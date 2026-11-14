@@ -289,29 +289,3 @@ Run `python3 scripts/desk_verify.py` to reproduce.
   image, so its rows cannot be joined.
 * **Luck is bounded, not removed.** Walk-forward testing, a Pythagorean residual and 95% CIs bound
   it; a single game stays mostly noise.
-
----
-
-## Decision ledger (branch `arena/2d19ea40-x3`)
-
-Subpages at **`/ledger/`** (`ledger/index.html`). Additive: no file owned by another session was edited.
-
-| Path | Contents |
-|------|----------|
-| `ledger/` | Overview, results feed (137 official finals), price store and origination (side → total → moneyline), replacement depth (76 Week-10 absences), leaderboard fields and demotion gate (proposed), correlations with n, flagged items |
-| `data/ledger/` | Input CSVs: `results_2026.csv`, `standings_live_2026_wk10.csv`, `price_snapshots.csv`, `replacement_depth_wk10.csv`, `leaderboard_fields.csv`, `demotion_gate.csv` |
-| `tools/ledger_extract.py` | Seeds the results and price-store inputs from the official-page capture |
-| `tools/build_ledger.py` | Deterministic builder: every number on a page is computed at build time |
-| `tools/verify_ledger.py` | Line-by-line gate: standings reconciliation (32 clubs), price-store rules, depth vs official injury report, row-source rule, internal links |
-
-Rebuild and verify:
-
-```bash
-python3 tools/ledger_extract.py
-python3 tools/build_ledger.py
-python3 tools/verify_ledger.py
-```
-
-Known limits: no official source publishes 2026 prices, so opening and closing values are blank; the leaderboard
-holds no rows because no strategy has settled bets; the demotion thresholds are proposals. Irregularities are listed on
-`ledger/flagged.html` (LF-01 to LF-10), including the home/away orientation mismatch for three games in `hub/data/lines.json`.

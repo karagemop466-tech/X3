@@ -1,28 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Overview - X3 decision ledger</title>
-<link rel="stylesheet" href="style.css"></head>
-<body>
-<header class="top"><div class="brand">X3 decision ledger</div>
-<div class="asof">Data as of 2026-11-14 (UTC) - 2026 season, Week 10</div></header>
-<nav class="nav"><a href="index.html" class="on">Overview</a><a href="results.html">Results feed</a><a href="prices.html">Price store &amp; origination</a><a href="depth.html">Replacement depth</a><a href="leaderboard.html">Leaderboard &amp; demotion</a><a href="correlation.html">Correlation</a><a href="flagged.html">Flagged for review</a><a href="../hub/index.html">Full decision desk</a><a href="../index.html">Site root</a></nav>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X3 Ledger — overview · X3 Ledger</title>
+<link rel="stylesheet" href="ledger.css">
+</head><body>
+<header class="top"><div class="brand"><a href="index.html">X3 Ledger</a><span>NFL 2026 · data captured 2026-11-14</span></div>
+<nav><a href="index.html" class=active>Overview</a><a href="results.html">Results feed</a><a href="prices.html">Lines &amp; prices</a><a href="depth.html">Replacement depth</a><a href="governance.html">Gates &amp; correlation</a><a href="../hub/index.html">Canonical hub</a><a href="../hub/flagged.html">Flagged</a></nav></header>
 <main>
-<section class="hero"><h1>Decision ledger</h1>
-<p>A single place for the inputs a decision needs: official results, the price store, replacement depth, the
-leaderboard rules and the correlations. Blank means not verified. Nothing here is a bet recommendation.</p></section>
-<section class="cards"><a class="card" href="results.html"><div class="num">137</div><div class="lbl">official FINAL games in the results feed</div></a><a class="card" href="results.html"><div class="num">32/32</div><div class="lbl">clubs reconciled to the live standings</div></a><a class="card" href="prices.html"><div class="num">13 x 3 = 39</div><div class="lbl">originated markets (side, total, moneyline)</div></a><a class="card" href="prices.html"><div class="num">0</div><div class="lbl">market prices recorded (no official price source)</div></a><a class="card" href="depth.html"><div class="num">41/76</div><div class="lbl">Out or Doubtful starters with a named replacement on the club chart</div></a><a class="card" href="leaderboard.html"><div class="num">0</div><div class="lbl">strategies ranked on the signal leaderboard (no settled bets)</div></a></section>
-<section><h2>Modules</h2><div class="tw"><table><thead><tr><th>Page</th><th>What it holds</th><th>Open</th></tr></thead><tbody><tr class="k-meta"><td>Results feed</td><td>Official 2026 finals, one row per game, source link per row, reconciled to standings</td><td><a href="results.html">open</a></td></tr><tr class="k-meta"><td>Price store and origination</td><td>Side, then total, then moneyline; fair, market and difference columns</td><td><a href="prices.html">open</a></td></tr><tr class="k-meta"><td>Replacement depth</td><td>Depth of each replacement behind an Out or Doubtful starter</td><td><a href="depth.html">open</a></td></tr><tr class="k-meta"><td>Leaderboard and demotion</td><td>Signal and staking tracked apart; demotion gate (proposed)</td><td><a href="leaderboard.html">open</a></td></tr><tr class="k-meta"><td>Correlation</td><td>Coefficients from official finals only, with n and 95% interval</td><td><a href="correlation.html">open</a></td></tr><tr class="k-meta"><td>Flagged for review</td><td>Unverified items and irregularities, with evidence links</td><td><a href="flagged.html">open</a></td></tr></tbody></table></div></section>
-<section><h2>What this ledger can and cannot support yet</h2>
+<h1>X3 Ledger — overview</h1>
+
+<p class="lede">A ledger for the NFL project: what has been recorded, from which official page, and what is still blank.
+Nothing is inferred. Empty means unverified.</p>
+<div class="cards">
+ <div><b>137</b>verified-source finals</div>
+ <div><b>0</b>price snapshots (open/close)</div>
+ <div><b>13</b>model lines (fair only)</div>
+ <div><b>0</b>market lines</div>
+ <div><b>210</b>injury-report rows with depth check</div>
+</div>
+<h2>Sections</h2>
+<table class="t k-meta"><thead><tr><th>Page</th><th>What it shows</th><th>Blank or unverified</th></tr></thead><tbody>
+<tr><td><a href="results.html">Results feed</a></td><td>137 final games, one official link per row</td><td>124 rows captured, not re-fetched</td></tr>
+<tr><td><a href="prices.html">Lines &amp; prices</a></td><td>Fair vs market vs difference; origination order; price store schema</td><td>all market prices and moneylines</td></tr>
+<tr><td><a href="depth.html">Replacement depth</a></td><td>Injury-report rows with the replacement's depth</td><td>54 rows not joined</td></tr>
+<tr><td><a href="governance.html">Gates &amp; correlation</a></td><td>Demotion gate proposal, signal vs staking, correlations with n</td><td>all strategy performance</td></tr>
+</tbody></table>
+<h2>Irregularities (this session)</h2>
 <ul>
-<li><b>Results: supported.</b> 32 of 32 clubs match the official standings on W, L, T, points for, points against, home and road records. Source: <a href="https://www.nfl.com/standings/league/2026/REG">nfl.com standings</a>.</li>
-<li><b>Prices: not supported.</b> No official source publishes 2026 opening or closing lines, so every
-opening and closing cell is blank. ROI and closing-line value cannot be computed until a price source is chosen.</li>
-<li><b>Signal vs staking: specified, not measured.</b> No strategy has settled bets, so the leaderboard holds no rows.</li>
-<li><b>Demotion gate: proposed.</b> Thresholds are proposals for an owner decision, not adopted rules.</li>
-</ul></section>
+<li>Desk pipeline built player profile URLs by slug (e.g. nfl.com/players/…) without verifying them. They are removed from this ledger. Source: <code>data/desk/deficiencies.json</code>.</li>
+<li>Club depth charts carry no as-of date for most clubs and are labelled unofficial by the club. Replacement depth is shown as a club-published fact, not an official NFL fact.</li>
+<li>Week 10 is in progress: 1 of 14 games are FINAL. The rest are scheduled for 15–16 Nov 2026 per the official week page.</li>
+<li>Market prices: no official source; price store has 0 rows by design.</li>
+<li>Model lines: BUF@NYJ, CAR@NO and JAX@TEN have reversed home/away orientation in <code>hub/data/lines.json</code>; their fair spreads are blanked here (source: nfl.com week 10 page).</li>
+<li>Full list of open items: <a href="../hub/flagged.html">Flagged for review (canonical hub)</a>.</li>
+</ul>
+
 </main>
-<footer>Every table row links its official source or is marked UNVERIFIED. DERIVED values are calculations from official
-inputs, not predictions. This site places no bets and pays no rewards. Built by tools/build_ledger.py; checked by
-tools/verify_ledger.py.</footer>
+<footer>Every row carries a link to an official source or is marked UNVERIFIED / DESIGN. Source repo: <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Blank cells are unverified on purpose.</footer>
+<script src="ledger.js"></script>
 </body></html>

@@ -1,8 +1,0 @@
-id,trigger,metric,threshold,min_sample,action,scope,status,source_url
-D-1,Input integrity,any live input lacks an official source or fails the row-source gate,any occurrence,n/a,demote to paper immediately,whole strategy,PROPOSED - owner decision required,../hub/gates.html
-D-2,Signal decay,mean closing-line value over the most recent 100 settled bets,below 0 points,100 settled bets,demote to paper,signal,PROPOSED - owner decision required,../hub/gates.html
-D-3,No evidence of edge over close,upper 95% bound of clv_mean over all settled bets since promotion,below 0 points,200 settled bets,demote to paper,signal,PROPOSED - owner decision required,../hub/gates.html
-D-4,Baseline loss,out-of-sample edge_vs_baseline with 95% interval entirely below 0,interval below 0,300 settled bets,demote to paper,signal,PROPOSED - owner decision required,../hub/gates.html
-D-5,Correlated-exposure breach,parlay legs sharing a game or correlated group over the exposure cap (gate G-8),2 breaches in 30 days,n/a,demote the parlay product only,product,PROPOSED - owner decision required,../hub/gates.html
-D-6,Staking breach,drawdown beyond the limit set in the staking rule,limit set before promotion,n/a,set stake to 0 and pause staking; signal evaluation continues and the signal status is unchanged,staking only,PROPOSED - owner decision required,../hub/gates.html
-D-7,Data outage,official injury or price input missing before kickoff,no input at kickoff,n/a,no new bets on affected games; not a demotion,game,PROPOSED - owner decision required,../hub/gates.html

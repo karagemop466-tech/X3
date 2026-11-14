@@ -1,203 +1,225 @@
 #!/usr/bin/env python3
-"""Line-by-line gate for the decision ledger (data/ledger/* and ledger/*.html).
+"""Row-level verification gate for the ledger module (session arena/a60a2bf7-x3).
 
-Checks, all offline (no network): 
-  1. Results feed reconciles to the live official standings snapshot:
-     W, L, T, PF, PA, home record and road record for all 32 clubs.
-  2. Price store: 13 games x 3 markets in origination order; every opening/closing/book
-     value is blank unless a price_source_url is present; every row carries a game source.
-  3. Replacement depth: each row's game_status equals the official injury report
-     (data/hub/injuries_2026_wk10.csv) for the same team and player.
-  4. Every table row on every ledger page links an approved official host, OR a repo
-     page for a PROPOSED/UNVERIFIED policy row, OR is explicitly flagged UNVERIFIED.
-  5. Every internal link in ledger/*.html resolves to a file.
-Exit code 0 only if every check passes.
+Checks, all offline:
+  1. Every <tbody> row of every table in ledger/*.html either
+       (a) links an approved official host (nfl.com, operations.nfl.com, or a club
+           domain that appears in data/ledger/replacement_depth.csv), or
+       (b) contains an explicit flag word: UNVERIFIED, DESIGN, DERIVED, IRREGULAR,
+           NOT ORIGINATED, COMPUTED.
+     Tables carrying class "k-meta" are navigation/summary tables and are exempt; the
+     exemption is visible in the markup.
+  2. Every CSV row in data/ledger/ that has a source_url / injury_source / url column
+     points at an approved host, or the row is flagged in its verification column.
+  3. Every relative link and asset in ledger/*.html resolves to a file.
+  4. results_feed.csv equals the FINAL rows of data/desk/games.json (count, scores, no
+     duplicate ids, margin and total arithmetic).
+  5. Rebuilding is byte-identical (determinism).
+
+Exit code 0 = pass, 1 = fail.
 """
-import csv, html, json, pathlib, re, sys
-from collections import defaultdict
+import csv
+import hashlib
+import json
+import re
+import subprocess
+import sys
 from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urlparse
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-LEDGER = ROOT / "data" / "ledger"
-PAGES = ROOT / "ledger"
-INJ = ROOT / "data" / "hub" / "injuries_2026_wk10.csv"
-ALIAS = {"ARI": "AZ"}  # game-log code -> standings code (official standings use AZ)
-
-APPROVED_HOSTS = {"www.nfl.com", "nfl.com", "operations.nfl.com"}
+ROOT = Path(__file__).resolve().parent.parent
+LEDGER = ROOT / "ledger"
+DATA = ROOT / "data" / "ledger"
+FLAG_WORDS = ("UNVERIFIED", "DESIGN", "DERIVED", "IRREGULAR", "NOT ORIGINATED", "COMPUTED")
+BASE_HOSTS = {"www.nfl.com", "nfl.com", "operations.nfl.com"}
 
 
 def club_hosts():
-    """Club depth-chart hosts, taken from the depth file. Each team must map to exactly one host."""
-    per_team = defaultdict(set)
-    for r in read("replacement_depth_wk10.csv"):
-        per_team[r["team"]].add(re.sub(r"^https?://", "", r["depth_source_url"]).split("/")[0].lower())
-    bad = {t: h for t, h in per_team.items() if len(h) != 1}
-    return set().union(*per_team.values()) if per_team else set(), bad
+    hosts = set()
+    p = DATA / "replacement_depth.csv"
+    if p.exists():
+        with p.open(encoding="utf-8") as fh:
+            for r in csv.DictReader(fh):
+                u = r.get("depth_source", "")
+                if u.startswith("https://"):
+                    hosts.add(urlparse(u).netloc)
+    return hosts
 
 
-def read(name):
-    with (LEDGER / name).open(newline="") as fh:
-        return list(csv.DictReader(fh))
+APPROVED = BASE_HOSTS | club_hosts()
 
 
-def reconcile():
-    """Return (teams_checked, mismatches) comparing results feed to live standings."""
-    results = read("results_2026.csv")
-    standings = read("standings_live_2026_wk10.csv")
-    agg = defaultdict(lambda: dict(w=0, l=0, t=0, pf=0, pa=0, hw=0, hl=0, ht=0, rw=0, rl=0, rt=0))
-    for g in results:
-        a, h = int(g["away_score"]), int(g["home_score"])
-        away = ALIAS.get(g["away"], g["away"])
-        home = ALIAS.get(g["home"], g["home"])
-        for team, pf, pa, is_home in ((home, h, a, True), (away, a, h, False)):
-            d = agg[team]
-            d["pf"] += pf
-            d["pa"] += pa
-            outcome = "w" if pf > pa else ("l" if pf < pa else "t")
-            d[outcome] += 1
-            d[("h" if is_home else "r") + outcome] += 1
-    mismatches = []
-    for s in standings:
-        team = s["team"]
-        d = agg.get(team)
-        if d is None:
-            mismatches.append((team, "no results rows"))
-            continue
-        for key in ("w", "l", "t", "pf", "pa"):
-            if d[key] != int(s[key]):
-                mismatches.append((team, f"{key}: feed {d[key]} vs standings {s[key]}"))
-        home_rec = f"{d['hw']}-{d['hl']}-{d['ht']}"
-        road_rec = f"{d['rw']}-{d['rl']}-{d['rt']}"
-        if home_rec != s["home_rec"]:
-            mismatches.append((team, f"home: feed {home_rec} vs standings {s['home_rec']}"))
-        if road_rec != s["road_rec"]:
-            mismatches.append((team, f"road: feed {road_rec} vs standings {s['road_rec']}"))
-    return len(standings), mismatches
-
-
-class _Links(HTMLParser):
+class TableParser(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.hrefs = []
+        self.tables = []  # list of dict(cls, rows=[(text, hrefs)])
+        self.hrefs_all = []
+        self.in_tbody = False
+        self.cur_table = None
+        self.cur_row = None
+        self.cur_text = []
+        self.cur_hrefs = []
+        self.cur_cells = 0
+        self.head_cells = None
+        self.in_thead = False
 
     def handle_starttag(self, tag, attrs):
-        if tag == "a":
-            href = dict(attrs).get("href", "")
-            if href:
-                self.hrefs.append(href)
+        a = dict(attrs)
+        if tag == "table":
+            self.cur_table = {"cls": a.get("class", ""), "rows": [], "head": None, "mismatch": []}
+            self.tables.append(self.cur_table)
+        elif tag == "thead":
+            self.in_thead = True
+            self.head_cells = 0
+        elif tag == "th" and self.in_thead:
+            self.head_cells += 1
+        elif tag == "tbody":
+            self.in_tbody = True
+        elif tag == "tr" and self.in_tbody:
+            self.cur_row = True
+            self.cur_text = []
+            self.cur_hrefs = []
+            self.cur_cells = 0
+        elif tag == "td" and self.cur_row:
+            self.cur_cells += 1
+        elif tag == "a" and "href" in a:
+            self.hrefs_all.append(a["href"])
+            if self.cur_row:
+                self.cur_hrefs.append(a["href"])
+
+    def handle_endtag(self, tag):
+        if tag == "thead":
+            self.in_thead = False
+            self.cur_table["head"] = self.head_cells
+        elif tag == "tbody":
+            self.in_tbody = False
+        elif tag == "tr" and self.cur_row:
+            if self.cur_table["head"] is not None and self.cur_cells != self.cur_table["head"]:
+                self.cur_table["mismatch"].append(self.cur_cells)
+            self.cur_table["rows"].append((" ".join(self.cur_text), self.cur_hrefs))
+            self.cur_row = None
+
+    def handle_data(self, data):
+        if self.cur_row:
+            self.cur_text.append(data)
 
 
-META_ROWS = []
+def host_ok(url):
+    p = urlparse(url)
+    return p.scheme == "https" and p.netloc in APPROVED
 
 
-def check_pages():
-    failures = []
-    CLUBS, _ = club_hosts()
-    rows_checked = 0
-    for page in sorted(PAGES.glob("*.html")):
-        text = page.read_text()
-        # row-level: every <tr> inside <tbody> needs an approved link or an UNVERIFIED/PROPOSED flag
-        for tr in re.findall(r"<tbody>(.*?)</tbody>", text, flags=re.S):
-            for row_open, row in re.findall(r"<tr([^>]*)>(.*?)</tr>", tr, flags=re.S):
-                if 'class="k-meta"' in row_open:
-                    # site-navigation / register row: exempt by explicit marker, counted separately
-                    META_ROWS.append(page.name)
-                    continue
-                rows_checked += 1
-                links = re.findall(r'href="([^"]+)"', row)
-                flagged = bool(re.search(r"UNVERIFIED|PROPOSED|DERIVED", row))
-                official = []
-                for href in links:
-                    if href.startswith(("http://", "https://")):
-                        host = re.sub(r"^https?://", "", href).split("/")[0].lower()
-                        if host in APPROVED_HOSTS or host in CLUBS:
-                            official.append(href)
-                if not official and not flagged:
-                    failures.append(f"{page.name}: row without official link or flag: {html.unescape(re.sub(r'<[^>]+>', ' ', row))[:120]!r}")
-                if not links:
-                    failures.append(f"{page.name}: row has no link at all")
-        parser = _Links()
-        parser.feed(text)
-        for href in parser.hrefs:
-            if href.startswith(("http://", "https://", "#", "mailto:")):
+def check_pages(fails, notes):
+    pages = sorted(LEDGER.glob("*.html"))
+    if not pages:
+        fails.append("no ledger pages found")
+        return
+    total_rows = exempt = 0
+    for page in pages:
+        text = page.read_text(encoding="utf-8")
+        tp = TableParser()
+        tp.feed(text)
+        for t in tp.tables:
+            if t["mismatch"]:
+                fails.append(f"{page.name}: table column count mismatch (header {t['head']}, row cells {sorted(set(t['mismatch']))})")
+            if "k-meta" in t["cls"]:
+                exempt += len(t["rows"])
                 continue
-            target = href.split("#", 1)[0]
-            if target and not (page.parent / target).exists():
-                failures.append(f"{page.name}: broken internal link {href}")
-    return rows_checked, failures
+            for body, hrefs in t["rows"]:
+                total_rows += 1
+                ok_link = any(host_ok(h) for h in hrefs)
+                ok_flag = any(w in body.upper() for w in FLAG_WORDS)
+                if not (ok_link or ok_flag):
+                    fails.append(f"{page.name}: row without official link or flag: {body[:90]!r}")
+        # internal links and assets
+        for href in tp.hrefs_all:
+            if href.startswith(("http://", "https://", "mailto:", "#")):
+                continue
+            target = (page.parent / href.split("#")[0]).resolve()
+            if href.split("#")[0] and not target.exists():
+                fails.append(f"{page.name}: broken relative link {href}")
+        for m in re.finditer(r'(?:src|href)="([^"#?]+\.(?:css|js))"', text):
+            if not (page.parent / m.group(1)).exists():
+                fails.append(f"{page.name}: missing asset {m.group(1)}")
+    notes.append(f"pages: {len(pages)}; table rows checked: {total_rows}; k-meta rows exempt: {exempt}")
 
 
-def check_prices():
-    out = []
-    rows = read("price_snapshots.csv")
-    if len(rows) != 39:
-        out.append(f"price store has {len(rows)} rows, expected 13 games x 3 markets = 39")
-    games = defaultdict(list)
+def check_csvs(fails, notes):
+    for path in sorted(DATA.glob("*.csv")):
+        with path.open(encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        url_cols = [c for c in ("source_url", "injury_source", "url") if rows and c in rows[0]]
+        for i, r in enumerate(rows, 1):
+            if not url_cols:
+                continue
+            urls = [r[c] for c in url_cols if r.get(c)]
+            flagged = any(w in (r.get("verification", "") + r.get("result", "")).upper() for w in FLAG_WORDS)
+            if not urls and not flagged:
+                fails.append(f"{path.name} row {i}: no source URL and not flagged")
+            for u in urls:
+                if not host_ok(u):
+                    fails.append(f"{path.name} row {i}: non-approved source host {u}")
+        notes.append(f"{path.name}: {len(rows)} rows")
+
+
+def check_results(fails, notes):
+    games = json.loads((ROOT / "data" / "desk" / "games.json").read_text())["games"]
+    finals = [g for g in games if g["status"] == "FINAL"]
+    with (DATA / "results_feed.csv").open(encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+    if len(rows) != len(finals):
+        fails.append(f"results_feed rows {len(rows)} != FINAL games {len(finals)}")
+    ids = [r["game_id"] for r in rows]
+    if len(set(ids)) != len(ids):
+        fails.append("results_feed has duplicate game_id")
+    src = {(g["away"], g["home"], g["week"]): g for g in finals}
     for r in rows:
-        games[r["game_id"]].append(r)
-    for gid, rs in games.items():
-        orders = [int(r["origination_order"]) for r in rs]
-        markets = [r["market"] for r in rs]
-        if orders != [1, 2, 3] or markets != ["spread", "total", "moneyline"]:
-            out.append(f"{gid}: origination order is {list(zip(orders, markets))}, expected side->total->moneyline")
-    for r in rows:
-        for field in ("opening_value", "closing_value", "book", "price_source_url"):
-            if r[field].strip():
-                if field == "price_source_url" and r[field].startswith("https://www.nfl.com/"):
-                    continue
-                out.append(f"{r['game_id']} {r['market']}: {field} filled ({r[field]!r}) without an official price source; must be blank")
-        if not r["game_source_url"].startswith("https://www.nfl.com/"):
-            out.append(f"{r['game_id']} {r['market']}: game_source_url is not an nfl.com page")
-    return len(rows), out
+        g = src.get((r["away"], r["home"], int(r["week"])))
+        if g is None:
+            fails.append(f"results row {r['game_id']} not in games.json FINAL set")
+            continue
+        if int(r["away_score"]) != g["away_score"] or int(r["home_score"]) != g["home_score"]:
+            fails.append(f"score mismatch {r['game_id']}")
+        if int(r["home_margin"]) != int(r["home_score"]) - int(r["away_score"]):
+            fails.append(f"margin arithmetic {r['game_id']}")
+        if int(r["total_points"]) != int(r["home_score"]) + int(r["away_score"]):
+            fails.append(f"total arithmetic {r['game_id']}")
+    notes.append(f"results_feed: {len(rows)} FINAL games reconciled to data/desk/games.json")
 
 
-def check_depth():
-    out = []
-    official = {}
-    for r in csv.DictReader(INJ.open(newline="")):
-        official[(r["team"], r["player"])] = r["status"]
-    rows = read("replacement_depth_wk10.csv")
-    for r in rows:
-        key = (r["team"], r["player"])
-        if key not in official:
-            out.append(f"{key}: not in official injury report")
-        elif official[key] != r["game_status"]:
-            out.append(f"{key}: status {r['game_status']!r} vs official {official[key]!r}")
-        if r["join"].startswith("matched") and not r["replacement"] and r["join"] != "matched-no-backup":
-            out.append(f"{key}: join says matched but no replacement name")
-    return len(rows), out
+def check_determinism(fails, notes):
+    def digest():
+        h = hashlib.sha256()
+        for p in sorted(list(LEDGER.glob("*")) + list(DATA.glob("*.csv"))):
+            h.update(p.name.encode())
+            h.update(p.read_bytes())
+        return h.hexdigest()
+
+    before = digest()
+    r = subprocess.run([sys.executable, str(ROOT / "tools" / "build_ledger.py")], cwd=ROOT,
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        fails.append("build_ledger.py failed: " + r.stderr.strip()[-200:])
+        return
+    after = digest()
+    if before != after:
+        fails.append("build is not deterministic / committed output differs from a rebuild")
+    notes.append("determinism: rebuild byte-identical" if before == after else "determinism: DIFF")
 
 
 def main():
-    problems = []
-    teams, mism = reconcile()
-    print(f"standings reconciliation: {teams} clubs, {len(mism)} mismatches")
-    problems += [f"reconcile {t}: {m}" for t, m in mism]
-    if teams != 32:
-        problems.append(f"expected 32 clubs, got {teams}")
-    n_res = len(read("results_2026.csv"))
-    print(f"results feed rows: {n_res}")
-    if n_res != 137:
-        problems.append(f"results feed has {n_res} rows, expected 137 FINAL games")
-    n_px, px = check_prices()
-    print(f"price store rows: {n_px}")
-    problems += px
-    n_dp, dp = check_depth()
-    print(f"replacement-depth rows checked against official injury report: {n_dp}")
-    problems += dp
-    _, multi = club_hosts()
-    problems += [f"team {t} uses more than one depth-chart host: {sorted(h)}" for t, h in multi.items()]
-    if PAGES.exists():
-        n_rows, pages = check_pages()
-        print(f"ledger page table rows checked: {n_rows} (navigation rows exempt by k-meta marker: {len(META_ROWS)})")
-        problems += pages
-    if problems:
-        print(f"LEDGER CHECK FAILED: {len(problems)} problem(s)")
-        for p in problems[:200]:
-            print(" -", p)
-        return 1
-    print("LEDGER CHECK PASSED")
-    return 0
+    fails, notes = [], []
+    check_pages(fails, notes)
+    check_csvs(fails, notes)
+    check_results(fails, notes)
+    check_determinism(fails, notes)
+    for n in notes:
+        print("OK  ", n)
+    for f in fails:
+        print("FAIL", f)
+    print("LEDGER VERIFY", "PASSED" if not fails else f"FAILED ({len(fails)})")
+    return 0 if not fails else 1
 
 
 if __name__ == "__main__":

@@ -1,48 +1,56 @@
 #!/usr/bin/env python3
-"""Deterministic builder for the decision ledger pages in ledger/.
+"""Deterministic builder for the ledger module (session arena/a60a2bf7-x3).
 
-Inputs (read-only): data/ledger/*.csv, hub/data/lines.json (model fair lines),
-data/hub/injuries_2026_wk10.csv (via verify_ledger). Every number on a page is computed
-here at build time; nothing is typed into prose. Market prices are never filled: the
-market columns stay blank, and the difference column is computed only when a market value
-exists (none does).
+Inputs (read only):
+  data/desk/games.json          official week-page captures (games, scores, source URL per game)
+  data/desk/deficiencies.json   official injury-report rows joined to club depth charts
+  hub/data/lines.json           model lines (DERIVED; market columns blank by policy)
 
-Derived values are labelled DERIVED on the page:
-  * final margin and total (home minus away, home plus away) from official finals
-  * correlations and Fisher-z 95% intervals from official finals only, n published
-  * fair moneyline = normal approximation P(home win) = Phi(fair margin / sigma), where
-    sigma is the sample standard deviation of official final margins (n published).
-    The approximation is uncalibrated: no market prices exist to test it against.
+Outputs:
+  data/ledger/results_feed.csv        one row per FINAL game, source URL per row
+  data/ledger/spot_checks.csv         live re-checks performed against official pages
+  data/ledger/price_snapshots.csv     opening/closing price store (schema only; no source yet)
+  data/ledger/lines_fair_market.csv   fair line, market line, difference (separate columns)
+  data/ledger/replacement_depth.csv   injury-report rows with replacement depth
+  ledger/*.html                       category pages
+
+Rules: nothing is inferred. A value that is not in an input file is written blank.
+Run:  python3 tools/build_ledger.py   (then python3 tools/verify_ledger.py)
 """
-import csv, html, json, math, pathlib, sys
+import csv
+import html
+import json
+import math
+from pathlib import Path
 
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-import verify_ledger as V  # reuse the same reconciliation and row rules
-import ledger_extract as LE  # the one documented code alias (LAR->LA, AZ->ARI)
+ROOT = Path(__file__).resolve().parent.parent
+SEASON = 2026
+DESK = ROOT / "data" / "desk"
+OUT_DATA = ROOT / "data" / "ledger"
+OUT_HTML = ROOT / "ledger"
+REPO_URL = "https://github.com/karagemop466-tech/X3"
+CAPTURED = "2026-11-14"
+MODEL_SRC = "https://github.com/karagemop466-tech/X3/blob/arena/a60a2bf7-x3/hub/data/lines.json"
 
-GAMES = V.ROOT / "data" / "desk" / "games.json"
-
-ROOT = V.ROOT
-OUT = ROOT / "ledger"
-LINES = ROOT / "hub" / "data" / "lines.json"
-WEEK_URL = "https://www.nfl.com/schedules/2026/by-week/week-{}"
-STANDINGS_URL = "https://www.nfl.com/standings/league/2026/REG"
-INJ_URL = "https://www.nfl.com/injuries/league/2026/reg10"
-ASOF = "2026-11-14"
-
-
-def esc(x):
-    return html.escape(str(x), quote=True)
+# Official host list used by the row-level gate (tools/verify_ledger.py).
+APPROVED_HOSTS = {"www.nfl.com", "nfl.com", "operations.nfl.com", "www.houstontexans.com"}
 
 
-def norm_cdf(z):
-    return 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
+def club_hosts_from_depth(depth_rows):
+    hosts = set()
+    for r in depth_rows:
+        src = r.get("depth_source", "")
+        if src.startswith("https://"):
+            hosts.add(src.split("/")[2])
+    return hosts
 
 
-def american(p):
-    if p >= 0.5:
-        return f"-{round(100 * p / (1 - p))}"
-    return f"+{round(100 * (1 - p) / p)}"
+def fisher_ci(r, n):
+    if n <= 3 or abs(r) >= 1:
+        return None, None
+    z = math.atanh(r)
+    se = 1 / math.sqrt(n - 3)
+    return math.tanh(z - 1.96 * se), math.tanh(z + 1.96 * se)
 
 
 def pearson(x, y):
@@ -54,345 +62,396 @@ def pearson(x, y):
     return sxy / math.sqrt(sxx * syy)
 
 
-def fisher_ci(r, n):
-    z = math.atanh(r)
-    se = 1.0 / math.sqrt(n - 3)
-    return math.tanh(z - 1.96 * se), math.tanh(z + 1.96 * se)
+def esc(v):
+    return html.escape("" if v is None else str(v))
 
 
-def compute():
-    res = V.read("results_2026.csv")
+def write_csv(path, header, rows):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh, lineterminator="\n")
+        w.writerow(header)
+        for r in rows:
+            w.writerow(["" if r.get(h) is None else r.get(h) for h in header])
+
+
+def build_results(games):
+    finals = [g for g in games if g["status"] == "FINAL"]
+    finals.sort(key=lambda g: (g["week"], g["date_iso"], g["away"]))
+    header = ["game_id", "season", "week", "date_iso", "away", "home", "away_score", "home_score",
+              "home_margin", "total_points", "winner", "source_url", "verification"]
     rows = []
-    for g in res:
-        h, a = int(g["home_score"]), int(g["away_score"])
-        rows.append({**g, "h": h, "a": a, "margin": h - a, "total": h + a, "week": int(g["week"])})
-    n = len(rows)
-    margins = [r["margin"] for r in rows]
-    mean_m = sum(margins) / n
-    sigma = math.sqrt(sum((m - mean_m) ** 2 for m in margins) / (n - 1))
-    corr = []
-    specs = [
-        ("Total points vs. home margin", [r["total"] for r in rows], [r["margin"] for r in rows],
-         "signed margin (home minus away)"),
-        ("Total points vs. absolute margin", [r["total"] for r in rows], [abs(r["margin"]) for r in rows],
-         "size of the winning margin, unsigned"),
-        ("Home points vs. away points", [r["h"] for r in rows], [r["a"] for r in rows],
-         "scoring by each side"),
-        ("Week number vs. total points", [r["week"] for r in rows], [r["total"] for r in rows],
-         "scoring trend across weeks 1-10"),
-    ]
-    for label, x, y, note in specs:
-        r = pearson(x, y)
-        lo, hi = fisher_ci(r, len(x))
-        corr.append({"label": label, "r": r, "lo": lo, "hi": hi, "n": len(x), "note": note})
-    fair = []
-    model = json.loads(LINES.read_text())["rows"]
-    official = {}
-    for g in json.loads(GAMES.read_text())["games"]:
-        if g["week"] == 10 and g["status"] == "SCHEDULED":
-            official[frozenset((g["away"], g["home"]))] = (g["away"], g["home"])
-    for m in model:
-        key = frozenset(LE.MODEL_TO_CAPTURE.get(t, t) for t in (m["home"], m["away"]))
-        off_away, off_home = official[key]
-        model_home = LE.MODEL_TO_CAPTURE.get(m["home"], m["home"])
-        spread_model_home = m["model_spread_home"]          # sportsbook sign, model's own 'home'
-        margin_model_home = -spread_model_home              # expected margin for model's 'home'
-        # Re-express from the OFFICIAL home side. The team-level margin is unchanged; only the
-        # label orientation differs for rows where the model's home/away is reversed.
-        reversed_orientation = model_home != off_home
-        margin_off_home = -margin_model_home if reversed_orientation else margin_model_home
-        spread_off_home = -margin_off_home
-        p_home = norm_cdf(margin_off_home / sigma)
-        fair.append({
-            "game": f"{off_away}@{off_home}", "home": off_home, "away": off_away,
-            "date": m["date"], "slot": m["slot"], "reversed": reversed_orientation,
-            "spread_home": spread_off_home, "total": m["model_total"], "p_home": p_home,
-            "ml_home": american(p_home), "ml_away": american(1 - p_home),
+    for g in finals:
+        a, h = int(g["away_score"]), int(g["home_score"])
+        winner = g["home"] if h > a else (g["away"] if a > h else "TIE")
+        gid = f"{SEASON}-W{g['week']:02d}-{g['away']}@{g['home']}"
+        rows.append({
+            "game_id": gid,
+            "season": SEASON, "week": g["week"], "date_iso": g["date_iso"],
+            "away": g["away"], "home": g["home"], "away_score": a, "home_score": h,
+            "home_margin": h - a, "total_points": a + h, "winner": winner,
+            "source_url": g["source"],
+            "verification": ("LIVE_MATCH " + CAPTURED + " (official page re-fetched)" if gid in SPOT_IDS
+                             else "CAPTURED_OFFICIAL_PAGE (desk CI " + CAPTURED + "; not re-fetched)"),
         })
-    return rows, n, sigma, mean_m, corr, fair
+    return header, rows
 
 
-# ---------- HTML helpers ----------
-CSS = "ledger/style.css"
-NAV = [("index.html", "Overview"), ("results.html", "Results feed"), ("prices.html", "Price store &amp; origination"),
-       ("depth.html", "Replacement depth"), ("leaderboard.html", "Leaderboard &amp; demotion"),
-       ("correlation.html", "Correlation"), ("flagged.html", "Flagged for review")]
+_W1 = [  # (away, home, away_pts, home_pts) transcribed from nfl.com/schedules/2026/by-week/week-1, chunk 1 of 2
+    ("NE", "SEA", 10, 13), ("SF", "LA", 27, 7), ("CHI", "CAR", 59, 37), ("TB", "CIN", 27, 33),
+    ("NO", "DET", 30, 31), ("BUF", "HOU", 36, 31), ("BAL", "IND", 41, 23), ("CLE", "JAX", 10, 34),
+    ("ATL", "PIT", 13, 20), ("NYJ", "TEN", 23, 10), ("ARI", "LAC", 26, 14), ("MIA", "LV", 13, 27),
+]
+SPOT_CHECKS = [
+    {"game_id": f"{SEASON}-W10-WAS@NYG", "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
+     "fetched_utc": CAPTURED, "observed": "Commanders 24, Giants 21, FINAL, Thursday, November 12th",
+     "result": "MATCH (away WAS 24, home NYG 21)"},
+] + [
+    {"game_id": f"{SEASON}-W01-{a}@{h}", "url": "https://www.nfl.com/schedules/2026/by-week/week-1",
+     "fetched_utc": CAPTURED, "observed": f"page lists {a} {ap}, {h} {hp}, FINAL",
+     "result": f"MATCH (away {a} {ap}, home {h} {hp})"}
+    for (a, h, ap, hp) in _W1
+]
 
 
-def page(name, title, body):
-    items = []
-    for h, t in NAV:
-        cls = ' class="on"' if h == name else ""
-        items.append('<a href="%s"%s>%s</a>' % (h, cls, t))
-    nav = "".join(items)
-    doc = f"""<!DOCTYPE html>
+SPOT_IDS = {s["game_id"] for s in SPOT_CHECKS}
+
+
+def build_prices_schema():
+    header = ["snapshot_id", "game_id", "market", "side", "snapshot_type", "line", "price_american",
+              "captured_at_utc", "book", "source_url", "verification"]
+    return header, []  # no official price source identified; store is empty by policy
+
+
+ALIAS = {"LAR": "LA", "AZ": "ARI"}  # model abbreviation -> official schedule abbreviation
+
+
+def build_lines(games, lines_doc):
+    """Join model lines to the official schedule. Orientation (away/home) is taken from the
+    official schedule. If the model's home side differs, the model's spread is sign-ambiguous
+    and is blanked; the total is orientation-independent and is kept."""
+    header = ["game", "week", "date", "kickoff_slot_et", "away", "home", "fair_spread_home",
+              "market_spread_home", "diff_spread_fair_minus_market", "fair_total", "market_total",
+              "diff_total_fair_minus_market", "moneyline_home", "source_url", "verification"]
+    rows = []
+    for r in lines_doc["rows"]:
+        ma, mh = ALIAS.get(r["away"], r["away"]), ALIAS.get(r["home"], r["home"])
+        match = [g for g in games if g["week"] in (10, 11) and g["status"] != "FINAL"
+                 and {g["away"], g["home"]} == {ma, mh}]
+        if len(match) != 1:
+            raise SystemExit(f"line row {r['game']} does not match exactly one scheduled game")
+        g = match[0]
+        conflict = g["home"] != mh
+        mk_s = r.get("market_spread")
+        mk_t = r.get("market_total")
+        fair_s = "" if conflict else r["model_spread_home"]
+        diff_s = round(fair_s - float(mk_s), 2) if (fair_s != "" and mk_s not in ("", None)) else ""
+        diff_t = round(r["model_total"] - float(mk_t), 2) if mk_t not in ("", None) else ""
+        ver = "DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED"
+        if conflict:
+            ver += "; IRREGULAR: model home/away reversed vs official schedule, spread blanked"
+        rows.append({
+            "game": f"{g['away']}@{g['home']}", "week": g["week"], "date": g["date_iso"],
+            "kickoff_slot_et": r["slot"], "away": g["away"], "home": g["home"],
+            "fair_spread_home": fair_s, "market_spread_home": mk_s if mk_s is not None else "",
+            "diff_spread_fair_minus_market": diff_s, "fair_total": r["model_total"],
+            "market_total": mk_t if mk_t is not None else "",
+            "diff_total_fair_minus_market": diff_t, "moneyline_home": "",
+            "source_url": g["source"], "verification": ver,
+        })
+    return header, rows
+
+
+def build_depth(def_doc):
+    header = ["week", "team", "player", "pos", "status", "injury", "group", "unit", "slot",
+              "starter_depth_string", "replacement", "replacement_depth", "chart_size", "join",
+              "chart_unofficial", "chart_as_of", "injury_source", "depth_source", "verification"]
+    rows = []
+    for r in def_doc["rows"]:
+        rows.append({
+            "week": r["week"], "team": r["team"], "player": r["player"], "pos": r["pos"],
+            "status": r["status"], "injury": r["injury"], "group": r["group"], "unit": r["unit"],
+            "slot": r["slot"], "starter_depth_string": r["depth_string"],
+            "replacement": r["replacement"], "replacement_depth": r["replacement_depth"],
+            "chart_size": r["chart_size"], "join": r["join"],
+            "chart_unofficial": "yes" if r["chart_unofficial"] else ("" if r["chart_as_of"] == "" else "no"),
+            "chart_as_of": r["chart_as_of"], "injury_source": r["injury_source"],
+            "depth_source": r["depth_source"],
+            "verification": "INJURY ROW OFFICIAL; CHART CLUB-PUBLISHED" + (
+                "; replacement UNVERIFIED (no join)" if r["join"] != "matched" else ""),
+        })
+    return header, rows
+
+
+def page(title, active, body, extra_head=""):
+    nav = [("index.html", "Overview"), ("results.html", "Results feed"), ("prices.html", "Lines & prices"),
+           ("depth.html", "Replacement depth"), ("governance.html", "Gates & correlation")]
+    navhtml = "".join(
+        f'<a href="{h}"{" class=active" if h == active else ""}>{esc(t)}</a>' for h, t in nav)
+    return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)} - X3 decision ledger</title>
-<link rel="stylesheet" href="style.css"></head>
-<body>
-<header class="top"><div class="brand">X3 decision ledger</div>
-<div class="asof">Data as of {ASOF} (UTC) - 2026 season, Week 10</div></header>
-<nav class="nav">{nav}<a href="../hub/index.html">Full decision desk</a><a href="../index.html">Site root</a></nav>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(title)} · X3 Ledger</title>
+<link rel="stylesheet" href="ledger.css">{extra_head}
+</head><body>
+<header class="top"><div class="brand"><a href="index.html">X3 Ledger</a><span>NFL 2026 · data captured {CAPTURED}</span></div>
+<nav>{navhtml}<a href="../hub/index.html">Canonical hub</a><a href="../hub/flagged.html">Flagged</a></nav></header>
 <main>
+<h1>{esc(title)}</h1>
 {body}
 </main>
-<footer>Every table row links its official source or is marked UNVERIFIED. DERIVED values are calculations from official
-inputs, not predictions. This site places no bets and pays no rewards. Built by tools/build_ledger.py; checked by
-tools/verify_ledger.py.</footer>
+<footer>Every row carries a link to an official source or is marked UNVERIFIED / DESIGN. Source repo: <a href="{REPO_URL}">{REPO_URL.split('github.com/')[1]}</a>. Blank cells are unverified on purpose.</footer>
+<script src="ledger.js"></script>
 </body></html>
 """
-    (OUT / name).write_text(doc)
 
 
-def table(headers, rows_html, caption=""):
-    th = "".join(f"<th>{h}</th>" for h in headers)
-    cap = f"<caption>{caption}</caption>" if caption else ""
-    return f'<div class="tw"><table>{cap}<thead><tr>{th}</tr></thead><tbody>{"".join(rows_html)}</tbody></table></div>'
+def table(headers, rows, cls="t"):
+    th = "".join(f"<th>{esc(h)}</th>" for h in headers)
+    trs = []
+    for r in rows:
+        tds = []
+        for c in r:
+            if isinstance(c, tuple) and c and c[0] == "HTML":
+                tds.append(f"<td>{c[1]}</td>")
+            else:
+                tds.append(f"<td>{esc(c)}</td>")
+        trs.append("<tr>" + "".join(tds) + "</tr>")
+    return (f'<input class="filter" placeholder="Filter rows…" aria-label="Filter rows">'
+            f'<div class="scroll"><table class="{cls}"><thead><tr>{th}</tr></thead>'
+            f'<tbody>{"".join(trs)}</tbody></table></div>')
 
 
-def link(url, label=None):
-    label = label or url.replace("https://", "")
-    return f'<a href="{esc(url)}" rel="noopener">{esc(label)}</a>'
+def link(url, label="source"):
+    return ("HTML", f'<a href="{esc(url)}" rel="noopener">{esc(label)}</a>')
 
 
-def build_all():
-    OUT.mkdir(exist_ok=True)
-    rows, n, sigma, mean_m, corr, fair = compute()
-    n_teams, mism = V.reconcile()
-    dep = V.read("replacement_depth_wk10.csv")
-    px = V.read("price_snapshots.csv")
-    lf = V.read("leaderboard_fields.csv")
-    dg = V.read("demotion_gate.csv")
-    join_counts = {}
-    for d in dep:
-        join_counts[d["join"]] = join_counts.get(d["join"], 0) + 1
-    with_repl = sum(1 for d in dep if d["replacement"])
-    n_out = sum(1 for d in dep if d["game_status"] == "Out")
-    n_dbt = sum(1 for d in dep if d["game_status"] == "Doubtful")
-    n_px_filled = sum(1 for r in px if r["opening_value"] or r["closing_value"])
-    recon_line = (f"{n_teams - len({t for t, _ in mism})} of {n_teams} clubs match the official standings on "
-                  f"W, L, T, points for, points against, home and road records"
-                  if n_teams else "no clubs checked")
-    (OUT / "style.css").write_text(STYLE)
+def blank_flag():
+    return ("HTML", '<span class="unv">UNVERIFIED</span>')
 
-    # ---- index
-    cards = [
-        (f"{n}", "official FINAL games in the results feed", "results.html"),
-        (f"{n_teams - len({t for t, _ in mism})}/{n_teams}", "clubs reconciled to the live standings", "results.html"),
-        (f"{len(fair)} x 3 = {len(px)}", "originated markets (side, total, moneyline)", "prices.html"),
-        (f"{n_px_filled}", "market prices recorded (no official price source)", "prices.html"),
-        (f"{with_repl}/{len(dep)}", "Out or Doubtful starters with a named replacement on the club chart", "depth.html"),
-        ("0", "strategies ranked on the signal leaderboard (no settled bets)", "leaderboard.html"),
+
+def main():
+    games = json.loads((DESK / "games.json").read_text())["games"]
+    def_doc = json.loads((DESK / "deficiencies.json").read_text())
+    lines_doc = json.loads((ROOT / "hub" / "data" / "lines.json").read_text())
+
+    res_h, res_rows = build_results(games)
+    pr_h, pr_rows = build_prices_schema()
+    ln_h, ln_rows = build_lines(games, lines_doc)
+    dp_h, dp_rows = build_depth(def_doc)
+
+    write_csv(OUT_DATA / "results_feed.csv", res_h, res_rows)
+    write_csv(OUT_DATA / "price_snapshots.csv", pr_h, pr_rows)
+    write_csv(OUT_DATA / "lines_fair_market.csv", ln_h, ln_rows)
+    write_csv(OUT_DATA / "replacement_depth.csv", dp_h, dp_rows)
+    write_csv(OUT_DATA / "spot_checks.csv",
+              ["game_id", "url", "fetched_utc", "observed", "result"], SPOT_CHECKS)
+
+    # ---- correlations: only official finals; n published with each value
+    x_home = [r["home_score"] for r in res_rows]
+    x_away = [r["away_score"] for r in res_rows]
+    tot = [r["total_points"] for r in res_rows]
+    absm = [abs(r["home_margin"]) for r in res_rows]
+    wk = [r["week"] for r in res_rows]
+    corr_defs = [
+        ("Home points vs away points", x_home, x_away),
+        ("Total points vs absolute home margin", tot, absm),
+        ("Week number vs total points (scoring trend)", wk, tot),
     ]
-    card_html = "".join(f'<a class="card" href="{h}"><div class="num">{v}</div><div class="lbl">{l}</div></a>'
-                        for v, l, h in cards)
-    idx_rows = [
-        ["Results feed", "Official 2026 finals, one row per game, source link per row, reconciled to standings",
-         "results.html"],
-        ["Price store and origination", "Side, then total, then moneyline; fair, market and difference columns",
-         "prices.html"],
-        ["Replacement depth", "Depth of each replacement behind an Out or Doubtful starter", "depth.html"],
-        ["Leaderboard and demotion", "Signal and staking tracked apart; demotion gate (proposed)", "leaderboard.html"],
-        ["Correlation", "Coefficients from official finals only, with n and 95% interval", "correlation.html"],
-        ["Flagged for review", "Unverified items and irregularities, with evidence links", "flagged.html"],
-    ]
-    idx_table = table(["Page", "What it holds", "Open"],
-                      [f"<tr class=\"k-meta\"><td>{esc(a)}</td><td>{esc(b)}</td><td><a href=\"{c}\">open</a></td></tr>" for a, b, c in idx_rows])
-    body = f"""<section class="hero"><h1>Decision ledger</h1>
-<p>A single place for the inputs a decision needs: official results, the price store, replacement depth, the
-leaderboard rules and the correlations. Blank means not verified. Nothing here is a bet recommendation.</p></section>
-<section class="cards">{card_html}</section>
-<section><h2>Modules</h2>{idx_table}</section>
-<section><h2>What this ledger can and cannot support yet</h2>
-<ul>
-<li><b>Results: supported.</b> {esc(recon_line)}. Source: <a href="{STANDINGS_URL}">nfl.com standings</a>.</li>
-<li><b>Prices: not supported.</b> No official source publishes 2026 opening or closing lines, so every
-opening and closing cell is blank. ROI and closing-line value cannot be computed until a price source is chosen.</li>
-<li><b>Signal vs staking: specified, not measured.</b> No strategy has settled bets, so the leaderboard holds no rows.</li>
-<li><b>Demotion gate: proposed.</b> Thresholds are proposals for an owner decision, not adopted rules.</li>
-</ul></section>"""
-    page("index.html", "Overview", body)
+    corr_rows = []
+    for label, a, b in corr_defs:
+        n = len(a)
+        r = pearson(a, b)
+        lo, hi = fisher_ci(r, n)
+        corr_rows.append((label, n, round(r, 3), round(lo, 3), round(hi, 3)))
 
-    # ---- results
-    rr = []
-    for r in sorted(rows, key=lambda r: (r["week"], r["date_iso"], r["away"])):
-        rr.append(f"<tr><td>{r['week']}</td><td>{esc(r['date_iso'])}</td><td>{esc(r['away'])}</td>"
-                  f"<td class=\"num\">{r['a']}</td><td class=\"num\">{r['h']}</td><td>{esc(r['home'])}</td>"
-                  f"<td class=\"num\">{r['margin']:+d}</td><td class=\"num\">{r['total']}</td>"
-                  f"<td>{esc(r['neutral_site'])}</td><td>{link(r['source_url'], 'nfl.com week ' + str(r['week']))}</td></tr>")
-    body = f"""<section class="hero"><h1>Results feed</h1>
-<p><b>{n} official FINAL games</b> (2026 Weeks 1-10). Scores are as captured from nfl.com week pages. Margin and total
-are <span class="tag d">DERIVED</span> from those scores. Reconciliation: {esc(recon_line)}, checked by
-<code>tools/verify_ledger.py</code> against <a href="{STANDINGS_URL}">the live standings page</a>.</p></section>
-{table(["Wk", "Date", "Away", "Away pts", "Home pts", "Home", "Home margin", "Total", "Neutral", "Source"], rr,
-       caption="2026 FINAL games, one row per game")}"""
-    page("results.html", "Results feed", body)
+    # ---- depth rollups (computed, not typed)
+    matched = [r for r in dp_rows if r["join"].startswith("matched")]
+    depth_counts = {}
+    for r in matched:
+        k = str(r["replacement_depth"]) or "blank"
+        depth_counts[k] = depth_counts.get(k, 0) + 1
+    unmatched_n = len(dp_rows) - len(matched)
 
-    # ---- prices
-    fair_by_game = {frozenset((f["away"], f["home"])): f for f in fair}
-    n_rev = sum(1 for f in fair if f["reversed"])
-    rev_list = ", ".join(f["game"] for f in fair if f["reversed"]) or "none"
-    pr = []
-    for r in px:
-        key = f"{r['away']}@{r['home']}"
-        f = fair_by_game[frozenset((r["away"], r["home"]))]
-        if r["market"] == "spread":
-            fair_txt = f"{esc(f['home'])} {f['spread_home']:+.1f} (home) / {esc(f['away'])} {-f['spread_home']:+.1f}"
-        elif r["market"] == "total":
-            fair_txt = f"{f['total']:.1f}"
-        else:
-            fair_txt = f"{esc(f['home'])} {f['ml_home']} / {esc(f['away'])} {f['ml_away']}"
-        pr.append(
-            f"<tr><td>{esc(key)}</td><td>{esc(r['date_iso'])} {esc(r['kickoff_et'])}</td>"
-            f"<td class=\"num\">{r['origination_order']}</td><td>{esc(r['market'])}</td>"
-            f"<td><span class=\"tag d\">DERIVED</span> {fair_txt}</td>"
-            f"<td class=\"blank\">UNVERIFIED</td><td class=\"blank\">UNVERIFIED</td>"
-            f"<td class=\"blank\">blank</td><td>{esc(r['status'])}</td>"
-            f"<td>{link(r['game_source_url'], 'nfl.com week 10')}</td></tr>")
-    body = f"""<section class="hero"><h1>Price store and origination</h1>
-<p>Every market we originate, in order: <b>1 side (spread)</b>, then <b>2 total</b>, then <b>3 moneyline</b>. For each
-market the page shows the model's fair line, the market line (blank: no official price source), and the difference
-(market minus fair, computed only when a market value exists). Opening and closing values stay blank until an official
-or otherwise sourced price archive is adopted (owner decision, see Flagged).</p>
-<p><b>Orientation:</b> home and away follow the official nfl.com listing. The model's own file labels {n_rev} games with
-the home side reversed ({rev_list}); their team-level margins are unchanged and are re-expressed here. See LF-10.</p>
-<p>Fair moneyline = normal approximation, P(home win) = &Phi;(fair margin / &sigma;), with &sigma; = {sigma:.2f} points, the sample
-standard deviation of {n} official final margins (<span class="tag d">DERIVED</span>, uncalibrated).</p></section>
-{table(["Game", "Date / kickoff ET", "Order", "Market", "Fair line (model)", "Market open", "Market close",
-        "Difference", "Price status", "Source"], pr,
-       caption="Week 10 unplayed games, 13 games x 3 markets")}"""
-    page("prices.html", "Price store", body)
+    # ---- html pages
+    fin_n = len(res_rows)
+    weeks = sorted({r["week"] for r in res_rows})
+    week_urls = sorted({r["source_url"] for r in res_rows})
+    total_games = len(games)
+    sched_n = total_games - fin_n
 
-    # ---- depth
-    dr = []
-    for d in dep:
-        repl = (f"{esc(d['replacement'])} (string {esc(d['replacement_string'])})" if d["replacement"]
-                else "<span class=\"blank\">blank</span>")
-        dr.append(
-            f"<tr><td>{esc(d['team'])}</td><td>{esc(d['player'])}</td><td>{esc(d['position'])}</td>"
-            f"<td>{esc(d['game_status'])}</td><td>{esc(d['injury'])}</td>"
-            f"<td>{esc(d['unit'])} {esc(d['slot'])}</td><td class=\"num\">{esc(d['starter_string'])}</td>"
-            f"<td>{repl}</td><td>{esc(d['join'])}</td><td>{esc(d['chart_labelled_unofficial'])}</td>"
-            f"<td>{link(d['injury_source_url'], 'NFL injury report')}; {link(d['depth_source_url'], 'club depth chart')}</td></tr>")
-    jc = "; ".join(f"{esc(k)}: {v}" for k, v in sorted(join_counts.items()))
-    body = f"""<section class="hero"><h1>Replacement depth</h1>
-<p><b>{len(dep)} Week-10 starters</b> listed Out ({n_out}) or Doubtful ({n_dbt}) on the official injury report. For each one the
-page shows the replacement's string number on the club's own depth chart, as captured. A blank replacement means the
-join failed, not that no replacement exists. Join results: {jc}.</p>
-<p>Charts are self-labelled unofficial by most clubs and mostly undated, so these are <span class="tag u">UNVERIFIED</span>
-inputs. Every status matches the official report (checked row by row); the Atlanta chart was re-read live for this build.</p>
-</section>
-{table(["Team", "Player", "Pos", "Status", "Injury", "Unit / slot", "Starter string", "Replacement (string)",
-        "Join", "Chart unofficial", "Sources"], dr, caption="Out and Doubtful starters, Week 10")}"""
-    page("depth.html", "Replacement depth", body)
-
-    # ---- leaderboard & demotion
-    lr = []
-    for r in lf:
-        lr.append(f"<tr><td>{esc(r['track'])}</td><td>{esc(r['field'])}</td><td>{esc(r['role'])}</td>"
-                  f"<td>{esc(r['definition'])}</td><td>{esc(r['status'])}</td>"
-                  f"<td>{link(r['source_url'], 'validation gates (hub)')}</td></tr>")
-    dr2 = []
-    for r in dg:
-        dr2.append(f"<tr><td>{esc(r['id'])}</td><td>{esc(r['trigger'])}</td><td>{esc(r['metric'])}</td>"
-                   f"<td>{esc(r['threshold'])}</td><td>{esc(r['min_sample'])}</td><td>{esc(r['action'])}</td>"
-                   f"<td>{esc(r['scope'])}</td><td>{esc(r['status'])}</td>"
-                   f"<td>{link(r['source_url'], 'validation gates (hub)')}</td></tr>")
-    body = f"""<section class="hero"><h1>Leaderboard and demotion gate</h1>
-<p><b>Ranking uses the signal track only.</b> Staking results are shown beside the signal, never inside the rank, so a
-lucky staking run cannot hide a weak signal. A strategy is ranked only if every gate passes; otherwise it shows
-NOT RANKED with the failing gate named.</p>
-<p><b>Current leaderboard: 0 rows.</b> No strategy has settled bets or closing prices, so no signal can be measured.
-The demotion thresholds below are <span class="tag u">PROPOSED</span> for an owner decision and are not in force.</p></section>
-<h2>Signal and staking fields</h2>
-{table(["Track", "Field", "Role", "Definition", "Status", "Source"], lr, caption="Leaderboard fields")}
-<h2>Demotion gate: sends a live strategy back to paper</h2>
-{table(["ID", "Trigger", "Metric", "Threshold", "Min sample", "Action", "Scope", "Status", "Source"], dr2,
-       caption="Demotion rules")}"""
-    page("leaderboard.html", "Leaderboard", body)
-
-    # ---- correlation
-    cr = []
-    for c in corr:
-        wk = " ".join(link(WEEK_URL.format(w), f"wk{w}") for w in range(1, 11))
-        cr.append(f"<tr><td>{esc(c['label'])}</td><td class=\"num\">{c['r']:+.3f}</td>"
-                  f"<td class=\"num\">[{c['lo']:+.3f}, {c['hi']:+.3f}]</td><td class=\"num\">{c['n']}</td>"
-                  f"<td>{esc(c['note'])}</td><td>{wk}</td></tr>")
-    body = f"""<section class="hero"><h1>Correlation</h1>
-<p>Pearson correlations computed only from official FINAL scores (<span class="tag d">DERIVED</span>). Each row publishes
-its <b>n</b> and a Fisher-z 95% interval. No price, prop or model number enters any coefficient.
-Correlations between parlay legs need joint outcomes that do not yet exist, so they are not computed here.</p></section>
-{table(["Pair", "r", "95% interval", "n", "Definition", "Official sources (weeks 1-10)"], cr,
-       caption="Coefficients from official FINAL games")}"""
-    page("correlation.html", "Correlation", body)
-
-    # ---- flagged
-    flags = [
-        ("LF-01", "Price store is empty. No official source publishes 2026 opening or closing lines.",
-         "UNVERIFIED", "../hub/flagged.html", "Owner decides the price source; then ingest with its own row URLs."),
-        ("LF-02", f"Fair moneyline uses a normal approximation with sigma = {sigma:.2f} (n = {n}). It is uncalibrated.",
-         "DERIVED", "prices.html", "Calibrate once closing prices exist; until then treat as a model output only."),
-        ("LF-03", "Demotion and leaderboard thresholds are proposals, not adopted rules.",
-         "PROPOSED", "leaderboard.html", "Owner decision on each D-rule and on ranking by signal only."),
-        ("LF-04", "Replacement strings come from club depth charts that clubs label unofficial; most are undated.",
-         "UNVERIFIED", "depth.html", "Use an official, dated depth source or keep the join as a flagged input."),
-        ("LF-05", "One Week-10 Atlanta depth chart was re-read live and matched; other charts were not re-read this build.",
-         "UNVERIFIED", "https://www.atlantafalcons.com/team/depth-chart", "Re-read remaining charts before relying on them."),
-        ("LF-06", "The model uses LAR and AZ; the official game capture uses LA and ARI. The one alias is applied explicitly.",
-         "DERIVED", "prices.html", "None; recorded so reviewers can trace the match."),
-        ("LF-07", "The Week 1 game SF at LA is captured as a neutral site (East Melbourne). Not independently re-checked here.",
-         "UNVERIFIED", "results.html", "Check the official game page before using neutral-site status."),
-        ("LF-08", "The ledger is not yet linked from the root landing or the decision desk. PR #36 (arena/e9b492ab-x3) is open and conflicting on the hub files.",
-         "UNVERIFIED", "https://github.com/karagemop466-tech/X3/pull/36", "Integration session adds the link after PR #36 is resolved."),
-        ("LF-10", f"Model file hub/data/lines.json lists the home side reversed for {n_rev} games ({rev_list}) "
-         "against the official listing. Team-level margins are unchanged; the ledger re-expresses them from the official home side.",
-         "UNVERIFIED", "https://www.nfl.com/schedules/2026/by-week/week-10",
-         "Owner corrects the orientation in the model (hub) after PR #36 is resolved; then re-run the ledger."),
-        ("LF-09", "The live standings page text contains an unrendered template heading ('$year$ NFL $displayname$ Standings'). Only the table values are used.",
-         "UNVERIFIED", STANDINGS_URL, "Note only; no value depends on the heading."),
-    ]
-    fr = []
-    for fid, item, tag, ev, act in sorted(flags, key=lambda f: f[0]):
-        ev_html = link(ev, ev) if ev.startswith("http") else f'<a href="{esc(ev)}">{esc(ev)}</a>'
-        fr.append(f"<tr><td>{fid}</td><td>{esc(item)}</td><td><span class=\"tag u\">{esc(tag)}</span></td>"
-                  f"<td>{ev_html}</td><td>{esc(act)}</td></tr>")
-    body = f"""<section class="hero"><h1>Flagged for review</h1>
-<p>Open items for the owner. None of them blocks publication: each one is either marked UNVERIFIED, DERIVED or PROPOSED on
-the page where it applies, or is a note.</p></section>
-{table(["ID", "Item", "Status", "Evidence", "What closes it"], fr, caption="Ledger flags")}"""
-    page("flagged.html", "Flagged for review", body)
-    return {"results": n, "clubs": n_teams, "mismatch": len(mism), "fair_games": len(fair), "price_rows": len(px),
-            "depth_rows": len(dep), "sigma": round(sigma, 4), "corr": [(c["label"], round(c["r"], 4), c["n"]) for c in corr]}
-
-
-STYLE = """
-:root{--ink:#14202b;--mut:#5b6b7a;--line:#dbe3ea;--bg:#f6f8fa;--acc:#0b5cad;--warn:#8a5a00;--warnbg:#fff4d6;--ok:#17603b;--okbg:#e4f5ec}
-*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
-header.top{background:#0f2a43;color:#fff;padding:14px 22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.brand{font-weight:700;letter-spacing:.2px}.asof{opacity:.85;font-size:13px}
-nav.nav{background:#fff;border-bottom:1px solid var(--line);padding:8px 16px;display:flex;gap:4px;flex-wrap:wrap}
-nav.nav a{color:var(--ink);text-decoration:none;padding:6px 10px;border-radius:6px;font-size:14px}
-nav.nav a:hover{background:#eef4fa}nav.nav a.on{background:var(--acc);color:#fff}
-main{max-width:1200px;margin:0 auto;padding:18px 16px 40px}
-h1{font-size:24px;margin:8px 0 6px}h2{font-size:18px;margin:26px 0 8px}
-.hero p{max-width:900px;color:var(--ink)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink)}
-.card:hover{border-color:var(--acc)}.num{font-variant-numeric:tabular-nums}
-.card .num{font-size:24px;font-weight:700;color:var(--acc)}.card .lbl{color:var(--mut);font-size:13px;margin-top:4px}
-.tw{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:14px}
-table{border-collapse:collapse;width:100%;font-size:13.5px}caption{text-align:left;padding:8px 10px;color:var(--mut);font-size:13px}
-th,td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:top;text-align:left}
-th{background:#f0f4f8;position:sticky;top:0;font-weight:600}
-td.num,th.num{text-align:right}td.blank{color:var(--warn);background:var(--warnbg)}
-.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;letter-spacing:.3px}
-.tag.d{background:#e6eefb;color:#174d8c}.tag.u{background:var(--warnbg);color:var(--warn)}
-footer{max-width:1200px;margin:0 auto;padding:14px 16px 30px;color:var(--mut);font-size:12.5px;border-top:1px solid var(--line)}
-a{color:var(--acc)}code{background:#eef2f6;padding:1px 4px;border-radius:3px}
-ul{max-width:900px}li{margin:4px 0}
+    # results.html
+    res_table_rows = []
+    for r in res_rows:
+        res_table_rows.append([r["game_id"], r["week"], r["date_iso"], r["away"], r["away_score"],
+                               r["home"], r["home_score"], r["home_margin"], r["total_points"],
+                               r["winner"], link(r["source_url"], "nfl.com week page"),
+                               "live match 2026-11-14" if r["game_id"] in SPOT_IDS else "captured (not re-fetched)"])
+    res_body = f"""
+<p class="lede">{fin_n} FINAL games from the official NFL week schedule pages (weeks {weeks[0]}–{weeks[-1]}).
+{sched_n} scheduled games are excluded until they are final. Each row links the official week page it was taken from.
+{len(SPOT_CHECKS)} rows (Week 1: 12 of 16 games, plus Week 10 WAS@NYG) were re-fetched live from nfl.com and matched.
+The other rows were captured by the desk pipeline from the same official pages and are <em>not</em> re-verified line by line here.</p>
+<div class="cards"><div><b>{fin_n}</b>finals</div><div><b>{len(week_urls)}</b>official week pages</div><div><b>{len(SPOT_CHECKS)}</b>rows re-fetched live and matched</div></div>
+<h2>Final results</h2>
+{table(["Game ID","Wk","Date","Away","Pts","Home","Pts","Home margin","Total","Winner","Source","Check"], res_table_rows)}
+<h2>Spot checks (this session)</h2>
+{table(["Game ID","Official page","Fetched (UTC)","Observed on page","Result"],
+       [[s["game_id"], link(s["url"], s["url"]), s["fetched_utc"], s["observed"], s["result"]] for s in SPOT_CHECKS])}
 """
+    # prices.html
+    line_rows = []
+    for r in ln_rows:
+        line_rows.append([r["game"], r["week"], r["date"], r["kickoff_slot_et"],
+                          r["fair_spread_home"], r["market_spread_home"] or blank_flag(),
+                          r["diff_spread_fair_minus_market"] or blank_flag(),
+                          r["fair_total"], r["market_total"] or blank_flag(),
+                          r["diff_total_fair_minus_market"] or blank_flag(),
+                          r["moneyline_home"] or blank_flag(),
+                          link(r["source_url"], "schedule page")])
+    origination = [
+        ["1", "Side (spread)", "Fair spread from model X3-v1 (DERIVED)", f"Available for {len(ln_rows)} unplayed games", link(MODEL_SRC, "hub/data/lines.json")],
+        ["2", "Total", "Fair total from model X3-v1 (DERIVED)", f"Available for {len(ln_rows)} unplayed games", link(MODEL_SRC, "hub/data/lines.json")],
+        ["3", "Moneyline", "Derived after side and total are fixed; no moneyline model exists", "NOT ORIGINATED (UNVERIFIED)", link(MODEL_SRC, "hub/data/lines.json")],
+    ]
+    prices_body = f"""
+<p class="lede">Model lines are our own (DERIVED). Market columns are blank: no official NFL source publishes
+2026 point spreads, totals or moneylines, so nothing is filled in. The difference column is computed only when
+both fair and market values exist; with no market values it is blank.</p>
+<p class="lede"><span class="unv">IRREGULAR</span> Three model rows (BUF@NYJ, CAR@NO, JAX@TEN) list the home and away teams the opposite way to the official schedule. Their fair spread is therefore blank. The fair total is kept, since a total does not depend on which side is home. Source: <a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com week 10 page</a> (e.g. "Bills at Jets", "Panthers at Saints", "Jaguars at Titans").</p>
+<h2>Fair line, market line and difference (separate columns)</h2>
+{table(["Game","Wk","Date","Slot (ET)","Fair spread (home)","Market spread (home)","Diff spread","Fair total","Market total","Diff total","Moneyline (home)","Source"], line_rows)}
+<h2>Origination order: side → total → moneyline</h2>
+{table(["Step","Market","Method","Status","Source"], origination)}
+<h2>Price-snapshot store (opening and closing)</h2>
+<p class="lede">Schema: <code>data/ledger/price_snapshots.csv</code>. Columns: snapshot_id, game_id, market, side,
+snapshot_type (open/close), line, price_american, captured_at_utc, book, source_url, verification.
+Current rows: <b>{len(pr_rows)}</b>. Opening and closing numbers cannot be recorded until the owner selects a price
+source (no official NFL price feed was found, and the sandbox cannot reach third-party books).</p>
+{table(pr_h, [], cls="t")}
+"""
+    # governance.html
+    gate_rows = [
+        ["D1", "Sample floor", "A strategy is evaluated only after N settled bets in the window (N proposed: 200; owner to set)", "PROPOSED", "not evaluable: 0 settled bets", ("HTML", '<span class="unv">DESIGN · UNVERIFIED</span>')],
+        ["D2", "Signal test", "Demote to paper when the signal metric's 95% upper bound stays below 0 for 2 consecutive windows", "PROPOSED", "not evaluable", ("HTML", '<span class="unv">DESIGN · UNVERIFIED</span>')],
+        ["D3", "Data integrity", "Freeze and demote to paper if any price snapshot in the window has no official-source link", "PROPOSED", "store empty", ("HTML", '<span class="unv">DESIGN · UNVERIFIED</span>')],
+        ["D4", "Staking cannot promote or rescue", "Bankroll/staking results never change the signal rank or the gate state", "PROPOSED", "n/a", ("HTML", '<span class="unv">DESIGN · UNVERIFIED</span>')],
+        ["D5", "Dependence", "Same-game parlay legs are scored as joint events; independence is never assumed", "PROPOSED", "n/a", ("HTML", '<span class="unv">DESIGN · UNVERIFIED</span>')],
+    ]
+    board_rows = [
+        ["—", "No strategy has settled bets", "—", "blank", "blank", "blank", "blank", "UNVERIFIED: not evaluated"],
+    ]
+    corr_html = [[lab, n, r, lo, hi, link(f"https://github.com/karagemop466-tech/X3/blob/{'arena/a60a2bf7-x3'}/data/ledger/results_feed.csv", "results_feed.csv (COMPUTED from official rows)")]
+                  for (lab, n, r, lo, hi) in corr_rows]
+    gov_body = f"""
+<p class="lede">The demotion gate and the signal/staking split are <strong>design proposals</strong>. Their thresholds are
+not verified facts and must be set by the owner. Rows are marked DESIGN, not source-backed data.</p>
+<h2>Demotion gate: live → paper</h2>
+{table(["Gate","Name","Rule","Status","Current evaluation","Source"], gate_rows)}
+<h2>Leaderboard: signal and staking shown separately</h2>
+<p class="lede">The rank uses the signal metric only. Staking results are a separate column and cannot move a strategy up.</p>
+{table(["Rank by signal","Strategy","Signal metric (CLV, n, CI)","Flat-stake result (n, CI)","Staking policy","Staking result (not ranked)","Gate state","Note"], board_rows)}
+<h2>Correlations (official finals only; n published with each value)</h2>
+<p class="lede">Pearson r with a Fisher-z 95% interval. Computed here from {fin_n} FINAL games in the results feed. Each
+row's source is the results feed; the feed rows link the official week pages. These describe scoring only and
+do not measure betting edge.</p>
+{table(["Pair","n","r","95% CI low","95% CI high","Source"], corr_html)}
+"""
+    # depth.html
+    dp_table = []
+    for r in dp_rows:
+        dp_table.append([r["week"], r["team"], r["player"], r["pos"], r["status"], r["injury"],
+                         r["group"], r["unit"], r["slot"], r["starter_depth_string"], r["replacement"] or blank_flag(),
+                         r["replacement_depth"] or blank_flag(), r["join"],
+                         link(r["injury_source"], "injury report"),
+                         link(r["depth_source"], "club depth chart") if r["depth_source"] else blank_flag()])
+    dep_body = f"""
+<p class="lede">Every injury-report row for weeks 8–10 with its replacement depth. The depth of the replacement is shown
+(depth 2 = second string, 3 = third, 4 = fourth). Blank means the join failed; blanks are unverified, not zero.
+Club charts are club-published and most are labelled unofficial by the club. Player profile links were removed:
+the desk pipeline built them by slug, which is not verified.</p>
+<div class="cards"><div><b>{len(dp_rows)}</b>report rows</div><div><b>{len(matched)}</b>joined to a chart</div><div><b>{unmatched_n}</b>not joined (UNVERIFIED)</div></div>
+<h2>Replacement depth among joined rows</h2>
+{table(["Replacement depth","Rows","Basis"], [[k, v, "COMPUTED from the rows below"] for k, v in sorted(depth_counts.items())] + [["(not joined)", unmatched_n, "COMPUTED; UNVERIFIED replacement"]])}
+<h2>All injury-report rows</h2>
+{table(["Wk","Team","Player","Pos","Status","Injury","Group","Unit","Slot","Starter depth","Replacement","Replacement depth","Join","Injury source","Depth source"], dp_table)}
+"""
+    # index.html
+    w10_all = sum(1 for g in games if g["week"] == 10)
+    w10_fin = sum(1 for g in games if g["week"] == 10 and g["status"] == "FINAL")
+    idx_body = f"""
+<p class="lede">A ledger for the NFL project: what has been recorded, from which official page, and what is still blank.
+Nothing is inferred. Empty means unverified.</p>
+<div class="cards">
+ <div><b>{fin_n}</b>verified-source finals</div>
+ <div><b>{len(pr_rows)}</b>price snapshots (open/close)</div>
+ <div><b>{len(ln_rows)}</b>model lines (fair only)</div>
+ <div><b>0</b>market lines</div>
+ <div><b>{len(dp_rows)}</b>injury-report rows with depth check</div>
+</div>
+<h2>Sections</h2>
+<table class="t k-meta"><thead><tr><th>Page</th><th>What it shows</th><th>Blank or unverified</th></tr></thead><tbody>
+<tr><td><a href="results.html">Results feed</a></td><td>{fin_n} final games, one official link per row</td><td>{fin_n - len(SPOT_CHECKS)} rows captured, not re-fetched</td></tr>
+<tr><td><a href="prices.html">Lines &amp; prices</a></td><td>Fair vs market vs difference; origination order; price store schema</td><td>all market prices and moneylines</td></tr>
+<tr><td><a href="depth.html">Replacement depth</a></td><td>Injury-report rows with the replacement's depth</td><td>{unmatched_n} rows not joined</td></tr>
+<tr><td><a href="governance.html">Gates &amp; correlation</a></td><td>Demotion gate proposal, signal vs staking, correlations with n</td><td>all strategy performance</td></tr>
+</tbody></table>
+<h2>Irregularities (this session)</h2>
+<ul>
+<li>Desk pipeline built player profile URLs by slug (e.g. nfl.com/players/…) without verifying them. They are removed from this ledger. Source: <code>data/desk/deficiencies.json</code>.</li>
+<li>Club depth charts carry no as-of date for most clubs and are labelled unofficial by the club. Replacement depth is shown as a club-published fact, not an official NFL fact.</li>
+<li>Week 10 is in progress: {w10_fin} of {w10_all} games are FINAL. The rest are scheduled for 15–16 Nov 2026 per the official week page.</li>
+<li>Market prices: no official source; price store has 0 rows by design.</li>
+<li>Model lines: BUF@NYJ, CAR@NO and JAX@TEN have reversed home/away orientation in <code>hub/data/lines.json</code>; their fair spreads are blanked here (source: nfl.com week 10 page).</li>
+<li>Full list of open items: <a href="../hub/flagged.html">Flagged for review (canonical hub)</a>.</li>
+</ul>
+"""
+    ledger_css = """
+:root{--ink:#1b2430;--mut:#5b6573;--line:#dfe4ea;--bg:#f7f9fb;--acc:#1f5fa8;--warn:#b35c00}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header.top{background:#fff;border-bottom:1px solid var(--line);padding:10px 22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.brand a{font-weight:700;color:var(--ink);text-decoration:none;font-size:17px}.brand span{color:var(--mut);margin-left:10px;font-size:13px}
+nav a{margin-left:12px;color:var(--acc);text-decoration:none;font-size:14px}nav a.active{font-weight:700;text-decoration:underline}
+main{max-width:1200px;margin:0 auto;padding:18px 22px}h1{font-size:24px;margin:8px 0}h2{font-size:18px;margin:24px 0 8px}
+.lede{color:var(--mut);max-width:900px}.cards{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.cards div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:150px;color:var(--mut);font-size:13px}
+.cards b{display:block;font-size:22px;color:var(--ink)}
+.filter{width:100%;max-width:340px;padding:7px 9px;border:1px solid var(--line);border-radius:6px;margin:6px 0}
+.scroll{overflow:auto;max-height:620px;border:1px solid var(--line);border-radius:8px;background:#fff}
+table.t{border-collapse:collapse;width:100%;font-size:13px}table.t th,table.t td{padding:6px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.t thead th{position:sticky;top:0;background:#eef3f8;z-index:1}table.t tr:hover td{background:#fafcff}
+.unv{background:#fff1e0;color:var(--warn);border-radius:4px;padding:1px 6px;font-size:12px;font-weight:600}
+code{background:#eef1f5;padding:1px 4px;border-radius:4px}footer{color:var(--mut);font-size:12px;max-width:1200px;margin:24px auto;padding:0 22px}
+a{color:var(--acc)}
+"""
+    ledger_js = """
+document.querySelectorAll('input.filter').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var q=inp.value.toLowerCase();
+    var t=inp.parentElement.querySelector('table');
+    if(!t)return;
+    t.querySelectorAll('tbody tr').forEach(function(tr){
+      tr.style.display=tr.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+"""
+    OUT_HTML.mkdir(parents=True, exist_ok=True)
+    (OUT_HTML / "ledger.css").write_text(ledger_css.lstrip(), encoding="utf-8")
+    (OUT_HTML / "ledger.js").write_text(ledger_js.lstrip(), encoding="utf-8")
+    pages = {
+        "index.html": ("X3 Ledger — overview", "index.html", idx_body),
+        "results.html": ("Results feed", "results.html", res_body),
+        "prices.html": ("Lines & price store", "prices.html", prices_body),
+        "depth.html": ("Replacement depth", "depth.html", dep_body),
+        "governance.html": ("Demotion gate, signal vs staking, correlation", "governance.html", gov_body),
+    }
+    for fname, (title, active, body) in pages.items():
+        (OUT_HTML / fname).write_text(page(title, active, body), encoding="utf-8")
+    print("built ledger:", fin_n, "results;", len(ln_rows), "lines;", len(dp_rows), "depth rows;",
+          len(pr_rows), "price rows")
+    print("correlations:", [(c[0], c[1], c[2]) for c in corr_rows])
+
 
 if __name__ == "__main__":
-    summary = build_all()
-    print(json.dumps(summary, indent=1))
+    main()

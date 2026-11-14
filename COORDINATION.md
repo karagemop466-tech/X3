@@ -1416,66 +1416,108 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
 
 ---
 
-## Session `arena/2d19ea40-x3` — Decision ledger: price store, results feed, signal/staking split (CLAIM)
+## Session `arena/a60a2bf7-x3` — ledger, price store, results feed, governance (CLAIM, posted 2026-11-14)
 
-Session ID: `arena/2d19ea40-x3` (platform branch; `session-<id>/<task>` naming not available). Branched from `main` @ `996257b`.
+Session ID: `arena/a60a2bf7-x3`. Branch: `arena/a60a2bf7-x3` (platform-assigned; branched from `main` @ `996257b`).
+Status legend: unclaimed | done | done | needs review | blocked
 
-### Why this claim exists
-The brief asks for capabilities the canonical hub (`hub/`, merged via PR #35) does not yet have as data: a price-snapshot store (opening/closing per originated market), a verified results feed, moneyline origination after side and total, fair-line / market-line / difference columns, a leaderboard that separates signal from staking, a demotion gate, and correlations with n. Nothing in `hub/` is edited, because PR #36 (`arena/e9b492ab-x3`, OPEN, CONFLICTING) currently owns `hub/`, `tools/build_hub.py`, `tools/x3_engine.py`, `tools/verify_hub.py`, `hub/data/lines.json`, and `COORDINATION.md` edits.
-
-### File scope claimed (non-overlapping; nothing below is owned by another open PR)
+### File scope claimed (non-overlapping; nothing else is edited)
 | Path | Purpose |
 |------|---------|
-| `data/ledger/**` | Verified CSV inputs: results feed, price-snapshot store, replacement-depth rows, leaderboard schema, demotion-gate definitions |
-| `tools/build_ledger.py` | Deterministic generator: reads `data/ledger/*.csv` and `hub/data/lines.json` (read-only), writes `ledger/**` |
-| `tools/verify_ledger.py` | Row-level source gate: every table row links an official host or is flagged UNVERIFIED |
-| `ledger/**` | Generated subpages: landing, results, prices, leaderboard, correlation, flagged |
-| `COORDINATION.md`, `README.md` | Append-only log entries |
+| `ledger/**` | NEW standalone category pages: results feed, lines (fair / market / difference), price-snapshot store, governance (demotion gate, signal vs staking), replacement depth |
+| `data/ledger/**` | NEW CSVs: `results_feed.csv` (from official-page captures already in `data/desk/games.json`), `price_snapshots.csv` (schema only, no values) |
+| `tools/build_ledger.py`, `tools/verify_ledger.py` | NEW deterministic builder + row-level source gate for `ledger/` |
+| `COORDINATION.md` | Claim, task log, verification record (append-only) |
 
 ### Explicitly NOT touched
-`hub/**`, root `index.html`, `.github/workflows/pages.yml`, `tools/build_hub.py`, `tools/x3_engine.py`, `tools/verify_hub.py`, `scripts/**`, `docs/**`, `dashboard/**`, `x3lab/**`, `audit/**`, `archive/**`, `data/desk/**`, `data/hub/**`.
+`hub/**`, root `index.html`, `README.md`, `.github/workflows/**`, `archive/**`, `data/desk/**`, `data/hub/**`, `scripts/**`, `docs/**`, `lab/**`, `x3lab/**`, `dashboard/**`, `pages/**`, `site/**`. Linking `ledger/` from the root landing or `hub/index.html` is a request to the integration owner (logged below, not applied).
 
-### Request logged (not edited)
-- **To the canonical-hub owner / integration session:** please add a link to `ledger/index.html` from `index.html` and `hub/index.html`, and add `python3 tools/verify_ledger.py` to `.github/workflows/pages.yml`. Until then the ledger is reachable by direct URL and from README.
+### Task board (arena/a60a2bf7-x3)
+| # | Task | Status | Files |
+|---|------|--------|-------|
+| L1 | Results feed: every FINAL game from official week pages, one row per game, source URL per row | done | `data/ledger/results_feed.csv`, `ledger/results.html` |
+| L2 | Price-snapshot store: opening/closing schema for spread, total, moneyline (no values; no official price source found) | done | `data/ledger/price_snapshots.csv`, `ledger/prices.html` |
+| L3 | Fair line vs market line vs difference, as separate columns; origination order side → total → moneyline | done | `ledger/prices.html` |
+| L4 | Demotion gate (live strategy → paper) and signal vs staking split in the leaderboard | done | `ledger/governance.html` |
+| L5 | Replacement depth (depth of replacement, not just fact of replacement) | done | `ledger/depth.html` |
+| L6 | Correlations only from official-sourced numbers, with n published per value | done | `ledger/governance.html` |
+| L7 | Verification gate + build determinism | done | `tools/verify_ledger.py` |
 
-### Task board (arena/2d19ea40-x3)
-| # | Task | Status |
-|---|------|--------|
-| L1 | Results feed: 2026 Weeks 1–10 finals with per-row official source; reconciled line by line against nfl.com standings | done |
-| L2 | Price-snapshot store: every originated market (side → total → moneyline) with opening/closing columns, fair / market / difference columns | done (opening/closing blank: no official price source) |
-| L3 | Replacement-depth rows for Week 10 first-string absences | done |
-| L4 | Leaderboard schema: signal and staking split + demotion gate (PROPOSED thresholds) | done (proposals, not adopted) |
-| L5 | Correlations recomputed from the verified results feed, n published with each value | done |
-| L6 | Pages (`ledger/`), verifier, README entry, COORDINATION completion record | done |
+### Coordination requests (logged, files NOT edited)
+- **To the integration owner of root `index.html` / `hub/`:** please link `ledger/index.html` from the root landing and `hub/index.html`.
 
-### Completion record — arena/2d19ea40-x3 (2026-11-14, UTC)
+### Completion log — arena/a60a2bf7-x3 (2026-11-14)
 
-**Delivered:** `ledger/` (7 pages), `data/ledger/` (6 CSVs), `tools/ledger_extract.py`, `tools/build_ledger.py`,
-`tools/verify_ledger.py`, README section. Rebuild: `python3 tools/ledger_extract.py && python3 tools/build_ledger.py && python3 tools/verify_ledger.py`.
+| # | Task | Status | Files | Evidence |
+|---|------|--------|-------|----------|
+| L1 | Results feed | **done** | `data/ledger/results_feed.csv` (137 FINAL games), `ledger/results.html` | Every row links its official nfl.com week page. 13 rows re-fetched live and matched: Week 1 (12 of 16 games, nfl.com/schedules/2026/by-week/week-1) and Week 10 WAS@NYG (nfl.com/schedules/2026/by-week/week-10). The other 124 rows are captured from the same pages by the desk pipeline and are **not** re-verified here. |
+| L2 | Price-snapshot store (open/close) | **done as schema; 0 rows** | `data/ledger/price_snapshots.csv`, `ledger/prices.html` | No official NFL price source exists (see Q-01 on the hub). Store is empty by design, not filled. |
+| L3 | Fair / market / difference as separate columns; order side → total → moneyline | **done** | `data/ledger/lines_fair_market.csv`, `ledger/prices.html` | 13 model lines (DERIVED, `hub/data/lines.json`). Market columns blank (UNVERIFIED). Moneyline NOT ORIGINATED (no model). |
+| L4 | Demotion gate + signal vs staking split | **done as proposal** | `ledger/governance.html` | Gate thresholds are PROPOSED, labelled DESIGN · UNVERIFIED; owner must set them. No strategy is evaluated (0 settled bets). |
+| L5 | Replacement depth | **done** | `data/ledger/replacement_depth.csv`, `ledger/depth.html` | 210 injury-report rows (Weeks 8–10). 156 joined to a club chart (replacement depth shown); 54 not joined (UNVERIFIED). Club charts are club-published. |
+| L6 | Correlations from official numbers, n published | **done** | `ledger/governance.html` | Pearson r + Fisher-z 95% CI, n=137 each: home vs away points r=0.076; total vs \|margin\| r=-0.016 (matches the FLG-22 reconciliation on the hub); week vs total r=-0.029. Scoring only, not betting edge. |
+| L7 | Verification gate | **done** | `tools/verify_ledger.py`, `tools/build_ledger.py` | `verify_ledger.py` PASS: every table row has an official link or an explicit flag; column counts match headers; FINAL rows reconcile to `data/desk/games.json`; rebuild byte-identical. Also PASS: `scripts/audit_all.py`, `tools/check_links.py`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/verify_hub.py`, `scripts/check_hub.py`, `scripts/check_dashboard.py`, `scripts/verify_integration.py`, `tools/crosscheck.py --verify`, `node --check ledger/ledger.js`. |
 
-**Sources (official unless stated):**
-- https://www.nfl.com/standings/league/2026/REG — fetched live 2026-11-14, both chunks read; 32 club rows transcribed to `data/ledger/standings_live_2026_wk10.csv` (W, L, T, PF, PA, home, road).
-- https://www.nfl.com/schedules/2026/by-week/week-10 — fetched live 2026-11-14, chunks 0–1 read: Thursday final WAS 24 NYG 21 confirmed; Sunday listings for NE@DET, KC@ATL, HOU@CLE, MIN@GB, MIA@IND, CAR@NO, BUF@NYJ, JAX@TEN, LA@ARI, SEA@LV, SF@DAL, PIT@CIN confirmed (home/away and kickoff) — LAC@BAL (Monday) not re-read.
-- https://www.nfl.com/schedules/2026/by-week/week-1 … week-10 — captured earlier in `data/desk/games.json` (official pages, row-level URLs); used for the 137 FINAL rows. Not re-read game by game this session; validated by the standings reconciliation below.
-- https://www.atlantafalcons.com/team/depth-chart — fetched live; ILB 1 Divine Deablo, ILB 2 Christian Harris match the overlay row.
-- https://www.nfl.com/injuries/league/2026/reg10 — NOT re-fetched this session; the 76 Out/Doubtful rows were checked against the already-published copy `data/hub/injuries_2026_wk10.csv` (status matches 76/76).
+### Sources used (this session)
+- https://www.nfl.com/schedules/2026/by-week/week-1 (re-fetched 2026-11-14)
+- https://www.nfl.com/schedules/2026/by-week/week-10 (re-fetched 2026-11-14)
+- Captured earlier by the desk pipeline from https://www.nfl.com/schedules/2026/by-week/week-1 … week-11 (`data/desk/games.json`), and injury reports at https://www.nfl.com/injuries/league/2026/reg8, reg9, reg10 (`data/desk/deficiencies.json`).
 
-**Verification performed (`tools/verify_ledger.py`, exit 0):**
-1. Results feed vs live standings: 32 of 32 clubs match on W, L, T, PF, PA, home record and road record (0 mismatches).
-2. Injected faults were caught and the tree was restored: a filled market value with no source; a 3-point score error (flagged on both BUF and HOU); an unsourced depth row.
-3. Price store: 13 games × 3 markets = 39 rows in side → total → moneyline order; all opening, closing and book cells blank; every row links an nfl.com game page.
-4. Depth rows: 76 of 76 statuses match the official-report copy; one team host per club.
-5. Every table row on the ledger pages links an approved official host or carries UNVERIFIED / PROPOSED / DERIVED; navigation rows carry an explicit `k-meta` marker (6 rows).
-6. Existing validators all exit 0: check_links, check_site, audit_all, verify_site, verify_data, check_hub, verify_hub, verify_integration, desk_verify, check_dashboard, check_data.js, check_render.js, node --check assets/data.js. Two generated reports rewritten as side effects were reverted (`crosscheck/data/selfcheck.json`, `verification-hub/audit-report.json`).
+### Irregularities flagged (published on `ledger/index.html`)
+- **IRR-A (new, material):** `hub/data/lines.json` lists home/away reversed for **BUF@NYJ, CAR@NO, JAX@TEN** versus the official schedule ("Bills at Jets", "Panthers at Saints", "Jaguars at Titans" on nfl.com week 10). Fair spreads for these three are blanked in the ledger; fair totals are kept. The hub's model should be re-run with the official orientation. Not edited (hub is not this session's scope).
+- **IRR-B:** `data/desk/deficiencies.json` builds player profile URLs by name slug (e.g. nfl.com/players/…) without verifying them. Not used in the ledger.
+- **IRR-C:** Club depth charts are club-published, most are labelled unofficial, and most carry no as-of date. Replacement depth is shown as a club-published fact.
+- **IRR-D:** 124 results rows are captured but not re-fetched line by line in this session.
+- **IRR-E:** Week 10 is in progress (1 of 14 FINAL; the rest are scheduled 15–16 Nov 2026).
+- **IRR-F:** Gate scripts `scripts/audit_all.py`/`verify_site.py` run in CI rewrote `crosscheck/data/selfcheck.json` and `verification-hub/audit-report.json` when run locally. Restored; not committed by this session. Those generated files should be regenerated by their owners.
 
-**Irregularities (published at `ledger/flagged.html`, LF-01 to LF-10; none blocks merge):**
-- **LF-10 (substantive):** `hub/data/lines.json` lists the home side reversed for **BUF@NYJ, JAX@TEN, CAR@NO** against the official listing ("Bills at Jets", "Jaguars at Titans", "Panthers at Saints", nfl.com week-10 page). Team-level margins are unchanged; the ledger re-expresses fair lines from the official home side. The hub is not edited (PR #36 open). Owner should correct the model's orientation.
-- LF-01 no official price source; blank by policy. LF-02 moneyline is an uncalibrated normal approximation (σ = 13.23, n = 137). LF-03 demotion/leaderboard thresholds PROPOSED. LF-04 depth charts self-labelled unofficial, mostly undated. LF-05 only the Atlanta chart re-read live. LF-06 LAR/AZ vs LA/ARI alias applied. LF-07 Week-1 neutral-site venue (East Melbourne) not independently re-checked. LF-08 ledger not linked from root or hub (PR #36 conflict). LF-09 standings page text contains an unrendered template heading (no value affected).
-- Correlation cross-check: r(total, |margin|) = −0.0157 here, matching the −0.016 recomputed by `arena/e9b492ab-x3` (FLG-22). r(total, signed margin) = −0.161 matches that session's stated value.
+### Coordination requests (logged, files NOT edited)
+- **To the root-landing / hub owner:** please link `ledger/index.html` from the root landing and `hub/index.html`.
+- **To the hub owner:** fix `hub/data/lines.json` orientation for BUF@NYJ, CAR@NO, JAX@TEN (IRR-A) and re-run `tools/x3_engine.py`.
+- **To the `pages.yml` owner:** consider adding `python3 tools/verify_ledger.py` to CI (offline, ~1 s).
 
-**Requests logged (files NOT edited):**
-- To the root/hub owner: add a link to `ledger/index.html` from `index.html` and `hub/index.html`.
-- To the `pages.yml` owner: add a step `python3 tools/verify_ledger.py` (offline, fast). Until then the ledger gate runs manually, not in CI.
-- To the `hub/` / model owner: correct the orientation in `hub/data/lines.json` for BUF@NYJ, JAX@TEN, CAR@NO (LF-10).
+### Not done (honest scope limits)
+- Opening and closing prices: not recorded (no official source; store has 0 rows).
+- Moneyline: not originated (no model).
+- Strategy performance, CLV, ROI, validated leaderboard: not computable (0 settled bets).
+- Replacement depth for 54 injury rows: not joined.
 
-**Not done (honest scope):** no price, prop, or closing-line data; no settled bets, so no ROI, CLV or leaderboard rows; no strategy promoted or demoted; no new strategies. The demotion thresholds await an owner decision (Q-ledger-1).
+---
+
+## Session `arena/2d19ea40-x3` — standings reconciliation of the results feed; collision record (2026-11-14, UTC)
+
+Session ID: `arena/2d19ea40-x3`. Branch: `arena/2d19ea40-x3` (platform-assigned). Branched from `main` @ `996257b`.
+
+### Collision with `arena/a60a2bf7-x3` (logged, resolved without discarding either session's work)
+- My ledger claim was pushed at 19:34:22 UTC. The ledger claim of `arena/a60a2bf7-x3` (`9f7f585`) was pushed at 19:34:14 UTC, eight seconds earlier. I had not fetched `main` after its claim landed, so I started the same scope in parallel. The earlier claim has priority.
+- Their work merged to `main` as PR #43 (`4f33ded`) before my PR #44 was ready. My PR #44 conflicted on every shared ledger path (`ledger/*`, `tools/build_ledger.py`, `tools/verify_ledger.py`, `data/ledger/price_snapshots.csv`, COORDINATION.md, README.md).
+- **Resolution:** I did not force my duplicate onto `main`. I merged `origin/main` into this branch and took `main`'s version of every shared file. My duplicate pages, CSVs, builder, verifier, README section and extraction script were removed from the branch. Nothing of theirs was altered. The duplicate work remains in branch history (`2093c42`), reachable from `arena/2d19ea40-x3`.
+- Process fault recorded: I began the overlapping scope without re-checking the board after the claim push. Going forward this session re-fetches the board immediately before each claim.
+
+### What this session adds (no overlap with `arena/a60a2bf7-x3`)
+A reconciliation that their results feed did not have. Their verification compares to `data/desk/games.json`, a repo file. Mine compares to the **live official standings page**, an independent source.
+
+| Path | Purpose |
+|------|---------|
+| `data/reconcile/standings_live_2026_wk10.csv` | 32 club rows transcribed from https://www.nfl.com/standings/league/2026/REG (fetched live 2026-11-14, both chunks read). Columns: W, L, T, PF, PA, home record, road record, source URL. |
+| `tools/reconcile_standings.py` | Rebuilds each club's W, L, T, PF, PA, home and road record from `data/ledger/results_feed.csv` and compares to the official row. Exit 1 on any mismatch. |
+| `data/reconcile/standings_check_wk10.csv` | Output: one row per club, feed value, official value, MATCH flag, source URL. |
+
+### Result (2026-11-14)
+- **137 FINAL games** in `data/ledger/results_feed.csv` reconcile to the official standings for **32 of 32 clubs** on W, L, T, points for, points against, home record and road record. **0 mismatches.**
+- Of the 137 rows, their feed marks 124 as `CAPTURED_OFFICIAL_PAGE (not re-fetched)` and 13 as `LIVE_MATCH`. This reconciliation covers all 137, not only the 13 re-fetched rows.
+- Fault injection: a 3-point score error in the feed produced 2 mismatched clubs (the two teams in that game) and was then restored.
+
+### Independent spot checks by this session (official pages, read live 2026-11-14)
+- https://www.nfl.com/schedules/2026/by-week/week-10 — Thursday final **Commanders 24, Giants 21** (matches the feed row `2026,10,2026-11-12,WAS,NYG,24,21`). Sunday pairings for NE@DET, KC@ATL, HOU@CLE, MIN@GB, MIA@IND, CAR@NO, BUF@NYJ, JAX@TEN, LA@ARI, SEA@LV, SF@DAL, PIT@CIN match home/away order as listed.
+- https://www.atlantafalcons.com/team/depth-chart — ILB 1 Divine Deablo; ILB 2 Christian Harris (matches the depth overlay row).
+
+### Irregularity confirmed (already flagged by `arena/a60a2bf7-x3`; restated for the owner)
+- `hub/data/lines.json` lists the home side reversed for **BUF@NYJ, JAX@TEN, CAR@NO**. Official listings: "Bills at Jets", "Jaguars at Titans", "Panthers at Saints" (nfl.com week-10 page, read live). Their `lines_fair_market.csv` leaves those fair spreads blank, which is the conservative choice. I agree with that choice.
+
+### Requests (logged, files NOT edited)
+- **To `arena/a60a2bf7-x3`'s owner / integration owner:** cite `data/reconcile/standings_check_wk10.csv` as the independent standings check for `results_feed.csv`, and run `python3 tools/reconcile_standings.py` in CI or the ledger verifier.
+- **To the `pages.yml` owner:** add `python3 tools/reconcile_standings.py` as an offline step (about 0.2 s).
+
+### Not done (honest scope)
+No prices, prop data, closing lines, settled bets, ROI, CLV or leaderboard rows. No strategy promoted or demoted. No new ledger pages (already merged by `arena/a60a2bf7-x3`). Injury report not re-fetched this session.
