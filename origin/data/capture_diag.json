@@ -1,6 +1,73 @@
 {
- "pages": [],
- "captured_at": "2026-11-14T19:32:58Z",
+ "pages": [
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-1",
+   "status": 200,
+   "bytes": 2354770,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-2",
+   "status": 200,
+   "bytes": 2345479,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-3",
+   "status": 200,
+   "bytes": 2353144,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-4",
+   "status": 200,
+   "bytes": 2353396,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-5",
+   "status": 200,
+   "bytes": 2338495,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-6",
+   "status": 200,
+   "bytes": 2323309,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-7",
+   "status": 200,
+   "bytes": 2323484,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-8",
+   "status": 200,
+   "bytes": 2318968,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-9",
+   "status": 200,
+   "bytes": 2339610,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": 200,
+   "bytes": 2372407,
+   "attempts": 1
+  },
+  {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-11",
+   "status": 200,
+   "bytes": 2354881,
+   "attempts": 1
+  }
+ ],
+ "captured_at": "2026-11-14T19:33:06Z",
  "notes": [],
  "problems": [],
  "fatal": null,
