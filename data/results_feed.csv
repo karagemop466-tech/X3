@@ -1,0 +1,15 @@
+game_id,date,away,home,away_name,home_name,away_score,home_score,winner,margin,result_source,result_fetched_at,verification_status
+2026-11-12-WAS@NYG,2026-11-12,WAS,NYG,Washington Commanders,New York Giants,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-NE@DET,2026-11-15,NE,DET,New England Patriots,Detroit Lions,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-KC@ATL,2026-11-15,KC,ATL,Kansas City Chiefs,Atlanta Falcons,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-HOU@CLE,2026-11-15,HOU,CLE,Houston Texans,Cleveland Browns,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-MIN@GB,2026-11-15,MIN,GB,Minnesota Vikings,Green Bay Packers,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-MIA@IND,2026-11-15,MIA,IND,Miami Dolphins,Indianapolis Colts,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-CAR@NO,2026-11-15,CAR,NO,Carolina Panthers,New Orleans Saints,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-JAX@TEN,2026-11-15,JAX,TEN,Jacksonville Jaguars,Tennessee Titans,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-BUF@NYJ,2026-11-15,BUF,NYJ,Buffalo Bills,New York Jets,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-LA@ARI,2026-11-15,LA,ARI,Los Angeles Rams,Arizona Cardinals,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-SEA@LV,2026-11-15,SEA,LV,Seattle Seahawks,Las Vegas Raiders,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-SF@DAL,2026-11-15,SF,DAL,San Francisco 49ers,Dallas Cowboys,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-15-PIT@CIN,2026-11-15,PIT,CIN,Pittsburgh Steelers,Cincinnati Bengals,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
+2026-11-16-LAC@BAL,2026-11-16,LAC,BAL,Los Angeles Chargers,Baltimore Ravens,,,,,pending - official NFL box score (NFL.com) to be recorded after kickoff; not inferred,,unverified
