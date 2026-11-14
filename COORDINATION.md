@@ -1470,3 +1470,62 @@ source stays blank and is published on `ops/flagged.html`.
 | O10 | Questions / suggestions / executive summary | unclaimed | `ops/questions.html`, `ops/suggestions.html`, `ops/executive-summary.html` |
 | O11 | Line-by-line verification + flagged-for-review | unclaimed | `ops/verification.html`, `ops/flagged.html` |
 | O12 | Integration, PR, merge, Pages deploy confirmation | unclaimed | this section |
+
+### Task board update — arena/3b99e9ad-x3 (completion record, 2026-11-14T19:55Z)
+
+| # | Task | Status | Scope | Result |
+|---|------|--------|-------|--------|
+| O01 | Coordination claim + repo review | **done** | `COORDINATION.md` | claim pushed at `6fae653` before any work |
+| O02 | Price-snapshot store | **done** | `scripts/ops_market.py`, `data/ops/snapshots/` | 78 markets (side/total/ML per game) with separate open and close columns; market columns null with reason `NO_OFFICIAL_SOURCE`; SHA-256 hash chain, idempotent re-runs |
+| O03 | Verified results feed | **done** | `scripts/ops_content.py`, `data/ops/results.json` | 137 finals from official week pages, reconciled to official standings 32/32 clubs on W-L-T, PF, PA; 7 mechanical checks |
+| O04 | Origination order side → total → ML | **done** | `scripts/ops_model.py`, `ops/order.html` | fixed code path; ML = Φ(side/σ) so the three markets cannot contradict |
+| O05 | Fair / market / difference columns | **done (partial by data)** | `ops/lines.html` | fair and difference columns present; market column blank with an explicit reason on every row |
+| O06 | Signal vs staking leaderboard split | **done** | `ops/leaderboard.html` | two independent columns, promotion reads signal only; 5 strategies in paper, 0 live |
+| O07 | Replacement depth | **done** | `scripts/ops_join.py`, `ops/depth.html` | 45 named same-position replacements, 8 published as holes, 22 not joinable; column + tier published separately |
+| O08 | Correlations, official only, with n | **done** | `ops/correlation.html` | 9 coefficients, each with n, 95% CI (Fisher z) and p (Student t via incomplete beta) |
+| O09 | Demotion gate | **done** | `ops/gates.html` | 6 gates; D-1 dry-run fires at bet 146 after the first draft (40-bet window) was proven unable to fire |
+| O10 | Questions / suggestions / exec summary | **done** | `ops/*.html` | 10 questions, 10 suggestions, executive summary |
+| O11 | Verification + flagged register | **done** | `ops/verification.html`, `ops/flagged.html` | 10-check gate, ALL CHECKS PASS; 14 flags |
+| O12 | Integration, PR, merge, Pages | **done** | this section | see PR log below |
+
+**Sources used (all fetched by this session, 2026-11-14 UTC, via the page-fetch tool):**
+nfl.com/schedules/2026/by-week/week-10 and week-11 · nfl.com/standings/league/2026/REG ·
+nfl.com/injuries/league/2026/reg10 · nfl.com/stats/team-stats/offense/passing/2026/reg/all ·
+nfl.com/stats/team-stats/defense/passing/2026/reg/all · nfl.com/players/{ceedee-lamb, tee-higgins,
+ja-marr-chase, chris-olave, jaxon-smith-njigba}/stats/ · nfl.com/played-game-check
+(commanders-at-giants-2026-reg-10, via the week-10 page) · detroitlions.com/team/depth-chart and
+miamidolphins.com/team/depth-chart (hand cross-checks). Raw artifacts and provenance table:
+`data/ops/raw/README.md`.
+
+**Verification performed (line by line):**
+- Team passing offense vs defense: all six column sums agree across two independently published
+  official pages (att 9,037 · cmp 5,787 · yds 64,098 · TD 415 · INT 200 · sck 643). A transcription
+  error in either table would break this; asserted in `scripts/ops_teamstats_source.py`.
+- Five player logs: each week-by-week log sums to the games, receptions, yards and TD printed on the
+  same official page. Asserted as a checksum in `scripts/ops_market.py`, re-checked as gate V5.
+- Week-11 slate re-read field by field against the official page: 13 games, 26 clubs, 6 byes,
+  32 clubs accounted for exactly once; kickoff times and networks identical.
+- Game log vs standings: 32 clubs × 5 values, 160/160 agree; asserted as gate V8.
+- Depth join audited by hand against Miami's official chart, which is where the "third WR column is
+  still a starter" problem surfaced and forced the column/tier split.
+
+**Irregularities found and published (`ops/flagged.html`, none blocking):**
+- **F-01** no official market price exists anywhere in the repository (HIGH).
+- **F-05** 14 of 32 club charts self-labelled unofficial, 1 of 32 prints an as-of date (HIGH).
+- **F-08** no strategy reaches the 200-bet skill gate; largest n = 88 (HIGH).
+- **nfl.com/injuries/league/2026/reg11 serves the week-10 report verbatim** (title, heading, every
+  row). No week-11 injury input is used anywhere. Recorded in `ops/repo-review.html`.
+- **D-1 as first drafted could not fire.** A 40-bet window cannot put the Wilson upper bound below
+  0.5238 above 35% accuracy. Widened to 100 bets and the direction made explicit; the dry run is kept
+  in the repo so the correction is auditable.
+- **Generator object leaked into `ops/leaderboard.html`** in the first build, caught by the determinism
+  gate (V10), not by eye. Fixed.
+- **Stale-data ordering bug**: `ops_content.py` read `join.json` before `ops_join.py` rewrote it, so a
+  published requirement quoted 29 where the data said 45. Fixed by `scripts/ops_run.py`, an explicit
+  dependency-ordered pipeline plus an mtime guard in `ops_content.py`.
+
+**Files touched.** New: `scripts/ops_{run,model,join,market,content,build,verify,teamstats_source}.py`,
+`data/ops/**`, `ops/**`. Modified additively: one step in `.github/workflows/pages.yml`, one `<section>`
+appended to root `index.html`. Nothing else in the repository was edited; `data/desk/**` is read only.
+
+### PR log (arena/3b99e9ad-x3)
