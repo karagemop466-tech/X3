@@ -827,12 +827,12 @@
    "table_rows": 143
   },
   {
-   "ext_links": 1257,
+   "ext_links": 1854,
    "owner": "arena/e9b492ab-x3, arena/621bf404-x3",
-   "pages": 23,
+   "pages": 27,
    "path": "hub/",
    "purpose": "Canonical review hub; the repository root points here",
-   "table_rows": 1280
+   "table_rows": 1840
   },
   {
    "ext_links": 838,
@@ -851,12 +851,12 @@
    "table_rows": 481
   },
   {
-   "ext_links": 837,
+   "ext_links": 947,
    "owner": "arena/37c71381-x3",
    "pages": 7,
    "path": "crosscheck/",
    "purpose": "Cross-tree register reconciliation and link audit",
-   "table_rows": 561
+   "table_rows": 662
   },
   {
    "ext_links": 844,
