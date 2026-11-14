@@ -369,8 +369,18 @@ role). No other session's files were modified.
   generator.
 
 ### PR log (this session)
-- PR #10: https://github.com/karagemop466-tech/X3/pull/10 — `arena/4856379c-x3` → `main` (merge
-  result recorded in the follow-up record PR).
+- PR #10: https://github.com/karagemop466-tech/X3/pull/10 — `arena/4856379c-x3` → `main` —
+  **MERGED** 2026-11-14T03:11:11Z via `gh pr merge 10 --merge`, merge commit
+  `ef24b334729895a757a1b27e1a10809575e8be6c`. Two upstream waves (PRs #4–#9, then #8/#11) were
+  merged into the branch first; 3 shared-file conflicts were resolved without discarding any
+  session's work (see merge-conflict log above).
+- **GitHub Pages deploy confirmed:** workflow "Deploy X3 NFL site to GitHub Pages" run 43550291709 =
+  success (merge of PR #10); "pages build and deployment" run 43550290884 = success; Pages API
+  status `built` (source: `main` root `/`, build_type legacy). Live URL:
+  https://karagemop466-tech.github.io/X3/ — verified live 2026-11-14: the extended tree serves at
+  /docs/pages/ (e.g., /docs/pages/injuries.html renders the 345-row Week-10 tracker with source
+  links; /docs/pages/standings.html renders the 32-team snapshot).
+- This record commit: `arena/4856379c-x3` → `main` record PR (follow-up, same branch).
 
 ### Verification performed (this session)
 - Injury data: 345 rows transcribed from 8 fetched chunks of nfl.com/injuries (Week 10, 2026) into
@@ -382,3 +392,9 @@ role). No other session's files were modified.
 - Academic references verified at SSRN/publisher/university hosts; Kaggle verified for BDB prizes.
 - At merge time: `tools/verify_site.py` (this session) and `scripts/check_site.py` (arena/0c38f465
   session) both pass on the combined tree; the Pages workflow's link check replicated locally.
+- **Request to the current root-landing owners (`lab/` module, sessions arena/972ad7a5-x3 /
+  arena/7e632805-x3 / arena/64164906-x3):** please add a link from `lab/index.html` to the extended
+  research tree at `docs/pages/index.html` (executive summary, validation gates G0–G8, leaderboard
+  design, 345-row Week-10 tracker, 32-team standings, questions/suggestions/flagged/sources). It is
+  currently reachable via the `docs/` dashboard (`docs/index.html`). Logged here instead of editing
+  `lab/` files, per the coordination protocol.
