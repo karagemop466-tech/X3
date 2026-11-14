@@ -1,0 +1,58 @@
+{
+ "rows": [
+  {
+   "id": "F-A01",
+   "item": "No official source publishes NFL market prices or prop prices",
+   "why": "Every market_line / diff / CLV / ROI cell that needs a price is left blank",
+   "impact": "non-blocking; blanks are structural, nothing inferred",
+   "status": "UNVERIFIED",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "F-A02",
+   "item": "Club depth charts are labelled unofficial by the clubs",
+   "why": "The replacement join (names + ordinals) is a lead from club sites, not league-verified fact",
+   "impact": "42 replacement rows and the deficiency index are leads only; no model input reads them",
+   "status": "UNVERIFIED",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "source_label": "injury report (the sourced half of the join)"
+  },
+  {
+   "id": "F-A03",
+   "item": "Closing snapshot numbers are pending the cycle-close capture",
+   "why": "The Week-10 cycle has not closed; close rows exist and stay blank until scripts/origin_capture.py close runs pre-kickoff",
+   "impact": "non-blocking; open numbers are complete",
+   "status": "PENDING",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "F-A04",
+   "item": "Week-11 injury selector still serves the Week-10 report",
+   "why": "Week-11 markets are deliberately NOT originated without their injury input",
+   "impact": "Week-11 origination deferred; nothing fabricated",
+   "status": "UNVERIFIED",
+   "source": "https://www.nfl.com/injuries/league/2026/reg11",
+   "source_label": "reg11 selector"
+  },
+  {
+   "id": "F-A05",
+   "item": "Season-to-date sample is small",
+   "why": "137 finals is not a season; CIs are published with every number and they are wide",
+   "impact": "non-blocking; no conclusion is drawn from a lone r value",
+   "status": "UNVERIFIED",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "F-A06",
+   "item": "Parlay leg-dependence phi is a tiny-sample estimate",
+   "why": "phi over the evaluated weeks cannot separate dependence from noise",
+   "impact": "published with n; no pricing decision uses it",
+   "status": "UNVERIFIED",
+   "source": "",
+   "source_label": ""
+  }
+ ]
+}

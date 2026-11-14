@@ -1,0 +1,88 @@
+{
+ "rows": [
+  {
+   "id": "V-01",
+   "check": "Results feed provenance",
+   "method": "CI fetch of official week pages; per-row source URL; parser self-test against the desk transcription before every capture",
+   "result": "PASS",
+   "detail": "11/11 pages HTTP 200; self-test 163/163; feed 163 games / 137 finals"
+  },
+  {
+   "id": "V-02",
+   "check": "Results feed independence",
+   "method": "cross-check every (week, away, home) score against data/desk/games.json (a different session's parser)",
+   "result": "PASS",
+   "detail": "163/163 agree, 0 conflicts"
+  },
+  {
+   "id": "V-03",
+   "check": "Origination order enforced",
+   "method": "verifier re-reads markets.json and asserts seq(sides) < seq(totals) < seq(moneylines)",
+   "result": "PASS",
+   "detail": "13 sides \u2192 13 totals \u2192 13 moneylines"
+  },
+  {
+   "id": "V-04",
+   "check": "Moneyline derivation reproducible",
+   "method": "verifier recomputes p = \u03a6(adj_margin/\u03c3) and the fair ML from each market's own side and compares",
+   "result": "PASS",
+   "detail": "\u03c3=13.5 (prereg); all 13 MLs reproduce"
+  },
+  {
+   "id": "V-05",
+   "check": "Snapshot store completeness",
+   "method": "every market must have an open row with model_line == market fair_line; close rows present and flagged pending",
+   "result": "PASS",
+   "detail": "39 markets \u00d7 2 phases = 78 rows"
+  },
+  {
+   "id": "V-06",
+   "check": "Blank discipline (R4)",
+   "method": "market_line and diff must be blank exactly when no price source exists",
+   "result": "PASS",
+   "detail": "all 39 markets blank+flagged; no inferred numbers"
+  },
+  {
+   "id": "V-07",
+   "check": "Leaderboard separation (R5)",
+   "method": "signal rank computed only from signal metrics; staking columns exist and are excluded from the rank",
+   "result": "PASS",
+   "detail": "5 strategies; 4 ranked on signal, props BLOCKED"
+  },
+  {
+   "id": "V-08",
+   "check": "Replacement depth (R6)",
+   "method": "join official designations to club charts; ordinal = chart tier of the next named player; cross-check against hub's independent join",
+   "result": "PASS (as a flagged lead)",
+   "detail": "42/76 replacements identified; ordinals published; join flagged UNVERIFIED (F-A02)"
+  },
+  {
+   "id": "V-09",
+   "check": "Correlations from sourced numbers only (R7)",
+   "method": "every correlation row's axes traced to official pages; derived-axis rows quarantined into model_diagnostics; n and CI on every row",
+   "result": "PASS",
+   "detail": "7 sourced rows + 2 quarantined rows"
+  },
+  {
+   "id": "V-10",
+   "check": "Demotion gate registered (R8)",
+   "method": "D-1 triggers + thresholds committed before any strategy is live",
+   "result": "PASS",
+   "detail": "5 triggers registered; D-2 re-promotion defined"
+  },
+  {
+   "id": "V-11",
+   "check": "Row-source policy (repo rule)",
+   "method": "scripts/origin_verify.py: every tbody row carries an external source link or an explicit badge; repo-wide audit_all.py re-checks",
+   "result": "PASS",
+   "detail": "no row without provenance"
+  },
+  {
+   "id": "V-12",
+   "check": "No manual input",
+   "method": "all module values computed by origin_build.py from frozen inputs; nothing typed into prose or tables",
+   "result": "PASS",
+   "detail": "prose counts are f-strings of computed values"
+  }
+ ]
+}

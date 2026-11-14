@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demotion gate, signal vs staking, correlation · X3 Ledger</title>
+<link rel="stylesheet" href="ledger.css">
+</head><body>
+<header class="top"><div class="brand"><a href="index.html">X3 Ledger</a><span>NFL 2026 · data captured 2026-11-14</span></div>
+<nav><a href="index.html">Overview</a><a href="results.html">Results feed</a><a href="prices.html">Lines &amp; prices</a><a href="depth.html">Replacement depth</a><a href="governance.html" class=active>Gates &amp; correlation</a><a href="../hub/index.html">Canonical hub</a><a href="../hub/flagged.html">Flagged</a></nav></header>
+<main>
+<h1>Demotion gate, signal vs staking, correlation</h1>
+
+<p class="lede">The demotion gate and the signal/staking split are <strong>design proposals</strong>. Their thresholds are
+not verified facts and must be set by the owner. Rows are marked DESIGN, not source-backed data.</p>
+<h2>Demotion gate: live → paper</h2>
+<input class="filter" placeholder="Filter rows…" aria-label="Filter rows"><div class="scroll"><table class="t"><thead><tr><th>Gate</th><th>Name</th><th>Rule</th><th>Status</th><th>Current evaluation</th><th>Source</th></tr></thead><tbody><tr><td>D1</td><td>Sample floor</td><td>A strategy is evaluated only after N settled bets in the window (N proposed: 200; owner to set)</td><td>PROPOSED</td><td>not evaluable: 0 settled bets</td><td><span class="unv">DESIGN · UNVERIFIED</span></td></tr><tr><td>D2</td><td>Signal test</td><td>Demote to paper when the signal metric&#x27;s 95% upper bound stays below 0 for 2 consecutive windows</td><td>PROPOSED</td><td>not evaluable</td><td><span class="unv">DESIGN · UNVERIFIED</span></td></tr><tr><td>D3</td><td>Data integrity</td><td>Freeze and demote to paper if any price snapshot in the window has no official-source link</td><td>PROPOSED</td><td>store empty</td><td><span class="unv">DESIGN · UNVERIFIED</span></td></tr><tr><td>D4</td><td>Staking cannot promote or rescue</td><td>Bankroll/staking results never change the signal rank or the gate state</td><td>PROPOSED</td><td>n/a</td><td><span class="unv">DESIGN · UNVERIFIED</span></td></tr><tr><td>D5</td><td>Dependence</td><td>Same-game parlay legs are scored as joint events; independence is never assumed</td><td>PROPOSED</td><td>n/a</td><td><span class="unv">DESIGN · UNVERIFIED</span></td></tr></tbody></table></div>
+<h2>Leaderboard: signal and staking shown separately</h2>
+<p class="lede">The rank uses the signal metric only. Staking results are a separate column and cannot move a strategy up.</p>
+<input class="filter" placeholder="Filter rows…" aria-label="Filter rows"><div class="scroll"><table class="t"><thead><tr><th>Rank by signal</th><th>Strategy</th><th>Signal metric (CLV, n, CI)</th><th>Flat-stake result (n, CI)</th><th>Staking policy</th><th>Staking result (not ranked)</th><th>Gate state</th><th>Note</th></tr></thead><tbody><tr><td>—</td><td>No strategy has settled bets</td><td>—</td><td>blank</td><td>blank</td><td>blank</td><td>blank</td><td>UNVERIFIED: not evaluated</td></tr></tbody></table></div>
+<h2>Correlations (official finals only; n published with each value)</h2>
+<p class="lede">Pearson r with a Fisher-z 95% interval. Computed here from 137 FINAL games in the results feed. Each
+row's source is the results feed; the feed rows link the official week pages. These describe scoring only and
+do not measure betting edge.</p>
+<input class="filter" placeholder="Filter rows…" aria-label="Filter rows"><div class="scroll"><table class="t"><thead><tr><th>Pair</th><th>n</th><th>r</th><th>95% CI low</th><th>95% CI high</th><th>Source</th></tr></thead><tbody><tr><td>Home points vs away points</td><td>137</td><td>0.076</td><td>-0.093</td><td>0.241</td><td><a href="https://github.com/karagemop466-tech/X3/blob/arena/a60a2bf7-x3/data/ledger/results_feed.csv" rel="noopener">results_feed.csv (COMPUTED from official rows)</a></td></tr><tr><td>Total points vs absolute home margin</td><td>137</td><td>-0.016</td><td>-0.183</td><td>0.152</td><td><a href="https://github.com/karagemop466-tech/X3/blob/arena/a60a2bf7-x3/data/ledger/results_feed.csv" rel="noopener">results_feed.csv (COMPUTED from official rows)</a></td></tr><tr><td>Week number vs total points (scoring trend)</td><td>137</td><td>-0.029</td><td>-0.196</td><td>0.139</td><td><a href="https://github.com/karagemop466-tech/X3/blob/arena/a60a2bf7-x3/data/ledger/results_feed.csv" rel="noopener">results_feed.csv (COMPUTED from official rows)</a></td></tr></tbody></table></div>
+
+</main>
+<footer>Every row carries a link to an official source or is marked UNVERIFIED / DESIGN. Source repo: <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Blank cells are unverified on purpose.</footer>
+<script src="ledger.js"></script>
+</body></html>

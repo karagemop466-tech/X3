@@ -1,0 +1,74 @@
+{
+ "rows": [
+  {
+   "id": "Q-A01",
+   "question": "Where do market prices (open/close) come from?",
+   "known": "No official source publishes NFL market prices; the store and every market-dependent column are schema-ready and blank.",
+   "missing": "A price provider (and whether its licence permits storage)",
+   "how_to_discover": "Owner decision; then add the provider to scripts/origin_capture.py and record prices per snapshot phase",
+   "status": "OPEN \u2014 blocks fair-vs-market diff, CLV, ROI, demotion trigger D-1a",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "Q-A02",
+   "question": "When is the cycle-close capture run?",
+   "known": "Week-10 markets are open; the close phase exists in the store and the capture script supports it.",
+   "missing": "A schedule (pre-kickoff Sunday) and an owner to arm it",
+   "how_to_discover": "Owner decision; run `python3 scripts/origin_capture.py close` before the first Week-10 kickoff and rebuild",
+   "status": "OPEN \u2014 blocks closing model lines",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "Q-A03",
+   "question": "Which replacement ordinals are real?",
+   "known": "42 of 76 absences have a named replacement on the club chart.",
+   "missing": "Club confirmation that the chart's deeper names are actual next-ups (charts are labelled unofficial by the clubs)",
+   "how_to_discover": "Cross-check club transaction wires / official game participation once available; treat the join as a lead only",
+   "status": "OPEN \u2014 depth join flagged UNVERIFIED",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "Q-A04",
+   "question": "Are the season-to-date correlations stable?",
+   "known": "Each row publishes n and a 95% CI; n is season-to-date only.",
+   "missing": "The rest of the season (and prior seasons) to widen n",
+   "how_to_discover": "Weekly re-capture (the feed grows automatically); multi-season backfill per suggestion S-A04",
+   "status": "OPEN \u2014 CI published with every value",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "Q-A05",
+   "question": "Is the parlay leg-dependence estimate usable?",
+   "known": "phi is published with its n (weeks evaluated); it is a tiny sample.",
+   "missing": "A sample that can separate dependence from noise",
+   "how_to_discover": "Recompute as weeks accrue; do not price correlated parlays until phi has a real n",
+   "status": "OPEN \u2014 flagged F-A06",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "Q-A06",
+   "question": "What are the leaderboard rewards?",
+   "known": "The brief says the competition 'provides rewards for top performing strategies'.",
+   "missing": "Pool, currency, cadence and funding \u2014 none of this exists in the repo",
+   "how_to_discover": "Owner decision; until then the leaderboard publishes signal ranks only and promises nothing",
+   "status": "OPEN \u2014 owner decision required",
+   "source": "",
+   "source_label": ""
+  },
+  {
+   "id": "Q-A07",
+   "question": "Is Week 11's slate originate-able now?",
+   "known": "The Week-11 schedule is in the feed (scheduled games, official source).",
+   "missing": "The Week-11 injury report (the league selector still serves Week 10) \u2014 originating Week-11 lines without it would silently drop the injury input",
+   "how_to_discover": "Capture the Week-11 report when the league publishes it, then run the engine and originate in order (side \u2192 total \u2192 ML)",
+   "status": "OPEN \u2014 Week-11 origination deliberately not fabricated",
+   "source": "https://www.nfl.com/injuries/league/2026/reg11",
+   "source_label": "week-11 selector"
+  }
+ ]
+}
