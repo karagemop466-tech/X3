@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open questions &amp; information gaps - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html" class=on">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Open questions &amp; information gaps</h1>
+<p class="lede">What must be known - and what can never be known from the sources available - before any of the suggestions below can be turned into a decision.</p>
+
+<p class="lede">16 open questions, 7 of them blocking a decision. The 'what we already
+know' column is deliberately included: several questions are answerable from data already in this
+repository, and the rest say exactly what has to be acquired and who can acquire it.</p>
+<div class="tblwrap"><table class="k-meta" id="qt">
+<thead><tr><th>ID</th><th>Blocking</th><th>Decision it gates</th><th>What we already know</th><th>What is missing</th><th>How to discover it</th><th>Who answers</th><th>Default if unanswered</th></tr></thead><tbody>
+<tr><td><b>Q-01</b></td><td>YES</td><td>Publish or shelve our originated lines as a decision aid</td><td>The model prices 13 of 13 unplayed Week 10 games from official standings + the official injury report (VERIFIED).</td><td>Any licensed market price to compare against - none in the repo; market columns are blank.</td><td>Decide a price source class: (a) licensed data vendor feed, (b) manual weekly snapshot by the owner, (c) publish model-only with no market comparison.</td><td>Owner (commercial decision)</td><td>Keep market columns blank and label the board 'model-only'.</td></tr>
+<tr><td><b>Q-02</b></td><td>YES</td><td>Whether any strategy can ever be ranked on a leaderboard</td><td>Gates G0-G9 are defined; G2 (minimum sample) needs &gt;= 300 settled bets per strategy.</td><td>Historical game results and prices: no game log, no odds archive in the repo.</td><td>Ingest a results archive (2018-2025) and a price archive; both are one-time bulk loads.</td><td>Owner + data vendor</td><td>Leaderboard stays empty; it is not a defect, it is the gate working.</td></tr>
+<tr><td><b>Q-03</b></td><td>YES</td><td>How to treat 1st-string vacancies in the model</td><td>39 positions across 18 clubs have a chart-named starter marked Out/Doubtful (DERIVED from official report + club charts).</td><td>A calibrated replacement cost: today POS_COST is an assumed prior, not a measurement.</td><td>Backtest player-absence impact on margins once a game log + roster snapshot exist.</td><td>This project (after Q-02 inputs arrive)</td><td>Keep the prior, publish the sensitivity (a 1.0 pt swing moves ~5 of 13 spreads).</td></tr>
+<tr><td><b>Q-04</b></td><td>PARTIAL</td><td>Whether depth-chart evidence can be trusted for lineup inference</td><td>31 of 32 club charts are readable (only Houston is image-only); every one is self-labelled unofficial; 26 of those 31 print no as-of date (re-verified for DET on 2026-11-14).</td><td>Any league-published, dated, official depth chart.</td><td>Ask whether the club's participation-report API (the feed behind the site) is licensed to us.</td><td>Owner + club/legal</td><td>Use charts only to rank 'who is next man up', never to assert a starter is available.</td></tr>
+<tr><td><b>Q-05</b></td><td>YES</td><td>Whether the weekly injury report is a complete availability picture</td><td>The report lists designations for the current slate only; players on IR never appear, and the Week 11 report does not exist yet (the week selector stops at Week 10).</td><td>A transactions/IR feed that captures players lost for the season.</td><td>Add the club transaction log pages to the daily pull, or ingest the NFL transactions feed.</td><td>This project</td><td>Treat absence of a row as 'no designation', never as 'available'.</td></tr>
+<tr><td><b>Q-06</b></td><td>PARTIAL</td><td>Whether to weight rest days and travel</td><td>Two clubs (JAX) list players 'Not injury related - resting player' on the report (VERIFIED).</td><td>Per-game venue and date data needed to compute rest-day differentials.</td><td>Comes free with the game log in Q-02.</td><td>This project</td><td>No rest/travel term in the model.</td></tr>
+<tr><td><b>Q-07</b></td><td>YES</td><td>Whether parlays and prop combos can be priced honestly</td><td>The correlation mathematics is specified (covariance of legs, joint probability).</td><td>Same-game prop settlement history and joint outcome data - zero rows available.</td><td>A prop archive (line + outcome per player per game) for &gt;= 3 seasons.</td><td>Owner + data vendor</td><td>Prop/parlay pages publish structure and formulas with every numeric cell blank.</td></tr>
+<tr><td><b>Q-08</b></td><td>PARTIAL</td><td>How much of a 2026 record is luck this season</td><td>Pythagorean k=2.37 residual sd = 1.06 wins; net points explain r2=0.771 of win pct (DERIVED).</td><td>Whether k=2.37 is right for the 2026 scoring environment.</td><td>Refit k on the game log once it exists (one regression).</td><td>This project</td><td>Keep k=2.37, publish the residual as a hypothesis only.</td></tr>
+<tr><td><b>Q-09</b></td><td>no</td><td>Which tree on the site is canonical</td><td>17 pages under hub/ generated from one data module; 6 older trees remain in the repo.</td><td>Owner preference on deleting or archiving superseded trees.</td><td>Decide: keep as archive (default) or delete in a follow-up PR.</td><td>Owner</td><td>Old trees stay, clearly labelled ARCHIVE on hub/archive.html.</td></tr>
+<tr><td><b>Q-10</b></td><td>no</td><td>Whether the 137 stale rows / count mismatches in older docs get corrected in place</td><td>Older pages state 205 injury rows (session arena/0c38f465) while others state 345; the official page contains 345 (re-verified by this session).</td><td>Nothing - the fix is mechanical once the owner says whether archived pages may be edited.</td><td>Approve an edit or leave the archive as printed history.</td><td>Owner</td><td>Archives left untouched; the discrepancy is published on hub/repo-review.html.</td></tr>
+<tr><td><b>Q-11</b></td><td>PARTIAL</td><td>Whether Tampa Bay's division record in the older dashboard gets corrected</td><td>The official standings page shows TB division 2-0-0 (pct 1.000); tools/nfl_data.py has 1-2-0.</td><td>Confirmation that the club's chart ordering is not being used as a tiebreaker elsewhere.</td><td>Owner approves a one-line data fix in the other session's file (scope request logged).</td><td>Owner + arena/7e632805-x3</td><td>Canonical CSV holds 2-0-0; the older file is flagged F-11.</td></tr>
+<tr><td><b>Q-12</b></td><td>no</td><td>Which slate to price first next week</td><td>Week 11 slate is scheduled (Thu Nov 19 IND@HOU; Sun Nov 22 slate) with no designations yet.</td><td>Nothing - the report publishes Wednesday 2026-11-18.</td><td>Re-run the engine on reg11 after publication.</td><td>This project</td><td>Board stays on Week 10 until the Week 11 report exists.</td></tr>
+<tr><td><b>Q-13</b></td><td>YES</td><td>Whether any reward, payout or real-money stake is in scope at all</td><td>Site is research-only; no sportsbook, wallet or payout exists.</td><td>Legal position of the owner's jurisdiction on operating an odds market or paying contest prizes.</td><td>Local legal review; and if betting is in scope, licensing advice.</td><td>Owner (legal)</td><td>All reward amounts remain blank; the site never accepts or settles a bet.</td></tr>
+<tr><td><b>Q-14</b></td><td>no</td><td>Model refresh cadence</td><td>The injury report changes Wed/Thu/Fri and standings change after each game.</td><td>Owner's tolerance for stale lines between refreshes.</td><td>Decide nightly vs three-times-a-week refresh; both are cron changes.</td><td>Owner</td><td>Manual run of tools/x3_engine.py at each session.</td></tr>
+<tr><td><b>Q-15</b></td><td>PARTIAL</td><td>Which accuracy metric the leaderboard should rank on</td><td>ROI per 100 staked, CLV, Brier score and log-loss are all defined in the design.</td><td>Nothing missing except settled bets; owner must pick the primary metric (they behave differently at small samples).</td><td>Pick one primary + one tiebreak; the design already supports all four.</td><td>Owner</td><td>Default: CLV-qualified ROI per 100 as primary, Brier score as tiebreak.</td></tr>
+<tr><td><b>Q-16</b></td><td>YES</td><td>What to do with the 6 duplicated site trees</td><td>Root, docs/, pages/, site/, lab/, dashboard/, x3lab/ each contain a landing page and overlapping content; the Pages source is the repo root.</td><td>Owner decision to consolidate (delete) or preserve (archive with labels).</td><td>One decision; the archive page already explains each tree.</td><td>Owner</td><td>Preserve all; hub/ is the only tree the landing page links as current.</td></tr>
+</tbody></table>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

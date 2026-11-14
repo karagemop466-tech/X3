@@ -2,7 +2,7 @@ name: Deploy X3 NFL site to GitHub Pages
 
 on:
   push:
-    branches: [ arena/1a771fcd-x3, main ]
+    branches: [ arena/3bf7cc8b-x3, main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -62,6 +62,9 @@ jobs:
       - name: Check other integrated root pages
         run: python3 tools/check_links.py
 
+      - name: Verify the consolidated decision desk
+        run: python3 scripts/desk_verify.py
+
       - name: Check source-first decision dashboard
         run: |
           python3 scripts/check_dashboard.py
@@ -71,6 +74,15 @@ jobs:
           node --check scripts/check_render.js
           node scripts/check_data.js
           node scripts/check_render.js
+
+      - name: Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced
+        run: |
+          python3 tools/x3_engine.py
+          python3 tools/build_hub.py
+          python3 tools/verify_hub.py
+          git diff --exit-code -- hub index.html data/hub || {
+            echo '::error::hub/*.html is not the current build of data/hub/*.csv - run `python3 tools/x3_engine.py && python3 tools/build_hub.py` and commit the result.'
+            exit 1; }
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correlations &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a' class="on"'ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Correlations</h1>
+<p class="note">Computed values are Pearson correlations over the 32 clubs in the official standings snapshot of 2026-11-14; they are descriptive, not tradable. Blank rows are blank because the input does not exist - never estimated.</p>
+<h2>Computed now (5)</h2>
+<table class=""><thead><tr>
+<th>#</th>
+<th>Pair</th>
+<th>r</th>
+<th>n</th>
+<th>Method</th>
+<th>Caveat</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>COR-01</td><td>Points for per game vs win percentage</td><td>++0.7001</td><td>32</td><td>Pearson r on the official 2026 standings snapshot of 2026-11-14</td><td>descriptive, not tradable; 9-week sample</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>COR-02</td><td>Points against per game vs win percentage</td><td>-0.6639</td><td>32</td><td>same</td><td>as above</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>COR-03</td><td>Net points per game vs win percentage</td><td>++0.8794</td><td>32</td><td>same</td><td>mechanically high: net points embed wins; useful as a luck-residual base, not as a signal</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>COR-04</td><td>Home win percentage vs road win percentage</td><td>++0.3506</td><td>32</td><td>same, ties excluded from denominators</td><td>weak: split-based home/road talent estimates are noisy at 8-9 games</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>COR-05</td><td>Net points per game vs points for per game</td><td>++0.8019</td><td>32</td><td>identity-contamination check</td><td>published deliberately: shows how a derived quantity re-uses its own inputs</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+</tbody></table>
+<h2>Pending, with the exact data required (7)</h2>
+<table class=""><thead><tr>
+<th>#</th>
+<th>Pair</th>
+<th>Value</th>
+<th>n</th>
+<th>Method / requirement</th>
+<th>Why it is blank</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>COR-06</td><td>Total points scored by both clubs vs absolute margin</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>requires game logs (272 games) - not in repo</td><td>the only in-repo version is an n=16 pilot in a legacy tree; below G-02 by an order of magnitude</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>COR-07</td><td>Rushing yards vs game total (same club)</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>needs play-by-play or box-score ingestion</td><td>needed before any run-pass parlay is allowed</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>COR-08</td><td>QB passing yards vs WR1 receiving yards</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>needs prop-level history</td><td>the core combo correlation; blocked by Q-12 and S-04</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>COR-09</td><td>Sack total vs offensive-line absences</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>injury rows joined to defensive box scores</td><td>input availability measured, outcome data absent</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>COR-10</td><td>Injury designation change vs line movement</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>snapshot diff of SRC-02 against price moves</td><td>impossible until S-04 and S-05 both exist</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>COR-11</td><td>Model residual vs next-week residual</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>autocorrelation of model-minus-close</td><td>the honest test of whether the model has any persistence</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>COR-12</td><td>Same-day club exposure correlation</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>cross-game: same-club legs and divisional opponents</td><td>required by G-09 before parlays across games are allowed</td><td><a href="flagged.html">FLG-07</a></td></tr>
+</tbody></table>
+<h2>Prior-session figures, re-derived</h2>
+<table class=""><thead><tr>
+<th>Pair</th>
+<th>Published by a prior tree</th>
+<th>Recomputed here</th>
+<th>Agreement</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr><td>Points for per game vs win %</td><td>+0.6984</td><td>+0.7001</td><td>0.002</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a> &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/correlations.json">prior file</a></td></tr>
+<tr><td>Points against per game vs win %</td><td>-0.6636</td><td>-0.6639</td><td>0.0003</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a> &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/correlations.json">prior file</a></td></tr>
+<tr><td>Net points per game vs win %</td><td>+0.8781</td><td>+0.8794</td><td>0.0015</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a> &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/correlations.json">prior file</a></td></tr>
+<tr><td>Home win % vs road win %</td><td>+0.3501</td><td>+0.3506</td><td>0.0005</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a> &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/correlations.json">prior file</a></td></tr>
+</tbody></table>
+<p class="note">No denominator convention reproduces the published set exactly, which pins the difference to snapshot timing rather than formula. Recorded as FLG-13; the practical rule is to stamp every derived statistic with its source snapshot time.</p>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
+  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
+  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>

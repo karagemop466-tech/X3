@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html" class=on">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Leaderboard</h1>
+<p class="lede">A competition design that rewards strategies only after they beat a luck-adjusted baseline - and which is therefore empty today.</p>
+
+<h2>Categories</h2><div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Category</th><th>Scope</th><th>Primary metric</th><th>Tiebreak</th></tr></thead><tbody>
+<tr><td><b>Game side (single)</b></td><td>Spread and moneyline singles</td><td>CLV-qualified ROI per 100 staked</td><td>Brier score on our own win probability</td></tr>
+<tr><td><b>Game total (single)</b></td><td>Over/under singles</td><td>CLV-qualified ROI per 100 staked</td><td>MAE of model total</td></tr>
+<tr><td><b>Player prop (single)</b></td><td>Anytime TD, yards, completions</td><td>ROI per 100 staked</td><td>hit rate CI</td></tr>
+<tr><td><b>Prop combo (same game)</b></td><td>2-3 correlated legs, one game</td><td>ROI per 100 with dependence audit</td><td>correlation error vs simulated joint</td></tr>
+<tr><td><b>Parlay (cross game)</b></td><td>2-4 legs, independent games</td><td>ROI per 100 with max simultaneous exposure</td><td>leg independence violations</td></tr>
+<tr><td><b>Model quality</b></td><td>No bets: line accuracy only</td><td>log-loss vs market closing line</td><td>MAE in points</td></tr>
+</tbody></table>
+</div>
+<h2>Ranking rules</h2>
+<ol><li>A strategy is invisible to the leaderboard until G-1 through G-9 all return PASS.</li><li>Ranking is by risk-adjusted return, not by win count; a 30-20 record is not evidence.</li><li>Every published number carries its sample size and its interval; a row without n is not shown.</li><li>Re-rating happens only on new weeks; a strategy that decays is demoted automatically.</li><li>No real money, no payout and no bet placement exists in this repository.</li></ol>
+<h2>Luck controls baked into the competition</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Control</th><th>Mechanism</th></tr></thead><tbody>
+<tr><td><b>Walk-forward only</b></td><td>fit on the past, scored on the future, always</td></tr>
+<tr><td><b>Minimum n</b></td><td>&gt;= 300 settled bets before a row exists at all</td></tr>
+<tr><td><b>FDR control</b></td><td>Benjamini-Hochberg at 10% across the trial window</td></tr>
+<tr><td><b>Deflated Sharpe</b></td><td>penalise the best-of-N that a search always produces</td></tr>
+<tr><td><b>CLV as the primary lens</b></td><td>closing prices are the least noisy verdict available</td></tr>
+<tr><td><b>Luck floor disclosure</b></td><td>the Pythagorean residual sd (1.06 wins) is printed next to any record claim</td></tr>
+<tr><td><b>Stake haircut</b></td><td>Kelly on the lower bound of the edge interval</td></tr>
+</tbody></table>
+</div>
+<h2>Standings</h2><div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Rank</th><th>Strategy</th><th>Bets</th><th>ROI /100</th><th>CLV</th><th>Sharpe (deflated)</th><th>State</th></tr></thead><tbody>
+<tr><td>-</td><td><i>no strategy qualifies</i></td><td>0</td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td></tr>
+<tr><td>-</td><td><i>no strategy qualifies</i></td><td>0</td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td></tr>
+<tr><td>-</td><td><i>no strategy qualifies</i></td><td>0</td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td></tr>
+</tbody></table>
+<p class="note">The empty standings are the correct output of the gate system: with zero settled bets (G-2 FAIL) there is nothing to rank. Filling this table now would mean ranking noise.</p>
+</div>
+<h2>Rewards</h2><div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Award</th><th>Form</th><th>Status</th></tr></thead><tbody>
+<tr><td>First place, per category, per season</td><td>notional</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>Promotion to 'funded' tier</td><td>notional</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>Contribution prize (best new documented signal)</td><td>notional</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+</tbody></table>
+</div>
+<p class="note">Amounts are blank by policy. Paying prizes for betting advice is a regulated activity in
+several jurisdictions, and no payout mechanism, bankroll or settlement service exists in this repository
+(flag F-06, F-07; decision Q-13).</p>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>
