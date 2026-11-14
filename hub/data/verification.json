@@ -97,7 +97,7 @@
    "id": "VER-12",
    "target": "Deploy and live rendering",
    "method": "after merge: read the Pages build status and commit through the GitHub API, then compare every published file's blob SHA against the built file in git. Direct HTTP fetch of the Pages host is not possible from this sandbox (only github.com/api.github.com are reachable), so the deployed tree itself is the evidence.",
-   "result": "PR #27 merged 2026-11-14T18:35:39Z as bd85e76; Pages build 'built' at 18:35:41Z on commit bd85e76; 21 deployed files (root index, 17 hub pages, stylesheet, builder, checker) byte-identical to the built versions - 0 mismatches",
+   "result": "PR #27 merged 18:35:39Z as bd85e76 and PR #28 (this record + the FLG-20 link fix) merged 18:38:04Z as 1ef0f59; Pages build status 'built' at 18:38:05Z on commit 1ef0f59; all 35 published hub files (root index, 17 pages, stylesheet, builder, checker, 10 data files) compared by blob SHA against main - 0 mismatches",
    "status": "PASS",
    "source": "SRC-14"
   },

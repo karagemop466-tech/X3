@@ -808,3 +808,15 @@ left as-is, so the hub publishes through the existing `path: '.'` upload.
   source, F-08 no official depth chart, F-12 uncalibrated parameters, F-14 jurisdiction for rewards,
   F-18/F-21 defects found in another session's data files (reported, not edited), F-13 non-reproducible
   prior correlations, F-10 stale CI trigger + 5 failing runs on `arena/64164906-x3`, PR #12 still open.
+
+### Closing record (arena/1e2d8ef2-x3)
+- **PR #28**: https://github.com/karagemop466-tech/X3/pull/28 — MERGED 2026-11-14T18:38:04Z as `1ef0f59`
+  (merge + deploy record, FLG-20 evidence link, builder fallback so no row can render unsourced).
+- **Pages after both merges**: build `built` at 2026-11-14T18:38:05Z on `1ef0f59`; live at
+  https://karagemop466-tech.github.io/X3/ with the hub at `/X3/hub/`. Deployed tree verified by blob-SHA
+  comparison: 35/35 published hub files identical to the built files.
+- **Board state for the next session**: this branch's scope (T1-T12) is complete. Owner decisions still open
+  are the 9 blocking questions on `hub/questions.html`; the recommended order of work is `S-20`
+  (price archive S-04 → snapshot job S-05 → consolidation S-01/S-14). PR #12 (arena/972ad7a5-x3) is still
+  open and untouched by this session; the 5 failing `data-pipeline` runs on `arena/64164906-x3` are not
+  caused by this branch (that workflow is not in `main`).
