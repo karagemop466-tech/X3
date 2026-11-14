@@ -110,8 +110,8 @@
     "hub": {
       "pages": 28,
       "rows": 1241,
-      "flagged_rows": 937,
-      "refs": 1788,
+      "flagged_rows": 941,
+      "refs": 1792,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -186,7 +186,7 @@
   },
   "pages_total": 159,
   "rows_total": 6028,
-  "rows_flagged_or_sourced": 5199,
+  "rows_flagged_or_sourced": 5203,
   "internal_refs": 3506,
   "problems": []
 }
