@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suggestions · NFL Decision Desk</title>
+<style>:root{--bg:#0b1220;--panel:#121b2c;--panel2:#18233a;--line:#243350;--ink:#e8eefb;
+--dim:#93a4c4;--acc:#4ea1ff;--acc2:#5ce1c0;--warn:#ffcf6b;--bad:#ff8a8a;--good:#7ee787}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.96);
+border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+.brand{display:flex;gap:14px;align-items:center;padding:14px 0 8px}
+.brand h1{font-size:18px;margin:0;letter-spacing:.2px}
+.brand .sub{color:var(--dim);font-size:12.5px}
+nav{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 12px}
+nav a{padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:var(--dim)}
+nav a:hover{color:var(--ink);border-color:var(--acc);text-decoration:none}
+nav a.on{color:#06111f;background:var(--acc);border-color:var(--acc);font-weight:600}
+main{max-width:1280px;margin:0 auto;padding:26px 20px 70px}
+h2{font-size:22px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;margin:24px 0 8px;color:#cfe0ff}
+p,li{color:#d3dded}
+.lede{color:var(--dim);font-size:14.5px;margin:6px 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi b{display:block;font-size:24px;line-height:1.2}
+.kpi span{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+.kpi small{display:block;color:#7d8fae;font-size:11.5px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card b{display:block;margin-bottom:4px}
+.card span{color:var(--dim);font-size:13px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:#b9cbe9;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.6px;position:sticky;top:0;white-space:nowrap}
+tbody tr:hover{background:#16233b}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+font-weight:600;letter-spacing:.3px;white-space:nowrap}
+.badge.unv{background:#3a2a12;color:var(--warn);border:1px solid #6b5320}
+.badge.der{background:#1b2f3d;color:#7fd7ff;border:1px solid #2c5a72}
+.badge.ok{background:#14301f;color:var(--good);border:1px solid #2a5738}
+.badge.bad{background:#3a1b1b;color:var(--bad);border:1px solid #6b2b2b}
+.notice{background:#1a2233;border:1px solid var(--line);border-left:3px solid var(--acc);
+border-radius:8px;padding:12px 14px;margin:16px 0;color:#cbd8ee;font-size:13.5px}
+.notice.warn{border-left-color:var(--warn)} .notice.bad{border-left-color:var(--bad)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
+footer .wrap{padding:20px}
+.small{font-size:12.5px;color:var(--dim)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.pos{color:var(--good)} .neg{color:var(--bad)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="brand">
+  <div>
+    <h1>NFL Decision Desk</h1>
+    <div class="sub">Evidence-first line origination, validation and injury intelligence</div>
+  </div>
+</div>
+<nav><a href="index.html">Overview</a>
+<a href="executive-summary.html">Executive summary</a>
+<a href="lines.html">Own lines</a>
+<a href="model.html">Model</a>
+<a href="strategies.html">Strategies</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="correlations.html">Correlations</a>
+<a href="injuries.html">Injuries</a>
+<a href="lineups.html">Lineups</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html" class="on">Suggestions</a>
+<a href="requirements.html">Requirements</a>
+<a href="games.html">Game log</a>
+<a href="standings.html">Standings</a>
+<a href="sources.html">Sources</a>
+<a href="repo-review.html">Repo review</a>
+<a href="flagged.html">Flagged for review</a>
+<a href="archive.html">Archive</a></nav>
+</div></header>
+<main>
+
+<h2>Suggestions for review</h2>
+<p class="lede">Nothing on this list has been implemented beyond what is already on the site. Each
+item states the problem, at least two paths, a recommendation, and what choosing it costs. Pick a
+path here before any further change is built.</p>
+<div class="notice"><b>How to use this page.</b> Read the problem, compare the paths, then record a
+decision. Suggestions that depend on missing data point at the exact
+<a href="questions.html">question</a> that must close first.</div>
+<div class="tw"><table><caption class="small" style="text-align:left;padding:8px 10px">Status means awaiting a decision unless marked implemented. Nothing here is a commitment. Provenance is the file in this repository that defines the proposal.</caption><thead><tr><th>ID</th><th>Suggestion</th><th>Problem</th><th>Option A</th><th>Option B</th><th>Option C</th><th>Recommendation</th><th>Cost / risk</th><th>Status</th><th>Provenance</th></tr></thead><tbody><tr><td>S1</td><td>Decide the source of prices before anything else</td><td>No strategy can be graded without a price, and no official NFL source publishes one.</td><td>Buy a licensed odds feed and store open/current/close with timestamps.</td><td>Record a declared commercial book manually per game, with capture time, and put a permanent caveat on every dependent row.</td><td>Keep official-only data and leave the leaderboard empty.</td><td>B. It unblocks grading immediately and the caveat is visible; upgrading to A later needs no rework.</td><td>Manual recording is error-prone and slow; a licensed feed costs money.</td><td><span class="badge unv">UNVERIFIED: proposed — awaiting decision</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S2</td><td>Add prior seasons before trusting any rating</td><td>Ratings fitted on ten weeks have wide uncertainty and regress hard.</td><td>Capture 2023-2025 weekly schedule pages from the same official source.</td><td>Wait until more of 2026 is played.</td><td>Keep the current model and label it experimental indefinitely.</td><td>A, and re-run the same walk-forward test on the larger sample.</td><td>~54 extra page captures; the parser already handles them.</td><td><span class="badge unv">UNVERIFIED: proposed</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S3</td><td>Publish an uncertainty band on every originated line</td><td>A single number implies precision the model does not have.</td><td>Show a 90% interval beside each spread and total derived from the residuals.</td><td>Show a single number and document MAE on the model page only.</td><td>Show no numbers until the model is validated.</td><td>A. It makes the honest reading the default one.</td><td>Small build change; no new data.</td><td><span class="badge unv">UNVERIFIED: proposed</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S4</td><td>Split the leaderboard into model-only and market-relative tracks</td><td>Ranking against other strategies rewards being least bad, not being good.</td><td>Two boards: prediction accuracy (no market) and market-relative ROI.</td><td>One market-relative board only.</td><td>One accuracy board only.</td><td>A. The accuracy board can run today; the ROI board runs once S1 is decided.</td><td>Two scoring definitions to maintain.</td><td><span class="badge unv">UNVERIFIED: proposed</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S5</td><td>Make the deficiency metric explicit and auditable</td><td>The join between the injury report and depth charts drops rows and could flatter or punish a club unfairly.</td><td>Publish the join rate and the unmatched list alongside every deficiency figure.</td><td>Publish only the deficiency count.</td><td>Impute depth strings for unmatched players.</td><td>A. C is rejected outright — it would fabricate data.</td><td>Already implemented on the lineups page; needs to stay there.</td><td><span class="badge ok">implemented</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S6</td><td>Set a hard rule that parlays need a joint model</td><td>Multiplying marginal probabilities overstates a parlay&#x27;s chance when legs correlate.</td><td>Block any parlay whose leg pair has no measured joint distribution.</td><td>Allow parlays with a warning.</td><td>Allow parlays freely.</td><td>A. Already the stated policy; keep it enforced in code, not just in prose.</td><td>Fewer eligible combos.</td><td><span class="badge ok">implemented</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S7</td><td>Automate the weekly capture on a schedule</td><td>Everything currently depends on a manual trigger.</td><td>Add a weekly cron trigger to the capture workflow during the season.</td><td>Keep manual triggers.</td><td>—</td><td>A, with the self-test as a hard gate so a broken parser cannot publish.</td><td>Runner minutes; NFL.com terms of use should be checked first.</td><td><span class="badge unv">UNVERIFIED: proposed — depends on a terms-of-use review</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S8</td><td>Give the injury pages an explicit freshness stamp</td><td>A reader cannot tell how old a designation is.</td><td>Show capture date and time on every injury table.</td><td>Rely on the footer.</td><td>—</td><td>A.</td><td>Trivial.</td><td><span class="badge unv">UNVERIFIED: proposed</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S9</td><td>Decide the legal position before any reward language</td><td>Rewards for betting performance may be regulated, and the applicable jurisdiction is unknown.</td><td>Obtain a legal opinion for the operating jurisdiction.</td><td>Keep rewards notional and add no payout mechanism.</td><td>—</td><td>B now, A before any real reward.</td><td>Legal review costs money; B costs nothing.</td><td><span class="badge unv">UNVERIFIED: proposed — no jurisdiction is asserted without a source</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S10</td><td>Retire or fix Houston&#x27;s depth chart</td><td>Houston publishes its chart only as an image, so 12 injury rows cannot be joined.</td><td>Find a text alternative published by the club.</td><td>Record it manually as a flagged exception.</td><td>Exclude Houston from deficiency metrics and say so.</td><td>C until A or B is done; never leave the gap unexplained.</td><td>None.</td><td><span class="badge unv">UNVERIFIED: proposed</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S11</td><td>Add a second official cross-check for scores</td><td>Scores come from one publisher&#x27;s page family; a transcription error would propagate.</td><td>Cross-check the game log against the standings after every capture (already done).</td><td>Add the NFL gamebook PDF as a second source.</td><td>—</td><td>A is running; add B if a gamebook URL is stable.</td><td>Extra capture and parsing.</td><td><span class="badge ok">implemented</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr><tr><td>S12</td><td>Freeze the leaderboard rules now</td><td>Rules written after results are indistinguishable from fitting to the results.</td><td>Publish the rules on this site as a frozen, dated version.</td><td>Keep refining them.</td><td>—</td><td>A, and any later change gets a new version number rather than an edit.</td><td>Less flexibility.</td><td><span class="badge unv">UNVERIFIED: proposed</span></td><td><span class="badge der">DERIVED</span> <span class="small mono">scripts/desk_content.py</span></td></tr></tbody></table></div>
+<h2>Ordered decision queue</h2>
+<div class="tw"><table><thead><tr><th>Order</th><th>Suggestion</th><th>Why this order</th><th>Status</th></tr></thead><tbody><tr><td>1</td><td>S1</td><td>Every other scoring decision depends on whether prices exist.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>2</td><td>S2</td><td>A larger sample changes how much weight the model numbers deserve.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>3</td><td>S9</td><td>Reward language should not appear before the legal position is known.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>4</td><td>S4</td><td>Board structure follows directly from S1.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>5</td><td>S3</td><td>Publishing uncertainty is cheap and improves every downstream reading.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>6</td><td>S12</td><td>Freezing the rules before any grading starts is what makes grading meaningful.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>7</td><td>S6</td><td>Parlay policy is already stated; make it executable.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>8</td><td>S5</td><td>Keeps the deficiency metric honest as it grows.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>9</td><td>S7</td><td>Automation only pays off once the rules and the parser are stable.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>10</td><td>S10</td><td>Fix or declare the Houston gap.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>11</td><td>S8</td><td>Freshness stamps on injury data.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr><tr><td>12</td><td>S11</td><td>Add a second cross-check for scores.</td><td><span class="badge unv">UNVERIFIED: awaiting decision</span></td></tr></tbody></table></div>
+
+</main>
+<footer><div class="wrap">
+<p><b>Evidence policy.</b> Every value is either read from an official source, computed from
+official values and badged <span class="badge der">DERIVED</span>, or left blank and marked
+<span class="badge unv">UNVERIFIED</span>. Nothing is inferred or filled in.</p>
+<p>Built 2026-11-14 18:32 UTC from
+<code>data/desk/*.json</code> · <a href="sources.html">source register</a> ·
+<a href="flagged.html">flagged items</a> · <a href="archive.html">archive of earlier sessions</a></p>
+</div></footer>
+</body>
+</html>

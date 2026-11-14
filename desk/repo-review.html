@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Repo review · NFL Decision Desk</title>
+<style>:root{--bg:#0b1220;--panel:#121b2c;--panel2:#18233a;--line:#243350;--ink:#e8eefb;
+--dim:#93a4c4;--acc:#4ea1ff;--acc2:#5ce1c0;--warn:#ffcf6b;--bad:#ff8a8a;--good:#7ee787}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.96);
+border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+.brand{display:flex;gap:14px;align-items:center;padding:14px 0 8px}
+.brand h1{font-size:18px;margin:0;letter-spacing:.2px}
+.brand .sub{color:var(--dim);font-size:12.5px}
+nav{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 12px}
+nav a{padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:var(--dim)}
+nav a:hover{color:var(--ink);border-color:var(--acc);text-decoration:none}
+nav a.on{color:#06111f;background:var(--acc);border-color:var(--acc);font-weight:600}
+main{max-width:1280px;margin:0 auto;padding:26px 20px 70px}
+h2{font-size:22px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;margin:24px 0 8px;color:#cfe0ff}
+p,li{color:#d3dded}
+.lede{color:var(--dim);font-size:14.5px;margin:6px 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi b{display:block;font-size:24px;line-height:1.2}
+.kpi span{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+.kpi small{display:block;color:#7d8fae;font-size:11.5px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card b{display:block;margin-bottom:4px}
+.card span{color:var(--dim);font-size:13px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:#b9cbe9;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.6px;position:sticky;top:0;white-space:nowrap}
+tbody tr:hover{background:#16233b}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+font-weight:600;letter-spacing:.3px;white-space:nowrap}
+.badge.unv{background:#3a2a12;color:var(--warn);border:1px solid #6b5320}
+.badge.der{background:#1b2f3d;color:#7fd7ff;border:1px solid #2c5a72}
+.badge.ok{background:#14301f;color:var(--good);border:1px solid #2a5738}
+.badge.bad{background:#3a1b1b;color:var(--bad);border:1px solid #6b2b2b}
+.notice{background:#1a2233;border:1px solid var(--line);border-left:3px solid var(--acc);
+border-radius:8px;padding:12px 14px;margin:16px 0;color:#cbd8ee;font-size:13.5px}
+.notice.warn{border-left-color:var(--warn)} .notice.bad{border-left-color:var(--bad)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
+footer .wrap{padding:20px}
+.small{font-size:12.5px;color:var(--dim)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.pos{color:var(--good)} .neg{color:var(--bad)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="brand">
+  <div>
+    <h1>NFL Decision Desk</h1>
+    <div class="sub">Evidence-first line origination, validation and injury intelligence</div>
+  </div>
+</div>
+<nav><a href="index.html">Overview</a>
+<a href="executive-summary.html">Executive summary</a>
+<a href="lines.html">Own lines</a>
+<a href="model.html">Model</a>
+<a href="strategies.html">Strategies</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="correlations.html">Correlations</a>
+<a href="injuries.html">Injuries</a>
+<a href="lineups.html">Lineups</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="requirements.html">Requirements</a>
+<a href="games.html">Game log</a>
+<a href="standings.html">Standings</a>
+<a href="sources.html">Sources</a>
+<a href="repo-review.html" class="on">Repo review</a>
+<a href="flagged.html">Flagged for review</a>
+<a href="archive.html">Archive</a></nav>
+</div></header>
+<main>
+
+<h2>Repository review</h2>
+<p class="lede">A line-by-line read of the repository as it was found, with the irregularities that
+matter for anyone using this site.</p>
+
+<h3>What the repository contained</h3>
+<table>
+<thead><tr><th>Item</th><th>Observation</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td>Working branch at start</td><td><code>arena/3bf7cc8b-x3</code>, branched from main</td><td><a href="../COORDINATION.md">COORDINATION.md</a> claim section</td></tr>
+<tr><td>Prior sessions</td><td>Six earlier session branches had already merged sites into the
+repository. Their pages are preserved untouched and linked from the <a href="archive.html">archive
+page</a>.</td><td><a href="../COORDINATION.md">COORDINATION.md</a></td></tr>
+<tr><td>Data at start</td><td>Several overlapping datasets existed, built by different sessions from
+different captures. They do not agree with each other in places, and none of them reconciled its
+game results against the standings.</td><td><code>data/</code>, <code>docs/data/</code>, <code>dashboard/data/</code>, <code>x3lab/data/</code> — <span class="badge der">DERIVED</span> from the file inventory</td></tr>
+<tr><td>Pages at start</td><td>Five separate sites (<code>docs/</code>, <code>dashboard/</code>,
+<code>x3lab/</code>, <code>lab/</code>, root category pages) with overlapping purposes.</td>
+<td><a href="archive.html">Archive page</a> · <code>scripts/desk_build.py</code></td></tr>
+</tbody></table>
+
+<h3>Irregularities found and how each was handled</h3>
+<table>
+<thead><tr><th>ID</th><th>Irregularity</th><th>Evidence</th><th>Handling</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>I-01</td><td>Five sites with no single entry point</td>
+<td>File inventory of the repository root</td>
+<td>This desk is the consolidated entry point; the others are archived and left intact</td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td></tr>
+<tr><td>I-02</td><td>Earlier injury datasets disagree on row counts for the same week</td>
+<td>Earlier sessions report 205, 345 and 320-362 rows for the same weeks</td>
+<td>All figures on this site come from one capture and one parser; earlier counts are not reused</td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td></tr>
+<tr><td>I-03</td><td>No earlier session reconciled game results to the standings</td>
+<td>No reconciliation script existed</td>
+<td>Added as a hard verification gate; all 32 clubs now match exactly</td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td></tr>
+<tr><td>I-04</td><td>Earlier model output used an assumed home-field advantage</td>
+<td>Prior sessions list HFA as an assumption with value 2.0 or 0.0</td>
+<td>HFA is now measured from the data; the value is published on the model page</td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td></tr>
+<tr><td>I-05</td><td>Depth charts were reported as 404 by an earlier session</td>
+<td>That session recorded all chart URLs returning 404</td>
+<td>The club URLs do resolve today; 31 of 32 parse. The contradiction is recorded rather than hidden</td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td></tr>
+<tr><td>I-06</td><td>Duplicated data directories with no stated precedence</td>
+<td><code>data/</code>, <code>docs/data/</code>, <code>dashboard/data/</code>, <code>x3lab/data/</code></td>
+<td>This desk reads only <code>data/desk/</code>; precedence is stated on the sources page</td><td><span class="badge der">DERIVED</span><br><span class="small">handled in this build · scripts/desk_build.py</span></td></tr>
+</tbody></table>
+
+<h3>Structural observations</h3>
+<ul>
+<li>The repository has no licence file. Anything reused outside this project should resolve that first.</li>
+<li>Earlier sessions edited each other's shared files (<code>index.html</code>, README) while
+resolving merge conflicts. The current work avoids this by claiming a scope in
+<code>COORDINATION.md</code> and only editing files inside it, plus the agreed shared entry point.</li>
+<li>The Pages workflow previously validated only some page directories. It now also runs this
+desk's verification gate <i>(see the workflow in <code>.github/workflows/</code>)</i>.</li>
+</ul>
+
+</main>
+<footer><div class="wrap">
+<p><b>Evidence policy.</b> Every value is either read from an official source, computed from
+official values and badged <span class="badge der">DERIVED</span>, or left blank and marked
+<span class="badge unv">UNVERIFIED</span>. Nothing is inferred or filled in.</p>
+<p>Built 2026-11-14 18:32 UTC from
+<code>data/desk/*.json</code> · <a href="sources.html">source register</a> ·
+<a href="flagged.html">flagged items</a> · <a href="archive.html">archive of earlier sessions</a></p>
+</div></footer>
+</body>
+</html>

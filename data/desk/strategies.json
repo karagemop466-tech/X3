@@ -1,0 +1,283 @@
+{
+ "policy": "These are hypotheses with an explicit gate ledger. A strategy is promoted to the leaderboard only when every blocking gate is recorded as passed on later, untouched data. No strategy is claimed to be profitable.",
+ "gates": [
+  {
+   "id": "G1",
+   "gate": "Pre-registration",
+   "rule": "Rule, inputs and staking written to the repo before any graded result.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G2",
+   "gate": "Sample size",
+   "rule": "At least 200 graded bets per strategy before any skill claim.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G3",
+   "gate": "Walk-forward only",
+   "rule": "Fit on past weeks, grade on later weeks. No same-game fitting.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G4",
+   "gate": "Multiple-testing control",
+   "rule": "Benjamini-Hochberg FDR at q=0.10 across all tested strategies.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G5",
+   "gate": "Benchmark beat",
+   "rule": "Must beat the vig-free closing line or a no-bet baseline, not a guess.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G6",
+   "gate": "Uncertainty",
+   "rule": "95% CI on ROI and on hit rate must exclude the break-even rate.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G7",
+   "gate": "Luck control",
+   "rule": "Deflated Sharpe: reward adjusted for number of trials run.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G8",
+   "gate": "Correlation integrity",
+   "rule": "Parlay legs must show a measured joint distribution, not multiplied marginals.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G9",
+   "gate": "Data provenance",
+   "rule": "Every input row carries an official source URL and a fetch date.",
+   "blocking": "yes"
+  },
+  {
+   "id": "G10",
+   "gate": "No look-ahead",
+   "rule": "Inputs must be published before the decision cutoff for that game.",
+   "blocking": "yes"
+  }
+ ],
+ "leaderboard_rule": {
+  "eligibility": "all blocking gates passed, minimum 200 graded bets, pre-registered",
+  "score": "vig-free ROI with a 95% CI, tie-broken by deflated Sharpe",
+  "rewards": "notional only: the leaderboard ranks strategies, it does not pay money. Any real reward needs a decision recorded on the Suggestions page.",
+  "anti_gaming": [
+   "no re-fitting after grading",
+   "results posted with the losing bets",
+   "one submission per strategy family per week"
+  ]
+ },
+ "strategies": [
+  {
+   "id": "S1",
+   "name": "Opponent-adjusted net rating difference",
+   "family": "Single",
+   "construction": "Full-game side. Difference of net ratings from model.json at the decision cutoff.",
+   "inputs": "verified final scores only",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G3",
+    "G9",
+    "G10"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "status": "hypothesis - cannot pass without a market price series"
+  },
+  {
+   "id": "S2",
+   "name": "Home-field measured vs assumed",
+   "family": "Single",
+   "construction": "Side only when measured home-field differs from the market's implied home-field.",
+   "inputs": "verified results + market spreads",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G3",
+    "G9",
+    "G10"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "status": "blocked - no market spread series"
+  },
+  {
+   "id": "S3",
+   "name": "Pythagorean luck fade",
+   "family": "Single",
+   "construction": "Fade clubs whose wins exceed Pythagorean expectation by more than 1.5 wins.",
+   "inputs": "standings PF/PA",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G9"
+   ],
+   "gates_fail": [
+    "G2",
+    "G6",
+    "G7"
+   ],
+   "status": "hypothesis - needs market prices to grade"
+  },
+  {
+   "id": "S4",
+   "name": "Starter-out deficiency signal",
+   "family": "Single",
+   "construction": "Side against a club starting a 2nd-or-deeper string at QB/LT/CB1/EDGE1.",
+   "inputs": "official injury report + club depth chart",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G9",
+    "G10"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "status": "hypothesis - depth charts are club-published and mostly unofficial"
+  },
+  {
+   "id": "S5",
+   "name": "Backup-promotion fade (offense)",
+   "family": "Single",
+   "construction": "Under on the side whose offensive line or QB depth is degraded.",
+   "inputs": "injury report + depth chart",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G9",
+    "G10"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6"
+   ],
+   "status": "hypothesis"
+  },
+  {
+   "id": "S6",
+   "name": "Total vs margin joint filter",
+   "family": "Parlay",
+   "construction": "Only combine a total leg with a side leg when the measured total/margin correlation for that game archetype is below the policy threshold.",
+   "inputs": "verified results",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G3",
+    "G8",
+    "G9"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "status": "hypothesis - current sample is too small to certify any leg pair"
+  },
+  {
+   "id": "S7",
+   "name": "Two-side arb of correlated scores",
+   "family": "Parlay",
+   "construction": "Two teams' scores co-move negatively; exploit only with a measured joint model.",
+   "inputs": "verified results",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G8",
+    "G9"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "status": "hypothesis - sign of the measured correlation must clear its CI first"
+  },
+  {
+   "id": "S8",
+   "name": "Player prop combo (same game)",
+   "family": "Prop combo",
+   "construction": "Combine player props whose measured joint distribution beats the product of their marginals by more than the price.",
+   "inputs": "player prop history",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G8",
+    "G9",
+    "G10"
+   ],
+   "gates_fail": [
+    "G2",
+    "G3",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "status": "blocked - no player-prop history and no official prop source"
+  },
+  {
+   "id": "S9",
+   "name": "Injury-news timing edge",
+   "family": "Single",
+   "construction": "Act on the first official injury-report posting before the line settles.",
+   "inputs": "official injury report timestamps + line timestamps",
+   "lookahead": "none (requires timestamps on both sides)",
+   "gates_pass": [
+    "G1",
+    "G9",
+    "G10"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6",
+    "G7"
+   ],
+   "status": "blocked - no line timestamp series"
+  },
+  {
+   "id": "S10",
+   "name": "Rest and short-week differential",
+   "family": "Single",
+   "construction": "Side with the rest advantage measured in days, net of travel.",
+   "inputs": "schedule dates + travel distance",
+   "lookahead": "none",
+   "gates_pass": [
+    "G1",
+    "G9",
+    "G10"
+   ],
+   "gates_fail": [
+    "G2",
+    "G5",
+    "G6"
+   ],
+   "status": "hypothesis - travel distance not yet ingested from an official source"
+  }
+ ],
+ "graded_results": {
+  "rows": 0,
+  "why": "grading requires market prices, which no official source publishes"
+ },
+ "backtest_sample": 121
+}
