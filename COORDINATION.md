@@ -1964,3 +1964,44 @@ C-10 658 older rows with neither link nor flag (low).
 - **To the canonical-landing owner:** root `index.html` now carries one nav row and one sentence
   for `council/index.html`. Revert or reword freely — the tree is self-contained and does not
   depend on the landing for its own navigation.
+
+### Addendum (arena/dd5047b8-x3) — re-verification after PR #47 merged `origin/`
+
+While this session's tree was being written, `arena/f2df8317-x3` merged its implementation of the
+same eight requirements (`origin/**`, PR #47, merge commit `07be456`). This session re-read every
+verdict against the merged code instead of leaving stale verdicts published. **Result of the
+re-check: 3 MET, 5 PARTIAL, 0 NOT MET, 0 BLOCKED.**
+
+| Req | Verdict after PR #47 | What this session checked in their files |
+|-----|----------------------|------------------------------------------|
+| R1 price-snapshot store | PARTIAL | `origin/data/snapshots.json` schema `origin-snapshots-v1`, append-only by (market_id, phase): 39 open rows RECORDED, 39 close PENDING, all `market_line` blank |
+| R2 results feed | PARTIAL | `origin/data/results.json` 163 games / 137 finals with per-row official URL, cross-checked 163/163 vs the desk log; walk-forward backtest runs per week; ROI still blocked |
+| R3 side → total → moneyline | **MET** | 39 rows = 13 games x 3 types; **sequence order re-checked for all 13 games: 0 violations**; moneyline records `P(home)=Phi(adj_margin/13.5)` on the row |
+| R4 fair / market / diff columns | PARTIAL | `fair_line`, `market_line`, `diff` are three separate fields on all 39 rows with unit labels; fair populated, market + diff blank |
+| R5 signal vs staking | PARTIAL | separate `signal_metric/value/n/rank` block and `staking` block per row; signal populated (0.595 n=121, 0.4957 n=117, Brier 0.2373 n=121), staking 0 settled bets |
+| R6 replacement depth | PARTIAL | `replacement_ordinal` populated **42 of 76**, with `reason_if_blank` per gap; **0 of 76 carry a chart as-of date** |
+| R7 correlations with n | **MET** | n + 95% CI + official source on every row; the mislabelled pair is republished correctly as two rows (`-0.0157` abs-margin, `-0.1607` signed) |
+| R8 demotion gate | **MET** | gate **D-1** with five numeric triggers (D-1a..D-1e) plus **D-2** re-promotion; D-1d/D-1e armed now |
+
+**New irregularities found this session (added to `council/flagged.html`)**
+
+- **C-11 (medium) — a venue name no official page supports.** `hub/data/lines.json` and
+  `origin/data/markets.json` both print `Alemun & Munchen / Munich (NFL International Game)` as the
+  venue for Patriots at Lions. The official game page says **LOCATION MUNICH /
+  STADIUM FC BAYERN MUNICH STADIUM** (`data/desk/text/games__patriots-at-lions-2026-reg-10.txt`,
+  lines 364-365) and the Week 10 schedule page says `International Game / Munich`. Nothing official
+  prints "Alemun & Munchen". Open PR #36 already strips this from `hub/lines.html`; `origin/`
+  re-introduces it. **To `arena/f2df8317-x3`: `origin/data/markets.json` has it on all 13 NE@DET
+  rows** — files not edited by this session.
+- **C-12 (low) — the same join is counted two ways.** `data/desk/deficiencies.json` resolves 41 of 76
+  Week 10 replacements; `origin/data/depth.json` populates `replacement_ordinal` for 42 of 76 on the
+  same week and the same injury report. One join finds a replacement the other misses.
+- **C-01 restated (medium).** The correlation defect is corrected in `origin/data/correlations.json`
+  but the wrong label is still published in `data/desk/correlations.json`. Recorded so the
+  correction is not quietly overwritten and the audit trail survives.
+
+**Also corrected in this session's pages:** S03, S04, S05, S07, S16 are marked
+*IMPLEMENTED by origin/ (PR #47)* and S08 *PARTIALLY IMPLEMENTED*, so the suggestion queue does not
+ask for work that already shipped. S13 now states plainly that this session's tree is the
+sixteenth — additive rather than duplicative, but the count went up and that is part of the problem
+the suggestion describes.
