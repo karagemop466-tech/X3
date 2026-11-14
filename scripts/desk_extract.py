@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Extract structured, source-linked data from captured official NFL pages.
+"""Turn captured official NFL pages into reviewable text + link maps.
 
-Input : capture/  directory of raw HTML captured by .github/workflows/desk-capture.yml
-Output: data/desk/*.json  (one file per dataset, every row keeping its official URL)
+Input : capture/                     raw HTML captured by the CI workflow
+Output: data/desk/text/<page>.txt     rendered page text (tabs keep table cells)
+        data/desk/text/<page>.links   "anchor text \t href" for nfl.com game/player links
+        data/desk/extract_report.json structure diagnostics per page
 
-Rules enforced here:
-  * a value is only written when it was read from the captured page
-  * every row stores the exact official URL it came from
-  * anything the parser cannot read is reported in data/desk/extract_report.json,
-    never guessed
+Why text and not HTML: the authoring sandbox cannot reach the artifact download host,
+so the CI job commits this reduced form. Nothing is inferred here; these files are a
+faithful reduction of the captured page, and every downstream parser cites the page URL.
 """
 from __future__ import annotations
 
@@ -27,61 +27,59 @@ for _w in range(1, 12):
 for _w in range(8, 12):
     CAPTURE_URLS[f"injuries-w{_w}.html"] = f"https://www.nfl.com/injuries/league/2026/reg{_w}"
 
-TAG_RE = re.compile(r"<[^>]+>")
-SCRIPT_RE = re.compile(r"<(script|style)\b.*?</\1>", re.S | re.I)
+SCRIPT_RE = re.compile(r"<(script|style|noscript)\b.*?</\1>", re.S | re.I)
+ANCHOR_RE = re.compile(r'<a\b[^>]*href="([^"]+)"[^>]*>(.*?)</a>', re.S | re.I)
 WS_RE = re.compile(r"[ \t\r\f\v]+")
-NL_RE = re.compile(r"\n{3,}")
+TAG_RE = re.compile(r"<[^>]+>")
+
+
+def links_of(raw: str) -> str:
+    out = []
+    for href, inner in ANCHOR_RE.findall(SCRIPT_RE.sub(" ", raw)):
+        txt = WS_RE.sub(" ", html.unescape(TAG_RE.sub(" ", inner))).strip()
+        if re.search(r"nfl\.com/(games|players)/", href) or "/team/depth-chart" in href:
+            out.append(f"{txt}\t{href}")
+    return "\n".join(out) + ("\n" if out else "")
 
 
 def text_of(raw: str) -> str:
-    """HTML -> readable text, keeping table cell boundaries as tabs and rows as newlines."""
     s = SCRIPT_RE.sub(" ", raw)
     s = re.sub(r"</t[dh]>", "\t", s, flags=re.I)
     s = re.sub(r"</tr>", "\n", s, flags=re.I)
-    s = re.sub(r"<br\s*/?>", " ", s, flags=re.I)
+    s = re.sub(r"</(p|div|li|h[1-6]|table|section|article)>", "\n", s, flags=re.I)
+    s = re.sub(r"<br\s*/?>", "\n", s, flags=re.I)
+    s = re.sub(r"<a\b[^>]*>(.*?)</a>", r"\1", s, flags=re.S | re.I)
     s = TAG_RE.sub(" ", s)
-    s = html.unescape(s)
-    s = WS_RE.sub(" ", s)
-    s = "\n".join(line.strip() for line in s.splitlines())
-    return NL_RE.sub("\n", s)
-
-
-def find_table_blocks(text: str) -> list[list[list[str]]]:
-    """Group consecutive tab-separated lines into tables of rows of cells."""
-    tables, cur = [], []
-    for line in text.splitlines():
-        if "\t" in line and line.count("\t") >= 2:
-            cur.append([c.strip() for c in line.split("\t") if c.strip() != ""] or [""])
-        elif cur:
-            tables.append(cur)
-            cur = []
-    if cur:
-        tables.append(cur)
-    return tables
+    s = html.unescape(s).replace("\u00a0", " ")
+    lines = []
+    for line in s.splitlines():
+        line = WS_RE.sub(" ", line).strip()
+        line = re.sub(r"\t+", "\t", line).strip("\t")
+        if line:
+            lines.append(line)
+    return "\n".join(lines) + "\n"
 
 
 def main(src: str, dst: str) -> int:
-    cap = Path(src)
-    out = Path(dst)
-    out.mkdir(parents=True, exist_ok=True)
-    report = {"captured": {}, "notes": []}
-    texts = {}
+    cap, out = Path(src), Path(dst)
+    textdir = out / "text"
+    textdir.mkdir(parents=True, exist_ok=True)
+    report = {"pages": {}, "notes": []}
     for f in sorted(cap.glob("*.html")):
         raw = f.read_text(errors="replace")
-        texts[f.name] = text_of(raw)
-        report["captured"][f.name] = {
+        txt = text_of(raw)
+        (textdir / (f.stem + ".txt")).write_text(txt)
+        (textdir / (f.stem + ".links")).write_text(links_of(raw))
+        lines = txt.splitlines()
+        report["pages"][f.stem] = {
             "url": CAPTURE_URLS.get(f.name, ""),
-            "bytes": len(raw),
-            "text_chars": len(texts[f.name]),
+            "html_bytes": len(raw),
+            "text_bytes": len(txt),
+            "lines": len(lines),
+            "tabbed_cell_lines": sum(1 for ln in lines if ln.count("\t") >= 2),
         }
-    # Structural diagnostics only; dataset parsers are added once the shape is known.
-    for name, text in texts.items():
-        report["notes"].append(
-            {"file": name, "tables": len(find_table_blocks(text)),
-             "lines": len(text.splitlines())}
-        )
     (out / "extract_report.json").write_text(json.dumps(report, indent=1) + "\n")
-    print(json.dumps(report["notes"], indent=1)[:4000])
+    print(json.dumps(report["pages"], indent=1)[:6000])
     return 0
 
 
