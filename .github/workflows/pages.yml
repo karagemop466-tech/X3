@@ -2,7 +2,7 @@ name: Deploy X3 NFL site to GitHub Pages
 
 on:
   push:
-    branches: [ arena/3bf7cc8b-x3, main ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -89,6 +89,18 @@ jobs:
           node --check scripts/check_render.js
           node scripts/check_data.js
           node scripts/check_render.js
+
+      - name: Rebuild the market layer from verified results, then gate it
+        run: |
+          python3 tools/results_feed.py
+          python3 tools/markets_engine.py
+          python3 tools/correlation_engine.py
+          python3 tools/depth_engine.py
+          python3 tools/strategies_engine.py
+          python3 tools/verify_markets.py
+          git diff --exit-code -- data/x3 || {
+            echo '::error::data/x3/* is not the current output of the market engines - run them and commit the result.'
+            exit 1; }
 
       - name: Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced
         run: |
