@@ -1432,15 +1432,59 @@ fetchable" limitation for row-level verification.
 
 | ID | Task | Status | Files / scope | Result |
 |----|------|--------|---------------|--------|
-| U01 | Claim + repo review of prior trees | in progress | `COORDINATION.md` | — |
-| U02 | Verified results feed from official pages | unclaimed | `data/verified/results_2026.csv` | — |
-| U03 | Price-snapshot store (open/close per market) | unclaimed | `data/snapshots/**` | — |
-| U04 | Origination order side→total→ML + fair/market/diff | unclaimed | `data/lines/**`, site | — |
-| U05 | Leaderboard signal vs staking + demotion gate | unclaimed | `data/leaderboard/**` | — |
-| U06 | Replacement depth (which string, how many) | unclaimed | `data/depth/**` | — |
-| U07 | Correlations from official numbers + n | unclaimed | `data/correlation/**` | — |
-| U08 | Questions→answers register | unclaimed | `data/decisions/**` | — |
-| U09 | Suggestions review section | unclaimed | `data/decisions/**` | — |
-| U10 | Canonical dashboard site | unclaimed | `app/**`, root `index.html` | — |
-| U11 | Executive summary | unclaimed | `app/summary.html` | — |
-| U12 | Gates, PR, merge, deploy check | unclaimed | `COORDINATION.md` | — |
+| U01 | Claim + repo review of prior trees | done | `COORDINATION.md` | 13 findings (6 confirmed, 4 corrected, 3 flagged) in `data/review/repo_review.json` |
+| U02 | Verified results feed from official pages | done | `data/verified/results_2026.csv` | 137 finals; **192/192 club fields agree** with the official standings |
+| U03 | Price-snapshot store (open/close per market) | done | `data/snapshots/**` | 39 rows (13 games x 3 markets); every market cell blank + flagged, invariants PASS |
+| U04 | Origination order side→total→ML + fair/market/diff | done | `data/picks/**`, `hub/picks.html` | order enforced; market and difference columns blank by design |
+| U05 | Leaderboard signal vs staking + demotion gate | done | `data/decisions/gates.json` | 6 demotion triggers, arithmetic shown; signal/staking measured separately |
+| U06 | Replacement depth (which string, how many) | done | `data/verified/depth_map.json` | 39/76 named; 34 2nd-string, 4 3rd, 1 4th; completeness PASS |
+| U07 | Correlations from official numbers + n | done | `data/verified/correlation.json` | 9 coefficients with n, Fisher CI, permutation p |
+| U08 | Questions→answers register | done | `data/decisions/questions.json` | 14 questions: 6 answered, 3 partial, 3 open, 2 blocked |
+| U09 | Suggestions review section | done | `data/decisions/suggestions.json` | 8 suggestions, none implemented |
+| U10 | Canonical dashboard site | done | `hub/*.html` (10 new pages) | 28 hub pages total; all validators green |
+| U11 | Executive summary | done | `hub/summary.html` | every number interpolated from data at build time |
+| U12 | Gates, PR, merge, deploy check | in progress | `COORDINATION.md` | see integration record below |
+
+
+### Session result (arena/aab4718a-x3)
+
+**What this session added that did not exist before.** A verified results feed, an out-of-sample
+backtest, a price-snapshot store, replacement tiers, arithmetic-derived gates, a demotion gate, and a
+review queue of questions and suggestions. Ten new pages under `hub/`, all built from data files by
+`tools/build_desk.py`.
+
+**Verification performed**
+
+| Check | Result |
+|-------|--------|
+| Results reconciliation (W/L/T/PF/PA/games x 32 clubs) | **192/192 agree**, 0 disagreements |
+| Official standings internal consistency | sum PF = sum PA = 6,291; net sums to 0; wins = losses |
+| Walk-forward backtest, no look-ahead | 89 games, MAE 9.29 vs 10.07 predict-zero baseline |
+| Home-field advantage | +0.469 pts, 95% CI [-1.812, +2.751], n=130 non-neutral |
+| Moneyline vig check (implied probability sum) | exactly 1.0000 on all 13 pairs |
+| Depth join completeness | 76 eligible -> 76 emitted, 0 missing, 0 duplicated |
+| Statistics kernel vs exact enumeration | `tools/selftest_stats.py` PASS |
+| New data layer + 10 pages | `tools/verify_desk.py`: **1,724 checks, PASS** |
+| Canonical hub row-source rule | `tools/verify_hub.py`: 28 pages, 928 rows, 0 failures, 0 warnings |
+| Every pre-existing verifier | 12 of 12 PASS |
+
+**Irregularities found and published (not hidden)**
+
+- **R-06** two depth captures disagree: `tools/nfl_data.py` has 31 charts / 26 undated with Houston
+  absent; `data/desk/depth.json` has 31 charts with slots / 30 undated with Houston present but
+  empty. Both are internally correct. Needs labelling or consolidation. FLAG.
+- **R-07** the published G-2 minimum of 300 settled bets is too low by roughly 8x. Exact power puts
+  a 55% edge at 2,272 bets; 300 only detects about 59.6%. CORRECTED.
+- **R-08** the injury/positional cost weights have no derivation anywhere in the repository and move
+  lines by up to 6.5 points. Published as Q-08 and Q-14. FLAG.
+- **R-04** the desk unit's `-0.161` label error reproduced; both quantities now published separately.
+- **R-13** this session's own first moneyline build had a vig defect (-158/+63, implied 1.226). Fixed,
+  and a permanent gate plus a negative control now prevent recurrence.
+- **R-11** two published MAE values for the same model on the same season (10.52 on 121 games vs
+  9.29 on 89 games) use different rating definitions. Both can be right; one should be adopted. FLAG.
+
+**Capability notes for future sessions.** `fetch_page` reaches `www.nfl.com`; raw `curl` does not
+(`SSL_ERROR_SYSCALL`). All official reads this session went through `fetch_page` and are cited by URL.
+
+**Scope.** New files only, plus additive edits to `tools/build_hub.py` (NAV), `.github/workflows/pages.yml`
+(two added gate steps) and this file. No other session's data file was edited.
