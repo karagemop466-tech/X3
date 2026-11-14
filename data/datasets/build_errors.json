@@ -1,19 +1,19 @@
 {
-  "step": "build_datasets",
+  "step": "build_site",
   "error_type": "TypeError",
-  "error": "string indices must be integers, not 'str'",
+  "error": "'NoneType' object is not subscriptable",
   "traceback": [
     "Traceback (most recent call last):",
-    "  File \"/home/runner/work/X3/X3/scripts/build_datasets.py\", line 85, in main",
-    "    return _build()",
-    "           ^^^^^^^^",
-    "  File \"/home/runner/work/X3/X3/scripts/build_datasets.py\", line 248, in _build",
-    "    \"groups\": normalise_depth_groups(parsed[\"units\"]),",
-    "              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-    "  File \"/home/runner/work/X3/X3/scripts/lib/parsers.py\", line 484, in normalise_depth_groups",
-    "    if player[\"ordinal\"] is None:",
-    "       ~~~~~~^^^^^^^^^^^",
-    "TypeError: string indices must be integers, not 'str'"
+    "  File \"/home/runner/work/X3/X3/scripts/build_site.py\", line 2020, in main",
+    "    return _impl()",
+    "           ^^^^^^^",
+    "  File \"/home/runner/work/X3/X3/scripts/build_site.py\", line 2066, in _impl",
+    "    \"data.html\": build_data_page(),",
+    "                 ^^^^^^^^^^^^^^^^^",
+    "  File \"/home/runner/work/X3/X3/scripts/build_site.py\", line 1523, in build_data_page",
+    "    e(d.get(\"fetched_at\") if isinstance(d.get(\"fetched_at\"), str) else \", \".join(d.get(\"fetched_at\", [])[:2])),",
+    "                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^",
+    "TypeError: 'NoneType' object is not subscriptable"
   ],
-  "generated_at": "2026-11-14T03:20:48+00:00"
+  "generated_at": "2026-11-14T03:28:10+00:00"
 }

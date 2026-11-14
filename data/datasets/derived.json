@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-11-14T03:28:10+00:00",
+  "model_version": "line-model-v1.0",
+  "league_points_per_game": 22.9599,
+  "scales": {
+    "margin_sd": null,
+    "total_sd": null,
+    "n_games": 0
+  },
+  "lines_generated": 14,
+  "games_considered": 14,
+  "completed_games_ingested": 0,
+  "unavailable": [
+    {
+      "item": "game results / home-field effect / back-test",
+      "reason": "No completed games with official scores are present in the schedule dataset, so the home-field effect, the margin scale and the walk-forward back-test cannot be computed. No proxy was substituted.",
+      "source_url": "https://www.nfl.com/schedules/2026/REG2026/"
+    },
+    {
+      "item": "strategy back-test and leaderboard rows",
+      "reason": "The walk-forward harness needs official game results with final scores; none were available.",
+      "source_url": "https://www.nfl.com/schedules/2026/REG2026/"
+    }
+  ]
+}

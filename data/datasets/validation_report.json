@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-11-14T03:28:12+00:00",
+  "pages_checked": 16,
+  "dataset_files_checked": 64,
+  "dataset_rows_with_source": 14711,
+  "dataset_blank_values": 12967,
+  "external_urls_checked": true,
+  "result": "fail",
+  "checks": [
+    {
+      "name": "Internal links and assets resolve",
+      "result": "pass",
+      "detail": "460 internal references checked across 16 pages"
+    },
+    {
+      "name": "All external links point at official hosts",
+      "result": "pass",
+      "detail": "74 external links checked against the official-host allowlist"
+    },
+    {
+      "name": "Every dataset row carries an official source link",
+      "result": "fail",
+      "detail": "14711 dataset rows checked for an official source link; problems: 1"
+    },
+    {
+      "name": "Dataset source problem",
+      "result": "fail",
+      "detail": "manifest.json.datasets[0]: source_url is not an official host (https://www.<club>.com/ (official club sites))"
+    },
+    {
+      "name": "Unverified values are rendered as explicit markers",
+      "result": "pass",
+      "detail": "1 unverified markers rendered (dataset blank values: 12967)"
+    },
+    {
+      "name": "Official source URLs are reachable",
+      "result": "fail",
+      "detail": "13 official URLs requested; unreachable: 1"
+    },
+    {
+      "name": "Unreachable official URL",
+      "result": "fail",
+      "detail": "https://www.nfl.com/news/nfl-communications -> HTTP 404"
+    }
+  ]
+}

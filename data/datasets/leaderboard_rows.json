@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-11-14T03:28:10+00:00",
+  "scoring_specification": "data/content/leaderboard.json",
+  "gates": "data/content/strategies.json",
+  "rows": [],
+  "benchmark": null,
+  "note": "Rows are produced only by the walk-forward harness on official results. A strategy with no evaluated bets is shown with its status and is not eligible for reward."
+}

@@ -1,0 +1,42 @@
+[PASS] injuries: week detected
+[PASS] injuries: rows parsed
+[PASS] injuries: games parsed
+[PASS] injuries: every row has a source_url
+[PASS] injuries: every row has a team
+[PASS] injuries: multiple game dates bound correctly
+[PASS] injuries: game statuses are official values
+[PASS] standings: 32 teams
+[PASS] standings: names carry no duplicated nickname
+[PASS] standings: names match the official club names
+[PASS] standings: points for and against are numeric
+[PASS] standings: every row has a source_url
+[PASS] standings: first row reads the official values
+[PASS] player stats: rows parsed
+[PASS] player stats: headers preserved
+[PASS] player stats: every row has a source_url
+[PASS] depth: positions normalised
+[PASS] depth: QB1 resolved
+[PASS] depth: QB3 resolved
+[PASS] depth: WR4 resolved
+[PASS] depth: unknown player is not guessed
+[PASS] depth: unknown position is not guessed
+[PASS] depth: explicit ordinals honoured
+[PASS] skill share: skilled strategy has a high share
+[PASS] skill share: interval excludes zero
+[PASS] skill share: luck null rejects the skilled strategy
+[PASS] skill share: edge t-statistic is large
+[PASS] skill share: luck strategy shows much less skill
+[PASS] skill share: luck strategy is not significant
+[PASS] skill share: a thin edge does not clear the threshold
+[PASS] correlation: perfect positive
+[PASS] correlation: perfect negative
+[PASS] correlation: too few points gives None
+[PASS] scoring: bet count
+[PASS] scoring: net units
+[PASS] scoring: roi
+[PASS] scoring: drawdown computed
+[PASS] scoring: fold count
+[PASS] scoring: positive fold share
+[PASS] scoring: empty bets give None metrics
+
+40 passed, 0 failed

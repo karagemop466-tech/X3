@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/runner/work/X3/X3/scripts/build_site.py", line 2089, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/runner/work/X3/X3/scripts/build_site.py", line 2020, in main
+    return _impl()
+           ^^^^^^^
+  File "/home/runner/work/X3/X3/scripts/build_site.py", line 2066, in _impl
+    "data.html": build_data_page(),
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/X3/X3/scripts/build_site.py", line 1523, in build_data_page
+    e(d.get("fetched_at") if isinstance(d.get("fetched_at"), str) else ", ".join(d.get("fetched_at", [])[:2])),
+                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+TypeError: 'NoneType' object is not subscriptable

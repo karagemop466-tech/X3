@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-11-14T03:28:10+00:00",
+  "matrices": [
+    {
+      "id": "team_level_season",
+      "title": "Team-level signal correlations (2026 regular season, official standings)",
+      "unit": "NFL team",
+      "n": 32,
+      "labels": [
+        "points_for",
+        "points_against",
+        "net_points",
+        "win_pct",
+        "games_played",
+        "adj_off",
+        "adj_def",
+        "pythagorean_expectation"
+      ],
+      "matrix": [
+        [
+          1.0,
+          -0.0869,
+          0.7211,
+          0.6528,
+          0.1083,
+          0.945,
+          -0.1403,
+          0.2726
+        ],
+        [
+          -0.0869,
+          1.0,
+          -0.7529,
+          -0.6333,
+          0.4876,
+          -0.2463,
+          0.9491,
+          0.2495
+        ],
+        [
+          0.7211,
+          -0.7529,
+          1.0,
+          0.8717,
+          -0.2675,
+          0.7956,
+          -0.7528,
+          0.0065
+        ],
+        [
+          0.6528,
+          -0.6333,
+          0.8717,
+          1.0,
+          -0.1589,
+          0.6965,
+          -0.6613,
+          0.0458
+        ],
+        [
+          0.1083,
+          0.4876,
+          -0.2675,
+          -0.1589,
+          1.0,
+          -0.2209,
+          0.1901,
+          0.5419
+        ],
+        [
+          0.945,
+          -0.2463,
+          0.7956,
+          0.6965,
+          -0.2209,
+          1.0,
+          -0.2017,
+          0.0891
+        ],
+        [
+          -0.1403,
+          0.9491,
+          -0.7528,
+          -0.6613,
+          0.1901,
+          -0.2017,
+          1.0,
+          0.0866
+        ],
+        [
+          0.2726,
+          0.2495,
+          0.0065,
+          0.0458,
+          0.5419,
+          0.0891,
+          0.0866,
+          1.0
+        ]
+      ],
+      "source_url": "https://www.nfl.com/standings/league/2026/REG",
+      "method": "Pearson product-moment correlation across the 32 official standings rows."
+    }
+  ],
+  "unavailable": [
+    {
+      "item": "Player-prop correlation matrix (receiving yards, rushing yards, receptions, passing yards within the same game)",
+      "reason": "Requires per-game official player logs. The platform has not yet ingested official game-level box scores, so no player-prop correlation value is published. No value is estimated or filled in.",
+      "source_url": "https://www.nfl.com/stats/player-stats/",
+      "related_question": "Q-005",
+      "related_suggestion": "S-013"
+    }
+  ]
+}
