@@ -255,6 +255,8 @@ def parse_depth(page: str, raw: str, abbr: str) -> dict:
                 names = [clean(a) for a in re.findall(r"<a\b[^>]*>(.*?)</a>", cell, re.S)]
                 if not names:
                     txt = clean(cell)
+                    # some clubs prefix the jersey number inside the cell: "44 Zaire Franklin"
+                    txt = re.sub(r"^#?\d{1,2}\s+", "", txt)
                     names = [txt] if txt else []
                 tiers.append(names)
             while tiers and not tiers[-1]:

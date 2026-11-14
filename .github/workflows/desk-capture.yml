@@ -45,6 +45,7 @@ jobs:
         run: |
           python3 scripts/desk_parse.py capture data/desk 2>&1 | tee data/desk/parse_stdout.txt || true
           test -s data/desk/games.json
+          python3 scripts/desk_join.py data/desk 2>&1 | tee data/desk/join_stdout.txt || true
 
       - name: Summarise
         if: always()
