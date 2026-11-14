@@ -329,22 +329,48 @@ def _game_cards(soup) -> list:
 
     The current NFL.com schedule is rendered with utility classes that carry
     no semantics, so the cards are located structurally: every element that
-    contains a link to a game page is a card.
+    directly contains a link to a game page is a card.
     """
     cards: list = []
     seen: set[int] = set()
     for link in soup.find_all("a", href=re.compile(r"/games/")):
-        node = link
-        for _ in range(8):
-            node = node.parent
-            if node is None:
-                break
-            if node.name in ("li", "article", "section", "div"):
-                if id(node) not in seen:
-                    seen.add(id(node))
-                    cards.append(node)
-                break
+        node = link.parent
+        if node is None or id(node) in seen:
+            continue
+        seen.add(id(node))
+        cards.append(node)
     return cards
+
+
+def _score_rows(card) -> list[dict]:
+    """Extract each team's identity and score from a game card.
+
+    A card holds one row per team. Each row carries the official club logo
+    (which gives the abbreviation), a screen-reader label with the full club
+    name, and the score in a ``blurrable-score`` container.
+    """
+    rows: list[dict] = []
+    for score_node in card.select('[data-testid="blurrable-score"]'):
+        row = score_node.parent
+        abbr = ""
+        name = ""
+        img = row.find("img", src=re.compile(r"/clubs/logos/"))
+        if img is not None:
+            abbr = (img.get("src") or "").rsplit("/", 1)[-1].split(".")[0].upper()
+        label = row.find("span", class_=re.compile(r"sr-only"))
+        if label is not None:
+            name = _txt(label)
+        score = _txt(score_node)
+        rows.append({"abbr": abbr, "name": name, "score": score})
+    if rows:
+        return rows
+
+    # Fallback for a card without the score container: read the club logos.
+    for img in card.find_all("img", src=re.compile(r"/clubs/logos/")):
+        abbr = (img.get("src") or "").rsplit("/", 1)[-1].split(".")[0].upper()
+        label = img.find_next("span", class_=re.compile(r"sr-only"))
+        rows.append({"abbr": abbr, "name": _txt(label) if label else "", "score": ""})
+    return rows
 
 
 def _leaf_texts(node) -> list[str]:
@@ -364,13 +390,13 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
 
     The current NFL.com schedule markup is built from utility classes, so the
     parser works structurally: it locates each game by its link, reads the
-    team abbreviations from the official club logos, the scores from the
-    numeric cells, the records from the win-loss-loss cells, and the network
-    from the broadcaster logo.
+    teams from the official club logos and their screen-reader labels, the
+    scores from the official score container, the records from the win-loss
+    cells, and the network from the broadcaster logo.
 
-    Only the games belonging to the requested week are returned. The page
-    also carries a by-week strip for other weeks, and mixing those in would
-    file one week of games under another.
+    Only the games belonging to the requested week are returned. The page also
+    carries a by-week strip for other weeks, and mixing those in would file
+    one week of games under another.
     """
     soup = BeautifulSoup(html, "lxml")
     games: list[dict] = []
@@ -387,28 +413,24 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
             if week is not None and game_week != int(week):
                 continue
             slug_year = int(slug_season)
-            away_name = _title_from_slug(away_slug)
-            home_name = _title_from_slug(home_slug)
+            away_fallback = _title_from_slug(away_slug)
+            home_fallback = _title_from_slug(home_slug)
         else:
             game_week = week
             slug_year = season
-            away_name = ""
-            home_name = ""
+            away_fallback = ""
+            home_fallback = ""
 
-        # The official club logo carries the team's abbreviation.
-        abbrs: list[str] = []
-        for img in card.find_all("img"):
-            src = img.get("src") or ""
-            if "/clubs/logos/" in src:
-                token = src.rsplit("/", 1)[-1].split(".")[0].upper()
-                if token and token not in abbrs:
-                    abbrs.append(token)
-        if len(abbrs) < 2:
+        rows = _score_rows(card)
+        if len(rows) < 2:
             continue
-        away_abbr, home_abbr = abbrs[0], abbrs[1]
+        away, home = rows[0], rows[1]
+        away_abbr = away["abbr"] or ""
+        home_abbr = home["abbr"] or ""
+        if not away_abbr or not home_abbr:
+            continue
 
         texts = _leaf_texts(card)
-        scores = [t for t in texts if _SCORE_RE.match(t)]
         records = [t for t in texts if _RECORD_RE.match(t)]
         time_text = ""
         date_text = ""
@@ -421,25 +443,11 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
                 break
 
         network = ""
-        for img in card.find_all("img"):
-            src = img.get("src") or ""
-            if "/broadcasters/square/" in src:
-                network = src.rsplit("/", 1)[-1].rsplit(".", 1)[0].upper()
+        for img in card.find_all("img", src=re.compile(r"broadcaster")):
+            alt = (img.get("alt") or "").strip()
+            network = alt.replace(" network logo", "").strip().upper()
+            if network:
                 break
-        if not network:
-            for text in texts:
-                if text.strip().upper() in {
-                    "FOX", "CBS", "NBC", "ESPN", "ESPN2", "ABC", "NFL NETWORK",
-                    "NFLN", "PRIME VIDEO", "AMAZON PRIME", "PEACOCK", "FOX DEPORTES",
-                    "ESPN DEPORTES", "UNIVERSO", "TNT", "NFL REDZONE",
-                }:
-                    network = text.strip().upper()
-                    break
-
-        away_score = scores[0] if len(scores) > 0 else ""
-        home_score = scores[1] if len(scores) > 1 else ""
-        away_record = records[0] if len(records) > 0 else ""
-        home_record = records[1] if len(records) > 1 else ""
 
         key = f"{away_abbr}@{home_abbr}#{game_week}"
         if key in seen:
@@ -455,13 +463,13 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
                 "game_timezone": "",
                 "network": network,
                 "away_team": away_abbr,
-                "away_team_name": away_name,
-                "away_record": away_record,
-                "away_score": away_score,
+                "away_team_name": away["name"] or away_fallback,
+                "away_record": records[0] if len(records) > 0 else "",
+                "away_score": away["score"],
                 "home_team": home_abbr,
-                "home_team_name": home_name,
-                "home_record": home_record,
-                "home_score": home_score,
+                "home_team_name": home["name"] or home_fallback,
+                "home_record": records[1] if len(records) > 1 else "",
+                "home_score": home["score"],
                 "status": "",
                 "game_url": "https://www.nfl.com" + link.get("href", ""),
                 "source_url": source_url,
