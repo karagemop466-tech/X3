@@ -1459,7 +1459,7 @@ review queue of questions and suggestions. Ten new pages under `hub/`, all built
 |-------|--------|
 | Results reconciliation (W/L/T/PF/PA/games x 32 clubs) | **192/192 agree**, 0 disagreements |
 | Official standings internal consistency | sum PF = sum PA = 6,291; net sums to 0; wins = losses |
-| Walk-forward backtest, no look-ahead | 89 games, MAE 9.29 vs 10.07 predict-zero baseline |
+| Walk-forward backtest, no look-ahead | 89 games, MAE 9.29 vs 10.21 predict-zero baseline |
 | Home-field advantage | +0.469 pts, 95% CI [-1.812, +2.751], n=130 non-neutral |
 | Moneyline vig check (implied probability sum) | exactly 1.0000 on all 13 pairs |
 | Depth join completeness | 76 eligible -> 76 emitted, 0 missing, 0 duplicated |
