@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-14T18:29:19Z",
+ "generated_at": "2026-11-14T18:37:21Z",
  "method": "Two ridge least-squares models fitted by coordinate descent on final scores: margin = home_field + net[home] - net[away]; total = base + pace[home] + pace[away]. Ratings are centred on zero. No prior-season data, no market data, no manual input.",
  "inputs": {
   "games": 137,
@@ -17,12 +17,12 @@
   ],
   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
  },
- "home_field_points": -0.5,
+ "home_field_points": 0.08,
  "league_avg_team_score": 22.97,
  "ratings": [
   {
    "team": "JAX",
-   "net_rating": 11.27,
+   "net_rating": 11.2,
    "pace_rating": -1.85,
    "points_for_pg": 28.6,
    "points_against_pg": 15.1,
@@ -30,8 +30,17 @@
    "games": 8
   },
   {
+   "team": "CIN",
+   "net_rating": 7.31,
+   "pace_rating": 7.38,
+   "points_for_pg": 30.0,
+   "points_against_pg": 21.9,
+   "net_points_pg": 8.1,
+   "games": 8
+  },
+  {
    "team": "SF",
-   "net_rating": 7.41,
+   "net_rating": 7.25,
    "pace_rating": 3.16,
    "points_for_pg": 29.4,
    "points_against_pg": 19.5,
@@ -40,7 +49,7 @@
   },
   {
    "team": "BUF",
-   "net_rating": 7.19,
+   "net_rating": 7.2,
    "pace_rating": 9.05,
    "points_for_pg": 32.0,
    "points_against_pg": 23.4,
@@ -48,17 +57,8 @@
    "games": 8
   },
   {
-   "team": "CIN",
-   "net_rating": 7.18,
-   "pace_rating": 7.38,
-   "points_for_pg": 30.0,
-   "points_against_pg": 21.9,
-   "net_points_pg": 8.1,
-   "games": 8
-  },
-  {
    "team": "CHI",
-   "net_rating": 6.13,
+   "net_rating": 6.06,
    "pace_rating": 3.61,
    "points_for_pg": 26.8,
    "points_against_pg": 20.4,
@@ -67,7 +67,7 @@
   },
   {
    "team": "KC",
-   "net_rating": 4.35,
+   "net_rating": 4.36,
    "pace_rating": -1.52,
    "points_for_pg": 25.2,
    "points_against_pg": 17.9,
@@ -85,7 +85,7 @@
   },
   {
    "team": "TB",
-   "net_rating": 4.16,
+   "net_rating": 4.14,
    "pace_rating": -3.23,
    "points_for_pg": 22.4,
    "points_against_pg": 19.8,
@@ -93,17 +93,8 @@
    "games": 9
   },
   {
-   "team": "SEA",
-   "net_rating": 3.68,
-   "pace_rating": -5.56,
-   "points_for_pg": 22.4,
-   "points_against_pg": 18.0,
-   "net_points_pg": 4.4,
-   "games": 9
-  },
-  {
    "team": "GB",
-   "net_rating": 3.63,
+   "net_rating": 3.69,
    "pace_rating": -0.92,
    "points_for_pg": 24.0,
    "points_against_pg": 21.2,
@@ -112,7 +103,7 @@
   },
   {
    "team": "PIT",
-   "net_rating": 3.52,
+   "net_rating": 3.56,
    "pace_rating": -5.02,
    "points_for_pg": 22.5,
    "points_against_pg": 18.0,
@@ -120,8 +111,17 @@
    "games": 8
   },
   {
+   "team": "SEA",
+   "net_rating": 3.5,
+   "pace_rating": -5.56,
+   "points_for_pg": 22.4,
+   "points_against_pg": 18.0,
+   "net_points_pg": 4.4,
+   "games": 9
+  },
+  {
    "team": "DET",
-   "net_rating": 2.85,
+   "net_rating": 2.88,
    "pace_rating": 4.49,
    "points_for_pg": 27.8,
    "points_against_pg": 23.6,
@@ -130,7 +130,7 @@
   },
   {
    "team": "DEN",
-   "net_rating": 2.61,
+   "net_rating": 2.64,
    "pace_rating": -2.47,
    "points_for_pg": 22.0,
    "points_against_pg": 20.7,
@@ -139,7 +139,7 @@
   },
   {
    "team": "NE",
-   "net_rating": 2.57,
+   "net_rating": 2.62,
    "pace_rating": 0.27,
    "points_for_pg": 23.4,
    "points_against_pg": 23.0,
@@ -147,17 +147,8 @@
    "games": 9
   },
   {
-   "team": "LA",
-   "net_rating": 1.68,
-   "pace_rating": -2.95,
-   "points_for_pg": 23.8,
-   "points_against_pg": 20.1,
-   "net_points_pg": 3.7,
-   "games": 9
-  },
-  {
    "team": "HOU",
-   "net_rating": 1.67,
+   "net_rating": 1.68,
    "pace_rating": 1.93,
    "points_for_pg": 26.1,
    "points_against_pg": 24.0,
@@ -165,21 +156,30 @@
    "games": 8
   },
   {
-   "team": "ATL",
-   "net_rating": -1.23,
-   "pace_rating": -1.88,
-   "points_for_pg": 20.9,
-   "points_against_pg": 24.8,
-   "net_points_pg": -3.9,
+   "team": "LA",
+   "net_rating": 1.6,
+   "pace_rating": -2.95,
+   "points_for_pg": 23.8,
+   "points_against_pg": 20.1,
+   "net_points_pg": 3.7,
    "games": 9
   },
   {
    "team": "DAL",
-   "net_rating": -1.26,
+   "net_rating": -1.2,
    "pace_rating": 7.18,
    "points_for_pg": 27.3,
    "points_against_pg": 26.2,
    "net_points_pg": 1.1,
+   "games": 9
+  },
+  {
+   "team": "ATL",
+   "net_rating": -1.29,
+   "pace_rating": -1.88,
+   "points_for_pg": 20.9,
+   "points_against_pg": 24.8,
+   "net_points_pg": -3.9,
    "games": 9
   },
   {
@@ -193,7 +193,7 @@
   },
   {
    "team": "NYG",
-   "net_rating": -2.52,
+   "net_rating": -2.61,
    "pace_rating": -2.41,
    "points_for_pg": 22.6,
    "points_against_pg": 21.8,
@@ -202,7 +202,7 @@
   },
   {
    "team": "LV",
-   "net_rating": -3.09,
+   "net_rating": -3.05,
    "pace_rating": 8.98,
    "points_for_pg": 26.4,
    "points_against_pg": 29.8,
@@ -211,7 +211,7 @@
   },
   {
    "team": "CLE",
-   "net_rating": -3.65,
+   "net_rating": -3.46,
    "pace_rating": -4.91,
    "points_for_pg": 17.9,
    "points_against_pg": 21.8,
@@ -220,7 +220,7 @@
   },
   {
    "team": "NO",
-   "net_rating": -3.83,
+   "net_rating": -3.92,
    "pace_rating": 5.41,
    "points_for_pg": 23.1,
    "points_against_pg": 27.0,
@@ -228,17 +228,8 @@
    "games": 8
   },
   {
-   "team": "WAS",
-   "net_rating": -4.09,
-   "pace_rating": 1.62,
-   "points_for_pg": 21.8,
-   "points_against_pg": 24.8,
-   "net_points_pg": -3.0,
-   "games": 9
-  },
-  {
    "team": "NYJ",
-   "net_rating": -4.29,
+   "net_rating": -4.19,
    "pace_rating": -1.05,
    "points_for_pg": 20.2,
    "points_against_pg": 24.8,
@@ -246,8 +237,17 @@
    "games": 9
   },
   {
+   "team": "WAS",
+   "net_rating": -4.21,
+   "pace_rating": 1.62,
+   "points_for_pg": 21.8,
+   "points_against_pg": 24.8,
+   "net_points_pg": -3.0,
+   "games": 9
+  },
+  {
    "team": "BAL",
-   "net_rating": -4.6,
+   "net_rating": -4.52,
    "pace_rating": -0.99,
    "points_for_pg": 21.0,
    "points_against_pg": 26.2,
@@ -255,17 +255,8 @@
    "games": 9
   },
   {
-   "team": "MIA",
-   "net_rating": -5.86,
-   "pace_rating": -5.53,
-   "points_for_pg": 15.8,
-   "points_against_pg": 25.0,
-   "net_points_pg": -9.2,
-   "games": 8
-  },
-  {
    "team": "IND",
-   "net_rating": -5.87,
+   "net_rating": -5.81,
    "pace_rating": 3.41,
    "points_for_pg": 20.4,
    "points_against_pg": 27.7,
@@ -273,8 +264,17 @@
    "games": 9
   },
   {
+   "team": "MIA",
+   "net_rating": -5.84,
+   "pace_rating": -5.53,
+   "points_for_pg": 15.8,
+   "points_against_pg": 25.0,
+   "net_points_pg": -9.2,
+   "games": 8
+  },
+  {
    "team": "ARI",
-   "net_rating": -7.0,
+   "net_rating": -6.89,
    "pace_rating": 2.78,
    "points_for_pg": 19.8,
    "points_against_pg": 28.3,
@@ -283,7 +283,7 @@
   },
   {
    "team": "PHI",
-   "net_rating": -7.51,
+   "net_rating": -7.62,
    "pace_rating": -5.57,
    "points_for_pg": 16.4,
    "points_against_pg": 24.6,
@@ -292,7 +292,7 @@
   },
   {
    "team": "TEN",
-   "net_rating": -8.29,
+   "net_rating": -8.25,
    "pace_rating": -2.49,
    "points_for_pg": 18.0,
    "points_against_pg": 24.9,
@@ -311,10 +311,10 @@
  ],
  "backtest": {
   "games": 121,
-  "mae": 10.51,
-  "rmse": 13.78,
-  "bias": -0.27,
-  "predicted_vs_actual_r": 0.203,
+  "mae": 10.52,
+  "rmse": 13.82,
+  "bias": -1.02,
+  "predicted_vs_actual_r": 0.2,
   "n": 121,
   "weeks": [
    {
@@ -365,9 +365,10 @@
     "kickoff_et": "9:30 AM",
     "home": "DET",
     "away": "NE",
-    "neutral_site": false,
-    "our_home_margin": -0.2,
-    "our_spread_home": 0.2,
+    "neutral_site": true,
+    "venue": "Munich",
+    "our_home_margin": 0.3,
+    "our_spread_home": -0.3,
     "our_total": 50.7,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -383,8 +384,9 @@
     "home": "ATL",
     "away": "KC",
     "neutral_site": false,
-    "our_home_margin": -6.1,
-    "our_spread_home": 6.1,
+    "venue": "",
+    "our_home_margin": -5.6,
+    "our_spread_home": 5.6,
     "our_total": 42.5,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -400,8 +402,9 @@
     "home": "CLE",
     "away": "HOU",
     "neutral_site": false,
-    "our_home_margin": -5.8,
-    "our_spread_home": 5.8,
+    "venue": "",
+    "our_home_margin": -5.1,
+    "our_spread_home": 5.1,
     "our_total": 43.0,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -417,8 +420,9 @@
     "home": "GB",
     "away": "MIN",
     "neutral_site": false,
-    "our_home_margin": -1.1,
-    "our_spread_home": 1.1,
+    "venue": "",
+    "our_home_margin": -0.5,
+    "our_spread_home": 0.5,
     "our_total": 31.5,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -434,8 +438,9 @@
     "home": "IND",
     "away": "MIA",
     "neutral_site": false,
-    "our_home_margin": -0.5,
-    "our_spread_home": 0.5,
+    "venue": "",
+    "our_home_margin": 0.1,
+    "our_spread_home": -0.1,
     "our_total": 43.8,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -451,8 +456,9 @@
     "home": "NO",
     "away": "CAR",
     "neutral_site": false,
-    "our_home_margin": -2.9,
-    "our_spread_home": 2.9,
+    "venue": "",
+    "our_home_margin": -2.4,
+    "our_spread_home": 2.4,
     "our_total": 58.2,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -468,8 +474,9 @@
     "home": "NYJ",
     "away": "BUF",
     "neutral_site": false,
-    "our_home_margin": -12.0,
-    "our_spread_home": 12.0,
+    "venue": "",
+    "our_home_margin": -11.3,
+    "our_spread_home": 11.3,
     "our_total": 53.9,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -485,8 +492,9 @@
     "home": "TEN",
     "away": "JAX",
     "neutral_site": false,
-    "our_home_margin": -20.1,
-    "our_spread_home": 20.1,
+    "venue": "",
+    "our_home_margin": -19.4,
+    "our_spread_home": 19.4,
     "our_total": 41.6,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -502,8 +510,9 @@
     "home": "ARI",
     "away": "LA",
     "neutral_site": false,
-    "our_home_margin": -9.2,
-    "our_spread_home": 9.2,
+    "venue": "",
+    "our_home_margin": -8.4,
+    "our_spread_home": 8.4,
     "our_total": 45.8,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -519,8 +528,9 @@
     "home": "LV",
     "away": "SEA",
     "neutral_site": false,
-    "our_home_margin": -7.3,
-    "our_spread_home": 7.3,
+    "venue": "",
+    "our_home_margin": -6.5,
+    "our_spread_home": 6.5,
     "our_total": 49.4,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -536,8 +546,9 @@
     "home": "DAL",
     "away": "SF",
     "neutral_site": false,
-    "our_home_margin": -9.2,
-    "our_spread_home": 9.2,
+    "venue": "",
+    "our_home_margin": -8.4,
+    "our_spread_home": 8.4,
     "our_total": 56.3,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -553,8 +564,9 @@
     "home": "CIN",
     "away": "PIT",
     "neutral_site": false,
-    "our_home_margin": 3.2,
-    "our_spread_home": -3.2,
+    "venue": "",
+    "our_home_margin": 3.8,
+    "our_spread_home": -3.8,
     "our_total": 48.3,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -570,8 +582,9 @@
     "home": "BAL",
     "away": "LAC",
     "neutral_site": false,
-    "our_home_margin": 4.6,
-    "our_spread_home": -4.6,
+    "venue": "",
+    "our_home_margin": 5.2,
+    "our_spread_home": -5.2,
     "our_total": 40.8,
     "model_class": "DERIVED - unvalidated, no market settlement rule applied",
     "inputs_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
@@ -584,8 +597,9 @@
  },
  "limitations": [
   "No preseason or prior-season data: ratings start from zero information.",
-  "No schedule-strength or rest/short-week adjustment beyond opponent rating.",
+  "No rest or short-week adjustment beyond opponent rating.",
   "No injury adjustment is applied to the model output.",
+  "Neutral-site games exclude the home-field term but are not otherwise adjusted.",
   "No market comparison: no licensed odds feed exists in this repository.",
   "Early-season weeks are fitted on very few games."
  ]

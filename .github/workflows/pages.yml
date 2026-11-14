@@ -2,7 +2,7 @@ name: Deploy X3 NFL site to GitHub Pages
 
 on:
   push:
-    branches: [ arena/1a771fcd-x3, main ]
+    branches: [ arena/3bf7cc8b-x3, main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -61,6 +61,9 @@ jobs:
 
       - name: Check other integrated root pages
         run: python3 tools/check_links.py
+
+      - name: Verify the consolidated decision desk
+        run: python3 scripts/desk_verify.py
 
       - name: Check source-first decision dashboard
         run: |

@@ -152,6 +152,9 @@ DISCOVERY = [
     ("Prior-season results",
      "Capture earlier seasons from the same official schedule pages, one page per week.", "No, but it "
      "improves the ratings materially"),
+    ("A second official cross-check for scores",
+     "Compare each weekly game log against the NFL gamebook PDF for the same game.", "No, "
+     "but it would catch a transcription error that reconciles by luck"),
     ("Travel distance per game",
      "Compute from published stadium locations, or drop S10 entirely.", "No — S10 can be dropped"),
     ("Injury-report timestamps",

@@ -512,9 +512,10 @@ published for that player at capture time. It never means available.</div>
     starter_out = sum(1 for r_ in d["rows"] if r_["depth_string"] == 1)
     body = f"""
 <h2>Lineup and depth deficiencies</h2>
-<p class="lede">Every player with an Out or Doubtful designation is looked up on his own club's
-depth chart. The result shows how deep the club has to reach: string 1 is the starter, string 2 the
-primary backup, string 3 and 4 the emergency options.</p>
+<p class="lede">Every player with an Out or Doubtful designation across weeks {min(s['weeks'])}–{max(s['weeks'])}
+is looked up on his own club's depth chart. The result shows how deep the club has to reach:
+string 1 is the starter, string 2 the primary backup, strings 3 and 4 the emergency options.
+Rows are per player per week, so a player out for two weeks appears twice.</p>
 <div class="kpis">
 {kpi(str(s['rows']), 'Out/Doubtful rows', f"weeks {s['weeks'][0]}–{s['weeks'][-1]}")}
 {kpi(str(s['matched']), 'Joined to a depth string')}
