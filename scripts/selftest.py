@@ -138,13 +138,15 @@ def test_player_stats() -> None:
 
 
 def test_depth_resolution() -> None:
+    # The layout an official club depth chart actually uses: a Position column
+    # and depth columns labelled 1st, 2nd, 3rd.
     units = [
         {
-            "headers": [],
+            "headers": ["Position", "1st", "2nd", "3rd", "4th"],
             "rows": [
-                ["QB", "Jordan Love", "Deshaun Watson", "Malik Willis"],
+                ["QB", "Jordan Love", "Deshaun Watson", "Malik Willis", ""],
                 ["WR", "Jordan Watkins", "Christian Watson", "Romeo Doubs", "Jalen Moreno"],
-                ["RB", "A.J. Dillon", "Chris Brooks", "Tyrion Mitchell"],
+                ["RB", "A.J. Dillon", "Chris Brooks", "Tyrion Mitchell", ""],
             ],
         }
     ]
@@ -180,6 +182,26 @@ def test_depth_resolution() -> None:
         "depth: explicit ordinals honoured",
         resolve_depth_string(ngroups, "Chris Brooks", "RB") == "RB2",
         resolve_depth_string(ngroups, "Chris Brooks", "RB"),
+    )
+
+    # The layout a club uses when the offence and the defence are printed side
+    # by side, read column by column.
+    side_by_side = [
+        {
+            "headers": [],
+            "rows": [
+                ["QB", "QB", "DE"],
+                ["Jordan Love", "Joe Burrow", "Cameron Thomas"],
+                ["Deshaun Watson", "Joe Flacco", "Za'Darius Smith"],
+            ],
+        }
+    ]
+    sgroups = normalise_depth_groups(side_by_side)
+    check(
+        "depth: side-by-side layout separates the units",
+        resolve_depth_string(sgroups, "Joe Burrow", "QB") == "QB1"
+        and resolve_depth_string(sgroups, "Cameron Thomas", "DE") == "DE1",
+        str([(g["position"], [p["name"] for p in g["players"]]) for g in sgroups]),
     )
 
 

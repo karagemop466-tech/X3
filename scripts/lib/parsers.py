@@ -413,6 +413,8 @@ POSITION_GROUPS: dict[str, str] = {
     "offensive line": "OL", "offensive lineman": "OL", "offensive linemen": "OL", "ol": "OL",
     "center": "C", "c": "C", "guard": "G", "guards": "G", "g": "G",
     "tackle": "T", "tackles": "T", "t": "T",
+    "lt": "T", "rt": "T", "left tackle": "T", "right tackle": "T",
+    "lg": "G", "rg": "G", "left guard": "G", "right guard": "G",
     "defensive line": "DL", "defensive lineman": "DL", "defensive linemen": "DL", "dl": "DL",
     "defensive end": "DE", "defensive ends": "DE", "de": "DE",
     "defensive tackle": "DT", "defensive tackles": "DT", "dt": "DT",
@@ -428,6 +430,8 @@ POSITION_GROUPS: dict[str, str] = {
     "punter": "P", "p": "P",
     "long snapper": "LS", "ls": "LS",
     "returner": "RS", "return specialist": "RS",
+    "pr": "PR", "kr": "KR", "nb": "NB", "rb/fb": "FB", "de/edge": "DE",
+    "offense": "OFF", "offense": "OFF", "defense": "DEF",
     "fullback": "FB", "fb": "FB",
     "running back/fullback": "RB/FB", "fb/rb": "FB",
 }
@@ -440,52 +444,135 @@ def _is_position_label(text: str) -> bool:
     return key in POSITION_GROUPS
 
 
+_ORDINAL_WORDS = {
+    "1st": 1, "2nd": 2, "3rd": 3, "4th": 4, "5th": 5, "6th": 6, "7th": 7,
+    "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7,
+    "first": 1, "second": 2, "third": 3, "fourth": 4, "fifth": 5,
+}
+
+
+def _depth_ordinals(headers: list[str]) -> dict[int, int] | None:
+    """Map column index to depth ordinal when the table headers declare one.
+
+    Official club depth charts label their columns ``1st``, ``2nd``, ``3rd``
+    and so on. When the header row says that, the depth order is read from the
+    header rather than inferred from the order of the rows.
+    """
+    if not headers:
+        return None
+    if headers[0].strip().lower() not in ("position", "pos"):
+        return None
+    ordinals: dict[int, int] = {}
+    for index, header in enumerate(headers[1:], start=1):
+        key = header.strip().lower()
+        if key in _ORDINAL_WORDS:
+            ordinals[index] = _ORDINAL_WORDS[key]
+    if not ordinals:
+        return None
+    return ordinals
+
+
 def normalise_depth_groups(units: list[dict]) -> list[dict]:
     """Turn parsed depth-chart tables into ordered position groups.
 
-    A group is a position label plus the players beneath it, in the order the
-    club publishes them. The order is what makes a depth string meaningful.
+    Two layouts are supported:
+
+    * The club's own layout, where the table header declares the depth
+      columns (``Position | 1st | 2nd | 3rd``). The depth of each player is
+      then read from the header, which is the club's published ordering.
+    * A plain two-column layout, where the position label is in the first
+      column and the players follow in depth order. Here the order of the
+      cells is the depth.
+
+    Either way a group is a position label plus its players in depth order,
+    and the order is what makes a depth string meaningful.
     """
     groups: list[dict] = []
     for unit in units:
-        for row in unit.get("rows", []):
-            cells = [c for c in row if c.strip()]
-            if not cells:
-                continue
-            if _is_position_label(cells[0]):
-                label = cells[0].strip().lower()
-                players = cells[1:]
-            elif len(cells) >= 2 and _is_position_label(cells[1]):
-                # Layout where the position label sits in the second column.
-                label = cells[1].strip().lower()
-                players = [cells[0]] + cells[2:]
-            else:
-                # A row that continues the previous group with more players.
-                if not groups:
+        rows = unit.get("rows", [])
+        if not rows:
+            continue
+        ordinals = _depth_ordinals(unit.get("headers", []))
+        if ordinals:
+            for row in rows:
+                if not row:
                     continue
-                for cell in cells:
+                label = row[0].strip()
+                if not label:
+                    continue
+                position = POSITION_GROUPS.get(label.lower(), label.upper())
+                group = {"position": position, "label": label, "players": []}
+                for index, cell in enumerate(row[1:], start=1):
                     text = cell.strip()
                     if not text:
                         continue
                     match = _ORDINAL_RE.match(text)
-                    groups[-1]["players"].append(
-                        {"name": match.group(2).strip() if match else text,
-                         "ordinal": int(match.group(1)) if match else None}
+                    name = match.group(2).strip() if match else text
+                    ordinal = ordinals.get(index)
+                    if ordinal is None:
+                        ordinal = len(group["players"]) + 1
+                    group["players"].append({"name": name, "ordinal": ordinal})
+                groups.append(group)
+            continue
+
+        # Fall back to reading the table row by row, which suits clubs that
+        # print the position label in the first cell and the players beside it.
+        labelled = [r for r in rows if r and _is_position_label(r[0].strip())]
+        if labelled and len(labelled) * 2 >= len(rows):
+            for row in rows:
+                if not row:
+                    continue
+                label = row[0].strip()
+                if not label or not _is_position_label(label):
+                    continue
+                group = {
+                    "position": POSITION_GROUPS.get(label.lower(), label.upper()),
+                    "label": label,
+                    "players": [],
+                }
+                for cell in row[1:]:
+                    text = cell.strip()
+                    if not text:
+                        continue
+                    match = _ORDINAL_RE.match(text)
+                    group["players"].append(
+                        {
+                            "name": match.group(2).strip() if match else text,
+                            "ordinal": int(match.group(1)) if match else None,
+                        }
                     )
-                continue
-            position = POSITION_GROUPS.get(label, label.upper())
-            groups.append({"position": position, "label": cells[0].strip(), "players": []})
-            for cell in players:
-                text = cell.strip()
+                groups.append(group)
+            continue
+
+        # Fall back to reading the table column by column, which suits clubs
+        # that print the offence and the defence side by side.
+        width = max(len(r) for r in rows)
+        for column in range(width):
+            current: dict | None = None
+            for row in rows:
+                if column >= len(row):
+                    continue
+                text = row[column].strip()
                 if not text:
                     continue
+                if _is_position_label(text):
+                    label = text.lower()
+                    current = {
+                        "position": POSITION_GROUPS.get(label, label.upper()),
+                        "label": text,
+                        "players": [],
+                    }
+                    groups.append(current)
+                    continue
+                if current is None:
+                    continue
                 match = _ORDINAL_RE.match(text)
-                if match:
-                    groups[-1]["players"].append(
-                        {"name": match.group(2).strip(), "ordinal": int(match.group(1))}
-                    )
-                else:
-                    groups[-1]["players"].append({"name": text, "ordinal": None})
+                current["players"].append(
+                    {
+                        "name": match.group(2).strip() if match else text,
+                        "ordinal": int(match.group(1)) if match else None,
+                    }
+                )
     # Fill in ordinals where the club did not number them.
     for group in groups:
         for index, player in enumerate(group["players"], start=1):

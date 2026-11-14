@@ -20,7 +20,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from lib.diagnostics import describe_html, failure_report, write_report
-from lib.official import resolve_payload
+from lib.official import CLUBS, resolve_payload
 from lib.parsers import (
     normalise_depth_groups,
     parse_depth_chart,
@@ -264,7 +264,7 @@ def _build() -> int:
             {
                 "dataset": "depth_charts.json",
                 "source_key": "club_depth_*",
-                "source_url": "https://www.<club>.com/ (official club sites)",
+                "source_url": "https://www.nfl.com/teams/",
                 "official_org": "Official NFL club sites",
                 "sha256": [s["sha256"] for c in depth.values() for s in c["sources"]][:8],
                 "fetched_at": [s["fetched_at"] for c in depth.values() for s in c["sources"]][:8],
@@ -280,15 +280,19 @@ def _build() -> int:
     resolved: list[dict] = []
     unresolved: list[dict] = []
     if injuries and depth:
-        club_by_suffix: dict[str, dict] = {}
-        for club_entry in depth.values():
-            suffix = club_entry["club"].split()[-1].lower()
-            club_by_suffix[suffix] = club_entry
+        # Map the official NFL team abbreviation used on the injury report to
+        # the club whose official depth chart was retrieved.
+        club_by_abbr: dict[str, dict] = {}
+        for slug, _domain, name, abbr in CLUBS:
+            for club_entry in depth.values():
+                if club_entry["club"] == name:
+                    club_by_abbr[abbr] = club_entry
+                    break
         for row in injuries.get("rows", []):
             if row.get("game_status") not in ("Out", "Doubtful", "Questionable"):
                 continue
             team = row.get("team", "")
-            club_entry = club_by_suffix.get(team.lower())
+            club_entry = club_by_abbr.get(team.upper())
             depth_string = ""
             if club_entry:
                 depth_string = resolve_depth_string(

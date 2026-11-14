@@ -1760,7 +1760,7 @@ def build_sources() -> str:
         ["Player statistics by category", "NFL.com", STATS_URL, "Official season player statistics for passing, rushing, receiving and the rest."],
         ["Team and player profiles", "NFL.com", "https://www.nfl.com/teams/", "Roster context and player profile links."],
         ["Official rulebook and rule changes", "NFL Football Operations", "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook", "The governing rules referenced by the platform."],
-        ["League policy statements", "NFL Communications", "https://www.nfl.com/news/nfl-communications", "Official league positions, including on wagering policy."],
+        ["League policy statements", "NFL Communications", "https://media.nfl.com/", "Official league positions, including on wagering policy."],
         ["Official club depth charts", "Official NFL club sites", "https://www.nfl.com/teams/", "Depth ordering, used only where a club publishes it."],
     ]
     b.append(
@@ -2003,7 +2003,7 @@ def build_flag_register() -> list[dict]:
         "The commercial nature of the platform is not yet settled",
         "The platform originates lines and publishes a leaderboard with a reward structure. Whether that constitutes a regulated activity depends on answers to Q-001, Q-002 and Q-003.",
         "high",
-        "https://www.nfl.com/news/nfl-communications",
+        "https://media.nfl.com/",
         "Answer Q-001, Q-002 and Q-003 and obtain a jurisdiction-specific legal review before any transactional feature is built (suggestion S-017).",
     )
     return flags

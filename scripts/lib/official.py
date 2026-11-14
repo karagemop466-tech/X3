@@ -59,40 +59,41 @@ class Source:
 
 
 #: Official NFL club websites (club-operated, league-sanctioned domains).
-CLUBS: list[tuple[str, str, str]] = [
+#: Each entry is (nfl.com slug, club domain, club full name, NFL abbreviation).
+CLUBS: list[tuple[str, str, str, str]] = [
     # slug (nfl.com/teams/<slug>), club domain, club full name
-    ("buffalo-bills", "buffalobills.com", "Buffalo Bills"),
-    ("san-francisco-49ers", "49ers.com", "San Francisco 49ers"),
-    ("chicago-bears", "chicagobears.com", "Chicago Bears"),
-    ("denver-broncos", "denverbroncos.com", "Denver Broncos"),
-    ("cincinnati-bengals", "bengals.com", "Cincinnati Bengals"),
-    ("detroit-lions", "detroitlions.com", "Detroit Lions"),
-    ("jacksonville-jaguars", "jaguars.com", "Jacksonville Jaguars"),
-    ("kansas-city-chiefs", "chiefs.com", "Kansas City Chiefs"),
-    ("minnesota-vikings", "vikings.com", "Minnesota Vikings"),
-    ("pittsburgh-steelers", "steelers.com", "Pittsburgh Steelers"),
-    ("green-bay-packers", "packers.com", "Green Bay Packers"),
-    ("new-york-giants", "giants.com", "New York Giants"),
-    ("cleveland-browns", "browns.com", "Cleveland Browns"),
-    ("los-angeles-rams", "therams.com", "Los Angeles Rams"),
-    ("new-england-patriots", "patriots.com", "New England Patriots"),
-    ("seattle-seahawks", "seahawks.com", "Seattle Seahawks"),
-    ("baltimore-ravens", "baltimoreravens.com", "Baltimore Ravens"),
-    ("dallas-cowboys", "dallascowboys.com", "Dallas Cowboys"),
-    ("las-vegas-raiders", "raiders.com", "Las Vegas Raiders"),
-    ("washington-commanders", "commandersons.com", "Washington Commanders"),
-    ("carolina-panthers", "panthers.com", "Carolina Panthers"),
-    ("houston-texans", "houstontexans.com", "Houston Texans"),
-    ("new-orleans-saints", "neworleanssaints.com", "New Orleans Saints"),
-    ("arizona-cardinals", "cardinals.com", "Arizona Cardinals"),
-    ("atlanta-falcons", "atlantafalcons.com", "Atlanta Falcons"),
-    ("miami-dolphins", "miamidolphins.com", "Miami Dolphins"),
-    ("new-york-jets", "newyorkjets.com", "New York Jets"),
-    ("indianapolis-colts", "colts.com", "Indianapolis Colts"),
-    ("tennessee-titans", "titans.com", "Tennessee Titans"),
-    ("philadelphia-eagles", "philaeagles.com", "Philadelphia Eagles"),
-    ("los-angeles-chargers", "chargers.com", "Los Angeles Chargers"),
-    ("tampa-bay-buccaneers", "buccaneers.com", "Tampa Bay Buccaneers"),
+    ("buffalo-bills", "buffalobills.com", "Buffalo Bills", "BUF"),
+    ("san-francisco-49ers", "49ers.com", "San Francisco 49ers", "SF"),
+    ("chicago-bears", "chicagobears.com", "Chicago Bears", "CHI"),
+    ("denver-broncos", "denverbroncos.com", "Denver Broncos", "DEN"),
+    ("cincinnati-bengals", "bengals.com", "Cincinnati Bengals", "CIN"),
+    ("detroit-lions", "detroitlions.com", "Detroit Lions", "DET"),
+    ("jacksonville-jaguars", "jaguars.com", "Jacksonville Jaguars", "JAX"),
+    ("kansas-city-chiefs", "chiefs.com", "Kansas City Chiefs", "KC"),
+    ("minnesota-vikings", "vikings.com", "Minnesota Vikings", "MIN"),
+    ("pittsburgh-steelers", "steelers.com", "Pittsburgh Steelers", "PIT"),
+    ("green-bay-packers", "packers.com", "Green Bay Packers", "GB"),
+    ("new-york-giants", "giants.com", "New York Giants", "NYG"),
+    ("cleveland-browns", "browns.com", "Cleveland Browns", "CLE"),
+    ("los-angeles-rams", "therams.com", "Los Angeles Rams", "LAR"),
+    ("new-england-patriots", "patriots.com", "New England Patriots", "NE"),
+    ("seattle-seahawks", "seahawks.com", "Seattle Seahawks", "SEA"),
+    ("baltimore-ravens", "baltimoreravens.com", "Baltimore Ravens", "BAL"),
+    ("dallas-cowboys", "dallascowboys.com", "Dallas Cowboys", "DAL"),
+    ("las-vegas-raiders", "raiders.com", "Las Vegas Raiders", "LV"),
+    ("washington-commanders", "commandersons.com", "Washington Commanders", "WAS"),
+    ("carolina-panthers", "panthers.com", "Carolina Panthers", "CAR"),
+    ("houston-texans", "houstontexans.com", "Houston Texans", "HOU"),
+    ("new-orleans-saints", "neworleanssaints.com", "New Orleans Saints", "NO"),
+    ("arizona-cardinals", "cardinals.com", "Arizona Cardinals", "ARI"),
+    ("atlanta-falcons", "atlantafalcons.com", "Atlanta Falcons", "ATL"),
+    ("miami-dolphins", "miamidolphins.com", "Miami Dolphins", "MIA"),
+    ("new-york-jets", "newyorkjets.com", "New York Jets", "NYJ"),
+    ("indianapolis-colts", "colts.com", "Indianapolis Colts", "IND"),
+    ("tennessee-titans", "titans.com", "Tennessee Titans", "TEN"),
+    ("philadelphia-eagles", "philaeagles.com", "Philadelphia Eagles", "PHI"),
+    ("los-angeles-chargers", "chargers.com", "Los Angeles Chargers", "LAC"),
+    ("tampa-bay-buccaneers", "buccaneers.com", "Tampa Bay Buccaneers", "TB"),
 ]
 
 #: Club depth-chart URL candidates, probed in order until one resolves.
@@ -219,7 +220,7 @@ def league_sources(seasons: Iterable[int] = SEASONS) -> list[Source]:
 def club_sources() -> list[Source]:
     """Official NFL club team pages and depth-chart candidates."""
     out: list[Source] = []
-    for slug, domain, name in CLUBS:
+    for slug, domain, name, abbr in CLUBS:
         out.append(
             Source(
                 key=f"club_team_{slug}",
