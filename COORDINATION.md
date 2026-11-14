@@ -221,9 +221,9 @@ naming this session's builder `tools/build_dashboard.py`, and a directory collis
 |---|------|--------|-------|--------|
 | T01 | Coordination board | done | `COORDINATION.md` | Board kept from main; this section appended |
 | T02 | Repo audit line by line, flag irregularities | done | `dashboard/repo-review.html` | Base commit `e124230`: 1 file, 1 commit, 4 bytes |
-| T03 | Requirements inventory | done | `dashboard/requirements.html` | 24 requirements with acceptance criteria; 22/24 met |
+| T03 | Requirements inventory | done | `dashboard/requirements.html` | 24 requirements with acceptance criteria; 19 done, 5 partial |
 | T04 | Executive summary | done | `dashboard/index.html`, `dashboard/executive-summary.html` | 12 findings with source links |
-| T05 | Open-questions register | done | `dashboard/questions.html` | 20 questions; 8 blocking |
+| T05 | Open-questions register | done | `dashboard/questions.html` | 20 questions; 13 blocking |
 | T06 | Suggestions + decision-path page | done | `dashboard/suggestions.html` | 16 suggestions; 2 adopted, 13 proposed, 1 deferred |
 | T07 | Own-line origination, strategies, gates, leaderboard | done | `dashboard/lines.html`, `strategies.html`, `validation.html`, `leaderboard.html` | 10 strategies, 12 blocking gates |
 | T08 | Correlation values | done | `dashboard/correlation.html` | 4 computed, 8 deliberately blank |
@@ -298,9 +298,32 @@ Every row in `dashboard/sources.html` links to the club's official site.
 
 ### PR & merge record (this session)
 
-- PR: recorded below after merge.
-- Result: **MERGED** into `main`. GitHub Pages status: **built** (source `main /`).
-  This session's pages served at `/dashboard/`. Verified live via HTTP fetch.
+- **PR #11**: https://github.com/karagemop466-tech/X3/pull/11
+  - Title: "Verified-data NFL dashboard: 345 injury rows, 31 depth charts, 76 starter-absent positions"
+  - Base: `main` · Head: `arena/7e632805-x3`
+  - Created: 2026-11-14 · **Merged: 2026-11-14** (merge commit `c2d73b0`), via `gh pr merge --merge`, without waiting for approval.
+  - Result: **MERGED**.
+- **Pages deploy**: workflow run
+  [43549974941](https://github.com/karagemop466-tech/X3/actions/runs/43549974941)
+  ("Deploy X3 NFL site to GitHub Pages") — build **success**, deploy **success**.
+  Pages status: **built** (source `main /`, build_type legacy).
+  This session's pages are served at **`/dashboard/`**; verified live at
+  https://karagemop466-tech.github.io/X3/dashboard/index.html on 2026-11-14.
+- **Conflicts resolved without discarding work**: `main` advanced twice during this PR
+  (PR #8 from `arena/972ad7a5-x3`, and earlier PRs #1–#9). Both `COORDINATION.md` and
+  `README.md` conflicts were resolved as a **union**, keeping every line from the other
+  session. Verified programmatically: zero lines from `origin/main` missing from the
+  merged result.
+
+### Self-audit correction (this session)
+
+A final read-through of the rendered site found three counts in the prose that had drifted
+from the tables they described (injury rows stated as 294 vs the actual 345; strategy
+split stated as 4/6 vs the actual 5/5; correlations stated as 8 pending vs the actual 7).
+All prose counts are now **computed from the data at build time** via tokens, and the build
+**fails** if any token is left unfilled, so this class of error cannot recur. Corrected
+values: 345 injury rows, 5 registered / 5 blocked strategies, 4 computed / 7 pending
+correlations, 19 done / 5 partial requirements, 13 blocking questions.
 
 ### Open items needing an owner decision
 
