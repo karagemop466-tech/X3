@@ -1413,3 +1413,36 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+
+---
+
+## Session `arena/cc3778ae-x3` (this session)
+
+Branch: `arena/cc3778ae-x3`, branched from `main` @ `996257b3bb1da823cd8356f327659a0fc585a632`. Platform-assigned branch; all work is committed to this branch only and a PR is opened from this branch to `main`.
+
+### Status legend
+unclaimed | in progress | done | needs review | blocked
+
+### Task board (arena/cc3778ae-x3)
+
+| ID | Task | Status | Files / scope | Result |
+|----|------|--------|---------------|--------|
+| C-01 | Session claim + task board | in progress | `COORDINATION.md` (this section) | Claimed; commit + push pending |
+| C-02 | Price-snapshot store (opening & closing per market) | unclaimed | `data/price_snapshots.csv`, `dashboard/data/price_snapshots.json`, page | Market lines are not published by an official NFL source → price cells blank + `unverified`, schema documented |
+| C-03 | Verified results feed (for backtests / ROI) | unclaimed | `data/results_feed.csv`, `dashboard/data/results_feed.json`, page | Official NFL schedule/results source; scores blank + `unverified` until fetched post-kickoff |
+| C-04 | Originate side → total → moneyline; fair line / market line / difference columns | unclaimed | `dashboard/data/model_lines.json` | Fair lines = model-originated (flagged); market lines blank + `unverified`; difference columns added, blank until market data exists |
+| C-05 | Separate 'signal' from 'staking' in the leaderboard | unclaimed | `dashboard/data/strategies.json`, leaderboard page | `signal_score` and `staking` columns separated; leaderboard ranked by signal first |
+| C-06 | Track replacement depth (2nd/3rd/4th string), offense + defense | unclaimed | `dashboard/data/depth.json` + `dashboard/data/injuries.json` join | Replacement depth derived from ordered official depth-chart player lists; blank where depth chart missing |
+| C-07 | Correlations only from officially sourced numbers, publish n | unclaimed | `data/correlations.csv`, `dashboard/data/correlations.json` | Values left blank, `n` published (0 until data), rule documented as officially sourced only |
+| C-08 | Demotion gate (live strategy → paper) | unclaimed | `dashboard/data/gates.json`, gates page | Gate added that returns a live strategy to paper on defined failure conditions |
+| C-09 | Executive summary update | unclaimed | `dashboard/executive-summary.html` | Regenerated from new stores/gates |
+| C-10 | Site build, verification (line-by-line), broken-link check | unclaimed | `scripts/*.py`, `tools/*.py`, dashboard pages | Run build + audit + link check; fix broken links; confirm Pages build |
+| C-11 | PR to main, merge, confirm Pages deploy, record result | unclaimed | `COORDINATION.md` | PR created, merged, Pages deploy confirmed, link + result recorded here |
+
+### Verification policy (this session)
+- Outbound network is limited to github.com / api.github.com / codeload.github.com / registry.npmjs.org / pypi.org / files.pythonhosted.org; nfl.com is not directly fetchable from bash. Official-source claims are verified via web_search / fetch_page and cited by URL.
+- No value is inferred or filled in. A cell that cannot be confirmed from an official source is left blank and flagged `unverified`.
+- Betting lines (opening/closing), player-prop prices and same-game parlay prices have no official NFL source; they are left blank + `unverified` pending a user-selected licensed odds source (Q03).
+
+### Claims log
+- `arena/cc3778ae-x3` claims `data/price_snapshots.csv`, `data/results_feed.csv`, `dashboard/data/model_lines.json`, `dashboard/data/strategies.json`, `dashboard/data/depth.json`, `dashboard/data/injuries.json`, `dashboard/data/correlations.json`, `dashboard/data/gates.json`, `dashboard/executive-summary.html`, `scripts/*.py`, `tools/*.py`, and the dashboard pages in its own scope. No other session's file is edited.
