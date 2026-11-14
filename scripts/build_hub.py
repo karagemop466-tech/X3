@@ -277,7 +277,7 @@ def compute(standings, injuries, slate, cfg, overlay=()):
         "nir_rows": sum(1 for r in injuries if "NIR" in r["injury"]),
         "designations": dict(Counter((r["game_status"] or "none") for r in injuries)),
         "unplayed_games": len(lines), "slate_rows": len(slate), "byes": byes,
-        "deficiency_rows": len(deficiency), "desk_meta": {},
+        "deficiency_rows": len(deficiency),
         "max_deficiency": max((d["score"] for d in deficiency), default=0),
     }
     return derived, deficiency, lines

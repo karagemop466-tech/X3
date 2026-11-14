@@ -20,7 +20,56 @@
   "Questionable": 84,
   "none": 185
  },
- "desk_meta": {},
+ "desk_meta": {
+  "bt": {
+   "bias": -1.02,
+   "games": 121,
+   "mae": 10.52,
+   "n": 121,
+   "predicted_vs_actual_r": 0.2,
+   "rmse": 13.82,
+   "rule": "fit on all weeks before the predicted week only",
+   "weeks": [
+    {
+     "games": 16,
+     "week": 2
+    },
+    {
+     "games": 16,
+     "week": 3
+    },
+    {
+     "games": 16,
+     "week": 4
+    },
+    {
+     "games": 15,
+     "week": 5
+    },
+    {
+     "games": 14,
+     "week": 6
+    },
+    {
+     "games": 14,
+     "week": 7
+    },
+    {
+     "games": 14,
+     "week": 8
+    },
+    {
+     "games": 15,
+     "week": 9
+    },
+    {
+     "games": 1,
+     "week": 10
+    }
+   ]
+  },
+  "hfa": 0.08
+ },
  "game_log": {
   "available": true,
   "finals": 137,
