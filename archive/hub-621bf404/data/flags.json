@@ -13,13 +13,13 @@
   },
   {
    "id": "FLG-02",
-   "severity": "Medium",
-   "area": "Source semantics",
-   "finding": "The official standings module lags completed games. After WAS 24-NYG 21 (Thu 2026-11-12, SRC-04) both the league standings page (SRC-01) and the game's own standings widget still show WAS 3-5-1 and NYG 5-3-1.",
-   "evidence": "https://www.nfl.com/games/commanders-at-giants-2026-reg-10 vs https://www.nfl.com/standings/league/2026/REG",
-   "impact": "Any model or backtest that reads 'standings' without an as-of rule silently mixes pre-game and post-game states (look-ahead or lag depending on fetch time)",
-   "action": "Freeze an as-of contract: snapshot standings immediately before each kickoff and store the timestamp (S-05)",
-   "status": "OPEN - documented in the data contract"
+   "severity": "Resolved",
+   "area": "Source semantics (retracted)",
+   "finding": "RETRAITED after cross-verification - the earlier reading of this flag was wrong. The official standings module does NOT lag the completed Thursday game. Reconciliation: summing the in-repo 2026 game log (SRC-17) over weeks 1-9 gives WAS 2-5-1 / 172-202 and NYG 5-2-1 / 182-172; adding the Week-10 Thursday final (WAS 24, NYG 21) gives exactly the WAS 3-5-1 / 196-223 and NYG 5-3-1 / 203-196 printed on the standings page and in the game page's own division widget. All 32 clubs reconcile on wins, losses, ties, points for and points against once LA->LAR and ARI->AZ are aliased. The 'standings are stale by one game' hypothesis came from this session's assumption that the page was a Week-9-only snapshot; it is not - it is 'all games through 2026-11-12'.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json ; https://www.nfl.com/standings/league/2026/REG",
+   "impact": "What survives is the weaker, still-important point: the standings page has no printed cut-off, so its as-of has to be inferred. An inferred as-of is how this flag was raised in error in the first place.",
+   "action": "Stamp every snapshot with the last included game (done in this hub: 'all games through 2026-11-12'), and stop describing it as 'through Week 9'",
+   "status": "CORRECTED this session - retracted on the evidence in VER-19; keep the as-of stamping rule (S-05)"
   },
   {
    "id": "FLG-03",
@@ -75,11 +75,11 @@
    "id": "FLG-08",
    "severity": "High",
    "area": "No source exists",
-   "finding": "There is no official league depth chart. Clubs publish their own charts and label them unofficial; per prior sessions 31 of 32 were readable, 27 of 32 carried no as-of date, and Houston publishes an image only.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md (session arena/7e632805-x3, F-01/F-02/F-05) ; https://www.nfl.com/teams/",
-   "impact": "The literal request 'know which 2nd/3rd/4th-string backups replace starters' cannot be answered from an official source at all; only the absence of a starter can be proven from the injury report",
-   "action": "Track availability (Out/Doubtful/Questionable) as the certified layer, treat string depth as an unverified overlay; Q-05/Q-06",
-   "status": "OPEN - string columns blank in the deficiency table"
+   "finding": "Still true in the strict sense - the league publishes no depth chart - but a usable overlay now exists inside this repository: the desk capture holds 32 club charts and joins them to the injury report (210 rows over weeks 8-10; 76 for Week 10). Of those Week-10 rows only 41 name a replacement, 22 have no string rank at all, 76 of 76 carry no as-of date, and 50 come from charts the club itself labels unofficial.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json ; https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json ; https://www.nfl.com/teams/",
+   "impact": "The literal request 'which 2nd/3rd/4th-stringer replaces the starter' is now answerable for about half the cases, but only from club-published material - never as a certified fact.",
+   "action": "Render it as a labelled UNVERIFIED overlay beside the certified availability layer (implemented on the depth page), keep it out of any model input or gate evidence.",
+   "status": "OPEN - overlay published on hub/deficiency.html, badged UNVERIFIED; model inputs still use the official report only"
   },
   {
    "id": "FLG-09",
@@ -128,8 +128,8 @@
    "finding": "A prior session published correlations of +0.6984 / -0.6636 / +0.8781 / +0.3501 from the official standings. Recomputing from this session's snapshot gives +0.7001 / -0.6639 / +0.8794 / +0.3506 with games = W+L+T (+0.6943 / -0.6509 / +0.8779 / +0.3506 with ties excluded). Neither denominator convention reproduces the published figures.",
    "evidence": "https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/correlations.json vs recomputation in scripts/check_hub.py from hub/data/standings_2026.csv",
    "impact": "Small but real: it proves the earlier numbers came from a different standings snapshot, so cross-page comparisons are not like-for-like",
-   "action": "Cite the snapshot timestamp with every derived statistic (VER-05)",
-   "status": "RESOLVED for the hub: values recomputed, formula and inputs printed, both variants published"
+   "action": "Cite the snapshot with every derived statistic (VER-05). Extended this session: the published set was tested against four candidate inputs (this hub's standings, the desk game log through W9, and the same log with and without the Week-10 Thursday game, with ties in and out of the denominators) and no variant reproduces it, so the figures cannot be reconstructed from any dataset currently in the repository.",
+   "status": "RESOLVED for the hub (values recomputed, inputs and formula printed); the prior figures remain unexplained rather than wrong"
   },
   {
    "id": "FLG-14",
@@ -187,7 +187,7 @@
    "area": "Identifier drift",
    "finding": "Team codes differ between trees: the Rams appear as LA and LAR, the Cardinals as ARI and AZ. The official page renders the Rams logo as logos/LA while using LAR elsewhere, so a naive join across trees silently drops two clubs.",
    "evidence": "https://www.nfl.com/standings/league/2026/REG ; prior tree files in dashboard/ and x3lab/",
-   "impact": "Cross-tree comparisons and any automated merge of prior data will mismatch on 2 of 32 clubs",
+   "impact": "Cross-tree comparisons and any automated merge of prior data mismatch on 2 of 32 clubs. Demonstrated cost: the first run of this session's reconciliation against the desk game log reported 18 false mismatches until LA->LAR and ARI->AZ were aliased; with aliases applied the two independent captures agree on every field for all 32 clubs (VER-19).",
    "action": "Freeze one id list (the 32 codes in hub/data/standings_2026.csv) and add an alias map (S-03, Q-18)",
    "status": "OPEN"
   },
@@ -210,6 +210,46 @@
    "impact": "anyone copying that column slips the wrong side of every game, and the magnitudes are not comparable with a market line",
    "action": "the hub states its convention in the table header (negative = home favourite) and shows both prior models side by side so the disagreement is visible",
    "status": "OPEN for the legacy trees (not edited here); documented and corrected in the hub"
+  },
+  {
+   "id": "FLG-22",
+   "severity": "Medium",
+   "area": "Repo data defect",
+   "finding": "The desk unit publishes r = -0.161 for the pair 'game total vs |margin|' with the reading 'same-game total and blowout size move together'. Recomputing from that unit's own 137 finals gives r(total, |margin|) = -0.016. The published -0.161 is exactly r(total, signed home-minus-away margin) - a different quantity, whose sign has no blowout interpretation. The companion row (away score vs home score, +0.076) reproduces exactly, so the pipeline is fine and the label is wrong.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json",
+   "impact": "the one game-level correlation that gates parlay leg selection is mislabelled in a merged, live page; a reader would conclude big games are blowouts when the data says nothing of the kind",
+   "action": "owner: fix the label in that unit (absolute vs signed margin) or republish both; the hub prints both values computed from the log (correlations page)",
+   "status": "OPEN - reported, not edited in another session's file"
+  },
+  {
+   "id": "FLG-23",
+   "severity": "Medium",
+   "area": "Overlay completeness",
+   "finding": "The depth overlay is partial in a way that biases it: of 210 joined rows, 102 match cleanly, 41 have no backup listed at that slot, 47 name a player who is not on his own club's chart, 10 matched on name only with a different position, and 7 clubs' charts were not machine-readable in the capture. For Week 10 that leaves 41 of 76 absences with an identified replacement.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json",
+   "impact": "absence of a replacement name is not evidence that none exists; the 44 blanks are mostly capture and naming failures, so a naive count of 'backup in' would understate depletion",
+   "action": "publish the join status per row (done on the depth page) and never compute a deficiency score from the overlay",
+   "status": "OPEN - documented, overlay marked partial"
+  },
+  {
+   "id": "FLG-24",
+   "severity": "Low",
+   "area": "Environment claim",
+   "finding": "A merged session documented that 'the authoring sandbox cannot reach nfl.com' and built a GitHub-Actions capture pipeline around that constraint. This session reached the same pages directly from the sandbox (injuries, standings, schedule, game centre) with the fetch tool, and its transcription matches that pipeline's data. Both routes work; the constraint is tool-specific, not environmental.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md ; https://www.nfl.com/injuries/",
+   "impact": "an assumed constraint that is not real adds CI machinery where a direct fetch would do; conversely the CI route is more reproducible and should be kept for scheduled snapshots",
+   "action": "keep both: direct fetch for in-session verification, the runner job for scheduled snapshots (S-05)",
+   "status": "OPEN - noted so the next session does not re-derive the limitation"
+  },
+  {
+   "id": "FLG-25",
+   "severity": "High",
+   "area": "Publication collision",
+   "finding": "Two sessions each claimed the integration role on the same day and wrote the same two paths: root `index.html` and `hub/`. The canonical result on main is the other session's 19-page hub (built by tools/build_hub.py from data/hub/*.csv, CI-guarded by tools/verify_hub.py); this session's 17-page hub was relocated verbatim to archive/hub-621bf404/ and remains reachable from hub/archive.html. Nothing was deleted, and both trees are complete and self-checking - but the two hubs now publish different registers under the same subject names (24 flags here vs 16 there, 18 questions here vs 16 there), and the archive directory is named after a third session (arena/621bf404-x3), not the session whose tree it holds (arena/1e2d8ef2-x3).",
+   "evidence": "https://github.com/karagemop466-tech/X3/tree/main/archive/hub-621bf404 ; https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md",
+   "impact": "a reader arriving at hub/ will not know a second, newer register of the same subject exists one directory over; the mislabelled archive directory makes it worse, because the provenance name points at the wrong session",
+   "action": "owner ruling needed (this is exactly the S-01 question, now with a concrete case): either merge the two register sets into the canonical hub's data files and retire the archive copy, or rename the directory to archive/hub-1e2d8ef2/ and link it from the canonical hub's nav. Until then this hub's files stay at the archive path and its builder writes there only",
+   "status": "OPEN - collision resolved without deletion by the integration session; the naming and the split registers remain for the owner"
   }
  ]
 }
