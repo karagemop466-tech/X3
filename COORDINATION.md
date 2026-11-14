@@ -1437,7 +1437,7 @@ unclaimed | in progress | done | needs review | blocked
 | C-08 | Demotion gate (live strategy → paper) | done | `dashboard/data/gates.json`, `data/gates.csv`, `dashboard/validation.html` | G-13 demotion gate: live strategy sent back to paper on significance/stability/drawdown/freshness/correlation-disclosure failure; must re-qualify to return to live |
 | C-09 | Executive summary update | unclaimed | `dashboard/executive-summary.html` | Regenerated from new stores/gates |
 | C-10 | Site build, verification (line-by-line), broken-link check | unclaimed | `scripts/*.py`, `tools/*.py`, dashboard pages | Run build + audit + link check; fix broken links; confirm Pages build |
-| C-11 | PR to main, merge, confirm Pages deploy, record result | unclaimed | `COORDINATION.md` | PR created, merged, Pages deploy confirmed, link + result recorded here |
+| C-11 | PR to main, merge, confirm Pages deploy, record result | done | `COORDINATION.md` | PR #46 (https://github.com/karagemop466-tech/X3/pull/46) merged via `gh pr merge 46 --merge`; merge commit db74474. Pages status `built` (source main /); live site https://karagemop466-tech.github.io/X3/ responds. Deploy run 43633522416 success. |
 
 ### Verification policy (this session)
 - Outbound network is limited to github.com / api.github.com / codeload.github.com / registry.npmjs.org / pypi.org / files.pythonhosted.org; nfl.com is not directly fetchable from bash. Official-source claims are verified via web_search / fetch_page and cited by URL.
