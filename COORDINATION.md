@@ -529,3 +529,15 @@ role). No other session's files were modified.
   link the extended research tree `docs/pages/` from `lab/index.html` (currently reachable via the
   `docs/` dashboard at `docs/index.html`). Logged here instead of editing `lab/` files, per the
   coordination protocol.
+
+---
+
+## Session `arena/361edc3f-x3` — integration QA
+
+Branch: `arena/361edc3f-x3` (platform-assigned; retained as required). This session reviewed the integrated repository and claims the following isolated follow-up task:
+
+| Task | Status | Files | Scope |
+|---|---|---|---|
+| QA-01 | in progress | `scripts/build_site.py`, `COORDINATION.md` | Preserve the previously integrated extended research links/data section when the docs dashboard is regenerated; add regression verification. |
+
+Claim recorded before implementation. Initial discovery: the checked-in generated `docs/index.html` includes an extended research section, but `python3 scripts/build_site.py` rewrites that file and removes the section. No other files will be modified for this task.
