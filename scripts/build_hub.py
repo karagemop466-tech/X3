@@ -200,8 +200,10 @@ def compute(standings, injuries, slate, cfg, overlay=()):
             "spread_home": "%+.1f" % spread, "total": "%.1f" % (round(total * 2) / 2),
             "exp_home": "%.1f" % exp_h, "exp_away": "%.1f" % exp_a,
             "market": UNVERIFIED,
-            "prior_home_spread": pd["model_home_spread"] if pd else UNVERIFIED,
-            "prior_total": pd["model_total"] if pd else UNVERIFIED,
+            # dashboard/data/model_lines.json renamed model_* -> fair_* (values identical, 14/14);
+            # accept either key so the build does not break on that rename.
+            "prior_home_spread": (pd.get("model_home_spread") or pd.get("fair_home_spread")) if pd else UNVERIFIED,
+            "prior_total": (pd.get("model_total") or pd.get("fair_total")) if pd else UNVERIFIED,
             "x3_away_spread": str(px["our_spread_away"]) if px else UNVERIFIED,
             "x3_total": str(px["our_total"]) if px else UNVERIFIED,
             "desk_spread": str(pd2["our_spread_home"]) if (pd2 := prior_desk.get((away, home))) else UNVERIFIED,
