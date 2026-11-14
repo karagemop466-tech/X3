@@ -1413,3 +1413,31 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+
+---
+
+## Session `arena/f2df8317-x3` (claim, appended 2026-11-14)
+
+Branch: `arena/f2df8317-x3` (platform-fixed), based on `996257b` (PR #42 merged).
+Session ID: `session-arena-f2df8317-x3`.
+
+### Claimed tasks — the eight new requirements in the project brief (none implemented anywhere yet: grepped repo for "demotion", "price-snapshot", "staking" — zero hits at claim time)
+
+| ID | Task | Status | File scope (exclusive) |
+|----|------|--------|------------------------|
+| O1 | Coordination claim + repo state review | in progress | `COORDINATION.md` (append-only) |
+| O2 | Price-snapshot store (open + close numbers for every market we originate) | unclaimed→claimed | `origin/data/snapshots.json`, `origin/data/markets.json`, `origin/snapshots.html` |
+| O3 | Verified results feed (official finals, per-row source) so backtests/ROI are computable | claimed | `origin/data/results.json`, `origin/results.html`, `scripts/origin_capture.py`, `.github/workflows/origin-capture.yml` |
+| O4 | Origination order: side → total → moneyline; fair line / market line / difference as separate columns | claimed | `origin/data/markets.json`, `origin/markets.html` |
+| O5 | Leaderboard: signal separated from staking | claimed | `origin/data/leaderboard.json`, `origin/leaderboard.html`, `origin/data/backtest.json` |
+| O6 | Replacement DEPTH tracking (ordinal of the replacement, not just the fact) | claimed | `origin/data/depth.json`, `origin/depth.html` |
+| O7 | Correlations only from officially sourced numbers, n published with each value | claimed | `origin/data/correlations.json`, `origin/correlations.html` |
+| O8 | Demotion gate: live strategy → paper | claimed | `origin/data/gates.json`, `origin/gates.html` |
+| O9 | Questions/information gaps + suggestions review queue for this module | claimed | `origin/questions.html`, `origin/suggestions.html`, `origin/data/questions.json`, `origin/data/suggestions.json` |
+| O10 | Executive summary, Flagged-for-Review, sources, verification log for the module | claimed | `origin/index.html`, `origin/flagged.html`, `origin/sources.html`, `origin/verification.html`, `origin/data/flags.json` |
+| O11 | Module builder + verifier (deterministic, CI-compatible) | claimed | `scripts/origin_build.py`, `scripts/origin_verify.py`, `origin/style.css` |
+
+### Scope notes
+- NEW files only outside `origin/**` and `COORDINATION.md`: `scripts/origin_*.py` (prefix-collided names avoided: all new), `.github/workflows/origin-capture.yml` (new file). Existing `scripts/*`, `tools/*`, `hub/**`, `index.html`, `data/hub/**`, `data/desk/**` (read-only), `docs/**`, `dashboard/**`, `x3lab/**`, `lab/**`, `audit/**`, `verification-hub/**`, `crosscheck/**`, `desk/**`, `archive/**`, `pages/**`, `site/**`, `legacy/**`, `.github/workflows/pages.yml`, `.github/workflows/desk-capture.yml` are owned by prior sessions and are NOT edited. `data/desk/*`, `hub/data/*` are read as inputs with provenance; no writes.
+- Results feed is captured by GitHub Actions runners (full internet) from official NFL.com week schedule pages, per the proven desk-capture pattern; trigger file `origin/capture-request.txt` so the job cannot loop.
+- The canonical hub's X3-v1 originated side/total lines (`hub/data/lines.json`, preregistered in `hub/data/prereg.json`) are adopted as the originated fair lines; the moneyline (third market type) is originated HERE from the side+total via the preregistered bridge (P(home win)=Φ(adj_margin/13.5), σ from `hub/data/prereg.json`). No second competing model line is introduced.
