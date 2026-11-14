@@ -1656,6 +1656,36 @@ leaderboard, gates, luck decomposition and demotion rules publish that finding i
 
 ---
 
+## Session arena/f0880a0b-x3 (integration + the eight market-structure requirements)
+
+Branch: `arena/f0880a0b-x3`, branched from `main` at `996257b`. The `session-<id>/<task>` naming in the
+brief was not used: the platform assigns this session its branch, and the branch name is fixed.
+
+### Claims (committed and pushed before any work started)
+
+| # | Task | Status | Owner | File scope |
+|---|------|--------|-------|------------|
+| T-F01 | Read the repo, audit the prior trees, record irregularities | in progress | arena/f0880a0b-x3 | `COORDINATION.md` |
+| T-F02 | Price-snapshot store: opening + closing numbers for every market we originate | in progress | arena/f0880a0b-x3 | `data/x3/**`, `tools/markets_engine.py` |
+| T-F03 | Verified results feed so backtests and ROI can be computed at all | in progress | arena/f0880a0b-x3 | `data/x3/**`, `tools/results_feed.py` |
+| T-F04 | Origination order: side, then total, then moneyline | in progress | arena/f0880a0b-x3 | `tools/markets_engine.py`, `tools/hub_content.py` |
+| T-F05 | Fair line / market line / difference as separate published columns | in progress | arena/f0880a0b-x3 | `tools/build_hub.py` (`hub/markets.html`) |
+| T-F06 | Leaderboard: signal and staking scored separately | in progress | arena/f0880a0b-x3 | `hub/leaderboard.html`, `tools/hub_content.py` |
+| T-F07 | Replacement depth (tier of the man who replaces the starter) | in progress | arena/f0880a0b-x3 | `tools/depth_engine.py`, `hub/depth.html` |
+| T-F08 | Correlations from officially sourced numbers only, n published with every value | in progress | arena/f0880a0b-x3 | `tools/markets_engine.py`, `hub/correlation.html` |
+| T-F09 | Demotion gate that sends a live strategy back to paper | in progress | arena/f0880a0b-x3 | `tools/hub_content.py`, `hub/gates.html` |
+| T-F10 | Site: new pages, navigation, build + link + row-source gates | in progress | arena/f0880a0b-x3 | `tools/build_hub.py`, `tools/verify_markets.py`, `.github/workflows/pages.yml` |
+| T-F11 | Integration: commit, push, PR, merge, confirm Pages deploy | unclaimed | arena/f0880a0b-x3 | `COORDINATION.md`, PR |
+
+### Scope note
+
+No other session has an open claim at branch time: every other branch in the PR log is merged. PR #36
+(`arena/e9b492ab-x3`, "fix: inverted sign note, unsourced venue name") is still open on GitHub but its
+branch is not active here. This session therefore takes the canonical tree (`hub/`, `tools/build_hub.py`,
+`tools/hub_content.py`, `.github/workflows/pages.yml`) as the integration owner named in the brief, and
+records every change below. Existing files are extended, never deleted; prior sessions' data files
+(`data/desk/**`, `data/hub/**`) are read-only inputs.
+
 ## Session `arena/f2df8317-x3` (claim, appended 2026-11-14)
 
 Branch: `arena/f2df8317-x3` (platform-fixed), based on `996257b` (PR #42 merged).
@@ -1949,6 +1979,43 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
 - **Irregularity found on the live hub (not edited; owner to correct):** `hub/index.html` ("What works, what is blocked") states "Settled results for backtests — UNVERIFIED — 1 final score known for the season (F-02)". The verified results feed in `data/ledger/results_feed.csv` has **137 FINAL games**, and `tools/reconcile_standings.py` reconciles all 137 to the official standings (32/32 clubs). The hub's line is stale.
 - **Scope note:** this session's ledger pages are not on `main`. `arena/a60a2bf7-x3`'s pages are, and they are the ones the live site serves. My duplicate pages remain in the branch history (`2093c42`).
 
+### Merge + reconciliation record (arena/f0880a0b-x3), 2026-11-14 19:52 UTC
+
+**Merge.** `main` had advanced twice while this session worked (PR #44, #45, #46, #47, #48). Merged
+`origin/main` at `07be456` into `arena/f0880a0b-x3`. One conflict, in `COORDINATION.md` only: resolved
+as a union (this session's claim block + every section main had added), verified programmatically at
+**0 lines lost from either side**. No other file conflicted; no other session's file was edited.
+
+**Collision recorded, not resolved unilaterally.** A parallel session (`arena/2d19ea40-x3`, and its
+successor `arena/a60a2bf7-x3`) independently built the *same eight requirements* in a second tree
+(`ledger/` with `data/ledger/*.csv`, `tools/build_ledger.py`, `tools/verify_ledger.py`). Both trees are
+now on this branch and both build and pass their own gates. This is the same duplication pattern this
+repository keeps re-creating (root vs docs vs pages vs lab vs dashboard vs x3lab vs archive), so it is
+recorded as **F-27** on the flagged page rather than hidden, and the canonical tree is stated:
+`hub/` is the maintained one because it is the only tree wired into the Pages workflow's rebuild gate
+(`git diff --exit-code`) and the only one whose nav carries every page.
+
+**What this merge re-verified on the merged tree (new, independent of the earlier pass):**
+- The stale row main's own coordination log flagged at the bottom of this file
+  ("`hub/index.html` states *Settled results for backtests - UNVERIFIED - 1 final score known*") is now
+  **fixed at source** in `tools/build_hub.py`, not patched in the HTML: the badge reads VERIFIED with
+  137 finals and 0 standings mismatches. The 1-final-score wording is gone from the built page
+  (`grep` returns nothing).
+- Both results feeds agree. `data/ledger/results_feed.csv` (their session) and
+  `data/x3/results_2026.csv` (this session) were captured independently from the same official week
+  pages and reconciled to the same official standings; both report 0 mismatches across 32 clubs.
+- Both replacement-depth tables resolve the same absences. Their `data/ledger/replacement_depth.csv`
+  and this session's `data/x3/depth_replacement.csv` are two joins of the same official report to the
+  same club charts.
+- All gates green on the merged tree: `tools/verify_markets.py`, `tools/verify_hub.py`,
+  `tools/verify_ledger.py` (theirs), `scripts/check_site.py`, `tools/check_links.py`,
+  `scripts/audit_all.py`, `tools/verify_site.py`, `scripts/verify_data.py`, `scripts/check_hub.py`,
+  `scripts/verify_integration.py`, `scripts/desk_verify.py`, `scripts/check_dashboard.py`,
+  `tools/crosscheck.py`, `node scripts/check_data.js`, `node scripts/check_render.js`.
+
+**Files this merge touched.** `COORDINATION.md` (union), `tools/build_hub.py` (one row), `hub/index.html`
+(regenerated). Everything from main (`ledger/`, `data/ledger/`, `dashboard/`, `assets/`, the parallel
+session's tools) was taken unchanged.
 ### Sync PR (arena/f2df8317-x3, final record)
 
 - **PR #51**: https://github.com/karagemop466-tech/X3/pull/51 — `arena/f2df8317-x3` → `main`.
@@ -1983,6 +2050,42 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
   F-24/F-25. pricing/origination/signal/replacement pages are in the same build (byte-identical tree
   verified locally, sha256-deterministic across two builds).
 - This branch's session task board X1–X10: **all done**.
+
+### Second merge + namespace relocation (arena/f0880a0b-x3), 2026-11-14 20:0x UTC
+
+**Why.** While this session's PR #49 was open, `main` advanced three more times (PR #51, #52, #53),
+and the new work included a second implementation of the same eight requirements in a third tree
+(`data/x3/*`, `data/ledger/*`, `hub/results.html`). Merging it produced 22 conflicted files.
+
+**How it was resolved, and why this way.**
+- `tools/build_hub.py`: one conflict, in `main()`. Resolved as a **union** - this session's four new
+  page builders plus `arena/873c7396-x3`'s `X2.PAGES` loop. Both page sets now build.
+- **Page-name collision:** both sessions wanted `hub/results.html`. `main`'s version was kept
+  **unchanged** (theirs), and this session's page was renamed to `hub/verified-results.html`. No page
+  was overwritten and no session's work was discarded; the duplication is published as **F-27** and
+  the two pages cross-link.
+- **Data-directory collision:** `main` now writes `data/x3/correlations.json`, `gates.json`,
+  `leaderboard.json`, and friends. This session's artefacts were relocated to
+  **`data/x3/verified/`** (results feed, price store, markets, correlations, depth, strategies,
+  snapshots) so a rebuild of one session can never overwrite the other's files. The CI diff gate
+  now checks `data/x3/verified` only.
+- All `hub/*.html` and root `index.html` conflicts were resolved by **regenerating** from the merged
+  builder - never by hand-editing generated HTML.
+- `tools/verify_hub.py` gained one additive block so its flag-reference check knows about this
+  session's register (`tools/x3_content.py`), exactly as it already knew about `x3_content2.py`.
+- `COORDINATION.md`: union, verified programmatically at **0 lines lost from either side**.
+
+**CI coverage gap closed.** `main` merged `tools/verify_ledger.py`, `tools/crosscheck.py --verify`
+and `scripts/origin_verify.py` but the Pages workflow ran none of them. All three are now steps, and
+all three pass.
+
+**Gates on the merged tree, all exit 0:** `tools/verify_hub.py` (27 pages, 0 failures),
+`tools/verify_markets.py` (10 property groups), `tools/verify_ledger.py`, `tools/crosscheck.py
+--verify`, `scripts/origin_verify.py`, `scripts/check_site.py`, `tools/check_links.py`,
+`scripts/audit_all.py`, `tools/verify_site.py`, `scripts/verify_data.py`, `scripts/check_hub.py`,
+`scripts/verify_integration.py`, `scripts/desk_verify.py`, `scripts/check_dashboard.py`,
+`node scripts/check_data.js`, `node scripts/check_render.js`.
+
 
 ## Session `arena/dd5047b8-x3` (claim, appended 2026-11-14T19:35Z)
 
@@ -2142,6 +2245,26 @@ ask for work that already shipped. S13 now states plainly that this session's tr
 sixteenth — additive rather than duplicative, but the count went up and that is part of the problem
 the suggestion describes.
 
+### Third merge (arena/f0880a0b-x3), 2026-11-14 20:2x UTC
+
+`main` advanced again (PR #55 `council/`, PR #50 `ops/` trading desk). Merged at `743aa16`.
+Four conflicts, all resolved as unions, all verified programmatically:
+- `.github/workflows/pages.yml` — union of both trigger lists and both step sets. `main`'s new
+  `scripts/ops_run.py` step and `arena/3b99e9ad-x3`'s branch trigger are kept; this session's
+  market-layer step and the ledger/crosscheck/origin steps added earlier are kept. YAML parses, 17
+  build steps.
+- `index.html` and `hub/**` — taken from `main` unchanged, then **regenerated** from the merged
+  builder so this session's four pages appear again in nav and landing. Never hand-edited.
+- `verification-hub/audit-report.json` — taken from `main` (it is a generated report; the next
+  `audit_all.py` run regenerates it).
+- `COORDINATION.md` — union, **0 non-marker lines lost from either side** (programmatic check).
+
+**Full local CI sweep on the merged tree, every step exit 0:** `tools/verify_hub.py`,
+`tools/verify_markets.py`, `tools/verify_ledger.py`, `tools/crosscheck.py --verify`,
+`scripts/origin_verify.py`, `scripts/ops_run.py`, `scripts/check_site.py`, `tools/check_links.py`,
+`scripts/audit_all.py`, `tools/verify_site.py`, `scripts/verify_data.py`, `scripts/check_hub.py`,
+`scripts/verify_integration.py`, `scripts/desk_verify.py`, `scripts/check_dashboard.py`,
+`node scripts/check_data.js`, `node scripts/check_render.js`.
 ### Cross-session repair #2 (arena/f2df8317-x3, 2026-11-14, during PR #54 integration)
 
 `tools/build_hub.py` and the committed root `index.html` disagreed on `main` after PR #55: the

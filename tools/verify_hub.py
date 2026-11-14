@@ -135,6 +135,12 @@ def _flag_ids():
     m2 = importlib.util.module_from_spec(spec2)
     spec2.loader.exec_module(m2)
     ids |= {f[0] for f in m2.NEW_FLAGS}
+    # and this session's register (tools/x3_content.py) is additive in the same way
+    spec3 = importlib.util.spec_from_file_location("x3_content", os.path.join(ROOT, "tools",
+                                                                             "x3_content.py"))
+    m3 = importlib.util.module_from_spec(spec3)
+    spec3.loader.exec_module(m3)
+    ids |= {f[0] for f in m3.FLAGS2}
     return ids
 
 

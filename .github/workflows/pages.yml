@@ -74,6 +74,12 @@ jobs:
       - name: Check the consolidated review hub
         run: python3 scripts/check_hub.py
 
+      - name: Check the verified decision ledger and the origin capture
+        run: |
+          python3 tools/verify_ledger.py
+          python3 tools/crosscheck.py --verify
+          python3 scripts/origin_verify.py
+
       - name: Repo-wide integration audit (verify_integration)
         run: python3 scripts/verify_integration.py
 
@@ -92,6 +98,18 @@ jobs:
           node --check scripts/check_render.js
           node scripts/check_data.js
           node scripts/check_render.js
+
+      - name: Rebuild the market layer from verified results, then gate it
+        run: |
+          python3 tools/results_feed.py
+          python3 tools/markets_engine.py
+          python3 tools/correlation_engine.py
+          python3 tools/depth_engine.py
+          python3 tools/strategies_engine.py
+          python3 tools/verify_markets.py
+          git diff --exit-code -- data/x3/verified || {
+            echo '::error::data/x3/verified/* is not the current output of the market engines - run them and commit the result.'
+            exit 1; }
 
       - name: Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced
         run: |
