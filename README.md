@@ -160,9 +160,11 @@ Originate our own Week-10 NFL lines (model v0.1, deterministic), run strategies 
 ## Consolidated review hub (branch `arena/1e2d8ef2-x3`, 2026-11-14)
 
 Nine earlier sessions each shipped a site tree. This session adds one consolidated
-review surface at [`hub/`](hub/index.html) and makes the repository root a real landing
-page instead of a meta-refresh redirect. Nothing else was deleted or rewritten: the
-older trees stay online and are indexed at [`hub/archive.html`](hub/archive.html).
+review surface at [`hub/`](hub/index.html). The repository root is the landing hub built by
+the final-integration session (`arena/621bf404-x3`); this branch registers `hub/` there
+(one unit row, one card section, two cross-reference lines) rather than replacing it, so
+the root page links both the data dashboard and this review hub. Nothing was deleted:
+the older trees stay online and are indexed at [`hub/archive.html`](hub/archive.html).
 
 **Pages:** overview · executive summary · requirements · questions & gaps · suggestions
 queue · originated lines · signals & strategies · validation gates · correlations ·
@@ -192,10 +194,14 @@ verification log · flagged for review · archive.
 
 **Irregularities found in existing data** (published at `hub/flagged.html`, all 21 non-blocking):
 a prior tree's Tampa Bay division record (1-2-0) contradicts the official page (2-0-0);
-a prior model's `model_home_spread` carries the sign of the expected margin and twice its
-magnitude in all 14 rows; published correlations from a prior tree do not reproduce
-exactly and came from a different snapshot; two official pages disagree on Freiermuth's
-designation and on Lamar Jackson's absence window.
+`dashboard/data/model_lines.json` still publishes `model_home_spread` with the sign of the
+expected margin instead of its negation (all 14 rows; 12 exactly double the margin), i.e. the
+wrong side and the wrong scale in betting notation; a prior tree's Tampa Bay division record
+(1-2-0) still contradicts the official page (2-0-0); published correlations from a prior tree
+do not reproduce exactly and came from a different snapshot; two official pages disagree on
+Freiermuth's designation and on Lamar Jackson's absence window. The `docs/data/` copies of the
+same two tables were corrected by the integration session, so `dashboard/data/` and
+`docs/data/` now disagree with each other — listed on the flags page rather than edited.
 
 ```bash
 python3 scripts/build_hub.py && python3 scripts/check_hub.py   # rebuild + audit

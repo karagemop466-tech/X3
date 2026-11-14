@@ -76,7 +76,7 @@
       "resolves": [
         "Q-13"
       ],
-      "detail": "Owner is located in Japan, where sports wagering is heavily restricted. Keep the competition points-only until a lawyer confirms what is permitted.",
+      "detail": "The operating jurisdiction and intended use have not been provided. Keep competition rewards non-funded and wagering disabled until qualified legal review confirms applicable requirements.",
       "status": "proposed",
       "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
     },

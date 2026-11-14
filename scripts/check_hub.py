@@ -107,11 +107,11 @@ def main():
     # 5. every hub page exists, has no unfilled token, and every row links
     pages_dir = os.path.join(ROOT, "hub")
     htmls = sorted(f for f in os.listdir(pages_dir) if f.endswith(".html"))
-    bad = [p for p in htmls + ["index.html"] if re.search(r"\{\{[A-Z_0-9]+\}\}", read(("hub/" if p != "index.html" else "") + p))]
+    bad = [p for p in htmls if re.search(r"\{\{[A-Z_0-9]+\}\}", read("hub/" + p))]
     if bad:
         fail("unfilled tokens in %s" % bad)
     else:
-        ok("%d hub pages + landing page carry no unfilled token" % len(htmls))
+        ok("%d hub pages carry no unfilled token" % len(htmls))
 
     # 6. data-row count parity for the injury page and the lines page
     inj_page = read("hub/injuries.html")
@@ -127,11 +127,17 @@ def main():
 
     # 7. links resolve on disk (after the last build wrote files)
     broken = 0
-    for name in htmls + ["index.html"]:
-        body = read(("hub/" if name != "index.html" else "") + name)
-        base = os.path.join(ROOT, "hub") if name != "index.html" else ROOT
-        for m in re.finditer(r'(?:href|src)="([^"#<> ]+?)"', body):
-            u = m.group(1)
+    root_html = read("index.html")
+    if 'href="hub/index.html"' not in root_html and 'href="hub/' not in root_html:
+        fail("the root landing page no longer links to the hub - the hub unit must be registered there")
+    for name in htmls:
+        body = read("hub/" + name)
+        base = os.path.join(ROOT, "hub")
+        for m in re.finditer(r'(?:href|src)="([^"#<>]+?)"', body):
+            u = m.group(1).strip()
+            if " " in u:
+                fail("%s: malformed href with spaces -> %s" % (name, u[:80]))
+                continue
             if u.startswith(("http://", "https://", "mailto:")):
                 continue
             tgt = os.path.normpath(os.path.join(base, u.split("?")[0]))
@@ -139,7 +145,7 @@ def main():
                 broken += 1
                 fail("broken internal link %s -> %s" % (name, u))
     if not broken:
-        ok("no broken internal links across %d pages" % (len(htmls) + 1))
+        ok("no broken internal links across %d hub pages" % len(htmls))
 
     # 8. official-source discipline on the data pages
     official = ("www.nfl.com", "nfl.com")

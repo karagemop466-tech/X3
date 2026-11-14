@@ -135,7 +135,7 @@
    "id": "FLG-14",
    "severity": "High",
    "area": "Legal / scope",
-   "finding": "Rewards for a leaderboard, and any staking, sit in the owner's jurisdiction, which this session could not verify. Two prior sessions assumed Japan; the Arena environment reports the Netherlands. A guessed regulator URL returned 404, so nothing here is legally verified.",
+   "finding": "Rewards for a leaderboard, and any staking, depend on the owner's jurisdiction, which is not established anywhere in the repository. Session arena/a8e2b617-x3 removed the earlier unsupported Tokyo/Japan assertions and left the jurisdiction flagged as unknown; a regulator page tried this session returned 404, so nothing here is legally verified.",
    "evidence": "https://www.ksa.nl/ (homepage only; the specific licence page tried was 404) ; https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md",
    "impact": "Reward implementation is out of scope until counsel confirms what is lawful",
    "action": "Q-08 before any reward, payout or real-money integration is built",
@@ -179,7 +179,7 @@
    "evidence": "https://www.nfl.com/standings/league/2026/REG vs https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/standings.json",
    "impact": "Any model or table in that tree that uses division record is wrong for TB; found only by re-deriving from the official page",
    "action": "Owner: accept the corrected value (this hub uses 2-0-0) and open a fix PR against that tree, or retire it per S-01",
-   "status": "OPEN - other session's file, not edited here"
+   "status": "OPEN - still live on main after the 2026-11-14 integration merge: docs/data/standings-2026-week10.csv was corrected to 2-0-0 by that session, dashboard/data/standings.json was not touched and still reads 1-2-0"
   },
   {
    "id": "FLG-19",
