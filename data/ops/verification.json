@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-14",
- "generated": "2026-11-14 20:02 UTC",
+ "generated": "2026-11-14 20:09 UTC",
  "checks": [
   {
    "check": "V1 every internal link resolves",
@@ -50,7 +50,7 @@
   {
    "check": "V10 second build is byte-identical",
    "result": "PASS",
-   "detail": "f3cf1fa1f7876261 vs f3cf1fa1f7876261"
+   "detail": "43114fe64d7e166f vs 43114fe64d7e166f"
   }
  ]
 }

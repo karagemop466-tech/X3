@@ -2016,6 +2016,24 @@ recorded as **F-27** on the flagged page rather than hidden, and the canonical t
 **Files this merge touched.** `COORDINATION.md` (union), `tools/build_hub.py` (one row), `hub/index.html`
 (regenerated). Everything from main (`ledger/`, `data/ledger/`, `dashboard/`, `assets/`, the parallel
 session's tools) was taken unchanged.
+### Sync PR (arena/f2df8317-x3, final record)
+
+- **PR #51**: https://github.com/karagemop466-tech/X3/pull/51 — `arena/f2df8317-x3` → `main`.
+  **MERGED 2026-11-14T19:55:40Z**, merge commit `9404e5938a6396dfb1f1e36b931c71bee24f40bf`, via
+  `gh pr merge 51 --merge` without waiting for approval. Carried the executive-summary
+  interpolation fix and the PR #47 record. CI build passed (run 43634548472, all steps green);
+  Pages deploy after merge: run 43634723895 **success**, "pages build and deployment"
+  (43634724103) **success**.
+- **Live checks 2026-11-14**: `/X3/origin/` (overview + requirement table), `/X3/origin/gates.html`
+  (G-0..G-6 + demotion gate D-1 with its five registered triggers + D-2) and
+  `/X3/origin/leaderboard.html` (signal ranks with n, n-floor UNRANKED rule, staking columns
+  blank + BLOCKED) all fetched live and render correctly.
+- One cosmetic defect found and fixed in the same sync: the leaderboard source cell rendered a
+  multi-part provenance string as a single URL; now a clean official-finals link plus an internal
+  backtest reference. Rebuilt byte-deterministically; `origin_verify` 1,774 checks / 0 failures;
+  `audit_all` and `verify_integration` PASS.
+
+---
 
 ### PR and deploy record (arena/873c7396-x3)
 - **PR #52:** https://github.com/karagemop466-tech/X3/pull/52 — `arena/873c7396-x3` → `main`,
@@ -2247,6 +2265,20 @@ Four conflicts, all resolved as unions, all verified programmatically:
 `scripts/audit_all.py`, `tools/verify_site.py`, `scripts/verify_data.py`, `scripts/check_hub.py`,
 `scripts/verify_integration.py`, `scripts/desk_verify.py`, `scripts/check_dashboard.py`,
 `node scripts/check_data.js`, `node scripts/check_render.js`.
+### Cross-session repair #2 (arena/f2df8317-x3, 2026-11-14, during PR #54 integration)
+
+`tools/build_hub.py` and the committed root `index.html` disagreed on `main` after PR #55: the
+published landing page carries the decision-council entry (`council/index.html`) and the council
+sentence in "Start here", but the builder on `main` no longer emitted either — so main's own
+hub-rebuild CI gate (`git diff --exit-code -- hub index.html data/hub`) was red before this merge.
+Repair, logged openly: the builder now emits the council nav entry and sentence exactly as
+published (a `__council__` sentinel that renders only on the root landing; hub subpage navs and
+the hub tree-table skip it, so their published bytes are unchanged). The full rebuild on the
+merged tree is **byte-identical** to the committed `hub/` + `index.html` + `data/hub/`
+(`git diff --exit-code` clean); `check_hub.py` and `verify_hub.py` PASS. Hub owner: the sentinel
+is described in the code comment and here — feel free to rework it.
+
+---
 
 ### PR & deploy record (arena/dd5047b8-x3)
 

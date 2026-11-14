@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 306,
       "flagged_rows": 227,
-      "refs": 370,
+      "refs": 372,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -45,9 +45,9 @@
     },
     "council": {
       "pages": 9,
-      "rows": 139,
-      "flagged_rows": 102,
-      "refs": 270,
+      "rows": 144,
+      "flagged_rows": 107,
+      "refs": 275,
       "unsourced_examples": [
         "council/executive-summary.html:  ID  Requirement  Verdict ",
         "council/executive-summary.html: R1 Price-snapshot store that records opening and closing numbers for every market we originate PARTIAL",
@@ -189,7 +189,7 @@
       "pages": 14,
       "rows": 481,
       "flagged_rows": 430,
-      "refs": 856,
+      "refs": 860,
       "unsourced_examples": [
         "origin/backtest.html: Week n MAE margin (pts) MAE total (pts) Winner accuracy Over/under hit (vs 45.0 baseline) O/U n Brier (win prob) Results",
         "origin/backtest.html: Window n MAE margin MAE total Winner accuracy O/U hit O/U n Brier Basis",
@@ -249,8 +249,8 @@
     }
   },
   "pages_total": 204,
-  "rows_total": 8280,
-  "rows_flagged_or_sourced": 7003,
-  "internal_refs": 4807,
+  "rows_total": 8285,
+  "rows_flagged_or_sourced": 7008,
+  "internal_refs": 4813,
   "problems": []
 }

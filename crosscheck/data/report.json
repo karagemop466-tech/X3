@@ -1,14 +1,14 @@
 {
- "generated_at": "2026-11-14T20:01:57+00:00",
+ "generated_at": "2026-11-14T20:08:58+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
    "pages": 197,
-   "links": 11208,
-   "external": 7344,
+   "links": 11219,
+   "external": 7349,
    "tables": 355,
-   "rows": 7263,
-   "rows_with_http": 5804,
+   "rows": 7268,
+   "rows_with_http": 5809,
    "rows_flag_only": 254,
    "rows_without": 1205
   },
@@ -216,11 +216,11 @@
    },
    {
     "page": "council/index.html",
-    "links": 47,
-    "external": 26,
+    "links": 52,
+    "external": 31,
     "tables": 2,
-    "rows": 31,
-    "rows_with_http": 25,
+    "rows": 36,
+    "rows_with_http": 30,
     "rows_flag_only": 6,
     "rows_without": 0
    },
@@ -1186,7 +1186,7 @@
    },
    {
     "page": "index.html",
-    "links": 52,
+    "links": 54,
     "external": 1,
     "tables": 0,
     "rows": 0,
@@ -1636,7 +1636,7 @@
    },
    {
     "page": "origin/leaderboard.html",
-    "links": 21,
+    "links": 25,
     "external": 5,
     "tables": 1,
     "rows": 5,
@@ -12088,7 +12088,7 @@
    "cmd": "python3 tools/check_links.py",
    "exit": 0,
    "tail": [
-    "OK \u2014 13 pages, 370 links checked, no broken internal links."
+    "OK \u2014 13 pages, 372 links checked, no broken internal links."
    ]
   },
   {
