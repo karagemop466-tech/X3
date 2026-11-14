@@ -1,0 +1,14 @@
+game,week,date,kickoff_slot_et,away,home,fair_spread_home,market_spread_home,diff_spread_fair_minus_market,fair_total,market_total,diff_total_fair_minus_market,moneyline_home,source_url,verification
+NE@DET,10,2026-11-15,09:30,NE,DET,-3.5,,,46.5,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+BUF@NYJ,10,2026-11-15,13:00,BUF,NYJ,,,,50.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,"DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED; IRREGULAR: model home/away reversed vs official schedule, spread blanked"
+CAR@NO,10,2026-11-15,13:00,CAR,NO,,,,49.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,"DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED; IRREGULAR: model home/away reversed vs official schedule, spread blanked"
+HOU@CLE,10,2026-11-15,13:00,HOU,CLE,-0.5,,,43.5,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+JAX@TEN,10,2026-11-15,13:00,JAX,TEN,,,,44.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,"DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED; IRREGULAR: model home/away reversed vs official schedule, spread blanked"
+KC@ATL,10,2026-11-15,13:00,KC,ATL,6.0,,,44.5,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+MIA@IND,10,2026-11-15,13:00,MIA,IND,-0.5,,,42.5,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+MIN@GB,10,2026-11-15,13:00,MIN,GB,-2.0,,,32.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+LA@ARI,10,2026-11-15,16:05,LA,ARI,9.5,,,44.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+SEA@LV,10,2026-11-15,16:05,SEA,LV,-1.0,,,43.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+SF@DAL,10,2026-11-15,16:25,SF,DAL,8.0,,,51.5,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+PIT@CIN,10,2026-11-15,20:20,PIT,CIN,0.0,,,46.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
+LAC@BAL,10,2026-11-16,20:15,LAC,BAL,-4.5,,,45.0,,,,https://www.nfl.com/schedules/2026/by-week/week-10,DERIVED model X3-v1 (hub/data/lines.json); market blank: UNVERIFIED
