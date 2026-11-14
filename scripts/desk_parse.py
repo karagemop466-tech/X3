@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 """Parse captured official NFL pages into source-linked datasets.
 
-Inputs : capture/*.html                 raw HTML captured by the CI workflow
-Outputs: data/desk/games.json           2026 regular-season game log (W1-W11)
-         data/desk/standings.json       2026 league standings
-         data/desk/injuries.json        Week 8-11 official injury reports
-         data/desk/depth.json           32 club depth charts with string order
-         data/desk/parse_report.json    per-page counts + every parse problem
+Inputs : capture/            raw HTML captured by scripts/desk_capture.py
+Outputs: data/desk/games.json      2026 regular-season schedule + results (W1-W11)
+         data/desk/standings.json  2026 league standings
+         data/desk/injuries.json   official injury reports, weeks 8-11
+         data/desk/depth.json      32 club depth charts with string order
+         data/desk/parse_report.json  per-page counts and every parse problem
 
-Parsing rules:
-  * values are read only from the captured page; missing cells stay empty
-  * each row keeps the official URL it came from (game page when the schedule links
-    one, otherwise the week's schedule page)
-  * a game is emitted only when both scores are present; scheduled games are emitted
-    with empty scores and an explicit status
-  * nothing is inferred, normalised or filled in
+Parsing rules
+  * a value is written only when it was read from the captured page
+  * missing cells stay empty (never guessed, never carried over)
+  * every row keeps the official URL it came from
+  * a row that cannot be parsed is reported, not silently dropped
 """
 from __future__ import annotations
 
@@ -25,137 +23,307 @@ import sys
 from pathlib import Path
 
 from desk_extract import text_of
+from desk_parse_meta import (CLUB_DEPTH, FULL_NAME, INJURY_URL, NFL, NICKNAME,
+                             SCHEDULE_URL, STANDINGS_URL)
 
-NFL = "https://www.nfl.com"
-SCHEDULE_URL = NFL + "/schedules/2026/by-week/week-{}"
-STANDINGS_URL = NFL + "/standings/league/2026/reg"
-INJURY_URL = NFL + "/injuries/league/2026/reg{}"
-
-CLUB_DEPTH = {
-    "ARI": "https://www.azcardinals.com/team/depth-chart",
-    "ATL": "https://www.atlantafalcons.com/team/depth-chart",
-    "BAL": "https://www.baltimoreravens.com/team/depth-chart",
-    "BUF": "https://www.buffalobills.com/team/depth-chart",
-    "CAR": "https://www.panthers.com/team/depth-chart",
-    "CHI": "https://www.chicagobears.com/team/depth-chart",
-    "CIN": "https://www.bengals.com/team/depth-chart",
-    "CLE": "https://www.clevelandbrowns.com/team/depth-chart",
-    "DAL": "https://www.dallascowboys.com/team/depth-chart",
-    "DEN": "https://www.denverbroncos.com/team/depth-chart",
-    "DET": "https://www.detroitlions.com/team/depth-chart",
-    "GB": "https://www.packers.com/team/depth-chart",
-    "HOU": "https://www.houstontexans.com/team/depth-chart",
-    "IND": "https://www.colts.com/team/depth-chart",
-    "JAX": "https://www.jaguars.com/team/depth-chart",
-    "KC": "https://www.chiefs.com/team/depth-chart",
-    "LA": "https://www.therams.com/team/depth-chart",
-    "LAC": "https://www.chargers.com/team/depth-chart",
-    "LV": "https://www.raiders.com/team/depth-chart",
-    "MIA": "https://www.miamidolphins.com/team/depth-chart",
-    "MIN": "https://www.vikings.com/team/depth-chart",
-    "NE": "https://www.patriots.com/team/depth-chart",
-    "NO": "https://www.neworleanssaints.com/team/depth-chart",
-    "NYG": "https://www.giants.com/team/depth-chart",
-    "NYJ": "https://www.newyorkjets.com/team/depth-chart",
-    "PHI": "https://www.philadelphiaeagles.com/team/depth-chart",
-    "PIT": "https://www.steelers.com/team/depth-chart",
-    "SEA": "https://www.seahawks.com/team/depth-chart",
-    "SF": "https://www.49ers.com/team/depth-chart",
-    "TB": "https://www.buccaneers.com/team/depth-chart",
-    "TEN": "https://www.tennesseetitans.com/team/depth-chart",
-    "WAS": "https://www.commanders.com/team/depth-chart",
-}
-
-SCHEDULE_CLUB_NAME = {
-    "Cardinals": "ARI", "Falcons": "ATL", "Ravens": "BAL", "Bills": "BUF",
-    "Panthers": "CAR", "Bears": "CHI", "Bengals": "CIN", "Browns": "CLE",
-    "Cowboys": "DAL", "Broncos": "DEN", "Lions": "DET", "Packers": "GB",
-    "Texans": "HOU", "Colts": "IND", "Jaguars": "JAX", "Chiefs": "KC",
-    "Rams": "LA", "Chargers": "LAC", "Raiders": "LV", "Dolphins": "MIA",
-    "Vikings": "MIN", "Patriots": "NE", "Saints": "NO", "Giants": "NYG",
-    "Jets": "NYJ", "Eagles": "PHI", "Steelers": "PIT", "49ers": "SF",
-    "Seahawks": "SEA", "Buccaneers": "TB", "Titans": "TEN", "Commanders": "WAS",
-}
-
-PARSE_NOTES: list[str] = []
+PROBLEMS: list[dict] = []
 
 
-def note(msg: str) -> None:
-    PARSE_NOTES.append(msg)
+def problem(page: str, msg: str, detail: str = "") -> None:
+    PROBLEMS.append({"page": page, "problem": msg, "detail": detail[:400]})
 
 
 # --------------------------------------------------------------------------- #
-# 1. Game log                                                                  #
+# 1. Schedule page: completed games and scheduled games                        #
 # --------------------------------------------------------------------------- #
-SCORE_LINE = re.compile(
-    r"^([A-Za-z0-9 ]+?) (\d{1,3}), ([A-Za-z0-9 ]+?) (\d{1,3}), FINAL", re.M)
+FINAL_RE = re.compile(
+    r"^([A-Za-z0-9.&' ]+?) (\d{1,3}), ([A-Za-z0-9.&' ]+?) (\d{1,3}), FINAL, "
+    r"([A-Za-z]+), ([A-Za-z]+ \d{1,2})(?:st|nd|rd|th)$")
+SCHED_RE = re.compile(
+    r"^([A-Za-z0-9.&' ]+?) at ([A-Za-z0-9.&' ]+), ([A-Za-z]+), "
+    r"([A-Za-z]+ \d{1,2})(?:st|nd|rd|th), (\d{1,2}:\d{2} [AP]M), (.+)$")
+MONTHS = {m: i for i, m in enumerate(
+    ["January", "February", "March", "April", "May", "June", "July", "August",
+     "September", "October", "November", "December"], start=1)}
 
 
-def parse_schedule(name: str, raw: str) -> list[dict]:
-    week = int(re.search(r"week-(\d+)", name).group(1))
+def iso_date(month_name: str, day_text: str, season: int = 2026) -> str:
+    """Date from the page text; a January date belongs to the following year."""
+    month = MONTHS.get(month_name)
+    if not month:
+        return ""
+    day = int(re.sub(r"\D", "", day_text))
+    year = season + 1 if month <= 2 else season
+    return f"{year:04d}-{month:02d}-{day:02d}"
+
+
+def parse_schedule(page: str, raw: str) -> list[dict]:
+    week = int(re.search(r"week-(\d+)", page).group(1))
+    src = SCHEDULE_URL.format(week)
+    rows: list[dict] = []
+    for line in text_of(raw).splitlines():
+        m = FINAL_RE.match(line)
+        if m:
+            away, ascore, home, hscore, _day, date_text = m.groups()
+            rows.append({
+                "week": week, "away": NICKNAME.get(away, ""), "home": NICKNAME.get(home, ""),
+                "away_name": away, "home_name": home,
+                "away_score": int(ascore), "home_score": int(hscore),
+                "status": "FINAL", "date_text": date_text,
+                "date_iso": iso_date(date_text.split()[0], date_text),
+                "kickoff_et": "", "network": "", "source": src,
+            })
+            if not rows[-1]["away"] or not rows[-1]["home"]:
+                problem(page, "club not mapped to an abbreviation", line)
+            continue
+        m = SCHED_RE.match(line)
+        if m:
+            away, home, _day, date_text, kickoff, network = m.groups()
+            rows.append({
+                "week": week, "away": NICKNAME.get(away, ""), "home": NICKNAME.get(home, ""),
+                "away_name": away, "home_name": home,
+                "away_score": None, "home_score": None, "status": "SCHEDULED",
+                "date_text": date_text, "date_iso": iso_date(date_text.split()[0], date_text),
+                "kickoff_et": kickoff, "network": network.strip(), "source": src,
+            })
+            if not rows[-1]["away"] or not rows[-1]["home"]:
+                problem(page, "club not mapped to an abbreviation", line)
+    seen, unique = set(), []
+    for r in rows:
+        key = (r["away"], r["home"])
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(r)
+    if not unique:
+        problem(page, "no games parsed")
+    return unique
+
+
+# --------------------------------------------------------------------------- #
+# 2. Standings                                                                 #
+# --------------------------------------------------------------------------- #
+RECORD_RE = re.compile(r"(\d+) - (\d+) - (\d+)")
+NUM_RE = re.compile(r"^-?\d+\.\d{3}$")
+
+
+def parse_standings(page: str, raw: str) -> list[dict]:
+    lines = text_of(raw).splitlines()
+    rows, i = [], 0
+    names = {v: k for k, v in FULL_NAME.items()}
+    while i < len(lines) - 2:
+        name = lines[i].strip()
+        if name in names and lines[i + 1].strip() == name.split()[-1]:
+            data = lines[i + 2].strip()
+            parts = data.split()
+            if len(parts) >= 7 and parts[0].isdigit():
+                recs = RECORD_RE.findall(data)
+                pcts = [p for p in parts if NUM_RE.match(p)]
+                rows.append({
+                    "abbr": names[name], "name": name,
+                    "w": int(parts[0]), "l": int(parts[1]), "t": int(parts[2]),
+                    "pct": parts[3], "pf": int(parts[4]), "pa": int(parts[5]),
+                    "net": int(parts[6]),
+                    "home": "-".join(recs[0]) if len(recs) > 0 else "",
+                    "road": "-".join(recs[1]) if len(recs) > 1 else "",
+                    "div": "-".join(recs[2]) if len(recs) > 2 else "",
+                    "div_pct": pcts[1] if len(pcts) > 1 else "",
+                    "conf": "-".join(recs[3]) if len(recs) > 3 else "",
+                    "conf_pct": pcts[2] if len(pcts) > 2 else "",
+                    "nonconf": "-".join(recs[4]) if len(recs) > 4 else "",
+                    "strk": parts[-2] if re.fullmatch(r"\d+[WL]", parts[-2]) else "",
+                    "last5": "-".join(recs[-1]) if recs else "",
+                    "source": STANDINGS_URL,
+                })
+            i += 3
+            continue
+        i += 1
+    if len(rows) != 32:
+        problem(page, f"expected 32 standings rows, parsed {len(rows)}")
+    return rows
+
+
+# --------------------------------------------------------------------------- #
+# 3. Injury reports                                                            #
+# --------------------------------------------------------------------------- #
+TABLE_RE = re.compile(r"(<table\b.*?</table>)", re.S)
+TITLE_RE = re.compile(r'<div class="nfl-t-stats__title">.*?</div></div>', re.S)
+CELL_RE = re.compile(r"<tr><td\b[^>]*>(.*?)</td><td>(.*?)</td><td>(.*?)</td><td>(.*?)</td><td>(.*?)</td></tr>", re.S)
+LINK_RE = re.compile(r'<a href="([^"]+)"[^>]*>\s*(.*?)\s*</a>', re.S)
+PRACTICE = {"Full Participation in Practice", "Limited Participation in Practice",
+            "Did Not Participate In Practice", "Not Listed"}
+GAME_STATUS = {"Out", "Doubtful", "Questionable", ""}
+
+
+def clean(s: str) -> str:
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s))).strip()
+
+
+def parse_injuries(page: str, raw: str, week: int) -> tuple[list[dict], dict]:
+    src = INJURY_URL.format(week)
+    rows: list[dict] = []
+    current = ""
+    for m in re.finditer(r'<div class="nfl-t-stats__title">(.*?)</div></div>|<table\b.*?</table>', raw, re.S):
+        chunk = m.group(0)
+        if chunk.startswith("<div"):
+            label = clean(chunk).split()[-1] if clean(chunk) else ""
+            if label in NICKNAME:
+                current = NICKNAME[label]
+            else:
+                problem(page, "team header not recognised", clean(chunk)[:80])
+            continue
+        if not current:
+            problem(page, "player table with no team header")
+            continue
+        if "<th>Player</th>" not in chunk:
+            continue
+        for cm in CELL_RE.finditer(chunk):
+            cells = [clean(c) for c in cm.groups()]
+            name_cell = cm.group(1)
+            link = LINK_RE.search(name_cell)
+            player = cells[0]
+            href = link.group(1) if link else ""
+            injury, practice, status = cells[2], cells[3], cells[4]
+            player_url = (NFL + href) if href.startswith("/players/") else ""
+            rows.append({
+                "team": current, "week": week, "player": player,
+                "player_url": player_url, "pos": cells[1], "injury": injury,
+                "practice": practice, "status": status, "source": src,
+            })
+            if injury and injury not in ("",) and len(injury) > 60:
+                problem(page, "suspicious injury cell", injury)
+            if practice and practice not in PRACTICE:
+                problem(page, "unrecognised practice value", practice)
+            if status and status not in GAME_STATUS:
+                problem(page, "unrecognised game status", status)
+    if not rows:
+        problem(page, "no injury rows parsed")
+    stats = {
+        "week": week, "rows": len(rows),
+        "teams": len({r["team"] for r in rows}),
+        "out": sum(r["status"] == "Out" for r in rows),
+        "doubtful": sum(r["status"] == "Doubtful" for r in rows),
+        "questionable": sum(r["status"] == "Questionable" for r in rows),
+        "no_status": sum(r["status"] == "" for r in rows),
+        "url": src,
+    }
+    return rows, stats
+
+
+# --------------------------------------------------------------------------- #
+# 4. Club depth charts                                                         #
+# --------------------------------------------------------------------------- #
+CAPTION_RE = re.compile(r"<caption[^>]*>(.*?)</caption>", re.S)
+TH_RE = re.compile(r"<th[^>]*>(.*?)</th>", re.S)
+DROW_RE = re.compile(r"<tr>(.*?)</tr>", re.S)
+TD_RE = re.compile(r"<td[^>]*>(.*?)</td>", re.S)
+UNOFFICIAL_RE = re.compile(r"unofficial", re.I)
+ASOF_RE = re.compile(r"(?:as of|updated)\s*[:\-]?\s*([A-Z][a-z]+ \d{1,2},? \d{4}|[A-Z][a-z]+ \d{1,2})", re.I)
+
+
+def parse_depth(page: str, raw: str, abbr: str) -> dict:
     text = text_of(raw)
-    links = {}
-    for href, inner in re.findall(
-            r'<a\b[^>]*href="([^"]+)"[^>]*>(.*?)</a>', raw, re.S | re.I):
-        m = re.search(r"/games/([a-z0-9-]+-2026-reg-\d+)$", href)
-        if not m:
-            continue
-        label = re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", inner))).strip()
-        links.setdefault(m.group(1), label)
-    games = []
-    for line in text.splitlines():
-        m = SCORE_LINE.match(line)
-        if not m:
-            continue
-        away_name, away_score, home_name, home_score = m.groups()
-        away_name, home_name = away_name.strip(), home_name.strip()
-        good = {v: k for k, v in ((a, b) for a, b in SCHEDULE_CLUB_NAME.items())}
-        if away_name not in SCHEDULE_CLUB_NAME or home_name not in SCHEDULE_CLUB_NAME:
-            note(f"{name}: unrecognised club in score line: {line}")
-            continue
-        slug_part = f"{away_name.lower().replace(' ', '-')}-at-{home_name.lower().replace(' ', '-')}-2026-reg-{week}"
-        slug_part = slug_part.replace("49ers", "49ers")
-        src = f"{NFL}/games/{slug_part}"
-        if slug_part not in links:
-            note(f"{name}: no game link for {line}; using schedule page as source")
-            src = SCHEDULE_URL.format(week)
-        games.append({
-            "week": week, "away": SCHEDULE_CLUB_NAME[away_name],
-            "home": SCHEDULE_CLUB_NAME[home_name],
-            "away_score": int(away_score), "home_score": int(home_score),
-            "status": "FINAL", "source": src,
-        })
-    # Scheduled (not yet played) games: HOME at AWAY team cards, no FINAL line.
-    scheduled = []
-    for m in re.finditer(r"/games/([a-z0-9-]+-2026-reg-(\d+))", raw):
-        pass
-    return games
-
-
-def parse_schedule_scheduled(name: str, raw: str) -> list[dict]:
-    """Games with no FINAL line: read gameTime + club abbreviations from the payload."""
-    week = int(re.search(r"week-(\d+)", name).group(1))
-    out = []
-    for m in re.finditer(r'"gameTime":"([^"]+)"', raw):
-        pass
-    # Next.js payload: {"gameTime":..,"homeTeam":{"abbreviation":..},"awayTeam":..}
-    for chunk in re.findall(r'self\.__next_f\.push\(\[1,(".*?")\]\)', raw, re.S):
-        try:
-            payload = json.loads(chunk)
-        except Exception:
-            continue
-        for g in re.finditer(
-                r'"gameTime":"([^"]+)".{0,4000}?"homeTeam":\{"abbreviation":"([A-Z]{2,3})"'
-                r'.{0,4000}?"awayTeam":\{"abbreviation":"([A-Z]{2,3})"', payload, re.S):
-            out.append({"gameTime": g.group(1), "home": g.group(2), "away": g.group(3)})
+    out = {"abbr": abbr, "url": CLUB_DEPTH.get(abbr, ""), "units": [],
+           "labels_unofficial": bool(UNOFFICIAL_RE.search(text[:6000])),
+           "as_of_text": "", "rows": 0}
+    m = ASOF_RE.search(text)
+    if m:
+        out["as_of_text"] = m.group(1)
+    for tm in re.finditer(r"<table\b.*?</table>", raw, re.S):
+        table = tm.group(0)
+        cm = CAPTION_RE.search(table)
+        caption = clean(cm.group(1)) if cm else ""
+        ths = [clean(t) for t in TH_RE.findall(table)[:6]]
+        if not any(t.lower().startswith(("first", "1st", "starter")) for t in ths):
+            if "Position" not in ths:
+                continue
+        unit = caption or ("Offense" if not out["units"] else "Unknown")
+        slots = []
+        for rm in DROW_RE.finditer(table):
+            cells = TD_RE.findall(rm.group(1))
+            if len(cells) < 2:
+                continue
+            pos = clean(cells[0])
+            if not pos or len(pos) > 12:
+                continue
+            tiers = []
+            for cell in cells[1:]:
+                names = [clean(a) for a in re.findall(r"<a\b[^>]*>(.*?)</a>", cell, re.S)]
+                if not names:
+                    txt = clean(cell)
+                    names = [txt] if txt else []
+                tiers.append(names)
+            while tiers and not tiers[-1]:
+                tiers.pop()
+            if not any(tiers):
+                continue
+            slots.append({"pos": pos, "tiers": tiers})
+        if slots:
+            out["units"].append({"unit": unit, "headers": ths, "slots": slots})
+            out["rows"] += sum(len(s["tiers"]) for s in slots)
+    if not out["units"]:
+        problem(page, "no depth-chart tables parsed", f"{abbr} {out['url']}")
     return out
 
+
+# --------------------------------------------------------------------------- #
 def main(src: str, dst: str) -> int:
     cap, out = Path(src), Path(dst)
     out.mkdir(parents=True, exist_ok=True)
-    report: dict[str, object] = {"notes": PARSE_NOTES}
-    # implemented below
-    (out / "parse_report.json").write_text(json.dumps(report, indent=1))
+    games, standings, injuries, depth = [], [], [], []
+    inj_stats = []
+
+    for w in range(1, 12):
+        f = cap / f"schedule-w{w}.html"
+        if not f.exists():
+            problem(f"schedule-w{w}", "page not captured")
+            continue
+        games += parse_schedule(f"schedule-w{w}", f.read_text(errors="replace"))
+    f = cap / "standings-2026.html"
+    if f.exists():
+        standings = parse_standings("standings-2026", f.read_text(errors="replace"))
+    for w in (8, 9, 10, 11):
+        f = cap / f"injuries-w{w}.html"
+        if not f.exists():
+            problem(f"injuries-w{w}", "page not captured")
+            continue
+        rows, st = parse_injuries(f"injuries-w{w}", f.read_text(errors="replace"), w)
+        injuries += rows
+        inj_stats.append(st)
+    for abbr, url in sorted(CLUB_DEPTH.items()):
+        f = cap / f"depth-{abbr}.html"
+        if not f.exists():
+            problem(f"depth-{abbr}", "page not captured", url)
+            continue
+        depth.append(parse_depth(f"depth-{abbr}", f.read_text(errors="replace"), abbr))
+
+    final = [g for g in games if g["status"] == "FINAL"]
+    (out / "games.json").write_text(json.dumps({
+        "season": 2026, "source_note": "Parsed from official NFL.com week schedule pages",
+        "games": games,
+        "counts": {"total": len(games), "final": len(final),
+                   "scheduled": len(games) - len(final)},
+    }, indent=1) + "\n")
+    (out / "standings.json").write_text(json.dumps({
+        "season": 2026, "url": STANDINGS_URL, "rows": standings}, indent=1) + "\n")
+    (out / "injuries.json").write_text(json.dumps({
+        "season": 2026, "weeks": inj_stats, "rows": injuries}, indent=1) + "\n")
+    (out / "depth.json").write_text(json.dumps({
+        "captured": "2026-11-14",
+        "note": "Club depth charts are published by each club; most are labelled unofficial by the club.",
+        "clubs": depth}, indent=1) + "\n")
+    (out / "parse_report.json").write_text(json.dumps({
+        "problems": PROBLEMS,
+        "problem_count": len(PROBLEMS),
+        "game_counts": {"total": len(games), "final": len(final)},
+        "standings_rows": len(standings),
+        "injury_weeks": inj_stats,
+        "depth_clubs": len(depth),
+        "depth_rows": {d["abbr"]: d["rows"] for d in depth},
+    }, indent=1) + "\n")
+    print(json.dumps({"problems": len(PROBLEMS), "games": len(games),
+                      "final": len(final), "standings": len(standings),
+                      "injuries": len(injuries), "depth_clubs": len(depth)}, indent=1))
     return 0
 
 
