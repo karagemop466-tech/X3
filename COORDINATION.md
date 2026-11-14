@@ -608,6 +608,11 @@ logged here as requests per protocol, not edited.
   - live site https://karagemop466-tech.github.io/X3/ fetched and rendering after the merge;
   - live check of https://karagemop466-tech.github.io/X3/lines.html confirms this session's
     source-row fixes deployed (NFL.com stats/injuries links, depth-chart tracker link).
+- **PR #41 (this record):** https://github.com/karagemop466-tech/X3/pull/41 — COORDINATION
+  record + additive sync of PRs #38/#40. Result: **MERGED** 2026-11-14T19:04:56Z, merge
+  commit `94e278c7f8edc49a506c7f2b533f45b8b6fd2dc3`; post-merge Pages runs
+  "Deploy X3 NFL site to GitHub Pages" and "pages build and deployment" both **success**;
+  Pages API status `built`.
 - **Parallel-session note:** `main` advanced through PRs #30–#38 while this session worked;
   each advance was merged in additively before the final PR (no other session's work
   discarded; union resolution verified programmatically on COORDINATION.md).
