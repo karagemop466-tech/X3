@@ -13,7 +13,7 @@ Pages
   strategies.html         strategy competition + gate ledger
   leaderboard.html        competition rules, empty until gates pass
   correlations.html       measured correlations with n and CI
-  injuries.html           official injury reports (weeks 8-11)
+  injuries.html           official injury reports (weeks captured, duplicates dropped)
   lineups.html            starter/backup deficiency map
   questions.html          information register (known / missing / decision)
   suggestions.html        suggestions for review before implementation
@@ -251,7 +251,10 @@ odds feed exists in this repository. Own lines are published as
   'Recomputed W-L-T, PF and PA for all 32 clubs — exact match to the standings page'],
  ['2026 standings', '32 clubs', src('https://www.nfl.com/standings/league/2026/reg', 'nfl.com standings'),
   'Independent recomputation from the game log'],
- ['Injury reports, weeks 8–11', f"{len(data['injuries']['rows']):,} rows",
+ ['Injury reports, weeks '
+  + '-'.join(str(w) for w in [min(x['week'] for x in data['injuries']['weeks']), max(x['week'] for x in data['injuries']['weeks'])])
+  + f" ({len(data['injuries']['weeks'])} weeks)",
+  f"{len(data['injuries']['rows']):,} rows",
   src('https://www.nfl.com/injuries/league/2026/reg10', 'nfl.com injuries'),
   'Team headers and status vocabulary checked row by row'],
  ['Club depth charts', f"{sum(len(c['units']) for c in data['depth']['clubs'])} unit tables, 32 clubs",
@@ -477,7 +480,9 @@ correlation clears the CI test above. At {m['inputs']['games']} games, no leg pa
                            src(r_["player_url"] or r_["source"], "nfl.com")])
     body = f"""
 <h2>Official injury reports</h2>
-<p class="lede">Parsed directly from NFL.com's official weekly injury report pages. Blank game
+<p class="lede">Parsed directly from NFL.com's official weekly injury report pages: weeks
+{min(weeks)}–{max(weeks)}. A request for a future week returns the current week's report, so
+duplicate future weeks are detected and dropped rather than published twice. Blank game
 statuses are preserved as blank — they mean the club had not issued a designation, not that the
 player is healthy.</p>
 {table(['Week', 'Rows', 'Teams', 'Out', 'Doubtful', 'Questionable', 'No status', 'Source'],

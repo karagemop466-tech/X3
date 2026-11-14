@@ -867,7 +867,7 @@ left as-is, so the hub publishes through the existing `path: '.'` upload.
 | D10 | Executive summary | done | `desk/executive-summary.html` | counts computed at build time |
 | D11 | Consolidated dashboard + link check | done | `desk/**` (18 pages) | every data row has a source link or an explicit UNVERIFIED badge |
 | D12 | Verification gate green | done | `scripts/desk_verify.py` | runs locally and in CI (`Verify the consolidated decision desk`) |
-| D13 | PR → merge → Pages deploy confirmation | in progress | `COORDINATION.md` | see PR log below |
+| D13 | PR → merge → Pages deploy confirmation | done | `COORDINATION.md` | see PR log below |
 
 ### Data pipeline built this session
 
@@ -916,3 +916,40 @@ commits the structured result back to this branch:
 `docs/**`, `dashboard/**`, `x3lab/**`, `lab/**`, `pages/**`, `site/**`, `legacy/**`, `analysis/**`,
 `research/**`, `data/*.csv`, `tools/**` and every pre-existing `scripts/*.py` remain exactly as the
 earlier sessions left them. They are linked from `desk/archive.html`.
+
+### PR, merge and deploy record (session arena/3bf7cc8b-x3)
+
+- **PR #30:** https://github.com/karagemop466-tech/X3/pull/30 — `arena/3bf7cc8b-x3` → `main`.
+  Created 2026-11-14, **MERGED** 2026-11-14T18:40:25Z via `gh pr merge 30 --merge`.
+  Merge commit `38a2d9783380cf542111c137cf189014c26a3f97`.
+- **Conflicts:** `main` advanced twice mid-flight (PR #27/#28 then PR #31, both from session
+  `arena/1e2d8ef2-x3`). Both times `origin/main` was merged in and resolved **additively**:
+  their landing hub in `index.html` was kept as the landing page and this session's desk entry was
+  appended to it; `COORDINATION.md` and `README.md` kept their text in full followed by this
+  session's sections. Nothing from either session was discarded.
+  Note: an earlier attempt to replace the shared `index.html` with a redirect was reverted in favour
+  of adding a desk section to the existing hub.
+- **Deploy:** workflow run
+  [43627910469](https://github.com/karagemop466-tech/X3/actions/runs/43627910469) — build **success**
+  (including `python3 scripts/desk_verify.py`), deploy **success**;
+  "pages build and deployment" run [43627909154](https://github.com/karagemop466-tech/X3/actions/runs/43627909154)
+  — **success**. Pages API: `built`, source `main /`.
+- **Live verification 2026-11-14:** https://karagemop466-tech.github.io/X3/desk/index.html fetched
+  and confirmed to render the dashboard (KPIs, verified-data table with source links, decision
+  cards). The site is reachable from the repository root hub via the new "Decision desk" badge and
+  the dedicated desk section.
+- **Follow-up commit (this record):** corrected the injury-report week span in the prose so it can
+  no longer drift from the data (now "weeks 8-10 (3 weeks)"), and stopped `desk/injuries.html`
+  describing a week it does not publish.
+
+### What remains unverified (published on `desk/flagged.html`, non-blocking)
+
+1. Market spreads and totals — no official NFL source publishes prices.
+2. Closing-line value and any profitability claim — depends on (1).
+3. Player-prop correlations — no official prop history anywhere.
+4. Houston depth chart — published only as a photo gallery.
+5. 108 Out/Doubtful players not joinable to a depth string.
+6. Whether club depth charts are authoritative — most are self-labelled "unofficial".
+7. Reward/payout mechanics — no mechanism exists; jurisdiction unresolved and not asserted.
+8. Points cost of a lineup change — needs multiple seasons joined to injury reports.
+9. Injury designations with no game status — no designation was published at capture time.

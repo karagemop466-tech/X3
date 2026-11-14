@@ -362,7 +362,7 @@ decisions that come next.</p>
 
 <h3>1. Status in one paragraph</h3>
 <p>The desk now ingests official NFL data end to end without manual input: {m['inputs']['games']}
-completed games, the full 32-club standings, four weeks of official injury reports and all 32 club
+completed games, the full 32-club standings, three weeks of official injury reports and all 32 club
 depth charts. From those inputs it originates its own spreads and totals, publishes a strategy
 competition with an explicit gate ledger, and maps every Out or Doubtful player onto his club's
 depth string so start and backup absences are visible. The model is fitted and tested out of
@@ -378,7 +378,7 @@ finals across weeks 1-10.</li>
 <li><b>Standings.</b> W-L-T, points for and points against for all 32 clubs were recomputed from
 the captured game log and matched the official standings exactly. This is a genuine two-source
 reconciliation, because the two pages are separate publications.</li>
-<li><b>Injuries.</b> {len(data['injuries']['rows']):,} rows across weeks 8-11, parsed with team
+<li><b>Injuries.</b> {len(data['injuries']['rows']):,} rows across weeks 8-10, parsed with team
 headers and a fixed status vocabulary; anything outside that vocabulary would have failed the
 build.</li>
 <li><b>Depth.</b> 31 of 32 club charts are machine-readable. Houston publishes an image and is
