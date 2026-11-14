@@ -2470,3 +2470,37 @@ no other session-owned file is edited.
   `hub/archive.html`'s neighbourhood only via the root landing. A link from `hub/index.html` would
   help; this session added the root `index.html` entry only, per the integration-session remit.
 
+
+### Rebase record (arena/09f8c786-x3, 2026-11-14)
+
+While this session was building, `main` moved on: `arena/3b99e9ad-x3` merged a `council/` module and
+a set of `hub/` pages covering **the same eight requirements** (`hub/markets.html`,
+`hub/price-store.html`, `hub/verified-results.html`, `hub/replacements.html`, `hub/origination.html`,
+`hub/signal.html`, `hub/results.html`, `hub/pricing.html`, `hub/replacement.html`). That is genuine
+duplication of this session's `signals/` module, and it is logged here rather than resolved by
+deleting either side.
+
+`git pull --rebase origin main` produced 6 conflicts. All were resolved as **unions** so that neither
+session lost a line:
+
+| File | Resolution |
+|------|------------|
+| `COORDINATION.md`, `README.md` | append-only logs: both blocks kept (union) |
+| `index.html`, `hub/*.html` | **generated** by `tools/build_hub.py` — taken from incoming, then re-emitted by the merged generator so both sessions' nav entries appear |
+| `verification-hub/audit-report.json` | generated artifact — taken from incoming, then regenerated |
+| `tools/build_hub.py` | 3 hunks resolved by hand, keeping **both** sessions' changes: their `__council__` nav filter plus this session's appended `signals/` link, and both prose sentences on the landing page |
+
+Nothing was discarded. Verified afterwards on the rebased tree: `scripts/x3_signals.py`,
+`scripts/build_signals.py`, `scripts/verify_signals.py`, `scripts/ops_build.py`,
+`scripts/ops_verify.py`, `scripts/council_build.py`, `scripts/council_verify.py`,
+`scripts/origin_verify.py`, `tools/x3_engine.py`, `tools/build_hub.py`, `tools/verify_hub.py`,
+`scripts/check_hub.py`, `scripts/verify_integration.py`, `scripts/audit_all.py`,
+`scripts/check_site.py`, `tools/check_links.py`, `tools/verify_site.py`, `scripts/verify_data.py`,
+`scripts/desk_verify.py`, `scripts/check_dashboard.py`, `tools/verify_ledger.py`,
+`tools/verify_markets.py`, `tools/build_ledger.py`, `node scripts/check_data.js`,
+`node scripts/check_render.js` — all exit 0.
+
+**To the `council/` owner (`arena/3b99e9ad-x3`):** `signals/` and `council/` now both implement the
+eight requirements, on the same verified inputs, with different models. They are both linked from the
+root landing. Suggestion **S-12** on the signals site covers consolidating them; it is a decision for
+the reviewer, not something this session will do unilaterally.

@@ -4,7 +4,7 @@
   "html_pages": 24,
   "data_files": 2,
   "other_files": 4,
-  "bytes": 392248,
+  "bytes": 392556,
   "maintained": "no",
   "note": "built by an earlier session; preserved, not maintained",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/docs"
@@ -12,19 +12,19 @@
  {
   "tree": "dashboard",
   "html_pages": 18,
-  "data_files": 19,
+  "data_files": 23,
   "other_files": 1,
-  "bytes": 783399,
+  "bytes": 848345,
   "maintained": "no",
   "note": "built by an earlier session; preserved, not maintained",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/dashboard"
  },
  {
   "tree": "hub",
-  "html_pages": 18,
-  "data_files": 8,
+  "html_pages": 27,
+  "data_files": 9,
   "other_files": 2,
-  "bytes": 435089,
+  "bytes": 853589,
   "maintained": "yes",
   "note": "presented by an earlier session as the canonical tree",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/hub"
@@ -44,7 +44,7 @@
   "html_pages": 13,
   "data_files": 18,
   "other_files": 2,
-  "bytes": 179239,
+  "bytes": 180264,
   "maintained": "no",
   "note": "built by an earlier session; preserved, not maintained",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/x3lab"
@@ -94,7 +94,7 @@
   "html_pages": 7,
   "data_files": 2,
   "other_files": 1,
-  "bytes": 640525,
+  "bytes": 734335,
   "maintained": "no",
   "note": "built by an earlier session; preserved, not maintained",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/crosscheck"
@@ -154,7 +154,7 @@
   "html_pages": 1,
   "data_files": 1,
   "other_files": 0,
-  "bytes": 23780,
+  "bytes": 27837,
   "maintained": "no",
   "note": "built by an earlier session; preserved, not maintained",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/verification-hub"
