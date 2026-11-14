@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flagged for review · NFL Decision Desk</title>
+<style>:root{--bg:#0b1220;--panel:#121b2c;--panel2:#18233a;--line:#243350;--ink:#e8eefb;
+--dim:#93a4c4;--acc:#4ea1ff;--acc2:#5ce1c0;--warn:#ffcf6b;--bad:#ff8a8a;--good:#7ee787}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.96);
+border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+.brand{display:flex;gap:14px;align-items:center;padding:14px 0 8px}
+.brand h1{font-size:18px;margin:0;letter-spacing:.2px}
+.brand .sub{color:var(--dim);font-size:12.5px}
+nav{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 12px}
+nav a{padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:var(--dim)}
+nav a:hover{color:var(--ink);border-color:var(--acc);text-decoration:none}
+nav a.on{color:#06111f;background:var(--acc);border-color:var(--acc);font-weight:600}
+main{max-width:1280px;margin:0 auto;padding:26px 20px 70px}
+h2{font-size:22px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;margin:24px 0 8px;color:#cfe0ff}
+p,li{color:#d3dded}
+.lede{color:var(--dim);font-size:14.5px;margin:6px 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi b{display:block;font-size:24px;line-height:1.2}
+.kpi span{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+.kpi small{display:block;color:#7d8fae;font-size:11.5px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card b{display:block;margin-bottom:4px}
+.card span{color:var(--dim);font-size:13px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:#b9cbe9;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.6px;position:sticky;top:0;white-space:nowrap}
+tbody tr:hover{background:#16233b}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+font-weight:600;letter-spacing:.3px;white-space:nowrap}
+.badge.unv{background:#3a2a12;color:var(--warn);border:1px solid #6b5320}
+.badge.der{background:#1b2f3d;color:#7fd7ff;border:1px solid #2c5a72}
+.badge.ok{background:#14301f;color:var(--good);border:1px solid #2a5738}
+.badge.bad{background:#3a1b1b;color:var(--bad);border:1px solid #6b2b2b}
+.notice{background:#1a2233;border:1px solid var(--line);border-left:3px solid var(--acc);
+border-radius:8px;padding:12px 14px;margin:16px 0;color:#cbd8ee;font-size:13.5px}
+.notice.warn{border-left-color:var(--warn)} .notice.bad{border-left-color:var(--bad)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
+footer .wrap{padding:20px}
+.small{font-size:12.5px;color:var(--dim)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.pos{color:var(--good)} .neg{color:var(--bad)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="brand">
+  <div>
+    <h1>NFL Decision Desk</h1>
+    <div class="sub">Evidence-first line origination, validation and injury intelligence</div>
+  </div>
+</div>
+<nav><a href="index.html">Overview</a>
+<a href="executive-summary.html">Executive summary</a>
+<a href="lines.html">Own lines</a>
+<a href="model.html">Model</a>
+<a href="strategies.html">Strategies</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="correlations.html">Correlations</a>
+<a href="injuries.html">Injuries</a>
+<a href="lineups.html">Lineups</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="requirements.html">Requirements</a>
+<a href="games.html">Game log</a>
+<a href="standings.html">Standings</a>
+<a href="sources.html">Sources</a>
+<a href="repo-review.html">Repo review</a>
+<a href="flagged.html" class="on">Flagged for review</a>
+<a href="archive.html">Archive</a></nav>
+</div></header>
+<main>
+
+<h2>Flagged for review</h2>
+<p class="lede">Everything that could not be confirmed from an official source, plus the
+irregularities worth a human decision. None of these blocks the site; all of them block a stronger
+claim.</p>
+
+<h3>Unverified values published as blank</h3>
+<table>
+<thead><tr><th>ID</th><th>Item</th><th>Why it is unverified</th><th>What would resolve it</th><th>Source tried</th></tr></thead>
+<tbody>
+<tr><td>F-01</td><td>Market spreads and totals</td>
+<td>No official NFL source publishes prices</td>
+<td>A licensed feed or a declared book with capture timestamps</td>
+<td><a href="https://operations.nfl.com/">operations.nfl.com</a></td></tr>
+<tr><td>F-02</td><td>Closing-line value for any strategy</td>
+<td>Depends on F-01</td><td>Same as F-01</td><td><span class="badge unv">UNVERIFIED: none found</span></td></tr>
+<tr><td>F-03</td><td>Player-prop correlations</td>
+<td>No official prop history exists</td><td>A licensed prop feed</td><td><span class="badge unv">UNVERIFIED: none found</span></td></tr>
+<tr><td>F-04</td><td>Houston depth chart, all strings</td>
+<td>The club publishes the chart as an image; no text rows are readable</td>
+<td>A text alternative from the club</td>
+<td><a href="https://www.houstontexans.com/team/depth-chart">houstontexans.com</a></td></tr>
+<tr><td>F-05</td><td>108 Out/Doubtful players with no depth string</td>
+<td>The player is not listed on his club's captured chart, or the position differs</td>
+<td>A stable, dated chart per club</td>
+<td><a href="https://www.nfl.com/teams/">nfl.com/teams</a></td></tr>
+<tr><td>F-06</td><td>Whether depth charts are authoritative</td>
+<td>Most clubs label their own chart "unofficial"</td>
+<td>An official depth publication</td>
+<td><a href="https://www.nfl.com/teams/">nfl.com/teams</a></td></tr>
+<tr><td>F-07</td><td>Payout or reward mechanics</td>
+<td>No reward mechanism exists and the legal position is unknown</td>
+<td>An owner decision plus a legal opinion</td><td><span class="badge unv">UNVERIFIED: none found</span></td></tr>
+<tr><td>F-08</td><td>Whether a strategy is profitable</td>
+<td>Cannot be tested without F-01</td><td>Graded results against prices</td><td><span class="badge unv">UNVERIFIED: none found</span></td></tr>
+<tr><td>F-09</td><td>Points cost of a lineup change</td>
+<td>Needs several seasons of results joined to injury reports</td>
+<td>Historical capture plus a fitted model</td><td><span class="badge unv">UNVERIFIED: none found</span></td></tr>
+<tr><td>F-10</td><td>Injury designations with no game status</td>
+<td>The club had not published a designation at capture time</td>
+<td>Recapture after the club posts its final report</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries</a></td></tr>
+</tbody></table>
+
+<h3>Model caveats that must not be quoted without context</h3>
+<ul>
+<li>The model is fitted on 137 games from a single season. Ratings regress
+heavily and the early weeks were fitted on very few games.</li>
+<li>Home-field advantage is measured as +0.08 points on this sample. That is
+smaller than the long-run convention, which is itself a finding worth review rather than a
+correction to be applied.</li>
+<li>No injury adjustment is applied to the model. The deficiency page is diagnostic, not an input.</li>
+<li>No neutral-site adjustment is applied. If a game is played outside a club's home stadium the
+home-field term is still applied unchanged.</li>
+</ul>
+
+<h3>Data irregularities observed during capture</h3>
+<ul>
+<li>NFL.com renders schedule scores client-side; the captured HTML shows "Hidden Score" in the
+score widgets. The visible score lines in the page text were used, and they reconcile exactly to
+the standings, which is the evidence they were read correctly.</li>
+<li>An earlier session reported every club depth-chart URL as 404. On the capture date used here,
+31 of 32 returned a parsable chart. Both observations are recorded; neither is deleted.</li>
+<li>Injury-report row counts differ between sessions because they captured at different times.
+Only this build's single capture is used on this site.</li>
+</ul>
+
+</main>
+<footer><div class="wrap">
+<p><b>Evidence policy.</b> Every value is either read from an official source, computed from
+official values and badged <span class="badge der">DERIVED</span>, or left blank and marked
+<span class="badge unv">UNVERIFIED</span>. Nothing is inferred or filled in.</p>
+<p>Built 2026-11-14 18:41 UTC from
+<code>data/desk/*.json</code> · <a href="sources.html">source register</a> ·
+<a href="flagged.html">flagged items</a> · <a href="archive.html">archive of earlier sessions</a></p>
+</div></footer>
+</body>
+</html>

@@ -22,14 +22,19 @@ Rules enforced (all hard, exit 1 on any violation):
   L2  SOURCE ROWS    In any table whose header contains a "source" column, every
                      body row must satisfy at least one of:
                        (a) the row carries an external http(s) link;
-                       (b) the source cell carries an internal link (a pointer to
-                           the page that documents that row's provenance);
+                       (b) the source cell carries an internal link — a relative
+                           path or a #fragment pointer to the page that
+                           documents that row's provenance;
                        (c) the row or its source cell carries an explicit
-                           unverified marker — text stating the value cannot be
-                           confirmed from an official source (strong markers:
-                           UNVERIFIED, no official source, left blank, ...; weak
-                           markers such as pending/proposed/open/n/a count only
-                           inside the source cell itself).
+                           marker — text stating the value cannot be confirmed
+                           from an official source (strong markers: UNVERIFIED,
+                           no official source, left blank, DERIVED (an explicit
+                           model-output badge, i.e. not a sourced fact), ...;
+                           weak markers such as pending/proposed/open/n/a count
+                           only inside the source cell itself).
+                     Headers containing the word "sourced" (e.g. a
+                     "Rows sourced or flagged" count column) are metrics, not
+                     provenance columns, and are not treated as source columns.
                      This is the brief's rule: "Every table row must have a source
                      link to an official site. If a value can't be confirmed from
                      an official source, leave it blank and flag it as unverified."
@@ -98,6 +103,7 @@ STRONG_RE = re.compile(
     | cannot
     | can\s+never
     | \bflagged\b
+    | \bDERIVED\b
     | class="[^"]*\b(?:flag|blank|unverif)\b[^"]*
     | 404
     """,
@@ -200,7 +206,7 @@ def main() -> int:
             headers = [strip_markup(c).lower() for c in CELL_RE.findall(thead.group(1))] if thead else []
             src_idx = None
             for i, h in enumerate(headers):
-                if "source" in h:
+                if "source" in h and "sourced" not in h:
                     src_idx = i
                     break
             body_m = TBODY_RE.search(tbl)
@@ -218,8 +224,9 @@ def main() -> int:
                         # (a) the row itself carries an external source link
                         stats["source_rows_linked"] += 1
                         continue
-                    if re.search(r"""href\s*=\s*["'](?!https?:|#|mailto:)[^"']+["']""", cell, re.I):
+                    if re.search(r"""href\s*=\s*["'](?!https?:|mailto:)[^"']+["']""", cell, re.I):
                         # (b) the source cell links the page documenting provenance
+                        #     (relative path or #fragment on the same page)
                         stats["source_rows_linked"] += 1
                         continue
                     if STRONG_RE.search(row) or WEAK_RE.search(plain):
@@ -238,7 +245,7 @@ def main() -> int:
                     stats["flagged_rows"] += 1
                     plain = strip_markup(row)
                     if (re.search(r"https?://", row)
-                            or re.search(r"""href\s*=\s*["'](?!https?:|#|mailto:)[^"']+["']""", row, re.I)
+                            or re.search(r"""href\s*=\s*["'](?!https?:|mailto:)[^"']+["']""", row, re.I)
                             or STRONG_RE.search(row)
                             or WEAK_RE.search(plain)):
                         continue

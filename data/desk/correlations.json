@@ -1,0 +1,63 @@
+{
+ "method": "Pearson product-moment correlation on verified values only. 95% CI by Fisher z. Two-sided p from Student t. n is printed with every coefficient; a coefficient whose CI includes 0 is reported as not distinguishable from no relationship.",
+ "pairs": [
+  {
+   "pair": "game total vs |margin|",
+   "r": -0.161,
+   "n": 137,
+   "ci95": [
+    -0.32,
+    0.007
+   ],
+   "p": 0.0607,
+   "reading": "same-game total and blowout size move together",
+   "used_for": "same-game parlay leg screen",
+   "source": "verified 2026 finals"
+  },
+  {
+   "pair": "away score vs home score",
+   "r": 0.076,
+   "n": 137,
+   "ci95": [
+    -0.093,
+    0.241
+   ],
+   "p": 0.3782,
+   "reading": "whether the two teams' scores co-move inside a game",
+   "used_for": "correlated two-leg parlay screen",
+   "source": "verified 2026 finals"
+  },
+  {
+   "pair": "points for per game vs points against per game",
+   "r": -0.204,
+   "n": 32,
+   "ci95": [
+    -0.516,
+    0.156
+   ],
+   "p": 0.2626,
+   "reading": "club-level scoring balance",
+   "used_for": "rating sanity check",
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "pair": "net points vs win percentage",
+   "r": 0.873,
+   "n": 32,
+   "ci95": [
+    0.754,
+    0.937
+   ],
+   "p": 0.0,
+   "reading": "how much point differential explains results",
+   "used_for": "luck screen",
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  }
+ ],
+ "sample_note": "137 verified final games (2026 weeks 1-10); club-level pairs use 32 clubs",
+ "not_measured": [
+  "player-prop correlations (no official player-prop history ingested)",
+  "correlation at market closing prices (no odds feed)",
+  "any correlation that would need play-by-play or drive data"
+ ]
+}

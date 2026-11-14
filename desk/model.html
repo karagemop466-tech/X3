@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Model · NFL Decision Desk</title>
+<style>:root{--bg:#0b1220;--panel:#121b2c;--panel2:#18233a;--line:#243350;--ink:#e8eefb;
+--dim:#93a4c4;--acc:#4ea1ff;--acc2:#5ce1c0;--warn:#ffcf6b;--bad:#ff8a8a;--good:#7ee787}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.96);
+border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+.brand{display:flex;gap:14px;align-items:center;padding:14px 0 8px}
+.brand h1{font-size:18px;margin:0;letter-spacing:.2px}
+.brand .sub{color:var(--dim);font-size:12.5px}
+nav{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 12px}
+nav a{padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:var(--dim)}
+nav a:hover{color:var(--ink);border-color:var(--acc);text-decoration:none}
+nav a.on{color:#06111f;background:var(--acc);border-color:var(--acc);font-weight:600}
+main{max-width:1280px;margin:0 auto;padding:26px 20px 70px}
+h2{font-size:22px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;margin:24px 0 8px;color:#cfe0ff}
+p,li{color:#d3dded}
+.lede{color:var(--dim);font-size:14.5px;margin:6px 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi b{display:block;font-size:24px;line-height:1.2}
+.kpi span{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+.kpi small{display:block;color:#7d8fae;font-size:11.5px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card b{display:block;margin-bottom:4px}
+.card span{color:var(--dim);font-size:13px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:14px 0;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:#b9cbe9;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.6px;position:sticky;top:0;white-space:nowrap}
+tbody tr:hover{background:#16233b}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+font-weight:600;letter-spacing:.3px;white-space:nowrap}
+.badge.unv{background:#3a2a12;color:var(--warn);border:1px solid #6b5320}
+.badge.der{background:#1b2f3d;color:#7fd7ff;border:1px solid #2c5a72}
+.badge.ok{background:#14301f;color:var(--good);border:1px solid #2a5738}
+.badge.bad{background:#3a1b1b;color:var(--bad);border:1px solid #6b2b2b}
+.notice{background:#1a2233;border:1px solid var(--line);border-left:3px solid var(--acc);
+border-radius:8px;padding:12px 14px;margin:16px 0;color:#cbd8ee;font-size:13.5px}
+.notice.warn{border-left-color:var(--warn)} .notice.bad{border-left-color:var(--bad)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
+footer .wrap{padding:20px}
+.small{font-size:12.5px;color:var(--dim)}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.pos{color:var(--good)} .neg{color:var(--bad)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="brand">
+  <div>
+    <h1>NFL Decision Desk</h1>
+    <div class="sub">Evidence-first line origination, validation and injury intelligence</div>
+  </div>
+</div>
+<nav><a href="index.html">Overview</a>
+<a href="executive-summary.html">Executive summary</a>
+<a href="lines.html">Own lines</a>
+<a href="model.html" class="on">Model</a>
+<a href="strategies.html">Strategies</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="correlations.html">Correlations</a>
+<a href="injuries.html">Injuries</a>
+<a href="lineups.html">Lineups</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="requirements.html">Requirements</a>
+<a href="games.html">Game log</a>
+<a href="standings.html">Standings</a>
+<a href="sources.html">Sources</a>
+<a href="repo-review.html">Repo review</a>
+<a href="flagged.html">Flagged for review</a>
+<a href="archive.html">Archive</a></nav>
+</div></header>
+<main>
+
+<h2>Model and calibration</h2>
+<p class="lede">A deliberately small model: two ridge regressions on final scores. The point is not
+sophistication, it is that every parameter is measurable, reproducible and testable out of sample.</p>
+<div class="kpis">
+<div class="kpi"><span>Walk-forward r</span><b>+0.200</b><small>n=121</small></div>
+<div class="kpi"><span>MAE (points)</span><b>10.52</b><small>home margin</small></div>
+<div class="kpi"><span>RMSE (points)</span><b>13.82</b><small>home margin</small></div>
+<div class="kpi"><span>Bias</span><b>-1.02</b><small>positive = under-predicts home margin</small></div>
+</div>
+<div class="notice warn"><b>Honest reading.</b> A walk-forward correlation of +0.200
+on 121 games is a weak signal. It is consistent with a real but small effect and is also
+consistent with noise at this sample size. It cannot support a profitability claim, and it is
+published with its uncertainty on the <a href="correlations.html">correlations page</a>.</div>
+<h2>Club ratings</h2>
+<div class="tw"><table><caption class="small" style="text-align:left;padding:8px 10px">Ratings are DERIVED. PF/g, PA/g and net pts/g are directly computed from the verified game log.</caption><thead><tr><th>Team</th><th class="num">Net rating</th><th class="num">Pace rating</th><th class="num">PF/g</th><th class="num">PA/g</th><th class="num">Net pts/g</th><th class="num">Games</th><th>Source</th></tr></thead><tbody><tr><td>JAX</td><td class="num">+11.20</td><td class="num">-1.85</td><td class="num">28.6</td><td class="num">15.1</td><td class="num">+13.5</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>CIN</td><td class="num">+7.31</td><td class="num">+7.38</td><td class="num">30.0</td><td class="num">21.9</td><td class="num">+8.1</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>SF</td><td class="num">+7.25</td><td class="num">+3.16</td><td class="num">29.4</td><td class="num">19.5</td><td class="num">+9.9</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>BUF</td><td class="num">+7.20</td><td class="num">+9.05</td><td class="num">32.0</td><td class="num">23.4</td><td class="num">+8.6</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>CHI</td><td class="num">+6.06</td><td class="num">+3.61</td><td class="num">26.8</td><td class="num">20.4</td><td class="num">+6.3</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>KC</td><td class="num">+4.36</td><td class="num">-1.52</td><td class="num">25.2</td><td class="num">17.9</td><td class="num">+7.4</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>MIN</td><td class="num">+4.27</td><td class="num">-13.54</td><td class="num">18.2</td><td class="num">14.5</td><td class="num">+3.8</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>TB</td><td class="num">+4.14</td><td class="num">-3.23</td><td class="num">22.4</td><td class="num">19.8</td><td class="num">+2.7</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>GB</td><td class="num">+3.69</td><td class="num">-0.92</td><td class="num">24.0</td><td class="num">21.2</td><td class="num">+2.8</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>PIT</td><td class="num">+3.56</td><td class="num">-5.02</td><td class="num">22.5</td><td class="num">18.0</td><td class="num">+4.5</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>SEA</td><td class="num">+3.50</td><td class="num">-5.56</td><td class="num">22.4</td><td class="num">18.0</td><td class="num">+4.4</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>DET</td><td class="num">+2.88</td><td class="num">+4.49</td><td class="num">27.8</td><td class="num">23.6</td><td class="num">+4.1</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>DEN</td><td class="num">+2.64</td><td class="num">-2.47</td><td class="num">22.0</td><td class="num">20.7</td><td class="num">+1.3</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>NE</td><td class="num">+2.62</td><td class="num">+0.27</td><td class="num">23.4</td><td class="num">23.0</td><td class="num">+0.4</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>HOU</td><td class="num">+1.68</td><td class="num">+1.93</td><td class="num">26.1</td><td class="num">24.0</td><td class="num">+2.1</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>LA</td><td class="num">+1.60</td><td class="num">-2.95</td><td class="num">23.8</td><td class="num">20.1</td><td class="num">+3.7</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>DAL</td><td class="num">-1.20</td><td class="num">+7.18</td><td class="num">27.3</td><td class="num">26.2</td><td class="num">+1.1</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>ATL</td><td class="num">-1.29</td><td class="num">-1.88</td><td class="num">20.9</td><td class="num">24.8</td><td class="num">-3.9</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>CAR</td><td class="num">-1.44</td><td class="num">+6.81</td><td class="num">24.9</td><td class="num">27.4</td><td class="num">-2.5</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>NYG</td><td class="num">-2.61</td><td class="num">-2.41</td><td class="num">22.6</td><td class="num">21.8</td><td class="num">+0.8</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>LV</td><td class="num">-3.05</td><td class="num">+8.98</td><td class="num">26.4</td><td class="num">29.8</td><td class="num">-3.3</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>CLE</td><td class="num">-3.46</td><td class="num">-4.91</td><td class="num">17.9</td><td class="num">21.8</td><td class="num">-3.9</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>NO</td><td class="num">-3.92</td><td class="num">+5.41</td><td class="num">23.1</td><td class="num">27.0</td><td class="num">-3.9</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>NYJ</td><td class="num">-4.19</td><td class="num">-1.05</td><td class="num">20.2</td><td class="num">24.8</td><td class="num">-4.6</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>WAS</td><td class="num">-4.21</td><td class="num">+1.62</td><td class="num">21.8</td><td class="num">24.8</td><td class="num">-3.0</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>BAL</td><td class="num">-4.52</td><td class="num">-0.99</td><td class="num">21.0</td><td class="num">26.2</td><td class="num">-5.2</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>IND</td><td class="num">-5.81</td><td class="num">+3.41</td><td class="num">20.4</td><td class="num">27.7</td><td class="num">-7.2</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>MIA</td><td class="num">-5.84</td><td class="num">-5.53</td><td class="num">15.8</td><td class="num">25.0</td><td class="num">-9.2</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>ARI</td><td class="num">-6.89</td><td class="num">+2.78</td><td class="num">19.8</td><td class="num">28.3</td><td class="num">-8.6</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>PHI</td><td class="num">-7.62</td><td class="num">-5.57</td><td class="num">16.4</td><td class="num">24.6</td><td class="num">-8.1</td><td class="num">9</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>TEN</td><td class="num">-8.25</td><td class="num">-2.49</td><td class="num">18.0</td><td class="num">24.9</td><td class="num">-6.9</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr><tr><td>LAC</td><td class="num">-9.66</td><td class="num">-4.20</td><td class="num">15.1</td><td class="num">27.4</td><td class="num">-12.2</td><td class="num">8</td><td><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">standings</a></td></tr></tbody></table></div>
+<h2>Walk-forward backtest, week by week</h2>
+<div class="tw"><table><caption class="small" style="text-align:left;padding:8px 10px">Week w is predicted by a model fitted only on weeks before w.</caption><thead><tr><th>Week</th><th class="num">Games graded</th><th>Source</th></tr></thead><tbody><tr><td>2</td><td class="num">16</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-2" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>3</td><td class="num">16</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-3" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>4</td><td class="num">16</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-4" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>5</td><td class="num">15</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-5" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>6</td><td class="num">14</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-6" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>7</td><td class="num">14</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-7" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>8</td><td class="num">14</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-8" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>9</td><td class="num">15</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-9" target="_blank" rel="noopener">nfl.com</a></td></tr><tr><td>10</td><td class="num">1</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr></tbody></table></div>
+<h2>Known model limitations</h2>
+<div class="tw"><table><thead><tr><th>Limitation</th><th>Status</th></tr></thead><tbody><tr><td>No preseason or prior-season data: ratings start from zero information.</td><td><span class="badge unv">UNVERIFIED: not corrected</span></td></tr><tr><td>No rest or short-week adjustment beyond opponent rating.</td><td><span class="badge unv">UNVERIFIED: not corrected</span></td></tr><tr><td>No injury adjustment is applied to the model output.</td><td><span class="badge unv">UNVERIFIED: not corrected</span></td></tr><tr><td>Neutral-site games exclude the home-field term but are not otherwise adjusted.</td><td><span class="badge unv">UNVERIFIED: not corrected</span></td></tr><tr><td>No market comparison: no licensed odds feed exists in this repository.</td><td><span class="badge unv">UNVERIFIED: not corrected</span></td></tr><tr><td>Early-season weeks are fitted on very few games.</td><td><span class="badge unv">UNVERIFIED: not corrected</span></td></tr></tbody></table></div>
+
+</main>
+<footer><div class="wrap">
+<p><b>Evidence policy.</b> Every value is either read from an official source, computed from
+official values and badged <span class="badge der">DERIVED</span>, or left blank and marked
+<span class="badge unv">UNVERIFIED</span>. Nothing is inferred or filled in.</p>
+<p>Built 2026-11-14 18:41 UTC from
+<code>data/desk/*.json</code> · <a href="sources.html">source register</a> ·
+<a href="flagged.html">flagged items</a> · <a href="archive.html">archive of earlier sessions</a></p>
+</div></footer>
+</body>
+</html>
