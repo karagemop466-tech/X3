@@ -303,9 +303,17 @@ Every row in `dashboard/sources.html` links to the club's official site.
   - Base: `main` · Head: `arena/7e632805-x3`
   - Created: 2026-11-14 · **Merged: 2026-11-14** (merge commit `c2d73b0`), via `gh pr merge --merge`, without waiting for approval.
   - Result: **MERGED**.
+- **PR #14** (follow-up): https://github.com/karagemop466-tech/X3/pull/14
+  - Title: "Correct prose counts that drifted from the data; make all counts computed at build time"
+  - Created: 2026-11-14 · **Merged: 2026-11-14** (merge commit `a26e232`), via `gh pr merge --merge`.
+  - Fixed three prose counts that had drifted from the tables (294→345 injury rows,
+    4/6→5/5 strategy split, 8→7 pending correlations). All prose counts are now computed
+    from the data at build time and the build aborts on any unfilled token.
 - **Pages deploy**: workflow run
-  [43549974941](https://github.com/karagemop466-tech/X3/actions/runs/43549974941)
-  ("Deploy X3 NFL site to GitHub Pages") — build **success**, deploy **success**.
+  [43550485139](https://github.com/karagemop466-tech/X3/actions/runs/43550485139)
+  ("Deploy X3 NFL site to GitHub Pages", the run for PR #14) — build **success**, deploy **success**.
+  (PR #11's own run [43549974941](https://github.com/karagemop466-tech/X3/actions/runs/43549974941)
+  also succeeded.)
   Pages status: **built** (source `main /`, build_type legacy).
   This session's pages are served at **`/dashboard/`**; verified live at
   https://karagemop466-tech.github.io/X3/dashboard/index.html on 2026-11-14.

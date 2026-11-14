@@ -376,9 +376,17 @@ Every row in `dashboard/sources.html` links to the club&#x27;s official site.
   - Base: `main` · Head: `arena/7e632805-x3`
   - Created: 2026-11-14 · **Merged: 2026-11-14** (merge commit `c2d73b0`), via `gh pr merge --merge`, without waiting for approval.
   - Result: **MERGED**.
+- **PR #14** (follow-up): https://github.com/karagemop466-tech/X3/pull/14
+  - Title: &quot;Correct prose counts that drifted from the data; make all counts computed at build time&quot;
+  - Created: 2026-11-14 · **Merged: 2026-11-14** (merge commit `a26e232`), via `gh pr merge --merge`.
+  - Fixed three prose counts that had drifted from the tables (294→345 injury rows,
+    4/6→5/5 strategy split, 8→7 pending correlations). All prose counts are now computed
+    from the data at build time and the build aborts on any unfilled token.
 - **Pages deploy**: workflow run
-  [43549974941](https://github.com/karagemop466-tech/X3/actions/runs/43549974941)
-  (&quot;Deploy X3 NFL site to GitHub Pages&quot;) — build **success**, deploy **success**.
+  [43550485139](https://github.com/karagemop466-tech/X3/actions/runs/43550485139)
+  (&quot;Deploy X3 NFL site to GitHub Pages&quot;, the run for PR #14) — build **success**, deploy **success**.
+  (PR #11&#x27;s own run [43549974941](https://github.com/karagemop466-tech/X3/actions/runs/43549974941)
+  also succeeded.)
   Pages status: **built** (source `main /`, build_type legacy).
   This session&#x27;s pages are served at **`/dashboard/`**; verified live at
   https://karagemop466-tech.github.io/X3/dashboard/index.html on 2026-11-14.
@@ -419,7 +427,66 @@ correlations, 19 done / 5 partial requirements, 13 blocking questions.
 - **Irregularity:** the NFL permalink `https://www.nfl.com/injuries/league/2025/reg1` returned a page title naming Week 10 of 2025 while the body heading said Week 1. No rows from that URL were copied. The separate 2026 `reg10` injury page was checked and its title/body both identify Week 10.
 - **Verification after integration:** `python3 scripts/build_site.py` built 13 legacy `docs/` files; `python3 scripts/check_site.py` passed with 352 archived table rows and 0 rows without a source link or explicit flag, and no broken internal links; `python3 tools/check_links.py` passed (13 prior root pages, 315 links); the GitHub Pages workflow&#x27;s HTML/link audit passed locally (31 pages). `python3 scripts/check_dashboard.py` passed for 12 root/lab HTML pages; `node --check` passed for all four dashboard/test scripts; `node scripts/check_data.js` passed with 20 registered sources and 61 source-backed research rows; `node scripts/check_render.js` passed for all 11 dashboard views, with every rendered table row linking to an approved NFL/NIST/scikit-learn host. Local HTTP smoke checks returned 200 for `/`, `/lab/index.html`, `/lab/lineups.html`, `/docs/injuries.html`, `/docs/index.html`, and the CSS/JS assets. GitHub Actions PR run [43549692954](https://github.com/karagemop466-tech/X3/actions/runs/43549692954) passed all six build steps; deployment was skipped as intended for a pull request. External links are registered/reviewed but not fetched by the local scripts.
 - **PR:** [#8 — Build NFL evidence-first decision dashboard](https://github.com/karagemop466-tech/X3/pull/8), `arena/972ad7a5-x3` → `main`. The rebased branch is pushed; GitHub Actions PR build passed all site, legacy-data, and new-dashboard checks (deploy correctly skipped for PRs). PR mergeability is clean; merge is pending.
-</pre></div><p><a class="src" href="https://github.com/karagemop466-tech/X3/blob/898785a94d710229ff67fc8d7f98d54c3306c004/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md on GitHub &#8599;</a></p>
+
+---
+
+## Session arena-4856379c-x3 (this session)
+
+Branch: `arena/4856379c-x3` (platform-assigned; used instead of the `session-&lt;id&gt;/&lt;task&gt;` naming, as
+with earlier sessions). Claimed scope: `research/**`, `docs/pages/**`, `docs/data/**`,
+`docs/style.css`, `tools/build_data_pages.py`, `tools/verify_site.py`; integration edits to the
+shared outputs `docs/index.html`, `README.md`, `COORDINATION.md` (sanctioned for the integration
+role). No other session&#x27;s files were modified.
+
+### Task board (arena-4856379c-x3)
+
+| Task | Status | Files | Sources / verification | Irregularities |
+|---|---|---|---|---|
+| T1 Repo line-by-line audit | done | `research/repo-audit.md`, `docs/pages/repo-audit.html` | git inventory at `e124230` (README only, `# X3`) | README rewritten; LICENSE absent (F-05) |
+| T2 Requirements inventory (28 items) | done | `docs/pages/requirements.html` | each status checked against repo contents | — |
+| T3 Line origination + signal catalog S1–S8 | done | `research/line-origination.md`, `docs/pages/strategies.html` | Levitt 2004 (EJ, uchicago.edu PDF); Claremont thesis 2025; Skidmore thesis (digitalcoll.skidmore.edu/record/6451); community replication (GitHub) | model σ/HFA parameters blank (UNVERIFIED until calibrated) |
+| T4 Validation gates G0–G8 (luck removal) | done | `research/validation.md`, `docs/pages/validation.html` | DSR Bailey &amp; López de Prado 2014 (SSRN 2460551); PBO Bailey et al. 2015 (SSRN 2326253) | DSR/PBO thresholds are paper conventions (F-08) |
+| T5 Correlation research | done | `research/correlation.md`, `docs/pages/correlation.html` | Davis 2018 via bettoredge (secondary); Skidmore thesis; industry SGP-tax sources (flagged) | no official numeric coefficients exist → blank + UNVERIFIED (F-03); estimation pipeline published |
+| T6 Leaderboard competition design | done | `research/leaderboard.md`, `docs/pages/leaderboard.html` | NFL Big Data Bowl prizes/rubric (Kaggle 2021/2022/2027) | reward amounts blank (Q-01) |
+| T7 Injury &amp; deficiency tracker | done | `docs/data/injury-2026-week10.csv` (345 rows), `docs/pages/injuries.html`, `research/injury-tracking.md` | nfl.com/injuries Week-10 2026 (8 chunks, 2026-11-14); nfl.com/news headlines; nfl.com important-dates page | F-01 Lamar timeline conflict; F-02 roster pairings vs historical knowledge; F-04 depth charts 404 at the URLs tested (depth ranks left blank); F-07 rest-outs; F-09 blank-status rows; F-12 Henley LAC/DEN conflict |
+| T8 Questions (15) + discovery paths | done | `docs/pages/questions.html` | known answers cite the same sources as data pages | Q-01/Q-02/Q-07/Q-11/Q-13 OPEN (owner decisions / blocked sources) |
+| T9 Suggestions board (14, review-before-implementation) | done | `docs/pages/suggestions.html` | proposal rows marked as such | — |
+| T10 Executive summary | done | `docs/pages/executive-summary.html` | claims sourced inline | — |
+| T11 Site build (dashboard + 13 subpages) | done | `docs/pages/**`, `docs/style.css`, `docs/data/standings-2026-week10.csv` (32 teams) | standings cross-checked vs injury-page records (all 28 non-bye teams match) | two source standings columns unlabeled (F-11, hidden) |
+| T12 Line-by-line verification | done | `tools/verify_site.py` | 14 pages / 49 tables, 0 failures, 0 warnings; every source-table row has an official link or UNVERIFIED flag | — |
+| T13 Integration | done (this merge) | shared outputs | merged `origin/main` twice (PRs #4–#9, then #8/#11 wave) without discarding other sessions&#x27; work | see conflict log below |
+
+### Merge-conflict log (2026-11-14)
+- First `gh pr merge 10 --merge` failed: `main` had advanced via PRs #4–#9. Stopped; merged
+  `origin/main` into this branch; conflicts in `COORDINATION.md`, `README.md`, `docs/index.html`
+  resolved by keeping the other sessions&#x27; content verbatim and appending this session&#x27;s sections.
+- Second `gh pr merge 10 --merge` failed: `main` had advanced again (PRs #8/#11,
+  sessions `arena/972ad7a5-x3`, `arena/7e632805-x3`). Re-merged `origin/main`; conflicts in
+  `COORDINATION.md`, `README.md` resolved the same way (theirs verbatim + this appended section);
+  `docs/index.html` auto-merged and retains both the generated dashboard and the marked
+  `arena-4856379c-x3` integration section. Nothing from any session was discarded.
+- Note: `git pull --rebase` once tried to linearize the integration merge commit and stopped on
+  conflicts; aborted with `git rebase --abort` (merge commit 53a0d97 preserved and pushed).
+- `docs/index.html` is co-owned: generated by `scripts/build_site.py` from `data/` with the
+  integration section added by this session. **Request to future sessions:** if
+  `scripts/build_site.py` is re-run, re-apply the `arena-4856379c-x3` section or fold it into the
+  generator.
+
+### PR log (this session)
+- PR #10: https://github.com/karagemop466-tech/X3/pull/10 — `arena/4856379c-x3` → `main` (merge
+  result recorded in the follow-up record PR).
+
+### Verification performed (this session)
+- Injury data: 345 rows transcribed from 8 fetched chunks of nfl.com/injuries (Week 10, 2026) into
+  `docs/data/injury-2026-week10.csv`, then generated into pages by `tools/build_data_pages.py`
+  (no hand-keyed duplicates). Status counts: 66 Out, 10 Doubtful, 84 Questionable, 185 without
+  game status.
+- Standings: 32 teams from nfl.com/standings; records cross-checked against the injury page headers
+  (all match).
+- Academic references verified at SSRN/publisher/university hosts; Kaggle verified for BDB prizes.
+- At merge time: `tools/verify_site.py` (this session) and `scripts/check_site.py` (arena/0c38f465
+  session) both pass on the combined tree; the Pages workflow&#x27;s link check replicated locally.
+</pre></div><p><a class="src" href="https://github.com/karagemop466-tech/X3/blob/a8d03166e1c26763ac9a3bbe91c6f4fc4344a5fb/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md on GitHub &#8599;</a></p>
 </div></main>
 <footer><div class="wrap">
 Verification rule: a row is verified only when its value was read from an official
