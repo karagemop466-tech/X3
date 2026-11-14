@@ -54,31 +54,31 @@ marked <b>PROPOSED</b>.</p></div>
 <h3><span class="mono">S03</span> Origination <span class="bad p1">P1 - high</span></h3>
 <p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - 39 rows in side, total, moneyline order, 0 violations. Open only if you want a different sigma.</b></p>
 <p><b>Proposal.</b> Originate the moneyline last, from the side and the total, and print the sigma used. Record the conversion on the row so a reviewer can reproduce the price from the spread.</p>
-<p class="m"><b>Evidence.</b> Side and total exist for 13 games (V09). No moneyline exists anywhere (R3).</p>
+<p class="m"><b>Evidence.</b> origin/data/markets.json now originates all three markets in the required order (V19), re-checked this session with 0 violations across the 13 games. What is still open is the sigma: 13.5 is a registered constant, not a fitted estimate (Q05).</p>
 <p class="m"><b>Unblocks.</b> R3, Q05</p>
 <p class="m"><b>Effort.</b> Small once sigma is chosen.</p>
 <p class="m"><b>Risk.</b> A normal-on-margin assumption is wrong in the tails and will misprice large favourites. Publish it as an assumption, not a fact.</p>
-<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - not derivable from any official page</span></p>
+<p class="m"><b>Decision.</b> IMPLEMENTED - review only if you want it changed &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - not derivable from any official page</span></p>
 </div>
 <div class="rq" id="S04">
 <h3><span class="mono">S04</span> Governance <span class="bad p1">P1 - high</span></h3>
 <p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - gate D-1 with five triggers plus D-2 re-promotion. Still open: automating enforcement.</b></p>
 <p><b>Proposal.</b> Write the demotion gate as numbers with an owner and an enforcement point. A concrete default: return to paper if the rolling 200-bet mean closing-line value is negative, or if the 95% CI on ROI contains zero over the last 200 graded bets, or immediately on any data-provenance failure. Log every demotion with its trigger.</p>
-<p class="m"><b>Evidence.</b> Promotion gates G1-G8 exist; no demotion rule exists anywhere (R8).</p>
+<p class="m"><b>Evidence.</b> Gate D-1 now exists with five numeric triggers and D-2 re-promotion, so R8 is satisfied as a rule. Nothing runs them yet, and D-1a to D-1c cannot fire until prices exist (Q14).</p>
 <p class="m"><b>Unblocks.</b> R8, Q13, Q14</p>
 <p class="m"><b>Effort.</b> Small to write, larger to automate.</p>
 <p class="m"><b>Risk.</b> Thresholds chosen after seeing results are fitted to the past. Choose them now, before there is anything to demote.</p>
-<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - decision, not a fetch</span></p>
+<p class="m"><b>Decision.</b> IMPLEMENTED - review only if you want it changed &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - decision, not a fetch</span></p>
 </div>
 <div class="rq" id="S05">
 <h3><span class="mono">S05</span> Leaderboard <span class="bad p1">P1 - high</span></h3>
 <p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - signal and staking are separate blocks on every row; the signal half is populated, the staking half is blocked.</b></p>
 <p><b>Proposal.</b> Split the leaderboard into two boards from the start: a signal board scored on stake-independent mean closing-line value per bet with n and a 95% CI, and a staking board scored on ROI, units and drawdown. Rank them separately and never blend them into one number.</p>
-<p class="m"><b>Evidence.</b> The design is described on two trees; neither board has a row (R5).</p>
+<p class="m"><b>Evidence.</b> The two blocks now exist on every leaderboard row and the signal half is populated (V22): 0.595, 0.4957 and Brier 0.2373. The staking half has zero settled bets, so no staking claim can be made and none is.</p>
 <p class="m"><b>Unblocks.</b> R5, Q11</p>
 <p class="m"><b>Effort.</b> Small once R1 closes. Nothing to build until then.</p>
 <p class="m"><b>Risk.</b> A blended ranking is exactly the failure the requirement is written to prevent.</p>
-<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - design, no graded bets exist</span></p>
+<p class="m"><b>Decision.</b> IMPLEMENTED - review only if you want it changed &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - design, no graded bets exist</span></p>
 </div>
 <div class="rq" id="S06">
 <h3><span class="mono">S06</span> Roster <span class="bad p1">P1 - high</span></h3>
@@ -94,21 +94,21 @@ marked <b>PROPOSED</b>.</p></div>
 <h3><span class="mono">S07</span> Roster <span class="bad p2">P2 - medium</span></h3>
 <p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - replacement_ordinal is populated for 42 of 76 absences. Still open: the ordinals are club-published and unverified.</b></p>
 <p><b>Proposal.</b> Add an ordinal depth field: 1st, 2nd, 3rd, 4th string, or a free-agent pickup sourced from the transaction wire rather than the depth chart. Treat the two sources as independent evidence and publish where they disagree.</p>
-<p class="m"><b>Evidence.</b> 41 of 76 absences resolve to a named replacement, none to a depth string (R6, V15).</p>
+<p class="m"><b>Evidence.</b> replacement_ordinal is populated for 42 of 76 absences (V23), so an ordinal is recorded rather than inferred. The gaps remain: 0 of 76 carry a chart as-of date, and the club charts are self-labelled unofficial by the clubs that publish them.</p>
 <p class="m"><b>Unblocks.</b> R6, Q06, Q07</p>
 <p class="m"><b>Effort.</b> Medium. Requires parsing each club&#x27;s chart layout, which varies by club.</p>
 <p class="m"><b>Risk.</b> Parsed ordinals are inferred from page layout, not stated by the club. Badge them DERIVED.</p>
-<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json">repo artifact - club charts</a></p>
+<p class="m"><b>Decision.</b> IMPLEMENTED - review only if you want it changed &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json">repo artifact - club charts</a></p>
 </div>
 <div class="rq" id="S08">
 <h3><span class="mono">S08</span> Statistics <span class="bad p0">P0 - blocking</span></h3>
 <p class="m"><b>Status.</b> <b>PARTIALLY IMPLEMENTED by origin/ (PR #47) - the corrected pair is published there. Still open: the stale desk copy still carries the wrong label (C-01).</b></p>
 <p><b>Proposal.</b> Fix the published correlation. Recompute r(game total, |margin|) from the 137 verified finals and publish the corrected value with a corrected reading, or withdraw the pair. Do not silently overwrite: publish the correction with the old value and the date.</p>
-<p class="m"><b>Evidence.</b> The published -0.161 is r(total, signed home margin), not r(total, |margin|). Correct value: see the recomputation on the verification page.</p>
+<p class="m"><b>Evidence.</b> The published -0.161 is r(total, signed home margin), not r(total, |margin|); the correct value is -0.0157. The corrected pairs are now published separately in origin/data/correlations.json, and the stale desk copy still carries the wrong label (C-01). See the recomputation on the verification page.</p>
 <p class="m"><b>Unblocks.</b> R7</p>
 <p class="m"><b>Effort.</b> Small. The fix is arithmetic; the discipline is publishing the correction.</p>
 <p class="m"><b>Risk.</b> A silent edit destroys the audit trail. Publish both.</p>
-<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json">repo artifact - recomputed here</a></p>
+<p class="m"><b>Decision.</b> PARTIALLY IMPLEMENTED - finish or accept as is &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json">repo artifact - recomputed here</a></p>
 </div>
 <div class="rq" id="S09">
 <h3><span class="mono">S09</span> Player props <span class="bad p2">P2 - medium</span></h3>
@@ -188,7 +188,7 @@ marked <b>PROPOSED</b>.</p></div>
 <p class="m"><b>Unblocks.</b> R4</p>
 <p class="m"><b>Effort.</b> Small.</p>
 <p class="m"><b>Risk.</b> Low, provided the blanks stay visibly blank.</p>
-<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">repo artifact - market columns empty</a></p>
+<p class="m"><b>Decision.</b> IMPLEMENTED - review only if you want it changed &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">repo artifact - market columns empty</a></p>
 </div>
 <div class="rq" id="S17">
 <h3><span class="mono">S17</span> Model <span class="bad p3">P3 - low</span></h3>

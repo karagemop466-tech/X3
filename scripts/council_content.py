@@ -585,7 +585,9 @@ SUGGESTIONS = [
     dict(id="S03", status="IMPLEMENTED by origin/ (PR #47) - 39 rows in side, total, moneyline order, 0 violations. Open only if you want a different sigma.", area="Origination", priority="P1 - high",
          proposal="Originate the moneyline last, from the side and the total, and print the sigma used. "
                   "Record the conversion on the row so a reviewer can reproduce the price from the spread.",
-         evidence="Side and total exist for 13 games (V09). No moneyline exists anywhere (R3).",
+         evidence="origin/data/markets.json now originates all three markets in the required order "
+                  "(V19), re-checked this session with 0 violations across the 13 games. What is still "
+                  "open is the sigma: 13.5 is a registered constant, not a fitted estimate (Q05).",
          unblocks="R3, Q05",
          effort="Small once sigma is chosen.",
          risk="A normal-on-margin assumption is wrong in the tails and will misprice large favourites. "
@@ -596,7 +598,9 @@ SUGGESTIONS = [
                   "default: return to paper if the rolling 200-bet mean closing-line value is negative, "
                   "or if the 95% CI on ROI contains zero over the last 200 graded bets, or immediately on "
                   "any data-provenance failure. Log every demotion with its trigger.",
-         evidence="Promotion gates G1-G8 exist; no demotion rule exists anywhere (R8).",
+         evidence="Gate D-1 now exists with five numeric triggers and D-2 re-promotion, so R8 is "
+                  "satisfied as a rule. Nothing runs them yet, and D-1a to D-1c cannot fire until "
+                  "prices exist (Q14).",
          unblocks="R8, Q13, Q14",
          effort="Small to write, larger to automate.",
          risk="Thresholds chosen after seeing results are fitted to the past. Choose them now, before "
@@ -607,7 +611,9 @@ SUGGESTIONS = [
                   "stake-independent mean closing-line value per bet with n and a 95% CI, and a staking "
                   "board scored on ROI, units and drawdown. Rank them separately and never blend them "
                   "into one number.",
-         evidence="The design is described on two trees; neither board has a row (R5).",
+         evidence="The two blocks now exist on every leaderboard row and the signal half is populated "
+                  "(V22): 0.595, 0.4957 and Brier 0.2373. The staking half has zero settled bets, so "
+                  "no staking claim can be made and none is.",
          unblocks="R5, Q11",
          effort="Small once R1 closes. Nothing to build until then.",
          risk="A blended ranking is exactly the failure the requirement is written to prevent.",
@@ -625,7 +631,9 @@ SUGGESTIONS = [
          proposal="Add an ordinal depth field: 1st, 2nd, 3rd, 4th string, or a free-agent pickup sourced "
                   "from the transaction wire rather than the depth chart. Treat the two sources as "
                   "independent evidence and publish where they disagree.",
-         evidence="41 of 76 absences resolve to a named replacement, none to a depth string (R6, V15).",
+         evidence="replacement_ordinal is populated for 42 of 76 absences (V23), so an ordinal is "
+                  "recorded rather than inferred. The gaps remain: 0 of 76 carry a chart as-of date, "
+                  "and the club charts are self-labelled unofficial by the clubs that publish them.",
          unblocks="R6, Q06, Q07",
          effort="Medium. Requires parsing each club's chart layout, which varies by club.",
          risk="Parsed ordinals are inferred from page layout, not stated by the club. Badge them DERIVED.",
@@ -634,8 +642,10 @@ SUGGESTIONS = [
          proposal="Fix the published correlation. Recompute r(game total, |margin|) from the 137 verified "
                   "finals and publish the corrected value with a corrected reading, or withdraw the pair. "
                   "Do not silently overwrite: publish the correction with the old value and the date.",
-         evidence="The published -0.161 is r(total, signed home margin), not r(total, |margin|). "
-                  "Correct value: see the recomputation on the verification page.",
+         evidence="The published -0.161 is r(total, signed home margin), not r(total, |margin|); the "
+                  "correct value is -0.0157. The corrected pairs are now published separately in "
+                  "origin/data/correlations.json, and the stale desk copy still carries the wrong "
+                  "label (C-01). See the recomputation on the verification page.",
          unblocks="R7",
          effort="Small. The fix is arithmetic; the discipline is publishing the correction.",
          risk="A silent edit destroys the audit trail. Publish both.",
