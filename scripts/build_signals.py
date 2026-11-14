@@ -1187,7 +1187,10 @@ def p_repo(repo):
                      esc(r["note"]), srcl(r["source"])])
     body = f"""
 <h2>Repository review</h2>
-<p>{len(repo)} parallel sessions have each published their own site tree into this repository. They overlap
+<p>The counts below are a snapshot of the working tree at build time. They move whenever any
+session rebuilds its own tree, which is why this page is excluded from the byte-for-byte drift
+check in CI &mdash; the <i>structure</i> of the table is what the verifier asserts.
+{len(repo)} parallel sessions have each published their own site tree into this repository. They overlap
 heavily: several present the same underlying table computed at different times, with different numbers.
 None of them was deleted &mdash; deleting another session's work would be worse than the duplication &mdash;
 but the duplication is itself a decision-making problem and it is logged as

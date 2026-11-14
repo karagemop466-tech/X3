@@ -39,13 +39,16 @@ jobs:
           python3 scripts/build_signals.py
 
       - name: The committed output must be exactly what the engine produces
-        # signals/data/repo_review.* is excluded on purpose: it is a report about the
-        # working tree, and other sessions' verifiers rewrite files inside the trees it
-        # measures (verification-hub/audit-report.json above all), so its bytes move when
-        # anything else in the repository is rebuilt. Its STRUCTURE is asserted by
-        # scripts/verify_signals.py instead. Everything else must match byte for byte.
+        # The repo-review trio is excluded on purpose: it is a live report on the working
+        # tree, and other sessions' verifiers rewrite files inside the trees it measures,
+        # so its counts and bytes move whenever anything else in the repository is rebuilt.
+        # Its STRUCTURE (which trees exist, that each is non-empty and sourced) is asserted
+        # by scripts/verify_signals.py instead. Everything else must match byte for byte.
         run: |
-          git diff --exit-code -- signals ':(exclude)signals/data/repo_review.csv' ':(exclude)signals/data/repo_review.json' || {
+          git diff --exit-code -- signals \
+            ':(exclude)signals/data/repo_review.csv' \
+            ':(exclude)signals/data/repo_review.json' \
+            ':(exclude)signals/repo-review.html' || {
             echo "::error::signals/ is not the current build of scripts/x3_signals.py - run it and commit the result."
             exit 1
           }
