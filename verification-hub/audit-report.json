@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 306,
       "flagged_rows": 227,
-      "refs": 346,
+      "refs": 354,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -41,6 +41,22 @@
         "audit/index.html: ID Issue Repo value Official value Proposed action Sources",
         "audit/index.html: Game (away @ home) Day Time Network (schedule) Note Injury page kickoff Injury page TV Sources",
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
+      ]
+    },
+    "crosscheck": {
+      "pages": 7,
+      "rows": 561,
+      "flagged_rows": 542,
+      "refs": 1690,
+      "unsourced_examples": [
+        "crosscheck/executive-summary.html: Fact Value Official source  Where verified",
+        "crosscheck/executive-summary.html: Missing Why State Source",
+        "crosscheck/executive-summary.html: # Decision Impact Raised by  Source Detail",
+        "crosscheck/executive-summary.html: # Step Source",
+        "crosscheck/flagged.html: ID Sev Area Finding Evidence  Suggested action",
+        "crosscheck/flagged.html: Module ID Sev Issue (as published)  Source",
+        "crosscheck/flagged.html: Family ID Modules Source",
+        "crosscheck/index.html: Module Pages Links  Tables Rows Source"
       ]
     },
     "dashboard": {
@@ -92,10 +108,10 @@
       ]
     },
     "hub": {
-      "pages": 18,
-      "rows": 768,
-      "flagged_rows": 555,
-      "refs": 994,
+      "pages": 26,
+      "rows": 1195,
+      "flagged_rows": 912,
+      "refs": 1679,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -168,9 +184,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 142,
-  "rows_total": 4994,
-  "rows_flagged_or_sourced": 4275,
-  "internal_refs": 2282,
+  "pages_total": 157,
+  "rows_total": 5982,
+  "rows_flagged_or_sourced": 5174,
+  "internal_refs": 3416,
   "problems": []
 }

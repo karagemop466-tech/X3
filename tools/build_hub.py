@@ -93,6 +93,15 @@ NAV = [
     ("repo-review", "Repo review", "Prior work audited line by line"),
     ("flagged", "Flagged for review", "Unverified items and irregularities"),
     ("archive", "Prior trees", f"The {len(ARCHIVE_ROWS)} older site trees"),
+    # ---- pages added by session arena/aab4718a-x3 (tools/build_desk.py)
+    ("summary", "Executive summary (new)", "One-page brief: verified, measured, still impossible"),
+    ("results", "Results feed", "Verified finals and the field-by-field reconciliation"),
+    ("picks", "Board: side/total/ML", "Originated in order, with key-number checks"),
+    ("snapshots", "Price snapshots", "Open/close store; exactly which cells are real"),
+    ("correlation-live", "Correlation (recomputed)", "Every coefficient with n and permutation p"),
+    ("leaderboard-live", "Leaderboard and demotion", "Signal separated from staking"),
+    ("depth-tiers", "Replacement depth", "Which string actually steps in"),
+    ("decisions", "Review queue", "Questions, answers and suggestions"),
 ]
 
 

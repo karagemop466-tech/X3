@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Board: side, total, moneyline - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="summary.html">Executive summary</a><a href="results.html">Results feed</a><a href="picks.html" class='on'>Board: side/total/ML</a><a href="snapshots.html">Price snapshots</a><a href="correlation-live.html">Correlation</a><a href="leaderboard-live.html">Leaderboard &amp; demotion</a><a href="depth-tiers.html">Replacement depth</a><a href="decisions.html">Review queue</a><a href="index.html">Canonical hub</a></nav>
+<main>
+<h1>Board: side, total, moneyline</h1>
+<p class="lede">Thirteen originated games, published in the order the brief requires, with a key-number check on every spread and an honest verdict on every column.</p>
+
+<section class="callout"><h2>The order is the point</h2>
+<p><b>Side first</b>, because it is the market the verified data says least about wrongly: the
+rating beats predict-zero out of sample, so the side is the only number on this board with
+evidence behind it. <b>Total second</b>, because on the backtest the model total is exactly as
+good as a constant - it beats nothing. <b>Moneyline last</b>, because it is a monotone function of
+the side through <code>Phi(-spread / sigma)</code>: it cannot disagree with the spread, so it adds
+no independent information. Publishing it last is a statement about what it is worth.</p></section>
+
+<h2>Key numbers - where a spread is dangerous</h2>
+<p>A line placed on a margin that recurs in the data pushes far more often than one placed
+elsewhere. 0 of the 13 originated lines sit exactly on a
+key number this week; the rest are checked against the empirical table below rather than assumed
+safe.</p>
+<div class="tblwrap"><table class="k-data">
+<caption>Margins that occur at least 6 times in 137 finals</caption>
+<thead><tr><th>Absolute margin</th><th>Games</th><th>Share of games</th><th>Cumulative share</th><th>Source</th></tr></thead><tbody>
+<tr><td>3</td><td>22</td><td>16.1%</td><td>21.9%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+<tr><td>4</td><td>8</td><td>5.8%</td><td>27.7%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+<tr><td>5</td><td>8</td><td>5.8%</td><td>33.6%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+<tr><td>6</td><td>12</td><td>8.8%</td><td>42.3%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+<tr><td>7</td><td>13</td><td>9.5%</td><td>51.8%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+<tr><td>8</td><td>7</td><td>5.1%</td><td>56.9%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+<tr><td>14</td><td>6</td><td>4.4%</td><td>70.8%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+<tr><td>17</td><td>10</td><td>7.3%</td><td>80.3%</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td></tr>
+</tbody></table>
+<p class="note">A line set on one of these values pushes with the share shown. This is a sample estimate from one season, not a constant of the sport.</p>
+</div>
+
+<h2>The board</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>13 games - side, then total, then moneyline</caption>
+<thead><tr><th>Game</th><th>Kickoff</th><th>Our side</th><th>Key-number check</th><th>Our total</th><th>Our moneyline (home/away)</th><th>Market</th><th>Difference</th><th>Market status</th></tr></thead><tbody>
+<tr><td><b>NE@DET</b></td><td>2026-11-15 09:30</td><td>DET -3.5</td><td>not a key number</td><td>46.5</td><td>-158 / +158</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>BUF@NYJ</b></td><td>2026-11-15 13:00</td><td>BUF -9.5</td><td>not a key number</td><td>50.0</td><td>-354 / +354</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>CAR@NO</b></td><td>2026-11-15 13:00</td><td>CAR -1.5</td><td>inside the 3-point cluster</td><td>49.0</td><td>-121 / +121</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>HOU@CLE</b></td><td>2026-11-15 13:00</td><td>CLE -0.5</td><td>inside the 3-point cluster</td><td>43.5</td><td>-107 / +107</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>JAX@TEN</b></td><td>2026-11-15 13:00</td><td>JAX -14.5</td><td>not a key number</td><td>44.0</td><td>-738 / +738</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>KC@ATL</b></td><td>2026-11-15 13:00</td><td>ATL +6.0</td><td>elevated push share</td><td>44.5</td><td>+220 / -220</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>MIA@IND</b></td><td>2026-11-15 13:00</td><td>IND -0.5</td><td>inside the 3-point cluster</td><td>42.5</td><td>-107 / +107</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>MIN@GB</b></td><td>2026-11-15 13:00</td><td>GB -2.0</td><td>inside the 3-point cluster</td><td>32.0</td><td>-130 / +130</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>LAR@AZ</b></td><td>2026-11-15 16:05</td><td>AZ +9.5</td><td>not a key number</td><td>44.0</td><td>+354 / -354</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>SEA@LV</b></td><td>2026-11-15 16:05</td><td>LV -1.0</td><td>inside the 3-point cluster</td><td>43.0</td><td>-114 / +114</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>SF@DAL</b></td><td>2026-11-15 16:25</td><td>DAL +8.0</td><td>elevated push share</td><td>51.5</td><td>+288 / -288</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>PIT@CIN</b></td><td>2026-11-15 20:20</td><td>pick'em</td><td>inside the 3-point cluster</td><td>46.0</td><td>-100 / -100</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td><b>LAC@BAL</b></td><td>2026-11-16 20:15</td><td>BAL -4.5</td><td>not a key number</td><td>45.0</td><td>-180 / +180</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+</tbody></table>
+<p class="note">This is a research board, not a tip sheet. It originates numbers and compares them to nothing, because no priced market exists in this repository. No bet is placed and no reward is paid.</p>
+</div>
+
+<h2>How each number was produced</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>Basis of each column</caption>
+<thead><tr><th>Market</th><th>Basis</th><th>Honest verdict</th></tr></thead><tbody>
+<tr><td>Side</td><td>base margin from shrunk club scoring rates, plus an injury adjustment</td><td><span class="badge d">DERIVED</span> - uncalibrated; the injury term is a prior (Q-08)</td></tr>
+<tr><td>Total</td><td>club scoring rates shrunk to the league mean</td><td><span class="badge d">DERIVED</span> - backtest MAE 10.96 equals the naive constant 10.96, so this is not yet better than a number</td></tr>
+<tr><td>Moneyline</td><td>Phi(-spread / 12.307) inverted to American odds</td><td><span class="badge d">DERIVED</span> - carries no information the side does not already carry</td></tr>
+</tbody></table>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_desk.py</code> from files in <code>data/verified/</code>,
+  <code>data/decisions/</code>, <code>data/picks/</code> and <code>data/snapshots/</code>.
+  Source rows are read from official NFL.com pages on 2026-11-14; values with no official source
+  are left blank and flagged. Model output is DERIVED and is arithmetic, not a prediction of
+  results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="index.html">Canonical hub</a> -
+  <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

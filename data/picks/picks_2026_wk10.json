@@ -1,0 +1,481 @@
+{
+ "as_of": "2026-11-14",
+ "season": 2026,
+ "week": 10,
+ "source": [
+  "https://www.nfl.com/schedules/2026/by-week/week-10",
+  "https://www.nfl.com/standings/league/2026/REG",
+  "https://www.nfl.com/injuries/league/2026/reg10"
+ ],
+ "order_of_origination": [
+  "SIDE",
+  "TOTAL",
+  "MONEYLINE"
+ ],
+ "n_games": 13,
+ "key_number_lines": 0,
+ "sigma_used_for_ml": 12.307,
+ "picks": [
+  {
+   "game": "NE@DET",
+   "kickoff": "2026-11-15 09:30",
+   "neutral_site": true,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "DET -3.5",
+    "number_home": -3.5,
+    "favourite": "DET",
+    "key_number": "not a key number",
+    "empirical_push_share": 0.0,
+    "basis": "base +2.44 + injury adj +1.20 = +3.64"
+   },
+   "total": {
+    "our_line": 46.5,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -158,
+    "away": 158,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT; neutral site (HFA removed)"
+  },
+  {
+   "game": "BUF@NYJ",
+   "kickoff": "2026-11-15 13:00",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "BUF -9.5",
+    "number_home": -9.5,
+    "favourite": "BUF",
+    "key_number": "not a key number",
+    "empirical_push_share": 0.0,
+    "basis": "base +8.90 + injury adj +0.63 = +9.53"
+   },
+   "total": {
+    "our_line": 50.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -354,
+    "away": 354,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT"
+  },
+  {
+   "game": "CAR@NO",
+   "kickoff": "2026-11-15 13:00",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "CAR -1.5",
+    "number_home": -1.5,
+    "favourite": "CAR",
+    "key_number": "inside the 3-point cluster",
+    "empirical_push_share": 0.0,
+    "basis": "base +0.92 + injury adj +0.36 = +1.28"
+   },
+   "total": {
+    "our_line": 49.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -121,
+    "away": 121,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT"
+  },
+  {
+   "game": "HOU@CLE",
+   "kickoff": "2026-11-15 13:00",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "CLE -0.5",
+    "number_home": -0.5,
+    "favourite": "CLE",
+    "key_number": "inside the 3-point cluster",
+    "empirical_push_share": 0.0,
+    "basis": "base -4.11 + injury adj +4.48 = +0.37"
+   },
+   "total": {
+    "our_line": 43.5,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -107,
+    "away": 107,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "STRONG - injury shift >= 3.5 pts"
+  },
+  {
+   "game": "JAX@TEN",
+   "kickoff": "2026-11-15 13:00",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "JAX -14.5",
+    "number_home": -14.5,
+    "favourite": "JAX",
+    "key_number": "not a key number",
+    "empirical_push_share": 0.0,
+    "basis": "base +13.58 + injury adj +1.14 = +14.72"
+   },
+   "total": {
+    "our_line": 44.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -738,
+    "away": 738,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT"
+  },
+  {
+   "game": "KC@ATL",
+   "kickoff": "2026-11-15 13:00",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "ATL +6.0",
+    "number_home": 6.0,
+    "favourite": "KC",
+    "key_number": "elevated push share",
+    "empirical_push_share": 0.0876,
+    "basis": "base -7.61 + injury adj +1.48 = -6.13"
+   },
+   "total": {
+    "our_line": 44.5,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": 220,
+    "away": -220,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT"
+  },
+  {
+   "game": "MIA@IND",
+   "kickoff": "2026-11-15 13:00",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "IND -0.5",
+    "number_home": -0.5,
+    "favourite": "IND",
+    "key_number": "inside the 3-point cluster",
+    "empirical_push_share": 0.0,
+    "basis": "base +1.17 + injury adj -0.50 = +0.67"
+   },
+   "total": {
+    "our_line": 42.5,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -107,
+    "away": 107,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT"
+  },
+  {
+   "game": "MIN@GB",
+   "kickoff": "2026-11-15 13:00",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "GB -2.0",
+    "number_home": -2.0,
+    "favourite": "GB",
+    "key_number": "inside the 3-point cluster",
+    "empirical_push_share": 0.0365,
+    "basis": "base -0.58 + injury adj +2.40 = +1.82"
+   },
+   "total": {
+    "our_line": 32.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -130,
+    "away": 130,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "MODERATE - injury shift 1.5-3.5 pts"
+  },
+  {
+   "game": "LAR@AZ",
+   "kickoff": "2026-11-15 16:05",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "AZ +9.5",
+    "number_home": 9.5,
+    "favourite": "LAR",
+    "key_number": "not a key number",
+    "empirical_push_share": 0.0,
+    "basis": "base -8.46 + injury adj -1.09 = -9.55"
+   },
+   "total": {
+    "our_line": 44.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": 354,
+    "away": -354,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT"
+  },
+  {
+   "game": "SEA@LV",
+   "kickoff": "2026-11-15 16:05",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "LV -1.0",
+    "number_home": -1.0,
+    "favourite": "LV",
+    "key_number": "inside the 3-point cluster",
+    "empirical_push_share": 0.0146,
+    "basis": "base -5.38 + injury adj +6.46 = +1.08"
+   },
+   "total": {
+    "our_line": 43.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -114,
+    "away": 114,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "STRONG - injury shift >= 3.5 pts"
+  },
+  {
+   "game": "SF@DAL",
+   "kickoff": "2026-11-15 16:25",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "DAL +8.0",
+    "number_home": 8.0,
+    "favourite": "SF",
+    "key_number": "elevated push share",
+    "empirical_push_share": 0.0511,
+    "basis": "base -5.81 + injury adj -2.12 = -7.93"
+   },
+   "total": {
+    "our_line": 51.5,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": 288,
+    "away": -288,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "MODERATE - injury shift 1.5-3.5 pts"
+  },
+  {
+   "game": "PIT@CIN",
+   "kickoff": "2026-11-15 20:20",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "pick'em",
+    "number_home": 0.0,
+    "favourite": "level",
+    "key_number": "inside the 3-point cluster",
+    "empirical_push_share": 0.0073,
+    "basis": "base +2.42 + injury adj -2.36 = +0.06"
+   },
+   "total": {
+    "our_line": 46.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -100,
+    "away": -100,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "MODERATE - injury shift 1.5-3.5 pts"
+  },
+  {
+   "game": "LAC@BAL",
+   "kickoff": "2026-11-16 20:15",
+   "neutral_site": false,
+   "order": [
+    "SIDE",
+    "TOTAL",
+    "MONEYLINE"
+   ],
+   "side": {
+    "our_line": "BAL -4.5",
+    "number_home": -4.5,
+    "favourite": "BAL",
+    "key_number": "not a key number",
+    "empirical_push_share": 0.0,
+    "basis": "base +4.55 + injury adj +0.00 = +4.55"
+   },
+   "total": {
+    "our_line": 45.0,
+    "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
+   },
+   "moneyline": {
+    "home": -180,
+    "away": 180,
+    "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
+   },
+   "market_side": "",
+   "market_total": "",
+   "market_ml": "",
+   "diff_side": "",
+   "diff_total": "",
+   "diff_ml": "",
+   "market_status": "UNVERIFIED - no official price source exists",
+   "signal_used": "NO MATERIAL INJURY SHIFT"
+  }
+ ],
+ "columns_explained": {
+  "our_line": "DERIVED - arithmetic on verified inputs, parameters printed in hub/data/meta.json",
+  "market": "blank - no official NFL price publication and no licensed feed",
+  "difference": "blank - a difference against a blank market would be a fabrication"
+ },
+ "disclaimer": "This is a research board, not a tip sheet. It originates numbers and compares them to nothing, because no priced market exists in this repository. No bet is placed and no reward is paid."
+}

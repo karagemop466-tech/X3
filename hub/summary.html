@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="summary.html" class='on'>Executive summary</a><a href="results.html">Results feed</a><a href="picks.html">Board: side/total/ML</a><a href="snapshots.html">Price snapshots</a><a href="correlation-live.html">Correlation</a><a href="leaderboard-live.html">Leaderboard &amp; demotion</a><a href="depth-tiers.html">Replacement depth</a><a href="decisions.html">Review queue</a><a href="index.html">Canonical hub</a></nav>
+<main>
+<h1>Executive summary</h1>
+<p class="lede">One page: what is now verified, what is measured, what is still impossible, and the four decisions that actually need a human.</p>
+<div class="grid">
+<div class="card"><div class="num">137</div><div class="lbl">verified finals</div>
+<div class="sub">every club field recomputed and matched</div></div>
+<div class="card"><div class="num">192/192</div>
+<div class="lbl">reconciliation fields agree</div>
+<div class="sub">official standings vs recomputed game log</div></div>
+<div class="card"><div class="num">39/76</div>
+<div class="lbl">absences with a named replacement</div>
+<div class="sub">the rest are blank, not guessed</div></div>
+<div class="card"><div class="num">3/10</div>
+<div class="lbl">validation gates passing</div>
+<div class="sub">2 blocked on data that does not exist here</div></div>
+</div>
+<section class="callout"><h2>The short version</h2>
+<p>Three things changed in this session, and one did not.</p>
+<ol>
+<li><b>A results feed now exists and is verified.</b> 137 finals were re-summed
+per club and compared field by field with the official standings page:
+192 of 192 values agree exactly across
+32 clubs. Before this, backtests in this repository were not possible at all.</li>
+<li><b>The model was tested out of sample for the first time.</b> On 89 games
+it had never seen, it beats predicting a zero margin: MAE 9.29 vs
+10.21 points, with 56 of
+88 sides correct (exact p=0.01375).
+That is a real signal about the score. It is <b>not</b> an edge over a price, and this site never
+claims one.</li>
+<li><b>The gates got arithmetic.</b> The published minimum sample of 300 bets was too low by a
+factor of about 8: an exact power calculation puts a 55% edge at 2272 settled bets.
+A demotion gate now exists with six triggers, each backed by a probability rather than an opinion.</li>
+</ol>
+<p>What did not change: there is still no market price anywhere in this repository.
+Every price cell is blank and flagged, so ROI, closing-line value and a populated leaderboard
+remain impossible. That is not a modelling gap, it is a missing purchase.</p>
+</section>
+
+<h2>What a reviewer should decide, in order</h2>
+<div class="tblwrap"><table class="k-meta">
+<caption>Decision queue</caption>
+<thead><tr><th>#</th><th>Decision</th><th>Why now</th><th>Evidence</th><th>Status</th></tr></thead><tbody>
+<tr><td>1</td><td>Adopt the signal/staking split and the corrected minimum sample</td><td>a 45% loser still looks profitable after 100 bets 6.6% of the time</td><td><a href="leaderboard-live.html">leaderboard &amp; demotion</a></td><td><span class="badge u">PROPOSED</span></td></tr>
+<tr><td>2</td><td>License a price feed with open and close per market</td><td>all 39 market cells are blank and every market gate is blocked on this</td><td><a href="snapshots.html">price snapshot store</a></td><td><span class="badge u">BLOCKED</span></td></tr>
+<tr><td>3</td><td>Estimate the injury cost coefficients instead of carrying priors</td><td>the injury adjustment moves lines by up to 6.5 points on no measured basis</td><td><a href="decisions.html">Q-08 and Q-14</a></td><td><span class="badge b">OPEN</span></td></tr>
+<tr><td>4</td><td>Obtain legal review before publishing any reward structure</td><td>the question cannot be answered from data and carries the only unhedgeable risk</td><td><a href="decisions.html">Q-13</a></td><td><span class="badge b">OPEN</span></td></tr>
+</tbody></table>
+</div>
+
+<h2>The three numbers that should govern everything else</h2>
+<div class="tblwrap"><table class="k-meta">
+<caption>Govern the rest</caption>
+<thead><tr><th>Number</th><th>What it means</th><th>Why it matters for a decision</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>6.6%</b></td><td>chance a true 45% bettor shows a profit after 100 bets at -110</td><td>a bankroll column is not evidence of skill and cannot rank strategies</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">NFL schedule pages</a></td></tr>
+<tr><td><b>2272</b></td><td>settled bets needed for 80% power to detect a 55% edge at -110</td><td>any competition opened before this sample ranks noise</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">NFL schedule pages</a></td></tr>
+<tr><td><b>0.469</b> ± 2.28</td><td>measured home-field advantage in points, n=130 non-neutral finals</td><td>the interval includes zero, which contradicts the usual 2.5-3 points and is why the model uses zero and says so</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">NFL schedule pages</a></td></tr>
+</tbody></table>
+</div>
+
+<h2>Where every open item lives</h2>
+<div class="tblwrap"><table class="k-meta">
+<caption>Index</caption>
+<thead><tr><th>Page</th><th>What you will find there</th></tr></thead><tbody>
+<tr><td><a href="results.html">Results feed</a></td><td>137 verified finals, the reconciliation, the empirical margin and total distributions</td></tr>
+<tr><td><a href="picks.html">Board</a></td><td>13 originated games in the order side, total, moneyline, with key-number checks</td></tr>
+<tr><td><a href="snapshots.html">Price snapshots</a></td><td>the store schema and exactly which cells are real</td></tr>
+<tr><td><a href="correlation-live.html">Correlation</a></td><td>coefficients recomputed from official numbers with n and permutation p</td></tr>
+<tr><td><a href="leaderboard-live.html">Leaderboard and demotion</a></td><td>signal separated from staking, six demotion triggers</td></tr>
+<tr><td><a href="depth-tiers.html">Replacement depth</a></td><td>which string steps in for each absence</td></tr>
+<tr><td><a href="decisions.html">Review queue</a></td><td>14 questions and 8 suggestions</td></tr>
+</tbody></table>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_desk.py</code> from files in <code>data/verified/</code>,
+  <code>data/decisions/</code>, <code>data/picks/</code> and <code>data/snapshots/</code>.
+  Source rows are read from official NFL.com pages on 2026-11-14; values with no official source
+  are left blank and flagged. Model output is DERIVED and is arithmetic, not a prediction of
+  results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="index.html">Canonical hub</a> -
+  <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

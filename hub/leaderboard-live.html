@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard: signal, staking and demotion - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="summary.html">Executive summary</a><a href="results.html">Results feed</a><a href="picks.html">Board: side/total/ML</a><a href="snapshots.html">Price snapshots</a><a href="correlation-live.html">Correlation</a><a href="leaderboard-live.html" class='on'>Leaderboard &amp; demotion</a><a href="depth-tiers.html">Replacement depth</a><a href="decisions.html">Review queue</a><a href="index.html">Canonical hub</a></nav>
+<main>
+<h1>Leaderboard: signal, staking and demotion</h1>
+<p class="lede">A competition that rewards the signal first and reports staking second, with a demotion gate that fires on arithmetic rather than on a vote.</p>
+
+<section class="callout"><h2>Signal and staking are different questions</h2>
+<p><b>Signal</b> asks whether the model ranked outcomes better than chance, and it involves no
+money. <b>Staking</b> asks what happened to a bankroll, which depends on unit size, price, the order
+of wins and losses, and luck. A leaderboard that ranks on the second while claiming the first is
+measuring luck. This page measures both, separately, and shows the arithmetic behind the split.</p></section>
+
+<h2>The measured signal</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>Signal, measured without money</caption>
+<thead><tr><th>Metric</th><th>Value</th><th>n</th><th>What it proves</th></tr></thead><tbody>
+<tr><td>Out-of-sample MAE</td><td><b>9.29</b> points</td><td>89</td><td>beats predict-zero (10.21) <span class="badge d">DERIVED</span></td></tr>
+<tr><td>Sides correct</td><td><b>56</b> of 88</td><td>89</td><td>exact binomial p = 0.01375 against a coin <span class="badge d">DERIVED</span></td></tr>
+<tr><td>Correlation of predicted to actual margin</td><td><b>0.3082</b></td><td>89</td><td>positive and out of sample <span class="badge d">DERIVED</span></td></tr>
+<tr><td>What is NOT claimed</td><td>an edge over a market</td><td>-</td><td>no price exists here, so the only comparison that matters has not been made <span class="badge d">DERIVED</span></td></tr>
+</tbody></table>
+<p class="note">Every row is DERIVED from the official finals at https://www.nfl.com/schedules/2026/by-week/week-N by tools/verified_feed.py.</p>
+</div>
+
+<h2>Why a bankroll cannot rank strategies</h2>
+<p>Simulated at -110 with resampled orderings. The rows are the number of bets; the columns are
+three strategies with different <i>true</i> win rates. A profitable-looking bankroll is common for
+every one of them at short samples.</p>
+<div class="tblwrap"><table class="k-data">
+<caption>Share of runs finishing above the starting bankroll</caption>
+<thead><tr><th>Bets</th><th>True 45% (a loser)</th><th>True 50% (no edge)</th><th>True 52.38% (breakeven)</th><th>Basis</th></tr></thead><tbody>
+<tr><td>20</td><td>25.0%</td><td>41.6%</td><td>50.0%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>50</td><td>12.2%</td><td>33.0%</td><td>45.6%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>100</td><td>6.6%</td><td>30.8%</td><td>49.1%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>200</td><td>1.9%</td><td>26.3%</td><td>52.0%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>500</td><td>0.1%</td><td>15.2%</td><td>51.3%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>1000</td><td>0.0%</td><td>7.4%</td><td>51.4%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>2000</td><td>0.0%</td><td>1.6%</td><td>50.3%</td><td><span class="badge d">DERIVED</span></td></tr>
+</tbody></table>
+</div>
+
+<p>And directly: how often does the <i>worse</i> of two strategies finish ahead of the better one
+over the same sample?</p>
+<div class="tblwrap"><table class="k-data">
+<caption>20000 simulated boards per row, seed 20261114</caption>
+<thead><tr><th>Bets</th><th>P(47% strategy outranks 55% strategy)</th><th>Basis</th></tr></thead><tbody>
+<tr><td>20</td><td>25.3%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>50</td><td>18.9%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>100</td><td>11.3%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>200</td><td>5.0%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>500</td><td>0.4%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>1000</td><td>0.0%</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>2000</td><td>0.0%</td><td><span class="badge d">DERIVED</span></td></tr>
+</tbody></table>
+</div>
+
+<h2>How many bets before the question can be answered</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>This is the arithmetic behind the minimum-sample gate</caption>
+<thead><tr><th>Edge above breakeven</th><th>Settled bets needed for 80% power</th><th>Verified by</th></tr></thead><tbody>
+<tr><td>55% vs breakeven</td><td><b>2272</b></td><td>exact binomial power = 0.8017 <span class="badge d">DERIVED</span></td></tr>
+<tr><td>56% vs breakeven</td><td><b>1182</b></td><td>exact binomial power = 0.801 <span class="badge d">DERIVED</span></td></tr>
+<tr><td>58% vs breakeven</td><td><b>498</b></td><td>exact binomial power = 0.802 <span class="badge d">DERIVED</span></td></tr>
+</tbody></table>
+<p class="note">The previously published minimum of 300 bets would only detect an edge of about 60%. That is why the gate was corrected rather than kept.</p>
+</div>
+
+<h2>The demotion gate: any one trigger sends a live strategy back to paper</h2>
+<div class="tblwrap"><table class="k-meta">
+<caption>6 triggers, all computed</caption>
+<thead><tr><th>ID</th><th>Trigger</th><th>Why this trigger</th><th>The arithmetic</th></tr></thead><tbody>
+<tr><td>D-1</td><td>30+ settled bets with negative cumulative flat-stake profit</td><td>A 12-bet losing run is normal, so the trigger is on cumulative profit over the run rather than on consecutive losses. Thirty bets is short enough to act on and long enough that a real edge rarely sits under water for all of it.</td><td>At a true 55% win rate, 30 losing bets in a row has probability 0.45^30 = 3.95e-11; at breakeven it is 2.15e-10. The trigger is therefore not a 50/50 call: it fires on a run that a genuine edge almost never produces.</td></tr>
+<tr><td>D-2</td><td>trailing 400-bet ROI below -3% while the pre-registered expectation was positive</td><td>A sharp registered edge almost never digs a 3%-below-turnover hole over 400 bets; a strategy with no edge digs it regularly. The trigger therefore separates a decayed edge from a genuine one without needing to know which it is in advance.</td><td>P(ROI &lt; -3% over 400 flat bets) = 0.0002 at a true 55% and 0.0061 at breakeven. Because the 55% figure is far below any conventional significance level, the trigger cannot be dismissed as an unlucky streak by a strategy that is merely breaking even.</td></tr>
+<tr><td>D-3</td><td>rolling 200-bet CLV negative for 3 consecutive re-ratings</td><td>CLV is the least noisy skill measure available and is not sensitive to variance in the outcome. Three consecutive negative windows is the standard process-quality failure signal.</td><td>requires G-5 to be unblocked; cannot fire until prices exist.</td></tr>
+<tr><td>D-4</td><td>documented input defect: any strategy input found to be wrong, unverifiable, or from a source that was later retracted</td><td>A correct result from wrong inputs is not a result. This is the trigger that applies to this repository's own history (a standings transcription had to be corrected once already).</td><td>n/a - a defect is a defect regardless of sample size</td></tr>
+<tr><td>D-5</td><td>the strategy's own stated dependence term cannot be re-estimated from current data</td><td>For combos and parlays, if the correlation that justified the joint price cannot be recomputed, the price is a guess and the strategy may not stay live.</td><td>n/a</td></tr>
+<tr><td>D-6</td><td>reward payout would exceed the notional cap before G-3 is met</td><td>Stops a promotion being paid out of a sample too small to justify it.</td><td>n/a</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>Demotion is automatic: any single trigger fires it. No human vote, no override on the same sample.</li><li>A demoted strategy returns to paper and may only be re-promoted on a NEW sample that post-dates the demotion, never on the sample that demoted it.</li><li>The demotion, its trigger, and the sample are published on the leaderboard page.</li><li>Losing a strategy is a normal cost of running many; hiding it is not permitted.</li>
+</ul>
+
+<h2>Strategy ledger</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>12 registered strategies - 0 live</caption>
+<thead><tr><th>ID</th><th>Family</th><th>Strategy</th><th>How its signal would be measured</th><th>Settled</th><th>Signal</th><th>Staking</th><th>Gate</th><th>Verdict</th></tr></thead><tbody>
+<tr><td>ST-01</td><td>Single - side</td><td>Injury-shock fade</td><td>sign accuracy and MAE vs predict-zero on unseen games</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-02</td><td>Single - side</td><td>Pythagorean regression</td><td>sign accuracy and MAE vs predict-zero on unseen games</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-03</td><td>Single - total</td><td>Backup-QB total under</td><td>MAE vs the naive total, on unseen games</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-04</td><td>Single - side</td><td>Offensive-line collapse</td><td>sign accuracy and MAE vs predict-zero on unseen games</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-05</td><td>Single - prop combo</td><td>Goal-to-go rush stack</td><td>joint hit rate vs the multiplied marginals</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-06</td><td>Parlay - same game</td><td>Correlated game-script parlay</td><td>realised joint rate vs the independence product</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-07</td><td>Parlay - cross game</td><td>Same-slate fade basket</td><td>realised joint rate vs the independence product</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-08</td><td>Single - side</td><td>Rest-day asymmetry</td><td>sign accuracy and MAE vs predict-zero on unseen games</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-09</td><td>Single - market check</td><td>Line-move vs news check</td><td>count of flagged moves that preceded a real absence</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-10</td><td>Evaluation</td><td>Cross-fitted model-quality benchmark</td><td>log-loss and MAE of the originated line</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-11</td><td>Single - side</td><td>Alternate-market arbitrage of our own line</td><td>sign accuracy and MAE vs predict-zero on unseen games</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+<tr><td>ST-12</td><td>Staking</td><td>Fractional-Kelly with model-error haircut</td><td>not a signal - applied on top of one</td><td>0</td><td><span class="badge u">NOT MEASURED</span></td><td><span class="blank"></span></td><td>G-3 FAIL (0 of the required settled bets)</td><td><span class="badge p">PAPER</span></td></tr>
+</tbody></table>
+<p class="note">Every strategy is on paper. Nine of the twelve have zero settled bets, and the ones that could be measured lack prices. The empty staking column is the correct output, not an omission.</p>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_desk.py</code> from files in <code>data/verified/</code>,
+  <code>data/decisions/</code>, <code>data/picks/</code> and <code>data/snapshots/</code>.
+  Source rows are read from official NFL.com pages on 2026-11-14; values with no official source
+  are left blank and flagged. Model output is DERIVED and is arithmetic, not a prediction of
+  results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="index.html">Canonical hub</a> -
+  <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>
