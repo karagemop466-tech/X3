@@ -20,11 +20,97 @@
   "Questionable": 84,
   "none": 185
  },
+ "desk_meta": {
+  "bt": {
+   "bias": -1.02,
+   "games": 121,
+   "mae": 10.52,
+   "n": 121,
+   "predicted_vs_actual_r": 0.2,
+   "rmse": 13.82,
+   "rule": "fit on all weeks before the predicted week only",
+   "weeks": [
+    {
+     "games": 16,
+     "week": 2
+    },
+    {
+     "games": 16,
+     "week": 3
+    },
+    {
+     "games": 16,
+     "week": 4
+    },
+    {
+     "games": 15,
+     "week": 5
+    },
+    {
+     "games": 14,
+     "week": 6
+    },
+    {
+     "games": 14,
+     "week": 7
+    },
+    {
+     "games": 14,
+     "week": 8
+    },
+    {
+     "games": 15,
+     "week": 9
+    },
+    {
+     "games": 1,
+     "week": 10
+    }
+   ]
+  },
+  "hfa": 0.08
+ },
+ "game_log": {
+  "available": true,
+  "finals": 137,
+  "r_away_home": 0.0759,
+  "r_total_absmargin": -0.0157,
+  "r_total_signedmargin": -0.1607,
+  "recon_mismatches": [],
+  "rows": 163,
+  "season": 2026,
+  "weeks": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ]
+ },
  "games_played": 274,
  "injury_rows": 345,
  "league_total_per_game": 45.92,
  "max_deficiency": 7.75,
  "nir_rows": 4,
+ "overlay": {
+  "clubs": 23,
+  "dated": 0,
+  "join_counts": {
+   "club depth chart not machine-readable in capture": 5,
+   "matched": 41,
+   "matched-no-backup": 13,
+   "player not listed on his own club's depth chart": 17
+  },
+  "rows": 76,
+  "unofficial": 50,
+  "with_replacement": 41
+ },
  "slate_rows": 18,
  "standings_problems": [],
  "unplayed_games": 13

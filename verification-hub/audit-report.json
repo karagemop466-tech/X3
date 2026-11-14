@@ -18,18 +18,18 @@
     },
     "archive": {
       "pages": 17,
-      "rows": 705,
-      "flagged_rows": 652,
-      "refs": 813,
+      "rows": 802,
+      "flagged_rows": 742,
+      "refs": 1010,
       "unsourced_examples": [
         "archive/hub-621bf404/archive.html:  Tree  What it is  Repository  Live page ",
         "archive/hub-621bf404/correlations.html:  #  Pair  r  n  Method  Caveat  Source ",
+        "archive/hub-621bf404/correlations.html:  Pair  Recomputed here  Published by the desk unit  n  Reading  Source ",
         "archive/hub-621bf404/correlations.html:  Pair  Published by a prior tree  Recomputed here  Agreement  Evidence ",
         "archive/hub-621bf404/deficiency.html:  Club  Record  Rows on report  Out  Doubtful  Questionable  Undesignated  Non-injury rest  Offensive loss (pts)  Defensi",
         "archive/hub-621bf404/deficiency.html:  Claim  Supportable from official data?  Treatment here  Evidence ",
         "archive/hub-621bf404/deficiency.html: Whether a backup's presence changes a prop market no - needs prop prices and usage data not attempted FLG-07 \u00b7 Q-12",
-        "archive/hub-621bf404/executive-summary.html:  Finding  Value  Basis  Source ",
-        "archive/hub-621bf404/executive-summary.html: No game log in repo no home-field estimate, no opponent adjustment, no parlay correlation matrix ingest schedule + box s"
+        "archive/hub-621bf404/deficiency.html:  Club  Absent starter  Pos  Official status  Slot  Starter's string  Named replacement  Repl. string  Join result  Chart"
       ]
     },
     "audit": {
@@ -169,8 +169,8 @@
     }
   },
   "pages_total": 142,
-  "rows_total": 4897,
-  "rows_flagged_or_sourced": 4185,
-  "internal_refs": 2265,
+  "rows_total": 4994,
+  "rows_flagged_or_sourced": 4275,
+  "internal_refs": 2282,
   "problems": []
 }

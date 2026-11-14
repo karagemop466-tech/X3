@@ -199,7 +199,8 @@ verification log · flagged for review · archive.
 | Week 10 injury report, 345 rows / 28 clubs | https://www.nfl.com/injuries/ | transcribed row by row; reproduces the repo's earlier snapshot on all 345 players and game statuses, 1 practice-status drift |
 | 2026 league standings, 32 clubs | https://www.nfl.com/standings/league/2026/REG | wins = losses, PF = PA, every home/road/division/conference split reconciles |
 | Week 10 slate: 14 games + 4 byes | https://www.nfl.com/schedules/2026/by-week/week-10 | 32 clubs accounted for exactly once |
-| WAS 24, NYG 21 (Thu) | https://www.nfl.com/games/commanders-at-giants-2026-reg-10 | confirmed; the standings module still excludes it (FLG-02) |
+| WAS 24, NYG 21 (Thu) | https://www.nfl.com/games/commanders-at-giants-2026-reg-10 | confirmed, and included in the standings: reconciled against `data/desk/games.json` on all 32 clubs (192/192 values agree). This retracted a flag this session had published in error (FLG-02) |
+| Club depth charts (desk capture) | https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json | 76 Week-10 absences: 41 resolve to a named replacement, 0 carry a chart as-of date → published only as an UNVERIFIED overlay |
 
 **Irregularities found in existing data** (published at `hub/flagged.html`, all 21 non-blocking):
 a prior tree's Tampa Bay division record (1-2-0) contradicts the official page (2-0-0);
