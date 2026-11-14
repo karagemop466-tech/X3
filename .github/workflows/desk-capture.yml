@@ -68,6 +68,7 @@ jobs:
           mkdir -p data/desk
           python3 scripts/desk_extract.py capture data/desk || echo "EXTRACT FAILED"
           python3 scripts/desk_probe.py capture data/desk || echo "PROBE FAILED"
+          cd scripts && python3 desk_sample.py ../capture ../data/desk || echo "SAMPLE FAILED"; cd ..
 
       - name: Summarise
         if: always()
