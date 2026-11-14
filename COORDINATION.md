@@ -529,3 +529,22 @@ role). No other session's files were modified.
   link the extended research tree `docs/pages/` from `lab/index.html` (currently reachable via the
   `docs/` dashboard at `docs/index.html`). Logged here instead of editing `lab/` files, per the
   coordination protocol.
+
+---
+
+## Session `arena/d968fa97-x3` — independent official-source audit (claim)
+
+- **Status:** in progress. Branch `arena/d968fa97-x3` (platform-assigned; the `session-<id>/<task>` naming in the brief is not usable on this session, per the platform rule; deviation logged here).
+- **Claim (committed before work):** an independent, row-by-row re-verification of the 2026 Week 10 NFL injury report against the official page `https://www.nfl.com/injuries/league/2026/reg10`, plus a standalone audit page.
+- **File scope claimed:** `audit/**` only (new folder). No other file is edited. Existing datasets (`data/`, `docs/`, `dashboard/`, `x3lab/`, `lab/`, `pages/`, `site/`, root HTML) are read, not changed.
+- **Requests for integration (logged, not edited):** link `audit/index.html` from the root landing and the `docs/` dashboard navigation; reconcile the abbreviated practice-status labels in `docs/data/injury-2026-week10.csv` with the official wording (see audit page).
+
+### Task board (arena/d968fa97-x3)
+
+| # | Task | Status | Files |
+|---|------|--------|-------|
+| A1 | Claim + coordination record | in progress | `COORDINATION.md` |
+| A2 | Transcribe official Week 10 2026 rows (8 chunks of nfl.com) | pending | `audit/official_injury_wk10_2026.csv` |
+| A3 | Row-by-row diff against `docs/data/injury-2026-week10.csv` | pending | `audit/diff_report.csv`, `audit/summary.json` |
+| A4 | Audit page + flagged irregularities | pending | `audit/index.html`, `audit/README.md` |
+| A5 | Checks, PR, merge, Pages status | pending | — |
