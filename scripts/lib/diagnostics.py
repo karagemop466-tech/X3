@@ -65,6 +65,26 @@ def describe_html(path: str, max_tables: int = 3, max_cells: int = 12) -> dict:
             classes[c] += 1
     out["top_classes"] = [c for c, _ in classes.most_common(30)]
 
+    # A compact, representative sample of the game cards, so a parser can be
+    # written or repaired from the repository alone. The full page is
+    # megabytes long; two cards are enough to see the structure.
+    cards = []
+    for a in soup.find_all("a", href=True):
+        if "/games/" not in a["href"]:
+            continue
+        node = a
+        for _ in range(8):
+            node = node.parent
+            if node is None:
+                break
+            if node.name in ("li", "article", "section", "div"):
+                cards.append(str(node))
+                break
+        if len(cards) >= 2:
+            break
+    if cards:
+        out["game_card_sample"] = cards
+
     chains = []
     for a in soup.find_all("a", href=True):
         if "/games/" not in a["href"]:

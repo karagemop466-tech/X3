@@ -110,14 +110,30 @@ jobs:
           fi
 
       # The build status still reflects reality: the pipeline fails if the
-      # validator found a broken link, a dataset row without an official source
-      # link, or a script that raised. The report is already committed, so the
-      # failure is diagnosable from the repository.
+      # offline self-tests failed, if the validator found a broken link, if a
+      # dataset row lacks an official source link, or if a script raised. The
+      # report is already committed, so the failure is diagnosable from the
+      # repository.
       - name: Check pipeline result
         if: always()
         run: |
           python - <<'PY'
-          import json, os, sys
+          import json, os, re, sys
+
+          # 1. The offline self-tests must have passed.
+          selftest = "data/datasets/logs/selftest.log"
+          if os.path.exists(selftest):
+              with open(selftest, encoding="utf-8") as fh:
+                  log = fh.read()
+              failures = re.findall(r"^\[FAIL\] (.*)$", log, re.M)
+              if failures:
+                  for line in failures:
+                      print(f"[FAIL] self-test: {line}")
+                  print(f"{len(failures)} self-test(s) failed")
+                  sys.exit(1)
+              print("[PASS] offline self-tests")
+
+          # 2. The validation report must have passed.
           report = "data/datasets/validation_report.json"
           if not os.path.exists(report):
               print("no validation report was produced")

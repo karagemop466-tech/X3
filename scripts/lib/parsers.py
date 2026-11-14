@@ -311,174 +311,159 @@ def parse_player_stats(html: str, source_url: str, category: str, season: int | 
 # ---------------------------------------------------------------------------
 
 
-def _schedule_competitor_blocks(card) -> list:
-    """Find the per-team blocks inside a game card."""
-    for selector in (
-        "div.d3-o-gamecard__competitor",
-        "li.d3-o-gamecard__competitor",
-        "div.nfl-c-matchup-strip__team",
-    ):
-        blocks = card.select(selector)
-        if len(blocks) >= 2:
-            return blocks
-    return []
+_GAME_SLUG_RE = re.compile(r"/games/([a-z0-9\-]+)-([a-z0-9]+)-at-([a-z0-9]+)-(\d{4})-reg-(\d+)")
+_SCORE_RE = re.compile(r"^\d{1,3}$")
+_RECORD_RE = re.compile(r"^\d{1,2}-\d{1,2}(-\d{1,2})?$")
+_TIME_RE = re.compile(r"\d{1,2}:\d{2}\s*(AM|PM)", re.I)
+_DATE_RE = re.compile(
+    r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2}", re.I
+)
 
 
-def _schedule_competitor(block, is_home: bool) -> dict:
-    """Extract one team's name, abbreviation, score and record from a block."""
-    name = ""
-    abbr = ""
-    score = ""
-    record = ""
+def _title_from_slug(word: str) -> str:
+    return " ".join(part.capitalize() for part in word.split("-") if part)
 
-    for selector in (
-        "div.d3-o-gamecard__team-name",
-        "span.d3-o-gamecard__team-name",
-        "div.nfl-c-matchup-strip__team-fullname",
-        "a.nfl-c-matchup-strip__team-fullname",
-        "div.d3-o-gamecard__competitor-title",
-        "span.d3-o-gamecard__team-abbreviation",
-        "span.nfl-c-matchup-strip__team-abbreviation",
-    ):
-        node = block.select_one(selector)
-        if node is None:
+
+def _game_cards(soup) -> list:
+    """Return the game cards on an NFL.com schedule page.
+
+    The current NFL.com schedule is rendered with utility classes that carry
+    no semantics, so the cards are located structurally: every element that
+    contains a link to a game page is a card.
+    """
+    cards: list = []
+    seen: set[int] = set()
+    for link in soup.find_all("a", href=re.compile(r"/games/")):
+        node = link
+        for _ in range(8):
+            node = node.parent
+            if node is None:
+                break
+            if node.name in ("li", "article", "section", "div"):
+                if id(node) not in seen:
+                    seen.add(id(node))
+                    cards.append(node)
+                break
+    return cards
+
+
+def _leaf_texts(node) -> list[str]:
+    """Text of the deepest elements that carry content, in document order."""
+    out: list[str] = []
+    for element in node.find_all(True):
+        if element.find(True):
             continue
-        text = _txt(node)
-        if not text:
-            continue
-        if "abbreviation" in selector:
-            abbr = text
-        elif "fullname" in selector:
-            name = name or text
-        elif not name:
-            name = text
-    if not name:
-        link = block.find("a")
-        if link is not None:
-            name = _txt(link)
-    if not abbr and name:
-        abbr = name.split()[-1] if name.split() else ""
-    if not abbr:
-        node = block.select_one("[class*=abbreviation]")
-        if node is not None:
-            abbr = _txt(node)
-
-    for selector in (
-        "div.d3-o-gamecard__score",
-        "span.d3-o-gamecard__score",
-        "div.nfl-c-matchup-strip__team-score",
-        "span.nfl-c-matchup-strip__team-score",
-    ):
-        node = block.select_one(selector)
-        if node is not None:
-            score = _txt(node)
-            break
-
-    for selector in (
-        "div.d3-o-gamecard__competitor-metadata",
-        "span.d3-o-gamecard__competitor-metadata",
-        "div.nfl-c-matchup-strip__record",
-    ):
-        node = block.select_one(selector)
-        if node is not None:
-            record = _txt(node).strip("()")
-            break
-
-    return {
-        "name": name,
-        "abbr": abbr,
-        "score": score,
-        "record": record,
-        "is_home": is_home,
-    }
+        text = _txt(element)
+        if text:
+            out.append(text)
+    return out
 
 
 def parse_schedule(html: str, source_url: str, season: int | None, week: int | None) -> dict:
     """Parse an NFL.com weekly schedule page into game records with scores.
 
-    NFL.com renders a schedule week as a list of game cards. Two markups are
-    supported: the ``d3-o-gamecard`` card and the ``nfl-c-matchup-strip``
-    strip. Both carry the teams, the final score, the network and the kickoff
-    time.
+    The current NFL.com schedule markup is built from utility classes, so the
+    parser works structurally: it locates each game by its link, reads the
+    team abbreviations from the official club logos, the scores from the
+    numeric cells, the records from the win-loss-loss cells, and the network
+    from the broadcaster logo.
+
+    Only the games belonging to the requested week are returned. The page
+    also carries a by-week strip for other weeks, and mixing those in would
+    file one week of games under another.
     """
     soup = BeautifulSoup(html, "lxml")
     games: list[dict] = []
-    cards = soup.select(
-        "div.d3-o-gamecard, li.d3-o-gamecard, section.d3-o-gamecard, div.nfl-c-matchup-strip"
-    )
     seen: set[str] = set()
-    for card in cards:
-        blocks = _schedule_competitor_blocks(card)
-        if len(blocks) < 2:
-            continue
-        competitors = []
-        for block in blocks[:2]:
-            classes = " ".join(block.get("class") or [])
-            is_home = "--home" in classes
-            competitors.append(_schedule_competitor(block, is_home))
-        # The first competitor is the away team on every NFL.com layout.
-        away, home = competitors[0], competitors[1]
-        if "--away" in " ".join(blocks[0].get("class") or []) or "--home" in " ".join(blocks[1].get("class") or []):
-            if "--home" in " ".join(blocks[0].get("class") or []):
-                away, home = competitors[1], competitors[0]
 
-        date_time = ""
-        for selector in (
-            "div.d3-o-gamecard__date-time",
-            "span.d3-o-gamecard__date-time",
-            "span.nfl-c-matchup-strip__date-time",
-            "div.d3-o-gamecard__header",
-        ):
-            node = card.select_one(selector)
-            if node is not None:
-                date_time = _txt(node)
-                break
-        network = ""
-        for selector in (
-            "div.d3-o-gamecard__network",
-            "span.d3-o-gamecard__network",
-            "p.nfl-c-matchup-strip__networks",
-            "div.nfl-c-matchup-strip__networks",
-        ):
-            node = card.select_one(selector)
-            if node is not None:
-                network = _txt(node)
-                break
-        status = ""
-        for selector in (
-            "div.d3-o-gamecard__status",
-            "span.d3-o-gamecard__status",
-            "div.d3-o-gamecard__header-status",
-        ):
-            node = card.select_one(selector)
-            if node is not None:
-                status = _txt(node)
-                break
-
+    for card in _game_cards(soup):
         link = card.find("a", href=re.compile(r"/games/"))
-        game_url = ("https://www.nfl.com" + link["href"]) if link else ""
-        key = (away["abbr"], home["abbr"], date_time)
+        if link is None:
+            continue
+        slug_match = _GAME_SLUG_RE.search(link.get("href", ""))
+        if slug_match:
+            away_slug, _at, home_slug, slug_season, slug_week = slug_match.groups()
+            game_week = int(slug_week)
+            if week is not None and game_week != int(week):
+                continue
+            slug_year = int(slug_season)
+            away_name = _title_from_slug(away_slug)
+            home_name = _title_from_slug(home_slug)
+        else:
+            game_week = week
+            slug_year = season
+            away_name = ""
+            home_name = ""
+
+        # The official club logo carries the team's abbreviation.
+        abbrs: list[str] = []
+        for img in card.find_all("img"):
+            src = img.get("src") or ""
+            if "/clubs/logos/" in src:
+                token = src.rsplit("/", 1)[-1].split(".")[0].upper()
+                if token and token not in abbrs:
+                    abbrs.append(token)
+        if len(abbrs) < 2:
+            continue
+        away_abbr, home_abbr = abbrs[0], abbrs[1]
+
+        texts = _leaf_texts(card)
+        scores = [t for t in texts if _SCORE_RE.match(t)]
+        records = [t for t in texts if _RECORD_RE.match(t)]
+        time_text = ""
+        date_text = ""
+        for text in texts:
+            if not time_text and _TIME_RE.search(text):
+                time_text = text
+            if not date_text and _DATE_RE.search(text):
+                date_text = text
+            if time_text and date_text:
+                break
+
+        network = ""
+        for img in card.find_all("img"):
+            src = img.get("src") or ""
+            if "/broadcasters/square/" in src:
+                network = src.rsplit("/", 1)[-1].rsplit(".", 1)[0].upper()
+                break
+        if not network:
+            for text in texts:
+                if text.strip().upper() in {
+                    "FOX", "CBS", "NBC", "ESPN", "ESPN2", "ABC", "NFL NETWORK",
+                    "NFLN", "PRIME VIDEO", "AMAZON PRIME", "PEACOCK", "FOX DEPORTES",
+                    "ESPN DEPORTES", "UNIVERSO", "TNT", "NFL REDZONE",
+                }:
+                    network = text.strip().upper()
+                    break
+
+        away_score = scores[0] if len(scores) > 0 else ""
+        home_score = scores[1] if len(scores) > 1 else ""
+        away_record = records[0] if len(records) > 0 else ""
+        home_record = records[1] if len(records) > 1 else ""
+
+        key = f"{away_abbr}@{home_abbr}#{game_week}"
         if key in seen:
             continue
         seen.add(key)
+
         games.append(
             {
-                "season": season,
-                "week": week,
-                "game_date": date_time,
-                "game_time": date_time,
+                "season": slug_year if slug_year else season,
+                "week": game_week,
+                "game_date": date_text or time_text,
+                "game_time": time_text,
                 "game_timezone": "",
                 "network": network,
-                "away_team": away["abbr"],
-                "away_team_name": away["name"],
-                "away_record": away["record"],
-                "away_score": away["score"],
-                "home_team": home["abbr"],
-                "home_team_name": home["name"],
-                "home_record": home["record"],
-                "home_score": home["score"],
-                "status": status,
-                "game_url": game_url,
+                "away_team": away_abbr,
+                "away_team_name": away_name,
+                "away_record": away_record,
+                "away_score": away_score,
+                "home_team": home_abbr,
+                "home_team_name": home_name,
+                "home_record": home_record,
+                "home_score": home_score,
+                "status": "",
+                "game_url": "https://www.nfl.com" + link.get("href", ""),
                 "source_url": source_url,
             }
         )
