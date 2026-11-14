@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources &amp; Verification — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Sources &amp; Verification Ledger</h1>
+<p class="meta">What was checked, against which host, and how strongly it counts · all checks performed 2026-11-14</p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html" class="active">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>Verification policy</h2>
+<ul>
+<li>Every data row on this site carries a source link to an official or official-hosted source.</li>
+<li>If a value cannot be confirmed from such a source, the cell is left <b>blank</b> and marked
+<span class="flag">UNVERIFIED</span>. Values are never inferred.</li>
+<li>Source tiers are explicit: <b>Official</b> (the league, publisher, or competition host) ·
+<b>Academic</b> (journal/SSRN/university repository) · <b>Trusted-secondary</b> (community data
+projects and replications) · <b>Industry-secondary</b> (practitioner press — flagged).</li>
+<li>Conflicts between sources are published on the <a href="flagged.html">Flagged</a> page, never
+resolved by guessing.</li>
+</ul>
+
+<h2>Ledger</h2>
+<table>
+<thead><tr><th>#</th><th>Source</th><th>Tier</th><th>What was verified from it</th><th>Checked</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td><td><span class="ok">Official</span></td>
+<td>Full Week-10 2026 injury report: 345 player rows (practice + game status), team records on headers; year selector back to 1965</td><td>2026-11-14</td></tr>
+<tr><td>2</td><td><a href="https://www.nfl.com/standings/">nfl.com/standings</a></td><td><span class="ok">Official</span></td>
+<td>2026 standings for all 32 teams: W-L-T, PCT, PF/PA, home/road/division/conference records, streaks</td><td>2026-11-14</td></tr>
+<tr><td>3</td><td><a href="https://www.nfl.com/news/2024-2025-national-football-league-important-dates">nfl.com — league important dates</a></td><td><span class="ok">Official</span></td>
+<td>Injury-report deadlines (practice reports + game status by 4:00 p.m. NY time; per-game-day schedules)</td><td>2026-11-14</td></tr>
+<tr><td>4</td><td><a href="https://www.nfl.com/news">nfl.com/news</a> (linked headlines on the injury page)</td><td><span class="ok">Official</span></td>
+<td>IR placements (Lamar Jackson, Malik Willis), starter designations (Drew Lock, Carson Beck, Deshaun Watson, Kyle McCord), injury timelines (Huntley out for season, Nacua likely IR, Jacobs surgery)</td><td>2026-11-14</td></tr>
+<tr><td>5</td><td><a href="https://www.espn.com/nfl/story/_/id/17361111/nfl-streamlines-injured-players-game-status-removes-probable-designation">ESPN — NFL injury policy change</a></td><td><span class="ok">Official (ESPN news on league policy)</span></td>
+<td>Game-status definitions (Out/Doubtful/Questionable; "probable" removed 2016)</td><td>2026-11-14</td></tr>
+<tr><td>6</td><td><a href="https://pricetheory.uchicago.edu/levitt/Papers/LevittWhyAreGamblingMarkets2004.pdf">Levitt (2004) — Economic Journal PDF</a></td><td><span class="ok">Academic (author's university host)</span></td>
+<td>Books price to exploit public bias rather than balance action (EJ 114(495):223–246)</td><td>2026-11-14</td></tr>
+<tr><td>7</td><td><a href="https://scholarship.claremont.edu/cgi/viewcontent.cgi?article=5145&amp;context=cmc_theses">Claremont thesis (2025) — NFL moneyline odds movement</a></td><td><span class="ok">Academic (university repository)</span></td>
+<td>Sharp-action-driven late movement; HFA overvaluation in close-game band; 52.38% break-even reference; Oswald (2022) summary</td><td>2026-11-14</td></tr>
+<tr><td>8</td><td><a href="https://ssrn.com/abstract=2460551">Bailey &amp; López de Prado (2014) — Deflated Sharpe Ratio</a></td><td><span class="ok">Academic (SSRN)</span></td>
+<td>DSR method + multiplicity correction; False Strategy Theorem context</td><td>2026-11-14</td></tr>
+<tr><td>9</td><td><a href="https://ssrn.com/abstract=2326253">Bailey, Borwein, López de Prado, Zhu (2015) — PBO/CSCV</a></td><td><span class="ok">Academic (SSRN)</span></td>
+<td>PBO method; MinTRL reference; PSR lineage</td><td>2026-11-14</td></tr>
+<tr><td>10</td><td><a href="https://digitalcoll.skidmore.edu/record/6451">Skidmore College repository — "An Analysis of NFL Betting Strategies"</a></td><td><span class="ok">Academic (university repository)</span></td>
+<td>2013–2019 correlated-parlay findings (in-sample, abstract warns non-persistence); high-wind under angle</td><td>2026-11-14</td></tr>
+<tr><td>11</td><td><a href="https://www.kaggle.com/c/nfl-big-data-bowl-2021">Kaggle — NFL Big Data Bowl 2021</a> &amp;
+<a href="https://www.kaggle.com/c/nfl-big-data-bowl-2022/rules">2022 rules</a> &amp;
+<a href="https://www.kaggle.com/competitions/nfl-big-data-bowl-2027/rules">2027 rules</a></td><td><span class="ok">Official (competition host)</span></td>
+<td>Prize structures ($15k×5 + $10k in 2021; college $5k×3 + $10k in 2022); judging rubric; team-prize splitting rules</td><td>2026-11-14</td></tr>
+<tr><td>12</td><td><a href="https://github.com/gouthamperavali4610-web/nfl-market-efficiency">nfl-market-efficiency (community replication)</a></td><td><span class="flag">Trusted-secondary</span></td>
+<td>Closing-line calibration findings (7,276 games), power-method de-vigging, Elo reference parameters</td><td>2026-11-14</td></tr>
+<tr><td>13</td><td><a href="https://github.com/nflverse/nflverse-data">nflverse data (GitHub)</a></td><td><span class="flag">Trusted-secondary</span></td>
+<td>Named as the planned play-by-play/roster pipeline (not yet ingested)</td><td>2026-11-14</td></tr>
+<tr><td>14</td><td><a href="https://www.oddsshopper.com/articles/betting-101/nfl-parlay-betting">oddsshopper.com</a> ·
+<a href="https://bestnflfuturesbets.com/articles/nfl-same-game-parlays-futures-trap/">bestnflfuturesbets.com</a> ·
+<a href="https://nfl-prop-bets.com/articles/nfl-same-game-parlay/">nfl-prop-bets.com</a> ·
+<a href="https://bodog.com/sports-betting/why-clv-matters">bodog.com</a></td><td><span class="flag">Industry-secondary — flagged</span></td>
+<td>SGP correlation-tax mechanics, hold comparisons, CLV practitioner framing — used only as flagged secondary support</td><td>2026-11-14</td></tr>
+<tr><td>15</td><td><a href="https://www.bettoredge.com/post/parlay-betting-strategy-tips-and-tricks-to-win-and-maximize-payouts">bettoredge.com</a> (citation of Davis 2018)</td><td><span class="flag">Industry-secondary — flagged</span></td>
+<td>Existence + abstract-level claims of the Davis (2018) correlated-parlay paper (primary not retrievable)</td><td>2026-11-14</td></tr>
+<tr><td>16</td><td><a href="https://www.academia.edu/34611270/The_Performance_of_Betting_Lines_for_Predicting_the_Outcome_of_NFL_Games">academia.edu index — betting-lines prediction study</a></td><td><span class="flag">Secondary index — flagged</span></td>
+<td>Opening-vs-closing line predictive findings (2,560 games 2002–2011)</td><td>2026-11-14</td></tr>
+<tr><td>17</td><td><a href="https://github.com/karagemop466-tech/X3">This repository (git)</a></td><td><span class="ok">Official (git history)</span></td>
+<td>Repo audit: base commit e124230 contains only README.md ("# X3")</td><td>2026-11-14</td></tr>
+</tbody>
+</table>
+
+<h2>Method notes</h2>
+<ul>
+<li>Injury rows were transcribed from the official page in 8 fetched chunks on 2026-11-14 and are
+stored canonically in <code>docs/data/injury-2026-week10.csv</code>; the per-team and per-game tables
+are generated from that file by <code>tools/build_data_pages.py</code> (no hand-keyed duplicates).</li>
+<li>Standings were cross-checked team-by-team against the injury page's record headers — all 28
+non-bye teams matched.</li>
+<li>Derived values (e.g., Out/Doubtful/Questionable counts) are computed from the verified rows and
+link back to the same official source.</li>
+<li>An automated check (<code>tools/verify_site.py</code>) confirms every table row on the site carries
+either a source link or an UNVERIFIED marker.</li>
+</ul>
+
+</main>
+<footer><p>Ledger kept by session arena-4856379c · irregularities from these sources live on the
+<a href="flagged.html">Flagged for Review</a> page · claims without sources were not published.</p></footer>
+</body>
+</html>

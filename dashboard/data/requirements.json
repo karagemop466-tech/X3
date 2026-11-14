@@ -1,0 +1,194 @@
+[
+ {
+  "id": "R-01",
+  "category": "Data",
+  "requirement": "Collect a full list of requirements for the NFL decision system.",
+  "acceptance": "Every requirement has an ID, an acceptance criterion, and a status on the Requirements page.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-02",
+  "category": "Data",
+  "requirement": "Organise and analyse the requirement set into categories.",
+  "acceptance": "Requirements are grouped by category and each category shows a count and a completion ratio.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-03",
+  "category": "Repo",
+  "requirement": "Review the repository line by line and flag irregularities.",
+  "acceptance": "Every tracked file is listed with its size, its commit link, and an irregularity verdict.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-04",
+  "category": "Verification",
+  "requirement": "Every table row carries a link to an official source.",
+  "acceptance": "Each row in every data table renders a source link; rows without one are marked unverified.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-05",
+  "category": "Verification",
+  "requirement": "Values that cannot be confirmed from an official source are left blank and flagged.",
+  "acceptance": "Blank cells render as UNVERIFIED and are mirrored to the Flagged for Review page.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-06",
+  "category": "Verification",
+  "requirement": "No value is inferred, interpolated or recalled from memory.",
+  "acceptance": "Site footer states the rule; model output is visually separated from fact tables.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-07",
+  "category": "Site",
+  "requirement": "Publish a GitHub Pages site with a clean landing page and category sub-pages.",
+  "acceptance": "Site builds, has a landing dashboard, and every sub-page is reachable from the nav.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-08",
+  "category": "Site",
+  "requirement": "UI is simple, clean, and dashboard-like with all findings in readable tables.",
+  "acceptance": "Single CSS theme, one table component, filters and sort on every data table.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-09",
+  "category": "Lines",
+  "requirement": "Originate our own NFL lines rather than consume market lines.",
+  "acceptance": "A documented, reproducible rating-to-line pipeline exists and outputs a number per game.",
+  "status": "partial",
+  "blocking": "Q-11, Q-12"
+ },
+ {
+  "id": "R-10",
+  "category": "Lines",
+  "requirement": "Research and develop strategies that generate actionable signals.",
+  "acceptance": "Strategy register exists with defined inputs, output, and a validation plan per strategy.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-11",
+  "category": "Lines",
+  "requirement": "Cover single bets, parlays, and player-prop combinations.",
+  "acceptance": "At least one strategy is registered in each of the three bet-construction families.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-12",
+  "category": "Validation",
+  "requirement": "Every strategy must pass validation gates before capital is risked.",
+  "acceptance": "Gate register exists with explicit thresholds and a pass/fail/blocked state per strategy.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-13",
+  "category": "Validation",
+  "requirement": "Determine correlation values between strategy legs and between strategies.",
+  "acceptance": "Correlation register with an estimator, a required dataset, and a status per pair.",
+  "status": "partial",
+  "blocking": "Q-14, Q-15"
+ },
+ {
+  "id": "R-14",
+  "category": "Validation",
+  "requirement": "Remove luck: separate skill from variance before trusting a result.",
+  "acceptance": "Null-hypothesis test + multiplicity control + minimum-sample gate defined per strategy.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-15",
+  "category": "Competition",
+  "requirement": "Run it as a leaderboard competition that rewards top-performing strategies.",
+  "acceptance": "Leaderboard scoring spec, reward tiers, and anti-gaming rules are published.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-16",
+  "category": "Injuries",
+  "requirement": "Track injuries league-wide.",
+  "acceptance": "Official Week 10 injury report is ingested row by row with player, position, practice and game status.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-17",
+  "category": "Injuries",
+  "requirement": "Know defensive deficiencies created by 2nd/3rd/4th-string backups replacing starters.",
+  "acceptance": "Depth chart is joined to injury status; starter-absent positions produce a named replacement and a depth-of-replacement score.",
+  "status": "partial",
+  "blocking": "Q-07, Q-08"
+ },
+ {
+  "id": "R-18",
+  "category": "Injuries",
+  "requirement": "Same for offenses: know whether a starter or a backup is playing.",
+  "acceptance": "Same pipeline is run over offensive position groups.",
+  "status": "partial",
+  "blocking": "Q-07, Q-08"
+ },
+ {
+  "id": "R-19",
+  "category": "Summary",
+  "requirement": "Produce an executive summary of the important details.",
+  "acceptance": "Landing page opens with an executive summary block.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-20",
+  "category": "Governance",
+  "requirement": "Create a dedicated suggestions section so a reviewer can pick a path before changes ship.",
+  "acceptance": "Suggestions page exposes options, trade-offs, and an explicit approve/defer control per suggestion.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-21",
+  "category": "Governance",
+  "requirement": "Publish a clear list of open questions: what we know, what we do not know, and how to find out.",
+  "acceptance": "Questions register splits every item into Known / Unknown / How to discover.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-22",
+  "category": "Governance",
+  "requirement": "Coordinate parallel agent sessions without conflicts.",
+  "acceptance": "COORDINATION.md is the shared board; this session claims a file scope before editing.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-23",
+  "category": "Governance",
+  "requirement": "Publish flagged irregularities on the site for post-launch review.",
+  "acceptance": "Flagged for Review page lists every irregularity with its source link.",
+  "status": "done",
+  "blocking": ""
+ },
+ {
+  "id": "R-24",
+  "category": "Ops",
+  "requirement": "No manual input required from the owner.",
+  "acceptance": "All ingestion, build, and publish steps run from committed scripts.",
+  "status": "partial",
+  "blocking": "Q-19, Q-20"
+ }
+]

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Summary — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Executive Summary</h1>
+<p class="meta">X3 NFL Research &amp; Line-Origination Project · 2026-11-14 · session arena-4856379c</p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html" class="active">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>Purpose</h2>
+<p>Build a research-and-analysis system that (1) collects and organizes NFL data from official
+sources only, (2) originates independent betting lines and skill-based signals, (3) removes luck
+through statistical validation gates, (4) tracks injuries and roster deficiencies, and (5) presents
+everything on a transparent dashboard where every number is sourced and every uncertainty is
+flagged — with a suggestions board for human review before any change is implemented.</p>
+
+<h2>What is delivered and verified today</h2>
+<table>
+<thead><tr><th>Deliverable</th><th>Status</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td>Repo review, line by line</td><td><span class="pill pill-done">DONE</span></td>
+<td><a href="repo-audit.html">Repo Audit</a> — base commit contained only a 4-byte README; rewritten</td></tr>
+<tr><td>Official data capture (Week 10, 2026)</td><td><span class="pill pill-done">DONE</span></td>
+<td>345-row injury report + 32-team standings, each row linked to nfl.com — <a href="injuries.html">Injuries</a>, <a href="standings.html">Standings</a></td></tr>
+<tr><td>Line-origination framework + 8 signal classes</td><td><span class="pill pill-done">DONE</span></td>
+<td><a href="strategies.html">Line Origination</a> — grounded in Levitt (2004), a 2025 odds-movement thesis, and a 2013–19 NFL parlay study</td></tr>
+<tr><td>Validation gates (luck removal)</td><td><span class="pill pill-done">DONE</span></td>
+<td><a href="validation.html">Validation</a> — G0–G8 stack: CLV, Deflated Sharpe Ratio, PBO/CSCV, Monte-Carlo luck null</td></tr>
+<tr><td>Correlation research</td><td><span class="pill pill-part">PARTIAL</span></td>
+<td><a href="correlation.html">Correlation</a> — structural findings verified; numeric matrix blank + flagged (no official numeric source exists); estimation pipeline specified</td></tr>
+<tr><td>Leaderboard competition design</td><td><span class="pill pill-done">DONE</span></td>
+<td><a href="leaderboard.html">Leaderboard</a> — rules, scoring, rewards, anti-gaming, modeled on the NFL Big Data Bowl (prizes verified on Kaggle)</td></tr>
+<tr><td>Injury/deficiency tracker</td><td><span class="pill pill-part">PARTIAL</span></td>
+<td>Weekly-report pipeline live; starter/backup depth ranks blocked (official depth charts 404) — blank + flagged, never inferred</td></tr>
+<tr><td>Questions / information-gaps board</td><td><span class="pill pill-done">DONE</span></td>
+<td><a href="questions.html">Questions</a> — 15 questions with known/unknown split and discovery paths</td></tr>
+<tr><td>Suggestions review board</td><td><span class="pill pill-done">DONE</span></td>
+<td><a href="suggestions.html">Suggestions</a> — proposals for review-before-implementation</td></tr>
+<tr><td>GitHub Pages dashboard</td><td><span class="pill pill-done">DONE</span></td>
+<td>This site — clean tables, category subpages, source links per row</td></tr>
+</tbody>
+</table>
+
+<h2>Key verified findings (2026-11-14)</h2>
+<ol>
+<li><b>The market is very hard to beat at the close, but not at the open.</b> Closing NFL prices are
+nearly calibrated; a 7,276-game replication found no classic angle profitable at closing prices
+(community study,
+<a href="https://github.com/gouthamperavali4610-web/nfl-market-efficiency">source</a>). Late-week line
+movement is driven mainly by sharp action, and it is predictable from early-week prices
+(Claremont thesis 2025, <a href="https://scholarship.claremont.edu/cgi/viewcontent.cgi?article=5145&amp;context=cmc_theses">source</a>).
+<b>Implication: origination must beat the market early — signal classes S2/S3 (timing) are the
+primary skill channels.</b></li>
+<li><b>Books price to exploit public bias, not to balance action</b> (Levitt 2004,
+<a href="https://pricetheory.uchicago.edu/levitt/Papers/LevittWhyAreGamblingMarkets2004.pdf">source</a>) —
+a structural reason carefully-built contrarian signals (S8) can persist.</li>
+<li><b>Backtests lie without gates.</b> With ~1,000 skill-free trials the best "strategy" shows a
+Sharpe ≈ 3.26 by luck alone (Bailey &amp; López de Prado 2014,
+<a href="https://ssrn.com/abstract=2460551">source</a>). Our gate stack (DSR ≥ 0.95, PBO ≤ 0.2,
+Monte-Carlo luck null, walk-forward OOS) makes "skill" a testable claim.</li>
+<li><b>Same-game correlation is real and already taxed.</b> Books apply proprietary correlation
+adjustments that, per practitioner audits, exceed historical correlation by 5–15 points
+(<a href="https://bestnflfuturesbets.com/articles/nfl-same-game-parlays-futures-trap/">source</a> —
+industry secondary, flagged). Combo strategies must price joints themselves (our matrix values are
+honestly blank until computed).</li>
+<li><b>This week's sharpest verified deficiencies are at quarterback.</b> Baltimore (Lamar Jackson on
+IR, Tyler Huntley out for season), Minnesota (Kyler Murray out), Seattle (Sam Darnold out), Miami
+(Malik Willis on IR → Kyle McCord's first start), Arizona (Carson Beck starting). Detroit is missing
+both starting safeties/CB1 and its center. Green Bay is missing Josh Jacobs and Micah Parsons.
+Details with links: <a href="injuries.html">Injuries</a>.</li>
+</ol>
+
+<h2>Top information gaps blocking decisions</h2>
+<p>Full list with discovery paths: <a href="questions.html">Questions</a>.</p>
+<table>
+<thead><tr><th>#</th><th>Gap</th><th>Blocks</th><th>Fastest discovery path</th></tr></thead>
+<tbody>
+<tr><td><a href="questions.html">Q-01</a></td><td>Leaderboard reward budget</td><td>Rewards finalization</td><td>Owner decision (single number)</td></tr>
+<tr><td><a href="questions.html">Q-07</a></td><td>Opening/closing odds feeds</td><td>CLV scoring, live signals, real line origination</td><td>Free archived consensus sources or licensed feed — decide budget/tier</td></tr>
+<tr><td><a href="questions.html">Q-09</a></td><td>Snap counts / depth evidence</td><td>"2nd/3rd/4th string" replacement detection</td><td>Ingest nflverse + nfl.com/stats play tracking</td></tr>
+<tr><td><a href="questions.html">Q-11</a></td><td>Official depth-chart access</td><td>Starter vs backup labels (currently blank)</td><td>Verify per-team official club depth-chart URLs manually (F-04)</td></tr>
+<tr><td><a href="questions.html">Q-05</a></td><td>Correlation matrix values</td><td>Parlay/prop-combo EV math</td><td>Run the specified estimation pipeline on ≥3 seasons play-by-play</td></tr>
+</tbody>
+</table>
+
+<h2>Recommendations (decision-ready, in order)</h2>
+<ol>
+<li><b>Approve the gate stack as the house standard</b> (G0–G8, <a href="validation.html">link</a>) —
+it is the mechanism that separates skill from luck and it gates the leaderboard.</li>
+<li><b>Authorize data ingestion next</b>: play-by-play (nflverse), snap counts, and an odds archive —
+everything else (working origination numbers, the correlation matrix, live CLV) unlocks after this.</li>
+<li><b>Answer Q-01 (budget) and Q-02 (legal/jurisdiction constraints)</b> — both are single-decision
+items that unblock the leaderboard's rewards and scope.</li>
+<li><b>Review the Flagged page</b> (<a href="flagged.html">12 items</a>) — especially F-04 (depth
+charts) and F-02 (a roster discrepancy in the official report itself). None block the site; all need
+a human verdict eventually.</li>
+<li><b>Use the Suggestions board as the change-control gate</b>: nothing is implemented from it
+without review; accept/reject each proposal there.</li>
+</ol>
+
+<h2>Verification posture</h2>
+<p>Every table row on this site carries an official source link, or the cell is blank and marked
+<span class="flag">UNVERIFIED</span>. Nothing is inferred. Sources and the verification ledger:
+<a href="sources.html">Sources</a>. Irregularities are published, not buried:
+<a href="flagged.html">Flagged for Review</a>.</p>
+
+</main>
+<footer><p>Compiled 2026-11-14 by session arena-4856379c · all claims sourced inline ·
+review status of proposals lives on the <a href="suggestions.html">Suggestions board</a>.</p></footer>
+</body>
+</html>

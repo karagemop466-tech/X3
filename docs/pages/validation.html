@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validation Gates &amp; Luck Removal — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Validation Gates &amp; Luck Removal</h1>
+<p class="meta">How a strategy earns the label "skill-based" · research notes: <code>research/validation.md</code></p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html" class="active">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>Statistical foundations (verified at official hosts)</h2>
+<table>
+<thead><tr><th>Method</th><th>What it does</th><th>Verified source</th></tr></thead>
+<tbody>
+<tr><td>Probabilistic Sharpe Ratio (PSR)</td>
+<td>Probability the true Sharpe exceeds a benchmark; robust to non-normal returns</td>
+<td>Bailey &amp; López de Prado (2012), <i>Journal of Risk</i> 15(2):3–44 — listed in the
+<a href="https://ssrn.com/abstract=2326253">SSRN PBO record</a></td></tr>
+<tr><td>Deflated Sharpe Ratio (DSR)</td>
+<td>PSR against the expected max Sharpe of N random trials — corrects selection bias. DSR ≥ 0.95 ⇒ ≥95% chance the edge is real after multiplicity</td>
+<td>Bailey &amp; López de Prado (2014), <i>J. Portfolio Management</i> 40(5):94–107, DOI 10.3905/jpm.2014.40.5.094 ·
+<a href="https://ssrn.com/abstract=2460551">ssrn.com/abstract=2460551</a></td></tr>
+<tr><td>Probability of Backtest Overfitting (PBO) via CSCV</td>
+<td>Probability that the "best" backtest is worse than median out-of-sample</td>
+<td>Bailey, Borwein, López de Prado, Zhu (2015), <i>J. Computational Finance</i> ·
+<a href="https://ssrn.com/abstract=2326253">ssrn.com/abstract=2326253</a> ·
+<a href="https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf">author PDF</a></td></tr>
+<tr><td>False Strategy Theorem</td>
+<td>After ~1,000 skill-free trials the expected best Sharpe ≈ 3.26 — great backtests arise from noise</td>
+<td>Bailey &amp; López de Prado (2014) · <a href="https://ssrn.com/abstract=2460551">ssrn.com</a></td></tr>
+<tr><td>MinTRL (minimum track record length)</td>
+<td>Minimum observations for a Sharpe estimate to clear a confidence threshold</td>
+<td>Bailey &amp; López de Prado (2012), via <a href="https://ssrn.com/abstract=2326253">ssrn.com/abstract=2326253</a></td></tr>
+</tbody>
+</table>
+
+<h2>The gate stack — every strategy passes ALL before scoring</h2>
+<table>
+<thead><tr><th>Gate</th><th>Requirement</th><th>Threshold</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td><b>G0</b> Data integrity</td>
+<td>Inputs timestamped + sourced; no look-ahead; bet logged before kickoff and before the move it exploits</td>
+<td>Hard fail on violation</td><td>Process rule</td></tr>
+<tr><td><b>G1</b> Minimum sample</td>
+<td>≥ 500 graded bets OR MinTRL at 95% confidence, whichever is stricter</td>
+<td>500 is a pragmatic floor — <span class="flag">UNVERIFIED as formal standard</span></td>
+<td>MinTRL: <a href="https://ssrn.com/abstract=2326253">ssrn.com</a></td></tr>
+<tr><td><b>G2</b> Closing-line value</td>
+<td>Mean CLV &gt; 0, two-sided t-test p &lt; 0.05 at no-vig closing consensus</td>
+<td>Process metric — few-hundred-bet visibility floor is industry guidance (secondary: <a href="https://bodog.com/sports-betting/why-clv-matters">bodog.com</a>, flagged)</td>
+<td>Statistical test: standard</td></tr>
+<tr><td><b>G3</b> Deflated Sharpe</td>
+<td>DSR ≥ 0.95 given the declared number of strategies tried</td><td>Multiplicity-corrected</td>
+<td><a href="https://ssrn.com/abstract=2460551">ssrn.com/2460551</a></td></tr>
+<tr><td><b>G4</b> Backtest honesty</td>
+<td>PBO ≤ 0.20 by CSCV across the whole selection history</td><td>Prevents "best of many"</td>
+<td><a href="https://ssrn.com/abstract=2326253">ssrn.com/2326253</a></td></tr>
+<tr><td><b>G5</b> Walk-forward OOS</td>
+<td>Parameters frozen on earlier seasons; verdict only on untouched later seasons</td><td>Chronological splits</td>
+<td>Methodology per <a href="https://ssrn.com/abstract=2326253">ssrn.com</a></td></tr>
+<tr><td><b>G6</b> Luck null (Monte Carlo)</td>
+<td>≥ 100,000 simulated no-skill seasons (each bet graded at market-implied probability, same count/stakes). Strategy ROI must exceed the null's 95th percentile. Report <b>luck-adjusted ROI = ROI − E[null]</b></td>
+<td>The core "remove luck" mechanism</td><td>Standard Monte Carlo + de-vigged prices</td></tr>
+<tr><td><b>G7</b> Bankroll safety</td>
+<td>Fractional Kelly ≤ ¼; ≤ 2% bankroll per bet; ≤ 25% weekly exposure</td><td>Proposal — rules choice</td><td>Kelly criterion (standard)</td></tr>
+<tr><td><b>G8</b> Stability</td>
+<td>Edge sign consistent across ≥ 2 seasons; ±20% parameter perturbation must not flip sign</td>
+<td>Anti-overfit</td><td>Consistent with PBO logic (<a href="https://ssrn.com/abstract=2326253">ssrn.com/2326253</a>)</td></tr>
+</tbody>
+</table>
+
+<h2>Luck vs skill — labeling rules</h2>
+<table>
+<thead><tr><th>Label</th><th>Criteria</th></tr></thead>
+<tbody>
+<tr><td><span class="ok">Skill-based (provisional)</span></td><td>Passes G0–G8; DSR ≥ 0.95; luck-adjusted ROI &gt; 0</td></tr>
+<tr><td><span class="ok">Skill-based (confirmed)</span></td><td>Provisional status held across two consecutive live seasons</td></tr>
+<tr><td><span class="flag">Lucky / unproven</span></td><td>Everything else — the honest default</td></tr>
+<tr><td>Disqualified</td><td>(<span class="pill pill-part">RULE</span>) G0 violation (look-ahead, unlogged bets) or falsified declared-trials count</td></tr>
+</tbody>
+</table>
+
+<h2>Parlay &amp; prop-combo gates</h2>
+<ol>
+<li>Every leg must independently pass G2 (positive CLV) before a combo can score.</li>
+<li>Combo EV from an explicit <b>joint probability model</b> — never naive multiplication
+(see <a href="correlation.html">Correlation</a>).</li>
+<li>Correlation estimates need ≥ 3 seasons of play-by-play with bootstrap CIs; if the CI includes
+zero, treat the pair as independent and display the value blank.</li>
+<li>Max 4 legs per scoring entry (variance control). Cross-game parlays favored structurally:
+their margin math is transparent, unlike same-game correlation adjustments
+(industry analysis: <a href="https://bestnflfuturesbets.com/articles/nfl-same-game-parlays-futures-trap/">source</a> — secondary, flagged).</li>
+<li>Same-game parlays must beat the book's own correlation "tax," not merely feel correlated
+(<a href="https://www.oddsshopper.com/articles/betting-101/nfl-parlay-betting">source</a> — secondary, flagged).</li>
+</ol>
+
+<h2>Deliberately blank values (no-inference rule)</h2>
+<table>
+<thead><tr><th>Item</th><th>Value</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Historical ROI of any specific angle in current conditions</td><td>(blank)</td>
+<td class="flag">UNVERIFIED — cited studies are dated in-sample results (2011–2024)</td></tr>
+<tr><td>MinTRL numbers for our strategy classes</td><td>(blank)</td>
+<td class="flag">UNVERIFIED until our return distribution (skew/kurt) is measured</td></tr>
+<tr><td>Monte Carlo null percentiles for the leaderboard</td><td>(blank)</td>
+<td class="flag">UNVERIFIED until submission volume/price structure is known</td></tr>
+<tr><td>DSR 0.95 / PBO 0.20 as NFL-optimal constants</td><td>(blank)</td>
+<td class="flag">These are the papers' conventions, not NFL-validated constants (flagged F-08)</td></tr>
+</tbody>
+</table>
+
+</main>
+<footer><p>Academic references verified at SSRN/publisher hosts · practitioner claims marked as
+secondary and flagged · see <a href="sources.html">Sources</a>.</p></footer>
+</body>
+</html>

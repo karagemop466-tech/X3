@@ -1,0 +1,42 @@
+[
+ {
+  "pair": "Points for per game vs. win percentage",
+  "kind": "Team-season",
+  "estimator": "Pearson r across all 32 clubs",
+  "data": "Official 2026 league standings",
+  "value": "+0.6984",
+  "n": 32,
+  "status": "Computed",
+  "source": "https://www.nfl.com/standings/league/2026/REG"
+ },
+ {
+  "pair": "Points against per game vs. win percentage",
+  "kind": "Team-season",
+  "estimator": "Pearson r across all 32 clubs",
+  "data": "Official 2026 league standings",
+  "value": "-0.6636",
+  "n": 32,
+  "status": "Computed",
+  "source": "https://www.nfl.com/standings/league/2026/REG"
+ },
+ {
+  "pair": "Net points per game vs. win percentage",
+  "kind": "Team-season",
+  "estimator": "Pearson r across all 32 clubs",
+  "data": "Official 2026 league standings",
+  "value": "+0.8781",
+  "n": 32,
+  "status": "Computed",
+  "source": "https://www.nfl.com/standings/league/2026/REG"
+ },
+ {
+  "pair": "Home win percentage vs. road win percentage",
+  "kind": "Team-season",
+  "estimator": "Pearson r across all 32 clubs",
+  "data": "Official 2026 league standings",
+  "value": "+0.3501",
+  "n": 32,
+  "status": "Computed",
+  "source": "https://www.nfl.com/standings/league/2026/REG"
+ }
+]
