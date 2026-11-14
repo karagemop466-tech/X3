@@ -1413,3 +1413,60 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+
+---
+
+## Session `arena/3b99e9ad-x3` — trading-desk operations build (CLAIM posted 2026-11-14T19:40Z)
+
+**Session ID:** `arena/3b99e9ad-x3`. **Branch:** `arena/3b99e9ad-x3` (platform-fixed; the brief's
+`session-<id>/<task>` naming is not available on this platform, same as every prior session).
+**Base:** `main` @ `996257b`.
+
+**Role:** this session adds the eight operational requirements the brief lists (price-snapshot store,
+verified results feed, origination order side→total→moneyline, fair/market/difference columns,
+signal-vs-staking leaderboard split, replacement-depth tracking, official-only correlations with n,
+demotion gate) as a new additive tree, then acts as integration session for that addition (verifies
+the combined data and the site build), opens a PR to `main`, merges it, and confirms the Pages deploy.
+
+**File scope claimed — no other session is editing these (none of them existed before this session):**
+
+| Path | Purpose |
+|------|---------|
+| `ops/**` | New "trading desk operations" page tree (additive; new directory) |
+| `data/ops/**` | Machine-captured official data + derived snapshots that `ops/` renders from |
+| `scripts/ops_capture.py` | Fetches the official pages on a GitHub runner; writes `data/ops/raw/**` |
+| `scripts/ops_parse.py` | Deterministic parsers: games, standings, injuries, depth, team stats |
+| `scripts/ops_model.py` | Ratings, origination order, price-snapshot store, leaderboard scores, demotion gate |
+| `scripts/ops_join.py` | Injury × depth-chart replacement-depth join |
+| `scripts/ops_build.py`, `scripts/ops_content.py` | Deterministic build of `ops/**` + `ops/data/*.json` |
+| `scripts/ops_verify.py` | Row-level source gate for `ops/**` (fails CI on any unsourced row) |
+| `.github/workflows/ops-capture.yml` | Capture job (new file) |
+| `.github/workflows/pages.yml` | **One additive step** running `scripts/ops_verify.py`; no existing step altered |
+| `index.html` (root) | **One additive section** registering `ops/` next to the existing `hub/` section; every existing link retained verbatim |
+| `README.md`, `COORDINATION.md` | Appended sections only |
+
+**Not touched:** `hub/**`, `desk/**`, `dashboard/**`, `docs/**`, `lab/**`, `x3lab/**`, `pages/**`,
+`site/**`, `legacy/**`, `crosscheck/**`, `audit/**`, `archive/**`, `verification-hub/**`,
+`analysis/**`, `research/**`, `data/desk/**`, `data/hub/**`, and all pre-existing `scripts/*`, `tools/*`.
+`data/desk/*.json` is **read as input only** (never written).
+
+**Method:** all values are parsed from official pages by a committed parser (no manual typing), then
+independently spot-verified against the same official pages by this session; anything with no official
+source stays blank and is published on `ops/flagged.html`.
+
+### Task board (arena/3b99e9ad-x3)
+
+| # | Task | Status | Scope |
+|---|------|--------|-------|
+| O01 | Coordination claim + repo review | in progress | `COORDINATION.md` |
+| O02 | Price-snapshot store (opening + closing per originated market) | unclaimed | `scripts/ops_model.py`, `data/ops/snapshots/` |
+| O03 | Verified results feed | unclaimed | `scripts/ops_parse.py`, `data/ops/results.json` |
+| O04 | Origination order: side → total → moneyline | unclaimed | `scripts/ops_model.py`, `ops/order.html` |
+| O05 | Fair / market / difference columns | unclaimed | `ops/lines.html` |
+| O06 | Signal vs staking leaderboard split | unclaimed | `ops/leaderboard.html` |
+| O07 | Replacement depth (string grade, not just fact) | unclaimed | `scripts/ops_join.py`, `ops/depth.html` |
+| O08 | Correlations from official numbers only, with n | unclaimed | `ops/correlation.html` |
+| O09 | Demotion gate (live → paper) | unclaimed | `ops/gates.html` |
+| O10 | Questions / suggestions / executive summary | unclaimed | `ops/questions.html`, `ops/suggestions.html`, `ops/executive-summary.html` |
+| O11 | Line-by-line verification + flagged-for-review | unclaimed | `ops/verification.html`, `ops/flagged.html` |
+| O12 | Integration, PR, merge, Pages deploy confirmation | unclaimed | this section |
