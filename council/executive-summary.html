@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary - X3 decision council</title>
+<link rel="stylesheet" href="assets/council.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>decision council</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<div class="wrap">
+<nav class="nav"><a href="index.html"><b>Overview</b><span>The eight requirements at a glance</span></a>
+<a class="on" href="executive-summary.html"><b>Executive summary</b><span>The one-page brief</span></a>
+<a href="requirements.html"><b>Requirements</b><span>Each requirement as an acceptance test</span></a>
+<a href="questions.html"><b>Questions &amp; answers</b><span>What is known, what is missing, what it blocks</span></a>
+<a href="suggestions.html"><b>Suggestions</b><span>Review the paths, then choose</span></a>
+<a href="verification.html"><b>Verification</b><span>Line by line, with the recomputation</span></a>
+<a href="repo-review.html"><b>Repo review</b><span>Every tree audited</span></a>
+<a href="flagged.html"><b>Flagged for review</b><span>Unverified items and irregularities</span></a>
+<a href="sources.html"><b>Sources</b><span>Official pages and repository artifacts</span></a></nav>
+<main>
+<h1>Executive summary</h1>
+<p class="lede">This is a decision surface, not a betting site. It states the eight requirements of the brief as acceptance tests, reports exactly which ones the repository meets today, and lists what must be decided before any of them can be. Every number below was either read from an official NFL page on 2026-11-14 or is left blank and marked UNVERIFIED. Nothing is inferred.</p>
+
+<h3>Verified and solid</h3><p>The results foundation is real. 137 completed games are logged with a per-row official source URL, the 32 club standings reconcile, and the 345 row Week 10 injury report was spot-checked 50 rows against the official page with zero mismatches. This session read nfl.com directly; the long-standing note that it cannot be reached is wrong.</p>
+<h3>The blocking gap</h3><p>No market price exists anywhere in the repository, and no NFL or club page publishes one. That single fact is why the fair-versus-market difference, closing-line value, ROI and the leaderboard are all blank. It is a data-rights decision, not an engineering task, and it is the first thing to resolve.</p>
+<h3>A confirmed defect, and its correction</h3><p>One published correlation did not reproduce from the data it cites: r(game total, |margin|) was published as -0.161 when the correct value is -0.0157, and -0.161 is in fact the signed-margin statistic. Its written reading had the sign backwards too. The corrected pairs are now published separately in origin/, with n and a 95% interval each; a stale copy carrying the wrong label is still on the desk tree. The pipeline was always sound - the label and the prose were not.</p>
+<h3>What is genuinely missing</h3><p>Player-prop history, a settlement rule, a dated depth chart and price data. Three of those four need a decision or a purchase; none can be fetched. The moneyline and the demotion gate were on this list at the start of the session and are no longer, because another session's module merged while this page was being written.</p>
+<h3>The honest read on skill</h3><p>Zero bets have been graded, so no strategy on any tree has demonstrated skill, and none has been shown to lack it. 3 of 8 requirements are met today and the rest are partly met, with the same blocker behind almost all of them. That is not a failure of analysis; it is the correct state of a project that has not yet bought its price data. The origination machinery - side, total, moneyline, fair line, gates, demotion - is built and waiting.</p>
+<h2>The numbers, as measured</h2>
+<div class="grid">
+<div class="card"><div class="num">137</div><div class="lbl">completed games verified</div>
+<div class="sub">of 163 scheduled rows, with a per-row official source URL</div></div>
+<div class="card"><div class="num">32</div><div class="lbl">clubs in the standings</div>
+<div class="sub">through week 9; league points for equals league points against</div></div>
+<div class="card"><div class="num">345</div><div class="lbl">Week 10 injury rows</div>
+<div class="sub">across 28 clubs; 50 spot-checked against the official page</div></div>
+<div class="card"><div class="num">0</div><div class="lbl">graded bets</div>
+<div class="sub">so no strategy has demonstrated skill, and none has been disproved</div></div>
+</div>
+
+<h2>Requirements at a glance</h2>
+<table><thead><tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Verdict</th>
+</tr></thead><tbody>
+<tr><td><span class="mono">R1</span></td><td>Price-snapshot store that records opening and closing numbers for every market we originate</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R2</span></td><td>Verified results feed so backtests and ROI can be computed at all</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R3</span></td><td>Originate the side first, then the total, then the moneyline</td><td><span class="bad ok">MET</span></td></tr>
+<tr><td><span class="mono">R4</span></td><td>Publish the model&#x27;s fair line, the market line, and the difference as separate columns</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R5</span></td><td>Separate &#x27;signal&#x27; from &#x27;staking&#x27; in the leaderboard so a lucky staking run cannot mask a bad signal</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R6</span></td><td>Track the depth of the replacement, not just the fact of a replacement</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R7</span></td><td>Compute correlations only from officially sourced numbers and publish n with each value</td><td><span class="bad ok">MET</span></td></tr>
+<tr><td><span class="mono">R8</span></td><td>Define a demotion gate that sends a live strategy back to paper</td><td><span class="bad ok">MET</span></td></tr>
+</tbody></table>
+
+<h2>What to decide first</h2>
+<ol class="tight">
+<li><b>S01</b> - where prices come from, or whether to drop every ROI claim. Blocks R1, R4, R5, R8.</li>
+<li><b>S02</b> - write the settlement rule before anything is graded. Blocks R2 and R5.</li>
+<li><b>S08</b> - fix the published correlation, and publish the correction rather than overwriting it.</li>
+<li><b>S13</b> - stop adding site trees; declare one canonical tree.</li>
+</ol>
+<p class="note">Full queue with evidence and effort on the
+<a href="suggestions.html">suggestions</a> page. Nothing on that page is implemented.</p>
+
+</main>
+<footer>
+<p>X3 decision council - session arena/dd5047b8-x3. Every row carries an official source link or an explicit
+UNVERIFIED badge; nothing is inferred. Repository:
+<a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>.
+Back to the <a href="../index.html">site landing</a>.</p>
+</footer>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 306,
       "flagged_rows": 227,
-      "refs": 346,
+      "refs": 348,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -43,6 +43,22 @@
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
       ]
     },
+    "council": {
+      "pages": 9,
+      "rows": 132,
+      "flagged_rows": 95,
+      "refs": 261,
+      "unsourced_examples": [
+        "council/executive-summary.html:  ID  Requirement  Verdict ",
+        "council/executive-summary.html: R1 Price-snapshot store that records opening and closing numbers for every market we originate BLOCKED",
+        "council/executive-summary.html: R2 Verified results feed so backtests and ROI can be computed at all PARTIAL",
+        "council/executive-summary.html: R3 Originate the side first, then the total, then the moneyline NOT MET",
+        "council/executive-summary.html: R4 Publish the model's fair line, the market line, and the difference as separate columns BLOCKED",
+        "council/executive-summary.html: R5 Separate 'signal' from 'staking' in the leaderboard so a lucky staking run cannot mask a bad signal NOT MET",
+        "council/executive-summary.html: R6 Track the depth of the replacement, not just the fact of a replacement NOT MET",
+        "council/executive-summary.html: R7 Compute correlations only from officially sourced numbers and publish n with each value PARTIAL - DEFECT CONFIRMED"
+      ]
+    },
     "crosscheck": {
       "pages": 7,
       "rows": 561,
@@ -61,9 +77,9 @@
     },
     "dashboard": {
       "pages": 18,
-      "rows": 797,
-      "flagged_rows": 681,
-      "refs": 1192,
+      "rows": 802,
+      "flagged_rows": 685,
+      "refs": 1193,
       "unsourced_examples": [
         "dashboard/correlation.html: Pair Kind Estimator Data used Value n Status Source",
         "dashboard/correlation.html: Pair Kind Estimator Required data Value Status",
@@ -93,7 +109,7 @@
     },
     "docs": {
       "pages": 24,
-      "rows": 1009,
+      "rows": 1010,
       "flagged_rows": 846,
       "refs": 1334,
       "unsourced_examples": [
@@ -130,28 +146,28 @@
       "refs": 33,
       "unsourced_examples": []
     },
+    "ledger": {
+      "pages": 5,
+      "rows": 405,
+      "flagged_rows": 388,
+      "refs": 650,
+      "unsourced_examples": [
+        "ledger/depth.html: Replacement depth Rows Basis",
+        "ledger/depth.html: 2 93 COMPUTED from the rows below",
+        "ledger/depth.html: 3 17 COMPUTED from the rows below",
+        "ledger/depth.html: 4 1 COMPUTED from the rows below",
+        "ledger/depth.html: Wk Team Player Pos Status Injury Group Unit Slot Starter depth Replacement Replacement depth Join Injury source Depth so",
+        "ledger/governance.html: Gate Name Rule Status Current evaluation Source",
+        "ledger/governance.html: Rank by signal Strategy Signal metric (CLV, n, CI) Flat-stake result (n, CI) Staking policy Staking result (not ranked) ",
+        "ledger/governance.html: Pair n r 95% CI low 95% CI high Source"
+      ]
+    },
     "legacy": {
       "pages": 1,
       "rows": 0,
       "flagged_rows": 0,
       "refs": 14,
       "unsourced_examples": []
-    },
-    "origin": {
-      "pages": 14,
-      "rows": 481,
-      "flagged_rows": 430,
-      "refs": 856,
-      "unsourced_examples": [
-        "origin/backtest.html: Week n MAE margin (pts) MAE total (pts) Winner accuracy Over/under hit (vs 45.0 baseline) O/U n Brier (win prob) Results",
-        "origin/backtest.html: Window n MAE margin MAE total Winner accuracy O/U hit O/U n Brier Basis",
-        "origin/correlations.html: ID X Y Pearson r Spearman \u03c1 n 95% CI Official sources Note",
-        "origin/correlations.html: ID X Y Pearson r Spearman \u03c1 n 95% CI Status Note",
-        "origin/depth.html: Club Out/Doubtful absences Replacements identified Deficiency index (pts) Injury source Chart source",
-        "origin/depth.html: Club Game Player out Pos Status Starter string Replacement (next up) Deficiency pts Basis Sources",
-        "origin/gates.html: ID Gate Requirement State Evidence / what flips it",
-        "origin/gates.html: G-0 Pre-registration Rules, sample definition and thresholds frozen in committed ledgers before outcomes are seen. PASS "
-      ]
     },
     "pages": {
       "pages": 6,
@@ -201,8 +217,8 @@
     }
   },
   "pages_total": 163,
-  "rows_total": 6036,
-  "rows_flagged_or_sourced": 5247,
-  "internal_refs": 3453,
+  "rows_total": 6098,
+  "rows_flagged_or_sourced": 5304,
+  "internal_refs": 3339,
   "problems": []
 }

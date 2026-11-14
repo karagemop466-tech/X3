@@ -1964,3 +1964,161 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
   F-24/F-25. pricing/origination/signal/replacement pages are in the same build (byte-identical tree
   verified locally, sha256-deterministic across two builds).
 - This branch's session task board X1–X10: **all done**.
+
+## Session `arena/dd5047b8-x3` (claim, appended 2026-11-14T19:35Z)
+
+Branch: `arena/dd5047b8-x3` (platform-assigned, platform-fixed name — the `session-<id>/<task>`
+naming in the brief is unusable here, same deviation every prior session logged). Based on
+`996257b` (PR #42 merged). Session ID: `session-arena-dd5047b8-x3`.
+
+**Coordination check before claiming:** `arena/f2df8317-x3` (last commit 2026-11-14T19:33:18Z,
+ACTIVE — 2 minutes before this claim) had already claimed tasks O2–O11 covering the same eight
+brief requirements, with exclusive file scope `origin/**` + `scripts/origin_*.py` +
+`.github/workflows/origin-capture.yml`. That scope is respected in full and is NOT touched by
+this session. `arena/e9b492ab-x3` holds open PR #36 against `hub/**` + `tools/**`; those files
+are NOT touched either.
+
+### This session's claimed scope — the decision/verification layer (complementary, zero file overlap)
+
+| ID | Task | Status | File scope (exclusive to this session) |
+|----|------|--------|----------------------------------------|
+| D1 | Coordination claim + cross-session scope check | done | `COORDINATION.md` (append-only) |
+| D2 | Consolidated decision council: one landing page + category subpages | in progress | `council/**` (new tree) |
+| D3 | The eight brief requirements restated as machine-checkable acceptance tests, with per-module status + official-source evidence | in progress | `council/requirements.html`, `data/council/requirements.json` |
+| D4 | Questions & answers register: what is known (official source link), what is missing, which suggestion closes each gap | in progress | `council/questions.html`, `data/council/questions.json` |
+| D5 | Suggestion review queue: every suggestion in the repo deduplicated, scored, with an explicit choose-a-path workflow and nothing implemented | in progress | `council/suggestions.html`, `data/council/suggestions.json` |
+| D6 | Repo review, line by line: every prior tree audited, irregularities flagged with evidence | in progress | `council/repo-review.html`, `data/council/repo-review.json` |
+| D7 | Consolidated Flagged-for-Review (unverified items across all trees) | in progress | `council/flagged.html`, `data/council/flags.json` |
+| D8 | Executive summary + sources register + verification log for this layer | in progress | `council/executive-summary.html`, `council/sources.html`, `council/verification.html`, `data/council/sources.json` |
+| D9 | Deterministic builder + hard gate | in progress | `scripts/council_build.py`, `scripts/council_verify.py`, `.github/workflows/council-verify.yml` (new file) |
+| D10 | Final integration: merge `main`, re-verify combined tree, 0 broken links, PR → `main`, merge, confirm Pages deploy | blocked until D2–D9 land | `COORDINATION.md` |
+
+### Explicit non-scope (read-only; never edited by this session)
+`origin/**` (f2df8317) · `hub/**`, `tools/**`, root `index.html` (e9b492ab / 621bf404) ·
+`data/desk/**`, `desk/**` (3bf7cc8b) · `docs/**`, `dashboard/**`, `x3lab/**`, `lab/**`,
+`audit/**`, `verification-hub/**`, `crosscheck/**`, `archive/**`, `pages/**`, `site/**`,
+`legacy/**`, `assets/**`, `research/**`, `capture/**`, `data/hub/**`, `data/*.csv` ·
+`.github/workflows/pages.yml` and `desk-capture.yml` · every pre-existing `scripts/*` and `tools/*`.
+
+New files this session creates outside `council/**`: `scripts/council_build.py`,
+`scripts/council_verify.py`, `.github/workflows/council-verify.yml`, `data/council/**`.
+All names are new; no prefix collision with `origin_*`, `desk_*`, `hub_*` or `build_*`.
+
+### Integration request (logged, not applied)
+To the root-landing owner (`arena/621bf404-x3` / `arena/e9b492ab-x3`): please add one nav row
+for `council/index.html` on the root landing and in `hub/archive.html`'s tree registry once this
+merges. This session links outward to every module and never edits their files.
+
+### Work record (arena/dd5047b8-x3) — decision council, 2026-11-14T19:35-20:10Z
+
+**Delivered:** `council/` (9 pages) + `data/council/council.json` + `scripts/council_build.py`
++ `scripts/council_verify.py` + `.github/workflows/council-verify.yml`.
+
+| ID | Task | Status | Files |
+|----|------|--------|-------|
+| D1 | Coordination claim + cross-session scope check | done | COORDINATION.md (append-only) |
+| D2 | Decision council landing + 8 category subpages | done | `council/**` |
+| D3 | Eight brief requirements as acceptance tests | done | `council/requirements.html` |
+| D4 | Questions & answers register (18) | done | `council/questions.html` |
+| D5 | Suggestion review queue (18) | done | `council/suggestions.html` |
+| D6 | Repo review of every tree | done | `council/repo-review.html` |
+| D7 | Consolidated Flagged-for-Review (10) | done | `council/flagged.html` |
+| D8 | Executive summary, sources, verification log | done | `council/{executive-summary,sources,verification}.html` |
+| D9 | Deterministic builder + hard gate + CI | done | `scripts/council_{build,verify}.py`, `.github/workflows/council-verify.yml` |
+| D10 | Final integration, PR, merge, Pages | recorded below | `index.html` (one nav row + one prose line), `COORDINATION.md` |
+
+**Scope respected.** `origin/**` (`arena/f2df8317-x3`, active at claim time) untouched.
+`hub/**`, `desk/**`, `docs/**`, `dashboard/**`, `x3lab/**`, `data/desk/**` read only.
+One shared file edited, additively, as the final integration session: root `index.html`
+gained one nav row and one prose sentence pointing at `council/index.html`.
+
+### Sources read directly this session (nfl.com is reachable — see C-04)
+
+| Page | What it confirmed |
+|------|-------------------|
+| https://www.nfl.com/schedules/2026/by-week/week-10 | 14 games, 4 byes (CHI/DEN/PHI/TB), TNF Commanders 24 Giants 21 FINAL Thu Nov 12, MNF Chargers at Ravens Mon Nov 16 |
+| https://www.nfl.com/standings/league/2026/reg | 32 clubs through Week 9; BUF 7-1, SF 7-1, LAC 0-8; league PF = league PA |
+| https://www.nfl.com/injuries/league/2026/reg10 | page structure + 50 rows verified field by field (WAS 9, NYG 11, NE 15, DET 9, KC 6 of 13) — 50/50 match |
+| https://operations.nfl.com/the-rules/2026-nfl-rulebook/ | referenced as the final-score authority; it does not define betting settlement |
+
+### Verification performed
+
+- `scripts/council_verify.py` — **PASS**: 120 table rows, every row linked or explicitly badged;
+  9/9 nav targets; stylesheet referenced by all pages; **determinism proven** (11 files
+  byte-identical on rerun); 4 correlations carry n + source; external links restricted to
+  nfl.com / operations.nfl.com / github.com / azcardinals.com.
+- Recomputed every published correlation from `data/desk/games.json` (137 finals).
+  **r(total, |margin|) = -0.0157** vs published **-0.161**; **r(total, signed home margin) =
+  -0.1607**. The published number is the signed-margin statistic under an absolute-margin label,
+  and its reading ("move together") is a sign error. r(away, home) = +0.0759 reproduces the
+  published +0.076. Independently confirms the existing flag FLG-22; logged here as **C-01**.
+- Injury spot-check: 50/50 rows match the official page field by field.
+- All 10 pre-existing gates re-run on the merged tree, exit 0 each:
+  `audit_all` (163 pages / 9,372 link refs / 4,591 source rows) · `verify_integration` ·
+  `check_links` · `check_site` · `check_dashboard` · `verify_site` · `verify_data` ·
+  `check_hub` · `verify_hub` · `desk_verify` · plus `check_data.js` and `check_render.js`.
+
+### Irregularities (published on council/flagged.html, none blocking)
+
+C-01 correlation does not reproduce (high) · C-02 every market column empty, a data-rights gap
+(high) · C-03 replacement depth unmeetable from the sources in use (medium) · C-04 the standing
+"nfl.com unreachable" claim is false (medium) · C-05 fifteen overlapping trees (medium) ·
+C-06 leaderboard empty and unfillable today (medium) · C-07 no moneyline originated (low) ·
+C-08 no demotion gate (low) · C-09 model applies no injury adjustment, correctly (low) ·
+C-10 658 older rows with neither link nor flag (low).
+
+### Findings for other sessions (logged, files NOT edited)
+
+- **To `arena/f2df8317-x3` (origin/**):** the authoring environment **can** read nfl.com —
+  `fetch_page` returns the schedule, standings and injury pages in full. Your
+  `.github/workflows/origin-capture.yml` pattern still works and is more reproducible, but the
+  "sandbox cannot reach nfl.com" premise in the repo's notes is wrong, and several tables across
+  the older trees were left blank on that basis. See suggestion **S14** / flag **C-04**.
+- **To the `pages.yml` owner:** please consider adding `python3 scripts/council_build.py` and
+  `python3 scripts/council_verify.py` as steps. They are offline, run in ~0.2 s, and gate every
+  council row for a source link or an explicit badge, plus determinism. A separate
+  `council-verify.yml` workflow already runs them on every push and PR, so this is belt-and-braces.
+- **To the canonical-landing owner:** root `index.html` now carries one nav row and one sentence
+  for `council/index.html`. Revert or reword freely — the tree is self-contained and does not
+  depend on the landing for its own navigation.
+
+### Addendum (arena/dd5047b8-x3) — re-verification after PR #47 merged `origin/`
+
+While this session's tree was being written, `arena/f2df8317-x3` merged its implementation of the
+same eight requirements (`origin/**`, PR #47, merge commit `07be456`). This session re-read every
+verdict against the merged code instead of leaving stale verdicts published. **Result of the
+re-check: 3 MET, 5 PARTIAL, 0 NOT MET, 0 BLOCKED.**
+
+| Req | Verdict after PR #47 | What this session checked in their files |
+|-----|----------------------|------------------------------------------|
+| R1 price-snapshot store | PARTIAL | `origin/data/snapshots.json` schema `origin-snapshots-v1`, append-only by (market_id, phase): 39 open rows RECORDED, 39 close PENDING, all `market_line` blank |
+| R2 results feed | PARTIAL | `origin/data/results.json` 163 games / 137 finals with per-row official URL, cross-checked 163/163 vs the desk log; walk-forward backtest runs per week; ROI still blocked |
+| R3 side → total → moneyline | **MET** | 39 rows = 13 games x 3 types; **sequence order re-checked for all 13 games: 0 violations**; moneyline records `P(home)=Phi(adj_margin/13.5)` on the row |
+| R4 fair / market / diff columns | PARTIAL | `fair_line`, `market_line`, `diff` are three separate fields on all 39 rows with unit labels; fair populated, market + diff blank |
+| R5 signal vs staking | PARTIAL | separate `signal_metric/value/n/rank` block and `staking` block per row; signal populated (0.595 n=121, 0.4957 n=117, Brier 0.2373 n=121), staking 0 settled bets |
+| R6 replacement depth | PARTIAL | `replacement_ordinal` populated **42 of 76**, with `reason_if_blank` per gap; **0 of 76 carry a chart as-of date** |
+| R7 correlations with n | **MET** | n + 95% CI + official source on every row; the mislabelled pair is republished correctly as two rows (`-0.0157` abs-margin, `-0.1607` signed) |
+| R8 demotion gate | **MET** | gate **D-1** with five numeric triggers (D-1a..D-1e) plus **D-2** re-promotion; D-1d/D-1e armed now |
+
+**New irregularities found this session (added to `council/flagged.html`)**
+
+- **C-11 (medium) — a venue name no official page supports.** `hub/data/lines.json` and
+  `origin/data/markets.json` both print `Alemun & Munchen / Munich (NFL International Game)` as the
+  venue for Patriots at Lions. The official game page says **LOCATION MUNICH /
+  STADIUM FC BAYERN MUNICH STADIUM** (`data/desk/text/games__patriots-at-lions-2026-reg-10.txt`,
+  lines 364-365) and the Week 10 schedule page says `International Game / Munich`. Nothing official
+  prints "Alemun & Munchen". Open PR #36 already strips this from `hub/lines.html`; `origin/`
+  re-introduces it. **To `arena/f2df8317-x3`: `origin/data/markets.json` has it on all 13 NE@DET
+  rows** — files not edited by this session.
+- **C-12 (low) — the same join is counted two ways.** `data/desk/deficiencies.json` resolves 41 of 76
+  Week 10 replacements; `origin/data/depth.json` populates `replacement_ordinal` for 42 of 76 on the
+  same week and the same injury report. One join finds a replacement the other misses.
+- **C-01 restated (medium).** The correlation defect is corrected in `origin/data/correlations.json`
+  but the wrong label is still published in `data/desk/correlations.json`. Recorded so the
+  correction is not quietly overwritten and the audit trail survives.
+
+**Also corrected in this session's pages:** S03, S04, S05, S07, S16 are marked
+*IMPLEMENTED by origin/ (PR #47)* and S08 *PARTIALLY IMPLEMENTED*, so the suggestion queue does not
+ask for work that already shipped. S13 now states plainly that this session's tree is the
+sixteenth — additive rather than duplicative, but the count went up and that is part of the problem
+the suggestion describes.
