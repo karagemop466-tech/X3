@@ -92,6 +92,48 @@ def describe_html(path: str, max_tables: int = 3, max_cells: int = 12) -> dict:
     if cards:
         out["game_card_sample"] = cards
 
+    # The weekly list of games is rendered on the client, so the data it uses
+    # is embedded in the page as a JSON payload. Locate that payload so a
+    # parser can be written against it.
+    payloads: list[dict] = []
+    next_data = soup.find("script", id="__NEXT_DATA__")
+    if next_data is not None:
+        payloads.append(
+            {
+                "kind": "__NEXT_DATA__",
+                "bytes": len(next_data.string or ""),
+                "sample": (next_data.string or "")[:1500],
+            }
+        )
+    pushes = []
+    for script in soup.find_all("script"):
+        text = script.string or script.get_text() or ""
+        if "self.__next_f.push" in text:
+            pushes.append(text)
+    if pushes:
+        combined = "".join(pushes)
+        payloads.append(
+            {
+                "kind": "next_f_push",
+                "scripts": len(pushes),
+                "bytes": len(combined),
+                "sample": combined[:2500],
+            }
+        )
+    if payloads:
+        out["data_payloads"] = payloads
+
+    # Any element carrying game data in an attribute.
+    for element in soup.find_all(True):
+        for attr, value in (element.attrs or {}).items():
+            if attr.startswith("data-") and isinstance(value, str) and len(value) > 200:
+                out.setdefault("data_attributes", []).append(
+                    {"tag": element.name, "attr": attr, "bytes": len(value), "sample": value[:400]}
+                )
+                break
+        if len(out.get("data_attributes", [])) >= 3:
+            break
+
     chains = []
     for a in soup.find_all("a", href=True):
         if "/games/" not in a["href"]:
