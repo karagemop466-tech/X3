@@ -1,0 +1,18 @@
+{
+  "description": "Master source list. Classification: OFFICIAL = league/team official properties; TRUSTED = established aggregators citing official reports; MARKET = sportsbook feeds (no official league source exists). Every data row in this repo links to one of these.",
+  "fetched": "2026-11-14",
+  "sources": [
+    {"id": "SRC-01", "name": "NFL.com League Standings 2026 REG", "url": "https://www.nfl.com/standings/league/2026/REG", "class": "OFFICIAL", "used_for": "standings.json (all 32 teams), luck.json inputs", "fetched": "2026-11-14"},
+    {"id": "SRC-02", "name": "NFL.com Conference Standings 2026 REG", "url": "https://www.nfl.com/standings/conference/2026/REG", "class": "OFFICIAL", "used_for": "conf_rank (playoff seeds) column", "fetched": "2026-11-14"},
+    {"id": "SRC-03", "name": "NFL.com Week 10 Schedule", "url": "https://www.nfl.com/schedules/2026/by-week/week-10", "class": "OFFICIAL", "used_for": "week10.json", "fetched": "2026-11-14"},
+    {"id": "SRC-04", "name": "NFL.com Week 9 Schedule & Results", "url": "https://www.nfl.com/schedules/2026/by-week/week-9", "class": "OFFICIAL", "used_for": "week9.json (15 finals)", "fetched": "2026-11-14"},
+    {"id": "SRC-05", "name": "NFL.com Week 11 Schedule", "url": "https://www.nfl.com/schedules/2026/by-week/week-11", "class": "OFFICIAL", "used_for": "week 11 slate + byes confirmation", "fetched": "2026-11-14"},
+    {"id": "SRC-06", "name": "NFL.com game pages", "url": "https://www.nfl.com/games/commanders-at-giants-2026-reg-10", "class": "OFFICIAL", "used_for": "per-game result/lineup verification (row-level links in week9/week10.json)", "fetched": "2026-11-14"},
+    {"id": "SRC-07", "name": "ESPN NFL Injuries (aggregates official team reports)", "url": "https://www.espn.com/nfl/injuries", "class": "TRUSTED", "used_for": "injuries.json (all 32 teams)", "fetched": "2026-11-14"},
+    {"id": "SRC-08", "name": "ESPN NFL Odds (DraftKings)", "url": "https://www.espn.com/nfl/odds", "class": "MARKET", "used_for": "odds_week10.json, odds_week11.json, futures", "fetched": "2026-11-14"},
+    {"id": "SRC-09", "name": "ESPN team depth charts (RotoWire)", "url": "https://www.espn.com/nfl/team/depth/_/name/pit", "class": "TRUSTED", "used_for": "depth.json (PIT, BAL) - NOT official team charts (F-05)", "fetched": "2026-11-14"},
+    {"id": "SRC-10", "name": "ESPN report: Seahawks-Raiders Week 10 (Lock starts, Nwosu/Shaheed return)", "url": "https://www.espn.com/nfl/story/_/id/50475505/seahawks-raiders-week-10-darnold-lock-shaheed-returns", "class": "TRUSTED", "used_for": "SEA starter note (deficiencies.json)", "fetched": "2026-11-14"},
+    {"id": "SRC-11", "name": "This repo's own scripts (model output)", "url": "https://github.com/karagemop466-tech/X3/blob/main/scripts/compute_lines.py", "class": "MODEL", "used_for": "lines_week10.json, correlation.json, luck.json - derived, labeled as model output", "fetched": "2026-11-14"}
+  ],
+  "whitelist_note": "Proposed whitelist (Q-12): nfl.com + official team sites = OFFICIAL; ESPN (citing team reports) = TRUSTED; DraftKings via ESPN = MARKET. Anything else needs owner approval before use."
+}

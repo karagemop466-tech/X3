@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions &amp; Gaps — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Questions &amp; Information Gaps</h1>
+  <p>What we already know (verified) · what we don't · and exactly how each gap can be discovered — before any decision is made on this information</p>
+</header>
+<main>
+  <h2>Answered by verified data</h2>
+  <div id="answered"></div>
+
+  <h2>Open questions — decisions blocked until these close</h2>
+  <div id="open"></div>
+
+  <h2>Owner questionnaire (draft — SUG-08)</h2>
+  <ol class="compact">
+    <li>What bankroll should the competition assume, and what is one unit?</li>
+    <li>What is the maximum acceptable drawdown before a strategy is paused?</li>
+    <li>Which sportsbook is the book of record for CLV and price-taking?</li>
+    <li>Is the source whitelist on the Sources page approved as written?</li>
+    <li>Should rewards be points-only, or funded? (Legal review required for funded — owner is in Japan, F-09.)</li>
+  </ol>
+</main>
+<footer class="site">X3 · <a href="suggestions.html">suggestions</a> · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('questions.html');
+(async () => {
+  const q = await loadJSON('data/questions.json');
+  renderTable('answered', [
+    { key: 'id', label: 'ID' },
+    { key: 'category', label: 'Category' },
+    { key: 'question', label: 'Question' },
+    { key: 'answer', label: 'Answer' },
+    { key: 'status', label: 'Status' }
+  ], q.answered.map(x => ({ ...x, source: x.source })));
+  renderTable('open', [
+    { key: 'id', label: 'ID' },
+    { key: 'category', label: 'Category' },
+    { key: 'question', label: 'Question' },
+    { key: 'blocks', label: 'What it blocks' },
+    { key: 'discovery_suggestion', label: 'How to discover the missing information' }
+  ], q.open.map(x => ({ ...x, source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json' })));
+})();
+</script>
+</body>
+</html>

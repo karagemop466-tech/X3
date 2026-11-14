@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Suggestions — Review Queue</h1>
+  <p>Read, then choose the best path: set each item to accepted / pilot / rejected before anything is implemented</p>
+</header>
+<main>
+  <div class="note"><strong>Review workflow.</strong> Statuses: proposed → accepted → pilot → rejected. The owner sets statuses; agent sessions never mark their own suggestions accepted. Rejected items stay visible with their reason. Proposed cadence: weekly (Q-14). To change a status, edit <code>docs/data/suggestions.json</code> (or tell the next session to).</div>
+  <h2>Queue (sorted by priority)</h2>
+  <div id="sugs"></div>
+  <h2>How these map to the rest of the site</h2>
+  <ul class="compact">
+    <li><strong>Integrity first:</strong> SUG-01, SUG-05, SUG-12 (gates, legal, whitelist).</li>
+    <li><strong>Data moats:</strong> SUG-02, SUG-03, SUG-04, SUG-06, SUG-07 — CLV snapshots and archives cannot be created retroactively.</li>
+    <li><strong>Model quality:</strong> SUG-09, SUG-10 — closes the gaps the LAC-BAL line exposed.</li>
+    <li><strong>Process:</strong> SUG-08, SUG-11 — your decisions and the weekly ritual.</li>
+  </ul>
+</main>
+<footer class="site">X3 · <a href="questions.html">questions</a> · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('suggestions.html');
+(async () => {
+  const s = await loadJSON('data/suggestions.json');
+  renderTable('sugs', [
+    { key: 'id', label: 'ID' },
+    { key: 'title', label: 'Suggestion' },
+    { key: 'priority', label: 'Priority' },
+    { key: 'effort', label: 'Effort' },
+    { key: 'impact', label: 'Impact' },
+    { key: 'detail', label: 'Detail' },
+    { key: 'resolves', label: 'Resolves', fmt: v => v.join(', ') },
+    { key: 'status', label: 'Status', fmt: v => `<span class="badge status">${esc(v)}</span>` }
+  ], s.suggestions.map(x => ({ ...x, source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json' })));
+})();
+</script>
+</body>
+</html>

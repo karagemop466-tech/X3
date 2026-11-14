@@ -142,3 +142,15 @@ official pages (all 28 non-bye teams match). Depth-chart ranks were left blank +
 session's tables (the official depth-chart URLs tested returned 404 — see the Flagged page F-01…F-12
 for all irregularities), and correlation coefficients remain blank + flagged (no official numeric
 source).
+
+---
+
+## NFL Lines & Strategy Lab (session e1c332ce)
+
+A separate, additive lab at [`x3lab/`](x3lab/index.html) — live at https://karagemop466-tech.github.io/X3/x3lab/.
+
+Originate our own Week-10 NFL lines (model v0.1, deterministic), run strategies through luck-removing validation gates (G-0…G-8: pre-registration, sample size, walk-forward, FDR, CLV, vig-adjusted CIs, deflated Sharpe, correlation integrity), and track injuries with 2nd/3rd/4th-string deficiency flags. Every table row links to an official or trusted source; unconfirmable values stay blank and flagged.
+
+- Data: `x3lab/data/*.json` · Notes: `analysis/` · Gate: `python3 scripts/verify_data.py` (must PASS)
+- Model: `scripts/compute_lines.py` · Pilots (correlations, Pythagorean luck): `scripts/compute_analysis.py`
+- Review before anything changes: `x3lab/suggestions.html` (12 proposals) · `x3lab/questions.html` (15 open) · `x3lab/flagged.html` (10 flags)

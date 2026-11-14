@@ -1,0 +1,29 @@
+{
+  "description": "Leaderboard competition design. Strategies compete; top performers earn rewards. Competition opens only for strategies that passed validation gates (G-0..G-8 as applicable). The current standings table is EMPTY on purpose - no strategy has entered, and fabricating results is forbidden.",
+  "generated_at": "2026-11-14",
+  "phases": [
+    {"phase": "P0 - Sandbox", "goal": "define strategy, pre-register, backtest", "entry": "none needed", "reward": "none"},
+    {"phase": "P1 - Shadow scoring", "goal": "forward picks tracked with zero risk", "entry": "pass G-0, G-1", "reward": "data, not money"},
+    {"phase": "P2 - Live league", "goal": "compete on leaderboard", "entry": "pass G-0..G-7 (plus G-8 for parlays/props)", "reward": "see rewards"}
+  ],
+  "scoring": {
+    "primary": "deflated Sharpe ratio (dSR) over settled picks - designed to strip luck and strategy-count inflation",
+    "secondary": ["CLV median (bps vs close)", "ROI at taken prices (vig-adjusted)", "Brier score / log loss on probability forecasts", "max drawdown (risk discipline)"],
+    "tie_breakers": ["higher CLV median", "lower max drawdown", "earlier pre-registration timestamp"]
+  },
+  "rewards": {
+    "structure": "TBD by owner (Q-01): points-only vs funded prizes",
+    "default_proposal": {"season_pool": "set by owner", "split": "50% season champion / 30% runner-up / 20% best CLV (consistent execution)", "anti_gaming": "rewards forfeited if picks are edited after kickoff or timestamps falsified"},
+    "status": "proposed - awaiting owner decision"
+  },
+  "rules": [
+    {"id": "LB-R1", "rule": "Picks must be timestamped before kickoff; no retro edits (G-1)."},
+    {"id": "LB-R2", "rule": "Minimum 5 picks/week to stay active in P2; absence weeks score neutral."},
+    {"id": "LB-R3", "rule": "Stake sizing must follow the pre-registered rule; mid-season stake changes void that week."},
+    {"id": "LB-R4", "rule": "Parlay entries must list every leg pair correlation value used (G-8)."},
+    {"id": "LB-R5", "rule": "Disqualification for fabricated sources; G-0 violations are permanent."},
+    {"id": "LB-R6", "rule": "One strategy = one entry. Parameter variants must be separate pre-registered entries (counts against dSR deflation)."}
+  ],
+  "entries": [],
+  "entry_schema": {"id": "STR-xx", "name": "", "type": "single|parlay|player_prop_combo", "registered_at": "", "gates_passed": [], "picks_settled": 0, "roi_pct": null, "clv_median_pts": null, "dSR": null, "status": "P0|P1|P2|disqualified"}
+}

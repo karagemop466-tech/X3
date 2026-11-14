@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requirements — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Requirements</h1>
+  <p>The full requirements list, with acceptance criteria and delivery status — mapped to where each one lives</p>
+</header>
+<main>
+  <div id="reqs"></div>
+  <div class="note">Status values: <strong>delivered</strong> (visible on this site), <strong>delivered (pending gates)</strong> (framework exists, results cannot exist yet), <strong>blocked</strong> (missing information — see <a href="questions.html">Questions</a>).</div>
+</main>
+<footer class="site">X3 · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('requirements.html');
+const reqs = [
+  { id: 'R1', req: 'Collect, organize, and analyze NFL information per the requirements list', crit: 'verified datasets, linked sources, analysis pages', status: 'delivered', where: 'Results, Injuries, Depth, Lines pages' },
+  { id: 'R2', req: 'Suggestions section where a reviewer picks the best path before implementing changes', crit: 'queue with statuses; nothing auto-implemented', status: 'delivered', where: 'suggestions.html (12 items, all proposed)' },
+  { id: 'R3', req: 'Clear list of questions/information/answers needed before decisions; suggestions target missing info', crit: 'known vs missing split + discovery path per gap', status: 'delivered', where: 'questions.html (5 answered, 15 open)' },
+  { id: 'R4', req: 'Originate our own NFL lines', crit: 'reproducible model, published numbers, assumptions flagged', status: 'delivered (unvalidated)', where: 'lines.html · scripts/compute_lines.py' },
+  { id: 'R5', req: 'Research/develop signal-generating strategies as a leaderboard competition', crit: 'signal library + strategy proposals + competition design', status: 'delivered (pending gates)', where: 'strategies.html, leaderboard.html' },
+  { id: 'R6', req: 'Rewards for top performers on the leaderboard', crit: 'reward structure + anti-gaming rules', status: 'delivered (structure proposed; funded rewards blocked on legal/owner)', where: 'leaderboard.html (Q-01, F-09)' },
+  { id: 'R7', req: 'Coverage: single bets, parlays, player-prop combos', crit: 'one strategy framework per bet type', status: 'delivered (prop combos blocked on data)', where: 'strategies.html · Q-06' },
+  { id: 'R8', req: 'Every strategy must pass validation gates', crit: 'gates defined and binding', status: 'delivered', where: 'leaderboard.html (G-0…G-8)' },
+  { id: 'R9', req: 'Determine correlation values', crit: 'method + measured values + policy thresholds', status: 'delivered (pilot n=16; production blocked)', where: 'leaderboard.html · correlation.json (F-08)' },
+  { id: 'R10', req: 'Remove luck; build selectively skill-based strategies', crit: 'shrinkage, binomial tests, deflated Sharpe, CLV', status: 'delivered', where: 'strategies.html "How we remove luck" · G-5/G-6/G-7 · luck.json' },
+  { id: 'R11', req: 'Track injuries + defense/offense deficiencies (2nd/3rd/4th string replacing starters)', crit: 'injury board + deficiency flags + string levels', status: 'delivered (string levels partial)', where: 'injuries.html, depth.html (F-05)' },
+  { id: 'R12', req: 'Executive summary', crit: 'situation, findings, decisions, risks', status: 'delivered', where: 'executive-summary.html' },
+  { id: 'R13', req: 'No manual input from user; work autonomously', crit: 'end-to-end without waiting', status: 'delivered', where: 'this session' },
+  { id: 'R14', req: 'Repo review line by line with links; verify every value', crit: 'verification log + machine check', status: 'delivered', where: 'analysis/verification-log.md · scripts/verify_data.py' },
+  { id: 'R15', req: 'GitHub Pages site: clean dashboard landing + category subpages; entries in simple tables', crit: 'landing + subpages, tables everywhere', status: 'delivered', where: 'this site (13 pages)' },
+  { id: 'R16', req: 'Every table row: official-source link; unconfirmable values blank + flagged', crit: 'no exceptions', status: 'delivered', where: 'UNVERIFIED badges + verify_data.py gate' },
+  { id: 'R17', req: 'Parallel-session coordination via COORDINATION.md', crit: 'claims, scopes, logs', status: 'delivered', where: 'COORDINATION.md (repo root)' },
+  { id: 'R18', req: 'PR to main, merge without waiting, Pages deploy confirmed, links recorded', crit: 'PR + merge + live URL recorded', status: 'delivered', where: 'COORDINATION.md integration record' }
+];
+renderTable('reqs', [
+  { key: 'id', label: 'ID' },
+  { key: 'req', label: 'Requirement' },
+  { key: 'crit', label: 'Acceptance criterion' },
+  { key: 'status', label: 'Status', fmt: v => `<span class="badge ${v.startsWith('blocked') ? 'unverified' : v.includes('pending') || v.includes('partial') || v.includes('unvalidated') ? 'doubtful' : 'official'}">${esc(v)}</span>` },
+  { key: 'where', label: 'Where it lives' }
+], reqs.map(r => ({ ...r, source: 'https://github.com/karagemop466-tech/X3' })));
+</script>
+</body>
+</html>

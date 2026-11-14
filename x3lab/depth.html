@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Depth &amp; Deficiencies — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Depth &amp; Deficiencies</h1>
+  <p>Who is down to 2nd / 3rd / 4th string · rule R-1 · chart-verified claims only where a chart was captured (F-05)</p>
+</header>
+<main>
+  <div class="note"><strong>Rule R-1:</strong> a position group is flagged when 2+ of its players are unavailable (Out/Doubtful/IR per the injury board) or when a captured depth chart shows an out-tagged player in the top two strings. "Replacement string" is stated ONLY when a depth chart or cited report verifies it — otherwise left blank with an UNVERIFIED source badge. Counts reflect the captured injury scope, not the full roster.</div>
+
+  <h2>Deficiency flags</h2>
+  <div id="deficiencies"></div>
+
+  <h2>Depth charts captured (worked examples)</h2>
+  <p class="small">Source: ESPN team depth charts, "Powered by RotoWire" — a trusted third-party chart, <em>not</em> an official team depth chart (flag F-05). Tags as displayed: (IR) injured reserve, (O) out, (Q) questionable.</p>
+  <h3 id="pit">Pittsburgh Steelers (SNF at CIN)</h3>
+  <div id="pitOff"></div>
+  <p class="small"></p>
+  <div id="pitDef"></div>
+  <h3 id="bal">Baltimore Ravens (MNF vs LAC)</h3>
+  <div id="balOff"></div>
+  <p class="small"></p>
+  <div id="balDef"></div>
+</main>
+<footer class="site">X3 · <a href="injuries.html">injury board</a> · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('depth.html');
+(async () => {
+  const [def, depth] = await Promise.all([
+    loadJSON('data/deficiencies.json'),
+    loadJSON('data/depth.json')
+  ]);
+  renderTable('deficiencies', [
+    { key: 't', label: 'Team' },
+    { key: 'side', label: 'Side' },
+    { key: 'group', label: 'Position group' },
+    { key: 'unavailable', label: 'Unavailable' },
+    { key: 'evidence', label: 'Evidence (verified rows)' },
+    { key: 'replacement_string', label: 'Replacement / string level', fmt: (v, r) => v ? esc(v) + (r.string_verified ? ' <span class="badge trusted">chart-verified</span>' : '') : '<span class="badge unverified">UNVERIFIED</span>' }
+  ], def.rows.map(r => ({ ...r, source: r.source || 'https://www.espn.com/nfl/injuries' })));
+
+  const chartCols = [
+    { key: 'pos', label: 'Pos' },
+    { key: 's1', label: 'Starter' },
+    { key: 's2', label: '2nd' },
+    { key: 's3', label: '3rd' },
+    { key: 's4', label: '4th' }
+  ];
+  const tag = (rows, src) => rows.map(r => ({ ...r, source: src }));
+  renderTable('pitOff', chartCols, tag(depth.teams.PIT.offense, depth.teams.PIT.source));
+  renderTable('pitDef', chartCols, tag(depth.teams.PIT.defense, depth.teams.PIT.source));
+  renderTable('balOff', chartCols, tag(depth.teams.BAL.offense, depth.teams.BAL.source));
+  renderTable('balDef', chartCols, tag(depth.teams.BAL.defense, depth.teams.BAL.source));
+})();
+</script>
+</body>
+</html>

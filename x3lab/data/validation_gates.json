@@ -1,0 +1,19 @@
+{
+  "description": "Validation gates. A strategy must pass ALL required gates before it may be scored live on the leaderboard or used for any decision. Gates exist to remove luck from results and to make skill measurable.",
+  "generated_at": "2026-11-14",
+  "gates": [
+    {"id": "G-0", "name": "Data provenance", "rule": "Every input used by the strategy must carry a source link to an official/trusted source and a fetch date. Unverified inputs are forbidden.", "threshold": "100% of rows", "status": "enforced in repo (scripts/verify_data.py)", "blocks": "all"},
+    {"id": "G-1", "name": "Pre-registration", "rule": "Strategy definition, markets, and selection rules are timestamped and frozen BEFORE outcomes are observed. No retro edits.", "threshold": "immutable record", "status": "policy ready - submission system pending (Q-05)", "blocks": "all"},
+    {"id": "G-2", "name": "Sample size", "rule": "Minimum settled picks per market type before scoring.", "threshold": "singles n>=200; parlays n>=100; prop combos n>=100", "status": "not met - season 2026 is week 10", "blocks": "all"},
+    {"id": "G-3", "name": "Walk-forward validation", "rule": "Fit/choose on past windows, test on strictly later windows. Rolling re-fit only.", "threshold": ">= 2 seasons of backtest + forward record", "status": "not met - historical odds archive missing (Q-03)", "blocks": "all"},
+    {"id": "G-4", "name": "Multiple-testing control", "rule": "When many signals/parameter variants are tried, significance is judged with Benjamini-Hochberg FDR at q=0.10 on the final candidate set.", "threshold": "FDR q=0.10", "status": "policy ready", "blocks": "all"},
+    {"id": "G-5", "name": "Closing line value (CLV)", "rule": "Median CLV per pick must be > 0 with sign test p<0.05 vs break-even at recorded prices.", "threshold": "p<0.05", "status": "tracking started (odds opens vs current captured 2026-11-14)", "blocks": "all"},
+    {"id": "G-6", "name": "Vig-adjusted break-even", "rule": "ROI must clear break-even at the prices actually taken (e.g. -110 needs 52.38%), with Wilson 95% CI lower bound > break-even.", "threshold": "CI lower bound > break-even", "status": "policy ready", "blocks": "all"},
+    {"id": "G-7", "name": "Luck removal", "rule": "(a) Bayesian shrinkage of win% toward 0.5 with beta(1,1) prior reported alongside raw record; (b) binomial test vs break-even at 95%; (c) deflated Sharpe ratio > 1.0 after accounting for the number of attempted strategies.", "threshold": "dSR > 1.0 and p<0.05", "status": "policy ready; luck.json provides the regression lens for team-level signals", "blocks": "all"},
+    {"id": "G-8", "name": "Correlation integrity", "rule": "Every parlay/prop-combo leg pair must have a measured correlation from validated data. |r|>=0.3 requires explicit dependency modeling; unmeasured pairs are forbidden.", "threshold": "all pairs measured", "status": "not met - pilot values only (correlation.json, F-08)", "blocks": "parlays, prop combos"}
+  ],
+  "notes": [
+    "No strategy in strategies.json has passed any gate yet. The leaderboard therefore holds zero live entries by design.",
+    "Gate status is re-evaluated weekly; nothing is marked verified without a linked source."
+  ]
+}

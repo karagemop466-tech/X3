@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategies &amp; Signals — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Strategies &amp; Signals</h1>
+  <p>Signal library and strategy proposals · every entry is unvalidated until it passes the gates · nothing here is a recommendation</p>
+</header>
+<main>
+  <h2>Signal library</h2>
+  <div id="signals"></div>
+
+  <h2>Strategy proposals</h2>
+  <div id="strategies"></div>
+
+  <h2>Bet types</h2>
+  <div id="bettypes"></div>
+
+  <h2>How we remove luck</h2>
+  <ul class="compact">
+    <li><strong>Shrinkage:</strong> raw win% is always published next to a beta(1,1)-shrunk estimate — a 5-2 record is not treated as proof of skill.</li>
+    <li><strong>Binomial tests vs break-even:</strong> at -110 you need 52.38%; the Wilson 95% CI must clear it (gate G-6).</li>
+    <li><strong>Deflated Sharpe:</strong> the more strategies tried, the higher the bar (gate G-7) — this is what makes the competition selectively skill-based.</li>
+    <li><strong>CLV:</strong> beating the closing line is the cleanest skill evidence, and it is measured on every pick (gate G-5).</li>
+    <li><strong>Correlation accounting:</strong> parlay/prop legs must publish measured correlation values or stay blocked (gate G-8).</li>
+  </ul>
+  <p class="small">Definitions and thresholds live in <a href="leaderboard.html">validation_gates.json</a>. Pilot correlation values (n=16) are on the Leaderboard page and are explicitly not decision-grade.</p>
+</main>
+<footer class="site">X3 · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('strategies.html');
+(async () => {
+  const s = await loadJSON('data/strategies.json');
+  renderTable('signals', [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'Signal' },
+    { key: 'definition', label: 'Definition' },
+    { key: 'data_needed', label: 'Data needed' },
+    { key: 'example_this_week', label: 'This week' },
+    { key: 'state', label: 'State' }
+  ], s.signals.map(x => ({ ...x, source: x.source })));
+
+  renderTable('strategies', [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'Strategy' },
+    { key: 'type', label: 'Type' },
+    { key: 'signals', label: 'Signals', fmt: v => v.join(', ') },
+    { key: 'hypothesis', label: 'Hypothesis' },
+    { key: 'validation_required', label: 'Gates required', fmt: v => v.join(' ') },
+    { key: 'state', label: 'State', fmt: v => `<span class="badge status">${esc(v)}</span>` }
+  ], s.strategies.map(x => ({ ...x, source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json' })));
+
+  const bt = Object.entries(s.bet_types).map(([k, v]) => ({
+    type: k,
+    status: v.status,
+    detail: [v.kelly_cap, v.max_legs ? 'max legs: ' + v.max_legs : '', v.missing ? 'missing: ' + v.missing.join('; ') : ''].filter(Boolean).join(' · '),
+    source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json'
+  }));
+  renderTable('bettypes', [
+    { key: 'type', label: 'Bet type' },
+    { key: 'status', label: 'Status' },
+    { key: 'detail', label: 'Policy / missing pieces' }
+  ], bt);
+})();
+</script>
+</body>
+</html>
