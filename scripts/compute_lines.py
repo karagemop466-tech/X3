@@ -22,7 +22,7 @@ every output row carries a source link. Model outputs are labeled as model outpu
 """
 import json, os
 
-BASE = os.path.join(os.path.dirname(__file__), '..', 'docs', 'data')
+BASE = os.path.join(os.path.dirname(__file__), '..', 'x3lab', 'data')
 
 HFA = 2.0            # A-01 (assumption)
 NEUTRAL_HFA = 0.0    # A-02 (assumption)

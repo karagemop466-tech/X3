@@ -13,6 +13,6 @@ notes behind them. Machine checks live in `scripts/`:
 - `scripts/compute_lines.py` — line origination (deterministic).
 - `scripts/compute_analysis.py` — pilot correlations + Pythagorean luck table.
 
-Key data files (single sources of truth): `docs/data/*.json` — standings, weeks 9/10/11,
+Key data files (single sources of truth): `x3lab/data/*.json` — standings, weeks 9/10/11,
 odds, injuries, depth, deficiencies, lines, luck, correlation, strategies, validation
 gates, leaderboard, questions, suggestions, flagged, sources.

@@ -12,7 +12,7 @@ data that is not available in this repo yet (flag F-08).
 """
 import json, math, os
 
-BASE = os.path.join(os.path.dirname(__file__), '..', 'docs', 'data')
+BASE = os.path.join(os.path.dirname(__file__), '..', 'x3lab', 'data')
 
 def pearson(xs, ys):
     n = len(xs)

@@ -13,8 +13,8 @@ Run: python3 scripts/verify_data.py   (exit code 0 = all checks pass)
 import json, os, re, sys
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
-DATA = os.path.join(ROOT, 'docs', 'data')
-DOC = os.path.join(ROOT, 'docs')
+DATA = os.path.join(ROOT, 'x3lab', 'data')
+DOC = os.path.join(ROOT, 'x3lab')
 fails = []
 checks = 0
 

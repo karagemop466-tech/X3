@@ -1,7 +1,7 @@
 # Line origination model v0.1
 
-Reproducible: `python3 scripts/compute_lines.py` → `docs/data/lines_week10.json`.
-Inputs (all official, linked in `docs/data/sources.json`): NFL.com standings (PF/PA,
+Reproducible: `python3 scripts/compute_lines.py` → `x3lab/data/lines_week10.json`.
+Inputs (all official, linked in `x3lab/data/sources.json`): NFL.com standings (PF/PA,
 records) and the official Week-10 schedule. Market comparison via DraftKings (ESPN).
 
 ## Method
@@ -33,5 +33,5 @@ records) and the official Week-10 schedule. Market comparison via DraftKings (ES
 ## How this becomes a validated origination
 
 Walk-forward backtest on a timestamped archive (Q-03), opponent-adjusted ratings,
-injury/deficiency weights from `docs/data/deficiencies.json`, CLV tracking (started
+injury/deficiency weights from `x3lab/data/deficiencies.json`, CLV tracking (started
 2026-11-14), then the G-6/G-7 bar (vig-adjusted CI, deflated Sharpe).

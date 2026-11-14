@@ -32,8 +32,8 @@ Worked examples (all chart-verified):
 
 ## Outputs
 
-- `docs/data/deficiencies.json` — 24 flagged groups for Week 10.
-- `docs/depth.html` — rendered tables.
+- `x3lab/data/deficiencies.json` — 24 flagged groups for Week 10.
+- `x3lab/depth.html` — rendered tables.
 
 ## Next step
 

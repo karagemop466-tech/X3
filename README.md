@@ -9,8 +9,8 @@ injuries/depth deficiencies — with every number linked to an official or trust
 
 | Path | What it is |
 | --- | --- |
-| `docs/` | The GitHub Pages site: dashboard + category subpages, all tables source-linked |
-| `docs/data/` | Single sources of truth: standings, weeks 9–11, odds, injuries, depth, deficiencies, model outputs, strategy/gate/leaderboard/question/suggestion/flag registries |
+| `x3lab/` | The GitHub Pages site: dashboard + category subpages, all tables source-linked |
+| `x3lab/data/` | Single sources of truth: standings, weeks 9–11, odds, injuries, depth, deficiencies, model outputs, strategy/gate/leaderboard/question/suggestion/flag registries |
 | `analysis/` | Working notes: verification log, line-origination method, depth-deficiency rule |
 | `scripts/verify_data.py` | Verification gate: every fact row must carry a source (or `unverified: true`), plus data invariants and site wiring |
 | `scripts/compute_lines.py` | Line origination model v0.1 (deterministic; assumptions labeled) |

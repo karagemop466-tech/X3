@@ -1,7 +1,7 @@
 # Verification log — session e1c332ce (2026-11-14)
 
 Machine gate: `python3 scripts/verify_data.py` — **PASS** (2,134 checks).
-Every fact-table row in `docs/data/*.json` carries a source link or an explicit
+Every fact-table row in `x3lab/data/*.json` carries a source link or an explicit
 `unverified: true` marker; structural invariants and site wiring pass.
 
 ## Sources fetched this session (all 2026-11-14)
