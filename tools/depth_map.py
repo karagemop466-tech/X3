@@ -122,10 +122,12 @@ def build():
                             {"unit": u["unit"], "pos": s["pos"], "tier": ti + 1, "slot": s})
 
     out_rows = []
+    seen_keys = []
     for r in rows:
         st = (r["status"] or "").strip()
         if st not in ("Out", "Doubtful"):
             continue
+        seen_keys.append((r["club"], r["name"]))
         club = r["club"]
         if not club:
             continue
@@ -160,6 +162,25 @@ def build():
             "reason": "" if replacement else "no lower tier listed on the club chart",
             "chart_url": club_meta.get(club, {}).get("url", ""),
         })
+
+    # ---- completeness audit: every Out/Doubtful row in the capture must appear
+    # exactly once in the output. A silent join loss is the failure mode this page
+    # exists to prevent, so it is checked rather than assumed.
+    eligible = [(r["club"], r["name"]) for r in rows
+                if (r["status"] or "").strip() in ("Out", "Doubtful")]
+    emitted = [(r["club"], r["player"]) for r in out_rows]
+    missing = [k for k in eligible if k not in emitted]
+    duplicated = sorted({k for k in emitted if emitted.count(k) > 1})
+    extra = [k for k in emitted if k not in eligible]
+    completeness = {
+        "eligible_out_or_doubtful": len(eligible),
+        "emitted_rows": len(emitted),
+        "missing_from_output": missing,
+        "duplicated_rows": duplicated,
+        "emitted_but_not_eligible": extra,
+        "status": ("PASS" if not missing and not duplicated and not extra
+                   and len(emitted) == len(eligible) else "FAIL"),
+    }
 
     # ---- aggregates
     tier_by_club = Counter()
@@ -216,6 +237,7 @@ def build():
             "The official injury report gives status, never a depth position. Nothing here "
             "overrides the official status.",
         ],
+        "completeness": completeness,
         "clubs": summary,
         "rows": out_rows,
     }
@@ -229,6 +251,10 @@ def main():
     print(f"rows (Out/Doubtful): {o['rows_total']}  replacements identified: "
           f"{o['replacements_identified']}  clubs: {o['clubs_with_absences']}")
     print("tier counts (tier of the man who steps in):", o["tier_counts"])
+    c = o["completeness"]
+    print(f"completeness: {c['status']}  eligible {c['eligible_out_or_doubtful']} -> "
+          f"emitted {c['emitted_rows']}  missing {len(c['missing_from_output'])}  "
+          f"dup {len(c['duplicated_rows'])}")
     deepest = [c for c in o["clubs"] if c["deepest_tier_forced"] not in ("", 2)]
     print("clubs forced past the 2nd string:", len(deepest))
     for c in deepest:

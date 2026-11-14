@@ -19,6 +19,14 @@
   "A player missing from a chart is not evidence he is not on the team; it is a capture limitation and is reported as one.",
   "The official injury report gives status, never a depth position. Nothing here overrides the official status."
  ],
+ "completeness": {
+  "eligible_out_or_doubtful": 76,
+  "emitted_rows": 76,
+  "missing_from_output": [],
+  "duplicated_rows": [],
+  "emitted_but_not_eligible": [],
+  "status": "PASS"
+ },
  "clubs": [
   {
    "club": "ARI",

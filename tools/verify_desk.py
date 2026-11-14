@@ -193,6 +193,11 @@ def main():
             ck(bool(r["reason"]), f"{r['player']}: blank replacement with no stated reason")
     ck(sum(dep["tier_counts"].values()) == dep["replacements_identified"],
        "tier counts do not sum to the replacement count")
+    ck(dep["completeness"]["status"] == "PASS",
+       f"depth completeness is {dep['completeness']['status']} - a row was lost in the join")
+    ck(not dep["completeness"]["missing_from_output"], "depth rows are missing from the output")
+    ck(dep["completeness"]["emitted_rows"] == dep["completeness"]["eligible_out_or_doubtful"],
+       "depth emitted row count does not equal the eligible count")
 
     # ---------------- staking / masking
     sig = demo["signal"]
