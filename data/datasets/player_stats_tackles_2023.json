@@ -1,0 +1,288 @@
+{
+  "category": "tackles",
+  "season": 2023,
+  "columns": [
+    "Comb",
+    "Asst",
+    "Solo",
+    "Sck"
+  ],
+  "rows": [
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Bobby Wagner",
+      "player_url": "https://www.nfl.com/players/bobby-wagner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "183",
+      "Asst": "87",
+      "Solo": "77",
+      "Sck": "3.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Zaire Franklin",
+      "player_url": "https://www.nfl.com/players/zaire-franklin/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "179",
+      "Asst": "72",
+      "Solo": "87",
+      "Sck": "1.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Alex Singleton",
+      "player_url": "https://www.nfl.com/players/alex-singleton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "177",
+      "Asst": "71",
+      "Solo": "83",
+      "Sck": "2"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Foyesade Oluokun",
+      "player_url": "https://www.nfl.com/players/foye-oluokun/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "173",
+      "Asst": "62",
+      "Solo": "91",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Azeez Al-Shaair",
+      "player_url": "https://www.nfl.com/players/azeez-al-shaair/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "163",
+      "Asst": "79",
+      "Solo": "62",
+      "Sck": "2"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Roquan Smith",
+      "player_url": "https://www.nfl.com/players/roquan-smith/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "158",
+      "Asst": "74",
+      "Solo": "74",
+      "Sck": "1.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "T.J. Edwards",
+      "player_url": "https://www.nfl.com/players/t-j-edwards/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "155",
+      "Asst": "64",
+      "Solo": "74",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "C.J. Mosley",
+      "player_url": "https://www.nfl.com/players/c-j-mosley/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "152",
+      "Asst": "71",
+      "Solo": "66",
+      "Sck": "0.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Bobby Okereke",
+      "player_url": "https://www.nfl.com/players/bobby-okereke/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "149",
+      "Asst": "57",
+      "Solo": "84",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Robert Spillane",
+      "player_url": "https://www.nfl.com/players/robert-spillane/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "148",
+      "Asst": "66",
+      "Solo": "65",
+      "Sck": "3.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Ernest Jones",
+      "player_url": "https://www.nfl.com/players/ernest-jones-2/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "145",
+      "Asst": "71",
+      "Solo": "56",
+      "Sck": "4.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Terrel Bernard",
+      "player_url": "https://www.nfl.com/players/terrel-bernard/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "143",
+      "Asst": "59",
+      "Solo": "68",
+      "Sck": "6.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Quincy Williams",
+      "player_url": "https://www.nfl.com/players/quincy-williams/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "138",
+      "Asst": "43",
+      "Solo": "79",
+      "Sck": "2"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Camryn Bynum",
+      "player_url": "https://www.nfl.com/players/camryn-bynum/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "137",
+      "Asst": "43",
+      "Solo": "78",
+      "Sck": "0.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Logan Wilson",
+      "player_url": "https://www.nfl.com/players/logan-wilson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "135",
+      "Asst": "57",
+      "Solo": "63",
+      "Sck": "1"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Lavonte David",
+      "player_url": "https://www.nfl.com/players/lavonte-david/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "134",
+      "Asst": "48",
+      "Solo": "69",
+      "Sck": "4.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Patrick Queen",
+      "player_url": "https://www.nfl.com/players/patrick-queen/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "133",
+      "Asst": "49",
+      "Solo": "67",
+      "Sck": "3.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Jessie Bates",
+      "player_url": "https://www.nfl.com/players/jessie-bates/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "132",
+      "Asst": "43",
+      "Solo": "78",
+      "Sck": "0"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Fred Warner",
+      "player_url": "https://www.nfl.com/players/fred-warner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "132",
+      "Asst": "50",
+      "Solo": "70",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Alex Anzalone",
+      "player_url": "https://www.nfl.com/players/alex-anzalone/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "129",
+      "Asst": "44",
+      "Solo": "71",
+      "Sck": "3"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Devin Lloyd",
+      "player_url": "https://www.nfl.com/players/devin-lloyd/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "127",
+      "Asst": "52",
+      "Solo": "58",
+      "Sck": "0"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Derwin James",
+      "player_url": "https://www.nfl.com/players/derwin-james/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "125",
+      "Asst": "39",
+      "Solo": "76",
+      "Sck": "2"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Frankie Luvu",
+      "player_url": "https://www.nfl.com/players/frankie-luvu/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "125",
+      "Asst": "59",
+      "Solo": "54",
+      "Sck": "5.5"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Julian Love",
+      "player_url": "https://www.nfl.com/players/julian-love/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "123",
+      "Asst": "38",
+      "Solo": "73",
+      "Sck": "0"
+    },
+    {
+      "season": 2023,
+      "category": "tackles",
+      "player": "Kevin Byard",
+      "player_url": "https://www.nfl.com/players/kevin-byard/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
+      "Comb": "122",
+      "Asst": "42",
+      "Solo": "68",
+      "Sck": "0"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc"
+}

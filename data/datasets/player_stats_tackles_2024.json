@@ -1,0 +1,288 @@
+{
+  "category": "tackles",
+  "season": 2024,
+  "columns": [
+    "Comb",
+    "Asst",
+    "Solo",
+    "Sck"
+  ],
+  "rows": [
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Zaire Franklin",
+      "player_url": "https://www.nfl.com/players/zaire-franklin/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "173",
+      "Asst": "80",
+      "Solo": "75",
+      "Sck": "3.5"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Budda Baker",
+      "player_url": "https://www.nfl.com/players/budda-baker/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "164",
+      "Asst": "69",
+      "Solo": "85",
+      "Sck": "2"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Jamien Sherwood",
+      "player_url": "https://www.nfl.com/players/jamien-sherwood/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "158",
+      "Asst": "60",
+      "Solo": "83",
+      "Sck": "2"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Robert Spillane",
+      "player_url": "https://www.nfl.com/players/robert-spillane/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "158",
+      "Asst": "67",
+      "Solo": "76",
+      "Sck": "2"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Roquan Smith",
+      "player_url": "https://www.nfl.com/players/roquan-smith/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "154",
+      "Asst": "73",
+      "Solo": "71",
+      "Sck": "1.5"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Zack Baun",
+      "player_url": "https://www.nfl.com/players/zack-baun/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "151",
+      "Asst": "58",
+      "Solo": "82",
+      "Sck": "3.5"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Kaden Elliss",
+      "player_url": "https://www.nfl.com/players/kaden-elliss/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "151",
+      "Asst": "66",
+      "Solo": "73",
+      "Sck": "5"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Daiyan Henley",
+      "player_url": "https://www.nfl.com/players/daiyan-henley/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "147",
+      "Asst": "63",
+      "Solo": "72",
+      "Sck": "1"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Nick Cross",
+      "player_url": "https://www.nfl.com/players/nick-cross/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "146",
+      "Asst": "59",
+      "Solo": "74",
+      "Sck": "1"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Jordyn Brooks",
+      "player_url": "https://www.nfl.com/players/jordyn-brooks/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "143",
+      "Asst": "57",
+      "Solo": "75",
+      "Sck": "3"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Germaine Pratt",
+      "player_url": "https://www.nfl.com/players/germaine-pratt/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "143",
+      "Asst": "63",
+      "Solo": "68",
+      "Sck": "0"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "E.J. Speed",
+      "player_url": "https://www.nfl.com/players/e-j-speed/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "142",
+      "Asst": "49",
+      "Solo": "82",
+      "Sck": "0"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Ernest Jones",
+      "player_url": "https://www.nfl.com/players/ernest-jones-2/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "138",
+      "Asst": "61",
+      "Solo": "58",
+      "Sck": "0.5"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Eric Kendricks",
+      "player_url": "https://www.nfl.com/players/eric-kendricks/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "138",
+      "Asst": "67",
+      "Solo": "61",
+      "Sck": "3"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Kyzir White",
+      "player_url": "https://www.nfl.com/players/kyzir-white/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "137",
+      "Asst": "77",
+      "Solo": "49",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Demario Davis",
+      "player_url": "https://www.nfl.com/players/demario-davis/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "136",
+      "Asst": "67",
+      "Solo": "66",
+      "Sck": "2"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Christian Rozeboom",
+      "player_url": "https://www.nfl.com/players/christian-rozeboom/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "135",
+      "Asst": "66",
+      "Solo": "59",
+      "Sck": "1"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Bobby Wagner",
+      "player_url": "https://www.nfl.com/players/bobby-wagner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "132",
+      "Asst": "57",
+      "Solo": "66",
+      "Sck": "2"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Jack Campbell",
+      "player_url": "https://www.nfl.com/players/jack-campbell-3/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "131",
+      "Asst": "62",
+      "Solo": "59",
+      "Sck": "1.5"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Fred Warner",
+      "player_url": "https://www.nfl.com/players/fred-warner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "131",
+      "Asst": "55",
+      "Solo": "63",
+      "Sck": "1"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Kevin Byard",
+      "player_url": "https://www.nfl.com/players/kevin-byard/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "130",
+      "Asst": "50",
+      "Solo": "70",
+      "Sck": "2"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "T.J. Edwards",
+      "player_url": "https://www.nfl.com/players/t-j-edwards/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "129",
+      "Asst": "50",
+      "Solo": "69",
+      "Sck": "4"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Patrick Queen",
+      "player_url": "https://www.nfl.com/players/patrick-queen/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "129",
+      "Asst": "64",
+      "Solo": "59",
+      "Sck": "1"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Nakobe Dean",
+      "player_url": "https://www.nfl.com/players/nakobe-dean/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "128",
+      "Asst": "48",
+      "Solo": "72",
+      "Sck": "3"
+    },
+    {
+      "season": 2024,
+      "category": "tackles",
+      "player": "Lavonte David",
+      "player_url": "https://www.nfl.com/players/lavonte-david/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
+      "Comb": "122",
+      "Asst": "46",
+      "Solo": "66",
+      "Sck": "5.5"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc"
+}

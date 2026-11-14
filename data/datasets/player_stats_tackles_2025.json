@@ -1,0 +1,288 @@
+{
+  "category": "tackles",
+  "season": 2025,
+  "columns": [
+    "Comb",
+    "Asst",
+    "Solo",
+    "Sck"
+  ],
+  "rows": [
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Jordyn Brooks",
+      "player_url": "https://www.nfl.com/players/jordyn-brooks/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "183",
+      "Asst": "84",
+      "Solo": "96",
+      "Sck": "3.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Jack Campbell",
+      "player_url": "https://www.nfl.com/players/jack-campbell-3/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "176",
+      "Asst": "87",
+      "Solo": "87",
+      "Sck": "5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Devin White",
+      "player_url": "https://www.nfl.com/players/devin-white/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "174",
+      "Asst": "79",
+      "Solo": "90",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Cedric Gray",
+      "player_url": "https://www.nfl.com/players/cedric-gray/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "164",
+      "Asst": "67",
+      "Solo": "94",
+      "Sck": "1"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Bobby Wagner",
+      "player_url": "https://www.nfl.com/players/bobby-wagner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "162",
+      "Asst": "83",
+      "Solo": "75",
+      "Sck": "4.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Carson Schwesinger",
+      "player_url": "https://www.nfl.com/players/carson-schwesinger/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "157",
+      "Asst": "90",
+      "Solo": "58",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Nick Bolton",
+      "player_url": "https://www.nfl.com/players/nick-bolton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "154",
+      "Asst": "81",
+      "Solo": "69",
+      "Sck": "1"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Jamien Sherwood",
+      "player_url": "https://www.nfl.com/players/jamien-sherwood/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "154",
+      "Asst": "83",
+      "Solo": "68",
+      "Sck": "2"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Blake Cashman",
+      "player_url": "https://www.nfl.com/players/blake-cashman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "144",
+      "Asst": "83",
+      "Solo": "60",
+      "Sck": "2"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Demario Davis",
+      "player_url": "https://www.nfl.com/players/demario-davis/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "143",
+      "Asst": "79",
+      "Solo": "61",
+      "Sck": "0.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Bobby Okereke",
+      "player_url": "https://www.nfl.com/players/bobby-okereke/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "143",
+      "Asst": "65",
+      "Solo": "75",
+      "Sck": "1"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Foyesade Oluokun",
+      "player_url": "https://www.nfl.com/players/foye-oluokun/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "143",
+      "Asst": "74",
+      "Solo": "68",
+      "Sck": "1"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Alex Singleton",
+      "player_url": "https://www.nfl.com/players/alex-singleton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "135",
+      "Asst": "81",
+      "Solo": "52",
+      "Sck": "1"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Nate Landman",
+      "player_url": "https://www.nfl.com/players/nate-landman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "132",
+      "Asst": "68",
+      "Solo": "62",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Roquan Smith",
+      "player_url": "https://www.nfl.com/players/roquan-smith/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "130",
+      "Asst": "54",
+      "Solo": "74",
+      "Sck": "0"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Tyrel Dodson",
+      "player_url": "https://www.nfl.com/players/tyrel-dodson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "129",
+      "Asst": "57",
+      "Solo": "70",
+      "Sck": "5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Quay Walker",
+      "player_url": "https://www.nfl.com/players/quay-walker/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "128",
+      "Asst": "70",
+      "Solo": "54",
+      "Sck": "2.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Ernest Jones",
+      "player_url": "https://www.nfl.com/players/ernest-jones-2/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "126",
+      "Asst": "66",
+      "Solo": "58",
+      "Sck": "0.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Germaine Pratt",
+      "player_url": "https://www.nfl.com/players/germaine-pratt/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "126",
+      "Asst": "59",
+      "Solo": "66",
+      "Sck": "0"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Payton Wilson",
+      "player_url": "https://www.nfl.com/players/payton-wilson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "126",
+      "Asst": "52",
+      "Solo": "73",
+      "Sck": "2"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Jordan Battle",
+      "player_url": "https://www.nfl.com/players/jordan-battle/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "125",
+      "Asst": "63",
+      "Solo": "60",
+      "Sck": "0"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Devin Bush",
+      "player_url": "https://www.nfl.com/players/devin-bush/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "125",
+      "Asst": "62",
+      "Solo": "61",
+      "Sck": "2"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Zaire Franklin",
+      "player_url": "https://www.nfl.com/players/zaire-franklin/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "125",
+      "Asst": "63",
+      "Solo": "60",
+      "Sck": "2"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Zack Baun",
+      "player_url": "https://www.nfl.com/players/zack-baun/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "123",
+      "Asst": "59",
+      "Solo": "63",
+      "Sck": "3.5"
+    },
+    {
+      "season": 2025,
+      "category": "tackles",
+      "player": "Kam Curl",
+      "player_url": "https://www.nfl.com/players/kamren-curl/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
+      "Comb": "122",
+      "Asst": "43",
+      "Solo": "75",
+      "Sck": "2"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc"
+}

@@ -1,0 +1,19 @@
+{
+  "step": "build_datasets",
+  "error_type": "TypeError",
+  "error": "string indices must be integers, not 'str'",
+  "traceback": [
+    "Traceback (most recent call last):",
+    "  File \"/home/runner/work/X3/X3/scripts/build_datasets.py\", line 85, in main",
+    "    return _build()",
+    "           ^^^^^^^^",
+    "  File \"/home/runner/work/X3/X3/scripts/build_datasets.py\", line 248, in _build",
+    "    \"groups\": normalise_depth_groups(parsed[\"units\"]),",
+    "              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "  File \"/home/runner/work/X3/X3/scripts/lib/parsers.py\", line 484, in normalise_depth_groups",
+    "    if player[\"ordinal\"] is None:",
+    "       ~~~~~~^^^^^^^^^^^",
+    "TypeError: string indices must be integers, not 'str'"
+  ],
+  "generated_at": "2026-11-14T03:20:48+00:00"
+}

@@ -1,0 +1,262 @@
+{
+  "category": "fumbles",
+  "season": 2026,
+  "columns": [
+    "FF",
+    "FR",
+    "FR TD"
+  ],
+  "rows": [
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "David Bailey",
+      "player_url": "https://www.nfl.com/players/david-bailey-2/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "5",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Fred Warner",
+      "player_url": "https://www.nfl.com/players/fred-warner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "5",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Jalen Carter",
+      "player_url": "https://www.nfl.com/players/jalen-carter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Quincy Williams",
+      "player_url": "https://www.nfl.com/players/quincy-williams/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Jessie Bates",
+      "player_url": "https://www.nfl.com/players/jessie-bates/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "1"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "K'Lavon Chaisson",
+      "player_url": "https://www.nfl.com/players/k-lavon-chaisson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Jamel Dean",
+      "player_url": "https://www.nfl.com/players/jamel-dean/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Nakobe Dean",
+      "player_url": "https://www.nfl.com/players/nakobe-dean/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Nate Landman",
+      "player_url": "https://www.nfl.com/players/nate-landman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Greg Rousseau",
+      "player_url": "https://www.nfl.com/players/gregory-rousseau/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Carson Schwesinger",
+      "player_url": "https://www.nfl.com/players/carson-schwesinger/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Wesley Bailey",
+      "player_url": "https://www.nfl.com/players/wesley-bailey/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Nik Bonitto",
+      "player_url": "https://www.nfl.com/players/nik-bonitto/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Austin Booker",
+      "player_url": "https://www.nfl.com/players/austin-booker/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Baron Browning",
+      "player_url": "https://www.nfl.com/players/baron-browning/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Tyson Campbell",
+      "player_url": "https://www.nfl.com/players/tyson-campbell/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Barrett Carter",
+      "player_url": "https://www.nfl.com/players/barrett-carter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Jeremy Chinn",
+      "player_url": "https://www.nfl.com/players/jeremy-chinn/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Caleb Downs",
+      "player_url": "https://www.nfl.com/players/caleb-downs/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Troy Dye",
+      "player_url": "https://www.nfl.com/players/troy-dye/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Kyler Gordon",
+      "player_url": "https://www.nfl.com/players/kyler-gordon/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Jevon Holland",
+      "player_url": "https://www.nfl.com/players/jevon-holland/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Malcolm Koonce",
+      "player_url": "https://www.nfl.com/players/malcolm-koonce/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "Quentin Lake",
+      "player_url": "https://www.nfl.com/players/quentin-lake/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2026,
+      "category": "fumbles",
+      "player": "DeMarcus Lawrence",
+      "player_url": "https://www.nfl.com/players/demarcus-lawrence/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "1",
+      "FR TD": "0"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc"
+}

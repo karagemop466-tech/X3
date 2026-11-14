@@ -1,0 +1,288 @@
+{
+  "category": "interceptions",
+  "season": 2025,
+  "columns": [
+    "INT",
+    "INT TD",
+    "INT Yds",
+    "Lng"
+  ],
+  "rows": [
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Kevin Byard",
+      "player_url": "https://www.nfl.com/players/kevin-byard/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "7",
+      "INT TD": "0",
+      "INT Yds": "91",
+      "Lng": "35"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Jaycee Horn",
+      "player_url": "https://www.nfl.com/players/jaycee-horn/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "46",
+      "Lng": "22"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Antonio Johnson",
+      "player_url": "https://www.nfl.com/players/antonio-johnson-3/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "1",
+      "INT Yds": "107",
+      "Lng": "58"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Ernest Jones",
+      "player_url": "https://www.nfl.com/players/ernest-jones-2/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "1",
+      "INT Yds": "150",
+      "Lng": "85"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Devin Lloyd",
+      "player_url": "https://www.nfl.com/players/devin-lloyd/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "1",
+      "INT Yds": "135",
+      "Lng": "99"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Xavier Watts",
+      "player_url": "https://www.nfl.com/players/xavier-watts/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "32",
+      "Lng": "32"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Nahshon Wright",
+      "player_url": "https://www.nfl.com/players/nahshon-wright/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "1",
+      "INT Yds": "118",
+      "Lng": "74"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Jordan Battle",
+      "player_url": "https://www.nfl.com/players/jordan-battle/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "6",
+      "Lng": "4"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Coby Bryant",
+      "player_url": "https://www.nfl.com/players/coby-bryant/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "43",
+      "Lng": "28"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Calen Bullock",
+      "player_url": "https://www.nfl.com/players/calen-bullock/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "40",
+      "Lng": "29"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Camryn Bynum",
+      "player_url": "https://www.nfl.com/players/camryn-bynum/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "22",
+      "Lng": "14"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Tremaine Edmunds",
+      "player_url": "https://www.nfl.com/players/tremaine-edmunds/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "10",
+      "Lng": "10"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Jaylinn Hawkins",
+      "player_url": "https://www.nfl.com/players/jaylinn-hawkins/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "1",
+      "Lng": "1"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Marlon Humphrey",
+      "player_url": "https://www.nfl.com/players/marlon-humphrey/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "54",
+      "Lng": "27"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Mike Jackson",
+      "player_url": "https://www.nfl.com/players/mike-jackson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "102",
+      "Lng": "54"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Donte Jackson",
+      "player_url": "https://www.nfl.com/players/donte-jackson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "27",
+      "Lng": "21"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Tony Jefferson",
+      "player_url": "https://www.nfl.com/players/tony-jefferson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "5",
+      "Lng": "3"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Kamari Lassiter",
+      "player_url": "https://www.nfl.com/players/kamari-lassiter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "0",
+      "Lng": "0"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Jalen Pitre",
+      "player_url": "https://www.nfl.com/players/jalen-pitre/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "18",
+      "Lng": "12"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Mike Sainristil",
+      "player_url": "https://www.nfl.com/players/mike-sainristil/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "78",
+      "Lng": "55"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Derek Stingley Jr.",
+      "player_url": "https://www.nfl.com/players/derek-stingley-jr/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "68",
+      "Lng": "31"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Cody Barton",
+      "player_url": "https://www.nfl.com/players/cody-barton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "1",
+      "INT Yds": "25",
+      "Lng": "24"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Jessie Bates",
+      "player_url": "https://www.nfl.com/players/jessie-bates/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "1",
+      "INT Yds": "54",
+      "Lng": "34"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Cole Bishop",
+      "player_url": "https://www.nfl.com/players/cole-bishop/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "16",
+      "Lng": "12"
+    },
+    {
+      "season": 2025,
+      "category": "interceptions",
+      "player": "Denzel Burke",
+      "player_url": "https://www.nfl.com/players/denzel-burke/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "20",
+      "Lng": "16"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc"
+}

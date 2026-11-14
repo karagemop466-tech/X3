@@ -1,0 +1,288 @@
+{
+  "category": "interceptions",
+  "season": 2023,
+  "columns": [
+    "INT",
+    "INT TD",
+    "INT Yds",
+    "Lng"
+  ],
+  "rows": [
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "DaRon Bland",
+      "player_url": "https://www.nfl.com/players/daron-bland/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "9",
+      "INT TD": "5",
+      "INT Yds": "209",
+      "Lng": "63"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Geno Stone",
+      "player_url": "https://www.nfl.com/players/geno-stone/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "7",
+      "INT TD": "0",
+      "INT Yds": "101",
+      "Lng": "36"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Jessie Bates",
+      "player_url": "https://www.nfl.com/players/jessie-bates/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "6",
+      "INT TD": "1",
+      "INT Yds": "95",
+      "Lng": "92"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Rasul Douglas",
+      "player_url": "https://www.nfl.com/players/rasul-douglas/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "1",
+      "INT Yds": "56",
+      "Lng": "40"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Derek Stingley Jr.",
+      "player_url": "https://www.nfl.com/players/derek-stingley-jr/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "17",
+      "Lng": "14"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Charvarius Ward",
+      "player_url": "https://www.nfl.com/players/charvarius-ward/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "1",
+      "INT Yds": "91",
+      "Lng": "66"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Paulson Adebo",
+      "player_url": "https://www.nfl.com/players/paulson-adebo/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "32",
+      "Lng": "27"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Julian Blackmon",
+      "player_url": "https://www.nfl.com/players/julian-blackmon/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "39",
+      "Lng": "25"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Andre Cisco",
+      "player_url": "https://www.nfl.com/players/andre-cisco/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "68",
+      "Lng": "29"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Tremaine Edmunds",
+      "player_url": "https://www.nfl.com/players/tremaine-edmunds/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "61",
+      "Lng": "45"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Martin Emerson",
+      "player_url": "https://www.nfl.com/players/martin-emerson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "25",
+      "Lng": "14"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Kyle Hamilton",
+      "player_url": "https://www.nfl.com/players/kyle-hamilton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "25",
+      "Lng": "18"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Jaylon Johnson",
+      "player_url": "https://www.nfl.com/players/jaylon-johnson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "65",
+      "Lng": "39"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Kerby Joseph",
+      "player_url": "https://www.nfl.com/players/kerby-joseph/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "37",
+      "Lng": "22"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Julian Love",
+      "player_url": "https://www.nfl.com/players/julian-love/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "7",
+      "Lng": "7"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Tyrann Mathieu",
+      "player_url": "https://www.nfl.com/players/tyrann-mathieu/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "122",
+      "Lng": "74"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Steven Nelson",
+      "player_url": "https://www.nfl.com/players/steven-nelson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "33",
+      "Lng": "33"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Tyrique Stevenson",
+      "player_url": "https://www.nfl.com/players/tyrique-stevenson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "46",
+      "Lng": "34"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Cam Taylor-Britt",
+      "player_url": "https://www.nfl.com/players/cam-taylor-britt/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "65",
+      "Lng": "30"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Jalen Thompson",
+      "player_url": "https://www.nfl.com/players/jalen-thompson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "49",
+      "Lng": "35"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Fred Warner",
+      "player_url": "https://www.nfl.com/players/fred-warner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "63",
+      "Lng": "32"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Jordan Whitehead",
+      "player_url": "https://www.nfl.com/players/jordan-whitehead/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "6",
+      "Lng": "6"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Darious Williams",
+      "player_url": "https://www.nfl.com/players/darious-williams/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "72",
+      "Lng": "61"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Logan Wilson",
+      "player_url": "https://www.nfl.com/players/logan-wilson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "42",
+      "Lng": "26"
+    },
+    {
+      "season": 2023,
+      "category": "interceptions",
+      "player": "Tony Adams",
+      "player_url": "https://www.nfl.com/players/tony-adams-4/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "50",
+      "Lng": "45"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc"
+}

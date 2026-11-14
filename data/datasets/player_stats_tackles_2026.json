@@ -1,0 +1,288 @@
+{
+  "category": "tackles",
+  "season": 2026,
+  "columns": [
+    "Comb",
+    "Asst",
+    "Solo",
+    "Sck"
+  ],
+  "rows": [
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Alex Singleton",
+      "player_url": "https://www.nfl.com/players/alex-singleton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "107",
+      "Asst": "56",
+      "Solo": "50",
+      "Sck": "2"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Nakobe Dean",
+      "player_url": "https://www.nfl.com/players/nakobe-dean/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "99",
+      "Asst": "54",
+      "Solo": "42",
+      "Sck": "1.5"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Carson Schwesinger",
+      "player_url": "https://www.nfl.com/players/carson-schwesinger/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "89",
+      "Asst": "49",
+      "Solo": "38",
+      "Sck": "3"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Ernest Jones",
+      "player_url": "https://www.nfl.com/players/ernest-jones-2/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "88",
+      "Asst": "44",
+      "Solo": "44",
+      "Sck": "3"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Anthony Hill Jr.",
+      "player_url": "https://www.nfl.com/players/anthony-hill-jr/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "82",
+      "Asst": "47",
+      "Solo": "35",
+      "Sck": "0"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Arvell Reese",
+      "player_url": "https://www.nfl.com/players/arvell-reese/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "81",
+      "Asst": "28",
+      "Solo": "52",
+      "Sck": "4.5"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Nick Bolton",
+      "player_url": "https://www.nfl.com/players/nick-bolton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "80",
+      "Asst": "41",
+      "Solo": "38",
+      "Sck": "0"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Sonny Styles",
+      "player_url": "https://www.nfl.com/players/sonny-styles/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "80",
+      "Asst": "43",
+      "Solo": "35",
+      "Sck": "1"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Jacob Rodriguez",
+      "player_url": "https://www.nfl.com/players/jacob-rodriguez/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "79",
+      "Asst": "44",
+      "Solo": "34",
+      "Sck": "1"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Jamien Sherwood",
+      "player_url": "https://www.nfl.com/players/jamien-sherwood/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "77",
+      "Asst": "40",
+      "Solo": "34",
+      "Sck": "0"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Fred Warner",
+      "player_url": "https://www.nfl.com/players/fred-warner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "77",
+      "Asst": "41",
+      "Solo": "35",
+      "Sck": "0.5"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Dane Belton",
+      "player_url": "https://www.nfl.com/players/dane-belton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "76",
+      "Asst": "36",
+      "Solo": "40",
+      "Sck": "1"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Blake Cashman",
+      "player_url": "https://www.nfl.com/players/blake-cashman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "76",
+      "Asst": "35",
+      "Solo": "39",
+      "Sck": "4.5"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Josiah Trotter",
+      "player_url": "https://www.nfl.com/players/josiah-trotter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "76",
+      "Asst": "39",
+      "Solo": "36",
+      "Sck": "1"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Evan Williams",
+      "player_url": "https://www.nfl.com/players/evan-williams/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "76",
+      "Asst": "28",
+      "Solo": "47",
+      "Sck": "1"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Jordyn Brooks",
+      "player_url": "https://www.nfl.com/players/jordyn-brooks/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "75",
+      "Asst": "43",
+      "Solo": "32",
+      "Sck": "0"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Roquan Smith",
+      "player_url": "https://www.nfl.com/players/roquan-smith/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "74",
+      "Asst": "42",
+      "Solo": "32",
+      "Sck": "2"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Quay Walker",
+      "player_url": "https://www.nfl.com/players/quay-walker/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "72",
+      "Asst": "44",
+      "Solo": "27",
+      "Sck": "2"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Payton Wilson",
+      "player_url": "https://www.nfl.com/players/payton-wilson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "69",
+      "Asst": "33",
+      "Solo": "34",
+      "Sck": "1"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Azeez Al-Shaair",
+      "player_url": "https://www.nfl.com/players/azeez-al-shaair/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "68",
+      "Asst": "42",
+      "Solo": "26",
+      "Sck": "0"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Barrett Carter",
+      "player_url": "https://www.nfl.com/players/barrett-carter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "68",
+      "Asst": "40",
+      "Solo": "27",
+      "Sck": "1.5"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Nate Landman",
+      "player_url": "https://www.nfl.com/players/nate-landman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "66",
+      "Asst": "29",
+      "Solo": "36",
+      "Sck": "0"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Drue Tranquill",
+      "player_url": "https://www.nfl.com/players/drue-tranquill/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "66",
+      "Asst": "33",
+      "Solo": "32",
+      "Sck": "0"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Zack Baun",
+      "player_url": "https://www.nfl.com/players/zack-baun/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "65",
+      "Asst": "31",
+      "Solo": "31",
+      "Sck": "2"
+    },
+    {
+      "season": 2026,
+      "category": "tackles",
+      "player": "Jeremy Chinn",
+      "player_url": "https://www.nfl.com/players/jeremy-chinn/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
+      "Comb": "65",
+      "Asst": "21",
+      "Solo": "44",
+      "Sck": "1"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc"
+}

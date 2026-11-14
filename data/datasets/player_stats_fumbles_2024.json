@@ -1,0 +1,262 @@
+{
+  "category": "fumbles",
+  "season": 2024,
+  "columns": [
+    "FF",
+    "FR",
+    "FR TD"
+  ],
+  "rows": [
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "T.J. Watt",
+      "player_url": "https://www.nfl.com/players/t-j-watt/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "6",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Zack Baun",
+      "player_url": "https://www.nfl.com/players/zack-baun/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "5",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Zaire Franklin",
+      "player_url": "https://www.nfl.com/players/zaire-franklin/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "5",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Jessie Bates",
+      "player_url": "https://www.nfl.com/players/jessie-bates/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Jonathan Greenard",
+      "player_url": "https://www.nfl.com/players/jonathan-greenard/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Nick Herbig",
+      "player_url": "https://www.nfl.com/players/nick-herbig/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Fred Warner",
+      "player_url": "https://www.nfl.com/players/fred-warner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Quincy Williams",
+      "player_url": "https://www.nfl.com/players/quincy-williams/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "3",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Leo Chenal",
+      "player_url": "https://www.nfl.com/players/leo-chenal/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Lavonte David",
+      "player_url": "https://www.nfl.com/players/lavonte-david/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Myles Garrett",
+      "player_url": "https://www.nfl.com/players/myles-garrett/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Eric Kendricks",
+      "player_url": "https://www.nfl.com/players/eric-kendricks/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Nate Landman",
+      "player_url": "https://www.nfl.com/players/nate-landman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Laiatu Latu",
+      "player_url": "https://www.nfl.com/players/laiatu-latu/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Marte Mapu",
+      "player_url": "https://www.nfl.com/players/marte-mapu/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Quan Martin",
+      "player_url": "https://www.nfl.com/players/jartavius-martin/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Isaiah McGuire",
+      "player_url": "https://www.nfl.com/players/isaiah-mcguire/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Keisean Nixon",
+      "player_url": "https://www.nfl.com/players/keisean-nixon/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Bobby Okereke",
+      "player_url": "https://www.nfl.com/players/bobby-okereke/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Ed Oliver",
+      "player_url": "https://www.nfl.com/players/ed-oliver/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Amik Robertson",
+      "player_url": "https://www.nfl.com/players/amik-robertson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Greg Rousseau",
+      "player_url": "https://www.nfl.com/players/gregory-rousseau/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Tykee Smith",
+      "player_url": "https://www.nfl.com/players/tykee-smith/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Azeez Al-Shaair",
+      "player_url": "https://www.nfl.com/players/azeez-al-shaair/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2024,
+      "category": "fumbles",
+      "player": "Dorance Armstrong",
+      "player_url": "https://www.nfl.com/players/dorance-armstrong/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc"
+}

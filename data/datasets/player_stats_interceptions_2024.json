@@ -1,0 +1,288 @@
+{
+  "category": "interceptions",
+  "season": 2024,
+  "columns": [
+    "INT",
+    "INT TD",
+    "INT Yds",
+    "Lng"
+  ],
+  "rows": [
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Kerby Joseph",
+      "player_url": "https://www.nfl.com/players/kerby-joseph/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "9",
+      "INT TD": "1",
+      "INT Yds": "99",
+      "Lng": "33"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Xavier McKinney",
+      "player_url": "https://www.nfl.com/players/xavier-mckinney/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "8",
+      "INT TD": "0",
+      "INT Yds": "128",
+      "Lng": "48"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "C.J. Gardner-Johnson",
+      "player_url": "https://www.nfl.com/players/chauncey-gardner-johnson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "6",
+      "INT TD": "1",
+      "INT Yds": "116",
+      "Lng": "69"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Marlon Humphrey",
+      "player_url": "https://www.nfl.com/players/marlon-humphrey/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "6",
+      "INT TD": "1",
+      "INT Yds": "37",
+      "Lng": "37"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Byron Murphy",
+      "player_url": "https://www.nfl.com/players/byron-murphy/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "6",
+      "INT TD": "0",
+      "INT Yds": "2",
+      "Lng": "2"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Calen Bullock",
+      "player_url": "https://www.nfl.com/players/calen-bullock/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "96",
+      "Lng": "68"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Amani Hooker",
+      "player_url": "https://www.nfl.com/players/amani-hooker/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "68",
+      "Lng": "30"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Donte Jackson",
+      "player_url": "https://www.nfl.com/players/donte-jackson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "88",
+      "Lng": "49"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Derek Stingley Jr.",
+      "player_url": "https://www.nfl.com/players/derek-stingley-jr/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "48",
+      "Lng": "31"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Jessie Bates",
+      "player_url": "https://www.nfl.com/players/jessie-bates/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "55",
+      "Lng": "55"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Beanie Bishop Jr.",
+      "player_url": "https://www.nfl.com/players/beanie-bishop-jr/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "46",
+      "Lng": "41"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Reed Blankenship",
+      "player_url": "https://www.nfl.com/players/reed-blankenship/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "29",
+      "Lng": "28"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Brian Branch",
+      "player_url": "https://www.nfl.com/players/brian-branch/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "48",
+      "Lng": "47"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Kamren Kinchens",
+      "player_url": "https://www.nfl.com/players/kamren-kinchens/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "123",
+      "Lng": "103"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Jaylen McCollough",
+      "player_url": "https://www.nfl.com/players/jaylen-mccollough/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "6",
+      "Lng": "4"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Tarheeb Still",
+      "player_url": "https://www.nfl.com/players/tarheeb-still/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "85",
+      "Lng": "61"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Geno Stone",
+      "player_url": "https://www.nfl.com/players/geno-stone/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "88",
+      "Lng": "49"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Pat Surtain II",
+      "player_url": "https://www.nfl.com/players/patrick-surtain-ii/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "1",
+      "INT Yds": "132",
+      "Lng": "100"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Paulson Adebo",
+      "player_url": "https://www.nfl.com/players/paulson-adebo/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "68",
+      "Lng": "47"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Julian Blackmon",
+      "player_url": "https://www.nfl.com/players/julian-blackmon/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "27",
+      "Lng": "17"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Coby Bryant",
+      "player_url": "https://www.nfl.com/players/coby-bryant/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "1",
+      "INT Yds": "87",
+      "Lng": "69"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Sean Murphy-Bunting",
+      "player_url": "https://www.nfl.com/players/sean-murphy-bunting/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "2",
+      "Lng": "2"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Camryn Bynum",
+      "player_url": "https://www.nfl.com/players/camryn-bynum/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "3",
+      "Lng": "3"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Nick Cross",
+      "player_url": "https://www.nfl.com/players/nick-cross/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "25",
+      "Lng": "20"
+    },
+    {
+      "season": 2024,
+      "category": "interceptions",
+      "player": "Tyrel Dodson",
+      "player_url": "https://www.nfl.com/players/tyrel-dodson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "7",
+      "Lng": "7"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc"
+}

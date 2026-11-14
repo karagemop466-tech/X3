@@ -1,0 +1,262 @@
+{
+  "category": "fumbles",
+  "season": 2023,
+  "columns": [
+    "FF",
+    "FR",
+    "FR TD"
+  ],
+  "rows": [
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Bradley Chubb",
+      "player_url": "https://www.nfl.com/players/bradley-chubb/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "6",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Antoine Winfield Jr.",
+      "player_url": "https://www.nfl.com/players/antoine-winfield-jr/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "6",
+      "FR": "4",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Khalil Mack",
+      "player_url": "https://www.nfl.com/players/khalil-mack/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "5",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Trent McDuffie",
+      "player_url": "https://www.nfl.com/players/trent-mcduffie/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "5",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Myles Garrett",
+      "player_url": "https://www.nfl.com/players/myles-garrett/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Danielle Hunter",
+      "player_url": "https://www.nfl.com/players/danielle-hunter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Josh Metellus",
+      "player_url": "https://www.nfl.com/players/josh-metellus/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Bobby Okereke",
+      "player_url": "https://www.nfl.com/players/bobby-okereke/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Fred Warner",
+      "player_url": "https://www.nfl.com/players/fred-warner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "T.J. Watt",
+      "player_url": "https://www.nfl.com/players/t-j-watt/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "3",
+      "FR TD": "1"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Shaquil Barrett",
+      "player_url": "https://www.nfl.com/players/shaquil-barrett/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Jessie Bates",
+      "player_url": "https://www.nfl.com/players/jessie-bates/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Camryn Bynum",
+      "player_url": "https://www.nfl.com/players/camryn-bynum/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Samson Ebukam",
+      "player_url": "https://www.nfl.com/players/samson-ebukam/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Akayleb Evans",
+      "player_url": "https://www.nfl.com/players/akayleb-evans/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Jordan Fuller",
+      "player_url": "https://www.nfl.com/players/jordan-fuller/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Alohi Gilman",
+      "player_url": "https://www.nfl.com/players/alohi-gilman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Trey Hendrickson",
+      "player_url": "https://www.nfl.com/players/trey-hendrickson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Jevon Holland",
+      "player_url": "https://www.nfl.com/players/jevon-holland/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Aidan Hutchinson",
+      "player_url": "https://www.nfl.com/players/aidan-hutchinson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Taron Johnson",
+      "player_url": "https://www.nfl.com/players/taron-johnson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "D.J. Jones",
+      "player_url": "https://www.nfl.com/players/d-j-jones/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Malcolm Koonce",
+      "player_url": "https://www.nfl.com/players/malcolm-koonce/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Nate Landman",
+      "player_url": "https://www.nfl.com/players/nate-landman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2023,
+      "category": "fumbles",
+      "player": "Jourdan Lewis",
+      "player_url": "https://www.nfl.com/players/jourdan-lewis/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "0"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc"
+}

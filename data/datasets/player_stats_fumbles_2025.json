@@ -1,0 +1,262 @@
+{
+  "category": "fumbles",
+  "season": 2025,
+  "columns": [
+    "FF",
+    "FR",
+    "FR TD"
+  ],
+  "rows": [
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Joey Bosa",
+      "player_url": "https://www.nfl.com/players/joey-bosa/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "5",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Aidan Hutchinson",
+      "player_url": "https://www.nfl.com/players/aidan-hutchinson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Nate Landman",
+      "player_url": "https://www.nfl.com/players/nate-landman/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Khalil Mack",
+      "player_url": "https://www.nfl.com/players/khalil-mack/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Josh Sweat",
+      "player_url": "https://www.nfl.com/players/josh-sweat/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Dallas Turner",
+      "player_url": "https://www.nfl.com/players/dallas-turner/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Eric Wilson",
+      "player_url": "https://www.nfl.com/players/eric-wilson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "4",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Will Anderson Jr.",
+      "player_url": "https://www.nfl.com/players/will-anderson-jr/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "1"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Dane Belton",
+      "player_url": "https://www.nfl.com/players/dane-belton/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Brian Burns",
+      "player_url": "https://www.nfl.com/players/brian-burns/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Jack Campbell",
+      "player_url": "https://www.nfl.com/players/jack-campbell-3/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Myles Garrett",
+      "player_url": "https://www.nfl.com/players/myles-garrett/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Nick Herbig",
+      "player_url": "https://www.nfl.com/players/nick-herbig/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "1"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Danielle Hunter",
+      "player_url": "https://www.nfl.com/players/danielle-hunter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "DeMarcus Lawrence",
+      "player_url": "https://www.nfl.com/players/demarcus-lawrence/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "3",
+      "FR TD": "2"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Jeffery Simmons",
+      "player_url": "https://www.nfl.com/players/jeffery-simmons/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Montez Sweat",
+      "player_url": "https://www.nfl.com/players/montez-sweat/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Jared Verse",
+      "player_url": "https://www.nfl.com/players/jared-verse/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "T.J. Watt",
+      "player_url": "https://www.nfl.com/players/t-j-watt/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "2",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Quinnen Williams",
+      "player_url": "https://www.nfl.com/players/quinnen-williams/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "3",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Jerome Baker",
+      "player_url": "https://www.nfl.com/players/jerome-baker/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Jordan Battle",
+      "player_url": "https://www.nfl.com/players/jordan-battle/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Yahya Black",
+      "player_url": "https://www.nfl.com/players/yahya-black/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "1",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Nik Bonitto",
+      "player_url": "https://www.nfl.com/players/nik-bonitto/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "0",
+      "FR TD": "0"
+    },
+    {
+      "season": 2025,
+      "category": "fumbles",
+      "player": "Nick Bosa",
+      "player_url": "https://www.nfl.com/players/nick-bosa/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
+      "FF": "2",
+      "FR": "1",
+      "FR TD": "0"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc"
+}

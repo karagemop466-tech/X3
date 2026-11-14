@@ -1,0 +1,288 @@
+{
+  "category": "interceptions",
+  "season": 2026,
+  "columns": [
+    "INT",
+    "INT TD",
+    "INT Yds",
+    "Lng"
+  ],
+  "rows": [
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Amani Hooker",
+      "player_url": "https://www.nfl.com/players/amani-hooker/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "114",
+      "Lng": "92"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Xavier McKinney",
+      "player_url": "https://www.nfl.com/players/xavier-mckinney/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "5",
+      "INT TD": "0",
+      "INT Yds": "46",
+      "Lng": "36"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Alex Anzalone",
+      "player_url": "https://www.nfl.com/players/alex-anzalone/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "26",
+      "Lng": "12"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Renardo Green",
+      "player_url": "https://www.nfl.com/players/renardo-green/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "2",
+      "Lng": "2"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Jevon Holland",
+      "player_url": "https://www.nfl.com/players/jevon-holland/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "0",
+      "Lng": "0"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Zyon McCollum",
+      "player_url": "https://www.nfl.com/players/zyon-mccollum/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "18",
+      "Lng": "18"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Byron Murphy",
+      "player_url": "https://www.nfl.com/players/byron-murphy/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "4",
+      "INT TD": "0",
+      "INT Yds": "67",
+      "Lng": "54"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Jordan Battle",
+      "player_url": "https://www.nfl.com/players/jordan-battle/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "18",
+      "Lng": "11"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Rasul Douglas",
+      "player_url": "https://www.nfl.com/players/rasul-douglas/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "25",
+      "Lng": "22"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Quentin Lake",
+      "player_url": "https://www.nfl.com/players/quentin-lake/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "45",
+      "Lng": "45"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Jourdan Lewis",
+      "player_url": "https://www.nfl.com/players/jourdan-lewis/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "49",
+      "Lng": "45"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Hezekiah Masses",
+      "player_url": "https://www.nfl.com/players/hezekiah-masses/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "67",
+      "Lng": "35"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Denzel Ward",
+      "player_url": "https://www.nfl.com/players/denzel-ward/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "0",
+      "Lng": "0"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Evan Williams",
+      "player_url": "https://www.nfl.com/players/evan-williams/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "3",
+      "INT TD": "0",
+      "INT Yds": "17",
+      "Lng": "17"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Julian Blackmon",
+      "player_url": "https://www.nfl.com/players/julian-blackmon/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "23",
+      "Lng": "21"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Chuck Clark",
+      "player_url": "https://www.nfl.com/players/chuck-clark/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "35",
+      "Lng": "34"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Martin Emerson",
+      "player_url": "https://www.nfl.com/players/martin-emerson/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "19",
+      "Lng": "12"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Cordale Flott",
+      "player_url": "https://www.nfl.com/players/cordale-flott/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "14",
+      "Lng": "14"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Cam Hart",
+      "player_url": "https://www.nfl.com/players/cam-hart/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "2",
+      "Lng": "2"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Ty'Ron Hopper",
+      "player_url": "https://www.nfl.com/players/ty-ron-hopper/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "21",
+      "Lng": "20"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Talanoa Hufanga",
+      "player_url": "https://www.nfl.com/players/talanoa-hufanga/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "1",
+      "INT Yds": "66",
+      "Lng": "66"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Travis Hunter",
+      "player_url": "https://www.nfl.com/players/travis-hunter/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "0",
+      "Lng": "0"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Brandon Jones",
+      "player_url": "https://www.nfl.com/players/brandon-jones-3/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "31",
+      "Lng": "24"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Devin Lloyd",
+      "player_url": "https://www.nfl.com/players/devin-lloyd/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "1",
+      "INT Yds": "69",
+      "Lng": "53"
+    },
+    {
+      "season": 2026,
+      "category": "interceptions",
+      "player": "Julian Love",
+      "player_url": "https://www.nfl.com/players/julian-love/",
+      "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
+      "INT": "2",
+      "INT TD": "0",
+      "INT Yds": "0",
+      "Lng": "0"
+    }
+  ],
+  "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc"
+}
