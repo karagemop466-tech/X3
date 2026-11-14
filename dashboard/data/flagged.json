@@ -93,9 +93,18 @@
   "id": "F-12",
   "area": "Repository",
   "severity": "Low",
-  "what": "The base commit contains 180 tracked file(s) totalling 2373192 bytes.",
-  "why": "There is no licence, no .gitignore, no CI, no tests, no documentation and no branch protection recorded at the base commit.",
-  "source": "https://github.com/karagemop466-tech/X3/commit/7239f60560ad8db69eae2c8518803762f8605526",
+  "what": "The base commit e124230 contains 1 tracked file(s) totalling 4 bytes.",
+  "why": "There is no licence, no .gitignore, no CI, no tests and no documentation at the base commit. The repo was an empty skeleton when this session started.",
+  "source": "https://github.com/karagemop466-tech/X3/commit/e12423044baef53c007fce7d1d3f45eeaf0a7e29",
   "action": "Add licence, .gitignore, CI and branch protection."
+ },
+ {
+  "id": "F-13",
+  "area": "Repository",
+  "severity": "Low",
+  "what": "The repository now holds 180 tracked files (2,141,028 bytes) across 67 commits from multiple parallel agent sessions.",
+  "why": "Six or more sessions each published their own site (root category pages, docs/, site/, pages/, lab/, x3lab/, research/, dashboard/). Nothing was deleted, so there are now several overlapping dashboards with no single canonical landing page.",
+  "source": "https://github.com/karagemop466-tech/X3/commit/ad0cbf27f212cefb7fb635cba28b7fbd80c3ee2b",
+  "action": "Pick one canonical dashboard and make the others legacy, or add a root index that lists all of them. Owner decision."
  }
 ]

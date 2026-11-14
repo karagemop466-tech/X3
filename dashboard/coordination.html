@@ -302,7 +302,7 @@ naming this session&#x27;s builder `tools/build_dashboard.py`, and a directory c
 | T08 | Correlation values | done | `dashboard/correlation.html` | 4 computed, 8 deliberately blank |
 | T09 | Injury &amp; depth-chart deficiency tracking | done | `dashboard/injuries.html`, `depth-charts.html` | 345 injury rows, 31/32 charts, 76 starter-absent positions |
 | T10 | Source register + verification pass | done | `dashboard/sources.html` | 4 league sources + 32 club sources |
-| T11 | Flagged for Review page | done | `dashboard/flagged.html` | 11 flags, all non-blocking |
+| T11 | Flagged for Review page | done | `dashboard/flagged.html` | 12 flags, all non-blocking |
 | T12 | Static site build | done | `dashboard/**` | 18 pages, 25 tables |
 | T13 | Pages enablement + deploy verification | done | (existing workflow reused) | See deploy log |
 | T14 | Re-verify, link check, PR + merge | done | `COORDINATION.md` | See PR log |
@@ -523,11 +523,13 @@ F-01 nfl.com schedule URL redirect quirk · F-02 standings split-column mapping 
 - 2026-11-14: `git pull --rebase` showed `main` had advanced with PRs #1-#9 from five sessions. Rebase stopped at an add/add conflict in `COORDINATION.md`; abandoned in favor of a merge (repo precedent).
 - 2026-11-14: to avoid add/add collisions with session `arena/0c38f465-x3`&#x27;s `docs/` dashboard, this session&#x27;s site was relocated to `x3lab/` (b1c260a). Nothing of other sessions was discarded or edited; root `index.html` (claimed by session `arena/972ad7a5-x3`) was NOT touched.
 - 2026-11-14: merge of `origin/main` into this branch; conflicts in `COORDINATION.md` and `README.md` resolved **additively** (main&#x27;s full content kept, this section appended), per the convention used by PRs #4 and #7.
-- Pending: PR `arena/e1c332ce-x3` → `main`, merge, live verification, then a follow-up record of the PR link + merge result below.
+- 2026-11-14: PR #13 **merged** into `main` (record below). `main` advanced concurrently with PRs #14 and #15 from other sessions; synced again without conflicts and without touching their files.
 
 ### PR &amp; deploy record (session e1c332ce)
 
-- (to be completed after merge — see follow-up)
+- **PR #13:** https://github.com/karagemop466-tech/X3/pull/13 — `arena/e1c332ce-x3` → `main`, &quot;X3: NFL Lines &amp; Strategy Lab — originated lines, validation gates, injury/depth tracker&quot;. Result: **MERGED** 2026-11-14, merge commit `059079d`. One fix-and-retry: the first merge attempt failed because `main` had advanced (PRs #10/#11); `origin/main` was merged in again with additive conflict resolution on `COORDINATION.md`/`README.md`, then the PR merged cleanly. Summary + sources + flagged irregularities were included in the PR body as required.
+- **CI / Pages deploy:** workflow &quot;Deploy X3 NFL site to GitHub Pages&quot; run 43550431317 — build + deploy **success**, all six steps green (HTML/link audit; docs row-source check 356 rows/0 missing; root-page link check; dashboard checks; node data + render checks). Pages source remains `main /` (legacy; shared flag F15 — token cannot change Pages settings).
+- **Live verification 2026-11-14:** https://karagemop466-tech.github.io/X3/x3lab/ — `lines.html` and `flagged.html` fetched live and render complete source-linked tables (model-vs-market board with gap highlighting, Week-11 look-ahead board, futures; F-01…F-10 incl. the UNVERIFIED badge behavior). The `index.html` URL intermittently returned a GitHub incident page (&quot;Unicorn&quot;) during the incident window while sibling pages served correctly; the deploy itself is green and sibling pages prove the artifact is complete.
 
 ---
 
@@ -600,7 +602,7 @@ role). No other session&#x27;s files were modified.
   link the extended research tree `docs/pages/` from `lab/index.html` (currently reachable via the
   `docs/` dashboard at `docs/index.html`). Logged here instead of editing `lab/` files, per the
   coordination protocol.
-</pre></div><p><a class="src" href="https://github.com/karagemop466-tech/X3/blob/7239f60560ad8db69eae2c8518803762f8605526/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md on GitHub &#8599;</a></p>
+</pre></div><p><a class="src" href="https://github.com/karagemop466-tech/X3/blob/e12423044baef53c007fce7d1d3f45eeaf0a7e29/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md on GitHub &#8599;</a></p>
 </div></main>
 <footer><div class="wrap">
 Verification rule: a row is verified only when its value was read from an official
