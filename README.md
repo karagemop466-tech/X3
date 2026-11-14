@@ -154,3 +154,49 @@ Originate our own Week-10 NFL lines (model v0.1, deterministic), run strategies 
 - Data: `x3lab/data/*.json` · Notes: `analysis/` · Gate: `python3 scripts/verify_data.py` (must PASS)
 - Model: `scripts/compute_lines.py` · Pilots (correlations, Pythagorean luck): `scripts/compute_analysis.py`
 - Review before anything changes: `x3lab/suggestions.html` (12 proposals) · `x3lab/questions.html` (15 open) · `x3lab/flagged.html` (10 flags)
+
+---
+
+## Consolidated review hub (branch `arena/1e2d8ef2-x3`, 2026-11-14)
+
+Nine earlier sessions each shipped a site tree. This session adds one consolidated
+review surface at [`hub/`](hub/index.html) and makes the repository root a real landing
+page instead of a meta-refresh redirect. Nothing else was deleted or rewritten: the
+older trees stay online and are indexed at [`hub/archive.html`](hub/archive.html).
+
+**Pages:** overview · executive summary · requirements · questions & gaps · suggestions
+queue · originated lines · signals & strategies · validation gates · correlations ·
+injury report · depth & deficiencies · leaderboard · repo review · sources ·
+verification log · flagged for review · archive.
+
+**Data policy enforced by the build** (`scripts/build_hub.py`, audited by
+`scripts/check_hub.py`):
+
+- every rendered table row links to the source that documents it; the four data pages
+  (injuries, deficiency, lines, correlations) must link to an official `nfl.com` host
+  or carry an explicit `UNVERIFIED` marker — the build aborts otherwise;
+- unknown values stay blank. No market price, depth string or performance figure was
+  inferred, because no official source publishes them;
+- every number in prose is injected from the data at build time through a token, and
+  the build fails if a token is unfilled, so text cannot drift from its table;
+- output is deterministic: two builds produce identical bytes (checked).
+
+**Verified this session** (retrieved 2026-11-14, Week 10 of the 2026 season):
+
+| Dataset | Official source | Result |
+|---|---|---|
+| Week 10 injury report, 345 rows / 28 clubs | https://www.nfl.com/injuries/ | transcribed row by row; reproduces the repo's earlier snapshot on all 345 players and game statuses, 1 practice-status drift |
+| 2026 league standings, 32 clubs | https://www.nfl.com/standings/league/2026/REG | wins = losses, PF = PA, every home/road/division/conference split reconciles |
+| Week 10 slate: 14 games + 4 byes | https://www.nfl.com/schedules/2026/by-week/week-10 | 32 clubs accounted for exactly once |
+| WAS 24, NYG 21 (Thu) | https://www.nfl.com/games/commanders-at-giants-2026-reg-10 | confirmed; the standings module still excludes it (FLG-02) |
+
+**Irregularities found in existing data** (published at `hub/flagged.html`, all 21 non-blocking):
+a prior tree's Tampa Bay division record (1-2-0) contradicts the official page (2-0-0);
+a prior model's `model_home_spread` carries the sign of the expected margin and twice its
+magnitude in all 14 rows; published correlations from a prior tree do not reproduce
+exactly and came from a different snapshot; two official pages disagree on Freiermuth's
+designation and on Lamar Jackson's absence window.
+
+```bash
+python3 scripts/build_hub.py && python3 scripts/check_hub.py   # rebuild + audit
+```
