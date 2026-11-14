@@ -76,7 +76,7 @@ CLUBS: list[tuple[str, str, str]] = [
     ("las-vegas-raiders", "raiders.com", "Las Vegas Raiders"),
     ("washington-commanders", "commandersons.com", "Washington Commanders"),
     ("carolina-panthers", "panthers.com", "Carolina Panthers"),
-    ("houston-texans", "texans.com", "Houston Texans"),
+    ("houston-texans", "houstontexans.com", "Houston Texans"),
     ("new-orleans-saints", "neworleanssaints.com", "New Orleans Saints"),
     ("arizona-cardinals", "cardinals.com", "Arizona Cardinals"),
     ("atlanta-falcons", "atlantafalcons.com", "Atlanta Falcons"),
@@ -94,9 +94,7 @@ DEPTH_CHART_CANDIDATES = (
     "/team/depth-chart",
     "/team/depth-chart/offense",
     "/team/depth-chart/defense",
-    "/team/depth-charts",
     "/depth-chart",
-    "/team/roster/depth-chart",
 )
 
 #: Player-stat categories published by the NFL (verified URL pattern:
@@ -137,17 +135,28 @@ def league_sources(seasons: Iterable[int] = SEASONS) -> list[Source]:
             description="NFL.com official team index (32 clubs).",
         ),
         Source(
-            key="nfl_rules_index",
-            url=f"{OPS_NFL}/rules/",
+            key="nfl_rulebook_2026",
+            url="https://operations.nfl.com/rules-officiating/2026-nfl-rulebook",
             category="policy",
-            description="NFL Operations — official rulebook index.",
+            description="NFL Football Operations — the official 2026 NFL Rulebook.",
             optional=True,
         ),
         Source(
-            key="nfl_communications",
-            url=f"{NFL_COM}/news/nfl-communications",
+            key="nfl_playing_rules_2026_pdf",
+            url=(
+                "https://media.nfl.com/content/dam/communications/Official%20Playing%20Rules/"
+                "2026%20Official%20Playing%20Rules.pdf"
+            ),
             category="policy",
-            description="NFL Communications — official league statements and policy.",
+            kind="pdf",
+            description="NFL Communications — 2026 Official Playing Rules of the National Football League.",
+            optional=True,
+        ),
+        Source(
+            key="nfl_media_communications",
+            url="https://media.nfl.com/",
+            category="policy",
+            description="NFL Communications — official media and league statement channel.",
             optional=True,
         ),
     ]
@@ -173,6 +182,15 @@ def league_sources(seasons: Iterable[int] = SEASONS) -> list[Source]:
                     url=f"{NFL_COM}/schedules/{season}/REG{week}/",
                     category="schedule",
                     description=f"{season} regular-season schedule, week {week}.",
+                    optional=True,
+                )
+            )
+            out.append(
+                Source(
+                    key=f"injuries_{season}_w{week:02d}",
+                    url=f"{NFL_COM}/injuries/league/{season}/reg{week}",
+                    category="injuries_history",
+                    description=f"Official NFL injury report, {season} week {week} (as published on NFL.com).",
                     optional=True,
                 )
             )

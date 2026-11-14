@@ -162,25 +162,79 @@ def _build() -> int:
         write_json(name, parsed)
         note(name, rec, len(parsed["rows"]))
 
+    # ------------------------------------------------------- injury archive
+    for season in (2023, 2024, 2025, 2026):
+        weeks: list[dict] = []
+        used: list[dict] = []
+        for rec in records:
+            if not rec["key"].startswith(f"injuries_{season}_w"):
+                continue
+            path = raw_path(rec)
+            if not path:
+                continue
+            week = int(rec["key"].rsplit("_w", 1)[-1])
+            with open(path, encoding="utf-8", errors="replace") as fh:
+                parsed = parse_injuries(fh.read(), rec["url"])
+            if not parsed["rows"]:
+                continue
+            weeks.append({"week": week, "source_url": rec["url"], "rows": parsed["rows"], "games": parsed["games"]})
+            used.append(rec)
+        if weeks:
+            weeks.sort(key=lambda w: w["week"])
+            write_json(
+                f"injuries_history_{season}.json",
+                {"season": season, "weeks": weeks, "source_url": f"https://www.nfl.com/injuries/league/{season}/reg<week>"},
+            )
+            datasets.append(
+                {
+                    "dataset": f"injuries_history_{season}.json",
+                    "source_key": f"injuries_{season}_w01..w18",
+                    "source_url": f"https://www.nfl.com/injuries/league/{season}/reg<week>",
+                    "official_org": "National Football League",
+                    "sha256": [u["sha256"] for u in used][:8],
+                    "fetched_at": [u["fetched_at"] for u in used][:8],
+                    "rows": sum(len(w["rows"]) for w in weeks),
+                }
+            )
+
     # ----------------------------------------------------------- depth charts
     depth: dict[str, dict] = {}
+    rejected: list[dict] = []
     for rec in records:
         if rec["category"] != "depth_chart":
             continue
         path = raw_path(rec)
         if not path:
             continue
+        club = rec["official_org"]
+        if club in depth:
+            # One official chart per club: the first URL that really contains a
+            # depth chart wins, so a club's application shell cannot be counted.
+            continue
         with open(path, encoding="utf-8", errors="replace") as fh:
             html = fh.read()
-        parsed = parse_depth_chart(html, rec["url"], rec["official_org"])
+        parsed = parse_depth_chart(html, rec["url"], club)
         if not parsed["units"]:
+            rejected.append({"club": club, "url": rec["url"], "reason": parsed.get("reason", "")})
             continue
-        club = rec["official_org"]
-        depth.setdefault(club, {"club": club, "sources": [], "units": []})
-        depth[club]["sources"].append({"url": rec["url"], "sha256": rec["sha256"], "fetched_at": rec["fetched_at"]})
-        depth[club]["units"].extend(parsed["units"])
-    if depth:
-        write_json("depth_charts.json", {"clubs": list(depth.values())})
+        depth[club] = {
+            "club": club,
+            "sources": [{"url": rec["url"], "sha256": rec["sha256"], "fetched_at": rec["fetched_at"]}],
+            "units": parsed["units"],
+        }
+    if depth or rejected:
+        write_json(
+            "depth_charts.json",
+            {
+                "clubs": list(depth.values()),
+                "rejected_candidates": rejected,
+                "coverage": {
+                    "clubs_resolved": len(depth),
+                    "clubs_total": 32,
+                    "clubs_unresolved": 32 - len(depth),
+                },
+            },
+        )
         datasets.append(
             {
                 "dataset": "depth_charts.json",

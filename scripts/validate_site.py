@@ -38,6 +38,8 @@ OFFICIAL_HOST_SUFFIXES = (
     ".nfl.com",
     "nfl.com",
     "operations.nfl.com",
+    "media.nfl.com",
+    "static.www.nfl.com",
 )
 OFFICIAL_CLUB_HOSTS = {
     "49ers.com", "arizona.cardinals.nfl.com", "atlantafalcons.com", "baltimoreravens.com",
@@ -48,6 +50,7 @@ OFFICIAL_CLUB_HOSTS = {
     "jaguars.com", "kansascitychiefs.com", "lasvegasraiders.com", "miamidolphins.com",
     "minnesotavikings.com", "newenglandpatriots.com", "neworleanssaints.com",
     "newyorkjets.com", "newyorkgiants.com", "philaeagles.com", "philadelphiaeagles.com",
+    "houstontexans.com", "houstontexans.com", "texans.com",
     "pittsburghsteelers.com", "raiders.com", "sanfrancisco49ers.com", "seattle.seahawks.nfl.com",
     "seahawks.com", "steelers.com", "tampabaybuccaneers.com", "tennesseetitans.com",
     "therams.com", "titans.com", "vikings.com", "washingtoncommanders.com",

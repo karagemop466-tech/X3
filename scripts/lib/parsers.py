@@ -369,27 +369,34 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
 def parse_depth_chart(html: str, source_url: str, club: str) -> dict:
     """Best-effort parse of an official club depth chart.
 
-    Club sites differ in markup, so this collects every table that looks like a
-    depth chart (two columns of player names) and keeps the unit name when the
-    page provides one.
+    Club sites differ in markup, and several return the same application shell
+    for every path, so the result is only accepted when the page really
+    contains a table that looks like a depth chart. Anything else yields no
+    units, which the dataset builder then reports as an unresolved gap.
     """
     soup = BeautifulSoup(html, "lxml")
+    page_text = _txt(soup).lower()
+    if "depth" not in page_text:
+        return {"club": club, "units": [], "source_url": source_url, "accepted": False,
+                "reason": "the page does not identify itself as a depth chart"}
     units: list[dict] = []
     for table in soup.find_all("table"):
         headers = [_txt(th) for th in table.select("thead th")]
         body = table.select("tbody tr")
-        if len(body) < 3:
+        if len(body) < 5:
             continue
-        # Depth charts are typically two side-by-side lists of names.
         cols = len(body[0].find_all(["td", "th"]))
-        if cols not in (2, 4, 6):
+        if cols < 2:
             continue
         rows = []
         for tr in body:
             cells = [_txt(c) for c in tr.find_all(["td", "th"])]
             if any(cells):
                 rows.append(cells)
-        if not rows:
+        if len(rows) < 5:
             continue
-        units.append({"headers": headers, "rows": rows})
-    return {"club": club, "units": units, "source_url": source_url}
+        units.append({"headers": headers, "rows": rows, "n_rows": len(rows)})
+    if not units:
+        return {"club": club, "units": [], "source_url": source_url, "accepted": False,
+                "reason": "no table with at least five rows was found"}
+    return {"club": club, "units": units, "source_url": source_url, "accepted": True, "reason": ""}
