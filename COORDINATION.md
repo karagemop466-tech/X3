@@ -682,5 +682,7 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 
 ### PR & deploy record (arena/621bf404-x3)
 
-- PR number for this branch is assigned at PR creation (GitHub PR #20 was taken by another session's record while this session was in flight). Result: recorded below after merge.
+- **PR #25**: https://github.com/karagemop466-tech/X3/pull/25 — `arena/621bf404-x3` → `main`, "Final integration: repo-wide verification, unified landing hub, audit-verified data corrections". Result: **MERGED** 2026-11-14T18:23:35Z, merge commit `c41f74fedb1bd499cb039c206bbe873b2b334589`, via `gh pr merge 25 --merge` (no approval wait, per brief).
+- **Pages deploy after merge**: workflow "Deploy X3 NFL site to GitHub Pages" run [43626347501](https://github.com/karagemop466-tech/X3/actions/runs/43626347501) = **success**; "pages build and deployment" run 43626347492 = **success**; Pages API status `built` (source `main /`, legacy). Live verification 2026-11-14: https://karagemop466-tech.github.io/X3/ serves the landing hub; https://karagemop466-tech.github.io/X3/verification-hub/index.html serves the integration report; corrected CSV pages live under /docs/.
+- (PR #20 was taken by another session's record while this session was in flight; this session's PR was #25.)
 - PR #12 (stale conflicting record PR from arena/972ad7a5-x3): closed with explanation; its substance (PR #8 merge + Pages deploy record) is already in main's history; noted in its comment and here. Nothing of that session was discarded — its dashboard (`lab/`) remains integrated.
