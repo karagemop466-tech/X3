@@ -24,7 +24,7 @@ import nfl_data as D
 import site_content as C
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = os.path.join(ROOT, "site")
+SITE = os.path.join(ROOT, "dashboard")
 DATA = os.path.join(SITE, "data")
 
 TNAME = {t[0]: t[1] for t in D.TEAMS}
@@ -310,6 +310,8 @@ nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:10px}
 nav a{padding:6px 11px;border-radius:6px;color:var(--dim);font-size:13px}
 nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
 nav a.on{background:var(--panel2);color:var(--txt);box-shadow:inset 0 -2px 0 var(--acc)}
+.xnav{padding:0 0 9px;font-size:12px;color:var(--mut)}
+.xnav a{color:var(--mut)}.xnav a:hover{color:var(--info)}
 main{padding:24px 0 60px}
 h2{font-size:22px;margin:0 0 4px}
 h3{font-size:16px;margin:26px 0 8px;color:var(--txt)}
@@ -433,7 +435,11 @@ def page(title, active, body, subtitle=""):
 <header><div class="wrap">
 <div class="brand"><h1>X3 &middot; NFL Decision System</h1>
 <span>2026 season &middot; Week 10 &middot; data as of {D.AS_OF}</span></div>
-<nav>{nav}</nav></div></header>
+<nav>{nav}</nav>
+<div class="xnav">Other published views in this repo:
+<a href="../docs/index.html">docs dashboard</a> &middot;
+<a href="../site/index.html">site dashboard</a> &middot;
+<a href="../index.html">repo root</a></div></header>
 <main><div class="wrap">
 <h2>{esc(title)}</h2>
 {('<p class="lede">' + esc(subtitle) + "</p>") if subtitle else ""}

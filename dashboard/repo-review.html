@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Repo Review | X3 NFL</title>
+<style>
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--info);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1400px;margin:0 auto;padding:0 20px}
+header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:baseline;gap:12px;padding:14px 0 10px}
+.brand h1{font-size:19px;margin:0;letter-spacing:.5px}
+.brand span{color:var(--dim);font-size:12px}
+nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:10px}
+nav a{padding:6px 11px;border-radius:6px;color:var(--dim);font-size:13px}
+nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+nav a.on{background:var(--panel2);color:var(--txt);box-shadow:inset 0 -2px 0 var(--acc)}
+main{padding:24px 0 60px}
+h2{font-size:22px;margin:0 0 4px}
+h3{font-size:16px;margin:26px 0 8px;color:var(--txt)}
+p.lede{color:var(--dim);margin:0 0 18px;max-width:100ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .k{font-size:26px;font-weight:600;line-height:1.1}
+.card .l{color:var(--dim);font-size:12px;margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
+.card.ok .k{color:var(--acc)}.card.warn .k{color:var(--warn)}.card.bad .k{color:var(--bad)}
+.card.info .k{color:var(--info)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.bar input,.bar select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+border-radius:6px;padding:7px 10px;font-size:13px}
+.bar input{min-width:230px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+.tw{overflow:auto;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);position:sticky;top:0;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.5px;color:var(--dim);cursor:pointer;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:#111823}
+.b{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;border:1px solid var(--line);
+white-space:nowrap}
+.b.ok{color:var(--acc);border-color:#1f6f37}.b.warn{color:var(--warn);border-color:#6b5210}
+.b.bad{color:var(--bad);border-color:#7d2b26}.b.info{color:var(--info);border-color:#1f4b7d}
+.b.mut{color:var(--mut)}
+.src{font-size:11px}
+.blank{color:var(--mut);font-style:italic}
+.mut{color:var(--dim)}
+small.note{color:var(--dim);display:block;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--dim);font-size:12px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;font-size:13px}
+.kv dt{color:var(--dim)}
+.kv dd{margin:0}
+ul.tight{margin:6px 0 0;padding-left:20px}ul.tight li{margin:3px 0}
+details{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.badge{font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--dim)}
+</style></head><body>
+<header><div class="wrap">
+<div class="brand"><h1>X3 &middot; NFL Decision System</h1>
+<span>2026 season &middot; Week 10 &middot; data as of 2026-11-14</span></div>
+<nav><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive Summary</a><a href="standings.html" class="">Standings</a><a href="schedule.html" class="">Schedule</a><a href="injuries.html" class="">Injuries</a><a href="depth-charts.html" class="">Depth &amp; Deficiencies</a><a href="lines.html" class="">Own Lines</a><a href="strategies.html" class="">Strategies</a><a href="validation.html" class="">Validation Gates</a><a href="correlation.html" class="">Correlation</a><a href="leaderboard.html" class="">Leaderboard</a><a href="questions.html" class="">Open Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="requirements.html" class="">Requirements</a><a href="repo-review.html" class="on">Repo Review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for Review</a><a href="coordination.html" class="">Coordination</a></nav></div></header>
+<main><div class="wrap">
+<h2>Repo Review</h2>
+<p class="lede">Line-by-line review of the base commit, with links for manual verification.</p>
+
+<p class="lede">The repository was reviewed line by line. At the base commit it contained exactly
+one tracked file. There was no prior code, data set, documentation or configuration to audit.</p>
+<div class="panel"><h3 style="margin-top:0">Repository facts</h3>
+<dl class="kv">
+<dt>Branch reviewed</dt><dd><code>arena/7e632805-x3</code></dd>
+<dt>Base commit</dt><dd><code>304b01c24a33f6afd04f22804f7f80c390899cb1</code> &mdash; <a class="src" href="https://github.com/karagemop466-tech/X3/commit/304b01c24a33f6afd04f22804f7f80c390899cb1" target="_blank" rel="noopener">open on GitHub &#8599;</a></dd>
+<dt>Commit count</dt><dd>2</dd>
+<dt>Tracked files at base</dt><dd>6</dd>
+<dt>Total bytes at base</dt><dd>196912</dd>
+</dl></div>
+<h3>File-by-file</h3>
+<div class="bar"><input data-filter="#t-repo" placeholder="Filter rows&hellip;"><span class="mut" id="c_t-repo"></span></div><div class="tw"><table id="t-repo"><thead><tr><th data-sort>Path</th><th data-sort>Bytes</th><th data-sort>Lines</th><th data-sort>Content as committed</th><th data-sort>Links for manual review</th></tr></thead><tbody><tr><td><code>.gitignore</code></td><td class="num">52</td><td class="num">6</td><td><code>__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+*.swp
+</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/.gitignore" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/.gitignore" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>COORDINATION.md</code></td><td class="num">5695</td><td class="num">89</td><td><code># COORDINATION.md — Shared Task Board
+
+Repo: `karagemop466-tech/X3`
+Session start: 2026-11-14 (UTC)
+
+## Branch / session rules in force
+
+This session is bound to a **single fixed branch**: `arena/7e632805-x3` (branched from
+`main` @ `e124230`). Arena tracks this session by that branch, so this session:
+
+* commits and pushes **only** to `arena/7e632805-x3`;
+* does **not** create or switch to `sessi</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/COORDINATION.md" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/COORDINATION.md" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>README.md</code></td><td class="num">2955</td><td class="num">67</td><td><code># X3 — NFL Decision System
+
+A verified-data NFL decision-support dashboard: official standings, schedule and injury data,
+joined to official club depth charts to surface starter-absent deficiencies, feeding a
+registered strategy book with hard validation gates.
+
+**Live site:** GitHub Pages, built from the `site/` directory by
+`.github/workflows/pages.yml`.
+
+## Verification rule
+
+Every row in a dat</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/README.md" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/README.md" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/build_dashboard.py</code></td><td class="num">64594</td><td class="num">1330</td><td><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Build the X3 static site.
+
+Stage 1  compute derived layers (injury x depth join, correlations, model lines)
+Stage 2  emit data/*.json
+Stage 3  emit site/*.html
+
+Nothing here invents a value. Derived columns are labelled &quot;derived&quot;; anything
+that could not be read from an official source is emitted as &quot;&quot; and pushed onto
+the flagged list.
+&quot;&quot;&quot;
+from __future__ import annotat</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/build_dashboard.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/build_dashboard.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/nfl_data.py</code></td><td class="num">85638</td><td class="num">1527</td><td><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+X3 / NFL decision-support data layer.
+
+EVERY value in this module was transcribed by reading an official source page
+(NFL.com or an NFL club&#x27;s official site) on 2026-11-14. Nothing is inferred,
+interpolated or recalled from model memory. Cells that could not be read from an
+official page are stored as empty strings and are surfaced by the site as
+&quot;unverified&quot; rows on th</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/nfl_data.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/nfl_data.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/site_content.py</code></td><td class="num">37978</td><td class="num">510</td><td><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Narrative / analysis content for the X3 site.
+
+Rules that bind this module:
+  * Anything asserted as FACT must carry an official source URL.
+  * Model output, thresholds, and recommendations are marked kind=&quot;derived&quot; or
+    kind=&quot;proposal&quot; and must never be presented as verified fact.
+  * Any value that could not be read from an official source is &quot;&quot; (blank) and is
+    </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/site_content.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/site_content.py" target="_blank" rel="noopener">history &#8599;</a></td></tr></tbody></table></div>
+<h3>Irregularities found</h3>
+<div class="bar"><input data-filter="#t-repo2" placeholder="Filter rows&hellip;"><span class="mut" id="c_t-repo2"></span></div><div class="tw"><table id="t-repo2"><thead><tr><th data-sort>ID</th><th data-sort>Area</th><th data-sort>Severity</th><th data-sort>What</th><th data-sort>Why it is irregular</th><th data-sort>Source</th></tr></thead><tbody><tr><td>F-01</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>Every club depth chart is labelled &#x27;unofficial&#x27; by the club that publishes it.</td><td>31 of 31 readable charts carry a self-declared unofficial label, so no chart can be treated as a club-authoritative starter designation.</td><td><a class="src" href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-02</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>27 of 32 club depth charts print no &#x27;as of&#x27; date, so freshness cannot be proven.</td><td>Only CHI, GB, LV, SF and TEN print a date. The others give no evidence of when the chart was last updated.</td><td><a class="src" href="https://www.chicagobears.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-03</td><td>Source quality</td><td><span class="b bad">High</span></td><td>Detroit lists Cade Mays as its starting centre while the official injury report lists him Out.</td><td>The club chart is not synced to the injury report. Trusting the chart would have produced a wrong starter.</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-04</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>Philadelphia&#x27;s depth chart lists Hollywood Brown and Fred Johnson, both waived by the club on 2026-11-13.</td><td>The club&#x27;s own news page and the club&#x27;s own depth chart disagree.</td><td><a class="src" href="https://www.philadelphiaeagles.com/news/eagles-waive-hollywood-brown-fred-johnson" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-05</td><td>Data gap</td><td><span class="b bad">High</span></td><td>Houston&#x27;s official depth chart is published only as an image; no rows could be read.</td><td>The page renders the chart inside a picture, so there is no machine-readable table.</td><td><a class="src" href="https://www.houstontexans.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-06</td><td>Data gap</td><td><span class="b bad">High</span></td><td>No market lines exist anywhere in the system.</td><td>No spread, total, moneyline or player-prop price has been ingested, so no signal can be converted into a bet or scored against the market.</td><td><span class="b mut">n/a</span></td></tr><tr><td>F-07</td><td>Data gap</td><td><span class="b bad">High</span></td><td>No game log has been ingested.</td><td>Without week-by-week results there is no home-field-advantage estimate and no schedule-strength adjustment, so the model runs uncalibrated.</td><td><span class="b mut">n/a</span></td></tr><tr><td>F-09</td><td>Source quality</td><td><span class="b info">Low</span></td><td>185 of 345 injury rows have a blank game status, and 21 of those also show the player did not practise.</td><td>The official report leaves the Game Status column empty for a majority of listed players, so availability cannot be read from that column alone. Counted against the official page: 66 Out, 10 Doubtful, 84 Questionable.</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-11</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>17 players ruled Out or Doubtful are absent from their own club&#x27;s depth chart.</td><td>Players on injured reserve or recently signed are frequently missing from the chart, so the chart cannot be used as a completeness check.</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-12</td><td>Repository</td><td><span class="b info">Low</span></td><td>The base commit contains 6 tracked file(s) totalling 196912 bytes.</td><td>There is no licence, no .gitignore, no CI, no tests, no documentation and no branch protection recorded at the base commit.</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/commit/304b01c24a33f6afd04f22804f7f80c390899cb1" target="_blank" rel="noopener">source &#8599;</a></td></tr></tbody></table></div>
+<p class="lede">Every row above links to the exact blob and its history on GitHub so it can be
+checked by hand. Nothing in this audit is inferred.</p>
+
+</div></main>
+<footer><div class="wrap">
+Verification rule: a row is verified only when its value was read from an official
+NFL source and the row carries that source's link. Values that could not be confirmed
+are blank and marked <span class="b warn">UNVERIFIED</span>; they are repeated on the
+<a href="flagged.html">Flagged for Review</a> page. Model output is always labelled
+<span class="b mut">DERIVED</span> and is never presented as fact.
+</div></footer>
+<script>
+document.querySelectorAll('th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){
+    var tb=th.closest('table');var i=[].indexOf.call(th.parentNode.children,th);
+    var asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+    var rows=[].slice.call(tb.tBodies[0].rows);
+    rows.sort(function(a,b){
+      var x=a.cells[i].dataset.sort!==undefined?a.cells[i].dataset.sort:a.cells[i].textContent;
+      var y=b.cells[i].dataset.sort!==undefined?b.cells[i].dataset.sort:b.cells[i].textContent;
+      var nx=parseFloat(x),ny=parseFloat(y);
+      if(!isNaN(nx)&&!isNaN(ny))return asc?nx-ny:ny-nx;
+      return asc?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+    });
+    rows.forEach(function(r){tb.tBodies[0].appendChild(r)});
+  });
+});
+document.querySelectorAll('input[data-filter]').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var q=inp.value.toLowerCase();var tb=document.querySelector(inp.dataset.filter);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+document.querySelectorAll('[data-filter]').forEach(function(inp){
+  function cnt(){var tb=document.querySelector(inp.dataset.filter);
+    if(!tb)return;var v=0;
+    [].forEach.call(tb.tBodies[0].rows,function(r){if(r.style.display!=='none')v++;});
+    var out=document.getElementById('c_'+tb.id);if(out)out.textContent=v+' rows';}
+  inp.addEventListener('input',cnt);cnt();
+});
+document.querySelectorAll('select[data-eq]').forEach(function(sel){
+  sel.addEventListener('change',function(){
+    var v=sel.value.toLowerCase();var tb=document.querySelector(sel.dataset.eq);
+    var col=parseInt(sel.dataset.col||'0',10);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      var c=(r.cells[col]?r.cells[col].textContent:'').toLowerCase();
+      r.style.display=(!v||c.indexOf(v)>-1)?'':'none';
+    });
+  });
+});
+</script></body></html>

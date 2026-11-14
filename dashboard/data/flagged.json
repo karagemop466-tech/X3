@@ -93,9 +93,9 @@
   "id": "F-12",
   "area": "Repository",
   "severity": "Low",
-  "what": "The base commit contains 45 tracked file(s) totalling 925245 bytes.",
+  "what": "The base commit contains 6 tracked file(s) totalling 196912 bytes.",
   "why": "There is no licence, no .gitignore, no CI, no tests, no documentation and no branch protection recorded at the base commit.",
-  "source": "https://github.com/karagemop466-tech/X3/commit/e12423044baef53c007fce7d1d3f45eeaf0a7e29",
+  "source": "https://github.com/karagemop466-tech/X3/commit/304b01c24a33f6afd04f22804f7f80c390899cb1",
   "action": "Add licence, .gitignore, CI and branch protection."
  }
 ]

@@ -1,0 +1,63 @@
+{
+ "sha": "304b01c24a33f6afd04f22804f7f80c390899cb1",
+ "short": "304b01c",
+ "commit_url": "https://github.com/karagemop466-tech/X3/commit/304b01c24a33f6afd04f22804f7f80c390899cb1",
+ "branch": "arena/7e632805-x3",
+ "commit_count": "2",
+ "files": [
+  {
+   "path": ".gitignore",
+   "bytes": 52,
+   "lines": 6,
+   "content": "__pycache__/\n*.py[cod]\n.DS_Store\n.venv/\nvenv/\n*.swp\n",
+   "truncated": false,
+   "blob": "https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/.gitignore",
+   "history": "https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/.gitignore"
+  },
+  {
+   "path": "COORDINATION.md",
+   "bytes": 5695,
+   "lines": 89,
+   "content": "# COORDINATION.md — Shared Task Board\n\nRepo: `karagemop466-tech/X3`\nSession start: 2026-11-14 (UTC)\n\n## Branch / session rules in force\n\nThis session is bound to a **single fixed branch**: `arena/7e632805-x3` (branched from\n`main` @ `e124230`). Arena tracks this session by that branch, so this session:\n\n* commits and pushes **only** to `arena/7e632805-x3`;\n* does **not** create or switch to `sessi",
+   "truncated": true,
+   "blob": "https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/COORDINATION.md",
+   "history": "https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/COORDINATION.md"
+  },
+  {
+   "path": "README.md",
+   "bytes": 2955,
+   "lines": 67,
+   "content": "# X3 — NFL Decision System\n\nA verified-data NFL decision-support dashboard: official standings, schedule and injury data,\njoined to official club depth charts to surface starter-absent deficiencies, feeding a\nregistered strategy book with hard validation gates.\n\n**Live site:** GitHub Pages, built from the `site/` directory by\n`.github/workflows/pages.yml`.\n\n## Verification rule\n\nEvery row in a dat",
+   "truncated": true,
+   "blob": "https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/README.md",
+   "history": "https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/README.md"
+  },
+  {
+   "path": "tools/build_dashboard.py",
+   "bytes": 64594,
+   "lines": 1330,
+   "content": "# -*- coding: utf-8 -*-\n\"\"\"\nBuild the X3 static site.\n\nStage 1  compute derived layers (injury x depth join, correlations, model lines)\nStage 2  emit data/*.json\nStage 3  emit site/*.html\n\nNothing here invents a value. Derived columns are labelled \"derived\"; anything\nthat could not be read from an official source is emitted as \"\" and pushed onto\nthe flagged list.\n\"\"\"\nfrom __future__ import annotat",
+   "truncated": true,
+   "blob": "https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/build_dashboard.py",
+   "history": "https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/build_dashboard.py"
+  },
+  {
+   "path": "tools/nfl_data.py",
+   "bytes": 85638,
+   "lines": 1527,
+   "content": "# -*- coding: utf-8 -*-\n\"\"\"\nX3 / NFL decision-support data layer.\n\nEVERY value in this module was transcribed by reading an official source page\n(NFL.com or an NFL club's official site) on 2026-11-14. Nothing is inferred,\ninterpolated or recalled from model memory. Cells that could not be read from an\nofficial page are stored as empty strings and are surfaced by the site as\n\"unverified\" rows on th",
+   "truncated": true,
+   "blob": "https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/nfl_data.py",
+   "history": "https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/nfl_data.py"
+  },
+  {
+   "path": "tools/site_content.py",
+   "bytes": 37978,
+   "lines": 510,
+   "content": "# -*- coding: utf-8 -*-\n\"\"\"\nNarrative / analysis content for the X3 site.\n\nRules that bind this module:\n  * Anything asserted as FACT must carry an official source URL.\n  * Model output, thresholds, and recommendations are marked kind=\"derived\" or\n    kind=\"proposal\" and must never be presented as verified fact.\n  * Any value that could not be read from an official source is \"\" (blank) and is\n    ",
+   "truncated": true,
+   "blob": "https://github.com/karagemop466-tech/X3/blob/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/site_content.py",
+   "history": "https://github.com/karagemop466-tech/X3/commits/304b01c24a33f6afd04f22804f7f80c390899cb1/tools/site_content.py"
+  }
+ ]
+}
