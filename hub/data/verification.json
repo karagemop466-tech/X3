@@ -96,9 +96,9 @@
   {
    "id": "VER-12",
    "target": "Deploy and live rendering",
-   "method": "after merge: Pages API status, then fetch each hub page from the published URL and compare its length against the built file",
-   "result": "recorded in COORDINATION.md after deploy",
-   "status": "PENDING at build time",
+   "method": "after merge: read the Pages build status and commit through the GitHub API, then compare every published file's blob SHA against the built file in git. Direct HTTP fetch of the Pages host is not possible from this sandbox (only github.com/api.github.com are reachable), so the deployed tree itself is the evidence.",
+   "result": "PR #27 merged 2026-11-14T18:35:39Z as bd85e76; Pages build 'built' at 18:35:41Z on commit bd85e76; 21 deployed files (root index, 17 hub pages, stylesheet, builder, checker) byte-identical to the built versions - 0 mismatches",
+   "status": "PASS",
    "source": "SRC-14"
   },
   {

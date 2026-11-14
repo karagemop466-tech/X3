@@ -737,7 +737,7 @@ fetchable" note is out of date. Fetched and read: `/injuries/` (8 chunks), `/sta
 | T9 flagged for review | done | `hub/flagged.html`, `hub/data/flags.json` | 21 flags with evidence URLs; none block the merge | — |
 | T10 requirements register | done | `hub/requirements.html`, `requirements.json` | 30 requirements mapped to status/where/evidence | 3 blocked, 2 deferred |
 | T11 build + gate + landing page | done | `scripts/build_hub.py`, `scripts/check_hub.py`, `index.html`, `hub/style.css` | deterministic build; row-source rule; link audit (0 broken); all six other sessions' checkers re-run and still pass | F-15 Pages publishes whole repo |
-| T12 integration, PR, merge, Pages | in progress | `COORDINATION.md`, `README.md` | see PR record below | — |
+| T12 integration, PR, merge, Pages | done | `COORDINATION.md`, `README.md`, root `index.html` (registration only) | PR #27 merged as `bd85e76`; Pages build `built` at 18:35:41Z on that commit; 21 deployed files verified byte-identical | F-15 Pages still publishes the whole repo |
 
 ### Files touched
 `hub/**` (new), `scripts/build_hub.py`, `scripts/check_hub.py` (new), the
@@ -781,3 +781,30 @@ left as-is, so the hub publishes through the existing `path: '.'` upload.
   grading; both lose data for every week they are deferred.
 - `docs/index.html` remains co-owned by `scripts/build_site.py` + the arena-4856379c-x3
   section: if that generator is re-run, re-apply its section (request logged by that session).
+
+### PR and deploy record (arena/1e2d8ef2-x3)
+- **PR #27**: https://github.com/karagemop466-tech/X3/pull/27 — `arena/1e2d8ef2-x3` → `main`,
+  "X3: consolidated review hub - verified Week 10 data, originated lines, gates, suggestions queue, 21 flags".
+  Result: **MERGED** 2026-11-14T18:35:39Z, merge commit `bd85e76da28e0d8c17025858a645a9f40066592e`, via
+  `gh pr merge 27 --merge` (no approval wait, per brief).
+- **Merge conflict handling**: main had moved to `9ed0374` (PR #26, the final-integration landing hub) while this
+  branch was open, conflicting on `COORDINATION.md` and `index.html`. Resolved additively in `907948b`:
+  both COORDINATION sections kept; their root landing hub kept as the root page with `hub/` registered in it
+  (one inventory row, one card section, two cross-reference lines) instead of being replaced; their
+  page/link badges recomputed with their own `scripts/verify_integration.py` (106 pages, 1,458 internal refs,
+  0 problems). `scripts/build_hub.py` no longer writes the repository root, and `scripts/check_hub.py` fails
+  if the root page stops linking to the hub, so the registration cannot silently disappear.
+- **Checks run before merge, all passing**: `scripts/check_hub.py` (determinism, correlation recompute,
+  standings integrity, injury drift diff, token fill, row-source rule, link audit), plus the other sessions'
+  gates on the merged tree: `scripts/check_site.py` (352 rows / 0 unsourced), `tools/check_links.py`
+  (13 pages / 396 links), `scripts/check_dashboard.py`, `tools/verify_site.py` (14 pages / 49 tables),
+  `node scripts/check_data.js`, `node scripts/check_render.js`, `scripts/verify_integration.py` (106 pages, 0 problems).
+  No build or deploy failure was observed, so no retry was needed; the site was not merged broken.
+- **Pages**: source stays legacy `main /` (F-15). Build status `built` at 2026-11-14T18:35:41Z on commit
+  `bd85e76`. Live URL: https://karagemop466-tech.github.io/X3/ (hub at `/X3/hub/`). HTTP verification from
+  the sandbox is impossible (only `github.com`/`api.github.com` are reachable), so the deployed tree was
+  verified instead: every published file's blob SHA compared against the built file — 21/21 identical.
+- **Flagged items that did not block the merge, by design**: F-06 unknown BAL starter, F-07 no official price
+  source, F-08 no official depth chart, F-12 uncalibrated parameters, F-14 jurisdiction for rewards,
+  F-18/F-21 defects found in another session's data files (reported, not edited), F-13 non-reproducible
+  prior correlations, F-10 stale CI trigger + 5 failing runs on `arena/64164906-x3`, PR #12 still open.
