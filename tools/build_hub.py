@@ -1213,12 +1213,13 @@ def _sha(path):
     return hashlib.sha256(open(path, "rb").read()).hexdigest()[:16]
 
 
+def landing_href(slug):
+    """href for a NAV slug as seen from the repository-root landing page."""
+    return slug + ".html" if "/" in slug else "hub/" + slug + ".html"
+
+
 def landing():
-    def _navhref(slug):
-        # a slug containing "/" is a page in another tree (e.g. "council"); leave its
-        # directory intact instead of prefixing hub/.
-        return slug + ".html" if "/" in slug else "hub/" + slug + ".html"
-    nav = "".join(f'<a href="{_navhref(slug)}"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
+    nav = "".join(f'<a href="{landing_href(slug)}"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
                   for slug, lbl, desc in NAV)
     html = f"""<!doctype html>
 <html lang="en">
