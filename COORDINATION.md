@@ -188,3 +188,16 @@ site and integrated it additively into `main` (did not overwrite the integrated
     `/executive-summary.html`, `/requirements.html`, `/suggestions.html`,
     `/lines.html`, `/leaderboard.html`, `/injuries.html`, `/verification.html`,
     `/flagged.html`. Verified live via HTTP fetch on 2026-11-14.
+
+---
+
+## Session `arena/972ad7a5-x3` — source-first decision dashboard
+
+- **Status:** in progress; all work is on Arena's fixed branch `arena/972ad7a5-x3`, originally based on `e12423044baef53c007fce7d1d3f45eeaf0a7e29`.
+- **Claim:** official-source research framework, executive summary, strategy/validation/correlation/lineup design, suggestions and flagged-review pages, and a responsive GitHub Pages dashboard. New implementation scope: `assets/data.js`, `assets/app.js`, `assets/site.css`, `lab/`, root Pages entry point, README, and dedicated checks. Existing `docs/`, `data/`, `pages/`, root category pages, and their history are being retained rather than overwritten.
+- **Integration context:** upstream `main` advanced after the first dashboard commit, including the legacy `docs/` data site and the additive PR #7 site (merge `8f9e491`; follow-up PR #9 confirmed its deployment). Current `origin/main` is `6bff6ef`. PR #8 was opened while `main` was at `ec0db9e`; it is being rebased and rechecked before merge. The root Pages source remains `main:/`.
+- **Evidence boundary:** the new research module contains hypotheses and source metadata, not NFL outcome/odds/injury values or measured performance. Earlier merged work already retains a 2026 Week 10 injury-report snapshot (205 rows) and key-date CSV in `data/` and `docs/`; these remain separate and are linked as an archive, not silently treated as inputs to the new module. No historical market prices, paired prop-event history, or league-wide ordinal depth-chart dataset has been verified for the new analysis.
+- **Sources reviewed:** official NFL player/team statistics, schedules, team directory/roster, the 2026 Week 10 injury report, NFL Football Operations roster/rulebook/Next Gen Stats pages; NIST statistics references and scikit-learn model-evaluation documentation. Full source register and uses are in `assets/data.js` and the site.
+- **Irregularity:** the NFL permalink `https://www.nfl.com/injuries/league/2025/reg1` returned a page title naming Week 10 of 2025 while the body heading said Week 1. No rows from that URL were copied. The separate 2026 `reg10` injury page was checked and its title/body both identify Week 10.
+- **Verification before integration:** static dashboard check, JavaScript syntax/data-source checks, 11-view render smoke test, and row-source-host validation passed. The existing `docs/` and root/site material will be rerun through their own checks after rebase.
+- **PR:** [#8 — Build NFL evidence-first decision dashboard](https://github.com/karagemop466-tech/X3/pull/8), `arena/972ad7a5-x3` → `main`; open/pending integration.
