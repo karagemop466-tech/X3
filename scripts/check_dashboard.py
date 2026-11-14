@@ -6,7 +6,7 @@ from urllib.parse import urlsplit
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML_FILES = [ROOT / "index.html", *sorted((ROOT / "pages").glob("*.html"))]
+HTML_FILES = [ROOT / "index.html", *sorted((ROOT / "lab").glob("*.html"))]
 EXPECTED_PAGES = [
     "executive-summary", "strategies", "validation", "lineups", "correlations",
     "leaderboard", "questions", "suggestions", "flagged", "sources",
@@ -55,10 +55,10 @@ for html_file in HTML_FILES:
         if not target.exists():
             errors.append(f"{html_file.relative_to(ROOT)}: missing local target {raw}")
 
-for slug in EXPECTED_PAGES:
-    page = ROOT / "pages" / f"{slug}.html"
+for slug in ["index", *EXPECTED_PAGES]:
+    page = ROOT / "lab" / f"{slug}.html"
     if not page.exists():
-        errors.append(f"missing expected page: pages/{slug}.html")
+        errors.append(f"missing expected page: lab/{slug}.html")
 
 if errors:
     print("Static-site link audit FAILED:")

@@ -1,8 +1,10 @@
 # NFL Decision Lab
 
-An evidence-first, static GitHub Pages research workspace for NFL line modeling, injury/lineup analysis, correlation, strategy validation, and a proposed leaderboard.
+An evidence-first, static GitHub Pages research workspace for NFL line modeling, injury/lineup analysis, correlation, strategy validation, and a proposed leaderboard. The root page is the current dashboard; its research subpages live in `lab/`.
 
-> **Current status:** research framework only. No NFL data, odds, injuries, lineups, correlations, model results, or leaderboard entries are loaded. The site deliberately leaves unsupported values blank and publishes source gaps on **Flagged for review**. It does not place bets or promise rewards.
+Earlier material integrated on `main` is preserved under `docs/`, `data/`, `pages/`, and other root files. It is not imported into the new dashboard's source-first data module; re-verify those historical tables and assumptions before treating them as current facts.
+
+> **Current status:** the new `assets/data.js` research module is a framework, not a live feed. The repository also retains a legacy 2026 Week 10 injury-report snapshot (205 rows) and 2026 key-dates CSV under `data/` and `docs/`; these are not connected to the new module or used for model results. No historical odds/prop-price archive, measured strategy performance, or validated leaderboard exists. Unsupported values remain blank and source gaps are published on **Flagged for review**. The site does not place bets or promise rewards.
 
 ## Site sections
 
@@ -31,6 +33,7 @@ Open `http://localhost:8080/` in a browser. On GitHub Pages, relative links supp
 ## Verify the static site
 
 ```bash
+python3 scripts/check_dashboard.py
 python3 scripts/check_site.py
 node --check assets/data.js
 node --check assets/app.js

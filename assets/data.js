@@ -23,7 +23,7 @@
         title: "NFL.com Team Stats — Offense / Passing (2026 page)",
         publisher: "National Football League",
         url: "https://www.nfl.com/stats/team-stats/offense/passing/2026/reg/all",
-        use: "Official team-stat page with offense, defense, and season/category navigation. No values were imported or analyzed.",
+        use: "Official team-stat page with offense, defense, and season/category navigation. No values were imported into the current research module or analyzed here.",
         reviewed: "Opened 2026-11-14; page structure reviewed; season-specific contents are dynamic."
       },
       nflInjuries: {
@@ -32,14 +32,22 @@
         publisher: "National Football League",
         url: "https://www.nfl.com/injuries/",
         use: "Official weekly report pages expose player, position, injury text, practice status, and game status. Each snapshot must retain its retrieval time and selected season/week.",
-        reviewed: "Opened 2026-11-14; current portal and report fields reviewed. No player values were copied."
+        reviewed: "Opened 2026-11-14; current portal and report fields reviewed. No player values were copied into the current research module."
+      },
+      nflWeek10Injuries: {
+        label: "NFL 2026 Week 10 injury report",
+        title: "Official NFL Injury Report for Players — Week 10 of the 2026 Season",
+        publisher: "National Football League",
+        url: "https://www.nfl.com/injuries/league/2026/reg10",
+        use: "Specific official report URL associated with the archived 2026 Week 10 snapshot in data/injury_report_2026_wk10.csv and docs/injuries.html. The current research module does not ingest those rows.",
+        reviewed: "Opened 2026-11-14; both page title and body identify Week 10 of 2026."
       },
       nflSchedules: {
         label: "NFL schedule and game center",
         title: "NFL.com Schedules",
         publisher: "National Football League",
         url: "https://www.nfl.com/schedules/",
-        use: "Official schedule and game-center entry point for event identity and timing. The project has not imported a schedule or result.",
+        use: "Official schedule and game-center entry point for event identity and timing. The current research module has not imported a schedule or result; a separate legacy key-dates CSV remains in data/.",
         reviewed: "Opened 2026-11-14; page and navigation reviewed."
       },
       nflTeamDirectory: {
@@ -283,14 +291,14 @@
       {
         field: "Report snapshot / source timestamp",
         purpose: "Keep each injury or roster observation in the state known at the prediction cutoff; store source URL, retrieval time, season/week, and the original label.",
-        state: "Not ingested",
-        sources: ["nflInjuries", "nflSchedules"]
+        state: "No automated snapshots; one archived 2026 Week 10 report is retained under data/ and docs/.",
+        sources: ["nflWeek10Injuries", "nflSchedules"]
       },
       {
         field: "Reported player, team, position, practice status, game status",
         purpose: "Track only the fields shown by the official report; do not convert report labels into a medical diagnosis or a guaranteed participation claim.",
-        state: "Source verified; no player rows copied",
-        sources: ["nflInjuries"]
+        state: "A 2026 Week 10 snapshot is archived in the repository; its player rows are not imported into this module.",
+        sources: ["nflWeek10Injuries"]
       },
       {
         field: "Official game availability / inactive status",
@@ -319,8 +327,8 @@
       {
         field: "Offensive and defensive position-group availability",
         purpose: "Track both sides independently and test clusters (for example, multiple linemen or defensive backs unavailable) without asserting a deficiency until model evidence supports one.",
-        state: "No lineup data loaded",
-        sources: ["nflInjuries", "nflRosterExample", "nflTeamStats", "nflGamebook"]
+        state: "Legacy injury rows exist; no linked depth chart or impact model is loaded into this module.",
+        sources: ["nflWeek10Injuries", "nflRosterExample", "nflTeamStats", "nflGamebook"]
       }
     ],
     validationGates: [
@@ -589,10 +597,10 @@
     flagged: [
       {
         id: "F-01",
-        issue: "No NFL dataset is present in the repository",
-        detail: "The starting repository contained only a README. No schedule/results archive, player/team statistics, injury snapshots, lineups, odds, strategy predictions, or performance history was present. Accordingly, no model line, measured edge, correlation, ranking, or reward result is published.",
-        impact: "All numerical outputs remain blank; this is a research framework, not a functioning data feed.",
-        sources: ["nflSchedules", "nflPlayerStats", "nflTeamStats", "nflInjuries", "nflGamebook"]
+        issue: "No unified modeling dataset is loaded in the new research module",
+        detail: "The starting repository contained only a README. A prior main-branch integration later added a separate archived 2026 Week 10 injury report (205 rows) and key-dates CSV under data/ and docs/. Those legacy rows are not ingested into this module. There is still no multi-season outcome/price archive, paired prop-event history, lineup/depth history, or strategy-prediction log.",
+        impact: "No model line, measured edge, correlation, ranking, or reward result is published; archived reports do not by themselves establish predictive performance.",
+        sources: ["nflWeek10Injuries", "nflSchedules", "nflPlayerStats", "nflTeamStats", "nflGamebook"]
       },
       {
         id: "F-02",

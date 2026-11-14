@@ -40,7 +40,7 @@ for (const [view, heading] of Object.entries(expected)) {
     setItem() {},
     removeItem() {}
   };
-  const window = { NFL_LAB: data, location: { pathname: view === "home" ? "/X3/" : `/X3/pages/${view}.html` } };
+  const window = { NFL_LAB: data, location: { pathname: view === "home" ? "/X3/lab/index.html" : `/X3/lab/${view}.html` } };
   vm.runInNewContext(appSource, { window, document, localStorage, Math, String, Array, Object, JSON });
   assert(app.innerHTML.includes(heading), `${view} did not render the expected heading`);
   assert(!app.innerHTML.includes("undefined"), `${view} contains an undefined value`);

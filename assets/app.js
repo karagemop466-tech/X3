@@ -3,8 +3,8 @@
 
   const data = window.NFL_LAB;
   const view = document.body.dataset.view || "home";
-  const insidePages = /\/pages\//.test(window.location.pathname);
-  const base = insidePages ? "../" : "./";
+  const insideLab = /\/lab\//.test(window.location.pathname);
+  const base = insideLab ? "../" : "./";
   const navItems = [
     ["home", "Overview"],
     ["executive-summary", "Executive summary"],
@@ -83,7 +83,7 @@
   }
 
   function hrefFor(slug) {
-    return slug === "home" ? base + "index.html" : base + "pages/" + slug + ".html";
+    return base + "lab/" + (slug === "home" ? "index" : slug) + ".html";
   }
 
   function sourceLinks(ids) {
@@ -145,12 +145,12 @@
   function renderHome() {
     const proposed = data.strategies.length;
     const summaryCards = '<div class="status-grid">' +
-      statusCard("Live NFL data", "Not configured", "No player, team, injury, lineup, or odds values are loaded.", "warning") +
+      statusCard("Current research module", "Framework only", "No live feed is configured. A prior 2026 Week 10 injury snapshot is archived separately under docs/ and data/.", "warning") +
       statusCard("Model-generated lines", "Not issued", "A fair line requires a dated dataset, a locked model, and out-of-sample validation.", "neutral") +
       statusCard("Correlations", "Not measured", "Every numerical estimate is intentionally blank until paired market outcomes exist.", "warning") +
       statusCard("Strategy research", proposed + " hypotheses", "Ideas only; none has a measured performance result or leaderboard rank.", "neutral") +
       '</div>';
-    const hero = '<section class="hero-panel"><div class="hero-copy"><div class="hero-kicker">NFL • EVIDENCE FIRST</div><h2>Build a line you can explain.<br><span>Validate before you reward it.</span></h2><p>This repository began as an empty scaffold. The site now provides an official-source research map, a proposed strategy and validation framework, and a visible list of missing evidence. It does not publish picks, prices, or performance claims.</p><div class="hero-actions"><a class="button button-primary" href="' + hrefFor("executive-summary") + '">Read the executive summary</a><a class="button button-secondary" href="' + hrefFor("suggestions") + '">Review suggestions</a></div></div><div class="hero-mark" aria-hidden="true"><span>NL</span><small>RESEARCH<br>NOT A LIVE FEED</small></div></section>';
+    const hero = '<section class="hero-panel"><div class="hero-copy"><div class="hero-kicker">NFL • EVIDENCE FIRST</div><h2>Build a line you can explain.<br><span>Validate before you reward it.</span></h2><p>This source-first workspace separates official references, research hypotheses, and missing evidence. A prior main-branch integration also retains a 2026 Week 10 injury snapshot and key-date archive; those records are not wired into this module. No picks, prices, or performance claims are produced.</p><div class="hero-actions"><a class="button button-primary" href="' + hrefFor("executive-summary") + '">Read the executive summary</a><a class="button button-secondary" href="' + base + 'docs/injuries.html">Open archived Week 10 report</a><a class="button button-secondary" href="' + hrefFor("suggestions") + '">Review suggestions</a></div></div><div class="hero-mark" aria-hidden="true"><span>NL</span><small>RESEARCH<br>NOT A LIVE FEED</small></div></section>';
     const cards = [
       ["Strategy lab", "Proposed signals across game lines, single bets, player props, combos, and parlays.", "strategies", "01"],
       ["Injuries & lineups", "Track what is officially reported; keep replacement rank blank until sourced.", "lineups", "02"],
@@ -168,11 +168,11 @@
   }
 
   function renderExecutiveSummary() {
-    const intro = '<div class="summary-banner"><div><span class="eyebrow">Bottom line</span><h2>The framework is ready; the evidence is not.</h2><p>Official NFL sources for schedules, statistics, weekly injury reports, team rosters, gamebooks, and tracking-data descriptions were reviewed. The repository contains no NFL observations or odds history, so an independent line, numeric correlation, model win rate, or leaderboard winner cannot honestly be produced yet.</p></div>' + statusPill("No picks or rankings published", "warning") + '</div>';
+    const intro = '<div class="summary-banner"><div><span class="eyebrow">Bottom line</span><h2>The framework is ready; the evidence is not.</h2><p>Official NFL sources for schedules, statistics, weekly injury reports, team rosters, gamebooks, and tracking-data descriptions were reviewed. A prior main-branch integration retains a 2026 Week 10 injury-report snapshot (205 rows) and a 2026 key-dates CSV under data/ and docs/. Those legacy records are not imported into this dashboard module or used in a model. No multi-season price/outcome archive or paired player-prop history is available here, so a defensible independent line, measured correlation, model performance, or leaderboard winner cannot be produced yet.</p></div>' + statusPill("No picks or rankings published", "warning") + '</div>';
     const knownRows = [
       { cells: ["Player and team statistics", "NFL.com publishes player- and team-stat pages with season/category navigation. No figures were transcribed into this project."], sources: ["nflPlayerStats", "nflTeamStats"] },
-      { cells: ["Weekly injury reporting", "The official report page shows player, position, injury text, practice participation, and game status. It is a snapshot source, not a confirmed future role."], sources: ["nflInjuries"] },
-      { cells: ["Schedule and game context", "NFL.com provides schedule and game-center pages for event identity and timing. No schedule/results table has been ingested."], sources: ["nflSchedules"] },
+      { cells: ["Weekly injury reporting", "The official report page shows player, position, injury text, practice participation, and game status. A prior integration archived a 2026 Week 10 snapshot (205 rows) in data/injury_report_2026_wk10.csv and docs/injuries.html; this dashboard module does not import it."], sources: ["nflWeek10Injuries"] },
+      { cells: ["Schedule and game context", "NFL.com provides schedule and game-center pages. A separate legacy 2026 key-dates CSV is retained in data/ and docs/; no results or odds history are imported into this module."], sources: ["nflSchedules"] },
       { cells: ["Historical lineup evidence", "The reviewed official gamebook sample has lineups, substitutions, inactive/did-not-play sections, statistics, and play-by-play. One sample is not a complete archive."], sources: ["nflGamebook"] },
       { cells: ["Roster and backups", "NFL roster pages and team-directory links exist. They do not by themselves confirm an ordinal second-/third-/fourth-string depth chart."], sources: ["nflRosterExample", "nflTeamDirectory"] },
       { cells: ["Tracking data", "NFL Football Operations describes player/ball tracking and derived metrics; the reviewed page does not establish project access rights for raw data."], sources: ["nflNextGen"] },
@@ -181,7 +181,7 @@
     const unknownRows = [
       { cells: ["Model lines / probabilities", "Not calculated — no verified historical modeling dataset or locked model."], sources: ["nflSchedules", "nflPlayerStats", "nistCrossValidation"] },
       { cells: ["Odds, market margin, and settlement", "Not verified — no price feed, market snapshot history, or operator settlement definition is in the repository."], sources: ["nflSchedules", "nflRulebook"] },
-      { cells: ["Injury impact / backup order", "Not measured — no snapshots or team-level depth evidence archive. Unknown rank remains blank."], sources: ["nflInjuries", "nflTeamDirectory", "nflGamebook"] },
+      { cells: ["Injury impact / backup order", "One archived Week 10 report exists, but no linked league-wide depth chart, replacement-role history, or impact model is available. Unknown rank remains blank."], sources: ["nflWeek10Injuries", "nflTeamDirectory", "nflGamebook"] },
       { cells: ["Correlation values / parlays", "Blank — exact leg definitions and paired outcomes are missing."], sources: ["nistCorrelation", "nflGamebook", "nistBootstrap"] },
       { cells: ["Leaderboard / rewards", "Empty — no validated entrants, score history, sample floor, prize rules, or target jurisdiction."], sources: ["nistMultiple", "nistConfidence", "nflRulebook"] }
     ];
@@ -214,8 +214,9 @@
       return { cells: [item.field, item.purpose, item.state], sources: item.sources };
     });
     const workflow = '<div class="lineup-workflow"><div><span class="workflow-icon">01</span><h3>Capture the report</h3><p>Store official source URL, selected season/week, retrieval time, and the exact published status.</p></div><div><span class="workflow-icon">02</span><h3>Confirm the role</h3><p>Join a player to an official dated roster/depth chart or gamebook lineup. If no source establishes order, rank stays blank.</p></div><div><span class="workflow-icon">03</span><h3>Measure the change</h3><p>Use opportunity/participation and later outcomes to test impact separately for offense and defense.</p></div><div><span class="workflow-icon">04</span><h3>Suppress uncertainty</h3><p>Flag stale or conflicting reports; do not turn uncertainty into an assumed starter or an asserted weakness.</p></div></div>';
+    const archive = '<div class="callout callout-blue"><div class="callout-icon" aria-hidden="true">↗</div><div><strong>Existing archived snapshot — not a live feed</strong><p>A prior main-branch integration recorded a 2026 Week 10 injury report snapshot (205 rows, accessed 2026-11-14) in the legacy data/docs site. This dashboard does not ingest or refresh those rows; the file does not provide a depth-chart mapping.</p><a href="../docs/injuries.html">Browse archived report table →</a><span class="source-separator"> · </span>' + sourceLinks(["nflWeek10Injuries"]) + '</div></div>';
     const note = '<div class="callout callout-amber"><div class="callout-icon" aria-hidden="true">!</div><div><strong>Important distinction: availability is not depth order</strong><p>An injury report status, roster entry, and gamebook lineup answer different questions. A second-/third-/fourth-string designation requires direct, dated evidence; it must not be inferred from a list order.</p>' + sourceList(["nflInjuries", "nflRosterExample", "nflTeamDirectory", "nflGamebook"]) + '</div></div>';
-    return pageHeader(pageMeta[view]) + note + section("Required lineup data fields", renderTable(["Field", "Purpose", "Current state"], rows, "NFL injury and lineup data requirements", { search: true })) + section("How the injury signal should work", workflow) + '<p class="disclaimer">Do not infer medical severity or future availability from injury text. Preserve the source&#39;s published status and the time it was observed.</p>';
+    return pageHeader(pageMeta[view]) + archive + note + section("Required lineup data fields", renderTable(["Field", "Purpose", "Current state"], rows, "NFL injury and lineup data requirements", { search: true })) + section("How the injury signal should work", workflow) + '<p class="disclaimer">Do not infer medical severity or future availability from injury text. Preserve the source&#39;s published status and the time it was observed.</p>';
   }
 
   function renderCorrelations() {
@@ -265,7 +266,8 @@
     const rows = data.flagged.map(function (item) {
       return { cells: [item.id, item.issue, item.detail, item.impact], sources: item.sources };
     });
-    return pageHeader(pageMeta[view]) + '<div class="callout callout-amber"><div class="callout-icon" aria-hidden="true">!</div><div><strong>Unverified items do not block this research framework</strong><p>They do block numerical NFL lines, measured correlations, market-value claims, and prize awards. Unknown values are kept blank and are not inferred.</p></div></div>' + section("Open flags", renderTable(["ID", "Issue", "Evidence / limitation", "Decision impact"], rows, "Flagged NFL data and source review items", { search: true })) + '<p class="disclaimer">An official source link documents where a reviewer can check the record; it does not convert an unverified field into a verified value.</p>';
+    const legacyFlags = '<div class="callout callout-blue"><div class="callout-icon" aria-hidden="true">↗</div><div><strong>Prior archive has a separate 16-item review register</strong><p>Earlier main-branch work recorded additional schedule, injury-report, source-label, and repository irregularities related to the legacy CSVs. They were not silently folded into this module; review them before reusing the legacy tables.</p><a href="../docs/flagged.html">Open the legacy Flagged for Review page →</a><span class="source-separator"> · </span>' + sourceLinks(["nflWeek10Injuries", "nflInjuryPermalinkCheck"]) + '</div></div>';
+    return pageHeader(pageMeta[view]) + '<div class="callout callout-amber"><div class="callout-icon" aria-hidden="true">!</div><div><strong>Unverified items do not block this research framework</strong><p>They do block numerical NFL lines, measured correlations, market-value claims, and prize awards. Unknown values are kept blank and are not inferred.</p></div></div>' + legacyFlags + section("Open flags", renderTable(["ID", "Issue", "Evidence / limitation", "Decision impact"], rows, "Flagged NFL data and source review items", { search: true })) + '<p class="disclaimer">An official source link documents where a reviewer can check the record; it does not convert an unverified field into a verified value.</p>';
   }
 
   function renderSources() {
