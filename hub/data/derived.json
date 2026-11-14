@@ -1,0 +1,31 @@
+{
+ "byes": [
+  "CHI",
+  "DEN",
+  "PHI",
+  "TB"
+ ],
+ "clubs_reporting": 28,
+ "correlations": {
+  "R_HR": 0.3506,
+  "R_NET": 0.8794,
+  "R_NETPF": 0.8019,
+  "R_PA": -0.6639,
+  "R_PF": 0.7001
+ },
+ "deficiency_rows": 28,
+ "designations": {
+  "Doubtful": 10,
+  "Out": 66,
+  "Questionable": 84,
+  "none": 185
+ },
+ "games_played": 274,
+ "injury_rows": 345,
+ "league_total_per_game": 45.92,
+ "max_deficiency": 7.75,
+ "nir_rows": 4,
+ "slate_rows": 18,
+ "standings_problems": [],
+ "unplayed_games": 13
+}

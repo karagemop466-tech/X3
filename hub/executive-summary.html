@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a' class="on"'ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Executive summary</h1>
+<p class='lead'>Bottom line: the data foundation is now verified and the analytical framework is complete, but nothing can be graded, because no verified price source exists. The correct next move is to start the price and snapshot archive (S-04, S-05) - every week of delay is permanently lost data.</p>
+<h2>What is solid</h2>
+<table class=""><thead><tr>
+<th>Finding</th>
+<th>Value</th>
+<th>Basis</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>Week-10 availability table</td><td>345 rows / 28 clubs</td><td>fetched and transcribed 2026-11-14</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>Designation split</td><td>66 Out / 10 Doubtful / 84 Questionable / 185 undesignated</td><td>counts computed from the transcription</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>Reproducibility of prior snapshot</td><td>344 of 345 rows identical</td><td>row-by-row diff vs the repo file; 1 practice-status drift</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/docs/data/injury-2026-week10.csv">SRC-16</a></td></tr>
+<tr><td>Standings integrity</td><td>32 clubs, league totals balance</td><td>wins=losses, PF=PA, every split reconciles</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>League scoring baseline</td><td>22.96 pts per team per game</td><td>derived from official PF totals / games</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>Slate</td><td>14 games + 4 byes; 13 unplayed</td><td>official week-10 schedule page</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">SRC-03</a></td></tr>
+<tr><td>Best point differential</td><td>JAX +108 (13.5/game)</td><td>official standings</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>Worst point differential</td><td>LAC -98</td><td>0-8, official standings</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>Net points vs record</td><td>r = +0.8794</td><td>32 clubs, computed here</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+</tbody></table>
+<h2>What is not known, and why it matters</h2>
+<table class=""><thead><tr>
+<th>Gap</th>
+<th>Consequence today</th>
+<th>Fix</th>
+<th>Flag</th>
+</tr></thead><tbody>
+<tr><td>No verified price source</td><td>no CLV, no ROI, no promotion of any strategy; market cells blank</td><td>licence a feed or capture closing lines nightly (S-04)</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>No official depth chart</td><td>2nd/3rd/4th-string claims are impossible to certify; only starter absence is provable</td><td>two-layer design: certified availability + unverified overlay (S-19)</td><td><a href="flagged.html">FLG-08</a></td></tr>
+<tr><td>No game log in repo</td><td>no home-field estimate, no opponent adjustment, no parlay correlation matrix</td><td>ingest schedule + box scores weekly (S-07)</td><td><a href="questions.html">Q-03</a></td></tr>
+<tr><td>Standings module lags finished games</td><td>silent look-ahead or lag depending on fetch time</td><td>as-of contract with snapshot timestamps (S-05)</td><td><a href="flagged.html">FLG-02</a></td></tr>
+<tr><td>Legal status of rewards</td><td>leaderboard pays nothing; tiers only</td><td>owner states jurisdiction, counsel reviews (Q-08)</td><td><a href="flagged.html">FLG-14</a></td></tr>
+<tr><td>Uncalibrated model parameters</td><td>originated lines are arithmetic, not edge</td><td>fit after one archived season (Q-07)</td><td><a href="flagged.html">FLG-12</a></td></tr>
+</tbody></table>
+<h2>Decisions this session took, and the ones it left for you</h2>
+<p>Taken: build one consolidated review surface rather than a ninth site tree; keep every legacy tree intact and link it; leave every unverifiable value blank. Left for you: the 10 blocking questions in <a href='questions.html'>Questions &amp; gaps</a> and the ordering of the 20 suggestions (<a href='suggestions.html'>S-20</a> is the recommended sequence).</p>
+<h2>Risk of acting on this page</h2><p>Low for the verified rows, high for anything downstream: 0 of 8 strategies have passed at least one gate, and every model row on this site is badged DERIVED with an assumption table attached. Treat the line table as a reviewable formula, not as a forecast.</p>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
+  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
+  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>

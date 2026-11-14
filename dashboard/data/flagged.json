@@ -102,9 +102,9 @@
   "id": "F-13",
   "area": "Repository",
   "severity": "Low",
-  "what": "The repository now holds 180 tracked files (2,151,850 bytes) across 76 commits from multiple parallel agent sessions.",
+  "what": "The repository now holds 180 tracked files (2,154,799 bytes) across 77 commits from multiple parallel agent sessions.",
   "why": "Six or more sessions each published their own site (root category pages, docs/, site/, pages/, lab/, x3lab/, research/, dashboard/). Nothing was deleted, so there are now several overlapping dashboards with no single canonical landing page.",
-  "source": "https://github.com/karagemop466-tech/X3/commit/a26af8c8566503a7f256cc530d1c550950bde483",
+  "source": "https://github.com/karagemop466-tech/X3/commit/760b2b268d20b55b6a2d7a159d47fd3669cf57ee",
   "action": "Pick one canonical dashboard and make the others legacy, or add a root index that lists all of them. Owner decision."
  }
 ]
