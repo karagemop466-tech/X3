@@ -62,8 +62,8 @@
     "hub": {
       "pages": 17,
       "rows": 705,
-      "flagged_rows": 651,
-      "refs": 811,
+      "flagged_rows": 652,
+      "refs": 813,
       "unsourced_examples": [
         "hub/archive.html:  Tree  What it is  Repository  Live page ",
         "hub/correlations.html:  #  Pair  r  n  Method  Caveat  Source ",
@@ -138,7 +138,7 @@
   },
   "pages_total": 106,
   "rows_total": 3349,
-  "rows_flagged_or_sourced": 2845,
+  "rows_flagged_or_sourced": 2846,
   "internal_refs": 1458,
   "problems": []
 }
