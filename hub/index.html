@@ -12,7 +12,7 @@
   <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
   <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
 </header>
-<nav class="nav"><a href="index.html" class=on">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html"">Price snapshot store</a><a href="results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<nav class="nav"><a href="index.html" class=on">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html"">Price snapshot store</a><a href="verified-results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html"">Replacement depth</a></nav>
 <main>
 <h1>X3 NFL decision desk</h1>
 <p class="lede">Collect, organise and analyse NFL evidence for originating our own lines, with every row tied to an official source and every gap published instead of filled.</p>
@@ -35,7 +35,7 @@ NFL.com publishes no odds at all. Nothing here was inferred to fill a gap.</p></
 <tr><td><a href="lines.html"><b>Originated lines</b></a></td><td>Our own Week-10 spreads and totals</td></tr>
 <tr><td><a href="markets.html"><b>Originated markets</b></a></td><td>Side, then total, then moneyline; fair / market / difference</td></tr>
 <tr><td><a href="price-store.html"><b>Price snapshot store</b></a></td><td>Opening and closing numbers for every market we originate</td></tr>
-<tr><td><a href="results.html"><b>Verified results feed</b></a></td><td>163 games reconciled to the official standings</td></tr>
+<tr><td><a href="verified-results.html"><b>Verified results feed</b></a></td><td>163 games reconciled to the official standings</td></tr>
 <tr><td><a href="replacements.html"><b>Depth of the replacement</b></a></td><td>Who actually replaces the starter, and how deep</td></tr>
 <tr><td><a href="strategies.html"><b>Strategies &amp; signals</b></a></td><td>12 registered hypotheses, singles/props/parlays</td></tr>
 <tr><td><a href="gates.html"><b>Validation gates</b></a></td><td>The luck-removing tests each strategy must pass</td></tr>
@@ -52,6 +52,11 @@ NFL.com publishes no odds at all. Nothing here was inferred to fill a gap.</p></
 <tr><td><a href="repo-review.html"><b>Repo review</b></a></td><td>Prior work audited line by line</td></tr>
 <tr><td><a href="flagged.html"><b>Flagged for review</b></a></td><td>Unverified items and irregularities</td></tr>
 <tr><td><a href="archive.html"><b>Prior trees</b></a></td><td>The 12 older site trees</td></tr>
+<tr><td><a href="results.html"><b>Results feed</b></a></td><td>Every 2026 game, cross-checked</td></tr>
+<tr><td><a href="pricing.html"><b>Price snapshots</b></a></td><td>Open/current/close/model per market</td></tr>
+<tr><td><a href="origination.html"><b>Origination v2</b></a></td><td>Side, then total, then moneyline</td></tr>
+<tr><td><a href="signal.html"><b>Signal vs staking</b></a></td><td>Leaderboard that luck cannot flatter</td></tr>
+<tr><td><a href="replacement.html"><b>Replacement depth</b></a></td><td>Who starts, and at what depth</td></tr>
 </tbody></table>
 </div>
 <h2>What works, what is blocked</h2>
@@ -64,7 +69,7 @@ NFL.com publishes no odds at all. Nothing here was inferred to fill a gap.</p></
 <tr><td>Luck controls</td><td><span class="badge v">VERIFIED</span></td><td>walk-forward, FDR, DSR/PBO, min-sample defined; see gates</td></tr>
 <tr><td>Leaderboard with rewards</td><td><span class="badge b">BLOCKED</span></td><td>empty by design - G-2 fails; reward amounts need an owner decision</td></tr>
 <tr><td>Market comparison / CLV</td><td><span class="badge u">UNVERIFIED</span></td><td>no licensed price feed exists in the repo (F-01) and NFL.com publishes no odds at all (F-18) - the difference column is structurally blank</td></tr>
-<tr><td>Settled results for backtests</td><td><span class="badge v">VERIFIED</span></td><td>137 finals reconciled to the official standings with 0 mismatches on 32 clubs - <a href='results.html'>results feed</a></td></tr>
+<tr><td>Settled results for backtests</td><td><span class="badge v">VERIFIED</span></td><td>137 finals reconciled to the official standings with 0 mismatches on 32 clubs - <a href='verified-results.html'>results feed</a></td></tr>
 <tr><td>Price snapshot store</td><td><span class="badge d">DERIVED</span></td><td>786 markets with an opening number; 156 closes PENDING by design - <a href='price-store.html'>store</a></td></tr>
 <tr><td>Depth of the replacement</td><td><span class="badge d">DERIVED</span></td><td>36 of 76 absences resolved to a named replacement, 5 at third string or deeper - <a href='replacements.html'>who replaces whom</a></td></tr>
 <tr><td>Demotion gate</td><td><span class="badge v">VERIFIED</span></td><td>G-10 defined with four clauses; D-4 fires today, so every strategy is on paper</td></tr>

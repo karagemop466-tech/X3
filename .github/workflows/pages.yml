@@ -74,6 +74,12 @@ jobs:
       - name: Check the consolidated review hub
         run: python3 scripts/check_hub.py
 
+      - name: Check the verified decision ledger and the origin capture
+        run: |
+          python3 tools/verify_ledger.py
+          python3 tools/crosscheck.py --verify
+          python3 scripts/origin_verify.py
+
       - name: Repo-wide integration audit (verify_integration)
         run: python3 scripts/verify_integration.py
 

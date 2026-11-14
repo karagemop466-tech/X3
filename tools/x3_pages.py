@@ -322,12 +322,17 @@ different session, and a score-by-score comparison of a sample against a live re
 {gametbl}
 <h2>Availability feed</h2>
 {avail}
+<h2>Why there is a second results page</h2>
+<p class="note">A parallel session also publishes a results page at
+<a href="results.html">hub/results.html</a>, built from its own capture of the same official week
+pages. Both reconcile to the same official standings with zero mismatches. They are kept side by side
+rather than merged or overwritten, and that duplication is recorded as flag F-27.</p>
 <h2>Limits, stated on the feed itself</h2>
 <ul>{''.join(f'<li>{esc(x)}</li>' for x in results['limitations'])}</ul>
 """
-        page("results.html", "Verified results feed",
+        page("verified-results.html", "Verified results feed",
              "One row per scheduled game, reconciled to the official standings with zero mismatches, "
-             "so a backtest has something real to grade.", body, "results")
+             "so a backtest has something real to grade.", body, "verified-results")
 
     # =====================================================================
     # 4. DEPTH OF THE REPLACEMENT

@@ -87,7 +87,7 @@ NAV = [
     ("lines", "Originated lines", "Our own Week-10 spreads and totals"),
     ("markets", "Originated markets", "Side, then total, then moneyline; fair / market / difference"),
     ("price-store", "Price snapshot store", "Opening and closing numbers for every market we originate"),
-    ("results", "Verified results feed", "163 games reconciled to the official standings"),
+    ("verified-results", "Verified results feed", "163 games reconciled to the official standings"),
     ("replacements", "Depth of the replacement", "Who actually replaces the starter, and how deep"),
     ("strategies", "Strategies & signals", "12 registered hypotheses, singles/props/parlays"),
     ("gates", "Validation gates", "The luck-removing tests each strategy must pass"),
@@ -262,7 +262,7 @@ def p_index():
          [esc("Settled results for backtests"), badge("VERIFIED"),
           f"{_res['counts']['finals']} finals reconciled to the official standings with "
           f"{_res['checks']['R2_standings_reconciliation']['mismatches']} mismatches on "
-          f"{_res['counts']['clubs']} clubs - <a href='results.html'>results feed</a>"],
+          f"{_res['counts']['clubs']} clubs - <a href='verified-results.html'>results feed</a>"],
          [esc("Price snapshot store"), badge("DERIVED"),
           f"{_mk['store']['markets']} markets with an opening number; "
           f"{_mk['store']['closing_pending']} closes PENDING by design - "
@@ -453,7 +453,9 @@ def p_lines():
     board = table(["When", "Matchup", "Base margin (H)", "Injury delta", "Adj margin (H)",
                    "Model spread (H)", "Model total", "Market spread/total", "Signal",
                    "1st-string vac. H/A", "Sources"], rows,
-                  note="Positive margin = home team is worse. Model spread is rounded to the half point; "
+                  note="Margin is home expected points minus away expected points, so a POSITIVE margin means the "
+         "home club is the better side; the spread is that margin negated (a +3.64 margin becomes -3.5). "
+         "Rounded to the half point; "
                        "negative = home favoured. Market columns are blank because no price source exists "
                        "in this repository (flag F-01).")
     tr = []
@@ -1356,12 +1358,22 @@ def _build_x3_pages():
 
 
 def main():
+    # ---- X3-v2 extension (session arena/873c7396-x3): additive pages + register rows
+    import x3_content2 as X2
+    X2.register(esc, badge, link, table)
+    C.FLAGS.extend(X2.NEW_FLAGS)
+    C.Q.extend(X2.NEW_QUESTIONS)
+    C.SUG.extend(X2.NEW_SUGGESTIONS)
+    NAV.extend(X2.NAV_EXTRA)
     # extra pages that need the helpers defined above
     build_prereg()
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
     p_injuries(); p_depth(); p_leader(); p_req(); p_questions(); p_suggestions()
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
     _P["p_markets"](); _P["p_store"](); _P["p_results"](); _P["p_replacements"]()
+    for fn in X2.PAGES:  # results / pricing / origination / signal / replacement
+        fname, title, intro, body = fn()
+        page(fname + ".html", title, intro, body, fname)
     with open(os.path.join(HUB, "assets", "hub.css"), "w", encoding="utf-8") as f:
         f.write(CSS)
     with open(os.path.join(HUB, "assets", "hub.js"), "w", encoding="utf-8") as f:
@@ -1449,7 +1461,7 @@ data does not exist here yet.</p>
 <p><a href="hub/executive-summary.html"><b>Executive summary</b></a> for the decisions,
 <a href="hub/markets.html"><b>Originated markets</b></a> for the three-market board,
 <a href="hub/price-store.html"><b>Price store</b></a> for the open/close record,
-<a href="hub/results.html"><b>Results feed</b></a> for the reconciled scores,
+<a href="hub/verified-results.html"><b>Results feed</b></a> for the reconciled scores,
 <a href="hub/replacements.html"><b>Replacements</b></a> for who is actually starting,
 <a href="hub/suggestions.html"><b>Suggestions</b></a> to choose a path,
 <a href="hub/questions.html"><b>Open questions</b></a> for the information gaps, and

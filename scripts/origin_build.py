@@ -1217,7 +1217,7 @@ rather than invented. The moment a price source is connected, every column the s
 leaderboard reserve for it activates — no schema change needed.</p>
 <h3>Executive summary — numbers on this page are computed, not typed</h3>
 <ul>
-<li>Results feed: <strong>{summary[0][1]}</strong> games captured from official pages, cross-checked
+<li>Results feed: <strong>{summary[1][1]}</strong> — captured from official pages, cross-checked
 163/163 against the independent desk transcription.</li>
 <li>Originated markets: <strong>39</strong> (13 sides → 13 totals → 13 moneylines), Week-10 slate,
 open numbers recorded in the snapshot store.</li>

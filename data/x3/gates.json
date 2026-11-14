@@ -1,0 +1,35 @@
+{
+ "demotion_rules": {
+  "D1": "rolling 20-bet mean pre-close edge < 0 pts -> back to paper",
+  "D2": "rolling 50-bet flat ROI < breakeven - 2 sigma -> back to paper",
+  "D3": "any verification failure (unverified row, source mismatch) on strategy inputs -> back to paper",
+  "D4": "paper-bankroll drawdown > 25% (quarter-Kelly) -> back to paper"
+ },
+ "gates": [
+  {
+   "D1_roll20_edge<0": "not triggered",
+   "D4_drawdown>25%": "TRIGGERED",
+   "G1_sample>=100": "PASS",
+   "G2_mean_edge>=1pt": "PASS",
+   "G3_hitCI>breakeven": "PASS",
+   "G4_brier<0.25": "FAIL",
+   "G6_stable>=3of6seasons": "FAIL",
+   "live_eligible": "NO - stays PAPER (owner sign-off still required)",
+   "state": "PAPER",
+   "strategy": "SID"
+  },
+  {
+   "D1_roll20_edge<0": "not triggered",
+   "D4_drawdown>25%": "TRIGGERED",
+   "G1_sample>=100": "PASS",
+   "G2_mean_edge>=1pt": "PASS",
+   "G3_hitCI>breakeven": "PASS",
+   "G4_brier<0.25": "FAIL",
+   "G6_stable>=3of6seasons": "FAIL",
+   "live_eligible": "NO - stays PAPER (owner sign-off still required)",
+   "state": "PAPER",
+   "strategy": "TOT"
+  }
+ ],
+ "note": "no strategy holds live capital; state column is the governance record"
+}

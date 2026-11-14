@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replacement depth - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html"">Price snapshot store</a><a href="verified-results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html" class=on">Replacement depth</a></nav>
+<main>
+<h1>Replacement depth</h1>
+<p class="lede">The requirement was to track the DEPTH of the replacement, not just the fact of one. For every first-string vacancy in the official Week-10 report, this page names who moves up and at what depth they sat (2nd/3rd/4th string), with the club chart as source.</p>
+<h2>Week 10, 2026 - who starts instead of the starter</h2><div class="tblwrap"><table class="k-meta">
+<caption>Computed at build time from data/x3/depth_replacement_2026_wk10.csv</caption>
+<thead><tr><th>Measure</th><th>Value</th></tr></thead><tbody>
+<tr><td>clubs with a readable chart</td><td>31 of 32 (HOU flagged F-26)</td></tr>
+<tr><td>first-string vacancies (Out or Doubtful)</td><td>39</td></tr>
+<tr><td>replacement depth 2</td><td>36</td></tr>
+<tr><td>replacement depth 3+</td><td>0</td></tr>
+<tr><td>no backup listed on the chart</td><td>3</td></tr>
+<tr><td>injured backups (not starters) tracked</td><td>16</td></tr>
+<tr><td>report rows with no chart match</td><td>21</td></tr>
+</tbody></table>
+</div><div class="tblwrap"><table class="k-data">
+<caption>The DEPTH of the replacement (2nd/3rd/4th string) is the tracked quantity - not just the fact of a replacement. Questionable starters are treated as available and are not vacancies.</caption>
+<thead><tr><th>Club</th><th>Unit</th><th>Pos</th><th>Starter out (status)</th><th>Replacement</th><th>Depth of replacement</th><th>Source</th></tr></thead><tbody>
+<tr><td>ATL</td><td>defense</td><td>LB</td><td>Divine Deablo (Doubtful)</td><td>Christian Harris <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.atlantafalcons.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>ATL</td><td>offense</td><td>WR</td><td>Zachariah Branch (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.atlantafalcons.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>BUF</td><td>offense</td><td>T</td><td>Spencer Brown (Doubtful)</td><td>Tylan Grable <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.buffalobills.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>CAR</td><td>defense</td><td>LB</td><td>Bobby Okereke (Out)</td><td>Tyrel Dodson <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.panthers.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>CIN</td><td>defense</td><td>S</td><td>Kyle Dugger (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.bengals.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>CLE</td><td>defense</td><td>S</td><td>Ronnie Hickman Jr. (Out)</td><td>Donovan McMillon <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.clevelandbrowns.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>CLE</td><td>offense</td><td>FB</td><td>Michael Burton (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.clevelandbrowns.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DAL</td><td>defense</td><td>LB</td><td>Donovan Ezeiruaku (Out)</td><td>James Houston <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.dallascowboys.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DAL</td><td>defense</td><td>S</td><td>P.J. Locke (Out)</td><td>Markquese Bell <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.dallascowboys.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DAL</td><td>defense</td><td>S</td><td>Juanyeh Thomas (Doubtful)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.dallascowboys.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DAL</td><td>offense</td><td>RB</td><td>Tyler Goodson (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.dallascowboys.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DAL</td><td>offense</td><td>TE</td><td>Jake Ferguson (Out)</td><td>Brevyn Spann-Ford <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.dallascowboys.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DAL</td><td>offense</td><td>WR</td><td>Jonathan Mingo (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.dallascowboys.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DET</td><td>defense</td><td>CB</td><td>D.J. Reed (Out)</td><td>Rock Ya-Sin <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>DET</td><td>offense</td><td>C</td><td>Cade Mays (Out)</td><td>Juice Scruggs <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>GB</td><td>defense</td><td>LB</td><td>Zaire Franklin (Doubtful)</td><td>Ty'Ron Hopper <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.packers.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>GB</td><td>offense</td><td>C</td><td>Sean Rhyan (Out)</td><td>Jager Burton <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.packers.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>GB</td><td>offense</td><td>RB</td><td>Josh Jacobs (Out)</td><td>MarShawn Lloyd <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.packers.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>IND</td><td>defense</td><td>DT</td><td>Jerry Tillery (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.colts.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>IND</td><td>defense</td><td>LB</td><td>Jaylon Carlies (Out)</td><td>Bryce Boettcher <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.colts.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>IND</td><td>defense</td><td>LB</td><td>Akeem Davis-Gaither (Out)</td><td>CJ Allen <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.colts.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>IND</td><td>offense</td><td>T</td><td>Jalen Travis (Out)</td><td>Luke Tenuta <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.colts.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>IND</td><td>offense</td><td>TE</td><td>Mo Alie-Cox (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.colts.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>IND</td><td>special</td><td>LS</td><td>Luke Rhodes (Out)</td><td><span class='mut'>none listed</span></td><td>UNVERIFIED</td><td><a class="src" href="https://www.colts.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>JAX</td><td>defense</td><td>DT</td><td>Jordan Davis (Out)</td><td>Davon Godchaux <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.jaguars.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>JAX</td><td>defense</td><td>S</td><td>Jessie Bates (Out)</td><td>Kaevon Merriweather <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.jaguars.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>KC</td><td>defense</td><td>DT</td><td>Peter Woods (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.chiefs.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>KC</td><td>offense</td><td>T</td><td>Jaylon Moore (Out)</td><td>Joshua Ezeudu <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.chiefs.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIA</td><td>offense</td><td>C</td><td>Aaron Brewer (Out)</td><td>Andrew Meyer <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.miamidolphins.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIA</td><td>offense</td><td>WR</td><td>Chris Bell (Doubtful)</td><td>Jalen Tolbert <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.miamidolphins.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIA</td><td>offense</td><td>WR</td><td>Jared Wayne (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.miamidolphins.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIN</td><td>defense</td><td>DT</td><td>Tyrion Ingram-Dawkins (Out)</td><td>Elijah Williams <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.vikings.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIN</td><td>defense</td><td>LB</td><td>Blake Cashman (Out)</td><td>Ivan Pace Jr. <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.vikings.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIN</td><td>offense</td><td>QB</td><td>Kyler Murray (Out)</td><td>Carson Wentz <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.vikings.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIN</td><td>offense</td><td>TE</td><td>T.J. Hockenson (Out)</td><td>Gavin Bartholomew <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.vikings.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>MIN</td><td>offense</td><td>WR</td><td>Jauan Jennings (Out)</td><td>Myles Price <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.vikings.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NE</td><td>defense</td><td>CB</td><td>Carlton Davis III (Out)</td><td>Channing Canada <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.patriots.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NE</td><td>offense</td><td>C</td><td>Ben Brown (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.patriots.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NE</td><td>offense</td><td>RB</td><td>TreVeyon Henderson (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.patriots.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NO</td><td>defense</td><td>DT</td><td>Christen Miller (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.neworleanssaints.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NO</td><td>offense</td><td>C</td><td>Erik McCoy (Out)</td><td>William Sherman <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.neworleanssaints.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NO</td><td>offense</td><td>RB</td><td>CJ Donaldson (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.neworleanssaints.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NO</td><td>offense</td><td>T</td><td>Taliese Fuaga (Out)</td><td>Mason Murphy <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.neworleanssaints.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>NYJ</td><td>defense</td><td>LB</td><td>Trevin Wallace (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.newyorkjets.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>SEA</td><td>defense</td><td>DT</td><td>Leonard Williams (Out)</td><td>Rylie Mills <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.seahawks.com/team/depth-chart/" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>SEA</td><td>offense</td><td>G</td><td>Quenton Nelson (Out)</td><td>Anthony Bradford <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.seahawks.com/team/depth-chart/" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>SEA</td><td>offense</td><td>QB</td><td>Sam Darnold (Out)</td><td>Drew Lock <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.seahawks.com/team/depth-chart/" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>SEA</td><td>offense</td><td>T</td><td>Charles Cross (Out)</td><td>Josh Jones <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.seahawks.com/team/depth-chart/" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>SF</td><td>offense</td><td>WR</td><td>Mike Evans (Out)</td><td>Jordan Watkins <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.49ers.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>TEN</td><td>defense</td><td>LB</td><td>Cody Barton (Out)</td><td><span class='mut'>none listed</span></td><td>UNVERIFIED</td><td><a class="src" href="https://www.tennesseetitans.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>TEN</td><td>defense</td><td>LB</td><td>Anthony Hill Jr. (Out)</td><td>Dorian Mausi <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.tennesseetitans.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>TEN</td><td>offense</td><td>G</td><td>Peter Skoronski (Out)</td><td><span class='mut'>none listed</span></td><td>UNVERIFIED</td><td><a class="src" href="https://www.tennesseetitans.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>TEN</td><td>offense</td><td>WR</td><td>Carnell Tate (Out)</td><td>Elic Ayomanor <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.tennesseetitans.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>TEN</td><td>special</td><td>P</td><td>Tommy Townsend (Out)</td><td>Joey Slye <b>[depth 2]</b></td><td>depth 2</td><td><a class="src" href="https://www.tennesseetitans.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+<tr><td>WAS</td><td>offense</td><td>TE</td><td>Colson Yankoff (Out)</td><td><span class='mut'>n/a</span></td><td>NOT-A-STARTER (injured player is not depth 1 in this slot)</td><td><a class="src" href="https://www.commanders.com/team/depth-chart" target="_blank" rel="noopener">club chart</a></td></tr>
+</tbody></table>
+<p class="note">Depth order comes from club-published (unofficial) charts on official club domains; designations come from the official league report. Where they disagree, the flag column says so.</p>
+</div><h2>Chart irregularities (published, not smoothed over)</h2><div class="tblwrap"><table class="k-meta">
+<caption>Each is also on the Flagged for Review page</caption>
+<thead><tr><th>Irregularity</th></tr></thead><tbody>
+<tr><td>HOU club depth chart page did not render a table on 2026-11-14 (2 attempts) - club flagged</td></tr>
+<tr><td>MIA chart has an EMPTY kicker slot (K row lists no player)</td></tr>
+<tr><td>BAL chart has an EMPTY kicker slot (K row lists no player)</td></tr>
+<tr><td>LA chart lists a player at DE who has not been on an NFL roster since 2023 (Aaron Donald) - template error on club page</td></tr>
+<tr><td>Charts are club-published UNOFFICIAL depth charts on official club domains; several pages are undated</td></tr>
+</tbody></table>
+</div>
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

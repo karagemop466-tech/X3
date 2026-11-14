@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal vs staking - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html"">Price snapshot store</a><a href="verified-results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html" class=on">Signal vs staking</a><a href="replacement.html"">Replacement depth</a></nav>
+<main>
+<h1>Signal vs staking</h1>
+<p class="lede">A lucky staking run cannot mask a bad signal here: the leaderboard publishes the signal (how good the originated line is against the closing market) and the staking (what paper money it made) as separate, independently judged columns - plus the demotion gate that sends a live strategy back to paper.</p>
+<h2>Leaderboard - signal separated from staking</h2><div class="tblwrap"><table class="k-meta">
+<caption>Flat 1u at the closing market, settled against official scores. SIGNAL columns measure the line; STAKING columns measure the money; neither can mask the other.</caption>
+<thead><tr><th>Strategy</th><th>Bets</th><th>SIGNAL: mean pre-close edge (pts)</th><th>SIGNAL: hit rate [90% CI]</th><th>SIGNAL: Brier</th><th>SIGNAL: luck z</th><th>STAKING: ROI flat</th><th>STAKING: Kelly bank (100 start)</th><th>STAKING: max drawdown</th><th>State</th></tr></thead><tbody>
+<tr><td>SID</td><td>1139</td><td>+6.12</td><td>0.506 [0.481, 0.530]</td><td>0.2809</td><td>-10.99</td><td>-3.4%</td><td>20.8</td><td>85.1%</td><td>PAPER</td></tr>
+<tr><td>TOT</td><td>1042</td><td>+4.97</td><td>0.509 [0.483, 0.534]</td><td>0.2751</td><td>-9.22</td><td>-2.9%</td><td>27.3</td><td>83.1%</td><td>PAPER</td></tr>
+</tbody></table>
+<p class="note">True CLV needs an opening or bet-time market snapshot; no 2026 opening-line source exists (Q-01/F-01), so published signal = pre-close edge vs the PFF closing line. luck_z is the binomial z of realized hit rate vs the fair-probability expectation; Kelly row uses quarter-Kelly capped 3%; all paper.</p>
+</div><h2>Season-by-season (stability is gate G6)</h2><div class="tblwrap"><table class="k-meta">
+<caption>A strategy that is only profitable in one season is a season, not a strategy</caption>
+<thead><tr><th>Strategy</th><th>Season</th><th>Bets</th><th>ROI flat</th></tr></thead><tbody>
+<tr><td>SID</td><td>2021</td><td>222</td><td>-4.0%</td></tr>
+<tr><td>SID</td><td>2022</td><td>208</td><td>+1.1%</td></tr>
+<tr><td>SID</td><td>2023</td><td>210</td><td>-12.9%</td></tr>
+<tr><td>SID</td><td>2024</td><td>208</td><td>-1.7%</td></tr>
+<tr><td>SID</td><td>2025</td><td>206</td><td>+1.5%</td></tr>
+<tr><td>SID</td><td>2026</td><td>85</td><td>-4.4%</td></tr>
+<tr><td>TOT</td><td>2021</td><td>203</td><td>+4.4%</td></tr>
+<tr><td>TOT</td><td>2022</td><td>188</td><td>-7.0%</td></tr>
+<tr><td>TOT</td><td>2023</td><td>192</td><td>-3.0%</td></tr>
+<tr><td>TOT</td><td>2024</td><td>192</td><td>-1.5%</td></tr>
+<tr><td>TOT</td><td>2025</td><td>180</td><td>-2.4%</td></tr>
+<tr><td>TOT</td><td>2026</td><td>87</td><td>-14.4%</td></tr>
+</tbody></table>
+</div><h2>Validation gates + the demotion gate (live -> paper)</h2><div class="tblwrap"><table class="k-meta">
+<caption>No strategy passes all gates, so nothing is live - the gates are doing their job</caption>
+<thead><tr><th>Strategy</th><th>G1 n>=100</th><th>G2 edge>=1pt</th><th>G3 hit CI>BE</th><th>G4 Brier<.25</th><th>G6 stable</th><th>D1 roll-20 edge<0</th><th>D4 drawdown>25%</th><th>State</th></tr></thead><tbody>
+<tr><td>SID</td><td>PASS</td><td>PASS</td><td>PASS</td><td>FAIL</td><td>FAIL</td><td>not triggered</td><td>TRIGGERED</td><td><b>PAPER</b></td></tr>
+<tr><td>TOT</td><td>PASS</td><td>PASS</td><td>PASS</td><td>FAIL</td><td>FAIL</td><td>not triggered</td><td>TRIGGERED</td><td><b>PAPER</b></td></tr>
+</tbody></table>
+</div><div class="tblwrap"><table class="k-meta">
+<caption>Demotion gate - a live strategy is demoted automatically, not by discretion</caption>
+<thead><tr><th>Rule</th><th>Trigger</th><th>Effect</th></tr></thead><tbody>
+<tr><td>D1</td><td>rolling 20-bet mean pre-close edge < 0 pts -> back to paper</td><td>strategy returns to paper immediately; re-promotion requires the full gate suite again</td></tr>
+<tr><td>D2</td><td>rolling 50-bet flat ROI < breakeven - 2 sigma -> back to paper</td><td>strategy returns to paper immediately; re-promotion requires the full gate suite again</td></tr>
+<tr><td>D3</td><td>any verification failure (unverified row, source mismatch) on strategy inputs -> back to paper</td><td>strategy returns to paper immediately; re-promotion requires the full gate suite again</td></tr>
+<tr><td>D4</td><td>paper-bankroll drawdown > 25% (quarter-Kelly) -> back to paper</td><td>strategy returns to paper immediately; re-promotion requires the full gate suite again</td></tr>
+</tbody></table>
+</div><h2>Parlay and prop families (framework)</h2><div class="tblwrap"><table class="k-meta">
+<caption>Parlays are priced from measured correlation, props stay parked</caption>
+<thead><tr><th>Family</th><th>Status</th><th>What is missing</th></tr></thead><tbody>
+<tr><td>2-game cross-game parlay</td><td>defined; legs must each clear the side/total thresholds</td><td>same-gate evidence as singles; correlation across games assumed 0 (documented)</td></tr>
+<tr><td>Same-game parlay (side+total)</td><td>defined; priced with the MEASURED joint-dependence factor</td><td>see correlations with n on the origination page</td></tr>
+<tr><td>Player-prop combos</td><td>framework only</td><td>no reachable prop-price source (F-27); every price cell blank and flagged until an owner decision (Q-07)</td></tr>
+</tbody></table>
+</div>
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

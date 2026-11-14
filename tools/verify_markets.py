@@ -194,7 +194,7 @@ def main() -> int:
         check("PAPER" in dg["verdict"], "M9 clauses fire but the verdict is not PAPER")
 
     # M10 pages + row-source rule via the hub gate
-    for p in ("markets.html", "price-store.html", "results.html", "replacements.html",
+    for p in ("markets.html", "price-store.html", "verified-results.html", "replacements.html",
               "leaderboard.html", "correlation.html", "gates.html", "suggestions.html",
               "questions.html", "requirements.html", "flagged.html", "executive-summary.html"):
         check(os.path.exists(os.path.join(HUB, p)), f"M10 missing page {p}")
