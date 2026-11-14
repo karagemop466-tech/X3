@@ -1,0 +1,496 @@
+{
+ "captured": {
+  "depth-ARI.html": {
+   "url": "",
+   "bytes": 293577,
+   "text_chars": 4771
+  },
+  "depth-ATL.html": {
+   "url": "",
+   "bytes": 320211,
+   "text_chars": 5384
+  },
+  "depth-BAL.html": {
+   "url": "",
+   "bytes": 298503,
+   "text_chars": 5136
+  },
+  "depth-BUF.html": {
+   "url": "",
+   "bytes": 301866,
+   "text_chars": 5240
+  },
+  "depth-CAR.html": {
+   "url": "",
+   "bytes": 330450,
+   "text_chars": 4634
+  },
+  "depth-CHI.html": {
+   "url": "",
+   "bytes": 291913,
+   "text_chars": 4798
+  },
+  "depth-CIN.html": {
+   "url": "",
+   "bytes": 296127,
+   "text_chars": 4896
+  },
+  "depth-CLE.html": {
+   "url": "",
+   "bytes": 298155,
+   "text_chars": 4894
+  },
+  "depth-DAL.html": {
+   "url": "",
+   "bytes": 281366,
+   "text_chars": 4710
+  },
+  "depth-DEN.html": {
+   "url": "",
+   "bytes": 295582,
+   "text_chars": 4742
+  },
+  "depth-DET.html": {
+   "url": "",
+   "bytes": 292353,
+   "text_chars": 4775
+  },
+  "depth-GB.html": {
+   "url": "",
+   "bytes": 294885,
+   "text_chars": 5244
+  },
+  "depth-HOU.html": {
+   "url": "",
+   "bytes": 490143,
+   "text_chars": 5005
+  },
+  "depth-IND.html": {
+   "url": "",
+   "bytes": 347848,
+   "text_chars": 8544
+  },
+  "depth-JAX.html": {
+   "url": "",
+   "bytes": 310697,
+   "text_chars": 5347
+  },
+  "depth-KC.html": {
+   "url": "",
+   "bytes": 302512,
+   "text_chars": 5278
+  },
+  "depth-LA.html": {
+   "url": "",
+   "bytes": 293434,
+   "text_chars": 4654
+  },
+  "depth-LAC.html": {
+   "url": "",
+   "bytes": 360262,
+   "text_chars": 6615
+  },
+  "depth-LV.html": {
+   "url": "",
+   "bytes": 297926,
+   "text_chars": 5145
+  },
+  "depth-MIA.html": {
+   "url": "",
+   "bytes": 285874,
+   "text_chars": 4548
+  },
+  "depth-MIN.html": {
+   "url": "",
+   "bytes": 308274,
+   "text_chars": 5336
+  },
+  "depth-NE.html": {
+   "url": "",
+   "bytes": 356582,
+   "text_chars": 9001
+  },
+  "depth-NO.html": {
+   "url": "",
+   "bytes": 509847,
+   "text_chars": 12491
+  },
+  "depth-NYG.html": {
+   "url": "",
+   "bytes": 296145,
+   "text_chars": 5070
+  },
+  "depth-NYJ.html": {
+   "url": "",
+   "bytes": 294142,
+   "text_chars": 4729
+  },
+  "depth-PHI.html": {
+   "url": "",
+   "bytes": 360103,
+   "text_chars": 6982
+  },
+  "depth-PIT.html": {
+   "url": "",
+   "bytes": 309301,
+   "text_chars": 5474
+  },
+  "depth-SEA.html": {
+   "url": "",
+   "bytes": 312199,
+   "text_chars": 5542
+  },
+  "depth-SF.html": {
+   "url": "",
+   "bytes": 288583,
+   "text_chars": 4624
+  },
+  "depth-TB.html": {
+   "url": "",
+   "bytes": 296114,
+   "text_chars": 4877
+  },
+  "depth-TEN.html": {
+   "url": "",
+   "bytes": 304201,
+   "text_chars": 5305
+  },
+  "depth-WAS.html": {
+   "url": "",
+   "bytes": 302269,
+   "text_chars": 5041
+  },
+  "injuries-w10.html": {
+   "url": "https://www.nfl.com/injuries/league/2026/reg10",
+   "bytes": 413298,
+   "text_chars": 27116
+  },
+  "injuries-w11.html": {
+   "url": "https://www.nfl.com/injuries/league/2026/reg11",
+   "bytes": 413298,
+   "text_chars": 27116
+  },
+  "injuries-w8.html": {
+   "url": "https://www.nfl.com/injuries/league/2026/reg8",
+   "bytes": 406986,
+   "text_chars": 25350
+  },
+  "injuries-w9.html": {
+   "url": "https://www.nfl.com/injuries/league/2026/reg9",
+   "bytes": 419971,
+   "text_chars": 27785
+  },
+  "schedule-w1.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-1",
+   "bytes": 2354655,
+   "text_chars": 8811
+  },
+  "schedule-w10.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "bytes": 2372305,
+   "text_chars": 8767
+  },
+  "schedule-w11.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-11",
+   "bytes": 2354782,
+   "text_chars": 8721
+  },
+  "schedule-w2.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-2",
+   "bytes": 2345101,
+   "text_chars": 8771
+  },
+  "schedule-w3.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-3",
+   "bytes": 2352764,
+   "text_chars": 8809
+  },
+  "schedule-w4.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-4",
+   "bytes": 2352890,
+   "text_chars": 8756
+  },
+  "schedule-w5.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-5",
+   "bytes": 2338122,
+   "text_chars": 8773
+  },
+  "schedule-w6.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-6",
+   "bytes": 2323194,
+   "text_chars": 8738
+  },
+  "schedule-w7.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-7",
+   "bytes": 2323109,
+   "text_chars": 8747
+  },
+  "schedule-w8.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-8",
+   "bytes": 2318594,
+   "text_chars": 8717
+  },
+  "schedule-w9.html": {
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-9",
+   "bytes": 2339273,
+   "text_chars": 8773
+  },
+  "standings-2026.html": {
+   "url": "https://www.nfl.com/standings/league/2026/reg",
+   "bytes": 258146,
+   "text_chars": 7220
+  },
+  "team-stats.html": {
+   "url": "https://www.nfl.com/stats/team-stats/",
+   "bytes": 245753,
+   "text_chars": 4882
+  }
+ },
+ "notes": [
+  {
+   "file": "depth-ARI.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-ATL.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-BAL.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-BUF.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-CAR.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-CHI.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-CIN.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-CLE.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-DAL.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "depth-DEN.html",
+   "tables": 0,
+   "lines": 111
+  },
+  {
+   "file": "depth-DET.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-GB.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "depth-HOU.html",
+   "tables": 0,
+   "lines": 77
+  },
+  {
+   "file": "depth-IND.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-JAX.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-KC.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-LA.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-LAC.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-LV.html",
+   "tables": 0,
+   "lines": 108
+  },
+  {
+   "file": "depth-MIA.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-MIN.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-NE.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-NO.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "depth-NYG.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-NYJ.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "depth-PHI.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-PIT.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "depth-SEA.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-SF.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "depth-TB.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "depth-TEN.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "depth-WAS.html",
+   "tables": 0,
+   "lines": 109
+  },
+  {
+   "file": "injuries-w10.html",
+   "tables": 0,
+   "lines": 450
+  },
+  {
+   "file": "injuries-w11.html",
+   "tables": 0,
+   "lines": 450
+  },
+  {
+   "file": "injuries-w8.html",
+   "tables": 0,
+   "lines": 425
+  },
+  {
+   "file": "injuries-w9.html",
+   "tables": 0,
+   "lines": 469
+  },
+  {
+   "file": "schedule-w1.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w10.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w11.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w2.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w3.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w4.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w5.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w6.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w7.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w8.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "schedule-w9.html",
+   "tables": 0,
+   "lines": 4
+  },
+  {
+   "file": "standings-2026.html",
+   "tables": 0,
+   "lines": 110
+  },
+  {
+   "file": "team-stats.html",
+   "tables": 0,
+   "lines": 110
+  }
+ ]
+}
