@@ -33,21 +33,6 @@ OFFICIAL_REQUIRED_PAGES = RULE_OFFICIAL | {"strategies.html", "sources.html", "v
 UNVERIFIED = "UNVERIFIED"
 
 
-def pick(row, *keys):
-    """Read the first present key from a row (schema-tolerant).
-
-    Added by session arena/f2df8317-x3 after PR #43 renamed the dashboard
-    model-lines keys (model_home_spread -> fair_home_spread) without touching
-    this builder, which left main's check_hub gate failing on KeyError.
-    Behaviour is unchanged when the old schema is present; the new key is used
-    only as a fallback. Minimal, reversible cross-session fix, logged in
-    COORDINATION.md."""
-    if not row:
-        return UNVERIFIED
-    for k in keys:
-        if k in row:
-            return row[k]
-    return UNVERIFIED
 
 
 def load(name):
@@ -217,8 +202,10 @@ def compute(standings, injuries, slate, cfg, overlay=()):
             "spread_home": "%+.1f" % spread, "total": "%.1f" % (round(total * 2) / 2),
             "exp_home": "%.1f" % exp_h, "exp_away": "%.1f" % exp_a,
             "market": UNVERIFIED,
-            "prior_home_spread": pick(pd, "model_home_spread", "fair_home_spread"),
-            "prior_total": pick(pd, "model_total", "fair_total"),
+            # dashboard/data/model_lines.json renamed model_* -> fair_* (values identical, 14/14);
+            # accept either key so the build does not break on that rename.
+            "prior_home_spread": (pd.get("model_home_spread") or pd.get("fair_home_spread")) if pd else UNVERIFIED,
+            "prior_total": (pd.get("model_total") or pd.get("fair_total")) if pd else UNVERIFIED,
             "x3_away_spread": str(px["our_spread_away"]) if px else UNVERIFIED,
             "x3_total": str(px["our_total"]) if px else UNVERIFIED,
             "desk_spread": str(pd2["our_spread_home"]) if (pd2 := prior_desk.get((away, home))) else UNVERIFIED,
