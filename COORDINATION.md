@@ -549,4 +549,8 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 - `python3 scripts/check_dashboard.py`: all local links and assets pass.
 - `python3 scripts/verify_data.py`: 2,134 checks pass; `python3 tools/verify_site.py`: 14 pages / 48 tables pass.
 - `node --check` for dashboard/test scripts, `node scripts/check_data.js`, and `node scripts/check_render.js` all pass.
-- No additional irregularities. GitHub Pages is already configured for `main /` and status was `built` during this session; a deployment for these changes requires merging the follow-up PR.
+- No additional irregularities were introduced. GitHub Pages is configured for `main /`.
+
+### PR / deployment record
+- **PR #19:** https://github.com/karagemop466-tech/X3/pull/19 — `arena/361edc3f-x3` → `main`; merged 2026-11-14 at 18:08 UTC. Merge commit: `4166f1f83e6de27dd77281a5bbb7fe93d9396478`.
+- The post-merge build + deploy workflow run [43624884173](https://github.com/karagemop466-tech/X3/actions/runs/43624884173) and Pages build/deployment run [43624883989](https://github.com/karagemop466-tech/X3/actions/runs/43624883989) both completed successfully. Pages API reports `built`; live URL: https://karagemop466-tech.github.io/X3/.
