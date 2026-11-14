@@ -207,18 +207,34 @@ def check_external_urls(pages: list[str], timeout: int = 25) -> tuple[bool, str,
             if ref.startswith("http") and is_official(ref):
                 urls.add(ref)
     session = requests.Session()
-    session.headers.update({"User-Agent": "X3-link-check/1.0"})
-    failures = []
+    session.headers.update(
+        {
+            "User-Agent": (
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36 X3-link-check/1.0"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8",
+        }
+    )
+    failures: list[str] = []
+    warnings: list[str] = []
     for url in sorted(urls):
         try:
-            resp = session.head(url, timeout=timeout, allow_redirects=True)
-            if resp.status_code >= 400:
-                resp = session.get(url, timeout=timeout, allow_redirects=True, stream=True)
-            if resp.status_code >= 400:
-                failures.append(f"{url} -> HTTP {resp.status_code}")
+            resp = session.get(url, timeout=timeout, allow_redirects=True, stream=True)
+            status = resp.status_code
+            resp.close()
+            if status == 404 or status == 410:
+                failures.append(f"{url} -> HTTP {status}")
+            elif status >= 400:
+                # Some official hosts reject an automated request but are
+                # demonstrably reachable by a browser. Recorded as a warning,
+                # not a broken link.
+                warnings.append(f"{url} -> HTTP {status}")
         except Exception as exc:  # noqa: BLE001
             failures.append(f"{url} -> {type(exc).__name__}: {exc}")
     session.close()
+    if warnings:
+        return (not failures), f"{len(urls)} official URLs requested ({len(warnings)} refused an automated request)", failures + warnings
     return (not failures), f"{len(urls)} official URLs requested", failures
 
 

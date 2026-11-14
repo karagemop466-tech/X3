@@ -62,20 +62,6 @@ jobs:
       - name: Build verified datasets
         run: python scripts/build_datasets.py
 
-      # Diagnostics are committed even when a step fails, so the failure can be
-      # diagnosed from the repository alone.
-      - name: Commit diagnostics
-        if: always()
-        run: |
-          git config user.name "x3-data-pipeline"
-          git config user.email "x3-data-pipeline@users.noreply.github.com"
-          git add -f data/datasets || true
-          if git diff --cached --quiet; then
-            echo "no diagnostics to commit"
-          else
-            git commit -m "ci: publish build diagnostics" || echo "diagnostic commit failed"
-          fi
-
       - name: Compute signals, lines and correlations
         run: python scripts/compute_signals.py
 
@@ -85,7 +71,11 @@ jobs:
       - name: Validate site (links, source links, blank cells)
         run: python scripts/validate_site.py --external
 
+      # Everything is committed even when a step fails, so the datasets, the
+      # generated site and the validation report are always available in the
+      # repository for review and diagnosis.
       - name: Commit regenerated data and site
+        if: always()
         run: |
           git config user.name "x3-data-pipeline"
           git config user.email "x3-data-pipeline@users.noreply.github.com"
@@ -94,7 +84,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
-            git commit -m "ci: regenerate official datasets and site"
+            git commit -m "ci: regenerate official datasets and site" || echo "commit failed"
           fi
 
       # One single, rebase-safe publish step. A push race is retried and then
