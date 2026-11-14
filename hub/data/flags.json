@@ -1,0 +1,215 @@
+{
+ "note": "Published, not buried. Non-blocking by design: none of these stops the site or the merge. Each needs an owner decision or a source that does not exist yet.",
+ "flags": [
+  {
+   "id": "FLG-01",
+   "severity": "High",
+   "area": "Site structure",
+   "finding": "Eight merged sessions each shipped a separate site tree at the repo root: `/`, `docs/`, `dashboard/`, `lab/`, `x3lab/`, `pages/`, `site/`, `legacy/`. Root `index.html` was a bare meta-refresh redirect to `lab/`, and each tree re-implements the same pages, so the same fact exists in 4-5 places with no canonical copy.",
+   "evidence": "https://github.com/karagemop466-tech/X3/tree/main - 180 tracked files, 9 index.html files, 4 injury pages, 5 suggestions pages",
+   "impact": "Decision-makers compare numbers from different snapshots and disagree; no single URL is citable",
+   "action": "Suggestion S-01: adopt this hub as canonical, demote the other trees to a labelled archive",
+   "status": "OPEN - hub published, archive page created, legacy trees left in place per no-delete policy"
+  },
+  {
+   "id": "FLG-02",
+   "severity": "Medium",
+   "area": "Source semantics",
+   "finding": "The official standings module lags completed games. After WAS 24-NYG 21 (Thu 2026-11-12, SRC-04) both the league standings page (SRC-01) and the game's own standings widget still show WAS 3-5-1 and NYG 5-3-1.",
+   "evidence": "https://www.nfl.com/games/commanders-at-giants-2026-reg-10 vs https://www.nfl.com/standings/league/2026/REG",
+   "impact": "Any model or backtest that reads 'standings' without an as-of rule silently mixes pre-game and post-game states (look-ahead or lag depending on fetch time)",
+   "action": "Freeze an as-of contract: snapshot standings immediately before each kickoff and store the timestamp (S-05)",
+   "status": "OPEN - documented in the data contract"
+  },
+  {
+   "id": "FLG-03",
+   "severity": "Low",
+   "area": "Data drift",
+   "finding": "This session's fresh transcription of the Week 10 report differs from the repo snapshot in exactly one of 345 rows: KC DT Omarr Norman-Lott practice status (repo: Limited participation; live page 2026-11-14: Did not participate). All 345 player identities and game statuses match.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/injury-2026-week10.csv vs https://www.nfl.com/injuries/",
+   "impact": "Confirms the injury page mutates between fetches; a snapshot without a timestamp is not reproducible",
+   "action": "Snapshot per fetch, keep history, diff on every build (VER-03)",
+   "status": "OPEN - diff automated"
+  },
+  {
+   "id": "FLG-04",
+   "severity": "Medium",
+   "area": "Source conflict",
+   "finding": "The official news roundup headline for Sat 2026-11-14 reads 'Steelers TE Pat Freiermuth (illness) questionable', but the Week 10 injury report table for PIT contains no Freiermuth row (8 rows, none with a game status).",
+   "evidence": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-saturday-nov-14 vs https://www.nfl.com/injuries/",
+   "impact": "Two official NFL surfaces disagree on a designation; a starter-level prop market (TE receptions/yards) would be priced off the wrong assumption",
+   "action": "Exclude Freiermuth from all hub signals, leave his row blank, re-check the final Friday report",
+   "status": "OPEN - excluded and flagged"
+  },
+  {
+   "id": "FLG-05",
+   "severity": "Medium",
+   "area": "Source conflict",
+   "finding": "Two official NFL pages give different absence windows for the same injury: 'Ravens' Lamar Jackson (right thumb) out 6-9 weeks' vs 'Ravens confirm Lamar Jackson expected to miss 6-10 weeks'.",
+   "evidence": "https://www.nfl.com/news/ravens-lamar-jackson-right-thumb-out-6-9-weeks-expects-to-return-this-season vs https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-friday-nov-13",
+   "impact": "Return-window inputs feed futures and rest-of-season props; a range cannot be treated as a point estimate",
+   "action": "Store both windows as a range with both citations; never use a midpoint",
+   "status": "OPEN - range stored, no midpoint used"
+  },
+  {
+   "id": "FLG-06",
+   "severity": "High",
+   "area": "Missing information",
+   "finding": "Baltimore's Week 10 report lists 8 players and no quarterback, while the starter (Jackson, IR per SRC-08) and the reported season-ending backup (Huntley) are both absent. No official page fetched this session identifies the starting QB for LAC@BAL on 2026-11-16.",
+   "evidence": "https://www.nfl.com/injuries/ (BAL block) ; https://www.nfl.com/news/ravens-qb-tyler-huntley-out-for-season-turf-toe-injury",
+   "impact": "The single highest-leverage lineup fact for a Monday prime-time game is unknown; every BAL line is unsafe to originate",
+   "action": "Owner decision Q-06: accept club/inactives as the only source for starters, or skip games with unknown QB",
+   "status": "OPEN - BAL row published with blank starter, UNVERIFIED"
+  },
+  {
+   "id": "FLG-07",
+   "severity": "High",
+   "area": "No source exists",
+   "finding": "The NFL does not publish betting lines or player-prop prices on any official NFL.com property, so every 'market' column in this hub is intentionally blank. A prior session's market columns came from ESPN/DraftKings (SRC-13), which this session did not fetch and cannot attest to.",
+   "evidence": "https://www.nfl.com/injuries/ , https://www.nfl.com/schedules/2026/by-week/week-10 , https://www.nfl.com/stats/ (no odds/prop-price publication found)",
+   "impact": "No closing line, no CLV, no ROI, and therefore no legitimate leaderboard promotion of any strategy",
+   "action": "Q-01/S-04: license or hand-record a price archive before any performance claim",
+   "status": "OPEN - all market cells blank by policy, not by omission"
+  },
+  {
+   "id": "FLG-08",
+   "severity": "High",
+   "area": "No source exists",
+   "finding": "There is no official league depth chart. Clubs publish their own charts and label them unofficial; per prior sessions 31 of 32 were readable, 27 of 32 carried no as-of date, and Houston publishes an image only.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md (session arena/7e632805-x3, F-01/F-02/F-05) ; https://www.nfl.com/teams/",
+   "impact": "The literal request 'know which 2nd/3rd/4th-string backups replace starters' cannot be answered from an official source at all; only the absence of a starter can be proven from the injury report",
+   "action": "Track availability (Out/Doubtful/Questionable) as the certified layer, treat string depth as an unverified overlay; Q-05/Q-06",
+   "status": "OPEN - string columns blank in the deficiency table"
+  },
+  {
+   "id": "FLG-09",
+   "severity": "Medium",
+   "area": "Repo review",
+   "finding": "Rows were transcribed from the live official page exactly as printed, including player-club pairings that this session could not cross-check against a verified roster page (no roster page was fetched).",
+   "evidence": "https://www.nfl.com/injuries/ vs https://www.nfl.com/teams/",
+   "impact": "If the source page itself mis-assigns a player to a club, the hub reproduces it",
+   "action": "Add a roster join (club roster page per team) to the ingestion contract (S-07)",
+   "status": "OPEN - no row altered, none independently confirmed"
+  },
+  {
+   "id": "FLG-10",
+   "severity": "Medium",
+   "area": "CI / repo hygiene",
+   "finding": "`.github/workflows/pages.yml` still triggers on `push` to the merged branch `arena/1a771fcd-x3`, runs five checkers belonging to five different sessions over eight site trees, and branch `arena/64164906-x3` has 5 consecutive failing `data-pipeline` runs (last seen 2026-11-14, 14h ago). PR #12 from another session is still OPEN.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/.github/workflows/pages.yml ; https://github.com/karagemop466-tech/X3/actions?query=branch%3Aarena%2F64164906-x3 ; https://github.com/karagemop466-tech/X3/pull/12",
+   "impact": "Red CI on an unrelated in-flight branch plus a stale trigger make the green/red signal meaningless for review",
+   "action": "S-14/S-15: scope triggers to `main` + PRs, make hub checks the required status, keep other checkers as non-blocking advisories",
+   "status": "OPEN - workflow file not edited (owned by other sessions)"
+  },
+  {
+   "id": "FLG-11",
+   "severity": "Medium",
+   "area": "Evidence quality",
+   "finding": "The injury-report cadence (Wed/Thu/Fri 4 pm ET filings; Out/Doubtful/Questionable; inactives ~90 min before kickoff) is described here from a secondary reference (SRC-12). The league rulebook text was not fetched, so the wording is not certified.",
+   "evidence": "https://www.pro-football-reference.com/players/injuries.htm",
+   "impact": "The pipeline schedule that this cadence implies is an assumption, not a verified rule",
+   "action": "Fetch the operations.nfl.com rulebook/policy page and replace the citation (S-12)",
+   "status": "OPEN - labelled SECONDARY, never used as a fact cell"
+  },
+  {
+   "id": "FLG-12",
+   "severity": "High",
+   "area": "Model honesty",
+   "finding": "Originated lines here are produced with uncalibrated assumption parameters (home-field advantage 2.0 pts, neutral-site 0.0, positional injury weights, 40% total shrinkage) and reproduce neither of the two prior in-repo models exactly. No line in this hub has passed a single validation gate.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/model_config.json ; https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/model_lines.json ; https://github.com/karagemop466-tech/X3/blob/main/x3lab/data/lines_week10.json",
+   "impact": "Anyone reading the line table as an edge would be mistaking a formula for skill",
+   "action": "Keep every model row badged DERIVED, gate G-0..G-9 blocking, leaderboard empty",
+   "status": "OPEN by design"
+  },
+  {
+   "id": "FLG-13",
+   "severity": "Medium",
+   "area": "Reproducibility",
+   "finding": "A prior session published correlations of +0.6984 / -0.6636 / +0.8781 / +0.3501 from the official standings. Recomputing from this session's snapshot gives +0.7001 / -0.6639 / +0.8794 / +0.3506 with games = W+L+T (+0.6943 / -0.6509 / +0.8779 / +0.3506 with ties excluded). Neither denominator convention reproduces the published figures.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/correlations.json vs recomputation in scripts/check_hub.py from hub/data/standings_2026.csv",
+   "impact": "Small but real: it proves the earlier numbers came from a different standings snapshot, so cross-page comparisons are not like-for-like",
+   "action": "Cite the snapshot timestamp with every derived statistic (VER-05)",
+   "status": "RESOLVED for the hub: values recomputed, formula and inputs printed, both variants published"
+  },
+  {
+   "id": "FLG-14",
+   "severity": "High",
+   "area": "Legal / scope",
+   "finding": "Rewards for a leaderboard, and any staking, depend on the owner's jurisdiction, which is not established anywhere in the repository. Session arena/a8e2b617-x3 removed the earlier unsupported Tokyo/Japan assertions and left the jurisdiction flagged as unknown; a regulator page tried this session returned 404, so nothing here is legally verified.",
+   "evidence": "https://www.ksa.nl/ (homepage only; the specific licence page tried was 404) ; https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md",
+   "impact": "Reward implementation is out of scope until counsel confirms what is lawful",
+   "action": "Q-08 before any reward, payout or real-money integration is built",
+   "status": "OPEN - rewards specified as notional only"
+  },
+  {
+   "id": "FLG-15",
+   "severity": "Medium",
+   "area": "Publication surface",
+   "finding": "GitHub Pages is configured as legacy `main /`, which publishes the whole repository including every experimental tree. A prior session reported HTTP 403 when a non-admin token tried to switch the source to a workflow build.",
+   "evidence": "https://api.github.com/repos/karagemop466-tech/X3/pages ; https://karagemop466-tech.github.io/X3/",
+   "impact": "Abandoned drafts stay publicly crawlable and get mistaken for current work",
+   "action": "Repo admin: switch Pages to a workflow that uploads only the hub + archives, or move legacy trees under /archive",
+   "status": "OPEN - needs admin rights"
+  },
+  {
+   "id": "FLG-16",
+   "severity": "Low",
+   "area": "Repo hygiene",
+   "finding": "No LICENSE file, no CODEOWNERS, no branch protection, no unit tests for the seven site builders; `data/`, `docs/data/`, `dashboard/data/`, `x3lab/data/` hold four overlapping copies of similar registers.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/.gitignore ; https://github.com/karagemop466-tech/X3/tree/main",
+   "impact": "Licence and ownership ambiguity plus duplicated data is how two sessions published different numbers for one fact",
+   "action": "S-13 add LICENSE/CODEOWNERS, S-03 one data contract",
+   "status": "OPEN - not created here to avoid touching shared files"
+  },
+  {
+   "id": "FLG-17",
+   "severity": "Low",
+   "area": "Snapshot timing",
+   "finding": "The Week 10 report used here is the practice/game-status table available on Saturday 2026-11-14 18:08 UTC; Sunday inactives (the final lineup truth) did not exist at fetch time, and the Monday-night game had one more report due.",
+   "evidence": "https://www.nfl.com/injuries/",
+   "impact": "Questionable-heavy clubs (NYJ 8, NE 9, SF 7, GB 7) may look far stronger or weaker on Sunday than the Saturday table implies",
+   "action": "Re-snapshot Friday 4 pm ET and Sunday -90 min; store both, diff them",
+   "status": "OPEN - as-of stamped on every table"
+  },
+  {
+   "id": "FLG-18",
+   "severity": "Medium",
+   "area": "Repo data error",
+   "finding": "A prior tree's standings table records Tampa Bay's division record as 1-2-0. The official page shows 2-0-0, and the .1000 division percentage printed in the same row is only consistent with 2-0-0. That row feeds that tree's derived numbers.",
+   "evidence": "https://www.nfl.com/standings/league/2026/REG vs https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/standings.json",
+   "impact": "Any model or table in that tree that uses division record is wrong for TB; found only by re-deriving from the official page",
+   "action": "Owner: accept the corrected value (this hub uses 2-0-0) and open a fix PR against that tree, or retire it per S-01",
+   "status": "OPEN - still live on main after the 2026-11-14 integration merge: docs/data/standings-2026-week10.csv was corrected to 2-0-0 by that session, dashboard/data/standings.json was not touched and still reads 1-2-0"
+  },
+  {
+   "id": "FLG-19",
+   "severity": "Low",
+   "area": "Identifier drift",
+   "finding": "Team codes differ between trees: the Rams appear as LA and LAR, the Cardinals as ARI and AZ. The official page renders the Rams logo as logos/LA while using LAR elsewhere, so a naive join across trees silently drops two clubs.",
+   "evidence": "https://www.nfl.com/standings/league/2026/REG ; prior tree files in dashboard/ and x3lab/",
+   "impact": "Cross-tree comparisons and any automated merge of prior data will mismatch on 2 of 32 clubs",
+   "action": "Freeze one id list (the 32 codes in hub/data/standings_2026.csv) and add an alias map (S-03, Q-18)",
+   "status": "OPEN"
+  },
+  {
+   "id": "FLG-20",
+   "severity": "Low",
+   "area": "Sample caveat",
+   "finding": "The hub's four computed correlations use 32 team-seasons from a 9-week sample. They describe the relationship between scoring and winning in 2026 to date; they are not evidence of a betting edge.",
+   "evidence": "recomputed in scripts/check_hub.py from SRC-01",
+   "impact": "Readers may mistake a descriptive statistic for a tradable signal",
+   "action": "Labelled on the page; keep out of any strategy promotion",
+   "status": "OPEN by design"
+  },
+  {
+   "id": "FLG-21",
+   "severity": "Medium",
+   "area": "Model readability",
+   "finding": "The prior model table in dashboard/data/model_lines.json publishes a 'model_home_spread' that follows neither the betting convention nor its own expected scores: all 14 rows carry the sign of (exp_home - exp_away) instead of its negation, and 12 of 14 are exactly twice that margin (the other 2 within 0.2). Example, KC at ATL: expected margin -5.6, i.e. the home club is a 5.6-point dog, yet the column reads -11.3, which in betting notation means an 11.3-point home favourite.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/model_lines.json ; recomputed row by row in this session",
+   "impact": "anyone copying that column slips the wrong side of every game, and the magnitudes are not comparable with a market line",
+   "action": "the hub states its convention in the table header (negative = home favourite) and shows both prior models side by side so the disagreement is visible",
+   "status": "OPEN for the legacy trees (not edited here); documented and corrected in the hub"
+  }
+ ]
+}

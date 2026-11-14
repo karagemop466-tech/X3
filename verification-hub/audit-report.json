@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 349,
-      "flagged_rows": 230,
-      "refs": 384,
+      "rows": 350,
+      "flagged_rows": 231,
+      "refs": 396,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -57,6 +57,22 @@
         "docs/pages/correlation.html: Finding Source Source tier",
         "docs/pages/correlation.html: Leg A Leg B Sign hypothesis (testable, not a value) Correlation value 95% CI Status",
         "docs/pages/executive-summary.html: Deliverable Status Evidence"
+      ]
+    },
+    "hub": {
+      "pages": 17,
+      "rows": 705,
+      "flagged_rows": 651,
+      "refs": 811,
+      "unsourced_examples": [
+        "hub/archive.html:  Tree  What it is  Repository  Live page ",
+        "hub/correlations.html:  #  Pair  r  n  Method  Caveat  Source ",
+        "hub/correlations.html:  Pair  Published by a prior tree  Recomputed here  Agreement  Evidence ",
+        "hub/deficiency.html:  Club  Record  Rows on report  Out  Doubtful  Questionable  Undesignated  Non-injury rest  Offensive loss (pts)  Defensi",
+        "hub/deficiency.html:  Claim  Supportable from official data?  Treatment here  Evidence ",
+        "hub/deficiency.html: Whether a backup's presence changes a prop market no - needs prop prices and usage data not attempted FLG-07 \u00b7 Q-12",
+        "hub/executive-summary.html:  Finding  Value  Basis  Source ",
+        "hub/executive-summary.html: No game log in repo no home-field estimate, no opponent adjustment, no parlay correlation matrix ingest schedule + box s"
       ]
     },
     "lab": {
@@ -120,9 +136,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 89,
-  "rows_total": 2643,
-  "rows_flagged_or_sourced": 2193,
-  "internal_refs": 1305,
+  "pages_total": 106,
+  "rows_total": 3349,
+  "rows_flagged_or_sourced": 2845,
+  "internal_refs": 1458,
   "problems": []
 }

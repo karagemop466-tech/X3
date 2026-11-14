@@ -1,0 +1,19 @@
+game_id,day,date,kickoff_et,away,home,broadcast,venue_note,result,game_url
+2026-reg-10-thu,Thu,2026-11-12,20:15,WAS,NYG,Prime Video,Thursday Night Football,"Commanders 24, Giants 21 (FINAL)",https://www.nfl.com/games/commanders-at-giants-2026-reg-10
+2026-reg-10-sun1,Sun,2026-11-15,09:30,NE,DET,Fox,Munich 2026 international game,,,https://www.nfl.com/games/patriots-at-lions-2026-reg-10
+2026-reg-10-sun2,Sun,2026-11-15,13:00,KC,ATL,CBS,,,,https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10
+2026-reg-10-sun3,Sun,2026-11-15,13:00,HOU,CLE,Fox,,,,https://www.nfl.com/games/texans-at-browns-2026-reg-10
+2026-reg-10-sun4,Sun,2026-11-15,13:00,MIN,GB,Fox,,,,https://www.nfl.com/games/vikings-at-packers-2026-reg-10
+2026-reg-10-sun5,Sun,2026-11-15,13:00,MIA,IND,CBS,,,,https://www.nfl.com/games/dolphins-at-colts-2026-reg-10
+2026-reg-10-sun6,Sun,2026-11-15,13:00,CAR,NO,Fox,,,,https://www.nfl.com/games/panthers-at-saints-2026-reg-10
+2026-reg-10-sun7,Sun,2026-11-15,13:00,BUF,NYJ,CBS,,,,https://www.nfl.com/games/bills-at-jets-2026-reg-10
+2026-reg-10-sun8,Sun,2026-11-15,13:00,JAX,TEN,Fox,,,,https://www.nfl.com/games/jaguars-at-titans-2026-reg-10
+2026-reg-10-sun9,Sun,2026-11-15,16:05,LAR,AZ,CBS,,,,https://www.nfl.com/games/rams-at-cardinals-2026-reg-10
+2026-reg-10-sun10,Sun,2026-11-15,16:05,SEA,LV,CBS,,,,https://www.nfl.com/games/seahawks-at-raiders-2026-reg-10
+2026-reg-10-sun11,Sun,2026-11-15,16:25,SF,DAL,Fox,,,,https://www.nfl.com/games/49ers-at-cowboys-2026-reg-10
+2026-reg-10-snf,Sun,2026-11-15,20:20,PIT,CIN,NBC,Sunday Night Football,,,https://www.nfl.com/games/steelers-at-bengals-2026-reg-10
+2026-reg-10-mnf,Mon,2026-11-16,20:15,LAC,BAL,ESPN,Monday Night Football; clear/night at time of fetch,,,https://www.nfl.com/games/chargers-at-ravens-2026-reg-10
+bye-1,Sun,2026-11-15,,CHI,,,,On bye,https://www.nfl.com/schedules/2026/by-week/week-10
+bye-2,Sun,2026-11-15,,DEN,,,,On bye,https://www.nfl.com/schedules/2026/by-week/week-10
+bye-3,Sun,2026-11-15,,PHI,,,,On bye,https://www.nfl.com/schedules/2026/by-week/week-10
+bye-4,Sun,2026-11-15,,TB,,,,On bye,https://www.nfl.com/schedules/2026/by-week/week-10

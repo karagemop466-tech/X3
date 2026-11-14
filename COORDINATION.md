@@ -686,3 +686,98 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 - **Pages deploy after merge**: workflow "Deploy X3 NFL site to GitHub Pages" run [43626347501](https://github.com/karagemop466-tech/X3/actions/runs/43626347501) = **success**; "pages build and deployment" run 43626347492 = **success**; Pages API status `built` (source `main /`, legacy). Live verification 2026-11-14: https://karagemop466-tech.github.io/X3/ serves the landing hub; https://karagemop466-tech.github.io/X3/verification-hub/index.html serves the integration report; corrected CSV pages live under /docs/.
 - (PR #20 was taken by another session's record while this session was in flight; this session's PR was #25.)
 - PR #12 (stale conflicting record PR from arena/972ad7a5-x3): closed with explanation; its substance (PR #8 merge + Pages deploy record) is already in main's history; noted in its comment and here. Nothing of that session was discarded — its dashboard (`lab/`) remains integrated.
+
+## Session `arena/1e2d8ef2-x3` — integration + review hub (CLAIM)
+
+- **Session ID:** `session-arena-1e2d8ef2-x3` · **Branch:** `arena/1e2d8ef2-x3` (platform-fixed; the
+  `session-<id>/<task>` naming in the brief is not available on this platform — deviation logged, same
+  as every prior session). **Base:** `54608abc` (main after PR #18).
+- **Role taken:** final integration session for shared outputs. Eight merged sessions each shipped
+  their own site tree (`/`, `docs/`, `dashboard/`, `lab/`, `x3lab/`, `pages/`, `site/`, `legacy/`); no
+  session consolidated them. That consolidation is this session's job, so the shared outputs
+  (`index.html`, `COORDINATION.md`, `README.md`) are edited here under the integration exception.
+- **Scope claimed (this session):**
+  | Path | Purpose |
+  |---|---|
+  | `hub/**` | new consolidated review hub: landing + category subpages, one table row = one source link |
+  | `hub/data/**.json` | single source of truth for the hub, transcribed from official pages |
+  | `scripts/build_hub.py` | deterministic generator for `hub/**` (fails on any row without a source or UNVERIFIED) |
+  | `scripts/check_hub.py` | link + row-source + JSON gate for the hub |
+  | `index.html` | root landing page (replaces the bare `<meta http-equiv=refresh>` redirect; every archive kept linked) |
+  | `COORDINATION.md`, `README.md` | this section + append-only notes |
+- **Explicitly NOT touched:** `docs/**`, `dashboard/**`, `lab/**`, `x3lab/**`, `pages/**`, `site/**`,
+  `legacy/**`, `data/**`, `analysis/**`, `research/**`, `assets/**`, `scripts/*` owned by other
+  sessions, `tools/*` owned by other sessions, `.github/workflows/pages.yml`.
+- **Open overlap:** PR #12 (`arena/972ad7a5-x3`) is still OPEN and touches `README.md` /
+  `COORDINATION.md` / `index.html`. `arena/64164906-x3` has 5 failing `data-pipeline` workflow runs.
+  Both are logged, not edited. If PR #12 lands first, this branch re-merges `main` additively.
+- **Tasks:** T1 repo audit + irregularities · T2 official data refresh (standings, Week 10 injuries,
+  schedule/results) · T3 line-origination strategy catalog + validation gates + luck controls ·
+  T4 correlation register · T5 injury + depth-deficiency tracker · T6 suggestions review queue ·
+  T7 questions/knowledge-gap register · T8 executive summary · T9 Flagged for Review ·
+  T10 hub build + checks · T11 PR + merge + Pages deploy confirmation. **Status: in progress.**
+
+### Work log (arena/1e2d8ef2-x3) — 2026-11-14, all times UTC
+
+Network note: this session fetched nfl.com directly (fetch_page) — the earlier "nfl.com not
+fetchable" note is out of date. Fetched and read: `/injuries/` (8 chunks), `/standings/league/2026/REG`
+(2 chunks), `/schedules/2026/by-week/week-10` (chunks 0-1),
+`/games/commanders-at-giants-2026-reg-10`, `/news/nfl-week-9-injury-report-2026-season`.
+
+| Task | Status | Files | Sources / verification | Irregularities |
+|---|---|---|---|---|
+| T1 repo audit + coordination | done | `hub/repo-review.html`, `COORDINATION.md` | 180 tracked files, 9 `index.html`, 8 site trees; Pages API read | F-01 fragmentation, F-10 stale CI trigger, PR #12 still open |
+| T2 official data refresh | done | `hub/data/*.csv` | 345 injury rows, 32 standings rows, 14-game slate, Thu result | F-02 standings lag, F-03 practice-status drift, F-04/F-05 source conflicts |
+| T3 line origination + signals + gates | done | `hub/lines.html`, `strategies.html`, `validation.html`, `hub/data/model_config.json`, `research.json` | derived only from T2; 12 signals, 8 strategies, 11 gates, all assumptions printed | F-07 no prices, F-12 uncalibrated parameters, F-21 prior sign/magnitude error |
+| T4 correlations | done | `hub/correlations.html` | 5 recomputed from standings; 7 register rows blank pending data | F-13 prior figures not reproducible, F-20 small-sample caveat |
+| T5 injury + depth deficiency tracker | done | `hub/injuries.html`, `deficiency.html` | per-club Out/Doubtful/Questionable tallies + derived loss; 28 clubs | F-08 no official depth chart → string columns blank, F-17 inactives not yet published |
+| T6 suggestions review queue | done | `hub/suggestions.html`, `hub/data/suggestions.json` | 20 suggestions, each with evidenced problem/options/impact/effort/risk/recommendation; 7 marked done-in-hub, 13 awaiting owner | none |
+| T7 questions / answers / gap register | done | `hub/questions.html`, `hub/data/questions.json` | 18 open (9 blocking) + 10 answered + 8-row missing-input register | F-06 unknown BAL QB, F-14 jurisdiction unverified |
+| T8 executive summary | done | `hub/executive-summary.html` | every figure computed at build time | none |
+| T9 flagged for review | done | `hub/flagged.html`, `hub/data/flags.json` | 21 flags with evidence URLs; none block the merge | — |
+| T10 requirements register | done | `hub/requirements.html`, `requirements.json` | 30 requirements mapped to status/where/evidence | 3 blocked, 2 deferred |
+| T11 build + gate + landing page | done | `scripts/build_hub.py`, `scripts/check_hub.py`, `index.html`, `hub/style.css` | deterministic build; row-source rule; link audit (0 broken); all six other sessions' checkers re-run and still pass | F-15 Pages publishes whole repo |
+| T12 integration, PR, merge, Pages | in progress | `COORDINATION.md`, `README.md` | see PR record below | — |
+
+### Files touched
+`hub/**` (new), `scripts/build_hub.py`, `scripts/check_hub.py` (new), the
+repository root landing hub (registration only: one unit row, one card section and two
+cross-reference lines added to `arena/621bf404-x3`'s page, so the hub is discoverable; their
+counts were recomputed with `scripts/verify_integration.py` rather than hand-edited), `README.md` and `COORDINATION.md` (append-only).
+No file owned by another session was edited, deleted or reformatted. The Pages workflow was
+left as-is, so the hub publishes through the existing `path: '.'` upload.
+
+### Verification performed
+- **345/345 injury rows** independently re-transcribed from the live page match the repo
+  snapshot on player identity and game status; exactly 1 of 345 practice statuses differs
+  (KC DT Norman-Lott, Limited → Did not participate) — the page mutates, so undated
+  fetches are not reproducible (F-03).
+- **Standings**: 32 clubs; league wins = losses (136 = 136), sum PF = sum PA, per-club
+  games = home + road = W+L+T, net = PF-PA, pct = W/(W+L), 274 club-games = 137 games;
+  the league's single tie (WAS-NYG 27-27, Week 5) reconciles with sum T = 2.
+- **Prior-tree data error confirmed**: `dashboard/data/standings.json` has TB division 1-2-0;
+  the official page has 2-0-0, and the .1000 division percentage on the same official row
+  is only consistent with 2-0-0 (F-18). Team-code drift also found: LA/LAR, ARI/AZ (F-19).
+- **Prior correlations re-derived**: +0.7001 / -0.6639 / +0.8794 / +0.3506 against the
+  published +0.6984 / -0.6636 / +0.8781 / +0.3501; neither denominator convention reproduces
+  them, so they came from a different snapshot (F-13).
+- **Prior model column audited arithmetically**: `model_home_spread` = 2 × (exp_home - exp_away)
+  with no sign flip on 12 of 14 rows (other 2 within 0.2) — wrong sign against betting
+  notation and double the magnitude (F-21).
+- **Build checks**: deterministic (two builds byte-identical), 0 broken internal links across
+  18 pages, every data row carries a source link or UNVERIFIED, no unfilled prose token.
+- **Other sessions' gates re-run after the change, all pass**: `scripts/check_site.py`
+  (356 rows, 0 unsourced), `tools/check_links.py` (13 pages / 319 links),
+  `scripts/check_dashboard.py`, `tools/verify_site.py` (14 pages / 49 tables),
+  `node scripts/check_data.js`, `node scripts/check_render.js`.
+- **No manual input** was requested from the owner; open items are published as decisions
+  with recommendations, and nothing analytical was changed on their behalf.
+
+### Handoff to the next session / owner
+- Adopt `hub/` as canonical (S-01) before anyone builds a tenth tree; move the legacy trees
+  under `/archive` in one cleanup PR, and switch Pages to a workflow artifact if admin rights
+  allow (F-15).
+- The price archive (S-04) and the snapshot job (S-05) are the only two items that unlock
+  grading; both lose data for every week they are deferred.
+- `docs/index.html` remains co-owned by `scripts/build_site.py` + the arena-4856379c-x3
+  section: if that generator is re-run, re-apply its section (request logged by that session).

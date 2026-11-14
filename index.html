@@ -16,8 +16,9 @@
     site is either linked to an official source or explicitly marked unverified — nothing is inferred.</p>
     <p class="badge-row">
       <span class="badge ok">Data as of: Week 10 · 2026 season · 2026-11-14</span>
-      <span class="badge">Pages: 89</span>
-      <span class="badge">Internal links: 1,304 — 0 broken</span>
+      <span class="badge">Site pages: 106</span>
+      <span class="badge">Internal links: 1,458 — 0 broken</span>
+      <span class="badge ok">Consolidated review hub: <a href="hub/index.html">hub/</a> — 20 suggestions, 18 questions, 21 flags</span>
       <span class="badge">Unverified values: blank + flagged</span>
     </p>
   </div>
@@ -102,7 +103,11 @@
 
 <section id="decisions">
   <h2>Open decisions blocking progress (13 of 20 questions)</h2>
-  <p>Full register with discovery paths: <a href="dashboard/questions.html">dashboard/questions.html</a>.
+  <p>Full register with discovery paths: <a href="dashboard/questions.html">dashboard/questions.html</a> (20 questions,
+  13 blocking) and <a href="hub/questions.html">hub/questions.html</a> (18 open, 9 blocking, 10 answered with sources, plus a
+  missing-input register). Both were built from the same official pages on 2026-11-14; where the IDs differ the underlying
+  question is the same, and the hub adds the four new blockers found in this session's audit (Q-06 unknown BAL starter,
+  Q-07 uncalibrated parameters, Q-13 refresh cut-off, Q-18 team-id standard).
   The five with the biggest decision impact:</p>
   <table>
     <thead><tr><th>ID</th><th>Question</th><th>Why it blocks</th><th>How to discover the answer</th></tr></thead>
@@ -122,6 +127,9 @@
   <a href="dashboard/suggestions.html">dashboard/suggestions.html</a> · alternatives:
   <a href="x3lab/suggestions.html">x3lab/suggestions.html</a> (12) ·
   <a href="docs/pages/suggestions.html">docs/pages/suggestions.html</a> (14).</p>
+  <p>Independent queue on the same subject: <a href="hub/suggestions.html">hub/suggestions.html</a> (20 items; S-01 on
+  consolidation agrees with S-N1 here, and S-20 states the recommended order of work). Nothing in either queue has been
+  implemented in the analytical layer without an owner decision.</p>
   <h3>New proposals from the final integration session — <span class="pill warn">PROPOSAL, not implemented</span></h3>
   <table>
     <thead><tr><th>ID</th><th>Suggestion</th><th>Decision-making benefit</th><th>Option A</th><th>Option B</th><th>Recommended path</th></tr></thead>
@@ -134,6 +142,49 @@
       <tr><td>S-N6</td><td>Keep leaderboard rewards notional until legal review clears the jurisdiction</td><td>Prevents building a prize system that cannot lawfully pay</td><td>Notional points + public ranking</td><td>Seek counsel before any funded season</td><td>A now; revisit B when Q-17 is answered</td></tr>
     </tbody>
   </table>
+</section>
+
+<section id="review-hub">
+  <h2>Consolidated review hub — <a href="hub/index.html">hub/</a> <span class="pill warn">added by session arena/1e2d8ef2-x3</span></h2>
+  <p>A second review surface built the same day as this landing hub, from a fresh fetch of the same official pages.
+  It contributes what the earlier units could not: a <strong>suggestions queue for owner review</strong> (20 items, each with
+  options and a recommendation), a <strong>questions and missing-information register</strong> (18 open, 9 blocking, 10 answered),
+  <strong>13 originated Week 10 lines</strong> with the formula and every parameter printed, an <strong>11-gate validation
+  framework</strong>, a <strong>12-row correlation register</strong> (5 computed, 7 blank because the input does not exist),
+  and <strong>21 published flags</strong> — including a wrong Tampa Bay division record and a sign/magnitude error found in
+  <code>dashboard/data/</code>. Legacy units are indexed at <a href="hub/archive.html">hub/archive.html</a> and were left untouched.</p>
+  <div class="cards">
+    <a class="card" href="hub/suggestions.html">
+      <span class="num">20</span>
+      <span class="lbl">Suggestions in a review queue — pick a path before anything is implemented</span>
+      <span class="src">Evidenced problem, options, impact, effort, risk per row</span>
+    </a>
+    <a class="card" href="hub/questions.html">
+      <span class="num">18 / 9</span>
+      <span class="lbl">Open questions / of those blocking a decision — plus 10 answered and an 8-row gap register</span>
+      <span class="src">Each row states known, missing, and the discovery path</span>
+    </a>
+    <a class="card" href="hub/lines.html">
+      <span class="num">13</span>
+      <span class="lbl">Originated spreads and totals for the unplayed Week 10 games (badged DERIVED)</span>
+      <span class="src">Inputs: nfl.com/standings, /injuries, /schedules — market cells blank by policy</span>
+    </a>
+    <a class="card" href="hub/validation.html">
+      <span class="num">11 / 0</span>
+      <span class="lbl">Blocking validation gates defined / strategies that have passed them</span>
+      <span class="src">Pre-registration, calibration, PBO (SSRN 2326253), DSR (SSRN 2460551), forward test</span>
+    </a>
+    <a class="card" href="hub/injuries.html">
+      <span class="num">345</span>
+      <span class="lbl">Week 10 injury rows re-transcribed and diffed against the repo snapshot (345/345 statuses match)</span>
+      <span class="src">Source: nfl.com/injuries/ · 66 Out · 10 Doubtful · 84 Questionable · 185 undesignated</span>
+    </a>
+    <a class="card" href="hub/flagged.html">
+      <span class="num">21</span>
+      <span class="lbl">Flags published, none blocking the merge — with evidence links for manual review</span>
+      <span class="src">Includes 2 data defects found in existing trees and 3 official-vs-official conflicts</span>
+    </a>
+  </div>
 </section>
 
 <section id="units">
@@ -149,6 +200,7 @@
       <tr><td>(root pages)</td><td>13</td><td>arena/d667d44d-x3 + arena/3dbc4678-x3</td><td>Standalone category pages (executive summary, lines, injuries, …)</td><td><a href="executive-summary.html">executive-summary.html</a></td></tr>
       <tr><td>pages/ + site/</td><td>7</td><td>arena/1a771fcd-x3</td><td>First integrated site unit (archive)</td><td><a href="pages/executive-summary.html">pages/executive-summary.html</a></td></tr>
       <tr><td>legacy/</td><td>1</td><td>arena/0c38f465-x3</td><td>Preserved original landing page</td><td><a href="legacy/index.html">legacy/index.html</a></td></tr>
+      <tr><td>hub/</td><td>17</td><td>arena/1e2d8ef2-x3</td><td>Consolidated review hub: suggestions queue, questions and gap register, originated lines, gates, correlation register, injury and depth tracker, flags</td><td><a href="hub/index.html">hub/index.html</a></td></tr>
       <tr><td>verification-hub/</td><td>1</td><td>arena/621bf404-x3</td><td>Line-by-line integration verification report + audit report (this session)</td><td><a href="verification-hub/index.html">verification-hub/index.html</a></td></tr>
     </tbody>
   </table>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validation gates &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a' class="on"'ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Validation gates</h1>
+<p class="note">A strategy enters the leaderboard only when every blocking gate below is passed. All are currently unpassed, so the empty leaderboard on the next page is the correct output, not a missing feature.</p>
+<table class=""><thead><tr>
+<th>#</th>
+<th>Gate</th>
+<th>Requirement</th>
+<th>Threshold</th>
+<th>Status</th>
+<th>Why it exists</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr><td>G-00</td><td>Provenance</td><td>Every input row carries a source URL and an as-of timestamp; unknown values are blank, never imputed.</td><td>100% of rows; enforced by scripts/check_hub.py at build</td><td>PASSED for the hub&#x27;s own tables</td><td>One unlabelled fetch makes the whole backtest unreproducible</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-01</td><td>Pre-registration</td><td>Strategy spec, parameters, entry/exit and staking rule committed and hash-stamped before any graded outcome is recorded.</td><td>git commit + sha256 of the spec file recorded in the row</td><td>NOT MET (no hash recorded yet)</td><td>Anything tuned after seeing results is hindsight</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-02</td><td>Sample size</td><td>Minimum graded bets, weeks and seasons before a strategy is ranked.</td><td>&gt;=200 bets, &gt;=40 distinct game-weeks, &gt;=2 seasons (convention, not a league rule)</td><td>NOT MET (0 graded bets exist)</td><td>Small samples are variance wearing a costume</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-03</td><td>Calibration</td><td>Model parameters fitted on data the strategy is not scored on, with a held-out year.</td><td>no shared season between fit and test; reported fit error</td><td>NOT MET (all parameters are assumptions, FLG-12)</td><td>Uncalibrated weights just encode the author&#x27;s priors</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-04</td><td>Cost-aware pricing</td><td>Grading uses real captured prices including vig, at a stated capture time.</td><td>median |model - close| and CLV computed on &gt;=200 bets</td><td>IMPOSSIBLE TODAY - no verified price source (FLG-07)</td><td>Beating a midpoint is not beating a market</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-05</td><td>Uncertainty reporting</td><td>Every published performance figure carries an interval and a max-drawdown; no bare point estimates.</td><td>bootstrap 95% CI over bets, clustered by game-week</td><td>NOT MET</td><td>A number without error bars is an invitation to overbet</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-06</td><td>Overfitting test</td><td>Probability of backtest overfitting estimated by CSCV across the parameter grid actually searched.</td><td>PBO &lt; 0.5 (paper convention)</td><td>NOT MET</td><td>The best in-sample setting is usually the most overfit one (SRC-11)</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253">SRC-11</a></td></tr>
+<tr><td>G-07</td><td>Selection-bias correction</td><td>Deflated Sharpe ratio accounting for the number of variants tried, skew and kurtosis of returns.</td><td>DSR &gt; 0 at 95% (paper convention)</td><td>NOT MET</td><td>Trials you discarded still inflate the survivor&#x27;s score (SRC-10)</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551">SRC-10</a></td></tr>
+<tr><td>G-08</td><td>Robustness</td><td>Performance survives subset and leave-out tests: home/away, rest days, division, removing the best 5% of bets.</td><td>sign of edge preserved in &gt;=80% of subsets</td><td>NOT MET</td><td>Three lucky weeks can carry a whole backtest</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-09</td><td>Correlation and exposure</td><td>Leg-correlation matrix measured; per-game and per-club caps enforced; parlays priced jointly not multiplied.</td><td>max |r| per parlay 0.30 until validated; single-club exposure cap stated in Q-10</td><td>NOT MET (no matrix beyond an n=16 pilot)</td><td>Correlation is how two edges become one bet</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>G-10</td><td>Paper-trade gate</td><td>After all above: a forward, untouched period run at the stated staking rule before any reward consideration.</td><td>&gt;=4 weeks of forward results, published before review</td><td>NOT MET</td><td>The only test that cannot be gamed is the one you have not seen yet</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+</tbody></table>
+<p>11 of 11 gates are blocking; 0 are passed by the hub's own provenance rule (G-00). Statistical thresholds (n, PBO, DSR) are conventions taken from the cited papers, not league rules - see FLG-11/FLG-12.</p>
+<h2>What each gate needs before it can be attempted</h2>
+<table class=""><thead><tr>
+<th>Gate</th>
+<th>Missing dependency</th>
+<th>First task</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr><td>G-01 Pre-registration</td><td>a hash recorded per spec</td><td>commit the spec, store its sha256 in the row</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">gates spec</a></td></tr>
+<tr><td>G-02 Sample size</td><td>graded bets</td><td>cannot start before G-04</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">gates spec</a></td></tr>
+<tr><td>G-03 Calibration</td><td>prices + game logs + lineup history</td><td>run S-04 and S-07, then fit on held-out years</td><td><a href="suggestions.html">S-04</a></td></tr>
+<tr><td>G-04 Pricing</td><td>a closing-line capture</td><td>S-04 option B: manual nightly capture</td><td><a href="flagged.html">FLG-07</a></td></tr>
+<tr><td>G-05 Uncertainty</td><td>a bet ledger</td><td>bootstrap intervals once G-04 exists</td><td><a href="suggestions.html">S-08</a></td></tr>
+<tr><td>G-06 PBO</td><td>the parameter grid actually searched</td><td>log every variant tried, including discards</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253">SRC-11</a></td></tr>
+<tr><td>G-07 DSR</td><td>trial count and return moments</td><td>the same log feeds the deflation term</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551">SRC-10</a></td></tr>
+<tr><td>G-08 Robustness</td><td>a subset ledger</td><td>define subsets before grading, not after</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">gates spec</a></td></tr>
+<tr><td>G-09 Correlation</td><td>the blank rows on the correlations page</td><td>measure the matrix from game logs</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">gates spec</a></td></tr>
+<tr><td>G-10 Forward test</td><td>untouched future games</td><td>paper trade four weeks before any reward talk</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">gates spec</a></td></tr>
+</tbody></table>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
+  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
+  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>
