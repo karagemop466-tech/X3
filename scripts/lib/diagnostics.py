@@ -68,9 +68,15 @@ def describe_html(path: str, max_tables: int = 3, max_cells: int = 12) -> dict:
     # A compact, representative sample of the game cards, so a parser can be
     # written or repaired from the repository alone. The full page is
     # megabytes long; two cards are enough to see the structure.
-    cards = []
+    # One card per distinct game URL. The page shows the same games several
+    # times (a score strip, a mobile strip and the week's own list), so the
+    # first card for each URL is kept, which reaches the week's own list.
+    cards: list[str] = []
+    seen_hrefs: set[str] = set()
     for a in soup.find_all("a", href=True):
         if "/games/" not in a["href"]:
+            continue
+        if a["href"] in seen_hrefs:
             continue
         node = a
         for _ in range(8):
@@ -78,9 +84,10 @@ def describe_html(path: str, max_tables: int = 3, max_cells: int = 12) -> dict:
             if node is None:
                 break
             if node.name in ("li", "article", "section", "div"):
+                seen_hrefs.add(a["href"])
                 cards.append(str(node))
                 break
-        if len(cards) >= 30:
+        if len(cards) >= 40:
             break
     if cards:
         out["game_card_sample"] = cards
