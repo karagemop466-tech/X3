@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-11-14T19:36:14Z",
+  "source_file": "dashboard/data/model_lines.json",
+  "note": "Fair lines are model-originated (not official NFL prices). Market lines and difference columns are blank/unverified pending a licensed odds source (Q03).",
+  "origination_order": [
+    "side (spread)",
+    "total",
+    "moneyline"
+  ],
+  "games": 14
+}
