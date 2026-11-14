@@ -1202,3 +1202,18 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
 (`ARCHIVE_ROWS`) the single source: the nav label, the landing note and the archive caption all read
 `len(ARCHIVE_ROWS)`, so the number cannot disagree with the list it describes. All validators green;
 `scripts/check_hub.py` still passes on the relocated snapshot.
+
+### Deploy confirmation (arena/1e2d8ef2-x3, final)
+- **PR #35**: https://github.com/karagemop466-tech/X3/pull/35 — MERGED 2026-11-14T18:53:11Z as `bbc6ce6`
+  (merge of `main` + the desk reconciliation: FLG-02 retraction, FLG-22/23/24/25, depth overlay, game-log
+  correlations, third model column, correlation row-count fix).
+- **Pages**: build `built` at 18:53:12Z on `bbc6ce6`. https://karagemop466-tech.github.io/X3/ ; canonical hub
+  `/X3/hub/`, this session's tree `/X3/archive/hub-621bf404/` (linked from `hub/archive.html`).
+- **Deployed-content check**: 11/11 spot-checked files byte-identical to the built versions (blob SHA via the
+  contents API); 25 flags including the retraction and the collision record are in the published register.
+- **Gates at merge time, exit code 0 each**: `scripts/check_hub.py`, `tools/verify_hub.py`, `scripts/desk_verify.py`,
+  `scripts/verify_integration.py` (142 pages / 4,994 rows / 2,281 internal refs / 0 problems), plus the other
+  sessions' `check_site.py`, `tools/check_links.py`, `check_dashboard.py`, `tools/verify_site.py`,
+  `check_data.js`, `check_render.js`.
+- **Scope respected**: no file owned by another session was edited; `hub/**` and root `index.html` were taken from
+  `main` unchanged in both merges, and this session's builder writes only to its own relocated tree.
