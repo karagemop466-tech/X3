@@ -113,4 +113,7 @@ unclaimed | in progress | done | needs review | blocked
 
 ### PR and deploy log (this session)
 
-- PR #4: https://github.com/karagemop466-tech/X3/pull/4 (`arena/0c38f465-x3` to `main`). Result: pending at the time of this entry; updated below after merge.
+- PR #4: https://github.com/karagemop466-tech/X3/pull/4 (`arena/0c38f465-x3` to `main`). Result: MERGED (merge commit `ec0db9e`) at 2026-11-14 with `gh pr merge --merge`. Mergeability was MERGEABLE before merge; a full HTML link check (25 pages, 332 internal refs) found 0 broken.
+- Pages deploy: workflow `pages build and deployment` run 43547926539 on `main` completed with success; Pages build for `ec0db9e` reports `built`.
+- Live URL check: not verified from this sandbox (outbound access is limited to GitHub and package hosts, so `karagemop466-tech.github.io` returned no response). Verify manually at https://karagemop466-tech.github.io/X3/docs/ and /X3/legacy/index.html.
+- Open items after merge (not blocking, per the brief): T05 strategy values, T06 depth charts (blocked), news-only items not yet verified, Japan Penal Code Art. 185-186 full text not read, Week 10 game count conflict. See data/flags.csv and data/questions.csv.
