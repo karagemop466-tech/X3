@@ -362,7 +362,9 @@ def p_lines():
     board = table(["When", "Matchup", "Base margin (H)", "Injury delta", "Adj margin (H)",
                    "Model spread (H)", "Model total", "Market spread/total", "Signal",
                    "1st-string vac. H/A", "Sources"], rows,
-                  note="Positive margin = home team is worse. Model spread is rounded to the half point; "
+                  note="Margin is home expected points minus away expected points, so a POSITIVE margin means the "
+         "home club is the better side; the spread is that margin negated (a +3.64 margin becomes -3.5). "
+         "Rounded to the half point; "
                        "negative = home favoured. Market columns are blank because no price source exists "
                        "in this repository (flag F-01).")
     tr = []
@@ -1148,11 +1150,21 @@ document.querySelectorAll('input.filt').forEach(function(inp){
 
 
 def main():
+    # ---- X3-v2 extension (session arena/873c7396-x3): additive pages + register rows
+    import x3_content2 as X2
+    X2.register(esc, badge, link, table)
+    C.FLAGS.extend(X2.NEW_FLAGS)
+    C.Q.extend(X2.NEW_QUESTIONS)
+    C.SUG.extend(X2.NEW_SUGGESTIONS)
+    NAV.extend(X2.NAV_EXTRA)
     # extra pages that need the helpers defined above
     build_prereg()
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
     p_injuries(); p_depth(); p_leader(); p_req(); p_questions(); p_suggestions()
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
+    for fn in X2.PAGES:  # results / pricing / origination / signal / replacement
+        fname, title, intro, body = fn()
+        page(fname + ".html", title, intro, body, fname)
     with open(os.path.join(HUB, "assets", "hub.css"), "w", encoding="utf-8") as f:
         f.write(CSS)
     with open(os.path.join(HUB, "assets", "hub.js"), "w", encoding="utf-8") as f:
@@ -1239,6 +1251,29 @@ data does not exist here yet.</p>
 <a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
 is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is
 <a href="COORDINATION.md">COORDINATION.md</a>.</p></section>
+<section class="callout" style="margin-top:22px">
+<h2>Trading desk - the eight operating requirements</h2>
+<p><b>Registration, not replacement.</b> <code>ops/</code> is a separate trading-desk tree that answers the eight
+operating requirements directly and says plainly where it cannot: prices originated in a fixed order
+(side, then total, then moneyline), a price-snapshot store with opening and closing schema for every market,
+correlations that each carry their n, injured starters resolved to the depth of their replacement, and a
+signal-vs-staking leaderboard whose demotion gate is dry-run to prove it fires.</p>
+<p><a href="ops/index.html"><b>Enter the trading desk</b></a> &middot;
+<a href="ops/executive-summary.html">Executive summary</a> &middot;
+<a href="ops/lines.html">Originated lines</a> &middot;
+<a href="ops/snapshots.html">Price snapshots</a> &middot;
+<a href="ops/leaderboard.html">Leaderboard</a> &middot;
+<a href="ops/gates.html">Gates &amp; demotion</a> &middot;
+<a href="ops/correlation.html">Correlation</a> &middot;
+<a href="ops/depth.html">Replacement depth</a> &middot;
+<a href="ops/results.html">Results feed</a> &middot;
+<a href="ops/questions.html">Open questions</a> &middot;
+<a href="ops/suggestions.html">Suggestions</a> &middot;
+<a href="ops/flagged.html">Flagged for review</a></p>
+<p class="note">Every market price on the trading desk is blank on purpose: no official market feed exists in
+this repository, so fair-versus-market, ROI and closing-line value are published as blocked rather than
+estimated.</p>
+</section>
 </main>
 </body></html>"""
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:

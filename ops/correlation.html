@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL trading desk operations: originated lines, price snapshots, verified results, receiver props, correlation and a signal-vs-staking leaderboard.">
+<title>Correlation - X3 NFL trading desk</title>
+<link rel="stylesheet" href="assets/ops.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3 <span>NFL trading desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> &middot; season 2026, week 10 of record &middot;
+  <a href="verification.html">verification</a> &middot; <a href="flagged.html">flagged</a></div>
+</header>
+<nav class="main"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="lines.html" class="">Originated lines</a><a href="order.html" class="">Origination order</a><a href="snapshots.html" class="">Price snapshots</a><a href="props.html" class="">Player props</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Gates &amp; demotion</a><a href="correlation.html" class="on">Correlation</a><a href="depth.html" class="">Replacement depth</a><a href="results.html" class="">Results feed</a><a href="requirements.html" class="">Requirements</a><a href="questions.html" class="">Open questions</a><a href="suggestions.html" class="">Suggestions</a><a href="method.html" class="">Method &amp; sources</a><a href="verification.html" class="">Verification</a><a href="flagged.html" class="">Flagged for review</a><a href="repo-review.html" class="">Repo review</a></nav>
+<main>
+<div class="crumb"><a href="../index.html">Site root</a> / <a href="index.html">Trading desk</a></div>
+<h1>Correlation - official numbers only, n on every row</h1>
+
+<p class="lede">Every coefficient on this page is computed from official numbers captured in this repository,
+prints its own n, and carries a 95% confidence interval. A coefficient whose interval includes zero is published
+as "not distinguishable from no relationship" - not as a finding. There are 9 of them.</p>
+<h2>Coefficients</h2>
+<div class="tw"><table class=""><caption>9 correlations, official inputs only </caption><thead><tr><th>Pair</th><th>r</th><th>n</th><th>CI95</th><th>p</th><th>Reading</th><th>Used for</th><th>Source</th></tr></thead><tbody><tr><td>points for vs points against (club level)</td><td>-0.087</td><td>32</td><td>-0.423 - 0.27</td><td>0.6362</td><td>not distinguishable from no relationship: the 95% CI includes 0</td><td>rating sanity check</td><td><a href="https://www.nfl.com/standings/league/2026/REG">source</a></td></tr><tr><td>net points vs win percentage (club level)</td><td>0.872</td><td>32</td><td>0.751 - 0.936</td><td>0.0</td><td>CI excludes 0 at n=32</td><td>standings sanity check</td><td><a href="https://www.nfl.com/standings/league/2026/REG">source</a></td></tr><tr><td>home win pct vs road win pct (club level)</td><td>0.356</td><td>32</td><td>0.009 - 0.627</td><td>0.0453</td><td>CI excludes 0 at n=32</td><td>home-field consistency</td><td><a href="https://www.nfl.com/standings/league/2026/REG">source</a></td></tr><tr><td>game total vs |margin| (game level)</td><td>-0.016</td><td>137</td><td>-0.183 - 0.152</td><td>0.8554</td><td>not distinguishable from no relationship: the 95% CI includes 0</td><td>same-game parlay leg screen</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-N">source</a></td></tr><tr><td>away score vs home score (game level)</td><td>0.076</td><td>137</td><td>-0.093 - 0.241</td><td>0.3782</td><td>not distinguishable from no relationship: the 95% CI includes 0</td><td>correlated two-leg parlay screen</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-N">source</a></td></tr><tr><td>opponent passing yards allowed vs opponent passing TDs allowed (club level)</td><td>0.565</td><td>32</td><td>0.27 - 0.763</td><td>0.0007</td><td>CI excludes 0 at n=32</td><td>defence quality screen for opposing passing props</td><td><a href="https://www.nfl.com/stats/team-stats/defense/passing/2026/reg/all">source</a></td></tr><tr><td>own passing yards vs own passing TDs (club level)</td><td>0.813</td><td>32</td><td>0.649 - 0.905</td><td>0.0</td><td>CI excludes 0 at n=32</td><td>offence quality screen for own passing props</td><td><a href="https://www.nfl.com/stats/team-stats/offense/passing/2026/reg/all">source</a></td></tr><tr><td>receptions vs receiving yards, within player (fixed effects)</td><td>0.831</td><td>42</td><td>0.705 - 0.906</td><td>0.0</td><td>CI excludes 0 at n=42</td><td>prop leg shopping: same-player combo</td><td><a href="https://www.nfl.com/players/ceedee-lamb/stats/">source</a></td></tr><tr><td>Tee Higgins vs Ja&#x27;Marr Chase receiving yards, same game (CIN)</td><td>-0.143</td><td>8</td><td>-0.77 - 0.625</td><td>0.7358</td><td>not distinguishable from no relationship: the 95% CI includes 0</td><td>same-game parlay joint probability</td><td><a href="https://www.nfl.com/players/tee-higgins/stats/">source</a></td></tr></tbody></table></div><p class="note">Pearson r; Fisher z interval; two-sided p from Student t via the incomplete beta function. No coefficient is rounded before its interval is computed.</p>
+<h2>Method, and why n is printed on every row</h2>
+<p>A correlation without its sample size is not a number, it is a rumour. r=0.87 at n=32 and r=0.87 at n=8 mean
+very different things, and the intervals on this page show it: the n=32 net-points coefficient
+(0.872) is decisive, while the n=8 team-mate coefficient
+(-0.143) spans almost the whole range.</p>
+<h2>The one that matters for parlays</h2>
+<p>A two-leg same-game parlay is only correctly priced with a joint probability. The one usable joint input here
+is the receptions-vs-yards relationship <i>within</i> a player, which is strongly positive
+(r=0.831,
+n=42) - but that is not the pair a parlay holds.
+For the pair a parlay actually holds (two teammates' yards), the measured coefficient is
+-0.143 at n=8, which is not distinguishable from zero. The
+honest conclusion: <b>multiply the marginals, and print the caveat</b>.</p>
+<h2>What is refused</h2>
+<ul>
+<li><b>No coefficient from a secondary source.</b> If a number is not computed here from an official page linked
+on this page, it is not published.</li>
+<li><b>No coefficient without n.</b> Enforced by the build.</li>
+<li><b>No causal language.</b> These are co-movements in one partial season.</li>
+</ul>
+
+</main>
+<footer>Built by <code>scripts/ops_build.py</code> from <code>data/ops/*.json</code>. Every table row links to
+an official source or is badged. No market price exists in this repository, so market columns are blank by
+policy, never estimated. Shared task board: <a href="../COORDINATION.md">COORDINATION.md</a>.</footer>
+</body></html>

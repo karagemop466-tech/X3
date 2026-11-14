@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requirements - X3 decision council</title>
+<link rel="stylesheet" href="assets/council.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>decision council</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<div class="wrap">
+<nav class="nav"><a href="index.html"><b>Overview</b><span>The eight requirements at a glance</span></a>
+<a href="executive-summary.html"><b>Executive summary</b><span>The one-page brief</span></a>
+<a class="on" href="requirements.html"><b>Requirements</b><span>Each requirement as an acceptance test</span></a>
+<a href="questions.html"><b>Questions &amp; answers</b><span>What is known, what is missing, what it blocks</span></a>
+<a href="suggestions.html"><b>Suggestions</b><span>Review the paths, then choose</span></a>
+<a href="verification.html"><b>Verification</b><span>Line by line, with the recomputation</span></a>
+<a href="repo-review.html"><b>Repo review</b><span>Every tree audited</span></a>
+<a href="flagged.html"><b>Flagged for review</b><span>Unverified items and irregularities</span></a>
+<a href="sources.html"><b>Sources</b><span>Official pages and repository artifacts</span></a></nav>
+<main>
+<h1>The eight requirements as acceptance tests</h1>
+<p class="lede">Read each test, then read what the repository does. The gap between them is the work. Every verdict is linked to the file it was measured in.</p>
+
+<p>Each requirement of the brief is restated as a test the repository either passes or fails. A
+requirement is <b>MET</b> only when its acceptance test passes on published data; <b>PARTIAL</b> when
+part of it passes; <b>NOT MET</b> when nothing satisfies it; <b>BLOCKED</b> when it cannot be satisfied
+without a decision or a purchase. Verdicts come from reading the files, not from intent.</p>
+<div class="rq partial">
+<h3><span class="mono">R1</span> Price-snapshot store that records opening and closing numbers for every market we originate <span class="bad warn">PARTIAL</span></h3>
+<p>Without both ends of the price, closing-line value cannot be measured, and without closing-line value a hit rate is not evidence of skill.</p>
+<p class="m"><b>Acceptance test.</b> For every originated market there is one row per book carrying market_id, book, open_price, open_timestamp, close_price, close_timestamp, price_format and source_url. A market cannot be graded unless open and close are both present.</p>
+<p class="m"><b>Status.</b> Store is live with schema origin-snapshots-v1, append-only by (market_id, phase): 39 open rows RECORDED, 39 close rows PENDING. Every market_line is blank, so no closing-line value can be computed yet.</p>
+<p class="m"><b>Owner.</b> origin/data/snapshots.json (session arena/f2df8317-x3, merged in PR #47)</p>
+<p class="m"><b>Blocker.</b> No price provider. The store is waiting on a data-rights decision, not on code. See Q01 and S01.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/snapshots.json">repo artifact - schema live, prices blank</a></p>
+</div>
+<div class="rq partial">
+<h3><span class="mono">R2</span> Verified results feed so backtests and ROI can be computed at all <span class="bad warn">PARTIAL</span></h3>
+<p>ROI is (settled return - stake) / stake. Every term needs a settled result, so without a results feed no leaderboard row can be scored.</p>
+<p class="m"><b>Acceptance test.</b> One row per completed game with final score for both clubs, the official source URL, the retrieval timestamp, and a written settlement rule per market type (side, total, moneyline) including how ties and pushes are treated.</p>
+<p class="m"><b>Status.</b> The feed exists and backtests now run on it: origin/data/results.json holds 163 games / 137 finals with a per-row official URL, cross-checked 163/163 against the desk game log, and a walk-forward backtest is published per week. ROI still cannot be computed, and no settlement rule is written down.</p>
+<p class="m"><b>Owner.</b> origin/data/results.json and origin/data/backtest.json (session arena/f2df8317-x3, merged in PR #47); data/desk/games.json (session arena/3bf7cc8b-x3)</p>
+<p class="m"><b>Blocker.</b> No settlement rule, and no player-prop results. See Q04, S02, S09.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/results.json">repo artifact - transcription of official week pages</a></p>
+</div>
+<div class="rq met">
+<h3><span class="mono">R3</span> Originate the side first, then the total, then the moneyline <span class="bad ok">MET</span></h3>
+<p>The moneyline is a function of the expected margin and its uncertainty. Deriving it last keeps the three markets mutually consistent; deriving them independently produces arbitrage against yourself.</p>
+<p class="m"><b>Acceptance test.</b> Each game carries three originated rows in the order side, total, moneyline. The moneyline row records the margin and the sigma it was derived from, so it is reproducible.</p>
+<p class="m"><b>Status.</b> 39 originated rows, 13 games x 3 market types, with seq order side then total then moneyline. This session re-checked the order for all 13 games: 0 violations. The moneyline records its own derivation - P(home win) = Phi(adj_margin / 13.5) on the side&#x27;s adjusted margin - so it is reproducible from the side.</p>
+<p class="m"><b>Owner.</b> origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)</p>
+<p class="m"><b>Blocker.</b> None. The order requirement is satisfied.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json">repo artifact - order verified 0 violations of 13</a></p>
+</div>
+<div class="rq partial">
+<h3><span class="mono">R4</span> Publish the model&#x27;s fair line, the market line, and the difference as separate columns <span class="bad warn">PARTIAL</span></h3>
+<p>The difference is the whole signal. Publishing only a fair line leaves the reader to do the subtraction against a price they cannot see.</p>
+<p class="m"><b>Acceptance test.</b> Three distinct columns per market: fair_line, market_line, and edge = fair_line - market_line, each with its own units label and sign convention.</p>
+<p class="m"><b>Status.</b> The column contract exists: fair_line, market_line and diff are three separate fields on all 39 rows, each with a unit label and a recorded sign convention. fair_line is populated for every market. market_line and diff are blank in all 39 rows because no source publishes a price.</p>
+<p class="m"><b>Owner.</b> origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)</p>
+<p class="m"><b>Blocker.</b> Depends on R1. No official source publishes NFL prices. See Q01 and S01.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json">repo artifact - columns present, market and diff blank</a></p>
+</div>
+<div class="rq partial">
+<h3><span class="mono">R5</span> Separate &#x27;signal&#x27; from &#x27;staking&#x27; in the leaderboard so a lucky staking run cannot mask a bad signal <span class="bad warn">PARTIAL</span></h3>
+<p>A flat-stake record measures whether the fair line was right. A sized record mixes that with how much was risked. Ranking on the blend lets a Kelly run on coin-flips outrank a real edge.</p>
+<p class="m"><b>Acceptance test.</b> Every leaderboard row carries two independently computed scores: a signal score that is stake-independent (mean closing-line value per bet, with n and a 95% CI) and a staking score that is PnL-dependent (ROI, drawdown, units). A strategy must be able to rank top-decile on signal while flat on staking, and the board must show both columns.</p>
+<p class="m"><b>Status.</b> The separation is implemented in the data rather than only described: every leaderboard row carries a signal block (metric, value, n, rank) and a separate staking block. The signal half is populated - side winner-direction accuracy 0.595 (n = 121), total over/under hit rate 0.4957 (n = 117), moneyline Brier 0.2373 (n = 121). The staking half is blocked with 0 settled bets.</p>
+<p class="m"><b>Owner.</b> origin/data/leaderboard.json (session arena/f2df8317-x3, merged in PR #47)</p>
+<p class="m"><b>Blocker.</b> The staking half needs prices and a settlement rule. See Q01, Q04, S05.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json">repo artifact - signal populated, staking blocked</a></p>
+</div>
+<div class="rq partial">
+<h3><span class="mono">R6</span> Track the depth of the replacement, not just the fact of a replacement <span class="bad warn">PARTIAL</span></h3>
+<p>&#x27;Starter out&#x27; and &#x27;third-string guard starting&#x27; are different events with different expected effects. Counting only the fact treats them as identical and throws away the signal.</p>
+<p class="m"><b>Acceptance test.</b> For each absent starter: the ordinal depth of the replacement (1st, 2nd, 3rd, 4th string or undrafted/free-agent pickup), the club chart URL, and the chart&#x27;s as-of date. A row without an as-of date is published as unverified, not as fact.</p>
+<p class="m"><b>Status.</b> An ordinal is now recorded, not just a name: replacement_ordinal is populated for 42 of 76 Week 10 absences, with a reason_if_blank field explaining each gap. Zero of 76 rows carry a chart as-of date, and the club charts are self-labelled unofficial by the clubs that publish them.</p>
+<p class="m"><b>Owner.</b> origin/data/depth.json (session arena/f2df8317-x3, merged in PR #47); data/desk/deficiencies.json (session arena/3bf7cc8b-x3)</p>
+<p class="m"><b>Blocker.</b> No chart carries a date, so an ordinal cannot be tied to a point in time. See Q06, S06, S07, and flag C-12 for a count discrepancy between the two trees.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json">repo artifact - club charts, no as-of date</a></p>
+</div>
+<div class="rq met">
+<h3><span class="mono">R7</span> Compute correlations only from officially sourced numbers and publish n with each value <span class="bad ok">MET</span></h3>
+<p>A correlation is the input to the parlay leg screen. An r with no n is unfalsifiable, and an r computed on unlogged data is a guess dressed as a measurement.</p>
+<p class="m"><b>Acceptance test.</b> Every published coefficient carries n, the official source URL, a 95% CI, and a plain reading. A coefficient whose CI contains 0 is labelled &#x27;not distinguishable from no relationship&#x27; and is not used to price anything.</p>
+<p class="m"><b>Status.</b> Every coefficient carries n, a 95% interval, and the official source URL, and the mislabelled pair has been republished correctly: game total vs |home margin| is now -0.0157 and signed home margin vs total is -0.1607, as two separate rows. The older desk copy still carries the wrong label - see flag C-01.</p>
+<p class="m"><b>Owner.</b> origin/data/correlations.json (session arena/f2df8317-x3, merged in PR #47); data/desk/correlations.json (stale copy)</p>
+<p class="m"><b>Blocker.</b> None. See flag C-01 for the stale copy still published on another tree.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/correlations.json">repo artifact - n and CI published with every value</a></p>
+</div>
+<div class="rq met">
+<h3><span class="mono">R8</span> Define a demotion gate that sends a live strategy back to paper <span class="bad ok">MET</span></h3>
+<p>A promotion gate with no demotion gate is a one-way door: a strategy that was lucky once stays live forever. The demotion rule is what makes the promotion rule mean anything.</p>
+<p class="m"><b>Acceptance test.</b> A written rule with numeric thresholds, a look-back window, and an automatic action: for example, return to paper when the rolling 200-bet closing-line value is negative, or when the 95% CI on ROI contains zero over the last 200 graded bets, or on any data provenance failure. Every demotion is logged with its trigger.</p>
+<p class="m"><b>Status.</b> Gate D-1 is written with five numeric triggers and an automatic action: rolling median closing-line value of the last 20 settled bets &lt;= 0 twice in a row (D-1a); drawdown from peak &gt;= 25% (D-1b); signal below 50% for three consecutive cycles (D-1c); any data-integrity failure (D-1d); any unregistered model change (D-1e). D-1d and D-1e are armed now; D-1a to D-1c arm at promotion. D-2 defines re-promotion.</p>
+<p class="m"><b>Owner.</b> origin/data/gates.json (session arena/f2df8317-x3, merged in PR #47)</p>
+<p class="m"><b>Blocker.</b> None on the rule. Enforcement is still manual - see Q14 and S04.</p>
+<p class="m"><b>Evidence.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/gates.json">repo artifact - D-1 triggers and D-2 re-promotion</a></p>
+</div>
+<h2>Standing project requirements</h2>
+<p>These are the rules this repository already holds itself to. They are listed so a reviewer can see
+the whole contract in one place.</p>
+<table><thead><tr>
+<th>Rule</th>
+<th>Where it is enforced</th>
+<th>Class</th>
+</tr></thead><tbody>
+<tr><td>Every published row carries an official source link or an explicit UNVERIFIED badge</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/council_verify.py">scripts/council_verify.py</a> on this tree; <a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/audit_all.py">scripts/audit_all.py</a> repo-wide</td><td><span class="bad der">POLICY - enforced by this tree</span></td></tr>
+<tr><td>Unknown values stay blank and are flagged; nothing is inferred</td><td>Every table on this tree; see the blank cells on the overview</td><td><span class="bad der">POLICY - enforced by this tree</span></td></tr>
+<tr><td>Model output is badged DERIVED and never presented as an official fact</td><td>V09, V10 and every originated-line row</td><td><span class="bad der">POLICY - enforced by this tree</span></td></tr>
+<tr><td>No bets are placed and no rewards are promised</td><td>Stated in the README and on the leaderboard of every tree</td><td><span class="bad der">POLICY - not a wagering surface</span></td></tr>
+<tr><td>Correlations publish n and a 95% CI, and are not used when the CI contains 0</td><td>Recomputed on the <a href="verification.html">verification</a> page</td><td><span class="bad der">POLICY - enforced by this tree</span></td></tr>
+</tbody></table>
+
+</main>
+<footer>
+<p>X3 decision council - session arena/dd5047b8-x3. Every row carries an official source link or an explicit
+UNVERIFIED badge; nothing is inferred. Repository:
+<a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>.
+Back to the <a href="../index.html">site landing</a>.</p>
+</footer>
+</div>
+</body>
+</html>

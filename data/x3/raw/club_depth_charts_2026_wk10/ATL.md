@@ -1,0 +1,32 @@
+# Atlanta Falcons depth chart (fetched 2026-11-14, https://www.atlantafalcons.com/team/depth-chart)
+## Offense
+| WR | Drake London | Chris Blair |  |
+| LT | Jake Matthews | Cameron Williams |  |
+| LG | Matthew Bergeron | Kyle Hinton |  |
+| C | Corey Levin |  |  |
+| RG | Chris Lindstrom | Andrew Vorhees |  |
+| RT | Jawaan Taylor | Ethan Onianwa |  |
+| TE | Kyle Pitts Sr. | Austin Hooper |  |
+| TE | Charlie Woerner | Nick Muse |  |
+| RB | Bijan Robinson | Khalil Herbert |  |
+| QB | Michael Penix Jr. | Tua Tagovailoa | Andy Dalton |
+| WR | Olamide Zaccheaus | Zachariah Branch |  |
+| WR | Jahan Dotson | Beaux Collins |  |
+## Defense
+| DE | Cameron Thomas | Za'Darius Smith | Charles Snowden |
+| DL | Maason Smith | Gervon Dexter Sr. |  |
+| DL | LaCale London | Zach Harrison |  |
+| DE | Brandon Dorlus | Yasir Abdullah | James Pearce Jr. |
+| ILB | Divine Deablo | Christian Harris | Josh Woods |
+| ILB | Kendal Daniels | Harold Perkins Jr. |  |
+| CB | A.J. Terrell Jr. | Robert Longerbeam |  |
+| S | DeMarcco Hellams |  |  |
+| S | Xavier Watts | Sydney Brown |  |
+| CB | C.J. Henderson | Mike Hughes | Mike Ford Jr |
+| NB | Avieon Terrell | Billy Bowman Jr. |  |
+## Special Teams
+| K | Jake Moody |  |  |
+| P | Jake Bailey |  |  |
+| LS | Liam McCullough |  |  |
+| PR | Zachariah Branch | Olamide Zaccheaus | Jahan Dotson |
+| KR | Olamide Zaccheaus | Zachariah Branch | Khalil Herbert |

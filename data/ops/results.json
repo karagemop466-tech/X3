@@ -1,0 +1,1782 @@
+{
+ "as_of": "2026-11-14",
+ "games": 137,
+ "clubs": 32,
+ "weeks": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "neutral_sites": 7,
+ "checks": [
+  [
+   "Wins equal losses",
+   "PASS",
+   "sum(W)=136, sum(L)=136 across 32 clubs"
+  ],
+  [
+   "Points for equal points against",
+   "PASS",
+   "sum(PF)=6291, sum(PA)=6291"
+  ],
+  [
+   "Club games equal 2 x finals (ties excluded)",
+   "PASS",
+   "club games=274, 2 x finals=274"
+  ],
+  [
+   "Every club's W-L-T, PF and PA recomputed from the game log",
+   "PASS",
+   "160/160 values agree"
+  ],
+  [
+   "A club plays at most once per week",
+   "PASS",
+   "no duplicate club-week"
+  ],
+  [
+   "Every final links to an official nfl.com week page",
+   "PASS",
+   "137/137 rows"
+  ],
+  [
+   "Neutral-site finals excluded from the home-field estimate",
+   "PASS",
+   "7 international finals, counted in params as 7"
+  ]
+ ],
+ "standings": [
+  {
+   "team": "BUF",
+   "name": "Buffalo Bills",
+   "w": 7,
+   "l": 1,
+   "t": 0,
+   "pf": 256,
+   "pa": 187,
+   "net": 69,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "SF",
+   "name": "San Francisco 49ers",
+   "w": 7,
+   "l": 1,
+   "t": 0,
+   "pf": 235,
+   "pa": 156,
+   "net": 79,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "CHI",
+   "name": "Chicago Bears",
+   "w": 7,
+   "l": 2,
+   "t": 0,
+   "pf": 241,
+   "pa": 184,
+   "net": 57,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "DEN",
+   "name": "Denver Broncos",
+   "w": 7,
+   "l": 2,
+   "t": 0,
+   "pf": 198,
+   "pa": 186,
+   "net": 12,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "CIN",
+   "name": "Cincinnati Bengals",
+   "w": 6,
+   "l": 2,
+   "t": 0,
+   "pf": 240,
+   "pa": 175,
+   "net": 65,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "DET",
+   "name": "Detroit Lions",
+   "w": 6,
+   "l": 2,
+   "t": 0,
+   "pf": 222,
+   "pa": 189,
+   "net": 33,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "JAX",
+   "name": "Jacksonville Jaguars",
+   "w": 6,
+   "l": 2,
+   "t": 0,
+   "pf": 229,
+   "pa": 121,
+   "net": 108,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "KC",
+   "name": "Kansas City Chiefs",
+   "w": 6,
+   "l": 2,
+   "t": 0,
+   "pf": 202,
+   "pa": 143,
+   "net": 59,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "MIN",
+   "name": "Minnesota Vikings",
+   "w": 6,
+   "l": 2,
+   "t": 0,
+   "pf": 146,
+   "pa": 116,
+   "net": 30,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "PIT",
+   "name": "Pittsburgh Steelers",
+   "w": 6,
+   "l": 2,
+   "t": 0,
+   "pf": 180,
+   "pa": 144,
+   "net": 36,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "GB",
+   "name": "Green Bay Packers",
+   "w": 6,
+   "l": 3,
+   "t": 0,
+   "pf": 216,
+   "pa": 191,
+   "net": 25,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "NYG",
+   "name": "New York Giants",
+   "w": 5,
+   "l": 3,
+   "t": 1,
+   "pf": 203,
+   "pa": 196,
+   "net": 7,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "CLE",
+   "name": "Cleveland Browns",
+   "w": 5,
+   "l": 4,
+   "t": 0,
+   "pf": 161,
+   "pa": 196,
+   "net": -35,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "LA",
+   "name": "Los Angeles Rams",
+   "w": 5,
+   "l": 4,
+   "t": 0,
+   "pf": 214,
+   "pa": 181,
+   "net": 33,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "NE",
+   "name": "New England Patriots",
+   "w": 5,
+   "l": 4,
+   "t": 0,
+   "pf": 211,
+   "pa": 207,
+   "net": 4,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "SEA",
+   "name": "Seattle Seahawks",
+   "w": 5,
+   "l": 4,
+   "t": 0,
+   "pf": 202,
+   "pa": 162,
+   "net": 40,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "BAL",
+   "name": "Baltimore Ravens",
+   "w": 4,
+   "l": 5,
+   "t": 0,
+   "pf": 189,
+   "pa": 236,
+   "net": -47,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "DAL",
+   "name": "Dallas Cowboys",
+   "w": 4,
+   "l": 5,
+   "t": 0,
+   "pf": 246,
+   "pa": 236,
+   "net": 10,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "LV",
+   "name": "Las Vegas Raiders",
+   "w": 4,
+   "l": 5,
+   "t": 0,
+   "pf": 238,
+   "pa": 268,
+   "net": -30,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "CAR",
+   "name": "Carolina Panthers",
+   "w": 3,
+   "l": 5,
+   "t": 0,
+   "pf": 199,
+   "pa": 219,
+   "net": -20,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "HOU",
+   "name": "Houston Texans",
+   "w": 3,
+   "l": 5,
+   "t": 0,
+   "pf": 209,
+   "pa": 192,
+   "net": 17,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "NO",
+   "name": "New Orleans Saints",
+   "w": 3,
+   "l": 5,
+   "t": 0,
+   "pf": 185,
+   "pa": 216,
+   "net": -31,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "WAS",
+   "name": "Washington Commanders",
+   "w": 3,
+   "l": 5,
+   "t": 1,
+   "pf": 196,
+   "pa": 223,
+   "net": -27,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "ARI",
+   "name": "Arizona Cardinals",
+   "w": 3,
+   "l": 6,
+   "t": 0,
+   "pf": 178,
+   "pa": 255,
+   "net": -77,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "ATL",
+   "name": "Atlanta Falcons",
+   "w": 3,
+   "l": 6,
+   "t": 0,
+   "pf": 188,
+   "pa": 223,
+   "net": -35,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "TB",
+   "name": "Tampa Bay Buccaneers",
+   "w": 3,
+   "l": 6,
+   "t": 0,
+   "pf": 202,
+   "pa": 178,
+   "net": 24,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "IND",
+   "name": "Indianapolis Colts",
+   "w": 2,
+   "l": 7,
+   "t": 0,
+   "pf": 184,
+   "pa": 249,
+   "net": -65,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "NYJ",
+   "name": "New York Jets",
+   "w": 2,
+   "l": 7,
+   "t": 0,
+   "pf": 182,
+   "pa": 223,
+   "net": -41,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "PHI",
+   "name": "Philadelphia Eagles",
+   "w": 2,
+   "l": 7,
+   "t": 0,
+   "pf": 148,
+   "pa": 221,
+   "net": -73,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "MIA",
+   "name": "Miami Dolphins",
+   "w": 1,
+   "l": 7,
+   "t": 0,
+   "pf": 126,
+   "pa": 200,
+   "net": -74,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "TEN",
+   "name": "Tennessee Titans",
+   "w": 1,
+   "l": 7,
+   "t": 0,
+   "pf": 144,
+   "pa": 199,
+   "net": -55,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "team": "LAC",
+   "name": "Los Angeles Chargers",
+   "w": 0,
+   "l": 8,
+   "t": 0,
+   "pf": 121,
+   "pa": 219,
+   "net": -98,
+   "source": "https://www.nfl.com/standings/league/2026/reg"
+  }
+ ],
+ "game_rows": [
+  {
+   "week": 1,
+   "away": "NE",
+   "home": "SEA",
+   "away_score": 10,
+   "home_score": 13,
+   "date_iso": "2026-09-09",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "SF",
+   "home": "LA",
+   "away_score": 27,
+   "home_score": 7,
+   "date_iso": "2026-09-10",
+   "neutral_site": true,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "CHI",
+   "home": "CAR",
+   "away_score": 59,
+   "home_score": 37,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "TB",
+   "home": "CIN",
+   "away_score": 27,
+   "home_score": 33,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "NO",
+   "home": "DET",
+   "away_score": 30,
+   "home_score": 31,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "BUF",
+   "home": "HOU",
+   "away_score": 36,
+   "home_score": 31,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "BAL",
+   "home": "IND",
+   "away_score": 41,
+   "home_score": 23,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "CLE",
+   "home": "JAX",
+   "away_score": 10,
+   "home_score": 34,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "ATL",
+   "home": "PIT",
+   "away_score": 13,
+   "home_score": 20,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "NYJ",
+   "home": "TEN",
+   "away_score": 23,
+   "home_score": 10,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "ARI",
+   "home": "LAC",
+   "away_score": 26,
+   "home_score": 14,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "MIA",
+   "home": "LV",
+   "away_score": 13,
+   "home_score": 27,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "GB",
+   "home": "MIN",
+   "away_score": 22,
+   "home_score": 39,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "WAS",
+   "home": "PHI",
+   "away_score": 22,
+   "home_score": 24,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "DAL",
+   "home": "NYG",
+   "away_score": 20,
+   "home_score": 28,
+   "date_iso": "2026-09-13",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 1,
+   "away": "DEN",
+   "home": "KC",
+   "away_score": 10,
+   "home_score": 31,
+   "date_iso": "2026-09-14",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+  },
+  {
+   "week": 2,
+   "away": "DET",
+   "home": "BUF",
+   "away_score": 31,
+   "home_score": 41,
+   "date_iso": "2026-09-17",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "CAR",
+   "home": "ATL",
+   "away_score": 34,
+   "home_score": 3,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "NO",
+   "home": "BAL",
+   "away_score": 24,
+   "home_score": 17,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "MIN",
+   "home": "CHI",
+   "away_score": 9,
+   "home_score": 3,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "CIN",
+   "home": "HOU",
+   "away_score": 20,
+   "home_score": 6,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "PIT",
+   "home": "NE",
+   "away_score": 3,
+   "home_score": 20,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "GB",
+   "home": "NYJ",
+   "away_score": 20,
+   "home_score": 17,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "CLE",
+   "home": "TB",
+   "away_score": 23,
+   "home_score": 19,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "PHI",
+   "home": "TEN",
+   "away_score": 24,
+   "home_score": 20,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "JAX",
+   "home": "DEN",
+   "away_score": 13,
+   "home_score": 20,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "LV",
+   "home": "LAC",
+   "away_score": 26,
+   "home_score": 14,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "SEA",
+   "home": "ARI",
+   "away_score": 31,
+   "home_score": 7,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "WAS",
+   "home": "DAL",
+   "away_score": 20,
+   "home_score": 37,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "MIA",
+   "home": "SF",
+   "away_score": 13,
+   "home_score": 35,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "IND",
+   "home": "KC",
+   "away_score": 30,
+   "home_score": 33,
+   "date_iso": "2026-09-20",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 2,
+   "away": "NYG",
+   "home": "LA",
+   "away_score": 6,
+   "home_score": 28,
+   "date_iso": "2026-09-21",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 3,
+   "away": "ATL",
+   "home": "GB",
+   "away_score": 35,
+   "home_score": 14,
+   "date_iso": "2026-09-24",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "LAC",
+   "home": "BUF",
+   "away_score": 16,
+   "home_score": 24,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "CAR",
+   "home": "CLE",
+   "away_score": 18,
+   "home_score": 21,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "NYJ",
+   "home": "DET",
+   "away_score": 24,
+   "home_score": 31,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "HOU",
+   "home": "IND",
+   "away_score": 17,
+   "home_score": 19,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "NE",
+   "home": "JAX",
+   "away_score": 6,
+   "home_score": 35,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "KC",
+   "home": "MIA",
+   "away_score": 24,
+   "home_score": 10,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "TEN",
+   "home": "NYG",
+   "away_score": 7,
+   "home_score": 12,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "CIN",
+   "home": "PIT",
+   "away_score": 27,
+   "home_score": 30,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "SEA",
+   "home": "WAS",
+   "away_score": 31,
+   "home_score": 33,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "ARI",
+   "home": "SF",
+   "away_score": 30,
+   "home_score": 36,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "MIN",
+   "home": "TB",
+   "away_score": 23,
+   "home_score": 16,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "LV",
+   "home": "NO",
+   "away_score": 35,
+   "home_score": 27,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "BAL",
+   "home": "DAL",
+   "away_score": 34,
+   "home_score": 31,
+   "date_iso": "2026-09-27",
+   "neutral_site": true,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "LA",
+   "home": "DEN",
+   "away_score": 26,
+   "home_score": 30,
+   "date_iso": "2026-09-27",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 3,
+   "away": "PHI",
+   "home": "CHI",
+   "away_score": 7,
+   "home_score": 27,
+   "date_iso": "2026-09-28",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 4,
+   "away": "PIT",
+   "home": "CLE",
+   "away_score": 24,
+   "home_score": 27,
+   "date_iso": "2026-10-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "IND",
+   "home": "WAS",
+   "away_score": 30,
+   "home_score": 13,
+   "date_iso": "2026-10-04",
+   "neutral_site": true,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "TEN",
+   "home": "BAL",
+   "away_score": 18,
+   "home_score": 24,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "NE",
+   "home": "BUF",
+   "away_score": 29,
+   "home_score": 26,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "NYJ",
+   "home": "CHI",
+   "away_score": 12,
+   "home_score": 23,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "JAX",
+   "home": "CIN",
+   "away_score": 22,
+   "home_score": 17,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "DAL",
+   "home": "HOU",
+   "away_score": 34,
+   "home_score": 30,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "ARI",
+   "home": "NYG",
+   "away_score": 24,
+   "home_score": 36,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "LA",
+   "home": "PHI",
+   "away_score": 24,
+   "home_score": 20,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "GB",
+   "home": "TB",
+   "away_score": 17,
+   "home_score": 14,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "MIA",
+   "home": "MIN",
+   "away_score": 10,
+   "home_score": 15,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "KC",
+   "home": "LV",
+   "away_score": 30,
+   "home_score": 27,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "LAC",
+   "home": "SEA",
+   "away_score": 23,
+   "home_score": 30,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "DEN",
+   "home": "SF",
+   "away_score": 14,
+   "home_score": 24,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "DET",
+   "home": "CAR",
+   "away_score": 26,
+   "home_score": 32,
+   "date_iso": "2026-10-04",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "away": "ATL",
+   "home": "NO",
+   "away_score": 45,
+   "home_score": 24,
+   "date_iso": "2026-10-05",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 5,
+   "away": "TB",
+   "home": "DAL",
+   "away_score": 24,
+   "home_score": 16,
+   "date_iso": "2026-10-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "PHI",
+   "home": "JAX",
+   "away_score": 17,
+   "home_score": 19,
+   "date_iso": "2026-10-11",
+   "neutral_site": true,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "CIN",
+   "home": "MIA",
+   "away_score": 31,
+   "home_score": 24,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "LV",
+   "home": "NE",
+   "away_score": 17,
+   "home_score": 45,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "MIN",
+   "home": "NO",
+   "away_score": 23,
+   "home_score": 13,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "CLE",
+   "home": "NYJ",
+   "away_score": 12,
+   "home_score": 17,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "IND",
+   "home": "PIT",
+   "away_score": 22,
+   "home_score": 34,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "HOU",
+   "home": "TEN",
+   "away_score": 26,
+   "home_score": 3,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "NYG",
+   "home": "WAS",
+   "away_score": 27,
+   "home_score": 27,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "CHI",
+   "home": "GB",
+   "away_score": 7,
+   "home_score": 31,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "DEN",
+   "home": "LAC",
+   "away_score": 23,
+   "home_score": 17,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "DET",
+   "home": "ARI",
+   "away_score": 45,
+   "home_score": 21,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "SF",
+   "home": "SEA",
+   "away_score": 32,
+   "home_score": 29,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "BAL",
+   "home": "ATL",
+   "away_score": 30,
+   "home_score": 23,
+   "date_iso": "2026-10-11",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "away": "BUF",
+   "home": "LA",
+   "away_score": 37,
+   "home_score": 34,
+   "date_iso": "2026-10-12",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 6,
+   "away": "SEA",
+   "home": "DEN",
+   "away_score": 14,
+   "home_score": 17,
+   "date_iso": "2026-10-15",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "HOU",
+   "home": "JAX",
+   "away_score": 34,
+   "home_score": 31,
+   "date_iso": "2026-10-18",
+   "neutral_site": true,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "CHI",
+   "home": "ATL",
+   "away_score": 31,
+   "home_score": 23,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "BAL",
+   "home": "CLE",
+   "away_score": 10,
+   "home_score": 13,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "TEN",
+   "home": "IND",
+   "away_score": 26,
+   "home_score": 20,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "NYJ",
+   "home": "NE",
+   "away_score": 19,
+   "home_score": 26,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "NO",
+   "home": "NYG",
+   "away_score": 34,
+   "home_score": 27,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "CAR",
+   "home": "PHI",
+   "away_score": 25,
+   "home_score": 14,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "PIT",
+   "home": "TB",
+   "away_score": 26,
+   "home_score": 19,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "ARI",
+   "home": "LA",
+   "away_score": 18,
+   "home_score": 16,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "LAC",
+   "home": "KC",
+   "away_score": 6,
+   "home_score": 22,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "BUF",
+   "home": "LV",
+   "away_score": 33,
+   "home_score": 30,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "DAL",
+   "home": "GB",
+   "away_score": 13,
+   "home_score": 23,
+   "date_iso": "2026-10-18",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "away": "WAS",
+   "home": "SF",
+   "away_score": 17,
+   "home_score": 23,
+   "date_iso": "2026-10-19",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 7,
+   "away": "NE",
+   "home": "CHI",
+   "away_score": 24,
+   "home_score": 30,
+   "date_iso": "2026-10-22",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "PIT",
+   "home": "NO",
+   "away_score": 16,
+   "home_score": 10,
+   "date_iso": "2026-10-25",
+   "neutral_site": true,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "SF",
+   "home": "ATL",
+   "away_score": 20,
+   "home_score": 29,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "CIN",
+   "home": "BAL",
+   "away_score": 35,
+   "home_score": 13,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "TB",
+   "home": "CAR",
+   "away_score": 43,
+   "home_score": 13,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "NYG",
+   "home": "HOU",
+   "away_score": 27,
+   "home_score": 21,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "IND",
+   "home": "MIN",
+   "away_score": 10,
+   "home_score": 16,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "MIA",
+   "home": "NYJ",
+   "away_score": 28,
+   "home_score": 25,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "CLE",
+   "home": "TEN",
+   "away_score": 27,
+   "home_score": 24,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "DEN",
+   "home": "ARI",
+   "away_score": 30,
+   "home_score": 16,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "GB",
+   "home": "DET",
+   "away_score": 17,
+   "home_score": 20,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "LA",
+   "home": "LV",
+   "away_score": 35,
+   "home_score": 21,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "KC",
+   "home": "SEA",
+   "away_score": 3,
+   "home_score": 20,
+   "date_iso": "2026-10-25",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "away": "DAL",
+   "home": "PHI",
+   "away_score": 38,
+   "home_score": 21,
+   "date_iso": "2026-10-26",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 8,
+   "away": "CAR",
+   "home": "GB",
+   "away_score": 19,
+   "home_score": 27,
+   "date_iso": "2026-10-29",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "BAL",
+   "home": "BUF",
+   "away_score": 10,
+   "home_score": 36,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "TEN",
+   "home": "CIN",
+   "away_score": 36,
+   "home_score": 43,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "ARI",
+   "home": "DAL",
+   "away_score": 33,
+   "home_score": 30,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "MIN",
+   "home": "DET",
+   "away_score": 15,
+   "home_score": 19,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "IND",
+   "home": "JAX",
+   "away_score": 7,
+   "home_score": 42,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "LV",
+   "home": "NYJ",
+   "away_score": 38,
+   "home_score": 33,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "CLE",
+   "home": "PIT",
+   "away_score": 6,
+   "home_score": 27,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "ATL",
+   "home": "TB",
+   "away_score": 0,
+   "home_score": 16,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "LAC",
+   "home": "LA",
+   "away_score": 9,
+   "home_score": 24,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "KC",
+   "home": "DEN",
+   "away_score": 24,
+   "home_score": 28,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "NE",
+   "home": "MIA",
+   "away_score": 24,
+   "home_score": 19,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "PHI",
+   "home": "WAS",
+   "away_score": 10,
+   "home_score": 27,
+   "date_iso": "2026-11-01",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "away": "CHI",
+   "home": "SEA",
+   "away_score": 34,
+   "home_score": 17,
+   "date_iso": "2026-11-02",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 9,
+   "away": "JAX",
+   "home": "BAL",
+   "away_score": 33,
+   "home_score": 10,
+   "date_iso": "2026-11-05",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "CIN",
+   "home": "ATL",
+   "away_score": 34,
+   "home_score": 17,
+   "date_iso": "2026-11-08",
+   "neutral_site": true,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "DEN",
+   "home": "CAR",
+   "away_score": 26,
+   "home_score": 21,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "DAL",
+   "home": "IND",
+   "away_score": 27,
+   "home_score": 23,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "NYJ",
+   "home": "KC",
+   "away_score": 12,
+   "home_score": 35,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "DET",
+   "home": "MIA",
+   "away_score": 19,
+   "home_score": 9,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "CLE",
+   "home": "NO",
+   "away_score": 22,
+   "home_score": 23,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "NYG",
+   "home": "PHI",
+   "away_score": 19,
+   "home_score": 11,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "LA",
+   "home": "WAS",
+   "away_score": 20,
+   "home_score": 13,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "HOU",
+   "home": "LAC",
+   "away_score": 44,
+   "home_score": 22,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "LV",
+   "home": "SF",
+   "away_score": 17,
+   "home_score": 38,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "GB",
+   "home": "NE",
+   "away_score": 45,
+   "home_score": 27,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "ARI",
+   "home": "SEA",
+   "away_score": 3,
+   "home_score": 17,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "TB",
+   "home": "CHI",
+   "away_score": 24,
+   "home_score": 27,
+   "date_iso": "2026-11-08",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "away": "BUF",
+   "home": "MIN",
+   "away_score": 23,
+   "home_score": 6,
+   "date_iso": "2026-11-09",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 10,
+   "away": "WAS",
+   "home": "NYG",
+   "away_score": 24,
+   "home_score": 21,
+   "date_iso": "2026-11-12",
+   "neutral_site": false,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  }
+ ],
+ "note": "The feed is rebuilt from official week pages and reconciled against the official standings page. Both are official and independently published."
+}

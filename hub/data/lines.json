@@ -6,7 +6,7 @@
    "slot": "09:30",
    "home": "DET",
    "away": "NE",
-   "neutral_site": "Alemun & Munchen / Munich (NFL International Game) - no home field",
+   "neutral_site": "Munich (NFL International Game) - neutral site, no home field applied",
    "base_margin_home": 2.44,
    "adj_margin_home": 3.64,
    "injury_delta": 1.2,
@@ -313,7 +313,7 @@
   }
  },
  "neutral": {
-  "NE@DET": "Alemun & Munchen / Munich (NFL International Game) - no home field"
+  "NE@DET": "Munich (NFL International Game) - neutral site, no home field applied"
  },
  "model": "X3-v1 (standings + official injury report)",
  "params": {

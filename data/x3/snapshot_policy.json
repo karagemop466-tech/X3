@@ -1,0 +1,5 @@
+{
+ "open_observation_policy": "OPEN (opening line) observations are schema-supported but left blank for 2026: no opening-line source is reachable from this sandbox (nflverse initial_lines.csv covers 2021 Westgate only; release-asset feeds are CDN-blocked). Opening capture starts once an owner-approved price source exists (Q-01).",
+ "rows": 652,
+ "games": 272
+}

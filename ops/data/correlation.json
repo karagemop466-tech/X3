@@ -1,0 +1,133 @@
+{
+ "as_of": "2026-11-14",
+ "method": "Pearson r on official values only. 95% CI by Fisher z. Two-sided p from Student t (incomplete beta). n printed on every row. A CI that includes 0 is published as 'not distinguishable from no relationship'.",
+ "rows": [
+  {
+   "pair": "points for vs points against (club level)",
+   "r": -0.087,
+   "n": 32,
+   "ci95": [
+    -0.423,
+    0.27
+   ],
+   "p": 0.6362,
+   "used_for": "rating sanity check",
+   "source": "https://www.nfl.com/standings/league/2026/REG",
+   "note": "",
+   "reading": "not distinguishable from no relationship: the 95% CI includes 0"
+  },
+  {
+   "pair": "net points vs win percentage (club level)",
+   "r": 0.872,
+   "n": 32,
+   "ci95": [
+    0.751,
+    0.936
+   ],
+   "p": 0.0,
+   "used_for": "standings sanity check",
+   "source": "https://www.nfl.com/standings/league/2026/REG",
+   "note": "",
+   "reading": "CI excludes 0 at n=32"
+  },
+  {
+   "pair": "home win pct vs road win pct (club level)",
+   "r": 0.356,
+   "n": 32,
+   "ci95": [
+    0.009,
+    0.627
+   ],
+   "p": 0.0453,
+   "used_for": "home-field consistency",
+   "source": "https://www.nfl.com/standings/league/2026/REG",
+   "note": "",
+   "reading": "CI excludes 0 at n=32"
+  },
+  {
+   "pair": "game total vs |margin| (game level)",
+   "r": -0.016,
+   "n": 137,
+   "ci95": [
+    -0.183,
+    0.152
+   ],
+   "p": 0.8554,
+   "used_for": "same-game parlay leg screen",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+   "note": "",
+   "reading": "not distinguishable from no relationship: the 95% CI includes 0"
+  },
+  {
+   "pair": "away score vs home score (game level)",
+   "r": 0.076,
+   "n": 137,
+   "ci95": [
+    -0.093,
+    0.241
+   ],
+   "p": 0.3782,
+   "used_for": "correlated two-leg parlay screen",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+   "note": "",
+   "reading": "not distinguishable from no relationship: the 95% CI includes 0"
+  },
+  {
+   "pair": "opponent passing yards allowed vs opponent passing TDs allowed (club level)",
+   "r": 0.565,
+   "n": 32,
+   "ci95": [
+    0.27,
+    0.763
+   ],
+   "p": 0.0007,
+   "used_for": "defence quality screen for opposing passing props",
+   "source": "https://www.nfl.com/stats/team-stats/defense/passing/2026/reg/all",
+   "note": "",
+   "reading": "CI excludes 0 at n=32"
+  },
+  {
+   "pair": "own passing yards vs own passing TDs (club level)",
+   "r": 0.813,
+   "n": 32,
+   "ci95": [
+    0.649,
+    0.905
+   ],
+   "p": 0.0,
+   "used_for": "offence quality screen for own passing props",
+   "source": "https://www.nfl.com/stats/team-stats/offense/passing/2026/reg/all",
+   "note": "",
+   "reading": "CI excludes 0 at n=32"
+  },
+  {
+   "pair": "receptions vs receiving yards, within player (fixed effects)",
+   "r": 0.831,
+   "n": 42,
+   "ci95": [
+    0.705,
+    0.906
+   ],
+   "p": 0.0,
+   "used_for": "prop leg shopping: same-player combo",
+   "source": "https://www.nfl.com/players/ceedee-lamb/stats/",
+   "note": "removes between-player talent so the coefficient measures the same-game relationship",
+   "reading": "CI excludes 0 at n=42"
+  },
+  {
+   "pair": "Tee Higgins vs Ja'Marr Chase receiving yards, same game (CIN)",
+   "r": -0.143,
+   "n": 8,
+   "ci95": [
+    -0.77,
+    0.625
+   ],
+   "p": 0.7358,
+   "used_for": "same-game parlay joint probability",
+   "source": "https://www.nfl.com/players/tee-higgins/stats/",
+   "note": "two teammates competing for the same targets; a positive coefficient inflates the joint over",
+   "reading": "not distinguishable from no relationship: the 95% CI includes 0"
+  }
+ ],
+ "n_rows": 9
+}

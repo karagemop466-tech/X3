@@ -1,0 +1,622 @@
+{
+ "as_of": "2026-11-14",
+ "rule": "Two columns that never borrow from each other: SIGNAL (did the call beat a coin flip, with n and CI) and STAKING (what it would have returned at a real price). A lucky staking run cannot promote a bad signal, because promotion reads the signal column.",
+ "rows": [
+  {
+   "id": "S1 model side",
+   "family": "single",
+   "n": 88,
+   "correct": 58,
+   "signal_rate": 0.659,
+   "signal_ci95": [
+    0.555,
+    0.75
+   ],
+   "vs_coinflip": 0.159,
+   "note": "pick the club our fair spread favours",
+   "source": "data/ops/model.json (walk-forward backtest)",
+   "staking_roi": null,
+   "staking_units": null,
+   "staking_status": "BLOCKED - no official market price is attached to any graded bet",
+   "clv": null,
+   "clv_status": "BLOCKED - closing line does not exist in this repository",
+   "gates": [
+    {
+     "gate": "G-0",
+     "name": "Pre-registration",
+     "status": "PASS",
+     "rule": "Rule, inputs and staking written before any graded result",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-1",
+     "name": "No look-ahead",
+     "status": "PASS",
+     "rule": "Every week-W grade uses weeks < W only (walk-forward)",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-2",
+     "name": "Sample size",
+     "status": "FAIL",
+     "rule": "n >= 200 graded bets for a skill claim",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-3",
+     "name": "Multiple-testing control",
+     "status": "NOT RUN",
+     "rule": "Benjamini-Hochberg FDR at q=0.10 across all tested strategies",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-4",
+     "name": "Signal exists",
+     "status": "PASS",
+     "rule": "Signal CI95 lower bound > 0.500 (coin flip), independent of staking",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-5",
+     "name": "Market exists",
+     "status": "FAIL",
+     "rule": "A verified market price is attached to every graded bet",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-6",
+     "name": "Beat the price",
+     "status": "NOT RUN",
+     "rule": "CI95 lower bound on ROI > 0 at the realised price",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-7",
+     "name": "Uncertainty",
+     "status": "PASS",
+     "rule": "95% CI reported on hit rate, ROI and CLV for every published number",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-8",
+     "name": "Correlation integrity",
+     "status": "PASS",
+     "rule": "Every multi-leg price uses a measured joint probability with n printed",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-9",
+     "name": "Data integrity",
+     "status": "PASS",
+     "rule": "Every input row carries an official source link and passes scripts/ops_verify.py",
+     "blocking": "blocking"
+    }
+   ],
+   "state": "PAPER",
+   "promotion_blocked_by": [
+    "G-2",
+    "G-3",
+    "G-5",
+    "G-6"
+   ],
+   "state_reason": "stays in PAPER: G-2, G-3, G-5, G-6"
+  },
+  {
+   "id": "S2 model side, decisive only",
+   "family": "single",
+   "n": 56,
+   "correct": 40,
+   "signal_rate": 0.714,
+   "signal_ci95": [
+    0.585,
+    0.816
+   ],
+   "vs_coinflip": 0.214,
+   "note": "same signal, only where our fair line disagrees with a coin flip by 10 points of probability",
+   "source": "data/ops/model.json (walk-forward backtest)",
+   "staking_roi": null,
+   "staking_units": null,
+   "staking_status": "BLOCKED - no official market price is attached to any graded bet",
+   "clv": null,
+   "clv_status": "BLOCKED - closing line does not exist in this repository",
+   "gates": [
+    {
+     "gate": "G-0",
+     "name": "Pre-registration",
+     "status": "PASS",
+     "rule": "Rule, inputs and staking written before any graded result",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-1",
+     "name": "No look-ahead",
+     "status": "PASS",
+     "rule": "Every week-W grade uses weeks < W only (walk-forward)",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-2",
+     "name": "Sample size",
+     "status": "FAIL",
+     "rule": "n >= 200 graded bets for a skill claim",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-3",
+     "name": "Multiple-testing control",
+     "status": "NOT RUN",
+     "rule": "Benjamini-Hochberg FDR at q=0.10 across all tested strategies",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-4",
+     "name": "Signal exists",
+     "status": "PASS",
+     "rule": "Signal CI95 lower bound > 0.500 (coin flip), independent of staking",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-5",
+     "name": "Market exists",
+     "status": "FAIL",
+     "rule": "A verified market price is attached to every graded bet",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-6",
+     "name": "Beat the price",
+     "status": "NOT RUN",
+     "rule": "CI95 lower bound on ROI > 0 at the realised price",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-7",
+     "name": "Uncertainty",
+     "status": "PASS",
+     "rule": "95% CI reported on hit rate, ROI and CLV for every published number",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-8",
+     "name": "Correlation integrity",
+     "status": "PASS",
+     "rule": "Every multi-leg price uses a measured joint probability with n printed",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-9",
+     "name": "Data integrity",
+     "status": "PASS",
+     "rule": "Every input row carries an official source link and passes scripts/ops_verify.py",
+     "blocking": "blocking"
+    }
+   ],
+   "state": "PAPER",
+   "promotion_blocked_by": [
+    "G-2",
+    "G-3",
+    "G-5",
+    "G-6"
+   ],
+   "state_reason": "stays in PAPER: G-2, G-3, G-5, G-6"
+  },
+  {
+   "id": "S3 always home",
+   "family": "baseline",
+   "n": 88,
+   "correct": 39,
+   "signal_rate": 0.443,
+   "signal_ci95": [
+    0.344,
+    0.547
+   ],
+   "vs_coinflip": -0.057,
+   "note": "no-skill baseline: home teams win at a fixed rate",
+   "source": "data/ops/model.json (walk-forward backtest)",
+   "staking_roi": null,
+   "staking_units": null,
+   "staking_status": "BLOCKED - no official market price is attached to any graded bet",
+   "clv": null,
+   "clv_status": "BLOCKED - closing line does not exist in this repository",
+   "gates": [
+    {
+     "gate": "G-0",
+     "name": "Pre-registration",
+     "status": "PASS",
+     "rule": "Rule, inputs and staking written before any graded result",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-1",
+     "name": "No look-ahead",
+     "status": "PASS",
+     "rule": "Every week-W grade uses weeks < W only (walk-forward)",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-2",
+     "name": "Sample size",
+     "status": "FAIL",
+     "rule": "n >= 200 graded bets for a skill claim",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-3",
+     "name": "Multiple-testing control",
+     "status": "NOT RUN",
+     "rule": "Benjamini-Hochberg FDR at q=0.10 across all tested strategies",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-4",
+     "name": "Signal exists",
+     "status": "FAIL",
+     "rule": "Signal CI95 lower bound > 0.500 (coin flip), independent of staking",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-5",
+     "name": "Market exists",
+     "status": "FAIL",
+     "rule": "A verified market price is attached to every graded bet",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-6",
+     "name": "Beat the price",
+     "status": "NOT RUN",
+     "rule": "CI95 lower bound on ROI > 0 at the realised price",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-7",
+     "name": "Uncertainty",
+     "status": "PASS",
+     "rule": "95% CI reported on hit rate, ROI and CLV for every published number",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-8",
+     "name": "Correlation integrity",
+     "status": "PASS",
+     "rule": "Every multi-leg price uses a measured joint probability with n printed",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-9",
+     "name": "Data integrity",
+     "status": "PASS",
+     "rule": "Every input row carries an official source link and passes scripts/ops_verify.py",
+     "blocking": "blocking"
+    }
+   ],
+   "state": "PAPER",
+   "promotion_blocked_by": [
+    "G-2",
+    "G-3",
+    "G-4",
+    "G-5",
+    "G-6"
+   ],
+   "state_reason": "stays in PAPER: G-2, G-3, G-4, G-5, G-6"
+  },
+  {
+   "id": "S4 model moneyline",
+   "family": "single",
+   "n": 88,
+   "correct": 58,
+   "signal_rate": 0.659,
+   "signal_ci95": [
+    0.555,
+    0.75
+   ],
+   "vs_coinflip": 0.159,
+   "note": "favourite-only reading of the same moneyline; measured separately because it is a different thesis",
+   "source": "data/ops/model.json (walk-forward backtest)",
+   "staking_roi": null,
+   "staking_units": null,
+   "staking_status": "BLOCKED - no official market price is attached to any graded bet",
+   "clv": null,
+   "clv_status": "BLOCKED - closing line does not exist in this repository",
+   "gates": [
+    {
+     "gate": "G-0",
+     "name": "Pre-registration",
+     "status": "PASS",
+     "rule": "Rule, inputs and staking written before any graded result",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-1",
+     "name": "No look-ahead",
+     "status": "PASS",
+     "rule": "Every week-W grade uses weeks < W only (walk-forward)",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-2",
+     "name": "Sample size",
+     "status": "FAIL",
+     "rule": "n >= 200 graded bets for a skill claim",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-3",
+     "name": "Multiple-testing control",
+     "status": "NOT RUN",
+     "rule": "Benjamini-Hochberg FDR at q=0.10 across all tested strategies",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-4",
+     "name": "Signal exists",
+     "status": "PASS",
+     "rule": "Signal CI95 lower bound > 0.500 (coin flip), independent of staking",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-5",
+     "name": "Market exists",
+     "status": "FAIL",
+     "rule": "A verified market price is attached to every graded bet",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-6",
+     "name": "Beat the price",
+     "status": "NOT RUN",
+     "rule": "CI95 lower bound on ROI > 0 at the realised price",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-7",
+     "name": "Uncertainty",
+     "status": "PASS",
+     "rule": "95% CI reported on hit rate, ROI and CLV for every published number",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-8",
+     "name": "Correlation integrity",
+     "status": "PASS",
+     "rule": "Every multi-leg price uses a measured joint probability with n printed",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-9",
+     "name": "Data integrity",
+     "status": "PASS",
+     "rule": "Every input row carries an official source link and passes scripts/ops_verify.py",
+     "blocking": "blocking"
+    }
+   ],
+   "state": "PAPER",
+   "promotion_blocked_by": [
+    "G-2",
+    "G-3",
+    "G-5",
+    "G-6"
+   ],
+   "state_reason": "stays in PAPER: G-2, G-3, G-5, G-6"
+  },
+  {
+   "id": "S5 side+total same-game 2-leg",
+   "family": "parlay",
+   "n": 88,
+   "correct": 33,
+   "signal_rate": 0.375,
+   "signal_ci95": [
+    0.281,
+    0.479
+   ],
+   "vs_coinflip": 0.125,
+   "independent_product": 0.352,
+   "departure_from_independence": 0.023,
+   "note": "legs graded independently and then combined; the independent_product column is what you get if you multiply marginals, and the gap is why G-8 exists",
+   "source": "data/ops/model.json (walk-forward backtest)",
+   "staking_status": "BLOCKED - no official market price is attached to any graded bet",
+   "staking_roi": null,
+   "staking_units": null,
+   "clv": null,
+   "clv_status": "BLOCKED - closing line does not exist in this repository",
+   "gates": [
+    {
+     "gate": "G-0",
+     "name": "Pre-registration",
+     "status": "PASS",
+     "rule": "Rule, inputs and staking written before any graded result",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-1",
+     "name": "No look-ahead",
+     "status": "PASS",
+     "rule": "Every week-W grade uses weeks < W only (walk-forward)",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-2",
+     "name": "Sample size",
+     "status": "FAIL",
+     "rule": "n >= 200 graded bets for a skill claim",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-3",
+     "name": "Multiple-testing control",
+     "status": "NOT RUN",
+     "rule": "Benjamini-Hochberg FDR at q=0.10 across all tested strategies",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-4",
+     "name": "Signal exists",
+     "status": "FAIL",
+     "rule": "Signal CI95 lower bound > 0.500 (coin flip), independent of staking",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-5",
+     "name": "Market exists",
+     "status": "FAIL",
+     "rule": "A verified market price is attached to every graded bet",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-6",
+     "name": "Beat the price",
+     "status": "NOT RUN",
+     "rule": "CI95 lower bound on ROI > 0 at the realised price",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-7",
+     "name": "Uncertainty",
+     "status": "PASS",
+     "rule": "95% CI reported on hit rate, ROI and CLV for every published number",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-8",
+     "name": "Correlation integrity",
+     "status": "FAIL",
+     "rule": "Every multi-leg price uses a measured joint probability with n printed",
+     "blocking": "blocking"
+    },
+    {
+     "gate": "G-9",
+     "name": "Data integrity",
+     "status": "PASS",
+     "rule": "Every input row carries an official source link and passes scripts/ops_verify.py",
+     "blocking": "blocking"
+    }
+   ],
+   "state": "PAPER",
+   "promotion_blocked_by": [
+    "G-2",
+    "G-3",
+    "G-4",
+    "G-5",
+    "G-6",
+    "G-8"
+   ],
+   "state_reason": "stays in PAPER: G-2, G-3, G-4, G-5, G-6, G-8"
+  }
+ ],
+ "eligible": 0,
+ "in_paper": 5,
+ "demotion_gates": [
+  {
+   "id": "D-1",
+   "name": "Signal decay",
+   "rule": "Over a rolling 100-bet window the signal CI95 UPPER bound stays below 0.5238 (break-even) - i.e. the evidence now excludes break-even from above",
+   "action": "live -> paper"
+  },
+  {
+   "id": "D-2",
+   "name": "Drawdown",
+   "rule": "Bankroll drawdown >= 20 units from peak",
+   "action": "live -> paper"
+  },
+  {
+   "id": "D-3",
+   "name": "No CLV",
+   "rule": "60 consecutive graded bets without positive closing-line value",
+   "action": "live -> paper"
+  },
+  {
+   "id": "D-4",
+   "name": "Duplicate signal",
+   "rule": "|r| > 0.8 with an existing live strategy and < 200 independent bets",
+   "action": "live -> paper"
+  },
+  {
+   "id": "D-5",
+   "name": "Data failure",
+   "rule": "Any input row fails the source gate on two consecutive builds",
+   "action": "live -> paper"
+  },
+  {
+   "id": "D-6",
+   "name": "Regime break",
+   "rule": "Three consecutive weeks of negative signal delta vs the no-bet baseline",
+   "action": "live -> paper"
+  }
+ ],
+ "promotion_gates": [
+  {
+   "id": "G-0",
+   "name": "Pre-registration",
+   "rule": "Rule, inputs and staking written before any graded result",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-1",
+   "name": "No look-ahead",
+   "rule": "Every week-W grade uses weeks < W only (walk-forward)",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-2",
+   "name": "Sample size",
+   "rule": "n >= 200 graded bets for a skill claim",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-3",
+   "name": "Multiple-testing control",
+   "rule": "Benjamini-Hochberg FDR at q=0.10 across all tested strategies",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-4",
+   "name": "Signal exists",
+   "rule": "Signal CI95 lower bound > 0.500 (coin flip), independent of staking",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-5",
+   "name": "Market exists",
+   "rule": "A verified market price is attached to every graded bet",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-6",
+   "name": "Beat the price",
+   "rule": "CI95 lower bound on ROI > 0 at the realised price",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-7",
+   "name": "Uncertainty",
+   "rule": "95% CI reported on hit rate, ROI and CLV for every published number",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-8",
+   "name": "Correlation integrity",
+   "rule": "Every multi-leg price uses a measured joint probability with n printed",
+   "blocking": "blocking"
+  },
+  {
+   "id": "G-9",
+   "name": "Data integrity",
+   "rule": "Every input row carries an official source link and passes scripts/ops_verify.py",
+   "blocking": "blocking"
+  }
+ ],
+ "demotion_dryrun": {
+  "kind": "SIMULATED",
+  "note": "Mechanical dry run of D-1 on a synthetic bet sequence. It proves the gate can fire at the stated threshold; it is not evidence about any real strategy.",
+  "window": 100,
+  "sequence_true_rate": {
+   "first_100": 0.58,
+   "next_100": 0.3
+  },
+  "d1_threshold": 0.5238,
+  "d1_first_fire_at_bet": 146,
+  "d1_ci_upper_at_fire": 0.518,
+  "verdict": "gate fires",
+  "self_check": "first draft used a 40-bet window; the dry run showed the upper bound cannot fall below 0.5238 above 35% accuracy, so the window was widened to 100 bets"
+ }
+}
