@@ -1,0 +1,182 @@
+[
+ {
+  "id": "Q-01",
+  "area": "Data scope",
+  "question": "What is the authoritative universe of games the model will be scored on?",
+  "known": "Official 2026 regular-season standings, Week 10 schedule and Week 10 injury report are ingested and verified from NFL.com.",
+  "unknown": "Game-level results by week (who beat whom, by how much) have NOT been ingested. That is why no schedule-strength adjustment exists yet.",
+  "how": "Ingest https://www.nfl.com/schedules/2026/by-week/week-N for N=1..9 and parse final scores; store as a game-log table keyed by game URL.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-02",
+  "area": "Market data",
+  "question": "What are the market lines we are trying to beat?",
+  "known": "Nothing. No market line has been ingested.",
+  "unknown": "Closing spread, total, moneyline and every player-prop line are unknown. Without them the model cannot be scored against anything.",
+  "how": "Licence a line feed, or record closing lines manually into a versioned CSV. No official NFL source publishes betting lines, so this can never satisfy the official-source rule; it must be handled as a separately-governed dataset.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-03",
+  "area": "Market data",
+  "question": "Are we allowed to use non-official sources at all?",
+  "known": "The verification rule in COORDINATION.md requires an official source for every fact row.",
+  "unknown": "Whether a vetted, non-official dataset (e.g. a licensed odds feed) may be used for the scoring layer only.",
+  "how": "Owner decision. Recommendation: allow it, but tag the source tier on every row so a fact row can never be confused with a vendor row.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-04",
+  "area": "Injuries",
+  "question": "How stale is the official injury report relative to kickoff?",
+  "known": "The Week 10 report lists a final practice status and a game status per player; it is dated by game day.",
+  "unknown": "The report's own last-updated timestamp is not exposed on the page, so we cannot prove how fresh it is at the moment we bet.",
+  "how": "Record an HTTP fetch timestamp with every ingest run and store it next to the row. The pipeline already writes AS_OF; surface it per row.",
+  "blocking": "No"
+ },
+ {
+  "id": "Q-05",
+  "area": "Injuries",
+  "question": "Does 'Out' on the injury report mean the player is officially inactive?",
+  "known": "Game Status values observed on the official report: Out, Doubtful, Questionable, and blank.",
+  "unknown": "The distinction between the injury report designation and the 90-minute-before-kickoff inactives list is not captured.",
+  "how": "Ingest the official inactives list per game. NFL.com publishes a per-week inactives article; link it per game.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-06",
+  "area": "Depth charts",
+  "question": "Are club depth charts official?",
+  "known": "31 of 32 clubs publish a depth chart. Every one of them is labelled 'unofficial' by the club itself. The Patriots page goes further and says it reflects the opinions of Patriots.com writers, not the organisation.",
+  "unknown": "A machine-readable, club-authoritative starter designation does not exist on the club pages we read.",
+  "how": "Use the NFL gamebook / official participation data as the ground truth for who actually started. That is an official next-gen/gamebook product and would replace the unofficial chart.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-07",
+  "area": "Depth charts",
+  "question": "How fresh is each club's depth chart?",
+  "known": "Four clubs print a date: CHI 10/31/2026, GB 2026-11-10, LV 2026-11-10, SF 2026-11-10, TEN 2026-11-10. The other 27 print no date at all.",
+  "unknown": "For 27 of 32 clubs we cannot prove the chart is current. Chicago's is 14 days old at fetch time.",
+  "how": "Diff each club's chart on every ingest run and store a change log; alert when a chart has not changed for 7+ days.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-08",
+  "area": "Depth charts",
+  "question": "Do depth charts reflect the current week's injuries?",
+  "known": "They do not. Detroit lists Cade Mays as the starting centre while the official injury report lists Cade Mays as Out for Week 10. Philadelphia still lists Hollywood Brown and Fred Johnson after the club's own news page announced both were waived on 2026-11-13.",
+  "unknown": "Whether any club auto-syncs its chart to the injury report. Evidence from DET and PHI says no.",
+  "how": "Treat the chart as a static prior and always override it with the injury report. This is what the pipeline does; the conflict is surfaced as a flag rather than silently resolved.",
+  "blocking": "No"
+ },
+ {
+  "id": "Q-09",
+  "area": "Data gap",
+  "question": "Which club is missing from the depth-chart layer?",
+  "known": "Houston's official depth-chart page renders the chart as an image; no table rows could be read.",
+  "unknown": "The entire Houston depth chart.",
+  "how": "Either OCR the image, or switch the whole layer to official gamebook participation data (see Q-06), which fixes this and Q-06 at once.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-10",
+  "area": "Modelling",
+  "question": "What is the correct home-field advantage constant?",
+  "known": "Official standings expose a home/road split per team, so home and road performance can be measured separately per club.",
+  "unknown": "A league-wide HFA constant has not been estimated; doing so requires the game log from Q-01.",
+  "how": "Fit HFA as the intercept in a game-log regression once Q-01 is closed. Until then the model runs with HFA = 0.0 and says so.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-11",
+  "area": "Modelling",
+  "question": "How do we adjust for schedule strength?",
+  "known": "Net points per game is computed for all 32 clubs from official standings.",
+  "unknown": "An opponent-adjusted rating is impossible without the game log. Net points per game currently treats every opponent as average.",
+  "how": "Close Q-01, then run an iterative (Bradley-Terry / least-squares) rating solve on the game log.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-12",
+  "area": "Modelling",
+  "question": "What is the model's total and prop capability?",
+  "known": "A spread can be derived from points-for and points-against per game.",
+  "unknown": "Pace, success rate, explosive-play rate, red-zone efficiency and any per-player projection require play-by-play that has not been ingested. Totals and props are therefore not yet modelable.",
+  "how": "Ingest official play-by-play / Next Gen Stats, then add a drive-level total model and a usage-based prop model.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-13",
+  "area": "Validation",
+  "question": "How much history do we need before a strategy is allowed to bet?",
+  "known": "Nothing has been validated yet; zero strategies have a single graded result.",
+  "unknown": "The minimum sample, the holdout design and the significance threshold are defined but untested against real results.",
+  "how": "Gate definitions are published on the Validation page. They execute automatically the moment a graded result set exists.",
+  "blocking": "No"
+ },
+ {
+  "id": "Q-14",
+  "area": "Correlation",
+  "question": "What are the correlations between parlay legs?",
+  "known": "Correlations that depend only on official standings can be computed today and are published on the Correlation page.",
+  "unknown": "Leg-level correlations (QB passing yards vs. his WR's receiving yards, team total vs. game total, same-game spread vs. total) require play-by-play and are all blank.",
+  "how": "Ingest play-by-play, then estimate the correlation matrix on a within-game residual basis, not on raw totals, to avoid the shared-game-driver bias.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-15",
+  "area": "Correlation",
+  "question": "How do we stop correlated strategies from being counted as independent evidence?",
+  "known": "Each strategy declares a family. Strategies in the same family are treated as one cluster for multiplicity purposes.",
+  "unknown": "The cross-strategy correlation matrix is unestimated, so the effective number of independent tests is unknown.",
+  "how": "Estimate strategy-return correlations, then replace the Bonferroni bound with an effective-number-of-tests correction. Until then use the conservative bound.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-16",
+  "area": "Competition",
+  "question": "How are leaderboard rewards funded and paid?",
+  "known": "A reward-tier structure is published on the Leaderboard page.",
+  "unknown": "Whether rewards are real money, points, or notional. No decision has been recorded.",
+  "how": "Owner decision. Recommendation: start notional. Cash rewards create an incentive to game the leaderboard that the anti-gaming rules in the spec only partially mitigate.",
+  "blocking": "No"
+ },
+ {
+  "id": "Q-17",
+  "area": "Legal",
+  "question": "Is this system legal to operate in the owner's jurisdiction?",
+  "known": "The owner's location is recorded as Tokyo, Japan.",
+  "unknown": "Whether originating lines and staking real money is lawful there, and whether a leaderboard with rewards constitutes a prize promotion.",
+  "how": "Legal review in the operating jurisdiction before any real-money staking. Not something the codebase can answer.",
+  "blocking": "Yes"
+ },
+ {
+  "id": "Q-18",
+  "area": "Ops",
+  "question": "Who owns the model when a strategy fails its gates?",
+  "known": "Gates produce a fail state and the strategy is marked blocked.",
+  "unknown": "No human review step is wired into the pipeline for a blocked strategy.",
+  "how": "Add the blocked strategy to the Suggestions page automatically so a reviewer picks a path: repair, retire, or re-scope.",
+  "blocking": "No"
+ },
+ {
+  "id": "Q-19",
+  "area": "Ops",
+  "question": "How often does the pipeline run?",
+  "known": "Ingest, build and publish are all scripted and can run without manual input.",
+  "unknown": "No scheduler is wired up. Injury and depth data change daily, so a stale site is a real risk.",
+  "how": "Add a GitHub Actions schedule (for example twice daily plus a pre-kickoff run) once Q-20 is closed.",
+  "blocking": "No"
+ },
+ {
+  "id": "Q-20",
+  "area": "Ops",
+  "question": "Who can push to the branch, and is the site served from a stable URL?",
+  "known": "The repo is on GitHub with GitHub authentication configured for this session.",
+  "unknown": "Branch protection, required checks, and the final GitHub Pages URL are not yet confirmed.",
+  "how": "Enable Pages from the branch, then confirm the deploy and record the URL in COORDINATION.md.",
+  "blocking": "No"
+ }
+]

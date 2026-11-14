@@ -1,0 +1,101 @@
+[
+ {
+  "id": "F-01",
+  "area": "Source quality",
+  "severity": "Medium",
+  "what": "Every club depth chart is labelled 'unofficial' by the club that publishes it.",
+  "why": "31 of 31 readable charts carry a self-declared unofficial label, so no chart can be treated as a club-authoritative starter designation.",
+  "source": "https://www.detroitlions.com/team/depth-chart",
+  "action": "Use official gamebook participation data as ground truth (S-02)."
+ },
+ {
+  "id": "F-02",
+  "area": "Source quality",
+  "severity": "Medium",
+  "what": "27 of 32 club depth charts print no 'as of' date, so freshness cannot be proven.",
+  "why": "Only CHI, GB, LV, SF and TEN print a date. The others give no evidence of when the chart was last updated.",
+  "source": "https://www.chicagobears.com/team/depth-chart",
+  "action": "Diff each chart on every run and alert when a chart has not changed in 7 days (S-02)."
+ },
+ {
+  "id": "F-03",
+  "area": "Source quality",
+  "severity": "High",
+  "what": "Detroit lists Cade Mays as its starting centre while the official injury report lists him Out.",
+  "why": "The club chart is not synced to the injury report. Trusting the chart would have produced a wrong starter.",
+  "source": "https://www.nfl.com/injuries/",
+  "action": "Already handled: the pipeline treats the injury report as authoritative for availability."
+ },
+ {
+  "id": "F-04",
+  "area": "Source quality",
+  "severity": "Medium",
+  "what": "Philadelphia's depth chart lists Hollywood Brown and Fred Johnson, both waived by the club on 2026-11-13.",
+  "why": "The club's own news page and the club's own depth chart disagree.",
+  "source": "https://www.philadelphiaeagles.com/news/eagles-waive-hollywood-brown-fred-johnson",
+  "action": "Treat club transaction news as an override on the next ingest run."
+ },
+ {
+  "id": "F-05",
+  "area": "Data gap",
+  "severity": "High",
+  "what": "Houston's official depth chart is published only as an image; no rows could be read.",
+  "why": "The page renders the chart inside a picture, so there is no machine-readable table.",
+  "source": "https://www.houstontexans.com/team/depth-chart",
+  "action": "Switch the whole depth layer to official gamebook participation data (S-02)."
+ },
+ {
+  "id": "F-06",
+  "area": "Data gap",
+  "severity": "High",
+  "what": "No market lines exist anywhere in the system.",
+  "why": "No spread, total, moneyline or player-prop price has been ingested, so no signal can be converted into a bet or scored against the market.",
+  "source": "",
+  "action": "Owner decision required (Q-02, Q-03, S-03)."
+ },
+ {
+  "id": "F-07",
+  "area": "Data gap",
+  "severity": "High",
+  "what": "No game log has been ingested.",
+  "why": "Without week-by-week results there is no home-field-advantage estimate and no schedule-strength adjustment, so the model runs uncalibrated.",
+  "source": "",
+  "action": "Ingest nfl.com/schedules/2026/by-week/week-N for N=1..9 (Q-01, S-01)."
+ },
+ {
+  "id": "F-08",
+  "area": "Modelling",
+  "severity": "Medium",
+  "what": "All model lines are produced with home-field advantage = 0.0 and no schedule adjustment.",
+  "why": "Both parameters need a game log. Publishing an uncalibrated number that looks like a line is how a bad model gets trusted.",
+  "source": "https://www.nfl.com/standings/league/2026/REG",
+  "action": "Close Q-10 and Q-11, then recalibrate (S-07)."
+ },
+ {
+  "id": "F-09",
+  "area": "Source quality",
+  "severity": "Low",
+  "what": "185 of 345 injury rows have a blank game status, and 21 of those also show the player did not practise.",
+  "why": "The official report leaves the Game Status column empty for a majority of listed players, so availability cannot be read from that column alone. Counted against the official page: 66 Out, 10 Doubtful, 84 Questionable.",
+  "source": "https://www.nfl.com/injuries/",
+  "action": "Cross-check against the official inactives list (Q-05, S-06)."
+ },
+ {
+  "id": "F-11",
+  "area": "Source quality",
+  "severity": "Medium",
+  "what": "17 players ruled Out or Doubtful are absent from their own club's depth chart.",
+  "why": "Players on injured reserve or recently signed are frequently missing from the chart, so the chart cannot be used as a completeness check.",
+  "source": "https://www.nfl.com/injuries/",
+  "action": "Treat absence from the chart as an unknown, never as 'healthy'."
+ },
+ {
+  "id": "F-12",
+  "area": "Repository",
+  "severity": "Low",
+  "what": "The base commit contains 45 tracked file(s) totalling 925245 bytes.",
+  "why": "There is no licence, no .gitignore, no CI, no tests, no documentation and no branch protection recorded at the base commit.",
+  "source": "https://github.com/karagemop466-tech/X3/commit/e12423044baef53c007fce7d1d3f45eeaf0a7e29",
+  "action": "Add licence, .gitignore, CI and branch protection."
+ }
+]

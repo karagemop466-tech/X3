@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coordination | X3 NFL</title>
+<style>
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--info);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1400px;margin:0 auto;padding:0 20px}
+header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:baseline;gap:12px;padding:14px 0 10px}
+.brand h1{font-size:19px;margin:0;letter-spacing:.5px}
+.brand span{color:var(--dim);font-size:12px}
+nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:10px}
+nav a{padding:6px 11px;border-radius:6px;color:var(--dim);font-size:13px}
+nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+nav a.on{background:var(--panel2);color:var(--txt);box-shadow:inset 0 -2px 0 var(--acc)}
+main{padding:24px 0 60px}
+h2{font-size:22px;margin:0 0 4px}
+h3{font-size:16px;margin:26px 0 8px;color:var(--txt)}
+p.lede{color:var(--dim);margin:0 0 18px;max-width:100ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .k{font-size:26px;font-weight:600;line-height:1.1}
+.card .l{color:var(--dim);font-size:12px;margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
+.card.ok .k{color:var(--acc)}.card.warn .k{color:var(--warn)}.card.bad .k{color:var(--bad)}
+.card.info .k{color:var(--info)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.bar input,.bar select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+border-radius:6px;padding:7px 10px;font-size:13px}
+.bar input{min-width:230px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+.tw{overflow:auto;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);position:sticky;top:0;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.5px;color:var(--dim);cursor:pointer;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:#111823}
+.b{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;border:1px solid var(--line);
+white-space:nowrap}
+.b.ok{color:var(--acc);border-color:#1f6f37}.b.warn{color:var(--warn);border-color:#6b5210}
+.b.bad{color:var(--bad);border-color:#7d2b26}.b.info{color:var(--info);border-color:#1f4b7d}
+.b.mut{color:var(--mut)}
+.src{font-size:11px}
+.blank{color:var(--mut);font-style:italic}
+.mut{color:var(--dim)}
+small.note{color:var(--dim);display:block;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--dim);font-size:12px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;font-size:13px}
+.kv dt{color:var(--dim)}
+.kv dd{margin:0}
+ul.tight{margin:6px 0 0;padding-left:20px}ul.tight li{margin:3px 0}
+details{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.badge{font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--dim)}
+</style></head><body>
+<header><div class="wrap">
+<div class="brand"><h1>X3 &middot; NFL Decision System</h1>
+<span>2026 season &middot; Week 10 &middot; data as of 2026-11-14</span></div>
+<nav><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive Summary</a><a href="standings.html" class="">Standings</a><a href="schedule.html" class="">Schedule</a><a href="injuries.html" class="">Injuries</a><a href="depth-charts.html" class="">Depth &amp; Deficiencies</a><a href="lines.html" class="">Own Lines</a><a href="strategies.html" class="">Strategies</a><a href="validation.html" class="">Validation Gates</a><a href="correlation.html" class="">Correlation</a><a href="leaderboard.html" class="">Leaderboard</a><a href="questions.html" class="">Open Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="requirements.html" class="">Requirements</a><a href="repo-review.html" class="">Repo Review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for Review</a><a href="coordination.html" class="on">Coordination</a></nav></div></header>
+<main><div class="wrap">
+<h2>Coordination</h2>
+<p class="lede">Shared task board and session rules.</p>
+<p class='lede'>Mirror of <code>COORDINATION.md</code>, the shared task board for parallel sessions.</p><div class='panel'><pre style='white-space:pre-wrap;margin:0;font-size:12.5px'># COORDINATION.md — Shared Task Board
+
+Repo: `karagemop466-tech/X3`
+Session start: 2026-11-14 (UTC)
+
+## Branch / session rules in force
+
+This session is bound to a **single fixed branch**: `arena/7e632805-x3` (branched from
+`main` @ `e124230`). Arena tracks this session by that branch, so this session:
+
+* commits and pushes **only** to `arena/7e632805-x3`;
+* does **not** create or switch to `session-&lt;id&gt;/&lt;task&gt;` worktrees;
+* claims file scopes below so that any *other* concurrent session can avoid them.
+
+If another session needs to edit a file owned here, log the request in **Handoff / Requests**
+instead of editing. If a claim is &gt;60 min old with no commits, another session may take over.
+
+## Session registry
+
+| Session ID | Branch | Status | Started | Last commit |
+|---|---|---|---|---|
+| `arena/7e632805-x3` | `arena/7e632805-x3` | active | 2026-11-14 | see change log |
+
+## Task board
+
+Legend: `unclaimed` · `in progress` · `needs review` · `done`
+
+| # | Task | Status | Owner | Files in scope |
+|---|---|---|---|---|
+| T01 | Create/read COORDINATION.md, define scope | done | `arena/7e632805-x3` | `COORDINATION.md` |
+| T02 | Repo audit, line by line, flag irregularities | done | `arena/7e632805-x3` | `site/repo-review.html`, `site/data/audit.json` |
+| T03 | Requirements inventory (collect / organize / analyze) | done | `arena/7e632805-x3` | `site/requirements.html` |
+| T04 | Executive summary | done | `arena/7e632805-x3` | `site/index.html`, `site/executive-summary.html` |
+| T05 | Open-questions register (have / don&#x27;t have / how to discover) | done | `arena/7e632805-x3` | `site/questions.html` |
+| T06 | Suggestions backlog + decision-path review page | done | `arena/7e632805-x3` | `site/suggestions.html` |
+| T07 | Own-line origination: signal strategies + leaderboard + validation gates | done | `arena/7e632805-x3` | `site/lines.html`, `site/strategies.html`, `site/leaderboard.html`, `site/validation.html` |
+| T08 | Correlation values &amp; parlay/prop-combo math | done | `arena/7e632805-x3` | `site/correlation.html` |
+| T09 | Injury &amp; depth-chart / defensive-deficiency tracking | done | `arena/7e632805-x3` | `site/depth-charts.html`, `site/injuries.html` |
+| T10 | Source register + verification pass (every row → official link) | done | `arena/7e632805-x3` | `site/sources.html` |
+| T11 | Flagged for Review page | done | `arena/7e632805-x3` | `site/flagged.html` |
+| T12 | Static site build (dashboard shell, nav, data renderer) | done | `arena/7e632805-x3` | `site/` all files |
+| T13 | GitHub Pages enablement + deploy verification | done | `arena/7e632805-x3` | `.github/workflows/pages.yml` |
+| T14 | Final integration: combined re-verify, link check, PR + merge | done | `arena/7e632805-x3` | all |
+
+## Verification rules (binding on every session)
+
+1. A table row is **verified** only if its value was read from an official source and the row
+   carries that source&#x27;s URL. Official = NFL.com, NFL team sites, NFL Football Operations,
+   NFL Next Gen Stats, NFLPA. Pro-Football-Reference and all sports media are *secondary*
+   (not official) and must never back a fact row.
+2. If a value cannot be confirmed from an official source, the cell is **left blank**, marked
+   `UNVERIFIED`, and mirrored to the **Flagged for Review** page.
+3. Never infer, interpolate, or model a value into a &quot;fact&quot; row. Model output is labelled
+   `DERIVED`, lives in its own table, and always shows its parameters.
+4. Every claim is re-checked against the live official page before it is marked verified.
+
+## Verification results
+
+| Layer | Rows | Sourced | Notes |
+|---|---|---|---|
+| Standings | 32 | 32/32 | `nfl.com/standings/league/2026/REG` |
+| Schedule | 14 games + 4 byes | 18/18 | `nfl.com/schedules/2026/by-week/week-10` |
+| Injuries | 345 | 345/345 | `nfl.com/injuries/`, Week 10 |
+| Depth charts | 31/32 clubs | 108/108 | HOU not readable (see F-05) |
+| Starter-absent join | 76 | 76/76 | derived: injury report × depth chart |
+| Model lines | 14 | 14/14 | derived, HFA = 0.0, uncalibrated |
+
+Structural checks run against the built site: 18 pages, 25 tables, 0 column mismatches,
+0 broken internal links, all 18 pages return HTTP 200.
+
+## Handoff / Requests
+
+| Date | From | Request | Status |
+|---|---|---|---|
+| 2026-11-14 | `arena/7e632805-x3` | No other session detected at start of work. Single-session build. | n/a |
+| 2026-11-14 | `arena/7e632805-x3` | **Owner decision needed:** no official source publishes betting lines (Q-02, Q-03, F-06). The scoring layer cannot fire without a licensed or manually-recorded odds feed. | open |
+| 2026-11-14 | `arena/7e632805-x3` | **Owner decision needed:** leaderboard rewards are currently specified as notional (S-12, Q-16). Confirm before any season starts. | open |
+| 2026-11-14 | `arena/7e632805-x3` | **Legal:** owner is in Tokyo, Japan. Whether originating lines and staking real money is lawful there is unresolved (Q-17, S-16). | open |
+
+## Change log
+
+| Date | Session | Change |
+|---|---|---|
+| 2026-11-14 | `arena/7e632805-x3` | Board created; T01–T12 claimed. |
+| 2026-11-14 | `arena/7e632805-x3` | Ingested official standings (32), Week 10 schedule (14 games, 4 byes), Week 10 injury report (345 rows). |
+| 2026-11-14 | `arena/7e632805-x3` | Read 31/32 official club depth charts. HOU publishes image only → flagged F-05. |
+| 2026-11-14 | `arena/7e632805-x3` | Built `tools/nfl_data.py` (verified data), `tools/site_content.py` (analysis), `tools/build_site.py` (build). |
+| 2026-11-14 | `arena/7e632805-x3` | Built 18-page site + `site/data/*.json`. 11 flagged items. T01–T12 complete. |
+| 2026-11-14 | `arena/7e632805-x3` | Added Pages workflow, .gitignore, README. T13 in progress. |
+</pre></div><p><a class="src" href="https://github.com/karagemop466-tech/X3/blob/e12423044baef53c007fce7d1d3f45eeaf0a7e29/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md on GitHub &#8599;</a></p>
+</div></main>
+<footer><div class="wrap">
+Verification rule: a row is verified only when its value was read from an official
+NFL source and the row carries that source's link. Values that could not be confirmed
+are blank and marked <span class="b warn">UNVERIFIED</span>; they are repeated on the
+<a href="flagged.html">Flagged for Review</a> page. Model output is always labelled
+<span class="b mut">DERIVED</span> and is never presented as fact.
+</div></footer>
+<script>
+document.querySelectorAll('th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){
+    var tb=th.closest('table');var i=[].indexOf.call(th.parentNode.children,th);
+    var asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+    var rows=[].slice.call(tb.tBodies[0].rows);
+    rows.sort(function(a,b){
+      var x=a.cells[i].dataset.sort!==undefined?a.cells[i].dataset.sort:a.cells[i].textContent;
+      var y=b.cells[i].dataset.sort!==undefined?b.cells[i].dataset.sort:b.cells[i].textContent;
+      var nx=parseFloat(x),ny=parseFloat(y);
+      if(!isNaN(nx)&&!isNaN(ny))return asc?nx-ny:ny-nx;
+      return asc?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+    });
+    rows.forEach(function(r){tb.tBodies[0].appendChild(r)});
+  });
+});
+document.querySelectorAll('input[data-filter]').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var q=inp.value.toLowerCase();var tb=document.querySelector(inp.dataset.filter);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+document.querySelectorAll('[data-filter]').forEach(function(inp){
+  function cnt(){var tb=document.querySelector(inp.dataset.filter);
+    if(!tb)return;var v=0;
+    [].forEach.call(tb.tBodies[0].rows,function(r){if(r.style.display!=='none')v++;});
+    var out=document.getElementById('c_'+tb.id);if(out)out.textContent=v+' rows';}
+  inp.addEventListener('input',cnt);cnt();
+});
+document.querySelectorAll('select[data-eq]').forEach(function(sel){
+  sel.addEventListener('change',function(){
+    var v=sel.value.toLowerCase();var tb=document.querySelector(sel.dataset.eq);
+    var col=parseInt(sel.dataset.col||'0',10);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      var c=(r.cells[col]?r.cells[col].textContent:'').toLowerCase();
+      r.style.display=(!v||c.indexOf(v)>-1)?'':'none';
+    });
+  });
+});
+</script></body></html>

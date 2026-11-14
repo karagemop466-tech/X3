@@ -1,0 +1,258 @@
+[
+ {
+  "abbr": "ARI",
+  "name": "Arizona Cardinals",
+  "profile": "https://www.nfl.com/teams/arizona-cardinals/",
+  "site": "https://www.azcardinals.com/",
+  "conf": "NFC",
+  "div": "West"
+ },
+ {
+  "abbr": "ATL",
+  "name": "Atlanta Falcons",
+  "profile": "https://www.nfl.com/teams/atlanta-falcons/",
+  "site": "https://www.atlantafalcons.com/",
+  "conf": "NFC",
+  "div": "South"
+ },
+ {
+  "abbr": "BAL",
+  "name": "Baltimore Ravens",
+  "profile": "https://www.nfl.com/teams/baltimore-ravens/",
+  "site": "https://www.baltimoreravens.com/",
+  "conf": "AFC",
+  "div": "North"
+ },
+ {
+  "abbr": "BUF",
+  "name": "Buffalo Bills",
+  "profile": "https://www.nfl.com/teams/buffalo-bills/",
+  "site": "https://www.buffalobills.com/",
+  "conf": "AFC",
+  "div": "East"
+ },
+ {
+  "abbr": "CAR",
+  "name": "Carolina Panthers",
+  "profile": "https://www.nfl.com/teams/carolina-panthers/",
+  "site": "https://www.panthers.com/",
+  "conf": "NFC",
+  "div": "South"
+ },
+ {
+  "abbr": "CHI",
+  "name": "Chicago Bears",
+  "profile": "https://www.nfl.com/teams/chicago-bears/",
+  "site": "https://www.chicagobears.com/",
+  "conf": "NFC",
+  "div": "North"
+ },
+ {
+  "abbr": "CIN",
+  "name": "Cincinnati Bengals",
+  "profile": "https://www.nfl.com/teams/cincinnati-bengals/",
+  "site": "https://www.bengals.com/",
+  "conf": "AFC",
+  "div": "North"
+ },
+ {
+  "abbr": "CLE",
+  "name": "Cleveland Browns",
+  "profile": "https://www.nfl.com/teams/cleveland-browns/",
+  "site": "https://www.clevelandbrowns.com/",
+  "conf": "AFC",
+  "div": "North"
+ },
+ {
+  "abbr": "DAL",
+  "name": "Dallas Cowboys",
+  "profile": "https://www.nfl.com/teams/dallas-cowboys/",
+  "site": "https://www.dallascowboys.com/",
+  "conf": "NFC",
+  "div": "East"
+ },
+ {
+  "abbr": "DEN",
+  "name": "Denver Broncos",
+  "profile": "https://www.nfl.com/teams/denver-broncos/",
+  "site": "https://www.denverbroncos.com/",
+  "conf": "AFC",
+  "div": "West"
+ },
+ {
+  "abbr": "DET",
+  "name": "Detroit Lions",
+  "profile": "https://www.nfl.com/teams/detroit-lions/",
+  "site": "https://www.detroitlions.com/",
+  "conf": "NFC",
+  "div": "North"
+ },
+ {
+  "abbr": "GB",
+  "name": "Green Bay Packers",
+  "profile": "https://www.nfl.com/teams/green-bay-packers/",
+  "site": "https://www.packers.com/",
+  "conf": "NFC",
+  "div": "North"
+ },
+ {
+  "abbr": "HOU",
+  "name": "Houston Texans",
+  "profile": "https://www.nfl.com/teams/houston-texans",
+  "site": "https://www.houstontexans.com/",
+  "conf": "AFC",
+  "div": "South"
+ },
+ {
+  "abbr": "IND",
+  "name": "Indianapolis Colts",
+  "profile": "https://www.nfl.com/teams/indianapolis-colts",
+  "site": "https://www.colts.com/",
+  "conf": "AFC",
+  "div": "South"
+ },
+ {
+  "abbr": "JAX",
+  "name": "Jacksonville Jaguars",
+  "profile": "https://www.nfl.com/teams/jacksonville-jaguars/",
+  "site": "https://www.jaguars.com/",
+  "conf": "AFC",
+  "div": "South"
+ },
+ {
+  "abbr": "KC",
+  "name": "Kansas City Chiefs",
+  "profile": "https://www.nfl.com/teams/kansas-city-chiefs/",
+  "site": "https://www.chiefs.com/",
+  "conf": "AFC",
+  "div": "West"
+ },
+ {
+  "abbr": "LV",
+  "name": "Las Vegas Raiders",
+  "profile": "https://www.nfl.com/teams/las-vegas-raiders/",
+  "site": "https://www.raiders.com/",
+  "conf": "AFC",
+  "div": "West"
+ },
+ {
+  "abbr": "LAC",
+  "name": "Los Angeles Chargers",
+  "profile": "https://www.nfl.com/teams/los-angeles-chargers/",
+  "site": "https://www.chargers.com/",
+  "conf": "AFC",
+  "div": "West"
+ },
+ {
+  "abbr": "LA",
+  "name": "Los Angeles Rams",
+  "profile": "https://www.nfl.com/teams/los-angeles-rams/",
+  "site": "https://www.therams.com/",
+  "conf": "NFC",
+  "div": "West"
+ },
+ {
+  "abbr": "MIA",
+  "name": "Miami Dolphins",
+  "profile": "https://www.nfl.com/teams/miami-dolphins/",
+  "site": "https://www.miamidolphins.com/",
+  "conf": "AFC",
+  "div": "East"
+ },
+ {
+  "abbr": "MIN",
+  "name": "Minnesota Vikings",
+  "profile": "https://www.nfl.com/teams/minnesota-vikings/",
+  "site": "https://www.vikings.com/",
+  "conf": "NFC",
+  "div": "North"
+ },
+ {
+  "abbr": "NE",
+  "name": "New England Patriots",
+  "profile": "https://www.nfl.com/teams/new-england-patriots/",
+  "site": "https://www.patriots.com/",
+  "conf": "AFC",
+  "div": "East"
+ },
+ {
+  "abbr": "NO",
+  "name": "New Orleans Saints",
+  "profile": "https://www.nfl.com/teams/new-orleans-saints/",
+  "site": "https://www.neworleanssaints.com/",
+  "conf": "NFC",
+  "div": "South"
+ },
+ {
+  "abbr": "NYG",
+  "name": "New York Giants",
+  "profile": "https://www.nfl.com/teams/new-york-giants/",
+  "site": "https://www.giants.com/",
+  "conf": "NFC",
+  "div": "East"
+ },
+ {
+  "abbr": "NYJ",
+  "name": "New York Jets",
+  "profile": "https://www.nfl.com/teams/new-york-jets/",
+  "site": "https://www.newyorkjets.com/",
+  "conf": "AFC",
+  "div": "East"
+ },
+ {
+  "abbr": "PHI",
+  "name": "Philadelphia Eagles",
+  "profile": "https://www.nfl.com/teams/philadelphia-eagles/",
+  "site": "https://www.philadelphiaeagles.com/",
+  "conf": "NFC",
+  "div": "East"
+ },
+ {
+  "abbr": "PIT",
+  "name": "Pittsburgh Steelers",
+  "profile": "https://www.nfl.com/teams/pittsburgh-steelers/",
+  "site": "https://www.steelers.com/",
+  "conf": "AFC",
+  "div": "North"
+ },
+ {
+  "abbr": "SF",
+  "name": "San Francisco 49ers",
+  "profile": "https://www.nfl.com/teams/san-francisco-49ers/",
+  "site": "https://www.49ers.com/",
+  "conf": "NFC",
+  "div": "West"
+ },
+ {
+  "abbr": "SEA",
+  "name": "Seattle Seahawks",
+  "profile": "https://www.nfl.com/teams/seattle-seahawks/",
+  "site": "https://www.seahawks.com/",
+  "conf": "NFC",
+  "div": "West"
+ },
+ {
+  "abbr": "TB",
+  "name": "Tampa Bay Buccaneers",
+  "profile": "https://www.nfl.com/teams/tampa-bay-buccaneers/",
+  "site": "https://www.buccaneers.com/",
+  "conf": "NFC",
+  "div": "South"
+ },
+ {
+  "abbr": "TEN",
+  "name": "Tennessee Titans",
+  "profile": "https://www.nfl.com/teams/tennessee-titans/",
+  "site": "https://www.tennesseetitans.com/",
+  "conf": "AFC",
+  "div": "South"
+ },
+ {
+  "abbr": "WAS",
+  "name": "Washington Commanders",
+  "profile": "https://www.nfl.com/teams/washington-commanders/",
+  "site": "https://www.commanders.com/",
+  "conf": "NFC",
+  "div": "East"
+ }
+]

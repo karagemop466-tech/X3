@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Standings | X3 NFL</title>
+<style>
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--info);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1400px;margin:0 auto;padding:0 20px}
+header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:baseline;gap:12px;padding:14px 0 10px}
+.brand h1{font-size:19px;margin:0;letter-spacing:.5px}
+.brand span{color:var(--dim);font-size:12px}
+nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:10px}
+nav a{padding:6px 11px;border-radius:6px;color:var(--dim);font-size:13px}
+nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+nav a.on{background:var(--panel2);color:var(--txt);box-shadow:inset 0 -2px 0 var(--acc)}
+main{padding:24px 0 60px}
+h2{font-size:22px;margin:0 0 4px}
+h3{font-size:16px;margin:26px 0 8px;color:var(--txt)}
+p.lede{color:var(--dim);margin:0 0 18px;max-width:100ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .k{font-size:26px;font-weight:600;line-height:1.1}
+.card .l{color:var(--dim);font-size:12px;margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
+.card.ok .k{color:var(--acc)}.card.warn .k{color:var(--warn)}.card.bad .k{color:var(--bad)}
+.card.info .k{color:var(--info)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.bar input,.bar select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+border-radius:6px;padding:7px 10px;font-size:13px}
+.bar input{min-width:230px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+.tw{overflow:auto;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);position:sticky;top:0;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.5px;color:var(--dim);cursor:pointer;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:#111823}
+.b{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;border:1px solid var(--line);
+white-space:nowrap}
+.b.ok{color:var(--acc);border-color:#1f6f37}.b.warn{color:var(--warn);border-color:#6b5210}
+.b.bad{color:var(--bad);border-color:#7d2b26}.b.info{color:var(--info);border-color:#1f4b7d}
+.b.mut{color:var(--mut)}
+.src{font-size:11px}
+.blank{color:var(--mut);font-style:italic}
+.mut{color:var(--dim)}
+small.note{color:var(--dim);display:block;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--dim);font-size:12px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;font-size:13px}
+.kv dt{color:var(--dim)}
+.kv dd{margin:0}
+ul.tight{margin:6px 0 0;padding-left:20px}ul.tight li{margin:3px 0}
+details{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.badge{font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--dim)}
+</style></head><body>
+<header><div class="wrap">
+<div class="brand"><h1>X3 &middot; NFL Decision System</h1>
+<span>2026 season &middot; Week 10 &middot; data as of 2026-11-14</span></div>
+<nav><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive Summary</a><a href="standings.html" class="on">Standings</a><a href="schedule.html" class="">Schedule</a><a href="injuries.html" class="">Injuries</a><a href="depth-charts.html" class="">Depth &amp; Deficiencies</a><a href="lines.html" class="">Own Lines</a><a href="strategies.html" class="">Strategies</a><a href="validation.html" class="">Validation Gates</a><a href="correlation.html" class="">Correlation</a><a href="leaderboard.html" class="">Leaderboard</a><a href="questions.html" class="">Open Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="requirements.html" class="">Requirements</a><a href="repo-review.html" class="">Repo Review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for Review</a><a href="coordination.html" class="">Coordination</a></nav></div></header>
+<main><div class="wrap">
+<h2>Standings</h2>
+<p class="lede">Official 2026 league standings.</p>
+<p class='lede'>Official 2026 league standings, all 32 clubs, read row by row from <a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">NFL.com &#8599;</a>. Every column is as printed on that page.</p><div class="bar"><input data-filter="#t-stand" placeholder="Filter rows&hellip;"><span class="mut" id="c_t-stand"></span></div><div class="tw"><table id="t-stand"><thead><tr><th data-sort>#</th><th data-sort>Club</th><th data-sort>Abbr</th><th data-sort>W</th><th data-sort>L</th><th data-sort>T</th><th data-sort>PCT</th><th data-sort>PF</th><th data-sort>PA</th><th data-sort>Net</th><th data-sort>Home</th><th data-sort>Road</th><th data-sort>Div</th><th data-sort>Conf</th><th data-sort>Strk</th><th data-sort>Last 5</th><th data-sort>Conference/Division</th><th data-sort>Source</th></tr></thead><tbody><tr><td class="num" data-sort="1">1</td><td>Buffalo Bills</td><td>BUF</td><td class="num">7</td><td class="num">1</td><td class="num">0</td><td class="num">.875</td><td class="num">256</td><td class="num">187</td><td class="num">69</td><td>3-1-0</td><td>4-0-0</td><td>0-1-0</td><td>4-1-0</td><td>4W</td><td>4-1-0</td><td>AFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="2">2</td><td>San Francisco 49ers</td><td>SF</td><td class="num">7</td><td class="num">1</td><td class="num">0</td><td class="num">.875</td><td class="num">235</td><td class="num">156</td><td class="num">79</td><td>5-0-0</td><td>2-1-0</td><td>3-0-0</td><td>4-1-0</td><td>1W</td><td>4-1-0</td><td>NFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="3">3</td><td>Chicago Bears</td><td>CHI</td><td class="num">7</td><td class="num">2</td><td class="num">0</td><td class="num">.778</td><td class="num">241</td><td class="num">184</td><td class="num">57</td><td>4-1-0</td><td>3-1-0</td><td>0-2-0</td><td>5-2-0</td><td>4W</td><td>4-1-0</td><td>NFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="4">4</td><td>Denver Broncos</td><td>DEN</td><td class="num">7</td><td class="num">2</td><td class="num">0</td><td class="num">.778</td><td class="num">198</td><td class="num">186</td><td class="num">12</td><td>4-0-0</td><td>3-2-0</td><td>2-1-0</td><td>3-1-0</td><td>5W</td><td>5-0-0</td><td>AFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="5">5</td><td>Cincinnati Bengals</td><td>CIN</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">.750</td><td class="num">240</td><td class="num">175</td><td class="num">65</td><td>2-1-0</td><td>4-1-0</td><td>1-1-0</td><td>4-2-0</td><td>4W</td><td>4-1-0</td><td>AFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="6">6</td><td>Detroit Lions</td><td>DET</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">.750</td><td class="num">222</td><td class="num">189</td><td class="num">33</td><td>4-0-0</td><td>2-2-0</td><td>2-0-0</td><td>4-1-0</td><td>4W</td><td>4-1-0</td><td>NFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="7">7</td><td>Jacksonville Jaguars</td><td>JAX</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">.750</td><td class="num">229</td><td class="num">121</td><td class="num">108</td><td>4-1-0</td><td>2-1-0</td><td>1-1-0</td><td>5-2-0</td><td>2W</td><td>4-1-0</td><td>AFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="8">8</td><td>Kansas City Chiefs</td><td>KC</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">.750</td><td class="num">202</td><td class="num">143</td><td class="num">59</td><td>4-0-0</td><td>2-2-0</td><td>3-1-0</td><td>6-1-0</td><td>1W</td><td>3-2-0</td><td>AFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="9">9</td><td>Minnesota Vikings</td><td>MIN</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">.750</td><td class="num">146</td><td class="num">116</td><td class="num">30</td><td>3-1-0</td><td>3-1-0</td><td>2-1-0</td><td>4-1-0</td><td>2L</td><td>3-2-0</td><td>NFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="10">10</td><td>Pittsburgh Steelers</td><td>PIT</td><td class="num">6</td><td class="num">2</td><td class="num">0</td><td class="num">.750</td><td class="num">180</td><td class="num">144</td><td class="num">36</td><td>4-0-0</td><td>2-2-0</td><td>2-1-0</td><td>3-2-0</td><td>4W</td><td>4-1-0</td><td>AFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="11">11</td><td>Green Bay Packers</td><td>GB</td><td class="num">6</td><td class="num">3</td><td class="num">0</td><td class="num">.667</td><td class="num">216</td><td class="num">191</td><td class="num">25</td><td>3-1-0</td><td>3-2-0</td><td>1-2-0</td><td>4-3-0</td><td>2W</td><td>4-1-0</td><td>NFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="12">12</td><td>New York Giants</td><td>NYG</td><td class="num">5</td><td class="num">3</td><td class="num">1</td><td class="num">.611</td><td class="num">203</td><td class="num">196</td><td class="num">7</td><td>3-2-0</td><td>2-1-1</td><td>2-1-1</td><td>3-3-1</td><td>1L</td><td>2-2-1</td><td>NFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="13">13</td><td>Cleveland Browns</td><td>CLE</td><td class="num">5</td><td class="num">4</td><td class="num">0</td><td class="num">.556</td><td class="num">161</td><td class="num">196</td><td class="num">-35</td><td>3-0-0</td><td>2-4-0</td><td>2-1-0</td><td>3-3-0</td><td>2L</td><td>2-3-0</td><td>AFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="14">14</td><td>Los Angeles Rams</td><td>LA</td><td class="num">5</td><td class="num">4</td><td class="num">0</td><td class="num">.556</td><td class="num">214</td><td class="num">181</td><td class="num">33</td><td>2-3-0</td><td>3-1-0</td><td>0-2-0</td><td>3-2-0</td><td>3W</td><td>3-2-0</td><td>NFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="15">15</td><td>New England Patriots</td><td>NE</td><td class="num">5</td><td class="num">4</td><td class="num">0</td><td class="num">.556</td><td class="num">211</td><td class="num">207</td><td class="num">4</td><td>3-1-0</td><td>2-3-0</td><td>3-0-0</td><td>5-1-0</td><td>1L</td><td>3-2-0</td><td>AFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="16">16</td><td>Seattle Seahawks</td><td>SEA</td><td class="num">5</td><td class="num">4</td><td class="num">0</td><td class="num">.556</td><td class="num">202</td><td class="num">162</td><td class="num">40</td><td>4-2-0</td><td>1-2-0</td><td>2-1-0</td><td>2-3-0</td><td>1W</td><td>2-3-0</td><td>NFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="17">17</td><td>Baltimore Ravens</td><td>BAL</td><td class="num">4</td><td class="num">5</td><td class="num">0</td><td class="num">.444</td><td class="num">189</td><td class="num">236</td><td class="num">-47</td><td>1-3-0</td><td>3-2-0</td><td>0-2-0</td><td>2-4-0</td><td>4L</td><td>1-4-0</td><td>AFC North</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="18">18</td><td>Dallas Cowboys</td><td>DAL</td><td class="num">4</td><td class="num">5</td><td class="num">0</td><td class="num">.444</td><td class="num">246</td><td class="num">236</td><td class="num">10</td><td>1-3-0</td><td>3-2-0</td><td>2-1-0</td><td>2-4-0</td><td>1W</td><td>2-3-0</td><td>NFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="19">19</td><td>Las Vegas Raiders</td><td>LV</td><td class="num">4</td><td class="num">5</td><td class="num">0</td><td class="num">.444</td><td class="num">238</td><td class="num">268</td><td class="num">-30</td><td>1-3-0</td><td>3-2-0</td><td>1-1-0</td><td>3-3-0</td><td>1L</td><td>1-4-0</td><td>AFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="20">20</td><td>Washington Commanders</td><td>WAS</td><td class="num">3</td><td class="num">5</td><td class="num">1</td><td class="num">.389</td><td class="num">196</td><td class="num">223</td><td class="num">-27</td><td>2-2-1</td><td>1-3-0</td><td>2-2-1</td><td>3-4-1</td><td>1W</td><td>2-2-1</td><td>NFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="21">21</td><td>Carolina Panthers</td><td>CAR</td><td class="num">3</td><td class="num">5</td><td class="num">0</td><td class="num">.375</td><td class="num">199</td><td class="num">219</td><td class="num">-20</td><td>1-3-0</td><td>2-2-0</td><td>1-1-0</td><td>3-3-0</td><td>3L</td><td>2-3-0</td><td>NFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="22">22</td><td>Houston Texans</td><td>HOU</td><td class="num">3</td><td class="num">5</td><td class="num">0</td><td class="num">.375</td><td class="num">209</td><td class="num">192</td><td class="num">17</td><td>0-4-0</td><td>3-1-0</td><td>2-1-0</td><td>3-3-0</td><td>1W</td><td>3-2-0</td><td>AFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="23">23</td><td>New Orleans Saints</td><td>NO</td><td class="num">3</td><td class="num">5</td><td class="num">0</td><td class="num">.375</td><td class="num">185</td><td class="num">216</td><td class="num">-31</td><td>1-4-0</td><td>2-1-0</td><td>0-1-0</td><td>1-3-0</td><td>1W</td><td>2-3-0</td><td>NFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="24">24</td><td>Arizona Cardinals</td><td>ARI</td><td class="num">3</td><td class="num">6</td><td class="num">0</td><td class="num">.333</td><td class="num">178</td><td class="num">255</td><td class="num">-77</td><td>0-3-0</td><td>3-3-0</td><td>1-3-0</td><td>2-5-0</td><td>1L</td><td>2-3-0</td><td>NFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="25">25</td><td>Atlanta Falcons</td><td>ATL</td><td class="num">3</td><td class="num">6</td><td class="num">0</td><td class="num">.333</td><td class="num">188</td><td class="num">223</td><td class="num">-35</td><td>1-4-0</td><td>2-2-0</td><td>1-2-0</td><td>3-3-0</td><td>2L</td><td>1-4-0</td><td>NFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="26">26</td><td>Tampa Bay Buccaneers</td><td>TB</td><td class="num">3</td><td class="num">6</td><td class="num">0</td><td class="num">.333</td><td class="num">202</td><td class="num">178</td><td class="num">24</td><td>1-4-0</td><td>2-2-0</td><td>1-2-0</td><td>3-3-0</td><td>1L</td><td>3-2-0</td><td>NFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="27">27</td><td>Indianapolis Colts</td><td>IND</td><td class="num">2</td><td class="num">7</td><td class="num">0</td><td class="num">.222</td><td class="num">184</td><td class="num">249</td><td class="num">-65</td><td>1-3-0</td><td>1-4-0</td><td>1-2-0</td><td>1-5-0</td><td>5L</td><td>0-5-0</td><td>AFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="28">28</td><td>New York Jets</td><td>NYJ</td><td class="num">2</td><td class="num">7</td><td class="num">0</td><td class="num">.222</td><td class="num">182</td><td class="num">223</td><td class="num">-41</td><td>1-3-0</td><td>1-4-0</td><td>0-2-0</td><td>2-4-0</td><td>4L</td><td>1-4-0</td><td>AFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="29">29</td><td>Philadelphia Eagles</td><td>PHI</td><td class="num">2</td><td class="num">7</td><td class="num">0</td><td class="num">.222</td><td class="num">148</td><td class="num">221</td><td class="num">-73</td><td>1-4-0</td><td>1-3-0</td><td>1-3-0</td><td>1-6-0</td><td>7L</td><td>0-5-0</td><td>NFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="30">30</td><td>Miami Dolphins</td><td>MIA</td><td class="num">1</td><td class="num">7</td><td class="num">0</td><td class="num">.125</td><td class="num">126</td><td class="num">200</td><td class="num">-74</td><td>0-4-0</td><td>1-3-0</td><td>1-1-0</td><td>1-4-0</td><td>2L</td><td>1-4-0</td><td>AFC East</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="31">31</td><td>Tennessee Titans</td><td>TEN</td><td class="num">1</td><td class="num">7</td><td class="num">0</td><td class="num">.125</td><td class="num">144</td><td class="num">199</td><td class="num">-55</td><td>0-4-0</td><td>1-3-0</td><td>1-1-0</td><td>1-5-0</td><td>2L</td><td>1-4-0</td><td>AFC South</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td class="num" data-sort="32">32</td><td>Los Angeles Chargers</td><td>LAC</td><td class="num">0</td><td class="num">8</td><td class="num">0</td><td class="num">.000</td><td class="num">121</td><td class="num">219</td><td class="num">-98</td><td>0-4-0</td><td>0-4-0</td><td>0-3-0</td><td>0-5-0</td><td>8L</td><td>0-5-0</td><td>AFC West</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source &#8599;</a></td></tr></tbody></table></div>
+</div></main>
+<footer><div class="wrap">
+Verification rule: a row is verified only when its value was read from an official
+NFL source and the row carries that source's link. Values that could not be confirmed
+are blank and marked <span class="b warn">UNVERIFIED</span>; they are repeated on the
+<a href="flagged.html">Flagged for Review</a> page. Model output is always labelled
+<span class="b mut">DERIVED</span> and is never presented as fact.
+</div></footer>
+<script>
+document.querySelectorAll('th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){
+    var tb=th.closest('table');var i=[].indexOf.call(th.parentNode.children,th);
+    var asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+    var rows=[].slice.call(tb.tBodies[0].rows);
+    rows.sort(function(a,b){
+      var x=a.cells[i].dataset.sort!==undefined?a.cells[i].dataset.sort:a.cells[i].textContent;
+      var y=b.cells[i].dataset.sort!==undefined?b.cells[i].dataset.sort:b.cells[i].textContent;
+      var nx=parseFloat(x),ny=parseFloat(y);
+      if(!isNaN(nx)&&!isNaN(ny))return asc?nx-ny:ny-nx;
+      return asc?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+    });
+    rows.forEach(function(r){tb.tBodies[0].appendChild(r)});
+  });
+});
+document.querySelectorAll('input[data-filter]').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var q=inp.value.toLowerCase();var tb=document.querySelector(inp.dataset.filter);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+document.querySelectorAll('[data-filter]').forEach(function(inp){
+  function cnt(){var tb=document.querySelector(inp.dataset.filter);
+    if(!tb)return;var v=0;
+    [].forEach.call(tb.tBodies[0].rows,function(r){if(r.style.display!=='none')v++;});
+    var out=document.getElementById('c_'+tb.id);if(out)out.textContent=v+' rows';}
+  inp.addEventListener('input',cnt);cnt();
+});
+document.querySelectorAll('select[data-eq]').forEach(function(sel){
+  sel.addEventListener('change',function(){
+    var v=sel.value.toLowerCase();var tb=document.querySelector(sel.dataset.eq);
+    var col=parseInt(sel.dataset.col||'0',10);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      var c=(r.cells[col]?r.cells[col].textContent:'').toLowerCase();
+      r.style.display=(!v||c.indexOf(v)>-1)?'':'none';
+    });
+  });
+});
+</script></body></html>
