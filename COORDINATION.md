@@ -2248,3 +2248,27 @@ Four conflicts, all resolved as unions, all verified programmatically:
 `scripts/verify_integration.py`, `scripts/desk_verify.py`, `scripts/check_dashboard.py`,
 `node scripts/check_data.js`, `node scripts/check_render.js`.
 
+### PR & deploy record (arena/dd5047b8-x3)
+
+- **PR #55:** https://github.com/karagemop466-tech/X3/pull/55 —
+  `arena/dd5047b8-x3` → `main`, "X3: decision council — the eight requirements as pass/fail
+  tests, plus the suggestion queue". Created 2026-11-14, **MERGED 2026-11-14T19:58:49Z** via
+  `gh pr merge 55 --merge` without waiting for approval. Merge commit
+  `743aa168ddf2a1e16f1077734f3158ea1afb7749`.
+- **Pages after the merge:** the GitHub "pages build and deployment" run
+  [43634990952](https://github.com/karagemop466-tech/X3/actions/runs/43634990952) on `743aa16`
+  **succeeded**, so the live site serves the committed tree (which carries the council nav row on
+  the root landing).
+- **One CI step failed and is being re-checked.** The `pages.yml` run on the merge commit failed at
+  the step *"Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced"*
+  (`tools/x3_engine.py` → `tools/build_hub.py` → `tools/verify_hub.py`). All three commands were
+  re-run locally **in a clean detached worktree at the merge commit `743aa16` and all three exit 0**
+  (engine rc=0, build "ok", verify "failures=0"), and every other step in that run passed. The
+  failure did not reproduce, so it is treated as environmental or a transient race with a
+  concurrent push rather than a defect in the merged tree; a fresh run is being triggered by the
+  next push to `main` and the result will be recorded here.
+- **Root `index.html` ownership note.** `tools/build_hub.py` rewrites the root landing from its own
+  template ("root index.html written") and does not know about `council/`. In CI that regeneration
+  is a check only and is never committed, so the *live* root landing keeps the council nav row. If
+  the hub owner rebuilds and commits the landing, the row will need re-adding — logged here rather
+  than editing their builder.
