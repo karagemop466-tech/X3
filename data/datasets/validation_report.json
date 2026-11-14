@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-11-14T03:40:20+00:00",
+  "generated_at": "2026-11-14T03:43:36+00:00",
   "pages_checked": 16,
   "dataset_files_checked": 64,
   "dataset_rows_with_source": 14711,
   "dataset_blank_values": 12860,
-  "external_urls_checked": false,
+  "external_urls_checked": true,
   "result": "pass",
   "checks": [
     {
       "name": "Internal links and assets resolve",
       "result": "pass",
-      "detail": "460 internal references checked across 16 pages"
+      "detail": "474 internal references checked across 16 pages"
     },
     {
       "name": "All external links point at official hosts",
       "result": "pass",
-      "detail": "74 external links checked against the official-host allowlist"
+      "detail": "955 external links checked against the official-host allowlist"
     },
     {
       "name": "Every dataset row carries an official source link",
@@ -25,7 +25,7 @@
     {
       "name": "Unverified values are rendered as explicit markers",
       "result": "pass",
-      "detail": "1 unverified markers rendered (dataset blank values: 12860)"
+      "detail": "253 unverified markers rendered (dataset blank values: 12860)"
     },
     {
       "name": "No two official URLs returned an identical payload",
@@ -36,6 +36,11 @@
       "name": "Scheduled games match the week they are filed under",
       "result": "pass",
       "detail": "0 scheduled games checked against their own game week"
+    },
+    {
+      "name": "Official source URLs are reachable",
+      "result": "pass",
+      "detail": "262 official URLs requested"
     }
   ]
 }
