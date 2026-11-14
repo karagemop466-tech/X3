@@ -1,7 +1,30 @@
-[PASS] Internal links and assets resolve: 460 internal references checked across 16 pages
-[PASS] All external links point at official hosts: 74 external links checked against the official-host allowlist
+[PASS] Internal links and assets resolve: 474 internal references checked across 16 pages
+[FAIL] All external links point at official hosts: 955 external links checked against the official-host allowlist; offenders: 19
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.chiefs.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.chiefs.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.chiefs.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.chiefs.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.panthers.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.panthers.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.panthers.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.packers.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.colts.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.chiefs.com/team/depth-chart
+[FAIL] Non-official link: depth.html -> https://www.patriots.com/team/depth-chart
 [PASS] Every dataset row carries an official source link: 14711 dataset rows checked for an official source link
-[PASS] Unverified values are rendered as explicit markers: 1 unverified markers rendered (dataset blank values: 12863)
-[FAIL] Official source URLs are reachable: 13 official URLs requested; unreachable: 1
-[FAIL] Unreachable official URL: https://www.nfl.com/news/nfl-communications -> HTTP 404
+[PASS] Unverified values are rendered as explicit markers: 253 unverified markers rendered (dataset blank values: 12860)
+[FAIL] No two official URLs returned an identical payload: 3 duplicate payload group(s) detected; groups: 3
+[FAIL] Duplicate official payload: 9 sources returned an identical payload (55559bfbef81): injuries_2026_w10, injuries_2026_w11, injuries_2026_w12, injuries_2026_w13, injuries_2026_w14, injuries_2026_w15, injuries_2026_w16, injuries_2026_w17
+[FAIL] Duplicate official payload: 2 sources returned an identical payload (5804e50c3582): club_depth_arizona-cardinals_depth-chart, club_depth_arizona-cardinals_team_depth-chart
+[FAIL] Duplicate official payload: 2 sources returned an identical payload (91b2b3bbfe1c): club_depth_atlanta-falcons_depth-chart, club_depth_atlanta-falcons_team_depth-chart
+[PASS] Scheduled games match the week they are filed under: 0 scheduled games checked against their own game week
+[PASS] Official source URLs are reachable: 262 official URLs requested
 overall: fail (16 pages)

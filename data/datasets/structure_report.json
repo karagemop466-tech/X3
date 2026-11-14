@@ -1,149 +1,280 @@
 {
   "sources": {
-    "club_depth_arizona-cardinals_depth-chart": {
-      "file": "club_depth_arizona_cardinals_depth_chart.html",
+    "schedule_2026_w01": {
+      "file": "schedule_2026_w01.html",
       "tables": [],
-      "bytes": 1125397,
-      "title": "Official St. Louis Cardinals Website | MLB.com",
-      "h1": "",
-      "text_sample": "Official St. Louis Cardinals Website | MLB.com Skip to Content Tickets Single Game Tickets Ticket Packs All-Inclusive & Premium Tickets Suites Season Tickets Group Tickets Coca-Cola Unlimited Stadium Tours Cardinals Gift Card Souvenir Tickets Promotions & Giveaways Theme Tickets Pre-Game Party Gameday Parking Ballpark Pass Concerts Fan Values Buy & Sell Tickets on SeatGeek My Cardinals Tickets Rainout Policy Schedule 2027 Spring Training Schedule 2027 Regular Season Schedule Sortable Schedule Downloadable Schedule Printable Schedule Spanish Broadcast Schedule Cardinals TV Info Cardinals Radio ",
+      "bytes": 2385670,
+      "title": "NFL Week 1 Schedule 2026: Games, Times, Matchups & Tickets",
+      "h1": "SCHEDULE 2026",
+      "text_sample": "NFL Week 1 Schedule 2026: Games, Times, Matchups & Tickets Skip to main content GET MORE FOOTBALL WITH NFL+ PREMIUM SUN 6:00PM 6:00PM Chevron Left SUN 6:00PM 6:00PM INTL New England Patriots NE Detroit Lions DET Kansas City Chiefs KC Atlanta Falcons ATL Houston Texans HOU Cleveland Browns CLE Minnesota Vikings MIN Green Bay Packers GB Miami Dolphins MIA Indianapolis Colts IND Carolina Panthers CAR New Orleans Saints NO Buffalo Bills BUF New York Jets NYJ Jacksonville Jaguars JAX Tennessee Titans TEN Los Angeles Rams LAR Arizona Cardinals AZ Seattle Seahawks SEA Las Vegas Raiders LV San Francis",
       "top_classes": [
-        "styles__StyledSubNavItem-sc-6aa8911c-0",
-        "ieNMBk",
-        "header__subnav__item",
-        "Typographystyles__Typography-sc-6uzo1m-0",
-        "l-grid__content",
-        "styles__StyledSubNavTeam-sc-aa8233a3-0",
-        "bPnrzL",
-        "header__subnav--teams__team",
-        "header__subnav--teams__team--logo",
-        "header__subnav--teams__team--name",
-        "header__subnav--teams__team--shortname",
-        "styles__Media-sc-1nkxvdz-1",
-        "KebVi",
-        "styles__ContentPreview-sc-1nkxvdz-9",
-        "styles__StyledImage-sc-1ofrg81-0",
-        "ieHeZQ",
-        "pattern-image",
-        "styles__Header-sc-1nkxvdz-4",
-        "bDQIfl",
-        "JCMEi",
-        "styles__Link-sc-1nkxvdz-0",
-        "dRDsLU",
-        "content-preview",
-        "styles__Body-sc-1nkxvdz-8",
-        "hBIvsx",
-        "l-grid",
-        "l-grid--gutters",
-        "l-grid__col",
-        "l-grid__col--transparent",
-        "header__subnav__group"
+        "flex",
+        "items-center",
+        "w-full",
+        "dark:text-white",
+        "border-b-transparent",
+        "text-ls-600",
+        "font-bold",
+        "border-b",
+        "justify-center",
+        "flex-col",
+        "body-2-sans",
+        "items-start",
+        "dark:text-ds-600",
+        "group/link",
+        "text-black",
+        "group-hover/link:border-b-black",
+        "dark:group-hover/link:border-b-white",
+        "relative",
+        "body-3-sans",
+        "hover:bg-ls-100",
+        "dark:hover:bg-ds-200",
+        "text-nowrap",
+        "pl-1",
+        "misc-1-stats",
+        "gap-2",
+        "self-stretch",
+        "rounded-xs",
+        "block",
+        "display-4",
+        "gap-1"
       ],
-      "game_link_chains": []
+      "game_link_chains": [
+        {
+          "href": "/games/patriots-at-lions-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-[143px].lg:w-[175px].flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        },
+        {
+          "href": "/games/chiefs-at-falcons-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-24.lg:w-32.flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        },
+        {
+          "href": "/games/texans-at-browns-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-24.lg:w-32.flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        }
+      ]
     },
-    "club_depth_arizona-cardinals_team_depth-chart": {
-      "file": "club_depth_arizona_cardinals_team_depth_chart.html",
+    "schedule_2026_w05": {
+      "file": "schedule_2026_w05.html",
       "tables": [],
-      "bytes": 1125397,
-      "title": "Official St. Louis Cardinals Website | MLB.com",
-      "h1": "",
-      "text_sample": "Official St. Louis Cardinals Website | MLB.com Skip to Content Tickets Single Game Tickets Ticket Packs All-Inclusive & Premium Tickets Suites Season Tickets Group Tickets Coca-Cola Unlimited Stadium Tours Cardinals Gift Card Souvenir Tickets Promotions & Giveaways Theme Tickets Pre-Game Party Gameday Parking Ballpark Pass Concerts Fan Values Buy & Sell Tickets on SeatGeek My Cardinals Tickets Rainout Policy Schedule 2027 Spring Training Schedule 2027 Regular Season Schedule Sortable Schedule Downloadable Schedule Printable Schedule Spanish Broadcast Schedule Cardinals TV Info Cardinals Radio ",
+      "bytes": 2369662,
+      "title": "NFL Week 5 Schedule 2026: Games, Times, Matchups & Tickets",
+      "h1": "SCHEDULE 2026",
+      "text_sample": "NFL Week 5 Schedule 2026: Games, Times, Matchups & Tickets Skip to main content GET MORE FOOTBALL WITH NFL+ PREMIUM SUN 6:00PM 6:00PM Chevron Left SUN 6:00PM 6:00PM INTL New England Patriots NE Detroit Lions DET Kansas City Chiefs KC Atlanta Falcons ATL Houston Texans HOU Cleveland Browns CLE Minnesota Vikings MIN Green Bay Packers GB Miami Dolphins MIA Indianapolis Colts IND Carolina Panthers CAR New Orleans Saints NO Buffalo Bills BUF New York Jets NYJ Jacksonville Jaguars JAX Tennessee Titans TEN Los Angeles Rams LAR Arizona Cardinals AZ Seattle Seahawks SEA Las Vegas Raiders LV San Francis",
       "top_classes": [
-        "styles__StyledSubNavItem-sc-6aa8911c-0",
-        "ieNMBk",
-        "header__subnav__item",
-        "Typographystyles__Typography-sc-6uzo1m-0",
-        "l-grid__content",
-        "styles__StyledSubNavTeam-sc-aa8233a3-0",
-        "bPnrzL",
-        "header__subnav--teams__team",
-        "header__subnav--teams__team--logo",
-        "header__subnav--teams__team--name",
-        "header__subnav--teams__team--shortname",
-        "styles__Media-sc-1nkxvdz-1",
-        "KebVi",
-        "styles__ContentPreview-sc-1nkxvdz-9",
-        "styles__StyledImage-sc-1ofrg81-0",
-        "ieHeZQ",
-        "pattern-image",
-        "styles__Header-sc-1nkxvdz-4",
-        "bDQIfl",
-        "JCMEi",
-        "styles__Link-sc-1nkxvdz-0",
-        "dRDsLU",
-        "content-preview",
-        "styles__Body-sc-1nkxvdz-8",
-        "hBIvsx",
-        "l-grid",
-        "l-grid--gutters",
-        "l-grid__col",
-        "l-grid__col--transparent",
-        "header__subnav__group"
+        "flex",
+        "items-center",
+        "w-full",
+        "dark:text-white",
+        "border-b-transparent",
+        "text-ls-600",
+        "font-bold",
+        "border-b",
+        "flex-col",
+        "justify-center",
+        "body-2-sans",
+        "items-start",
+        "group/link",
+        "dark:text-ds-600",
+        "text-black",
+        "group-hover/link:border-b-black",
+        "dark:group-hover/link:border-b-white",
+        "relative",
+        "body-3-sans",
+        "hover:bg-ls-100",
+        "dark:hover:bg-ds-200",
+        "text-nowrap",
+        "pl-1",
+        "misc-1-stats",
+        "self-stretch",
+        "rounded-xs",
+        "gap-2",
+        "gap-1",
+        "block",
+        "display-4"
       ],
-      "game_link_chains": []
+      "game_link_chains": [
+        {
+          "href": "/games/patriots-at-lions-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-[143px].lg:w-[175px].flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        },
+        {
+          "href": "/games/chiefs-at-falcons-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-24.lg:w-32.flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        },
+        {
+          "href": "/games/texans-at-browns-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-24.lg:w-32.flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        }
+      ]
     },
-    "club_depth_atlanta-falcons_depth-chart": {
-      "file": "club_depth_atlanta_falcons_depth_chart.html",
+    "schedule_2026_w10": {
+      "file": "schedule_2026_w10.html",
+      "tables": [],
+      "bytes": 2403234,
+      "title": "NFL Week 10 Schedule 2026: Games, Times, Matchups & Tickets",
+      "h1": "SCHEDULE 2026",
+      "text_sample": "NFL Week 10 Schedule 2026: Games, Times, Matchups & Tickets Skip to main content GET MORE FOOTBALL WITH NFL+ PREMIUM SUN 6:00PM 6:00PM Chevron Left SUN 6:00PM 6:00PM INTL New England Patriots NE Detroit Lions DET Kansas City Chiefs KC Atlanta Falcons ATL Houston Texans HOU Cleveland Browns CLE Minnesota Vikings MIN Green Bay Packers GB Miami Dolphins MIA Indianapolis Colts IND Carolina Panthers CAR New Orleans Saints NO Buffalo Bills BUF New York Jets NYJ Jacksonville Jaguars JAX Tennessee Titans TEN Los Angeles Rams LAR Arizona Cardinals AZ Seattle Seahawks SEA Las Vegas Raiders LV San Franci",
+      "top_classes": [
+        "flex",
+        "items-center",
+        "w-full",
+        "font-bold",
+        "dark:text-white",
+        "border-b-transparent",
+        "border-b",
+        "justify-center",
+        "flex-col",
+        "body-2-sans",
+        "text-ls-600",
+        "items-start",
+        "group/link",
+        "relative",
+        "text-black",
+        "group-hover/link:border-b-black",
+        "dark:group-hover/link:border-b-white",
+        "body-3-sans",
+        "hover:bg-ls-100",
+        "dark:hover:bg-ds-200",
+        "text-nowrap",
+        "dark:text-ds-600",
+        "gap-2",
+        "misc-1-stats",
+        "self-stretch",
+        "gap-1",
+        "rounded-xs",
+        "block",
+        "py-1",
+        "text-ls-800"
+      ],
+      "game_link_chains": [
+        {
+          "href": "/games/patriots-at-lions-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-[143px].lg:w-[175px].flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        },
+        {
+          "href": "/games/chiefs-at-falcons-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-24.lg:w-32.flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        },
+        {
+          "href": "/games/texans-at-browns-2026-reg-10",
+          "chain": [
+            "div.flex",
+            "li.w-24.lg:w-32.flex-none.last:border-r.last:border-r-ls-200.dark:last:border-r-ds-200",
+            "ul.relative.flex.w-full.snap-x.overflow-x-auto.no-scrollbar",
+            "div.flex.justify-center.w-full",
+            "aside.relative.bg-ls-level-1.dark:bg-ds-level-1.border-b.border-b-ls-200.dark:border-b-ds-200",
+            "div.transition-all.duration-500.ease-out.transform.lg:transition-none.lg:h-auto"
+          ]
+        }
+      ]
+    },
+    "injuries_current": {
+      "file": "injuries_current.html",
       "tables": [
         {
           "headers": [
+            "Player",
             "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "WR",
-              "Drake London",
-              "Chris Blair",
+              "John Bates",
+              "TE",
               "",
-              "",
-              "",
+              "Full Participation in Practice",
               ""
             ],
             [
-              "LT",
-              "Jake Matthews",
-              "Cameron Williams",
+              "Treylon Burks",
+              "WR",
               "",
-              "",
-              "",
+              "Did Not Participate In Practice",
               ""
             ]
           ],
-          "n_rows": 12
+          "n_rows": 9
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "DE",
-              "Cameron Thomas",
-              "Za'Darius Smith",
-              "Charles Snowden",
+              "Abdul Carter",
+              "LB",
               "",
-              "",
+              "Full Participation in Practice",
               ""
             ],
             [
-              "DL",
-              "Maason Smith",
-              "Gervon Dexter Sr.",
+              "Jermaine Eluemunor",
+              "T",
               "",
-              "",
-              "",
+              "Full Participation in Practice",
               ""
             ]
           ],
@@ -151,72 +282,660 @@
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "K",
-              "Jake Moody",
+              "Ben Brown",
+              "C",
+              "Knee",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "A.J. Brown",
+              "WR",
+              "Ankle, Knee",
+              "Limited Participation in Practice",
+              "Questionable"
+            ]
+          ],
+          "n_rows": 15
+        }
+      ],
+      "bytes": 412849,
+      "title": "Official Latest NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com",
+      "h1": "Official Latest NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com",
+      "text_sample": "Official Latest NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com Skip to main content Official Latest NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com 2026 NFL Injury Report Injuries - WEEK 10 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "cls-1",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2026_w05": {
+      "file": "injuries_2026_w05.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Rueben Bain Jr.",
+              "LB",
               "",
-              "",
-              "",
-              "",
+              "Full Participation in Practice",
               ""
             ],
             [
-              "P",
-              "Jake Bailey",
+              "SirVocea Dennis",
+              "LB",
+              "Ankle, Foot",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 9
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Alijah Clark",
+              "S",
               "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Cobie Durant",
+              "CB",
+              "Hamstring",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 11
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Saquon Barkley",
+              "RB",
+              "Hamstring",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Zack Baun",
+              "LB",
               "",
-              "",
-              "",
+              "Full Participation in Practice",
               ""
             ]
           ],
-          "n_rows": 5
+          "n_rows": 15
         }
       ],
-      "bytes": 319872,
-      "title": "Falcons Depth Chart | Atlanta Falcons – atlantafalcons.com",
-      "h1": "Atlanta Falcons Depth Chart",
-      "text_sample": "Falcons Depth Chart | Atlanta Falcons – atlantafalcons.com Skip to main content Primary nav SCHEDULE NEWS VIDEO PHOTOS PODCASTS TEAM UNIFORMS COMMUNITY APP TEAM STORE CHEERLEADERS FANS FREDDIE FALCON MERCEDES-BENZ STADIUM PROMOTIONS MEDIA TICKETS SHOP Search Open menu button Action related nav TICKETS SHOP MEMBERS WATCH Roster Coaches Transactions Depth Chart Injury Report My Cause My Cleats Stats Standings Front Office History 2026 Yearbook Partners Atlanta Falcons Depth Chart DEPTH CHART Offense Defense Special Teams Offense Offense Position 1st 2nd 3rd 4th 5th 6th WR Drake London Chris Blai",
+      "bytes": 420288,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com 2026 NFL Injury Report Injuries - WEEK 5 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 A",
       "top_classes": [
-        "d3-o-depthchart__tiers-6",
+        "nfl-o-cta--link",
         "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "header",
-        "d3-o-footer__panel-links",
-        "d3-l-col__col-12",
-        "cls-1",
-        "d3-o-footer__panel-link-category",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
         "d3-o-media-object",
-        "d3-o-media-object__figure",
         "d3-o-media-object--vertical",
         "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
         "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
         "d3-o-media-object__title",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-list",
-        "d3-l-section-header",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-o-section-title",
-        "d3-o-nav__title",
-        "d3-o-adv-block",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-section-row",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
+      ],
+      "game_link_chains": []
+    },
+    "standings_league_2026": {
+      "file": "standings_league_2026.html",
+      "tables": [
+        {
+          "headers": [
+            "NFL Team",
+            "W",
+            "L",
+            "T",
+            "PCT",
+            "PF",
+            "PA",
+            "Net Pts",
+            "Home",
+            "Road",
+            "Div",
+            "Pct",
+            "Conf",
+            "Pct",
+            "Non-Conf",
+            "Strk",
+            "Last 5"
+          ],
+          "rows": [
+            [
+              "Los Angeles Chargers Chargers",
+              "0",
+              "8",
+              "0",
+              "0.000",
+              "121",
+              "219",
+              "-98",
+              "0 - 4 - 0",
+              "0 - 4 - 0",
+              "0 - 3 - 0",
+              "0.000"
+            ],
+            [
+              "Miami Dolphins Dolphins",
+              "1",
+              "7",
+              "0",
+              "0.125",
+              "126",
+              "200",
+              "-74",
+              "0 - 4 - 0",
+              "1 - 3 - 0",
+              "1 - 1 - 0",
+              "0.500"
+            ]
+          ],
+          "n_rows": 32
+        }
+      ],
+      "bytes": 257807,
+      "title": "2026 NFL League Standings",
+      "h1": "$year$ NFL $displayname$ Standings",
+      "text_sample": "2026 NFL League Standings Skip to main content Advertising $year$ NFL $displayname$ Standings Division Conference League Year 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 1964 1963 1962 1961 1960 1959 1958 1957 1956 1955 1954 1953 1952 1951 1950 1949 1948 1947 1946 1945 1944 1943 1942 1941 1940 1939 1938 1937 1936 1935 1934 1933 1932",
+      "top_classes": [
+        "sorter-tie",
+        "d3-o-club-info",
+        "d3-o-club-logo",
+        "img-responsive",
+        "d3-o-club-fullname",
+        "d3-o-club-shortname",
+        "sorter-strike",
+        "d3-legend--listItemFont",
+        "d3-legend--listItemFontBold",
+        "cls-1",
         "d3-l-grid--inner",
-        "d3-is-active"
+        "cls-2",
+        "d3-l-grid--outer",
+        "d3-l-col__col-12",
+        "d3-l-section-row",
+        "twitter-logo",
+        "optanon-category-C0004",
+        "d3-l-adaptive",
+        "d3-o-season-selector--item",
+        "d3-o-dropdown",
+        "d3-o-dropdown--native",
+        "d3-legend--title",
+        "d3-legend--list",
+        "emailBackground",
+        "emailLetter",
+        "facebookBackground",
+        "facebookF",
+        "twitter-circle",
+        "profile-header__overlay-stripe",
+        "profile-header__overlay-polygon"
+      ],
+      "game_link_chains": []
+    },
+    "standings_division_2026": {
+      "file": "standings_division_2026.html",
+      "tables": [
+        {
+          "headers": [
+            "AFC EAST",
+            "W",
+            "L",
+            "T",
+            "PCT",
+            "PF",
+            "PA",
+            "Net Pts",
+            "Home",
+            "Road",
+            "Div",
+            "Pct",
+            "Conf",
+            "Pct",
+            "Non-Conf",
+            "Strk",
+            "Last 5"
+          ],
+          "rows": [
+            [
+              "Buffalo Bills Bills",
+              "7",
+              "1",
+              "0",
+              "0.875",
+              "256",
+              "187",
+              "69",
+              "3 - 1 - 0",
+              "4 - 0 - 0",
+              "0 - 1 - 0",
+              "0.000"
+            ],
+            [
+              "New England Patriots Patriots",
+              "5",
+              "4",
+              "0",
+              "0.556",
+              "211",
+              "207",
+              "4",
+              "3 - 1 - 0",
+              "2 - 3 - 0",
+              "3 - 0 - 0",
+              "1.000"
+            ]
+          ],
+          "n_rows": 4
+        },
+        {
+          "headers": [
+            "AFC NORTH",
+            "W",
+            "L",
+            "T",
+            "PCT",
+            "PF",
+            "PA",
+            "Net Pts",
+            "Home",
+            "Road",
+            "Div",
+            "Pct",
+            "Conf",
+            "Pct",
+            "Non-Conf",
+            "Strk",
+            "Last 5"
+          ],
+          "rows": [
+            [
+              "Pittsburgh Steelers Steelers",
+              "6",
+              "2",
+              "0",
+              "0.750",
+              "180",
+              "144",
+              "36",
+              "4 - 0 - 0",
+              "2 - 2 - 0",
+              "2 - 1 - 0",
+              "0.667"
+            ],
+            [
+              "Cincinnati Bengals Bengals",
+              "6",
+              "2",
+              "0",
+              "0.750",
+              "240",
+              "175",
+              "65",
+              "2 - 1 - 0",
+              "4 - 1 - 0",
+              "1 - 1 - 0",
+              "0.500"
+            ]
+          ],
+          "n_rows": 4
+        },
+        {
+          "headers": [
+            "AFC SOUTH",
+            "W",
+            "L",
+            "T",
+            "PCT",
+            "PF",
+            "PA",
+            "Net Pts",
+            "Home",
+            "Road",
+            "Div",
+            "Pct",
+            "Conf",
+            "Pct",
+            "Non-Conf",
+            "Strk",
+            "Last 5"
+          ],
+          "rows": [
+            [
+              "Jacksonville Jaguars Jaguars",
+              "6",
+              "2",
+              "0",
+              "0.750",
+              "229",
+              "121",
+              "108",
+              "4 - 1 - 0",
+              "2 - 1 - 0",
+              "1 - 1 - 0",
+              "0.500"
+            ],
+            [
+              "Houston Texans Texans",
+              "3",
+              "5",
+              "0",
+              "0.375",
+              "209",
+              "192",
+              "17",
+              "0 - 4 - 0",
+              "3 - 1 - 0",
+              "2 - 1 - 0",
+              "0.667"
+            ]
+          ],
+          "n_rows": 4
+        }
+      ],
+      "bytes": 269126,
+      "title": "2026 NFL Division Standings",
+      "h1": "$year$ NFL $displayname$ Standings",
+      "text_sample": "2026 NFL Division Standings Skip to main content Advertising $year$ NFL $displayname$ Standings Division Conference League Year 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 1964 1963 1962 1961 1960 1959 1958 1957 1956 1955 1954 1953 1952 1951 1950 1949 1948 1947 1946 1945 1944 1943 1942 1941 1940 1939 1938 1937 1936 1935 1934 1933 19",
+      "top_classes": [
+        "sorter-tie",
+        "d3-o-club-info",
+        "d3-o-club-logo",
+        "img-responsive",
+        "d3-o-club-fullname",
+        "d3-o-club-shortname",
+        "sorter-strike",
+        "d3-legend--listItemFont",
+        "d3-legend--listItemFontBold",
+        "cls-1",
+        "d3-l-col__col-12",
+        "flex-wrap",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--row-striping",
+        "d3-o-table--detailed",
+        "d3-o-standings--detailed",
+        "d3-o-table--sortable",
+        "{sortlist:",
+        "[[4,1]],",
+        "sortinitialorder:",
+        "'desc'}",
+        "d3-o-table__caption",
+        "nfl-o-icon-included--down",
+        "d3-l-grid--inner",
+        "d3-l-grid--outer",
+        "cls-2",
+        "d3-l-section-row",
+        "twitter-logo",
+        "optanon-category-C0004"
+      ],
+      "game_link_chains": []
+    },
+    "stats_player_passing_2026": {
+      "file": "stats_player_passing_2026.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Pass Yds",
+            "Yds/Att",
+            "Att",
+            "Cmp",
+            "Cmp %",
+            "TD",
+            "INT",
+            "Rate",
+            "1st",
+            "1st%",
+            "20+",
+            "40+",
+            "Lng",
+            "Sck",
+            "SckY"
+          ],
+          "rows": [
+            [
+              "Jordan Love",
+              "2618",
+              "7.7",
+              "341",
+              "215",
+              "63",
+              "19",
+              "6",
+              "97.9",
+              "110",
+              "32.3",
+              "40"
+            ],
+            [
+              "Joe Burrow",
+              "2386",
+              "8.1",
+              "296",
+              "219",
+              "74",
+              "23",
+              "6",
+              "114.8",
+              "119",
+              "40.2",
+              "27"
+            ]
+          ],
+          "n_rows": 25
+        }
+      ],
+      "bytes": 268736,
+      "title": "2026 NFL passing stats - Players | NFL.com",
+      "h1": "2026 NFL passing stats - Players | NFL.com",
+      "text_sample": "2026 NFL passing stats - Players | NFL.com Skip to main content 2026 NFL passing stats - Players | NFL.com 2026 Player Stats - Category Passing Passing Rushing Receiving Fumbles Tackles Interceptions Field Goals Kickoffs Kickoff Returns Punting Punt Returns Year 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 Advertising Aggregated players statistics Player Pas",
+      "top_classes": [
+        "d3-o-media-object",
+        "d3-o-media-object--vertical-center",
+        "d3-o-media-object__figure",
+        "d3-o-player-headshot",
+        "img-responsive",
+        "d3-o-media-object__body",
+        "d3-o-player-fullname",
+        "nfl-o-cta--link",
+        "selected",
+        "header",
+        "cls-1",
+        "d3-o-tabs__list-item",
+        "cls-2",
+        "d3-l-grid--outer",
+        "d3-l-grid--inner",
+        "d3-l-col__col-12",
+        "d3-l-content--wide",
+        "twitter-logo",
+        "optanon-category-C0004",
+        "d3-l-adaptive",
+        "d3-l-section-row",
+        "d3-t-content--primary-color",
+        "emailBackground",
+        "emailLetter",
+        "facebookBackground",
+        "facebookF",
+        "twitter-circle",
+        "profile-header__overlay-stripe",
+        "profile-header__overlay-polygon",
+        "cls-3"
+      ],
+      "game_link_chains": []
+    },
+    "stats_player_receiving_2026": {
+      "file": "stats_player_receiving_2026.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Rec",
+            "Yds",
+            "TD",
+            "20+",
+            "40+",
+            "LNG",
+            "Rec 1st",
+            "1st%",
+            "Rec FUM",
+            "Rec YAC/R",
+            "Tgts"
+          ],
+          "rows": [
+            [
+              "Trey McBride",
+              "73",
+              "598",
+              "5",
+              "4",
+              "0",
+              "27",
+              "30",
+              "41.1",
+              "1",
+              "215",
+              "94"
+            ],
+            [
+              "Jaxon Smith-Njigba",
+              "71",
+              "1036",
+              "9",
+              "16",
+              "3",
+              "82",
+              "51",
+              "71.8",
+              "0",
+              "346",
+              "99"
+            ]
+          ],
+          "n_rows": 25
+        }
+      ],
+      "bytes": 267532,
+      "title": "2026 NFL receiving stats - Players | NFL.com",
+      "h1": "2026 NFL receiving stats - Players | NFL.com",
+      "text_sample": "2026 NFL receiving stats - Players | NFL.com Skip to main content 2026 NFL receiving stats - Players | NFL.com 2026 Player Stats - Category Receiving Passing Rushing Receiving Fumbles Tackles Interceptions Field Goals Kickoffs Kickoff Returns Punting Punt Returns Year 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 Advertising Aggregated players statistics Play",
+      "top_classes": [
+        "d3-o-media-object",
+        "d3-o-media-object--vertical-center",
+        "d3-o-media-object__figure",
+        "d3-o-player-headshot",
+        "img-responsive",
+        "d3-o-media-object__body",
+        "d3-o-player-fullname",
+        "nfl-o-cta--link",
+        "selected",
+        "cls-1",
+        "header",
+        "d3-o-tabs__list-item",
+        "cls-2",
+        "d3-l-grid--outer",
+        "d3-l-grid--inner",
+        "d3-l-col__col-12",
+        "d3-l-content--wide",
+        "twitter-logo",
+        "optanon-category-C0004",
+        "d3-l-adaptive",
+        "d3-l-section-row",
+        "d3-t-content--primary-color",
+        "emailBackground",
+        "emailLetter",
+        "facebookBackground",
+        "facebookF",
+        "twitter-circle",
+        "profile-header__overlay-stripe",
+        "profile-header__overlay-polygon",
+        "cls-3"
       ],
       "game_link_chains": []
     },
@@ -358,1116 +1077,1583 @@
       ],
       "game_link_chains": []
     },
-    "club_depth_baltimore-ravens_team_depth-chart": {
-      "file": "club_depth_baltimore_ravens_team_depth_chart.html",
+    "injuries_2023_w01": {
+      "file": "injuries_2023_w01.html",
       "tables": [
         {
           "headers": [
+            "Player",
             "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "WR",
-              "Zay Flowers",
-              "Devontez Walker",
-              "Elijah Sarratt",
-              ""
-            ],
-            [
-              "WR",
-              "Rashod Bateman",
-              "Ja'Kobi Lane",
-              "LaJohntay Wester",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
-          ],
-          "rows": [
-            [
+              "Isaiah Buggs",
               "DT",
-              "Nnamdi Madubuike",
-              "Broderick Washington Jr.",
               "",
+              "Full Participation in Practice",
               ""
             ],
             [
-              "NT",
-              "Travis Jones",
-              "John Jenkins",
+              "Ifeatu Melifonwu",
+              "S",
               "",
+              "Full Participation in Practice",
               ""
             ]
           ],
-          "n_rows": 12
+          "n_rows": 4
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "P",
-              "Ryan Eckley",
+              "Nick Allegretti",
+              "G",
               "",
-              "",
+              "Full Participation in Practice",
               ""
             ],
             [
-              "K",
+              "Richie James",
+              "WR",
               "",
-              "",
-              "",
+              "Full Participation in Practice",
               ""
             ]
           ],
-          "n_rows": 6
+          "n_rows": 8
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Blake Cashman",
+              "LB",
+              "Hamstring",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Christian Harris",
+              "LB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 5
         }
       ],
-      "bytes": 298527,
-      "title": "Ravens Depth Chart | Baltimore Ravens – baltimoreravens.com",
-      "h1": "Baltimore Ravens Depth Chart",
-      "text_sample": "Ravens Depth Chart | Baltimore Ravens – baltimoreravens.com Skip to main content Primary nav NEWS VIDEO AUDIO PHOTOS SCHEDULE TEAM GAMEDAY COMMUNITY DARKNESS TV/RADIO STADIUM RAVENS FLOCK RAVENS IN UK CHEERLEADERS EVENT CALENDAR CONNECT WITH US TICKETS SHOP Open menu button Action related nav TICKETS ACCOUNT MANAGER WATCH SHOP Team Home Roster Depth Chart Coaches Front Office Stats Injury Report Transactions History Ring of Honor Uniform Evolution Advertising Baltimore Ravens Depth Chart DEPTH CHART Offense Defense Special Teams Offense Offense Position 1st 2nd 3rd 4th WR Zay Flowers Devontez ",
+      "bytes": 379727,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 1 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
       "top_classes": [
-        "d3-o-depthchart__tiers-4",
+        "nfl-o-cta--link",
         "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "header",
-        "d3-o-footer__panel-link-category",
-        "cls-1",
-        "d3-l-col__col-12",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
         "d3-o-table--horizontal-scroll",
         "d3-o-table",
-        "d3-o-table--row-striping",
         "d3-o-table--detailed",
-        "d3-o-depthchart"
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
       ],
       "game_link_chains": []
     },
-    "club_depth_buffalo-bills_team_depth-chart": {
-      "file": "club_depth_buffalo_bills_team_depth_chart.html",
+    "injuries_2023_w02": {
+      "file": "injuries_2023_w02.html",
       "tables": [
         {
           "headers": [
+            "Player",
             "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "WR",
-              "DJ Moore",
-              "Skyler Bell",
-              "",
-              ""
+              "Garrett Bradbury",
+              "C",
+              "Back",
+              "Did Not Participate In Practice",
+              "Out"
             ],
             [
-              "LT",
-              "Dion Dawkins",
-              "Jude Bowry",
-              "",
-              ""
+              "Christian Darrisaw",
+              "T",
+              "Ankle",
+              "Limited Participation in Practice",
+              "Questionable"
             ]
           ],
-          "n_rows": 11
+          "n_rows": 3
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "DL",
-              "Ed Oliver",
-              "DeWayne Carter",
-              "",
-              ""
+              "Reed Blankenship",
+              "S",
+              "Ribs",
+              "Did Not Participate In Practice",
+              "Out"
             ],
             [
-              "DL",
-              "Deone Walker",
-              "Greg Gaines",
-              "",
-              ""
+              "James Bradberry",
+              "CB",
+              "Concussion",
+              "Did Not Participate In Practice",
+              "Out"
             ]
           ],
-          "n_rows": 12
+          "n_rows": 5
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "K",
-              "Tyler Bass",
-              "",
-              "",
-              ""
-            ],
-            [
-              "P",
-              "Tommy Doman Jr.",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 301527,
-      "title": "Buffalo Bills Depth Chart | Buffalo Bills - buffalobills.com",
-      "h1": "Buffalo Bills Depth Chart | Buffalo Bills - buffalobills.com",
-      "text_sample": "Buffalo Bills Depth Chart | Buffalo Bills - buffalobills.com Skip to main content Primary nav NEWS VIDEO PHOTOS TEAM SCHEDULE HIGHMARK STADIUM DOWNLOAD APP EMAIL COMMUNITY YOUTH PROGRAMS FANS BILLS IN CANADA ONE BILLS LIVE PODCASTS TICKETS SHOP Search Open menu button Action related nav TICKETS ACCOUNT MANAGER SHOP WATCH Roster Depth Chart Coaches Stats Injury Report Transactions Standings 2026 Media Guide Front Office Limited Partners Legends NFL Draft Advertising Buffalo Bills Depth Chart | Buffalo Bills - buffalobills.com DEPTH CHART Offense Defense Special Teams Offense Offense Position Fi",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "header",
-        "cls-1",
-        "d3-l-col__col-12",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_carolina-panthers_team_depth-chart": {
-      "file": "club_depth_carolina_panthers_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Tetairoa McMillan",
-              "Brycen Tremayne",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "WR",
-              "Jalen Coker",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
-          ],
-          "rows": [
-            [
-              "DL",
-              "Bobby Brown III",
-              "TeRah Edwards",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "DL",
-              "Tershawn Wharton",
-              "Lee Hunter",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
-          ],
-          "rows": [
-            [
-              "KR",
-              "Anthony Tyus III",
-              "Trevor Etienne",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "PR",
-              "Trevor Etienne",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 330613,
-      "title": "Carolina Panthers Depth Chart | Carolina Panthers - Panthers.com",
-      "h1": "Carolina Panthers Depth Chart | Carolina Panthers - Panthers.com",
-      "text_sample": "Carolina Panthers Depth Chart | Carolina Panthers - Panthers.com Skip to main content Primary nav NEWS TEAM SCHEDULE VIDEO PHOTOS AUDIO MOMINTUM HOF MOBILE APP PARKING STADIUM FAN ZONE COMMUNITY ENTERTAINMENT KEEP POUNDING SHOP Search Open menu button Action related nav TICKETS ACCOUNT MANAGER SHOP Roster Stats Depth Chart Coaches Injury Report Transactions Front Office 2026 Yearbook Hall of Honor Germany Advertising Carolina Panthers Depth Chart | Carolina Panthers - Panthers.com 2026 Depth Chart Offense Defense Special Teams Offense Offense Position 1st 2nd 3rd 4th 5th 6th WR Tetairoa McMill",
-      "top_classes": [
-        "d3-o-depthchart__tiers-6",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "header",
-        "d3-o-footer__panel-links",
-        "cls-1",
-        "d3-o-footer__panel-link-category",
-        "d3-l-col__col-12",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-adv-block",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "d3-o-nav__list",
-        "d3-is-active",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_chicago-bears_team_depth-chart": {
-      "file": "club_depth_chicago_bears_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "1st String",
-            "2nd String",
-            "3rd String",
-            "Other"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Rome Odunze",
-              "Zavion Thomas",
-              "",
-              ""
-            ],
-            [
-              "LT",
-              "Theo Benedet",
-              "Ozzy Trapilo",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st String",
-            "2nd String",
-            "3rd String",
-            "Other"
-          ],
-          "rows": [
-            [
-              "DL",
-              "Austin Booker",
-              "Shemar Turner",
-              "James Lynch",
-              ""
-            ],
-            [
-              "DL",
-              "Grady Jarrett",
-              "Neville Gallimore",
-              "Jayden Loving",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st String",
-            "2nd String",
-            "3rd String",
-            "Other"
-          ],
-          "rows": [
-            [
-              "K",
-              "Cairo Santos",
-              "",
-              "",
-              ""
-            ],
-            [
-              "P",
-              "Tory Taylor",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 7
-        }
-      ],
-      "bytes": 291574,
-      "title": "Depth Chart | Chicago Bears Official Website",
-      "h1": "Depth Chart | Chicago Bears Official Website",
-      "text_sample": "Depth Chart | Chicago Bears Official Website Skip to main content Primary nav NEWS SCHEDULE PHOTOS VIDEO PODCASTS TEAM RIVALRIES BEARIGAMI COMMUNITY EMPLOYMENT FAN ZONE GAMEDAY GUIDE HISTORY UK CHICAGO BEARS VAMOS BEARS TICKETS PRO SHOP Open menu button Action related nav WATCH TICKETS SUITES FOLLOW PRO SHOP Roster Coaches Depth Chart Front Office Injury Report Standings Stats Transactions Advertising Depth Chart | Chicago Bears Official Website Depth Chart (As of 10/31/2026) Offense Defense Special Teams Offense Offense Position 1st String 2nd String 3rd String Other WR Rome Odunze Zavion Tho",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "header",
-        "d3-o-footer__panel-links",
-        "cls-1",
-        "d3-o-footer__panel-link-category",
-        "d3-l-col__col-12",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-is-active",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_cincinnati-bengals_team_depth-chart": {
-      "file": "club_depth_cincinnati_bengals_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Ja'Marr Chase",
-              "Mitch Tinsley",
-              ""
-            ],
-            [
-              "LOT",
-              "Orlando Brown Jr.",
-              "Javon Foster",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third"
-          ],
-          "rows": [
-            [
-              "LDE",
-              "Myles Murphy",
-              "Shemar Stewart",
-              "Cedric Johnson"
-            ],
-            [
-              "NT",
-              "Dexter Lawrence II",
-              "T.J. Slaton Jr.",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third"
-          ],
-          "rows": [
-            [
-              "P",
-              "Ryan Rehkow",
-              "",
-              ""
-            ],
-            [
-              "K",
-              "Evan McPherson",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 295788,
-      "title": "Depth Chart | Cincinnati Bengals - Bengals.com",
-      "h1": "2026 Bengals Depth Chart",
-      "text_sample": "Depth Chart | Cincinnati Bengals - Bengals.com Skip to main content Primary nav SCHEDULE TEAM NEWS VIDEO PHOTOS WHITE BENGAL COMMUNITY STADIUM TV/RADIO UNIFORMS TRADITIONS HISTORY CHEERLEADERS FAN ZONE DRAFT PODCASTS APP APP TICKETS SHOP Search Open menu button Action related nav TICKETS SHOP WATCH Team Home Roster Coaches Transactions Injury Report Stats Standings Depth Chart Advertising 2026 Bengals Depth Chart DEPTH CHART Offense Defense Special Teams Offense Offense Position First Second Third WR Ja'Marr Chase Mitch Tinsley LOT Orlando Brown Jr. Javon Foster LG Dylan Fairchild Jalen Rivers",
-      "top_classes": [
-        "d3-o-depthchart__tiers-3",
-        "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "cls-1",
-        "header",
-        "d3-l-col__col-12",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_cleveland-browns_team_depth-chart": {
-      "file": "club_depth_cleveland_browns_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Jerry Jeudy",
-              "Tylan Wallace",
-              "",
-              ""
-            ],
-            [
-              "LT",
-              "Spencer Fano",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
-          ],
-          "rows": [
-            [
-              "LDE",
-              "Jared Verse",
-              "Sam Williams",
-              "",
-              ""
-            ],
-            [
-              "LDT",
-              "Maliek Collins",
-              "Mike Hall Jr.",
-              "Sam Kamara",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
-          ],
-          "rows": [
-            [
-              "P",
-              "Corey Bojorquez",
-              "",
-              "",
-              ""
-            ],
-            [
-              "K",
-              "Andre Szmyt",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 297816,
-      "title": "Browns Depth Chart | Cleveland Browns - clevelandbrowns.com",
-      "h1": "Browns Depth Chart | Cleveland Browns - clevelandbrowns.com",
-      "text_sample": "Browns Depth Chart | Cleveland Browns - clevelandbrowns.com Skip to main content Primary nav GAMEDAY SCHEDULE TEAM NEWS VIDEO AUDIO PHOTOS COMMUNITY FANS CONTESTS EMAIL NEWSLETTER CAMPUS EXPANSION TICKETS SHOP Search Open menu button Action related nav TICKETS DOME STADIUM SHOP LOGIN Roster Transactions Stats Depth Chart Injury Report Standings Coaches History Yearbook Front Office Advertising Browns Depth Chart | Cleveland Browns - clevelandbrowns.com DEPTH CHART Presented by Offense Defense Special Teams Offense Offense Position 1st 2nd 3rd 4th WR Jerry Jeudy Tylan Wallace LT Spencer Fano LG",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-links",
-        "header",
-        "cls-1",
-        "d3-o-footer__panel-link-category",
-        "d3-l-col__col-12",
-        "d3-o-adv-block",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_dallas-cowboys_team_depth-chart": {
-      "file": "club_depth_dallas_cowboys_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third"
-          ],
-          "rows": [
-            [
-              "WR",
-              "George Pickens",
-              "Camden Brown",
-              ""
-            ],
-            [
-              "LT",
-              "Tyler Guyton",
-              "Drew Shelton",
-              ""
-            ]
-          ],
-          "n_rows": 12
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third"
-          ],
-          "rows": [
-            [
-              "DT",
-              "Otito Ogbonnia",
-              "Elijah Garcia",
-              ""
-            ],
-            [
-              "DT",
-              "Kenny Clark",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 12
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third"
-          ],
-          "rows": [
-            [
-              "K",
-              "Brandon Aubrey",
-              "",
-              ""
-            ],
-            [
-              "P",
-              "Bryan Anger",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 281027,
-      "title": "Dallas Cowboys | Official Site of the Dallas Cowboys",
-      "h1": "",
-      "text_sample": "Dallas Cowboys | Official Site of the Dallas Cowboys Skip to main content Primary nav NEWS MULTIMEDIA SCHEDULE TEAM TICKETS FANS STADIUM CHEERLEADERS COMMUNITY SPANISH SHOP TICKETS Search Open menu button Action related nav TICKETS WATCH PRO SHOP Team Home Roster Depth Chart Coaches Executives Stats Injury Report Standings Advertising Unofficial 2026 Dallas Cowboys Depth Chart Offense Defense Special Teams Offense Offense Position First Second Third WR George Pickens Camden Brown LT Tyler Guyton Drew Shelton LG Tyler Smith T.J. Bass C Cooper Beebe T.J. Bass RG Tyler Booker Ajani Cornelius RT T",
-      "top_classes": [
-        "d3-o-depthchart__tiers-3",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "cls-1",
-        "d3-o-footer__panel-links",
-        "header",
-        "d3-o-footer__panel-link-category",
-        "d3-l-col__col-12",
-        "d3-o-adv-block",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-list",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "d3-o-nav__list",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_denver-broncos_team_depth-chart": {
-      "file": "club_depth_denver_broncos_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "NAME",
-            "NAME",
-            "NAME",
-            "NAME"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Marvin Mims Jr.",
-              "Troy Franklin",
-              "",
-              ""
-            ],
-            [
-              "WR",
-              "Jaylen Waddle",
-              "Lil'Jordan Humphrey",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 12
-        },
-        {
-          "headers": [
-            "Position",
-            "NAME",
-            "NAME",
-            "NAME",
-            "NAME"
-          ],
-          "rows": [
-            [
+              "Joey Bosa",
               "DE",
-              "Zach Allen",
-              "Jordan Jackson",
-              "Tyler Onyedim",
-              ""
+              "Hamstring",
+              "Limited Participation in Practice",
+              "Questionable"
             ],
             [
-              "NT",
-              "D.J. Jones",
-              "Sai'vion Jones",
-              "",
-              ""
+              "Austin Ekeler",
+              "RB",
+              "Ankle",
+              "Did Not Participate In Practice",
+              "Doubtful"
             ]
           ],
-          "n_rows": 12
-        },
+          "n_rows": 5
+        }
+      ],
+      "bytes": 389194,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 2 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w03": {
+      "file": "injuries_2023_w03.html",
+      "tables": [
         {
           "headers": [
+            "Player",
             "Position",
-            "NAME",
-            "NAME",
-            "NAME",
-            "NAME"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "PK",
-              "Wil Lutz",
+              "Saquon Barkley",
+              "RB",
+              "Ankle",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Ben Bredeson",
+              "G",
+              "Concussion",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 6
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Brandon Aiyuk",
+              "WR",
+              "Shoulder",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Ambry Thomas",
+              "CB",
+              "Knee",
+              "Limited Participation in Practice",
+              "Questionable"
+            ]
+          ],
+          "n_rows": 2
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Christian Barmore",
+              "DT",
+              "Knee",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Trent Brown",
+              "T",
               "",
+              "Limited Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 8
+        }
+      ],
+      "bytes": 398702,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 3 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w04": {
+      "file": "injuries_2023_w04.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Jason Cabinda",
+              "FB",
+              "Knee",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Taylor Decker",
+              "T",
+              "Ankle",
+              "Limited Participation in Practice",
+              "Questionable"
+            ]
+          ],
+          "n_rows": 9
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Jaire Alexander",
+              "CB",
+              "Back",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Zayne Anderson",
+              "S",
+              "Hamstring",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 10
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Josh Ali",
+              "WR",
+              "Ankle",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Calais Campbell",
+              "DE",
               "",
+              "Did Not Participate In Practice",
+              ""
+            ]
+          ],
+          "n_rows": 3
+        }
+      ],
+      "bytes": 404688,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 4 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w05": {
+      "file": "injuries_2023_w05.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Jaquan Brisker",
+              "S",
+              "Hamstring",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Chase Claypool",
+              "WR",
+              "not injury related - team decision",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 5
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Jahan Dotson",
+              "WR",
+              "",
+              "Full Participation in Practice",
               ""
             ],
             [
-              "KO",
-              "Wil Lutz",
+              "Christian Holmes",
+              "CB",
               "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 6
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Jamal Agnew",
+              "WR",
+              "Quadricep",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Josh Hines-Allen",
+              "LB",
               "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 10
+        }
+      ],
+      "bytes": 397954,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 5 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "cls-1",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w06": {
+      "file": "injuries_2023_w06.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Baron Browning",
+              "LB",
+              "Knee",
+              "Limited Participation in Practice",
+              "Out"
+            ],
+            [
+              "Frank Clark",
+              "LB",
+              "Illness",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 9
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Nick Bolton",
+              "LB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Michael Danna",
+              "DE",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 10
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Odell Beckham Jr.",
+              "WR",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Jadeveon Clowney",
+              "LB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 8
+        }
+      ],
+      "bytes": 408777,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 6 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w07": {
+      "file": "injuries_2023_w07.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Tyson Campbell",
+              "CB",
+              "Hamstring",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "DaVon Hamilton",
+              "DT",
+              "Back",
+              "Full Participation in Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 6
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Derek Carr",
+              "QB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Demario Davis",
+              "LB",
+              "Knee",
+              "Did Not Participate In Practice",
+              "Questionable"
+            ]
+          ],
+          "n_rows": 14
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Calais Campbell",
+              "DE",
+              "",
+              "Did Not Participate In Practice",
+              ""
+            ]
+          ],
+          "n_rows": 1
+        }
+      ],
+      "bytes": 389023,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 7 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "cls-1",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w08": {
+      "file": "injuries_2023_w08.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Chase Edmonds",
+              "RB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Matt Feiler",
+              "G",
+              "Knee",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 6
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Josh Allen",
+              "QB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Terrel Bernard",
+              "LB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 10
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Demario Davis",
+              "LB",
+              "Knee",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Max Garcia",
+              "G",
+              "Illness",
+              "Limited Participation in Practice",
+              "Questionable"
+            ]
+          ],
+          "n_rows": 16
+        }
+      ],
+      "bytes": 414336,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 8 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w09": {
+      "file": "injuries_2023_w09.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Denico Autry",
+              "DE",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Mike Brown",
+              "S",
+              "Ankle",
+              "Full Participation in Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 13
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Minkah Fitzpatrick",
+              "S",
+              "Hamstring",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Cameron Heyward",
+              "DT",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 6
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Terron Armstead",
+              "T",
+              "Knee",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Braxton Berrios",
+              "WR",
+              "Hamstring",
+              "Limited Participation in Practice",
+              "Questionable"
+            ]
+          ],
+          "n_rows": 14
+        }
+      ],
+      "bytes": 401700,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 9 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 W",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "cls-1",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w10": {
+      "file": "injuries_2023_w10.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Vonn Bell",
+              "S",
+              "Quadricep",
+              "Full Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Raheem Blackshear",
+              "RB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 14
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Josh Blackwell",
+              "CB",
+              "Hamstring",
+              "Full Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Khari Blasingame",
+              "FB",
+              "Concussion",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 11
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Julius Brents",
+              "CB",
+              "Quadricep",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Tony Brown",
+              "CB",
+              "",
+              "Full Participation in Practice",
               ""
             ]
           ],
           "n_rows": 7
         }
       ],
-      "bytes": 295243,
-      "title": "Denver Broncos | Depth Chart",
-      "h1": "Denver Broncos Depth Chart",
-      "text_sample": "Denver Broncos | Depth Chart Skip to main content Primary nav Game Day Schedule Team News Video Photos Podcasts Fans Community New Stadium Stadium App Uniforms Cheerleaders En Español Careers Shop Search Open menu button Action related nav Watch Tickets Travel Pro Shop Team Home Roster Depth Chart Coaches Staff Members Stats Draft Injury Report Transactions Standings History Photo Training Facility Advertising Denver Broncos Depth Chart DEPTH CHART Offense Defense Special Teams Offense Offense Position NAME NAME NAME NAME WR Marvin Mims Jr. Troy Franklin WR Jaylen Waddle Lil'Jordan Humphrey LT",
+      "bytes": 398729,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 10 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 ",
       "top_classes": [
-        "d3-o-depthchart__tiers-4",
+        "nfl-o-cta--link",
         "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "header",
-        "cls-1",
-        "d3-l-col__col-12",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-adv-block",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "d3-o-nav__list",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-icon-included--user",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
         "d3-o-table--horizontal-scroll",
         "d3-o-table",
-        "d3-o-table--row-striping",
         "d3-o-table--detailed",
-        "d3-o-depthchart"
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "cls-1",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks"
       ],
       "game_link_chains": []
     },
-    "club_depth_detroit-lions_team_depth-chart": {
-      "file": "club_depth_detroit_lions_team_depth_chart.html",
+    "injuries_2023_w11": {
+      "file": "injuries_2023_w11.html",
       "tables": [
         {
           "headers": [
+            "Player",
             "Position",
-            "Player",
-            "Player",
-            "Player",
-            "Player",
-            ""
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "WR",
-              "Jameson Williams",
+              "Chidobe Awuzie",
+              "CB",
               "",
-              "",
-              "",
+              "Full Participation in Practice",
               ""
             ],
             [
+              "Akeem Davis-Gaither",
+              "LB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 10
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Odell Beckham Jr.",
               "WR",
-              "Amon-Ra St. Brown",
-              "DeAndre Carter",
               "",
+              "Did Not Participate In Practice",
+              ""
+            ],
+            [
+              "Jadeveon Clowney",
+              "LB",
               "",
+              "Did Not Participate In Practice",
+              ""
+            ]
+          ],
+          "n_rows": 10
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Joey Blount",
+              "S",
+              "Knee",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Michael Carter",
+              "RB",
+              "",
+              "Did Not Participate In Practice",
               ""
             ]
           ],
           "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "Player",
-            "Player",
-            "Player",
-            "Player",
-            ""
-          ],
-          "rows": [
-            [
-              "EDGE",
-              "Aidan Hutchinson",
-              "Derrick Moore",
-              "Eric O'Neill",
-              "",
-              ""
-            ],
-            [
-              "DL",
-              "Alim McNeill",
-              "Skyler Gill-Howard",
-              "Mekhi Wingo",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "Player",
-            "Player",
-            "Player",
-            "Player",
-            ""
-          ],
-          "rows": [
-            [
-              "K",
-              "Jake Bates",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "H",
-              "Jack Fox",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
         }
       ],
-      "bytes": 292014,
-      "title": "Detroit Lions Depth Chart | Detroit Lions - DetroitLions.com",
-      "h1": "2026 Lions Depth Chart",
-      "text_sample": "Detroit Lions Depth Chart | Detroit Lions - DetroitLions.com Skip to main content Primary nav NEWS VIDEO PHOTOS SCHEDULE TEAM FORD FIELD TUNE IN COMMUNITY FOOTBALL EDUCATION CHEERLEADERS LIONS ENTERTAINMENT FAN CLUBS DRUMLINE ROARY GAMING MOBILE APP PODCAST INTERNATIONAL CAREER OPPORTUNITIES Season Tickets Lions Shop Search Open menu button Action related nav TICKETS MY LIONS ACCOUNT SHOP WATCH Roster Coaching Injury Report Depth Chart Transactions Staff Members Stats Standings Team Yearbook Beyond Advertising 2026 Lions Depth Chart 2026 Unofficial Depth Chart Compiled by Lions Football Commun",
+      "bytes": 402614,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 11 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 ",
       "top_classes": [
-        "d3-o-depthchart__tiers-5",
+        "nfl-o-cta--link",
         "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "header",
-        "cls-1",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "d3-l-col__col-12",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
         "d3-o-table--horizontal-scroll",
         "d3-o-table",
-        "d3-o-table--row-striping",
         "d3-o-table--detailed",
-        "d3-o-depthchart"
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "cls-1",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks"
       ],
       "game_link_chains": []
     },
-    "club_depth_green-bay-packers_team_depth-chart": {
-      "file": "club_depth_green_bay_packers_team_depth_chart.html",
+    "injuries_2023_w12": {
+      "file": "injuries_2023_w12.html",
       "tables": [
         {
           "headers": [
+            "Player",
             "Position",
-            "Player",
-            "Player",
-            "Player"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "WR",
-              "9 Christian Watson",
-              "16 Bo Melton",
+              "Jaire Alexander",
+              "CB",
+              "Shoulder",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Corey Ballentine",
+              "CB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 17
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Isaiah Buggs",
+              "DT",
+              "",
+              "Full Participation in Practice",
               ""
             ],
             [
+              "Jonah Jackson",
+              "G",
+              "Wrist",
+              "Did Not Participate In Practice",
+              "Out"
+            ]
+          ],
+          "n_rows": 4
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Alex Armah",
+              "FB",
+              "Hamstring",
+              "Did Not Participate In Practice",
+              "Out"
+            ],
+            [
+              "Cody Barton",
+              "LB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 11
+        }
+      ],
+      "bytes": 417460,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 12 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 ",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w13": {
+      "file": "injuries_2023_w13.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Jamal Adams",
+              "S",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Jake Bobo",
               "WR",
-              "0 Matthew Golden",
-              "87 J. Michael Sturdivant",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 11
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Rico Dowdle",
+              "RB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Dante Fowler Jr.",
+              "DE",
+              "",
+              "Full Participation in Practice",
+              ""
+            ]
+          ],
+          "n_rows": 9
+        },
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "De'Von Achane",
+              "RB",
+              "",
+              "Full Participation in Practice",
+              ""
+            ],
+            [
+              "Terron Armstead",
+              "T",
+              "Knee, Quadricep",
+              "Limited Participation in Practice",
+              "Questionable"
+            ]
+          ],
+          "n_rows": 19
+        }
+      ],
+      "bytes": 393234,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 13 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 ",
+      "top_classes": [
+        "nfl-o-cta--link",
+        "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
+        "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
+        "d3-o-media-object__figure",
+        "d3-o-media-object__body",
+        "d3-o-media-object__roofline",
+        "d3-o-media-object__title",
+        "cls-1",
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks"
+      ],
+      "game_link_chains": []
+    },
+    "injuries_2023_w14": {
+      "file": "injuries_2023_w14.html",
+      "tables": [
+        {
+          "headers": [
+            "Player",
+            "Position",
+            "Injuries",
+            "Practice Status",
+            "Game Status"
+          ],
+          "rows": [
+            [
+              "Christian Barmore",
+              "DT",
+              "Shoulder",
+              "Limited Participation in Practice",
+              "Questionable"
+            ],
+            [
+              "Chris Board",
+              "LB",
+              "",
+              "Limited Participation in Practice",
               ""
             ]
           ],
@@ -1475,22 +2661,25 @@
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "Player",
-            "Player",
-            "Player"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
+              "Montravius Adams",
               "DT",
-              "94 Karl Brooks",
-              "97 Jordon Riley",
-              "93 Anthony Campbell"
+              "",
+              "Full Participation in Practice",
+              ""
             ],
             [
+              "Keeanu Benton",
               "DT",
-              "95 Devonte Wyatt",
-              "55 Chris McClellan",
+              "",
+              "Limited Participation in Practice",
               ""
             ]
           ],
@@ -1498,201 +2687,51 @@
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "Player",
-            "Player",
-            "Player"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "K",
-              "28 Trey Smack",
+              "Brian Allen",
+              "C",
               "",
+              "Did Not Participate In Practice",
               ""
             ],
             [
-              "P",
-              "19 Daniel Whelan",
+              "Aaron Donald",
+              "DT",
               "",
+              "Did Not Participate In Practice",
               ""
             ]
           ],
-          "n_rows": 6
+          "n_rows": 9
         }
       ],
-      "bytes": 294546,
-      "title": "Packers Depth Chart | Green Bay Packers – packers.com",
-      "h1": "Green Bay Packers Depth Chart",
-      "text_sample": "Packers Depth Chart | Green Bay Packers – packers.com Skip to main content Primary nav News Video Podcasts Photos Schedule Team Lambeau Field Community Gameday Guide History Fans Mobile App International Draft Predict Frozen Tundra Faceoff Zach Bryan Concert Pro Shop Tickets Open menu button Action related nav Watch Packers Perks Tickets Pro Shop Roster Coaches Front Office Executive Committee Stats Transactions Depth Chart Injury Report How Built All-Time Players All-Time Coaches Standings Advertising Green Bay Packers Depth Chart OFFENSE Position Player Player Player WR 9 Christian Watson 16",
+      "bytes": 413382,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 14 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 ",
       "top_classes": [
-        "d3-o-table-item--optional-large",
+        "nfl-o-cta--link",
         "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "cls-1",
-        "d3-l-col__col-8",
-        "nfl-c-body-part",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-o-list",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-nav__title",
-        "d3-o-adv-block",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "nfl-c-article__container",
-        "nfl-c-body-part--text",
-        "nfl-c-body-part--table",
-        "nfl-c-body-part--table-extended",
-        "d3-o-table--horizontal-scroll__table-ext",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
         "d3-o-table",
-        "d3-o-table--row-striping",
         "d3-o-table--detailed",
-        "d3-o-footer__tab-trigger",
-        "d3-o-footer__tab-heading"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_houston-texans_team_depth-chart": {
-      "file": "club_depth_houston_texans_team_depth_chart.html",
-      "tables": [],
-      "bytes": 489804,
-      "title": "Depth Chart | Houston Texans - HoustonTexans.com",
-      "h1": "Depth Chart | Houston Texans - HoustonTexans.com",
-      "text_sample": "Depth Chart | Houston Texans - HoustonTexans.com Skip to main content Primary nav GAMEDAY SCHEDULE RIVALRIES JANICE S. MCNAIR TEAM NEW PREMIUM NEWS PHOTOS VIDEO LISTEN 25TH SEASON SEASON TICKET MEMBERS STADIUM COMMUNITY CHEERLEADERS FAN ZONE KIDS SOMOS TEXANS Tickets Rivalries Shop Search Open menu button Action related nav TICKETS ACCOUNT MANAGER NFL+ TEAM SHOP Roster Coaches Front Office Stats Depth Chart Injury Report Ring of Honor Transactions History Robert C. McNair TEXANS GAMEDAY NEWS How To Watch: Week 10 vs Browns All the ways you can watch, stream, and tune-in to Week 10 between the ",
-      "top_classes": [
-        "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "cls-1",
-        "nfl-o-icon",
-        "d3-l-col__col-3",
-        "d3-o-media-object",
-        "d3-o-media-object--vertical",
-        "d3-o-content-tray__card",
-        "d3-o-media-object__figure",
-        "d3-o-media-object__body",
-        "d3-o-media-object__title",
-        "nfl-o-icon--small",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-o-list",
-        "d3-l-col__col-12",
-        "d3-o-nav__title",
-        "d3-o-adv-block",
-        "nfl-o-icon-included--user",
-        "d3-o-section-title",
-        "d3-l-section-row",
-        "d3-o-media-object__detail",
-        "nfl-o-media-object-detail--center-center",
-        "nfl-o-icon--x-large"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_indianapolis-colts_team_depth-chart": {
-      "file": "club_depth_indianapolis_colts_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Laquon Treadwell",
-              "Nick Westbrook-Ikhine",
-              "",
-              ""
-            ],
-            [
-              "LT",
-              "Bernhard Raimann",
-              "Charlie Heck",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "DE",
-              "Jaylahn Tuimoloau",
-              "George Gumbs Jr.",
-              "",
-              ""
-            ],
-            [
-              "DT",
-              "Adetomiwa Adebawore",
-              "Kevin Givens",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "P",
-              "Rigoberto Sanchez",
-              "",
-              "",
-              ""
-            ],
-            [
-              "PK",
-              "Spencer Shrader",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 347509,
-      "title": "Colts Depth Chart | Indianapolis Colts - colts.com",
-      "h1": "Indianapolis Colts Depth Chart | Indianapolis Colts – www.colts.com",
-      "text_sample": "Colts Depth Chart | Indianapolis Colts - colts.com Skip to main content Primary nav SCHEDULE GAMEDAY NEWS VIDEO AUDIO PHOTOS TEAM EVENTS FANS CLUBS CHEERLEADERS COMMUNITY BLUE THE MASCOT FAN FORUM GRIDIRON HALL FOOTBALL DEVELOPMENT KICKING THE STIGMA TICKETS SHOP Search Open menu button Action related nav TICKETS APP WATCH PRO SHOP Roster Team History Coaches Depth Chart Injury Report Stats Transactions Staff Members Rivalries Uniform Indiana Nights Uniforms Watch Colts Games Full Classic Colts Games Standings Draft Practice Facility Tony Dungy Fellowship Program Harriet P. Irsay Fellowship fo",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
+        "d3-o-reports--detailed",
         "d3-o-media-object",
         "d3-o-media-object--vertical",
         "d3-o-content-tray__card",
@@ -1700,1171 +2739,137 @@
         "d3-o-media-object__body",
         "d3-o-media-object__roofline",
         "d3-o-media-object__title",
-        "d3-o-media-object__summary",
-        "header",
-        "cls-1",
-        "d3-l-col__col-12",
-        "d3-o-adv-block",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-section-title",
-        "d3-o-list",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-l-section-header",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user"
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
       ],
       "game_link_chains": []
     },
-    "club_depth_jacksonville-jaguars_team_depth-chart": {
-      "file": "club_depth_jacksonville_jaguars_team_depth_chart.html",
+    "injuries_2023_w15": {
+      "file": "injuries_2023_w15.html",
       "tables": [
         {
           "headers": [
+            "Player",
             "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth",
-            "Fifth",
-            "Sixth",
-            "Seventh"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
+              "Keenan Allen",
               "WR",
-              "Parker Washington",
-              "Josh Cameron",
-              "",
-              "",
-              "",
-              "",
-              ""
+              "Heel",
+              "Did Not Participate In Practice",
+              "Out"
             ],
             [
-              "RT",
-              "Cole Van Lanen",
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth",
-            "Fifth",
-            "Sixth",
-            "Seventh"
-          ],
-          "rows": [
-            [
-              "NT",
-              "Jordan Davis",
-              "Davon Godchaux",
-              "Matt Dickerson",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "DT",
-              "Arik Armstead",
-              "Ruke Orhorhoro",
-              "Albert Regis",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 12
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth",
-            "Fifth",
-            "Sixth",
-            "Seventh"
-          ],
-          "rows": [
-            [
-              "K",
-              "Cam Little",
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "H",
-              "Logan Cooke",
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 309856,
-      "title": "Jaguars Depth Chart | Jacksonville Jaguars - jaguars.com",
-      "h1": "Jaguars Depth Chart | Jacksonville Jaguars - jaguars.com",
-      "text_sample": "Jaguars Depth Chart | Jacksonville Jaguars - jaguars.com Skip to main content Primary nav Game Day Rivalries Schedule News Videos Photos Podcasts Team Stadium of the Future Fans 2027 Orlando Interest Fans Stadium Info Community Cheerleaders Daily's Place Jaguars UK EverBank Stadium Miller Electric Center Schedule Tickets Shop Search Open menu button Action related nav Shop Tickets Members Watch Roster Coaches Scouts Depth Chart Standings Stats Injury Report Transactions History Front Office Team Dog Jaguars Depth Chart | Jacksonville Jaguars - jaguars.com Presented by DEPTH CHART Offense Defen",
-      "top_classes": [
-        "d3-o-depthchart__tiers-7",
-        "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "header",
-        "d3-l-col__col-12",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "cls-1",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-list",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-l-section-header",
-        "cls-2",
-        "d3-o-adv-block",
-        "d3-o-nav__list",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-o-section-title",
-        "d3-is-active",
-        "d3-l-section-row",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_kansas-city-chiefs_team_depth-chart": {
-      "file": "club_depth_kansas_city_chiefs_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Rashee Rice",
-              "Jalen Royals",
-              "Andrew Armstrong",
-              ""
-            ],
-            [
-              "LT",
-              "Kahlil Benson",
-              "Diego Pounds",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "DE",
-              "Felix Anudike-Uzomah",
-              "Ashton Gillotte",
-              "",
-              ""
-            ],
-            [
-              "DT",
-              "Chris Jones",
-              "Peter Woods",
-              "Marcus Harris",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "K",
-              "Harrison Butker",
-              "",
-              "",
-              ""
-            ],
-            [
-              "H",
-              "Matt Araiza",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 302173,
-      "title": "Chiefs Depth Chart | Kansas City Chiefs - chiefs.com",
-      "h1": "Kansas City Chiefs Unofficial Depth Chart",
-      "text_sample": "Chiefs Depth Chart | Kansas City Chiefs - chiefs.com Skip to main content Primary nav News Videos Photos Podcasts Schedule Team Stadium Community New Stadium Mobile App Entertainment Teams Kingdom Kids Fans Ways to Watch Yearbook Well-Being Playbook Next Gen Football International Tickets Shop Search Open menu button Action related nav Tickets Listen Watch Shop Roster Coaches Injury Report Depth Chart Transactions Stats Standings Hunt Family Front Office Staff Hall of Honor Partner With Us Media Information Printable Roster Kansas City Chiefs Unofficial Depth Chart Unofficial Depth Chart Offen",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "header",
-        "cls-1",
-        "d3-l-col__col-12",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-list",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "d3-o-adv-block",
-        "nfl-o-icon-included--user",
-        "d3-o-section-title",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart",
-        "d3-o-table__caption",
-        "d3-o-footer__tab-trigger"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_las-vegas-raiders_team_depth-chart": {
-      "file": "club_depth_las_vegas_raiders_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "FIRST",
-            "SECOND",
-            "THIRD",
-            "OTHER"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Jalen Nailor",
-              "Malik Benson",
-              "Dont'e Thornton Jr.",
-              ""
-            ],
-            [
-              "LT",
-              "Kolton Miller",
-              "Charles Grant",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "FIRST",
-            "SECOND",
-            "THIRD",
-            "OTHER"
-          ],
-          "rows": [
-            [
-              "DE",
-              "Maxx Crosby",
-              "Malcolm Koonce",
-              "",
-              ""
-            ],
-            [
-              "DT",
-              "Tonka Hemingway",
-              "JJ Pegues",
-              "Tim Keenan III",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "FIRST",
-            "SECOND",
-            "THIRD",
-            "OTHER"
-          ],
-          "rows": [
-            [
-              "P",
-              "AJ Cole",
-              "",
-              "",
-              ""
-            ],
-            [
-              "K",
-              "Matt Gay",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 297587,
-      "title": "Depth Chart | Las Vegas Raiders | Raiders.com",
-      "h1": "Depth Chart | Las Vegas Raiders | Raiders.com",
-      "text_sample": "Depth Chart | Las Vegas Raiders | Raiders.com Skip to main content Primary nav News Team Schedule Multimedia Photos Raiderettes Community History Allegiant Stadium Promotions Fans Fit Raiders Foundation Alumni Relations Español International Connect With Us TICKETS SHOP Search Open menu button Action related nav Watch Tickets Shop My Account Team Home Roster Coaches Administration Transactions Depth Chart Injury Report Stats Standings Draft Central Free Agent Tracker Advertising Depth Chart | Las Vegas Raiders | Raiders.com The Las Vegas Raiders depth chart as of November 10, 2026 | Week 10 vs",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-footer__panel-links",
-        "header",
-        "cls-1",
-        "d3-l-col__col-12",
-        "d3-o-footer__panel-link-category",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-section-title",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-l-section-header",
-        "d3-l-col__col-4",
-        "d3-o-followbar__platform",
-        "nfl-o-icon--large",
-        "d3-o-followbar__platform--name",
-        "d3-o-followbar__platform--account",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-is-active",
-        "d3-l-section-row",
-        "nfl-o-anchor__option"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_los-angeles-chargers_team_depth-chart": {
-      "file": "club_depth_los_angeles_chargers_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Ladd McConkey",
-              "Tre' Harris",
-              "Derius Davis Theo Wease Jr.",
-              ""
-            ],
-            [
-              "LT",
-              "Travis Burke",
-              "Branson Taylor",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
-          ],
-          "rows": [
-            [
-              "EDGE",
-              "Khalil Mack",
-              "Akheem Mesidor",
-              "",
-              ""
-            ],
-            [
-              "DL",
-              "Jamaree Caldwell",
-              "Nick Barrett",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th"
-          ],
-          "rows": [
-            [
-              "K",
-              "Cameron Dicker",
-              "",
-              "",
-              ""
-            ],
-            [
-              "P",
-              "JK Scott",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 7
-        }
-      ],
-      "bytes": 359923,
-      "title": "Chargers Depth Chart | Los Angeles Chargers - chargers.com",
-      "h1": "Los Angeles Chargers Depth Chart",
-      "text_sample": "Chargers Depth Chart | Los Angeles Chargers - chargers.com Skip to main content Primary nav TEAM SCHEDULE NEWS VIDEO PHOTOS PODCASTS SOFI STADIUM PURO CHARGERS COMMUNITY FAN ZONE APP TICKETS SHOP Search Open menu button Action related nav TICKETS ACCOUNT MANAGER SHOP WATCH Home NFL Draft Free Agency Roster Transactions Depth Chart Standings Stats Injury Report Coaches Front Office History Advertising Los Angeles Chargers Depth Chart Los Angeles Chargers Depth Chart DEPTH CHART Offense Defense Special Teams Offense Offense Position 1st 2nd 3rd 4th WR Ladd McConkey Tre' Harris Derius Davis Theo ",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-media-object",
-        "d3-o-media-object--vertical",
-        "d3-o-content-tray__card",
-        "d3-o-media-object__figure",
-        "d3-o-media-object__body",
-        "d3-o-media-object__roofline",
-        "d3-o-media-object__title",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "header",
-        "cls-1",
-        "d3-l-col__col-12",
-        "d3-o-section-title",
-        "d3-o-adv-block",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-l-section-header",
-        "d3-o-list",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-l-section-row"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_los-angeles-rams_team_depth-chart": {
-      "file": "club_depth_los_angeles_rams_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Konata Mumpfield",
-              "CJ Daniels",
-              "",
-              ""
-            ],
-            [
+              "Gerald Everett",
               "TE",
-              "Davis Allen Tyler Higbee",
               "",
-              "",
+              "Full Participation in Practice",
               ""
             ]
           ],
-          "n_rows": 11
+          "n_rows": 13
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "OLB",
-              "Byron Young",
-              "Wesley Bailey",
-              "",
-              ""
-            ],
-            [
-              "DE",
-              "Braden Fiske",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First",
-            "Second",
-            "Third",
-            "Fourth"
-          ],
-          "rows": [
-            [
-              "P",
-              "Ethan Evans",
-              "",
-              "",
-              ""
-            ],
-            [
-              "K",
-              "Brandon McManus",
-              "Joshua Karty",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 293095,
-      "title": "Rams Unofficial Depth Chart | Los Angeles Rams - therams.com",
-      "h1": "Rams Unofficial Depth Chart | Los Angeles Rams - therams.com",
-      "text_sample": "Rams Unofficial Depth Chart | Los Angeles Rams - therams.com Skip to main content Primary nav TEAM NEWS SCHEDULE VIDEO PHOTOS COMMUNITY GAMEDAY PARTNERS UNIFORMS RAMS FOOTBALL ACADEMY CHEERLEADERS RAMS FAN ZONE PODCASTS VAMOS RAMS MOBILE APP TICKETS SHOP Search Open menu button Action related nav TICKETS SOFI STADIUM RAMS SHOP NFL+ Roster Coaches Front Office Unofficial Depth Chart Injury Report Team Stats Transactions Madden Ratings Legends Advertising Rams Unofficial Depth Chart | Los Angeles Rams - therams.com UNOFFICIAL DEPTH CHART Offense Defense Special Teams Offense Offense Position Fir",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-links",
-        "header",
-        "d3-o-footer__panel-link-category",
-        "cls-1",
-        "d3-l-col__col-12",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": [
-        {
-          "href": "https://www.ea.com/games/madden-nfl/player-ratings/player-filter/player-team/24",
-          "chain": [
-            "li.d3-o-nav__item",
-            "ul.d3-o-nav__list.d3-o-list",
-            "nav.d3-o-nav--secondary",
-            "div.d3-o-nav__wrap",
-            "header.nfl-c-header.d3-o-nav__has-secondary-nav",
-            "div.d3-l-wrap"
-          ]
-        }
-      ]
-    },
-    "club_depth_miami-dolphins_team_depth-chart": {
-      "file": "club_depth_miami_dolphins_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th"
-          ],
-          "rows": [
-            [
+              "Davante Adams",
               "WR",
-              "Caleb Douglas",
-              "Jared Wayne",
-              "",
-              "",
-              ""
+              "Illness",
+              "Did Not Participate In Practice",
+              "Questionable"
             ],
             [
-              "LT",
-              "Patrick Paul",
-              "Chukwuebuka Godrick",
+              "Curtis Bolton",
+              "LB",
               "",
-              "",
+              "Full Participation in Practice",
               ""
             ]
           ],
-          "n_rows": 12
+          "n_rows": 10
         },
         {
           "headers": [
+            "Player",
             "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th"
+            "Injuries",
+            "Practice Status",
+            "Game Status"
           ],
           "rows": [
             [
-              "DT",
-              "Jordan Phillips",
-              "Kenneth Grant",
+              "Ed Ingram",
+              "G",
               "",
-              "",
+              "Full Participation in Practice",
               ""
             ],
             [
-              "DT",
-              "Zeek Biggers",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th"
-          ],
-          "rows": [
-            [
-              "K",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "P",
-              "Bradley Pinion",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 285674,
-      "title": "Miami Dolphins Depth Chart",
-      "h1": "Dolphins Depth Chart",
-      "text_sample": "Miami Dolphins Depth Chart Skip to main content Primary nav NEWS MULTIMEDIA TEAM SCHEDULE GAME DAY STADIUM COMMUNITY CHEERLEADERS FAN ZONE BAPTIST HEALTH TRAINING COMPLEX SMALL BUSINESS PARTNERS TICKETS SHOP Open menu button Action related nav TICKETS PRO SHOP Team Home Roster Depth Chart Injury Report Coaches Stats Standings Transactions Front Office Advertising Dolphins Depth Chart DEPTH CHART Offense Defense Special Teams Offense Offense Position 1st 2nd 3rd 4th 5th WR Caleb Douglas Jared Wayne LT Patrick Paul Chukwuebuka Godrick LG Kadyn Proctor Jarrett Kingston C Aaron Brewer Andrew Meyer",
-      "top_classes": [
-        "d3-o-depthchart__tiers-5",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "header",
-        "cls-1",
-        "d3-o-footer__panel-links",
-        "d3-l-col__col-12",
-        "d3-o-footer__panel-link-category",
-        "d3-o-adv-block",
-        "d3-o-list",
-        "d3-o-section-title",
-        "cls-2",
-        "d3-o-nav__list",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-l-section-header",
-        "d3-o-nav__title",
-        "nfl-o-icon-included--user",
-        "d3-is-active",
-        "nfl-o-anchor__option",
-        "nfl-t-depth-chart__table",
-        "d3-o-table--horizontal-scroll",
-        "d3-o-table",
-        "d3-o-table--row-striping",
-        "d3-o-table--detailed",
-        "d3-o-depthchart"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_minnesota-vikings_team_depth-chart": {
-      "file": "club_depth_minnesota_vikings_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
-          ],
-          "rows": [
-            [
-              "QB",
-              "Kyler Murray",
-              "Carson Wentz",
-              "Max Brosmer",
-              "Kirk Cousins",
-              "",
-              ""
-            ],
-            [
-              "RB",
-              "Aaron Jones Sr. Jordan Mason",
-              "Demond Claiborne",
-              "DeeJay Dallas",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 12
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
-          ],
-          "rows": [
-            [
-              "OLB",
-              "Dallas Turner",
-              "Kyle Van Noy",
-              "Chaz Chambliss",
-              "",
-              "",
-              ""
-            ],
-            [
-              "DL",
-              "Jalen Redmond",
-              "Caleb Banks",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "1st",
-            "2nd",
-            "3rd",
-            "4th",
-            "5th",
-            "6th"
-          ],
-          "rows": [
-            [
-              "K",
-              "Will Reichard",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "P",
-              "Brett Thorson",
-              "",
-              "",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 307935,
-      "title": "Depth Chart | Minnesota Vikings - vikings.com",
-      "h1": "Minnesota Vikings Depth Chart",
-      "text_sample": "Depth Chart | Minnesota Vikings - vikings.com Skip to main content Primary nav NEWS VIDEOS PHOTOS AUDIO TEAM SCHEDULE U.S. BANK STADIUM COMMUNITY VIKINGS FOUNDATION FANS HISTORY CHEERLEADERS YOUTH PROGRAMS YOUTH AND HIGH SCHOOL FOOTBALL INTERNATIONAL Watch Games Shop Search Open menu button Action related nav WATCH TICKETS SHOP MY VIKINGS ACCOUNT Roster Coaches Depth Chart Injury Report Transactions Stats Standings Legends History Front Office Associates Minnesota Vikings Depth Chart Subscribe Now Stream Live and Local Vikings Games! 2026 Unofficial Depth Chart View the Vikings unofficial dept",
-      "top_classes": [
-        "d3-o-depthchart__tiers-6",
-        "img-responsive",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "header",
-        "d3-l-col__col-12",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "cls-1",
-        "nfl-o-icon",
-        "nfl-o-icon--small",
-        "d3-o-list",
-        "d3-l-section-header",
-        "d3-l-col__col-4",
-        "d3-o-followbar__platform",
-        "nfl-o-icon--large",
-        "d3-o-followbar__platform--name",
-        "d3-o-followbar__platform--account",
-        "cls-2",
-        "d3-o-nav__list",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-o-section-title",
-        "d3-o-nav__title",
-        "d3-o-adv-block",
-        "nfl-o-icon-included--user",
-        "d3-is-active",
-        "d3-l-section-row",
-        "nfl-o-anchor__option"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_new-england-patriots_team_depth-chart": {
-      "file": "club_depth_new_england_patriots_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "FIRST",
-            "SECOND",
-            "THIRD",
-            "FOURTH"
-          ],
-          "rows": [
-            [
+              "Justin Jefferson",
               "WR",
-              "A.J. Brown",
-              "Efton Chism III",
-              "",
-              ""
-            ],
-            [
-              "LT",
-              "Will Campbell",
-              "Dametrious Crownover",
-              "Marcus Bryant",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "FIRST",
-            "SECOND",
-            "THIRD",
-            "FOURTH"
-          ],
-          "rows": [
-            [
-              "OLB",
-              "Dre'Mont Jones",
-              "Gabe Jacas",
-              "",
-              ""
-            ],
-            [
-              "DT",
-              "Christian Barmore",
-              "Leonard Taylor III",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 12
-        },
-        {
-          "headers": [
-            "Position",
-            "FIRST",
-            "SECOND",
-            "THIRD",
-            "FOURTH"
-          ],
-          "rows": [
-            [
-              "K",
-              "Andy Borregales",
-              "",
-              "",
-              ""
-            ],
-            [
-              "P",
-              "Mitch Wishnowsky",
-              "",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 6
-        }
-      ],
-      "bytes": 356549,
-      "title": "New England Patriots Unofficial Depth Chart",
-      "h1": "New England Patriots Unofficial Depth Chart",
-      "text_sample": "New England Patriots Unofficial Depth Chart Skip to main content Primary nav NEWS VIDEO PODCASTS PHOTOS SCHEDULE TEAM COMMUNITY MOBILE APP FAN ZONE CHEERLEADERS PRESS ROOM HALL OF FAME ALUMNI TRAINING CAMP PROSHOP Search Open menu button Action related nav TICKETS PROSHOP WATCH LIVE AUDIO Roster Unofficial Depth Chart Injury Report Team Stats Standings Transactions Coaches Front Office History Alumni Advertising New England Patriots Unofficial Depth Chart replay Replay: Patriots Unfiltered & Patriots Catch-22 Thu Nov 12 - 01:00 PM | Sun Nov 15 - 08:10 AM UP NEXT WHAT'S COMING UP NEXT: Sun Nov ",
-      "top_classes": [
-        "d3-o-depthchart__tiers-4",
-        "img-responsive",
-        "d3-o-footer__panel-icon",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-legend--listItemFont",
-        "d3-legend--listItemFontBold",
-        "d3-o-media-object",
-        "d3-o-media-object__body",
-        "d3-o-media-object--vertical",
-        "d3-o-content-tray__card",
-        "d3-o-media-object__figure",
-        "d3-o-media-object__title",
-        "d3-l-col__col-12",
-        "header",
-        "cls-1",
-        "d3-o-footer__panel-links",
-        "d3-o-footer__panel-link-category",
-        "nfl-o-icon",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "nfl-o-icon--small",
-        "d3-o-section-title",
-        "d3-o-adv-block",
-        "d3-l-section-row",
-        "d3-l-section-header",
-        "cls-2",
-        "d3-o-list",
-        "d3-o-nav__title",
-        "d3-o-nav__list"
-      ],
-      "game_link_chains": []
-    },
-    "club_depth_new-orleans-saints_team_depth-chart": {
-      "file": "club_depth_new_orleans_saints_team_depth_chart.html",
-      "tables": [
-        {
-          "headers": [
-            "Position",
-            "First Team",
-            "Second Team",
-            "Third Team",
-            "Fourth Team"
-          ],
-          "rows": [
-            [
-              "WR",
-              "Chris Olave",
-              "Barion Brown",
-              "",
-              ""
-            ],
-            [
-              "LT",
-              "Kelvin Banks Jr.",
-              "Asim Richards",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 11
-        },
-        {
-          "headers": [
-            "Position",
-            "First Team",
-            "Second Team",
-            "Third Team",
-            "Fourth Team"
-          ],
-          "rows": [
-            [
-              "EDGE",
-              "Chase Young Carl Granderson",
-              "Anfernee Jennings",
-              "",
-              ""
-            ],
-            [
-              "DL",
-              "Vernon Broughton",
-              "John Ridgeway III",
-              "",
-              ""
-            ]
-          ],
-          "n_rows": 12
-        },
-        {
-          "headers": [
-            "Position",
-            "First Team",
-            "Second Team",
-            "Third Team",
-            "Fourth Team"
-          ],
-          "rows": [
-            [
-              "P",
-              "Ryan Wright",
-              "",
-              "",
-              ""
-            ],
-            [
-              "K",
-              "Charlie Smyth",
-              "",
-              "",
-              ""
+              "Chest",
+              "Full Participation in Practice",
+              "Questionable"
             ]
           ],
           "n_rows": 7
         }
       ],
-      "bytes": 509570,
-      "title": "New Orleans Saints Depth Chart | New Orleans Saints | NewOrleansSaints.com",
-      "h1": "New Orleans Saints Depth Chart | New Orleans Saints | NewOrleansSaints.com",
-      "text_sample": "New Orleans Saints Depth Chart | New Orleans Saints | NewOrleansSaints.com Skip to main content Primary nav SCHEDULE NEWS VIDEO PHOTOS TEAM FAN ZONE CAESARS SUPERDOME COMMUNITY Depth Chart Saints Mobile App Saints Contests Saints Podcast Injury Report Watch Games: NFL+ TICKETS SHOP WATCH Search Open menu button Action related nav TICKETS SHOP WATCH ACCOUNT MANAGER Roster Coaches Staff Stats Standings Depth Chart Injury Report Transactions Team History 2026 Yearbook Thank You Drew Advertising New Orleans Saints Depth Chart | New Orleans Saints | NewOrleansSaints.com SCHEDULE TICKETS STATS: MOBI",
+      "bytes": 424378,
+      "title": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "h1": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com",
+      "text_sample": "Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com Skip to main content Official NFL Injury Report for Players - Week 10 of the 2023 Season | NFL.com 2023 NFL Injury Report Injuries - WEEK 15 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999 1998 1997 1996 1995 1994 1993 1992 1991 1990 1989 1988 1987 1986 1985 1984 1983 1982 1981 1980 1979 1978 1977 1976 1975 1974 1973 1972 1971 1970 1969 1968 1967 1966 1965 WEEK 1 WEEK 2 WEEK 3 WEEK 4 WEEK 5 WEEK 6 WEEK 7 WEEK 8 WEEK 9 WEEK 10 ",
       "top_classes": [
-        "d3-o-depthchart__tiers-4",
+        "nfl-o-cta--link",
         "img-responsive",
+        "nfl-c-matchup-strip__team",
+        "nfl-c-matchup-strip__team-name",
+        "nfl-c-matchup-strip__team-logo",
+        "nfl-c-matchup-strip__team-abbreviation",
+        "nfl-c-matchup-strip__team-fullname",
+        "nfl-c-matchup-strip__record",
+        "nfl-t-stats__title",
+        "nfl-u-hide-empty",
+        "d3-o-section-sub-title",
+        "d3-o-table--horizontal-scroll",
+        "d3-o-table",
+        "d3-o-table--detailed",
+        "d3-o-reports--detailed",
         "d3-o-media-object",
+        "d3-o-media-object--vertical",
+        "d3-o-content-tray__card",
         "d3-o-media-object__figure",
         "d3-o-media-object__body",
         "d3-o-media-object__roofline",
         "d3-o-media-object__title",
-        "nfl-o-icon",
-        "nfl-c-media-playlist__aside-item",
-        "d3-o-media-object__detail",
-        "nfl-o-media-object-detail--center-center",
-        "nfl-o-icon--x-large",
-        "nfl-o-icon--white",
-        "nfl-o-icon--play",
-        "d3-o-nav__item",
-        "d3-o-nav__item-label",
-        "d3-o-footer__panel-icon",
-        "d3-o-media-object--vertical",
-        "d3-o-content-tray__card",
-        "d3-o-media-object__summary",
-        "d3-o-footer__panel-links",
-        "d3-l-col__col-12",
-        "header",
-        "cls-1",
-        "d3-o-footer__panel-link-category",
-        "d3-l-grid--outer",
-        "d3-l-grid--inner",
-        "d3-o-section-title",
-        "d3-o-adv-block",
-        "nfl-o-icon--small"
+        "nfl-o-injury-report__unit",
+        "nfl-c-matchup-strip",
+        "nfl-c-matchup-strip__game-info",
+        "nfl-c-matchup-strip__date-info",
+        "nfl-c-matchup-strip__date-time",
+        "nfl-c-matchup-strip__date-timezone",
+        "nfl-c-matchup-strip__networks",
+        "nfl-c-matchup-strip__game"
       ],
       "game_link_chains": []
     }
   },
-  "generated_at": "2026-11-14T03:32:34+00:00"
+  "generated_at": "2026-11-14T03:36:43+00:00"
 }
