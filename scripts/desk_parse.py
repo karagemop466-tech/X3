@@ -38,10 +38,10 @@ def problem(page: str, msg: str, detail: str = "") -> None:
 # --------------------------------------------------------------------------- #
 FINAL_RE = re.compile(
     r"^([A-Za-z0-9.&' ]+?) (\d{1,3}), ([A-Za-z0-9.&' ]+?) (\d{1,3}), FINAL, "
-    r"([A-Za-z]+), ([A-Za-z]+ \d{1,2})(?:st|nd|rd|th)$")
+    r"([A-Za-z]+), ([A-Za-z]+ \d{1,2})(?:st|nd|rd|th)(?:.*)$")
 SCHED_RE = re.compile(
     r"^([A-Za-z0-9.&' ]+?) at ([A-Za-z0-9.&' ]+), ([A-Za-z]+), "
-    r"([A-Za-z]+ \d{1,2})(?:st|nd|rd|th), (\d{1,2}:\d{2} [AP]M), (.+)$")
+    r"([A-Za-z]+ \d{1,2})(?:st|nd|rd|th), (\d{1,2}:\d{2} [AP]M), ([A-Za-z0-9 ,]+?)(?:\s+Tickets.*)?$")
 MONTHS = {m: i for i, m in enumerate(
     ["January", "February", "March", "April", "May", "June", "July", "August",
      "September", "October", "November", "December"], start=1)}
@@ -58,16 +58,16 @@ def iso_date(month_name: str, day_text: str, season: int = 2026) -> str:
 
 
 def parse_schedule(page: str, raw: str) -> list[dict]:
-    m = re.search(r"week-(\d+)", page)
-    if not m:
+    wm = re.search(r"-w(\d+)$", page)
+    if not wm:
         problem(page, "page name does not contain a week number")
         return []
-    week = int(m.group(1))
+    week = int(wm.group(1))
     src = SCHEDULE_URL.format(week)
     rows: list[dict] = []
     for line in text_of(raw).splitlines():
         m = FINAL_RE.match(line)
-        if m:
+        if m is not None:
             away, ascore, home, hscore, _day, date_text = m.groups()
             rows.append({
                 "week": week, "away": NICKNAME.get(away, ""), "home": NICKNAME.get(home, ""),
