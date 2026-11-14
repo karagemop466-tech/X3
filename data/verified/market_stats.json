@@ -1,0 +1,46 @@
+{
+ "method": "Sample moments of the 137 verified 2026 finals. Mean and SD are what a normal-approximation line is priced from; the quantiles are the same information without assuming normality. sd_used_for_pricing is the sample SD (ddof=1).",
+ "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "schedule_source_pattern": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "n_games": 137,
+ "total": {
+  "mean": 45.92,
+  "sd": 14.26,
+  "min": 12,
+  "max": 96,
+  "quantiles": {
+   "5": 23,
+   "10": 29,
+   "25": 36,
+   "50": 45,
+   "75": 56,
+   "90": 64,
+   "95": 69
+  }
+ },
+ "abs_margin": {
+  "mean": 10.56,
+  "sd": 7.91,
+  "min": 0,
+  "max": 35,
+  "quantiles": {
+   "5": 2,
+   "10": 3,
+   "25": 4,
+   "50": 7,
+   "75": 17,
+   "90": 22,
+   "95": 24
+  }
+ },
+ "home_margin": {
+  "mean": -0.02,
+  "sd": 13.23
+ },
+ "league_avg_team_score": 22.96,
+ "normal_check": {
+  "abs_margin_excess_kurtosis": -0.146,
+  "total_excess_kurtosis": 0.19,
+  "note": "Excess kurtosis ~0 means a normal approximation is not crazy; large negative values mean the distribution is too flat-peaked for normal pricing to be safe."
+ }
+}

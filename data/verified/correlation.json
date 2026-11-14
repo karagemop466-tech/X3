@@ -1,0 +1,113 @@
+{
+ "method": "Pearson and Spearman correlation with n printed for every value. The 95% interval is Fisher z. The p-value is a two-sided permutation test with 20,000 shuffles and a fixed seed, so it is reproducible and does not rely on a normality assumption. Only official numbers are used: finals from the NFL schedule pages and the NFL standings page. No price data is involved, so none of these are market correlations.",
+ "sources": [
+  "https://www.nfl.com/schedules/2026/by-week/week-N",
+  "https://www.nfl.com/standings/league/2026/REG"
+ ],
+ "rows": [
+  {
+   "pair": "game total vs |margin|",
+   "n": 137,
+   "pearson_r": -0.0157,
+   "spearman_rho": -0.0759,
+   "ci95_low": -0.1829,
+   "ci95_high": 0.1524,
+   "perm_p": 0.85281,
+   "note": "Do scoring-heavy games also blow out? The screen for whether a total and a spread are independent legs of the same ticket.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "pair": "game total vs signed home margin",
+   "n": 137,
+   "pearson_r": -0.1607,
+   "spearman_rho": -0.1263,
+   "ci95_low": -0.3198,
+   "ci95_high": 0.0073,
+   "perm_p": 0.0668,
+   "note": "Directional version of the row above; reported separately so the two cannot be confused (see FLG-22 in COORDINATION.md).",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "pair": "away score vs home score (same game)",
+   "n": 137,
+   "pearson_r": 0.0759,
+   "spearman_rho": 0.0896,
+   "ci95_low": -0.093,
+   "ci95_high": 0.2405,
+   "perm_p": 0.37953,
+   "note": "Within-game co-movement. This is the quantity that decides whether two legs in one game may be multiplied as if independent.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "pair": "points for per game vs points against per game (clubs)",
+   "n": 32,
+   "pearson_r": -0.2041,
+   "spearman_rho": -0.2774,
+   "ci95_low": -0.516,
+   "ci95_high": 0.1557,
+   "perm_p": 0.26294,
+   "note": "Club-level balance: does scoring more come with allowing more?",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "pair": "net points per game vs win pct (clubs)",
+   "n": 32,
+   "pearson_r": 0.8794,
+   "spearman_rho": 0.8691,
+   "ci95_low": 0.7654,
+   "ci95_high": 0.9399,
+   "perm_p": 5e-05,
+   "note": "How much of a club's record its scoring differential already explains.",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "pair": "points for per game vs win pct (clubs)",
+   "n": 32,
+   "pearson_r": 0.7001,
+   "spearman_rho": 0.6876,
+   "ci95_low": 0.4649,
+   "ci95_high": 0.843,
+   "perm_p": 0.0001,
+   "note": "Offence alone.",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "pair": "points against per game vs win pct (clubs)",
+   "n": 32,
+   "pearson_r": -0.6639,
+   "spearman_rho": -0.6865,
+   "ci95_low": -0.8222,
+   "ci95_high": -0.4101,
+   "perm_p": 5e-05,
+   "note": "Defence alone.",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "pair": "home win pct vs road win pct (clubs)",
+   "n": 32,
+   "pearson_r": 0.3501,
+   "spearman_rho": 0.3101,
+   "ci95_low": 0.0016,
+   "ci95_high": 0.6228,
+   "perm_p": 0.0486,
+   "note": "Is home form portable to the road? If this is weak, 'they play well at home' is not evidence for a road game.",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "pair": "last-5 win pct vs net points per game (clubs)",
+   "n": 32,
+   "pearson_r": 0.8397,
+   "spearman_rho": 0.8582,
+   "ci95_low": 0.6943,
+   "ci95_high": 0.9192,
+   "perm_p": 5e-05,
+   "note": "Does the recent record track the underlying point differential, i.e. is 'form' mostly a restatement of quality?",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  }
+ ],
+ "cannot_compute": [
+  "any correlation against a market price or a closing line (no price feed in the repo)",
+  "player-prop joint distributions (no official prop archive)",
+  "anything requiring play-by-play (not ingested)"
+ ]
+}

@@ -1,0 +1,292 @@
+{
+ "method": "Count of finals by the absolute home margin. A spread set exactly on a value k pushes when the game lands on k; the share column is the probability of that push if that line were used, estimated from the same 137 games. This is a sample estimate, not a law of football.",
+ "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "schedule_source_pattern": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "n_games": 137,
+ "by_margin": [
+  {
+   "margin": 0,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 0,
+   "cum_games_le": 1,
+   "cum_share_le": 0.0073
+  },
+  {
+   "margin": 1,
+   "games": 2,
+   "share": 0.0146,
+   "push_if_line_is": 1,
+   "cum_games_le": 3,
+   "cum_share_le": 0.0219
+  },
+  {
+   "margin": 2,
+   "games": 5,
+   "share": 0.0365,
+   "push_if_line_is": 2,
+   "cum_games_le": 8,
+   "cum_share_le": 0.0584
+  },
+  {
+   "margin": 3,
+   "games": 22,
+   "share": 0.1606,
+   "push_if_line_is": 3,
+   "cum_games_le": 30,
+   "cum_share_le": 0.219
+  },
+  {
+   "margin": 4,
+   "games": 8,
+   "share": 0.0584,
+   "push_if_line_is": 4,
+   "cum_games_le": 38,
+   "cum_share_le": 0.2774
+  },
+  {
+   "margin": 5,
+   "games": 8,
+   "share": 0.0584,
+   "push_if_line_is": 5,
+   "cum_games_le": 46,
+   "cum_share_le": 0.3358
+  },
+  {
+   "margin": 6,
+   "games": 12,
+   "share": 0.0876,
+   "push_if_line_is": 6,
+   "cum_games_le": 58,
+   "cum_share_le": 0.4234
+  },
+  {
+   "margin": 7,
+   "games": 13,
+   "share": 0.0949,
+   "push_if_line_is": 7,
+   "cum_games_le": 71,
+   "cum_share_le": 0.5182
+  },
+  {
+   "margin": 8,
+   "games": 7,
+   "share": 0.0511,
+   "push_if_line_is": 8,
+   "cum_games_le": 78,
+   "cum_share_le": 0.5693
+  },
+  {
+   "margin": 9,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 9,
+   "cum_games_le": 79,
+   "cum_share_le": 0.5766
+  },
+  {
+   "margin": 10,
+   "games": 5,
+   "share": 0.0365,
+   "push_if_line_is": 10,
+   "cum_games_le": 84,
+   "cum_share_le": 0.6131
+  },
+  {
+   "margin": 11,
+   "games": 2,
+   "share": 0.0146,
+   "push_if_line_is": 11,
+   "cum_games_le": 86,
+   "cum_share_le": 0.6277
+  },
+  {
+   "margin": 12,
+   "games": 4,
+   "share": 0.0292,
+   "push_if_line_is": 12,
+   "cum_games_le": 90,
+   "cum_share_le": 0.6569
+  },
+  {
+   "margin": 13,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 13,
+   "cum_games_le": 91,
+   "cum_share_le": 0.6642
+  },
+  {
+   "margin": 14,
+   "games": 6,
+   "share": 0.0438,
+   "push_if_line_is": 14,
+   "cum_games_le": 97,
+   "cum_share_le": 0.708
+  },
+  {
+   "margin": 15,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 15,
+   "cum_games_le": 98,
+   "cum_share_le": 0.7153
+  },
+  {
+   "margin": 16,
+   "games": 2,
+   "share": 0.0146,
+   "push_if_line_is": 16,
+   "cum_games_le": 100,
+   "cum_share_le": 0.7299
+  },
+  {
+   "margin": 17,
+   "games": 10,
+   "share": 0.073,
+   "push_if_line_is": 17,
+   "cum_games_le": 110,
+   "cum_share_le": 0.8029
+  },
+  {
+   "margin": 18,
+   "games": 2,
+   "share": 0.0146,
+   "push_if_line_is": 18,
+   "cum_games_le": 112,
+   "cum_share_le": 0.8175
+  },
+  {
+   "margin": 20,
+   "games": 2,
+   "share": 0.0146,
+   "push_if_line_is": 20,
+   "cum_games_le": 114,
+   "cum_share_le": 0.8321
+  },
+  {
+   "margin": 21,
+   "games": 5,
+   "share": 0.0365,
+   "push_if_line_is": 21,
+   "cum_games_le": 119,
+   "cum_share_le": 0.8686
+  },
+  {
+   "margin": 22,
+   "games": 5,
+   "share": 0.0365,
+   "push_if_line_is": 22,
+   "cum_games_le": 124,
+   "cum_share_le": 0.9051
+  },
+  {
+   "margin": 23,
+   "games": 3,
+   "share": 0.0219,
+   "push_if_line_is": 23,
+   "cum_games_le": 127,
+   "cum_share_le": 0.927
+  },
+  {
+   "margin": 24,
+   "games": 4,
+   "share": 0.0292,
+   "push_if_line_is": 24,
+   "cum_games_le": 131,
+   "cum_share_le": 0.9562
+  },
+  {
+   "margin": 26,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 26,
+   "cum_games_le": 132,
+   "cum_share_le": 0.9635
+  },
+  {
+   "margin": 28,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 28,
+   "cum_games_le": 133,
+   "cum_share_le": 0.9708
+  },
+  {
+   "margin": 29,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 29,
+   "cum_games_le": 134,
+   "cum_share_le": 0.9781
+  },
+  {
+   "margin": 30,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 30,
+   "cum_games_le": 135,
+   "cum_share_le": 0.9854
+  },
+  {
+   "margin": 31,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 31,
+   "cum_games_le": 136,
+   "cum_share_le": 0.9927
+  },
+  {
+   "margin": 35,
+   "games": 1,
+   "share": 0.0073,
+   "push_if_line_is": 35,
+   "cum_games_le": 137,
+   "cum_share_le": 1.0
+  }
+ ],
+ "top_totals": [
+  {
+   "total": 40,
+   "games": 7
+  },
+  {
+   "total": 34,
+   "games": 6
+  },
+  {
+   "total": 33,
+   "games": 6
+  },
+  {
+   "total": 46,
+   "games": 5
+  },
+  {
+   "total": 51,
+   "games": 5
+  },
+  {
+   "total": 23,
+   "games": 4
+  },
+  {
+   "total": 61,
+   "games": 4
+  },
+  {
+   "total": 48,
+   "games": 4
+  },
+  {
+   "total": 37,
+   "games": 4
+  },
+  {
+   "total": 39,
+   "games": 4
+  }
+ ],
+ "share_within_3": 0.219,
+ "share_within_7": 0.5182
+}
