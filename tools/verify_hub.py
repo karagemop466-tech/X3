@@ -121,6 +121,23 @@ def approved_link(hrefs_and_text, page_dir=None):
     return False
 
 
+def _flag_ids():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("hub_content", os.path.join(ROOT, "tools",
+                                                                                "hub_content.py"))
+    m = importlib.util.module_from_spec(spec)
+    sys.modules["hub_content"] = m
+    spec.loader.exec_module(m)
+    return {f[0] for f in m.FLAGS}
+
+
+try:
+    KNOWN_FLAGS = _flag_ids()
+except Exception as e:                                    # pragma: no cover
+    print("warn: flag register unavailable:", e)
+    KNOWN_FLAGS = set()
+
+
 def main():
     data_rows = 0
     failures, warnings = [], []
@@ -150,6 +167,11 @@ def main():
         for m in re.finditer(r'(?:src|href)="(assets/[^"]+)"', html):
             if not os.path.exists(os.path.join(HUB, m.group(1))):
                 failures.append(f"{fn}: missing asset {m.group(1)}")
+        # flag references must resolve to a real row of the flag register
+        for m in re.finditer(r"\bF-(\d{2})\b", html):
+            fid = "F-" + m.group(1)
+            if fid not in KNOWN_FLAGS:
+                failures.append(f"{fn}: references {fid}, which is not in the flag register")
         # markdown must never ship: the generator emits HTML, not source text
         for m in re.finditer(r"(?<![A-Za-z0-9])\*\*?[A-Za-z][^<>]*?\*\*?(?![A-Za-z0-9])", html):
             failures.append(f"{fn}: markdown emphasis leaked into HTML: {m.group(0)[:50]}")

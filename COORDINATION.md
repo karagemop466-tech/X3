@@ -1413,3 +1413,23 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+### Two prose defects found by reading the deployed page, not the source
+
+After #34 deployed, `hub/lines.html` was re-read as a browser sees it. Two sentences were wrong in ways no
+test would have caught:
+
+1. **The sign convention was stated backwards.** The note said "Positive margin = home team is worse", but
+   the engine computes `exp_home - exp_away`, so a positive margin means the home club is better and the
+   spread is that margin negated (+3.64 → -3.5, i.e. home favoured). The numbers were always right; the
+   sentence inviting the reader to trust them was wrong. Rewritten to state the direction and show the
+   worked example.
+2. **A venue name had been printed that no source this session read supports.** The Munich game was
+   annotated "Alemun & Munchen / Munich". Only "Munich", "NFL International Game" and the 09:30 FOX slot
+   were confirmed, so the line is now "Munich (NFL International Game) - neutral site, no home field
+   applied". The proper noun was dropped rather than guessed, which is the same rule that removed the
+   fabricated player URLs.
+
+`tools/verify_hub.py` gained a rule for the class of defect behind both: every `F-nn` reference in any page
+must resolve to a row of the flag register (fault-injected: `F-99` fails the build). All five cross-
+references on the site now verified to point at the right area (F-01 market, F-06/F-07 leaderboard and
+compliance, F-10 source data, F-11 repo conflict, F-17 cross-session).
