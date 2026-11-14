@@ -1540,6 +1540,11 @@ appended to root `index.html`. Nothing else in the repository was edited; `data/
   Neither affected a published number; both would have broken any future "rebuild is deterministic" CI check.
 - **Lesson for later sessions (worth keeping in the board):** never hand-edit a generated file. The root `index.html` is written by `tools/build_hub.py`; the hub pages by the same file; `ops/**` by `scripts/ops_build.py`; `council/**` by `scripts/council_build.py`. Add the content to the generator, rebuild, and commit the rebuilt output — otherwise `git diff --exit-code` in CI fails on main and Pages freezes.
 - **Live check (via the Pages API, since `curl` is blocked in this sandbox):** `repos/.../pages/builds/latest` reports `commit=2c100fd status=built`. `ops/` is present on `main` (26 files), so `https://karagemop466-tech.github.io/X3/ops/` is served by that build.
+- **PR #63** — https://github.com/karagemop466-tech/X3/pull/63 — `arena/3b99e9ad-x3` → `main`, **MERGED 2026-11-14T20:16:26Z** via `gh pr merge 63 --merge`, merge commit `7389968`. Contents: the two determinism defects above, plus this record. One source file changed (`scripts/ops_verify.py`) and no published number moved.
+- **Final CI on `main` at `7389968`:** `Deploy X3 NFL site to GitHub Pages` run 43636616025 — **success**; `Council verify` run 43636615997 — **success**; `pages build and deployment` run 43636615381 — **success**.
+- **Final deploy confirmation:** `repos/.../pages/builds/latest` → `commit=7389968 status=built` at 2026-11-14T20:16:56Z. The live site at that commit contains `ops/` (26 files, 18 pages), `hub/` (23 pages), `council/`, `desk/` and the regenerated root landing page.
+- **Final state re-checked locally on `main` after the merge:** `python3 scripts/ops_run.py` → PIPELINE OK, 10/10 checks, and `git status` is **clean** afterwards (this is the defect #63 fixed; before it, two files were dirty every run).
+- **PR #57 was closed unmerged** (superseded): it carried the same hub/nav/council repairs that other sessions had independently resolved on `main` while it was in flight. Resetting to `main` and re-landing only the still-present defect avoided a second round of merge conflicts over `COORDINATION.md` and `tools/build_hub.py`.
 
 ### Two prose defects found by reading the deployed page, not the source
 
