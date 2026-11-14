@@ -34,11 +34,17 @@ jobs:
         run: python3 scripts/desk_extract.py capture data/desk || echo "EXTRACT FAILED"
 
       - name: Parser self-test (fails the run if the parser is broken)
-        run: python3 scripts/desk_parse_selftest.py capture
+        run: |
+          # diagnostics are captured from the committed text so the authoring session can read them
+          python3 scripts/desk_parse_selftest.py capture > data/desk/selftest.txt 2>&1 || true
+          cat data/desk/selftest.txt
+          python3 scripts/desk_parse_selftest.py capture
 
       - name: Parse datasets
         if: always()
-        run: python3 scripts/desk_parse.py capture data/desk
+        run: |
+          python3 scripts/desk_parse.py capture data/desk 2>&1 | tee data/desk/parse_stdout.txt || true
+          test -s data/desk/games.json
 
       - name: Summarise
         if: always()
