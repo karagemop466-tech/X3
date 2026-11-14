@@ -2391,3 +2391,46 @@ decision can no longer disagree.
 
 **PRs from this session:** #55 (the tree), #56 (merge/deploy record), #59 (mislabel fix + gate),
 #60 (suggestion evidence/decision alignment). All merged.
+
+## Session arena/09f8c786-x3 (FINAL INTEGRATION for this round of requirements)
+
+Branch: `arena/09f8c786-x3`. Base: `main` @ `996257b3`. Claimed **2026-11-14**.
+Platform rule: all work happens on this assigned branch; the `session-<id>/<task>` naming in the
+brief yields to the platform rule. Status legend: unclaimed | in progress | done | needs review | blocked
+
+### New requirements this session (the 8 items), mapped to files
+
+| ID | Requirement | Status | Scope (all NEW, no overlap) |
+|----|-------------|--------|------------------------------|
+| X3-01 | Price-snapshot store (open + close for every originated market) | in progress | `signals/data/price_snapshots.csv|json`, `signals/prices.html` |
+| X3-02 | Verified results feed (backtests/ROI possible at all) | in progress | `signals/data/results.csv|json`, `signals/results.html` |
+| X3-03 | Origination order: side → total → moneyline | in progress | `scripts/build_signals.py` (pipeline stage order), `signals/lines.html` |
+| X3-04 | Publish fair line / market line / difference as separate columns | in progress | `signals/lines.html` (3 columns per market) |
+| X3-05 | Separate signal from staking in the leaderboard | in progress | `signals/leaderboard.html`, `signals/data/leaderboard.csv` |
+| X3-06 | Track depth of the replacement (2nd/3rd/4th string) | in progress | `signals/depth.html`, `signals/data/depth.csv` |
+| X3-07 | Correlations from official numbers only, publish n | in progress | `signals/correlations.html`, `signals/data/correlations.csv` |
+| X3-08 | Demotion gate: live → paper | in progress | `signals/gates.html`, `signals/data/demotion.csv` |
+| X3-09 | Suggestions section (review → choose path → then implement) | in progress | `signals/suggestions.html`, `signals/data/suggestions.csv` |
+| X3-10 | Questions / information we have / information we lack / answers | in progress | `signals/questions.html`, `signals/data/questions.csv` |
+| X3-11 | Executive summary | in progress | `signals/executive-summary.html` |
+| X3-12 | Repo review, line by line, with links + flags | in progress | `signals/repo-review.html` |
+| X3-13 | Flagged for Review page | in progress | `signals/flagged.html`, `signals/data/flags.csv` |
+| X3-14 | Line-by-line verification: every row sourced or flagged | in progress | `scripts/verify_signals.py`, `signals/verification.html` |
+| X3-15 | CI gate for the new module | in progress | `.github/workflows/signals.yml` (new file) |
+| X3-16 | Integration: PR → merge → Pages deploy → record | in progress | `COORDINATION.md`, `README.md` (append-only) |
+
+### File-scope declaration (non-overlapping)
+
+This session **creates** `signals/**`, `scripts/build_signals.py`, `scripts/verify_signals.py`,
+`.github/workflows/signals.yml`. It **reads but never writes** `data/desk/**`, `hub/**`, `docs/**`,
+`dashboard/**`, `x3lab/**`, `desk/**`, `crosscheck/**`, `audit/**`, `pages/**`, `site/**`,
+`archive/**`, `lab/**`, `legacy/**`, `analysis/**`, `research/**`, `.github/workflows/pages.yml`,
+`.github/workflows/desk-capture.yml`, `tools/**`, and the other sessions' `scripts/**`.
+`COORDINATION.md` and `README.md` are append-only. Root `index.html` gets one added nav entry as
+the integration session (the brief assigns site index/navigation to the final integration session);
+no other session-owned file is edited.
+
+### Log
+
+- 2026-11-14 claim: 16 tasks claimed; scope declared; pushed.
+
