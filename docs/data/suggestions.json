@@ -1,0 +1,181 @@
+{
+  "description": "SUGGESTIONS - dedicated review queue. A human reviews these and sets status: proposed / accepted / pilot / rejected. Nothing is implemented from this list without that decision. Each suggestion links the questions/flags it resolves.",
+  "generated_at": "2026-11-14",
+  "workflow": {
+    "statuses": [
+      "proposed",
+      "accepted",
+      "pilot",
+      "rejected"
+    ],
+    "reviewer": "owner",
+    "cadence": "proposed weekly (Q-14)",
+    "rule": "a suggestion stays proposed until the owner changes its status; agent sessions never mark their own suggestions accepted"
+  },
+  "suggestions": [
+    {
+      "id": "SUG-01",
+      "title": "Adopt the validation-gate framework before any wagering",
+      "priority": 1,
+      "effort": "low",
+      "impact": "high",
+      "resolves": [
+        "Q-01",
+        "Q-02"
+      ],
+      "detail": "Gates G-0..G-8 (validation_gates.json) are the mechanism that removes luck from results. Making them binding before any money is risked is the single highest-leverage decision.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-02",
+      "title": "Start weekly CLV timestamp tracking now",
+      "priority": 2,
+      "effort": "low",
+      "impact": "high",
+      "resolves": [
+        "Q-03",
+        "Q-04"
+      ],
+      "detail": "Every week, snapshot opens and closes for all games. The 2026-11-14 snapshot is already in odds_week10/11.json. This data cannot be reconstructed later - it compounds.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-03",
+      "title": "Automate data snapshots with a scheduled GitHub Action",
+      "priority": 3,
+      "effort": "medium",
+      "impact": "high",
+      "resolves": [
+        "Q-15"
+      ],
+      "detail": "3x/week ingestion of standings, schedules, injuries, odds into docs/data/history/. Removes staleness and makes the tracker real.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-04",
+      "title": "Acquire a historical odds/results archive for backtesting",
+      "priority": 4,
+      "effort": "medium",
+      "impact": "high",
+      "resolves": [
+        "Q-03"
+      ],
+      "detail": "G-3 cannot pass without multi-season timestamped lines. Options: licensed archive, or build forward-only and wait. Recommendation: evaluate vendors, meanwhile rely on forward tracking.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-05",
+      "title": "Legal review before any funded rewards or wagering",
+      "priority": 5,
+      "effort": "low",
+      "impact": "high",
+      "resolves": [
+        "Q-13"
+      ],
+      "detail": "Owner is located in Japan, where sports wagering is heavily restricted. Keep the competition points-only until a lawyer confirms what is permitted.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-06",
+      "title": "Automate official depth-chart + gamebook pulls for all 32 teams",
+      "priority": 6,
+      "effort": "medium",
+      "impact": "medium",
+      "resolves": [
+        "Q-08",
+        "Q-11"
+      ],
+      "detail": "Resolves flag F-05. Official team sites publish depth charts; gamebooks publish snap participation. Both are needed to certify '2nd/3rd/4th string' claims everywhere.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-07",
+      "title": "Add play-by-play + player prop data ingestion",
+      "priority": 7,
+      "effort": "high",
+      "impact": "high",
+      "resolves": [
+        "Q-06",
+        "Q-07"
+      ],
+      "detail": "Unblocks G-8 (correlation matrix), STR-06 (prop combos), and production-grade correlations. Must use verified sources only.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-08",
+      "title": "Owner questionnaire: bankroll, risk, book, whitelist",
+      "priority": 8,
+      "effort": "low",
+      "impact": "high",
+      "resolves": [
+        "Q-01",
+        "Q-02",
+        "Q-04",
+        "Q-12"
+      ],
+      "detail": "Four answers size everything downstream. Draft questionnaire available on the Questions page.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-09",
+      "title": "Model v0.2: opponent adjustment + injury adjustments + neutral HFA",
+      "priority": 9,
+      "effort": "high",
+      "impact": "medium",
+      "resolves": [
+        "Q-09",
+        "Q-10"
+      ],
+      "detail": "v0.1's largest gaps (LAC-BAL +4.5) are exactly the games with QB news it cannot see. v0.2 inputs: opponent-adjusted margins, deficiency weights from deficiencies.json, weather totals.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-10",
+      "title": "Variance simulator for luck-vs-skill visualization",
+      "priority": 10,
+      "effort": "medium",
+      "impact": "medium",
+      "resolves": [
+        "Q-01"
+      ],
+      "detail": "Given a strategy's hit rate and price, simulate 10,000 seasons to show how often luck alone produces the observed record. Directly supports gate G-7 and 'remove luck' goal.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-11",
+      "title": "Weekly suggestion review ritual on this page",
+      "priority": 11,
+      "effort": "low",
+      "impact": "medium",
+      "resolves": [
+        "Q-14"
+      ],
+      "detail": "Owner sets statuses; rejected items stay visible with reason. Prevents silent scope creep.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    },
+    {
+      "id": "SUG-12",
+      "title": "Publish source whitelist + verification SOP",
+      "priority": 12,
+      "effort": "low",
+      "impact": "medium",
+      "resolves": [
+        "Q-12"
+      ],
+      "detail": "Formalize what counts as official/trusted (see Sources page) so future sessions and strategies inherit the same standard.",
+      "status": "proposed",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/suggestions.json"
+    }
+  ]
+}

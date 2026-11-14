@@ -1,0 +1,168 @@
+{
+  "description": "Decision-readiness register: questions answered by verified data, and open questions/information gaps that must be closed before any decision is reasonably made. Each open question includes a discovery suggestion. Nothing is inferred to fill gaps.",
+  "generated_at": "2026-11-14",
+  "answered": [
+    {
+      "id": "Q-A1",
+      "category": "Competition state",
+      "question": "What is every team's record and scoring margin through Week 9 + TNF?",
+      "answer": "Full 32-team table captured and reconciled (home+away sums match, diff = PF-PA verified).",
+      "source": "https://www.nfl.com/standings/league/2026/REG",
+      "status": "answered - verified"
+    },
+    {
+      "id": "Q-A2",
+      "category": "Schedule",
+      "question": "What games remain in Week 10 and what does Week 11 look like?",
+      "answer": "13 remaining Week-10 games (14 incl. played TNF) + 13 Week-11 games + 6 byes, all with official links.",
+      "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+      "status": "answered - verified"
+    },
+    {
+      "id": "Q-A3",
+      "category": "Injuries",
+      "question": "Who is ruled out / doubtful / questionable for Week 10?",
+      "answer": "All 32 teams' game-day designations captured (~165 rows) + line-moving IR subset (~65 rows).",
+      "source": "https://www.espn.com/nfl/injuries",
+      "status": "answered - verified (with F-04 mismatches flagged)"
+    },
+    {
+      "id": "Q-A4",
+      "category": "Market",
+      "question": "What are the current market spreads/totals/MLs for Weeks 10-11?",
+      "answer": "DraftKings lines via ESPN captured for all 13 Week-10 and 13 Week-11 games + Super Bowl futures.",
+      "source": "https://www.espn.com/nfl/odds",
+      "status": "answered - verified (open timestamps missing: F-03)"
+    },
+    {
+      "id": "Q-A5",
+      "category": "Depth deficiencies",
+      "question": "Which teams are fielding 2nd/3rd/4th stringers at key spots?",
+      "answer": "Rule-based deficiency table (24 rows) + chart-verified string claims for PIT and BAL only.",
+      "source": "https://www.espn.com/nfl/team/depth/_/name/bal",
+      "status": "partially answered (F-05)"
+    }
+  ],
+  "open": [
+    {
+      "id": "Q-01",
+      "category": "Owner decisions",
+      "question": "What bankroll, unit size, and reward structure should the competition use?",
+      "blocks": "all staking, rewards, leaderboard P2",
+      "discovery_suggestion": "Owner questionnaire (SUG-08); until answered, leaderboard runs points-only (LB default).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-02",
+      "category": "Owner decisions",
+      "question": "Risk tolerance: max drawdown, stop-loss, Kelly fraction?",
+      "blocks": "stake sizing rules (STR bet_types)",
+      "discovery_suggestion": "Owner questionnaire (SUG-08).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-03",
+      "category": "Data",
+      "question": "Where is a timestamped historical odds + results archive for backtesting?",
+      "blocks": "G-3 walk-forward validation of every strategy",
+      "discovery_suggestion": "SUG-04: license an odds archive vendor or scrape-and-store forward from now (tracking already started 2026-11-14).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-04",
+      "category": "Market",
+      "question": "Which sportsbook(s) define 'the line' for CLV and comparison?",
+      "blocks": "G-5 CLV measurement definition",
+      "discovery_suggestion": "Owner decision; currently only DraftKings (via ESPN) is captured (Q-04 open).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-05",
+      "category": "Process",
+      "question": "How are strategy submissions made (code, pick sheet, form) and who timestamps them?",
+      "blocks": "G-1 pre-registration in practice",
+      "discovery_suggestion": "SUG-05 recommendation: git-committed pick files (commit time = timestamp).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-06",
+      "category": "Data",
+      "question": "What is a verified source for player prop lines?",
+      "blocks": "STR-06 player prop combos entirely",
+      "discovery_suggestion": "SUG-07: evaluate licensed prop data vendors; until verified, prop strategies stay blocked (no hallucinated lines).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-07",
+      "category": "Data",
+      "question": "Play-by-play feed for measuring same-game leg correlations?",
+      "blocks": "G-8 for all parlays/prop combos",
+      "discovery_suggestion": "SUG-07: ingest game books (NFL.com official game pages) or licensed PBP; pilot n=16 correlations published as reference only.",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-08",
+      "category": "Lineups",
+      "question": "Snap-count source to confirm exactly which string each player is?",
+      "blocks": "string-level claims beyond PIT/BAL",
+      "discovery_suggestion": "SUG-06: pull official gamebooks weekly (they list participation).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-09",
+      "category": "Model",
+      "question": "What HFA applies to neutral-site games (Munich, Mexico City)?",
+      "blocks": "S5, model lines for international games",
+      "discovery_suggestion": "Backtest international series results from official game pages (SUG-09).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-10",
+      "category": "Model",
+      "question": "Weather data source for totals adjustments?",
+      "blocks": "totals model v0.2",
+      "discovery_suggestion": "NOAA/stadium forecasts snapshot at kickoff (SUG-09).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-11",
+      "category": "Lineups",
+      "question": "Can official team depth charts (all 32) be pulled weekly?",
+      "blocks": "F-05 resolution",
+      "discovery_suggestion": "SUG-06: automate per-team depth pulls from team official sites.",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-12",
+      "category": "Governance",
+      "question": "Is the source whitelist (NFL.com official; ESPN trusted; DraftKings via ESPN market) approved?",
+      "blocks": "G-0 policy finalization",
+      "discovery_suggestion": "Owner sign-off on docs/sources (SUG-12).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-13",
+      "category": "Legal",
+      "question": "Are real-money rewards / wagering permitted in the owner's jurisdiction (owner located in Japan)?",
+      "blocks": "funded rewards, any real wagering",
+      "discovery_suggestion": "SUG-05: legal review before any funded activity; competition defaults to points-only.",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-14",
+      "category": "Process",
+      "question": "Who reviews the Suggestions page and how often are statuses updated?",
+      "blocks": "nothing (process)",
+      "discovery_suggestion": "Owner sets cadence; proposed weekly review (SUG-11).",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    },
+    {
+      "id": "Q-15",
+      "category": "Data",
+      "question": "Should injury/odds/standings snapshots be automated (GitHub Actions 3x/week)?",
+      "blocks": "nothing now (manual snapshots work, but stale fast)",
+      "discovery_suggestion": "SUG-03: scheduled workflow; keeps CLV timestamps continuous.",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"
+    }
+  ]
+}
