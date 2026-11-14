@@ -1,0 +1,99 @@
+{
+ "rows": [
+  {
+   "strategy_id": "LB-1",
+   "name": "Game side (single)",
+   "scope": "spread/moneyline singles",
+   "signal_metric": "winner-direction accuracy (walk-forward)",
+   "signal_value": 0.595,
+   "signal_n": 121,
+   "signal_rank": 1,
+   "staking": {
+    "roi_per_100": "",
+    "clv_per_bet": "",
+    "settled_bets": 0,
+    "status": "BLOCKED - no market prices exist to stake against (Q-01 open)"
+   },
+   "note": "baseline-relative; no market line is needed for the signal",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N (official finals); signal computed walk-forward by origin/data/backtest.json"
+  },
+  {
+   "strategy_id": "LB-2",
+   "name": "Game total (single)",
+   "scope": "over/under singles",
+   "signal_metric": "baseline-relative over/under hit rate",
+   "signal_value": 0.4957,
+   "signal_n": 117,
+   "signal_rank": 2,
+   "staking": {
+    "roi_per_100": "",
+    "clv_per_bet": "",
+    "settled_bets": 0,
+    "status": "BLOCKED - no market prices exist to stake against (Q-01 open)"
+   },
+   "note": "baseline 45.0 is the registered naive total (hub gates G-4)",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N (official finals); signal computed walk-forward by origin/data/backtest.json"
+  },
+  {
+   "strategy_id": "LB-3",
+   "name": "Game moneyline (single)",
+   "scope": "moneyline singles",
+   "signal_metric": "Brier score on win probability",
+   "signal_value": 0.2373,
+   "signal_n": 121,
+   "signal_rank": 3,
+   "staking": {
+    "roi_per_100": "",
+    "clv_per_bet": "",
+    "settled_bets": 0,
+    "status": "BLOCKED - no market prices exist to stake against (Q-01 open)"
+   },
+   "note": "lower is better; probability from the originated side via the registered bridge",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N (official finals); signal computed walk-forward by origin/data/backtest.json"
+  },
+  {
+   "strategy_id": "LB-4",
+   "name": "Parlay (cross-game, 2 legs)",
+   "scope": "2-4 legs, independent games",
+   "signal_metric": "joint hit rate of the two strongest signals per week",
+   "signal_value": 0.625,
+   "signal_n": 8,
+   "signal_rank": null,
+   "staking": {
+    "roi_per_100": "",
+    "clv_per_bet": "",
+    "settled_bets": 0,
+    "status": "BLOCKED - no market prices exist to stake against (Q-01 open)"
+   },
+   "note": "UNRANKED \u2014 n=8 is below the registered signal-rank floor of 100; a tiny sample would let luck top the board. leg-dependence phi published with n; tiny sample, flagged",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N (official finals); signal computed walk-forward by origin/data/backtest.json"
+  },
+  {
+   "strategy_id": "LB-5",
+   "name": "Player prop / same-game combo",
+   "scope": "props",
+   "signal_metric": "none computable",
+   "signal_value": null,
+   "signal_n": 0,
+   "signal_rank": null,
+   "staking": {
+    "roi_per_100": "",
+    "clv_per_bet": "",
+    "settled_bets": 0,
+    "status": "BLOCKED - no market prices exist to stake against (Q-01 open)"
+   },
+   "note": "BLOCKED - no official source publishes prop results or prop prices; nothing is estimated",
+   "source": "no official source identified (flagged F-A01)"
+  }
+ ],
+ "rules": [
+  "The leaderboard is ranked by the SIGNAL column ONLY. Staking columns are displayed next to it but are never blended into the rank, so a lucky staking run cannot mask a bad signal (and vice versa).",
+  "A strategy needs n >= 100 settled walk-forward signals to hold a rank at all (floor registered before any Week-10 result exists); below it the strategy is UNRANKED, not zero.",
+  "Signal metrics are computed walk-forward on official finals only; n is published with every value.",
+  "A strategy enters the competition only after passing gates G-0..G-6 (hub gates) and stays there only while no demotion trigger (origin gates D-1) has fired.",
+  "Staking columns activate when a market-price source exists (open decision Q-01); until then every staking cell stays blank and BLOCKED.",
+  "Rewards: the brief provides for rewards for top-performing strategies, but the reward pool, currency and funding are an owner decision (question Q-A06) - nothing is promised or published here."
+ ],
+ "min_signal_n": 100,
+ "generated_at": "2026-11-14T19:33:18Z"
+}

@@ -33,6 +33,8 @@ OFFICIAL_REQUIRED_PAGES = RULE_OFFICIAL | {"strategies.html", "sources.html", "v
 UNVERIFIED = "UNVERIFIED"
 
 
+
+
 def load(name):
     return json.load(open(os.path.join(DATA, name), encoding="utf-8"))
 
