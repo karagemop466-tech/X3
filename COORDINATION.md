@@ -861,7 +861,7 @@ left as-is, so the hub publishes through the existing `path: '.'` upload.
 | D04 | Own-line model | done | `data/desk/model.json` | ridge margin + pace models on verified finals; neutral sites excluded from HFA |
 | D05 | Correlations with n and 95% CI | done | `data/desk/correlations.json` | Pearson + Fisher z; 4 coefficients, CIs published |
 | D06 | Strategy competition, gates, leaderboard | done | `data/desk/strategies.json` | 10 hypotheses, 10 gates, 0 graded bets (no prices exist) |
-| D07 | Injury → depth-string deficiency join | done | `data/desk/deficiencies.json` | 156 joined, 108 flagged not-joinable |
+| D07 | Injury → depth-string deficiency join | done | `data/desk/deficiencies.json` | 150 exact-position joins, 6 partial (flagged, excluded), 60 not joinable; cross-role matches refused |
 | D08 | Questions / missing info / decisions | done | `desk/questions.html` | 18 questions with blocked/open/answered status |
 | D09 | Suggestions for review | done | `desk/suggestions.html` | 12 proposals, 3 marked already implemented |
 | D10 | Executive summary | done | `desk/executive-summary.html` | counts computed at build time |
@@ -953,3 +953,22 @@ earlier sessions left them. They are linked from `desk/archive.html`.
 7. Reward/payout mechanics — no mechanism exists; jurisdiction unresolved and not asserted.
 8. Points cost of a lineup change — needs multiple seasons joined to injury reports.
 9. Injury designations with no game status — no designation was published at capture time.
+
+### Post-merge correction (2026-11-14, follow-up PR)
+
+A live read-through of the deployed lineups page found three defects in the injury-to-depth join.
+All three are fixed and re-verified:
+
+1. **Cross-role matches.** `RB` was matching a `KR` slot and `WR` a `PR` slot, which would have
+   reported a kick-returner as a running back's replacement. Position aliases are now grouped into
+   role groups (offense / o-line / d-line / linebacker / secondary / kicking) and a match across
+   groups is refused.
+2. **Partial matches were counted as joins.** Rows where the name appears on the chart at a
+   different position code are now labelled `matched-name-only`, published in their own table, and
+   excluded from the headline counts.
+3. **Missing-backup rows were counted as joins.** They are now labelled `matched-no-backup` and
+   shown with an explicit "no backup on chart" marker.
+
+Final join state: 210 Out/Doubtful rows → **150 exact-position joins** (101 at string 1),
+**6 partial** (flagged, excluded), **60 not joinable** (47 not on the chart, 7 from clubs whose
+chart did not capture, 6 other). `scripts/desk_verify.py` still reports ALL GATES PASS.
