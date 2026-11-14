@@ -1,0 +1,8 @@
+{
+ "problems": 2,
+ "games": 163,
+ "final": 137,
+ "standings": 32,
+ "injuries": 1027,
+ "depth_clubs": 32
+}

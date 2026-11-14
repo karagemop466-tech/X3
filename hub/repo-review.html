@@ -17,7 +17,7 @@
 <h1>Repo review</h1>
 <p class="lede">Every prior session's published tree, inventoried and assessed - what holds up, what conflicts, and what this session did about it.</p>
 
-<h2>Tree inventory (13 areas) - what each contains and whether it was verified</h2>
+<h2>Tree inventory (14 areas) - what each contains and whether it was verified</h2>
 <div class="tblwrap"><table class="k-meta">
 <thead><tr><th>Path</th><th>Owner session</th><th>What it contains</th><th>Assessment</th><th>State</th></tr></thead><tbody>
 <tr><td><code>(root)</code></td><td>mixed: category pages from two sessions + a redirect</td><td>8 standalone category pages, inline styles, tables with sources</td><td>superseded by hub/; index.html now the landing page</td><td><span class="badge p">PARTIAL</span></td></tr>
@@ -29,6 +29,7 @@
 <tr><td><code>dashboard/</code></td><td>arena/7e632805-x3</td><td>18-page dashboard with 345 injury rows, 31 charts, 76 starter-absent positions</td><td>archive; closest prior design to this one; carries the TB data error (F-11)</td><td><span class="badge p">ARCHIVE</span></td></tr>
 <tr><td><code>x3lab/</code></td><td>arena/e1c332ce-x3</td><td>13-page lab with model v0.1, gates G-0..G-8, third-party prices</td><td>archive; the only tree that recorded market prices, but from non-official sources</td><td><span class="badge p">ARCHIVE</span></td></tr>
 <tr><td><code>legacy/</code></td><td>arena/0c38f465-x3</td><td>the original root landing page</td><td>archive</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>desk/</code></td><td>arena/3bf7cc8b-x3</td><td>second full pipeline with its own capture job, data/desk/*.json and a CI gate; comparable to hub/ but built from different inputs</td><td>active elsewhere</td><td><span class="badge p">ACTIVE</span></td></tr>
 <tr><td><code>data/</code></td><td>several sessions</td><td>CSVs: injury 205-row snapshot, questions, suggestions, flags</td><td>partially superseded; &lt;code&gt;data/hub/&lt;/code&gt; added by this session as the canonical inputs</td><td><span class="badge p">PARTIAL</span></td></tr>
 <tr><td><code>tools/</code></td><td>several sessions</td><td>4 generators + 3 checkers; tools/nfl_data.py is a 1,527-line data module</td><td>kept; new files namespaced (x3_engine, build_hub, verify_hub)</td><td><span class="badge p">ACTIVE</span></td></tr>
 <tr><td><code>scripts/</code></td><td>several sessions</td><td>legacy builders and checks wired into CI</td><td>kept; unchanged by this session</td><td><span class="badge p">ACTIVE</span></td></tr>

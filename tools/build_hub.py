@@ -961,6 +961,8 @@ def p_repo():
         ("x3lab/", "arena/e1c332ce-x3", "13-page lab with model v0.1, gates G-0..G-8, third-party prices",
          "archive; the only tree that recorded market prices, but from non-official sources", "ARCHIVE"),
         ("legacy/", "arena/0c38f465-x3", "the original root landing page", "archive", "ARCHIVE"),
+        ("desk/", "arena/3bf7cc8b-x3", "second full pipeline with its own capture job, data/desk/*.json "
+         "and a CI gate; comparable to hub/ but built from different inputs", "active elsewhere", "ACTIVE"),
         ("data/", "several sessions", "CSVs: injury 205-row snapshot, questions, suggestions, flags",
          "partially superseded; <code>data/hub/</code> added by this session as the canonical inputs", "PARTIAL"),
         ("tools/", "several sessions", "4 generators + 3 checkers; tools/nfl_data.py is a 1,527-line data "
@@ -1054,6 +1056,10 @@ and re-verified. Use this page to navigate the archive knowingly.</p>
          "includes prices from third-party sportsbook pages; useful for method, not an official source"],
         ["legacy/", "arena/0c38f465-x3", '<a href="../legacy/index.html">legacy/index.html</a>',
          "the original landing page"],
+        ["desk/", "arena/3bf7cc8b-x3", '<a href="../desk/index.html">desk/index.html</a>',
+         "a second full pipeline (its own capture job, <code>data/desk/*.json</code>, its own "
+         "<code>scripts/desk_verify.py</code> gate in CI); its inputs are its own captures rather than the "
+         "two CSVs this hub is built from, so the two boards are comparable, not merged"],
         ["verification-hub/", "arena/1e2d8ef2-x3",
          '<a href="../verification-hub/index.html">verification-hub/index.html</a>',
          "an audit of the integration itself (deployed-file checks); a report about the site, not a "

@@ -59,6 +59,22 @@
         "dashboard/index.html: Q-01 Data scope What is the authoritative universe of games the model will be scored on? Yes open"
       ]
     },
+    "desk": {
+      "pages": 18,
+      "rows": 824,
+      "flagged_rows": 787,
+      "refs": 1240,
+      "unsourced_examples": [
+        "desk/archive.html: Site Path What it contains Status",
+        "desk/archive.html: Verified-data dashboard /dashboard/  18 pages: standings, injuries, depth, own lines, gates, correlations  Archived \u2014 di",
+        "desk/archive.html: Lines and strategy lab /x3lab/  Model v0.1 lines, luck analysis, validation gates G-0\u2026G-8  Archived \u2014 its model used ass",
+        "desk/archive.html: Extended research tree /docs/pages/  Research notes, requirements, correlation research, leaderboard design  Archived",
+        "desk/archive.html: Source-first research site /lab/  Hypotheses, gate definitions, open questions, suggestions  Archived",
+        "desk/archive.html: Legacy data site /docs/  Generated dashboard with archived CSVs Archived",
+        "desk/correlations.html: Pair r n 95% CI p Reading Used for Verdict Source",
+        "desk/correlations.html: Team W L T Pythag % Expected wins Actual wins Luck delta Source"
+      ]
+    },
     "docs": {
       "pages": 24,
       "rows": 1009,
@@ -77,9 +93,9 @@
     },
     "hub": {
       "pages": 18,
-      "rows": 766,
+      "rows": 768,
       "flagged_rows": 555,
-      "refs": 993,
+      "refs": 994,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -152,9 +168,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 124,
-  "rows_total": 4071,
-  "rows_flagged_or_sourced": 3384,
-  "internal_refs": 1861,
+  "pages_total": 142,
+  "rows_total": 4897,
+  "rows_flagged_or_sourced": 4171,
+  "internal_refs": 2264,
   "problems": []
 }

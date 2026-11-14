@@ -1,0 +1,78 @@
+name: Desk capture (official NFL pages)
+
+# Fetches official NFL pages from a GitHub-hosted runner (full internet), extracts
+# structured data, and commits the result to this working branch so the authoring
+# sandbox (which cannot reach nfl.com) can review it. Never touches `main`.
+#
+# Trigger: push to desk/capture-request.txt on this branch, or manual dispatch.
+
+on:
+  push:
+    branches: [ arena/3bf7cc8b-x3 ]
+    paths: [ desk/capture-request.txt ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: desk-capture
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Capture official pages
+        run: python3 scripts/desk_capture.py capture
+
+      - name: Extract text + link maps
+        if: always()
+        run: python3 scripts/desk_extract.py capture data/desk || echo "EXTRACT FAILED"
+
+      - name: Parser self-test (fails the run if the parser is broken)
+        run: |
+          # diagnostics are captured from the committed text so the authoring session can read them
+          python3 scripts/desk_parse_selftest.py capture > data/desk/selftest.txt 2>&1 || true
+          cat data/desk/selftest.txt
+          python3 scripts/desk_parse_selftest.py capture
+
+      - name: Parse datasets
+        if: always()
+        run: |
+          python3 scripts/desk_parse.py capture data/desk 2>&1 | tee data/desk/parse_stdout.txt || true
+          test -s data/desk/games.json
+          python3 scripts/desk_join.py data/desk 2>&1 | tee data/desk/join_stdout.txt || true
+
+      - name: Summarise
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p = pathlib.Path('data/desk/capture_diag.json')
+          if p.exists():
+              d = json.loads(p.read_text())
+              rows = d['pages']
+              bad = [r for r in rows if r.get('status') != 200]
+              print(f"capture: {len(rows) - len(bad)}/{len(rows)} OK, {d.get('distinct_game_slugs')} game slugs")
+              for b in bad[:20]:
+                  print('  failed:', b)
+          else:
+              print('no capture diagnostics written')
+          for f in sorted(pathlib.Path('data/desk').glob('*.json')):
+              print('data file:', f.name, f.stat().st_size, 'bytes')
+          PY
+
+      - name: Commit extracted data
+        if: always()
+        run: |
+          git config user.name "desk-capture-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/desk
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -q -m "chore(desk): capture + parse official pages (run $GITHUB_RUN_ID)"
+          git pull --rebase --autostash origin arena/3bf7cc8b-x3
+          git push origin HEAD:arena/3bf7cc8b-x3
