@@ -33,9 +33,12 @@ jobs:
         if: always()
         run: python3 scripts/desk_extract.py capture data/desk || echo "EXTRACT FAILED"
 
+      - name: Parser self-test (fails the run if the parser is broken)
+        run: python3 scripts/desk_parse_selftest.py capture
+
       - name: Parse datasets
         if: always()
-        run: python3 scripts/desk_parse.py capture data/desk || echo "PARSE FAILED"
+        run: python3 scripts/desk_parse.py capture data/desk
 
       - name: Summarise
         if: always()
