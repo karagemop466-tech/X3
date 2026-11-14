@@ -839,15 +839,15 @@
    "pages": 24,
    "path": "docs/",
    "purpose": "First verified-data dashboard",
-   "table_rows": 1009
+   "table_rows": 1010
   },
   {
-   "ext_links": 771,
+   "ext_links": 772,
    "owner": "arena/7e632805-x3",
    "pages": 18,
    "path": "dashboard/",
    "purpose": "18-page dashboard built from transcribed official data",
-   "table_rows": 797
+   "table_rows": 802
   },
   {
    "ext_links": 3,
