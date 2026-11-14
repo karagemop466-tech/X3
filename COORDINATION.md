@@ -109,13 +109,15 @@ Checked: `git status`, `git log`, `README.md`, remote config, GitHub Pages confi
 - 2026-11-14: PR #4 (arena/0c38f465-x3 -> main) first showed merge conflicts because `main` had advanced (PRs #1 and #3 from other sessions merged). Resolved by merging origin/main into this branch (not rebasing, so no history was rewritten):
   - `COORDINATION.md` (add/add): kept the full board from main and appended this session's section. Statements about being the only session were corrected.
   - `README.md`: kept main's README and appended this session's layout and rules.
-  - `.github/workflows/pages.yml`: kept all existing steps (link validation, deploy). Added the docs check and an assembly step so one Pages artifact serves this session's site at the root and the earlier root/`site/`/`pages/` pages under `/legacy/`. Upload path changed from `.` to `_site`.
-  - `scripts/build_site.py` nav: added an 'Earlier' link to `legacy/index.html`.
-- Pages build type change: from legacy (main /) to GitHub Actions workflow, so the assembled artifact is what is published. This is done after the PR is updated and before the merge, so the merge push triggers the workflow deploy.
-- Pending: merge PR #4, confirm the `Deploy X3 NFL site to GitHub Pages` run succeeds, confirm https://karagemop466-tech.github.io/X3/ and /legacy/ respond, record PR link and merge result here.
+  - `index.html` (root, from the earlier decision-lab site): moved unchanged to `legacy/index.html` (links fixed to `../`), `style.css` copied to `legacy/style.css`. The root `index.html` is now a redirect to `docs/index.html` (the integrated dashboard). Integration session owns the index per the brief.
+  - `.nojekyll` added at root so the legacy Pages build serves the static HTML as-is.
+  - `.github/workflows/pages.yml`: restored to main's version and added one step that runs `scripts/check_site.py`.
+  - `scripts/build_site.py` nav: added an "Earlier" link to `../legacy/index.html`.
+- Pages settings: the token cannot change Pages settings (PUT /pages returned HTTP 403), so the source stays legacy `main /`. The dashboard is therefore served at `/docs/` and the root redirects to it. Changing the source to `/docs` or to the workflow needs a repo admin (logged as flag F15).
+- Pending: merge PR #4; confirm the Pages build from main succeeds; confirm https://karagemop466-tech.github.io/X3/ redirects to docs/ and https://karagemop466-tech.github.io/X3/docs/ and /legacy/ respond; record PR link and merge result here.
 
 ### Overlap notes (added at integration)
 
 - `arena/64164906-x3` (T2: official-source registry, fetcher with provenance, CI data validation) overlaps with `data/sources.csv` in this branch (source registry). This branch's registry is the one used by the Pages build (`scripts/build_site.py`). Please coordinate before merging to avoid duplicate registries; the simplest path is to keep one file and extend it.
 - The earlier root-level site (`index.html`, `style.css`, etc.) and `site/`, `pages/` from prior sessions are NOT replaced or deleted. The integrated Pages build publishes them unchanged under `/legacy/`, and this branch's site (`docs/`) is published at the site root.
-- The Pages source changed from legacy `main /` to the GitHub Actions workflow in `.github/workflows/pages.yml` so that one artifact contains both sites (see Integration log).
+- Pages source remains legacy `main /` (token cannot change it). Both sites are in one repo and both are served from `main`: this session's dashboard under `docs/`, and the earlier site at root and `legacy/` (see Integration log).

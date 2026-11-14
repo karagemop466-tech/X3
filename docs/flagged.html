@@ -9,7 +9,7 @@
 <body>
 <header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
 <span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
-<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html" class=active>Flagged for Review</a></div><div class="navgroup"><span class="navlabel">Earlier</span><a href="legacy/index.html">Earlier decision-lab site (archived copy)</a></div></nav>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html" class=active>Flagged for Review</a></div><div class="navgroup"><span class="navlabel">Earlier</span><a href="../legacy/index.html">Earlier decision-lab landing (archived)</a></div></nav>
 <main>
 <h1>Flagged for Review</h1>
 
@@ -159,10 +159,10 @@ the site. They do not block publication. Each row has a link so you can check it
 <td>F15</td>
 <td><span class="badge todo">Low</span></td>
 <td>Hosting</td>
-<td>GitHub Pages currently publishes from main at &quot;/&quot; (legacy). The site is published from /docs after the merge, so the Pages source must be changed.</td>
-<td>GitHub API pages endpoint</td>
+<td>GitHub Pages source is legacy main / and the API token cannot change it (HTTP 403). The dashboard is served from /docs/ and the root index redirects there. Changing the source to /docs is a repo-admin step.</td>
+<td>GitHub API: PUT /repos/.../pages returned 403; GET shows build_type legacy, source main /</td>
 <td><a href="https://karagemop466-tech.github.io/X3/" target="_blank" rel="noopener">https://karagemop466-tech.github.io/X3/</a></td>
-<td>Confirm the Pages source change is acceptable</td>
+<td>Confirm, or change Pages source to /docs in repo settings (admin)</td>
 </tr>
 <tr>
 <td>F16</td>

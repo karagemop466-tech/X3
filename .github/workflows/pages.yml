@@ -54,17 +54,8 @@ jobs:
           print(f'Validated {len(pages)} HTML pages and their local links.')
           PY
 
-      - name: Check decision-lab docs site (rows have sources, no broken links)
+      - name: Check dashboard site (docs/) rows have sources and no broken links
         run: python3 scripts/check_site.py
-
-      - name: Assemble combined site (docs at root; earlier pages preserved under /legacy/)
-        run: |
-          rm -rf _site && mkdir -p _site/legacy
-          cp -r docs/. _site/
-          touch _site/.nojekyll
-          cp *.html style.css _site/legacy/
-          cp -r site pages _site/legacy/
-          test -f _site/index.html && test -f _site/legacy/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -72,7 +63,7 @@ jobs:
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site'
+          path: '.'
 
   deploy:
     environment:

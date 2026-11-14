@@ -66,7 +66,7 @@ NAV = OrderedDict([
     ("Decisions", [("questions.html", "Questions"), ("suggestions.html", "Suggestions (for review)"),
                    ("requirements.html", "Requirements")]),
     ("Review", [("flagged.html", "Flagged for Review")]),
-    ("Earlier", [("legacy/index.html", "Earlier decision-lab site (archived copy)")]),
+    ("Earlier", [("../legacy/index.html", "Earlier decision-lab landing (archived)")]),
 ])
 
 

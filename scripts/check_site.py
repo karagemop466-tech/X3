@@ -30,11 +30,7 @@ for name in sorted(os.listdir(DOCS)):
         if href.startswith("http"): ext_links.add(href); continue
         if href.startswith("#") or href.startswith("mailto:"): continue
         target = href.split("#")[0]
-        if target.startswith("legacy/"):
-            # /legacy/ is assembled from the repo root (earlier sessions' pages) by the Pages workflow
-            ok = os.path.exists(os.path.join(ROOT_DIR, target[len("legacy/"):]))
-        else:
-            ok = os.path.exists(os.path.join(DOCS, target))
+        ok = os.path.exists(os.path.normpath(os.path.join(DOCS, target)))
         if not ok:
             errors.append(f"{name}: broken internal link -> {href}")
     rows_total += len(p.rows); rows_missing += sum(1 for ok in p.rows if not ok)
