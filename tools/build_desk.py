@@ -364,8 +364,8 @@ safe.</p>
        cap="Basis of each column")}
 """
     page("picks.html", "Board: side, total, moneyline",
-         "Thirteen originated games, published in the order the brief requires, with a "
-         "key-number check on every spread and an honest verdict on every column.", body, "picks")
+         f"{picks['n_games']} originated games, published in the order the brief requires, with a "
+         f"key-number check on every spread and an honest verdict on every column.", body, "picks")
 
 
 def p_snapshots():
@@ -499,9 +499,9 @@ label cannot slip again:</p>
        cap="Blank because the data does not exist here")}
 """
     page("correlation-live.html", "Correlation, from official numbers only",
-         "Nine coefficients recomputed from verified finals and the official standings, each with "
-         "n and a permutation p-value, plus the list of correlations that cannot honestly exist "
-         "yet.", body, "correlation-live")
+         f"{len(corr['rows'])} coefficients recomputed from verified finals and the official "
+         f"standings, each with n and a permutation p-value, plus the list of correlations that "
+         f"cannot honestly exist yet.", body, "correlation-live")
 
 
 def p_leader():
@@ -580,10 +580,13 @@ over the same sample?</p>
 <h2>Strategy ledger</h2>
 {table(["ID", "Family", "Strategy", "How its signal would be measured", "Settled",
         "Signal", "Staking", "Gate", "Verdict"], led_rows,
-       cap=f"{len(led['strategies'])} registered strategies - {led['live_count'] if 'live_count' in led else 0} live",
-       note="Every strategy is on paper. Nine of the twelve have zero settled bets, and the "
-            "ones that could be measured lack prices. The empty staking column is the correct "
-            "output, not an omission.")}
+       cap=f"{len(led['strategies'])} registered strategies - "
+           f"{sum(1 for x in led['strategies'] if x['verdict'] == 'LIVE')} live",
+       note=f"Every strategy is on paper. "
+            f"{sum(1 for x in led['strategies'] if x['n_settled'] == 0)} of "
+            f"{len(led['strategies'])} have zero settled bets, and the ones that could be "
+            f"measured lack prices. The empty staking column is the correct output, not an "
+            f"omission.")}
 """
     page("leaderboard-live.html", "Leaderboard: signal, staking and demotion",
          "A competition that rewards the signal first and reports staking second, with a "
@@ -762,8 +765,9 @@ the capture source needs labelling or consolidating.</li>
 </ol>
 """
     page("repo-review-live.html", "Repo review",
-         "Thirteen claims from earlier trees, each rechecked against official data with the "
-         "result published whether it passed or not.", body, "repo-review-live")
+         f"{review['totals']['findings']} claims from earlier trees, each rechecked against "
+         f"official data with the result published whether it passed or not.", body,
+         "repo-review-live")
 
 
 def p_flagged():

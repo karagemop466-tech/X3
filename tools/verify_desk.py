@@ -294,6 +294,14 @@ def main():
         ck("{" not in s.replace("{", "", 0) or "K(" not in s, f"{name}.html has an unfilled token")
         ck('href="index.html.html"' not in s, f"{name}.html has a doubled extension in a link")
 
+    # ---------------- prose drift: a count written by hand cannot disagree with the data
+    src = open(os.path.join(ROOT, "tools", "build_desk.py"), encoding="utf-8").read()
+    HARD = ["Thirteen originated", "Thirteen claims", "Nine coefficients", "Six demotion",
+            "Six triggers", "Nine of the twelve", "twelve have zero", "37 depth rows"]
+    for phrase in HARD:
+        ck(phrase not in src,
+           f"build_desk.py contains a hand-typed count ({phrase!r}); interpolate it instead")
+
     print(f"checks run: {CHECKS}   pages: {len(PAGES)}   internal/external refs: {total_refs}")
     if PROBLEMS:
         print(f"FAILED - {len(PROBLEMS)} problems")
