@@ -1,0 +1,222 @@
+{
+ "as_of": "2026-11-14",
+ "correlations": [
+  {
+   "n": 1359,
+   "numbers": "official scores only",
+   "pair": "signed home margin vs game total",
+   "pearson_r": 0.0385,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv",
+   "window": "2021-2025"
+  },
+  {
+   "corr_factor_joint_vs_indep": 1.0179,
+   "n": 814,
+   "numbers": "official scores + PFF closing lines (MARKET-3P)",
+   "p_independent_expected": 0.239,
+   "p_joint": 0.2432,
+   "pair": "home-favourite covers vs over (same game)",
+   "pearson_r": 0.0171,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv",
+   "window": "2021-2025"
+  },
+  {
+   "n": 544,
+   "numbers": "official scores only",
+   "pair": "team margin week i vs week i+1 (momentum)",
+   "pearson_r": 0.13,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv",
+   "window": "2021-2025"
+  },
+  {
+   "n": 274,
+   "numbers": "official scores only",
+   "pair": "signed home margin vs game total",
+   "pearson_r": -0.1607,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv",
+   "window": "2026"
+  },
+  {
+   "corr_factor_joint_vs_indep": 0.697,
+   "n": 166,
+   "numbers": "official scores + PFF closing lines (MARKET-3P)",
+   "p_independent_expected": 0.2247,
+   "p_joint": 0.1566,
+   "pair": "home-favourite covers vs over (same game)",
+   "pearson_r": -0.2749,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv",
+   "window": "2026"
+  },
+  {
+   "n": 228,
+   "numbers": "official scores only",
+   "pair": "team margin week i vs week i+1 (momentum)",
+   "pearson_r": 0.087,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv",
+   "window": "2026"
+  }
+ ],
+ "gaussian_mapping_validation": [
+  {
+   "abs_err": 0.1096,
+   "closing_spread_home": -10.5,
+   "empirical_home_win": 0.88,
+   "gaussian_model": 0.7704,
+   "n": 25,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0493,
+   "closing_spread_home": -7.5,
+   "empirical_home_win": 0.6522,
+   "gaussian_model": 0.7015,
+   "n": 46,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0032,
+   "closing_spread_home": -7.0,
+   "empirical_home_win": 0.6923,
+   "gaussian_model": 0.6891,
+   "n": 39,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0526,
+   "closing_spread_home": -6.5,
+   "empirical_home_win": 0.7292,
+   "gaussian_model": 0.6766,
+   "n": 48,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0603,
+   "closing_spread_home": -6.0,
+   "empirical_home_win": 0.7241,
+   "gaussian_model": 0.6638,
+   "n": 29,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.1398,
+   "closing_spread_home": -5.5,
+   "empirical_home_win": 0.5111,
+   "gaussian_model": 0.6509,
+   "n": 45,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0089,
+   "closing_spread_home": -4.5,
+   "empirical_home_win": 0.6333,
+   "gaussian_model": 0.6244,
+   "n": 30,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0664,
+   "closing_spread_home": -4.0,
+   "empirical_home_win": 0.6774,
+   "gaussian_model": 0.611,
+   "n": 31,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0816,
+   "closing_spread_home": -3.5,
+   "empirical_home_win": 0.679,
+   "gaussian_model": 0.5974,
+   "n": 81,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0019,
+   "closing_spread_home": -3.0,
+   "empirical_home_win": 0.5856,
+   "gaussian_model": 0.5837,
+   "n": 111,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0541,
+   "closing_spread_home": -2.5,
+   "empirical_home_win": 0.5158,
+   "gaussian_model": 0.5699,
+   "n": 95,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0461,
+   "closing_spread_home": -1.5,
+   "empirical_home_win": 0.5882,
+   "gaussian_model": 0.5421,
+   "n": 34,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.1143,
+   "closing_spread_home": -1.0,
+   "empirical_home_win": 0.4138,
+   "gaussian_model": 0.5281,
+   "n": 29,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0392,
+   "closing_spread_home": 1.0,
+   "empirical_home_win": 0.5111,
+   "gaussian_model": 0.4719,
+   "n": 45,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0786,
+   "closing_spread_home": 1.5,
+   "empirical_home_win": 0.3793,
+   "gaussian_model": 0.4579,
+   "n": 29,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0672,
+   "closing_spread_home": 2.5,
+   "empirical_home_win": 0.3629,
+   "gaussian_model": 0.4301,
+   "n": 62,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0442,
+   "closing_spread_home": 3.0,
+   "empirical_home_win": 0.3721,
+   "gaussian_model": 0.4163,
+   "n": 86,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0526,
+   "closing_spread_home": 3.5,
+   "empirical_home_win": 0.35,
+   "gaussian_model": 0.4026,
+   "n": 60,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.1293,
+   "closing_spread_home": 6.0,
+   "empirical_home_win": 0.2069,
+   "gaussian_model": 0.3362,
+   "n": 29,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  },
+  {
+   "abs_err": 0.0146,
+   "closing_spread_home": 7.0,
+   "empirical_home_win": 0.2963,
+   "gaussian_model": 0.3109,
+   "n": 27,
+   "source": "https://github.com/nflverse/nfldata/blob/master/data/games.csv"
+  }
+ ],
+ "policy": "every value carries n; official scores only; market lines labelled MARKET-3P"
+}

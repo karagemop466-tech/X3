@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Origination engine X3-v2 - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html" class=on">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html"">Replacement depth</a></nav>
+<main>
+<h1>Origination engine X3-v2</h1>
+<p class="lede">We originate our own lines in a fixed order - side, then total, then moneyline - from verified results and published parameters only. The engine does not beat the closing market in backtest; that finding is published, gated, and drives the upgrade path rather than being hidden.</p>
+<h2>The order is enforced in code</h2><div class="tblwrap"><table class="k-meta">
+<caption>origination_seq column in model_lines_2026.csv records this per game</caption>
+<thead><tr><th>Step</th><th>Market</th><th>Derivation</th><th>Never uses</th></tr></thead><tbody>
+<tr><td>1</td><td>SIDE</td><td>opponent-adjusted margin ratings (SRS fixed-point) + measured HFA; rounded to the half point</td><td>the total or the moneyline</td></tr>
+<tr><td>2</td><td>TOTAL</td><td>opponent-adjusted for/against point ratings around the league mean</td><td>the market total</td></tr>
+<tr><td>3</td><td>MONEYLINE</td><td>Gaussian margin model on the step-1 fair margin (sigma from official margins)</td><td>market prices</td></tr>
+</tbody></table>
+</div><h2>Published parameters (frozen - changes create a new model id)</h2><div class="tblwrap"><table class="k-meta">
+<caption><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">scripts/x3/model.py</a> - every number the model uses</caption>
+<thead><tr><th>Parameter</th><th>Value</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>bet_odds_default</td><td>-110</td><td>assumed price when odds missing</td></tr>
+<tr><td>edge_threshold_ml_ev</td><td>0.04</td><td>min EV to bet an ML</td></tr>
+<tr><td>edge_threshold_side_pts</td><td>2.0</td><td>min |fair - close| to bet a side</td></tr>
+<tr><td>edge_threshold_total_pts</td><td>2.0</td><td>min |fair - close| to bet a total</td></tr>
+<tr><td>flat_stake_units</td><td>1.0</td><td>flat stake</td></tr>
+<tr><td>hfa_2026_pts</td><td>0.0</td><td>measured 2026 HFA (home win% 0.4927, n=137 -> none)</td></tr>
+<tr><td>hfa_backtest_pts</td><td>1.5</td><td>fixed HFA for 2021-25 backtest</td></tr>
+<tr><td>iterations</td><td>150</td><td>fixed-point iterations</td></tr>
+<tr><td>kelly_cap</td><td>0.03</td><td>Kelly cap</td></tr>
+<tr><td>kelly_fraction</td><td>0.25</td><td>fractional Kelly</td></tr>
+<tr><td>model_id</td><td>X3-v2</td><td>X3-v2</td></tr>
+<tr><td>prior_season_weight</td><td>0.5</td><td>last season's rating shrunk to this</td></tr>
+<tr><td>prior_shrinkage_games_k</td><td>3.0</td><td>prior evidence counted as k games</td></tr>
+<tr><td>sigma_margin_fixed</td><td>None</td><td></td></tr>
+<tr><td>sigma_margin_n</td><td>1359</td><td>n for sigma</td></tr>
+<tr><td>sigma_margin_sd</td><td>14.188</td><td>sd of official margins 2021-2025</td></tr>
+</tbody></table>
+</div><h2>Team ratings behind the board (walk-forward thru Week 10 finals)</h2><div class="tblwrap"><table class="k-data">
+<caption>league scoring 22.1 pts/team/game; DERIVED from verified results only</caption>
+<thead><tr><th>Club</th><th>Margin rating</th><th>Off rating</th><th>Def rating</th><th>Source</th></tr></thead><tbody>
+<tr><td>NE</td><td>+6.16</td><td>+3.56</td><td>-2.60</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>BAL</td><td>+3.92</td><td>+1.07</td><td>-2.85</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>GB</td><td>+3.47</td><td>+2.84</td><td>-0.63</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>PIT</td><td>+3.25</td><td>+0.49</td><td>-2.76</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>PHI</td><td>+2.52</td><td>+1.63</td><td>-0.89</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>KC</td><td>+2.37</td><td>+1.68</td><td>-0.69</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>SEA</td><td>+2.11</td><td>+0.84</td><td>-1.27</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>IND</td><td>+1.72</td><td>+2.61</td><td>+0.89</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>LAC</td><td>+1.50</td><td>+1.39</td><td>-0.11</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>DEN</td><td>+1.38</td><td>+0.61</td><td>-0.78</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>NO</td><td>+1.24</td><td>+2.41</td><td>+1.18</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>BUF</td><td>+1.00</td><td>+0.39</td><td>-0.61</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>DAL</td><td>+0.96</td><td>+1.22</td><td>+0.26</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>MIN</td><td>+0.72</td><td>+0.67</td><td>-0.05</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>TB</td><td>-0.19</td><td>-0.85</td><td>-0.66</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>SF</td><td>-0.38</td><td>-0.20</td><td>+0.19</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>LA</td><td>-0.39</td><td>+0.34</td><td>+0.73</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>MIA</td><td>-0.87</td><td>-1.24</td><td>-0.37</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>CHI</td><td>-0.90</td><td>-1.88</td><td>-0.98</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>CIN</td><td>-1.01</td><td>+0.06</td><td>+1.06</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>ATL</td><td>-1.13</td><td>-0.12</td><td>+1.02</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>TEN</td><td>-1.62</td><td>-0.83</td><td>+0.79</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>NYG</td><td>-1.65</td><td>-1.16</td><td>+0.50</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>CAR</td><td>-1.72</td><td>-1.48</td><td>+0.24</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>JAX</td><td>-1.76</td><td>-1.90</td><td>-0.14</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>HOU</td><td>-1.94</td><td>-1.19</td><td>+0.74</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>DET</td><td>-2.29</td><td>+0.07</td><td>+2.36</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>NYJ</td><td>-2.35</td><td>-2.47</td><td>-0.12</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>WAS</td><td>-2.57</td><td>-1.87</td><td>+0.70</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>ARI</td><td>-3.42</td><td>-1.63</td><td>+1.79</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>LV</td><td>-3.47</td><td>-1.33</td><td>+2.13</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+<tr><td>CLE</td><td>-4.66</td><td>-3.74</td><td>+0.91</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/ratings_2026_current.json" target="_blank" rel="noopener">ratings_2026_current.json</a></td></tr>
+</tbody></table>
+</div><h2>Is the Gaussian moneyline honest? Empirical check</h2><div class="tblwrap"><table class="k-data">
+<caption>2021-2025 official results; bins with n >= 25; the model is fitted to this data and the residuals are published rather than hidden</caption>
+<thead><tr><th>Closing spread (H)</th><th>n</th><th>Empirical home win%</th><th>Gaussian model</th><th>|err|</th><th>Source</th></tr></thead><tbody>
+<tr><td>-10.5</td><td>25</td><td>0.880</td><td>0.770</td><td>0.110</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-7.5</td><td>46</td><td>0.652</td><td>0.702</td><td>0.049</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-7</td><td>39</td><td>0.692</td><td>0.689</td><td>0.003</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-6.5</td><td>48</td><td>0.729</td><td>0.677</td><td>0.053</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-6</td><td>29</td><td>0.724</td><td>0.664</td><td>0.060</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-5.5</td><td>45</td><td>0.511</td><td>0.651</td><td>0.140</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-4.5</td><td>30</td><td>0.633</td><td>0.624</td><td>0.009</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-4</td><td>31</td><td>0.677</td><td>0.611</td><td>0.066</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-3.5</td><td>81</td><td>0.679</td><td>0.597</td><td>0.082</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-3</td><td>111</td><td>0.586</td><td>0.584</td><td>0.002</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-2.5</td><td>95</td><td>0.516</td><td>0.570</td><td>0.054</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-1.5</td><td>34</td><td>0.588</td><td>0.542</td><td>0.046</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>-1</td><td>29</td><td>0.414</td><td>0.528</td><td>0.114</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>+1</td><td>45</td><td>0.511</td><td>0.472</td><td>0.039</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>+1.5</td><td>29</td><td>0.379</td><td>0.458</td><td>0.079</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>+2.5</td><td>62</td><td>0.363</td><td>0.430</td><td>0.067</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>+3</td><td>86</td><td>0.372</td><td>0.416</td><td>0.044</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>+3.5</td><td>60</td><td>0.350</td><td>0.403</td><td>0.053</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>+6</td><td>29</td><td>0.207</td><td>0.336</td><td>0.129</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+<tr><td>+7</td><td>27</td><td>0.296</td><td>0.311</td><td>0.015</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">nflverse</a></td></tr>
+</tbody></table>
+</div><h2>Correlations from official numbers - n published with every value</h2><div class="tblwrap"><table class="k-data">
+<caption>Same-game parlay pricing must use the measured side/total factor, not independence</caption>
+<thead><tr><th>Pair</th><th>Window</th><th>n</th><th>Value</th><th>Numbers used</th><th>Source</th></tr></thead><tbody>
+<tr><td>signed home margin vs game total</td><td>2021-2025</td><td>1359</td><td>0.0385</td><td>official scores only</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">source</a></td></tr>
+<tr><td>home-favourite covers vs over (same game)</td><td>2021-2025</td><td>814</td><td>0.0171 | joint 0.2432 vs indep 0.239 (factor 1.0179)</td><td>official scores + PFF closing lines (MARKET-3P)</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">source</a></td></tr>
+<tr><td>team margin week i vs week i+1 (momentum)</td><td>2021-2025</td><td>544</td><td>0.1300</td><td>official scores only</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">source</a></td></tr>
+<tr><td>signed home margin vs game total</td><td>2026</td><td>274</td><td>-0.1607</td><td>official scores only</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">source</a></td></tr>
+<tr><td>home-favourite covers vs over (same game)</td><td>2026</td><td>166</td><td>-0.2749 | joint 0.1566 vs indep 0.2247 (factor 0.697)</td><td>official scores + PFF closing lines (MARKET-3P)</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">source</a></td></tr>
+<tr><td>team margin week i vs week i+1 (momentum)</td><td>2026</td><td>228</td><td>0.0870</td><td>official scores only</td><td><a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">source</a></td></tr>
+</tbody></table>
+</div>
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

@@ -1,0 +1,28 @@
+{
+ "as_of": "2026-11-14",
+ "source_commit": "d9772e4e83ab349de144bf6d7a4fc9fb3ee7b066",
+ "source_ts": "2026-11-14T19:05:17Z",
+ "results_feed": {
+  "rows": 272,
+  "finals": 137,
+  "desk_finals_compared": 137,
+  "desk_finals_match": 137,
+  "desk_mismatches": [],
+  "pending": 135
+ },
+ "standings_transcription_reconciliation": {
+  "file": "data/hub/standings_2026_thru_wk9.csv (transcribed from nfl.com/standings)",
+  "clubs": 32,
+  "field_mismatches_vs_all_137_finals": 0,
+  "detail": [],
+  "field_mismatches_vs_weeks_1_9_strict": 6,
+  "finding": "IRREGULARITY F-24: the transcription file is named thru_wk9 but its values match standings INCLUDING the Week-10 Thursday final (WAS 24 @ NYG 21) - the exact differences were WAS +1 win/+24 PF/+21 PA and NYG +1 loss/+21 PF/+24 PA. The numbers are correct as of 2026-11-14; the filename is misleading. Published as-is with this flag.",
+  "also": "the transcription file contains a duplicated header row (row 2); skipped on read"
+ },
+ "standings_thru_wk10_vs_nflverse": {
+  "clubs": 32,
+  "field_mismatches": 0,
+  "detail": [],
+  "compared_to": "data/x3/source/standings.csv"
+ }
+}
