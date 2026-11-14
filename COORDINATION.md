@@ -1413,3 +1413,34 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+
+---
+
+## Session arena/aab4718a-x3 (integration, this branch)
+
+Branch: `arena/aab4718a-x3`, branched from `main` @ `996257b`. No other session has an open branch
+at claim time (`git branch -r` lists only `origin/main`), so this session is the integration session.
+Per the platform rule the branch is the assigned one, not `session-<id>/<task>` (Flag F13, already logged).
+
+### Capability note (new this session)
+`fetch_page` reaches `www.nfl.com` (verified 2026-11-14 by direct fetch of the 2026 league standings).
+Raw `curl`/socket egress to nfl.com is still blocked (`SSL_ERROR_SYSCALL`), so official pages are read
+through `fetch_page` and cited by URL. This removes the previous sessions' "nfl.com not directly
+fetchable" limitation for row-level verification.
+
+### Task board
+
+| ID | Task | Status | Files / scope | Result |
+|----|------|--------|---------------|--------|
+| U01 | Claim + repo review of prior trees | in progress | `COORDINATION.md` | — |
+| U02 | Verified results feed from official pages | unclaimed | `data/verified/results_2026.csv` | — |
+| U03 | Price-snapshot store (open/close per market) | unclaimed | `data/snapshots/**` | — |
+| U04 | Origination order side→total→ML + fair/market/diff | unclaimed | `data/lines/**`, site | — |
+| U05 | Leaderboard signal vs staking + demotion gate | unclaimed | `data/leaderboard/**` | — |
+| U06 | Replacement depth (which string, how many) | unclaimed | `data/depth/**` | — |
+| U07 | Correlations from official numbers + n | unclaimed | `data/correlation/**` | — |
+| U08 | Questions→answers register | unclaimed | `data/decisions/**` | — |
+| U09 | Suggestions review section | unclaimed | `data/decisions/**` | — |
+| U10 | Canonical dashboard site | unclaimed | `app/**`, root `index.html` | — |
+| U11 | Executive summary | unclaimed | `app/summary.html` | — |
+| U12 | Gates, PR, merge, deploy check | unclaimed | `COORDINATION.md` | — |
