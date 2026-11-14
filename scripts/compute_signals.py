@@ -25,6 +25,7 @@ import json
 import math
 import os
 import random
+import sys
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,7 +45,9 @@ MODEL_VERSION = "line-model-v1.0"
 SHRINKAGE_K = 4.0          # games of pseudo-count pulled toward the league mean
 MARGIN_PCT = 0.03          # hold carried in the published price
 LINE_ROUNDING = 0.5        # published spread rounding
-MIN_TRAIN_GAMES = 16       # games a team must have played before it is rated
+MIN_TRAIN_GAMES = 4        # games a team must have played before it is rated
+                           # (early-season ratings are pulled hard toward the
+                           #  league mean by the shrinkage below)
 
 
 # ---------------------------------------------------------------------------

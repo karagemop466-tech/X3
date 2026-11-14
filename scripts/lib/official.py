@@ -26,6 +26,9 @@ from typing import Iterable
 
 import requests
 
+#: Repository root, used to store cache paths as repo-root-relative values.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/120.0.0.0 Safari/537.36 X3-NFL-research/1.0"
@@ -312,7 +315,7 @@ def fetch_one(
                         ok=True,
                         bytes=len(payload),
                         sha256=_sha256(payload),
-                        content_path=os.path.relpath(fpath, os.path.dirname(outdir) or "."),
+                        content_path=os.path.relpath(fpath, REPO_ROOT),
                     )
                     return record
                 last_err = f"HTTP {resp.status_code}"
@@ -367,18 +370,7 @@ def write_manifest(records: list[dict], path: str) -> dict:
             cat["ok"] += 1
         else:
             cat["failed"] += 1
-        cat["urls"].append(
-            {
-                "key": rec["key"],
-                "url": rec["url"],
-                "ok": rec["ok"],
-                "status": rec["status"],
-                "sha256": rec["sha256"],
-                "bytes": rec["bytes"],
-                "fetched_at": rec["fetched_at"],
-                "error": rec["error"],
-            }
-        )
+        cat["urls"].append(rec["url"])
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
         json.dump({"summary": summary, "records": records}, fh, indent=2)

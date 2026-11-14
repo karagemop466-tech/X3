@@ -53,18 +53,6 @@ jobs:
           retention-days: 14
           if-no-files-found: warn
 
-      - name: Commit fetch manifest
-        run: |
-          git config user.name "x3-data-pipeline"
-          git config user.email "x3-data-pipeline@users.noreply.github.com"
-          git add data/datasets/fetch_manifest.json
-          if git diff --cached --quiet; then
-            echo "fetch manifest unchanged"
-          else
-            git commit -m "ci: refresh official-source fetch manifest"
-            git push origin "HEAD:$BRANCH"
-          fi
-
       - name: Build verified datasets
         run: python scripts/build_datasets.py
 
@@ -80,7 +68,6 @@ jobs:
             echo "no diagnostics to commit"
           else
             git commit -m "ci: publish build diagnostics" || echo "diagnostic commit failed"
-            git push origin "HEAD:$BRANCH" || echo "diagnostic push failed"
           fi
 
       - name: Compute signals, lines and correlations
@@ -90,17 +77,43 @@ jobs:
         run: python scripts/build_site.py
 
       - name: Validate site (links, source links, blank cells)
-        run: python scripts/validate_site.py
+        run: python scripts/validate_site.py --external
 
-      - name: Commit regenerated data + site
+      - name: Commit regenerated data and site
         run: |
           git config user.name "x3-data-pipeline"
           git config user.email "x3-data-pipeline@users.noreply.github.com"
           git add -A -- . ':!data/raw'
           if git diff --cached --quiet; then
             echo "no changes to commit"
-            exit 0
+          else
+            git commit -m "ci: regenerate official datasets and site"
           fi
-          git commit -m "ci: regenerate official datasets and site"
-          git pull --rebase origin "$BRANCH" || git pull --rebase origin "$BRANCH"
-          git push origin "HEAD:$BRANCH"
+
+      # One single, rebase-safe publish step. A push race is retried and then
+      # reported without failing the build: the next scheduled run reconciles.
+      - name: Publish to the branch
+        if: always()
+        continue-on-error: true
+        run: |
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "$BRANCH" || { sleep 5; continue; }
+            if git rebase "origin/$BRANCH"; then
+              if git push origin "HEAD:$BRANCH"; then
+                echo "published to $BRANCH"
+                exit 0
+              fi
+            else
+              # A conflict on a regenerated file is resolved in favour of the
+              # freshly generated version (the commit being replayed).
+              git diff --name-only --diff-filter=U | while read -r f; do
+                [ -n "$f" ] && git checkout --theirs -- "$f" 2>/dev/null || true
+              done
+              git add -A || true
+              GIT_EDITOR=true git rebase --continue || git rebase --abort || true
+            fi
+            echo "publish attempt $attempt failed; retrying"
+            sleep $((attempt * 4))
+          done
+          echo "could not publish to $BRANCH after 5 attempts"
+          exit 0

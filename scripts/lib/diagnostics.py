@@ -53,6 +53,33 @@ def describe_html(path: str, max_tables: int = 3, max_cells: int = 12) -> dict:
     # A short text excerpt helps identify unfamiliar markup.
     text = soup.get_text(" ", strip=True)
     out["text_sample"] = text[:600]
+
+    # Structural fingerprints: which element chains carry the game links, and
+    # which class names dominate. This is what a parser for an unfamiliar
+    # component needs, and it is far smaller than the raw payload.
+    from collections import Counter
+
+    classes = Counter()
+    for el in soup.find_all(True):
+        for c in el.get("class") or []:
+            classes[c] += 1
+    out["top_classes"] = [c for c, _ in classes.most_common(30)]
+
+    chains = []
+    for a in soup.find_all("a", href=True):
+        if "/games/" not in a["href"]:
+            continue
+        chain = []
+        node = a
+        for _ in range(6):
+            node = node.parent
+            if node is None or getattr(node, "name", None) in (None, "[document]"):
+                break
+            chain.append(f"{node.name}.{'.'.join(node.get('class') or []) or '-'}")
+        chains.append({"href": a["href"], "chain": chain})
+        if len(chains) >= 3:
+            break
+    out["game_link_chains"] = chains
     return out
 
 
