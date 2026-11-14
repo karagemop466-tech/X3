@@ -1,0 +1,11 @@
+PASS schedule-w1 captured
+Traceback (most recent call last):
+  File "/home/runner/work/X3/X3/scripts/desk_parse_selftest.py", line 68, in <module>
+    sys.exit(main(sys.argv[1]))
+             ~~~~^^^^^^^^^^^^^
+  File "/home/runner/work/X3/X3/scripts/desk_parse_selftest.py", line 31, in main
+    rows = P.parse_schedule(f"schedule-w{w}", f.read_text(errors="replace"))
+  File "/home/runner/work/X3/X3/scripts/desk_parse.py", line 61, in parse_schedule
+    week = int(re.search(r"week-(\d+)", page).group(1))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
