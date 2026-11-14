@@ -51,3 +51,22 @@ python3 scripts/check_site.py
 Rules: table values come only from official sources (linked); anything unconfirmed is left blank and flagged unverified; suggestions are not implemented until a decision is recorded.
 
 **Research only, not betting advice.** Wagering with private bookmakers from Japan is criminal for the bettor under Penal Code Article 185 ([official text](https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb)).
+
+## Session `arena/3dbc4678-x3` contributions
+
+This session added a parallel, self-contained static site (inline styles, per-row
+source links) plus build tooling. It was merged into the integrated dashboard
+without overwriting the shared `index.html` navigation or the integrated `docs/`
+dashboard. Its standalone pages are served from the repo root:
+
+- `index.html` — root redirect to the dashboard (shared output, unchanged).
+- `executive-summary.html`, `requirements.html`, `suggestions.html`, `lines.html`,
+  `leaderboard.html`, `injuries.html`, `verification.html`, `flagged.html`
+  (root) — this session's category pages.
+- `tools/build_site.py` — generates the standalone pages from verified data.
+- `tools/check_links.py` — verifies no broken internal links (9 pages, 297 links).
+
+All data rows link to official sources; betting lines, correlation values, and
+leaderboard performance have no official source and are left blank + flagged
+unverified. See `COORDINATION.md` (this session's section) for the full
+verification log and irregularity flags.

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requirements &amp; Questions · X3 NFL Analytics</title>
+<meta name="description" content="The clear list of questions, information, and answers to address before any decision.">
+<style>
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --muted:#9aa6bd;
+  --line:#2a3448; --accent:#4f8cff; --accent2:#22c55e; --warn:#f5a623; --bad:#ef4444;
+  --chip:#22304a;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header.top{position:sticky;top:0;z-index:20;background:rgba(15,20,32,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.top-inner{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:18px;letter-spacing:.5px}
+.brand span{color:var(--accent)}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14px}
+nav.main a:hover{background:var(--panel2);text-decoration:none;color:var(--ink)}
+nav.main a.active{background:var(--accent);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:26px 20px 80px}
+h1{font-size:28px;margin:0 0 6px}
+h2{font-size:21px;margin:34px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+h3{font-size:16px;margin:22px 0 8px;color:var(--ink)}
+p.lede{color:var(--muted);font-size:16px;max-width:80ch}
+.hero{background:linear-gradient(135deg,#1a2440,#141a28);border:1px solid var(--line);border-radius:14px;padding:24px;margin:18px 0 8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card .k{color:var(--muted);font-size:13px}
+.card .v{font-size:26px;font-weight:800;margin-top:4px}
+.card .s{color:var(--muted);font-size:12px;margin-top:4px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--muted);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.src{font-size:12px;color:var(--muted)}
+.src a{color:var(--accent)}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.b-verified{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.4)}
+.b-unverified{background:rgba(245,166,35,.15);color:#fbbf24;border:1px solid rgba(245,166,35,.4)}
+.b-flagged{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.4)}
+.b-pending{background:rgba(154,166,189,.15);color:#cbd5e1;border:1px solid rgba(154,166,189,.4)}
+ul.clean{list-style:none;padding:0;margin:10px 0}
+ul.clean li{padding:7px 0;border-bottom:1px solid var(--line)}
+ul.clean li:last-child{border-bottom:none}
+.tag{display:inline-block;background:var(--chip);color:var(--ink);border-radius:6px;padding:1px 7px;font-size:12px;margin-right:6px}
+.note{background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.3);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+.warn{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.3);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px;border-top:1px solid var(--line);margin-top:30px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner">
+  <div class="brand">X<span>3</span> · NFL Analytics</div>
+  <nav class="main"><a href="index.html" class="">Home</a>
+<a href="executive-summary.html" class="">Executive Summary</a>
+<a href="requirements.html" class="active">Requirements &amp; Questions</a>
+<a href="suggestions.html" class="">Suggestions</a>
+<a href="lines.html" class="">Lines &amp; Signals</a>
+<a href="leaderboard.html" class="">Strategy Leaderboard</a>
+<a href="injuries.html" class="">Injuries &amp; Lineups</a>
+<a href="verification.html" class="">Verification</a>
+<a href="flagged.html" class="">Flagged for Review</a></nav>
+</div></header>
+<main>
+<h1>Requirements &amp; Questions</h1>
+<p class="lede">The clear list of questions, information, and answers to address before any decision.</p>
+<div class="note">These are the questions, information, and answers that must be resolved before any decision can reasonably be made on the information we have and do not have. Each question notes the information needed and why it matters. Suggestions to discover missing information are on the <a href="suggestions.html">Suggestions</a> page.</div>
+<h2>Information we have vs. do not have</h2>
+<table>
+<thead><tr>
+<th>Category</th>
+<th>Have (verified)</th>
+<th>Do not have (gap)</th>
+</tr></thead><tbody>
+<tr>
+<td>League standings</td>
+<td>Full 32-team standings, PF/PA, net points — NFL.com</td>
+<td>Team-level efficiency (EPA) and situational splits</td>
+</tr>
+<tr>
+<td>Injuries</td>
+<td>Week 10 official injury report (player, status, game status)</td>
+<td>Historical injury-to-performance impact; full season archive</td>
+</tr>
+<tr>
+<td>Lineups</td>
+<td>Detroit Lions official depth chart (starter→4th string)</td>
+<td>Depth charts for all 32 teams; game-day inactives archive</td>
+</tr>
+<tr>
+<td>Lines</td>
+<td>Official NFL schedule (matchups, times, networks)</td>
+<td>Betting lines — no official NFL source exists</td>
+</tr>
+<tr>
+<td>Signals</td>
+<td>Strategy/signal design framework</td>
+<td>Computed signal values and historical signal performance</td>
+</tr>
+<tr>
+<td>Correlations</td>
+<td>Correlation methodology</td>
+<td>Computed correlation values (needs data pipeline)</td>
+</tr>
+<tr>
+<td>Strategy results</td>
+<td>Validation gates + leaderboard framework</td>
+<td>Validated strategy performance and rewards</td>
+</tr>
+</tbody></table>
+<h2>Pre-decision questions</h2>
+<table>
+<thead><tr>
+<th>Question</th>
+<th>Why it matters / information needed</th>
+<th>Answer status</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>What is the exact definition of a "signal" and the required minimum sample size before a strategy is considered? </td>
+<td>Without a fixed threshold, strategies can be cherry-picked. A gate (e.g., minimum 1,000 historical bets or 3 seasons) must be set first.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Which closing-line source will be treated as the skill benchmark (CLV)?</td>
+<td>Removing luck requires comparing bet outcomes to the market's closing line. The specific sportsbook/feed that publishes closing lines must be named and verified.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>What is the acceptable edge threshold to open a position (in half-points / EV)?</td>
+<td>Defines when a signal converts to a bet. Must be fixed before testing to avoid hindsight.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>What validation protocol is used (walk-forward, holdout, k-fold)?</td>
+<td>Determines whether a strategy's edge is real or overfit. Protocol must be chosen before any backtest.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>How are correlated parlays handled so risk is not understated?</td>
+<td>Correlated legs inflate variance; correlation values must be computed and legs capped/dropped when correlation exceeds a threshold.</td>
+<td>Unresolved — methodology designed, values pending data.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Which injury/lineup sources are authoritative for starting-lineup changes (injury report vs. depth chart vs. game-day inactives)?</td>
+<td>The system must reconcile sources; conflicting data is a key risk. Source priority must be defined.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>How is "2nd/3rd/4th string" defined and where is it sourced per team?</td>
+<td>Depth charts are team-published and may lag; the authoritative source and refresh cadence must be fixed.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>What is the reward structure for the leaderboard (prize tiers, risk-adjusted metric)?</td>
+<td>The leaderboard metric (risk-adjusted ROI, CLV, significance) and reward tiers must be set before rankings are meaningful.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>What are the constraints on player-prop liquidity and book limits?</td>
+<td>Props have lower liquidity and book limits; strategy sizing must account for this or it is not implementable.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+<tr>
+<td>What kill-switch / drawdown rule halts a strategy?</td>
+<td>A predefined stop-loss on drawdown prevents a luck-based strategy from running. Must be defined.</td>
+<td>Unresolved — needs decision.</td>
+<td>—</td>
+</tr>
+</tbody></table>
+</main>
+<footer>X3 NFL Analytics · Static site · All data rows link to official sources ·
+Unverified values are left blank and flagged. Built 2026-11-14.</footer>
+</body>
+</html>
