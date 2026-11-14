@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary — X3 crosscheck</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+<h1>Executive summary</h1>
+<p>Cross-module reconciliation &amp; verification · session arena/37c71381-x3 · every row source-linked</p>
+<nav class="main"><a href="index.html">Overview</a><a href="requirements.html">Requirements</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="executive-summary.html" class="active">Exec summary</a><a href="verification.html">Verification</a></nav>
+</div></header>
+<div class="wrap">
+
+<div class="banner">Generated 2026-11-14T18:50:32+00:00 from the reconciled register set.
+Research only. Every claim below links to a source file or an official publisher page.</div>
+<h2>Where the project stands</h2>
+<ul class="tight">
+<li><strong>88 pages</strong> across 8 site modules, <strong>3,461 links</strong>
+checked, <strong>0 broken</strong>, 2,433 table rows audited
+(2,000 with a source link, 92 flagged, 341 neither).</li>
+<li><strong>361 register entries</strong>
+reconciled across 6 families;
+69 ID-content collisions and
+1 status conflicts found — consolidation is unsafe until fixed.</li>
+<li><strong>14 findings</strong> published on the
+<a href="flagged.html">Flagged for review</a> page (non-blocking).</li>
+<li>All pre-existing verifiers pass (see <a href="verification.html">verification</a>).</li>
+</ul>
+<h2>Verified facts (official sources)</h2>
+<table><thead><tr><th>Fact</th><th class="num">Value</th><th>Official source</th>
+<th>Where verified</th></tr></thead><tbody><tr><td>2026 Week-10 official injury report</td><td class='num'>345 rows · 66 Out · 10 Doubtful · 84 Questionable · 185 blank status</td><td><a href='https://www.nfl.com/injuries/league/2026/reg10'>nfl.com/injuries/league/2026/reg10</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/audit/summary.json">independent re-audit (294 MATCH / 51 DIFF)</a><span class="src"><a href="../audit/index.html">view page</a></span></td></tr><tr><td>2026 league standings</td><td class='num'>32 clubs</td><td><a href='https://www.nfl.com/standings/'>nfl.com/standings</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/standings.json">dashboard/data/standings.json</a><span class="src"><a href="../dashboard/standings.html">view page</a></span></td></tr><tr><td>2026 Week-10 schedule</td><td class='num'>14 games · 4 byes</td><td><a href='https://www.nfl.com/schedules/2026/by-week/week-10'>nfl.com/schedules/2026/by-week/week-10</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/audit/schedule_check_wk10.csv">audit/schedule_check_wk10.csv</a><span class="src"><a href="../audit/index.html">view page</a></span></td></tr><tr><td>Week-10 CSV internal consistency</td><td class='num'>205⊂345 rows · 0 status disagreements</td><td><a href='https://www.nfl.com/injuries/'>nfl.com/injuries</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">reconciliation proof</a><span class="src"><a href="verification.html">view page</a></span></td></tr></tbody></table>
+<h2>What we do not have (blank, never inferred)</h2>
+<table><thead><tr><th>Missing</th><th>Why</th><th>State</th><th>Source</th></tr></thead>
+<tbody><tr><td>Market lines (spread / total / moneyline)</td><td>No official publisher exists in the register set</td><td><span class="badge flag">UNVERIFIED / missing</span> <span class='src'>X-09</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/sources.csv">data/sources.csv</a><span class="src"><a href="../docs/sources.html">view page</a></span></td></tr><tr><td>Player prop prices</td><td>No official publisher; combos cannot be priced</td><td><span class="badge flag">UNVERIFIED / missing</span> <span class='src'>X-09</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/sources.csv">data/sources.csv</a><span class="src"><a href="../docs/sources.html">view page</a></span></td></tr><tr><td>Correlation coefficients (numeric)</td><td>Left blank by policy - no paired-event history</td><td><span class="badge flag">UNVERIFIED / missing</span> <span class='src'>X-01</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/correlations.csv">data/correlations.csv</a><span class="src"><a href="../docs/correlations.html">view page</a></span></td></tr><tr><td>Measured strategy performance / CLV</td><td>No odds feed and no settlement history</td><td><span class="badge flag">UNVERIFIED / missing</span> <span class='src'>X-09</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/strategies.csv">data/strategies.csv</a><span class="src"><a href="../docs/strategies.html">view page</a></span></td></tr><tr><td>Depth-string ranks (2nd/3rd/4th string) for all 32 clubs</td><td>Club depth charts are self-labelled unofficial; mostly unverified</td><td><span class="badge flag">UNVERIFIED / missing</span> <span class='src'>X-14</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/depth_missing.json">dashboard/data/depth_missing.json</a><span class="src"><a href="../dashboard/depth-charts.html">view page</a></span></td></tr><tr><td>Leaderboard rewards</td><td>Notional only; policy undecided</td><td><span class="badge flag">UNVERIFIED / missing</span> <span class='src'>X-10</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/strategies.json">dashboard/data/strategies.json</a><span class="src"><a href="../dashboard/leaderboard.html">view page</a></span></td></tr></tbody></table>
+<h2>Blocking decisions (owner required)</h2>
+<table><thead><tr><th>#</th><th>Decision</th><th>Impact</th><th>Raised by</th>
+<th>Source</th><th>Detail</th></tr></thead><tbody><tr><td class='mono'>D1</td><td>Legal scope: research-only vs wagering (Japan Penal Code Art. 185/186)</td><td><span class="badge flag">Blocking</span></td><td>data/questions.csv Q02 · data/flags.csv F01</td><td><a href='https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb'>source</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">detail</a><span class="src"><a href="questions.html">view page</a></span></td></tr><tr><td class='mono'>D2</td><td>Odds-feed source for scoring (no official publisher exists)</td><td><span class="badge flag">Blocking</span></td><td>data/sources.csv · dashboard questions</td><td><a href='https://github.com/karagemop466-tech/X3/blob/main/data/sources.csv'>source</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">detail</a><span class="src"><a href="questions.html">view page</a></span></td></tr><tr><td class='mono'>D3</td><td>Leaderboard rewards: notional vs funded (and where lawful)</td><td><span class="badge flag">Blocking</span></td><td>dashboard suggestions · lab leaderboard</td><td><a href='https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/suggestions.json'>source</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">detail</a><span class="src"><a href="suggestions.html">view page</a></span></td></tr><tr><td class='mono'>D4</td><td>Canonical injury snapshot file (205-row vs 345-row CSV)</td><td><span class="badge warn">Non-blocking — reconciled</span></td><td>this session&#x27;s proof</td><td><a href='https://www.nfl.com/injuries/'>source</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">detail</a><span class="src"><a href="verification.html">view page</a></span></td></tr><tr><td class='mono'>D5</td><td>Whether to take over the stale data-pipeline session (X-04)</td><td><span class="badge warn">Non-blocking</span></td><td>COORDINATION.md handoff</td><td><a href='https://github.com/karagemop466-tech/X3/tree/arena/64164906-x3'>source</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">detail</a><span class="src"><a href="flagged.html">view page</a></span></td></tr><tr><td class='mono'>D6</td><td>Which landing page wins the four-way index.html claim (X-05)</td><td><span class="badge warn">Non-blocking</span></td><td>claim commits</td><td><a href='https://github.com/karagemop466-tech/X3/pulls'>source</a></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">detail</a><span class="src"><a href="flagged.html">view page</a></span></td></tr></tbody></table>
+<h2>Recommended decision sequence</h2>
+<table><thead><tr><th class="num">#</th><th>Step</th><th>Source</th></tr></thead>
+<tbody><tr><td class='num'>1</td><td>Settle legal scope (D1) — nothing else can ship to a human user without it.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/questions.csv">data/questions.csv</a><span class="src"><a href="../docs/questions.html">view page</a></span></td></tr><tr><td class='num'>2</td><td>Decide the odds-feed question (D2) or explicitly declare the leaderboard notional.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/sources.csv">data/sources.csv</a><span class="src"><a href="../docs/sources.html">view page</a></span></td></tr><tr><td class='num'>3</td><td>Prefix module IDs (X-01/X-02) before any register merge so consolidation cannot corrupt meaning.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json">crosscheck/data/report.json</a><span class="src"><a href="requirements.html">view page</a></span></td></tr><tr><td class='num'>4</td><td>Repair or document the 51 divergent injury rows (X-07).</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/audit/summary.json">audit/summary.json</a><span class="src"><a href="../audit/index.html">view page</a></span></td></tr><tr><td class='num'>5</td><td>Add the missing verifiers to CI (X-11) so every module stays green on push.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/.github/workflows/pages.yml">.github/workflows/pages.yml</a><span class="src"><a href="verification.html">view page</a></span></td></tr><tr><td class='num'>6</td><td>Take over or retire the stale data-pipeline branch (X-04).</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a><span class="src"><a href="flagged.html">view page</a></span></td></tr><tr><td class='num'>7</td><td>Only then: calibrate line origination on a verified game log and run strategies through gates G0–G8.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/gates.csv">data/gates.csv</a><span class="src"><a href="../docs/strategies.html">view page</a></span></td></tr></tbody></table>
+<h2>Next review surface</h2>
+<div class="grid">
+<a class="tile" href="suggestions.html"><b>Suggestions</b><span>Review queues from all six modules — pick paths, implement later</span></a>
+<a class="tile" href="questions.html"><b>Questions</b><span>Open / blocking items with discovery paths</span></a>
+<a class="tile" href="flagged.html"><b>Flagged</b><span>All irregularities, one page</span></a>
+</div>
+
+</div>
+<footer><div class="wrap">
+Research only — this unit reconciles what sessions published; it does not place or recommend bets.
+Generated by <code>tools/crosscheck.py</code> · source data: <a href="https://github.com/karagemop466-tech/X3/blob/main/">github.com/karagemop466-tech/X3</a>
+
+</div></footer>
+</body>
+</html>
