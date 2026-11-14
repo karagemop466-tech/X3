@@ -450,11 +450,13 @@ F-01 nfl.com schedule URL redirect quirk · F-02 standings split-column mapping 
 - 2026-11-14: `git pull --rebase` showed `main` had advanced with PRs #1-#9 from five sessions. Rebase stopped at an add/add conflict in `COORDINATION.md`; abandoned in favor of a merge (repo precedent).
 - 2026-11-14: to avoid add/add collisions with session `arena/0c38f465-x3`'s `docs/` dashboard, this session's site was relocated to `x3lab/` (b1c260a). Nothing of other sessions was discarded or edited; root `index.html` (claimed by session `arena/972ad7a5-x3`) was NOT touched.
 - 2026-11-14: merge of `origin/main` into this branch; conflicts in `COORDINATION.md` and `README.md` resolved **additively** (main's full content kept, this section appended), per the convention used by PRs #4 and #7.
-- Pending: PR `arena/e1c332ce-x3` → `main`, merge, live verification, then a follow-up record of the PR link + merge result below.
+- 2026-11-14: PR #13 **merged** into `main` (record below). `main` advanced concurrently with PRs #14 and #15 from other sessions; synced again without conflicts and without touching their files.
 
 ### PR & deploy record (session e1c332ce)
 
-- (to be completed after merge — see follow-up)
+- **PR #13:** https://github.com/karagemop466-tech/X3/pull/13 — `arena/e1c332ce-x3` → `main`, "X3: NFL Lines & Strategy Lab — originated lines, validation gates, injury/depth tracker". Result: **MERGED** 2026-11-14, merge commit `059079d`. One fix-and-retry: the first merge attempt failed because `main` had advanced (PRs #10/#11); `origin/main` was merged in again with additive conflict resolution on `COORDINATION.md`/`README.md`, then the PR merged cleanly. Summary + sources + flagged irregularities were included in the PR body as required.
+- **CI / Pages deploy:** workflow "Deploy X3 NFL site to GitHub Pages" run 43550431317 — build + deploy **success**, all six steps green (HTML/link audit; docs row-source check 356 rows/0 missing; root-page link check; dashboard checks; node data + render checks). Pages source remains `main /` (legacy; shared flag F15 — token cannot change Pages settings).
+- **Live verification 2026-11-14:** https://karagemop466-tech.github.io/X3/x3lab/ — `lines.html` and `flagged.html` fetched live and render complete source-linked tables (model-vs-market board with gap highlighting, Week-11 look-ahead board, futures; F-01…F-10 incl. the UNVERIFIED badge behavior). The `index.html` URL intermittently returned a GitHub incident page ("Unicorn") during the incident window while sibling pages served correctly; the deploy itself is green and sibling pages prove the artifact is complete.
 
 ---
 
