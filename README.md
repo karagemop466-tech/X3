@@ -26,3 +26,28 @@ The repository began with no NFL datasets or application. Live NFL odds, dated o
 
 ## Branch
 `arena/1a771fcd-x3` (from `main` @ e124230); integrated with `arena/d667d44d-x3` work on `main`.
+
+---
+
+## Data, injuries, strategy validation and suggestions (branch arena/0c38f465-x3)
+
+Published site (single Pages build): `docs/` at the site root, with the earlier root-level and `site/`/`pages/` sites preserved under `/legacy/`.
+
+| Path | Contents |
+|------|----------|
+| `docs/` | Static site for the dashboard, injuries, schedule, strategies, correlations, questions, suggestions, requirements, sources, executive summary and Flagged for Review (generated) |
+| `data/` | Source-of-truth CSVs: injury report (Week 10 2026), 2026 key dates, strategies, gates, correlations, questions, suggestions, requirements, flags, sources |
+| `scripts/build_site.py` | Builds `docs/` from `data/` (Python standard library) |
+| `scripts/check_site.py` | Checks internal links and that every table row has a source link or unverified flag |
+| `COORDINATION.md` | Shared task board for all sessions |
+
+Rebuild and check:
+
+```bash
+python3 scripts/build_site.py
+python3 scripts/check_site.py
+```
+
+Rules: table values come only from official sources (linked); anything unconfirmed is left blank and flagged unverified; suggestions are not implemented until a decision is recorded.
+
+**Research only, not betting advice.** Wagering with private bookmakers from Japan is criminal for the bettor under Penal Code Article 185 ([official text](https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb)).

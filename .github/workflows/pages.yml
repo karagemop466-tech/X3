@@ -54,6 +54,9 @@ jobs:
           print(f'Validated {len(pages)} HTML pages and their local links.')
           PY
 
+      - name: Check dashboard site (docs/) rows have sources and no broken links
+        run: python3 scripts/check_site.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
