@@ -22,14 +22,17 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib.diagnostics import describe_html, failure_report, write_report
 from lib.official import resolve_payload
 from lib.parsers import (
+    normalise_depth_groups,
     parse_depth_chart,
     parse_injuries,
     parse_player_stats,
     parse_schedule,
     parse_standings,
+    resolve_depth_string,
 )
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+INJURY_PAGE = "https://www.nfl.com/injuries/"
 RAW = os.path.join(ROOT, "data", "raw")
 OUT = os.path.join(ROOT, "data", "datasets")
 
@@ -55,6 +58,25 @@ def write_json(name: str, payload) -> str:
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=2, ensure_ascii=False)
     return path
+
+
+OFFENCE_POSITIONS = {"QB", "RB", "FB", "WR", "TE", "OL", "C", "G", "T", "RB/FB"}
+
+
+def _unit_for_position(position: str) -> str:
+    """Classify a position as offence or defence.
+
+    A position the platform does not recognise is reported as "unknown"
+    rather than being assigned to a unit by inference.
+    """
+    pos = (position or "").strip().upper()
+    if pos in OFFENCE_POSITIONS:
+        return "offence"
+    if pos in {"DL", "DE", "DT", "NT", "LB", "OLB", "ILB", "CB", "S", "SS", "FS"}:
+        return "defence"
+    if pos in {"K", "P", "LS", "RS"}:
+        return "special teams"
+    return "unknown"
 
 
 def main() -> int:
@@ -221,6 +243,7 @@ def _build() -> int:
             "club": club,
             "sources": [{"url": rec["url"], "sha256": rec["sha256"], "fetched_at": rec["fetched_at"]}],
             "units": parsed["units"],
+            "groups": normalise_depth_groups(parsed["units"]),
         }
     if depth or rejected:
         write_json(
@@ -244,6 +267,77 @@ def _build() -> int:
                 "sha256": [s["sha256"] for c in depth.values() for s in c["sources"]][:8],
                 "fetched_at": [s["fetched_at"] for c in depth.values() for s in c["sources"]][:8],
                 "rows": sum(len(c["units"]) for c in depth.values()),
+            }
+        )
+
+    # ------------------------------------------------- depth-string resolution
+    # Resolve, for every player the official report lists as unavailable, the
+    # depth string of the replacement that is now expected to start. The
+    # string comes only from an official club depth chart. Where the club
+    # publishes no chart that could be parsed, the cell is left empty.
+    resolved: list[dict] = []
+    unresolved: list[dict] = []
+    if injuries and depth:
+        club_by_suffix: dict[str, dict] = {}
+        for club_entry in depth.values():
+            suffix = club_entry["club"].split()[-1].lower()
+            club_by_suffix[suffix] = club_entry
+        for row in injuries.get("rows", []):
+            if row.get("game_status") not in ("Out", "Doubtful", "Questionable"):
+                continue
+            team = row.get("team", "")
+            club_entry = club_by_suffix.get(team.lower())
+            depth_string = ""
+            if club_entry:
+                depth_string = resolve_depth_string(
+                    club_entry.get("groups", []), row.get("player", ""), row.get("position", "")
+                )
+            record = {
+                "week": injuries.get("week"),
+                "game_date": row.get("game_date", ""),
+                "away_team": row.get("away_team", ""),
+                "home_team": row.get("home_team", ""),
+                "team": team,
+                "player": row.get("player", ""),
+                "player_url": row.get("player_url", ""),
+                "position": row.get("position", ""),
+                "game_status": row.get("game_status", ""),
+                "practice_status": row.get("practice_status", ""),
+                "depth_string": depth_string,
+                "unit": _unit_for_position(row.get("position", "")),
+                "depth_source_url": (
+                    club_entry["sources"][0]["url"] if club_entry and club_entry.get("sources") else ""
+                ),
+                "source_url": row.get("source_url", ""),
+            }
+            if depth_string:
+                resolved.append(record)
+            else:
+                unresolved.append(record)
+    if resolved or unresolved:
+        write_json(
+            "depth_resolution.json",
+            {
+                "resolved": resolved,
+                "unresolved": unresolved,
+                "coverage": {
+                    "absences_total": len(resolved) + len(unresolved),
+                    "absences_resolved": len(resolved),
+                    "absences_unresolved": len(unresolved),
+                },
+                "policy": "A depth string is published only when an official club depth chart resolves it. "
+                "Otherwise the cell is blank and the absence is listed on the Flagged for Review page.",
+            },
+        )
+        datasets.append(
+            {
+                "dataset": "depth_resolution.json",
+                "source_key": "injuries_current + club_depth_*",
+                "source_url": INJURY_PAGE,
+                "official_org": "National Football League and official NFL club sites",
+                "sha256": None,
+                "fetched_at": None,
+                "rows": len(resolved) + len(unresolved),
             }
         )
 

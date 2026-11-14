@@ -1169,11 +1169,14 @@ def build_injuries() -> str:
 def build_depth() -> str:
     inj = load("injuries.json", DATA) or {"rows": []}
     depth = load("depth_charts.json", DATA) or {"clubs": []}
+    resolution = load("depth_resolution.json", DATA) or {"resolved": [], "unresolved": []}
     b = []
 
     absent = [r for r in inj.get("rows", []) if r.get("game_status") in ("Out", "Doubtful", "Questionable")]
     club_teams = sorted({r.get("team", "") for r in absent if r.get("team")})
     clubs_with_chart = {c["club"] for c in depth.get("clubs", [])}
+    resolved = resolution.get("resolved", [])
+    unresolved = resolution.get("unresolved", [])
 
     b.append(
         '<p class="prose">The official injury report says <em>who</em> is unavailable. It does not say <em>who replaces them</em>. '
@@ -1183,9 +1186,9 @@ def build_depth() -> str:
 
     b.append('<div class="grid cols-4">')
     b.append(f'<div class="card kpi bad"><div class="value">{len(absent)}</div><div class="label">Unavailable or limited players</div></div>')
-    b.append(f'<div class="card kpi"><div class="value">{len(club_teams)}</div><div class="label">Clubs affected this week</div></div>')
-    b.append(f'<div class="card kpi accent"><div class="value">{len(clubs_with_chart)}</div><div class="label">Clubs with an official depth chart retrieved</div></div>')
-    b.append(f'<div class="card kpi warn"><div class="value">{len(club_teams) - len(clubs_with_chart)}</div><div class="label">Clubs with no chart — depth strings unresolved</div></div>')
+    b.append(f'<div class="card kpi accent"><div class="value">{len(clubs_with_chart)}</div><div class="label">Clubs with an official depth chart</div></div>')
+    b.append(f'<div class="card kpi ok"><div class="value">{len(resolved)}</div><div class="label">Depth strings resolved from an official chart</div></div>')
+    b.append(f'<div class="card kpi warn"><div class="value">{len(unresolved)}</div><div class="label">Unresolved — left blank and flagged</div></div>')
     b.append("</div>")
 
     b.append(
@@ -1194,65 +1197,123 @@ def build_depth() -> str:
         "from reputation, statistics or a prior season.</p></div>"
     )
 
-    # depth chart coverage
-    b.append("<h2>Official depth-chart coverage</h2>")
-    club_lookup = {c["club"]: c for c in depth.get("clubs", [])}
-    cov_rows = []
-    for team in club_teams:
-        club = None
-        for c in depth.get("clubs", []):
-            if team and team.lower() in c["club"].lower():
-                club = c
-                break
-        if club:
-            urls = ", ".join(
-                f'<a href="{e(s["url"])}" target="_blank" rel="noopener">chart</a>' for s in club.get("sources", [])
+    # Depth strings that were resolved
+    b.append("<h2>Resolved depth strings</h2>")
+    if resolved:
+        rrows = []
+        for r in resolved:
+            rrows.append(
+                [
+                    e(r.get("game_date")),
+                    e(r.get("team")),
+                    f'<a href="{e(r["player_url"])}" target="_blank" rel="noopener">{e(r.get("player"))}</a>' if r.get("player_url") else e(r.get("player")),
+                    e(r.get("position")),
+                    e(r.get("unit")),
+                    badge(r.get("game_status") or "", {"Out": "bad", "Questionable": "warn", "Doubtful": "warn"}.get(r.get("game_status", ""), "muted")),
+                    badge(r.get("depth_string", ""), "purple"),
+                    f'<a class="src-link" href="{e(r.get("depth_source_url", ""))}" target="_blank" rel="noopener">depth chart</a>'
+                    if r.get("depth_source_url")
+                    else unverified("no chart"),
+                    f'<a class="src-link" href="{e(r.get("source_url", ""))}" target="_blank" rel="noopener">injury report</a>',
+                ]
             )
-            cov_rows.append([e(team), badge("official depth chart available", "ok"), urls, str(len(club.get("units", [])))])
-        else:
-            cov_rows.append([e(team), badge("not resolved", "warn"), unverified("no official chart"), unverified()])
-    if cov_rows:
-        b.append(
-            table(
-                [("Club", False, False), ("Official depth source", False, False), ("Link", False, False), ("Parsed units", True, True)],
-                cov_rows,
-            )
-        )
-    else:
-        b.append('<div class="callout warn"><p>No clubs are listed because no injury entries with a game status were present in this build.</p></div>')
-
-    b.append("<h2>Absences by club</h2>")
-    drows = []
-    for team in club_teams:
-        team_rows = [r for r in absent if r.get("team") == team]
-        names = ", ".join(
-            f'<a href="{e(r["player_url"])}" target="_blank" rel="noopener">{e(r.get("player"))}</a>'
-            f' <span style="color:var(--text-faint)">({e(r.get("position"))} · {e(r.get("game_status"))})</span>'
-            if r.get("player_url")
-            else e(r.get("player"))
-            for r in team_rows
-        )
-        club = club_lookup.get(team)
-        depth_cell = (
-            '<a class="src-link" href="' + e(club["sources"][0]["url"]) + '" target="_blank" rel="noopener">depth chart</a>'
-            if club and club.get("sources")
-            else unverified("depth string unresolved")
-        )
-        drows.append([e(team), str(len(team_rows)), names, depth_cell, '<a class="src-link" href="' + e(INJURY_URL) + '" target="_blank" rel="noopener">source</a>'])
-    if drows:
         b.append(
             table(
                 [
+                    ("Date", False, False),
                     ("Club", False, False),
-                    ("Players affected", True, True),
-                    ("Players", False, False),
-                    ("Depth resolution", False, False),
-                    ("Official source", False, False),
+                    ("Unavailable player", False, False),
+                    ("Pos", False, False),
+                    ("Unit", False, False),
+                    ("Game status", False, False),
+                    ("Depth string", False, False),
+                    ("Depth source", False, False),
+                    ("Absence source", False, False),
                 ],
-                drows,
-                caption="A missing depth resolution is a coverage gap, not an inference. Every gap appears on the Flagged for Review page.",
+                rrows,
+                caption="The depth string is the player's position and his position in the club's own published depth ordering, for example WR3. "
+                "It is read from the club's official depth chart and is never inferred.",
             )
         )
+    else:
+        b.append(
+            '<div class="callout warn"><h4>No depth strings were resolved in this build</h4><p>Every absence below is left blank and flagged. '
+            "The reason is listed on the Flagged for Review page.</p></div>"
+        )
+
+    # Unresolved absences, explicitly blank
+    b.append("<h2>Unresolved absences</h2>")
+    if unresolved:
+        urows = []
+        for r in unresolved:
+            urows.append(
+                [
+                    e(r.get("game_date")),
+                    e(r.get("team")),
+                    f'<a href="{e(r["player_url"])}" target="_blank" rel="noopener">{e(r.get("player"))}</a>' if r.get("player_url") else e(r.get("player")),
+                    e(r.get("position")),
+                    e(r.get("unit")),
+                    badge(r.get("game_status") or "", {"Out": "bad", "Questionable": "warn", "Doubtful": "warn"}.get(r.get("game_status", ""), "muted")),
+                    unverified("depth string unresolved"),
+                    f'<a class="src-link" href="{e(r.get("source_url", ""))}" target="_blank" rel="noopener">source</a>',
+                ]
+            )
+        b.append(
+            table(
+                [
+                    ("Date", False, False),
+                    ("Club", False, False),
+                    ("Unavailable player", False, False),
+                    ("Pos", False, False),
+                    ("Unit", False, False),
+                    ("Game status", False, False),
+                    ("Depth string", False, False),
+                    ("Official source", False, False),
+                ],
+                urows,
+                caption="These absences are real and sourced, but no official depth chart resolves the replacement's depth string, "
+                "so the cell is left blank and flagged. It is not estimated.",
+            )
+        )
+
+    # Depth-chart coverage
+    b.append("<h2>Official depth-chart coverage</h2>")
+    coverage = depth.get("coverage", {})
+    if coverage:
+        b.append(
+            '<div class="grid cols-3">'
+            f'<div class="card kpi ok"><div class="value">{coverage.get("clubs_resolved", 0)}</div>'
+            f'<div class="label">Clubs with an official depth chart</div></div>'
+            f'<div class="card kpi warn"><div class="value">{coverage.get("clubs_unresolved", 0)}</div>'
+            f'<div class="label">Clubs with no chart resolved</div></div>'
+            f'<div class="card kpi"><div class="value">{coverage.get("clubs_total", 32)}</div>'
+            f'<div class="label">Clubs in the league</div></div>'
+            "</div>"
+        )
+    cov_rows = []
+    for club in depth.get("clubs", []):
+        urls = ", ".join(
+            f'<a href="{e(s["url"])}" target="_blank" rel="noopener">chart</a>' for s in club.get("sources", [])
+        )
+        groups = club.get("groups", [])
+        positions = ", ".join(sorted({g["position"] for g in groups})) or unverified("no positions parsed")
+        cov_rows.append([e(club["club"]), badge("official depth chart", "ok"), positions, urls])
+    rejected = depth.get("rejected_candidates", [])
+    for r in rejected:
+        cov_rows.append(
+            [e(r.get("club", "")), badge("not resolved", "warn"), unverified("no chart"), e(r.get("reason", ""))]
+        )
+    if cov_rows:
+        b.append(
+            table(
+                [("Club", False, False), ("Official depth source", False, False), ("Positions published", False, False), ("Link", False, False)],
+                cov_rows,
+                caption="A club whose chart could not be retrieved is listed so the coverage gap is visible rather than silent.",
+            )
+        )
+    else:
+        b.append('<div class="callout warn"><p>No official club depth chart was retrieved in this build.</p></div>')
+
     return page(
         "Lineup Depth &amp; Deficiencies",
         "Data",
