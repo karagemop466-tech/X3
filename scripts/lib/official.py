@@ -183,10 +183,14 @@ def league_sources(seasons: Iterable[int] = SEASONS) -> list[Source]:
             ),
         ]
         for week in WEEKS:
+            # IMPORTANT: the legacy /schedules/<season>/REG<week>/ form
+            # redirects to the current week and returns a byte-identical
+            # payload for every week, which would silently fabricate history.
+            # The by-week route returns the requested week and is verified.
             out.append(
                 Source(
                     key=f"schedule_{season}_w{week:02d}",
-                    url=f"{NFL_COM}/schedules/{season}/REG{week}/",
+                    url=f"{NFL_COM}/schedules/{season}/by-week/week-{week}",
                     category="schedule",
                     description=f"{season} regular-season schedule, week {week}.",
                     optional=True,
@@ -398,6 +402,21 @@ def write_manifest(records: list[dict], path: str) -> dict:
         else:
             cat["failed"] += 1
         cat["urls"].append(rec["url"])
+    # Detect sources that returned a byte-identical payload. A different URL
+    # that resolves to the same bytes means the request was redirected to a
+    # generic page, which would silently duplicate one week of data across
+    # every week.
+    by_digest: dict[str, list[str]] = {}
+    for rec in records:
+        if rec.get("ok") and rec.get("sha256"):
+            by_digest.setdefault(rec["sha256"], []).append(rec["key"])
+    duplicates = {digest: keys for digest, keys in by_digest.items() if len(keys) > 1}
+    summary["duplicate_payloads"] = [
+        {"sha256": digest, "keys": sorted(keys), "count": len(keys)}
+        for digest, keys in sorted(duplicates.items(), key=lambda kv: -len(kv[1]))
+    ]
+    summary["sources_with_duplicate_payload"] = sum(len(v) for v in duplicates.values())
+
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
         json.dump({"summary": summary, "records": records}, fh, indent=2)

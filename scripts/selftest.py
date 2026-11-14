@@ -19,6 +19,7 @@ from lib.parsers import (
     normalise_depth_groups,
     parse_injuries,
     parse_player_stats,
+    parse_schedule,
     parse_standings,
     resolve_depth_string,
 )
@@ -134,6 +135,43 @@ def test_player_stats() -> None:
     check(
         "player stats: every row has a source_url",
         all(r.get("source_url") for r in parsed["rows"]),
+    )
+
+
+def test_schedule() -> None:
+    html = fixture("schedule.html")
+    if not html:
+        print("[SKIP] schedule fixture not present")
+        return
+    parsed = parse_schedule(html, "https://www.nfl.com/schedules/2026/by-week/week-5", 2026, 5)
+    games = parsed["games"]
+    check("schedule: games parsed", len(games) >= 10, f"got {len(games)}")
+    scored = [g for g in games if g.get("away_score") and g.get("home_score")]
+    check("schedule: final scores captured", len(scored) >= 10, f"got {len(scored)}")
+    check(
+        "schedule: every game has both teams",
+        all(g.get("away_team") and g.get("home_team") for g in games),
+    )
+    check(
+        "schedule: every game carries its official link",
+        all("/games/" in (g.get("game_url") or "") for g in games),
+    )
+    check(
+        "schedule: every game carries a source_url",
+        all(g.get("source_url") for g in games),
+    )
+    check(
+        "schedule: the game week matches the requested week",
+        all(
+            (not g.get("game_url")) or f"-reg-{parsed['week']}" in g["game_url"]
+            for g in games
+        ),
+        str([g["game_url"] for g in games[:3]]),
+    )
+    check(
+        "schedule: network and date are captured",
+        any(g.get("network") for g in games) and any(g.get("game_date") for g in games),
+        str(games[:1]),
     )
 
 
@@ -271,6 +309,7 @@ def main() -> int:
     test_injuries()
     test_standings()
     test_player_stats()
+    test_schedule()
     test_depth_resolution()
     test_skill_share()
     test_correlation()

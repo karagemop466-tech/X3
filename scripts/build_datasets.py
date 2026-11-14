@@ -357,16 +357,32 @@ def _build() -> int:
     # ------------------------------------------------------------ diagnostics
     # A structural summary of the official payloads, so a parser can be written
     # or repaired from the repository alone.
-    sample_keys = ["injuries_current", "standings_league_2026", "schedule_2026_w01",
-                   "schedule_2026_w10", "stats_player_passing_2026", "stats_player_receiving_2026"]
-    for rec in records:
+    # The samples that matter most for parser repair come first, so the
+    # report is not crowded out by the club depth charts.
+    priority = [
+        "schedule_2026_w01", "schedule_2026_w05", "schedule_2026_w10",
+        "injuries_current", "injuries_2026_w05",
+        "standings_league_2026", "standings_division_2026",
+        "stats_player_passing_2026", "stats_player_receiving_2026",
+        "club_depth_atlanta-falcons_team_depth-chart",
+    ]
+    by_key = {r["key"]: r for r in records}
+    for key in priority:
+        rec = by_key.get(key)
+        if not rec:
+            continue
         path = raw_path(rec)
         if not path:
             continue
-        if rec["key"] in sample_keys or rec["key"].startswith("club_depth_"):
+        structure[key] = describe_html(path)
+    for rec in records:
+        if len(structure) > 24:
+            break
+        path = raw_path(rec)
+        if not path or rec["key"] in structure:
+            continue
+        if rec["category"] in ("schedule", "injuries", "injuries_history", "standings", "player_stats"):
             structure[rec["key"]] = describe_html(path)
-            if len(structure) > 24:
-                break
     write_report("structure_report.json", {"sources": structure})
     write_report("build_report.json", {"built_at": built_at, "datasets": len(datasets), "ok": True})
 

@@ -311,48 +311,174 @@ def parse_player_stats(html: str, source_url: str, category: str, season: int | 
 # ---------------------------------------------------------------------------
 
 
+def _schedule_competitor_blocks(card) -> list:
+    """Find the per-team blocks inside a game card."""
+    for selector in (
+        "div.d3-o-gamecard__competitor",
+        "li.d3-o-gamecard__competitor",
+        "div.nfl-c-matchup-strip__team",
+    ):
+        blocks = card.select(selector)
+        if len(blocks) >= 2:
+            return blocks
+    return []
+
+
+def _schedule_competitor(block, is_home: bool) -> dict:
+    """Extract one team's name, abbreviation, score and record from a block."""
+    name = ""
+    abbr = ""
+    score = ""
+    record = ""
+
+    for selector in (
+        "div.d3-o-gamecard__team-name",
+        "span.d3-o-gamecard__team-name",
+        "div.nfl-c-matchup-strip__team-fullname",
+        "a.nfl-c-matchup-strip__team-fullname",
+        "div.d3-o-gamecard__competitor-title",
+        "span.d3-o-gamecard__team-abbreviation",
+        "span.nfl-c-matchup-strip__team-abbreviation",
+    ):
+        node = block.select_one(selector)
+        if node is None:
+            continue
+        text = _txt(node)
+        if not text:
+            continue
+        if "abbreviation" in selector:
+            abbr = text
+        elif "fullname" in selector:
+            name = name or text
+        elif not name:
+            name = text
+    if not name:
+        link = block.find("a")
+        if link is not None:
+            name = _txt(link)
+    if not abbr and name:
+        abbr = name.split()[-1] if name.split() else ""
+    if not abbr:
+        node = block.select_one("[class*=abbreviation]")
+        if node is not None:
+            abbr = _txt(node)
+
+    for selector in (
+        "div.d3-o-gamecard__score",
+        "span.d3-o-gamecard__score",
+        "div.nfl-c-matchup-strip__team-score",
+        "span.nfl-c-matchup-strip__team-score",
+    ):
+        node = block.select_one(selector)
+        if node is not None:
+            score = _txt(node)
+            break
+
+    for selector in (
+        "div.d3-o-gamecard__competitor-metadata",
+        "span.d3-o-gamecard__competitor-metadata",
+        "div.nfl-c-matchup-strip__record",
+    ):
+        node = block.select_one(selector)
+        if node is not None:
+            record = _txt(node).strip("()")
+            break
+
+    return {
+        "name": name,
+        "abbr": abbr,
+        "score": score,
+        "record": record,
+        "is_home": is_home,
+    }
+
+
 def parse_schedule(html: str, source_url: str, season: int | None, week: int | None) -> dict:
-    """Parse an NFL.com weekly schedule page into game records with scores."""
+    """Parse an NFL.com weekly schedule page into game records with scores.
+
+    NFL.com renders a schedule week as a list of game cards. Two markups are
+    supported: the ``d3-o-gamecard`` card and the ``nfl-c-matchup-strip``
+    strip. Both carry the teams, the final score, the network and the kickoff
+    time.
+    """
     soup = BeautifulSoup(html, "lxml")
     games: list[dict] = []
-    for card in soup.select("div.nfl-c-matchup-strip, div.d3-o-gamecard"):
-        strip = card
-        teams = strip.select("div.nfl-c-matchup-strip__team")
-        if len(teams) < 2:
+    cards = soup.select(
+        "div.d3-o-gamecard, li.d3-o-gamecard, section.d3-o-gamecard, div.nfl-c-matchup-strip"
+    )
+    seen: set[str] = set()
+    for card in cards:
+        blocks = _schedule_competitor_blocks(card)
+        if len(blocks) < 2:
             continue
-        def team_info(t):
-            abbr = t.select_one("span.nfl-c-matchup-strip__team-abbreviation")
-            name = t.select_one("a.nfl-c-matchup-strip__team-fullname")
-            rec = t.select_one("div.nfl-c-matchup-strip__record")
-            return {
-                "abbr": _txt(abbr),
-                "name": _txt(name),
-                "record": _txt(rec).strip("()"),
-            }
-        a, b = team_info(teams[0]), team_info(teams[1])
-        dt = strip.select_one("span.nfl-c-matchup-strip__date-time")
-        tz = strip.select_one("span.nfl-c-matchup-strip__date-timezone")
-        net = strip.select_one("p.nfl-c-matchup-strip__networks")
-        scores = [s.get_text(" ", strip=True) for s in strip.select("div.nfl-c-matchup-strip__team-score, .d3-o-gamecard__score")]
-        status = strip.select_one(".d3-o-gamecard__status, .nfl-c-matchup-strip__status")
-        link = strip.find("a", href=re.compile(r"/games/"))
+        competitors = []
+        for block in blocks[:2]:
+            classes = " ".join(block.get("class") or [])
+            is_home = "--home" in classes
+            competitors.append(_schedule_competitor(block, is_home))
+        # The first competitor is the away team on every NFL.com layout.
+        away, home = competitors[0], competitors[1]
+        if "--away" in " ".join(blocks[0].get("class") or []) or "--home" in " ".join(blocks[1].get("class") or []):
+            if "--home" in " ".join(blocks[0].get("class") or []):
+                away, home = competitors[1], competitors[0]
+
+        date_time = ""
+        for selector in (
+            "div.d3-o-gamecard__date-time",
+            "span.d3-o-gamecard__date-time",
+            "span.nfl-c-matchup-strip__date-time",
+            "div.d3-o-gamecard__header",
+        ):
+            node = card.select_one(selector)
+            if node is not None:
+                date_time = _txt(node)
+                break
+        network = ""
+        for selector in (
+            "div.d3-o-gamecard__network",
+            "span.d3-o-gamecard__network",
+            "p.nfl-c-matchup-strip__networks",
+            "div.nfl-c-matchup-strip__networks",
+        ):
+            node = card.select_one(selector)
+            if node is not None:
+                network = _txt(node)
+                break
+        status = ""
+        for selector in (
+            "div.d3-o-gamecard__status",
+            "span.d3-o-gamecard__status",
+            "div.d3-o-gamecard__header-status",
+        ):
+            node = card.select_one(selector)
+            if node is not None:
+                status = _txt(node)
+                break
+
+        link = card.find("a", href=re.compile(r"/games/"))
+        game_url = ("https://www.nfl.com" + link["href"]) if link else ""
+        key = (away["abbr"], home["abbr"], date_time)
+        if key in seen:
+            continue
+        seen.add(key)
         games.append(
             {
                 "season": season,
                 "week": week,
-                "game_date": _txt(dt),
-                "game_timezone": _txt(tz),
-                "network": _txt(net),
-                "away_team": a["abbr"],
-                "away_team_name": a["name"],
-                "away_record": a["record"],
-                "home_team": b["abbr"],
-                "home_team_name": b["name"],
-                "home_record": b["record"],
-                "away_score": scores[0] if len(scores) > 0 else "",
-                "home_score": scores[1] if len(scores) > 1 else "",
-                "status": _txt(status),
-                "game_url": ("https://www.nfl.com" + link["href"]) if link else "",
+                "game_date": date_time,
+                "game_time": date_time,
+                "game_timezone": "",
+                "network": network,
+                "away_team": away["abbr"],
+                "away_team_name": away["name"],
+                "away_record": away["record"],
+                "away_score": away["score"],
+                "home_team": home["abbr"],
+                "home_team_name": home["name"],
+                "home_record": home["record"],
+                "home_score": home["score"],
+                "status": status,
+                "game_url": game_url,
                 "source_url": source_url,
             }
         )

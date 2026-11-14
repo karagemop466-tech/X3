@@ -238,6 +238,55 @@ def check_external_urls(pages: list[str], timeout: int = 25) -> tuple[bool, str,
     return (not failures), f"{len(urls)} official URLs requested", failures
 
 
+def check_duplicate_payloads() -> tuple[bool, str, list[str]]:
+    """Fail when two different official URLs returned a byte-identical payload.
+
+    A redirect to a generic page produces exactly this signature. Publishing
+    the result would silently duplicate one week of data across every week.
+    """
+    manifest_path = os.path.join(DATA, "fetch_manifest.json")
+    if not os.path.exists(manifest_path):
+        return True, "no fetch manifest to check", []
+    with open(manifest_path, encoding="utf-8") as fh:
+        manifest = json.load(fh)
+    problems: list[str] = []
+    summary = manifest.get("summary", {})
+    for entry in summary.get("duplicate_payloads", []):
+        keys = entry.get("keys", [])
+        problems.append(
+            f"{entry.get('count')} sources returned an identical payload "
+            f"({entry.get('sha256', '')[:12]}): {', '.join(keys[:8])}"
+        )
+    if not problems:
+        return True, "no two official URLs returned an identical payload", []
+    return False, f"{len(problems)} duplicate payload group(s) detected", problems
+
+
+def check_schedule_weeks() -> tuple[bool, str, list[str]]:
+    """Fail when a parsed schedule week does not match the week it claims.
+
+    The official schedule used to redirect every week to the current week, so
+    this check guards against that class of silent fabrication returning.
+    """
+    problems: list[str] = []
+    checked = 0
+    for name in sorted(os.listdir(DATA)) if os.path.isdir(DATA) else []:
+        if not name.startswith("schedule_") or not name.endswith(".json"):
+            continue
+        with open(os.path.join(DATA, name), encoding="utf-8") as fh:
+            payload = json.load(fh)
+        for game in payload.get("games", []):
+            checked += 1
+            week = game.get("week")
+            url = game.get("game_url") or ""
+            match = re.search(r"-reg-(\d+)", url)
+            if match and week is not None and int(match.group(1)) != int(week):
+                problems.append(
+                    f"{name}: a game tagged week {week} links to a week-{match.group(1)} game ({url})"
+                )
+    return (not problems), f"{checked} scheduled games checked against their own game week", problems
+
+
 def main() -> int:
     external = "--external" in sys.argv
     pages = sorted(
@@ -268,6 +317,16 @@ def main() -> int:
     blanks, sourced = count_blanks(datasets)
     ok, detail, _ = check_unverified_markers(pages, blanks)
     checks.append({"name": "Unverified values are rendered as explicit markers", "result": "pass" if ok else "fail", "detail": detail})
+
+    ok, detail, problems = check_duplicate_payloads()
+    checks.append({"name": "No two official URLs returned an identical payload", "result": "pass" if ok else "fail", "detail": detail + (f"; groups: {len(problems)}" if problems else "")})
+    for p in problems[:10]:
+        checks.append({"name": "Duplicate official payload", "result": "fail", "detail": p})
+
+    ok, detail, problems = check_schedule_weeks()
+    checks.append({"name": "Scheduled games match the week they are filed under", "result": "pass" if ok else "fail", "detail": detail + (f"; mismatches: {len(problems)}" if problems else "")})
+    for p in problems[:10]:
+        checks.append({"name": "Schedule week mismatch", "result": "fail", "detail": p})
 
     if external:
         ok, detail, failures = check_external_urls(pages)

@@ -222,3 +222,74 @@ blob-storage redirect.
 diagnosis is available from the repository itself.
 
 **Status:** resolved.
+
+---
+
+## 13. Every historical schedule URL silently redirected to the current week
+
+**This is the most serious defect found in the whole review.**
+
+The original registry used `https://www.nfl.com/schedules/<season>/REG<week>/`
+for every week of every season. In the fetch manifest, all 72 of those
+requests returned HTTP 200 with a **byte-identical 2,403,944-byte payload**,
+and every one of them had redirected to the same final URL:
+`https://www.nfl.com/schedules` — the current week's schedule.
+
+The consequence is severe: had the parser succeeded, the platform would have
+published the current week's fourteen games as if they were the schedule for
+every week of 2023, 2024, 2025 and 2026. The back-test would have "validated"
+against a single week repeated 72 times, and every historical statistic would
+have been fabricated. Nothing in the HTTP response indicates a problem: the
+status is 200 and the page is a legitimate NFL schedule page.
+
+**Resolution.** The correct official route is
+`https://www.nfl.com/schedules/<season>/by-week/week-<n>`, which is the link
+the NFL publishes on its own schedule page. It was verified for 2026 week 5,
+2026 week 10 and 2024 week 10, each returning the right week with the correct
+final scores. The registry now uses that form.
+
+**Guard rails added**, so this class of defect cannot recur silently:
+
+1. The fetcher computes a SHA-256 per payload and reports every group of
+   distinct URLs that returned an identical payload, in
+   `data/datasets/fetch_manifest.json` under `summary.duplicate_payloads`.
+2. `scripts/validate_site.py` fails the build if any such group exists.
+3. The validator also checks that every published game links to a game URL
+   whose own week matches the week the game is filed under, which catches a
+   redirect directly.
+
+**Status:** resolved.
+
+---
+
+## 14. The official player-statistics tables are paginated at 25 rows
+
+Each official statistics page returns 25 rows of a much longer table. The
+platform therefore publishes 25 players per category per season rather than
+the full leaderboard, and the row count for each dataset reflects that.
+
+The values published are the official ones for the players shown, so nothing
+is wrong with the numbers themselves; the coverage is simply partial. The
+platform reports the exact row count for each dataset so a reviewer can see
+what is included.
+
+**Status:** open, tracked. Resolving it requires identifying the official
+pagination parameter rather than guessing one.
+
+---
+
+## 15. The official game page has no `/boxscore` path
+
+`https://www.nfl.com/games/<slug>/boxscore` returns HTTP 404 for every game
+tried. The game page itself is at `https://www.nfl.com/games/<slug>` and the
+schedule links to it in that form.
+
+**Consequence:** the per-game player logs needed for the player-prop and
+prop-combination strategy classes are not reachable through the route tried,
+so those classes cannot yet be evaluated.
+
+**Resolution:** the limitation is published on the Flagged for Review page and
+on the Strategies page, and the strategies that depend on it are marked as
+registered but not evaluated.
+
+**Status:** open, tracked.

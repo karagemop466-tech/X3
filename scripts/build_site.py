@@ -1400,6 +1400,18 @@ def build_lines() -> str:
     )
 
 
+def _manifest_fetched(entry: dict) -> str:
+    """Render the fetch timestamp of a manifest entry, which may be a string,
+    a list of strings, or absent."""
+    value = entry.get("fetched_at")
+    if isinstance(value, str):
+        return value
+    if isinstance(value, list):
+        parts = [str(v) for v in value if v]
+        return ", ".join(parts[:2])
+    return ""
+
+
 def build_data_page() -> str:
     b = []
     standings = load(f"standings_{2026}.json", DATA)
@@ -1520,7 +1532,7 @@ def build_data_page() -> str:
                     f'<a href="{e(d.get("source_url"))}" target="_blank" rel="noopener">{e(d.get("source_url"))}</a>'
                     if str(d.get("source_url", "")).startswith("http")
                     else e(d.get("source_url")),
-                    e(d.get("fetched_at") if isinstance(d.get("fetched_at"), str) else ", ".join(d.get("fetched_at", [])[:2])),
+                    e(_manifest_fetched(d)),
                 ]
             )
         b.append(

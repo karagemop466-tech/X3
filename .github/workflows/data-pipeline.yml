@@ -101,7 +101,7 @@ jobs:
         run: |
           git config user.name "x3-data-pipeline" || true
           git config user.email "x3-data-pipeline@users.noreply.github.com" || true
-          git add -A -- . ':!data/raw' || true
+          git add -A || true
           git add -f data/datasets || true
           if git diff --cached --quiet; then
             echo "no changes to commit"
