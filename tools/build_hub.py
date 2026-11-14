@@ -362,7 +362,9 @@ def p_lines():
     board = table(["When", "Matchup", "Base margin (H)", "Injury delta", "Adj margin (H)",
                    "Model spread (H)", "Model total", "Market spread/total", "Signal",
                    "1st-string vac. H/A", "Sources"], rows,
-                  note="Positive margin = home team is worse. Model spread is rounded to the half point; "
+                  note="Margin is home expected points minus away expected points, so a POSITIVE margin means the "
+         "home club is the better side; the spread is that margin negated (a +3.64 margin becomes -3.5). "
+         "Rounded to the half point; "
                        "negative = home favoured. Market columns are blank because no price source exists "
                        "in this repository (flag F-01).")
     tr = []

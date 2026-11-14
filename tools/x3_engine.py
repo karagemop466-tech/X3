@@ -251,7 +251,10 @@ for r in injury_rows:
                                 "away": r["opp"] if r["side"] == "H" else r["team"],
                                 "home": r["team"] if r["side"] == "H" else r["opp"]})
 # verified against the official Week 10 schedule page + injury page headers
-NEUTRAL = {"NE@DET": "Alemun & Munchen / Munich (NFL International Game) - no home field"}
+# Only the two facts confirmed from the schedule page are asserted here: the game is in Munich and it is
+# an NFL International Game, so no home field is applied. The venue's proper name was not confirmed by any
+# source read this session, so it is deliberately not printed.
+NEUTRAL = {"NE@DET": "Munich (NFL International Game) - neutral site, no home field applied"}
 BYE = ["CHI", "DEN", "PHI", "TB"]
 PLAYED = {"WAS@NYG": {"result": "Commanders 24, Giants 21, FINAL (Thu Nov 12)",
                      "source": SRC_SCHEDULE}}
