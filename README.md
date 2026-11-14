@@ -19,6 +19,7 @@ Earlier material integrated on `main` is preserved under `docs/`, `data/`, `page
 - **Suggestions** — review proposals and select a planning path. Local browser choices are not shared and do not implement changes.
 - **Flagged for review** — missing datasets, feed/rights questions, source irregularities, and other unverified items.
 - **Sources** — official NFL/NFL Football Operations pages and technical statistical-method references.
+- **Prior data archive** — [2026 Week 10 injury snapshot](docs/injuries.html), [2026 key dates](docs/schedule.html), and [legacy flags](docs/flagged.html); these rows are separate from the new module and should be rechecked before reuse.
 
 ## Run locally
 
@@ -33,8 +34,10 @@ Open `http://localhost:8080/` in a browser. On GitHub Pages, relative links supp
 ## Verify the static site
 
 ```bash
-python3 scripts/check_dashboard.py
+python3 scripts/build_site.py
 python3 scripts/check_site.py
+python3 tools/check_links.py
+python3 scripts/check_dashboard.py
 node --check assets/data.js
 node --check assets/app.js
 node scripts/check_data.js

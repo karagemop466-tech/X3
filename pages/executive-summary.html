@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Summary &mdash; X3 NFL</title>
+<meta name="description" content="Executive summary of the X3 NFL decision-intelligence project: purpose, components, findings, sources.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand"><span class="mark">X3</span><span>X3 &middot; NFL Decision Intelligence</span></div>
+    <div class="tagline">Originate lines &middot; signal strategies &middot; validation gates &middot; injury &amp; depth tracking &middot; all sourced</div>
+  </div>
+</header>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html">Dashboard</a>
+    <a href="executive-summary.html" class="active">Executive Summary</a>
+    <a href="suggestions.html">Suggestions &amp; Review</a>
+    <a href="flagged-for-review.html">Flagged for Review</a>
+    <a href="strategies.html">Strategies &amp; Signals</a>
+    <a href="injuries.html">Injuries &amp; Depth</a>
+    <a href="sources.html">Sources</a>
+    <div class="nav-spacer"></div>
+    <span class="nav-badge">Unverified items flagged</span>
+  </div>
+</nav>
+
+<main id="content" class="container">
+  <h1 class="section-title">Executive Summary</h1>
+  <p class="section-sub">Important details of the X3 NFL decision-intelligence project, outlined for leadership review.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="kicker">Purpose</div>
+      <h3>Collect, organize, analyze</h3>
+      <p>Build a decision-support system for NFL betting lines: originate our own lines, generate useful signals, validate every strategy, track injuries and depth-chart deficiencies, and review suggestions before changes are implemented.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Core components</div>
+      <h3>Six workstreams</h3>
+      <p>(1) Suggestions &amp; decision framework, (2) line-origination strategies &amp; signals, (3) validation gates &amp; correlation values, (4) single/parlay/player-prop combos, (5) injury &amp; backup depth tracking, (6) leaderboard competition with rewards.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Data rule</div>
+      <h3>Source or flag</h3>
+      <p>Every value must be confirmed from an official source (e.g. NFL.com). Unconfirmed values are left blank and flagged unverified. Nothing is inferred.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Status</div>
+      <h3>Live site</h3>
+      <p>GitHub Pages site with landing page, category subpages, sourced tables, and a Flagged for Review page.</p>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="num">2</span>Key findings</div>
+  <table>
+    <thead>
+      <tr><th>Area</th><th>Finding</th><th>Status</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Injury reports</td>
+        <td>Official NFL injury report is published weekly at nfl.com/injuries with player, position, injury, practice status, and game status.</td>
+        <td><span class="tag tag-ok">Confirmed</span></td>
+        <td class="source-cell"><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries</a></td>
+      </tr>
+      <tr>
+        <td>Depth charts</td>
+        <td>Weekly depth charts (starters + backups by position) are an official NFL data feed via Sportradar; third-party mirrors exist but are not the official source.</td>
+        <td><span class="tag tag-ok">Source identified</span></td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+      <tr>
+        <td>Betting lines / odds</td>
+        <td>No official NFL-published betting lines or odds source identified; lines originate from sportsbooks, not the NFL.</td>
+        <td><span class="tag tag-unverified">Unverified</span></td>
+        <td class="source-cell"><span class="blank">No official NFL source found &mdash; left blank</span></td>
+      </tr>
+      <tr>
+        <td>Player props</td>
+        <td>No official NFL-published player-prop market data identified.</td>
+        <td><span class="tag tag-unverified">Unverified</span></td>
+        <td class="source-cell"><span class="blank">No official NFL source found &mdash; left blank</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title"><span class="num">3</span>Recommendations</div>
+  <ul>
+    <li>Publish this site to GitHub Pages and route all improvement suggestions through the <a href="suggestions.html">Suggestions &amp; Review</a> page before implementation.</li>
+    <li>Route every unverified value (betting lines, player props, correlations) to the <a href="flagged-for-review.html">Flagged for Review</a> page.</li>
+    <li>Automate injury and depth-chart ingestion from official NFL feeds so no manual input is required.</li>
+    <li>Run strategies through validation gates and a leaderboard before real capital is allocated.</li>
+  </ul>
+
+  <div class="callout warn">
+    <h4>&nbsp; Limitations</h4>
+    <p>Sandbox outbound network access is restricted to GitHub hosts and package registries, so live NFL.com pages could not be fetched directly for row-level verification. All NFL.com citations are official-source URLs identified via web search; row-level data remains blank/unverified until fetched from an official source.</p>
+  </div>
+
+  <div class="section-title"><span class="num">4</span>Sources used for this summary</div>
+  <table>
+    <thead>
+      <tr><th>Source</th><th>What it provides</th><th>Official?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">NFL.com &mdash> Injury Report</a></td><td>Weekly player injury report (practice + game status)</td><td>Yes</td></tr>
+      <tr><td><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL official feeds documentation</a></td><td>Weekly depth charts, injuries, rosters (official NFL partner feed)</td><td>Partner feed</td></tr>
+    </tbody>
+  </table>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    X3 &middot; NFL project &middot; Branch <code>arena/1a771fcd-x3</code> &middot; Built with GitHub Pages &middot; No manual input &mdash; all entries sourced or flagged unverified.
+  </div>
+</footer>
+
+</body>
+</html>
