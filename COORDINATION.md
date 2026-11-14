@@ -680,7 +680,7 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 | # | Task | Status | Files |
 |---|------|--------|-------|
 | C1 | Read COORDINATION.md; claim scope; push claim first | done | `COORDINATION.md` |
-| C2 | `tools/crosscheck.py`: repo-wide link + row-source audit + register reconciliation | in progress | `tools/crosscheck.py`, `crosscheck/data/report.json` |
-| C3 | `crosscheck/` site unit (landing + subpages), every row linked or flagged | pending | `crosscheck/**` |
-| C4 | Line-by-line verification of this session's output; rerun all pre-existing checkers | pending | `crosscheck/verification.html` |
-| C5 | PR → merge → confirm GitHub Pages deploy → record here | pending | `COORDINATION.md` |
+| C2 | `tools/crosscheck.py`: repo-wide link + row-source audit + register reconciliation | done | `tools/crosscheck.py`, `crosscheck/data/report.json` — 88 pages / 3,461 links / 0 broken internal; 28 registers / 361 entries; 69 ID-content collisions, 1 status conflict (R01: Partial vs done), 8 cross-family ID reuses |
+| C3 | `crosscheck/` site unit (landing + subpages), every row linked or flagged | done | `crosscheck/**` — 7 pages, 413 rows, every row carries a github.com source link |
+| C4 | Line-by-line verification of this session's output; rerun all pre-existing checkers | done | `crosscheck/verification.html` — post-write gate `tools/crosscheck.py --verify` = PASS (0 failures); all 8 pre-existing verifiers exit 0 (check_site, check_links, check_dashboard, check_data, check_render, verify_site, verify_data, py_compile); HTML well-formedness OK; HTTP smoke 200 for all 7 pages, 0 broken hrefs |
+| C5 | PR → merge → confirm GitHub Pages deploy → record here | in progress | `COORDINATION.md` |
