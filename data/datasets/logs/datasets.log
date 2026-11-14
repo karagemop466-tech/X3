@@ -50,10 +50,10 @@ built 59 datasets -> /home/runner/work/X3/X3/data/datasets
   player_stats_tackles_2024.json               rows=25     src=https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensiveco
   player_stats_tackles_2025.json               rows=25     src=https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensiveco
   player_stats_tackles_2026.json               rows=25     src=https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensiveco
-  schedule_2023.json                           rows=517    src=https://www.nfl.com/schedules/2023/
-  schedule_2024.json                           rows=515    src=https://www.nfl.com/schedules/2024/
-  schedule_2025.json                           rows=516    src=https://www.nfl.com/schedules/2025/
-  schedule_2026.json                           rows=510    src=https://www.nfl.com/schedules/2026/
+  schedule_2023.json                           rows=252    src=https://www.nfl.com/schedules/2023/
+  schedule_2024.json                           rows=252    src=https://www.nfl.com/schedules/2024/
+  schedule_2025.json                           rows=252    src=https://www.nfl.com/schedules/2025/
+  schedule_2026.json                           rows=252    src=https://www.nfl.com/schedules/2026/
   standings_2023.json                          rows=32     src=https://www.nfl.com/standings/league/2023/REG
   standings_2024.json                          rows=32     src=https://www.nfl.com/standings/league/2024/REG
   standings_2025.json                          rows=32     src=https://www.nfl.com/standings/league/2025/REG

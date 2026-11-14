@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-14T03:47:22+00:00",
+  "generated_at": "2026-11-14T03:50:27+00:00",
   "pages_checked": 16,
   "dataset_files_checked": 68,
-  "dataset_rows_with_source": 16773,
-  "dataset_blank_values": 32518,
+  "dataset_rows_with_source": 15722,
+  "dataset_blank_values": 20852,
   "external_urls_checked": true,
   "result": "fail",
   "checks": [
@@ -15,17 +15,17 @@
     {
       "name": "All external links point at official hosts",
       "result": "pass",
-      "detail": "959 external links checked against the official-host allowlist"
+      "detail": "958 external links checked against the official-host allowlist"
     },
     {
       "name": "Every dataset row carries an official source link",
       "result": "pass",
-      "detail": "16773 dataset rows checked for an official source link"
+      "detail": "15722 dataset rows checked for an official source link"
     },
     {
       "name": "Unverified values are rendered as explicit markers",
       "result": "pass",
-      "detail": "253 unverified markers rendered (dataset blank values: 32518)"
+      "detail": "255 unverified markers rendered (dataset blank values: 20852)"
     },
     {
       "name": "No two official URLs returned an identical payload",
@@ -35,7 +35,7 @@
     {
       "name": "Scheduled games match the week they are filed under",
       "result": "fail",
-      "detail": "2058 scheduled games checked against their own game week; mismatches: 952"
+      "detail": "1008 scheduled games checked against their own game week; mismatches: 952"
     },
     {
       "name": "Schedule week mismatch",

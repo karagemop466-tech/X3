@@ -1,12 +1,14 @@
 {
   "model_version": "line-model-v1.0",
-  "generated_at": "2026-11-14T03:46:50+00:00",
+  "generated_at": "2026-11-14T03:50:07+00:00",
   "margin_pct": 0.03,
   "shrinkage_k": 4.0,
   "league_points_per_game": 22.9599,
   "scales": {
     "margin_sd": null,
     "total_sd": null,
+    "home_cover_rate": null,
+    "home_avg_margin": 0.0,
     "n_games": 0
   },
   "lines": [

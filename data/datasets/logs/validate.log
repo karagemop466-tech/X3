@@ -1,9 +1,9 @@
 [PASS] Internal links and assets resolve: 474 internal references checked across 16 pages
-[PASS] All external links point at official hosts: 959 external links checked against the official-host allowlist
-[PASS] Every dataset row carries an official source link: 16773 dataset rows checked for an official source link
-[PASS] Unverified values are rendered as explicit markers: 253 unverified markers rendered (dataset blank values: 32518)
+[PASS] All external links point at official hosts: 958 external links checked against the official-host allowlist
+[PASS] Every dataset row carries an official source link: 15722 dataset rows checked for an official source link
+[PASS] Unverified values are rendered as explicit markers: 255 unverified markers rendered (dataset blank values: 20852)
 [PASS] No two official URLs returned an identical payload: no duplicate payload fabricates distinct data (3 expected group(s))
-[FAIL] Scheduled games match the week they are filed under: 2058 scheduled games checked against their own game week; mismatches: 952
+[FAIL] Scheduled games match the week they are filed under: 1008 scheduled games checked against their own game week; mismatches: 952
 [FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/patriots-at-lions-2026-reg-10)
 [FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10)
 [FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/texans-at-browns-2026-reg-10)
