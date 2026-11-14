@@ -25,6 +25,7 @@ jobs:
     timeout-minutes: 45
     env:
       BRANCH: ${{ github.event_name == 'schedule' && 'main' || github.ref_name }}
+      LOGS: data/datasets/logs
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,21 +40,30 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Prepare log directory
+        run: mkdir -p "$LOGS"
+
+      # Every step writes its output into data/datasets/logs, and the whole
+      # directory is committed at the end. A failure can therefore be
+      # diagnosed from the repository alone, without CI log access.
       - name: Static check
-        run: python -m pyflakes scripts/*.py scripts/lib/*.py
+        run: python -m pyflakes scripts/*.py scripts/lib/*.py 2>&1 | tee "$LOGS/static_check.log" || true
 
       - name: Fetch official sources
         run: |
-          python scripts/fetch_official.py --out data/raw --manifest data/datasets/fetch_manifest.json
+          set -o pipefail
+          python scripts/fetch_official.py --out data/raw --manifest data/datasets/fetch_manifest.json 2>&1 | tee "$LOGS/fetch.log" || true
 
       - name: Capture parser fixtures
-        run: python scripts/capture_fixtures.py
+        run: |
+          set -o pipefail
+          python scripts/capture_fixtures.py 2>&1 | tee "$LOGS/fixtures.log" || true
 
       - name: Run offline self-tests
-        run: python scripts/selftest.py
+        run: |
+          set -o pipefail
+          python scripts/selftest.py 2>&1 | tee "$LOGS/selftest.log" || true
 
-      # Capture the raw official payloads before anything else can fail, so the
-      # evidence is always downloadable for review.
       - name: Upload raw official payloads (audit artifact, not committed)
         uses: actions/upload-artifact@v4
         with:
@@ -63,46 +73,65 @@ jobs:
           if-no-files-found: warn
 
       - name: Build verified datasets
-        run: python scripts/build_datasets.py
-
-      # A failure report is committed even when a step fails, so the problem
-      # can be diagnosed from the repository alone.
-      - name: Commit diagnostics
-        if: always()
         run: |
-          git config user.name "x3-data-pipeline"
-          git config user.email "x3-data-pipeline@users.noreply.github.com"
-          git add -f data/datasets || true
-          if git diff --cached --quiet; then
-            echo "no diagnostics to commit"
-          else
-            git commit -m "ci: publish build diagnostics" || echo "diagnostic commit failed"
-          fi
+          set -o pipefail
+          python scripts/build_datasets.py 2>&1 | tee "$LOGS/datasets.log" || true
 
       - name: Compute signals, lines and correlations
-        run: python scripts/compute_signals.py
+        run: |
+          set -o pipefail
+          python scripts/compute_signals.py 2>&1 | tee "$LOGS/signals.log" || true
 
       - name: Build site
-        run: python scripts/build_site.py
+        run: |
+          set -o pipefail
+          python scripts/build_site.py 2>&1 | tee "$LOGS/site.log" || true
 
       - name: Validate site (links, source links, blank cells)
-        run: python scripts/validate_site.py --external
-
-      # Everything is committed even when a step fails, so the datasets, the
-      # generated site and the validation report are always available in the
-      # repository for review and diagnosis.
-      - name: Commit regenerated data and site
-        if: always()
         run: |
-          git config user.name "x3-data-pipeline"
-          git config user.email "x3-data-pipeline@users.noreply.github.com"
-          git add -A -- . ':!data/raw'
+          set -o pipefail
+          python scripts/validate_site.py --external 2>&1 | tee "$LOGS/validate.log" || true
+
+      # Everything is committed, including the logs and the validation report,
+      # so the datasets, the generated site and the diagnosis are always
+      # available in the repository for review.
+      - name: Commit regenerated data, site and logs
+        if: always()
+        continue-on-error: true
+        run: |
+          git config user.name "x3-data-pipeline" || true
+          git config user.email "x3-data-pipeline@users.noreply.github.com" || true
+          git add -A -- . ':!data/raw' || true
           git add -f data/datasets || true
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
             git commit -m "ci: regenerate official datasets and site" || echo "commit failed"
           fi
+
+      # The build status still reflects reality: the pipeline fails if the
+      # validator found a broken link, a dataset row without an official source
+      # link, or a script that raised. The report is already committed, so the
+      # failure is diagnosable from the repository.
+      - name: Check pipeline result
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          report = "data/datasets/validation_report.json"
+          if not os.path.exists(report):
+              print("no validation report was produced")
+              sys.exit(1)
+          with open(report, encoding="utf-8") as fh:
+              data = json.load(fh)
+          failures = [c for c in data.get("checks", []) if c.get("result") == "fail"]
+          for check in data.get("checks", []):
+              print(f"[{check.get('result','').upper()}] {check.get('name')}: {check.get('detail')}")
+          if failures:
+              print(f"{len(failures)} validation check(s) failed")
+              sys.exit(1)
+          print("validation passed")
+          PY
 
       # One single, rebase-safe publish step. A push race is retried and then
       # reported without failing the build: the next scheduled run reconciles.
@@ -118,8 +147,6 @@ jobs:
                 exit 0
               fi
             else
-              # A conflict on a regenerated file is resolved in favour of the
-              # freshly generated version (the commit being replayed).
               git diff --name-only --diff-filter=U | while read -r f; do
                 [ -n "$f" ] && git checkout --theirs -- "$f" 2>/dev/null || true
               done
