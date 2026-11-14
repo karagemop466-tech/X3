@@ -1,0 +1,25 @@
+
+:root{--ink:#14202b;--mut:#5b6b7a;--line:#dbe3ea;--bg:#f6f8fa;--acc:#0b5cad;--warn:#8a5a00;--warnbg:#fff4d6;--ok:#17603b;--okbg:#e4f5ec}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header.top{background:#0f2a43;color:#fff;padding:14px 22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.brand{font-weight:700;letter-spacing:.2px}.asof{opacity:.85;font-size:13px}
+nav.nav{background:#fff;border-bottom:1px solid var(--line);padding:8px 16px;display:flex;gap:4px;flex-wrap:wrap}
+nav.nav a{color:var(--ink);text-decoration:none;padding:6px 10px;border-radius:6px;font-size:14px}
+nav.nav a:hover{background:#eef4fa}nav.nav a.on{background:var(--acc);color:#fff}
+main{max-width:1200px;margin:0 auto;padding:18px 16px 40px}
+h1{font-size:24px;margin:8px 0 6px}h2{font-size:18px;margin:26px 0 8px}
+.hero p{max-width:900px;color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--acc)}.num{font-variant-numeric:tabular-nums}
+.card .num{font-size:24px;font-weight:700;color:var(--acc)}.card .lbl{color:var(--mut);font-size:13px;margin-top:4px}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}caption{text-align:left;padding:8px 10px;color:var(--mut);font-size:13px}
+th,td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:top;text-align:left}
+th{background:#f0f4f8;position:sticky;top:0;font-weight:600}
+td.num,th.num{text-align:right}td.blank{color:var(--warn);background:var(--warnbg)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;letter-spacing:.3px}
+.tag.d{background:#e6eefb;color:#174d8c}.tag.u{background:var(--warnbg);color:var(--warn)}
+footer{max-width:1200px;margin:0 auto;padding:14px 16px 30px;color:var(--mut);font-size:12.5px;border-top:1px solid var(--line)}
+a{color:var(--acc)}code{background:#eef2f6;padding:1px 4px;border-radius:3px}
+ul{max-width:900px}li{margin:4px 0}

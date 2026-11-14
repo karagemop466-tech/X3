@@ -1,0 +1,10 @@
+track,field,role,definition,status,source_url
+Ranking,ranking_basis,rank key,"Strategies are ordered by signal-track metrics only. Staking-track metrics cannot change rank.",PROPOSED - owner decision required (see Q-ledger-1),../hub/gates.html
+Ranking,eligibility,gate,"A strategy is listed as ranked only if every validation gate in hub/gates.html is PASS. Any other state is shown as NOT RANKED with the failing gate named.",PROPOSED - owner decision required,../hub/gates.html
+Signal,n_settled_bets,gate input,"Count of settled bets in the signal sample. A signal is not comparable across different n.",UNVERIFIED - no settled bets exist (no price or result archive for bets),../hub/gates.html
+Signal,clv_mean,gate input,"Mean closing-line value of the strategy's bets (price taken minus closing price, in the market's own units).",UNVERIFIED - no closing prices exist (see price_snapshots.csv),../hub/gates.html
+Signal,clv_ci_low_95,gate input,"Lower bound of the bootstrap 95% interval on clv_mean (gate G-6).",UNVERIFIED - no closing prices exist,../hub/gates.html
+Signal,edge_vs_baseline,gate input,"Out-of-sample difference between strategy outcome rate and a preregistered baseline on games not used to choose the rule (gate G-4).",UNVERIFIED - hub/data/prereg.json registers 12 strategy hypotheses but names no baseline model and no holdout season,../hub/gates.html
+Staking,stake_rule,information only,"The frozen staking rule (for example fixed units). Recorded for audit; never used to rank.",PROPOSED - no staking rule adopted,../hub/gates.html
+Staking,roi,information only,"Profit divided by amount staked under stake_rule. Shown in a separate column beside the signal metrics.",UNVERIFIED - no settled bets,../hub/gates.html
+Staking,max_drawdown_units,information only,"Largest peak-to-trough fall in bankroll under stake_rule, in units.",UNVERIFIED - no settled bets,../hub/gates.html

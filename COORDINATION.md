@@ -1441,9 +1441,41 @@ The brief asks for capabilities the canonical hub (`hub/`, merged via PR #35) do
 ### Task board (arena/2d19ea40-x3)
 | # | Task | Status |
 |---|------|--------|
-| L1 | Results feed: 2026 Weeks 1–10 finals with per-row official source; reconciled line by line against nfl.com standings | in progress |
-| L2 | Price-snapshot store: every originated market (side → total → moneyline) with opening/closing columns, fair / market / difference columns | unclaimed |
-| L3 | Replacement-depth rows for Week 10 first-string absences | unclaimed |
-| L4 | Leaderboard schema: signal and staking split + demotion gate (PROPOSED thresholds) | unclaimed |
-| L5 | Correlations recomputed from the verified results feed, n published with each value | unclaimed |
-| L6 | Pages (`ledger/`), verifier, README entry, COORDINATION completion record | unclaimed |
+| L1 | Results feed: 2026 Weeks 1–10 finals with per-row official source; reconciled line by line against nfl.com standings | done |
+| L2 | Price-snapshot store: every originated market (side → total → moneyline) with opening/closing columns, fair / market / difference columns | done (opening/closing blank: no official price source) |
+| L3 | Replacement-depth rows for Week 10 first-string absences | done |
+| L4 | Leaderboard schema: signal and staking split + demotion gate (PROPOSED thresholds) | done (proposals, not adopted) |
+| L5 | Correlations recomputed from the verified results feed, n published with each value | done |
+| L6 | Pages (`ledger/`), verifier, README entry, COORDINATION completion record | done |
+
+### Completion record — arena/2d19ea40-x3 (2026-11-14, UTC)
+
+**Delivered:** `ledger/` (7 pages), `data/ledger/` (6 CSVs), `tools/ledger_extract.py`, `tools/build_ledger.py`,
+`tools/verify_ledger.py`, README section. Rebuild: `python3 tools/ledger_extract.py && python3 tools/build_ledger.py && python3 tools/verify_ledger.py`.
+
+**Sources (official unless stated):**
+- https://www.nfl.com/standings/league/2026/REG — fetched live 2026-11-14, both chunks read; 32 club rows transcribed to `data/ledger/standings_live_2026_wk10.csv` (W, L, T, PF, PA, home, road).
+- https://www.nfl.com/schedules/2026/by-week/week-10 — fetched live 2026-11-14, chunks 0–1 read: Thursday final WAS 24 NYG 21 confirmed; Sunday listings for NE@DET, KC@ATL, HOU@CLE, MIN@GB, MIA@IND, CAR@NO, BUF@NYJ, JAX@TEN, LA@ARI, SEA@LV, SF@DAL, PIT@CIN confirmed (home/away and kickoff) — LAC@BAL (Monday) not re-read.
+- https://www.nfl.com/schedules/2026/by-week/week-1 … week-10 — captured earlier in `data/desk/games.json` (official pages, row-level URLs); used for the 137 FINAL rows. Not re-read game by game this session; validated by the standings reconciliation below.
+- https://www.atlantafalcons.com/team/depth-chart — fetched live; ILB 1 Divine Deablo, ILB 2 Christian Harris match the overlay row.
+- https://www.nfl.com/injuries/league/2026/reg10 — NOT re-fetched this session; the 76 Out/Doubtful rows were checked against the already-published copy `data/hub/injuries_2026_wk10.csv` (status matches 76/76).
+
+**Verification performed (`tools/verify_ledger.py`, exit 0):**
+1. Results feed vs live standings: 32 of 32 clubs match on W, L, T, PF, PA, home record and road record (0 mismatches).
+2. Injected faults were caught and the tree was restored: a filled market value with no source; a 3-point score error (flagged on both BUF and HOU); an unsourced depth row.
+3. Price store: 13 games × 3 markets = 39 rows in side → total → moneyline order; all opening, closing and book cells blank; every row links an nfl.com game page.
+4. Depth rows: 76 of 76 statuses match the official-report copy; one team host per club.
+5. Every table row on the ledger pages links an approved official host or carries UNVERIFIED / PROPOSED / DERIVED; navigation rows carry an explicit `k-meta` marker (6 rows).
+6. Existing validators all exit 0: check_links, check_site, audit_all, verify_site, verify_data, check_hub, verify_hub, verify_integration, desk_verify, check_dashboard, check_data.js, check_render.js, node --check assets/data.js. Two generated reports rewritten as side effects were reverted (`crosscheck/data/selfcheck.json`, `verification-hub/audit-report.json`).
+
+**Irregularities (published at `ledger/flagged.html`, LF-01 to LF-10; none blocks merge):**
+- **LF-10 (substantive):** `hub/data/lines.json` lists the home side reversed for **BUF@NYJ, JAX@TEN, CAR@NO** against the official listing ("Bills at Jets", "Jaguars at Titans", "Panthers at Saints", nfl.com week-10 page). Team-level margins are unchanged; the ledger re-expresses fair lines from the official home side. The hub is not edited (PR #36 open). Owner should correct the model's orientation.
+- LF-01 no official price source; blank by policy. LF-02 moneyline is an uncalibrated normal approximation (σ = 13.23, n = 137). LF-03 demotion/leaderboard thresholds PROPOSED. LF-04 depth charts self-labelled unofficial, mostly undated. LF-05 only the Atlanta chart re-read live. LF-06 LAR/AZ vs LA/ARI alias applied. LF-07 Week-1 neutral-site venue (East Melbourne) not independently re-checked. LF-08 ledger not linked from root or hub (PR #36 conflict). LF-09 standings page text contains an unrendered template heading (no value affected).
+- Correlation cross-check: r(total, |margin|) = −0.0157 here, matching the −0.016 recomputed by `arena/e9b492ab-x3` (FLG-22). r(total, signed margin) = −0.161 matches that session's stated value.
+
+**Requests logged (files NOT edited):**
+- To the root/hub owner: add a link to `ledger/index.html` from `index.html` and `hub/index.html`.
+- To the `pages.yml` owner: add a step `python3 tools/verify_ledger.py` (offline, fast). Until then the ledger gate runs manually, not in CI.
+- To the `hub/` / model owner: correct the orientation in `hub/data/lines.json` for BUF@NYJ, JAX@TEN, CAR@NO (LF-10).
+
+**Not done (honest scope):** no price, prop, or closing-line data; no settled bets, so no ROI, CLV or leaderboard rows; no strategy promoted or demoted; no new strategies. The demotion thresholds await an owner decision (Q-ledger-1).
