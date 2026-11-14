@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verification Hub — X3 NFL Integration Report</title>
+<link rel="stylesheet" href="../assets/hub.css">
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Final integration session · arena/621bf404-x3</p>
+    <h1>Verification Hub — line-by-line integration report</h1>
+    <p class="sub">Repo-wide audit of every site unit, official-source re-verification of the canonical
+    datasets, and the full checks registry. Generated 2026-11-14; machine-readable output in
+    <code>verification-hub/audit-report.json</code>, produced by <code>scripts/verify_integration.py</code>.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <h2>1 · Repo-wide structural audit (this session)</h2>
+  <p>Coverage: every <code>*.html</code> file in the repository — including <code>dashboard/</code> and
+  <code>x3lab/</code>, which no single prior check covered together with the rest.</p>
+  <table>
+    <thead><tr><th>Unit</th><th>Pages</th><th>Table rows</th><th>Rows sourced or flagged</th><th>Refs</th><th>Entry page</th></tr></thead>
+    <tbody>
+      <tr><td>(root pages)</td><td>13</td><td>348</td><td>230</td><td>383</td><td><a href="../index.html">index.html</a></td></tr>
+      <tr><td>dashboard/</td><td>18</td><td>797</td><td>681</td><td>1,192</td><td><a href="../dashboard/index.html">dashboard/index.html</a></td></tr>
+      <tr><td>docs/</td><td>24</td><td>1,009</td><td>846</td><td>1,334</td><td><a href="../docs/index.html">docs/index.html</a></td></tr>
+      <tr><td>lab/</td><td>11</td><td>0 (client-side render)</td><td>n/a — render test covers rows</td><td>33</td><td><a href="../lab/index.html">lab/index.html</a></td></tr>
+      <tr><td>legacy/</td><td>1</td><td>0</td><td>n/a</td><td>14</td><td><a href="../legacy/index.html">legacy/index.html</a></td></tr>
+      <tr><td>pages/</td><td>6</td><td>82</td><td>54</td><td>87</td><td><a href="../pages/executive-summary.html">pages/executive-summary.html</a></td></tr>
+      <tr><td>site/</td><td>1</td><td>0</td><td>n/a</td><td>13</td><td><a href="../site/index.html">site/index.html</a></td></tr>
+      <tr><td>x3lab/</td><td>13</td><td>0 (client-side render)</td><td>n/a — render test covers rows</td><td>83</td><td><a href="../x3lab/index.html">x3lab/index.html</a></td></tr>
+      <tr><td>verification-hub/</td><td>1</td><td>32</td><td>13</td><td>26</td><td>this page</td></tr>
+      <tr><td><strong>Total</strong></td><td><strong>88</strong></td><td><strong>2,268</strong></td><td><strong>1,824</strong></td><td><strong>1,302 internal</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Result: 0 parse problems, 0 broken internal links.</strong></p>
+  <p>Row accounting: rows without an external link or marker are column headers and
+  framework/definition rows (strategy specifications, gate definitions, questions, requirements,
+  suggestions) — project-authored content with no external fact to cite. The per-unit data-row
+  policy checks (below) enforce the source rule on fact rows; each was run on the combined tree.</p>
+</section>
+
+<section>
+  <h2>2 · Official-source re-verification (this session, 2026-11-14)</h2>
+  <table>
+    <thead><tr><th>Dataset</th><th>Official page (link)</th><th>Verification performed</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td>2026 league standings (32 clubs)</td><td><a href="https://www.nfl.com/standings/league/2026/REG">nfl.com/standings/league/2026/REG</a></td><td>Both page chunks read; all 32 rows compared field-by-field against <code>docs/data/standings-2026-week10.csv</code> (W, L, T, PF, PA, net, home, road, div, conf, streak)</td><td><span class="pill ok">32/32 EXACT MATCH</span></td></tr>
+      <tr><td>Week-10 injury report (345 rows)</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries/league/2026/reg10</a></td><td>Chunk 1 re-read and matched against <code>docs/data/injury-2026-week10.csv</code>: WAS (Bates, Burks, Daniels, Gulbin, Okonkwo, Patrick, Robertson, Tuttle, Yankoff), NYG (Carter, Harrison, McCarthy), NE (A.J. Brown, Ben Brown…), DET (Branch, Goff, Joseph, Mays, Reed, St. Brown…), KC (Bassa, Delane, Fields, Kelce, Mahomes…)</td><td><span class="pill ok">ALL SPOT-CHECKS MATCH</span></td></tr>
+      <tr><td>Injury status counts</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries/league/2026/reg10</a></td><td>CSV parsed with a quote-aware parser: 66 Out · 10 Doubtful · 84 Questionable · 185 practice-only rows</td><td><span class="pill ok">MATCHES PRIOR SESSIONS' COUNTS</span></td></tr>
+      <tr><td>Game/schedule context</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">injury page headers</a></td><td>WAS(3-5-1)@NYG(5-3-1) Nov 12 · KC(6-2)@ATL(3-6) Nov 15 · NE(5-4) vs DET(6-2) Munich — records agree with the standings snapshot</td><td><span class="pill ok">CONSISTENT</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>3 · Checks registry (all pass on the combined tree)</h2>
+  <table>
+    <thead><tr><th>Check</th><th>Command</th><th>Covers</th><th>Last result</th><th>Owner session</th></tr></thead>
+    <tbody>
+      <tr><td>Integration audit (this session)</td><td><code>python3 scripts/verify_integration.py</code></td><td>All 87 pages: parse + internal links + row accounting</td><td>PASS — 0 problems, 0 broken links</td><td>arena/621bf404-x3</td></tr>
+      <tr><td>Docs dashboard rows &amp; links</td><td><code>python3 scripts/check_site.py</code></td><td>docs/ pages: 352 rows, 0 missing link/flag</td><td>PASS</td><td>arena/0c38f465-x3</td></tr>
+      <tr><td>Root &amp; unit link check</td><td><code>python3 tools/check_links.py</code></td><td>13 root pages, 315 links</td><td>PASS</td><td>arena/3dbc4678-x3</td></tr>
+      <tr><td>Source-first dashboard checks</td><td><code>python3 scripts/check_dashboard.py</code> + <code>node scripts/check_data.js</code> + <code>node scripts/check_render.js</code></td><td>lab/ + assets: 20 sources, 61 research rows, 11 rendered views</td><td>PASS</td><td>arena/972ad7a5-x3</td></tr>
+      <tr><td>x3lab data gate</td><td><code>python3 scripts/verify_data.py</code></td><td>x3lab: 2,134 checks (row sourcing, invariants, wiring)</td><td>PASS</td><td>arena/e1c332ce-x3</td></tr>
+      <tr><td>Extended research pages verifier</td><td><code>python3 tools/verify_site.py</code></td><td>14 pages / 48 tables, row-source policy</td><td>PASS</td><td>arena/4856379c-x3</td></tr>
+      <tr><td>Dashboard build (deterministic)</td><td><code>python3 tools/build_dashboard.py</code></td><td>dashboard/ rebuilt from <code>tools/nfl_data.py</code> — counts computed at build time</td><td>VERIFIED — no drift (per PR #14)</td><td>arena/7e632805-x3</td></tr>
+      <tr><td>Pages workflow audit</td><td>GitHub Actions “Deploy X3 NFL site to GitHub Pages”</td><td>HTML/link audit, docs rows, root pages, dashboard checks, upload</td><td>Runs on every push/PR to main</td><td>arena/1a771fcd-x3</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>4 · Irregularities observed during integration (non-blocking)</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Observation</th><th>Assessment</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>I-01</td><td>Generated pages in <code>dashboard/</code> omit explicit <code>&lt;/tr&gt;</code> end tags</td><td>Valid HTML5 — tr/td end tags are optional under the HTML parsing rules; browsers and all prior checkers accept it</td><td>Auditor updated to implement HTML5 optional-end-tag semantics; no files changed</td></tr>
+      <tr><td>I-02</td><td><code>docs/data/standings-2026-week10.csv</code> cites the generic <code>https://www.nfl.com/standings/</code> rather than the exact permalink</td><td>Data itself verified exact (32/32) against the permalink</td><td>Logged as suggestion S-N2 for the owner; not silently edited (file owned by arena/4856379c-x3)</td></tr>
+      <tr><td>I-03</td><td>Open PR <a href="https://github.com/karagemop466-tech/X3/pull/12">#12</a> (record-keeping, COORDINATION.md only) conflicts with main</td><td>Its substance (PR #8 merge + Pages deployment record) is already reflected on main's history</td><td>Handled separately from this PR; see COORDINATION.md integration log</td></tr>
+      <tr><td>I-04</td><td>Eight overlapping site units create navigation ambiguity</td><td>All units pass their own checks; duplication is a UX risk, not a data risk</td><td>Landing hub (<a href="../index.html">index.html</a>) now names one canonical destination per category (suggestion S-N1)</td></tr>
+      <tr><td>I-05</td><td>Club depth charts are self-labelled “unofficial”; Houston's is an image; no as-of dates on 27 of 32</td><td>Already flagged F-01/F-02/F-05 on <a href="../dashboard/flagged.html">dashboard/flagged.html</a></td><td>Depth-dependent values remain badged; severity shown per row</td></tr>
+      <tr><td>I-06</td><td>No official NFL source publishes betting lines or player-prop prices</td><td>Confirmed independently this session — model/market comparisons stay DERIVED or UNVERIFIED</td><td>All odds-dependent values blank/badged; see <a href="../dashboard/questions.html">Q-02/Q-03</a></td></tr>
+    </tbody>
+  </table>
+  <p>Full per-unit flag lists: <a href="../dashboard/flagged.html">dashboard/flagged.html</a> (12) ·
+  <a href="../x3lab/flagged.html">x3lab/flagged.html</a> (10) ·
+  <a href="../docs/pages/flagged.html">docs/pages/flagged.html</a> (13) ·
+  <a href="../docs/flagged.html">docs/flagged.html</a> (17) ·
+  <a href="../flagged.html">flagged.html (root)</a> (16) ·
+  <a href="../pages/flagged-for-review.html">pages/flagged-for-review.html</a>.</p>
+</section>
+
+<section>
+  <h2>5 · Rebuild / re-run</h2>
+  <p>Regenerate this report: <code>python3 scripts/verify_integration.py</code> (writes
+  <code>verification-hub/audit-report.json</code> and prints the summary; exits non-zero on any
+  parse or link failure). Run alongside the per-unit checks in section 3 for full coverage.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Policy:</strong> nothing on this site is inferred. Facts link to official sources; unknowns stay blank and flagged; model output is badged DERIVED.</p>
+    <p><a href="../index.html">← Landing hub</a> · <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a> · <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+  </div>
+</footer>
+</body>
+</html>

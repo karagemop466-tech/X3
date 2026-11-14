@@ -1,0 +1,117 @@
+{
+  "units": {
+    "(root)": {
+      "pages": 13,
+      "rows": 348,
+      "flagged_rows": 230,
+      "refs": 383,
+      "unsourced_examples": [
+        "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
+        "executive-summary.html:  Item  Detail  Source ",
+        "executive-summary.html:  Area  Status  Detail ",
+        "executive-summary.html:  Standings / Injuries / Schedule / Depth  verified  Verified against official sources ",
+        "flagged.html: Live or historical betting lines / odds \u2014 No line archive or provider is present. NFL is not the source of bookmaker quo",
+        "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
+        "flagged.html: Item Type Detail Official source",
+        "index.html: Category Primary page (open) What you will find Data status Official source"
+      ]
+    },
+    "dashboard": {
+      "pages": 18,
+      "rows": 797,
+      "flagged_rows": 681,
+      "refs": 1192,
+      "unsourced_examples": [
+        "dashboard/correlation.html: Pair Kind Estimator Data used Value n Status Source",
+        "dashboard/correlation.html: Pair Kind Estimator Required data Value Status",
+        "dashboard/depth-charts.html: Club Abbr Chart label as printed by the club As-of date Players listed Source",
+        "dashboard/depth-charts.html: Club Abbr Player Pos Unit Chart slot Out depth Severity Named replacement Replacement depth Game status Sources",
+        "dashboard/executive-summary.html: Area Finding Source",
+        "dashboard/index.html: Away Home Model home spread Model total Network Kickoff (ET) Source",
+        "dashboard/index.html: ID Area Question Blocking Detail",
+        "dashboard/index.html: Q-01 Data scope What is the authoritative universe of games the model will be scored on? Yes open"
+      ]
+    },
+    "docs": {
+      "pages": 24,
+      "rows": 1009,
+      "flagged_rows": 846,
+      "refs": 1334,
+      "unsourced_examples": [
+        "docs/correlations.html:  ID  Signal A  Signal B  Correlation  Method  Sample  Status  Note  Source ",
+        "docs/flagged.html:  ID  Severity  Area  Issue  Evidence  Source link  Action for you ",
+        "docs/injuries.html:  Team  Out  Doubtful  Questionable  Rows  Source ",
+        "docs/injuries.html:  Position  Out count  Source ",
+        "docs/injuries.html:  Team  Game slot  Player  Pos  Injury  Practice  Game status  Note  Source ",
+        "docs/pages/correlation.html: Finding Source Source tier",
+        "docs/pages/correlation.html: Leg A Leg B Sign hypothesis (testable, not a value) Correlation value 95% CI Status",
+        "docs/pages/executive-summary.html: Deliverable Status Evidence"
+      ]
+    },
+    "lab": {
+      "pages": 11,
+      "rows": 0,
+      "flagged_rows": 0,
+      "refs": 33,
+      "unsourced_examples": []
+    },
+    "legacy": {
+      "pages": 1,
+      "rows": 0,
+      "flagged_rows": 0,
+      "refs": 14,
+      "unsourced_examples": []
+    },
+    "pages": {
+      "pages": 6,
+      "rows": 82,
+      "flagged_rows": 54,
+      "refs": 87,
+      "unsourced_examples": [
+        "pages/executive-summary.html: Area Finding Status Source",
+        "pages/executive-summary.html: Source What it provides Official?",
+        "pages/flagged-for-review.html: Ref Irregularity Detail Source / reference Suggested action",
+        "pages/flagged-for-review.html:  I-01  Repository was empty at branch point  Only README.md (\"# X3\"); no data, docs, or site configuration existed  git ",
+        "pages/flagged-for-review.html:  I-03  Direct fetch of nfl.com blocked in sandbox  Outbound network limited to GitHub hosts and package registries  Sand",
+        "pages/injuries.html: Element Design Status Source",
+        "pages/injuries.html:  Ingestion  Automated weekly fetch; no manual input  Not built  Direct nfl.com fetch blocked in sandbox ",
+        "pages/sources.html: # Source Type Used for Official?"
+      ]
+    },
+    "site": {
+      "pages": 1,
+      "rows": 0,
+      "flagged_rows": 0,
+      "refs": 13,
+      "unsourced_examples": []
+    },
+    "verification-hub": {
+      "pages": 1,
+      "rows": 32,
+      "flagged_rows": 13,
+      "refs": 26,
+      "unsourced_examples": [
+        "verification-hub/index.html: (root pages) 13 348 230 383 index.html",
+        "verification-hub/index.html: dashboard/ 18 797 681 1,192 dashboard/index.html",
+        "verification-hub/index.html: docs/ 24 1,009 846 1,334 docs/index.html",
+        "verification-hub/index.html: pages/ 6 82 54 87 pages/executive-summary.html",
+        "verification-hub/index.html: verification-hub/ 1 32 13 26 this page",
+        "verification-hub/index.html: Total 88 2,268 1,824 1,302 internal \u2014",
+        "verification-hub/index.html: Dataset Official page (link) Verification performed Result",
+        "verification-hub/index.html: Check Command Covers Last result Owner session"
+      ]
+    },
+    "x3lab": {
+      "pages": 13,
+      "rows": 0,
+      "flagged_rows": 0,
+      "refs": 83,
+      "unsourced_examples": []
+    }
+  },
+  "pages_total": 88,
+  "rows_total": 2268,
+  "rows_flagged_or_sourced": 1824,
+  "internal_refs": 1302,
+  "problems": []
+}

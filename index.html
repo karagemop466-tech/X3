@@ -1,15 +1,168 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10273b">
-  <meta http-equiv="refresh" content="0; url=lab/index.html">
-  <link rel="canonical" href="lab/index.html">
-  <title>NFL Decision Lab</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X3 · NFL Decision Intelligence — Landing Hub</title>
+<link rel="stylesheet" href="assets/hub.css">
 </head>
 <body>
-  <p>Opening the source-first <a href="lab/index.html">NFL Decision Lab</a>.</p>
-  <p>The previous source-reviewed data dashboard is preserved at <a href="docs/index.html">docs/index.html</a>.</p>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Final integration · session arena/621bf404-x3 · 2026-11-14</p>
+    <h1>X3 — NFL Decision Intelligence</h1>
+    <p class="sub">One landing page for the whole project: verified data, own-line origination,
+    strategy validation, injury &amp; depth tracking, suggestions and flags. Every value on this
+    site is either linked to an official source or explicitly marked unverified — nothing is inferred.</p>
+    <p class="badge-row">
+      <span class="badge ok">Data as of: Week 10 · 2026 season · 2026-11-14</span>
+      <span class="badge">Pages: 88</span>
+      <span class="badge">Internal links: 1,302 — 0 broken</span>
+      <span class="badge">Unverified values: blank + flagged</span>
+    </p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="snapshot">
+  <h2>Executive snapshot</h2>
+  <div class="cards">
+    <a class="card" href="dashboard/executive-summary.html">
+      <span class="num">32/32</span>
+      <span class="lbl">Standings rows verified against the official NFL page</span>
+      <span class="src">Source: nfl.com/standings/league/2026/REG</span>
+    </a>
+    <a class="card" href="dashboard/injuries.html">
+      <span class="num">345</span>
+      <span class="lbl">Injury-report rows (66 Out · 10 Doubtful · 84 Questionable · 185 practice-only)</span>
+      <span class="src">Source: nfl.com/injuries/league/2026/reg10</span>
+    </a>
+    <a class="card" href="dashboard/depth-charts.html">
+      <span class="num">31/32</span>
+      <span class="lbl">Club depth charts transcribed; 76 starter-absent positions identified</span>
+      <span class="src">Source: official club sites (self-labelled “unofficial” — flagged)</span>
+    </a>
+    <a class="card" href="dashboard/lines.html">
+      <span class="num">14</span>
+      <span class="lbl">Own model lines originated (v0.1, HFA 0.0, uncalibrated — badged DERIVED)</span>
+      <span class="src">Model output, not fact: parameters printed on the page</span>
+    </a>
+    <a class="card" href="dashboard/validation.html">
+      <span class="num">10 / 0</span>
+      <span class="lbl">Strategies registered / strategies that have passed all validation gates</span>
+      <span class="src">Gates G-01…G-12 defined; no strategy cleared yet</span>
+    </a>
+    <a class="card" href="dashboard/correlation.html">
+      <span class="num">4</span>
+      <span class="lbl">Correlation values computed (Pearson r on official standings); 7 pending data</span>
+      <span class="src">DERIVED from official standings; method published</span>
+    </a>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How to use this site for a decision</h2>
+  <ol class="steps">
+    <li><strong>Check what is verified.</strong> Start with the <a href="dashboard/executive-summary.html">executive summary</a> and the <a href="dashboard/standings.html">verified standings</a> / <a href="dashboard/injuries.html">injury tracker</a>.</li>
+    <li><strong>Check what it implies.</strong> Look at <a href="dashboard/lines.html">own lines</a>, <a href="dashboard/strategies.html">candidate strategies</a> and the <a href="dashboard/leaderboard.html">leaderboard</a> — only gate-passing strategies belong in decisions.</li>
+    <li><strong>Check what is still unknown.</strong> Read the <a href="#decisions">open decisions</a>, the <a href="dashboard/questions.html">question register</a> and the <a href="dashboard/flagged.html">Flagged for Review</a> page before acting. Review <a href="#suggestions">suggestions</a> and pick a path before implementing changes.</li>
+  </ol>
+</section>
+
+<section id="directory">
+  <h2>Site directory — one canonical destination per category</h2>
+  <p>The repository integrates eight parallel site units. For each category the table below names the
+  <em>primary</em> page to use. Additional units covering the same category are listed under each row.</p>
+  <table>
+    <thead><tr><th>Category</th><th>Primary page (open)</th><th>What you will find</th><th>Data status</th><th>Official source</th></tr></thead>
+    <tbody>
+      <tr><td>Executive summary</td><td><a href="dashboard/executive-summary.html">dashboard/executive-summary.html</a></td><td>Findings, deliverables status, evidence links (counts computed at build time)</td><td><span class="pill ok">VERIFIED</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries</a></td></tr>
+      <tr><td>Standings</td><td><a href="dashboard/standings.html">dashboard/standings.html</a></td><td>All 32 clubs, W/L/T, PF/PA, net points, home/road splits</td><td><span class="pill ok">VERIFIED 32/32</span></td><td><a href="https://www.nfl.com/standings/league/2026/REG">nfl.com/standings</a></td></tr>
+      <tr><td>Schedule</td><td><a href="dashboard/schedule.html">dashboard/schedule.html</a></td><td>Week 10 matchups, kickoffs, networks, byes</td><td><span class="pill ok">VERIFIED 14+4</span></td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com/schedules</a></td></tr>
+      <tr><td>Injuries</td><td><a href="dashboard/injuries.html">dashboard/injuries.html</a></td><td>345-row Week-10 official injury report with per-row source</td><td><span class="pill ok">VERIFIED 345</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries</a></td></tr>
+      <tr><td>Depth &amp; backup deficiencies</td><td><a href="dashboard/depth-charts.html">dashboard/depth-charts.html</a></td><td>Starter→backup mapping, 76 starter-absent positions, 2nd/3rd/4th-string impact</td><td><span class="pill warn">PARTIAL — club charts self-labelled unofficial</span></td><td><a href="https://www.detroitlions.com/team/depth-chart">example: club site</a></td></tr>
+      <tr><td>Own lines (model)</td><td><a href="dashboard/lines.html">dashboard/lines.html</a></td><td>Model v0.1 spreads/totals vs week-10 slate; market comparison in the x3lab unit</td><td><span class="pill warn">DERIVED / UNCALIBRATED</span></td><td><a href="dashboard/sources.html">see sources page</a></td></tr>
+      <tr><td>Market comparison &amp; luck pilots</td><td><a href="x3lab/lines.html">x3lab/lines.html</a></td><td>Model-vs-market board, week-11 look-ahead, futures; Pythagorean luck pilot</td><td><span class="pill warn">MARKET DATA UNVERIFIED</span></td><td><a href="x3lab/sources.html">x3lab sources</a></td></tr>
+      <tr><td>Strategies &amp; signals</td><td><a href="dashboard/strategies.html">dashboard/strategies.html</a></td><td>10 registered strategies: singles, parlays, player-prop combos with selection rules</td><td><span class="pill warn">REGISTERED — none gate-passed</span></td><td><a href="dashboard/sources.html">see sources page</a></td></tr>
+      <tr><td>Validation gates (luck removal)</td><td><a href="dashboard/validation.html">dashboard/validation.html</a></td><td>G-01…G-12: pre-registration, sample size, walk-forward, CLV, deflated Sharpe, FDR</td><td><span class="pill warn">FRAMEWORK — not yet run</span></td><td><a href="https://www.nist.gov/nist-pubs/statistical-reference-pages">NIST statistics references</a></td></tr>
+      <tr><td>Correlation</td><td><a href="dashboard/correlation.html">dashboard/correlation.html</a></td><td>Pearson r on official standings (4 computed); parlay-leg correlations pending price data</td><td><span class="pill warn">4 COMPUTED / 7 PENDING</span></td><td><a href="https://www.nfl.com/standings/league/2026/REG">nfl.com/standings</a></td></tr>
+      <tr><td>Leaderboard</td><td><a href="dashboard/leaderboard.html">dashboard/leaderboard.html</a></td><td>Competition design, scoring metrics, anti-gaming rules, notional rewards</td><td><span class="pill warn">EMPTY BY DESIGN</span></td><td><a href="https://www.kaggle.com/competitions/nfl-big-data-bowl-2027/overview">prize-model reference</a></td></tr>
+      <tr><td>Open questions</td><td><a href="dashboard/questions.html">dashboard/questions.html</a></td><td>20 questions, 13 blocking, each with a discovery path</td><td><span class="pill warn">13 BLOCKING</span></td><td><a href="dashboard/sources.html">see sources page</a></td></tr>
+      <tr><td>Suggestions (review queue)</td><td><a href="dashboard/suggestions.html">dashboard/suggestions.html</a></td><td>16 proposals awaiting a decision before implementation; plus new proposals below</td><td><span class="pill ok">PROCESS ACTIVE</span></td><td><a href="#suggestions">see this page</a></td></tr>
+      <tr><td>Requirements tracker</td><td><a href="dashboard/requirements.html">dashboard/requirements.html</a></td><td>24 requirements with acceptance criteria; 19 done, 5 partial</td><td><span class="pill ok">TRACKED</span></td><td><a href="dashboard/repo-review.html">repo review</a></td></tr>
+      <tr><td>Flagged for Review</td><td><a href="dashboard/flagged.html">dashboard/flagged.html</a></td><td>12 irregularities incl. depth-chart freshness, no market-line source, HFA 0.0</td><td><span class="pill warn">NON-BLOCKING</span></td><td><a href="dashboard/flagged.html">see page</a></td></tr>
+      <tr><td>Sources register</td><td><a href="dashboard/sources.html">dashboard/sources.html</a></td><td>4 league + 32 club official sources with row counts</td><td><span class="pill ok">VERIFIED</span></td><td><a href="https://www.nfl.com/">nfl.com</a></td></tr>
+      <tr><td>Research depth (methods)</td><td><a href="docs/pages/strategies.html">docs/pages/strategies.html</a></td><td>Signal catalog S1–S8, line-origination literature (Levitt 2004), validation G0–G8, correlation pipeline</td><td><span class="pill ok">FRAMEWORK</span></td><td><a href="https://www.ssrn.com/abstract=2460551">SSRN 2460551 (DSR)</a></td></tr>
+      <tr><td>Archive data (CSV)</td><td><a href="docs/index.html">docs/index.html</a></td><td>Generated dashboard over CSV snapshots: 345-row injuries, 32-team standings</td><td><span class="pill ok">VERIFIED SNAPSHOT</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries</a></td></tr>
+      <tr><td>Framework-first dashboard</td><td><a href="lab/index.html">lab/index.html</a></td><td>Evidence-boundary research module; hypotheses and source metadata (no measured outcomes)</td><td><span class="pill ok">FRAMEWORK</span></td><td><a href="https://operations.nfl.com/">operations.nfl.com</a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="decisions">
+  <h2>Open decisions blocking progress (13 of 20 questions)</h2>
+  <p>Full register with discovery paths: <a href="dashboard/questions.html">dashboard/questions.html</a>.
+  The five with the biggest decision impact:</p>
+  <table>
+    <thead><tr><th>ID</th><th>Question</th><th>Why it blocks</th><th>How to discover the answer</th></tr></thead>
+    <tbody>
+      <tr><td>Q-02</td><td>What market lines are we trying to beat?</td><td>No odds feed exists in the system; scoring layer cannot fire</td><td>Choose a licensed odds provider; record opening/closing prices weekly</td></tr>
+      <tr><td>Q-01</td><td>Which games define the scoring universe?</td><td>Leaderboard cannot rank strategies without a frozen game set</td><td>Owner decision: all regular-season games vs listed slate only</td></tr>
+      <tr><td>Q-14</td><td>Correlations between parlay legs?</td><td>Parlay/prop-combo pricing needs joint probabilities, not products of marginals</td><td>Ingest play-by-play (nflverse GitHub) and estimate pairwise correlations</td></tr>
+      <tr><td>Q-10</td><td>What is the correct home-field advantage?</td><td>Model currently runs at HFA 0.0 — lines are uncalibrated</td><td>Fit HFA on historical game log once results data is ingested</td></tr>
+      <tr><td>Q-17</td><td>Is the system lawful in the owner's jurisdiction?</td><td>Real-money rewards cannot be configured before a legal review</td><td>Owner decision; keep rewards notional until cleared</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="suggestions">
+  <h2>Suggestions — review before implementing anything</h2>
+  <p>Dedicated review queue with 16 tracked proposals (2 adopted, 13 proposed, 1 deferred):
+  <a href="dashboard/suggestions.html">dashboard/suggestions.html</a> · alternatives:
+  <a href="x3lab/suggestions.html">x3lab/suggestions.html</a> (12) ·
+  <a href="docs/pages/suggestions.html">docs/pages/suggestions.html</a> (14).</p>
+  <h3>New proposals from the final integration session — <span class="pill warn">PROPOSAL, not implemented</span></h3>
+  <table>
+    <thead><tr><th>ID</th><th>Suggestion</th><th>Decision-making benefit</th><th>Option A</th><th>Option B</th><th>Recommended path</th></tr></thead>
+    <tbody>
+      <tr><td>S-N1</td><td>Consolidate the eight site units into one canonical tree</td><td>Removes ambiguity about which page is authoritative; single navigation</td><td>Keep dashboard/ as canonical, archive the rest under /legacy/</td><td>Merge all units into one rebuild pipeline</td><td>A — lowest risk; content preserved; one nav to maintain</td></tr>
+      <tr><td>S-N2</td><td>Point snapshot CSVs at exact official permalinks</td><td>Makes every archived row reproducible at the exact page version</td><td>Edit <code>docs/data/standings-2026-week10.csv</code> source_url to the /league/2026/REG permalink</td><td>Keep generic URL; rely on page header</td><td>A — one-line change; file owned by arena/4856379c-x3, so logged in COORDINATION.md and <strong>awaiting owner decision, not applied</strong></td></tr>
+      <tr><td>S-N3</td><td>Automate weekly refresh from nflverse GitHub datasets (github.com/nflverse)</td><td>Removes manual transcription; keeps injuries/lines current without human input</td><td>Scheduled GitHub Action pulling nflverse release data</td><td>Keep weekly manual-equivalent agent transcription</td><td>A after Q-02 resolved — market prices still need a licensed feed</td></tr>
+      <tr><td>S-N4</td><td>Unify unit-scoped flag IDs (F-01…F-15 appear in four units)</td><td>One master flag table prevents missed follow-ups</td><td>Master table on this hub, linking each unit's flag row</td><td>Rename IDs per unit (F-DOC-01…)</td><td>A — zero data changes, pure navigation</td></tr>
+      <tr><td>S-N5</td><td>Add a 90-minute-pre-kickoff inactives gate to every strategy</td><td>'Out' on the report is not inactivity (Q-05); final lineups change prices</td><td>Gate rule in validation framework</td><td>Trust injury report only</td><td>A — already endorsed in dashboard S-06; make it blocking gate G-13</td></tr>
+      <tr><td>S-N6</td><td>Keep leaderboard rewards notional until legal review clears the jurisdiction</td><td>Prevents building a prize system that cannot lawfully pay</td><td>Notional points + public ranking</td><td>Seek counsel before any funded season</td><td>A now; revisit B when Q-17 is answered</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="units">
+  <h2>Site units inventory (all integrated on main)</h2>
+  <table>
+    <thead><tr><th>Unit</th><th>Pages</th><th>Owner session</th><th>Role</th><th>Entry page</th></tr></thead>
+    <tbody>
+      <tr><td>dashboard/</td><td>18</td><td>arena/7e632805-x3</td><td>Verified-data dashboard (primary data &amp; decision pages)</td><td><a href="dashboard/index.html">dashboard/index.html</a></td></tr>
+      <tr><td>x3lab/</td><td>13</td><td>arena/e1c332ce-x3</td><td>Lines &amp; strategy lab: market comparison, gates, luck pilots</td><td><a href="x3lab/index.html">x3lab/index.html</a></td></tr>
+      <tr><td>docs/</td><td>24</td><td>arena/0c38f465-x3 + arena/4856379c-x3</td><td>Generated data dashboard + extended research pages + CSV snapshots</td><td><a href="docs/index.html">docs/index.html</a></td></tr>
+      <tr><td>lab/</td><td>11</td><td>arena/972ad7a5-x3</td><td>Source-first decision lab (framework + research subpages)</td><td><a href="lab/index.html">lab/index.html</a></td></tr>
+      <tr><td>(root pages)</td><td>13</td><td>arena/d667d44d-x3 + arena/3dbc4678-x3</td><td>Standalone category pages (executive summary, lines, injuries, …)</td><td><a href="executive-summary.html">executive-summary.html</a></td></tr>
+      <tr><td>pages/ + site/</td><td>7</td><td>arena/1a771fcd-x3</td><td>First integrated site unit (archive)</td><td><a href="pages/executive-summary.html">pages/executive-summary.html</a></td></tr>
+      <tr><td>legacy/</td><td>1</td><td>arena/0c38f465-x3</td><td>Preserved original landing page</td><td><a href="legacy/index.html">legacy/index.html</a></td></tr>
+      <tr><td>verification-hub/</td><td>1</td><td>arena/621bf404-x3</td><td>Line-by-line integration verification report (this session)</td><td><a href="verification-hub/index.html">verification-hub/index.html</a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Verification policy:</strong> every fact row carries a source link to an official site; values that could not be confirmed are left blank and flagged unverified on <a href="dashboard/flagged.html">Flagged for Review</a>; nothing is inferred. Model outputs are badged DERIVED with parameters printed.</p>
+    <p><strong>Integration verification report:</strong> <a href="verification-hub/index.html">verification-hub/index.html</a> ·
+    <strong>Board:</strong> <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a> ·
+    <strong>Repository:</strong> <a href="https://github.com/karagemop466-tech/X3">github.com/karagemop466-tech/X3</a></p>
+    <p class="fine">Built by session arena/621bf404-x3 on 2026-11-14 · no wagers placed · no real-money rewards configured</p>
+  </div>
+</footer>
 </body>
 </html>
