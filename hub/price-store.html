@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price snapshot store - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html" class=on">Price snapshot store</a><a href="results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Price snapshot store</h1>
+<p class="lede">Every market we originate gets a dated opening and closing observation in a committed, append-only store - and a blank market column, because no official price exists.</p>
+
+<section class="callout"><h2>What this store is for</h2>
+<p>A backtest is only as good as the numbers it grades. This store gives every market we originate
+a dated opening and closing observation in a committed file, so a future backtest grades the number
+we actually published rather than a number refitted with hindsight. It deliberately does not contain
+a market price: that column is blank because no official source publishes one.</p></section>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Quantity</th><th>Value</th><th>What it means</th></tr></thead><tbody>
+<tr><td>markets in the store</td><td>786</td><td>one row per market per side, across games we have originated</td></tr>
+<tr><td>rows with a recorded close</td><td>630</td><td>every played game, refitted on all finals dated before kickoff</td></tr>
+<tr><td>rows with a close still PENDING</td><td>156</td><td>the unplayed slate: the close does not exist yet and is never imputed</td></tr>
+<tr><td>snapshot files written</td><td>1</td><td>one file per build date in data/x3/snapshots/<date>.json, append-only</td></tr>
+<tr><td>open-to-close pairs we can measure</td><td>420</td><td>mean |movement| 0.3643 points, max 5.5; 138 of 420 moved at all</td></tr>
+<tr><td>market open / close</td><td></td><td>UNVERIFIED - no official NFL price publication exists (F-18), so there is nothing to snapshot</td></tr>
+</tbody></table>
+<p class="note">Counts are read from data/x3/markets.json at build time.</p>
+</div>
+<h2>Open and close, defined before anything is measured</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Concept</th><th>Definition used here</th><th>Why this definition</th></tr></thead><tbody>
+<tr><td>Open (played game)</td><td>our number fitted on finals from weeks before the game's week</td><td>it is what we could have published on the Tuesday</td></tr>
+<tr><td>Close (played game)</td><td>our number fitted on every final dated before that game's kickoff</td><td>it is the last number we could have published before the ball was kicked</td></tr>
+<tr><td>Open (unplayed game)</td><td>our number fitted on every final available now</td><td>one capture, no second observation yet</td></tr>
+<tr><td>Close (unplayed game)</td><td>PENDING</td><td>the event has not happened; imputing it would be inventing the thing the store exists to record</td></tr>
+<tr><td>Market open / close</td><td>blank</td><td>no official price exists (F-18) and none may be inferred from our own model</td></tr>
+</tbody></table>
+</div>
+<h2>Rows from both ends of the store</h2>
+<input class="filt" data-for="ps" placeholder="filter: team, PENDING, week...">
+<div class="tblwrap"><table class="k-data" id="ps">
+<thead><tr><th>Game</th><th>Market</th><th>Open</th><th>Close</th><th>Movement</th><th>Market price</th><th>State</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>BUF at NYJ</b></td><td>side (home)</td><td>+11.5</td><td>PENDING</td><td>PENDING</td><td><span class="badge u">UNVERIFIED</span></td><td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>CAR at NO</b></td><td>side (home)</td><td>+2.5</td><td>PENDING</td><td>PENDING</td><td><span class="badge u">UNVERIFIED</span></td><td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>HOU at CLE</b></td><td>side (home)</td><td>+5.0</td><td>PENDING</td><td>PENDING</td><td><span class="badge u">UNVERIFIED</span></td><td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>JAX at TEN</b></td><td>side (home)</td><td>+19.5</td><td>PENDING</td><td>PENDING</td><td><span class="badge u">UNVERIFIED</span></td><td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>KC at ATL</b></td><td>side (home)</td><td>+5.5</td><td>PENDING</td><td>PENDING</td><td><span class="badge u">UNVERIFIED</span></td><td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>LAR at AZ</b></td><td>side (home)</td><td>+8.5</td><td>PENDING</td><td>PENDING</td><td><span class="badge u">UNVERIFIED</span></td><td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>ATL at GB</b><br><span class='mut'>week 3</span></td><td>side (home)</td><td>-13.0</td><td>-13.0</td><td>+0.0</td><td><span class="badge d">DERIVED</span></td><td><span class="badge v">VERIFIED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-3" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>AZ at SF</b><br><span class='mut'>week 3</span></td><td>side (home)</td><td>-16.0</td><td>-14.5</td><td>+1.5</td><td><span class="badge d">DERIVED</span></td><td><span class="badge v">VERIFIED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-3" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>BAL at DAL</b><br><span class='mut'>week 3</span></td><td>side (home)</td><td>+4.0</td><td>+4.0</td><td>+0.0</td><td><span class="badge d">DERIVED</span></td><td><span class="badge v">VERIFIED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-3" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>CAR at CLE</b><br><span class='mut'>week 3</span></td><td>side (home)</td><td>+9.0</td><td>+14.5</td><td>+5.5</td><td><span class="badge d">DERIVED</span></td><td><span class="badge v">VERIFIED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-3" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>CIN at PIT</b><br><span class='mut'>week 3</span></td><td>side (home)</td><td>+10.5</td><td>+9.5</td><td>-1.0</td><td><span class="badge d">DERIVED</span></td><td><span class="badge v">VERIFIED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-3" target="_blank" rel="noopener">schedule</a></td></tr>
+<tr><td><b>HOU at IND</b><br><span class='mut'>week 3</span></td><td>side (home)</td><td>+0.5</td><td>+3.0</td><td>+2.5</td><td><span class="badge d">DERIVED</span></td><td><span class="badge v">VERIFIED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-3" target="_blank" rel="noopener">schedule</a></td></tr>
+</tbody></table>
+<p class="note">Six rows from each end of the store. Open and close are OUR numbers; the market columns belong to a source that does not exist, so they are blank. A reconstructed close is labelled as such in the CSV's note column - it is not a captured price.</p>
+</div>
+<h2>Honest limits</h2>
+<p class="lede">There is one snapshot milestone so far, so every close in the store is a
+<em>reconstructed</em> close (our own model refitted), not a captured one. The movement figures above
+are therefore the movement of our own number, and are labelled that way wherever they appear. Turning
+this into a real open/close record needs a scheduled capture, which is suggestion S-17.</p>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

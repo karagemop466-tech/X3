@@ -24,8 +24,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HUB = os.path.join(ROOT, "hub")
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import hub_content as C  # noqa: E402
+import x3_content as X  # noqa: E402
 
 J = lambda n: json.load(open(os.path.join(HUB, "data", n), encoding="utf-8"))
+X3 = os.path.join(ROOT, "data", "x3")
+
+
+def JX(n):
+    """load a derived file from data/x3/ (this session's market/results/depth artefacts)"""
+    return json.load(open(os.path.join(X3, n), encoding="utf-8"))
 teams = J("teams.json")
 lines = J("lines.json")
 injuries = J("injuries.json")
@@ -78,6 +85,10 @@ NAV = [
     ("index", "Overview", "Status, what is verified, what is not"),
     ("executive-summary", "Executive summary", "The one-page brief for a decision"),
     ("lines", "Originated lines", "Our own Week-10 spreads and totals"),
+    ("markets", "Originated markets", "Side, then total, then moneyline; fair / market / difference"),
+    ("price-store", "Price snapshot store", "Opening and closing numbers for every market we originate"),
+    ("results", "Verified results feed", "163 games reconciled to the official standings"),
+    ("replacements", "Depth of the replacement", "Who actually replaces the starter, and how deep"),
     ("strategies", "Strategies & signals", "12 registered hypotheses, singles/props/parlays"),
     ("gates", "Validation gates", "The luck-removing tests each strategy must pass"),
     ("correlation", "Correlation", "Coefficients computed from official data"),
@@ -451,8 +462,12 @@ def p_gates():
     rows = [[f"<b>{esc(g)}</b>", esc(name), esc(req), esc(why), badge(st), esc(ev)]
             for g, name, req, why, st, ev in C.GATES]
     hoisted_tbl1 = table(['Gate', 'Name', 'Requirement', 'What it removes', 'State', 'Evidence / what flips it'], rows)
+    import x3_pages
+    P = _P
+    _s, _c, demtbl, _e, _ev = P["leaderboard_blocks"]()
+    dem = P["data"]["strat"]["demotion_gate"]
     body = f"""
-<h2>Gates ({len(C.GATES)})</h2>
+<h2>Gates ({len(C.GATES) + 1})</h2>
 <p class="lede">A strategy is a candidate until it passes every gate. The gates exist to make it expensive
 to be fooled: sample size, chronology, multiple-testing, intervals and exposure each remove a different way
 that luck masquerades as skill.</p>
@@ -469,6 +484,9 @@ analysis gap; S-02 and S-03 close it.</p></section>
 
 
 def p_corr():
+    import x3_pages
+    P = _P
+    corx, corblank = P["correlation_blocks"]()
     rows = []
     for r in corr["rows"]:
         rows.append([esc(r["x"]), esc(r["y"]), f"<b>{r['pearson_r']:+.4f}</b>", f"{r['spearman_rho']:+.4f}",
@@ -492,7 +510,15 @@ def p_corr():
                       "Why blank"], [[esc(a), f"<code>{esc(b)}</code>", esc(c), badge(d), esc(e)]
                                      for a, b, c, d, e in need])
     body = f"""
-<h2>Computed from official data ({len(corr['rows'])} pairs, n=32 clubs)</h2>
+<h2>Officially sourced correlations with n published ({len(P["data"]["corr"]["rows"])} rows)</h2>
+<p class="lede">Rule: a coefficient is published only when both variables come from a transcribed
+official NFL page, and n is printed beside it. Anything else is a blank row with the missing
+artefact named. The game-level rows are measured across {P["data"]["corr"]["counts"]["n_games"]}
+final games; the club-level rows across {P["data"]["corr"]["counts"]["n_clubs"]} clubs.</p>
+{corx}
+<h2>Deliberately blank, with the reason</h2>
+{corblank}
+<h2>Computed from official standings ({len(corr['rows'])} pairs, n=32 clubs)</h2>
 {computed}
 <h2>Deliberately blank (the correlations that would pay)</h2>
 <p class="lede">These are the coefficients a real pricing engine needs. None of them can be read off an
@@ -660,6 +686,9 @@ way.</li>
 
 
 def p_leader():
+    import x3_pages
+    P = _P
+    stbl, contract, demtbl, evid, ev = P["leaderboard_blocks"]()
     cats = table(["Category", "Scope", "Primary metric", "Tiebreak"],
                  [[f"<b>{esc(a)}</b>", esc(b), esc(c), esc(d)] for a, b, c, d in C.LEADER["categories"]])
     rew = table(["Award", "Form", "Status"],
@@ -673,6 +702,21 @@ def p_leader():
     antiluck_tbl = table(['Control', 'Mechanism'],
                          [[f'<b>{esc(a)}</b>', esc(b)] for a, b in C.LEADER['anti_luck']])
     body = f"""
+<section class="callout"><h2>Signal and staking are two different columns</h2>
+<p>A strategy can look profitable because of when it was staked, and a good signal can be buried by
+bad staking. This leaderboard therefore scores the two separately, from different data, and never
+adds them into one number. The signal column is measured on outcomes with n and an interval; the
+staking column needs a price and is empty because no price exists. A strategy is ranked only when
+both columns exist - which today means none is.</p></section>
+<h2>Signal and staking, scored apart ({len(P["data"]["strat"]["strategies"])} registered strategies)</h2>
+<input class="filt" data-for="sigs" placeholder="filter: family, INCONCLUSIVE, UNTESTED...">
+{stbl}
+<h2>The scoring contract</h2>
+{contract}
+<h2>What the signal evidence actually says</h2>
+{evid}
+<h2>The demotion gate: how a live strategy goes back to paper</h2>
+{demtbl}
 <h2>Categories</h2>{cats}
 <h2>Ranking rules</h2>
 <ol>{''.join(f'<li>{esc(r)}</li>' for r in C.LEADER['rules'])}</ol>
@@ -690,13 +734,14 @@ several jurisdictions, and no payout mechanism, bankroll or settlement service e
 
 
 def p_req():
+    REQ = C.REQ + X.REQ2
     rows = [[f"<b>{esc(i)}</b>", esc(a), esc(r), esc(acc), badge(s), esc(ev)]
-            for i, a, r, acc, s, ev in C.REQ]
-    done = sum(1 for r in C.REQ if r[4] == "VERIFIED")
-    hoisted_tbl1 = table(['Count', 'Value'], [['Requirements tracked', str(len(C.REQ))],
+            for i, a, r, acc, s, ev in REQ]
+    done = sum(1 for r in REQ if r[4] == "VERIFIED")
+    hoisted_tbl1 = table(['Count', 'Value'], [['Requirements tracked', str(len(REQ))],
        ['Met and evidenced', str(done)],
-       ['Partial', str(sum(1 for r in C.REQ if r[4] == 'PARTIAL'))],
-       ['Blocked on data or a decision', str(sum(1 for r in C.REQ if r[4] == 'BLOCKED'))]])
+       ['Partial', str(sum(1 for r in REQ if r[4] == 'PARTIAL'))],
+       ['Blocked on data or a decision', str(sum(1 for r in REQ if r[4] == 'BLOCKED'))]])
     hoisted_tbl2 = table(['ID', 'Area', 'Requirement', 'Acceptance criterion', 'Status', 'Evidence'], rows, tid='reqt')
     body = f"""
 {hoisted_tbl1}
@@ -708,14 +753,15 @@ def p_req():
 
 
 def p_questions():
+    QQ = C.Q + X.Q2
     rows = [[f"<b>{esc(i)}</b>", ("YES" if b == "YES" else ("PARTIAL" if b == "PARTIAL" else "no")),
              esc(dec), esc(know), esc(miss), esc(how), esc(who), esc(dflt)]
-            for i, b, dec, know, miss, how, who, dflt in C.Q]
-    blocking = sum(1 for r in C.Q if r[1] == "YES")
+            for i, b, dec, know, miss, how, who, dflt in QQ]
+    blocking = sum(1 for r in QQ if r[1] == "YES")
     hoisted_tbl1 = table(['ID', 'Blocking', 'Decision it gates', 'What we already know', 'What is missing',
         'How to discover it', 'Who answers', 'Default if unanswered'], rows, tid='qt')
     body = f"""
-<p class="lede">{len(C.Q)} open questions, {blocking} of them blocking a decision. The 'what we already
+<p class="lede">{len(QQ)} open questions, {blocking} of them blocking a decision. The 'what we already
 know' column is deliberately included: several questions are answerable from data already in this
 repository, and the rest say exactly what has to be acquired and who can acquire it.</p>
 {hoisted_tbl1}
@@ -726,9 +772,10 @@ repository, and the rest say exactly what has to be acquired and who can acquire
 
 
 def p_suggestions():
+    SUG = C.SUG + X.SUG2
     rows = [[f"<b>{esc(i)}</b>", f"<b>{esc(t)}</b>", esc(w), esc(imp), esc(eff), esc(risk), esc(dep),
              badge(status), "<span class='blank'></span>"]
-            for i, t, w, imp, eff, risk, dep, status, _ in C.SUG]
+            for i, t, w, imp, eff, risk, dep, status, _ in SUG]
     paths = table(["Path", "Sequence", "What you get", "What you do not get"], [
         ["<b>A - Evidence first</b> (recommended)",
          "S-01 archive policy -&gt; S-03 game log -&gt; S-02 prices -&gt; calibrate (S-09) -&gt; gates fire "
@@ -768,7 +815,25 @@ is a coin flip with a prize.</p></section>
 
 
 def p_sources():
-    rows = [[esc(n), link(u), esc(o), esc(p), esc(m), esc(r), badge(s)] for n, u, o, p, m, r, s in C.SOURCES]
+    SRC = C.SOURCES + [
+        ("Official weekly schedules with final scores, weeks 1-11, 2026",
+         "https://www.nfl.com/schedules/2026/by-week/week-N", "NFL.com (official)",
+         "the verified results feed: 163 games, 137 finals",
+         "captured by this repository's own CI runner (212/212 pages HTTP 200) and read through the "
+         "fetch tool for week 1", AS_OF, "VERIFIED"),
+        ("Official game centre, LAC at BAL week 10", X.S["game_lac_bal"], "NFL.com (official)",
+         "the market probe: participation, team stats, standings - and no odds",
+         "read in full; confirms F-18 that no official price publication exists",
+         AS_OF, "VERIFIED (absence verified)"),
+        ("NFL.com odds index", X.S["odds_probe"], "NFL.com (official)",
+         "checked for any official price publication", "returns HTTP 404", AS_OF,
+         "VERIFIED (no such page)"),
+        ("Club depth charts, 31 of 32 clubs", "https://github.com/karagemop466-tech/X3/blob/main/tools/nfl_data.py",
+         "each club (self-labelled unofficial)", "the chart tier of every replacement named on "
+         "hub/replacements.html", "two clubs re-read live this session (NE, CIN, CLE); the rest "
+         "inherited with their club URLs published per row", AS_OF, "VERIFIED (self-labelled unofficial)"),
+    ]
+    rows = [[esc(n), link(u), esc(o), esc(p), esc(m), esc(r), badge(s)] for n, u, o, p, m, r, s in SRC]
     hoisted_tbl1 = table(['What it provides', 'Link', 'Publisher', 'Used for', 'Method this session', 'Retrieved', 'State'], rows)
     body = f"""
 {hoisted_tbl1}
@@ -1052,9 +1117,10 @@ def p_repo():
 
 
 def p_flagged():
+    FL = C.FLAGS + X.FLAGS2
     rows = [[f"<b>{esc(i)}</b>", ("HIGH" if s == "HIGH" else ("MEDIUM" if s == "MEDIUM" else "LOW")),
              esc(a), esc(f), link(u, "check source"), esc(act)]
-            for i, s, a, f, u, act in C.FLAGS]
+            for i, s, a, f, u, act in FL]
     hoisted_tbl1 = table(['ID', 'Severity', 'Area', 'Finding', 'Evidence', 'Action needed'], rows, tid='flg')
     body = f"""
 <p class="lede">Everything the site could not confirm from an official source, plus every irregularity
@@ -1063,7 +1129,7 @@ Values that would have needed these inputs are left blank rather than estimated.
 {hoisted_tbl1}
 """
     page("flagged.html", "Flagged for review",
-         f"{len(C.FLAGS)} open items: missing datasets, source conflicts, unverified parameters and repo "
+         f"{len(FL)} open items: missing datasets, source conflicts, unverified parameters and repo "
          "irregularities.", body, "flagged")
 
 
@@ -1147,12 +1213,18 @@ document.querySelectorAll('input.filt').forEach(function(inp){
 """
 
 
+def _build_x3_pages():
+    import x3_pages
+    return x3_pages.build(sys.modules[__name__], JX, C, X)
+
+
 def main():
     # extra pages that need the helpers defined above
     build_prereg()
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
     p_injuries(); p_depth(); p_leader(); p_req(); p_questions(); p_suggestions()
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
+    _P["p_markets"](); _P["p_store"](); _P["p_results"](); _P["p_replacements"]()
     with open(os.path.join(HUB, "assets", "hub.css"), "w", encoding="utf-8") as f:
         f.write(CSS)
     with open(os.path.join(HUB, "assets", "hub.js"), "w", encoding="utf-8") as f:
@@ -1245,7 +1317,11 @@ is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> an
         f.write(html)
 
 
+_P = None
+
+
 if __name__ == "__main__":
+    _P = _build_x3_pages()
     os.makedirs(os.path.join(HUB, "assets"), exist_ok=True)
     # inject the JS into hub pages
     main()
