@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Origination module — overview &amp; executive summary · X3 origination module</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header><div class="wrap"><h1>X3 · Origination module</h1>
+<nav><a href="index.html">Overview</a> <a href="results.html">Results feed</a> <a href="markets.html">Markets</a> <a href="snapshots.html">Price snapshots</a> <a href="backtest.html">Backtest</a> <a href="leaderboard.html">Leaderboard</a> <a href="depth.html">Replacement depth</a> <a href="correlations.html">Correlations</a> <a href="gates.html">Gates &amp; demotion</a> <a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions</a> <a href="flagged.html">Flagged for review</a> <a href="sources.html">Sources</a> <a href="verification.html">Verification log</a></nav></div></header>
+<main class="wrap"><h2>Origination module — overview &amp; executive summary</h2>
+
+<p class="lead">This module turns the eight new requirements of the brief into working
+machinery: a verified results feed (what actually happened, from official pages), a price-snapshot
+store (what our originated lines were at open — and at close, once the cycle closes), a strict
+origination order (side → total → moneyline), an honest fair-vs-market presentation, a
+leaderboard that cannot confuse a lucky staking run with a good signal, replacement-depth
+tracking, correlations computed only from officially sourced numbers with n published, and a
+demotion gate registered before any strategy goes live.</p>
+<table class="grid"><thead><tr><th>Requirement</th><th>What was built</th><th>Page</th></tr></thead><tbody><tr><td><strong>R1 price-snapshot store</strong></td><td>39 markets × open+close rows; open recorded, close pending cycle capture</td><td><a href="snapshots.html" rel="noopener">open</a></td></tr><tr><td><strong>R2 verified results feed</strong></td><td>163 games / 137 finals, 163/163 cross-check</td><td><a href="results.html" rel="noopener">open</a></td></tr><tr><td><strong>R3 origination order</strong></td><td>sides (1–13) → totals (14–26) → moneylines (27–39)</td><td><a href="markets.html" rel="noopener">open</a></td></tr><tr><td><strong>R4 fair / market / diff columns</strong></td><td>separate columns; market blank + flagged (no official price source)</td><td><a href="markets.html" rel="noopener">open</a></td></tr><tr><td><strong>R5 signal vs staking</strong></td><td>separate boards; rank ignores staking structurally</td><td><a href="leaderboard.html" rel="noopener">open</a></td></tr><tr><td><strong>R6 replacement depth</strong></td><td>42 of 76 absences joined with replacement ordinals (flagged lead)</td><td><a href="depth.html" rel="noopener">open</a></td></tr><tr><td><strong>R7 correlations with n</strong></td><td>7 sourced-number rows, each with n + CI; derived axes quarantined</td><td><a href="correlations.html" rel="noopener">open</a></td></tr><tr><td><strong>R8 demotion gate</strong></td><td>D-1 registered with 5 mechanical triggers + D-2 re-promotion</td><td><a href="gates.html" rel="noopener">open</a></td></tr></tbody></table>
+<h3>The honest state of the money question</h3>
+<p>Backtests are now computable (the results feed exists). ROI is not: no official source
+publishes NFL market prices, so fair-vs-market differences, CLV and ROI stay blank and flagged
+rather than invented. The moment a price source is connected, every column the store and the
+leaderboard reserve for it activates — no schema change needed.</p>
+<h3>Executive summary — numbers on this page are computed, not typed</h3>
+<ul>
+<li>Results feed: <strong>163 games / 137 finals, 163/163 cross-check</strong> — captured from official pages, cross-checked
+163/163 against the independent desk transcription.</li>
+<li>Originated markets: <strong>39</strong> (13 sides → 13 totals → 13 moneylines), Week-10 slate,
+open numbers recorded in the snapshot store.</li>
+<li>Replacement depth: every Out/Doubtful absence joined to the club chart with the replacement's
+ordinal string; deficiency index in registered points.</li>
+<li>Correlations: only officially sourced axes, each with n and a 95% CI.</li>
+<li>Gates: G-0..G-6 adopted from the hub layer; demotion gate D-1 and re-promotion gate D-2
+registered now, with thresholds frozen before any strategy is live.</li>
+</ul>
+
+<footer><p>Session <code>arena/f2df8317-x3</code> · built 2026-11-14T19:33:18Z ·
+repo <a href="https://github.com/karagemop466-tech/X3" rel="noopener">karagemop466-tech/X3</a> ·
+every value is computed from the frozen inputs; unconfirmable values are blank and flagged.</p></footer>
+</main></body></html>

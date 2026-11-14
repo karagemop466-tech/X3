@@ -289,3 +289,48 @@ Run `python3 scripts/desk_verify.py` to reproduce.
   image, so its rows cannot be joined.
 * **Luck is bounded, not removed.** Walk-forward testing, a Pythagorean residual and 95% CIs bound
   it; a single game stays mostly noise.
+
+---
+
+## Trading desk — `/ops/` (session `arena/3b99e9ad-x3`)
+
+**Live:** https://karagemop466-tech.github.io/X3/ops/ — 18 pages, one verification gate, one
+dependency-ordered pipeline. Additive: no other session's file was edited.
+
+It answers the eight operational requirements directly, and says where it cannot.
+
+| Requirement | Where it is answered |
+|---|---|
+| Price-snapshot store, opening + closing per market | [`ops/snapshots.html`](ops/snapshots.html) — 78 markets, SHA-256 hash chain, market columns null with reason `NO_OFFICIAL_SOURCE` |
+| Verified results feed | [`ops/results.html`](ops/results.html) — 137 finals, reconciled to official standings 32/32 clubs |
+| Side → total → moneyline, in that order | [`ops/order.html`](ops/order.html) — ML = Φ(side/σ), so the markets cannot contradict |
+| Fair / market / difference as separate columns | [`ops/lines.html`](ops/lines.html) — market blank by policy, never estimated |
+| Signal vs staking split on the leaderboard | [`ops/leaderboard.html`](ops/leaderboard.html) — promotion reads signal only |
+| Depth of the replacement | [`ops/depth.html`](ops/depth.html) — 45 named same-position backups, 8 holes published |
+| Correlations, official numbers only, with n | [`ops/correlation.html`](ops/correlation.html) — 9 coefficients, each with n, CI, p |
+| Demotion gate, live → paper | [`ops/gates.html`](ops/gates.html) — dry-run proves D-1 fires |
+
+Plus [`ops/props.html`](ops/props.html) (receiver props with a 54-leg walk-forward backtest),
+[`ops/executive-summary.html`](ops/executive-summary.html),
+[`ops/questions.html`](ops/questions.html), [`ops/suggestions.html`](ops/suggestions.html) (10 proposals
+awaiting a decision), [`ops/flagged.html`](ops/flagged.html) (14 flags) and
+[`ops/verification.html`](ops/verification.html).
+
+### Rebuild and verify
+
+```bash
+python3 scripts/ops_run.py     # 7 steps in dependency order, then the gate
+```
+
+The gate (`scripts/ops_verify.py`, one CI step) checks 10 things and fails the build on any of them:
+links resolve; every table row links an official source or is explicitly badged; no unfilled token or
+rendered `None`; published counts equal the data; player logs reconcile to official season totals;
+snapshot hashes recompute and chain; passing offense and defense reconcile; the results feed reconciles
+to the standings; no market price exists without a source; and a second build is byte-identical.
+
+### What is deliberately blank
+
+**No market price exists in this repository**, so fair-versus-market, ROI, closing-line value and the
+whole staking column are blank with a stated reason. One partial season cannot support a 200-bet skill
+claim, and club depth charts are mostly self-labelled unofficial. Those are findings, published on
+[`ops/flagged.html`](ops/flagged.html) — not gaps hidden by a placeholder.

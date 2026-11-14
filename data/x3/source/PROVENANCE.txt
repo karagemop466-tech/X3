@@ -1,0 +1,6 @@
+nfldata master: d9772e4e83ab349de144bf6d7a4fc9fb3ee7b066 2026-11-14T19:05:17Z
+games.csv 2190038 bytes sha256:7d791bb4776e81a3
+closing_lines.csv 942229 bytes sha256:3571e1c9fc8d7396
+initial_lines.csv 45068 bytes sha256:654770173d11fdb2
+sc_lines.csv 140765 bytes sha256:384039e92630831e
+standings.csv 56873 bytes sha256:a955694cba054283

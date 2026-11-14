@@ -1,0 +1,84 @@
+{
+ "as_of": "2026-11-14",
+ "season": 2026,
+ "note": "Per-week receiving logs transcribed from official NFL.com player pages. Each player's rows are checked against the same page's 2026 season totals (games, receptions, yards, TD) by scripts/ops_model.py; a mismatch fails the build.",
+ "players": [
+  {
+   "name": "CeeDee Lamb", "team": "DAL", "pos": "WR",
+   "url": "https://www.nfl.com/players/ceedee-lamb/stats/",
+   "season_totals": {"games": 9, "rec": 70, "yds": 904, "td": 7},
+   "rows": [
+    {"week": 1, "opp": "@Giants", "result": "L 20-28", "rec": 5, "yds": 44, "td": 1},
+    {"week": 2, "opp": "Commanders", "result": "W 37-20", "rec": 8, "yds": 153, "td": 2},
+    {"week": 3, "opp": "Ravens", "result": "L 31-34", "rec": 7, "yds": 112, "td": 0},
+    {"week": 4, "opp": "@Texans", "result": "W 34-30", "rec": 17, "yds": 189, "td": 1},
+    {"week": 5, "opp": "Buccaneers", "result": "L 16-24", "rec": 2, "yds": 9, "td": 0},
+    {"week": 6, "opp": "@Packers", "result": "L 13-23", "rec": 9, "yds": 70, "td": 0},
+    {"week": 7, "opp": "@Eagles", "result": "W 38-21", "rec": 5, "yds": 74, "td": 2},
+    {"week": 8, "opp": "Cardinals", "result": "L 30-33", "rec": 7, "yds": 58, "td": 0},
+    {"week": 9, "opp": "@Colts", "result": "W 27-23", "rec": 10, "yds": 195, "td": 1}
+   ]
+  },
+  {
+   "name": "Tee Higgins", "team": "CIN", "pos": "WR",
+   "url": "https://www.nfl.com/players/tee-higgins/stats/",
+   "season_totals": {"games": 8, "rec": 48, "yds": 758, "td": 6},
+   "rows": [
+    {"week": 1, "opp": "Buccaneers", "result": "W 33-27", "rec": 3, "yds": 59, "td": 0},
+    {"week": 2, "opp": "@Texans", "result": "W 20-6", "rec": 5, "yds": 95, "td": 0},
+    {"week": 3, "opp": "@Steelers", "result": "L 27-30", "rec": 6, "yds": 90, "td": 1},
+    {"week": 4, "opp": "Jaguars", "result": "L 17-22", "rec": 11, "yds": 157, "td": 0},
+    {"week": 5, "opp": "@Dolphins", "result": "W 31-24", "rec": 2, "yds": 22, "td": 0},
+    {"week": 7, "opp": "@Ravens", "result": "W 35-13", "rec": 6, "yds": 148, "td": 1},
+    {"week": 8, "opp": "Titans", "result": "W 43-36", "rec": 10, "yds": 155, "td": 2},
+    {"week": 9, "opp": "@Falcons", "result": "W 34-17", "rec": 5, "yds": 32, "td": 2}
+   ]
+  },
+  {
+   "name": "Ja'Marr Chase", "team": "CIN", "pos": "WR",
+   "url": "https://www.nfl.com/players/ja-marr-chase/stats/",
+   "season_totals": {"games": 8, "rec": 53, "yds": 647, "td": 7},
+   "rows": [
+    {"week": 1, "opp": "Buccaneers", "result": "W 33-27", "rec": 2, "yds": 12, "td": 0},
+    {"week": 2, "opp": "@Texans", "result": "W 20-6", "rec": 7, "yds": 75, "td": 2},
+    {"week": 3, "opp": "@Steelers", "result": "L 27-30", "rec": 9, "yds": 98, "td": 1},
+    {"week": 4, "opp": "Jaguars", "result": "L 17-22", "rec": 3, "yds": 27, "td": 0},
+    {"week": 5, "opp": "@Dolphins", "result": "W 31-24", "rec": 6, "yds": 77, "td": 1},
+    {"week": 7, "opp": "@Ravens", "result": "W 35-13", "rec": 5, "yds": 62, "td": 1},
+    {"week": 8, "opp": "Titans", "result": "W 43-36", "rec": 11, "yds": 141, "td": 1},
+    {"week": 9, "opp": "@Falcons", "result": "W 34-17", "rec": 10, "yds": 155, "td": 1}
+   ]
+  },
+  {
+   "name": "Chris Olave", "team": "NO", "pos": "WR",
+   "url": "https://www.nfl.com/players/chris-olave/stats/",
+   "season_totals": {"games": 8, "rec": 56, "yds": 734, "td": 2},
+   "rows": [
+    {"week": 1, "opp": "@Lions", "result": "L 30-31", "rec": 10, "yds": 182, "td": 0},
+    {"week": 2, "opp": "@Ravens", "result": "W 24-17", "rec": 8, "yds": 86, "td": 1},
+    {"week": 3, "opp": "Raiders", "result": "L 27-35", "rec": 9, "yds": 107, "td": 0},
+    {"week": 4, "opp": "Falcons", "result": "L 24-45", "rec": 8, "yds": 116, "td": 0},
+    {"week": 5, "opp": "Vikings", "result": "L 13-23", "rec": 4, "yds": 46, "td": 0},
+    {"week": 6, "opp": "@Giants", "result": "W 34-27", "rec": 4, "yds": 43, "td": 1},
+    {"week": 7, "opp": "Steelers", "result": "L 10-16", "rec": 6, "yds": 56, "td": 0},
+    {"week": 9, "opp": "Browns", "result": "W 23-22", "rec": 7, "yds": 98, "td": 0}
+   ]
+  },
+  {
+   "name": "Jaxon Smith-Njigba", "team": "SEA", "pos": "WR",
+   "url": "https://www.nfl.com/players/jaxon-smith-njigba/stats/",
+   "season_totals": {"games": 9, "rec": 71, "yds": 1036, "td": 9},
+   "rows": [
+    {"week": 1, "opp": "Patriots", "result": "W 13-10", "rec": 8, "yds": 122, "td": 1},
+    {"week": 2, "opp": "@Cardinals", "result": "W 31-7", "rec": 9, "yds": 155, "td": 3},
+    {"week": 3, "opp": "@Commanders", "result": "L 31-33", "rec": 10, "yds": 128, "td": 2},
+    {"week": 4, "opp": "Chargers", "result": "W 30-23", "rec": 5, "yds": 76, "td": 0},
+    {"week": 5, "opp": "49ers", "result": "L 29-32", "rec": 5, "yds": 102, "td": 1},
+    {"week": 6, "opp": "@Broncos", "result": "L 14-17", "rec": 12, "yds": 134, "td": 0},
+    {"week": 7, "opp": "Chiefs", "result": "W 20-3", "rec": 9, "yds": 150, "td": 1},
+    {"week": 8, "opp": "Bears", "result": "L 17-34", "rec": 6, "yds": 118, "td": 1},
+    {"week": 9, "opp": "Cardinals", "result": "W 17-3", "rec": 7, "yds": 51, "td": 0}
+   ]
+  }
+ ]
+}

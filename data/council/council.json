@@ -1,0 +1,1252 @@
+{
+ "as_of": "2026-11-14",
+ "correlations": [
+  {
+   "ci95": [
+    -0.1829,
+    0.1524
+   ],
+   "distinguishable": false,
+   "key": "total_vs_absmargin",
+   "n": 137,
+   "p": 0.855412054637618,
+   "pair": "Game total vs |margin|",
+   "r": -0.01570830443737658,
+   "reading": "Whether high-scoring games are also blowouts. This is the pair the same-game parlay leg screen is supposed to use.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "used_for": "Same-game parlay leg screen"
+  },
+  {
+   "ci95": [
+    -0.3198,
+    0.0073
+   ],
+   "distinguishable": false,
+   "key": "total_vs_homemargin",
+   "n": 137,
+   "p": 0.06073943023630386,
+   "pair": "Game total vs signed home margin",
+   "r": -0.16065480820902156,
+   "reading": "Whether high-scoring games tilt toward the home club.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "used_for": "Diagnostic for the published defect"
+  },
+  {
+   "ci95": [
+    -0.093,
+    0.2405
+   ],
+   "distinguishable": false,
+   "key": "away_vs_home",
+   "n": 137,
+   "p": 0.37823124109467204,
+   "pair": "Away score vs home score",
+   "r": 0.07586915754559596,
+   "reading": "Whether the two clubs' scores move together inside a game.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "used_for": "Two-leg parlay correlation screen"
+  },
+  {
+   "ci95": [
+    -0.1962,
+    0.139
+   ],
+   "distinguishable": false,
+   "key": "week_vs_total",
+   "n": 137,
+   "p": 0.7330384986119024,
+   "pair": "Week of season vs game total",
+   "r": -0.029404098070784628,
+   "reading": "Whether scoring declines as the season moves into colder weather. A real seasonal drift would be a cheap totals adjustment; a flat line means there is nothing to adjust.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "used_for": "Seasonal totals check"
+  }
+ ],
+ "flags": [
+  {
+   "action": "Withdraw or correct the stale desk copy, and record the correction rather than overwriting it. Not edited by this session - both files belong to other sessions.",
+   "area": "Statistics",
+   "detail": "data/desk/correlations.json publishes r = -0.161 labelled 'game total vs |margin|', n = 137, reading 'same-game total and blowout size move together'. Recomputed this session from the same 137 verified finals: r(total, |margin|) = -0.0157 and r(total, signed home margin) = -0.1607. The published number is the signed-margin statistic under an absolute-margin label, and a negative r means the two quantities move in opposite directions, not together. Its 95% CI contains 0 either way.",
+   "detail_corrected": "origin/data/correlations.json (merged in PR #47) now publishes both pairs separately and correctly: game total vs |home margin| = -0.0157 and signed home margin vs total = -0.1607, each with n, a 95% interval and the official source. The decision register should record the correction, because a silent overwrite would destroy the audit trail.",
+   "finding": "A published correlation did not reproduce from the data it cited. The correction is now published on one tree and the wrong label is still published on another.",
+   "id": "C-01",
+   "severity": "medium",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json"
+  },
+  {
+   "action": "Decide a path under S01. Do not fill these cells from any non-official source.",
+   "area": "Market data",
+   "detail": "market_spread_home and market_total are empty strings in all 13 originated rows. No NFL or club page publishes prices. Any ROI, closing-line value, edge or leaderboard figure on the site is therefore unavailable, not merely missing.",
+   "finding": "Every market column on the site is empty, and that is a data-rights gap rather than a parsing gap.",
+   "id": "C-02",
+   "severity": "high",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json"
+  },
+  {
+   "action": "S06 and S07. Until then, publish as UNVERIFIED and use it for no model input.",
+   "area": "Roster",
+   "detail": "Club depth charts name a replacement for 41 of 76 Week 10 absences. Zero of 76 carry a chart as-of date, 50 of the charts are labelled unofficial by the publishing club, and Houston's chart is published as an image and cannot be parsed. No ordinal depth string is recorded anywhere in the repository.",
+   "finding": "The replacement-depth requirement cannot be met from the sources in use.",
+   "id": "C-03",
+   "severity": "medium",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json"
+  },
+  {
+   "action": "S14. Re-run the blank tables.",
+   "area": "Verification",
+   "detail": "COORDINATION.md and the README record that nfl.com is not directly fetchable from the sandbox and that this is why tables were left blank. This session read the Week 10 schedule, the 2026 league standings and the Week 10 official injury report directly, and matched 50 injury rows field by field against the official page.",
+   "finding": "A standing project-wide claim is false: the authoring environment can reach nfl.com.",
+   "id": "C-04",
+   "severity": "medium",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10"
+  },
+  {
+   "action": "S13. Nothing is deleted by this flag; it asks for a decision.",
+   "area": "Repository",
+   "detail": "Each session built its own root directory, so the same unanswered question appears as a Q-row, an S-row and an F-row in several trees with different identifiers and different wording. A sixteenth tree (origin/) is under construction.",
+   "finding": "Fifteen overlapping site trees publish the same blanks under different IDs.",
+   "id": "C-05",
+   "severity": "medium",
+   "source": "https://github.com/karagemop466-tech/X3"
+  },
+  {
+   "action": "Close R1 and R2 first. S01, S02.",
+   "area": "Leaderboard",
+   "detail": "Zero bets are graded. Grading needs prices (R1) and a settlement rule (R2). Every strategy on every tree is registered and blocked, not competing.",
+   "finding": "The leaderboard is empty by design and cannot be filled by any current workstream.",
+   "id": "C-06",
+   "severity": "medium",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/desk/leaderboard.html"
+  },
+  {
+   "action": "S03.",
+   "area": "Origination",
+   "detail": "The brief requires side, then total, then moneyline. Side and total are originated for 13 games; no moneyline is originated anywhere in the repository.",
+   "finding": "The third market type in the required origination order does not exist.",
+   "id": "C-07",
+   "severity": "low",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json"
+  },
+  {
+   "action": "S04.",
+   "area": "Governance",
+   "detail": "Gates G1-G8 define how a strategy becomes live. No rule defines how it stops being live.",
+   "finding": "Promotion gates exist without any demotion gate, so promotion is irreversible.",
+   "id": "C-08",
+   "severity": "low",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json"
+  },
+  {
+   "action": "Revisit only after R6 closes. S06, Q17.",
+   "area": "Model",
+   "detail": "Stated in the model's own limitations. This is correct behaviour given C-03: there is no verified depth data to adjust with.",
+   "finding": "The model applies no injury adjustment and says so.",
+   "id": "C-09",
+   "severity": "low",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json"
+  },
+  {
+   "action": "Replace with the official string, or print only 'Munich (NFL International Game)' as PR #36 does. Files not edited by this session - both belong to other sessions.",
+   "area": "Schedule",
+   "detail": "hub/data/lines.json and origin/data/markets.json both carry the string 'Alemun & Munchen / Munich (NFL International Game) - no home field' as the venue of the Patriots at Lions game. The official nfl.com game page states LOCATION MUNICH and STADIUM FC BAYERN MUNICH STADIUM; the Week 10 schedule page states International Game, Munich. Nothing read from any official page prints 'Alemun & Munchen'. An open pull request (#36) already removes this string from hub/lines.html, so the fix is in flight on that tree; origin/ re-introduces it.",
+   "finding": "A venue name is published that no official page supports, and the official page gives a different one.",
+   "id": "C-11",
+   "severity": "medium",
+   "source": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10"
+  },
+  {
+   "action": "Reconcile the two joins and publish one number, or publish both with the reason for the difference. Files not edited by this session.",
+   "area": "Roster",
+   "detail": "data/desk/deficiencies.json resolves a named replacement for 41 of the 76 Week 10 absences; origin/data/depth.json populates replacement_ordinal for 42 of 76 on the same week and the same injury report. One join finds a replacement the other misses. Both counts are published as fact on their own tree.",
+   "finding": "Two trees count the same join differently: 41 of 76 versus 42 of 76 replacements.",
+   "id": "C-12",
+   "severity": "low",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json"
+  },
+  {
+   "action": "S15. Non-blocking; the rows are on archived trees.",
+   "area": "Verification",
+   "detail": "A prior cross-tree audit counted 658 such rows across the older trees. This session's own tables are gated so that cannot happen here.",
+   "finding": "Some published rows carry neither a source link nor an unverified badge.",
+   "id": "C-10",
+   "severity": "low",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/scripts/audit_all.py"
+  }
+ ],
+ "measured": {
+  "n_finals": 137,
+  "n_games": 163,
+  "n_injury": 345,
+  "n_standings": 32,
+  "n_teams_inj": 28,
+  "scheduled": 26
+ },
+ "pages": [
+  "executive-summary.html",
+  "flagged.html",
+  "index.html",
+  "questions.html",
+  "repo-review.html",
+  "requirements.html",
+  "sources.html",
+  "suggestions.html",
+  "verification.html"
+ ],
+ "questions": [
+  {
+   "area": "Market data",
+   "blocks": "R1, R4, R5. Also closing-line value, ROI, and any leaderboard row.",
+   "discover": "S01",
+   "id": "Q01",
+   "known": "No NFL or club page publishes prices. Every market column in the repository is empty for that reason, not because of a parsing gap.",
+   "missing": "A price source and the right to store and display it.",
+   "question": "Where will opening and closing prices come from, and under what licence?",
+   "source": "",
+   "source_label": "UNVERIFIED - no official price source exists"
+  },
+  {
+   "area": "Market data",
+   "blocks": "R1, R5, R8. The demotion gate is defined on closing-line value.",
+   "discover": "S01",
+   "id": "Q02",
+   "known": "Nothing. The repository has never seen a price, so no close timestamp convention exists.",
+   "missing": "A definition: last price before kickoff from a named book, or a consensus of N books. The choice changes measured closing-line value by a material amount.",
+   "question": "What counts as the closing number?",
+   "source": "",
+   "source_label": "UNVERIFIED"
+  },
+  {
+   "area": "Market data",
+   "blocks": "R1, R4 (the market column needs a named book).",
+   "discover": "S01",
+   "id": "Q03",
+   "known": "Nothing.",
+   "missing": "One book is cheap and biased; a consensus is unbiased and expensive. The number of books also sets how 'consensus close' is computed.",
+   "question": "Which book, and how many, for the price snapshot store?",
+   "source": "",
+   "source_label": "UNVERIFIED"
+  },
+  {
+   "area": "Settlement",
+   "blocks": "R2, R5.",
+   "discover": "S02",
+   "id": "Q04",
+   "known": "Final scores are verified. How a side settles on a tie, how a total settles on an exact landing, and whether overtime counts are all undefined here.",
+   "missing": "A written rule per market type. Without it two strategies can grade the same game differently and the leaderboard is meaningless.",
+   "question": "What is the settlement rule for each market type?",
+   "source": "",
+   "source_label": "UNVERIFIED"
+  },
+  {
+   "area": "Moneyline",
+   "blocks": "Precision of the moneyline. R3 is satisfied; this is about how good the number is.",
+   "discover": "S03",
+   "id": "Q05",
+   "known": "origin/data/markets.json now derives the moneyline from the side: P(home win) = Phi(adj_margin / 13.5), with sigma 13.5 preregistered in the module's backtest parameters and the derivation recorded on the row itself.",
+   "missing": "A sigma fitted on data the model has not seen. 13.5 is a registered constant, not an estimate from this season, and a normal-on-margin assumption is known to be wrong in the tails. Neither fact is currently published with the number.",
+   "question": "What sigma converts an expected margin into a moneyline, and on what data was it fitted?",
+   "source": "",
+   "source_label": "UNVERIFIED - not derivable from any official page"
+  },
+  {
+   "area": "Roster",
+   "blocks": "R6, and any injury adjustment to the model (currently the model applies none).",
+   "discover": "S06, S07",
+   "id": "Q06",
+   "known": "Club websites publish depth charts. They name a replacement for 41 of 76 Week 10 absences. None carries an as-of date, and 50 are labelled unofficial by the club itself.",
+   "missing": "An ordinal (1st/2nd/3rd/4th string), a chart date, and a source that is not self-disclaimed. Houston publishes its chart as an image and cannot be parsed.",
+   "question": "What is the ordinal depth of each replacement, and when was the chart true?",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json",
+   "source_label": "repo artifact - club charts, no as-of date"
+  },
+  {
+   "area": "Roster",
+   "blocks": "R6 precision. Not blocking: an absence is an absence for availability purposes.",
+   "discover": "S07",
+   "id": "Q07",
+   "known": "The official report lists practice status and game status only.",
+   "missing": "Nothing on this. The official page does not separate coach's decision from injury, so any split would be an inference.",
+   "question": "How do we distinguish a healthy scratch from an injury absence?",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "source_label": "nfl.com official injury report"
+  },
+  {
+   "area": "Player props",
+   "blocks": "The prop-combo leg of the brief. Every prop strategy on the site is BLOCKED.",
+   "discover": "S09",
+   "id": "Q08",
+   "known": "No. Prop markets are book-created products; no league source publishes them.",
+   "missing": "A commercial feed. Until one exists the entire prop and prop-combo strategy family cannot be registered, let alone graded.",
+   "question": "Is there any source for player-prop prices or results?",
+   "source": "",
+   "source_label": "UNVERIFIED - no official prop source exists"
+  },
+  {
+   "area": "Statistics",
+   "blocks": "R5, R7, R8. Every skill claim on the site.",
+   "discover": "S10",
+   "id": "Q09",
+   "known": "137 verified finals, one season, 32 clubs. The walk-forward correlation between the model's margin and the actual margin is r = 0.20 on 121 games.",
+   "missing": "At least one prior season for a real out-of-sample test, and enough bets for the 200-bet minimum the promotion gates already specify.",
+   "question": "Is 137 games enough to fit anything?",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "source_label": "repo artifact - DERIVED"
+  },
+  {
+   "area": "Statistics",
+   "blocks": "R5, R7, R8.",
+   "discover": "S11",
+   "id": "Q10",
+   "known": "Gate G4 specifies Benjamini-Hochberg at q = 0.10. No count of planned tests is registered.",
+   "missing": "A preregistered test count. FDR control needs the denominator; without it the correction cannot be applied at all.",
+   "question": "How many strategies will be tested, and is the multiple-testing control funded?",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json",
+   "source_label": "repo artifact - gate register"
+  },
+  {
+   "area": "Leaderboard",
+   "blocks": "Nothing structural. It blocks the claim that any of this is skill.",
+   "discover": "S05",
+   "id": "Q11",
+   "known": "Every leaderboard row now carries a signal block (metric, value, n, rank) and a separate staking block. Side: winner-direction accuracy 0.595, n = 121. Total: over/under hit rate 0.4957, n = 117. Moneyline: Brier 0.2373, n = 121.",
+   "missing": "The staking-side formula is defined in the schema but has no data, and the signal metrics are baseline-relative rather than market-relative because no price exists to be relative to.",
+   "question": "What is the signal score, numerically?",
+   "source": "",
+   "source_label": "UNVERIFIED"
+  },
+  {
+   "area": "Leaderboard",
+   "blocks": "The reward half of the brief only. Research can proceed without it.",
+   "discover": "S12",
+   "id": "Q12",
+   "known": "Nothing is configured. The site explicitly does not place bets or promise rewards.",
+   "missing": "A prize structure and, in most jurisdictions, a legal review. Contest design is regulated differently from research, and this is not a legal-advice surface.",
+   "question": "What are the rewards, and who is liable for them?",
+   "source": "",
+   "source_label": "UNVERIFIED"
+  },
+  {
+   "area": "Demotion",
+   "blocks": "Nothing. R8 is satisfied as a rule; see Q14 on execution.",
+   "discover": "S04",
+   "id": "Q13",
+   "known": "Gate D-1 now defines them: rolling median closing-line value <= 0 twice in a row over 20-bet windows (D-1a), drawdown >= 25% from peak (D-1b), signal below 50% for three consecutive cycles (D-1c), any data-integrity failure (D-1d), any unregistered model change (D-1e).",
+   "missing": "Nothing on the thresholds. What is missing is enforcement: nothing runs them, and D-1a to D-1c cannot fire until prices exist.",
+   "question": "What thresholds send a live strategy back to paper?",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json",
+   "source_label": "repo artifact - promotion gates only"
+  },
+  {
+   "area": "Demotion",
+   "blocks": "R8 in practice, even after thresholds are chosen.",
+   "discover": "S04",
+   "id": "Q14",
+   "known": "Nothing is automated today; the repository is static files and CI.",
+   "missing": "An owner and an enforcement point. A rule nobody runs is documentation.",
+   "question": "Who or what executes a demotion, and is it automatic?",
+   "source": "",
+   "source_label": "UNVERIFIED"
+  },
+  {
+   "area": "Repository",
+   "blocks": "Nothing technically. It wastes review effort and hides the real gaps.",
+   "discover": "S13",
+   "id": "Q15",
+   "known": "Sixteen overlapping trees exist. The repository root links into hub/, origin/ merged in PR #47, and council/ is this session's addition.",
+   "missing": "A decision. Every new session adds a tree, and each tree restates the same blanks.",
+   "question": "Which site tree is canonical?",
+   "source": "https://github.com/karagemop466-tech/X3/branches",
+   "source_label": "GitHub branch list"
+  },
+  {
+   "area": "Repository",
+   "blocks": "Nothing now. It previously blocked every data page on the site.",
+   "discover": "S14",
+   "id": "Q16",
+   "known": "Prior sessions concluded it could not, and left tables blank on that basis. This session read nfl.com schedule, standings and injury pages directly and verified 50 injury rows against the official page.",
+   "missing": "Nothing. The prior conclusion was wrong for this environment.",
+   "question": "Can the authoring environment reach nfl.com?",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "source_label": "nfl.com official injury report"
+  },
+  {
+   "area": "Model",
+   "blocks": "Accuracy only. Not blocking for the leaderboard.",
+   "discover": "S06",
+   "id": "Q17",
+   "known": "It does not. That is stated in the model's own limitations block.",
+   "missing": "A fitted effect size, which needs R6 first and a prior season second.",
+   "question": "Should the model apply an injury adjustment?",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "source_label": "repo artifact - DERIVED"
+  },
+  {
+   "area": "Model",
+   "blocks": "R4, R5.",
+   "discover": "S01",
+   "id": "Q18",
+   "known": "Walk-forward MAE is 10.52 points, r = 0.20, n = 121. Typical NFL closing spreads are graded against a margin distribution whose standard deviation is about 13.5 points.",
+   "missing": "A market benchmark. Accuracy in a vacuum cannot answer this; only the gap to the closing line can, which is R1.",
+   "question": "Is the model's 10.52-point MAE good enough to trade against?",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "source_label": "repo artifact - DERIVED"
+  }
+ ],
+ "requirements": [
+  {
+   "acceptance": "For every originated market there is one row per book carrying market_id, book, open_price, open_timestamp, close_price, close_timestamp, price_format and source_url. A market cannot be graded unless open and close are both present.",
+   "blocker": "No price provider. The store is waiting on a data-rights decision, not on code. See Q01 and S01.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/snapshots.json",
+   "evidence_label": "repo artifact - schema live, prices blank",
+   "id": "R1",
+   "owner": "origin/data/snapshots.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "Store is live with schema origin-snapshots-v1, append-only by (market_id, phase): 39 open rows RECORDED, 39 close rows PENDING. Every market_line is blank, so no closing-line value can be computed yet.",
+   "title": "Price-snapshot store that records opening and closing numbers for every market we originate",
+   "verdict": "PARTIAL",
+   "why": "Without both ends of the price, closing-line value cannot be measured, and without closing-line value a hit rate is not evidence of skill."
+  },
+  {
+   "acceptance": "One row per completed game with final score for both clubs, the official source URL, the retrieval timestamp, and a written settlement rule per market type (side, total, moneyline) including how ties and pushes are treated.",
+   "blocker": "No settlement rule, and no player-prop results. See Q04, S02, S09.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/results.json",
+   "evidence_label": "repo artifact - transcription of official week pages",
+   "id": "R2",
+   "owner": "origin/data/results.json and origin/data/backtest.json (session arena/f2df8317-x3, merged in PR #47); data/desk/games.json (session arena/3bf7cc8b-x3)",
+   "status_text": "The feed exists and backtests now run on it: origin/data/results.json holds 163 games / 137 finals with a per-row official URL, cross-checked 163/163 against the desk game log, and a walk-forward backtest is published per week. ROI still cannot be computed, and no settlement rule is written down.",
+   "title": "Verified results feed so backtests and ROI can be computed at all",
+   "verdict": "PARTIAL",
+   "why": "ROI is (settled return - stake) / stake. Every term needs a settled result, so without a results feed no leaderboard row can be scored."
+  },
+  {
+   "acceptance": "Each game carries three originated rows in the order side, total, moneyline. The moneyline row records the margin and the sigma it was derived from, so it is reproducible.",
+   "blocker": "None. The order requirement is satisfied.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "evidence_label": "repo artifact - order verified 0 violations of 13",
+   "id": "R3",
+   "owner": "origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "39 originated rows, 13 games x 3 market types, with seq order side then total then moneyline. This session re-checked the order for all 13 games: 0 violations. The moneyline records its own derivation - P(home win) = Phi(adj_margin / 13.5) on the side's adjusted margin - so it is reproducible from the side.",
+   "title": "Originate the side first, then the total, then the moneyline",
+   "verdict": "MET",
+   "why": "The moneyline is a function of the expected margin and its uncertainty. Deriving it last keeps the three markets mutually consistent; deriving them independently produces arbitrage against yourself."
+  },
+  {
+   "acceptance": "Three distinct columns per market: fair_line, market_line, and edge = fair_line - market_line, each with its own units label and sign convention.",
+   "blocker": "Depends on R1. No official source publishes NFL prices. See Q01 and S01.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "evidence_label": "repo artifact - columns present, market and diff blank",
+   "id": "R4",
+   "owner": "origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "The column contract exists: fair_line, market_line and diff are three separate fields on all 39 rows, each with a unit label and a recorded sign convention. fair_line is populated for every market. market_line and diff are blank in all 39 rows because no source publishes a price.",
+   "title": "Publish the model's fair line, the market line, and the difference as separate columns",
+   "verdict": "PARTIAL",
+   "why": "The difference is the whole signal. Publishing only a fair line leaves the reader to do the subtraction against a price they cannot see."
+  },
+  {
+   "acceptance": "Every leaderboard row carries two independently computed scores: a signal score that is stake-independent (mean closing-line value per bet, with n and a 95% CI) and a staking score that is PnL-dependent (ROI, drawdown, units). A strategy must be able to rank top-decile on signal while flat on staking, and the board must show both columns.",
+   "blocker": "The staking half needs prices and a settlement rule. See Q01, Q04, S05.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json",
+   "evidence_label": "repo artifact - signal populated, staking blocked",
+   "id": "R5",
+   "owner": "origin/data/leaderboard.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "The separation is implemented in the data rather than only described: every leaderboard row carries a signal block (metric, value, n, rank) and a separate staking block. The signal half is populated - side winner-direction accuracy 0.595 (n = 121), total over/under hit rate 0.4957 (n = 117), moneyline Brier 0.2373 (n = 121). The staking half is blocked with 0 settled bets.",
+   "title": "Separate 'signal' from 'staking' in the leaderboard so a lucky staking run cannot mask a bad signal",
+   "verdict": "PARTIAL",
+   "why": "A flat-stake record measures whether the fair line was right. A sized record mixes that with how much was risked. Ranking on the blend lets a Kelly run on coin-flips outrank a real edge."
+  },
+  {
+   "acceptance": "For each absent starter: the ordinal depth of the replacement (1st, 2nd, 3rd, 4th string or undrafted/free-agent pickup), the club chart URL, and the chart's as-of date. A row without an as-of date is published as unverified, not as fact.",
+   "blocker": "No chart carries a date, so an ordinal cannot be tied to a point in time. See Q06, S06, S07, and flag C-12 for a count discrepancy between the two trees.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json",
+   "evidence_label": "repo artifact - club charts, no as-of date",
+   "id": "R6",
+   "owner": "origin/data/depth.json (session arena/f2df8317-x3, merged in PR #47); data/desk/deficiencies.json (session arena/3bf7cc8b-x3)",
+   "status_text": "An ordinal is now recorded, not just a name: replacement_ordinal is populated for 42 of 76 Week 10 absences, with a reason_if_blank field explaining each gap. Zero of 76 rows carry a chart as-of date, and the club charts are self-labelled unofficial by the clubs that publish them.",
+   "title": "Track the depth of the replacement, not just the fact of a replacement",
+   "verdict": "PARTIAL",
+   "why": "'Starter out' and 'third-string guard starting' are different events with different expected effects. Counting only the fact treats them as identical and throws away the signal."
+  },
+  {
+   "acceptance": "Every published coefficient carries n, the official source URL, a 95% CI, and a plain reading. A coefficient whose CI contains 0 is labelled 'not distinguishable from no relationship' and is not used to price anything.",
+   "blocker": "None. See flag C-01 for the stale copy still published on another tree.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/correlations.json",
+   "evidence_label": "repo artifact - n and CI published with every value",
+   "id": "R7",
+   "owner": "origin/data/correlations.json (session arena/f2df8317-x3, merged in PR #47); data/desk/correlations.json (stale copy)",
+   "status_text": "Every coefficient carries n, a 95% interval, and the official source URL, and the mislabelled pair has been republished correctly: game total vs |home margin| is now -0.0157 and signed home margin vs total is -0.1607, as two separate rows. The older desk copy still carries the wrong label - see flag C-01.",
+   "title": "Compute correlations only from officially sourced numbers and publish n with each value",
+   "verdict": "MET",
+   "why": "A correlation is the input to the parlay leg screen. An r with no n is unfalsifiable, and an r computed on unlogged data is a guess dressed as a measurement."
+  },
+  {
+   "acceptance": "A written rule with numeric thresholds, a look-back window, and an automatic action: for example, return to paper when the rolling 200-bet closing-line value is negative, or when the 95% CI on ROI contains zero over the last 200 graded bets, or on any data provenance failure. Every demotion is logged with its trigger.",
+   "blocker": "None on the rule. Enforcement is still manual - see Q14 and S04.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/gates.json",
+   "evidence_label": "repo artifact - D-1 triggers and D-2 re-promotion",
+   "id": "R8",
+   "owner": "origin/data/gates.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "Gate D-1 is written with five numeric triggers and an automatic action: rolling median closing-line value of the last 20 settled bets <= 0 twice in a row (D-1a); drawdown from peak >= 25% (D-1b); signal below 50% for three consecutive cycles (D-1c); any data-integrity failure (D-1d); any unregistered model change (D-1e). D-1d and D-1e are armed now; D-1a to D-1c arm at promotion. D-2 defines re-promotion.",
+   "title": "Define a demotion gate that sends a live strategy back to paper",
+   "verdict": "MET",
+   "why": "A promotion gate with no demotion gate is a one-way door: a strategy that was lucky once stays live forever. The demotion rule is what makes the promotion rule mean anything."
+  }
+ ],
+ "season": "2026",
+ "session": "arena/dd5047b8-x3",
+ "sources": [
+  {
+   "host": "nfl.com",
+   "id": "SRC-01",
+   "name": "NFL.com Week 10 schedule",
+   "official": "yes",
+   "status": "read 2026-11-14, all 3 chunks",
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "used_for": "Slate size, kickoff times, neutral site, byes, Thursday result"
+  },
+  {
+   "host": "nfl.com",
+   "id": "SRC-02",
+   "name": "NFL.com 2026 league standings",
+   "official": "yes",
+   "status": "read 2026-11-14, all 2 chunks",
+   "url": "https://www.nfl.com/standings/league/2026/reg",
+   "used_for": "32 club records, points for and against, splits"
+  },
+  {
+   "host": "nfl.com",
+   "id": "SRC-03",
+   "name": "NFL.com official injury report, Week 10",
+   "official": "yes",
+   "status": "read 2026-11-14, chunk 1 of 8; 50 rows verified field by field",
+   "url": "https://www.nfl.com/injuries/league/2026/reg10",
+   "used_for": "345 player rows: practice status and game status"
+  },
+  {
+   "host": "nfl.com",
+   "id": "SRC-04",
+   "name": "NFL.com Commanders at Giants game page",
+   "official": "yes",
+   "status": "confirmed on the Week 10 schedule page",
+   "url": "https://www.nfl.com/games/commanders-at-giants-2026-reg-10",
+   "used_for": "The one completed Week 10 game"
+  },
+  {
+   "host": "nfl.com",
+   "id": "SRC-05",
+   "name": "NFL.com team stats",
+   "official": "yes",
+   "status": "captured by CI, HTTP 200",
+   "url": "https://www.nfl.com/stats/team-stats/",
+   "used_for": "Model context"
+  },
+  {
+   "host": "operations.nfl.com",
+   "id": "SRC-06",
+   "name": "NFL Football Operations 2026 rule book",
+   "official": "yes",
+   "status": "referenced; it does not define betting settlement",
+   "url": "https://operations.nfl.com/the-rules/2026-nfl-rulebook/",
+   "used_for": "What constitutes a final score"
+  },
+  {
+   "host": "github.com",
+   "id": "SRC-07",
+   "name": "Verified game log (repository artifact)",
+   "official": "transcription",
+   "status": "transcription of nfl.com week pages; capture manifest shows 11/11 HTTP 200",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json",
+   "used_for": "137 finals used for every recomputation on this tree"
+  },
+  {
+   "host": "github.com",
+   "id": "SRC-08",
+   "name": "Originated lines (repository artifact)",
+   "official": "no",
+   "status": "DERIVED. Badged as such on every row.",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "used_for": "Side and total for 13 games, walk-forward accuracy"
+  },
+  {
+   "host": "github.com",
+   "id": "SRC-09",
+   "name": "Injury and depth join (repository artifact)",
+   "official": "no",
+   "status": "Club-published, mostly self-labelled unofficial, no as-of dates",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json",
+   "used_for": "Absences joined to club depth charts"
+  },
+  {
+   "host": "github.com",
+   "id": "SRC-10",
+   "name": "Correlation register (repository artifact)",
+   "official": "no",
+   "status": "recomputed this session; see the verification page",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json",
+   "used_for": "Published coefficients, one of which is wrong (C-01)"
+  },
+  {
+   "host": "club sites",
+   "id": "SRC-11",
+   "name": "Club depth charts",
+   "official": "club-published",
+   "status": "31 of 32 clubs parsed; all self-labelled unofficial; Houston publishes an image",
+   "url": "https://www.azcardinals.com/team/depth-chart",
+   "used_for": "Replacement names behind R6"
+  }
+ ],
+ "suggestions": [
+  {
+   "area": "Market data",
+   "effort": "Path (c): an hour. Paths (a) and (b): a procurement or legal step plus a pipeline.",
+   "evidence": "Every market column in the repository is empty (V11-V14). Path (c) is the only one that costs nothing and it is also the only one that is honest today.",
+   "id": "S01",
+   "priority": "P0 - blocking",
+   "proposal": "Decide the price source before building more on top of it. Three paths: (a) buy a historical odds licence and ingest it in CI; (b) run the GitHub Actions runner on a schedule to snapshot one public book's board at a fixed time each day and retain only what is needed for closing-line value; (c) declare prices out of scope and re-scope the site to model accuracy against results, dropping every ROI and leaderboard claim.",
+   "risk": "Path (b) risks a terms-of-use problem and a single-book bias. Path (a) costs money. Path (c) removes the competition half of the brief.",
+   "source": "",
+   "source_label": "UNVERIFIED - decision, not a fetch",
+   "unblocks": "R1, R4, R5, R8, Q01, Q02, Q03, Q18"
+  },
+  {
+   "area": "Settlement",
+   "effort": "Small. It is a document, not a system.",
+   "evidence": "137 finals are verified and gradeable today (V04), but nothing states how they grade.",
+   "id": "S02",
+   "priority": "P0 - blocking",
+   "proposal": "Write the settlement rule down before any bet is graded: how a side settles on a tie, how a total settles on an exact landing, whether overtime counts, and what a push does to the record. One page, versioned, linked from every leaderboard row.",
+   "risk": "Low, but if it is written after the first bet is graded the early record becomes unfixable.",
+   "source": "",
+   "source_label": "UNVERIFIED - decision, not a fetch",
+   "unblocks": "R2, R5, Q04"
+  },
+  {
+   "area": "Origination",
+   "effort": "Small once sigma is chosen.",
+   "evidence": "Side and total exist for 13 games (V09). No moneyline exists anywhere (R3).",
+   "id": "S03",
+   "priority": "P1 - high",
+   "proposal": "Originate the moneyline last, from the side and the total, and print the sigma used. Record the conversion on the row so a reviewer can reproduce the price from the spread.",
+   "risk": "A normal-on-margin assumption is wrong in the tails and will misprice large favourites. Publish it as an assumption, not a fact.",
+   "source": "",
+   "source_label": "UNVERIFIED - not derivable from any official page",
+   "status": "IMPLEMENTED by origin/ (PR #47) - 39 rows in side, total, moneyline order, 0 violations. Open only if you want a different sigma.",
+   "unblocks": "R3, Q05"
+  },
+  {
+   "area": "Governance",
+   "effort": "Small to write, larger to automate.",
+   "evidence": "Promotion gates G1-G8 exist; no demotion rule exists anywhere (R8).",
+   "id": "S04",
+   "priority": "P1 - high",
+   "proposal": "Write the demotion gate as numbers with an owner and an enforcement point. A concrete default: return to paper if the rolling 200-bet mean closing-line value is negative, or if the 95% CI on ROI contains zero over the last 200 graded bets, or immediately on any data-provenance failure. Log every demotion with its trigger.",
+   "risk": "Thresholds chosen after seeing results are fitted to the past. Choose them now, before there is anything to demote.",
+   "source": "",
+   "source_label": "UNVERIFIED - decision, not a fetch",
+   "status": "IMPLEMENTED by origin/ (PR #47) - gate D-1 with five triggers plus D-2 re-promotion. Still open: automating enforcement.",
+   "unblocks": "R8, Q13, Q14"
+  },
+  {
+   "area": "Leaderboard",
+   "effort": "Small once R1 closes. Nothing to build until then.",
+   "evidence": "The design is described on two trees; neither board has a row (R5).",
+   "id": "S05",
+   "priority": "P1 - high",
+   "proposal": "Split the leaderboard into two boards from the start: a signal board scored on stake-independent mean closing-line value per bet with n and a 95% CI, and a staking board scored on ROI, units and drawdown. Rank them separately and never blend them into one number.",
+   "risk": "A blended ranking is exactly the failure the requirement is written to prevent.",
+   "source": "",
+   "source_label": "UNVERIFIED - design, no graded bets exist",
+   "status": "IMPLEMENTED by origin/ (PR #47) - signal and staking are separate blocks on every row; the signal half is populated, the staking half is blocked.",
+   "unblocks": "R5, Q11"
+  },
+  {
+   "area": "Roster",
+   "effort": "Small: the capture pipeline already exists for nfl.com pages.",
+   "evidence": "0 of 76 Week 10 absences carry a chart as-of date (R6).",
+   "id": "S06",
+   "priority": "P1 - high",
+   "proposal": "Capture depth charts on a fixed schedule in CI and store the capture date with every chart. A chart without a date is not evidence of a lineup, it is evidence that a page once existed.",
+   "risk": "Club charts are self-labelled unofficial. Store the disclaimer with the row.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json",
+   "source_label": "repo artifact - club charts",
+   "unblocks": "R6, Q06, Q17"
+  },
+  {
+   "area": "Roster",
+   "effort": "Medium. Requires parsing each club's chart layout, which varies by club.",
+   "evidence": "41 of 76 absences resolve to a named replacement, none to a depth string (R6, V15).",
+   "id": "S07",
+   "priority": "P2 - medium",
+   "proposal": "Add an ordinal depth field: 1st, 2nd, 3rd, 4th string, or a free-agent pickup sourced from the transaction wire rather than the depth chart. Treat the two sources as independent evidence and publish where they disagree.",
+   "risk": "Parsed ordinals are inferred from page layout, not stated by the club. Badge them DERIVED.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json",
+   "source_label": "repo artifact - club charts",
+   "status": "IMPLEMENTED by origin/ (PR #47) - replacement_ordinal is populated for 42 of 76 absences. Still open: the ordinals are club-published and unverified.",
+   "unblocks": "R6, Q06, Q07"
+  },
+  {
+   "area": "Statistics",
+   "effort": "Small. The fix is arithmetic; the discipline is publishing the correction.",
+   "evidence": "The published -0.161 is r(total, signed home margin), not r(total, |margin|). Correct value: see the recomputation on the verification page.",
+   "id": "S08",
+   "priority": "P0 - blocking",
+   "proposal": "Fix the published correlation. Recompute r(game total, |margin|) from the 137 verified finals and publish the corrected value with a corrected reading, or withdraw the pair. Do not silently overwrite: publish the correction with the old value and the date.",
+   "risk": "A silent edit destroys the audit trail. Publish both.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json",
+   "source_label": "repo artifact - recomputed here",
+   "status": "PARTIALLY IMPLEMENTED by origin/ (PR #47) - the corrected pair is published there. Still open: the stale desk copy still carries the wrong label (C-01).",
+   "unblocks": "R7"
+  },
+  {
+   "area": "Player props",
+   "effort": "Small to close; a purchase to open.",
+   "evidence": "No official source publishes prop prices or results (Q08, V16).",
+   "id": "S09",
+   "priority": "P2 - medium",
+   "proposal": "Either fund a prop feed or formally close the prop strategy family and say so on the leaderboard, rather than leaving strategies registered and permanently blocked.",
+   "risk": "Leaving blocked strategies registered inflates the apparent progress of the project.",
+   "source": "",
+   "source_label": "UNVERIFIED - no official prop source exists",
+   "unblocks": "The prop-combo leg of the brief, Q08"
+  },
+  {
+   "area": "Statistics",
+   "effort": "Medium. Historical week pages are the same format as the current ones.",
+   "evidence": "137 verified finals (V04); gates already specify 200 graded bets (G2).",
+   "id": "S10",
+   "priority": "P1 - high",
+   "proposal": "Ingest at least one prior season of official results before making any skill claim. The 2026 season alone cannot support a walk-forward test or a 200-bet minimum.",
+   "risk": "Low. More data is strictly better here.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "source_label": "nfl.com week schedule pages",
+   "unblocks": "R5, R7, R8, Q09"
+  },
+  {
+   "area": "Statistics",
+   "effort": "Small.",
+   "evidence": "Gate G4 specifies Benjamini-Hochberg at q = 0.10 with no test count registered (Q10).",
+   "id": "S11",
+   "priority": "P2 - medium",
+   "proposal": "Preregister the number of strategy tests before testing. FDR control needs a denominator, and an unbounded search space makes any correction meaningless.",
+   "risk": "Registering too few tests and then testing more is the failure mode; log additions.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json",
+   "source_label": "repo artifact - gate register",
+   "unblocks": "R5, R7, R8, Q10"
+  },
+  {
+   "area": "Rewards",
+   "effort": "Large, and mostly legal rather than technical.",
+   "evidence": "Nothing is configured; the site already states it does not promise rewards (Q12).",
+   "id": "S12",
+   "priority": "P3 - low",
+   "proposal": "Keep rewards out of the research system. If a competition is wanted, design it as a separate surface with its own rules and its own review, and do not let prize structure feed back into the signal scores.",
+   "risk": "Contest design is regulated. This is not a legal-advice surface; get a review.",
+   "source": "",
+   "source_label": "UNVERIFIED",
+   "unblocks": "Q12"
+  },
+  {
+   "area": "Repository",
+   "effort": "Medium: a decision plus a one-time archive move.",
+   "evidence": "Fifteen trees exist; a sixteenth is being built now (Q15).",
+   "id": "S13",
+   "priority": "P1 - high",
+   "proposal": "Stop adding duplicate site trees. Declare one canonical tree, freeze the rest as an archive, and require new work to land as pages inside the canonical tree instead of as a new root directory. This session is not exempt from the criticism: council/ is the sixteenth tree. It is additive rather than duplicative - it holds no table that another tree already publishes - but the count still went up, and a reviewer should read that as part of the problem rather than as a solution to it.",
+   "risk": "Freezing the wrong tree loses the newest registers. Check which tree holds them first.",
+   "source": "https://github.com/karagemop466-tech/X3",
+   "source_label": "GitHub repository",
+   "unblocks": "Q15"
+  },
+  {
+   "area": "Verification",
+   "effort": "Medium: re-fetch and re-verify, page by page.",
+   "evidence": "This session read nfl.com schedule, standings and injury pages directly and matched 50 injury rows field by field (V08, Q16).",
+   "id": "S14",
+   "priority": "P1 - high",
+   "proposal": "Correct the standing claim that the authoring environment cannot reach nfl.com, and re-run every blank table against the official pages. Several blanks are fetchable, not unknowable.",
+   "risk": "None. It only removes false blanks.",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "source_label": "nfl.com official injury report",
+   "unblocks": "Q16"
+  },
+  {
+   "area": "Verification",
+   "effort": "Small. The pattern already exists in scripts/audit_all.py.",
+   "evidence": "A repo-wide link and source-row gate exists, but prior sessions report 658 published rows that carry neither a link nor a flag.",
+   "id": "S15",
+   "priority": "P2 - medium",
+   "proposal": "Add one gate that refuses to publish a numeric cell unless it carries either an official source URL or an explicit UNVERIFIED badge. Enforce it in CI on every tree, not only on the tree that happens to own the newest page.",
+   "risk": "Low. It makes blanks visible instead of hiding them.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/scripts/audit_all.py",
+   "source_label": "repo artifact - existing gate",
+   "unblocks": "R7 hygiene, Q15"
+  },
+  {
+   "area": "Origination",
+   "effort": "Small.",
+   "evidence": "All 13 originated rows already carry empty market fields (V11, V12).",
+   "id": "S16",
+   "priority": "P2 - medium",
+   "proposal": "Publish the fair, market and difference columns even while the market column is empty: three headers, two blanks, and a cell that says why. The column contract is then in place when prices arrive.",
+   "risk": "Low, provided the blanks stay visibly blank.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "source_label": "repo artifact - market columns empty",
+   "status": "IMPLEMENTED by origin/ (PR #47) - fair_line, market_line and diff are separate fields on all 39 rows; market and diff stay blank until prices exist.",
+   "unblocks": "R4"
+  },
+  {
+   "area": "Model",
+   "effort": "Small.",
+   "evidence": "Walk-forward MAE 10.52, r 0.20, n 121, with no baseline published (V10, Q18).",
+   "id": "S17",
+   "priority": "P3 - low",
+   "proposal": "Report model accuracy against a published naive baseline (home team by a fixed margin, or last week's spread) so 'MAE 10.52' has something to be better than.",
+   "risk": "Low. It may show the model is not yet better than the baseline, which is useful to know.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "source_label": "repo artifact - DERIVED",
+   "unblocks": "Q18"
+  },
+  {
+   "area": "Governance",
+   "effort": "Small.",
+   "evidence": "A prior session published a false 'standings lag the finished game' flag purely because no cut-off was recorded anywhere.",
+   "id": "S18",
+   "priority": "P2 - medium",
+   "proposal": "Adopt an as-of contract for every dataset: each file declares the week, the retrieval timestamp and the source URL in the data itself, so no reader has to infer a cut-off.",
+   "risk": "None.",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json",
+   "source_label": "repo artifact - verified game log",
+   "unblocks": "R2, R6"
+  }
+ ],
+ "trees": [
+  {
+   "ext_links": 112,
+   "owner": "arena/dd5047b8-x3",
+   "pages": 9,
+   "path": "council/",
+   "purpose": "this session - decision council: the eight requirements as acceptance tests, questions, the suggestion review queue, verification, flags",
+   "table_rows": 138
+  },
+  {
+   "ext_links": 1835,
+   "owner": "arena/e9b492ab-x3, arena/621bf404-x3",
+   "pages": 37,
+   "path": "hub/",
+   "purpose": "Canonical review hub; the repository root points here",
+   "table_rows": 1964
+  },
+  {
+   "ext_links": 838,
+   "owner": "arena/3bf7cc8b-x3",
+   "pages": 18,
+   "path": "desk/",
+   "purpose": "Consolidated decision desk; owns the verified game log and the model",
+   "table_rows": 824
+  },
+  {
+   "ext_links": 528,
+   "owner": "arena/f2df8317-x3",
+   "pages": 14,
+   "path": "origin/",
+   "purpose": "Merged in PR #47: the eight requirements implemented as code - snapshot store, markets, moneyline, depth ordinals, gates D-1/D-2",
+   "table_rows": 481
+  },
+  {
+   "ext_links": 837,
+   "owner": "arena/37c71381-x3",
+   "pages": 7,
+   "path": "crosscheck/",
+   "purpose": "Cross-tree register reconciliation and link audit",
+   "table_rows": 561
+  },
+  {
+   "ext_links": 844,
+   "owner": "arena/4856379c-x3, arena/0c38f465-x3",
+   "pages": 24,
+   "path": "docs/",
+   "purpose": "First verified-data dashboard",
+   "table_rows": 1010
+  },
+  {
+   "ext_links": 772,
+   "owner": "arena/7e632805-x3",
+   "pages": 18,
+   "path": "dashboard/",
+   "purpose": "18-page dashboard built from transcribed official data",
+   "table_rows": 802
+  },
+  {
+   "ext_links": 3,
+   "owner": "arena/e1c332ce-x3",
+   "pages": 13,
+   "path": "x3lab/",
+   "purpose": "Lines and strategy lab with gates G0-G8",
+   "table_rows": 0
+  },
+  {
+   "ext_links": 0,
+   "owner": "early session",
+   "pages": 11,
+   "path": "lab/",
+   "purpose": "Research lab: hypotheses, gates, correlation, leaderboard design",
+   "table_rows": 0
+  },
+  {
+   "ext_links": 386,
+   "owner": "arena/d968fa97-x3",
+   "pages": 1,
+   "path": "audit/",
+   "purpose": "Independent re-verification of the Week 10 injury report",
+   "table_rows": 368
+  },
+  {
+   "ext_links": 12,
+   "owner": "prior session",
+   "pages": 1,
+   "path": "verification-hub/",
+   "purpose": "Verification surface",
+   "table_rows": 38
+  },
+  {
+   "ext_links": 852,
+   "owner": "arena/1e2d8ef2-x3",
+   "pages": 17,
+   "path": "archive/hub-621bf404/",
+   "purpose": "Relocated tree from an earlier integration session",
+   "table_rows": 802
+  },
+  {
+   "ext_links": 24,
+   "owner": "arena/1a771fcd-x3",
+   "pages": 6,
+   "path": "pages/",
+   "purpose": "Category subpages from an early integration",
+   "table_rows": 82
+  },
+  {
+   "ext_links": 0,
+   "owner": "arena/1a771fcd-x3",
+   "pages": 1,
+   "path": "site/",
+   "purpose": "Early standalone site",
+   "table_rows": 0
+  },
+  {
+   "ext_links": 0,
+   "owner": "prior session",
+   "pages": 1,
+   "path": "legacy/",
+   "purpose": "The original root site, preserved",
+   "table_rows": 0
+  },
+  {
+   "ext_links": 196,
+   "owner": "arena/35b167ca-x3",
+   "pages": 13,
+   "path": "(repository root)",
+   "purpose": "Landing hub and root category pages",
+   "table_rows": 306
+  }
+ ],
+ "verification": [
+  {
+   "check": "Every table row on this tree carries an official source URL or an explicit UNVERIFIED badge",
+   "id": "V-A1",
+   "method": "Gate in scripts/council_verify.py, run after every build.",
+   "result": "PASS"
+  },
+  {
+   "check": "Internal links across the council tree resolve",
+   "id": "V-A2",
+   "method": "Gate walks every href in the generated HTML.",
+   "result": "PASS"
+  },
+  {
+   "check": "Build is deterministic: two builds produce identical bytes",
+   "id": "V-A3",
+   "method": "Gate compares the output of two consecutive builds.",
+   "result": "PASS"
+  },
+  {
+   "check": "No unfilled prose token survives the build",
+   "id": "V-A4",
+   "method": "The build aborts on any unfilled placeholder token, so prose cannot drift from the table it describes.",
+   "result": "PASS"
+  },
+  {
+   "check": "Week 10 slate: 14 games plus 4 byes",
+   "id": "V-B1",
+   "method": "nfl.com Week 10 schedule page read in full. Byes: CHI, DEN, PHI, TB.",
+   "result": "CONFIRMED"
+  },
+  {
+   "check": "Week 10 Thursday result: Commanders 24, Giants 21",
+   "id": "V-B2",
+   "method": "Stated as FINAL on the official Week 10 schedule page.",
+   "result": "CONFIRMED"
+  },
+  {
+   "check": "Standings: 32 clubs, league points for equals league points against",
+   "id": "V-B3",
+   "method": "All 32 rows read from nfl.com/standings/league/2026/reg.",
+   "result": "CONFIRMED"
+  },
+  {
+   "check": "Week 10 injury report: 345 rows, 28 clubs, 66 Out / 10 Doubtful / 84 Questionable",
+   "id": "V-B4",
+   "method": "Counted from data/desk/injuries.json and checked against the official page header and layout.",
+   "result": "CONFIRMED"
+  },
+  {
+   "check": "Injury rows match the official page field by field",
+   "id": "V-B5",
+   "method": "WAS (9), NYG (11), NE (15), DET (9) and the first 6 KC rows compared on player, position, injury, practice status and game status against nfl.com/injuries/league/2026/reg10.",
+   "result": "50 of 50 MATCH"
+  },
+  {
+   "check": "Published correlation r(game total, |margin|) = -0.161, n = 137 (data/desk/correlations.json)",
+   "id": "V-C1",
+   "method": "Recomputed from the same 137 verified finals: r(total, |margin|) = -0.0157; r(total, signed home margin) = -0.1607. The published value is the signed-margin statistic under an absolute-margin label. Its reading ('move together') is also a sign error: a negative r means opposite directions. See flag C-01.",
+   "result": "DOES NOT REPRODUCE - CORRECTED IN origin/"
+  },
+  {
+   "check": "Published correlation r(away score, home score) = +0.076, n = 137",
+   "id": "V-C2",
+   "method": "Recomputed +0.0759 on the same 137 finals. Its 95% CI contains 0, so it is not distinguishable from no relationship.",
+   "result": "REPRODUCES"
+  },
+  {
+   "check": "Market columns are empty in all originated rows",
+   "id": "V-C3",
+   "method": "market_spread_home, market_total and market_source are empty strings in all 13 rows of data/desk/model.json.",
+   "result": "CONFIRMED EMPTY"
+  },
+  {
+   "check": "No moneyline is originated anywhere in the repository",
+   "id": "V-C4",
+   "method": "Repository-wide search for 'moneyline' returns only prose in strategy and leaderboard descriptions, never a price row.",
+   "result": "CONFIRMED ABSENT"
+  },
+  {
+   "check": "No demotion threshold exists anywhere in the repository",
+   "id": "V-C5",
+   "method": "Repository-wide search for 'demot' returns only a mention in hub/leaderboard.html and discussion text, never a rule.",
+   "result": "CONFIRMED ABSENT"
+  },
+  {
+   "check": "Replacement depth carries no as-of date",
+   "id": "V-C6",
+   "method": "0 of 76 Week 10 absences in data/desk/deficiencies.json carry a chart as-of date; 41 of 76 resolve to a named replacement.",
+   "result": "CONFIRMED"
+  }
+ ],
+ "verified": [
+  {
+   "area": "Season state",
+   "fact": "Season / week / as-of date",
+   "id": "V01",
+   "note": "Week 10 Sunday games kick off 2026-11-15; Monday night game 2026-11-16.",
+   "official": "yes",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "value": "2026 season, Week 10, as of 2026-11-14 (Saturday)"
+  },
+  {
+   "area": "Season state",
+   "fact": "Week 10 slate size",
+   "id": "V02",
+   "note": "4 clubs on bye: CHI, DEN, PHI, TB.",
+   "official": "yes",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "value": "14 games"
+  },
+  {
+   "area": "Results",
+   "fact": "Week 10 Thursday night result",
+   "id": "V03",
+   "note": "The only Week 10 game completed at the time of this review.",
+   "official": "yes",
+   "source": "https://www.nfl.com/games/commanders-at-giants-2026-reg-10",
+   "value": "Commanders 24, Giants 21 (FINAL, Thursday November 12th)"
+  },
+  {
+   "area": "Results",
+   "fact": "Completed games in the verified game log",
+   "id": "V04",
+   "note": "Weeks 1-9 complete (136) plus the Week 10 Thursday game (1).",
+   "official": "yes",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "value": "137 finals of 163 scheduled rows"
+  },
+  {
+   "area": "Standings",
+   "fact": "League standings rows, through Week 9",
+   "id": "V05",
+   "note": "Best: BUF 7-1-0, SF 7-1-0. Worst: LAC 0-8-0. League PF equals league PA, as it must.",
+   "official": "yes",
+   "source": "https://www.nfl.com/standings/league/2026/reg",
+   "value": "32 clubs"
+  },
+  {
+   "area": "Injuries",
+   "fact": "Week 10 official injury report rows",
+   "id": "V06",
+   "note": "28 clubs = the 32 league clubs minus the 4 on bye.",
+   "official": "yes",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "value": "345 rows across 28 clubs"
+  },
+  {
+   "area": "Injuries",
+   "fact": "Week 10 game-status distribution",
+   "id": "V07",
+   "note": "Counts sum to 345.",
+   "official": "yes",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "value": "66 Out, 10 Doubtful, 84 Questionable, 185 with no game status"
+  },
+  {
+   "area": "Injuries",
+   "fact": "Line-by-line injury spot-check against the official page",
+   "id": "V08",
+   "note": "Player, position, injury, practice status and game status compared field by field.",
+   "official": "yes",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "value": "50 of 50 rows match across WAS, NYG, NE, DET and the first 6 KC rows"
+  },
+  {
+   "area": "Model",
+   "fact": "Games priced by this repository's own model for Week 10",
+   "id": "V09",
+   "note": "DERIVED. 14 games minus the Thursday game already played.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "value": "13"
+  },
+  {
+   "area": "Model",
+   "fact": "Model walk-forward accuracy on verified finals",
+   "id": "V10",
+   "note": "DERIVED. Fit on earlier weeks only, graded on later weeks.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "value": "MAE 10.52 pts, RMSE 13.82, r 0.20, n = 121"
+  },
+  {
+   "area": "Market",
+   "fact": "Market spread for any originated line",
+   "id": "V11",
+   "note": "UNVERIFIED. No NFL or club page publishes prices; `market_spread_home` is an empty string in all 13 rows of data/desk/model.json.",
+   "official": "no",
+   "source": "",
+   "value": ""
+  },
+  {
+   "area": "Market",
+   "fact": "Market total for any originated line",
+   "id": "V12",
+   "note": "UNVERIFIED. Same cause as V11; `market_total` is empty in all 13 rows.",
+   "official": "no",
+   "source": "",
+   "value": ""
+  },
+  {
+   "area": "Market",
+   "fact": "Opening and closing price for any originated market",
+   "id": "V13",
+   "note": "UNVERIFIED. No price feed exists in this repository, so no closing-line value and no ROI can be computed.",
+   "official": "no",
+   "source": "",
+   "value": ""
+  },
+  {
+   "area": "Market",
+   "fact": "Settled bet / graded wager record",
+   "id": "V14",
+   "note": "UNVERIFIED. Zero graded bets exist; the leaderboard is empty by design.",
+   "official": "no",
+   "source": "",
+   "value": ""
+  },
+  {
+   "area": "Roster",
+   "fact": "Replacement depth of the player filling an absent starter's role",
+   "id": "V15",
+   "note": "UNVERIFIED. Club depth charts name a replacement for 41 of 76 Week 10 absences but carry no ordinal string and no as-of date (see R06).",
+   "official": "no",
+   "source": "",
+   "value": ""
+  },
+  {
+   "area": "Roster",
+   "fact": "Player-prop market history (any book, any season)",
+   "id": "V16",
+   "note": "UNVERIFIED. No official source publishes prop prices or prop results.",
+   "official": "no",
+   "source": "",
+   "value": ""
+  },
+  {
+   "area": "Results",
+   "fact": "Team stats source used for model context",
+   "id": "V17",
+   "note": "Captured by the repository's CI runner; see capture/manifest.txt.",
+   "official": "yes",
+   "source": "https://www.nfl.com/stats/team-stats/",
+   "value": "nfl.com team stats page (captured, HTTP 200)"
+  },
+  {
+   "area": "Origination",
+   "fact": "Originated markets per game, in the required order",
+   "id": "V19",
+   "note": "DERIVED. Sequence order re-checked this session: 0 violations across the 13 games.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "value": "39 rows: 13 games x side, total, moneyline"
+  },
+  {
+   "area": "Origination",
+   "fact": "Moneyline derivation as recorded on the row",
+   "id": "V20",
+   "note": "DERIVED. The moneyline records the margin and sigma it came from, so it reproduces.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "value": "P(home win) = Phi(adj_margin / 13.5); sigma 13.5 preregistered"
+  },
+  {
+   "area": "Schedule",
+   "fact": "Official venue of the Munich international game",
+   "id": "V21",
+   "note": "Read from the official game page game-info block. The repository publishes a different venue string that no official page supports - see flag C-11.",
+   "official": "yes",
+   "source": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
+   "value": "FC Bayern Munich Stadium (location: Munich)"
+  },
+  {
+   "area": "Leaderboard",
+   "fact": "Signal scores populated on the leaderboard",
+   "id": "V22",
+   "note": "DERIVED. Signal and staking are separate blocks on every row, as the requirement asks.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json",
+   "value": "side winner accuracy 0.595 (n=121); total over/under 0.4957 (n=117); moneyline Brier 0.2373 (n=121); staking 0 settled bets"
+  },
+  {
+   "area": "Roster",
+   "fact": "Replacement ordinal recorded for Week 10 absences",
+   "id": "V23",
+   "note": "Club-published and self-labelled unofficial. The desk tree records 41 of 76 for the same week - see flag C-12.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json",
+   "value": "42 of 76"
+  },
+  {
+   "area": "Rules",
+   "fact": "League rule book used as the settlement reference",
+   "id": "V18",
+   "note": "Determines what counts as a final score. It does not determine betting settlement.",
+   "official": "yes",
+   "source": "https://operations.nfl.com/the-rules/2026-nfl-rulebook/",
+   "value": "operations.nfl.com 2026 NFL rule book"
+  }
+ ],
+ "week": "10"
+}

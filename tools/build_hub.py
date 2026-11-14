@@ -93,17 +93,22 @@ NAV = [
     ("repo-review", "Repo review", "Prior work audited line by line"),
     ("flagged", "Flagged for review", "Unverified items and irregularities"),
     ("archive", "Prior trees", f"The {len(ARCHIVE_ROWS)} older site trees"),
-    # ---- pages added by session arena/aab4718a-x3 (tools/build_desk.py)
-    ("summary", "Executive summary (new)", "One-page brief: verified, measured, still impossible"),
-    ("results", "Results feed", "Verified finals and the field-by-field reconciliation"),
-    ("picks", "Board: side/total/ML", "Originated in order, with key-number checks"),
-    ("snapshots", "Price snapshots", "Open/close store; exactly which cells are real"),
-    ("correlation-live", "Correlation (recomputed)", "Every coefficient with n and permutation p"),
-    ("leaderboard-live", "Leaderboard and demotion", "Signal separated from staking"),
-    ("depth-tiers", "Replacement depth", "Which string actually steps in"),
-    ("decisions", "Review queue", "Questions, answers and suggestions"),
-    ("repo-review-live", "Repo review", "Prior claims rechecked line by line"),
-    ("flagged-live", "Flagged for review", "Everything that needs a human decision"),
+    # ---- pages added by session arena/aab4718a-x3 (tools/build_desk.py).
+    # Labeled as a cross-check so that no label duplicates another unit's page.
+    # After the merge with PR #55/#56 there were nine duplicate labels on the
+    # landing, which is a usability defect: two rows called "Results feed" with
+    # different content is worse than one. Each of these is an independent
+    # recomputation of the same question from official pages, so it says so.
+    ("summary", "Cross-check: executive brief", "Independent one-page brief, every number interpolated"),
+    ("results", "Cross-check: results feed", "Same 137 finals, reconciled field by field"),
+    ("picks", "Cross-check: board side/total/ML", "Originated in order, with key-number checks"),
+    ("snapshots", "Cross-check: price snapshots", "Open/close store; exactly which cells are real"),
+    ("correlation-live", "Cross-check: correlation", "Every coefficient with n and permutation p"),
+    ("leaderboard-live", "Cross-check: demotion rule", "Signal separated from staking, 6 triggers"),
+    ("depth-tiers", "Cross-check: replacement depth", "Which string actually steps in"),
+    ("decisions", "Cross-check: review queue", "Questions, answers and suggestions"),
+    ("repo-review-live", "Cross-check: repo audit", "14 prior claims rechecked line by line"),
+    ("flagged-live", "Cross-check: review flags", "Everything that needs a human decision"),
 ]
 
 
@@ -175,8 +180,12 @@ def table(heads, rows, tid=None, cap=None, note=None, kind="data"):
 
 
 def page(fname, title, intro, body, active="index", extra_head=""):
+    # Pages emitted into a subdirectory need their relative links prefixed, or they
+    # resolve against the wrong directory and every nav target 404s. `up` is the
+    # number of path segments between the page and hub/.
+    up = "../" * max(0, fname.count("/"))
     nav = "".join(
-        f'<a href="{slug}.html"{" class=on" if slug == active else ""}">{esc(lbl)}</a>'
+        f'<a href="{up}{slug}.html"{" class=on" if slug == active else ""}">{esc(lbl)}</a>'
         for slug, lbl, _d in NAV)
     html = f"""<!doctype html>
 <html lang="en">
@@ -184,12 +193,12 @@ def page(fname, title, intro, body, active="index", extra_head=""):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} - X3 NFL decision desk</title>
-<link rel="stylesheet" href="assets/hub.css">
+<link rel="stylesheet" href="{up}assets/hub.css">
 {extra_head}
 </head>
 <body>
 <header class="top">
-  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="brand"><a href="{up}index.html">X3 <span>NFL decision desk</span></a></div>
   <div class="asof">data as of <b>{AS_OF}</b> - season 2026, week {meta['week']}</div>
 </header>
 <nav class="nav">{nav}</nav>
@@ -203,11 +212,13 @@ def page(fname, title, intro, body, active="index", extra_head=""):
   <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on {AS_OF};
   values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
   calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
-  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <p><a href="{up}../index.html">Site root</a> - <a href="{up}../COORDINATION.md">Coordination log</a> -
   <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
 </footer>
 </body></html>"""
-    with open(os.path.join(HUB, fname), "w", encoding="utf-8") as f:
+    out = os.path.join(HUB, fname)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as f:
         f.write(html)
 
 
@@ -373,7 +384,9 @@ def p_lines():
     board = table(["When", "Matchup", "Base margin (H)", "Injury delta", "Adj margin (H)",
                    "Model spread (H)", "Model total", "Market spread/total", "Signal",
                    "1st-string vac. H/A", "Sources"], rows,
-                  note="Positive margin = home team is worse. Model spread is rounded to the half point; "
+                  note="Margin is home expected points minus away expected points, so a POSITIVE margin means the "
+         "home club is the better side; the spread is that margin negated (a +3.64 margin becomes -3.5). "
+         "Rounded to the half point; "
                        "negative = home favoured. Market columns are blank because no price source exists "
                        "in this repository (flag F-01).")
     tr = []
@@ -1159,11 +1172,29 @@ document.querySelectorAll('input.filt').forEach(function(inp){
 
 
 def main():
+    # ---- X3-v2 extension (session arena/873c7396-x3): additive pages + register rows
+    import x3_content2 as X2
+    X2.register(esc, badge, link, table)
+    C.FLAGS.extend(X2.NEW_FLAGS)
+    C.Q.extend(X2.NEW_QUESTIONS)
+    C.SUG.extend(X2.NEW_SUGGESTIONS)
+    NAV.extend(X2.NAV_EXTRA)
     # extra pages that need the helpers defined above
     build_prereg()
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
     p_injuries(); p_depth(); p_leader(); p_req(); p_questions(); p_suggestions()
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
+    # COLLISION RESOLUTION (session arena/aab4718a-x3).
+    # Another session's generator (tools/x3_content2.py) writes results.html,
+    # pricing.html, origination.html, signal.html and replacement.html at the hub
+    # root. This session publishes results.html, snapshots.html, picks.html,
+    # leaderboard-live.html and depth-tiers.html. Writing both sets to the same
+    # names would make one unit silently overwrite the other, so the x3/ set is
+    # emitted under hub/x3/ instead. Nothing is deleted and no name is stolen:
+    # both units keep every page, each under its own namespace.
+    for fn in X2.PAGES:  # results / pricing / origination / signal / replacement
+        fname, title, intro, body = fn()
+        page(os.path.join("x3", fname + ".html"), title, intro, body, fname)
     with open(os.path.join(HUB, "assets", "hub.css"), "w", encoding="utf-8") as f:
         f.write(CSS)
     with open(os.path.join(HUB, "assets", "hub.js"), "w", encoding="utf-8") as f:
@@ -1241,15 +1272,38 @@ data does not exist here yet.</p>
 {nav}
 </nav>
 <section class="callout"><h2>Start here</h2>
-<p><a href="hub/executive-summary.html"><b>Executive summary</b></a> for the decisions,
-<a href="hub/lines.html"><b>Originated lines</b></a> for the board,
-<a href="hub/suggestions.html"><b>Suggestions</b></a> to choose a path,
-<a href="hub/questions.html"><b>Open questions</b></a> for the information gaps, and
-<a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.</p>
+<p>The navigation above lists every page in this tree. If you want a single entry point written
+against the eight operating requirements, the decision council is
+<a href="council/index.html"><b>council/index.html</b></a>; this tree is
+<a href="hub/index.html"><b>hub/index.html</b></a>. Both are maintained, and each says which of the
+eight requirements it considers met, partial or blocked.</p>
 <p class="note">Earlier sessions published {len(ARCHIVE_ROWS)} overlapping site trees; they are preserved and indexed at
 <a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
 is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is
 <a href="COORDINATION.md">COORDINATION.md</a>.</p></section>
+<section class="callout" style="margin-top:22px">
+<h2>Trading desk - the eight operating requirements</h2>
+<p><b>Registration, not replacement.</b> <code>ops/</code> is a separate trading-desk tree that answers the eight
+operating requirements directly and says plainly where it cannot: prices originated in a fixed order
+(side, then total, then moneyline), a price-snapshot store with opening and closing schema for every market,
+correlations that each carry their n, injured starters resolved to the depth of their replacement, and a
+signal-vs-staking leaderboard whose demotion gate is dry-run to prove it fires.</p>
+<p><a href="ops/index.html"><b>Enter the trading desk</b></a> &middot;
+<a href="ops/executive-summary.html">Executive summary</a> &middot;
+<a href="ops/lines.html">Originated lines</a> &middot;
+<a href="ops/snapshots.html">Price snapshots</a> &middot;
+<a href="ops/leaderboard.html">Leaderboard</a> &middot;
+<a href="ops/gates.html">Gates &amp; demotion</a> &middot;
+<a href="ops/correlation.html">Correlation</a> &middot;
+<a href="ops/depth.html">Replacement depth</a> &middot;
+<a href="ops/results.html">Results feed</a> &middot;
+<a href="ops/questions.html">Open questions</a> &middot;
+<a href="ops/suggestions.html">Suggestions</a> &middot;
+<a href="ops/flagged.html">Flagged for review</a></p>
+<p class="note">Every market price on the trading desk is blank on purpose: no official market feed exists in
+this repository, so fair-versus-market, ROI and closing-line value are published as blocked rather than
+estimated.</p>
+</section>
 </main>
 </body></html>"""
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:

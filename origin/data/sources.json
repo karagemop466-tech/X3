@@ -1,0 +1,53 @@
+{
+ "rows": [
+  {
+   "id": "S-01",
+   "what": "Official 2026 week schedule pages (results feed; weeks 1\u201311)",
+   "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "verified": "fetched by CI (11/11 HTTP 200); parsed finals cross-checked 163/163 vs the independent desk transcription",
+   "used_for": "results feed, backtest, correlations C-01..C-06"
+  },
+  {
+   "id": "S-02",
+   "what": "Official league standings (cross-reference)",
+   "url": "https://www.nfl.com/standings/league/2026/REG",
+   "verified": "aggregates recomputed from the official game log agree with the desk's standings transcription (192/192, prior session's published check)",
+   "used_for": "correlations C-04..C-07 inputs"
+  },
+  {
+   "id": "S-03",
+   "what": "Official Week-10 injury report",
+   "url": "https://www.nfl.com/injuries/league/2026/reg10",
+   "verified": "345 rows; two prior sessions' independent transcriptions agree 345/345 (published in COORDINATION.md); designation counts used as-is",
+   "used_for": "depth join, deficiency index, correlation C-07"
+  },
+  {
+   "id": "S-04",
+   "what": "Club depth charts (32 clubs)",
+   "url": "https://www.detroitlions.com/team/depth-chart",
+   "verified": "UNVERIFIED as fact \u2014 charts are labelled unofficial by the clubs; used only as a flagged lead for replacement ordinals",
+   "used_for": "replacement-depth join (flagged F-A02)"
+  },
+  {
+   "id": "S-05",
+   "what": "X3-v1 pre-registration (model params)",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/prereg.json",
+   "verified": "committed ledger read as-is; sigma and weights adopted unchanged",
+   "used_for": "ML bridge sigma, pos_cost, string_weight"
+  },
+  {
+   "id": "S-06",
+   "what": "Hub originated lines (sides + totals, DERIVED)",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/lines.json",
+   "verified": "published build output of the CI-locked hub; adopted as the originated fair lines rather than re-fitted here",
+   "used_for": "markets S/T rows, snapshot store open numbers"
+  },
+  {
+   "id": "S-07",
+   "what": "Desk transcription of the same official pages (independent)",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json",
+   "verified": "used as the cross-check target: 163/163 agreement with this session's independent capture",
+   "used_for": "results-feed verification"
+  }
+ ]
+}

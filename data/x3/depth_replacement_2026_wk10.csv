@@ -1,0 +1,56 @@
+club,unit,pos,player_out,status,chart_pos,out_depth,replacement,replacement_depth,flag,source
+ATL,defense,LB,Divine Deablo,Doubtful,ILB,1,Christian Harris,2,,https://www.atlantafalcons.com/team/depth-chart
+ATL,offense,WR,Zachariah Branch,Out,WR,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.atlantafalcons.com/team/depth-chart
+BUF,offense,T,Spencer Brown,Doubtful,RT,1,Tylan Grable,2,,https://www.buffalobills.com/team/depth-chart
+CAR,defense,LB,Bobby Okereke,Out,LB,1,Tyrel Dodson,2,,https://www.panthers.com/team/depth-chart
+CIN,defense,S,Kyle Dugger,Out,S,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.bengals.com/team/depth-chart
+CLE,defense,S,Ronnie Hickman Jr.,Out,FS,1,Donovan McMillon,2,,https://www.clevelandbrowns.com/team/depth-chart
+CLE,offense,FB,Michael Burton,Out,RB,3,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.clevelandbrowns.com/team/depth-chart
+DAL,defense,LB,Donovan Ezeiruaku,Out,OLB,1,James Houston,2,,https://www.dallascowboys.com/team/depth-chart
+DAL,defense,S,P.J. Locke,Out,S,1,Markquese Bell,2,,https://www.dallascowboys.com/team/depth-chart
+DAL,defense,S,Juanyeh Thomas,Doubtful,S,3,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.dallascowboys.com/team/depth-chart
+DAL,offense,RB,Tyler Goodson,Out,RB,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.dallascowboys.com/team/depth-chart
+DAL,offense,TE,Jake Ferguson,Out,TE,1,Brevyn Spann-Ford,2,,https://www.dallascowboys.com/team/depth-chart
+DAL,offense,WR,Jonathan Mingo,Out,WR,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.dallascowboys.com/team/depth-chart
+DET,defense,CB,D.J. Reed,Out,CB,1,Rock Ya-Sin,2,,https://www.detroitlions.com/team/depth-chart
+DET,offense,C,Cade Mays,Out,C,1,Juice Scruggs,2,,https://www.detroitlions.com/team/depth-chart
+GB,defense,LB,Zaire Franklin,Doubtful,LB,1,Ty'Ron Hopper,2,,https://www.packers.com/team/depth-chart
+GB,offense,C,Sean Rhyan,Out,C,1,Jager Burton,2,,https://www.packers.com/team/depth-chart
+GB,offense,RB,Josh Jacobs,Out,RB,1,MarShawn Lloyd,2,,https://www.packers.com/team/depth-chart
+IND,defense,DT,Jerry Tillery,Out,NT,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.colts.com/team/depth-chart
+IND,defense,LB,Jaylon Carlies,Out,WLB,1,Bryce Boettcher,2,,https://www.colts.com/team/depth-chart
+IND,defense,LB,Akeem Davis-Gaither,Out,MLB,1,CJ Allen,2,,https://www.colts.com/team/depth-chart
+IND,offense,T,Jalen Travis,Out,RT,1,Luke Tenuta,2,,https://www.colts.com/team/depth-chart
+IND,offense,TE,Mo Alie-Cox,Out,TE,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.colts.com/team/depth-chart
+IND,special,LS,Luke Rhodes,Out,LS,1,,,,https://www.colts.com/team/depth-chart
+JAX,defense,DT,Jordan Davis,Out,NT,1,Davon Godchaux,2,,https://www.jaguars.com/team/depth-chart
+JAX,defense,S,Jessie Bates,Out,S,1,Kaevon Merriweather,2,,https://www.jaguars.com/team/depth-chart
+KC,defense,DT,Peter Woods,Out,DT,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.chiefs.com/team/depth-chart
+KC,offense,T,Jaylon Moore,Out,RT,1,Joshua Ezeudu,2,,https://www.chiefs.com/team/depth-chart
+MIA,offense,C,Aaron Brewer,Out,C,1,Andrew Meyer,2,,https://www.miamidolphins.com/team/depth-chart
+MIA,offense,WR,Chris Bell,Doubtful,WR,1,Jalen Tolbert,2,,https://www.miamidolphins.com/team/depth-chart
+MIA,offense,WR,Jared Wayne,Out,WR,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.miamidolphins.com/team/depth-chart
+MIN,defense,DT,Tyrion Ingram-Dawkins,Out,DL,1,Elijah Williams,2,,https://www.vikings.com/team/depth-chart
+MIN,defense,LB,Blake Cashman,Out,LB,1,Ivan Pace Jr.,2,,https://www.vikings.com/team/depth-chart
+MIN,offense,QB,Kyler Murray,Out,QB,1,Carson Wentz,2,,https://www.vikings.com/team/depth-chart
+MIN,offense,TE,T.J. Hockenson,Out,TE,1,Gavin Bartholomew,2,,https://www.vikings.com/team/depth-chart
+MIN,offense,WR,Jauan Jennings,Out,WR,1,Myles Price,2,,https://www.vikings.com/team/depth-chart
+NE,defense,CB,Carlton Davis III,Out,CB,1,Channing Canada,2,,https://www.patriots.com/team/depth-chart
+NE,offense,C,Ben Brown,Out,C,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.patriots.com/team/depth-chart
+NE,offense,RB,TreVeyon Henderson,Out,RB,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.patriots.com/team/depth-chart
+NO,defense,DT,Christen Miller,Out,DL,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.neworleanssaints.com/team/depth-chart
+NO,offense,C,Erik McCoy,Out,C,1,William Sherman,2,,https://www.neworleanssaints.com/team/depth-chart
+NO,offense,RB,CJ Donaldson,Out,RB,3,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.neworleanssaints.com/team/depth-chart
+NO,offense,T,Taliese Fuaga,Out,RT,1,Mason Murphy,2,,https://www.neworleanssaints.com/team/depth-chart
+NYJ,defense,LB,Trevin Wallace,Out,LB,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.newyorkjets.com/team/depth-chart
+SEA,defense,DT,Leonard Williams,Out,DT,1,Rylie Mills,2,,https://www.seahawks.com/team/depth-chart/
+SEA,offense,G,Quenton Nelson,Out,LG,1,Anthony Bradford,2,,https://www.seahawks.com/team/depth-chart/
+SEA,offense,QB,Sam Darnold,Out,QB,1,Drew Lock,2,,https://www.seahawks.com/team/depth-chart/
+SEA,offense,T,Charles Cross,Out,LT,1,Josh Jones,2,,https://www.seahawks.com/team/depth-chart/
+SF,offense,WR,Mike Evans,Out,WR,1,Jordan Watkins,2,,https://www.49ers.com/team/depth-chart
+TEN,defense,LB,Cody Barton,Out,LB,1,,,,https://www.tennesseetitans.com/team/depth-chart
+TEN,defense,LB,Anthony Hill Jr.,Out,LB,1,Dorian Mausi,2,,https://www.tennesseetitans.com/team/depth-chart
+TEN,offense,G,Peter Skoronski,Out,LG,1,,,,https://www.tennesseetitans.com/team/depth-chart
+TEN,offense,WR,Carnell Tate,Out,WR,1,Elic Ayomanor,2,,https://www.tennesseetitans.com/team/depth-chart
+TEN,special,P,Tommy Townsend,Out,P,1,Joey Slye,2,,https://www.tennesseetitans.com/team/depth-chart
+WAS,offense,TE,Colson Yankoff,Out,TE,2,,,NOT-A-STARTER (injured player is not depth 1 in this slot),https://www.commanders.com/team/depth-chart

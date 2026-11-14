@@ -1,0 +1,41 @@
+{
+ "as_of": "2026-11-14",
+ "hfa_sensitivity_2026": {
+  "hfa_used": 0.0,
+  "note": "measured 2026 home win% = 0.4927 (n=137); grid -1.5..+3.5 published on hub/lines"
+ },
+ "model": "X3-v2",
+ "order": [
+  "1-side",
+  "2-total",
+  "3-moneyline"
+ ],
+ "params": {
+  "bet_odds_default": -110,
+  "edge_threshold_ml_ev": 0.04,
+  "edge_threshold_side_pts": 2.0,
+  "edge_threshold_total_pts": 2.0,
+  "flat_stake_units": 1.0,
+  "hfa_2026_pts": 0.0,
+  "hfa_backtest_pts": 1.5,
+  "iterations": 150,
+  "kelly_cap": 0.03,
+  "kelly_fraction": 0.25,
+  "model_id": "X3-v2",
+  "prior_season_weight": 0.5,
+  "prior_shrinkage_games_k": 3.0,
+  "sigma_margin_fixed": null,
+  "sigma_margin_n": 1359,
+  "sigma_margin_note": "sd of official game margins 2021-2025, used for cover/win probabilities",
+  "sigma_margin_sd": 14.188
+ },
+ "seasons_backtested": [
+  2021,
+  2022,
+  2023,
+  2024,
+  2025,
+  "2026 wks1-9"
+ ],
+ "source": "results/market: nflverse games.csv (scores = official record mirror; lines = PFF MARKET-3P)"
+}

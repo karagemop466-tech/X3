@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview - X3 decision council</title>
+<link rel="stylesheet" href="assets/council.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>decision council</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<div class="wrap">
+<nav class="nav"><a class="on" href="index.html"><b>Overview</b><span>The eight requirements at a glance</span></a>
+<a href="executive-summary.html"><b>Executive summary</b><span>The one-page brief</span></a>
+<a href="requirements.html"><b>Requirements</b><span>Each requirement as an acceptance test</span></a>
+<a href="questions.html"><b>Questions &amp; answers</b><span>What is known, what is missing, what it blocks</span></a>
+<a href="suggestions.html"><b>Suggestions</b><span>Review the paths, then choose</span></a>
+<a href="verification.html"><b>Verification</b><span>Line by line, with the recomputation</span></a>
+<a href="repo-review.html"><b>Repo review</b><span>Every tree audited</span></a>
+<a href="flagged.html"><b>Flagged for review</b><span>Unverified items and irregularities</span></a>
+<a href="sources.html"><b>Sources</b><span>Official pages and repository artifacts</span></a></nav>
+<main>
+<h1>The eight requirements, and what the repository actually meets</h1>
+<p class="lede">A decision surface for the X3 NFL project: each requirement of the brief turned into a test the repository either passes or fails, with the evidence linked.</p>
+<div class="grid"><div class="card"><div class="num">3</div><div class="lbl">requirements met</div><div class="sub">of 8 in the brief</div></div><div class="card"><div class="num">5</div><div class="lbl">partially met</div><div class="sub">in place, with a defect or a gap</div></div><div class="card"><div class="num">0</div><div class="lbl">not met</div><div class="sub">built nowhere in the repository</div></div><div class="card"><div class="num">0</div><div class="lbl">blocked on data</div><div class="sub">need a decision or a purchase, not code</div></div></div>
+<h2>The eight requirements, verdict by verdict</h2>
+<table><thead><tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Verdict</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr><td><span class="mono">R1</span></td><td><b>Price-snapshot store that records opening and closing numbers for every market we originate</b></td><td><span class="bad warn">PARTIAL</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/snapshots.json">repo artifact - schema live, prices blank</a></td></tr>
+<tr><td><span class="mono">R2</span></td><td><b>Verified results feed so backtests and ROI can be computed at all</b></td><td><span class="bad warn">PARTIAL</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/results.json">repo artifact - transcription of official week pages</a></td></tr>
+<tr><td><span class="mono">R3</span></td><td><b>Originate the side first, then the total, then the moneyline</b></td><td><span class="bad ok">MET</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json">repo artifact - order verified 0 violations of 13</a></td></tr>
+<tr><td><span class="mono">R4</span></td><td><b>Publish the model&#x27;s fair line, the market line, and the difference as separate columns</b></td><td><span class="bad warn">PARTIAL</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json">repo artifact - columns present, market and diff blank</a></td></tr>
+<tr><td><span class="mono">R5</span></td><td><b>Separate &#x27;signal&#x27; from &#x27;staking&#x27; in the leaderboard so a lucky staking run cannot mask a bad signal</b></td><td><span class="bad warn">PARTIAL</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json">repo artifact - signal populated, staking blocked</a></td></tr>
+<tr><td><span class="mono">R6</span></td><td><b>Track the depth of the replacement, not just the fact of a replacement</b></td><td><span class="bad warn">PARTIAL</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json">repo artifact - club charts, no as-of date</a></td></tr>
+<tr><td><span class="mono">R7</span></td><td><b>Compute correlations only from officially sourced numbers and publish n with each value</b></td><td><span class="bad ok">MET</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/correlations.json">repo artifact - n and CI published with every value</a></td></tr>
+<tr><td><span class="mono">R8</span></td><td><b>Define a demotion gate that sends a live strategy back to paper</b></td><td><span class="bad ok">MET</span></td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/gates.json">repo artifact - D-1 triggers and D-2 re-promotion</a></td></tr>
+</tbody></table>
+<p class="note">Every verdict is derived from an acceptance test, not an impression.
+<a href="requirements.html">Requirements</a> carries the test, the evidence and the blocker for each one.</p>
+
+<h2>What is verified right now</h2>
+<table><thead><tr>
+<th>ID</th>
+<th>Area</th>
+<th>Fact</th>
+<th>Verified value</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td><span class="mono">V01</span></td><td>Season state</td><td>Season / week / as-of date</td><td>2026 season, Week 10, as of 2026-11-14 (Saturday)</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V02</span></td><td>Season state</td><td>Week 10 slate size</td><td>14 games</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V03</span></td><td>Results</td><td>Week 10 Thursday night result</td><td>Commanders 24, Giants 21 (FINAL, Thursday November 12th)</td><td><a href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V04</span></td><td>Results</td><td>Completed games in the verified game log</td><td>137 finals of 163 scheduled rows</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V05</span></td><td>Standings</td><td>League standings rows, through Week 9</td><td>32 clubs</td><td><a href="https://www.nfl.com/standings/league/2026/reg">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V06</span></td><td>Injuries</td><td>Week 10 official injury report rows</td><td>345 rows across 28 clubs</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V07</span></td><td>Injuries</td><td>Week 10 game-status distribution</td><td>66 Out, 10 Doubtful, 84 Questionable, 185 with no game status</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V08</span></td><td>Injuries</td><td>Line-by-line injury spot-check against the official page</td><td>50 of 50 rows match across WAS, NYG, NE, DET and the first 6 KC rows</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V09</span></td><td>Model</td><td>Games priced by this repository&#x27;s own model for Week 10</td><td>13</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V10</span></td><td>Model</td><td>Model walk-forward accuracy on verified finals</td><td>MAE 10.52 pts, RMSE 13.82, r 0.20, n = 121</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V11</span></td><td>Market</td><td>Market spread for any originated line</td><td><span class="blanks">blank - no official source</span></td><td><span class="bad">UNVERIFIED - no official source</span></td></tr>
+<tr><td><span class="mono">V12</span></td><td>Market</td><td>Market total for any originated line</td><td><span class="blanks">blank - no official source</span></td><td><span class="bad">UNVERIFIED - no official source</span></td></tr>
+<tr><td><span class="mono">V13</span></td><td>Market</td><td>Opening and closing price for any originated market</td><td><span class="blanks">blank - no official source</span></td><td><span class="bad">UNVERIFIED - no official source</span></td></tr>
+<tr><td><span class="mono">V14</span></td><td>Market</td><td>Settled bet / graded wager record</td><td><span class="blanks">blank - no official source</span></td><td><span class="bad">UNVERIFIED - no official source</span></td></tr>
+<tr><td><span class="mono">V15</span></td><td>Roster</td><td>Replacement depth of the player filling an absent starter&#x27;s role</td><td><span class="blanks">blank - no official source</span></td><td><span class="bad">UNVERIFIED - no official source</span></td></tr>
+<tr><td><span class="mono">V16</span></td><td>Roster</td><td>Player-prop market history (any book, any season)</td><td><span class="blanks">blank - no official source</span></td><td><span class="bad">UNVERIFIED - no official source</span></td></tr>
+<tr><td><span class="mono">V17</span></td><td>Results</td><td>Team stats source used for model context</td><td>nfl.com team stats page (captured, HTTP 200)</td><td><a href="https://www.nfl.com/stats/team-stats/">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V19</span></td><td>Origination</td><td>Originated markets per game, in the required order</td><td>39 rows: 13 games x side, total, moneyline</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V20</span></td><td>Origination</td><td>Moneyline derivation as recorded on the row</td><td>P(home win) = Phi(adj_margin / 13.5); sigma 13.5 preregistered</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V21</span></td><td>Schedule</td><td>Official venue of the Munich international game</td><td>FC Bayern Munich Stadium (location: Munich)</td><td><a href="https://www.nfl.com/games/patriots-at-lions-2026-reg-10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V22</span></td><td>Leaderboard</td><td>Signal scores populated on the leaderboard</td><td>side winner accuracy 0.595 (n=121); total over/under 0.4957 (n=117); moneyline Brier 0.2373 (n=121); staking 0 settled bets</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V23</span></td><td>Roster</td><td>Replacement ordinal recorded for Week 10 absences</td><td>42 of 76</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">V18</span></td><td>Rules</td><td>League rule book used as the settlement reference</td><td>operations.nfl.com 2026 NFL rule book</td><td><a href="https://operations.nfl.com/the-rules/2026-nfl-rulebook/">UNVERIFIED - no official source</a></td></tr>
+</tbody></table>
+<p class="note">Rows with a blank value are blank because no official source publishes them. They are
+not pending; they are unknown. <a href="flagged.html">Flagged for review</a> lists the consequences.</p>
+
+<div class="callout"><h3 style="margin-top:0">The one decision that unblocks the rest</h3>
+<p>No NFL or club page publishes betting prices. That single fact is why the fair-versus-market
+difference, closing-line value, ROI and the leaderboard are all blank across every tree in this
+repository. It is a data-rights decision rather than an engineering task, and it is
+<b>suggestion S01</b> on the <a href="suggestions.html">suggestions</a> page.</p></div>
+
+<h2>How to use this tree</h2>
+<ul class="tight">
+<li><a href="executive-summary.html">Executive summary</a> - the one-page brief.</li>
+<li><a href="questions.html">Questions &amp; answers</a> - what is known, what is missing, what each
+gap blocks, and which suggestion would close it.</li>
+<li><a href="suggestions.html">Suggestions</a> - the review queue. Nothing here is implemented; you
+pick a path first.</li>
+<li><a href="verification.html">Verification</a> - what was checked line by line, including a
+correlation that does not reproduce.</li>
+<li><a href="repo-review.html">Repo review</a> - every site tree in the repository, audited.</li>
+</ul>
+
+</main>
+<footer>
+<p>X3 decision council - session arena/dd5047b8-x3. Every row carries an official source link or an explicit
+UNVERIFIED badge; nothing is inferred. Repository:
+<a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>.
+Back to the <a href="../index.html">site landing</a>.</p>
+</footer>
+</div>
+</body>
+</html>

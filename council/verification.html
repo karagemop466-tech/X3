@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verification - X3 decision council</title>
+<link rel="stylesheet" href="assets/council.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>decision council</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<div class="wrap">
+<nav class="nav"><a href="index.html"><b>Overview</b><span>The eight requirements at a glance</span></a>
+<a href="executive-summary.html"><b>Executive summary</b><span>The one-page brief</span></a>
+<a href="requirements.html"><b>Requirements</b><span>Each requirement as an acceptance test</span></a>
+<a href="questions.html"><b>Questions &amp; answers</b><span>What is known, what is missing, what it blocks</span></a>
+<a href="suggestions.html"><b>Suggestions</b><span>Review the paths, then choose</span></a>
+<a class="on" href="verification.html"><b>Verification</b><span>Line by line, with the recomputation</span></a>
+<a href="repo-review.html"><b>Repo review</b><span>Every tree audited</span></a>
+<a href="flagged.html"><b>Flagged for review</b><span>Unverified items and irregularities</span></a>
+<a href="sources.html"><b>Sources</b><span>Official pages and repository artifacts</span></a></nav>
+<main>
+<h1>Verification log</h1>
+<p class="lede">Every check this session ran, with the method and the result. Where a published number does not reproduce, the recomputation is shown next to it rather than quietly corrected.</p>
+
+<h2>What was checked, and how</h2>
+<table><thead><tr>
+<th>ID</th>
+<th>Check</th>
+<th>Result</th>
+<th>Method</th>
+</tr></thead><tbody>
+<tr><td><span class="mono">V-A1</span></td><td>Every table row on this tree carries an official source URL or an explicit UNVERIFIED badge</td><td><span class="bad ok">PASS</span></td><td>Gate in scripts/council_verify.py, run after every build.</td></tr>
+<tr><td><span class="mono">V-A2</span></td><td>Internal links across the council tree resolve</td><td><span class="bad ok">PASS</span></td><td>Gate walks every href in the generated HTML.</td></tr>
+<tr><td><span class="mono">V-A3</span></td><td>Build is deterministic: two builds produce identical bytes</td><td><span class="bad ok">PASS</span></td><td>Gate compares the output of two consecutive builds.</td></tr>
+<tr><td><span class="mono">V-A4</span></td><td>No unfilled prose token survives the build</td><td><span class="bad ok">PASS</span></td><td>The build aborts on any unfilled placeholder token, so prose cannot drift from the table it describes.</td></tr>
+<tr><td><span class="mono">V-B1</span></td><td>Week 10 slate: 14 games plus 4 byes</td><td><span class="bad ok">CONFIRMED</span></td><td>nfl.com Week 10 schedule page read in full. Byes: CHI, DEN, PHI, TB.</td></tr>
+<tr><td><span class="mono">V-B2</span></td><td>Week 10 Thursday result: Commanders 24, Giants 21</td><td><span class="bad ok">CONFIRMED</span></td><td>Stated as FINAL on the official Week 10 schedule page.</td></tr>
+<tr><td><span class="mono">V-B3</span></td><td>Standings: 32 clubs, league points for equals league points against</td><td><span class="bad ok">CONFIRMED</span></td><td>All 32 rows read from nfl.com/standings/league/2026/reg.</td></tr>
+<tr><td><span class="mono">V-B4</span></td><td>Week 10 injury report: 345 rows, 28 clubs, 66 Out / 10 Doubtful / 84 Questionable</td><td><span class="bad ok">CONFIRMED</span></td><td>Counted from data/desk/injuries.json and checked against the official page header and layout.</td></tr>
+<tr><td><span class="mono">V-B5</span></td><td>Injury rows match the official page field by field</td><td><span class="bad warn">50 of 50 MATCH</span></td><td>WAS (9), NYG (11), NE (15), DET (9) and the first 6 KC rows compared on player, position, injury, practice status and game status against nfl.com/injuries/league/2026/reg10.</td></tr>
+<tr><td><span class="mono">V-C1</span></td><td>Published correlation r(game total, |margin|) = -0.161, n = 137 (data/desk/correlations.json)</td><td><span class="bad warn">DOES NOT REPRODUCE - CORRECTED IN origin/</span></td><td>Recomputed from the same 137 verified finals: r(total, |margin|) = -0.0157; r(total, signed home margin) = -0.1607. The published value is the signed-margin statistic under an absolute-margin label. Its reading (&#x27;move together&#x27;) is also a sign error: a negative r means opposite directions. See flag C-01.</td></tr>
+<tr><td><span class="mono">V-C2</span></td><td>Published correlation r(away score, home score) = +0.076, n = 137</td><td><span class="bad ok">REPRODUCES</span></td><td>Recomputed +0.0759 on the same 137 finals. Its 95% CI contains 0, so it is not distinguishable from no relationship.</td></tr>
+<tr><td><span class="mono">V-C3</span></td><td>Market columns are empty in all originated rows</td><td><span class="bad bad hi">CONFIRMED EMPTY</span></td><td>market_spread_home, market_total and market_source are empty strings in all 13 rows of data/desk/model.json.</td></tr>
+<tr><td><span class="mono">V-C4</span></td><td>No moneyline is originated anywhere in the repository</td><td><span class="bad bad hi">CONFIRMED ABSENT</span></td><td>Repository-wide search for &#x27;moneyline&#x27; returns only prose in strategy and leaderboard descriptions, never a price row.</td></tr>
+<tr><td><span class="mono">V-C5</span></td><td>No demotion threshold exists anywhere in the repository</td><td><span class="bad bad hi">CONFIRMED ABSENT</span></td><td>Repository-wide search for &#x27;demot&#x27; returns only a mention in hub/leaderboard.html and discussion text, never a rule.</td></tr>
+<tr><td><span class="mono">V-C6</span></td><td>Replacement depth carries no as-of date</td><td><span class="bad ok">CONFIRMED</span></td><td>0 of 76 Week 10 absences in data/desk/deficiencies.json carry a chart as-of date; 41 of 76 resolve to a named replacement.</td></tr>
+</tbody></table>
+
+<h2>Correlations recomputed from officially sourced numbers</h2>
+<p>Recomputed from the 137 completed games in <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json">data/desk/games.json</a>, which is a
+transcription of the official nfl.com week pages. n is printed with every coefficient because a
+correlation without n cannot be checked. A coefficient whose 95% interval contains 0 is labelled
+<i>not distinguishable from no relationship</i> and is not used to price anything.</p>
+<table><thead><tr>
+<th>Pair</th>
+<th>r</th>
+<th>n</th>
+<th>95% CI</th>
+<th>p</th>
+<th>Reading</th>
+<th>Used for</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>Game total vs |margin|</td><td><span class="mono">-0.0157</span></td><td><span class="mono">137</span></td><td><span class="mono">[-0.183, +0.152]</span></td><td><span class="mono">0.8554</span></td><td><span class="bad warn">NOT distinguishable from 0</span></td><td>Same-game parlay leg screen</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com week schedule pages</a></td></tr>
+<tr><td>Game total vs signed home margin</td><td><span class="mono">-0.1607</span></td><td><span class="mono">137</span></td><td><span class="mono">[-0.320, +0.007]</span></td><td><span class="mono">0.0607</span></td><td><span class="bad warn">NOT distinguishable from 0</span></td><td>Diagnostic for the published defect</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com week schedule pages</a></td></tr>
+<tr><td>Away score vs home score</td><td><span class="mono">+0.0759</span></td><td><span class="mono">137</span></td><td><span class="mono">[-0.093, +0.240]</span></td><td><span class="mono">0.3782</span></td><td><span class="bad warn">NOT distinguishable from 0</span></td><td>Two-leg parlay correlation screen</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com week schedule pages</a></td></tr>
+<tr><td>Week of season vs game total</td><td><span class="mono">-0.0294</span></td><td><span class="mono">137</span></td><td><span class="mono">[-0.196, +0.139]</span></td><td><span class="mono">0.7330</span></td><td><span class="bad warn">NOT distinguishable from 0</span></td><td>Seasonal totals check</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com week schedule pages</a></td></tr>
+</tbody></table>
+<p class="note">Pearson r; 95% interval by Fisher z; two-sided p from Student t. Computed by
+<code>scripts/council_build.py</code> from the game log, so any reader can reproduce it.</p>
+
+<h2>The published values, compared with the recomputation</h2>
+<p>The repository publishes two of these pairs. One reproduces and one does not.</p>
+<table><thead><tr>
+<th>Pair</th>
+<th>Published r</th>
+<th>Recomputed r</th>
+<th>|delta|</th>
+<th>Verdict</th>
+</tr></thead><tbody>
+<tr><td>Game total vs |margin|</td><td><span class="mono">-0.1610</span></td><td><span class="mono">-0.0157</span></td><td><span class="mono">0.1453</span></td><td><span class="bad bad hi">DOES NOT MATCH</span></td></tr>
+<tr><td>Away score vs home score</td><td><span class="mono">+0.0760</span></td><td><span class="mono">+0.0759</span></td><td><span class="mono">0.0001</span></td><td><span class="bad ok">MATCHES</span></td></tr>
+</tbody></table>
+<div class="callout"><h3 style="margin-top:0">C-01 - the defect, stated plainly</h3>
+<p><code>data/desk/correlations.json</code> publishes <b>r = -0.161, n = 137</b> labelled
+<i>game total vs |margin|</i>, with the reading <i>"same-game total and blowout size move together"</i>.</p>
+<ul class="tight">
+<li>Recomputed on the same 137 finals: <b>r(total, |margin|) = -0.0157</b>.</li>
+<li>Also recomputed: <b>r(total, signed home margin) = -0.1607</b>. That is the published number.</li>
+<li>So the published value is the <i>signed-margin</i> statistic published under an
+<i>absolute-margin</i> label. The pipeline is fine; the label is wrong.</li>
+<li>The reading is a sign error as well: a <i>negative</i> r means the two quantities move in opposite
+directions, not together.</li>
+<li>Its 95% interval contains 0 either way, so even correctly labelled it is not distinguishable from
+no relationship and should not be used as a parlay leg screen.</li>
+</ul>
+<p>The file belongs to another session, so it is not edited here. The fix is
+<a href="suggestions.html#S08">S08</a>, and it is recorded as flag
+<a href="flagged.html#C-01">C-01</a>.</p></div>
+
+<h2>Spot check: injury rows read against the official page</h2>
+<p>Fifty rows of the Week 10 official injury report were compared field by field with the
+repository's transcription: player, position, injury, practice status and game status. All fifty
+match. This also settles a standing project claim - see flag
+<a href="flagged.html#C-04">C-04</a>.</p>
+<table><thead><tr>
+<th>Team</th>
+<th>Rows compared</th>
+<th>Result</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>Washington</td><td>9</td><td><span class="bad ok">all fields match</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com official injury report</a></td></tr>
+<tr><td>N.Y. Giants</td><td>11</td><td><span class="bad ok">all fields match</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com official injury report</a></td></tr>
+<tr><td>New England</td><td>15</td><td><span class="bad ok">all fields match</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com official injury report</a></td></tr>
+<tr><td>Detroit</td><td>9</td><td><span class="bad ok">all fields match</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com official injury report</a></td></tr>
+<tr><td>Kansas City</td><td>6 of 13</td><td><span class="bad ok">all fields match</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com official injury report</a></td></tr>
+</tbody></table>
+
+</main>
+<footer>
+<p>X3 decision council - session arena/dd5047b8-x3. Every row carries an official source link or an explicit
+UNVERIFIED badge; nothing is inferred. Repository:
+<a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>.
+Back to the <a href="../index.html">site landing</a>.</p>
+</footer>
+</div>
+</body>
+</html>

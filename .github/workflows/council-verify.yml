@@ -1,0 +1,42 @@
+name: Council verify
+
+# Offline gate for the council/ decision tree. It rebuilds the tree from its
+# sources and then refuses the run if any published row lacks a source link or
+# an explicit UNVERIFIED badge, if any internal link is broken, or if the build
+# is not deterministic.
+
+on:
+  push:
+    branches: [main, "arena/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build the council tree
+        run: python3 scripts/council_build.py
+
+      - name: Gate the council tree
+        run: python3 scripts/council_verify.py
+
+      - name: Fail if the build left the tree dirty
+        run: |
+          git config --local user.email "ci@example.invalid"
+          git config --local user.name "ci"
+          git add -A council data/council
+          git diff --cached --quiet || {
+            echo "::error::council/ or data/council/ changed on rebuild; commit the regenerated tree"
+            git --no-pager diff --cached --stat
+            exit 1
+          }
