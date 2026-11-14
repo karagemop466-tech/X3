@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Injuries &amp; Depth &mdash; X3 NFL</title>
+<meta name="description" content="Injury tracking and defense/offense depth-chart deficiencies: backups (2nd, 3rd, 4th string) replacing starters.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand"><span class="mark">X3</span><span>X3 &middot; NFL Decision Intelligence</span></div>
+    <div class="tagline">Track injuries &amp; depth-chart deficiencies</div>
+  </div>
+</header>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html">Dashboard</a>
+    <a href="executive-summary.html">Executive Summary</a>
+    <a href="suggestions.html">Suggestions &amp; Review</a>
+    <a href="flagged-for-review.html">Flagged for Review</a>
+    <a href="strategies.html">Strategies &amp; Signals</a>
+    <a href="injuries.html" class="active">Injuries &amp; Depth</a>
+    <a href="sources.html">Sources</a>
+    <div class="nav-spacer"></div>
+    <span class="nav-badge">Weekly cycle</span>
+  </div>
+</nav>
+
+<main id="content" class="container">
+  <h1 class="section-title">Injuries &amp; Depth Tracking</h1>
+  <p class="section-sub">The system tracks injuries and identifies deficiencies in defenses and offenses when 2nd, 3rd, or 4th string backups replace starters due to lineups.</p>
+
+  <div class="section-title"><span class="num">1</span>Injury tracking design</div>
+  <table>
+    <thead>
+      <tr><th>Element</th><th>Design</th><th>Status</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Injury source</td>
+        <td>Official NFL weekly injury report (player, position, injury, practice status, game status)</td>
+        <td><span class="tag tag-unverified">Identified, not fetched</span></td>
+        <td class="source-cell"><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries</a></td>
+      </tr>
+      <tr>
+        <td>Ingestion</td>
+        <td>Automated weekly fetch; no manual input</td>
+        <td><span class="tag tag-unverified">Not built</span></td>
+        <td class="source-cell"><span class="blank">Direct nfl.com fetch blocked in sandbox</span></td>
+      </tr>
+      <tr>
+        <td>Fields tracked</td>
+        <td>Player, team, position, injury, practice status, game status, week</td>
+        <td><span class="tag tag-unverified">Schema defined</span></td>
+        <td class="source-cell"><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title"><span class="num">2</span>Depth-chart / backup tracking (defense &amp; offense)</div>
+  <p class="section-sub">Flags where a starter is replaced by a 2nd, 3rd, or 4th string backup, creating a position-group deficiency.</p>
+  <table>
+    <thead>
+      <tr><th>Unit</th><th>Position</th><th>Starter</th><th>2nd string</th><th>3rd string</th><th>4th string</th><th>Deficiency flag</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Defense</td>
+        <td class="blank">CB</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Unverified</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+      <tr>
+        <td>Defense</td>
+        <td class="blank">EDGE</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Unverified</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+      <tr>
+        <td>Defense</td>
+        <td class="blank">S</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Unverified</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+      <tr>
+        <td>Offense</td>
+        <td class="blank">QB</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Unverified</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+      <tr>
+        <td>Offense</td>
+        <td class="blank">LT</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Unverified</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+      <tr>
+        <td>Offense</td>
+        <td class="blank">WR1</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Not fetched</td>
+        <td class="blank">Unverified</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title"><span class="num">3</span>Deficiency rules</div>
+  <ul>
+    <li>Flag a unit as <em>deficient</em> when the starter is out/questionable and a 2nd, 3rd, or 4th string backup is the next available player.</li>
+    <li>Track offense and defense separately; combine into a team-level availability score for line origination.</li>
+    <li>Update weekly with the official injury report and depth charts.</li>
+  </ul>
+
+  <div class="callout warn">
+    <h4>&nbsp; Verification status</h4>
+    <p>No player, depth order, or deficiency value on this page has been confirmed from an official source. All cells are left blank and flagged unverified. Nothing is inferred or filled in.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    X3 &middot; NFL project &middot; Branch <code>arena/1a771fcd-x3</code> &middot; Built with GitHub Pages &middot; No manual input &mdash; all entries sourced or flagged unverified.
+  </div>
+</footer>
+
+</body>
+</html>
