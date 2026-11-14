@@ -1,0 +1,4 @@
+https://www.nfl.com/injuries/ -> 200 412874 bytes
+https://www.nfl.com/standings/league/2026/REG -> 200 257832 bytes
+https://www.nfl.com/schedules/2026/REG1/ -> 308 23 bytes
+https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingyards/desc -> 200 268761 bytes
