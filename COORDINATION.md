@@ -542,3 +542,24 @@ role). No other session's files were modified.
 - **Additional correction:** fixed the X3 Lab Suggestions page's status-edit instruction, which pointed to the unrelated `docs/data/suggestions.json` path instead of `x3lab/data/suggestions.json`.
 - **Build/verification:** `python3 tools/build_dashboard.py` regenerated the dashboard after the shallow checkout was unshallowed with `git fetch --unshallow origin main`; build reported 345 injury rows, 31/32 depth charts, 76 deficiencies, 12 flags, and 18 pages. All local checks passed: `scripts/check_site.py` (356 rows, 0 lacking source/flag), `tools/check_links.py` (13 pages / 315 links), `scripts/check_dashboard.py`, `node scripts/check_data.js` (20 sources / 61 research rows), `node scripts/check_render.js` (11 views), and `scripts/verify_data.py` (2,134 checks). JSON parse and targeted published-copy checks passed.
 - **Sources/limits:** no official or trusted source identifies the applicable operating jurisdiction; no jurisdiction-specific legal statement was added. A user-supplied approximate location is not used as a substitute for legal domicile. External legal review remains a flagged prerequisite, not a verified conclusion.
+
+---
+
+## Session `arena/361edc3f-x3` — integration QA
+
+Branch: `arena/361edc3f-x3` (platform-assigned; retained as required). This session reviewed the integrated repository and claims the following isolated follow-up task:
+
+| Task | Status | Files | Scope |
+|---|---|---|---|
+| QA-01 | done | `scripts/build_site.py`, generated `docs/index.html`, `COORDINATION.md` | Preserve the previously integrated extended research links/data section when the docs dashboard is regenerated; add regression verification. |
+
+Claim recorded and pushed before implementation. Initial discovery: the checked-in generated `docs/index.html` included an extended research section, but `python3 scripts/build_site.py` rewrote the file and removed that section. The generated output was added to the task scope because it is the direct build artifact. Updated the dashboard generator to re-emit links to all 13 `docs/pages/` research pages. No NFL fact values were added or changed; source verification is not applicable to this generator-only fix.
+
+### Verification / irregularities
+- Ran `python3 scripts/build_site.py`; confirmed generated `docs/index.html` includes the extended section and all 13 expected page links.
+- `python3 scripts/check_site.py`: 352 table rows, 0 missing source links/flags; internal links pass.
+- `python3 tools/check_links.py`: 13 pages, 315 links, no broken internal links.
+- `python3 scripts/check_dashboard.py`: all local links and assets pass.
+- `python3 scripts/verify_data.py`: 2,134 checks pass; `python3 tools/verify_site.py`: 14 pages / 48 tables pass.
+- `node --check` for dashboard/test scripts, `node scripts/check_data.js`, and `node scripts/check_render.js` all pass.
+- No additional irregularities. GitHub Pages is already configured for `main /` and status was `built` during this session; a deployment for these changes requires merging the follow-up PR.
