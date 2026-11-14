@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for Review | X3 NFL Research</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
+<span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html" class=active>Flagged for Review</a></div></nav>
+<main>
+<h1>Flagged for Review</h1>
+
+<p class="lede"><b>Flagged for Review.</b> These are irregularities, conflicts and unverified items found while building
+the site. They do not block publication. Each row has a link so you can check it. Tell us which to change.</p>
+<div class="cards">
+<div class="card"><b>16</b><span>flags</span></div>
+<div class="card"><b>3</b><span>high severity</span></div>
+</div>
+<input class="search" type="search" placeholder="Filter rows..." data-target="tbl-flags" aria-label="Filter rows">
+<div class="tablewrap"><table id="tbl-flags"><thead><tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Area</th>
+<th>Issue</th>
+<th>Evidence</th>
+<th>Source link</th>
+<th>Action for you</th>
+</tr></thead><tbody>
+<tr>
+<td>F01</td>
+<td><span class="badge flag">High</span></td>
+<td>Legal</td>
+<td>Wagering with private bookmakers from Japan is criminal for the bettor under Penal Code Art. 185 (fine up to 500,000 yen); habitual gambling is Art. 186. The project therefore has legal exposure if it is used for wagering.</td>
+<td>Official translation of Penal Code Art. 185 (search excerpt of the official page; full text not re-read)</td>
+<td><a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb</a></td>
+<td>Decide research-only scope (S08) and confirm with counsel (Q02)</td>
+</tr>
+<tr>
+<td>F02</td>
+<td><span class="badge flag">High</span></td>
+<td>Schedule</td>
+<td>NFL.com page titled &quot;2026 National Football League important dates&quot; lists 2025-season dates (Week 18 Jan 3-4 2026; Super Bowl LX Feb 8 2026). It conflicts with the 2026 season schedule release (Week 18 Jan 9-10 2027).</td>
+<td>Both NFL.com pages fetched</td>
+<td><a href="https://www.nfl.com/news/2026-national-football-league-important-dates" target="_blank" rel="noopener">https://www.nfl.com/news/2026-national-football-league-important-dates</a></td>
+<td>Do not use this page for 2026-27 dates; confirm with NFL</td>
+</tr>
+<tr>
+<td>F03</td>
+<td><span class="badge todo">Medium</span></td>
+<td>Schedule</td>
+<td>Thanksgiving 2026 matchups conflict. An NFL.com schedule excerpt shows Detroit at Chicago on 11/26, while a third-party page lists Bears at Lions. Left unverified.</td>
+<td>Search excerpts only; full NFL.com schedule not fetched</td>
+<td><a href="https://www.nfl.com/nfl-schedule-release/" target="_blank" rel="noopener">https://www.nfl.com/nfl-schedule-release/</a></td>
+<td>Confirm on NFL.com before use</td>
+</tr>
+<tr>
+<td>F04</td>
+<td><span class="badge todo">Medium</span></td>
+<td>Injury data</td>
+<td>Puka Nacua (Rams WR): NFL.com news reports turf toe with sprained MCL and PCL and a likely IR placement, but the Week 10 report shows no injury entry (practice DNP, blank game status).</td>
+<td>Week 10 league page and news article</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">https://www.nfl.com/injuries/league/2026/reg10</a></td>
+<td>Confirm whether the report field is incomplete</td>
+</tr>
+<tr>
+<td>F05</td>
+<td><span class="badge todo">Medium</span></td>
+<td>Injury data</td>
+<td>Lamar Jackson (Ravens QB) was placed on injured reserve per NFL.com news but does not appear on the Week 10 report. Report scope for IR players is unclear.</td>
+<td>NFL.com news &quot;Ravens officially place Lamar Jackson on injured reserve&quot; (linked from the Week 10 news page); Ravens list on the Week 10 report shows no QB entry</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">https://www.nfl.com/injuries/league/2026/reg10</a></td>
+<td>Confirm report scope (Q12)</td>
+</tr>
+<tr>
+<td>F06</td>
+<td><span class="badge todo">Low</span></td>
+<td>Injury data</td>
+<td>Name variants between the report and the official news article: Jacob Hummel (report; URL slug jake-hummel) vs Jake Hummel (article); Gervon Dexter Sr. (report) vs Gervon Dexter (article); Kam Curl (report) vs Kamren Curl (article).</td>
+<td>Week 10 league page vs article</td>
+<td><a href="https://www.nfl.com/news/nfl-week-10-injury-report-2026-season" target="_blank" rel="noopener">https://www.nfl.com/news/nfl-week-10-injury-report-2026-season</a></td>
+<td>Use the NFL.com player profile slug as the match key</td>
+</tr>
+<tr>
+<td>F07</td>
+<td><span class="badge todo">Low</span></td>
+<td>Injury data</td>
+<td>Position labels differ between the report and the article (for example Ben Brown C on report vs OL in article; Jaylon Moore T vs OL; Walter Rouse T vs OL). Stored as on the report; article labels noted in the note column.</td>
+<td>Week 10 league page vs article</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">https://www.nfl.com/injuries/league/2026/reg10</a></td>
+<td>Use the report label as the source of truth</td>
+</tr>
+<tr>
+<td>F08</td>
+<td><span class="badge todo">Low</span></td>
+<td>Injury data</td>
+<td>The injury field includes non-injury reasons (&quot;Not injury related - resting player&quot;; &quot;personal matter&quot;). Kept as printed, not treated as injuries.</td>
+<td>Rows for Jessie Bates, Jordan Davis, Myles Garrett, Azeez Al-Shaair</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">https://www.nfl.com/injuries/league/2026/reg10</a></td>
+<td>Filter these rows out of injury models</td>
+</tr>
+<tr>
+<td>F09</td>
+<td><span class="badge todo">Low</span></td>
+<td>Injury data</td>
+<td>The Week 10 league page shows no publication timestamp. The as-of date is the access date (2026-11-14).</td>
+<td>Page content</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">https://www.nfl.com/injuries/league/2026/reg10</a></td>
+<td>Snapshot daily to track changes (Suggestion S01)</td>
+</tr>
+<tr>
+<td>F10</td>
+<td><span class="badge flag">High</span></td>
+<td>Data gap</td>
+<td>No validated strategies exist. No historical odds, results or depth charts were retrieved, so all ROI, CLV, sample size and correlation fields are blank.</td>
+<td>data/strategies.csv and data/correlations.csv</td>
+<td><a href="https://nextgenstats.nfl.com/" target="_blank" rel="noopener">https://nextgenstats.nfl.com/</a></td>
+<td>Choose data sources (Q03, Q04, Q05, Q06)</td>
+</tr>
+<tr>
+<td>F11</td>
+<td><span class="badge todo">Medium</span></td>
+<td>Data gap</td>
+<td>Depth-chart mapping (2nd and 3rd string backups) was not built; no official depth chart was verified in this session.</td>
+<td>COORDINATION.md task T06 (blocked)</td>
+<td><a href="https://www.nfl.com/teams/" target="_blank" rel="noopener">https://www.nfl.com/teams/</a></td>
+<td>Approve depth-chart collection (Suggestion S02)</td>
+</tr>
+<tr>
+<td>F12</td>
+<td><span class="badge todo">Medium</span></td>
+<td>Repo</td>
+<td>The repo had no LICENSE, .gitignore or code at the start of the session (README is 4 bytes: &quot;# X3&quot;).</td>
+<td>git ls-files; README.md</td>
+<td><a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3</a></td>
+<td>Decide license (Suggestion S10)</td>
+</tr>
+<tr>
+<td>F13</td>
+<td><span class="badge todo">Medium</span></td>
+<td>Repo</td>
+<td>The brief&#x27;s branch rule (session-&lt;id&gt;/&lt;task&gt;) conflicts with the platform rule (single assigned branch). The platform rule was followed.</td>
+<td>COORDINATION.md</td>
+<td><a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3</a></td>
+<td>Confirm preferred branch rule (Q10)</td>
+</tr>
+<tr>
+<td>F14</td>
+<td><span class="badge todo">Low</span></td>
+<td>Repo</td>
+<td>The brief&#x27;s COORDINATION.md link and session placeholders are HTML-escaped (&quot;&amp;amp;lt;id&amp;amp;gt;&quot;), so the intended text was inferred. Flagged rather than silently fixed.</td>
+<td>Brief text</td>
+<td><a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3</a></td>
+<td>Confirm the intended format</td>
+</tr>
+<tr>
+<td>F15</td>
+<td><span class="badge todo">Low</span></td>
+<td>Hosting</td>
+<td>GitHub Pages currently publishes from main at &quot;/&quot; (legacy). The site is published from /docs after the merge, so the Pages source must be changed.</td>
+<td>GitHub API pages endpoint</td>
+<td><a href="https://karagemop466-tech.github.io/X3/" target="_blank" rel="noopener">https://karagemop466-tech.github.io/X3/</a></td>
+<td>Confirm the Pages source change is acceptable</td>
+</tr>
+<tr>
+<td>F16</td>
+<td><span class="badge todo">Low</span></td>
+<td>Unverified</td>
+<td>Trade deadline (Nov 10 2026, 4pm ET) appears only on a third-party page. Not used as an official value.</td>
+<td>sportsfoundation.org excerpt</td>
+<td><a href="https://sportsfoundation.org/nfl-season-dates/" target="_blank" rel="noopener">https://sportsfoundation.org/nfl-season-dates/</a></td>
+<td>Confirm on NFL.com</td>
+</tr>
+</tbody></table></div>
+
+</main>
+<footer>Every table row links to an official source where one exists. Blank cells are unverified and flagged.
+Wagering from Japan with private bookmakers is criminal for the bettor under Penal Code Art. 185
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">official text</a>).
+Built from data/ by scripts/build_site.py.</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategy leaderboard and validation gates | X3 NFL Research</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
+<span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html" class=active>Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html">Flagged for Review</a></div></nav>
+<main>
+<h1>Strategy leaderboard and validation gates</h1>
+
+<p class="lede">Leaderboard for candidate NFL strategies. A strategy ranks only after it passes every validation gate.
+<b>No strategy has passed any gate yet</b>, because no historical odds, results or depth-chart data have been retrieved
+from a verified source. ROI, CLV and sample sizes are therefore blank and flagged, not estimated.</p>
+<div class="cards">
+<div class="card"><b>8</b><span>candidate strategies</span></div>
+<div class="card"><b>0</b><span>passed all gates</span></div>
+<div class="card"><b>0</b><span>graded bets</span></div>
+</div>
+<div class="notice"><b>Rewards are not set up.</b> Reward mechanics are a user decision (Questions Q08; Suggestions S06-S07).</div>
+<h2>Leaderboard</h2>
+<input class="search" type="search" placeholder="Filter rows..." data-target="tbl-strat" aria-label="Filter rows">
+<div class="tablewrap"><table id="tbl-strat"><thead><tr>
+<th>ID</th>
+<th>Strategy</th>
+<th>Bet type</th>
+<th>Hypothesis</th>
+<th>Official inputs</th>
+<th>Gate status</th>
+<th>Sample</th>
+<th>ROI</th>
+<th>CLV</th>
+<th>Rank</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>S01</td>
+<td>Injury-adjusted team strength (starter availability vs backup)</td>
+<td>Single (spread/moneyline)</td>
+<td>Teams with more designated starters Out or Doubtful underperform their market line</td>
+<td>Partial - injury report is official (NFL.com); depth charts and results not yet pulled; closing lines not official</td>
+<td><span class="badge todo">Proposed - no data</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">2026 NFL Injury Report - Week 10 (league page)</a></td>
+</tr>
+<tr>
+<td>S02</td>
+<td>Quarterback availability shift</td>
+<td>Single (moneyline)</td>
+<td>Teams whose starting QB is Out or Doubtful versus a healthy starter show a measurable market mispricing</td>
+<td>Partial - injury report official; results available from NFL.com/NGS (not pulled); lines not official</td>
+<td><span class="badge todo">Proposed - no data</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">2026 NFL Injury Report - Week 10 (league page)</a></td>
+</tr>
+<tr>
+<td>S03</td>
+<td>Designation drift (Questionable players trending to DNP during the week)</td>
+<td>Single/prop</td>
+<td>A Questionable player whose practice status drops from LP to DNP across the week is less likely to play than the market implies</td>
+<td>Partial - injury report is official; only one snapshot is in this repo so history must be built from now on</td>
+<td><span class="badge todo">Proposed - needs data collection</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">2026 NFL Injury Report - Week 10 (league page)</a></td>
+</tr>
+<tr>
+<td>S04</td>
+<td>Wide receiver target share after WR1 is Out</td>
+<td>Player prop (receiving yards)</td>
+<td>WR2/WR3 receiving yardage rises when the team&#x27;s WR1 is Out</td>
+<td>Partial - injury report and NGS stats official; prop lines not official</td>
+<td><span class="badge todo">Proposed - no data</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://nextgenstats.nfl.com/" target="_blank" rel="noopener">NFL Next Gen Stats</a></td>
+</tr>
+<tr>
+<td>S05</td>
+<td>Two-leg parlay of uncorrelated single-game signals</td>
+<td>Parlay (2 legs)</td>
+<td>Two independent signals combined in a parlay produce positive expected value after the bookmaker margin</td>
+<td>Depends on S01/S02 validation</td>
+<td><span class="badge flag">Blocked until S01 or S02 validates</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">2026 NFL Injury Report - Week 10 (league page)</a></td>
+</tr>
+<tr>
+<td>S06</td>
+<td>Same-game parlay (player prop + team total)</td>
+<td>Combo / SGP</td>
+<td>Correlated legs in the same game are priced inefficiently by books</td>
+<td>No official source for prop or SGP pricing</td>
+<td><span class="badge flag">Blocked - no data and legal review pending</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://nextgenstats.nfl.com/" target="_blank" rel="noopener">NFL Next Gen Stats</a></td>
+</tr>
+<tr>
+<td>S07</td>
+<td>Rest and short-week effect</td>
+<td>Single (spread)</td>
+<td>Teams on short rest or after Thursday games underperform the line</td>
+<td>Schedule official (NFL.com); results official; closing lines not official</td>
+<td><span class="badge todo">Proposed - no data</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced" target="_blank" rel="noopener">2026 NFL Schedule Announced (press release, May 14 2026)</a></td>
+</tr>
+<tr>
+<td>S08</td>
+<td>Depth-chart backup penalty (defense and offense)</td>
+<td>Single/prop</td>
+<td>A backup starting in place of a starter at key positions reduces expected output by a measurable amount</td>
+<td>Depth charts NOT yet retrieved</td>
+<td><span class="badge flag">Blocked - depth charts missing</span></td>
+<td>0</td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">unverified</span></td>
+<td><span class="flag">not ranked</span></td>
+<td><a href="https://www.nfl.com/teams/" target="_blank" rel="noopener">NFL.com team pages (not yet retrieved)</a></td>
+</tr>
+</tbody></table></div>
+<h2>Validation gates</h2>
+<p>Gate thresholds marked "proposed" are design choices, not sourced facts, and need user approval (Questions Q07).</p>
+<div class="tablewrap"><table id="tbl-gates"><thead><tr>
+<th>Gate</th>
+<th>Name</th>
+<th>Definition</th>
+<th>Status</th>
+<th>Note</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>G0</td>
+<td>Data provenance</td>
+<td>Every input is traced to an official source or a documented, reproducible dataset with a link</td>
+<td><span class="badge ok">Pass for injury and schedule inputs only</span></td>
+<td>No strategy inputs cleared beyond injury and schedule</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G1</td>
+<td>Pre-registration</td>
+<td>Hypothesis, metric and sample rules written and committed before any test runs</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Proposed process (Suggestions S04)</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Minimum sample</td>
+<td>Minimum graded bets per strategy</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Threshold is a PROPOSAL, not sourced; user to set (Questions Q07)</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G3</td>
+<td>Out-of-sample test</td>
+<td>Walk-forward test on seasons not used to design the strategy</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Requires historical data</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G4</td>
+<td>Closing line value</td>
+<td>Strategy price beats the closing line on average</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Requires closing-line data, which is not official</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Multiple-comparison control</td>
+<td>Adjust for the number of strategies tested (e.g. Bonferroni or FDR)</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Method to be chosen by user (Suggestions S05)</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G6</td>
+<td>Stability across seasons</td>
+<td>Positive result in at least the minimum number of seasons specified</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Threshold to be set by user</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G7</td>
+<td>Drawdown and ruin check</td>
+<td>Maximum drawdown and simulated bankroll outcomes reported</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Requires results</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G8</td>
+<td>Correlation control</td>
+<td>Parlay legs must have measured correlation below an agreed threshold</td>
+<td><span class="badge todo">Not started</span></td>
+<td>Requires correlation data (correlations.csv)</td>
+<td><span class="flag">proposed; no external source</span></td>
+</tr>
+<tr>
+<td>G9</td>
+<td>Legal and compliance check</td>
+<td>Confirm the activity is lawful for the user&#x27;s jurisdiction before any wager</td>
+<td><span class="badge flag">Flagged</span></td>
+<td>Wagering with private bookmakers from Japan is criminal under Penal Code Art. 185 per official source JP-PENAL-185</td>
+<td><a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">Penal Code (Art. 185)</a></td>
+</tr>
+</tbody></table></div>
+
+</main>
+<footer>Every table row links to an official source where one exists. Blank cells are unverified and flagged.
+Wagering from Japan with private bookmakers is criminal for the bettor under Penal Code Art. 185
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">official text</a>).
+Built from data/ by scripts/build_site.py.</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

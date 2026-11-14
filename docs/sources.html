@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Official sources registry | X3 NFL Research</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
+<span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html" class=active>Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html">Flagged for Review</a></div></nav>
+<main>
+<h1>Official sources registry</h1>
+
+<p class="lede">Source registry. Official sources are the only basis for table values. Third-party pages are listed only
+to document conflicts and are never used as a source for a value.</p>
+<input class="search" type="search" placeholder="Filter rows..." data-target="tbl-src" aria-label="Filter rows">
+<div class="tablewrap"><table id="tbl-src"><thead><tr>
+<th>ID</th>
+<th>Name</th>
+<th>Publisher</th>
+<th>Link</th>
+<th>Type</th>
+<th>Used for</th>
+<th>Fetch status</th>
+<th>Checked</th>
+<th>Notes</th>
+</tr></thead><tbody>
+<tr>
+<td>NFL-INJ-W10</td>
+<td>2026 NFL Injury Report - Week 10 (league page)</td>
+<td>NFL.com (NFL official site)</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">https://www.nfl.com/injuries/league/2026/reg10</a></td>
+<td>Official</td>
+<td>Injury rows in data/injury_report_2026_wk10.csv</td>
+<td>Fetched 8 of 8 chunks</td>
+<td>2026-11-14</td>
+<td>Page shows no publication timestamp; as-of date is the access date</td>
+</tr>
+<tr>
+<td>NFL-INJ-NEWS-W10</td>
+<td>NFL news: Week 10 injury report (Nov 13)</td>
+<td>NFL.com</td>
+<td><a href="https://www.nfl.com/news/nfl-week-10-injury-report-2026-season" target="_blank" rel="noopener">https://www.nfl.com/news/nfl-week-10-injury-report-2026-season</a></td>
+<td>Official</td>
+<td>Cross-check of statuses</td>
+<td>Fetched 1 of 3 chunks</td>
+<td>2026-11-14</td>
+<td>Partial read; used only for cross-checks</td>
+</tr>
+<tr>
+<td>NFL-SCHED-PR</td>
+<td>2026 NFL Schedule Announced (press release, May 14 2026)</td>
+<td>NFL Media (media.nfl.com)</td>
+<td><a href="https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced" target="_blank" rel="noopener">https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced</a></td>
+<td>Official</td>
+<td>Season key dates</td>
+<td>Fetched 2 chunks (chunk 1 read in full; chunk 2 not re-read)</td>
+<td>2026-11-14</td>
+<td>Dates and times as stated in the release</td>
+</tr>
+<tr>
+<td>NFL-DATES</td>
+<td>2026 National Football League important dates</td>
+<td>NFL.com</td>
+<td><a href="https://www.nfl.com/news/2026-national-football-league-important-dates" target="_blank" rel="noopener">https://www.nfl.com/news/2026-national-football-league-important-dates</a></td>
+<td>Official</td>
+<td>Checked for 2026 calendar; content is for 2025-season playoffs</td>
+<td>Fetched 1 of 1</td>
+<td>2026-11-14</td>
+<td>Labeled 2026 but lists Week 18 Jan 3-4 and Super Bowl LX Feb 8 2026; see flags</td>
+</tr>
+<tr>
+<td>NFL-SCHED-RELEASE</td>
+<td>2026 NFL schedule release page</td>
+<td>NFL.com</td>
+<td><a href="https://www.nfl.com/nfl-schedule-release/" target="_blank" rel="noopener">https://www.nfl.com/nfl-schedule-release/</a></td>
+<td>Official</td>
+<td>Conflict check (Thanksgiving)</td>
+<td>Search excerpt only (not fetched in full)</td>
+<td>2026-11-14</td>
+<td>Excerpt conflicts with a third-party page on Thanksgiving games; not used in tables</td>
+</tr>
+<tr>
+<td>NFL-NGS</td>
+<td>NFL Next Gen Stats</td>
+<td>NFL</td>
+<td><a href="https://nextgenstats.nfl.com/" target="_blank" rel="noopener">https://nextgenstats.nfl.com/</a></td>
+<td>Official</td>
+<td>Candidate official player-tracking source for future strategy inputs</td>
+<td>Homepage fetched</td>
+<td>2026-11-14</td>
+<td>No dataset downloaded yet</td>
+</tr>
+<tr>
+<td>JP-PENAL-185</td>
+<td>Penal Code (Act No. 45 of 1907), Japanese Law Translation</td>
+<td>Ministry of Justice (Japan)</td>
+<td><a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb</a></td>
+<td>Official (Japan government)</td>
+<td>Legal flag: gambling under Article 185</td>
+<td>TOC chunk 1 of 27 fetched; Article 185 text from search excerpt of this same page</td>
+<td>2026-11-14</td>
+<td>Manual review of Article 185 recommended</td>
+</tr>
+<tr>
+<td>GH-REPO</td>
+<td>karagemop466-tech/X3 repository</td>
+<td>GitHub</td>
+<td><a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3</a></td>
+<td>Repository</td>
+<td>Repo review</td>
+<td>Checked via git and GitHub API</td>
+<td>2026-11-14</td>
+<td>Pages settings checked via GitHub API</td>
+</tr>
+<tr>
+<td>GH-PAGES</td>
+<td>X3 GitHub Pages site (live URL)</td>
+<td>GitHub</td>
+<td><a href="https://karagemop466-tech.github.io/X3/" target="_blank" rel="noopener">https://karagemop466-tech.github.io/X3/</a></td>
+<td>Repository</td>
+<td>Site location</td>
+<td>Pages API status: built</td>
+<td>2026-11-14</td>
+<td>Source changes to /docs after merge</td>
+</tr>
+<tr>
+<td>THIRD-SFD</td>
+<td>2026 NFL season dates (Sports Foundation)</td>
+<td>Third party</td>
+<td><a href="https://sportsfoundation.org/nfl-season-dates/" target="_blank" rel="noopener">https://sportsfoundation.org/nfl-season-dates/</a></td>
+<td>Third party (not official)</td>
+<td>Only used to flag conflicts</td>
+<td>Search excerpt only</td>
+<td>2026-11-14</td>
+<td>Not used as a source for any table value</td>
+</tr>
+<tr>
+<td>THIRD-STREAM</td>
+<td>NFL Schedule 2026 (streamplayz)</td>
+<td>Third party</td>
+<td><a href="https://streamplayz.com/nfl-schedule-2026/" target="_blank" rel="noopener">https://streamplayz.com/nfl-schedule-2026/</a></td>
+<td>Third party (not official)</td>
+<td>Only used to flag conflicts</td>
+<td>Search excerpt only</td>
+<td>2026-11-14</td>
+<td>Not used as a source for any table value</td>
+</tr>
+</tbody></table></div>
+
+</main>
+<footer>Every table row links to an official source where one exists. Blank cells are unverified and flagged.
+Wagering from Japan with private bookmakers is criminal for the bettor under Penal Code Art. 185
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">official text</a>).
+Built from data/ by scripts/build_site.py.</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

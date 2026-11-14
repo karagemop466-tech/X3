@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requirements tracker | X3 NFL Research</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
+<span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html" class=active>Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html">Flagged for Review</a></div></nav>
+<main>
+<h1>Requirements tracker</h1>
+
+<p class="lede">Tracker for each item in the project brief. Status is shown as delivered, partial, or blocked.
+Requirements are internal, so their evidence links point to the site pages and repo files; they are not official sources.</p>
+<input class="search" type="search" placeholder="Filter rows..." data-target="tbl-rq" aria-label="Filter rows">
+<div class="tablewrap"><table id="tbl-rq"><thead><tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Status</th>
+<th>What was delivered</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr>
+<td>R01</td>
+<td>Collect / organize / analyze the full NFL requirements list</td>
+<td><span class="badge todo">Partial</span></td>
+<td>Requirements tracker and data folders created; analysis limited to verified data</td>
+<td><a href="requirements.html">requirements.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R02</td>
+<td>Suggestions section to review improvements before any change</td>
+<td><span class="badge ok">Done</span></td>
+<td>Suggestions page with options and pending decisions</td>
+<td><a href="suggestions.html">suggestions.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R03</td>
+<td>Clear list of questions / information needed before decisions</td>
+<td><span class="badge ok">Done</span></td>
+<td>Questions page (12 items)</td>
+<td><a href="questions.html">questions.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R04</td>
+<td>Originate own NFL lines and research signal strategies</td>
+<td><span class="badge todo">Partial</span></td>
+<td>Strategy framework and candidate list; no validated strategies because no verified historical data was retrieved</td>
+<td><a href="strategies.html">strategies.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R05</td>
+<td>Leaderboard competition with rewards for top strategies</td>
+<td><span class="badge todo">Partial</span></td>
+<td>Leaderboard shell with gates; rewards pending user decision (Q08)</td>
+<td><a href="strategies.html">strategies.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R06</td>
+<td>Single bets / parlays / player prop combos</td>
+<td><span class="badge todo">Partial</span></td>
+<td>Covered as candidate families S01-S08; none validated</td>
+<td><a href="strategies.html">strategies.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R07</td>
+<td>Each strategy must pass validation gates</td>
+<td><span class="badge ok">Done</span></td>
+<td>Gates G0-G9 defined; status shown per strategy</td>
+<td><a href="strategies.html">strategies.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R08</td>
+<td>Determine correlation values</td>
+<td><span class="badge flag">Blocked</span></td>
+<td>Correlation table created; values left blank (no data)</td>
+<td><a href="correlations.html">correlations.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R09</td>
+<td>Build strategies that are selectively skill based (remove luck)</td>
+<td><span class="badge todo">Partial</span></td>
+<td>Pre-registration and out-of-sample gates proposed; not tested</td>
+<td><a href="strategies.html">strategies.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R10</td>
+<td>Track injuries and detect starter-to-backup deficiencies (defense and offense)</td>
+<td><span class="badge todo">Partial</span></td>
+<td>Official Week 10 injury report captured (205 rows); depth-chart mapping not built</td>
+<td><a href="injuries.html">injuries.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R11</td>
+<td>Executive summary</td>
+<td><span class="badge ok">Done</span></td>
+<td>Executive summary page</td>
+<td><a href="executive-summary.html">executive-summary.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R12</td>
+<td>Repo review with official sources and irregularities flagged</td>
+<td><span class="badge ok">Done</span></td>
+<td>Repo review in COORDINATION.md and Flagged for Review</td>
+<td><a href="flagged.html">flagged.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R13</td>
+<td>GitHub Pages landing page and category subpages</td>
+<td><span class="badge ok">Done</span></td>
+<td>Dashboard and category pages</td>
+<td><a href="index.html">index.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R14</td>
+<td>Every table row has a source link to an official site (unverified values blank and flagged)</td>
+<td><span class="badge ok">Done</span></td>
+<td>Each row carries a source link; unverified values blank</td>
+<td><a href="sources.html">sources.html</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R15</td>
+<td>Coordinate via COORDINATION.md before work</td>
+<td><span class="badge ok">Done</span></td>
+<td>Task board with claims and status</td>
+<td><a href="https://github.com/karagemop466-tech/X3/blob/arena/0c38f465-x3/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md</a> <span class="flag">internal page</span></td>
+</tr>
+<tr>
+<td>R16</td>
+<td>Flagged for Review page with source links</td>
+<td><span class="badge ok">Done</span></td>
+<td>Published</td>
+<td><a href="flagged.html">flagged.html</a> <span class="flag">internal page</span></td>
+</tr>
+</tbody></table></div>
+
+</main>
+<footer>Every table row links to an official source where one exists. Blank cells are unverified and flagged.
+Wagering from Japan with private bookmakers is criminal for the bettor under Penal Code Art. 185
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">official text</a>).
+Built from data/ by scripts/build_site.py.</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
