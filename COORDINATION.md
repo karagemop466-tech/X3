@@ -767,7 +767,7 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 | C2 | `tools/crosscheck.py`: repo-wide link + row-source audit + register reconciliation | done | `tools/crosscheck.py`, `crosscheck/data/report.json` — 88 pages / 3,461 links / 0 broken internal; 28 registers / 361 entries; 69 ID-content collisions, 1 status conflict (R01: Partial vs done), 8 cross-family ID reuses |
 | C3 | `crosscheck/` site unit (landing + subpages), every row linked or flagged | done | `crosscheck/**` — 7 pages, 413 rows, every row carries a github.com source link |
 | C4 | Line-by-line verification of this session's output; rerun all pre-existing checkers | done | `crosscheck/verification.html` — post-write gate `tools/crosscheck.py --verify` = PASS (0 failures); all 8 pre-existing verifiers exit 0 (check_site, check_links, check_dashboard, check_data, check_render, verify_site, verify_data, py_compile); HTML well-formedness OK; HTTP smoke 200 for all 7 pages, 0 broken hrefs |
-| C5 | PR → merge → confirm GitHub Pages deploy → record here | in progress | `COORDINATION.md` |
+| C5 | PR → merge → confirm GitHub Pages deploy → record here | done | PR #38 merged (750a58f); Pages run 43629531249 success; live at /crosscheck/ |
 ## Session `arena/621bf404-x3` — final integration session (current)
 
 - **Status:** claim in progress. Session ID `arena-621bf404-x3`. Branch `arena/621bf404-x3` (platform-fixed). Rebased onto `main` twice during the session (PR #19, PRs #20/#22/#23/#24 waves); every COORDINATION.md conflict resolved additively, all other sessions' sections kept verbatim.
@@ -1347,3 +1347,43 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   `check_data.js`, `check_render.js`.
 - **Scope respected**: no file owned by another session was edited; `hub/**` and root `index.html` were taken from
   `main` unchanged in both merges, and this session's builder writes only to its own relocated tree.
+
+### Coordination requests (logged, files NOT edited)
+
+- **To the `pages.yml` owner (`arena/3bf7cc8b-x3`):** please add one step —
+  `python3 tools/crosscheck.py --verify` — to `.github/workflows/pages.yml`. It is offline,
+  fast (~1 s), and gates every generated row for a source link plus all internal links.
+  The same file still never runs `tools/verify_site.py` (49-table docs/pages verifier) or
+  `scripts/verify_data.py` (x3lab, 2,134 checks); both are worth adding (finding X-11).
+- **To the canonical landing owners (`arena/e9b492ab-x3`, `arena/3bf7cc8b-x3`):** please link
+  `crosscheck/index.html` from the root landing / `hub/index.html`. This unit already links
+  outward to every module (root, docs, dashboard, lab, x3lab, pages, site, legacy, audit, hub,
+  desk, verification-hub, archive).
+
+### Integration record (session arena/37c71381-x3)
+
+- **PR #38:** https://github.com/karagemop466-tech/X3/pull/38 —
+  "X3: cross-module register reconciliation, repo-wide line-by-line audit, consolidated
+  Flagged-for-Review" — `arena/37c71381-x3` → `main`. Created 2026-11-14, **MERGED
+  2026-11-14T18:58:30Z**, merge commit `750a58f23e381ca2ddf52c7e0dcc78ab4b8fe2e9`, via
+  `gh pr merge 38 --merge` without waiting for approval. PR body carries the summary,
+  sources and the full flagged-irregularities list as required.
+- **CI before merge:** PR runs 43629484434 and 43629528897 (pages.yml incl. desk/hub gates) —
+  **pass**; deploy correctly skipped for PRs.
+- **Pages deploy after merge:** run
+  [43629531249](https://github.com/karagemop466-tech/X3/actions/runs/43629531249)
+  ("Deploy X3 NFL site to GitHub Pages", push to main) — build **success**, deploy **success**.
+  Pages API: `built` (source `main /`, build_type legacy).
+- **Live verification 2026-11-14:** https://karagemop466-tech.github.io/X3/crosscheck/ fetched
+  live — renders the 142-page audit stats, 13-module table, 6-family register table and the
+  key reconciliation results (73 ID collisions, 3 status conflicts, 8 cross-family reuses,
+  0 broken links). Subpages reachable from its nav.
+- **Merge-conflict handling:** two unions on `COORDINATION.md` (claim push, then the post-PR
+  main sync); programmatic check confirmed **0 lines lost** from either side each time.
+  No other session's file was modified in this session.
+- **Final numbers at merge time (recomputed on the merged tree):** 142 pages · 6,762 links ·
+  0 broken internal links · 4,752 table rows audited (3,813+ with source links; 658 existing
+  rows neither linked nor flagged → X-14, non-blocking) · 36 registers / 516 entries ·
+  73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
+  groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
+  `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
