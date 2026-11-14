@@ -1,0 +1,99 @@
+{
+ "gates": [
+  {
+   "id": "G-0",
+   "name": "Pre-registration",
+   "requirement": "Rules, sample definition and thresholds frozen in committed ledgers before outcomes are seen.",
+   "state": "PASS",
+   "evidence": "hub/data/prereg.json (X3-v1 params); this module's ridge lambda, baseline total 45.0 and D-1 thresholds are committed in origin/data/backtest.json and origin/data/gates.json before any Week-10 result exists."
+  },
+  {
+   "id": "G-1",
+   "name": "Data integrity",
+   "requirement": "Every input row has an official source and passes the row-source gate.",
+   "state": "PASS",
+   "evidence": "results feed rows all carry their official page URL; injury rows carry the official report URL; scripts/origin_verify.py re-checks each build."
+  },
+  {
+   "id": "G-2",
+   "name": "Minimum sample",
+   "requirement": ">= 300 settled bets and >= 3 seasons per strategy.",
+   "state": "FAIL",
+   "evidence": "0 settled bets exist (no prices). Flips when the price archive (S-A01) and multi-season results (S-A04) exist."
+  },
+  {
+   "id": "G-3",
+   "name": "Chronological walk-forward",
+   "requirement": "Fit on the past, score on the future; no shuffling.",
+   "state": "PASS (module backtest)",
+   "evidence": "origin/data/backtest.json: fitted on weeks < w, scored on week w, for every week 2..10."
+  },
+  {
+   "id": "G-4",
+   "name": "Out-of-sample edge over baseline",
+   "requirement": "Beat the naive baseline (home PK / total 45.0) and a closing-line benchmark on untouched data.",
+   "state": "PARTIAL",
+   "evidence": "baseline-relative over/under and winner accuracy are published; the closing-line benchmark is BLOCKED on prices."
+  },
+  {
+   "id": "G-5",
+   "name": "Multiple-testing control",
+   "requirement": "Benjamini-Hochberg FDR at 10% across strategies evaluated in a window; report the number of variants tried.",
+   "state": "REGISTERED",
+   "evidence": "5 strategies registered (LB-1..LB-5); correction will be applied to the first window in which settled bets exist."
+  },
+  {
+   "id": "G-6",
+   "name": "Uncertainty reporting",
+   "requirement": "Publish an interval with every estimate; n with every correlation.",
+   "state": "PASS (module)",
+   "evidence": "every correlation row carries n and a Fisher-z 95% CI; walk-forward metrics carry n per week."
+  }
+ ],
+ "demotion": {
+  "id": "D-1",
+  "name": "Demotion gate (live -> paper)",
+  "state": "REGISTERED (no strategy is live; triggers armed at promotion)",
+  "action": "Any single trigger moves the strategy from live to paper for at least the next full cycle. Open positions are closed at the next cycle boundary. The strategy keeps its leaderboard signal row (signal history is never erased) but is marked DEMOTED and cannot be staked until re-promoted via D-2.",
+  "triggers": [
+   {
+    "id": "D-1a",
+    "trigger": "Rolling median CLV of the last 20 settled bets <= 0, twice in a row",
+    "threshold_registered_now": "two consecutive 20-bet windows with median CLV <= 0",
+    "needs": "closing prices (Q-01 / S-A01)"
+   },
+   {
+    "id": "D-1b",
+    "trigger": "Bankroll drawdown from running peak >= 25%",
+    "threshold_registered_now": "0.25 of peak bankroll, measured at each cycle close",
+    "needs": "settled staking history"
+   },
+   {
+    "id": "D-1c",
+    "trigger": "Signal score below the signal floor for 3 consecutive cycles (winner accuracy or over/under hit rate below 50% over each cycle's settled signals)",
+    "threshold_registered_now": "3 consecutive cycles below 50% on the strategy's own signal metric",
+    "needs": "results feed (exists) + cycle capture"
+   },
+   {
+    "id": "D-1d",
+    "trigger": "Any data-integrity failure (G-1) on the strategy's inputs",
+    "threshold_registered_now": "any verifier failure on rows the strategy reads",
+    "needs": "none - armed now"
+   },
+   {
+    "id": "D-1e",
+    "trigger": "Model or input definition changed without a new pre-registration commit",
+    "threshold_registered_now": "any change to params/sigma/weights without a dated prereg entry; detected by build-diff",
+    "needs": "none - armed now"
+   }
+  ],
+  "re_promotion": {
+   "id": "D-2",
+   "name": "Re-promotion gate (paper -> live)",
+   "requirement": "After a demotion: >= 30 paper-settled signals at the same rules, median CLV >= 0 on those signals once prices exist, G-2/G-4 re-passed on the fresh sample, and no D-1 trigger active for two full cycles.",
+   "state": "REGISTERED"
+  },
+  "source": "definition registered in origin/data/gates.json at build time 2026-11-14T19:33:18Z"
+ },
+ "generated_at": "2026-11-14T19:33:18Z"
+}
