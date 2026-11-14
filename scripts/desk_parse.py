@@ -334,12 +334,11 @@ def main(src: str, dst: str) -> int:
         for later in weeks_sorted[i + 1:]:
             if sig[w] == sig[later] and sig[w]:
                 dup_weeks.append(later)
-    if dup_weeks:
-        keep = min(dup_weeks)
-        drop = set(dup_weeks) - {keep}
+    drop = set(dup_weeks)
+    if drop:
         injuries = [r for r in injuries if r["week"] not in drop]
         inj_stats = [w for w in inj_stats if w["week"] not in drop]
-        for w in dup_weeks:
+        for w in sorted(drop):
             problem(f"injuries-w{w}", "identical to an earlier week's report; dropped as a "
                                      "duplicate served for a future week")
 
