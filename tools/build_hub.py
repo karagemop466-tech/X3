@@ -24,8 +24,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HUB = os.path.join(ROOT, "hub")
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import hub_content as C  # noqa: E402
+import x3_content as X  # noqa: E402
 
 J = lambda n: json.load(open(os.path.join(HUB, "data", n), encoding="utf-8"))
+X3 = os.path.join(ROOT, "data", "x3", "verified")
+
+
+def JX(n):
+    """load a derived file from data/x3/verified/ (this session's market/results/depth artefacts)"""
+    return json.load(open(os.path.join(X3, n), encoding="utf-8"))
 teams = J("teams.json")
 lines = J("lines.json")
 injuries = J("injuries.json")
@@ -78,6 +85,10 @@ NAV = [
     ("index", "Overview", "Status, what is verified, what is not"),
     ("executive-summary", "Executive summary", "The one-page brief for a decision"),
     ("lines", "Originated lines", "Our own Week-10 spreads and totals"),
+    ("markets", "Originated markets", "Side, then total, then moneyline; fair / market / difference"),
+    ("price-store", "Price snapshot store", "Opening and closing numbers for every market we originate"),
+    ("verified-results", "Verified results feed", "163 games reconciled to the official standings"),
+    ("replacements", "Depth of the replacement", "Who actually replaces the starter, and how deep"),
     ("strategies", "Strategies & signals", "12 registered hypotheses, singles/props/parlays"),
     ("gates", "Validation gates", "The luck-removing tests each strategy must pass"),
     ("correlation", "Correlation", "Coefficients computed from official data"),
@@ -211,6 +222,10 @@ def K(**kw):
 def p_index():
     n_inj = meta["rows"]["injuries"]
     designated = sum(1 for r in injuries["rows"] if r["status"])
+    _res = JX("results.json")
+    _mk = JX("markets.json")
+    _dp = JX("depth_replacement.json")
+    _st = JX("strategies.json")
     cards = [
         ("Games priced", f"{len(lines['rows'])}/{lines_total()}",
          "Week-10 games with an originated spread and total, modelled before the slate is played"),
@@ -218,8 +233,10 @@ def p_index():
          f"every row re-read from the official report; {designated} carry a game designation"),
         ("Clubs with a 1st-stringer out", f"{n_clubs_out()}",
          f"{n_positions_out()} starter slots must be filled by a backup this week"),
-        ("Strategies eligible for the leaderboard", "0 of 12",
-         "registered in the pre-registration ledger, blocked on data, not on analysis"),
+        ("Strategies eligible for the leaderboard", f"0 of {len(_st['strategies'])}",
+         f"{_st['counts']['signal_untested']} untested, "
+         f"{_st['counts']['signal_inconclusive']} inconclusive, "
+         f"{_st['counts']['staking_blocked']} with no staking score"),
     ]
     grid = "".join(
         f'<div class="card"><div class="num">{esc(v)}</div><div class="lbl">{esc(t)}</div>'
@@ -241,16 +258,34 @@ def p_index():
           "coefficients blank (no archive)"],
          [esc("Luck controls"), badge("VERIFIED"), "walk-forward, FDR, DSR/PBO, min-sample defined; see gates"],
          [esc("Leaderboard with rewards"), badge("BLOCKED"), "empty by design - G-2 fails; reward amounts need an owner decision"],
-         [esc("Market comparison / CLV"), badge("UNVERIFIED"), "no licensed price feed exists in the repo (F-01)"],
-         [esc("Settled results for backtests"), badge("UNVERIFIED"), "1 final score known for the season (F-02)"]])
+         [esc("Market comparison / CLV"), badge("UNVERIFIED"),
+          "no licensed price feed exists in the repo (F-01) and NFL.com publishes no odds at all "
+          "(F-18) - the difference column is structurally blank"],
+         [esc("Settled results for backtests"), badge("VERIFIED"),
+          f"{_res['counts']['finals']} finals reconciled to the official standings with "
+          f"{_res['checks']['R2_standings_reconciliation']['mismatches']} mismatches on "
+          f"{_res['counts']['clubs']} clubs - <a href='verified-results.html'>results feed</a>"],
+         [esc("Price snapshot store"), badge("DERIVED"),
+          f"{_mk['store']['markets']} markets with an opening number; "
+          f"{_mk['store']['closing_pending']} closes PENDING by design - "
+          "<a href='price-store.html'>store</a>"],
+         [esc("Depth of the replacement"), badge("DERIVED"),
+          f"{_dp['counts']['replacement_named']} of "
+          f"{_dp['counts']['absences_out_or_doubtful']} absences resolved to a named replacement, "
+          f"{_dp['counts']['replaced_by_3rd_string_or_deeper']} at third string or deeper - "
+          "<a href='replacements.html'>who replaces whom</a>"],
+         [esc("Demotion gate"), badge("VERIFIED"),
+          "G-10 defined with four clauses; D-4 fires today, so every strategy is on paper"]])
     body = f"""
 <section class="callout"><h2>Read this first</h2>
-<p>This repository is an evidence-first decision desk, not a tipster. Three things are true at once:
-the injury and standings data on this site is <b>verified against official NFL pages</b>; the model lines
-are <b>derived arithmetic</b> on that data using parameters that are stated in the open and are not yet
-calibrated; and anything that would require a betting market - prices, closing-line value, settled bets,
-ROI, a populated leaderboard - is <b>blank and flagged</b>, because no such data exists in this repo.
-Nothing here was inferred to fill a gap.</p></section>
+<p>This repository is an evidence-first decision desk, not a tipster. Four things are true at once:
+the injury and standings data is <b>verified against official NFL pages</b>; the results are
+<b>verified too</b>, because {_res['counts']['finals']} final scores reconcile to the official standings
+with {_res['checks']['R2_standings_reconciliation']['mismatches']} mismatches across
+{_res['counts']['clubs']} clubs; the model lines are <b>derived arithmetic</b> on that data with every
+parameter stated in the open; and anything that would require a <b>betting market</b> - a market line, a
+difference, closing-line value, ROI, a populated leaderboard - is <b>blank and flagged</b>, because
+NFL.com publishes no odds at all. Nothing here was inferred to fill a gap.</p></section>
 <div class="grid">{grid}</div>
 <h2>Sections</h2>
 {nav_tbl}
@@ -310,18 +345,74 @@ def p_exec():
          "PARTIAL", "correlation"),
         ("Strategy pipeline", "12 strategies registered and frozen in a committed ledger; none can be "
          "scored because G-2 (minimum sample) cannot see a single settled bet", "BLOCKED", "strategies"),
-        ("Blocker", "No market prices and no game log exist in the repository; these two inputs unlock "
-         "CLV, ROI, calibration, and every gate after G-2", "UNVERIFIED", "flagged F-01, F-02"),
+        ("Blocker", "One blocker remains: no market price exists, so CLV, ROI and every staking "
+         "score are blank. A second, smaller blocker is sample size - one season of results cannot "
+         "satisfy the three-season gate", "UNVERIFIED", "flagged F-01, F-18; Q-17, Q-19"),
         ("Compliance", "Originating a betting market and paying contest prizes needs legal review in the "
          "owner's jurisdiction before any reward is real", "BLOCKED", "Q-13, F-07"),
     ]]
+    _res = JX("results.json")
+    _mk = JX("markets.json")
+    _dp = JX("depth_replacement.json")
+    _st = JX("strategies.json")
+    _cor = JX("correlations.json")
+    rows += [
+        ("Results feed", f"{_res['counts']['finals']} final scores over {_res['counts']['clubs']} clubs "
+         f"reconcile to the official standings with "
+         f"{_res['checks']['R2_standings_reconciliation']['mismatches']} mismatches, and all "
+         f"{_res['checks']['R3_box_score_sample']['checked']} Week-1 box scores match an independent "
+         f"live read. Backtests now have something real to grade.", "VERIFIED", "verified results feed"),
+        ("Origination order", "Side, then total, then moneyline. The moneyline is derived from the "
+         "side model's margin distribution and sigma, never priced on its own; the total is fitted "
+         "separately because side and total are only weakly related.", "DERIVED", "originated markets"),
+        ("Fair vs market vs difference", f"Three separate columns over "
+         f"{len(_mk['live'])} games and {len(_mk['market_rows'])} market rows. The fair line is "
+         "ours; the market line and the difference are blank because NFL.com publishes no odds "
+         "(the LAC@BAL game centre carries no price, and /odds/ is a 404).", "UNVERIFIED",
+         "originated markets; flagged F-18"),
+        ("Price snapshot store", f"{_mk['store']['markets']} market rows with an opening number, "
+         f"{_mk['store']['closing_recorded']} with a closing number and "
+         f"{_mk['store']['closing_pending']} PENDING because the game has not been played. Opens and "
+         "closes are defined before they are measured and are appended, not overwritten.", "DERIVED",
+         "price snapshot store"),
+        ("Signal vs staking", f"{_st['counts']['strategies']} strategies scored in two columns from "
+         f"two data sources. Signal: {_st['counts']['signal_established']} established, "
+         f"{_st['counts']['signal_inconclusive']} inconclusive, {_st['counts']['signal_untested']} "
+         f"untested. Staking: {_st['counts']['staking_blocked']} blocked for want of a price. "
+         "Eligible for ranking: 0.", "BLOCKED", "leaderboard"),
+        ("Depth of the replacement", f"{_dp['counts']['replacement_named']} of "
+         f"{_dp['counts']['absences_out_or_doubtful']} officially unavailable players are resolved to "
+         f"a named replacement and his chart rung; {_dp['counts']['replaced_by_3rd_string_or_deeper']} "
+         f"are replaced by a third string or deeper. The other "
+         f"{_dp['counts']['replacement_unverified']} are published UNVERIFIED with the reason.",
+         "DERIVED", "depth of the replacement"),
+        ("Correlation integrity", f"{_cor['counts']['computed']} coefficients computed, each from a "
+         f"transcribed official page with its n printed beside it; {_cor['counts']['blank']} "
+         "relationships are published blank because no official source contains them.", "PARTIAL",
+         "correlation"),
+        ("Demotion gate", "G-10 sends a live strategy back to paper on any of four clauses. D-4 "
+         "(the staking input is missing while the strategy is live) fires today, which is why every "
+         "strategy sits on paper.", "VERIFIED", "validation gates"),
+        ("The model's honest grade",
+         f"Walk-forward n={_st['signal_evidence']['n_games']}: the side beats a constant -2.5 by "
+         f"{_st['market' if False else 'signal_evidence']['margin']['mean_improvement']:+.3f} points "
+         f"with a 95% CI of [{_st['signal_evidence']['margin']['ci95'][0]:+.3f}, "
+         f"{_st['signal_evidence']['margin']['ci95'][1]:+.3f}] - it contains zero, so the signal is "
+         f"INCONCLUSIVE; the total is <b>worse</b> than a constant 45.0 by "
+         f"{-_st['signal_evidence']['total']['mean_improvement']:.3f} points. Both are published "
+         f"as found.", "DERIVED", "leaderboard; flagged F-21, F-25"),
+    ]
     hoisted_tbl1 = table(['Topic', 'Finding', 'Status', 'Where'], rows)
     hoisted_tbl2 = table(['Decision', 'Why it is needed', 'If unanswered'], [[esc(a), esc(b), esc(c)] for a, b, c in [
     ('Choose a price source class', 'Without any market price the site can never tell you whether our '
      'line disagrees with the market, which is the only external check a line model has',
      'Board publishes as model-only with blank market columns'),
-    ('Approve the game-log and prop-archive load', 'Every gate from G-2 onward, the correlation of prop '
-     'legs, and any calibrated injury cost depend on it', 'Model keeps assumed parameters; leaderboard stays empty'),
+        ('Approve a price source class (licensed feed, or one recorded weekly snapshot)', 'Without a '
+     'price the difference column, CLV and every staking score stay blank, and the demotion gate '
+     'cannot clear clause D-4', 'Leaderboard stays a signal board with no staking column'),
+        ('Approve prior-season results (2018-2025)', 'Gate G-2 needs three seasons and G-3 needs a '
+     'walk-forward across them; one season cannot satisfy either', 'Every strategy stays on paper '
+     'however good its signal looks'),
     ('Rule on rewards', 'A funded leaderboard is a contest, and in some jurisdictions that is regulated '
      'activity; nothing in the repo establishes a prize', 'All reward amounts stay notional/blank'),
     ('Confirm the archive policy', 'The overlapping site trees listed on hub/archive.html publish different '
@@ -423,6 +514,35 @@ the half point. Every parameter is printed below and frozen in the pre-registrat
 
 
 def p_strategies():
+    _prop_tbl = table(["Family", "Can we originate it from an official source?", "What exists",
+                       "What is missing", "State"],
+                      [["Game side (single)", "Yes",
+                        "final scores and venues for 137 games, reconciled to the standings",
+                        "a market price to compare against", badge("DERIVED")],
+                       ["Game total (single)", "Yes, but it loses to a constant",
+                        "the same finals, plus a measured side-to-total correlation with its n",
+                        "a pace model that beats 45.0 (F-21)", badge("DERIVED")],
+                       ["Moneyline (single)", "Yes, derived",
+                        "the side model's margin distribution and its residual sigma",
+                        "an independent price to check it against", badge("DERIVED")],
+                       ["Parlay (cross game)", "Partly",
+                        "per-game margin and total distributions, and the measured "
+                        "r(home points, away points) and r(margin, total) with n",
+                        "prices, and a settlement rule that only a market can supply", badge("BLOCKED")],
+                       ["Same-game prop combo", "No",
+                        "nothing player-level: NFL.com publishes official player statistics "
+                        "(nfl.com/stats/player-stats) but no prop market, no prop price and no prop "
+                        "settlement history",
+                        "a licensed prop feed with settlement (F-24)", badge("BLOCKED")],
+                       ["Player prop (single)", "No",
+                        "the same gap: official player statistics exist, an official prop market "
+                        "does not",
+                        "a licensed prop feed with settlement (F-24)", badge("BLOCKED")]],
+                      kind="meta",
+                      note="This is the honest boundary of origination. A side, a total and a "
+                           "moneyline can be originated from official scores alone; a prop cannot, "
+                           "because the thing being priced has no official market. The prop "
+                           "strategies stay registered and untested rather than deleted.")
     rows = []
     for sid, fam, name, entry, exit_, data, sig, gate in C.STRAT:
         rows.append([f"<b>{esc(sid)}</b>", esc(fam), f"<b>{esc(name)}</b>", esc(entry), esc(exit_),
@@ -441,6 +561,8 @@ def p_strategies():
 committed before any outcome is observed. None of them claims an edge yet, and none is scored - see the
 gates page for what blocks each one.</p>
 {st_tbl}
+<h2>Singles, parlays and player-prop combos: what can and cannot be originated</h2>
+{_prop_tbl}
 <h2>Pre-registration ledger</h2>
 {hoisted_tbl1}
 <p class="note">Regenerated by <code>tools/build_hub.py</code>; the ledger is rebuilt from the same source
@@ -455,8 +577,12 @@ def p_gates():
     rows = [[f"<b>{esc(g)}</b>", esc(name), esc(req), esc(why), badge(st), esc(ev)]
             for g, name, req, why, st, ev in C.GATES]
     hoisted_tbl1 = table(['Gate', 'Name', 'Requirement', 'What it removes', 'State', 'Evidence / what flips it'], rows)
+    import x3_pages
+    P = _P
+    _s, _c, demtbl, _e, _ev = P["leaderboard_blocks"]()
+    dem = P["data"]["strat"]["demotion_gate"]
     body = f"""
-<h2>Gates ({len(C.GATES)})</h2>
+<h2>Gates ({len(C.GATES) + 1})</h2>
 <p class="lede">A strategy is a candidate until it passes every gate. The gates exist to make it expensive
 to be fooled: sample size, chronology, multiple-testing, intervals and exposure each remove a different way
 that luck masquerades as skill.</p>
@@ -473,6 +599,9 @@ analysis gap; S-02 and S-03 close it.</p></section>
 
 
 def p_corr():
+    import x3_pages
+    P = _P
+    corx, corblank = P["correlation_blocks"]()
     rows = []
     for r in corr["rows"]:
         rows.append([esc(r["x"]), esc(r["y"]), f"<b>{r['pearson_r']:+.4f}</b>", f"{r['spearman_rho']:+.4f}",
@@ -496,7 +625,15 @@ def p_corr():
                       "Why blank"], [[esc(a), f"<code>{esc(b)}</code>", esc(c), badge(d), esc(e)]
                                      for a, b, c, d, e in need])
     body = f"""
-<h2>Computed from official data ({len(corr['rows'])} pairs, n=32 clubs)</h2>
+<h2>Officially sourced correlations with n published ({len(P["data"]["corr"]["rows"])} rows)</h2>
+<p class="lede">Rule: a coefficient is published only when both variables come from a transcribed
+official NFL page, and n is printed beside it. Anything else is a blank row with the missing
+artefact named. The game-level rows are measured across {P["data"]["corr"]["counts"]["n_games"]}
+final games; the club-level rows across {P["data"]["corr"]["counts"]["n_clubs"]} clubs.</p>
+{corx}
+<h2>Deliberately blank, with the reason</h2>
+{corblank}
+<h2>Computed from official standings ({len(corr['rows'])} pairs, n=32 clubs)</h2>
 {computed}
 <h2>Deliberately blank (the correlations that would pay)</h2>
 <p class="lede">These are the coefficients a real pricing engine needs. None of them can be read off an
@@ -664,6 +801,9 @@ way.</li>
 
 
 def p_leader():
+    import x3_pages
+    P = _P
+    stbl, contract, demtbl, evid, ev = P["leaderboard_blocks"]()
     cats = table(["Category", "Scope", "Primary metric", "Tiebreak"],
                  [[f"<b>{esc(a)}</b>", esc(b), esc(c), esc(d)] for a, b, c, d in C.LEADER["categories"]])
     rew = table(["Award", "Form", "Status"],
@@ -677,6 +817,21 @@ def p_leader():
     antiluck_tbl = table(['Control', 'Mechanism'],
                          [[f'<b>{esc(a)}</b>', esc(b)] for a, b in C.LEADER['anti_luck']])
     body = f"""
+<section class="callout"><h2>Signal and staking are two different columns</h2>
+<p>A strategy can look profitable because of when it was staked, and a good signal can be buried by
+bad staking. This leaderboard therefore scores the two separately, from different data, and never
+adds them into one number. The signal column is measured on outcomes with n and an interval; the
+staking column needs a price and is empty because no price exists. A strategy is ranked only when
+both columns exist - which today means none is.</p></section>
+<h2>Signal and staking, scored apart ({len(P["data"]["strat"]["strategies"])} registered strategies)</h2>
+<input class="filt" data-for="sigs" placeholder="filter: family, INCONCLUSIVE, UNTESTED...">
+{stbl}
+<h2>The scoring contract</h2>
+{contract}
+<h2>What the signal evidence actually says</h2>
+{evid}
+<h2>The demotion gate: how a live strategy goes back to paper</h2>
+{demtbl}
 <h2>Categories</h2>{cats}
 <h2>Ranking rules</h2>
 <ol>{''.join(f'<li>{esc(r)}</li>' for r in C.LEADER['rules'])}</ol>
@@ -694,13 +849,14 @@ several jurisdictions, and no payout mechanism, bankroll or settlement service e
 
 
 def p_req():
+    REQ = C.REQ + X.REQ2
     rows = [[f"<b>{esc(i)}</b>", esc(a), esc(r), esc(acc), badge(s), esc(ev)]
-            for i, a, r, acc, s, ev in C.REQ]
-    done = sum(1 for r in C.REQ if r[4] == "VERIFIED")
-    hoisted_tbl1 = table(['Count', 'Value'], [['Requirements tracked', str(len(C.REQ))],
+            for i, a, r, acc, s, ev in REQ]
+    done = sum(1 for r in REQ if r[4] == "VERIFIED")
+    hoisted_tbl1 = table(['Count', 'Value'], [['Requirements tracked', str(len(REQ))],
        ['Met and evidenced', str(done)],
-       ['Partial', str(sum(1 for r in C.REQ if r[4] == 'PARTIAL'))],
-       ['Blocked on data or a decision', str(sum(1 for r in C.REQ if r[4] == 'BLOCKED'))]])
+       ['Partial', str(sum(1 for r in REQ if r[4] == 'PARTIAL'))],
+       ['Blocked on data or a decision', str(sum(1 for r in REQ if r[4] == 'BLOCKED'))]])
     hoisted_tbl2 = table(['ID', 'Area', 'Requirement', 'Acceptance criterion', 'Status', 'Evidence'], rows, tid='reqt')
     body = f"""
 {hoisted_tbl1}
@@ -712,14 +868,15 @@ def p_req():
 
 
 def p_questions():
+    QQ = C.Q + X.Q2
     rows = [[f"<b>{esc(i)}</b>", ("YES" if b == "YES" else ("PARTIAL" if b == "PARTIAL" else "no")),
              esc(dec), esc(know), esc(miss), esc(how), esc(who), esc(dflt)]
-            for i, b, dec, know, miss, how, who, dflt in C.Q]
-    blocking = sum(1 for r in C.Q if r[1] == "YES")
+            for i, b, dec, know, miss, how, who, dflt in QQ]
+    blocking = sum(1 for r in QQ if r[1] == "YES")
     hoisted_tbl1 = table(['ID', 'Blocking', 'Decision it gates', 'What we already know', 'What is missing',
         'How to discover it', 'Who answers', 'Default if unanswered'], rows, tid='qt')
     body = f"""
-<p class="lede">{len(C.Q)} open questions, {blocking} of them blocking a decision. The 'what we already
+<p class="lede">{len(QQ)} open questions, {blocking} of them blocking a decision. The 'what we already
 know' column is deliberately included: several questions are answerable from data already in this
 repository, and the rest say exactly what has to be acquired and who can acquire it.</p>
 {hoisted_tbl1}
@@ -730,9 +887,10 @@ repository, and the rest say exactly what has to be acquired and who can acquire
 
 
 def p_suggestions():
+    SUG = C.SUG + X.SUG2
     rows = [[f"<b>{esc(i)}</b>", f"<b>{esc(t)}</b>", esc(w), esc(imp), esc(eff), esc(risk), esc(dep),
              badge(status), "<span class='blank'></span>"]
-            for i, t, w, imp, eff, risk, dep, status, _ in C.SUG]
+            for i, t, w, imp, eff, risk, dep, status, _ in SUG]
     paths = table(["Path", "Sequence", "What you get", "What you do not get"], [
         ["<b>A - Evidence first</b> (recommended)",
          "S-01 archive policy -&gt; S-03 game log -&gt; S-02 prices -&gt; calibrate (S-09) -&gt; gates fire "
@@ -772,7 +930,25 @@ is a coin flip with a prize.</p></section>
 
 
 def p_sources():
-    rows = [[esc(n), link(u), esc(o), esc(p), esc(m), esc(r), badge(s)] for n, u, o, p, m, r, s in C.SOURCES]
+    SRC = C.SOURCES + [
+        ("Official weekly schedules with final scores, weeks 1-11, 2026",
+         "https://www.nfl.com/schedules/2026/by-week/week-N", "NFL.com (official)",
+         "the verified results feed: 163 games, 137 finals",
+         "captured by this repository's own CI runner (212/212 pages HTTP 200) and read through the "
+         "fetch tool for week 1", AS_OF, "VERIFIED"),
+        ("Official game centre, LAC at BAL week 10", X.S["game_lac_bal"], "NFL.com (official)",
+         "the market probe: participation, team stats, standings - and no odds",
+         "read in full; confirms F-18 that no official price publication exists",
+         AS_OF, "VERIFIED (absence verified)"),
+        ("NFL.com odds index", X.S["odds_probe"], "NFL.com (official)",
+         "checked for any official price publication", "returns HTTP 404", AS_OF,
+         "VERIFIED (no such page)"),
+        ("Club depth charts, 31 of 32 clubs", "https://github.com/karagemop466-tech/X3/blob/main/tools/nfl_data.py",
+         "each club (self-labelled unofficial)", "the chart tier of every replacement named on "
+         "hub/replacements.html", "two clubs re-read live this session (NE, CIN, CLE); the rest "
+         "inherited with their club URLs published per row", AS_OF, "VERIFIED (self-labelled unofficial)"),
+    ]
+    rows = [[esc(n), link(u), esc(o), esc(p), esc(m), esc(r), badge(s)] for n, u, o, p, m, r, s in SRC]
     hoisted_tbl1 = table(['What it provides', 'Link', 'Publisher', 'Used for', 'Method this session', 'Retrieved', 'State'], rows)
     body = f"""
 {hoisted_tbl1}
@@ -789,6 +965,8 @@ aggregator.</p></section>
 
 
 def p_verification():
+    res = JX("results.json")
+    dp = JX("depth_replacement.json")
     rows = [[esc(a), esc(b), esc(c), esc(d), badge(e)] for a, b, c, d, e in [
         ("Injury report, 345 rows", "independent re-transcription of the official page (8 chunks read in "
          "full) vs the stored data module",
@@ -824,6 +1002,30 @@ def p_verification():
          "row", "VERIFIED"),
         ("Row-source gate", "tools/verify_hub.py", "every row of every table must carry an official URL or "
          "an explicit UNVERIFIED marker", "run in CI; 0 failures required to build", "VERIFIED"),
+        ("Results feed reconciliation", "tools/results_feed.py, on every build",
+         "final scores aggregated per club must equal the official standings on W, L, T, PF, PA and "
+         "games played; a final without both scores is dropped, never filled",
+         f"{res['counts']['clubs']}/{res['counts']['clubs']} clubs agree on all six fields, 0 "
+         f"mismatches, across {res['counts']['finals']} finals", "VERIFIED"),
+        ("Results feed box-score sample", "a live read of the official Week-1 page vs the capture",
+         "16 finals compared score by score",
+         f"{res['checks']['R3_box_score_sample']['agreed']}/16 agree", "VERIFIED"),
+        ("Market probe: does NFL.com publish odds?", "a live read of the LAC@BAL Week-10 game centre "
+         "and of nfl.com/odds/",
+         "any spread, total, moneyline or odds table on an official page",
+         "the game centre carries participation, team stats and standings and no odds; /odds/ "
+         "returns 404. This is what makes the market columns structurally blank (F-18)", "VERIFIED"),
+        ("Depth of the replacement, live spot-check",
+         "the engine's output for CIN S Kyle Dugger vs a live read of the Bengals' own chart",
+         "the chart's S(2) slot, name by name",
+         "the live chart reads Jordan Battle > Kyle Dugger > Russ Yeast, so with Dugger out the "
+         "replacement is Russ Yeast at third string - exactly what the engine published", "VERIFIED"),
+        ("Cross-role name matches refused",
+         "tools/depth_engine.py, on every build",
+         "a name match is only accepted when the chart slot's position group equals the position on "
+         "the official report",
+         "16 name matches fell in the wrong position group and are published UNVERIFIED rather than "
+         "used to name a replacement (F-23)", "VERIFIED"),
         ("Counts in prose", "build-time interpolation", "no number may be typed into prose",
          "build aborts on an unfilled token, which is how the row-count drift in earlier sessions was "
          "prevented from recurring", "VERIFIED"),
@@ -1056,9 +1258,10 @@ def p_repo():
 
 
 def p_flagged():
+    FL = C.FLAGS + X.FLAGS2
     rows = [[f"<b>{esc(i)}</b>", ("HIGH" if s == "HIGH" else ("MEDIUM" if s == "MEDIUM" else "LOW")),
              esc(a), esc(f), link(u, "check source"), esc(act)]
-            for i, s, a, f, u, act in C.FLAGS]
+            for i, s, a, f, u, act in FL]
     hoisted_tbl1 = table(['ID', 'Severity', 'Area', 'Finding', 'Evidence', 'Action needed'], rows, tid='flg')
     body = f"""
 <p class="lede">Everything the site could not confirm from an official source, plus every irregularity
@@ -1067,7 +1270,7 @@ Values that would have needed these inputs are left blank rather than estimated.
 {hoisted_tbl1}
 """
     page("flagged.html", "Flagged for review",
-         f"{len(C.FLAGS)} open items: missing datasets, source conflicts, unverified parameters and repo "
+         f"{len(FL)} open items: missing datasets, source conflicts, unverified parameters and repo "
          "irregularities.", body, "flagged")
 
 
@@ -1151,6 +1354,11 @@ document.querySelectorAll('input.filt').forEach(function(inp){
 """
 
 
+def _build_x3_pages():
+    import x3_pages
+    return x3_pages.build(sys.modules[__name__], JX, C, X)
+
+
 def main():
     # ---- X3-v2 extension (session arena/873c7396-x3): additive pages + register rows
     import x3_content2 as X2
@@ -1165,6 +1373,7 @@ def main():
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
     p_injuries(); p_depth(); p_leader(); p_req(); p_questions(); p_suggestions()
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
+    _P["p_markets"](); _P["p_store"](); _P["p_results"](); _P["p_replacements"]()
     for fn in X2.PAGES:  # results / pricing / origination / signal / replacement
         fname, title, intro, body = fn()
         page(fname + ".html", title, intro, body, fname)
@@ -1207,6 +1416,10 @@ def _sha(path):
 
 
 def landing():
+    _RES = JX("results.json")
+    _MK = JX("markets.json")
+    _ST = JX("strategies.json")
+
     def nav_item(slug, lbl, desc):
         if slug == "__council__":
             return ('<a href="council/index.html"><b>Decision council</b><span>The eight '
@@ -1242,15 +1455,22 @@ data does not exist here yet.</p>
 <div class="sub">spreads and totals for the unplayed Week-10 slate</div></div>
 <div class="card"><div class="num">{n_positions_out()}</div><div class="lbl">1st-string vacancies</div>
 <div class="sub">across {n_clubs_out()} clubs - backups starting this week</div></div>
-<div class="card"><div class="num">0 / {len(C.STRAT)}</div><div class="lbl">strategies leaderboard-eligible</div>
-<div class="sub">12 registered; blocked on market and results data, not on analysis</div></div>
+<div class="card"><div class="num">{len(_RES['rows'])}</div><div class="lbl">games in the verified results feed</div>
+<div class="sub">{_RES['counts']['finals']} finals, {_RES['counts']['clubs']} clubs, {_RES['checks']['R2_standings_reconciliation']['mismatches']} standings mismatches</div></div>
+<div class="card"><div class="num">{len(_MK['live'])}</div><div class="lbl">games with all three markets originated</div>
+<div class="sub">side, then total, then moneyline - fair line, market line and difference kept apart</div></div>
+<div class="card"><div class="num">0 / {len(_ST['strategies'])}</div><div class="lbl">strategies leaderboard-eligible</div>
+<div class="sub">{_ST['counts']['signal_untested']} untested, {_ST['counts']['signal_inconclusive']} inconclusive, staking blocked on prices</div></div>
 </div>
 <nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
 {nav}
 </nav>
 <section class="callout"><h2>Start here</h2>
 <p><a href="hub/executive-summary.html"><b>Executive summary</b></a> for the decisions,
-<a href="hub/lines.html"><b>Originated lines</b></a> for the board,
+<a href="hub/markets.html"><b>Originated markets</b></a> for the three-market board,
+<a href="hub/price-store.html"><b>Price store</b></a> for the open/close record,
+<a href="hub/verified-results.html"><b>Results feed</b></a> for the reconciled scores,
+<a href="hub/replacements.html"><b>Replacements</b></a> for who is actually starting,
 <a href="hub/suggestions.html"><b>Suggestions</b></a> to choose a path,
 <a href="hub/questions.html"><b>Open questions</b></a> for the information gaps, and
 <a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.
@@ -1290,7 +1510,11 @@ estimated.</p>
         f.write(html)
 
 
+_P = None
+
+
 if __name__ == "__main__":
+    _P = _build_x3_pages()
     os.makedirs(os.path.join(HUB, "assets"), exist_ok=True)
     # inject the JS into hub pages
     main()

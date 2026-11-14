@@ -1,0 +1,483 @@
+{
+ "as_of": "2026-11-14",
+ "generated_by": "tools/strategies_engine.py",
+ "scoring_contract": [
+  "Signal and staking are scored in different columns from different data and are never combined into one number.",
+  "A strategy is leaderboard-eligible only when its signal is ESTABLISHED (whole CI above the baseline), its staking score exists with n, and the demotion gate is not firing.",
+  "A good staking run cannot promote a strategy whose signal is INCONCLUSIVE or FAILED; a good signal cannot be published with a staking number that does not exist.",
+  "Every number carries n. A row without n is not ranked."
+ ],
+ "signal_evidence": {
+  "n_games": 105,
+  "margin": {
+   "metric": "paired improvement in absolute error vs the naive -2.5 baseline, in points",
+   "mean_improvement": 0.205,
+   "ci95": [
+    -1.047,
+    1.478
+   ],
+   "model_mae": 9.74,
+   "naive_mae": 9.95,
+   "interpretation": "the interval contains zero, so the side model's edge over a constant -2.5 is not yet established at this sample size"
+  },
+  "total": {
+   "metric": "paired improvement in absolute error vs the naive 45.0 baseline, in points",
+   "mean_improvement": -1.355,
+   "ci95": [
+    -2.6,
+    -0.119
+   ],
+   "model_mae": 12.5,
+   "naive_mae": 11.14,
+   "interpretation": "the model's total is WORSE than a constant 45 on this sample; published as-is rather than tuned until it looks better"
+  },
+  "direction": {
+   "hits": 66,
+   "n": 105,
+   "rate": 0.6286,
+   "ci95_wilson": [
+    0.5331,
+    0.7149
+   ],
+   "baseline_always_away": 0.5238,
+   "baseline_always_home": 0.4762,
+   "advantage_over_always_away": 0.1048,
+   "advantage_ci95": [
+    -0.0286,
+    0.2286
+   ],
+   "reading": "the direction rate beats the always-away baseline by +0.105 per game, 95% CI [-0.029, +0.229]"
+  },
+  "moneyline_calibration": {
+   "brier": 0.2267,
+   "brier_base_rate": 0.2494,
+   "base_rate_home_win": 0.4762,
+   "n": 105,
+   "reading": "lower is better; the model's probability beats the base rate"
+  },
+  "multiple_testing": {
+   "variants_tried": 12,
+   "control": "Bonferroni over the number of registered strategies; Benjamini-Hochberg at 10% is the registered gate G-5",
+   "note": "with 12 registered hypotheses the corrected threshold on any single test is 0.05/12 = 0.0042"
+  },
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+ },
+ "demotion_gate": {
+  "id": "G-10",
+  "name": "Demotion",
+  "rule": "a live strategy is returned to paper when any of D-1..D-4 fires; the check runs on every scheduled build, and a demoted strategy must pass every promotion gate again from a new registration id",
+  "clauses": [
+   {
+    "id": "D-1",
+    "condition": "three consecutive scored weeks worse than the naive baseline"
+   },
+   {
+    "id": "D-2",
+    "condition": "rolling-20-game paired improvement CI entirely below zero"
+   },
+   {
+    "id": "D-3",
+    "condition": "direction hit-rate 95% CI entirely below 0.50"
+   },
+   {
+    "id": "D-4",
+    "condition": "the staking input disappears while the strategy is live"
+   }
+  ],
+  "evaluated_against": "ST-10 model-quality benchmark (the only strategy with a series)",
+  "results": {
+   "D-1_three_consecutive_weeks_worse_than_naive": {
+    "fires": false,
+    "worst_streak_observed": 3,
+    "last_three": [
+     {
+      "week": 8,
+      "beats_naive": true
+     },
+     {
+      "week": 9,
+      "beats_naive": true
+     },
+     {
+      "week": 10,
+      "beats_naive": false
+     }
+    ]
+   },
+   "D-2_rolling20_improvement_ci_below_zero": {
+    "fires": false,
+    "rolling20_mean_improvement_points": 2.809,
+    "ci95": [
+     0.668,
+     5.013
+    ]
+   },
+   "D-3_direction_hit_rate_ci_below_0.50": {
+    "fires": false,
+    "ci95": [
+     0.5331,
+     0.7149
+    ]
+   },
+   "D-4_staking_input_missing_while_live": {
+    "fires": true,
+    "detail": "no market prices exist (F-01), so no strategy can hold a live staking score; anything that was live would be returned to paper by this rule alone"
+   }
+  },
+  "firing": [
+   "D-4_staking_input_missing_while_live"
+  ],
+  "verdict": "PAPER. D-4_staking_input_missing_while_live fire."
+ },
+ "weekly_series": [
+  {
+   "week": 3,
+   "n": 16,
+   "mae_margin": 10.89,
+   "mae_naive": 9.81,
+   "beats_naive": false,
+   "direction_rate": 0.5
+  },
+  {
+   "week": 4,
+   "n": 16,
+   "mae_margin": 7.16,
+   "mae_naive": 7.5,
+   "beats_naive": true,
+   "direction_rate": 0.75
+  },
+  {
+   "week": 5,
+   "n": 15,
+   "mae_margin": 12.12,
+   "mae_naive": 10.3,
+   "beats_naive": false,
+   "direction_rate": 0.6
+  },
+  {
+   "week": 6,
+   "n": 14,
+   "mae_margin": 6.51,
+   "mae_naive": 6.29,
+   "beats_naive": false,
+   "direction_rate": 0.571
+  },
+  {
+   "week": 7,
+   "n": 14,
+   "mae_margin": 12.02,
+   "mae_naive": 10.43,
+   "beats_naive": false,
+   "direction_rate": 0.571
+  },
+  {
+   "week": 8,
+   "n": 14,
+   "mae_margin": 12.03,
+   "mae_naive": 14.14,
+   "beats_naive": true,
+   "direction_rate": 0.643
+  },
+  {
+   "week": 9,
+   "n": 15,
+   "mae_margin": 7.93,
+   "mae_naive": 12.03,
+   "beats_naive": true,
+   "direction_rate": 0.8
+  },
+  {
+   "week": 10,
+   "n": 1,
+   "mae_margin": 5.72,
+   "mae_naive": 0.5,
+   "beats_naive": false,
+   "direction_rate": 0.0
+  }
+ ],
+ "counts": {
+  "strategies": 12,
+  "signal_established": 0,
+  "signal_inconclusive": 1,
+  "signal_failed": 0,
+  "signal_untested": 11,
+  "staking_scored": 0,
+  "staking_blocked": 12,
+  "leaderboard_eligible": 0,
+  "demotion_gates_firing": 1
+ },
+ "strategies": [
+  {
+   "id": "ST-01",
+   "family": "Single - side",
+   "name": "Injury-shock fade",
+   "entry": "Bet the opponent when a club's model line moves >= 3.5 points because of officially designated absences of 1st-string players, and the movement is not matched by the market move.",
+   "settlement": "Settle at game final; one unit per game, no doubling.",
+   "data_required": "Game log + closing prices + 4 seasons of Wednesday/Friday designations",
+   "signal_source": "Official injury report x club charts (this site)",
+   "gate_state_at_registration": "BLOCKED - no prices/results",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-02",
+   "family": "Single - side",
+   "name": "Pythagorean regression",
+   "entry": "Fade teams whose actual wins exceed Pythagorean wins by >= 1.5 wins, and take teams below by the same margin, when the line has not moved with the underlying rating.",
+   "settlement": "Settle at game final.",
+   "data_required": "Standings (have) + prices (missing) + 7 seasons for stability",
+   "signal_source": "hub/correlation.html luck table (DERIVED)",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-03",
+   "family": "Single - total",
+   "name": "Backup-QB total under",
+   "entry": "When a club's chart QB1 is officially Out and the QB2 has < 200 career snaps, take the under of that club's team total contribution.",
+   "settlement": "Settle at game final.",
+   "data_required": "Charts (partial) + report (have) + snaps (have via nfl.com/stats) + prices (missing)",
+   "signal_source": "Lineup deficiency index (this site)",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-04",
+   "family": "Single - side",
+   "name": "Offensive-line collapse",
+   "entry": "When >= 2 chart OL starters (incl. the centre) are Out/Doubtful, take the opponent's side in games where the opponent's pass-rush unit is fully available.",
+   "settlement": "Settle at game final.",
+   "data_required": "Chart positions + report + game log",
+   "signal_source": "hub/depth.html (e.g. IND, NO, SEA, TEN this week)",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-05",
+   "family": "Single - prop combo",
+   "name": "Goal-to-go rush stack",
+   "entry": "Combine RB1 'anytime TD' with 'over 65.5 rushing yards' only when the opponent is ranked in the bottom third on red-zone defence per play.",
+   "settlement": "Settle per league prop settlement rules.",
+   "data_required": "Prop prices + red-zone defence splits + snap counts",
+   "signal_source": "nfl.com/stats (have) + prop archive (missing)",
+   "gate_state_at_registration": "BLOCKED - no prop archive",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-06",
+   "family": "Parlay - same game",
+   "name": "Correlated game-script parlay",
+   "entry": "Two legs priced from one joint simulation of the game (spread + team total), with the dependence term estimated from the model's own simulated games, not from market prices alone.",
+   "settlement": "Settle both legs at game final.",
+   "data_required": "Game-level simulation + prices",
+   "signal_source": "Model margin distribution",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-07",
+   "family": "Parlay - cross game",
+   "name": "Same-slate fade basket",
+   "entry": "Up to 3 injury-shock fades within one betting window; legs must be independent by construction (different games, no shared total exposure).",
+   "settlement": "Settle at game final; a cancelled leg voids only that leg.",
+   "data_required": "As ST-01 + slate scheduling data",
+   "signal_source": "Official injury report",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-08",
+   "family": "Single - side",
+   "name": "Rest-day asymmetry",
+   "entry": "After a short week (<= 4 rest days) travelling from a primetime game, fade the rested team only when the spread exceeds the model line by < 1.5 points.",
+   "settlement": "Settle at game final.",
+   "data_required": "Game log with dates/venues (missing)",
+   "signal_source": "Schedule data",
+   "gate_state_at_registration": "BLOCKED - no game log",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-09",
+   "family": "Single - market check",
+   "name": "Line-move vs news check",
+   "entry": "Flag games where the market moved >= 2.5 points with no corresponding official designation; treat as a data-integrity signal first and a trade only after verification.",
+   "settlement": "No bet by default; review only.",
+   "data_required": "Prices + report timestamps",
+   "signal_source": "Price snapshot delta",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-10",
+   "family": "Evaluation",
+   "name": "Cross-fitted model-quality benchmark",
+   "entry": "Score the originated lines themselves with log-loss and MAE against outcomes on a chronological walk-forward; a strategy may not be promoted until the underlying model beats the naive baseline (home -2.5 / total 45.0).",
+   "settlement": "n/a - evaluation only.",
+   "data_required": "Game log + outcomes",
+   "signal_source": "This site's model",
+   "gate_state_at_registration": "BLOCKED - no results",
+   "signal_score": 0.205,
+   "signal_n": 105,
+   "signal_ci": [
+    -1.047,
+    1.478
+   ],
+   "signal_metric": "paired improvement in absolute margin error over the naive home -2.5 baseline, bootstrap 95% CI",
+   "signal_status": "INCONCLUSIVE",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-11",
+   "family": "Single - side",
+   "name": "Alternate-market arbitrage of our own line",
+   "entry": "Trade only when our line and the market differ by more than the model's own standard error (not a fixed point threshold), so bet size scales with genuine uncertainty.",
+   "settlement": "Settle at game final.",
+   "data_required": "Prices + model error estimate",
+   "signal_source": "Model residuals",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  },
+  {
+   "id": "ST-12",
+   "family": "Staking",
+   "name": "Fractional-Kelly with model-error haircut",
+   "entry": "Stake = 0.25 x Kelly fraction computed on the interval, using the lower confidence bound of the edge rather than the point estimate, capped at 2% of bankroll per bet.",
+   "settlement": "Applies to every strategy above.",
+   "data_required": "Prices + edge intervals",
+   "signal_source": "Gate CI outputs",
+   "gate_state_at_registration": "BLOCKED - no prices",
+   "signal_score": null,
+   "signal_n": null,
+   "signal_ci": null,
+   "signal_metric": "",
+   "signal_status": "UNTESTED",
+   "staking_score": null,
+   "staking_n": null,
+   "staking_status": "BLOCKED",
+   "staking_blocker": "no market price exists in this repository, so a bet cannot be priced, settled or valued (F-01)",
+   "rank": null,
+   "tier": "PAPER",
+   "demotion": "n/a - never promoted"
+  }
+ ],
+ "limits": [
+  "One season of results; G-2 (>=300 settled bets, >=3 seasons) cannot be met, so even an established signal cannot be promoted yet.",
+  "No prices means no staking score at all: ROI, CLV and drawdown are not computable and are not published as zero.",
+  "Prop, parlay and prop-combo strategies are UNTESTED rather than failed: their inputs (prop prices, prop settlement history) do not exist in this repository."
+ ]
+}

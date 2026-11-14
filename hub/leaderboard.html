@@ -12,11 +12,66 @@
   <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
   <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
 </header>
-<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html" class=on">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html"">Replacement depth</a></nav>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html"">Price snapshot store</a><a href="verified-results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html" class=on">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html"">Replacement depth</a></nav>
 <main>
 <h1>Leaderboard</h1>
 <p class="lede">A competition design that rewards strategies only after they beat a luck-adjusted baseline - and which is therefore empty today.</p>
 
+<section class="callout"><h2>Signal and staking are two different columns</h2>
+<p>A strategy can look profitable because of when it was staked, and a good signal can be buried by
+bad staking. This leaderboard therefore scores the two separately, from different data, and never
+adds them into one number. The signal column is measured on outcomes with n and an interval; the
+staking column needs a price and is empty because no price exists. A strategy is ranked only when
+both columns exist - which today means none is.</p></section>
+<h2>Signal and staking, scored apart (12 registered strategies)</h2>
+<input class="filt" data-for="sigs" placeholder="filter: family, INCONCLUSIVE, UNTESTED...">
+<div class="tblwrap"><table class="k-data" id="sigs">
+<thead><tr><th>Strategy</th><th>Name</th><th>Family</th><th>Signal score</th><th>Signal 95% CI</th><th>n</th><th>Signal verdict</th><th>Staking score</th><th>Staking state</th><th>Rank</th><th>Tier</th></tr></thead><tbody>
+<tr><td><b>ST-01</b></td><td>Injury-shock fade</td><td>Single - side</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-02</b></td><td>Pythagorean regression</td><td>Single - side</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-03</b></td><td>Backup-QB total under</td><td>Single - total</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-04</b></td><td>Offensive-line collapse</td><td>Single - side</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-05</b></td><td>Goal-to-go rush stack</td><td>Single - prop combo</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-06</b></td><td>Correlated game-script parlay</td><td>Parlay - same game</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-07</b></td><td>Same-slate fade basket</td><td>Parlay - cross game</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-08</b></td><td>Rest-day asymmetry</td><td>Single - side</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-09</b></td><td>Line-move vs news check</td><td>Single - market check</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-10</b></td><td>Cross-fitted model-quality benchmark</td><td>Evaluation</td><td>+0.205</td><td>[-1.047, +1.478]</td><td>105</td><td><span class="badge p">PARTIAL</span> INCONCLUSIVE</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-11</b></td><td>Alternate-market arbitrage of our own line</td><td>Single - side</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-12</b></td><td>Fractional-Kelly with model-error haircut</td><td>Staking</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+</tbody></table>
+<p class="note">The signal column is measured on outcomes with n and an interval. The staking column is empty and BLOCKED because no price exists, so no staking number can stand in for a signal number. A strategy is ranked only when both columns exist.</p>
+</div>
+<h2>The scoring contract</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Rule</th><th>Consequence</th></tr></thead><tbody>
+<tr><td>Signal and staking are scored in different columns from different data and are never combined into one number.</td><td></td></tr>
+<tr><td>A strategy is leaderboard-eligible only when its signal is ESTABLISHED (whole CI above the baseline), its staking score exists with n, and the demotion gate is not firing.</td><td></td></tr>
+<tr><td>A good staking run cannot promote a strategy whose signal is INCONCLUSIVE or FAILED; a good signal cannot be published with a staking number that does not exist.</td><td></td></tr>
+<tr><td>Every number carries n. A row without n is not ranked.</td><td></td></tr>
+</tbody></table>
+</div>
+<h2>What the signal evidence actually says</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Object</th><th>Value</th><th>n</th><th>Reading</th></tr></thead><tbody>
+<tr><td>Paired improvement in absolute margin error vs the constant -2.5</td><td>+0.205 pts</td><td>105</td><td>95% CI [-1.047, +1.478] - contains zero, so the label is INCONCLUSIVE</td></tr>
+<tr><td>Paired improvement in absolute total error vs the constant 45.0</td><td>-1.355 pts</td><td>105</td><td>95% CI [-2.600, -0.119] - the model is worse than the constant</td></tr>
+<tr><td>Direction hit rate</td><td>62.9%</td><td>105</td><td>always-away baseline 52.4%; advantage +0.105 per game, CI [-0.029, +0.229]</td></tr>
+<tr><td>Brier score, model moneyline</td><td>0.2267</td><td>105</td><td>base-rate Brier 0.2494 - lower is better; the model's probability beats the base rate</td></tr>
+<tr><td>Variants tried (multiple testing)</td><td>12</td><td>105</td><td>corrected threshold on any single test: with 12 registered hypotheses the corrected threshold on any single test is 0.05/12 = 0.0042</td></tr>
+</tbody></table>
+<p class="note">This is the luck-removal evidence in full. Nothing here is a return claim; it is a statement about whether the forecast carries information.</p>
+</div>
+<h2>The demotion gate: how a live strategy goes back to paper</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Clause</th><th>Condition</th><th>State now</th><th>Measured value</th></tr></thead><tbody>
+<tr><td><b>D-1</b></td><td>three consecutive scored weeks worse than the naive baseline</td><td>clear</td><td>{"worst_streak_observed": 3, "last_three": [{"week": 8, "beats_naive": true}, {"week": 9, "beats_naive": true}, {"week": 10, "beats_naive": false}]}</td></tr>
+<tr><td><b>D-2</b></td><td>rolling-20-game paired improvement CI entirely below zero</td><td>clear</td><td>{"rolling20_mean_improvement_points": 2.809, "ci95": [0.668, 5.013]}</td></tr>
+<tr><td><b>D-3</b></td><td>direction hit-rate 95% CI entirely below 0.50</td><td>clear</td><td>{"ci95": [0.5331, 0.7149]}</td></tr>
+<tr><td><b>D-4</b></td><td>the staking input disappears while the strategy is live</td><td><span class="badge b">FAIL</span> FIRING</td><td>{"detail": "no market prices exist (F-01), so no strategy can hold a live staking score; anything that was live would be returned to paper by this rule alone"}</td></tr>
+</tbody></table>
+<p class="note">Evaluated on every build by tools/strategies_engine.py against ST-10 model-quality benchmark (the only strategy with a series). Verdict: PAPER. D-4_staking_input_missing_while_live fire.</p>
+</div>
 <h2>Categories</h2><div class="tblwrap"><table class="k-meta">
 <thead><tr><th>Category</th><th>Scope</th><th>Primary metric</th><th>Tiebreak</th></tr></thead><tbody>
 <tr><td><b>Game side (single)</b></td><td>Spread and moneyline singles</td><td>CLV-qualified ROI per 100 staked</td><td>Brier score on our own win probability</td></tr>

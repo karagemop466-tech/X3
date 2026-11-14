@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 306,
       "flagged_rows": 227,
-      "refs": 348,
+      "refs": 372,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -45,25 +45,25 @@
     },
     "council": {
       "pages": 9,
-      "rows": 132,
-      "flagged_rows": 95,
-      "refs": 261,
+      "rows": 144,
+      "flagged_rows": 107,
+      "refs": 275,
       "unsourced_examples": [
         "council/executive-summary.html:  ID  Requirement  Verdict ",
-        "council/executive-summary.html: R1 Price-snapshot store that records opening and closing numbers for every market we originate BLOCKED",
+        "council/executive-summary.html: R1 Price-snapshot store that records opening and closing numbers for every market we originate PARTIAL",
         "council/executive-summary.html: R2 Verified results feed so backtests and ROI can be computed at all PARTIAL",
-        "council/executive-summary.html: R3 Originate the side first, then the total, then the moneyline NOT MET",
-        "council/executive-summary.html: R4 Publish the model's fair line, the market line, and the difference as separate columns BLOCKED",
-        "council/executive-summary.html: R5 Separate 'signal' from 'staking' in the leaderboard so a lucky staking run cannot mask a bad signal NOT MET",
-        "council/executive-summary.html: R6 Track the depth of the replacement, not just the fact of a replacement NOT MET",
-        "council/executive-summary.html: R7 Compute correlations only from officially sourced numbers and publish n with each value PARTIAL - DEFECT CONFIRMED"
+        "council/executive-summary.html: R3 Originate the side first, then the total, then the moneyline MET",
+        "council/executive-summary.html: R4 Publish the model's fair line, the market line, and the difference as separate columns PARTIAL",
+        "council/executive-summary.html: R5 Separate 'signal' from 'staking' in the leaderboard so a lucky staking run cannot mask a bad signal PARTIAL",
+        "council/executive-summary.html: R6 Track the depth of the replacement, not just the fact of a replacement PARTIAL",
+        "council/executive-summary.html: R7 Compute correlations only from officially sourced numbers and publish n with each value MET"
       ]
     },
     "crosscheck": {
       "pages": 7,
-      "rows": 561,
-      "flagged_rows": 542,
-      "refs": 1690,
+      "rows": 662,
+      "flagged_rows": 643,
+      "refs": 1910,
       "unsourced_examples": [
         "crosscheck/executive-summary.html: Fact Value Official source  Where verified",
         "crosscheck/executive-summary.html: Missing Why State Source",
@@ -124,10 +124,10 @@
       ]
     },
     "hub": {
-      "pages": 18,
-      "rows": 768,
-      "flagged_rows": 555,
-      "refs": 994,
+      "pages": 27,
+      "rows": 1840,
+      "flagged_rows": 1441,
+      "refs": 2762,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -168,6 +168,38 @@
       "flagged_rows": 0,
       "refs": 14,
       "unsourced_examples": []
+    },
+    "ops": {
+      "pages": 18,
+      "rows": 521,
+      "flagged_rows": 275,
+      "refs": 871,
+      "unsourced_examples": [
+        "ops/correlation.html: Pair r n CI95 p Reading Used for Source",
+        "ops/depth.html: Measured on Value State What it means Source",
+        "ops/depth.html: Team Player Pos Status Injury Column Tier Replacement Rep. column Rep. tier Where the name came from Chart confidence Ch",
+        "ops/depth.html: Team Player Pos Status Column Tier Why Chart confidence Chart",
+        "ops/depth.html: Team Player Pos Status Reason State Injury Chart",
+        "ops/depth.html: Team Absences resolved Deepest replacement column Mean replacement column Chart confidence Chart as-of Chart",
+        "ops/executive-summary.html: Finding Value n CI95 Reading",
+        "ops/executive-summary.html: Model side picks the winner 0.659 88 0.555 - 0.75 well above a coin flip, but n is under the 200-bet skill bar, so it is"
+      ]
+    },
+    "origin": {
+      "pages": 14,
+      "rows": 481,
+      "flagged_rows": 430,
+      "refs": 860,
+      "unsourced_examples": [
+        "origin/backtest.html: Week n MAE margin (pts) MAE total (pts) Winner accuracy Over/under hit (vs 45.0 baseline) O/U n Brier (win prob) Results",
+        "origin/backtest.html: Window n MAE margin MAE total Winner accuracy O/U hit O/U n Brier Basis",
+        "origin/correlations.html: ID X Y Pearson r Spearman \u03c1 n 95% CI Official sources Note",
+        "origin/correlations.html: ID X Y Pearson r Spearman \u03c1 n 95% CI Status Note",
+        "origin/depth.html: Club Out/Doubtful absences Replacements identified Deficiency index (pts) Injury source Chart source",
+        "origin/depth.html: Club Game Player out Pos Status Starter string Replacement (next up) Deficiency pts Basis Sources",
+        "origin/gates.html: ID Gate Requirement State Evidence / what flips it",
+        "origin/gates.html: G-0 Pre-registration Rules, sample definition and thresholds frozen in committed ledgers before outcomes are seen. PASS "
+      ]
     },
     "pages": {
       "pages": 6,
@@ -216,9 +248,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 163,
-  "rows_total": 6098,
-  "rows_flagged_or_sourced": 5304,
-  "internal_refs": 3339,
+  "pages_total": 204,
+  "rows_total": 8285,
+  "rows_flagged_or_sourced": 7008,
+  "internal_refs": 4813,
   "problems": []
 }
