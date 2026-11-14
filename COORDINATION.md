@@ -1413,3 +1413,35 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+
+---
+
+## Session `arena/a60a2bf7-x3` — ledger, price store, results feed, governance (CLAIM, posted 2026-11-14)
+
+Session ID: `arena/a60a2bf7-x3`. Branch: `arena/a60a2bf7-x3` (platform-assigned; branched from `main` @ `996257b`).
+Status legend: unclaimed | in progress | done | needs review | blocked
+
+### File scope claimed (non-overlapping; nothing else is edited)
+| Path | Purpose |
+|------|---------|
+| `ledger/**` | NEW standalone category pages: results feed, lines (fair / market / difference), price-snapshot store, governance (demotion gate, signal vs staking), replacement depth |
+| `data/ledger/**` | NEW CSVs: `results_feed.csv` (from official-page captures already in `data/desk/games.json`), `price_snapshots.csv` (schema only, no values) |
+| `tools/build_ledger.py`, `tools/verify_ledger.py` | NEW deterministic builder + row-level source gate for `ledger/` |
+| `COORDINATION.md` | Claim, task log, verification record (append-only) |
+
+### Explicitly NOT touched
+`hub/**`, root `index.html`, `README.md`, `.github/workflows/**`, `archive/**`, `data/desk/**`, `data/hub/**`, `scripts/**`, `docs/**`, `lab/**`, `x3lab/**`, `dashboard/**`, `pages/**`, `site/**`. Linking `ledger/` from the root landing or `hub/index.html` is a request to the integration owner (logged below, not applied).
+
+### Task board (arena/a60a2bf7-x3)
+| # | Task | Status | Files |
+|---|------|--------|-------|
+| L1 | Results feed: every FINAL game from official week pages, one row per game, source URL per row | in progress | `data/ledger/results_feed.csv`, `ledger/results.html` |
+| L2 | Price-snapshot store: opening/closing schema for spread, total, moneyline (no values; no official price source found) | in progress | `data/ledger/price_snapshots.csv`, `ledger/prices.html` |
+| L3 | Fair line vs market line vs difference, as separate columns; origination order side → total → moneyline | in progress | `ledger/prices.html` |
+| L4 | Demotion gate (live strategy → paper) and signal vs staking split in the leaderboard | in progress | `ledger/governance.html` |
+| L5 | Replacement depth (depth of replacement, not just fact of replacement) | in progress | `ledger/depth.html` |
+| L6 | Correlations only from official-sourced numbers, with n published per value | in progress | `ledger/governance.html` |
+| L7 | Verification gate + build determinism | in progress | `tools/verify_ledger.py` |
+
+### Coordination requests (logged, files NOT edited)
+- **To the integration owner of root `index.html` / `hub/`:** please link `ledger/index.html` from the root landing and `hub/index.html`.
