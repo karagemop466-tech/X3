@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources &mdash; X3 NFL</title>
+<meta name="description" content="Official and reference sources used across the X3 NFL decision-intelligence site.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand"><span class="mark">X3</span><span>X3 &middot; NFL Decision Intelligence</span></div>
+    <div class="tagline">Every value sourced or flagged unverified</div>
+  </div>
+</header>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html">Dashboard</a>
+    <a href="executive-summary.html">Executive Summary</a>
+    <a href="suggestions.html">Suggestions &amp; Review</a>
+    <a href="flagged-for-review.html">Flagged for Review</a>
+    <a href="strategies.html">Strategies &amp; Signals</a>
+    <a href="injuries.html">Injuries &amp; Depth</a>
+    <a href="sources.html" class="active">Sources</a>
+    <div class="nav-spacer"></div>
+    <span class="nav-badge">Official sources only</span>
+  </div>
+</nav>
+
+<main id="content" class="container">
+  <h1 class="section-title">Sources</h1>
+  <p class="section-sub">All sources referenced across the site. Official sources are preferred; where none exists, the item is flagged unverified and left blank.</p>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Source</th><th>Type</th><th>Used for</th><th>Official?</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>SRC-01</td>
+        <td class="source-cell"><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">NFL.com &mdash; Official Injury Report</a></td>
+        <td>Official NFL site</td>
+        <td>Weekly player injuries, practice status, game status</td>
+        <td><span class="tag tag-ok">Yes</span></td>
+      </tr>
+      <tr>
+        <td>SRC-02</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL official feeds documentation</a></td>
+        <td>Official NFL partner feed docs</td>
+        <td>Weekly depth charts (starters + backups), weekly injuries, rosters</td>
+        <td><span class="tag tag-ok">Partner feed</span></td>
+      </tr>
+      <tr>
+        <td>SRC-03</td>
+        <td class="source-cell"><span class="blank">No official NFL betting-lines source identified</span></td>
+        <td>Not found</td>
+        <td>Originating game lines / odds</td>
+        <td><span class="tag tag-unverified">No</span></td>
+      </tr>
+      <tr>
+        <td>SRC-04</td>
+        <td class="source-cell"><span class="blank">No official NFL player-prop source identified</span></td>
+        <td>Not found</td>
+        <td>Player-prop markets and prices</td>
+        <td><span class="tag tag-unverified">No</span></td>
+      </tr>
+      <tr>
+        <td>SRC-05</td>
+        <td class="source-cell"><span class="blank">Internal &mdash; Suggestions &amp; Review page (this site)</span></td>
+        <td>Internal</td>
+        <td>Validation gate thresholds, leaderboard rewards, review decisions</td>
+        <td><span class="tag tag-unverified">Internal</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout info">
+    <h4>&nbsp; Citation standard</h4>
+    <p>Every table row across the site must carry a source link to an official site. If a value cannot be confirmed from an official source, the cell is left blank and flagged unverified. Values are never inferred or filled in.</p>
+  </div>
+
+  <div class="section-title"><span class="num">2</span>Verification note</div>
+  <p>Direct outbound access to nfl.com is restricted in this sandbox, so row-level data was not fetched live. Source URLs above are official-source locations identified via web search; they should be re-verified against the live official pages after the site is published. See the <a href="flagged-for-review.html">Flagged for Review</a> page for the full unverified list.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    X3 &middot; NFL project &middot; Branch <code>arena/1a771fcd-x3</code> &middot; Built with GitHub Pages &middot; No manual input &mdash; all entries sourced or flagged unverified.
+  </div>
+</footer>
+
+</body>
+</html>
