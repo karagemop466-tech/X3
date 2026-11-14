@@ -959,6 +959,8 @@ aggregator.</p></section>
 
 
 def p_verification():
+    res = JX("results.json")
+    dp = JX("depth_replacement.json")
     rows = [[esc(a), esc(b), esc(c), esc(d), badge(e)] for a, b, c, d, e in [
         ("Injury report, 345 rows", "independent re-transcription of the official page (8 chunks read in "
          "full) vs the stored data module",
@@ -994,6 +996,30 @@ def p_verification():
          "row", "VERIFIED"),
         ("Row-source gate", "tools/verify_hub.py", "every row of every table must carry an official URL or "
          "an explicit UNVERIFIED marker", "run in CI; 0 failures required to build", "VERIFIED"),
+        ("Results feed reconciliation", "tools/results_feed.py, on every build",
+         "final scores aggregated per club must equal the official standings on W, L, T, PF, PA and "
+         "games played; a final without both scores is dropped, never filled",
+         f"{res['counts']['clubs']}/{res['counts']['clubs']} clubs agree on all six fields, 0 "
+         f"mismatches, across {res['counts']['finals']} finals", "VERIFIED"),
+        ("Results feed box-score sample", "a live read of the official Week-1 page vs the capture",
+         "16 finals compared score by score",
+         f"{res['checks']['R3_box_score_sample']['agreed']}/16 agree", "VERIFIED"),
+        ("Market probe: does NFL.com publish odds?", "a live read of the LAC@BAL Week-10 game centre "
+         "and of nfl.com/odds/",
+         "any spread, total, moneyline or odds table on an official page",
+         "the game centre carries participation, team stats and standings and no odds; /odds/ "
+         "returns 404. This is what makes the market columns structurally blank (F-18)", "VERIFIED"),
+        ("Depth of the replacement, live spot-check",
+         "the engine's output for CIN S Kyle Dugger vs a live read of the Bengals' own chart",
+         "the chart's S(2) slot, name by name",
+         "the live chart reads Jordan Battle > Kyle Dugger > Russ Yeast, so with Dugger out the "
+         "replacement is Russ Yeast at third string - exactly what the engine published", "VERIFIED"),
+        ("Cross-role name matches refused",
+         "tools/depth_engine.py, on every build",
+         "a name match is only accepted when the chart slot's position group equals the position on "
+         "the official report",
+         "16 name matches fell in the wrong position group and are published UNVERIFIED rather than "
+         "used to name a replacement (F-23)", "VERIFIED"),
         ("Counts in prose", "build-time interpolation", "no number may be typed into prose",
          "build aborts on an unfilled token, which is how the row-count drift in earlier sessions was "
          "prevented from recurring", "VERIFIED"),
