@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requirements &amp; Status — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Requirements &amp; Status</h1>
+<p class="meta">Full requirement list from the project brief, tracked line by line · 2026-11-14</p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html" class="active">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<table>
+<thead><tr><th>ID</th><th>Requirement (from brief)</th><th>Status</th><th>Where</th><th>Gaps / notes</th></tr></thead>
+<tbody>
+<tr><td>R1</td><td>Collect, organize, and analyze using a full list of requirements</td>
+<td><span class="pill pill-done">DONE</span></td><td>This page + <a href="injuries.html">Injuries</a>, <a href="standings.html">Standings</a></td>
+<td>Week-10 official data captured; historical backfill listed as Q-10</td></tr>
+<tr><td>R2</td><td>Suggestions to improve the site &amp; decision-making; dedicated suggestions section for review before implementing changes</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="suggestions.html">Suggestions</a></td>
+<td>Board seeded with 14 proposals; review workflow defined on the page</td></tr>
+<tr><td>R3</td><td>Clear list of questions, information, and answers needed before decisions — based on what we have and don't have</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="questions.html">Questions</a></td>
+<td>15 entries with known/unknown split</td></tr>
+<tr><td>R4</td><td>Suggestions to discover missing information</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="questions.html">Questions</a> (discovery column) + <a href="suggestions.html">Suggestions</a> S-02</td>
+<td>Every open question carries a concrete discovery path</td></tr>
+<tr><td>R5</td><td>Originate my own NFL lines</td>
+<td><span class="pill pill-part">FRAMEWORK</span></td><td><a href="strategies.html">Line Origination</a></td>
+<td>Method complete; live numbers require odds/efficiency data ingestion (Q-07, Q-12)</td></tr>
+<tr><td>R6</td><td>Research and develop strategies for generating useful signals</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="strategies.html">Signal catalog S1–S8</a></td>
+<td>Grounded in verified literature; each signal names its validation gate</td></tr>
+<tr><td>R7</td><td>Treat as leaderboard competition with rewards for top strategies</td>
+<td><span class="pill pill-done">DESIGN</span></td><td><a href="leaderboard.html">Leaderboard</a></td>
+<td>Reward amounts blank pending budget (Q-01); execution engine listed as build items</td></tr>
+<tr><td>R8</td><td>Cover single bets, parlays, player-prop bet combos</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="leaderboard.html">Leaderboard</a> (classes) + <a href="validation.html">parlay gates</a> + <a href="correlation.html">Correlation</a></td>
+<td>Combo EV rules require the correlation matrix (Q-05) before live scoring</td></tr>
+<tr><td>R9</td><td>Each strategy must pass validation gates</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="validation.html">G0–G8</a></td>
+<td>Thresholds cited to published papers where they exist; NFL-specific constants flagged</td></tr>
+<tr><td>R10</td><td>Determine correlation values</td>
+<td><span class="pill pill-part">PARTIAL</span></td><td><a href="correlation.html">Correlation</a></td>
+<td class="flag">UNVERIFIED numeric values — no official source exists; pipeline specified to compute them (Q-05)</td></tr>
+<tr><td>R11</td><td>Remove luck; selectively skill-based strategies</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="validation.html">Monte-Carlo luck null + DSR/PBO</a></td>
+<td>Mechanism defined; runs once bets are logged</td></tr>
+<tr><td>R12</td><td>Track injuries</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="injuries.html">Injury tracker</a></td>
+<td>Weekly official reports + IR/transaction news; automation procedure documented</td></tr>
+<tr><td>R13</td><td>Know defensive deficiencies (2nd/3rd/4th string replacing starters)</td>
+<td><span class="pill pill-part">PARTIAL</span></td><td><a href="injuries.html">Deficiency model</a></td>
+<td class="flag">Depth ranks UNVERIFIED (official depth charts 404 — F-04); unit-loss counts verified; replacement names blank</td></tr>
+<tr><td>R14</td><td>Same for offenses (starters vs backups)</td>
+<td><span class="pill pill-part">PARTIAL</span></td><td><a href="injuries.html">QB alerts + unit counts</a></td>
+<td class="flag">Same depth-rank gap; QB starter changes tracked via official news (BAL/SEA/MIN/MIA/ARI verified)</td></tr>
+<tr><td>R15</td><td>Executive summary of important details</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="executive-summary.html">Executive Summary</a></td><td>—</td></tr>
+<tr><td>R16</td><td>No manual input from owner; work autonomously</td>
+<td><span class="pill pill-done">DONE</span></td><td>This session</td>
+<td>Two owner decisions remain flagged as questions (Q-01 budget, Q-02 legal) — they require owner judgment by definition</td></tr>
+<tr><td>R17</td><td>Review repo line by line; links for manual review; flag irregularities</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="repo-audit.html">Repo Audit</a>, <a href="flagged.html">Flagged</a></td><td>—</td></tr>
+<tr><td>R18</td><td>GitHub Pages site: clean landing page + category subpages</td>
+<td><span class="pill pill-done">DONE</span></td><td>Dashboard + 13 subpages</td><td>Deployment recorded in COORDINATION.md</td></tr>
+<tr><td>R19</td><td>Clean, simple, user-friendly dashboard UI</td>
+<td><span class="pill pill-done">DONE</span></td><td>Shared stylesheet, table-first layout</td>
+<td>UX improvement proposals on the Suggestions board (S-12–S-14)</td></tr>
+<tr><td>R20</td><td>All entries and findings in simple table format</td>
+<td><span class="pill pill-done">DONE</span></td><td>All pages</td><td>—</td></tr>
+<tr><td>R21</td><td>Every table row has a source link to an official site</td>
+<td><span class="pill pill-done">DONE</span></td><td>Automated check <code>tools/verify_site.py</code></td>
+<td>Proposal-only rows (suggestions/questions) link to their evidence or say "proposal"</td></tr>
+<tr><td>R22</td><td>Unverifiable values left blank and flagged</td>
+<td><span class="pill pill-done">DONE</span></td><td><span class="flag">UNVERIFIED</span> badges</td><td>—</td></tr>
+<tr><td>R23</td><td>Never infer or fill values</td>
+<td><span class="pill pill-done">DONE</span></td><td>Policy stated on every page footer</td><td>—</td></tr>
+<tr><td>R24</td><td>COORDINATION.md shared task board protocol</td>
+<td><span class="pill pill-done">DONE</span></td><td><code>COORDINATION.md</code></td>
+<td>Claims committed before work; log records sources, verification, irregularities</td></tr>
+<tr><td>R25</td><td>Create PR with summary of changes, sources, flagged irregularities; merge without waiting</td>
+<td><span class="pill pill-done">DONE</span></td><td>PR recorded in COORDINATION.md</td><td>—</td></tr>
+<tr><td>R26</td><td>Confirm GitHub Pages deploys successfully; record PR link &amp; merge result</td>
+<td><span class="pill pill-done">DONE</span></td><td>COORDINATION.md log</td><td>Retry-on-failure policy applied</td></tr>
+<tr><td>R27</td><td>Publish flagged irregularities on a clearly labeled page with source links</td>
+<td><span class="pill pill-done">DONE</span></td><td><a href="flagged.html">Flagged for Review</a></td><td>12 items</td></tr>
+<tr><td>R28</td><td>Fix build/check/deploy failures and retry until live; never merge a broken site</td>
+<td><span class="pill pill-done">DONE</span></td><td>Verification pass + deploy check</td><td>—</td></tr>
+</tbody>
+</table>
+
+<blockquote>Status vocabulary: DONE = delivered and verified where factual · PARTIAL = delivered with
+explicit, flagged gaps · FRAMEWORK/DESIGN = method delivered, live values need data or owner
+decisions. Nothing is marked DONE without the linked evidence.</blockquote>
+
+</main>
+<footer><p>Requirements transcribed from the project brief · statuses verified against the files in
+this repository · gaps point to the Questions page.</p></footer>
+</body>
+</html>

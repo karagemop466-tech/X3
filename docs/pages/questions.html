@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions &amp; Information Gaps — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Questions, Information &amp; Answers</h1>
+<p class="meta">What we know, what we don't, and how to discover it — required reading before decisions · 2026-11-14</p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html" class="active">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>Legend</h2>
+<p><span class="ok">ANSWERED</span> = we have a verified answer ·
+<span class="pill pill-part">PARTIAL</span> = partially known ·
+<span class="pill pill-open">OPEN</span> = unknown; the discovery column says how to find out.
+Nothing in the "what we know" column is inferred — it repeats only what is sourced on this site.</p>
+
+<table>
+<thead><tr><th>ID</th><th>Question</th><th>What we know (answer today)</th><th>Source</th><th>What's missing</th><th>Discovery path</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Q-01</td><td>What is the reward budget for the strategy leaderboard?</td>
+<td>Nothing — amounts left blank on purpose</td><td><a href="leaderboard.html">Leaderboard (blank cells)</a></td>
+<td>Owner decision: total pool + split</td><td>Single owner decision; BDB precedent ($15k×5) is the anchor</td>
+<td><span class="pill pill-open">OPEN</span></td></tr>
+<tr><td>Q-02</td><td>In which jurisdiction(s) will signals be used, and what legal constraints apply?</td>
+<td>Unknown — legal rules vary by location; nothing on this site constitutes a placed bet</td>
+<td><span class="flag">UNVERIFIED — no data source (owner/legal input, not a data question)</span></td><td>Owner's jurisdiction + intended use (origination research vs actual wagering)</td>
+<td>Owner decision; then consult official local regulator sources</td>
+<td><span class="pill pill-open">OPEN</span></td></tr>
+<tr><td>Q-03</td><td>What official data is live right now?</td>
+<td>Weekly injury reports (Week 10 2026 captured, 345 rows), standings (32 teams), IR/transaction news headlines</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a> · <a href="https://www.nfl.com/standings/">nfl.com/standings</a></td>
+<td>Historical backfill, play-by-play ingestion</td><td>nfl.com year/week selectors (verified 1965–2026) + nflverse</td>
+<td><span class="ok">ANSWERED</span></td></tr>
+<tr><td>Q-04</td><td>Are the injury-report deadlines and designations known?</td>
+<td>Yes: practice reports due 4:00 p.m. NY time on the three days before game day; game status two days before kickoff; Out/Doubtful/Questionable ("probable" retired 2016)</td>
+<td><a href="https://www.nfl.com/news/2024-2025-national-football-league-important-dates">nfl.com</a> · <a href="https://www.espn.com/nfl/story/_/id/17361111/nfl-streamlines-injured-players-game-status-removes-probable-designation">ESPN</a></td>
+<td>—</td><td>—</td><td><span class="ok">ANSWERED</span></td></tr>
+<tr><td>Q-05</td><td>What are the numeric correlation values for parlays/prop combos?</td>
+<td>No official numeric source exists; structural findings and directional hypotheses documented</td>
+<td><a href="correlation.html">Correlation page</a></td><td>The numbers themselves (must be computed, not looked up)</td>
+<td>Run the estimation pipeline on ≥3 seasons play-by-play (nflverse); publish value + CI</td>
+<td><span class="pill pill-part">PARTIAL</span></td></tr>
+<tr><td>Q-06</td><td>What statistical bar separates skill from luck?</td>
+<td>DSR ≥ 0.95, PBO ≤ 0.2, CLV &gt; 0 significant, Monte-Carlo luck null, walk-forward OOS — all sourced</td>
+<td><a href="validation.html">Validation</a></td><td>NFL-specific calibration of thresholds</td>
+<td>Calibrate on our own entry distribution when the leaderboard runs</td>
+<td><span class="pill pill-part">PARTIAL</span></td></tr>
+<tr><td>Q-07</td><td>Where do opening/closing odds and consensus prices come from?</td>
+<td>Nothing yet — no odds feed connected to this repo</td><td><span class="flag">UNVERIFIED — no feed connected</span></td><td>A licensed feed or free archive (budget/tier decision)</td>
+<td>Compare licensed providers vs free archives; decide budget (ties to Q-01/Q-02)</td>
+<td><span class="pill pill-open">OPEN</span></td></tr>
+<tr><td>Q-08</td><td>What does the market evidence say about beating closing prices?</td>
+<td>Closing lines are near-calibrated; classic angles fail at closing prices; early-week movement is predictable and reflects sharp action</td>
+<td><a href="strategies.html">Sources table</a></td><td>Live confirmation on our own signals</td>
+<td>Log our signals' CLV from day one (Gate G2)</td><td><span class="ok">ANSWERED</span></td></tr>
+<tr><td>Q-09</td><td>Which players are actually 2nd/3rd/4th string, and who replaces whom?</td>
+<td>Unit-level loss counts verified (e.g., DET missing S1/CB1/C per names on report); starter/backup ranks not verifiable</td>
+<td><a href="injuries.html">Injuries</a> · <a href="flagged.html">F-04</a></td>
+<td>Depth ranks + snap counts</td><td>Verify per-team official club depth-chart URLs (manual pass); ingest snap counts from nfl.com/stats + nflverse</td>
+<td><span class="pill pill-part">PARTIAL</span></td></tr>
+<tr><td>Q-10</td><td>Can historical injury reports be reconstructed?</td>
+<td>Yes in principle — the official page exposes year selectors back to 1965 and week selectors</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td><td>Automated backfill + storage plan</td>
+<td>Backfill seasons needed for injury-model training (e.g., 2019→now)</td>
+<td><span class="pill pill-part">PARTIAL</span></td></tr>
+<tr><td>Q-11</td><td>Where are official depth charts?</td>
+<td>nfl.com/depthcharts and /teams/*/depth-chart/ return 404 (tested 2026-11-14)</td>
+<td><a href="flagged.html">F-04</a></td><td>The working official URL(s) or club-site pages</td>
+<td>Manual verification of each club's official site; also official personnel notices</td>
+<td><span class="pill pill-open">OPEN</span></td></tr>
+<tr><td>Q-12</td><td>What efficiency metrics should the origination model use?</td>
+<td>EPA/play &amp; success rate are the community standard (nflverse); DVOA-style splits exist (Football Outsiders)</td>
+<td><a href="https://github.com/nflverse/nflverse-data">nflverse</a></td><td>Our own calibrated weights + margin σ</td>
+<td>Fit on play-by-play; bootstrap; freeze per season</td><td><span class="pill pill-part">PARTIAL</span></td></tr>
+<tr><td>Q-13</td><td>What weather feed do totals models use?</td>
+<td>Wind ≥15 mph mechanism is documented (Skidmore thesis); no feed connected</td>
+<td><a href="https://digitalcoll.skidmore.edu/record/6451">digitalcoll.skidmore.edu</a></td><td>Stadium-level forecast feed</td>
+<td>Connect an official meteorological source at game-stadium coordinates</td>
+<td><span class="pill pill-open">OPEN</span></td></tr>
+<tr><td>Q-14</td><td>How big is the trust difference between official and community data?</td>
+<td>Official = nfl.com (stats, injuries, news). Community = nflverse (trusted, widely used, not NFL-official). Both tiers are labeled on the Sources page</td>
+<td><a href="sources.html">Sources</a></td><td>Reconciliation routine (sample-based cross-checks)</td>
+<td>Monthly spot-check of nflverse aggregates vs nfl.com/stats (logged in COORDINATION.md)</td>
+<td><span class="pill pill-part">PARTIAL</span></td></tr>
+<tr><td>Q-15</td><td>What did the repo contain before this build?</td>
+<td>One file: README.md (single line: <code># X3</code>) — nothing else</td>
+<td><a href="repo-audit.html">Repo Audit</a></td><td>—</td><td>—</td><td><span class="ok">ANSWERED</span></td></tr>
+</tbody>
+</table>
+
+<h2>Decision rule</h2>
+<blockquote>No irreversible decision (prize spending, live signal publication, staking rules) should be
+made while its blocking questions are <span class="pill pill-open">OPEN</span>. Partial questions may
+proceed with their gaps flagged. Answers must arrive with sources — the same standard as the data.</blockquote>
+
+</main>
+<footer><p>Each open question has a discovery path — see also Suggestion S-02 (discovery sprint) on the
+<a href="suggestions.html">Suggestions board</a>.</p></footer>
+</body>
+</html>

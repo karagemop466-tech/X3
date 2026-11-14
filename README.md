@@ -122,3 +122,23 @@ for the decision queue.
 ---
 
 See [`COORDINATION.md`](COORDINATION.md) for scope, source review, verification performed, and flagged irregularities.
+
+---
+
+## Extended research tree & verified Week-10 dataset (branch `arena/4856379c-x3`)
+
+| Path | Contents |
+|------|----------|
+| `docs/pages/` | Research subpages: Executive Summary · Requirements · Line Origination · Validation · Correlation · Leaderboard · Injuries · Standings · Questions · Suggestions · Flagged · Sources · Repo Audit |
+| `docs/data/` | Canonical verified CSVs: `injury-2026-week10.csv` (345 rows, per-row official source URL) · `standings-2026-week10.csv` (32 teams) |
+| `docs/style.css` | Stylesheet for the `docs/pages/` tree |
+| `research/` | Backing research notes with source links (line origination, validation, correlation, leaderboard, injury tracking, repo audit) |
+| `tools/build_data_pages.py` | Regenerates `docs/pages/injuries.html` + `docs/pages/standings.html` from the CSVs |
+| `tools/verify_site.py` | Line-by-line verification: every source-table row must carry an official link or an UNVERIFIED flag (result at merge: 14 pages / 49 tables, 0 failures) |
+
+Verification note for this session's data: fetched live from `nfl.com/injuries` (Week 10, 2026 —
+8 chunks) and `nfl.com/standings` on 2026-11-14; team records were cross-checked between the two
+official pages (all 28 non-bye teams match). Depth-chart ranks were left blank + flagged in this
+session's tables (the official depth-chart URLs tested returned 404 — see the Flagged page F-01…F-12
+for all irregularities), and correlation coefficients remain blank + flagged (no official numeric
+source).

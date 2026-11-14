@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Line Origination &amp; Signals — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Line Origination &amp; Signal Generation</h1>
+<p class="meta">How to originate independent NFL numbers and turn them into skill-based signals · research notes: <code>research/line-origination.md</code></p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html" class="active">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>What "originate your own lines" means here</h2>
+<p>Produce your own fair spread, fair total, and fair win probabilities <b>before</b> looking at the
+market's final price. The gap between your number and the market's is the raw signal. Everything
+downstream — gates, staking, leaderboard — exists to tell real skill from luck.</p>
+
+<h2>Verified market context (each row sourced)</h2>
+<table>
+<thead><tr><th>Finding</th><th>Detail</th><th>Source (official host)</th></tr></thead>
+<tbody>
+<tr><td>Books price to exploit public bias rather than balance action</td>
+<td>Levitt (2004), <i>The Economic Journal</i> 114(495):223–246, DOI 10.1111/j.1468-0297.2004.00207.x</td>
+<td><a href="https://pricetheory.uchicago.edu/levitt/Papers/LevittWhyAreGamblingMarkets2004.pdf">pricetheory.uchicago.edu PDF</a></td></tr>
+<tr><td>Late-week odds movement is driven by sharp action more than injury news; movement is predictable from early-week prices</td>
+<td>Claremont Graduate University thesis (2025), NFL moneyline 2020–2024 high-frequency odds</td>
+<td><a href="https://scholarship.claremont.edu/cgi/viewcontent.cgi?article=5145&amp;context=cmc_theses">scholarship.claremont.edu</a></td></tr>
+<tr><td>Home field looks overvalued in forecasted-close games (win-prob 0.30–0.70 band)</td>
+<td>Away-team system +46.16 units over 851 games (2020–2024) in that thesis; profits concentrated in earlier seasons</td>
+<td><a href="https://scholarship.claremont.edu/cgi/viewcontent.cgi?article=5145&amp;context=cmc_theses">scholarship.claremont.edu</a></td></tr>
+<tr><td>Break-even rate for a −110 spread bet is 52.38%</td><td>110/210; also cited in the thesis above</td>
+<td><a href="https://scholarship.claremont.edu/cgi/viewcontent.cgi?article=5145&amp;context=cmc_theses">scholarship.claremont.edu</a></td></tr>
+<tr><td>In-sample profitable situational angles existed 2013–2019 (under in divisional high-wind; home favorite + over in prime-time non-divisional; home underdog + under in divisional 10–13.5 spreads)</td>
+<td>Skidmore College thesis; abstract warns results "unlikely to persist"</td>
+<td><a href="https://digitalcoll.skidmore.edu/record/6451">digitalcoll.skidmore.edu</a></td></tr>
+<tr><td>Favorite–longshot bias exists directionally; a from-scratch Elo model did NOT beat the closing line (7,276 games, 1999–2025)</td>
+<td>Community replication with walk-forward discipline and bootstrap CIs (trusted-secondary)</td>
+<td><a href="https://github.com/gouthamperavali4610-web/nfl-market-efficiency">github.com</a></td></tr>
+<tr><td>Opening→closing line difference predicted divisional winners ≥75% (2002–2011 sample)</td><td>Study of 2,560 games (secondary index — flagged)</td>
+<td><a href="https://www.academia.edu/34611270/The_Performance_of_Betting_Lines_for_Predicting_the_Outcome_of_NFL_Games">academia.edu index</a></td></tr>
+</tbody>
+</table>
+
+<h2>Origination framework</h2>
+<h3>Inputs (each must be a versioned, timestamped, sourced feed)</h3>
+<table>
+<thead><tr><th>Input</th><th>What it contributes</th><th>Source to ingest</th></tr></thead>
+<tbody>
+<tr><td>Team efficiency</td><td>EPA/play, success rate, drive quality (offense/defense/ST)</td>
+<td>nflverse play-by-play <a href="https://github.com/nflverse/nflverse-data">github.com/nflverse</a> (trusted-secondary) cross-checked vs <a href="https://www.nfl.com/stats/">nfl.com/stats</a> (official)</td></tr>
+<tr><td>QB &amp; lineup state</td><td>Starter identity changes are the largest single-game swing</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a> + <a href="https://www.nfl.com/news">nfl.com/news</a> (verified workflow)</td></tr>
+<tr><td>Injury &amp; depth deltas</td><td>Unit-level Out/Doubtful pressure, backup-level replacements</td>
+<td><a href="injuries.html">our tracker</a> (depth ranks pending Q-11)</td></tr>
+<tr><td>Situation</td><td>Rest, bye, travel, international (e.g., Munich, Week 10), altitude, prime-time splits</td>
+<td><a href="https://www.nfl.com/standings/">nfl.com/standings</a> &amp; official schedule pages</td></tr>
+<tr><td>Weather</td><td>Wind ≥15 mph classically suppresses passing/total scoring (mechanism cited in the Skidmore high-wind under angle)</td>
+<td>Mechanism cited in <a href="https://digitalcoll.skidmore.edu/record/6451">digitalcoll.skidmore.edu</a>; forecast feed not yet connected — <span class="flag">UNVERIFIED (Q-13)</span></td></tr>
+<tr><td>Market anchors (used only AFTER freezing your own number)</td><td>Opening line, consensus, limits</td><td><span class="flag">UNVERIFIED — no feed yet (gap <a href="questions.html">Q-07</a>)</span></td></tr>
+</tbody>
+</table>
+
+<h3>Core model</h3>
+<ul>
+<li><b>Rating layer:</b> margin-of-victory–damped Elo, walk-forward only. Reference parameter set
+(K=20, HFA≈52 rating points, ⅓ off-season mean reversion) published in the community replication
+(<a href="https://github.com/gouthamperavali4610-web/nfl-market-efficiency">source</a>); our own
+HFA/damping must be calibrated on our data — <span class="flag">values blank until calibrated</span>.</li>
+<li><b>Margin model:</b> rating gap → expected margin → win probability via a logistic/normal margin
+distribution. The distribution σ is a calibration parameter —
+<span class="flag">blank by policy (UNVERIFIED)</span>, to be fit + bootstrapped from our play-by-play.</li>
+<li><b>Totals layer:</b> pace × efficiency projection, adjusted for weather/script.</li>
+<li><b>De-vigging:</b> power method (solve Σpᵢᵏ = 1) rather than naive normalization.</li>
+</ul>
+
+<h2>Signal catalog (what the leaderboard scores)</h2>
+<table>
+<thead><tr><th>ID</th><th>Signal</th><th>Skill mechanism</th><th>Primary gate</th></tr></thead>
+<tbody>
+<tr><td>S1</td><td>Model-vs-market gap beyond own uncertainty band</td><td>Better inputs/model</td><td><a href="validation.html">CLV + DSR</a></td></tr>
+<tr><td>S2</td><td>Early line-move confirmation (act before the move — movement reflects sharp action)</td><td>Timing</td><td><a href="validation.html">CLV</a></td></tr>
+<tr><td>S3</td><td>Injury/depth delta not yet repriced (secondary, OL, backup QBs)</td><td>Information speed</td><td><a href="validation.html">CLV</a> + injury holdout</td></tr>
+<tr><td>S4</td><td>Weather/total mispricing (wind, cold, precipitation)</td><td>Public underweights weather</td><td><a href="validation.html">CLV</a></td></tr>
+<tr><td>S5</td><td>Key-number leverage around margins 3 and 7</td><td>Pricing granularity</td><td><a href="validation.html">CLV</a> at bought price</td></tr>
+<tr><td>S6</td><td>Situation (rest/bye/travel/international)</td><td>Schedule awareness</td><td><a href="validation.html">CLV</a> + stability</td></tr>
+<tr><td>S7</td><td>Correlated combo structure (parlays/prop combos below joint probability)</td><td>Correlation modeling</td><td>Per-leg <a href="validation.html">CLV</a> + <a href="correlation.html">joint-probability</a> gate</td></tr>
+<tr><td>S8</td><td>Contrarian fade of public bias (Levitt mechanism)</td><td>Structural market bias</td><td><a href="validation.html">CLV + PBO</a></td></tr>
+</tbody>
+</table>
+<blockquote>Timing rule: S2/S3 are credited only when the bet is timestamped before the move it
+claims to exploit. Otherwise it is hindsight, not skill.</blockquote>
+
+<h2>"Selectively skill based" — the split</h2>
+<p><b>Skill:</b> input quality, model specification, timing, selection filters, correlation
+estimation, staking discipline. <b>Luck:</b> single-game variance, parlay binomial noise,
+small-sample ROI. The pipeline separates them mechanically: no strategy is labeled skill-based
+until it clears the <a href="validation.html">gate stack</a>. Everything else is "lucky until proven
+otherwise."</p>
+
+</main>
+<footer><p>Every finding row carries its source; calibration parameters are intentionally blank until
+measured (no inference). Related: <a href="validation.html">Validation</a> ·
+<a href="correlation.html">Correlation</a> · <a href="questions.html">open questions</a>.</p></footer>
+</body>
+</html>
