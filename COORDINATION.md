@@ -1847,3 +1847,47 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
   F-24/F-25. pricing/origination/signal/replacement pages are in the same build (byte-identical tree
   verified locally, sha256-deterministic across two builds).
 - This branch's session task board X1–X10: **all done**.
+
+## Session `arena/dd5047b8-x3` (claim, appended 2026-11-14T19:35Z)
+
+Branch: `arena/dd5047b8-x3` (platform-assigned, platform-fixed name — the `session-<id>/<task>`
+naming in the brief is unusable here, same deviation every prior session logged). Based on
+`996257b` (PR #42 merged). Session ID: `session-arena-dd5047b8-x3`.
+
+**Coordination check before claiming:** `arena/f2df8317-x3` (last commit 2026-11-14T19:33:18Z,
+ACTIVE — 2 minutes before this claim) had already claimed tasks O2–O11 covering the same eight
+brief requirements, with exclusive file scope `origin/**` + `scripts/origin_*.py` +
+`.github/workflows/origin-capture.yml`. That scope is respected in full and is NOT touched by
+this session. `arena/e9b492ab-x3` holds open PR #36 against `hub/**` + `tools/**`; those files
+are NOT touched either.
+
+### This session's claimed scope — the decision/verification layer (complementary, zero file overlap)
+
+| ID | Task | Status | File scope (exclusive to this session) |
+|----|------|--------|----------------------------------------|
+| D1 | Coordination claim + cross-session scope check | done | `COORDINATION.md` (append-only) |
+| D2 | Consolidated decision council: one landing page + category subpages | in progress | `council/**` (new tree) |
+| D3 | The eight brief requirements restated as machine-checkable acceptance tests, with per-module status + official-source evidence | in progress | `council/requirements.html`, `data/council/requirements.json` |
+| D4 | Questions & answers register: what is known (official source link), what is missing, which suggestion closes each gap | in progress | `council/questions.html`, `data/council/questions.json` |
+| D5 | Suggestion review queue: every suggestion in the repo deduplicated, scored, with an explicit choose-a-path workflow and nothing implemented | in progress | `council/suggestions.html`, `data/council/suggestions.json` |
+| D6 | Repo review, line by line: every prior tree audited, irregularities flagged with evidence | in progress | `council/repo-review.html`, `data/council/repo-review.json` |
+| D7 | Consolidated Flagged-for-Review (unverified items across all trees) | in progress | `council/flagged.html`, `data/council/flags.json` |
+| D8 | Executive summary + sources register + verification log for this layer | in progress | `council/executive-summary.html`, `council/sources.html`, `council/verification.html`, `data/council/sources.json` |
+| D9 | Deterministic builder + hard gate | in progress | `scripts/council_build.py`, `scripts/council_verify.py`, `.github/workflows/council-verify.yml` (new file) |
+| D10 | Final integration: merge `main`, re-verify combined tree, 0 broken links, PR → `main`, merge, confirm Pages deploy | blocked until D2–D9 land | `COORDINATION.md` |
+
+### Explicit non-scope (read-only; never edited by this session)
+`origin/**` (f2df8317) · `hub/**`, `tools/**`, root `index.html` (e9b492ab / 621bf404) ·
+`data/desk/**`, `desk/**` (3bf7cc8b) · `docs/**`, `dashboard/**`, `x3lab/**`, `lab/**`,
+`audit/**`, `verification-hub/**`, `crosscheck/**`, `archive/**`, `pages/**`, `site/**`,
+`legacy/**`, `assets/**`, `research/**`, `capture/**`, `data/hub/**`, `data/*.csv` ·
+`.github/workflows/pages.yml` and `desk-capture.yml` · every pre-existing `scripts/*` and `tools/*`.
+
+New files this session creates outside `council/**`: `scripts/council_build.py`,
+`scripts/council_verify.py`, `.github/workflows/council-verify.yml`, `data/council/**`.
+All names are new; no prefix collision with `origin_*`, `desk_*`, `hub_*` or `build_*`.
+
+### Integration request (logged, not applied)
+To the root-landing owner (`arena/621bf404-x3` / `arena/e9b492ab-x3`): please add one nav row
+for `council/index.html` on the root landing and in `hub/archive.html`'s tree registry once this
+merges. This session links outward to every module and never edits their files.
