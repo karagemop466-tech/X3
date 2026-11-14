@@ -1,0 +1,30 @@
+PASS schedule-w1 captured
+PASS schedule-w1 parsed rows  [16 games, 16 final]
+PASS schedule-w1 all clubs mapped
+PASS schedule-w1 dates parsed
+PASS schedule-w9 captured
+PASS schedule-w9 parsed rows  [15 games, 15 final]
+PASS schedule-w9 all clubs mapped
+PASS schedule-w9 dates parsed
+PASS schedule-w10 captured
+PASS schedule-w10 parsed rows  [14 games, 1 final]
+PASS schedule-w10 all clubs mapped
+PASS schedule-w10 dates parsed
+PASS schedule-w11 captured
+PASS schedule-w11 parsed rows  [13 games, 0 final]
+PASS schedule-w11 all clubs mapped
+PASS schedule-w11 dates parsed
+PASS injuries-w9 captured
+PASS injuries-w9 rows  [362 rows, 30 teams]
+PASS injuries-w9 team headers  [30 teams]
+PASS injuries-w10 captured
+PASS injuries-w10 rows  [345 rows, 28 teams]
+PASS injuries-w10 team headers  [28 teams]
+PASS standings captured
+PASS standings 32 rows  [32]
+PASS standings clubs unique
+PASS depth-ARI captured
+PASS depth-ARI units  [3 units]
+PASS depth-ARI slots
+
+0 failing checks

@@ -1,0 +1,87 @@
+{
+ "problems": [
+  {
+   "page": "depth-HOU",
+   "problem": "no depth-chart tables parsed",
+   "detail": "HOU https://www.houstontexans.com/team/depth-chart"
+  },
+  {
+   "page": "injuries-w11",
+   "problem": "identical to an earlier week's report; dropped as a duplicate served for a future week",
+   "detail": ""
+  }
+ ],
+ "problem_count": 2,
+ "game_counts": {
+  "total": 163,
+  "final": 137
+ },
+ "standings_rows": 32,
+ "injury_weeks": [
+  {
+   "week": 8,
+   "rows": 320,
+   "teams": 28,
+   "out": 50,
+   "doubtful": 3,
+   "questionable": 79,
+   "no_status": 188,
+   "url": "https://www.nfl.com/injuries/league/2026/reg8"
+  },
+  {
+   "week": 9,
+   "rows": 362,
+   "teams": 30,
+   "out": 75,
+   "doubtful": 6,
+   "questionable": 73,
+   "no_status": 208,
+   "url": "https://www.nfl.com/injuries/league/2026/reg9"
+  },
+  {
+   "week": 10,
+   "rows": 345,
+   "teams": 28,
+   "out": 66,
+   "doubtful": 10,
+   "questionable": 84,
+   "no_status": 185,
+   "url": "https://www.nfl.com/injuries/league/2026/reg10"
+  }
+ ],
+ "depth_clubs": 32,
+ "depth_rows": {
+  "ARI": 56,
+  "ATL": 59,
+  "BAL": 59,
+  "BUF": 61,
+  "CAR": 57,
+  "CHI": 59,
+  "CIN": 52,
+  "CLE": 58,
+  "DAL": 53,
+  "DEN": 60,
+  "DET": 57,
+  "GB": 57,
+  "HOU": 0,
+  "IND": 52,
+  "JAX": 52,
+  "KC": 60,
+  "LA": 53,
+  "LAC": 57,
+  "LV": 54,
+  "MIA": 56,
+  "MIN": 56,
+  "NE": 62,
+  "NO": 58,
+  "NYG": 60,
+  "NYJ": 59,
+  "PHI": 49,
+  "PIT": 56,
+  "SEA": 60,
+  "SF": 58,
+  "TB": 60,
+  "TEN": 56,
+  "WAS": 61
+ }
+}

@@ -19,6 +19,7 @@
       <span class="badge">Site pages: 106</span>
       <span class="badge">Internal links: 1,458 — 0 broken</span>
       <span class="badge ok">Consolidated review hub: <a href="hub/index.html">hub/</a> — 20 suggestions, 18 questions, 21 flags</span>
+      <span class="badge ok">Decision desk: <a href="desk/index.html">desk/</a> — verified game log, own lines, gate ledger, injury-to-lineup map</span>
       <span class="badge">Unverified values: blank + flagged</span>
     </p>
   </div>
@@ -145,6 +146,29 @@
 </section>
 
 <section id="review-hub">
+  <h2>NFL Decision Desk — <a href="desk/index.html">desk/</a> <span class="pill warn">added by session arena/3bf7cc8b-x3</span></h2>
+  <p class="lede">One desk that reconciles its own data: 137 final games recomputed against the
+  official standings (all 32 clubs match on W-L-T, PF and PA), originated lines from a
+  walk-forward-tested model, a 10-gate ledger for 10 strategy hypotheses, and every Out/Doubtful
+  player joined to his club's depth string. Eighteen pages, one hard verification gate.</p>
+  <table>
+  <thead><tr><th>Page</th><th>What it settles</th><th>Evidence</th></tr></thead>
+  <tbody>
+  <tr><td><a href="desk/executive-summary.html">Executive summary</a></td><td>Status, verified findings, what cannot be claimed, next five decisions</td><td>Counts computed at build time from <code>data/desk/*.json</code></td></tr>
+  <tr><td><a href="desk/lines.html">Own lines</a></td><td>Originated spreads/totals for the priced week</td><td>DERIVED from the verified game log; market columns blank and flagged</td></tr>
+  <tr><td><a href="desk/model.html">Model</a></td><td>Club ratings and walk-forward calibration (r +0.200, MAE 10.52, n=121)</td><td><code>data/desk/calibration.json</code></td></tr>
+  <tr><td><a href="desk/strategies.html">Strategies</a></td><td>10 hypotheses × 10 gates; none eligible</td><td><code>data/desk/strategies.json</code></td></tr>
+  <tr><td><a href="desk/correlations.html">Correlations</a></td><td>4 coefficients with n and 95% CI</td><td><code>data/desk/correlations.json</code></td></tr>
+  <tr><td><a href="desk/lineups.html">Lineups</a></td><td>156 injuries joined to a depth string; 102 at starter level</td><td>Official injury report × club depth chart</td></tr>
+  <tr><td><a href="desk/questions.html">Questions</a></td><td>18 questions: answered / open / blocked</td><td>Each row states what it blocks</td></tr>
+  <tr><td><a href="desk/suggestions.html">Suggestions</a></td><td>12 proposals to review before any change</td><td>Options, recommendation, cost, status</td></tr>
+  <tr><td><a href="desk/flagged.html">Flagged for review</a></td><td>Every unverified value and irregularity</td><td>Source tried + what would resolve it</td></tr>
+  </tbody></table>
+  <p class="small">Verification: <code>python3 scripts/desk_verify.py</code> — run in CI on every
+  push. It fails the build if the standings stop reconciling with the game log, if any dataset row
+  loses its official source URL, if a correlation sits outside its own CI, or if any published table
+  row lacks a source link or an explicit UNVERIFIED badge.</p>
+
   <h2>Consolidated review hub — <a href="hub/index.html">hub/</a> <span class="pill warn">added by session arena/1e2d8ef2-x3</span></h2>
   <p>A second review surface built the same day as this landing hub, from a fresh fetch of the same official pages.
   It contributes what the earlier units could not: a <strong>suggestions queue for owner review</strong> (20 items, each with
@@ -200,6 +224,7 @@
       <tr><td>(root pages)</td><td>13</td><td>arena/d667d44d-x3 + arena/3dbc4678-x3</td><td>Standalone category pages (executive summary, lines, injuries, …)</td><td><a href="executive-summary.html">executive-summary.html</a></td></tr>
       <tr><td>pages/ + site/</td><td>7</td><td>arena/1a771fcd-x3</td><td>First integrated site unit (archive)</td><td><a href="pages/executive-summary.html">pages/executive-summary.html</a></td></tr>
       <tr><td>legacy/</td><td>1</td><td>arena/0c38f465-x3</td><td>Preserved original landing page</td><td><a href="legacy/index.html">legacy/index.html</a></td></tr>
+      <tr><td>desk/</td><td>18</td><td>arena/3bf7cc8b-x3</td><td>Decision desk: verified game log and standings reconciled against each other, own lines, walk-forward model calibration, gate ledger, injury-to-depth-string map, questions, suggestions, flags</td><td><a href="desk/index.html">desk/index.html</a></td></tr>
       <tr><td>hub/</td><td>17</td><td>arena/1e2d8ef2-x3</td><td>Consolidated review hub: suggestions queue, questions and gap register, originated lines, gates, correlation register, injury and depth tracker, flags</td><td><a href="hub/index.html">hub/index.html</a></td></tr>
       <tr><td>verification-hub/</td><td>1</td><td>arena/621bf404-x3</td><td>Line-by-line integration verification report + audit report (this session)</td><td><a href="verification-hub/index.html">verification-hub/index.html</a></td></tr>
     </tbody>

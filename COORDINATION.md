@@ -820,3 +820,99 @@ left as-is, so the hub publishes through the existing `path: '.'` upload.
   (price archive S-04 → snapshot job S-05 → consolidation S-01/S-14). PR #12 (arena/972ad7a5-x3) is still
   open and untouched by this session; the 5 failing `data-pipeline` runs on `arena/64164906-x3` are not
   caused by this branch (that workflow is not in `main`).
+
+---
+
+## Session `arena/3bf7cc8b-x3` — consolidated decision desk (integration session)
+
+- **Session ID:** `arena/3bf7cc8b-x3`
+- **Branch:** `arena/3bf7cc8b-x3` (platform-assigned; the `session-<id>/<task>` naming is not usable here)
+- **Role:** integration session. No other session branch is open on `origin` at claim time
+  (`git branch -r` → `origin/main` only; last merge PR #20). If a new session appears,
+  this section will be updated before any shared file is touched again.
+- **Claim recorded before any edit**, 2026-11-14. Commit pushed immediately after this claim.
+
+### File scope claimed (non-overlapping)
+
+| Path | Purpose |
+|------|---------|
+| `data/desk/**` | New verified datasets built this session (2026 game log, model outputs, correlations, deficiency join, registries) |
+| `desk/**` | New consolidated dashboard site: landing page + category subpages + per-row source links |
+| `scripts/desk_build.py` | Deterministic build: `data/desk/*.json` → `desk/**` |
+| `scripts/desk_verify.py` | Line-by-line verification gate (row-level source check, PF/PA reconciliation, link check) |
+| `scripts/desk_fetch_notes.md` | Fetch/transcription notes for every dataset |
+| `index.html` | **Shared output** (integration role): canonical landing page pointing at `desk/` |
+| `.github/workflows/pages.yml` | **Shared output** (integration role): add the `desk` verification step only; nothing removed |
+| `README.md` | **Shared output** (integration role): append this session's section only |
+| `COORDINATION.md` | This section only |
+
+**Deliberately not touched:** `docs/**`, `dashboard/**`, `x3lab/**`, `lab/**`, `pages/**`,
+`site/**`, `legacy/**`, `analysis/**`, `research/**`, `data/*.csv` (existing), `tools/**`,
+`scripts/*.py` (existing). Those remain the record of prior sessions and stay linked from
+`desk/archive.html`.
+
+### Task board (arena/3bf7cc8b-x3)
+
+| ID | Task | Status | Files | Sources / verification |
+|----|------|--------|-------|------------------------|
+| D01 | Coordination claim | done | `COORDINATION.md` | claim pushed before any edit (`8f86ae7`) |
+| D02 | Repo line-by-line review + irregularity log | done | `desk/repo-review.html` | file inventory, git history, prior-session claims (I-01…I-06) |
+| D03 | Verified 2026 game log W1–W11 | done | `data/desk/games.json` | 163 rows / 137 finals, nfl.com weekly schedule pages, one URL per week |
+| D04 | Own-line model | done | `data/desk/model.json` | ridge margin + pace models on verified finals; neutral sites excluded from HFA |
+| D05 | Correlations with n and 95% CI | done | `data/desk/correlations.json` | Pearson + Fisher z; 4 coefficients, CIs published |
+| D06 | Strategy competition, gates, leaderboard | done | `data/desk/strategies.json` | 10 hypotheses, 10 gates, 0 graded bets (no prices exist) |
+| D07 | Injury → depth-string deficiency join | done | `data/desk/deficiencies.json` | 156 joined, 108 flagged not-joinable |
+| D08 | Questions / missing info / decisions | done | `desk/questions.html` | 18 questions with blocked/open/answered status |
+| D09 | Suggestions for review | done | `desk/suggestions.html` | 12 proposals, 3 marked already implemented |
+| D10 | Executive summary | done | `desk/executive-summary.html` | counts computed at build time |
+| D11 | Consolidated dashboard + link check | done | `desk/**` (18 pages) | every data row has a source link or an explicit UNVERIFIED badge |
+| D12 | Verification gate green | done | `scripts/desk_verify.py` | runs locally and in CI (`Verify the consolidated decision desk`) |
+| D13 | PR → merge → Pages deploy confirmation | in progress | `COORDINATION.md` | see PR log below |
+
+### Data pipeline built this session
+
+Because the authoring sandbox cannot reach `nfl.com`, capture runs on a GitHub-hosted runner and
+commits the structured result back to this branch:
+
+| Script | Role |
+|--------|------|
+| `scripts/desk_capture.py` | fetch 212 official pages, write `capture_diag.json` |
+| `scripts/desk_extract.py` | page text + link maps |
+| `scripts/desk_parse_selftest.py` | hard self-test; fails CI if a parser returns nothing |
+| `scripts/desk_parse.py` | games / standings / injuries / depth → `data/desk/*.json` |
+| `scripts/desk_join.py` | injury report × depth chart → deficiencies |
+| `scripts/desk_model.py` | ratings, walk-forward backtest, correlations, strategy registry |
+| `scripts/desk_build.py` + `desk_content.py` | build `desk/**` (18 pages) |
+| `scripts/desk_verify.py` | verification gate (also wired into `pages.yml`) |
+
+### Verification performed (D12)
+
+- **Standings vs game log:** W-L-T, PF and PA recomputed from the captured finals match the
+  official standings for all 32 clubs. Two separately published official pages agree.
+- **Row sourcing:** every dataset row carries an official URL; every published table row carries a
+  source link or an explicit `UNVERIFIED` badge (enforced by `desk_verify.py`, 18 pages).
+- **Correlations:** each coefficient lies inside its own 95% CI; n printed on every row.
+- **Links:** 0 broken internal links across the 18 pages; no placeholder tokens.
+- **CI:** workflow run [43627651543](https://github.com/karagemop466-tech/X3/actions/runs/43627651543)
+  — build success, including the new desk verification step.
+
+### Irregularities found and flagged (published on `desk/flagged.html`)
+
+- **No official market prices exist**, so no strategy can be graded and the leaderboard is empty.
+  This is the project's largest gap and is stated on every affected page.
+- **NFL.com serves the current injury report for a future week.** Week 11 returned byte-identical
+  rows to week 10; the parser now detects and drops duplicate future-week reports.
+- **Houston publishes its depth chart only as a photo gallery**, so its rows cannot be joined.
+- **Most club depth charts are labelled "unofficial" by the publisher**, so per-club depth strings
+  carry a permanent caveat.
+- **Neutral-site games:** 8 international games are detected from the page banner and carry no
+  home-field term; one (PIT @ NO, week 7) has no city named on the page, so its venue is blank.
+- **Sandbox network restriction:** `nfl.com` is unreachable from the authoring sandbox; the raw
+  artifact download host is also blocked. CI therefore commits the structured extraction rather
+  than the raw HTML.
+
+### Files deliberately not touched
+
+`docs/**`, `dashboard/**`, `x3lab/**`, `lab/**`, `pages/**`, `site/**`, `legacy/**`, `analysis/**`,
+`research/**`, `data/*.csv`, `tools/**` and every pre-existing `scripts/*.py` remain exactly as the
+earlier sessions left them. They are linked from `desk/archive.html`.

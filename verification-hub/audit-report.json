@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 350,
-      "flagged_rows": 231,
-      "refs": 396,
+      "rows": 361,
+      "flagged_rows": 234,
+      "refs": 408,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -41,6 +41,22 @@
         "dashboard/index.html: Away Home Model home spread Model total Network Kickoff (ET) Source",
         "dashboard/index.html: ID Area Question Blocking Detail",
         "dashboard/index.html: Q-01 Data scope What is the authoritative universe of games the model will be scored on? Yes open"
+      ]
+    },
+    "desk": {
+      "pages": 18,
+      "rows": 823,
+      "flagged_rows": 786,
+      "refs": 1240,
+      "unsourced_examples": [
+        "desk/archive.html: Site Path What it contains Status",
+        "desk/archive.html: Verified-data dashboard /dashboard/  18 pages: standings, injuries, depth, own lines, gates, correlations  Archived \u2014 di",
+        "desk/archive.html: Lines and strategy lab /x3lab/  Model v0.1 lines, luck analysis, validation gates G-0\u2026G-8  Archived \u2014 its model used ass",
+        "desk/archive.html: Extended research tree /docs/pages/  Research notes, requirements, correlation research, leaderboard design  Archived",
+        "desk/archive.html: Source-first research site /lab/  Hypotheses, gate definitions, open questions, suggestions  Archived",
+        "desk/archive.html: Legacy data site /docs/  Generated dashboard with archived CSVs Archived",
+        "desk/correlations.html: Pair r n 95% CI p Reading Used for Verdict Source",
+        "desk/correlations.html: Team W L T Pythag % Expected wins Actual wins Luck delta Source"
       ]
     },
     "docs": {
@@ -136,9 +152,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 106,
-  "rows_total": 3349,
-  "rows_flagged_or_sourced": 2846,
-  "internal_refs": 1458,
+  "pages_total": 124,
+  "rows_total": 4183,
+  "rows_flagged_or_sourced": 3635,
+  "internal_refs": 1872,
   "problems": []
 }
