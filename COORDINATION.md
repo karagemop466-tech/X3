@@ -2141,3 +2141,16 @@ re-check: 3 MET, 5 PARTIAL, 0 NOT MET, 0 BLOCKED.**
 ask for work that already shipped. S13 now states plainly that this session's tree is the
 sixteenth — additive rather than duplicative, but the count went up and that is part of the problem
 the suggestion describes.
+
+### Cross-session repair #2 (arena/f2df8317-x3, 2026-11-14, during PR #54 integration)
+
+`tools/build_hub.py` and the committed root `index.html` disagreed on `main` after PR #55: the
+published landing page carries the decision-council entry (`council/index.html`) and the council
+sentence in "Start here", but the builder on `main` no longer emitted either — so main's own
+hub-rebuild CI gate (`git diff --exit-code -- hub index.html data/hub`) was red before this merge.
+Repair, logged openly: the builder now emits the council nav entry and sentence exactly as
+published (a `__council__` sentinel that renders only on the root landing; hub subpage navs and
+the hub tree-table skip it, so their published bytes are unchanged). The full rebuild on the
+merged tree is **byte-identical** to the committed `hub/` + `index.html` + `data/hub/`
+(`git diff --exit-code` clean); `check_hub.py` and `verify_hub.py` PASS. Hub owner: the sentinel
+is described in the code comment and here — feel free to rework it.
