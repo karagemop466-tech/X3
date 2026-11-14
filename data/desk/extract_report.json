@@ -198,9 +198,9 @@
   },
   "depth-SF": {
    "url": "",
-   "html_bytes": 288583,
-   "text_bytes": 4591,
-   "lines": 180,
+   "html_bytes": 289511,
+   "text_bytes": 4598,
+   "lines": 181,
    "tabbed_cell_lines": 0
   },
   "depth-TB": {
@@ -261,56 +261,56 @@
   },
   "schedule-w10": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
-   "html_bytes": 2372306,
+   "html_bytes": 2372307,
    "text_bytes": 8739,
    "lines": 492,
    "tabbed_cell_lines": 0
   },
   "schedule-w11": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-11",
-   "html_bytes": 2354647,
+   "html_bytes": 2354782,
    "text_bytes": 8693,
    "lines": 487,
    "tabbed_cell_lines": 0
   },
   "schedule-w2": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-2",
-   "html_bytes": 2345101,
+   "html_bytes": 2345366,
    "text_bytes": 8743,
    "lines": 475,
    "tabbed_cell_lines": 0
   },
   "schedule-w3": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-3",
-   "html_bytes": 2352764,
+   "html_bytes": 2353028,
    "text_bytes": 8781,
    "lines": 477,
    "tabbed_cell_lines": 0
   },
   "schedule-w4": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-4",
-   "html_bytes": 2352890,
+   "html_bytes": 2353153,
    "text_bytes": 8728,
    "lines": 477,
    "tabbed_cell_lines": 0
   },
   "schedule-w5": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-5",
-   "html_bytes": 2338122,
+   "html_bytes": 2338384,
    "text_bytes": 8745,
    "lines": 475,
    "tabbed_cell_lines": 0
   },
   "schedule-w6": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-6",
-   "html_bytes": 2323194,
+   "html_bytes": 2323195,
    "text_bytes": 8710,
    "lines": 471,
    "tabbed_cell_lines": 0
   },
   "schedule-w7": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-7",
-   "html_bytes": 2323372,
+   "html_bytes": 2323109,
    "text_bytes": 8719,
    "lines": 471,
    "tabbed_cell_lines": 0
@@ -324,7 +324,7 @@
   },
   "schedule-w9": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-9",
-   "html_bytes": 2339667,
+   "html_bytes": 2339495,
    "text_bytes": 8745,
    "lines": 475,
    "tabbed_cell_lines": 0
