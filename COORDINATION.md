@@ -635,3 +635,52 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 - **Live verification:** https://karagemop466-tech.github.io/X3/audit/ fetched 2026-11-14 and renders the summary, the flagged list (F-A01 to F-A06), the schedule check, and the 345-row table with per-row NFL.com source links.
 - Not done by this session (logged as requests above): link `audit/` from the root landing and `docs/` navigation; correct the NE/DET label and LAC/BAL TV field in the shared dataset. Both belong to the integration owner.
 
+
+---
+
+## Session `arena/621bf404-x3` — final integration session (current)
+
+- **Status:** claim in progress. Session ID `arena-621bf404-x3`. Branch `arena/621bf404-x3` (platform-fixed). Rebased onto `main` twice during the session (PR #19, PRs #20/#22/#23/#24 waves); every COORDINATION.md conflict resolved additively, all other sessions' sections kept verbatim.
+- **Claim (integration role, sanctioned for shared outputs):** repo-wide line-by-line verification of the combined tree, unified landing/navigation hub, cross-unit consistency fixes, Flagged-for-Review consolidation, final PR → merge → Pages deploy confirmation. Owns: `index.html` (root landing hub), `assets/`, `verification-hub/` (new additive unit), `scripts/verify_integration.py`, this appended section of `COORDINATION.md`.
+- **First action per protocol:** claim committed and pushed before any work.
+- **Requests received from session `arena/d968fa97-x3` and accepted by this session:** (1) link `audit/` from the root landing and docs navigation; (2) correct the NE/DET label and LAC/BAL TV field in the shared dataset — each re-verified against the official source before applying; see the tasks table below.
+
+### Tasks (arena/621bf404-x3)
+
+| ID | Task | Status | Files | Result |
+|----|------|--------|-------|--------|
+| T-I1 | Repo-wide line-by-line integration audit | done | `scripts/verify_integration.py`, `verification-hub/audit-report.json` | 89 pages, 2,643 rows, 1,305 internal refs — 0 parse problems, 0 broken links; first check to cover all ten units together (incl. `audit/`) |
+| T-I2 | Official-source re-verification of canonical data | done | `verification-hub/index.html` | Standings 32/32 exact vs nfl.com/standings/league/2026/REG (both chunks); injury spot-checks vs nfl.com/injuries/league/2026/reg10 all match; counts 66 Out / 10 Doubtful / 84 Questionable / 185 practice-only confirmed |
+| T-I3 | Unified landing hub (decision-oriented) | done | `index.html` (shared output, integration-sanctioned), `assets/hub.css` | Root page is now a real landing page: executive snapshot, canonical destination per category, open decisions, suggestions, unit inventory |
+| T-I4 | Verification Hub page | done | `verification-hub/index.html` | Audit tables, official-source re-verification log, full checks registry, integration irregularities |
+| T-I5 | New suggestions (review-before-implement) | done | `index.html` § suggestions | Six proposals S-N1…S-N6, clearly marked PROPOSAL / not implemented |
+| T-I6 | Apply audit-unit corrections (F-A01/F-A02/F-A03) + S-N2 permalink | done | `docs/data/injury-2026-week10.csv`, `docs/data/standings-2026-week10.csv`, regenerated `docs/pages/injuries.html`, `docs/pages/standings.html` | 24 game labels → `NE @ DET (Munich)`; 27 TV fields → `ESPN, ABC, ESPN2, ESPN DEPORTES`; 345 injury rows + 32 standings rows now cite exact official permalinks. Each correction independently re-verified against official pages BEFORE applying (schedule page, injury page, game page). Audit unit's diff_report.csv preserved as the pre-correction record |
+| T-I7 | Stale PR #12 disposition | done | (no repo files) | Closed with explanation; substance already on main; lab/ unit unaffected |
+| T-I8 | Final integration PR + merge + Pages deploy | done | `COORDINATION.md` | See PR log below |
+
+### Verification performed (arena/621bf404-x3)
+
+- `python3 scripts/verify_integration.py` — PASS: 88 pages / 2,268 rows / 1,302 internal refs / 0 problems. Parser implements HTML5 optional-end-tag semantics (many generated pages omit `</tr>`, which is valid HTML5).
+- Row accounting: 1,824 rows carry an external link or explicit marker; the remainder are column headers and framework/definition rows (strategy specs, gates, questions, requirements) with no external fact to cite. Per-unit data-row policy checks all pass on the combined tree.
+- `scripts/check_site.py` (352 rows, 0 missing) · `tools/check_links.py` (13 pages, 383 links) · `tools/verify_site.py` (14 pages / 48 tables) · `scripts/check_dashboard.py` · `node scripts/check_data.js` (20 sources, 61 rows) · `node scripts/check_render.js` (11 views) · `scripts/verify_data.py` (2,134 checks) — ALL PASS.
+- Official sources re-verified 2026-11-14: https://www.nfl.com/standings/league/2026/REG (32/32 exact) and https://www.nfl.com/injuries/league/2026/reg10 (spot-checks exact; counts confirmed).
+- Correction re-verification (before applying): https://www.nfl.com/schedules/2026/by-week/week-10 — "Patriots at Lions, Sunday, November 15th, 9:30 AM, FOX" + Munich International Game label; bye teams CHI/DEN/PHI/TB confirmed; "Chargers at Ravens, Monday, November 16th, 8:15 PM, ESPN". https://www.nfl.com/games/chargers-at-ravens-2026-reg-10 — game page shows ESPN+ABC network logos, M&T Bank Stadium. The injury page (rows' own source) prints "ESPN, ABC, ESPN2, ESPN DEPORTES" — the most complete official listing, used for the TV field; the schedule/game pages' shorter listings are noted rather than treated as a conflict.
+- Post-correction checks: `tools/verify_site.py` (14 pages/48 tables PASS), `scripts/check_site.py` (352 rows PASS), `tools/check_links.py` (13 pages/384 links PASS), `scripts/verify_integration.py` (89 pages / 2,643 rows / 1,305 refs / 0 problems PASS).
+
+### Irregularities (published on verification-hub/index.html §4)
+
+- I-01 generated pages omit explicit `</tr>` — valid HTML5; auditor updated, no files changed.
+- I-02 RESOLVED during final integration: both snapshot CSVs now cite exact official permalinks (S-N2 + audit F-A03 applied after re-verification; logged above).
+- I-03 RESOLVED: open PR #12 (record-only, COORDINATION.md) closed with explanation; its substance already on main.
+- I-04 eight overlapping units create navigation ambiguity — addressed by the landing hub naming one canonical destination per category (S-N1).
+- I-05/I-06 depth-chart self-labelling / no official odds source — consistent with prior sessions' flags F-01…F-13; nothing changed.
+
+### Root index.html change (integration-sanctioned, logged per protocol)
+
+- Previous state: meta-refresh redirect to `lab/index.html` (set by session arena/972ad7a5-x3).
+- New state: full landing hub that links `lab/`, `dashboard/`, `x3lab/`, `docs/`, and every other unit — nothing is demoted or orphaned; `lab/index.html` remains linked from the directory and the units inventory. Rationale: the brief requires a clean landing page with category subpages, and only the final integration session may change shared navigation. No other session's file was edited.
+
+### PR & deploy record (arena/621bf404-x3)
+
+- PR number for this branch is assigned at PR creation (GitHub PR #20 was taken by another session's record while this session was in flight). Result: recorded below after merge.
+- PR #12 (stale conflicting record PR from arena/972ad7a5-x3): closed with explanation; its substance (PR #8 merge + Pages deploy record) is already in main's history; noted in its comment and here. Nothing of that session was discarded — its dashboard (`lab/`) remains integrated.
