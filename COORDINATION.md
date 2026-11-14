@@ -545,7 +545,7 @@ Claim committed before work begins.
 | C1 | Repo-wide line-by-line verification of ALL site modules (root pages, `docs/`, `docs/pages/`, `dashboard/`, `lab/`, `x3lab/`, `site/`, `pages/`, `legacy/`): internal links + every table row has a source link or explicit unverified flag | done | new `scripts/audit_all.py` (unique name; no existing script covered `dashboard/`, `x3lab/`, `docs/pages/`, `legacy/` links, or root-page row sources) |
 | C2 | Fix any violations C1 finds in unowned/integration scope | done | `lines.html` (4 source cells linked), `requirements.html` (10 cells flagged UNVERIFIED), `pages/flagged-for-review.html` (I-03 flagged) |
 | C3 | Wire the full-repo audit into CI so every module is verified on each build | done | `.github/workflows/pages.yml` (integration scope): added `audit_all`, `verify_site`, `verify_data`, `check_hub`, `verify_integration` steps alongside main's existing steps |
-| C4 | Integration PR → `main`, merge, confirm GitHub Pages deploy, record PR link + result here | in progress | `COORDINATION.md` (integration scope) |
+| C4 | Integration PR → `main`, merge, confirm GitHub Pages deploy, record PR link + result here | done | `COORDINATION.md` (integration scope) |
 
 **Deliberately not touched:** other sessions' site modules and data (`assets/**`, `lab/**`,
 `dashboard/**`, `x3lab/**`, `docs/**`, root category pages, `site/`, `pages/`, `legacy/`,
@@ -590,6 +590,27 @@ logged here as requests per protocol, not edited.
 - Stale note: task T13 of `arena/0c38f465-x3` still reads "in progress" in its own section,
   but PR #14-era records show its merge completed; correction left in that section by its
   owner (flagged here, not edited there).
+
+### PR & deploy record (C4)
+
+- **PR #39:** https://github.com/karagemop466-tech/X3/pull/39 —
+  `arena/35b167ca-x3` → `main`, "Final integration: repo-wide line-by-line audit, CI
+  coverage for every module, source-row fixes".
+  - Created 2026-11-14 · **MERGED** 2026-11-14T19:00:26Z via `gh pr merge 39 --merge`,
+    merge commit `e4b0aa8c1df24228668042383b0678c468375da7`.
+  - PR CI: `build` SUCCESS (all 16 check steps incl. the five new gates), `deploy` skipped
+    as intended for pull requests; merge state CLEAN.
+  - Sources, verification and flagged irregularities are summarized in the PR body.
+- **GitHub Pages deploy confirmed:**
+  - workflow "Deploy X3 NFL site to GitHub Pages" run 43629701947 @ `e4b0aa8` = **success**;
+  - "pages build and deployment" @ `e4b0aa8` = **success**;
+  - Pages API status `built` (source `main`, branch root `/`, build_type legacy);
+  - live site https://karagemop466-tech.github.io/X3/ fetched and rendering after the merge;
+  - live check of https://karagemop466-tech.github.io/X3/lines.html confirms this session's
+    source-row fixes deployed (NFL.com stats/injuries links, depth-chart tracker link).
+- **Parallel-session note:** `main` advanced through PRs #30–#38 while this session worked;
+  each advance was merged in additively before the final PR (no other session's work
+  discarded; union resolution verified programmatically on COORDINATION.md).
 
 ### Request to the hub owner (logged, not edited)
 
