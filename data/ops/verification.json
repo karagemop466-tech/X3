@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-14",
- "generated": "2026-11-14 20:00 UTC",
+ "generated": "data as of 2026-11-14, 18:15 UTC (rebuild stamp is fixed to the cutoff)",
  "checks": [
   {
    "check": "V1 every internal link resolves",
@@ -50,7 +50,7 @@
   {
    "check": "V10 second build is byte-identical",
    "result": "PASS",
-   "detail": "f3cf1fa1f7876261 vs f3cf1fa1f7876261"
+   "detail": "f28b9449873edf6b vs f28b9449873edf6b"
   }
  ]
 }

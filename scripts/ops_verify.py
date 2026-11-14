@@ -235,6 +235,10 @@ def main():
     def digest():
         h = hashlib.sha256()
         for f in sorted(os.listdir(OPS)):
+            # verification.html records this digest, so hashing it would be
+            # self-referential and the check could never converge.
+            if f == "verification.html":
+                continue
             if f.endswith(".html") or f.endswith(".css"):
                 h.update(open(os.path.join(OPS, f), "rb").read())
         return h.hexdigest()
@@ -246,9 +250,11 @@ def main():
         f"{first[:16]} vs {second[:16]}")
 
     # ---- write the verification page data, then rebuild so the page shows it
-    import datetime
+    # The stamp is deliberately derived from the data cutoff, not the wall clock:
+    # a clock-derived value would make this file differ on every run and leave the
+    # working tree permanently dirty after any rebuild.
     blob = {"as_of": "2026-11-14",
-            "generated": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            "generated": "data as of 2026-11-14, 18:15 UTC (rebuild stamp is fixed to the cutoff)",
             "checks": checks}
     with open(os.path.join(D, "verification.json"), "w", encoding="utf-8") as f:
         json.dump(blob, f, indent=1)
