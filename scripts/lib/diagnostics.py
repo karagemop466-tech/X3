@@ -134,6 +134,26 @@ def describe_html(path: str, max_tables: int = 3, max_cells: int = 12) -> dict:
         if len(out.get("data_attributes", [])) >= 3:
             break
 
+    # The week's own game cards announce themselves in their analytics
+    # attribute, so they can be found without relying on their link target.
+    game_cards: list[str] = []
+    for a in soup.find_all("a"):
+        analytics = a.get("data-analytics") or ""
+        if '"linkModule":"Game Card"' not in analytics and '"linkModule": "Game Card"' not in analytics:
+            continue
+        node = a
+        for _ in range(8):
+            node = node.parent
+            if node is None:
+                break
+            if node.name in ("li", "article", "section", "div"):
+                game_cards.append(str(node))
+                break
+        if len(game_cards) >= 3:
+            break
+    if game_cards:
+        out["week_game_cards"] = game_cards
+
     chains = []
     for a in soup.find_all("a", href=True):
         if "/games/" not in a["href"]:
