@@ -1,0 +1,60 @@
+name: X3 signals module
+
+# New file, owned by session arena/09f8c786-x3. It does not edit the existing
+# pages.yml (owned by another session); it adds the signals module's own gate.
+#
+# Fails the run if:
+#   * the engine and the rendered pages disagree with the committed data
+#   * any table row lacks an official source link or an UNVERIFIED marker
+#   * any internal link inside signals/ is broken
+#   * an originated market is missing its opening or its closing snapshot (G11)
+#   * the leaderboard rank is decided by anything other than a signal column (G12)
+
+on:
+  push:
+    branches: [ arena/09f8c786-x3, main ]
+    paths:
+      - 'signals/**'
+      - 'scripts/x3_signals.py'
+      - 'scripts/build_signals.py'
+      - 'scripts/verify_signals.py'
+      - 'data/desk/**'
+      - '.github/workflows/signals.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  signals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild the signals data and pages from the committed inputs
+        run: |
+          python3 scripts/x3_signals.py
+          python3 scripts/build_signals.py
+
+      - name: The committed output must be exactly what the engine produces
+        # The repo-review trio is excluded on purpose: it is a live report on the working
+        # tree, and other sessions' verifiers rewrite files inside the trees it measures,
+        # so its counts and bytes move whenever anything else in the repository is rebuilt.
+        # Its STRUCTURE (which trees exist, that each is non-empty and sourced) is asserted
+        # by scripts/verify_signals.py instead. Everything else must match byte for byte.
+        run: |
+          git diff --exit-code -- signals \
+            ':(exclude)signals/data/repo_review.csv' \
+            ':(exclude)signals/data/repo_review.json' \
+            ':(exclude)signals/repo-review.html' || {
+            echo "::error::signals/ is not the current build of scripts/x3_signals.py - run it and commit the result."
+            exit 1
+          }
+
+      - name: Verify rows, links, gates and determinism
+        run: python3 scripts/verify_signals.py
+
+      - name: Determinism (engine re-run reproduces the data byte for byte)
+        run: python3 scripts/verify_signals.py --determinism

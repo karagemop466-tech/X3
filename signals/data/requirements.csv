@@ -1,0 +1,9 @@
+id,requirement,status,evidence,page
+X3-01,Add a price-snapshot store that records opening and closing numbers for every market we originate,done,"signals/data/price_snapshots.csv — one row per market per snapshot (open, close).",signals/prices.html
+X3-02,Add a verified results feed so backtests and ROI can be computed at all,done,"signals/data/results.csv — 163 games, 137 verified finals, every row linked to the official week page.",signals/results.html
+X3-03,"Originate the side first, then the total, then the moneyline",done,Fixed pipeline order with the origination order recorded per market row; the moneyline is derived from the side plus the margin sigma.,signals/lines.html
+X3-04,"Publish the model's fair line, the market line, and the difference as separate columns",done,Three separate columns per market. Market and difference are empty and flagged F-01.,signals/lines.html
+X3-05,Separate 'signal' from 'staking' in the leaderboard so a lucky staking run cannot mask a bad signal,done,Two blocks per strategy; ranking uses signal only; enforced by scripts/verify_signals.py.,signals/leaderboard.html
+X3-06,"Track the depth of the replacement, not just the fact of a replacement",done,"depth_string and replacement_depth (2nd/3rd/4th) are published per absence, with a per-club-week load roll-up.",signals/depth.html
+X3-07,Compute correlations only from officially sourced numbers and publish n with each value,done,"Every coefficient on signals/correlations.html carries r, n, a 95% CI, a p-value and its source link.",signals/correlations.html
+X3-08,Define a demotion gate that sends a live strategy back to paper,done,Seven demotion rules (D1-D7) with measured values and the action each one triggers.,signals/gates.html

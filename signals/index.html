@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL signals &amp;amp; strategy desk - X3 NFL signals, every row sourced or flagged.">
+<title>X3 NFL signals &amp; strategy desk</title>
+<link rel="stylesheet" href="assets/signals.css">
+
+</head><body>
+<header class="top"><div class="top-in">
+<div class="brand"><a href="index.html">X3 <span>NFL signals &amp; strategy desk</span></a></div>
+<div class="asof">data as of <b>2026-11-14</b> &middot; season 2026 &middot; through week 10</div>
+</div><nav class="cats"><a href="index.html" class="on">Overview</a><a href="results.html" class="">Market data</a><a href="strategies.html" class="">Strategies</a><a href="correlations.html" class="">Evidence</a><a href="questions.html" class="">Decisions</a><a href="sources.html" class="">Governance</a></nav></header>
+<main>
+<h1>X3 NFL signals &amp; strategy desk</h1>
+<p class="lede">Originate our own NFL numbers, grade them against verified results, and score signal separately from staking &mdash; with every row sourced from an official page or flagged.</p>
+<nav class="sidenav"><div class="cat"><div class="cat-h">Overview</div><a href="index.html" class="on">Overview</a> <a href="executive-summary.html" class="">Executive summary</a> <a href="requirements.html" class="">Requirements</a></div><div class="cat"><div class="cat-h">Market data</div><a href="results.html" class="">Results feed</a> <a href="prices.html" class="">Price snapshots</a> <a href="lines.html" class="">Originated lines</a></div><div class="cat"><div class="cat-h">Strategies</div><a href="strategies.html" class="">Strategies</a> <a href="leaderboard.html" class="">Leaderboard</a> <a href="gates.html" class="">Gates &amp; demotion</a></div><div class="cat"><div class="cat-h">Evidence</div><a href="correlations.html" class="">Correlations</a> <a href="depth.html" class="">Injuries &amp; depth</a></div><div class="cat"><div class="cat-h">Decisions</div><a href="questions.html" class="">Open questions</a> <a href="suggestions.html" class="">Suggestions</a></div><div class="cat"><div class="cat-h">Governance</div><a href="sources.html" class="">Sources</a> <a href="verification.html" class="">Verification log</a> <a href="repo-review.html" class="">Repo review</a> <a href="flagged.html" class="">Flagged for review</a></div></nav>
+
+<div class="grid">
+  <div class="card"><div class="num">137</div><div class="lbl">verified finals in the results feed</div>
+    <div class="sub">163 scheduled games, every row linked to its official week page</div></div>
+  <div class="card"><div class="num">345 / 393</div><div class="lbl">opening / closing numbers stored</div>
+    <div class="sub">978 rows; 240 markets not originated for lack of training data</div></div>
+  <div class="card"><div class="num">105</div><div class="lbl">games graded walk-forward</div>
+    <div class="sub">weeks 3&ndash;10; every number fitted on earlier weeks only</div></div>
+  <div class="card"><div class="num">15</div><div class="lbl">correlations, each with its n</div>
+    <div class="sub">computed only from officially sourced numbers</div></div>
+  <div class="card"><div class="num">210</div><div class="lbl">absences with a depth string</div>
+    <div class="sub">96 club-week availability rows, weeks 8&ndash;10</div></div>
+  <div class="card"><div class="num">15</div><div class="lbl">registered strategies</div>
+    <div class="sub">singles, parlays and player-prop combos &mdash; none promoted</div></div>
+</div>
+
+<div class="callout"><h2>Start here</h2>
+<p><a href="executive-summary.html"><b>Executive summary</b></a> for the decisions.
+<a href="lines.html"><b>Originated lines</b></a> for the board.
+<a href="leaderboard.html"><b>Leaderboard</b></a> for signal versus staking.
+<a href="suggestions.html"><b>Suggestions</b></a> to choose a path.
+<a href="questions.html"><b>Open questions</b></a> for the information gaps.
+<a href="flagged.html"><b>Flagged for review</b></a> for what could not be verified.</p></div>
+
+<h2>What this module does</h2>
+<p>It originates its own NFL numbers &mdash; side, then total, then moneyline &mdash; from verified league
+data, stores an opening and a closing number for every market it originates, grades them walk-forward
+against what actually happened, and scores strategies on signal separately from staking. It does all
+of that without a single market price, because none exists in this repository. That is not a gap in the
+analysis; it is the finding that shapes everything on this site.</p>
+
+<h2>The three numbers that matter</h2>
+<div class="panel">
+<dl class="kv">
+<dt>Side beats a constant baseline</dt><dd><b>0.638</b> of 105 graded games
+  (95% CI 0.543&ndash;0.724, exact binomial p = 0.0060).
+  This clears the multiple-testing gate. It is real, and it is the only favourable discovery we have.</dd>
+<dt>Total does not</dt><dd><b>0.448</b> of 105 (p = 0.3291).
+  Worse: when the total model is most confident it is <b>reliably wrong</b> &mdash; 0.276 on
+  29 selective games, p = 0.0241. That is a significant adverse finding, not a null.</dd>
+<dt>The model is under-spread</dt><dd>predicted margin SD <b>4.283</b> against an actual SD of <b>12.736</b>
+  (ratio 0.336). It ranks teams in roughly the right order but pulls every number toward the league mean.</dd>
+</dl>
+</div>
+
+<h2>What is verified and what is not</h2>
+<div class="tw"><table><thead><tr><th>Layer</th><th class="n">Rows</th><th>Status</th><th>Source</th></tr></thead><tbody>
+<tr><td>Results feed (final scores)</td><td class="n">137</td>
+  <td><span class="badge ok">verified</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-1" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Club standings</td><td class="n">32</td>
+  <td><span class="badge ok">verified</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Official injury report</td><td class="n">1,027</td>
+  <td><span class="badge ok">verified</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Club depth charts (2nd/3rd/4th string)</td><td class="n">32</td>
+  <td><span class="badge warn">club-published, undated</span> <span class="badge unv">UNVERIFIED (F-03)</span></td><td><a class="src" href="https://www.azcardinals.com/team/depth-chart" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Our own fair lines</td><td class="n">393</td>
+  <td><span class="badge neutral">computed here</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Market lines / opening and closing prices</td><td class="n">0</td>
+  <td><span class="badge unv">UNVERIFIED (F-01)</span></td><td><a class="src" href="https://www.nfl.com/" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Per-game player statistics (props)</td><td class="n">0</td>
+  <td><span class="badge unv">UNVERIFIED (F-04)</span></td><td><a class="src" href="https://www.nfl.com/stats" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Settled bets, ROI, drawdown</td><td class="n">0</td>
+  <td><span class="badge unv">UNVERIFIED (F-02)</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-1" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+</tbody></table></div>
+<p class="note">Full register of irregularities: <a href="flagged.html">Flagged for review</a>
+(13 items, all non-blocking).</p>
+
+</main>
+<footer>
+<p>X3 NFL signals module &middot; built by <code>scripts/x3_signals.py</code> and
+<code>scripts/build_signals.py</code> from data captured out of official NFL pages.
+Every table row links an official source or is explicitly flagged unverified &mdash; enforced by
+<code>scripts/verify_signals.py</code>.</p>
+<p>Repository: <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> &middot;
+canonical desk: <a href="../hub/index.html">hub/</a> &middot;
+landing: <a href="../index.html">X3 home</a> &middot;
+task board: <a href="../COORDINATION.md">COORDINATION.md</a></p>
+</footer>
+</body></html>

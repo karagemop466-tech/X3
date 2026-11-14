@@ -2396,3 +2396,116 @@ decision can no longer disagree.
 
 **PRs from this session:** #55 (the tree), #56 (merge/deploy record), #59 (mislabel fix + gate),
 #60 (suggestion evidence/decision alignment). All merged.
+
+## Session arena/09f8c786-x3 (FINAL INTEGRATION for this round of requirements)
+
+Branch: `arena/09f8c786-x3`. Base: `main` @ `996257b3`. Claimed **2026-11-14**.
+Platform rule: all work happens on this assigned branch; the `session-<id>/<task>` naming in the
+brief yields to the platform rule. Status legend: unclaimed | in progress | done | needs review | blocked
+
+### New requirements this session (the 8 items), mapped to files
+
+| ID | Requirement | Status | Scope (all NEW, no overlap) |
+|----|-------------|--------|------------------------------|
+| X3-01 | Price-snapshot store (open + close for every originated market) | in progress | `signals/data/price_snapshots.csv|json`, `signals/prices.html` |
+| X3-02 | Verified results feed (backtests/ROI possible at all) | in progress | `signals/data/results.csv|json`, `signals/results.html` |
+| X3-03 | Origination order: side → total → moneyline | in progress | `scripts/build_signals.py` (pipeline stage order), `signals/lines.html` |
+| X3-04 | Publish fair line / market line / difference as separate columns | in progress | `signals/lines.html` (3 columns per market) |
+| X3-05 | Separate signal from staking in the leaderboard | in progress | `signals/leaderboard.html`, `signals/data/leaderboard.csv` |
+| X3-06 | Track depth of the replacement (2nd/3rd/4th string) | in progress | `signals/depth.html`, `signals/data/depth.csv` |
+| X3-07 | Correlations from official numbers only, publish n | in progress | `signals/correlations.html`, `signals/data/correlations.csv` |
+| X3-08 | Demotion gate: live → paper | in progress | `signals/gates.html`, `signals/data/demotion.csv` |
+| X3-09 | Suggestions section (review → choose path → then implement) | in progress | `signals/suggestions.html`, `signals/data/suggestions.csv` |
+| X3-10 | Questions / information we have / information we lack / answers | in progress | `signals/questions.html`, `signals/data/questions.csv` |
+| X3-11 | Executive summary | in progress | `signals/executive-summary.html` |
+| X3-12 | Repo review, line by line, with links + flags | in progress | `signals/repo-review.html` |
+| X3-13 | Flagged for Review page | in progress | `signals/flagged.html`, `signals/data/flags.csv` |
+| X3-14 | Line-by-line verification: every row sourced or flagged | in progress | `scripts/verify_signals.py`, `signals/verification.html` |
+| X3-15 | CI gate for the new module | in progress | `.github/workflows/signals.yml` (new file) |
+| X3-16 | Integration: PR → merge → Pages deploy → record | in progress | `COORDINATION.md`, `README.md` (append-only) |
+
+### File-scope declaration (non-overlapping)
+
+This session **creates** `signals/**`, `scripts/build_signals.py`, `scripts/verify_signals.py`,
+`.github/workflows/signals.yml`. It **reads but never writes** `data/desk/**`, `hub/**`, `docs/**`,
+`dashboard/**`, `x3lab/**`, `desk/**`, `crosscheck/**`, `audit/**`, `pages/**`, `site/**`,
+`archive/**`, `lab/**`, `legacy/**`, `analysis/**`, `research/**`, `.github/workflows/pages.yml`,
+`.github/workflows/desk-capture.yml`, `tools/**`, and the other sessions' `scripts/**`.
+`COORDINATION.md` and `README.md` are append-only. Root `index.html` gets one added nav entry as
+the integration session (the brief assigns site index/navigation to the final integration session);
+no other session-owned file is edited.
+
+### Log
+
+- 2026-11-14 claim: 16 tasks claimed; scope declared; pushed.
+
+
+
+### Progress log (arena/09f8c786-x3)
+
+- 2026-11-14 — claimed 16 tasks, scope declared, pushed (`d3f63a5`).
+- 2026-11-14 — `scripts/x3_signals.py` written and run. Two bugs found and fixed during
+  verification, both of which had inverted published findings:
+  1. the side was being scored against the raw margin instead of against the *predicted* margin,
+     which turned a 0.638 contest win rate into 0.305 and produced a false "the model is worse
+     than nothing" conclusion;
+  2. the home-field constant was computed inside the ridge fit and then discarded, so the margin
+     model was fitted with home field forced to zero.
+  Both are recorded here because they are the reason the site says what it says.
+- 2026-11-14 — the ridge penalty is now chosen by **nested walk-forward validation inside the
+  training window** (fit weeks <= T-1, score week T) rather than hand-picked, so the penalty is
+  never tuned on the data it is graded against. The chosen value is stored per row.
+- 2026-11-14 — Benjamini-Hochberg (G4) applied at q = 0.10 to the 6 strategies with a computable
+  p-value; 3 discoveries, one of which is **adverse** (the selective total is reliably worse than a
+  constant). Adverse discoveries are labelled, not hidden.
+- 2026-11-14 — `scripts/build_signals.py` renders 17 pages; `scripts/verify_signals.py` gates them
+  (1,774 table rows, every one sourced or flagged; G11 both snapshots present; G12 rank keyed on
+  signal; engine deterministic across re-runs).
+- 2026-11-14 — `.github/workflows/signals.yml` added (new file, no overlap with the existing
+  `pages.yml`). Root `index.html` gained one nav entry, as the integration session.
+
+### Coordination requests (logged; files NOT edited)
+
+- **To the `pages.yml` owner (`arena/3bf7cc8b-x3`):** please add
+  `python3 scripts/verify_signals.py` to `.github/workflows/pages.yml`. It is offline, runs in
+  about 20 seconds, and gates every row in `signals/**` for an official source link plus all
+  internal links. Until then it runs from `.github/workflows/signals.yml`, which I created as a new
+  file so as not to touch yours.
+- **To the canonical-hub owner (`arena/e9b492ab-x3`):** `signals/` is reachable from
+  `hub/archive.html`'s neighbourhood only via the root landing. A link from `hub/index.html` would
+  help; this session added the root `index.html` entry only, per the integration-session remit.
+
+
+### Rebase record (arena/09f8c786-x3, 2026-11-14)
+
+While this session was building, `main` moved on: `arena/3b99e9ad-x3` merged a `council/` module and
+a set of `hub/` pages covering **the same eight requirements** (`hub/markets.html`,
+`hub/price-store.html`, `hub/verified-results.html`, `hub/replacements.html`, `hub/origination.html`,
+`hub/signal.html`, `hub/results.html`, `hub/pricing.html`, `hub/replacement.html`). That is genuine
+duplication of this session's `signals/` module, and it is logged here rather than resolved by
+deleting either side.
+
+`git pull --rebase origin main` produced 6 conflicts. All were resolved as **unions** so that neither
+session lost a line:
+
+| File | Resolution |
+|------|------------|
+| `COORDINATION.md`, `README.md` | append-only logs: both blocks kept (union) |
+| `index.html`, `hub/*.html` | **generated** by `tools/build_hub.py` — taken from incoming, then re-emitted by the merged generator so both sessions' nav entries appear |
+| `verification-hub/audit-report.json` | generated artifact — taken from incoming, then regenerated |
+| `tools/build_hub.py` | 3 hunks resolved by hand, keeping **both** sessions' changes: their `__council__` nav filter plus this session's appended `signals/` link, and both prose sentences on the landing page |
+
+Nothing was discarded. Verified afterwards on the rebased tree: `scripts/x3_signals.py`,
+`scripts/build_signals.py`, `scripts/verify_signals.py`, `scripts/ops_build.py`,
+`scripts/ops_verify.py`, `scripts/council_build.py`, `scripts/council_verify.py`,
+`scripts/origin_verify.py`, `tools/x3_engine.py`, `tools/build_hub.py`, `tools/verify_hub.py`,
+`scripts/check_hub.py`, `scripts/verify_integration.py`, `scripts/audit_all.py`,
+`scripts/check_site.py`, `tools/check_links.py`, `tools/verify_site.py`, `scripts/verify_data.py`,
+`scripts/desk_verify.py`, `scripts/check_dashboard.py`, `tools/verify_ledger.py`,
+`tools/verify_markets.py`, `tools/build_ledger.py`, `node scripts/check_data.js`,
+`node scripts/check_render.js` — all exit 0.
+
+**To the `council/` owner (`arena/3b99e9ad-x3`):** `signals/` and `council/` now both implement the
+eight requirements, on the same verified inputs, with different models. They are both linked from the
+root landing. Suggestion **S-12** on the signals site covers consolidating them; it is a decision for
+the reviewer, not something this session will do unilaterally.

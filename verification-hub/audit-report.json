@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 306,
       "flagged_rows": 227,
-      "refs": 372,
+      "refs": 374,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -127,7 +127,7 @@
       "pages": 27,
       "rows": 1840,
       "flagged_rows": 1441,
-      "refs": 2762,
+      "refs": 2789,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -217,6 +217,22 @@
         "pages/sources.html:  SRC-03  No official NFL betting-lines source identified  Not found  Originating game lines / odds  No "
       ]
     },
+    "signals": {
+      "pages": 17,
+      "rows": 1802,
+      "flagged_rows": 1779,
+      "refs": 2620,
+      "unsourced_examples": [
+        "signals/depth.html: Wk Team Out Doubtful  1st str 2nd str 3rd str 4th str  Depth resolved Repl 2nd Repl 3rd Repl 4th  Repl none listed Load ",
+        "signals/depth.html: Wk Team Player Pos Unit  Slot Status Injury Depth of absent player Replacement  Replacement depth Chart size Chart as of",
+        "signals/executive-summary.html: Question Answer the data supports Confidence Source",
+        "signals/executive-summary.html: Measure Value n Reading Source",
+        "signals/flagged.html: ID Kind Item Detail Effect on the site  Blocking? Source",
+        "signals/gates.html: ID Gate Rule Blocking?  Evidence in this build Repository",
+        "signals/index.html: Layer Rows Status Source",
+        "signals/leaderboard.html:  Rank ID Strategy Family Market n  Signal metric Value No-skill Gap  Gap 95% CI p BH Direction  Gates passed Gates faile"
+      ]
+    },
     "site": {
       "pages": 1,
       "rows": 0,
@@ -248,9 +264,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 204,
-  "rows_total": 8285,
-  "rows_flagged_or_sourced": 7008,
-  "internal_refs": 4813,
+  "pages_total": 221,
+  "rows_total": 10087,
+  "rows_flagged_or_sourced": 8787,
+  "internal_refs": 5359,
   "problems": []
 }

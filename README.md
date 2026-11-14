@@ -334,3 +334,57 @@ to the standings; no market price exists without a source; and a second build is
 whole staking column are blank with a stated reason. One partial season cannot support a 200-bet skill
 claim, and club depth charts are mostly self-labelled unofficial. Those are findings, published on
 [`ops/flagged.html`](ops/flagged.html) — not gaps hidden by a placeholder.
+
+## X3 signals & strategy desk (`signals/`)
+
+Added by session `arena/09f8c786-x3`. It originates its own NFL numbers, grades them against
+verified results, and ranks strategies on signal with staking reported separately.
+
+Live at **https://karagemop466-tech.github.io/X3/signals/**
+
+### What it is built from
+
+| Input | Rows | Official source |
+|-------|------|-----------------|
+| Verified results feed | 163 games / 137 finals | https://www.nfl.com/schedules/2026/by-week/week-N |
+| Standings | 32 clubs | https://www.nfl.com/standings/league/2026/reg |
+| Official injury report | 1,027 rows (weeks 8-10) | https://www.nfl.com/injuries/league/2026/regN |
+| Club depth charts | 32 clubs | https://www.<club>.com/team/depth-chart |
+
+`signals/` reads `data/desk/**` and **never writes to it**.
+
+### The eight requirements
+
+| ID | Requirement | Where |
+|----|-------------|-------|
+| X3-01 | Price-snapshot store (open + close per originated market) | `signals/prices.html`, `signals/data/price_snapshots.csv` |
+| X3-02 | Verified results feed | `signals/results.html`, `signals/data/results.csv` |
+| X3-03 | Origination order: side -> total -> moneyline | `signals/lines.html` (pipeline order printed) |
+| X3-04 | Fair line / market line / difference as separate columns | `signals/lines.html` |
+| X3-05 | Signal separated from staking | `signals/leaderboard.html` |
+| X3-06 | Depth of the replacement (2nd/3rd/4th string) | `signals/depth.html` |
+| X3-07 | Correlations from official numbers, n published | `signals/correlations.html` |
+| X3-08 | Demotion gate (live -> paper) | `signals/gates.html` |
+
+### Headline findings
+
+- The **side beats a constant baseline**: 67/105 walk-forward graded games, 95% CI 0.543-0.724,
+  exact binomial p = 0.006. It clears Benjamini-Hochberg at q = 0.10.
+- The **total does not** (47/105, p = 0.329), and on its confident subset it is *significantly
+  adverse* (8/29, p = 0.024).
+- The model is **badly under-spread**: predicted margin SD 4.28 vs actual 12.74 (ratio 0.34).
+- **No market price exists** in this repository, so ROI, closing-line value, staking and drawdown
+  are empty and flagged (F-01). Nothing is staked and nothing is promoted.
+
+### Rebuild and verify
+
+```sh
+python3 scripts/x3_signals.py     # recompute signals/data/*
+python3 scripts/build_signals.py  # render signals/*.html
+python3 scripts/verify_signals.py # rows, links, gates, determinism
+```
+
+`scripts/verify_signals.py` fails the build on any table row that neither links an official source
+nor carries an UNVERIFIED marker, on any broken internal link, on a missing snapshot (G11) and on a
+leaderboard ranked by anything other than a signal column (G12).
+

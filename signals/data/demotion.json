@@ -1,0 +1,51 @@
+[
+ {
+  "id": "D1",
+  "name": "Trailing record",
+  "rule": "Over the trailing 50 graded decisions, contest win rate <= 0.50 AND the exact binomial p >= 0.05.",
+  "action": "live -> paper",
+  "measurement": "Trailing contest win rate and p are computed every build from the reserved window."
+ },
+ {
+  "id": "D2",
+  "name": "Baseline regression",
+  "rule": "Trailing 30 decisions: MAE worse than the no-knowledge baseline (delta < 0).",
+  "action": "live -> paper",
+  "measurement": "MAE delta is computed every build; the trailing-30 slice is printed as soon as n allows."
+ },
+ {
+  "id": "D3",
+  "name": "Drawdown",
+  "rule": "Notional drawdown greater than 20 units.",
+  "action": "live -> paper",
+  "measurement": "UNEVALUABLE \u2014 needs a settled payoff series (F-01). Recorded, not waived."
+ },
+ {
+  "id": "D4",
+  "name": "Provenance break",
+  "rule": "Any input row loses its official source link, or a source fetch fails.",
+  "action": "live -> paper (immediate)",
+  "measurement": "Checked by scripts/verify_signals.py on every build and in CI."
+ },
+ {
+  "id": "D5",
+  "name": "Under-powered",
+  "rule": "Fewer than 30 graded decisions since promotion.",
+  "action": "live -> paper",
+  "measurement": "Promotion itself requires the sample-size gate, so this is a safety net."
+ },
+ {
+  "id": "D6",
+  "name": "Look-ahead",
+  "rule": "Any input is found to be published after the decision cutoff for the graded game.",
+  "action": "live -> paper (immediate)",
+  "measurement": "Structurally prevented by the walk-forward fit; checked by re-running G10."
+ },
+ {
+  "id": "D7",
+  "name": "Closing-value collapse",
+  "rule": "Fair line stops being closer to the truth than the baseline in 3 consecutive weeks.",
+  "action": "live -> paper",
+  "measurement": "Weekly contest win rate is printed on the leaderboard page."
+ }
+]
