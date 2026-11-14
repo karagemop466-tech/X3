@@ -154,7 +154,7 @@ policy, never estimated. Shared task board: <a href="../COORDINATION.md">COORDIN
 
 
 # --------------------------------------------------------------------------- pages
-def p_index(model, ldb, props, snap, join, corr):
+def p_index(model, ldb, props, snap, join, corr, res):
     params = model["params"]
     bt = model["backtest"]
     cards = [
@@ -162,7 +162,7 @@ def p_index(model, ldb, props, snap, join, corr):
         (f'{snap["counts"]["markets"]}', "price snapshots recorded", "opening and closing schema, model-tagged"),
         (f'{snap["counts"]["markets_with_official_market_price"]}', "with an official market price",
          "no licensed feed exists in this repository - blank by policy"),
-        (f'{bt["n"]}', "walk-forward games graded", f'MAE {bt["mae_margin"]} pts, Brier {bt["brier_home_win"]}'),
+        (f'{bt["n"]}/{res["games"]}', "finals graded walk-forward", f'MAE {bt["mae_margin"]} pts, Brier {bt["brier_home_win"]}'),
         (f'{ldb["eligible"]} / {len(ldb["rows"])}', "strategies live", "all others in paper"),
         (f'{join["summary"]["matched_with_replacement"]}', "absentees with a named backup", "depth string published"),
     ]
@@ -174,7 +174,8 @@ def p_index(model, ldb, props, snap, join, corr):
                  f'{snap["counts"]["markets"]} markets x opening + closing, hash-chained, schema carries market fields that stay null until a feed exists',
                  a("snapshots.html", "Price snapshots")],
                 ["Verified results feed", badge("VERIFIED"),
-                 f'{bt["n"]} final scores, each linked to the official week page', a("results.html", "Results feed")],
+                 f'{res["games"]} final scores, each linked to the official week page; '
+                 f'{bt["n"]} of them are gradable walk-forward', a("results.html", "Results feed")],
                 ["Origination order", badge("DERIVED"), "side, then total, then moneyline - enforced in code, see the order page",
                  a("order.html", "Origination order")],
                 ["Fair / market / difference", badge("PARTIAL"),
@@ -227,12 +228,14 @@ none is typed by hand. Where a number cannot exist, the reason is stated instead
 <h2>1. What this desk now does</h2>
 <ul>
 <li><b>Originates side, then total, then moneyline</b> for all {len([r for r in model["originated"] if r["status"]=="DERIVED"])}
-week-11 games, using ratings fitted on weeks 1-10 only. The moneyline is a transform of the side, so the three
+unplayed games on the board ({sum(1 for r in model["originated"] if r["status"]=="DERIVED" and r["week"]==11)} in
+week 11, {sum(1 for r in model["originated"] if r["status"]=="DERIVED" and r["week"]==10)} week-10 games that were
+still unplayed at the last capture), using ratings fitted only on games played before each one. The moneyline is a transform of the side, so the three
 markets cannot contradict each other ({a("order.html", "detailed here")}).</li>
 <li><b>Stores an opening and a closing number for every market</b>: {snap["counts"]["markets"]} markets across
 {snap["counts"]["snapshots"]} immutable, hash-chained snapshot file.</li>
-<li><b>Grades against official final scores</b>: {bt["n"]} walk-forward games, each linked to the official
-nfl.com week page. MAE {bt["mae_margin"]} pts on the margin, {bt["mae_total"]} on the total, Brier
+<li><b>Grades against official final scores</b>: {bt["n"]} walk-forward games out of the {res["games"]} finals
+captured, each linked to the official nfl.com week page. MAE {bt["mae_margin"]} pts on the margin, {bt["mae_total"]} on the total, Brier
 {bt["brier_home_win"]} on the home-win probability.</li>
 <li><b>Prices receiver props</b> from official per-week player logs: {len(props["rows"])} markets across
 {len(props["source_players"])} players, with a {len(props["backtest"])}-leg walk-forward backtest.</li>
@@ -319,7 +322,9 @@ game, so it never sees a result it is being graded on. Parameters are printed on
 {a("method.html", "method page")}.</div>
 {table(["Wk", "Away", "Home", "Date", "Our side (home)", "Our total", "Our moneyline (home)",
         "Market side", "Market total", "Market ML", "Difference", "Market status", "Source"],
-       rows, caption=f"{len(model['originated'])} games in the week-11 slate",
+       rows, caption=f"{len(model['originated'])} unplayed games on the board "
+                     f"({sum(1 for r in model['originated'] if r['week']==11)} in week 11, "
+                     f"{sum(1 for r in model['originated'] if r['week']==10)} carried over from week 10)",
        note="Every row links to the official nfl.com schedule page it was scheduled from. "
             "The absence of a market number is a published finding, not a rendering gap.")}
 <h2>Games blocked by the origination gate</h2>
@@ -869,7 +874,7 @@ def p_verification(ver):
 data, and fails if any row lacks a source, any link is broken, any hash does not recompute, or any published
 count disagrees with the data behind it. This page prints its output.</p>
 {table(["Check", "Result", "Detail"], rows, caption=f'{len(ver["checks"])} checks',
-       note=f'Generated {ver["generated"]} by scripts/ops_verify.py.')}
+       note=f'Generated by the verification run at {ver["generated"]}.')}
 <h2>Manual verification performed this session</h2>
 <ul>
 <li><b>Team passing offense vs defense reconciliation.</b> Two separately published official pages must agree on
@@ -960,7 +965,7 @@ def main():
             with open(os.path.join(OPS, "data", f"{name}.json"), "w", encoding="utf-8") as f:
                 f.write(data)
 
-    p_index(model, ldb, props, snap, join, corr)
+    p_index(model, ldb, props, snap, join, corr, res)
     p_exec(model, ldb, props, snap, join, corr, res)
     p_lines(model)
     p_order(model)

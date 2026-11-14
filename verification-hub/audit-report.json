@@ -43,6 +43,22 @@
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
       ]
     },
+    "crosscheck": {
+      "pages": 7,
+      "rows": 561,
+      "flagged_rows": 542,
+      "refs": 1690,
+      "unsourced_examples": [
+        "crosscheck/executive-summary.html: Fact Value Official source  Where verified",
+        "crosscheck/executive-summary.html: Missing Why State Source",
+        "crosscheck/executive-summary.html: # Decision Impact Raised by  Source Detail",
+        "crosscheck/executive-summary.html: # Step Source",
+        "crosscheck/flagged.html: ID Sev Area Finding Evidence  Suggested action",
+        "crosscheck/flagged.html: Module ID Sev Issue (as published)  Source",
+        "crosscheck/flagged.html: Family ID Modules Source",
+        "crosscheck/index.html: Module Pages Links  Tables Rows Source"
+      ]
+    },
     "dashboard": {
       "pages": 18,
       "rows": 797,
@@ -168,9 +184,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 142,
-  "rows_total": 4994,
-  "rows_flagged_or_sourced": 4275,
-  "internal_refs": 2282,
+  "pages_total": 149,
+  "rows_total": 5555,
+  "rows_flagged_or_sourced": 4817,
+  "internal_refs": 3125,
   "problems": []
 }

@@ -24,12 +24,14 @@ none is typed by hand. Where a number cannot exist, the reason is stated instead
 <h2>1. What this desk now does</h2>
 <ul>
 <li><b>Originates side, then total, then moneyline</b> for all 26
-week-11 games, using ratings fitted on weeks 1-10 only. The moneyline is a transform of the side, so the three
+unplayed games on the board (13 in
+week 11, 13 week-10 games that were
+still unplayed at the last capture), using ratings fitted only on games played before each one. The moneyline is a transform of the side, so the three
 markets cannot contradict each other (<a href="order.html">detailed here</a>).</li>
 <li><b>Stores an opening and a closing number for every market</b>: 78 markets across
 1 immutable, hash-chained snapshot file.</li>
-<li><b>Grades against official final scores</b>: 89 walk-forward games, each linked to the official
-nfl.com week page. MAE 9.263 pts on the margin, 11.414 on the total, Brier
+<li><b>Grades against official final scores</b>: 89 walk-forward games out of the 137 finals
+captured, each linked to the official nfl.com week page. MAE 9.263 pts on the margin, 11.414 on the total, Brier
 0.217 on the home-win probability.</li>
 <li><b>Prices receiver props</b> from official per-week player logs: 10 markets across
 5 players, with a 54-leg walk-forward backtest.</li>

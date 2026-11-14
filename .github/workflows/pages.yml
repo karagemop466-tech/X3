@@ -80,6 +80,9 @@ jobs:
       - name: Verify the consolidated decision desk
         run: python3 scripts/desk_verify.py
 
+      - name: Verify the trading desk (ops/) - row sources, links, hashes, reconciliation, determinism
+        run: python3 scripts/ops_run.py
+
       - name: Check source-first decision dashboard
         run: |
           python3 scripts/check_dashboard.py

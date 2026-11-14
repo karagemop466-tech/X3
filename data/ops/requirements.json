@@ -47,7 +47,7 @@
    "status": "PARTIAL",
    "where": "depth.html",
    "req": "Track the depth of the replacement, not just the fact of a replacement",
-   "evidence": "29 absences resolved with a depth string, 25 published as having nobody below them, 22 not joinable"
+   "evidence": "45 absences resolved with a depth string, 8 published as having nobody below them, 22 not joinable"
   },
   {
    "id": "R-07",
@@ -111,7 +111,7 @@
    "status": "PARTIAL",
    "where": "depth.html",
    "req": "Injury and lineup deficiencies (2nd/3rd/4th string) are tracked for offence and defense",
-   "evidence": "tracked on both sides of the ball ({'secondary': 4, 'offense': 16, 'dline': 2, 'lb': 6, 'kicking': 1}); no validated effect size, so not a model input"
+   "evidence": "tracked on both sides of the ball ({'offense': 25, 'secondary': 5, 'dline': 6, 'lb': 9}); no validated effect size, so not a model input"
   },
   {
    "id": "R-15",

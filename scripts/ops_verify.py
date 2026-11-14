@@ -246,7 +246,10 @@ def main():
         f"{first[:16]} vs {second[:16]}")
 
     # ---- write the verification page data, then rebuild so the page shows it
-    blob = {"as_of": "2026-11-14", "generated": "by scripts/ops_verify.py", "checks": checks}
+    import datetime
+    blob = {"as_of": "2026-11-14",
+            "generated": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            "checks": checks}
     with open(os.path.join(D, "verification.json"), "w", encoding="utf-8") as f:
         json.dump(blob, f, indent=1)
     subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "ops_build.py")],

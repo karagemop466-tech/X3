@@ -1,6 +1,6 @@
 {
  "as_of": "2026-11-14",
- "generated": "by scripts/ops_verify.py",
+ "generated": "2026-11-14 19:49 UTC",
  "checks": [
   {
    "check": "V1 every internal link resolves",
@@ -50,7 +50,7 @@
   {
    "check": "V10 second build is byte-identical",
    "result": "PASS",
-   "detail": "c9ff0e2d24af56d0 vs c9ff0e2d24af56d0"
+   "detail": "af137bdebb591e4a vs af137bdebb591e4a"
   }
  ]
 }

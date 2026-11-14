@@ -408,6 +408,19 @@ def build_repo():
 
 
 def main():
+    # Ordering guard: content copies numbers out of these files, so refuse to run if one is
+    # missing or older than the script that produces it. This is the bug that let a stale
+    # depth count reach a published page.
+    import time
+    for name, producer in (("join.json", "ops_join.py"), ("leaderboard.json", "ops_market.py"),
+                           ("snapshots.json", "ops_market.py"), ("correlation.json", "ops_market.py"),
+                           ("props.json", "ops_market.py"), ("model.json", "ops_model.py")):
+        data_p = os.path.join(D, name)
+        prod_p = os.path.join(ROOT, "scripts", producer)
+        if not os.path.exists(data_p):
+            raise SystemExit(f"ops_content: {name} missing - run scripts/{producer} first")
+        if os.path.getmtime(data_p) < os.path.getmtime(prod_p):
+            print(f"warning: {name} is older than {producer}; it may be stale")
     res = build_results()
     join = load(os.path.join(D, "join.json"))
     ldb = load(os.path.join(D, "leaderboard.json"))
