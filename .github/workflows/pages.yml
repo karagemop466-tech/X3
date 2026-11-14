@@ -62,6 +62,21 @@ jobs:
       - name: Check other integrated root pages
         run: python3 tools/check_links.py
 
+      - name: Repo-wide audit — every module, links + source rows (audit_all)
+        run: python3 scripts/audit_all.py
+
+      - name: Check docs/pages research tree (verify_site)
+        run: python3 tools/verify_site.py
+
+      - name: Check x3lab data wiring (verify_data)
+        run: python3 scripts/verify_data.py
+
+      - name: Check the consolidated review hub
+        run: python3 scripts/check_hub.py
+
+      - name: Repo-wide integration audit (verify_integration)
+        run: python3 scripts/verify_integration.py
+
       - name: Verify the consolidated decision desk
         run: python3 scripts/desk_verify.py
 

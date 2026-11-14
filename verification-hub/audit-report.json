@@ -3,8 +3,8 @@
     "(root)": {
       "pages": 13,
       "rows": 306,
-      "flagged_rows": 214,
-      "refs": 340,
+      "flagged_rows": 227,
+      "refs": 346,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -124,17 +124,17 @@
     "pages": {
       "pages": 6,
       "rows": 82,
-      "flagged_rows": 54,
+      "flagged_rows": 55,
       "refs": 87,
       "unsourced_examples": [
         "pages/executive-summary.html: Area Finding Status Source",
         "pages/executive-summary.html: Source What it provides Official?",
         "pages/flagged-for-review.html: Ref Irregularity Detail Source / reference Suggested action",
         "pages/flagged-for-review.html:  I-01  Repository was empty at branch point  Only README.md (\"# X3\"); no data, docs, or site configuration existed  git ",
-        "pages/flagged-for-review.html:  I-03  Direct fetch of nfl.com blocked in sandbox  Outbound network limited to GitHub hosts and package registries  Sand",
         "pages/injuries.html: Element Design Status Source",
         "pages/injuries.html:  Ingestion  Automated weekly fetch; no manual input  Not built  Direct nfl.com fetch blocked in sandbox ",
-        "pages/sources.html: # Source Type Used for Official?"
+        "pages/sources.html: # Source Type Used for Official?",
+        "pages/sources.html:  SRC-03  No official NFL betting-lines source identified  Not found  Originating game lines / odds  No "
       ]
     },
     "site": {
@@ -170,7 +170,7 @@
   },
   "pages_total": 142,
   "rows_total": 4994,
-  "rows_flagged_or_sourced": 4261,
-  "internal_refs": 2281,
+  "rows_flagged_or_sourced": 4275,
+  "internal_refs": 2282,
   "problems": []
 }

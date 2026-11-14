@@ -134,61 +134,61 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:24px;border-t
 <td>What is the exact definition of a "signal" and the required minimum sample size before a strategy is considered? </td>
 <td>Without a fixed threshold, strategies can be cherry-picked. A gate (e.g., minimum 1,000 historical bets or 3 seasons) must be set first.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>Which closing-line source will be treated as the skill benchmark (CLV)?</td>
 <td>Removing luck requires comparing bet outcomes to the market's closing line. The specific sportsbook/feed that publishes closing lines must be named and verified.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>What is the acceptable edge threshold to open a position (in half-points / EV)?</td>
 <td>Defines when a signal converts to a bet. Must be fixed before testing to avoid hindsight.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>What validation protocol is used (walk-forward, holdout, k-fold)?</td>
 <td>Determines whether a strategy's edge is real or overfit. Protocol must be chosen before any backtest.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>How are correlated parlays handled so risk is not understated?</td>
 <td>Correlated legs inflate variance; correlation values must be computed and legs capped/dropped when correlation exceeds a threshold.</td>
 <td>Unresolved — methodology designed, values pending data.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>Which injury/lineup sources are authoritative for starting-lineup changes (injury report vs. depth chart vs. game-day inactives)?</td>
 <td>The system must reconcile sources; conflicting data is a key risk. Source priority must be defined.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>How is "2nd/3rd/4th string" defined and where is it sourced per team?</td>
 <td>Depth charts are team-published and may lag; the authoritative source and refresh cadence must be fixed.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>What is the reward structure for the leaderboard (prize tiers, risk-adjusted metric)?</td>
 <td>The leaderboard metric (risk-adjusted ROI, CLV, significance) and reward tiers must be set before rankings are meaningful.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>What are the constraints on player-prop liquidity and book limits?</td>
 <td>Props have lower liquidity and book limits; strategy sizing must account for this or it is not implementable.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 <tr>
 <td>What kill-switch / drawdown rule halts a strategy?</td>
 <td>A predefined stop-loss on drawdown prevents a luck-based strategy from running. Must be defined.</td>
 <td>Unresolved — needs decision.</td>
-<td>—</td>
+<td><span class="tag">UNVERIFIED</span> no official source; answer pending</td>
 </tr>
 </tbody></table>
 </main>
