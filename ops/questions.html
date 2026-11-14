@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL trading desk operations: originated lines, price snapshots, verified results, receiver props, correlation and a signal-vs-staking leaderboard.">
+<title>Open questions - X3 NFL trading desk</title>
+<link rel="stylesheet" href="assets/ops.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3 <span>NFL trading desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> &middot; season 2026, week 10 of record &middot;
+  <a href="verification.html">verification</a> &middot; <a href="flagged.html">flagged</a></div>
+</header>
+<nav class="main"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="lines.html" class="">Originated lines</a><a href="order.html" class="">Origination order</a><a href="snapshots.html" class="">Price snapshots</a><a href="props.html" class="">Player props</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Gates &amp; demotion</a><a href="correlation.html" class="">Correlation</a><a href="depth.html" class="">Replacement depth</a><a href="results.html" class="">Results feed</a><a href="requirements.html" class="">Requirements</a><a href="questions.html" class="on">Open questions</a><a href="suggestions.html" class="">Suggestions</a><a href="method.html" class="">Method &amp; sources</a><a href="verification.html" class="">Verification</a><a href="flagged.html" class="">Flagged for review</a><a href="repo-review.html" class="">Repo review</a></nav>
+<main>
+<div class="crumb"><a href="../index.html">Site root</a> / <a href="index.html">Trading desk</a></div>
+<h1>Questions, information and answers</h1>
+
+<p class="lede">Questions, information and answers, in one place, so a decision can be made on what is actually
+known. Each row says what we have, what we do not have, what it blocks, and how to go get it. A question marked
+BLOCKED is blocked by a missing input, not by analysis.</p>
+<div class="tw"><table class=""><caption>10 questions, 4 open </caption><thead><tr><th>#</th><th>Question</th><th>Status</th><th>What we have</th><th>What is missing</th><th>What it blocks</th><th>How to find it</th></tr></thead><tbody><tr><td>Q-01</td><td>Where does a market price come from, and may this repository store it?</td><td><span class="badge bad">BLOCKED</span></td><td>0 market prices; a snapshot schema that already carries the field</td><td>a licensed feed, or written permission to record public board prices with timestamps</td><td>every market column, ROI, CLV, staking, promotion</td><td><a href="suggestions.html">S-01 / S-02 options</a></td></tr><tr><td>Q-02</td><td>What exactly is scored and rewarded on the leaderboard?</td><td><span class="badge mid">OPEN</span></td><td>signal and staking measured separately; promotion reads signal</td><td>a rule naming which column pays, who pays, and under what terms</td><td>rewards, competition start</td><td><a href="suggestions.html">S-05 reward rule</a></td></tr><tr><td>Q-03</td><td>Is a club-published depth chart an acceptable input for a price?</td><td><span class="badge mid">OPEN</span></td><td>32 charts captured; 14 self-labelled unofficial</td><td>an authoritative depth source, or an owner decision to accept the club&#x27;s own</td><td>any injury-driven adjustment to a line</td><td><a href="depth.html">chart coverage evidence</a></td></tr><tr><td>Q-04</td><td>How much history is available to fit on?</td><td><span class="badge bad">BLOCKED</span></td><td>89 walk-forward games from one partial season</td><td>prior seasons; the 200-bet gate cannot be met on this sample</td><td>any skill claim, the FDR control</td><td><a href="suggestions.html">S-03 widen history</a></td></tr><tr><td>Q-05</td><td>Can the side, total and moneyline be made mutually consistent?</td><td><span class="badge mid">ANSWERED</span></td><td>yes - the moneyline is generated from the side as Phi(side/sigma)</td><td>nothing</td><td>nothing</td><td><a href="order.html">the derivation</a></td></tr><tr><td>Q-06</td><td>What is the joint probability of two legs in the same game?</td><td><span class="badge mid">PARTIAL</span></td><td>9 coefficients; the parlay-relevant pair is measured at n=8</td><td>a same-game joint sample large enough to price a combo</td><td>parlays, prop combos</td><td><a href="correlation.html">the measured coefficients</a></td></tr><tr><td>Q-07</td><td>Can a demotion rule be made to actually fire?</td><td><span class="badge mid">ANSWERED</span></td><td>yes at a 100-bet window; a 40-bet window provably cannot fire above 35% accuracy</td><td>nothing - the dry run is in the repo</td><td>nothing</td><td><a href="gates.html">the dry run</a></td></tr><tr><td>Q-08</td><td>How many players need official per-week logs before props are representative?</td><td><span class="badge mid">PARTIAL</span></td><td>5 players logged, all with reconciliation to season totals</td><td>a league-wide per-week feed (400+ skill players)</td><td>a representative prop board</td><td><a href="props.html">the prop board</a></td></tr><tr><td>Q-09</td><td>Who settles a result - the box score, the official stat feed, or the book&#x27;s rules?</td><td><span class="badge mid">OPEN</span></td><td>official final scores; official per-week player lines</td><td>a written settlement rule for props (e.g. does a stat correction after the game change a settled bet)</td><td>grading any prop bet</td><td><a href="suggestions.html">S-08 settlement rule</a></td></tr><tr><td>Q-10</td><td>Which jurisdiction and rule set would any reward scheme sit under?</td><td><span class="badge mid">OPEN</span></td><td>nothing asserted</td><td>a decision; this desk makes no legal claim either way</td><td>any real-money or prize element</td><td><a href="suggestions.html">S-05 prize structure</a></td></tr></tbody></table></div><p class="note">Status: ANSWERED (an official source answers it), PARTIAL (partly answerable), OPEN (needs data), BLOCKED (needs a decision or an input that does not exist).</p>
+<h2>The questions that actually gate the project</h2>
+<ol>
+<li><b>Can this repository legally hold market prices?</b> A licensed feed changes everything downstream;
+recording public board prices may require permission. Until answered, the market column stays blank.</li>
+<li><b>What is being scored and rewarded?</b> Signal, staking, or both. A reward paid on staking alone
+rewards luck, which the split on the <a href="leaderboard.html">leaderboard</a> exists to prevent.</li>
+<li><b>Is a club depth chart an acceptable input?</b> Most say "unofficial" and few print an as-of date.</li>
+<li><b>How many seasons of history are available?</b> The 200-bet skill gate cannot be met on one partial
+season at any plausible bet volume.</li>
+</ol>
+
+</main>
+<footer>Built by <code>scripts/ops_build.py</code> from <code>data/ops/*.json</code>. Every table row links to
+an official source or is badged. No market price exists in this repository, so market columns are blank by
+policy, never estimated. Shared task board: <a href="../COORDINATION.md">COORDINATION.md</a>.</footer>
+</body></html>

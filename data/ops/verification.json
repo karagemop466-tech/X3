@@ -1,0 +1,56 @@
+{
+ "as_of": "2026-11-14",
+ "generated": "2026-11-14 20:02 UTC",
+ "checks": [
+  {
+   "check": "V1 every internal link resolves",
+   "result": "PASS",
+   "detail": "18 pages, 544 internal refs, 31 tables, 0 broken"
+  },
+  {
+   "check": "V2 every table row links an official source or is explicitly badged",
+   "result": "PASS",
+   "detail": "490 rows checked, 0 unmarked"
+  },
+  {
+   "check": "V3 no unfilled token or None/nan rendered",
+   "result": "PASS",
+   "detail": "0 problems"
+  },
+  {
+   "check": "V4 published counts equal the data",
+   "result": "PASS",
+   "detail": "26 originated, 78 snapshot markets, 9 correlations"
+  },
+  {
+   "check": "V5 player logs reconcile to official season totals",
+   "result": "PASS",
+   "detail": "5 players checked, 0 mismatched"
+  },
+  {
+   "check": "V6 snapshot hashes recompute and the chain is intact",
+   "result": "PASS",
+   "detail": "1 snapshot files, 0 problems"
+  },
+  {
+   "check": "V7 passing offense and defense reconcile across the two official pages",
+   "result": "PASS",
+   "detail": "att 9037/9037, cmp 5787/5787, yds 64098/64098, td 415/415, int 200/200, sck 643/643"
+  },
+  {
+   "check": "V8 results feed reconciles to official standings",
+   "result": "PASS",
+   "detail": "137 finals, 32 clubs, 7 checks, 0 failed"
+  },
+  {
+   "check": "V9 no market price appears without an official source",
+   "result": "PASS",
+   "detail": "0 leaked market values"
+  },
+  {
+   "check": "V10 second build is byte-identical",
+   "result": "PASS",
+   "detail": "f3cf1fa1f7876261 vs f3cf1fa1f7876261"
+  }
+ ]
+}

@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-11-14T19:53:40+00:00",
+ "generated_at": "2026-11-14T20:01:57+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
-   "pages": 165,
-   "links": 9065,
-   "external": 6196,
-   "tables": 292,
-   "rows": 6152,
-   "rows_with_http": 5047,
-   "rows_flag_only": 230,
-   "rows_without": 875
+   "pages": 197,
+   "links": 11208,
+   "external": 7344,
+   "tables": 355,
+   "rows": 7263,
+   "rows_with_http": 5804,
+   "rows_flag_only": 254,
+   "rows_without": 1205
   },
   "broken_internal": [],
   "per_page": [
@@ -193,6 +193,96 @@
     "rows_with_http": 365,
     "rows_flag_only": 0,
     "rows_without": 0
+   },
+   {
+    "page": "council/executive-summary.html",
+    "links": 15,
+    "external": 1,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "council/flagged.html",
+    "links": 26,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "council/index.html",
+    "links": 47,
+    "external": 26,
+    "tables": 2,
+    "rows": 31,
+    "rows_with_http": 25,
+    "rows_flag_only": 6,
+    "rows_without": 0
+   },
+   {
+    "page": "council/questions.html",
+    "links": 42,
+    "external": 10,
+    "tables": 1,
+    "rows": 18,
+    "rows_with_http": 9,
+    "rows_flag_only": 9,
+    "rows_without": 0
+   },
+   {
+    "page": "council/repo-review.html",
+    "links": 37,
+    "external": 17,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "council/requirements.html",
+    "links": 25,
+    "external": 11,
+    "tables": 1,
+    "rows": 5,
+    "rows_with_http": 1,
+    "rows_flag_only": 1,
+    "rows_without": 3
+   },
+   {
+    "page": "council/sources.html",
+    "links": 26,
+    "external": 12,
+    "tables": 1,
+    "rows": 11,
+    "rows_with_http": 11,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "council/suggestions.html",
+    "links": 25,
+    "external": 12,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "council/verification.html",
+    "links": 27,
+    "external": 11,
+    "tables": 4,
+    "rows": 26,
+    "rows_with_http": 9,
+    "rows_flag_only": 1,
+    "rows_without": 16
    },
    {
     "page": "dashboard/coordination.html",
@@ -826,7 +916,7 @@
    },
    {
     "page": "hub/archive.html",
-    "links": 40,
+    "links": 45,
     "external": 1,
     "tables": 1,
     "rows": 12,
@@ -836,7 +926,7 @@
    },
    {
     "page": "hub/correlation.html",
-    "links": 48,
+    "links": 53,
     "external": 21,
     "tables": 4,
     "rows": 25,
@@ -846,7 +936,7 @@
    },
    {
     "page": "hub/depth.html",
-    "links": 71,
+    "links": 76,
     "external": 44,
     "tables": 2,
     "rows": 43,
@@ -856,7 +946,7 @@
    },
    {
     "page": "hub/executive-summary.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 2,
     "rows": 24,
@@ -866,17 +956,17 @@
    },
    {
     "page": "hub/flagged.html",
-    "links": 54,
-    "external": 27,
+    "links": 65,
+    "external": 33,
     "tables": 1,
-    "rows": 26,
-    "rows_with_http": 26,
+    "rows": 32,
+    "rows_with_http": 32,
     "rows_flag_only": 0,
     "rows_without": 0
    },
    {
     "page": "hub/gates.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 1,
     "rows": 10,
@@ -886,17 +976,17 @@
    },
    {
     "page": "hub/index.html",
-    "links": 56,
+    "links": 66,
     "external": 4,
     "tables": 2,
-    "rows": 33,
+    "rows": 38,
     "rows_with_http": 2,
     "rows_flag_only": 2,
-    "rows_without": 29
+    "rows_without": 34
    },
    {
     "page": "hub/injuries.html",
-    "links": 373,
+    "links": 378,
     "external": 346,
     "tables": 2,
     "rows": 354,
@@ -906,7 +996,7 @@
    },
    {
     "page": "hub/leaderboard.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 8,
     "rows": 44,
@@ -916,7 +1006,7 @@
    },
    {
     "page": "hub/lines.html",
-    "links": 102,
+    "links": 107,
     "external": 75,
     "tables": 4,
     "rows": 54,
@@ -926,7 +1016,7 @@
    },
    {
     "page": "hub/luck.html",
-    "links": 60,
+    "links": 65,
     "external": 33,
     "tables": 2,
     "rows": 37,
@@ -936,7 +1026,7 @@
    },
    {
     "page": "hub/markets.html",
-    "links": 184,
+    "links": 189,
     "external": 157,
     "tables": 4,
     "rows": 92,
@@ -945,8 +1035,18 @@
     "rows_without": 13
    },
    {
+    "page": "hub/origination.html",
+    "links": 92,
+    "external": 60,
+    "tables": 5,
+    "rows": 77,
+    "rows_with_http": 58,
+    "rows_flag_only": 0,
+    "rows_without": 19
+   },
+   {
     "page": "hub/price-store.html",
-    "links": 40,
+    "links": 45,
     "external": 13,
     "tables": 3,
     "rows": 23,
@@ -955,18 +1055,38 @@
     "rows_without": 10
    },
    {
+    "page": "hub/pricing.html",
+    "links": 64,
+    "external": 32,
+    "tables": 4,
+    "rows": 25,
+    "rows_with_http": 17,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
     "page": "hub/questions.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 1,
-    "rows": 24,
+    "rows": 27,
     "rows_with_http": 0,
-    "rows_flag_only": 3,
-    "rows_without": 21
+    "rows_flag_only": 4,
+    "rows_without": 23
+   },
+   {
+    "page": "hub/replacement.html",
+    "links": 88,
+    "external": 56,
+    "tables": 3,
+    "rows": 68,
+    "rows_with_http": 55,
+    "rows_flag_only": 2,
+    "rows_without": 11
    },
    {
     "page": "hub/replacements.html",
-    "links": 226,
+    "links": 231,
     "external": 199,
     "tables": 3,
     "rows": 113,
@@ -976,7 +1096,7 @@
    },
    {
     "page": "hub/repo-review.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 3,
     "rows": 24,
@@ -986,7 +1106,7 @@
    },
    {
     "page": "hub/requirements.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 2,
     "rows": 40,
@@ -996,17 +1116,27 @@
    },
    {
     "page": "hub/results.html",
-    "links": 229,
-    "external": 202,
-    "tables": 4,
-    "rows": 201,
-    "rows_with_http": 201,
-    "rows_flag_only": 0,
-    "rows_without": 0
+    "links": 586,
+    "external": 553,
+    "tables": 3,
+    "rows": 282,
+    "rows_with_http": 278,
+    "rows_flag_only": 1,
+    "rows_without": 3
+   },
+   {
+    "page": "hub/signal.html",
+    "links": 33,
+    "external": 1,
+    "tables": 5,
+    "rows": 23,
+    "rows_with_http": 0,
+    "rows_flag_only": 2,
+    "rows_without": 21
    },
    {
     "page": "hub/sources.html",
-    "links": 42,
+    "links": 47,
     "external": 15,
     "tables": 1,
     "rows": 14,
@@ -1016,7 +1146,7 @@
    },
    {
     "page": "hub/strategies.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 3,
     "rows": 20,
@@ -1026,17 +1156,17 @@
    },
    {
     "page": "hub/suggestions.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 2,
-    "rows": 29,
+    "rows": 34,
     "rows_with_http": 0,
     "rows_flag_only": 2,
-    "rows_without": 27
+    "rows_without": 32
    },
    {
     "page": "hub/verification.html",
-    "links": 28,
+    "links": 33,
     "external": 1,
     "tables": 4,
     "rows": 26,
@@ -1045,8 +1175,18 @@
     "rows_without": 24
    },
    {
+    "page": "hub/verified-results.html",
+    "links": 235,
+    "external": 202,
+    "tables": 4,
+    "rows": 201,
+    "rows_with_http": 201,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
     "page": "index.html",
-    "links": 35,
+    "links": 52,
     "external": 1,
     "tables": 0,
     "rows": 0,
@@ -1253,6 +1393,186 @@
     "rows_with_http": 11,
     "rows_flag_only": 0,
     "rows_without": 12
+   },
+   {
+    "page": "ops/correlation.html",
+    "links": 34,
+    "external": 9,
+    "tables": 1,
+    "rows": 9,
+    "rows_with_http": 9,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "ops/depth.html",
+    "links": 195,
+    "external": 169,
+    "tables": 5,
+    "rows": 102,
+    "rows_with_http": 102,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "ops/executive-summary.html",
+    "links": 34,
+    "external": 0,
+    "tables": 2,
+    "rows": 8,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "ops/flagged.html",
+    "links": 39,
+    "external": 0,
+    "tables": 1,
+    "rows": 14,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 14
+   },
+   {
+    "page": "ops/gates.html",
+    "links": 26,
+    "external": 0,
+    "tables": 3,
+    "rows": 25,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 25
+   },
+   {
+    "page": "ops/index.html",
+    "links": 41,
+    "external": 0,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "ops/leaderboard.html",
+    "links": 27,
+    "external": 0,
+    "tables": 2,
+    "rows": 15,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 15
+   },
+   {
+    "page": "ops/lines.html",
+    "links": 57,
+    "external": 26,
+    "tables": 1,
+    "rows": 26,
+    "rows_with_http": 26,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "ops/method.html",
+    "links": 25,
+    "external": 0,
+    "tables": 2,
+    "rows": 17,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 17
+   },
+   {
+    "page": "ops/order.html",
+    "links": 52,
+    "external": 26,
+    "tables": 1,
+    "rows": 26,
+    "rows_with_http": 26,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "ops/props.html",
+    "links": 90,
+    "external": 64,
+    "tables": 3,
+    "rows": 66,
+    "rows_with_http": 64,
+    "rows_flag_only": 0,
+    "rows_without": 2
+   },
+   {
+    "page": "ops/questions.html",
+    "links": 36,
+    "external": 0,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 10
+   },
+   {
+    "page": "ops/repo-review.html",
+    "links": 34,
+    "external": 1,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 1,
+    "rows_flag_only": 0,
+    "rows_without": 7
+   },
+   {
+    "page": "ops/requirements.html",
+    "links": 44,
+    "external": 0,
+    "tables": 1,
+    "rows": 18,
+    "rows_with_http": 0,
+    "rows_flag_only": 1,
+    "rows_without": 17
+   },
+   {
+    "page": "ops/results.html",
+    "links": 59,
+    "external": 32,
+    "tables": 2,
+    "rows": 39,
+    "rows_with_http": 32,
+    "rows_flag_only": 0,
+    "rows_without": 7
+   },
+   {
+    "page": "ops/snapshots.html",
+    "links": 26,
+    "external": 0,
+    "tables": 2,
+    "rows": 79,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 79
+   },
+   {
+    "page": "ops/suggestions.html",
+    "links": 25,
+    "external": 0,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 10
+   },
+   {
+    "page": "ops/verification.html",
+    "links": 27,
+    "external": 0,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 10
    },
    {
     "page": "origin/backtest.html",
@@ -1857,7 +2177,7 @@
    "path": "hub/questions.html",
    "page": "hub/questions.html",
    "kind": "html",
-   "rows": 24
+   "rows": 27
   },
   {
    "family": "requirements",
@@ -1889,7 +2209,7 @@
    "path": "hub/suggestions.html",
    "page": "hub/suggestions.html",
    "kind": "html",
-   "rows": 26
+   "rows": 31
   },
   {
    "family": "flags",
@@ -1905,7 +2225,7 @@
    "path": "hub/flagged.html",
    "page": "hub/flagged.html",
    "kind": "html",
-   "rows": 26
+   "rows": 32
   },
   {
    "family": "strategies",
@@ -1960,7 +2280,7 @@
  "reconciliation": {
   "families": {
    "flags": {
-    "count": 117,
+    "count": 123,
     "modules": {
      "data (0c38f465)": 16,
      "dashboard (7e632805)": 12,
@@ -1970,7 +2290,7 @@
      "root page (3dbc4678)": 14,
      "pages (1a771fcd)": 9,
      "desk (3bf7cc8b)": 10,
-     "hub (e9b492ab)": 26
+     "hub (e9b492ab)": 32
     },
     "id_groups": {
      "F01": {
@@ -3295,6 +3615,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "F-24",
+        "title": "data/hub/standings_2026_thru_wk9.csv is NAMED thru_wk9 but its values match standings INCLUDING the Week-10 Thursday final (WAS 24 @ NYG 21) - the exact deltas were WAS +1W/+24PF/+21PA and NYG +1L/+21PF/+24PA. Values are correct as of 2026-11-14; the filename is misleading. The file also contains a duplicated header row (skipped on read).",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-24",
         "title": "5 of 12 registered strategies (both prop-combo and parlay families, plus the prop single) cannot be tested at all: no prop price and no prop settlement history exists, and no official source publishes either.",
         "status": "LOW",
         "status_norm": "OTHER",
@@ -3303,9 +3633,9 @@
         "source": "check source"
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "OTHER"
       ],
@@ -3319,6 +3649,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "F-25",
+        "title": "No opening-line source is reachable from this sandbox for 2026. nflverse initial_lines.csv covers 2021 (Westgate) only; the nflverse-data release assets redirect to a CDN host this environment cannot fetch. OPEN observations in the price-snapshot store are therefore blank by policy and flagged, not estimated.",
+        "status": "HIGH",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-25",
         "title": "The signal score for the side model is +0.205 points of absolute-error improvement over the naive baseline, with a bootstrap 95% CI of [-1.047, +1.478]. The interval contains zero, so the honest label is INCONCLUSIVE, not 'beats the baseline'. The direction hit rate (62.9%, CI [53.3%, 71.5%]) is a different and weaker claim, and is published next to its own baseline.",
         "status": "LOW",
         "status_norm": "OTHER",
@@ -3327,9 +3667,9 @@
         "source": "check source"
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.01,
+      "same_content": false,
       "statuses": [
        "OTHER"
       ],
@@ -3343,7 +3683,75 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "F-26",
+        "title": "31 of 32 club depth charts transcribed; HOU page did not render a table on 2026-11-14. MIA and BAL publish an EMPTY kicker slot. LA's chart lists a retired player (template error). Co-listed (tied) players are read as sequential depths; the co-list is preserved in the raw transcription.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-26",
         "title": "The store has one snapshot milestone. Every close in it is a reconstructed close (our own number refitted on finals before kickoff), not a captured one, and every open for the live slate is a single fit rather than a before-kickoff capture. The distinction is printed in every row's note column, because a reconstructed close and a captured close are not the same evidence.",
+        "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "different",
+      "min_score": 0.03,
+      "same_content": false,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F27": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-27",
+        "title": "No player-prop price source exists (league or third-party reachable), so prop-combo strategies remain framework-only with UNVERIFIED price cells.",
+        "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-27",
+        "title": "A parallel session independently implemented the same eight market-structure requirements in a second tree (ledger/ with data/ledger/*.csv and its own builder and verifier), and both trees now ship. This is the eighth time this repository has grown a parallel site for the same facts, which is the single largest usability and audit problem here.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F28": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-28",
+        "title": "Correlation values computed at game level use official scores plus PFF closing lines (MARKET-3P). Every value publishes n. Team-level coefficients from the prior session (n=32) are kept and labelled.",
         "status": "LOW",
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
@@ -3578,7 +3986,7 @@
     }
    },
    "questions": {
-    "count": 130,
+    "count": 133,
     "modules": {
      "data (0c38f465)": 12,
      "dashboard (7e632805)": 20,
@@ -3586,7 +3994,7 @@
      "x3lab (e1c332ce)": 20,
      "lab (972ad7a5)": 14,
      "desk (3bf7cc8b)": 25,
-     "hub (e9b492ab)": 24
+     "hub (e9b492ab)": 27
     },
     "id_groups": {
      "Q01": {
@@ -5124,6 +5532,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "Q-20",
+        "title": "Opening-line source",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-20",
         "title": "What a reward may legally be",
         "status": "YES",
         "status_norm": "BLOCKED",
@@ -5149,6 +5567,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "Q-21",
+        "title": "X3-v2 upgrade path",
+        "status": "no",
+        "status_norm": "OTHER",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-21",
         "title": "Whether to keep a total model that loses to a constant",
         "status": "YES",
         "status_norm": "BLOCKED",
@@ -5157,11 +5585,12 @@
         "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
-       "BLOCKED"
+       "BLOCKED",
+       "OTHER"
       ],
       "status_conflict": false
      },
@@ -5173,6 +5602,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "Q-22",
+        "title": "Leaderboard staking weights",
+        "status": "no",
+        "status_norm": "OTHER",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-22",
         "title": "Whether club depth charts are acceptable evidence",
         "status": "no",
         "status_norm": "OTHER",
@@ -5181,9 +5620,9 @@
         "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "OTHER"
       ],
@@ -6994,7 +7433,7 @@
         "status_norm": "DONE",
         "page": "hub/requirements.html",
         "register": "hub/requirements.html",
-        "source": "data/x3/price_store.csv - counts are interpolated from the file at build time, never typed"
+        "source": "data/x3/verified/price_store.csv - counts are interpolated from the file at build time, never typed"
        }
       ],
       "identity": "different",
@@ -7029,7 +7468,7 @@
         "status_norm": "DONE",
         "page": "hub/requirements.html",
         "register": "hub/requirements.html",
-        "source": "data/x3/results_2026.csv - every club's results aggregate to the official standings with 0 mismatches, and the 16 Week-1 box scores match an independent live read"
+        "source": "data/x3/verified/results_2026.csv - every club's results aggregate to the official standings with 0 mismatches, and the 16 Week-1 box scores match an independent live read"
        }
       ],
       "identity": "different",
@@ -7064,7 +7503,7 @@
         "status_norm": "DONE",
         "page": "hub/requirements.html",
         "register": "hub/requirements.html",
-        "source": "data/x3/markets.json origination_order; hub/markets.html prints the order per row and the moneyline is computed from the same margin model"
+        "source": "data/x3/verified/markets.json origination_order; hub/markets.html prints the order per row and the moneyline is computed from the same margin model"
        }
       ],
       "identity": "different",
@@ -7112,7 +7551,7 @@
         "status_norm": "DONE",
         "page": "hub/requirements.html",
         "register": "hub/requirements.html",
-        "source": "hub/leaderboard.html + data/x3/strategies.json scoring_contract"
+        "source": "hub/leaderboard.html + data/x3/verified/strategies.json scoring_contract"
        }
       ],
       "identity": "same",
@@ -8342,7 +8781,7 @@
     }
    },
    "suggestions": {
-    "count": 116,
+    "count": 121,
     "modules": {
      "data (0c38f465)": 10,
      "dashboard (7e632805)": 16,
@@ -8351,7 +8790,7 @@
      "root page (3dbc4678)": 10,
      "lab (972ad7a5)": 7,
      "desk (3bf7cc8b)": 24,
-     "hub (e9b492ab)": 26
+     "hub (e9b492ab)": 31
     },
     "id_groups": {
      "S01": {
@@ -9563,6 +10002,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "S-20",
+        "title": "CI-side nflverse ingest",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-20",
         "title": "Price parlay legs from one joint simulation rather than a product of marginals",
         "status": "PROPOSED",
         "status_norm": "OPEN",
@@ -9571,9 +10020,9 @@
         "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "OPEN"
       ],
@@ -9587,6 +10036,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "S-21",
+        "title": "Auto weekly cadence",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-21",
         "title": "Replace club depth charts with game-day participation once captured",
         "status": "PROPOSED",
         "status_norm": "OPEN",
@@ -9595,9 +10054,9 @@
         "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "OPEN"
       ],
@@ -9611,6 +10070,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "S-22",
+        "title": "EPA upgrade for X3-v3",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-22",
         "title": "Publish a weekly movement digest from the price store",
         "status": "PROPOSED",
         "status_norm": "OPEN",
@@ -9619,9 +10088,9 @@
         "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "OPEN"
       ],
@@ -9635,6 +10104,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "S-23",
+        "title": "Correlation-aware staking caps",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-23",
         "title": "Keep the leaderboard paper-only until a staking contract and a legal answer exist",
         "status": "PROPOSED",
         "status_norm": "OPEN",
@@ -9643,9 +10122,9 @@
         "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.08,
+      "same_content": false,
       "statuses": [
        "OPEN"
       ],
@@ -9659,6 +10138,16 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "S-24",
+        "title": "Prop data decision",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-24",
         "title": "Make snapshot files write-once and verify them by hash in CI",
         "status": "PROPOSED",
         "status_norm": "OPEN",
@@ -9667,9 +10156,9 @@
         "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "OPEN"
       ],
@@ -11599,7 +12088,7 @@
    "cmd": "python3 tools/check_links.py",
    "exit": 0,
    "tail": [
-    "OK \u2014 13 pages, 353 links checked, no broken internal links."
+    "OK \u2014 13 pages, 370 links checked, no broken internal links."
    ]
   },
   {
@@ -11798,7 +12287,7 @@
    "id": "X-14",
    "severity": "Medium",
    "area": "Rows without source or flag",
-   "finding": "875 table rows across 76 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: origin/snapshots.html (78), hub/leaderboard.html (41), hub/requirements.html (35), hub/index.html (29), hub/suggestions.html (27), hub/verification.html (24), hub/repo-review.html (22), verification-hub/index.html (22).",
+   "finding": "1205 table rows across 98 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: ops/snapshots.html (79), origin/snapshots.html (78), hub/leaderboard.html (41), hub/requirements.html (35), hub/index.html (34), hub/suggestions.html (32), ops/gates.html (25), hub/verification.html (24).",
    "evidence": [
     "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json"
    ],
