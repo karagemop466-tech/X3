@@ -103,7 +103,7 @@ def build(B, J, C, X):
                        "a fair line is not a prediction of the score"]],
                      kind="meta",
                      note="Recomputed by tools/markets_engine.py on every build from "
-                          "data/x3/results.json. No number on this page is typed by hand.")
+                          "data/x3/verified/results.json. No number on this page is typed by hand.")
 
         order = table(["Step", "Market", "How it is produced", "Why in this order"],
                       [["1", "Side (handicap)",
@@ -172,7 +172,7 @@ checked {AS_OF}).</p>
                       ["rows with a close still PENDING", f"{st['closing_pending']}",
                        "the unplayed slate: the close does not exist yet and is never imputed"],
                       ["snapshot files written", f"{st['snapshots_written']}",
-                       "one file per build date in data/x3/snapshots/<date>.json, append-only"],
+                       "one file per build date in data/x3/verified/snapshots/<date>.json, append-only"],
                       ["open-to-close pairs we can measure",
                        f"{mv['pairs_recorded']}",
                        f"mean |movement| {mv['mean_abs_movement_points']} points, max "
@@ -182,7 +182,7 @@ checked {AS_OF}).</p>
                        "UNVERIFIED - no official NFL price publication exists (F-18), so there is "
                        "nothing to snapshot"]],
                      kind="meta",
-                     note="Counts are read from data/x3/markets.json at build time.")
+                     note="Counts are read from data/x3/verified/markets.json at build time.")
 
         demo = []
         for r in markets["live"][:6]:

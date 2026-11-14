@@ -19,8 +19,8 @@ Origination order is the requirement, and it is also the order the arithmetic al
 
 Price snapshot store (requirement 2 of the brief):
 
-  data/x3/snapshots/<date>.json   one file per capture run, append-only
-  data/x3/price_store.csv         the flattened store: one row per market per snapshot
+  data/x3/verified/snapshots/<date>.json   one file per capture run, append-only
+  data/x3/verified/price_store.csv         the flattened store: one row per market per snapshot
 
 Definitions, fixed here and used everywhere:
 
@@ -53,7 +53,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import x3_model as M  # noqa: E402
 
-OUT = os.path.join(ROOT, "data", "x3")
+OUT = os.path.join(ROOT, "data", "x3", "verified")
 AS_OF = "2026-11-14"
 WEEK = 10
 SIGMA_FLOOR = 10.0          # never price a market with an unrealistically tight sigma

@@ -15,7 +15,7 @@ the missing artefact named. It is never estimated to fill the table.
 
 Two independent official inputs:
 
-  data/x3/results.json      one row per game, reconciled to the official standings
+  data/x3/verified/results.json      one row per game, reconciled to the official standings
                             (tools/results_feed.py, 0 mismatches on 32 clubs)
   data/hub/standings_2026_thru_wk9.csv   official standings, transcribed by another session
 
@@ -32,7 +32,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import x3_model as M  # noqa: E402
 
-OUT = os.path.join(ROOT, "data", "x3")
+OUT = os.path.join(ROOT, "data", "x3", "verified")
 SRC_RESULTS = "https://www.nfl.com/schedules/2026/by-week/week-N"
 SRC_STANDINGS = "https://www.nfl.com/standings/league/2026/REG"
 

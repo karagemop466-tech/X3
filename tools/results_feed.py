@@ -27,8 +27,8 @@ Inputs are read-only:
   data/desk/injuries.json                   report availability per week 8/9/10
 
 Outputs:
-  data/x3/results_2026.csv     one row per game, every row source-linked
-  data/x3/results.json         the same rows plus the check record
+  data/x3/verified/results_2026.csv     one row per game, every row source-linked
+  data/x3/verified/results.json         the same rows plus the check record
 
 Run: python3 tools/results_feed.py
 """
@@ -40,7 +40,7 @@ import os
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "data", "x3")
+OUT = os.path.join(ROOT, "data", "x3", "verified")
 
 SRC_WEEK = "https://www.nfl.com/schedules/2026/by-week/week-{w}"
 SRC_STANDINGS = "https://www.nfl.com/standings/league/2026/REG"

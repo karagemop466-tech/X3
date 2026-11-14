@@ -36,16 +36,16 @@ REQ2 = [
      "market we originate",
      "Every originated market has an open and a close row; a close that does not exist yet is "
      "PENDING, never imputed", "VERIFIED",
-     "data/x3/price_store.csv - counts are interpolated from the file at build time, never typed"),
+     "data/x3/verified/price_store.csv - counts are interpolated from the file at build time, never typed"),
     ("R-27", "Markets", "Verified results feed so backtests and ROI can be computed at all",
      "Results reconcile to an independent official source with zero mismatches, or the build fails",
      "VERIFIED",
-     "data/x3/results_2026.csv - every club's results aggregate to the official standings with 0 "
+     "data/x3/verified/results_2026.csv - every club's results aggregate to the official standings with 0 "
      "mismatches, and the 16 Week-1 box scores match an independent live read"),
     ("R-28", "Markets", "Originate the side first, then the total, then the moneyline",
      "The origination order is explicit in the data and the moneyline is derived from the side "
      "model, not priced independently", "VERIFIED",
-     "data/x3/markets.json origination_order; hub/markets.html prints the order per row and the "
+     "data/x3/verified/markets.json origination_order; hub/markets.html prints the order per row and the "
      "moneyline is computed from the same margin model"),
     ("R-29", "Markets", "Publish fair line, market line and difference as separate columns",
      "Three distinct columns; a blank market cell carries a status and a reason", "VERIFIED",
@@ -53,7 +53,7 @@ REQ2 = [
      "flagged (F-18)"),
     ("R-30", "Leaderboard", "Separate signal from staking so a lucky staking run cannot mask a bad "
      "signal", "Two columns, two data sources, and a promotion rule that requires both",
-     "VERIFIED", "hub/leaderboard.html + data/x3/strategies.json scoring_contract"),
+     "VERIFIED", "hub/leaderboard.html + data/x3/verified/strategies.json scoring_contract"),
     ("R-31", "Depth", "Track the depth of the replacement, not just the fact of a replacement",
      "Each absence names the replacement and his chart tier, or is published UNVERIFIED",
      "VERIFIED", "hub/replacements.html - each absence either names a replacement with his chart "
@@ -150,7 +150,7 @@ SUG2 = [
     ("S-15", "Record one weekly price snapshot by hand, with a timestamp and a hash, and label it "
      "as such",
      "A licensed feed is the clean answer but it is a purchase. A single recorded snapshot per "
-     "week (one book, one time, screenshot plus the numbers typed into data/x3/snapshots/) costs "
+     "week (one book, one time, screenshot plus the numbers typed into data/x3/verified/snapshots/) costs "
      "minutes and immediately makes the difference column meaningful. It must be labelled "
      "MANUAL-RECORDED, not official.",
      "Critical", "Low (one file a week)", "Medium - a hand-entered price is an unverified input "
@@ -271,7 +271,7 @@ FLAGS2 = [
      "slate is a single fit rather than a before-kickoff capture. The distinction is printed in "
      "every row's note column, because a reconstructed close and a captured close are not the "
      "same evidence.",
-     "https://github.com/karagemop466-tech/X3/blob/main/data/x3/price_store.csv",
+     "https://github.com/karagemop466-tech/X3/blob/main/data/x3/verified/price_store.csv",
      "S-17 / S-24: schedule the capture and hash the files."),
     ("F-27", "MEDIUM", "Repository duplication",
      "A parallel session independently implemented the same eight market-structure requirements in a "

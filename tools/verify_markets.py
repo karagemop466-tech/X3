@@ -37,7 +37,7 @@ import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-D = os.path.join(ROOT, "data", "x3")
+D = os.path.join(ROOT, "data", "x3", "verified")
 HUB = os.path.join(ROOT, "hub")
 fails: list[str] = []
 

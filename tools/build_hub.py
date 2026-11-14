@@ -27,11 +27,11 @@ import hub_content as C  # noqa: E402
 import x3_content as X  # noqa: E402
 
 J = lambda n: json.load(open(os.path.join(HUB, "data", n), encoding="utf-8"))
-X3 = os.path.join(ROOT, "data", "x3")
+X3 = os.path.join(ROOT, "data", "x3", "verified")
 
 
 def JX(n):
-    """load a derived file from data/x3/ (this session's market/results/depth artefacts)"""
+    """load a derived file from data/x3/verified/ (this session's market/results/depth artefacts)"""
     return json.load(open(os.path.join(X3, n), encoding="utf-8"))
 teams = J("teams.json")
 lines = J("lines.json")

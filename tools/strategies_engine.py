@@ -49,7 +49,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import x3_model as M  # noqa: E402
 
-OUT = os.path.join(ROOT, "data", "x3")
+OUT = os.path.join(ROOT, "data", "x3", "verified")
 SRC_RESULTS = "https://www.nfl.com/schedules/2026/by-week/week-N"
 SEED = 20261114
 

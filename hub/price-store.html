@@ -27,11 +27,11 @@ a market price: that column is blank because no official source publishes one.</
 <tr><td>markets in the store</td><td>786</td><td>one row per market per side, across games we have originated</td></tr>
 <tr><td>rows with a recorded close</td><td>630</td><td>every played game, refitted on all finals dated before kickoff</td></tr>
 <tr><td>rows with a close still PENDING</td><td>156</td><td>the unplayed slate: the close does not exist yet and is never imputed</td></tr>
-<tr><td>snapshot files written</td><td>1</td><td>one file per build date in data/x3/snapshots/<date>.json, append-only</td></tr>
+<tr><td>snapshot files written</td><td>1</td><td>one file per build date in data/x3/verified/snapshots/<date>.json, append-only</td></tr>
 <tr><td>open-to-close pairs we can measure</td><td>420</td><td>mean |movement| 0.3643 points, max 5.5; 138 of 420 moved at all</td></tr>
 <tr><td>market open / close</td><td></td><td>UNVERIFIED - no official NFL price publication exists (F-18), so there is nothing to snapshot</td></tr>
 </tbody></table>
-<p class="note">Counts are read from data/x3/markets.json at build time.</p>
+<p class="note">Counts are read from data/x3/verified/markets.json at build time.</p>
 </div>
 <h2>Open and close, defined before anything is measured</h2>
 <div class="tblwrap"><table class="k-meta">

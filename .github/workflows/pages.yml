@@ -98,8 +98,8 @@ jobs:
           python3 tools/depth_engine.py
           python3 tools/strategies_engine.py
           python3 tools/verify_markets.py
-          git diff --exit-code -- data/x3 || {
-            echo '::error::data/x3/* is not the current output of the market engines - run them and commit the result.'
+          git diff --exit-code -- data/x3/verified || {
+            echo '::error::data/x3/verified/* is not the current output of the market engines - run them and commit the result.'
             exit 1; }
 
       - name: Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced

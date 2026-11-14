@@ -37,7 +37,7 @@ import json
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "data", "x3")
+OUT = os.path.join(ROOT, "data", "x3", "verified")
 SRC_INJ = "https://www.nfl.com/injuries/league/2026/reg10"
 AS_OF = "2026-11-14"
 
