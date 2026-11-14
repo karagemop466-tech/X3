@@ -128,7 +128,14 @@ def _flag_ids():
     m = importlib.util.module_from_spec(spec)
     sys.modules["hub_content"] = m
     spec.loader.exec_module(m)
-    return {f[0] for f in m.FLAGS}
+    ids = {f[0] for f in m.FLAGS}
+    # the X3-v2 session extends the register additively (tools/x3_content2.py) at build time
+    spec2 = importlib.util.spec_from_file_location("x3_content2", os.path.join(ROOT, "tools",
+                                                                               "x3_content2.py"))
+    m2 = importlib.util.module_from_spec(spec2)
+    spec2.loader.exec_module(m2)
+    ids |= {f[0] for f in m2.NEW_FLAGS}
+    return ids
 
 
 try:

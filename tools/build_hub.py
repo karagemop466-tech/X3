@@ -1150,11 +1150,21 @@ document.querySelectorAll('input.filt').forEach(function(inp){
 
 
 def main():
+    # ---- X3-v2 extension (session arena/873c7396-x3): additive pages + register rows
+    import x3_content2 as X2
+    X2.register(esc, badge, link, table)
+    C.FLAGS.extend(X2.NEW_FLAGS)
+    C.Q.extend(X2.NEW_QUESTIONS)
+    C.SUG.extend(X2.NEW_SUGGESTIONS)
+    NAV.extend(X2.NAV_EXTRA)
     # extra pages that need the helpers defined above
     build_prereg()
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
     p_injuries(); p_depth(); p_leader(); p_req(); p_questions(); p_suggestions()
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
+    for fn in X2.PAGES:  # results / pricing / origination / signal / replacement
+        fname, title, intro, body = fn()
+        page(fname + ".html", title, intro, body, fname)
     with open(os.path.join(HUB, "assets", "hub.css"), "w", encoding="utf-8") as f:
         f.write(CSS)
     with open(os.path.join(HUB, "assets", "hub.js"), "w", encoding="utf-8") as f:

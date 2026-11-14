@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price-snapshot store - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html" class=on">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html"">Replacement depth</a></nav>
+<main>
+<h1>Price-snapshot store</h1>
+<p class="lede">Opening and closing numbers for every market we originate, plus our fair line - stored as observations with source, timestamp and observation type. Opening lines have no reachable 2026 source, so those cells stay blank and flagged rather than being estimated.</p>
+<h2>What the store records</h2><div class="tblwrap"><table class="k-meta">
+<caption>obs_type catalogue - OPEN (opening line) observations are schema-supported but left blank for 2026: n...</caption>
+<thead><tr><th>Observation</th><th>Meaning</th><th>Rows in store</th><th>Policy</th></tr></thead><tbody>
+<tr><td>OPEN</td><td>opening line (before the week)</td><td>0</td><td>BLANK BY POLICY - no reachable 2026 source (flag F-25); 2021 Westgate pilot committed</td></tr>
+<tr><td>CURRENT</td><td>latest published market line for unplayed games</td><td>104</td><td>PFF via nflverse; captured_at = source commit timestamp</td></tr>
+<tr><td>CLOSE</td><td>closing market line for completed games</td><td>548</td><td>PFF via nflverse (MARKET-3P)</td></tr>
+<tr><td>MODEL</td><td>our originated fair line (X3-v2)</td><td>1304</td><td>DERIVED - scripts/x3/model.py, order side->total->ML</td></tr>
+</tbody></table>
+<p class="note">OPEN (opening line) observations are schema-supported but left blank for 2026: no opening-line source is reachable from this sandbox (nflverse initial_lines.csv covers 2021 Westgate only; release-asset feeds are CDN-blocked). Opening capture starts once an owner-approved price source exists (Q-01).</p>
+</div><div class="tblwrap"><table class="k-meta">
+<caption>Store coverage by market (side, total, moneyline home/away)</caption>
+<thead><tr><th>Market</th><th>CLOSE</th><th>CURRENT</th><th>MODEL</th></tr></thead><tbody>
+<tr><td>SPREAD_HOME</td><td>137</td><td>26</td><td>326</td></tr>
+<tr><td>TOTAL</td><td>137</td><td>26</td><td>326</td></tr>
+<tr><td>ML_HOME</td><td>137</td><td>26</td><td>326</td></tr>
+<tr><td>ML_AWAY</td><td>137</td><td>26</td><td>326</td></tr>
+</tbody></table>
+</div><h2>Fair line, market line, difference - Week 10 (the required columns)</h2><div class="tblwrap"><table class="k-data">
+<caption>DIFF = fair minus market. Blank market cells are games whose lines PFF had not published at the source commit (flagged, never inferred).</caption>
+<thead><tr><th>When</th><th>Matchup</th><th>Fair spread (H)</th><th>Mkt spread (H)</th><th>Diff</th><th>Fair total</th><th>Mkt total</th><th>Diff</th><th>Fair ML (H/A)</th><th>Mkt ML (H/A)</th><th>Origination order</th><th>Sources</th></tr></thead><tbody>
+<tr><td>W10 2026-11-12</td><td>WAS at NYG</td><td><b>-1</b></td><td>-1.5</td><td>+0.5</td><td><b>42</b></td><td>40.5</td><td>+1.5</td><td><b>-111</b> / +111</td><td>-122 / +102</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>BUF at NYJ</td><td><b>+3.5</b></td><td>+8.5</td><td>-5</td><td><b>43.5</b></td><td>50.5</td><td>-7</td><td><b>+146</b> / -146</td><td>+330 / -425</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>CAR at NO</td><td><b>-3</b></td><td>-2.5</td><td>-0.5</td><td><b>44</b></td><td>48.5</td><td>-4.5</td><td><b>-140</b> / +140</td><td>-135 / +114</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>HOU at CLE</td><td><b>+2.5</b></td><td>+4.5</td><td>-2</td><td><b>41</b></td><td>40.5</td><td>+0.5</td><td><b>+136</b> / -136</td><td>+195 / -238</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>JAX at TEN</td><td><b>+0</b></td><td>+10.5</td><td>-10.5</td><td><b>42.5</b></td><td>46.5</td><td>-4</td><td><b>-102</b> / +102</td><td>+525 / -750</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>KC at ATL</td><td><b>+3.5</b></td><td>+3</td><td>+0.5</td><td><b>45</b></td><td>47.5</td><td>-2.5</td><td><b>+148</b> / -148</td><td>+142 / -170</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>LA at ARI</td><td><b>+3</b></td><td>+9.5</td><td>-6.5</td><td><b>42.5</b></td><td>39.5</td><td>+3</td><td><b>+141</b> / -141</td><td>+380 / -500</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>MIA at IND</td><td><b>-2.5</b></td><td>-4.5</td><td>+2</td><td><b>44.5</b></td><td>37.5</td><td>+7</td><td><b>-134</b> / +134</td><td>-218 / +180</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>MIN at GB</td><td><b>-3</b></td><td>-2.5</td><td>-0.5</td><td><b>46.5</b></td><td>42.5</td><td>+4</td><td><b>-136</b> / +136</td><td>-148 / +124</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>NE at DET</td><td><b>+8.5</b></td><td>-2.5</td><td>+11</td><td><b>46</b></td><td>49.5</td><td>-3.5</td><td><b>+263</b> / -263</td><td>-148 / +124</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>PIT at CIN</td><td><b>+4.5</b></td><td>-3.5</td><td>+8</td><td><b>45.5</b></td><td>49.5</td><td>-4</td><td><b>+162</b> / -162</td><td>-180 / +150</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>SEA at LV</td><td><b>+5.5</b></td><td>+6.5</td><td>-1</td><td><b>43.5</b></td><td>40.5</td><td>+3</td><td><b>+188</b> / -188</td><td>+245 / -305</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-15</td><td>SF at DAL</td><td><b>-1.5</b></td><td>+4.5</td><td>-6</td><td><b>44.5</b></td><td>55.5</td><td>-11</td><td><b>-116</b> / +116</td><td>+170 / -205</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+<tr><td>W10 2026-11-16</td><td>LAC at BAL</td><td><b>-2.5</b></td><td>-4.5</td><td>+2</td><td><b>47</b></td><td>38.5</td><td>+8.5</td><td><b>-131</b> / +131</td><td>-218 / +180</td><td>1-side,2-total,3-moneyline</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3/model.py" target="_blank" rel="noopener">model</a> <a class="src" href="https://github.com/nflverse/nfldata/blob/master/data/games.csv" target="_blank" rel="noopener">market</a></td></tr>
+</tbody></table>
+</div><h2>Full store</h2><div class="tblwrap"><table class="k-meta">
+<caption>Committed artifacts</caption>
+<thead><tr><th>Artifact</th><th>Rows</th><th>What it holds</th></tr></thead><tbody>
+<tr><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/price_snapshots_2026.csv" target="_blank" rel="noopener">price_snapshots_2026.csv</a></td><td>1956</td><td>every 2026 market: SPREAD_HOME / TOTAL / ML_HOME / ML_AWAY x CLOSE/CURRENT/MODEL</td></tr>
+<tr><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/opening_lines_2021_pilot.csv" target="_blank" rel="noopener">opening_lines_2021_pilot.csv</a></td><td>544</td><td>2021 Westgate openers - schema pilot proving the OPEN path</td></tr>
+<tr><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/source/README.md" target="_blank" rel="noopener">source README</a></td><td>-</td><td>provenance, commit sha, fetch timestamps</td></tr>
+</tbody></table>
+</div>
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>
