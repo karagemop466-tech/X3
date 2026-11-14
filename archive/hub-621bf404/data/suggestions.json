@@ -12,13 +12,12 @@
    "area": "Site structure",
    "problem": "The same fact exists in up to five places across eight site trees, so two reviewers can quote different numbers for one question and both be right about their own page.",
    "options": [
-    "A) Declare this hub canonical and link every other tree from one labelled archive page (done this session as a first step); B) additionally delete or physically move the legacy trees under /archive; C) leave as is.",
-    "Recommendation: A now, B as a single follow-up cleanup PR."
+    "A) fold this tree's registers (flags, questions, suggestions, correlation register, depth overlay) into the canonical hub's data files and retire the archive copy; B) keep two trees but rename the directory to match its real author and cross-link them in the nav; C) leave as is. Recommendation: B now (zero risk, honest labelling), A in one follow-up PR once the owner rules on S-01"
    ],
    "impact": "High",
    "effort": "Low (A) / Medium (B)",
    "risk": "A is additive and reversible; B touches files owned by other sessions and needs the integration role",
-   "status": "Proposed (A delivered, B open)",
+   "status": "Partly overtaken by events: a second integration session merged its own hub/ as canonical and relocated this tree verbatim to archive/hub-621bf404/ (FLG-25). The remaining decision is whether to fold these registers into the canonical hub or keep two trees",
    "evidence": "https://github.com/karagemop466-tech/X3/tree/main"
   },
   {
@@ -278,7 +277,7 @@
    "impact": "High",
    "effort": "Done",
    "risk": "diffs depend on the other tree's schema, so a schema change shows up as a failure rather than silent drift",
-   "status": "Done this session (VER-03, VER-19, VER-20, VER-21 all run inside the build/check)",
+   "status": "Done this session for injuries, standings, the game log and the depth overlay (VER-03, VER-19, VER-20, VER-21 all run in the build); the same mechanism is what should merge the two competing hubs",
    "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/asof.json"
   }
  ]

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verification log &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a' class="on"'ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Verification log</h1>
+<p class="note">Checks that were actually executed in this session, with the command or comparison that produced the result. 'Method' is written so a person can repeat it; 'Result' is the observed output, not a restatement of intent.</p>
+<p>16 checks recorded: 12 pass, 2 pass-with-findings, 2 pending or not verifiable by design.</p>
+<table class=""><thead><tr>
+<th>#</th>
+<th>Target</th>
+<th>Method</th>
+<th>Result</th>
+<th>Status</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>VER-01</td><td>Injury report completeness</td><td>fetch the official Week 10 report (all 8 chunks), transcribe every row, count rows and designations</td><td>345 rows across 28 clubs; 66 Out, 10 Doubtful, 84 Questionable, 185 undesignated; the 4 clubs on bye publish no row (CHI, DEN, PHI, TB)</td><td>PASS</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>VER-02</td><td>Status vocabulary</td><td>assert no row has a game status outside {Out, Doubtful, Questionable, blank}</td><td>0 violations</td><td>PASS</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>VER-03</td><td>Independent reproduction of the repo&#x27;s existing snapshot</td><td>row-by-row set comparison of hub/data/injuries_wk10_2026-11-14.csv against docs/data/injury-2026-week10.csv on (club, player) and (practice, game status)</td><td>345/345 membership identical, 344/345 rows identical; 1 difference: KC DT Omarr Norman-Lott practice status Limited (repo) vs Did not participate (live) - game status Out in both</td><td>PASS with 1 drift recorded</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/docs/data/injury-2026-week10.csv">SRC-16</a>, <a href="flagged.html">FLG-03</a></td></tr>
+<tr><td>VER-04</td><td>Standings internal consistency</td><td>sum W, sum L, sum T and sum PF/PA across 32 clubs; per club check games = W+L+T = home + road, net = PF-PA, pct = W/(W+L)</td><td>computed at build time and printed on hub/verification.html; failures abort the build</td><td>PASS</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>VER-05</td><td>Correlations recomputed and compared with a prior published claim</td><td>Pearson r on 32 clubs from the official standings, two denominator conventions, compared with dashboard/data/correlations.json</td><td>this session: ++0.7001 / -0.6639 / ++0.8794 / ++0.3506; prior claim: +0.6984 / -0.6636 / +0.8781 / +0.3501; agreement to about 0.002, no exact match under either convention, so the prior figures come from a different snapshot</td><td>REPRODUCED with drift flagged</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="flagged.html">FLG-13</a></td></tr>
+<tr><td>VER-06</td><td>Slate completeness</td><td>assert 14 games x 2 + 4 byes = 32 distinct clubs, each appearing once, and each game id matches the official game-page slug pattern</td><td>32/32 clubs accounted for, no duplicate, all 14 game URLs follow the league pattern</td><td>PASS</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">SRC-03</a></td></tr>
+<tr><td>VER-07</td><td>Non-injury absences separated</td><td>count rows whose injury text begins with &#x27;Not injury related&#x27; (rest or personal matter) and confirm they are kept in availability but excluded from injury-risk weighting</td><td>4 rows identified and excluded from injury-risk features; all still counted as unavailable</td><td>PASS</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>VER-08</td><td>Cross-tree standings diff</td><td>compare hub/data/standings_2026.csv with dashboard/data/standings.json on every shared field, after aliasing LA-&gt;LAR and ARI-&gt;AZ</td><td>31 of 32 clubs identical on all fields; 1 field mismatch: TB division record 1-2-0 in the prior tree vs 2-0-0 on the official page (official value also agrees with that row&#x27;s 1.000 division percentage)</td><td>PRIOR DATA ERROR CONFIRMED</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="flagged.html">FLG-18</a></td></tr>
+<tr><td>VER-09</td><td>Determinism</td><td>run scripts/build_hub.py twice, sha256 the generated tree</td><td>identical digest on both runs; any timestamp in output is taken from the stored as_of field, never from the clock</td><td>PASS</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/build_hub.py">github.com</a></td></tr>
+<tr><td>VER-10</td><td>Broken links</td><td>scripts/check_hub.py: every href and src in hub/*.html and index.html resolved against the filesystem and against the published URL set</td><td>768 internal references checked, 0 broken</td><td>PASS</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/check_hub.py">github.com</a></td></tr>
+<tr><td>VER-11</td><td>Row-source rule</td><td>every rendered data row must contain either a link to an approved official host or an explicit UNVERIFIED marker</td><td>671/671 rendered table rows carry a source link or an explicit UNVERIFIED marker; 403 of them link to an official NFL host on the data pages; 250 cells are blank with an UNVERIFIED badge; the build aborts otherwise</td><td>PASS</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/check_hub.py">github.com</a></td></tr>
+<tr><td>VER-12</td><td>Deploy and live rendering</td><td>after merge: Pages API status, then fetch each hub page from the published URL and compare its length against the built file</td><td>recorded in COORDINATION.md after deploy</td><td>PENDING at build time</td><td><a href="https://api.github.com/repos/karagemop466-tech/X3/pages">SRC-14</a></td></tr>
+<tr><td>VER-13</td><td>Academic citations</td><td>search-verified the two statistical references used for gates G-06 and G-07</td><td>SSRN 2460551 = Deflated Sharpe Ratio, J. Portfolio Mgmt 40(5):94-107 (2014); SSRN 2326253 = Probability of Backtest Overfitting, CSCV method, later J. Computational Finance 20(4)</td><td>PASS</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551">SRC-10</a>, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253">SRC-11</a></td></tr>
+<tr><td>VER-14</td><td>Legal question left open, deliberately</td><td>attempted to locate a regulator page for the owner&#x27;s jurisdiction; the specific page tried returned 404 and the environment&#x27;s reported country conflicts with a prior session&#x27;s assumption</td><td>no legal claim is made anywhere on the site; rewards stay notional and blank</td><td>NOT VERIFIED (by design)</td><td><a href="flagged.html">FLG-14</a></td></tr>
+<tr><td>VER-15</td><td>Thursday result and the standings lag</td><td>fetch the game page and compare its final score with the standings module on the same page and on the league standings page</td><td>game page: Commanders 24, Giants 21, Final, MetLife Stadium; standings on both pages still show WAS 3-5-1 and NYG 5-3-1, so the module excludes the completed game; the Week 5 tie between them (27-27) is the only tie in the league and it reconciles with sum T = 2 across 32 clubs</td><td>PASS, lag documented</td><td><a href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10">SRC-04</a>, <a href="flagged.html">FLG-02</a></td></tr>
+<tr><td>VER-16</td><td>Injury-type continuity spot check against a second official page</td><td>for 8 players marked Out or Questionable in Week 10, check the official Week 9 injury-report article for the same player and injury type</td><td>8 of 8 corroborated with the same body part: DET Mays (ankle), Joseph (knee), Reed (hip), Wonnum (concussion, now undesignated in Wk10), KC Norman-Lott (knee), Woods (neck), ATL Branch (hamstring), CIN Dugger (quadricep)</td><td>PASS</td><td><a href="https://www.nfl.com/news/nfl-week-9-injury-report-2026-season">SRC-05</a></td></tr>
+</tbody></table>
+<h2>Build integrity</h2><ul><li>standings consistency: PASS</li><li>derived snapshot digest: <code>36593034b8f71a79</code></li></ul>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
+  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
+  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,407 @@
+{
+ "clubs_in_chart": [
+  "ATL",
+  "AZ",
+  "BAL",
+  "BUF",
+  "CAR",
+  "CHI",
+  "CIN",
+  "CLE",
+  "DAL",
+  "DEN",
+  "DET",
+  "GB",
+  "IND",
+  "JAX",
+  "KC",
+  "LAC",
+  "LAR",
+  "LV",
+  "MIA",
+  "MIN",
+  "NE",
+  "NO",
+  "NYG",
+  "NYJ",
+  "PHI",
+  "PIT",
+  "SEA",
+  "SF",
+  "TB",
+  "TEN",
+  "WAS"
+ ],
+ "charts_total": 31,
+ "charts_undated": 26,
+ "clubs_in_week10_slate": 31,
+ "chart_missing": [
+  "HOU"
+ ],
+ "teams": {
+  "ATL": {
+   "backup_forced": [
+    {
+     "player": "Divine Deablo",
+     "pos": "LB",
+     "slot": "ILB",
+     "status": "Doubtful"
+    }
+   ],
+   "unverified_depth": 0
+  },
+  "AZ": {
+   "backup_forced": [
+    {
+     "player": "Hjalte Froholdt",
+     "pos": "C",
+     "slot": "C",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 2
+  },
+  "BAL": {
+   "backup_forced": [],
+   "unverified_depth": 0
+  },
+  "BUF": {
+   "backup_forced": [
+    {
+     "player": "Spencer Brown",
+     "pos": "T",
+     "slot": "RT",
+     "status": "Doubtful"
+    }
+   ],
+   "unverified_depth": 2
+  },
+  "CAR": {
+   "backup_forced": [
+    {
+     "player": "Bobby Okereke",
+     "pos": "LB",
+     "slot": "LB (2)",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 4
+  },
+  "CIN": {
+   "backup_forced": [],
+   "unverified_depth": 3
+  },
+  "CLE": {
+   "backup_forced": [],
+   "unverified_depth": 1
+  },
+  "DAL": {
+   "backup_forced": [
+    {
+     "player": "Donovan Ezeiruaku",
+     "pos": "LB",
+     "slot": "OLB",
+     "status": "Out"
+    },
+    {
+     "player": "Jake Ferguson",
+     "pos": "TE",
+     "slot": "TE",
+     "status": "Out"
+    },
+    {
+     "player": "P.J. Locke",
+     "pos": "S",
+     "slot": "S",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 2
+  },
+  "DET": {
+   "backup_forced": [
+    {
+     "player": "Cade Mays",
+     "pos": "C",
+     "slot": "C",
+     "status": "Out"
+    },
+    {
+     "player": "D.J. Reed",
+     "pos": "CB",
+     "slot": "CB",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 1
+  },
+  "GB": {
+   "backup_forced": [
+    {
+     "player": "Zaire Franklin",
+     "pos": "LB",
+     "slot": "LB",
+     "status": "Doubtful"
+    },
+    {
+     "player": "Josh Jacobs",
+     "pos": "RB",
+     "slot": "RB",
+     "status": "Out"
+    },
+    {
+     "player": "Sean Rhyan",
+     "pos": "C",
+     "slot": "C",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 3
+  },
+  "HOU": {
+   "backup_forced": [],
+   "unverified_depth": 11
+  },
+  "IND": {
+   "backup_forced": [
+    {
+     "player": "Jaylon Carlies",
+     "pos": "LB",
+     "slot": "WLB",
+     "status": "Out"
+    },
+    {
+     "player": "Akeem Davis-Gaither",
+     "pos": "LB",
+     "slot": "MLB",
+     "status": "Out"
+    },
+    {
+     "player": "Luke Rhodes",
+     "pos": "LS",
+     "slot": "LS",
+     "status": "Out"
+    },
+    {
+     "player": "Jalen Travis",
+     "pos": "T",
+     "slot": "RT",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 1
+  },
+  "JAX": {
+   "backup_forced": [
+    {
+     "player": "Jordan Davis",
+     "pos": "DT",
+     "slot": "NT",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 2
+  },
+  "KC": {
+   "backup_forced": [
+    {
+     "player": "Jaylon Moore",
+     "pos": "T",
+     "slot": "RT",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 2
+  },
+  "LAC": {
+   "backup_forced": [],
+   "unverified_depth": 0
+  },
+  "LAR": {
+   "backup_forced": [
+    {
+     "player": "Steve Avila",
+     "pos": "G",
+     "slot": "LG",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 1
+  },
+  "LV": {
+   "backup_forced": [],
+   "unverified_depth": 1
+  },
+  "MIA": {
+   "backup_forced": [
+    {
+     "player": "Chris Bell",
+     "pos": "WR",
+     "slot": "WR (3)",
+     "status": "Doubtful"
+    },
+    {
+     "player": "Aaron Brewer",
+     "pos": "C",
+     "slot": "C",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 1
+  },
+  "MIN": {
+   "backup_forced": [
+    {
+     "player": "Blake Cashman",
+     "pos": "LB",
+     "slot": "LB",
+     "status": "Out"
+    },
+    {
+     "player": "T.J. Hockenson",
+     "pos": "TE",
+     "slot": "TE",
+     "status": "Out"
+    },
+    {
+     "player": "Tyrion Ingram-Dawkins",
+     "pos": "DT",
+     "slot": "DL (3)",
+     "status": "Out"
+    },
+    {
+     "player": "Jauan Jennings",
+     "pos": "WR",
+     "slot": "WR (3)",
+     "status": "Out"
+    },
+    {
+     "player": "Kyler Murray",
+     "pos": "QB",
+     "slot": "QB",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 1
+  },
+  "NE": {
+   "backup_forced": [
+    {
+     "player": "Carlton Davis III",
+     "pos": "CB",
+     "slot": "CB",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 3
+  },
+  "NO": {
+   "backup_forced": [
+    {
+     "player": "Taliese Fuaga",
+     "pos": "T",
+     "slot": "RT",
+     "status": "Out"
+    },
+    {
+     "player": "Erik McCoy",
+     "pos": "C",
+     "slot": "C",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 2
+  },
+  "NYG": {
+   "backup_forced": [],
+   "unverified_depth": 1
+  },
+  "NYJ": {
+   "backup_forced": [],
+   "unverified_depth": 1
+  },
+  "PIT": {
+   "backup_forced": [],
+   "unverified_depth": 1
+  },
+  "SEA": {
+   "backup_forced": [
+    {
+     "player": "Charles Cross",
+     "pos": "T",
+     "slot": "LT",
+     "status": "Out"
+    },
+    {
+     "player": "Sam Darnold",
+     "pos": "QB",
+     "slot": "QB",
+     "status": "Out"
+    },
+    {
+     "player": "Quenton Nelson",
+     "pos": "G",
+     "slot": "LG",
+     "status": "Out"
+    },
+    {
+     "player": "Leonard Williams",
+     "pos": "DT",
+     "slot": "DT",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 0
+  },
+  "SF": {
+   "backup_forced": [
+    {
+     "player": "Mike Evans",
+     "pos": "WR",
+     "slot": "WR",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 2
+  },
+  "TEN": {
+   "backup_forced": [
+    {
+     "player": "Cody Barton",
+     "pos": "LB",
+     "slot": "LB",
+     "status": "Out"
+    },
+    {
+     "player": "Anthony Hill Jr.",
+     "pos": "LB",
+     "slot": "LB (3)",
+     "status": "Out"
+    },
+    {
+     "player": "Peter Skoronski",
+     "pos": "G",
+     "slot": "LG",
+     "status": "Out"
+    },
+    {
+     "player": "Carnell Tate",
+     "pos": "WR",
+     "slot": "WR (3)",
+     "status": "Out"
+    },
+    {
+     "player": "Tommy Townsend",
+     "pos": "P",
+     "slot": "H",
+     "status": "Out"
+    }
+   ],
+   "unverified_depth": 0
+  },
+  "WAS": {
+   "backup_forced": [],
+   "unverified_depth": 1
+  }
+ }
+}

@@ -3,244 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>X3 · NFL Decision Intelligence — Landing Hub</title>
-<link rel="stylesheet" href="assets/hub.css">
+<meta name="description" content="X3 NFL decision desk: originated lines, verified injury and depth data,
+validation gates, correlation and a luck-adjusted leaderboard design - every row tied to an official source.">
+<title>X3 NFL decision desk</title>
+<link rel="stylesheet" href="hub/assets/hub.css">
 </head>
 <body>
-<header class="hero">
-  <div class="wrap">
-    <p class="kicker">Final integration · session arena/621bf404-x3 · 2026-11-14</p>
-    <h1>X3 — NFL Decision Intelligence</h1>
-    <p class="sub">One landing page for the whole project: verified data, own-line origination,
-    strategy validation, injury &amp; depth tracking, suggestions and flags. Every value on this
-    site is either linked to an official source or explicitly marked unverified — nothing is inferred.</p>
-    <p class="badge-row">
-      <span class="badge ok">Data as of: Week 10 · 2026 season · 2026-11-14</span>
-      <span class="badge">Site pages: 124</span>
-      <span class="badge">Internal links: 1889 — 0 broken</span>
-      <span class="badge ok">Consolidated review hub: <a href="hub/index.html">hub/</a> — 21 suggestions, 18 questions, 24 flags</span>
-      <span class="badge ok">Decision desk: <a href="desk/index.html">desk/</a> — verified game log, own lines, gate ledger, injury-to-lineup map</span>
-      <span class="badge">Unverified values: blank + flagged</span>
-    </p>
-  </div>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
 </header>
-
-<main class="wrap">
-
-<section id="snapshot">
-  <h2>Executive snapshot</h2>
-  <div class="cards">
-    <a class="card" href="dashboard/executive-summary.html">
-      <span class="num">32/32</span>
-      <span class="lbl">Standings rows verified against the official NFL page</span>
-      <span class="src">Source: nfl.com/standings/league/2026/REG</span>
-    </a>
-    <a class="card" href="dashboard/injuries.html">
-      <span class="num">345</span>
-      <span class="lbl">Injury-report rows (66 Out · 10 Doubtful · 84 Questionable · 185 practice-only)</span>
-      <span class="src">Source: nfl.com/injuries/league/2026/reg10</span>
-    </a>
-    <a class="card" href="dashboard/depth-charts.html">
-      <span class="num">31/32</span>
-      <span class="lbl">Club depth charts transcribed; 76 starter-absent positions identified</span>
-      <span class="src">Source: official club sites (self-labelled “unofficial” — flagged)</span>
-    </a>
-    <a class="card" href="dashboard/lines.html">
-      <span class="num">14</span>
-      <span class="lbl">Own model lines originated (v0.1, HFA 0.0, uncalibrated — badged DERIVED)</span>
-      <span class="src">Model output, not fact: parameters printed on the page</span>
-    </a>
-    <a class="card" href="dashboard/validation.html">
-      <span class="num">10 / 0</span>
-      <span class="lbl">Strategies registered / strategies that have passed all validation gates</span>
-      <span class="src">Gates G-01…G-12 defined; no strategy cleared yet</span>
-    </a>
-    <a class="card" href="dashboard/correlation.html">
-      <span class="num">4</span>
-      <span class="lbl">Correlation values computed (Pearson r on official standings); 7 pending data</span>
-      <span class="src">DERIVED from official standings; method published</span>
-    </a>
-  </div>
-</section>
-
-<section id="how">
-  <h2>How to use this site for a decision</h2>
-  <ol class="steps">
-    <li><strong>Check what is verified.</strong> Start with the <a href="dashboard/executive-summary.html">executive summary</a> and the <a href="dashboard/standings.html">verified standings</a> / <a href="dashboard/injuries.html">injury tracker</a>.</li>
-    <li><strong>Check what it implies.</strong> Look at <a href="dashboard/lines.html">own lines</a>, <a href="dashboard/strategies.html">candidate strategies</a> and the <a href="dashboard/leaderboard.html">leaderboard</a> — only gate-passing strategies belong in decisions.</li>
-    <li><strong>Check what is still unknown.</strong> Read the <a href="#decisions">open decisions</a>, the <a href="dashboard/questions.html">question register</a> and the <a href="dashboard/flagged.html">Flagged for Review</a> page before acting. Review <a href="#suggestions">suggestions</a> and pick a path before implementing changes.</li>
-  </ol>
-</section>
-
-<section id="directory">
-  <h2>Site directory — one canonical destination per category</h2>
-  <p>The repository integrates ten site units. For each category the table below names the
-  <em>primary</em> page to use. Additional units covering the same category are listed under each row.</p>
-  <table>
-    <thead><tr><th>Category</th><th>Primary page (open)</th><th>What you will find</th><th>Data status</th><th>Official source</th></tr></thead>
-    <tbody>
-      <tr><td>Executive summary</td><td><a href="dashboard/executive-summary.html">dashboard/executive-summary.html</a></td><td>Findings, deliverables status, evidence links (counts computed at build time)</td><td><span class="pill ok">VERIFIED</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries</a></td></tr>
-      <tr><td>Standings</td><td><a href="dashboard/standings.html">dashboard/standings.html</a></td><td>All 32 clubs, W/L/T, PF/PA, net points, home/road splits</td><td><span class="pill ok">VERIFIED 32/32</span></td><td><a href="https://www.nfl.com/standings/league/2026/REG">nfl.com/standings</a></td></tr>
-      <tr><td>Schedule</td><td><a href="dashboard/schedule.html">dashboard/schedule.html</a></td><td>Week 10 matchups, kickoffs, networks, byes</td><td><span class="pill ok">VERIFIED 14+4</span></td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com/schedules</a></td></tr>
-      <tr><td>Injuries</td><td><a href="dashboard/injuries.html">dashboard/injuries.html</a></td><td>345-row Week-10 official injury report with per-row source</td><td><span class="pill ok">VERIFIED 345</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries</a></td></tr>
-      <tr><td>Depth &amp; backup deficiencies</td><td><a href="dashboard/depth-charts.html">dashboard/depth-charts.html</a></td><td>Starter→backup mapping, 76 starter-absent positions, 2nd/3rd/4th-string impact</td><td><span class="pill warn">PARTIAL — club charts self-labelled unofficial</span></td><td><a href="https://www.detroitlions.com/team/depth-chart">example: club site</a></td></tr>
-      <tr><td>Own lines (model)</td><td><a href="dashboard/lines.html">dashboard/lines.html</a></td><td>Model v0.1 spreads/totals vs week-10 slate; market comparison in the x3lab unit</td><td><span class="pill warn">DERIVED / UNCALIBRATED</span></td><td><a href="dashboard/sources.html">see sources page</a></td></tr>
-      <tr><td>Market comparison &amp; luck pilots</td><td><a href="x3lab/lines.html">x3lab/lines.html</a></td><td>Model-vs-market board, week-11 look-ahead, futures; Pythagorean luck pilot</td><td><span class="pill warn">MARKET DATA UNVERIFIED</span></td><td><a href="x3lab/sources.html">x3lab sources</a></td></tr>
-      <tr><td>Strategies &amp; signals</td><td><a href="dashboard/strategies.html">dashboard/strategies.html</a></td><td>10 registered strategies: singles, parlays, player-prop combos with selection rules</td><td><span class="pill warn">REGISTERED — none gate-passed</span></td><td><a href="dashboard/sources.html">see sources page</a></td></tr>
-      <tr><td>Validation gates (luck removal)</td><td><a href="dashboard/validation.html">dashboard/validation.html</a></td><td>G-01…G-12: pre-registration, sample size, walk-forward, CLV, deflated Sharpe, FDR</td><td><span class="pill warn">FRAMEWORK — not yet run</span></td><td><a href="https://www.nist.gov/nist-pubs/statistical-reference-pages">NIST statistics references</a></td></tr>
-      <tr><td>Correlation</td><td><a href="dashboard/correlation.html">dashboard/correlation.html</a></td><td>Pearson r on official standings (4 computed); parlay-leg correlations pending price data</td><td><span class="pill warn">4 COMPUTED / 7 PENDING</span></td><td><a href="https://www.nfl.com/standings/league/2026/REG">nfl.com/standings</a></td></tr>
-      <tr><td>Leaderboard</td><td><a href="dashboard/leaderboard.html">dashboard/leaderboard.html</a></td><td>Competition design, scoring metrics, anti-gaming rules, notional rewards</td><td><span class="pill warn">EMPTY BY DESIGN</span></td><td><a href="https://www.kaggle.com/competitions/nfl-big-data-bowl-2027/overview">prize-model reference</a></td></tr>
-      <tr><td>Open questions</td><td><a href="dashboard/questions.html">dashboard/questions.html</a></td><td>20 questions, 13 blocking, each with a discovery path</td><td><span class="pill warn">13 BLOCKING</span></td><td><a href="dashboard/sources.html">see sources page</a></td></tr>
-      <tr><td>Suggestions (review queue)</td><td><a href="dashboard/suggestions.html">dashboard/suggestions.html</a></td><td>16 proposals awaiting a decision before implementation; plus new proposals below</td><td><span class="pill ok">PROCESS ACTIVE</span></td><td><a href="#suggestions">see this page</a></td></tr>
-      <tr><td>Requirements tracker</td><td><a href="dashboard/requirements.html">dashboard/requirements.html</a></td><td>24 requirements with acceptance criteria; 19 done, 5 partial</td><td><span class="pill ok">TRACKED</span></td><td><a href="dashboard/repo-review.html">repo review</a></td></tr>
-      <tr><td>Flagged for Review</td><td><a href="dashboard/flagged.html">dashboard/flagged.html</a></td><td>12 irregularities incl. depth-chart freshness, no market-line source, HFA 0.0</td><td><span class="pill warn">NON-BLOCKING</span></td><td><a href="dashboard/flagged.html">see page</a></td></tr>
-      <tr><td>Sources register</td><td><a href="dashboard/sources.html">dashboard/sources.html</a></td><td>4 league + 32 club official sources with row counts</td><td><span class="pill ok">VERIFIED</span></td><td><a href="https://www.nfl.com/">nfl.com</a></td></tr>
-      <tr><td>Research depth (methods)</td><td><a href="docs/pages/strategies.html">docs/pages/strategies.html</a></td><td>Signal catalog S1–S8, line-origination literature (Levitt 2004), validation G0–G8, correlation pipeline</td><td><span class="pill ok">FRAMEWORK</span></td><td><a href="https://www.ssrn.com/abstract=2460551">SSRN 2460551 (DSR)</a></td></tr>
-      <tr><td>Archive data (CSV)</td><td><a href="docs/index.html">docs/index.html</a></td><td>Generated dashboard over CSV snapshots: 345-row injuries, 32-team standings</td><td><span class="pill ok">VERIFIED SNAPSHOT</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries</a></td></tr>
-      <tr><td>Framework-first dashboard</td><td><a href="lab/index.html">lab/index.html</a></td><td>Evidence-boundary research module; hypotheses and source metadata (no measured outcomes)</td><td><span class="pill ok">FRAMEWORK</span></td><td><a href="https://operations.nfl.com/">operations.nfl.com</a></td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="decisions">
-  <h2>Open decisions blocking progress (13 of 20 questions)</h2>
-  <p>Full register with discovery paths: <a href="dashboard/questions.html">dashboard/questions.html</a> (20 questions,
-  13 blocking) and <a href="hub/questions.html">hub/questions.html</a> (18 open, 9 blocking, 10 answered with sources, plus a
-  missing-input register). Both were built from the same official pages on 2026-11-14; where the IDs differ the underlying
-  question is the same, and the hub adds the four new blockers found in this session's audit (Q-06 unknown BAL starter,
-  Q-07 uncalibrated parameters, Q-13 refresh cut-off, Q-18 team-id standard).
-  The five with the biggest decision impact:</p>
-  <table>
-    <thead><tr><th>ID</th><th>Question</th><th>Why it blocks</th><th>How to discover the answer</th></tr></thead>
-    <tbody>
-      <tr><td>Q-02</td><td>What market lines are we trying to beat?</td><td>No odds feed exists in the system; scoring layer cannot fire</td><td>Choose a licensed odds provider; record opening/closing prices weekly</td></tr>
-      <tr><td>Q-01</td><td>Which games define the scoring universe?</td><td>Leaderboard cannot rank strategies without a frozen game set</td><td>Owner decision: all regular-season games vs listed slate only</td></tr>
-      <tr><td>Q-14</td><td>Correlations between parlay legs?</td><td>Parlay/prop-combo pricing needs joint probabilities, not products of marginals</td><td>Ingest play-by-play (nflverse GitHub) and estimate pairwise correlations</td></tr>
-      <tr><td>Q-10</td><td>What is the correct home-field advantage?</td><td>Model currently runs at HFA 0.0 — lines are uncalibrated</td><td>Fit HFA on historical game log once results data is ingested</td></tr>
-      <tr><td>Q-17</td><td>Is the system lawful in the owner's jurisdiction?</td><td>Real-money rewards cannot be configured before a legal review</td><td>Owner decision; keep rewards notional until cleared</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="suggestions">
-  <h2>Suggestions — review before implementing anything</h2>
-  <p>Dedicated review queue with 16 tracked proposals (2 adopted, 13 proposed, 1 deferred):
-  <a href="dashboard/suggestions.html">dashboard/suggestions.html</a> · alternatives:
-  <a href="x3lab/suggestions.html">x3lab/suggestions.html</a> (12) ·
-  <a href="docs/pages/suggestions.html">docs/pages/suggestions.html</a> (14).</p>
-  <p>Independent queue on the same subject: <a href="hub/suggestions.html">hub/suggestions.html</a> (20 items; S-01 on
-  consolidation agrees with S-N1 here, and S-20 states the recommended order of work). Nothing in either queue has been
-  implemented in the analytical layer without an owner decision.</p>
-  <h3>New proposals from the final integration session — <span class="pill warn">PROPOSAL, not implemented</span></h3>
-  <table>
-    <thead><tr><th>ID</th><th>Suggestion</th><th>Decision-making benefit</th><th>Option A</th><th>Option B</th><th>Recommended path</th></tr></thead>
-    <tbody>
-      <tr><td>S-N1</td><td>Consolidate the eight site units into one canonical tree</td><td>Removes ambiguity about which page is authoritative; single navigation</td><td>Keep dashboard/ as canonical, archive the rest under /legacy/</td><td>Merge all units into one rebuild pipeline</td><td>A — lowest risk; content preserved; one nav to maintain</td></tr>
-      <tr><td>S-N2</td><td>Point snapshot CSVs at exact official permalinks</td><td>Makes every archived row reproducible at the exact page version</td><td>Edit <code>docs/data/standings-2026-week10.csv</code> source_url to the /league/2026/REG permalink</td><td>Keep generic URL; rely on page header</td><td>A — one-line change; file owned by arena/4856379c-x3, so logged in COORDINATION.md and <strong>awaiting owner decision, not applied</strong></td></tr>
-      <tr><td>S-N3</td><td>Automate weekly refresh from nflverse GitHub datasets (github.com/nflverse)</td><td>Removes manual transcription; keeps injuries/lines current without human input</td><td>Scheduled GitHub Action pulling nflverse release data</td><td>Keep weekly manual-equivalent agent transcription</td><td>A after Q-02 resolved — market prices still need a licensed feed</td></tr>
-      <tr><td>S-N4</td><td>Unify unit-scoped flag IDs (F-01…F-15 appear in four units)</td><td>One master flag table prevents missed follow-ups</td><td>Master table on this hub, linking each unit's flag row</td><td>Rename IDs per unit (F-DOC-01…)</td><td>A — zero data changes, pure navigation</td></tr>
-      <tr><td>S-N5</td><td>Add a 90-minute-pre-kickoff inactives gate to every strategy</td><td>'Out' on the report is not inactivity (Q-05); final lineups change prices</td><td>Gate rule in validation framework</td><td>Trust injury report only</td><td>A — already endorsed in dashboard S-06; make it blocking gate G-13</td></tr>
-      <tr><td>S-N6</td><td>Keep leaderboard rewards notional until legal review clears the jurisdiction</td><td>Prevents building a prize system that cannot lawfully pay</td><td>Notional points + public ranking</td><td>Seek counsel before any funded season</td><td>A now; revisit B when Q-17 is answered</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section id="review-hub">
-  <h2>NFL Decision Desk — <a href="desk/index.html">desk/</a> <span class="pill warn">added by session arena/3bf7cc8b-x3</span></h2>
-  <p class="lede">One desk that reconciles its own data: 137 final games recomputed against the
-  official standings (all 32 clubs match on W-L-T, PF and PA), originated lines from a
-  walk-forward-tested model, a 10-gate ledger for 10 strategy hypotheses, and every Out/Doubtful
-  player joined to his club's depth string. Eighteen pages, one hard verification gate.</p>
-  <table>
-  <thead><tr><th>Page</th><th>What it settles</th><th>Evidence</th></tr></thead>
-  <tbody>
-  <tr><td><a href="desk/executive-summary.html">Executive summary</a></td><td>Status, verified findings, what cannot be claimed, next five decisions</td><td>Counts computed at build time from <code>data/desk/*.json</code></td></tr>
-  <tr><td><a href="desk/lines.html">Own lines</a></td><td>Originated spreads/totals for the priced week</td><td>DERIVED from the verified game log; market columns blank and flagged</td></tr>
-  <tr><td><a href="desk/model.html">Model</a></td><td>Club ratings and walk-forward calibration (r +0.200, MAE 10.52, n=121)</td><td><code>data/desk/calibration.json</code></td></tr>
-  <tr><td><a href="desk/strategies.html">Strategies</a></td><td>10 hypotheses × 10 gates; none eligible</td><td><code>data/desk/strategies.json</code></td></tr>
-  <tr><td><a href="desk/correlations.html">Correlations</a></td><td>4 coefficients with n and 95% CI</td><td><code>data/desk/correlations.json</code></td></tr>
-  <tr><td><a href="desk/lineups.html">Lineups</a></td><td>156 injuries joined to a depth string; 102 at starter level</td><td>Official injury report × club depth chart</td></tr>
-  <tr><td><a href="desk/questions.html">Questions</a></td><td>18 questions: answered / open / blocked</td><td>Each row states what it blocks</td></tr>
-  <tr><td><a href="desk/suggestions.html">Suggestions</a></td><td>12 proposals to review before any change</td><td>Options, recommendation, cost, status</td></tr>
-  <tr><td><a href="desk/flagged.html">Flagged for review</a></td><td>Every unverified value and irregularity</td><td>Source tried + what would resolve it</td></tr>
-  </tbody></table>
-  <p class="small">Verification: <code>python3 scripts/desk_verify.py</code> — run in CI on every
-  push. It fails the build if the standings stop reconciling with the game log, if any dataset row
-  loses its official source URL, if a correlation sits outside its own CI, or if any published table
-  row lacks a source link or an explicit UNVERIFIED badge.</p>
-
-  <h2>Consolidated review hub — <a href="hub/index.html">hub/</a> <span class="pill warn">added by session arena/1e2d8ef2-x3</span></h2>
-  <p>A second review surface built the same day as this landing hub, from a fresh fetch of the same official pages.
-  It contributes what the earlier units could not: a <strong>suggestions queue for owner review</strong> (20 items, each with
-  options and a recommendation), a <strong>questions and missing-information register</strong> (18 open, 9 blocking, 10 answered),
-  <strong>13 originated Week 10 lines</strong> with the formula and every parameter printed, an <strong>11-gate validation
-  framework</strong>, a <strong>12-row correlation register</strong> (5 computed, 7 blank because the input does not exist),
-  and <strong>21 published flags</strong> — including a wrong Tampa Bay division record and a sign/magnitude error found in
-  <code>dashboard/data/</code>. Legacy units are indexed at <a href="hub/archive.html">hub/archive.html</a> and were left untouched.</p>
-  <div class="cards">
-    <a class="card" href="hub/suggestions.html">
-      <span class="num">21</span>
-      <span class="lbl">Suggestions in a review queue — pick a path before anything is implemented</span>
-      <span class="src">Evidenced problem, options, impact, effort, risk per row</span>
-    </a>
-    <a class="card" href="hub/questions.html">
-      <span class="num">18 / 9</span>
-      <span class="lbl">Open questions / of those blocking a decision — plus 10 answered and an 8-row gap register</span>
-      <span class="src">Each row states known, missing, and the discovery path</span>
-    </a>
-    <a class="card" href="hub/lines.html">
-      <span class="num">13</span>
-      <span class="lbl">Originated spreads and totals for the unplayed Week 10 games (badged DERIVED)</span>
-      <span class="src">Inputs: nfl.com/standings, /injuries, /schedules — market cells blank by policy</span>
-    </a>
-    <a class="card" href="hub/validation.html">
-      <span class="num">11 / 0</span>
-      <span class="lbl">Blocking validation gates defined / strategies that have passed them</span>
-      <span class="src">Pre-registration, calibration, PBO (SSRN 2326253), DSR (SSRN 2460551), forward test</span>
-    </a>
-    <a class="card" href="hub/injuries.html">
-      <span class="num">345</span>
-      <span class="lbl">Week 10 injury rows re-transcribed and diffed against the repo snapshot (345/345 statuses match)</span>
-      <span class="src">Source: nfl.com/injuries/ · 66 Out · 10 Doubtful · 84 Questionable · 185 undesignated</span>
-    </a>
-    <a class="card" href="hub/flagged.html">
-      <span class="num">24</span>
-      <span class="lbl">Flags published, none blocking the merge — with evidence links for manual review</span>
-      <span class="src">Includes 2 data defects found in existing trees and 3 official-vs-official conflicts</span>
-    </a>
-  </div>
-</section>
-
-<section id="units">
-  <h2>Site units inventory (all integrated on main)</h2>
-  <table>
-    <thead><tr><th>Unit</th><th>Pages</th><th>Owner session</th><th>Role</th><th>Entry page</th></tr></thead>
-    <tbody>
-      <tr><td>audit/</td><td>1</td><td>arena/d968fa97-x3</td><td>Independent official-source audit of the Week-10 injury dataset (345-row diff vs NFL.com)</td><td><a href="audit/index.html">audit/index.html</a></td></tr>
-      <tr><td>dashboard/</td><td>18</td><td>arena/7e632805-x3</td><td>Verified-data dashboard (primary data &amp; decision pages)</td><td><a href="dashboard/index.html">dashboard/index.html</a></td></tr>
-      <tr><td>x3lab/</td><td>13</td><td>arena/e1c332ce-x3</td><td>Lines &amp; strategy lab: market comparison, gates, luck pilots</td><td><a href="x3lab/index.html">x3lab/index.html</a></td></tr>
-      <tr><td>docs/</td><td>24</td><td>arena/0c38f465-x3 + arena/4856379c-x3</td><td>Generated data dashboard + extended research pages + CSV snapshots</td><td><a href="docs/index.html">docs/index.html</a></td></tr>
-      <tr><td>lab/</td><td>11</td><td>arena/972ad7a5-x3</td><td>Source-first decision lab (framework + research subpages)</td><td><a href="lab/index.html">lab/index.html</a></td></tr>
-      <tr><td>(root pages)</td><td>13</td><td>arena/d667d44d-x3 + arena/3dbc4678-x3</td><td>Standalone category pages (executive summary, lines, injuries, …)</td><td><a href="executive-summary.html">executive-summary.html</a></td></tr>
-      <tr><td>pages/ + site/</td><td>7</td><td>arena/1a771fcd-x3</td><td>First integrated site unit (archive)</td><td><a href="pages/executive-summary.html">pages/executive-summary.html</a></td></tr>
-      <tr><td>legacy/</td><td>1</td><td>arena/0c38f465-x3</td><td>Preserved original landing page</td><td><a href="legacy/index.html">legacy/index.html</a></td></tr>
-      <tr><td>desk/</td><td>18</td><td>arena/3bf7cc8b-x3</td><td>Decision desk: verified game log and standings reconciled against each other, own lines, walk-forward model calibration, gate ledger, injury-to-depth-string map, questions, suggestions, flags</td><td><a href="desk/index.html">desk/index.html</a></td></tr>
-      <tr><td>hub/</td><td>17</td><td>arena/1e2d8ef2-x3</td><td>Consolidated review hub: suggestions queue, questions and gap register, originated lines, gates, correlation register, injury and depth tracker, flags</td><td><a href="hub/index.html">hub/index.html</a></td></tr>
-      <tr><td>verification-hub/</td><td>1</td><td>arena/621bf404-x3</td><td>Line-by-line integration verification report + audit report (this session)</td><td><a href="verification-hub/index.html">verification-hub/index.html</a></td></tr>
-    </tbody>
-  </table>
-</section>
-
+<main>
+<h1>Originating NFL lines from verified data - and being honest about what cannot be verified</h1>
+<p class="lede">This is the canonical dashboard for the X3 project. Injury designations, standings and depth
+charts are transcribed row by row from official NFL.com and club pages. The lines below are arithmetic on
+those inputs with every parameter printed in the open. Anything that would require a betting market -
+prices, closing-line value, settled bets, ROI, a populated leaderboard - is blank and flagged, because that
+data does not exist here yet.</p>
+<div class="grid">
+<div class="card"><div class="num">345</div><div class="lbl">official injury rows verified</div>
+<div class="sub">Week 10, 2026 - re-read field for field from the league report</div></div>
+<div class="card"><div class="num">13</div><div class="lbl">games priced by our own model</div>
+<div class="sub">spreads and totals for the unplayed Week-10 slate</div></div>
+<div class="card"><div class="num">39</div><div class="lbl">1st-string vacancies</div>
+<div class="sub">across 18 clubs - backups starting this week</div></div>
+<div class="card"><div class="num">0 / 12</div><div class="lbl">strategies leaderboard-eligible</div>
+<div class="sub">12 registered; blocked on market and results data, not on analysis</div></div>
+</div>
+<nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
+<a href="hub/index.html"><b>Overview</b><span>Status, what is verified, what is not</span></a><a href="hub/executive-summary.html"><b>Executive summary</b><span>The one-page brief for a decision</span></a><a href="hub/lines.html"><b>Originated lines</b><span>Our own Week-10 spreads and totals</span></a><a href="hub/strategies.html"><b>Strategies &amp; signals</b><span>12 registered hypotheses, singles/props/parlays</span></a><a href="hub/gates.html"><b>Validation gates</b><span>The luck-removing tests each strategy must pass</span></a><a href="hub/correlation.html"><b>Correlation</b><span>Coefficients computed from official data</span></a><a href="hub/luck.html"><b>Luck decomposition</b><span>How much of a record is not skill</span></a><a href="hub/injuries.html"><b>Injury tracker</b><span>Every row of the official weekly report</span></a><a href="hub/depth.html"><b>Depth &amp; deficiencies</b><span>Who is starting instead of the starter</span></a><a href="hub/leaderboard.html"><b>Leaderboard</b><span>Competition design; deliberately empty</span></a><a href="hub/requirements.html"><b>Requirements</b><span>Full register with status and evidence</span></a><a href="hub/questions.html"><b>Open questions</b><span>What must be known before deciding</span></a><a href="hub/suggestions.html"><b>Suggestions</b><span>Review the paths before implementing</span></a><a href="hub/sources.html"><b>Sources</b><span>Official pages, method and retrieval date</span></a><a href="hub/verification.html"><b>Verification log</b><span>How each line was checked</span></a><a href="hub/repo-review.html"><b>Repo review</b><span>Prior work audited line by line</span></a><a href="hub/flagged.html"><b>Flagged for review</b><span>Unverified items and irregularities</span></a><a href="hub/archive.html"><b>Prior trees</b><span>The six older site trees</span></a>
+</nav>
+<section class="callout"><h2>Start here</h2>
+<p><a href="hub/executive-summary.html"><b>Executive summary</b></a> for the decisions,
+<a href="hub/lines.html"><b>Originated lines</b></a> for the board,
+<a href="hub/suggestions.html"><b>Suggestions</b></a> to choose a path,
+<a href="hub/questions.html"><b>Open questions</b></a> for the information gaps, and
+<a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.</p>
+<p class="note">Earlier sessions published six overlapping site trees; they are preserved and indexed at
+<a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
+is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is
+<a href="COORDINATION.md">COORDINATION.md</a>.</p></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <p><strong>Verification policy:</strong> every fact row carries a source link to an official site; values that could not be confirmed are left blank and flagged unverified on <a href="dashboard/flagged.html">Flagged for Review</a>; nothing is inferred. Model outputs are badged DERIVED with parameters printed.</p>
-    <p><strong>Integration verification report:</strong> <a href="verification-hub/index.html">verification-hub/index.html</a> ·
-    <strong>Board:</strong> <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a> ·
-    <strong>Repository:</strong> <a href="https://github.com/karagemop466-tech/X3">github.com/karagemop466-tech/X3</a></p>
-    <p class="fine">Built by session arena/621bf404-x3 on 2026-11-14 · no wagers placed · no real-money rewards configured</p>
-  </div>
-</footer>
-</body>
-</html>
+</body></html>

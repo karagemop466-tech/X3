@@ -240,6 +240,16 @@
    "impact": "an assumed constraint that is not real adds CI machinery where a direct fetch would do; conversely the CI route is more reproducible and should be kept for scheduled snapshots",
    "action": "keep both: direct fetch for in-session verification, the runner job for scheduled snapshots (S-05)",
    "status": "OPEN - noted so the next session does not re-derive the limitation"
+  },
+  {
+   "id": "FLG-25",
+   "severity": "High",
+   "area": "Publication collision",
+   "finding": "Two sessions each claimed the integration role on the same day and wrote the same two paths: root `index.html` and `hub/`. The canonical result on main is the other session's 19-page hub (built by tools/build_hub.py from data/hub/*.csv, CI-guarded by tools/verify_hub.py); this session's 17-page hub was relocated verbatim to archive/hub-621bf404/ and remains reachable from hub/archive.html. Nothing was deleted, and both trees are complete and self-checking - but the two hubs now publish different registers under the same subject names (24 flags here vs 16 there, 18 questions here vs 16 there), and the archive directory is named after a third session (arena/621bf404-x3), not the session whose tree it holds (arena/1e2d8ef2-x3).",
+   "evidence": "https://github.com/karagemop466-tech/X3/tree/main/archive/hub-621bf404 ; https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md",
+   "impact": "a reader arriving at hub/ will not know a second, newer register of the same subject exists one directory over; the mislabelled archive directory makes it worse, because the provenance name points at the wrong session",
+   "action": "owner ruling needed (this is exactly the S-01 question, now with a concrete case): either merge the two register sets into the canonical hub's data files and retire the archive copy, or rename the directory to archive/hub-1e2d8ef2/ and link it from the canonical hub's nav. Until then this hub's files stay at the archive path and its builder writes there only",
+   "status": "OPEN - collision resolved without deletion by the integration session; the naming and the split registers remain for the owner"
   }
  ]
 }

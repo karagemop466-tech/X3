@@ -3,60 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Executive summary &middot; X3 review hub</title>
-<link rel="stylesheet" href="style.css">
+<title>Executive summary - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
 </head>
 <body>
 <header class="top">
-  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
-  <nav><a''ef="index.html">Overview</a> <a' class="on"'ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
 </header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html" class=on">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
 <main>
 <h1>Executive summary</h1>
-<p class='lead'>Bottom line: the data foundation is now verified and the analytical framework is complete, but nothing can be graded, because no verified price source exists. The correct next move is to start the price and snapshot archive (S-04, S-05) - every week of delay is permanently lost data.</p>
-<h2>What is solid</h2>
-<table class=""><thead><tr>
-<th>Finding</th>
-<th>Value</th>
-<th>Basis</th>
-<th>Source</th>
-</tr></thead><tbody>
-<tr><td>Week-10 availability table</td><td>345 rows / 28 clubs</td><td>fetched and transcribed 2026-11-14</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
-<tr><td>Designation split</td><td>66 Out / 10 Doubtful / 84 Questionable / 185 undesignated</td><td>counts computed from the transcription</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
-<tr><td>Reproducibility of prior snapshot</td><td>344 of 345 rows identical</td><td>row-by-row diff vs the repo file; 1 practice-status drift</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/docs/data/injury-2026-week10.csv">SRC-16</a></td></tr>
-<tr><td>Standings integrity</td><td>32 clubs, league totals balance</td><td>wins=losses, PF=PA, every split reconciles</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>League scoring baseline</td><td>22.96 pts per team per game</td><td>derived from official PF totals / games</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>Slate</td><td>14 games + 4 byes; 13 unplayed</td><td>official week-10 schedule page</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">SRC-03</a></td></tr>
-<tr><td>Standings vs independent game log</td><td>192 of 192 values agree</td><td>32 clubs x W/L/T/PF/PA/games, reconciled against data/desk/games.json</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json">SRC-17</a></td></tr>
-<tr><td>Best point differential per game</td><td>JAX +13.50</td><td>official standings (+108 over 8 games)</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>Worst point differential</td><td>LAC -98</td><td>0-8, official standings</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>Net points vs record</td><td>r = +0.8794</td><td>32 clubs, computed here</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<p class="lede">One page: what is verified, what is derived, what is blocked, and the four decisions that change the roadmap.</p>
+
+<h2>What the data says today</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Topic</th><th>Finding</th><th>Status</th><th>Where</th></tr></thead><tbody>
+<tr><td>Data quality</td><td>All 345 injury rows and 32 standings rows were re-read from the official pages this session and reconciled field for field</td><td><span class="badge v">VERIFIED</span></td><td>verification log</td></tr>
+<tr><td>Model</td><td>13 of 13 unplayed Week-10 games priced; league average 22.96 points per team-game; home win pct 0.4927 (95% CI 0.409-0.5764) over 137 games</td><td><span class="badge d">DERIVED</span></td><td>originated lines</td></tr>
+<tr><td>Largest injury shift</td><td>SEA@LV: +6.46 points, moving the model line to +1.08</td><td><span class="badge d">DERIVED</span></td><td>originated lines</td></tr>
+<tr><td>Injury signal</td><td>2 games with a shift of 3.5+ points, 3 with 1.5-3.5; the rest have no material shift</td><td><span class="badge d">DERIVED</span></td><td>originated lines</td></tr>
+<tr><td>Lineup deficiency</td><td>18 clubs must start a non-first-string player at 39 positions; 22 of those are on offence (QB, RB, WR, TE, O-line)</td><td><span class="badge d">DERIVED</span></td><td>depth &amp; deficiencies</td></tr>
+<tr><td>Luck</td><td>Net points per game explains r2=0.771 of win percentage; the Pythagorean residual has sd 1.064 wins, so a record can be +/-2 wins of luck with no change in team quality</td><td><span class="badge d">DERIVED</span></td><td>luck decomposition</td></tr>
+<tr><td>Correlation</td><td>8 coefficients computed with 95% intervals; the home-vs-road form correlation is only r=0.3501, so venue form is not portable</td><td><span class="badge p">PARTIAL</span></td><td>correlation</td></tr>
+<tr><td>Strategy pipeline</td><td>12 strategies registered and frozen in a committed ledger; none can be scored because G-2 (minimum sample) cannot see a single settled bet</td><td><span class="badge b">BLOCKED</span></td><td>strategies</td></tr>
+<tr><td>Blocker</td><td>No market prices and no game log exist in the repository; these two inputs unlock CLV, ROI, calibration, and every gate after G-2</td><td><span class="badge u">UNVERIFIED</span></td><td>flagged F-01, F-02</td></tr>
+<tr><td>Compliance</td><td>Originating a betting market and paying contest prizes needs legal review in the owner's jurisdiction before any reward is real</td><td><span class="badge b">BLOCKED</span></td><td>Q-13, F-07</td></tr>
 </tbody></table>
-<h2>What is not known, and why it matters</h2>
-<table class=""><thead><tr>
-<th>Gap</th>
-<th>Consequence today</th>
-<th>Fix</th>
-<th>Flag</th>
-</tr></thead><tbody>
-<tr><td>No verified price source</td><td>no CLV, no ROI, no promotion of any strategy; market cells blank</td><td>licence a feed or capture closing lines nightly (S-04)</td><td><a href="flagged.html">FLG-07</a></td></tr>
-<tr><td>No official depth chart</td><td>2nd/3rd/4th-string claims are impossible to certify; only starter absence is provable</td><td>two-layer design: certified availability + unverified overlay (S-19)</td><td><a href="flagged.html">FLG-08</a></td></tr>
-<tr><td>Game log covers one season, scores only</td><td>no multi-season calibration, no play-by-play, so parlay correlations stay partly blank</td><td>extend the existing capture workflow backwards (S-07)</td><td><a href="questions.html">Q-03</a></td></tr>
-<tr><td>No cut-off printed on the standings page</td><td>any feature built on it inherits an inferred as-of; this session inferred one wrongly and retracted a flag</td><td>as-of contract shipped with the data + snapshot timestamps (S-05, VER-19)</td><td><a href="flagged.html">FLG-02</a></td></tr>
-<tr><td>Legal status of rewards</td><td>leaderboard pays nothing; tiers only</td><td>owner states jurisdiction, counsel reviews (Q-08)</td><td><a href="flagged.html">FLG-14</a></td></tr>
-<tr><td>Uncalibrated model parameters</td><td>originated lines are arithmetic, not edge</td><td>fit after one archived season (Q-07)</td><td><a href="flagged.html">FLG-12</a></td></tr>
+</div>
+<h2>Decisions this project needs from you</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Decision</th><th>Why it is needed</th><th>If unanswered</th></tr></thead><tbody>
+<tr><td>Choose a price source class</td><td>Without any market price the site can never tell you whether our line disagrees with the market, which is the only external check a line model has</td><td>Board publishes as model-only with blank market columns</td></tr>
+<tr><td>Approve the game-log and prop-archive load</td><td>Every gate from G-2 onward, the correlation of prop legs, and any calibrated injury cost depend on it</td><td>Model keeps assumed parameters; leaderboard stays empty</td></tr>
+<tr><td>Rule on rewards</td><td>A funded leaderboard is a contest, and in some jurisdictions that is regulated activity; nothing in the repo establishes a prize</td><td>All reward amounts stay notional/blank</td></tr>
+<tr><td>Confirm the archive policy</td><td>The overlapping site trees listed on hub/archive.html publish different numbers for the same fact</td><td>hub/ stays canonical, older trees labelled ARCHIVE</td></tr>
 </tbody></table>
-<h2>Decisions this session took, and the ones it left for you</h2>
-<p>Taken: build one consolidated review surface rather than a ninth site tree; keep every legacy tree intact and link it; leave every unverifiable value blank. Left for you: the 10 blocking questions in <a href='questions.html'>Questions &amp; gaps</a> and the ordering of the 20 suggestions (<a href='suggestions.html'>S-20</a> is the recommended sequence).</p>
-<h2>Correction published on this page</h2><p>Earlier in the session the standings module was flagged as lagging the completed Thursday game. Reconciling the page against an independent in-repo game log disproved it: the standings cover every game through 2026-11-12 and simply print no cut-off. The flag is retracted on the evidence (VER-19) and replaced by an as-of contract that now ships with the data (<code>hub/data/asof.json</code>) - which is the part that actually mattered.</p>
-<h2>Risk of acting on this page</h2><p>Low for the verified rows, high for anything downstream: 0 of 8 strategies have passed at least one gate, and every model row on this site is badged DERIVED with an assumption table attached. Treat the line table as a reviewable formula, not as a forecast.</p>
+</div>
+<h2>What is deliberately not claimed</h2>
+<p class="lede">No accuracy figure, no ROI, no edge, no "best bet", no populated leaderboard, and no
+assertion that any player is available or unavailable beyond what the official designation says. Those
+cells are blank because the inputs do not exist yet - not because they were checked and found empty.</p>
+
 </main>
 <footer>
-  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>.
-  Snapshots fetched 2026-11-14 18:07-18:15 UTC; standings cover every regular-season game completed on or before 2026-11-12, i.e. all of Week 9 plus the Week 10 Thursday game (WAS 24, NYG 21); injury table is the Saturday report, before
-  Sunday inactives (<a href="data/asof.json">as-of contract</a>). Facts link to NFL.com; derived values are labelled;
-  assumptions are labelled; everything else is blank and marked <span class="bad">UNVERIFIED</span>.
-  Nothing here is betting advice.</p>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
 </footer>
-</body>
-</html>
+<script src="assets/hub.js" defer></script>
+</body></html>

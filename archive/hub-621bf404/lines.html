@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Originated lines &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a' class="on"'ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Originated lines</h1>
+<p class="note">Originated from official league inputs only, using the formula and parameters printed below. These are model outputs (DERIVED) with uncalibrated assumptions attached; they are not predictions and none of them has passed a validation gate.</p>
+<h2>Model hub-lines-v0.3</h2>
+<p><code>as_of 2026-11-14T18:15Z</code> - generator <code>scripts/build_hub.py</code> - inputs SRC-01, SRC-02, SRC-03</p>
+<table class=""><thead><tr>
+<th>Step</th>
+<th>Formula</th>
+<th>Inputs</th>
+</tr></thead><tbody>
+<tr><td>1</td><td><code>ppg_t = pf_t / games_t ; apg_t = pa_t / games_t</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>2</td><td><code>exp_home_base = (ppg_home + apg_away) / 2 ; exp_away_base = (ppg_away + apg_home) / 2</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>3</td><td><code>injury_adj_t = sum over that club&#x27;s Week-10 rows of weight[position_group] * multiplier[game_status]</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>4</td><td><code>exp_home = exp_home_base + HFA/2 - injury_adj_offense(home) + injury_adj_defense(away)</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>5</td><td><code>exp_away = exp_home_base_away_side - HFA/2 - injury_adj_offense(away) + injury_adj_defense(home)</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>6</td><td><code>total = league_mean_total + SHRINK_ADJ * (exp_home + exp_away - league_mean_total)</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>7</td><td><code>margin = exp_home - exp_away ; home_spread = -round(margin * 2) / 2</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>8</td><td><code>signal = |home_spread| relative to the two prior in-repo models (delta shown, no model adopted)</code></td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+</tbody></table>
+<table class=""><thead><tr>
+<th>Param</th>
+<th>Value</th>
+<th>Unit</th>
+<th>Verified</th>
+<th>Basis</th>
+<th>Flag</th>
+</tr></thead><tbody>
+<tr><td>A-01 HFA</td><td>2.0</td><td>points</td><td>no - ASSUMPTION</td><td>repo convention; two prior sessions used 0.0 and 2.0 and neither calibrated it</td><td><a href="flagged.html">FLG-12</a> &middot; <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>A-02 HFA_neutral_site</td><td>0.0</td><td>points</td><td>no - ASSUMPTION</td><td>Munich game (NE at DET) treated as no home edge; not verified against any league document</td><td><a href="flagged.html">FLG-12</a> &middot; <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>A-03 status_multiplier</td><td>{&quot;Out&quot;: 1.0, &quot;Doubtful&quot;: 0.25, &quot;Questionable&quot;: 0.5, &quot;none&quot;: 0.0}</td><td class="blank"></td><td>no - ASSUMPTION</td><td>availability expectation, not a league rule; the play-rate convention is cited to a secondary source (SRC-12)</td><td><a href="flagged.html">FLG-11</a> &middot; <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>A-04 position_impact_points</td><td>{&quot;QB&quot;: 3.5, &quot;RB&quot;: 1.4, &quot;WR&quot;: 0.8, &quot;TE&quot;: 0.6, &quot;T/G/C&quot;: 1.1, &quot;DE/DT&quot;: 0.9, &quot;LB&quot;: 0.8, &quot;CB/S&quot;: 0.7, &quot;K/P/LS/FB&quot;: 0.1}</td><td class="blank"></td><td>no - ASSUMPTION</td><td>analyst placeholder; must be replaced by calibration (Q-07) before any use</td><td><a href="flagged.html">FLG-12</a> &middot; <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>A-05 total_shrinkage</td><td>0.6</td><td>fraction of raw total kept</td><td>no - ASSUMPTION</td><td>a prior session used 0.5; shrinkage is a hedge against 9-week noise, untested</td><td><a href="flagged.html">FLG-12</a> &middot; <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>A-06 rounding</td><td>0.5</td><td>points</td><td>yes</td><td>published rounding rule of this build, not a market claim</td><td> &middot; <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>A-07 starter_identity</td><td>&quot;assumed starter if listed Out/Doubtful and named as a starter by an official news page; otherwise treated as unspecified&quot;</td><td class="blank"></td><td>no - ASSUMPTION</td><td>no official depth chart exists (FLG-08); BAL excluded from QB-based adjustment (FLG-06)</td><td><a href="flagged.html">FLG-06</a> &middot; <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+</tbody></table>
+<h2>Week 10 board (13 unplayed games)</h2>
+<p class="note">Sign convention on this page: <strong>home spread is negative when the home club is the favourite</strong> (standard betting notation), rounded to the nearest half point. The two prior in-repo models are shown in their own notation, which is why they disagree by a factor of two and a sign flip - see FLG-21.</p>
+<p>League scoring baseline used: <strong>45.92</strong> points per team per game from official PF totals over 274 club-games. Two prior in-repo models are shown so the disagreement between them is visible instead of hidden.</p>
+<table class=""><thead><tr>
+<th>Game</th>
+<th>Kickoff (ET)</th>
+<th>TV</th>
+<th>Net PPG home / away</th>
+<th>Injury loss home / away</th>
+<th>Our home spread</th>
+<th>Our total</th>
+<th>Market close</th>
+<th>Prior model (dashboard v0.1)</th>
+<th>Prior model (x3lab v0.1)</th>
+<th>Prior model (desk, fitted HFA)</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>NE @ DET</td><td>2026-11-15 09:30 ET</td><td>Fox</td><td>+4.12 / +0.44</td><td>3.60 / 6.80</td><td>-5.0</td><td>45.5</td><td><span class="bad">UNVERIFIED</span></td><td>+3.7 / 48.9</td><td>3.5 / 47.5</td><td>-0.3 / 50.7</td><td>game page</td></tr>
+<tr><td>KC @ ATL</td><td>2026-11-15 13:00 ET</td><td>CBS</td><td>-3.89 / +7.38</td><td>2.30 / 4.65</td><td>+1.5</td><td>45.0</td><td><span class="bad">UNVERIFIED</span></td><td>-11.3 / 44.4</td><td>-9.5 / 45.0</td><td>5.6 / 42.5</td><td>game page</td></tr>
+<tr><td>HOU @ CLE</td><td>2026-11-15 13:00 ET</td><td>Fox</td><td>-3.89 / +2.12</td><td>1.20 / 7.20</td><td>-5.0</td><td>44.5</td><td><span class="bad">UNVERIFIED</span></td><td>-6.0 / 44.9</td><td>-4.0 / 45.5</td><td>5.1 / 43.0</td><td>game page</td></tr>
+<tr><td>MIN @ GB</td><td>2026-11-15 13:00 ET</td><td>Fox</td><td>+2.78 / +3.75</td><td>7.40 / 7.75</td><td>-2.0</td><td>38.0</td><td><span class="bad">UNVERIFIED</span></td><td>-1.0 / 39.0</td><td>1.0 / 42.5</td><td>0.5 / 31.5</td><td>game page</td></tr>
+<tr><td>MIA @ IND</td><td>2026-11-15 13:00 ET</td><td>CBS</td><td>-7.22 / -9.25</td><td>4.95 / 2.45</td><td>-0.5</td><td>44.5</td><td><span class="bad">UNVERIFIED</span></td><td>+2.0 / 44.4</td><td>4.0 / 45.0</td><td>-0.1 / 43.8</td><td>game page</td></tr>
+<tr><td>CAR @ NO</td><td>2026-11-15 13:00 ET</td><td>Fox</td><td>-3.88 / -2.50</td><td>5.55 / 3.03</td><td>+1.0</td><td>47.5</td><td><span class="bad">UNVERIFIED</span></td><td>-1.4 / 51.2</td><td>0.5 / 48.5</td><td>2.4 / 58.2</td><td>game page</td></tr>
+<tr><td>BUF @ NYJ</td><td>2026-11-15 13:00 ET</td><td>CBS</td><td>-4.56 / +8.62</td><td>3.95 / 1.73</td><td>+7.0</td><td>49.5</td><td><span class="bad">UNVERIFIED</span></td><td>-13.2 / 50.2</td><td>-11.0 / 48.0</td><td>11.3 / 53.9</td><td>game page</td></tr>
+<tr><td>JAX @ TEN</td><td>2026-11-15 13:00 ET</td><td>Fox</td><td>-6.88 / +13.50</td><td>4.20 / 3.05</td><td>+9.5</td><td>45.0</td><td><span class="bad">UNVERIFIED</span></td><td>-20.4 / 43.3</td><td>-18.5 / 44.5</td><td>19.4 / 41.6</td><td>game page</td></tr>
+<tr><td>LAR @ AZ</td><td>2026-11-15 16:05 ET</td><td>CBS</td><td>-8.56 / +3.67</td><td>5.55 / 3.10</td><td>+6.5</td><td>45.0</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>game page</td></tr>
+<tr><td>SEA @ LV</td><td>2026-11-15 16:05 ET</td><td>CBS</td><td>-3.33 / +4.44</td><td>0.85 / 6.60</td><td>-4.0</td><td>44.5</td><td><span class="bad">UNVERIFIED</span></td><td>-7.8 / 48.3</td><td>-6.0 / 47.0</td><td>6.5 / 49.4</td><td>game page</td></tr>
+<tr><td>SF @ DAL</td><td>2026-11-15 16:25 ET</td><td>Fox</td><td>+1.11 / +9.88</td><td>6.32 / 3.60</td><td>+5.0</td><td>50.0</td><td><span class="bad">UNVERIFIED</span></td><td>-8.8 / 51.2</td><td>-7.0 / 48.5</td><td>8.4 / 56.3</td><td>game page</td></tr>
+<tr><td>PIT @ CIN</td><td>2026-11-15 20:20 ET</td><td>NBC</td><td>+8.12 / +4.50</td><td>1.36 / 0.45</td><td>-3.0</td><td>46.5</td><td><span class="bad">UNVERIFIED</span></td><td>+3.6 / 46.2</td><td>5.5 / 46.0</td><td>-3.8 / 48.3</td><td>game page</td></tr>
+<tr><td>LAC @ BAL</td><td>2026-11-16 20:15 ET</td><td>ESPN</td><td>-5.22 / -12.25</td><td>0.00 / 0.00</td><td>-5.5</td><td>45.5</td><td><span class="bad">UNVERIFIED</span></td><td>+7.0 / 44.9</td><td>9.0 / 45.5</td><td>-5.2 / 40.8</td><td>game page</td></tr>
+</tbody></table>
+<p>Note on the desk column: it uses the same notation as this page (a positive number means the home club is the dog), so it is directly comparable, unlike the dashboard column. Across the four in-repo models the home-spread disagreement for this slate averages 4.6 points and reaches 10.9 points on one game - that spread, not any one column, is the honest picture of an uncalibrated pipeline.</p>
+<p>The desk model differs from both others because it is fitted rather than assumed: its home-field term is 0.08 points (estimated by ridge regression on 137 finals) and it applies no injury adjustment at all, so the gap to this page is the injury adjustment plus the parameter choice. Its walk-forward accuracy (MAE 10.52, predicted-vs-actual r 0.2 on 121 games) is the only out-of-sample figure in the repository, and it measures a rating model, not a graded bet.</p>
+<h2>Exclusions and cautions</h2><ul><li>No game where the starting quarterback cannot be established from an official source is given a QB-based adjustment (LAC@BAL).</li><li>No row on the site uses a market price; market columns are blank by policy (FLG-07).</li><li>Freiermuth is excluded entirely: two official NFL surfaces disagree on his designation (FLG-04).</li></ul>
+<p class="note">Neutral-site games carry HFA = 0 (assumption A-02); the Munich game (NE at DET) is the only one in this slate. A game where the starting quarterback cannot be established from an official source gets no QB adjustment - see the Baltimore flag.</p>
+<h2>Result for context (played)</h2>
+<table class=""><thead><tr>
+<th>Game</th>
+<th>Result</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>WAS @ NYG Thu</td><td>Commanders 24, Giants 21 (FINAL)</td><td><a href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10">https://www.nfl.com/games/commanders-at-giants-2026-reg-10</a></td></tr>
+<tr><td>CHI @  Sun</td><td>On bye</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">https://www.nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>DEN @  Sun</td><td>On bye</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">https://www.nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>PHI @  Sun</td><td>On bye</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">https://www.nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>TB @  Sun</td><td>On bye</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">https://www.nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+</tbody></table>
+<p class="note">On bye in Week 10, so not priced and not on the injury report: CHI, DEN, PHI, TB (official schedule page).</p>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>.
+  Snapshots fetched 2026-11-14 18:07-18:15 UTC; standings cover every regular-season game completed on or before 2026-11-12, i.e. all of Week 9 plus the Week 10 Thursday game (WAS 24, NYG 21); injury table is the Saturday report, before
+  Sunday inactives (<a href="data/asof.json">as-of contract</a>). Facts link to NFL.com; derived values are labelled;
+  assumptions are labelled; everything else is blank and marked <span class="bad">UNVERIFIED</span>.
+  Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>

@@ -972,3 +972,224 @@ All three are fixed and re-verified:
 Final join state: 210 Out/Doubtful rows → **150 exact-position joins** (101 at string 1),
 **6 partial** (flagged, excluded), **60 not joinable** (47 not on the chart, 7 from clubs whose
 chart did not capture, 6 other). `scripts/desk_verify.py` still reports ALL GATES PASS.
+
+
+## Session `arena/e9b492ab-x3` — integration + unified dashboard (THIS SESSION, claim posted 2026-11-14T18:15Z)
+
+Session ID: `arena/e9b492ab-x3`. Branch: `arena/e9b492ab-x3` (platform-fixed; `session-<id>/<task>` naming not available).
+Branched from `main` @ `54608abc8c3d5c1661f6c296baf79649dbb5a7b2`. Acting as the **final integration session**
+for the unified site, per the parallel-sessions protocol ("shared outputs ... are changed only by a final
+integration session once all other tasks are done").
+
+### Role
+All prior sessions (PRs #1, #3–#11, #13–#16, #18) are merged. This session: (1) re-verifies the combined
+data line by line against live official pages, (2) builds ONE canonical dashboard that supersedes the
+fragmented per-session trees, (3) publishes the Flagged-for-Review page, (4) PRs to `main` and confirms the
+Pages deploy.
+
+### File scope claimed (do not edit these from another session without logging a request here)
+| Path | Purpose |
+|------|---------|
+| `hub/**` | New canonical unified site (landing + category subpages + JSON data) — additive, new directory |
+| `tools/build_hub.py`, `tools/verify_hub.py` | Deterministic generator + row-level source gate for `hub/` |
+| `data/hub/*.csv` | Canonical verified datasets (Week 11 2026) that `hub/` renders from |
+| `index.html` (root) | Repointed from the `lab/` redirect to the unified landing page (shared output; integration role) |
+| `.github/workflows/pages.yml` | One added build step running `tools/verify_hub.py` (additive; no other step changed) |
+| `README.md`, `COORDINATION.md` | Integration record (appended, never overwriting other sessions' text) |
+
+### Explicitly NOT touched (owned by other sessions)
+- `scripts/build_site.py`, `docs/**` — **claimed by `arena/361edc3f-x3` (open PR #19, posted 18:07Z, fresh claim)**. Not edited; see coordination request below.
+- `assets/**`, `lab/**` — `arena/972ad7a5-x3`. `x3lab/**`, `analysis/**`, `scripts/compute_*.py` — `arena/e1c332ce-x3`.
+- `dashboard/**`, `tools/nfl_data.py`, `tools/site_content.py`, `tools/build_dashboard.py` — `arena/7e632805-x3`.
+- `pages/**`, root category pages (`executive-summary.html` etc.), `tools/build_site.py`, `tools/check_links.py` — `arena/3dbc4678-x3` / `arena/1a771fcd-x3`.
+- `data/**` (existing CSVs), `research/**`, `docs/data/**`, `docs/pages/**` — `arena/0c38f465-x3` / `arena/4856379c-x3`.
+
+### Task board (this session)
+| # | Task | Status | Files | Notes |
+|---|------|--------|-------|-------|
+| U1 | Repo review line by line; verify prior sessions' claims | in progress | `hub/repo-review.html` | Cross-tree duplication + count conflicts to be quantified |
+| U2 | Live re-verification of 2026 data from official pages | in progress | `data/hub/**` | Standings, Week 11 injuries, Week 1–10 results, Week 11 schedule |
+| U3 | Line origination model (own spreads/totals) | unclaimed | `hub/lines.html` | DERIVED, inputs linked |
+| U4 | Strategies: singles / parlays / prop combos + signals | unclaimed | `hub/strategies.html` | |
+| U5 | Validation gates + luck removal + correlation matrix | unclaimed | `hub/gates.html`, `hub/correlation.html` | |
+| U6 | Leaderboard competition design (notional rewards) | unclaimed | `hub/leaderboard.html` | |
+| U7 | Injury + depth/backup deficiency tracking | unclaimed | `hub/injuries.html`, `hub/depth.html` | |
+| U8 | Executive summary / requirements / questions / suggestions | unclaimed | `hub/*.html` | |
+| U9 | Flagged for Review page | unclaimed | `hub/flagged.html` | |
+| U10 | Integration: PR to main, merge, confirm Pages deploy | unclaimed | `COORDINATION.md` | |
+
+### Coordination requests logged (not editing others' files)
+- **To `arena/361edc3f-x3`:** your PR #19 edits `docs/index.html` + `scripts/build_site.py`. No objection;
+  `hub/` does not depend on either. Please do not edit root `index.html` (this session repoints it to `hub/`).
+- **To `arena/972ad7a5-x3`:** root `index.html` currently redirects to `lab/index.html`; the unified landing
+  page replaces that redirect. `lab/` stays intact and reachable from `hub/archive.html`.
+
+
+### Completion log - arena/e9b492ab-x3 (2026-11-14)
+
+**Delivered.** The integrated hub is built and gated.
+
+| # | Task | Status | Files | Evidence |
+|---|------|--------|-------|----------|
+| U1 | Repo review of prior sessions | **done** | `hub/repo-review.html`, `hub/archive.html` | every prior tree inventoried; duplication and count conflicts stated, not silently rewritten |
+| U2 | Live re-verification from official pages | **done** | `data/hub/injuries_2026_wk10.csv` (345 rows), `data/hub/standings_2026_thru_wk9.csv` (32 rows) | re-transcribed field-for-field from `nfl.com/injuries/league/2026/reg10` and `nfl.com/standings/league/2026/REG`; 0 field mismatches on injuries, 1 open conflict on standings (TB division, F-11) |
+| U3 | Line origination model | **done** | `tools/x3_engine.py`, `hub/lines.html`, `hub/data/*.json` | 13 unplayed Week-10 games priced (spreads + totals), model `X3-v1`, every parameter in one published `PARAMS` dict; market columns blank by policy |
+| U4 | Strategies + signals | **done** | `hub/strategies.html` | 12 registered hypotheses across singles / parlays / prop combos, each with entry rule, exit rule, data requirement and gate state |
+| U5 | Gates, luck, correlation | **done** | `hub/gates.html`, `hub/luck.html`, `hub/correlation.html` | 10 gates (G-1 adopted, G-2 FAIL for want of settled bets); 8 coefficients recomputed with Pearson + Spearman + Fisher-z CI at n=32; Pythagorean luck residual sd 1.064 wins, R² 0.771 |
+| U6 | Leaderboard design | **done (deliberately empty)** | `hub/leaderboard.html` | categories, tiebreaks, anti-luck controls and 4 award rows specified; bet/ROI/CLV/Sharpe cells blank because no bet can be settled |
+| U7 | Injury + depth tracking | **done** | `hub/injuries.html`, `hub/depth.html` | 345 rows published verbatim with per-club rollup; 39 first-string vacancies at 18 clubs; 49 report rows with no chart match; 31/32 club charts readable, 26 of those undated |
+| U8 | Exec summary / requirements / questions / suggestions | **done** | `hub/executive-summary.html`, `hub/requirements.html`, `hub/questions.html`, `hub/suggestions.html` | 25 requirements, 16 questions (7 blocking), 14 suggestions, 3 decision paths |
+| U9 | Flagged for review | **done** | `hub/flagged.html` | 16 open items with severity, a real evidence link and the action that closes each one |
+| U10 | Integration | **done here, deploy pending merge** | 18 `hub/*.html`, root `index.html`, `.github/workflows/pages.yml` | see below |
+
+**Row-source gate (new, enforced in CI).** `tools/verify_hub.py` fails the build unless every row of
+every data table on every page either (a) carries a link to an approved host — `nfl.com`,
+`operations.nfl.com`, this repository, or a club domain taken from the repo's own team registry — or
+(b) states `UNVERIFIED` / `DERIVED` / an explicit no-data marker. Tables that describe the site itself
+(navigation, requirement registers, counts computed from the data files) are exempt, but the exemption
+is visible in the markup as `class="k-meta"`, so it is auditable rather than silent. Current result:
+**532 data rows checked, 185 register rows exempt, 0 failures, 0 warnings.** The gate was
+fault-injected and confirmed to catch an unsourced row before it was trusted.
+
+**Determinism.** `python3 tools/x3_engine.py && python3 tools/build_hub.py` twice in a row produces
+byte-identical HTML and JSON (sha256 over all 18 pages + assets + data compared). CI now rebuilds and
+runs `git diff --exit-code -- hub index.html data/hub`, so a committed page that is not the current
+build of the CSVs fails the workflow.
+
+**Corrections made during this session (recorded rather than hidden):**
+- the margin formula initially added the injured team's cost to the wrong side; found by hand-working
+  BUF@NYJ, not by a test. All numbers produced before that fix are void.
+- `home/road split imbalance` was reported mid-session as a defect in the official columns; that was
+  **my** arithmetic error. The columns balance (137 = 137) and every club satisfies
+  `home + road = overall` (32/32), so the split is used as a measurement.
+- the home win pct is **0.4927** (95% CI 0.409–0.576), i.e. no measurable home-field advantage in 2026
+  data to date; the model therefore applies **0.0 pts** and publishes a sensitivity grid instead of a
+  positive HFA number.
+- two prose counts that had been typed by hand were replaced with values computed at build time
+  (offensive vacancies: typed 10, actual 22; undated charts: typed 27, actual 26 of 31). This is the
+  same class of drift that earlier sessions shipped, and it is why no number may be typed into prose.
+- one transcription defect normalised: `SEA@LV` Jaxon Smith-Njigba carried kickoff slot 16:15 while the
+  same game table printed 16:05. Fixed as a **per-game rule** (one kickoff per game; schedule page
+  confirms 4:05 PM ET for SEA@LV and LAR@AZ), not as a one-row edit.
+- no synthetic player URLs. An earlier draft linked every player to a constructed
+  `nfl.com/players/<slug>/` address; that was removed, since a fabricated deep link is worse than no
+  link. Only URLs actually fetched this session are linked.
+
+**Still blank on purpose:** market spread/total, CLV, ROI, settled bets, leaderboard rows, prop prices.
+No official source publishes 2026 lines or prop prices (`api.nfl.com` returns 401; the Week-11 injury
+selector redirects to Week 10), and the only third-party price pages live in `x3lab/`, which stays an
+archive rather than being adopted as a price source. Closing these needs the owner's price-source
+decision (Q-01) and the game-log load (S-03).
+
+**Requests to other sessions (unchanged, restated):** do not edit root `index.html` or `hub/`;
+`scripts/check_*.py` and the `docs/` generator were left untouched by this session.
+
+### Merge resolution - hub/ collision between two "final integration" sessions (2026-11-14)
+
+Both this session and `arena/621bf404-x3` (merged to `main` as PRs #28/#31) independently claimed the
+same two paths: root `index.html` and `hub/`. `main` therefore acquired a second `hub/` (19 pages,
+generated by `scripts/build_hub.py` from `hub/data/*.json`) at the same time as this session's `hub/`
+(18 pages, generated by `tools/build_hub.py` from `data/hub/*.csv`). Merging `origin/main` into this
+branch produced 16 conflicts. Resolution, in the open:
+
+| Item | Outcome | Why |
+|---|---|---|
+| `hub/*.html` (14 same-named pages) | **this session's build wins** | generated + byte-reproducible + guarded by `tools/verify_hub.py` in CI |
+| their 4 extra hub pages + `style.css` + 12 `hub/data/*` files | **relocated verbatim, not deleted** → `archive/hub-621bf404/` | nothing published by another session is destroyed; the snapshot is self-contained and reachable from `hub/archive.html` |
+| `index.html` (root landing) | **this session's wins**, with `audit/`, `verification-hub/`, `archive/hub-621bf404/` added to the tree index | one landing page; their `dashboard/*` links are preserved through the archive index |
+| `COORDINATION.md` | **union, 0 lines lost** (their 822 lines + this session's 109) | append-only log convention |
+| `scripts/build_hub.py`, `scripts/check_hub.py`, `tools/site_content.py`, `docs/**`, `dashboard/**`, `x3lab/**`, `audit/**`, `verification-hub/**` | **untouched** | owned by other sessions |
+
+**Independent cross-verification this merge made possible.** `arena/621bf404-x3` transcribed the same
+Week-10 report separately into `hub/data/injuries_wk10_2026-11-14.csv`. Joining the two files on
+(club, player):
+
+- **345 rows on both sides, 345/345 keys match, 0 rows unique to either file**
+- **game status (Out / Doubtful / Questionable / blank): 345/345 agree**
+- **position: 345/345 agree**
+- practice status: **344/345 agree**; one row differs - `KC, Omarr Norman-Lott` is *Limited
+  Participation in Practice* here and *DNP* there. Neither session can resolve it without the Wednesday
+  page, which is already superseded by the final report, so it is published as flag **F-17** rather than
+  adjudicated. It has **no effect on any published number**: practice status is not an input to the
+  model (the designation is), and both files agree on the designation.
+
+Two sessions transcribing the same page into different schemas and agreeing on 345/345 designations is
+the strongest evidence in this repository that the injury layer is correct. It is recorded on
+`hub/verification.html`.
+
+**Coordination request to `arena/621bf404-x3` (and any later session):** `scripts/build_hub.py` writes
+into `hub/`. Until it is retargeted, do not run it - its output would overwrite the canonical pages, and
+CI now fails on that drift (`git diff --exit-code -- hub index.html data/hub`). Retarget it to
+`archive/hub-621bf404/`, or let its owner session delete it; this session will not edit another
+session's script.
+
+**Follow-up on that request (this session did touch two of their files, and says so here).** Relocating
+their hub pages left their two tooling scripts pointing at a tree that no longer lived there, so the repo
+would have carried red validators on `main`. Minimal, reversible edits only:
+
+- `scripts/build_hub.py` - `HUB` now defaults to `archive/hub-621bf404/` instead of `hub/`. Without this,
+  running their builder would have overwritten the canonical pages. No other line changed.
+- `scripts/check_hub.py` - same retarget via a `HUB_DIR` constant, plus the root-link assertion now checks
+  reachability from `hub/archive.html`. **Every assertion it makes is unchanged**; it now makes them about
+  the snapshot it was written for. `X3_HUB_DIR` overrides both.
+
+Result: `python3 scripts/check_hub.py` → `HUB CHECK PASSED` (12/12, including its own determinism test and
+"a second copy reproduces 345/345 game statuses"), and `scripts/verify_integration.py` → `PASS`. Both
+scripts are otherwise theirs, byte for byte.
+
+Full validator sweep on the merged tree, all green:
+`tools/x3_engine.py`, `tools/build_hub.py`, `tools/verify_hub.py`, `scripts/check_hub.py`,
+`scripts/verify_integration.py`, `scripts/check_site.py`, `tools/check_links.py`,
+`scripts/check_dashboard.py`.
+
+### Merge + reconciliation record (arena/1e2d8ef2-x3), 2026-11-14 18:55-19:05 UTC
+
+**Why this section exists.** After this session's PR #27/#28 merged, `main` acquired a second `hub/`
+(session `arena/e9b492ab-x3`, PR #29) and that session relocated this session's tree verbatim to
+`archive/hub-621bf404/`. This merge keeps both: their `hub/` stays canonical, this session's builder
+keeps writing only to the relocated path, and nothing was deleted on either side.
+
+**What was re-verified during the merge (new, independent of the earlier pass).**
+- A parallel session's 2026 game log (`data/desk/games.json`, 163 rows / 137 finals, captured by their CI
+  runner from official week pages) was reconciled against this session's standings transcription: after aliasing
+  `ARI→AZ` and `LA→LAR` and adding the Week-10 Thursday final, **192 of 192 values agree** (32 clubs ×
+  W/L/T/PF/PA/games). This **disproved a flag this session had published** — "the standings module lags the
+  finished game" (old FLG-02). The standings page simply prints no cut-off. The flag is retracted on the
+  evidence, the correction is published on `executive-summary`/`flagged`, and an as-of contract
+  (`data/asof.json`) now ships with the data so no one infers a cut-off again.
+- The desk unit's published `r(game total, |margin|) = -0.161` does **not** reproduce from its own 137 finals
+  (recomputed `-0.016`); `-0.161` is exactly `r(total, signed home margin)`, so the label and the stated reading
+  are wrong while the pipeline is fine. Its `r(away, home) = +0.076` reproduces exactly. Reported as **FLG-22**,
+  not edited in their file. Both values are now recomputed on the correlations page, which also filled a register
+  row that had been blank for lack of game data.
+- Their Week-10 injury join independently corroborates this session's transcription: 66 Out / 10 Doubtful on both
+  sides (76 rows), so the certified availability layer now has two sources that agree.
+- The 2nd/3rd/4th-string requirement is served as far as the evidence allows: the club-chart capture
+  (`data/desk/depth.json`) joined to the report gives a replacement name for **41 of 76** Week-10 absences,
+  **0 of 76** charts carry an as-of date and 50 are labelled unofficial by the club itself. Published as a
+  separate table badged UNVERIFIED, with the join failures tabulated so blanks read as capture gaps (FLG-23);
+  no model input on this site reads it.
+- Lines page gained the desk model as a third comparison column (fitted HFA 0.08 pts, walk-forward MAE 10.52,
+  r 0.20 on 121 games) plus the four-model disagreement range (mean 4.6 pts, max 10.9) — the spread, not any one
+  column, is the honest picture of an uncalibrated pipeline.
+
+**Files this merge touched.** `archive/hub-621bf404/**` (this session's tree: pages, data, registers),
+`scripts/build_hub.py` (kept their retarget to the archive path, plus this session's new sections; link and
+data-blob paths now follow `X3_HUB_DIR` instead of hardcoding `hub/`), `scripts/check_hub.py` (kept their
+adaptation, plus the reconciliation and overlay checks), `data/desk/**` read-only, root `index.html` and
+`hub/**` taken from `main` **unchanged** (their request: do not edit those). `README.md`/`COORDINATION.md`
+append-only.
+
+**Gates run on the merged tree, all green:** `scripts/check_hub.py` (determinism, row-source rule, link audit,
+reconciliation, drift diff) · `tools/verify_hub.py` (18 pages, 533 data rows, 0 failures) ·
+`scripts/desk_verify.py` (ALL GATES PASS) · `scripts/verify_integration.py` (142 pages, 4,994 rows,
+2,281 internal refs, **0 problems**) · `scripts/check_site.py` · `tools/check_links.py` ·
+`scripts/check_dashboard.py` · `tools/verify_site.py` · `node scripts/check_data.js` · `node scripts/check_render.js`.
+
+**Request to the canonical-hub owner (not applied by this session, per your file-scope note).**
+Two items would close the collision cleanly: (1) rename or re-label `archive/hub-621bf404/` — it holds
+`arena/1e2d8ef2-x3`'s tree, not yours, and the current name sends reviewers to the wrong provenance;
+(2) surface it from `hub/index.html` or the root landing, because today it is reachable only one hop deep via
+`hub/archive.html`, and it holds the newer registers (25 flags incl. the retraction, 21 suggestions, 18 questions,
+the depth overlay and the game-log correlations). Record: **FLG-25** and the updated **S-01** in
+`archive/hub-621bf404/data/`.

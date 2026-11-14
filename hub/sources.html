@@ -3,53 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Source register &middot; X3 review hub</title>
-<link rel="stylesheet" href="style.css">
+<title>Source register - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
 </head>
 <body>
 <header class="top">
-  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
-  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a' class="on"'ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
 </header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html" class=on">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
 <main>
 <h1>Source register</h1>
-<p class="note">Every published row in the hub cites one of these ids. class OFFICIAL = operated by the NFL or a club; MARKET = third-party pricing; ACADEMIC = peer-reviewed/working paper; SECONDARY = commentary about the league. A row citing only SECONDARY or MARKET data is never presented as fact.</p>
-<table class=""><thead><tr>
-<th>#</th>
-<th>Source</th>
-<th>Class</th>
-<th>Accessed</th>
-<th>Used for</th>
-<th>Verification status</th>
-<th>URL</th>
-</tr></thead><tbody>
-<tr><td>SRC-01</td><td>NFL.com - Official league standings, 2026 regular season</td><td>OFFICIAL</td><td>2026-11-14T18:07Z</td><td>32-club W-L-T, PF, PA, net, home/road/division/conference splits; derived correlations</td><td>fetched and parsed this session (2 chunks)</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SRC-02</td><td>NFL.com - Official Week 10 injury report</td><td>OFFICIAL</td><td>2026-11-14T18:08Z</td><td>345 practice/game-status rows for the 28 clubs playing in Week 10</td><td>fetched and transcribed this session (8 chunks)</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
-<tr><td>SRC-03</td><td>NFL.com - Week 10 2026 schedule (by week)</td><td>OFFICIAL</td><td>2026-11-14T18:11Z</td><td>14 games, kickoff times, broadcasts, Munich venue, 4 byes, Thu result line</td><td>fetched and parsed this session (chunks 0-1)</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">SRC-03</a></td></tr>
-<tr><td>SRC-04</td><td>NFL.com Game Center - Commanders at Giants, Week 10</td><td>OFFICIAL</td><td>2026-11-14T18:14Z</td><td>final score WAS 24 NYG 21, scoring drives, MetLife Stadium, standings widget</td><td>fetched this session; also exposes flag FLG-02 (stale standings widget)</td><td><a href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10">SRC-04</a></td></tr>
-<tr><td>SRC-05</td><td>NFL.com news - Week 9 injury report (2026)</td><td>OFFICIAL</td><td>2026-11-14T18:13Z</td><td>independent cross-check of designations for 2026-11-08 games</td><td>fetched chunk 0 this session</td><td><a href="https://www.nfl.com/news/nfl-week-9-injury-report-2026-season">SRC-05</a></td></tr>
-<tr><td>SRC-06</td><td>NFL.com news roundup - Saturday Nov 14, 2026</td><td>OFFICIAL</td><td>2026-11-14T18:08Z (headline as printed on SRC-02)</td><td>Freiermuth questionable claim; Colts activate Arden Key from IR</td><td>headline only; article body not fetched this session - see FLG-04</td><td><a href="https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-saturday-nov-14">SRC-06</a></td></tr>
-<tr><td>SRC-07</td><td>NFL.com news - Seahawks at Raiders QB note</td><td>OFFICIAL</td><td>2026-11-14T18:08Z (headline as printed on SRC-02)</td><td>confirms Drew Lock (not on report as designated) starts for SEA with Sam Darnold Out</td><td>headline only</td><td><a href="https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders">SRC-07</a></td></tr>
-<tr><td>SRC-08</td><td>NFL.com news - Ravens Lamar Jackson IR</td><td>OFFICIAL</td><td>2026-11-14T18:08Z (headline as printed on SRC-02)</td><td>Jackson placed on IR 2026-11-05; absence window conflicts across official pages</td><td>headline only - see FLG-05</td><td><a href="https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-thursday-nov-5">SRC-08</a></td></tr>
-<tr><td>SRC-09</td><td>Club depth-chart pages (32 clubs)</td><td>OFFICIAL</td><td>prior session 2026-11-14 (arena/7e632805-x3)</td><td>intended source for 2nd/3rd/4th-string depth; self-labelled unofficial by the clubs</td><td>NOT re-fetched this session; string-rank claims left blank - see FLG-08</td><td><a href="https://www.nfl.com/teams/">SRC-09</a></td></tr>
-<tr><td>SRC-10</td><td>Bailey &amp; Lopez de Prado - The Deflated Sharpe Ratio (SSRN 2460551)</td><td>ACADEMIC</td><td>2026-11-14T18:16Z</td><td>gate G-07: selection bias / multiple testing correction for a strategy leaderboard</td><td>title, authors, journal cite (J. Portfolio Mgmt 40(5):94-107, 2014) confirmed by search result</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551">SRC-10</a></td></tr>
-<tr><td>SRC-11</td><td>Bailey, Borwein, Lopez de Prado &amp; Zhu - The Probability of Backtest Overfitting (SSRN 2326253)</td><td>ACADEMIC</td><td>2026-11-14T18:16Z</td><td>gate G-06: CSCV/PBO test that the selected strategy is not an in-sample artefact</td><td>abstract, method (CSCV) and later journal publication confirmed by search result</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253">SRC-11</a></td></tr>
-<tr><td>SRC-12</td><td>NFL injury-report cadence explained (secondary)</td><td>SECONDARY</td><td>2026-11-14T18:16Z</td><td>Wed/Thu/Fri 4pm ET filing and Out/Doubtful/Questionable convention</td><td>NOT verified against a league rulebook page this session - see FLG-11</td><td><a href="https://www.pro-football-reference.com/players/injuries.htm">SRC-12</a></td></tr>
-<tr><td>SRC-13</td><td>ESPN NFL odds (used by a prior session for market lines)</td><td>MARKET</td><td>prior session 2026-11-14 (arena/e1c332ce-x3)</td><td>no hub row uses this; listed so the earlier x3lab market columns can be traced</td><td>not re-fetched, not verified - see FLG-07</td><td><a href="https://www.espn.com/nfl/odds">SRC-13</a></td></tr>
-<tr><td>SRC-14</td><td>GitHub Pages - repo pages API status for karagemop466-tech/X3</td><td>OFFICIAL</td><td>2026-11-14T18:06Z</td><td>deploy target and build status (source main /, build_type legacy, status built)</td><td>read with gh api this session</td><td><a href="https://api.github.com/repos/karagemop466-tech/X3/pages">SRC-14</a></td></tr>
-<tr><td>SRC-15</td><td>GitHub Pages product docs</td><td>OFFICIAL</td><td>prior session 2026-11-14</td><td>how the deploy workflow and Pages source behave</td><td>not re-fetched this session</td><td><a href="https://docs.github.com/en/pages">SRC-15</a></td></tr>
-<tr><td>SRC-16</td><td>Repo snapshot data - docs/data/injury-2026-week10.csv (345 rows, permalinks added by the integration session)</td><td>REPO</td><td>2026-11-14T18:12Z</td><td>independent diff against this session&#x27;s fresh transcription (VER-03)</td><td>compared row by row this session: 345/345 players and game statuses identical, 1 practice-status drift. Independently corroborated by the audit unit&#x27;s diff (audit/summary.json: 294 MATCH / 51 DIFF, mismatches confined to the game and tv label columns)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/docs/data/injury-2026-week10.csv">SRC-16</a></td></tr>
-<tr><td>SRC-17</td><td>In-repo 2026 game log captured by the desk pipeline (data/desk/games.json)</td><td>REPO</td><td>2026-11-14T18:44Z</td><td>163 rows / 137 finals W1-W11; reconciliation of the standings snapshot and the two game-level correlations; each log row carries its own official week-page URL</td><td>fetched by a GitHub-hosted runner from official week pages (session arena/3bf7cc8b-x3); this session re-derived W1-9 points and records from it and they match the official standings on all 32 clubs once LA/ARI aliases are applied (VER-19)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json">SRC-17</a></td></tr>
-<tr><td>SRC-18</td><td>Club-published depth charts + injury join captured by the desk pipeline (data/desk/depth.json, deficiencies.json)</td><td>REPO</td><td>2026-11-14T18:44Z</td><td>replacement-chain overlay for Week 10 (76 Out/Doubtful rows, 42 with a listed backup)</td><td>club-published charts, 76/76 with no as-of date and 50 explicitly labelled unofficial by the club; rendered only as an UNVERIFIED overlay (FLG-08, FLG-23)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json">SRC-18</a></td></tr>
-<tr><td>SRC-19</td><td>Desk model output with walk-forward backtest (data/desk/model.json)</td><td>REPO</td><td>2026-11-14T18:44Z</td><td>third in-repo model for the comparison columns; fitted HFA 0.08 and backtest MAE 10.52 / r 0.20 on 121 games</td><td>DERIVED by that session from the game log; not re-fitted here, metrics reproduced arithmetically where possible (VER-22)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">SRC-19</a></td></tr>
+<p class="lede">Every source used by the canonical site, what it provides, how it was read, and when.</p>
+
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>What it provides</th><th>Link</th><th>Publisher</th><th>Used for</th><th>Method this session</th><th>Retrieved</th><th>State</th></tr></thead><tbody>
+<tr><td>2026 league standings (W-L-T, PF, PA, home/road/div/conf splits, streak, last 5)</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">www.nfl.com/standings/league/2026/REG</a></td><td>NFL.com (official)</td><td>team ratings inputs; HFA and luck analysis</td><td>fetched and read in full (2 chunks)</td><td>2026-11-14</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Official weekly injury report - Week 10, 2026</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">www.nfl.com/injuries/league/2026/reg10</a></td><td>NFL.com (official)</td><td>345 player rows: practice status, designation, game status</td><td>fetched and read in full (8 chunks; the reg11 URL redirects to reg10)</td><td>2026-11-14</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Week 10 2026 schedule (matchups, dates, times, TV, one final score, Munich label)</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">www.nfl.com/schedules/2026/by-week/week-10</a></td><td>NFL.com (official)</td><td>slate definition; neutral-site flag</td><td>fetched, chunk 0 of 3 read (games 1-8 of 14)</td><td>2026-11-14</td><td><span class="badge p">PARTIAL</span></td></tr>
+<tr><td>Week 11 2026 schedule (look-ahead slate)</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">www.nfl.com/schedules/2026/by-week/week-11</a></td><td>NFL.com (official)</td><td>next-slate matchups and times</td><td>fetched, chunk 0 of 2 read</td><td>2026-11-14</td><td><span class="badge p">PARTIAL</span></td></tr>
+<tr><td>Detroit Lions 2026 depth chart</td><td><a class="src" href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">www.detroitlions.com/team/depth-chart</a></td><td>Detroit Lions (official club site)</td><td>first-string names per slot for the lineup-deficiency check</td><td>fetched, 1 chunk, read in full</td><td>2026-11-14</td><td><span class="badge p">VERIFIED (page self-labels 'Unofficial')</span></td></tr>
+<tr><td>New England Patriots 2026 depth chart</td><td><a class="src" href="https://www.patriots.com/team/depth-chart" target="_blank" rel="noopener">www.patriots.com/team/depth-chart</a></td><td>New England Patriots (official club site)</td><td>offensive chart rows used in the same check</td><td>fetched, chunk 0 of 3 read (offence)</td><td>2026-11-14</td><td><span class="badge p">PARTIAL</span></td></tr>
+<tr><td>NFL Football Operations - roster/injury rules</td><td><a class="src" href="https://operations.nfl.com/the-rules/nfl-rulebook/" target="_blank" rel="noopener">operations.nfl.com/the-rules/nfl-rulebook/</a></td><td>NFL.com (official)</td><td>definition of the designation window and reporting duty</td><td>cited as the governing document; text not re-read this session</td><td>not re-fetched</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>NFL player statistics (snap counts, splits)</td><td><a class="src" href="https://www.nfl.com/stats/" target="_blank" rel="noopener">www.nfl.com/stats/</a></td><td>NFL.com (official)</td><td>career-snap and split data needed for ST-03 and S-09</td><td>not fetched this session</td><td>-</td><td><span class="badge u">NOT USED</span></td></tr>
+<tr><td>Repo data files (canonical inputs for this site)</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/data/hub" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/tree/main/data/hub</a></td><td>this repository</td><td>standings and injury CSVs the model reads</td><td>generated + committed</td><td>2026-11-14</td><td><span class="badge d">DERIVED</span></td></tr>
+<tr><td>Prior-session data module (depth charts)</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/tools/nfl_data.py" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/tools/nfl_data.py</a></td><td>this repository</td><td>club depth-chart strings for 31 clubs</td><td>spot-verified against DET live page; not re-fetched for the other 30</td><td>2026-11-14</td><td><span class="badge p">INHERITED</span></td></tr>
 </tbody></table>
+</div>
+<section class="callout"><h2>Fetch boundary</h2>
+<p>Direct network access from the build environment is limited to github.com, api.github.com,
+codeload.github.com, registry.npmjs.org, pypi.org and files.pythonhosted.org. Pages on nfl.com and club
+domains are read through the agent's fetch tool, which returns the rendered document; the URLs above are
+the addresses to open manually to confirm any row. No value on this site was taken from a third-party
+aggregator.</p></section>
+
 </main>
 <footer>
-  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>.
-  Snapshots fetched 2026-11-14 18:07-18:15 UTC; standings cover every regular-season game completed on or before 2026-11-12, i.e. all of Week 9 plus the Week 10 Thursday game (WAS 24, NYG 21); injury table is the Saturday report, before
-  Sunday inactives (<a href="data/asof.json">as-of contract</a>). Facts link to NFL.com; derived values are labelled;
-  assumptions are labelled; everything else is blank and marked <span class="bad">UNVERIFIED</span>.
-  Nothing here is betting advice.</p>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
 </footer>
-</body>
-</html>
+<script src="assets/hub.js" defer></script>
+</body></html>
