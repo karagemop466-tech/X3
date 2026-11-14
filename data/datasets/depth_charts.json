@@ -5,8 +5,8 @@
       "sources": [
         {
           "url": "https://www.atlantafalcons.com/depth-chart",
-          "sha256": "088ab1890da5e668b56c9b9c0c3f86635201c14c6fbaa7f7b140cae8b8f81d97",
-          "fetched_at": "2026-11-14T03:41:15+00:00"
+          "sha256": "de241007970b509046bc4b1ff2d7f8603ed8ad0f588e8de0c7983f5fed2bf27c",
+          "fetched_at": "2026-11-14T03:44:54+00:00"
         }
       ],
       "units": [
@@ -717,8 +717,8 @@
       "sources": [
         {
           "url": "https://www.baltimoreravens.com/team/depth-chart",
-          "sha256": "a263bd77bf5886529189e3a8ebb6c42ab725614cf3fcce159db6350710365af6",
-          "fetched_at": "2026-11-14T03:41:10+00:00"
+          "sha256": "08fe6b097301677fd30cba9c9c500a099b51f698eecdd7c87583de719c5fdddb",
+          "fetched_at": "2026-11-14T03:44:49+00:00"
         }
       ],
       "units": [
@@ -1379,8 +1379,8 @@
       "sources": [
         {
           "url": "https://www.buffalobills.com/team/depth-chart",
-          "sha256": "95e8dd2ccddbdae4ab819147c44f306d54f42b67c813538788950b1e321698e0",
-          "fetched_at": "2026-11-14T03:41:00+00:00"
+          "sha256": "3b934a22fbfab0081c1b6ceb47a98d4f3b32ed57155b9443ba60b4b69fd62ea5",
+          "fetched_at": "2026-11-14T03:44:39+00:00"
         }
       ],
       "units": [
@@ -2051,7 +2051,7 @@
         {
           "url": "https://www.panthers.com/team/depth-chart",
           "sha256": "d6bbd2e26ce51225c7dc8f8b6f46ad21f2e6728b94fc512e2ecb2bc830d1f32b",
-          "fetched_at": "2026-11-14T03:41:14+00:00"
+          "fetched_at": "2026-11-14T03:44:50+00:00"
         }
       ],
       "units": [
@@ -2754,8 +2754,8 @@
       "sources": [
         {
           "url": "https://www.chicagobears.com/team/depth-chart",
-          "sha256": "e5697dde5a8d9e2b31f905975a0bf69af6103b69aa0dabf71caf5c4e4851e6c4",
-          "fetched_at": "2026-11-14T03:41:01+00:00"
+          "sha256": "242f1b46070234d763fa3f4ff524838cc7fba9255c8b16e787a135fc1b3bb315",
+          "fetched_at": "2026-11-14T03:44:39+00:00"
         }
       ],
       "units": [
@@ -3383,8 +3383,8 @@
       "sources": [
         {
           "url": "https://www.bengals.com/team/depth-chart",
-          "sha256": "5fd21dbcaf6764fc3525c098118f0d844547e8c1b056bd1ae3de8f9327a94b03",
-          "fetched_at": "2026-11-14T03:41:04+00:00"
+          "sha256": "d31be0608633883d2ae79811ab5176257d03a0d1c777f67648cc71c859a6a597",
+          "fetched_at": "2026-11-14T03:44:39+00:00"
         }
       ],
       "units": [
@@ -3998,8 +3998,8 @@
       "sources": [
         {
           "url": "https://www.browns.com/team/depth-chart",
-          "sha256": "ac497574ea01ed8bacd2f240dfa0bb64cd50212cfc70e98b9de06f080e2ee0b8",
-          "fetched_at": "2026-11-14T03:41:08+00:00"
+          "sha256": "56a5db770ad09398f957d2f30cd16f44ffa44e0505a4b867c09f2902f9f0e5a4",
+          "fetched_at": "2026-11-14T03:44:44+00:00"
         }
       ],
       "units": [
@@ -4645,7 +4645,7 @@
         {
           "url": "https://www.dallascowboys.com/team/depth-chart",
           "sha256": "6533826cc2402ad64fcd8e19c25e87a485b968070507f857bf856e2dad7c3baf",
-          "fetched_at": "2026-11-14T03:41:10+00:00"
+          "fetched_at": "2026-11-14T03:44:49+00:00"
         }
       ],
       "units": [
@@ -5283,8 +5283,8 @@
       "sources": [
         {
           "url": "https://www.denverbroncos.com/team/depth-chart",
-          "sha256": "3ce3dbaa7ea89ffc1d5bb77a17587e09f39761bc0a575774aebc72e47e8f872e",
-          "fetched_at": "2026-11-14T03:41:03+00:00"
+          "sha256": "e52c6170f19709604edf556758b7984650605098084e707c358107731d90b704",
+          "fetched_at": "2026-11-14T03:44:39+00:00"
         }
       ],
       "units": [
@@ -5876,8 +5876,8 @@
       "sources": [
         {
           "url": "https://www.detroitlions.com/team/depth-chart",
-          "sha256": "d7f8f72e0693e5db9b893baf86c1c46d2e22c0486df1200d34b53538fcdc5e0e",
-          "fetched_at": "2026-11-14T03:41:04+00:00"
+          "sha256": "3afb4a5665626ffc2e3c58442883c76c5ee92aa410dbd73da45bac5521cddce2",
+          "fetched_at": "2026-11-14T03:44:39+00:00"
         }
       ],
       "units": [
@@ -6503,8 +6503,8 @@
       "sources": [
         {
           "url": "https://www.packers.com/team/depth-chart",
-          "sha256": "6ad2d11ca5424a731ec05fb8fe34367877e4b61b54cba919d3b745a481333bab",
-          "fetched_at": "2026-11-14T03:41:06+00:00"
+          "sha256": "2ccd5f286985ced14f4eded4442936a127b1a4a110abf08bbdadb9869e563405",
+          "fetched_at": "2026-11-14T03:44:44+00:00"
         }
       ],
       "units": [
@@ -7088,8 +7088,8 @@
       "sources": [
         {
           "url": "https://www.colts.com/team/depth-chart",
-          "sha256": "44e90f60f8e3909e9940192c4274b95a69089d8461fd826309ead7cd325050fd",
-          "fetched_at": "2026-11-14T03:41:17+00:00"
+          "sha256": "5535b416c7dd8c54eb0405373d419fb90a090618ad97bf3bcda3ef794cb26dbf",
+          "fetched_at": "2026-11-14T03:44:54+00:00"
         }
       ],
       "units": [
@@ -7726,8 +7726,8 @@
       "sources": [
         {
           "url": "https://www.jaguars.com/team/depth-chart",
-          "sha256": "70e424547787e77a47f09314b2c3295ecfb491e2722e37cf893467572a600961",
-          "fetched_at": "2026-11-14T03:41:04+00:00"
+          "sha256": "02591d113433fee3506bd11a8484e4d0f5a5c505f71de5b233b9d31a00037d58",
+          "fetched_at": "2026-11-14T03:44:42+00:00"
         }
       ],
       "units": [
@@ -8474,7 +8474,7 @@
         {
           "url": "https://www.chiefs.com/team/depth-chart",
           "sha256": "4fa100dd8ea0cb417a7de2aa2b1957c6a11a83ca1f093a7b433491a874c3425d",
-          "fetched_at": "2026-11-14T03:41:05+00:00"
+          "fetched_at": "2026-11-14T03:44:44+00:00"
         }
       ],
       "units": [
@@ -9127,8 +9127,8 @@
       "sources": [
         {
           "url": "https://www.raiders.com/team/depth-chart",
-          "sha256": "d9606c98619b82ae6c563ef8fbec9bc70fc0ac7594761108f90a425f7977ef62",
-          "fetched_at": "2026-11-14T03:41:11+00:00"
+          "sha256": "a2cffc552ee2f274608e4f4411ee54bf955e14c90b4b8673b2096379376136f1",
+          "fetched_at": "2026-11-14T03:44:49+00:00"
         }
       ],
       "units": [
@@ -9769,8 +9769,8 @@
       "sources": [
         {
           "url": "https://www.chargers.com/team/depth-chart",
-          "sha256": "eddfe8f3cab9a6e2368044ec6f6244b699405019b2d330461f8c4592bd1c28cd",
-          "fetched_at": "2026-11-14T03:41:19+00:00"
+          "sha256": "3835c0e00fa185f563ff200cda3dfe69be978c94f99b26b869991ece5a7d26df",
+          "fetched_at": "2026-11-14T03:44:57+00:00"
         }
       ],
       "units": [
@@ -10436,8 +10436,8 @@
       "sources": [
         {
           "url": "https://www.therams.com/team/depth-chart",
-          "sha256": "47d35dffee25dc8f637cb12ffed6ac48bb54a3c1a4c6f6f40664ff08bfc6fc67",
-          "fetched_at": "2026-11-14T03:41:09+00:00"
+          "sha256": "49699a35e53bd6edf801cdc0a9c90e44adece832c57af6fd2a7c65476ecc8c3a",
+          "fetched_at": "2026-11-14T03:44:45+00:00"
         }
       ],
       "units": [
@@ -11070,8 +11070,8 @@
       "sources": [
         {
           "url": "https://www.miamidolphins.com/team/depth-chart",
-          "sha256": "bd8e05ac0fcc7045ec4b6e29c4b6bf94c1c5fcb57ddfc94107a8efce34b21858",
-          "fetched_at": "2026-11-14T03:41:15+00:00"
+          "sha256": "124c285f418123e370cd3adefe3f6a19ecc70c7c03b156b70f2f43b5e572c1ba",
+          "fetched_at": "2026-11-14T03:44:54+00:00"
         }
       ],
       "units": [
@@ -11752,8 +11752,8 @@
       "sources": [
         {
           "url": "https://www.vikings.com/team/depth-chart",
-          "sha256": "afd8ca1e2af874bdf3de32612d99cd5439519f7d04ec5c40b2febfb6325f3d54",
-          "fetched_at": "2026-11-14T03:41:05+00:00"
+          "sha256": "6c4dfbefe9fe5ab923e85ba406d409f7b2913f83f2b06e66ef76be5443f343c2",
+          "fetched_at": "2026-11-14T03:44:44+00:00"
         }
       ],
       "units": [
@@ -12479,8 +12479,8 @@
       "sources": [
         {
           "url": "https://www.patriots.com/team/depth-chart",
-          "sha256": "011a653f36fb37f5224d36a4e3ccef629e7816cf8cea028b2a28f49d5d7519dc",
-          "fetched_at": "2026-11-14T03:41:09+00:00"
+          "sha256": "cc2691a115d981d410a7a3007d098da3587d82c81dd9e96702ce6971e954eead",
+          "fetched_at": "2026-11-14T03:44:47+00:00"
         }
       ],
       "units": [
@@ -13154,8 +13154,8 @@
       "sources": [
         {
           "url": "https://www.neworleanssaints.com/team/depth-chart",
-          "sha256": "782e794ba479078954f7d623e9d2b624e314a79d6042ecb0556b3222b5f9f7ce",
-          "fetched_at": "2026-11-14T03:41:15+00:00"
+          "sha256": "37bab14d174cb9c82e548e98f737506423144384ce792cd8e151ff15bd3233bd",
+          "fetched_at": "2026-11-14T03:44:53+00:00"
         }
       ],
       "units": [
@@ -13786,8 +13786,8 @@
       "sources": [
         {
           "url": "https://www.giants.com/team/depth-chart",
-          "sha256": "a55491609b3dba6caa3e355a49d9a2c1e7cdae8a0835978341ae42f971abe5a1",
-          "fetched_at": "2026-11-14T03:41:08+00:00"
+          "sha256": "b1119dc824630afb2c4a18b124c9514de5e44ae77a96decf6586cfefdc8ac9d3",
+          "fetched_at": "2026-11-14T03:44:44+00:00"
         }
       ],
       "units": [
@@ -14373,8 +14373,8 @@
       "sources": [
         {
           "url": "https://www.newyorkjets.com/team/depth-chart",
-          "sha256": "17a58ecd64d4ae8a41bb5a08820776793c4afbeeb6e5edab4579ffc0825d582a",
-          "fetched_at": "2026-11-14T03:41:16+00:00"
+          "sha256": "d9fda405a81386d8cb880cfc67ef5e73510c41527103c81ff0457e3b8c42ad68",
+          "fetched_at": "2026-11-14T03:44:54+00:00"
         }
       ],
       "units": [
@@ -15003,8 +15003,8 @@
       "sources": [
         {
           "url": "https://www.steelers.com/team/depth-chart",
-          "sha256": "2b0e04fb71dd623e70d22bdb36f67ec121fb2ef945e4b942e453b0c55f392e09",
-          "fetched_at": "2026-11-14T03:41:05+00:00"
+          "sha256": "73abf0d920b73cc3326f32bdc73966ef51f55d68b5745ea9d33ea70be9632c04",
+          "fetched_at": "2026-11-14T03:44:44+00:00"
         }
       ],
       "units": [
@@ -15709,7 +15709,7 @@
         {
           "url": "https://www.49ers.com/team/depth-chart",
           "sha256": "711025a54a2bc245d438fe7cbf1092f1be3f31007a0836be46a7696884905242",
-          "fetched_at": "2026-11-14T03:41:00+00:00"
+          "fetched_at": "2026-11-14T03:44:39+00:00"
         }
       ],
       "units": [
@@ -16367,8 +16367,8 @@
       "sources": [
         {
           "url": "https://www.seahawks.com/team/depth-chart",
-          "sha256": "366af151f1943395c1ebef5e24b69d52e4bfed26156f6fd9e6711a4d3ccf0ac9",
-          "fetched_at": "2026-11-14T03:41:10+00:00"
+          "sha256": "372d633cd485666d38a23ed573f5649db067498daaedbe4713ea164a36f33dd2",
+          "fetched_at": "2026-11-14T03:44:48+00:00"
         }
       ],
       "units": [
@@ -17139,7 +17139,7 @@
         {
           "url": "https://www.buccaneers.com/team/depth-chart",
           "sha256": "6ea1ab104c78a4ab0e8c30de27f0091d2ca4d3da00e5750bc636da76b0c02c42",
-          "fetched_at": "2026-11-14T03:41:20+00:00"
+          "fetched_at": "2026-11-14T03:44:57+00:00"
         }
       ],
       "units": [

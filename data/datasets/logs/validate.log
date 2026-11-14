@@ -1,8 +1,18 @@
 [PASS] Internal links and assets resolve: 474 internal references checked across 16 pages
-[PASS] All external links point at official hosts: 955 external links checked against the official-host allowlist
-[PASS] Every dataset row carries an official source link: 14711 dataset rows checked for an official source link
-[PASS] Unverified values are rendered as explicit markers: 253 unverified markers rendered (dataset blank values: 12860)
+[PASS] All external links point at official hosts: 959 external links checked against the official-host allowlist
+[PASS] Every dataset row carries an official source link: 16773 dataset rows checked for an official source link
+[PASS] Unverified values are rendered as explicit markers: 253 unverified markers rendered (dataset blank values: 32518)
 [PASS] No two official URLs returned an identical payload: no duplicate payload fabricates distinct data (3 expected group(s))
-[PASS] Scheduled games match the week they are filed under: 0 scheduled games checked against their own game week
-[PASS] Official source URLs are reachable: 262 official URLs requested
-overall: pass (16 pages)
+[FAIL] Scheduled games match the week they are filed under: 2058 scheduled games checked against their own game week; mismatches: 952
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/patriots-at-lions-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/texans-at-browns-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/vikings-at-packers-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/dolphins-at-colts-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/panthers-at-saints-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/bills-at-jets-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/jaguars-at-titans-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/rams-at-cardinals-2026-reg-10)
+[FAIL] Schedule week mismatch: schedule_2023.json: a game tagged week 1 links to a week-10 game (https://www.nfl.com/games/seahawks-at-raiders-2026-reg-10)
+[PASS] Official source URLs are reachable: 266 official URLs requested
+overall: fail (16 pages)
