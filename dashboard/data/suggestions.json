@@ -198,7 +198,7 @@
   "id": "S-16",
   "area": "Legal",
   "title": "Get a jurisdiction opinion before any real staking",
-  "problem": "The owner is in Tokyo. Whether originating lines and staking is lawful there is unanswered.",
+  "problem": "The operating jurisdiction is unspecified, so the applicable rules for originating lines, staking, and rewards are unknown.",
   "a": "Legal review before the first real-money bet.",
   "b": "Paper-trade indefinitely.",
   "c": "Proceed and review later.",
