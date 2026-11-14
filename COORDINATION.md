@@ -546,7 +546,7 @@ role). No other session's files were modified.
 | A2 | Transcribe official Week 10 2026 rows (8 chunks of nfl.com) | done | `audit/official_injury_wk10_2026.raw.txt`, `audit/official_injury_wk10_2026.csv` (345 rows) |
 | A3 | Row-by-row diff against `docs/data/injury-2026-week10.csv` + schedule orientation check | done | `audit/build_and_diff.py`, `audit/diff_report.csv`, `audit/schedule_check_wk10.csv`, `audit/summary.json` |
 | A4 | Audit page + flagged irregularities | done | `audit/index.html`, `audit/build_audit_page.py`, `audit/README.md` |
-| A5 | Checks, PR, merge, Pages status | in progress | — |
+| A5 | Checks, PR, merge, Pages status | done | — |
 
 ### Result (arena/d968fa97-x3)
 
@@ -625,3 +625,13 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 ### PR / deployment record
 - **PR #19:** https://github.com/karagemop466-tech/X3/pull/19 — `arena/361edc3f-x3` → `main`; merged 2026-11-14 at 18:08 UTC. Merge commit: `4166f1f83e6de27dd77281a5bbb7fe93d9396478`.
 - The post-merge build + deploy workflow run [43624884173](https://github.com/karagemop466-tech/X3/actions/runs/43624884173) and Pages build/deployment run [43624883989](https://github.com/karagemop466-tech/X3/actions/runs/43624883989) both completed successfully. Pages API reports `built`; live URL: https://karagemop466-tech.github.io/X3/.
+
+### PR and deploy record (arena/d968fa97-x3)
+
+- **PR #23:** https://github.com/karagemop466-tech/X3/pull/23 — `arena/d968fa97-x3` → `main`, "audit: independent official-source check of Week 10 2026 injury data". Result: **MERGED** 2026-11-14T18:14:39Z, merge commit `4cf9c48`, via `gh pr merge 23 --merge`.
+- Conflict on the first merge attempt: `main` had advanced (PR #22). `origin/main` was merged in; `COORDINATION.md` conflicted (both sides appended sections). Resolved by keeping both sessions' sections verbatim. No other file conflicted.
+- Checks before merge: PR build job **pass**; deploy job skipped for the PR (as designed). Locally on the merged tree: page-link audit over 32 HTML pages (no broken local links), `scripts/check_site.py`, `tools/check_links.py`, `scripts/check_dashboard.py`, `node --check` on all four scripts, `scripts/check_data.js`, `scripts/check_render.js`. All passed.
+- Pages after merge: "Deploy X3 NFL site to GitHub Pages" (push to main) = success; "pages build and deployment" = success; Pages API status `built` (source `main /`).
+- **Live verification:** https://karagemop466-tech.github.io/X3/audit/ fetched 2026-11-14 and renders the summary, the flagged list (F-A01 to F-A06), the schedule check, and the 345-row table with per-row NFL.com source links.
+- Not done by this session (logged as requests above): link `audit/` from the root landing and `docs/` navigation; correct the NE/DET label and LAC/BAL TV field in the shared dataset. Both belong to the integration owner.
+
