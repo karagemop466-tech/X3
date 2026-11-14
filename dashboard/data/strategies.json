@@ -1,0 +1,112 @@
+[
+ {
+  "id": "ST-01",
+  "name": "Starter-Delta Fade",
+  "family": "Injury / depth",
+  "construction": "Single",
+  "inputs": "Official Week 10 injury report (game status Out/Doubtful) joined to the official club depth chart; replacement depth (2nd, 3rd, 4th string).",
+  "output": "Signed availability delta in position groups, split offense and defense.",
+  "rule": "Bet the side whose opponent is starting a 3rd-string or deeper replacement at a high-leverage position (QB, LT, CB1, EDGE1) and the other side is not.",
+  "lookahead": "None. Injury and depth data are both published before kickoff.",
+  "status": "Registered"
+ },
+ {
+  "id": "ST-02",
+  "name": "Secondary Depletion Over",
+  "family": "Injury / depth",
+  "construction": "Single",
+  "inputs": "Official injury report joined to depth chart; count of Out/Doubtful players in the defensive backfield.",
+  "output": "Count of unavailable defensive backs, and the depth of the worst replacement.",
+  "rule": "Play the team total over (or game total over) when the opposing secondary is missing two or more of its top three corners or both starting safeties.",
+  "lookahead": "None.",
+  "status": "Registered"
+ },
+ {
+  "id": "ST-03",
+  "name": "Net-Rating Divergence",
+  "family": "Ratings",
+  "construction": "Single",
+  "inputs": "Official standings: points for, points against, games played, home/road split.",
+  "output": "Model spread derived from net points per game.",
+  "rule": "Bet the side where the model spread and the market spread differ by more than a pre-registered threshold. BLOCKED until a market line exists (Q-02).",
+  "lookahead": "None.",
+  "status": "Blocked"
+ },
+ {
+  "id": "ST-04",
+  "name": "Rest-and-Travel Fade",
+  "family": "Situational",
+  "construction": "Single",
+  "inputs": "Official schedule: game date, kickoff time, and bye-week status.",
+  "output": "Days of rest and whether the opponent is coming off a bye.",
+  "rule": "Fade a team playing on short rest against an opponent coming off its bye.",
+  "lookahead": "None.",
+  "status": "Registered"
+ },
+ {
+  "id": "ST-05",
+  "name": "Same-Game Correlated Parlay: QB Stack",
+  "family": "Correlation",
+  "construction": "Parlay",
+  "inputs": "Requires per-player projections from play-by-play plus the correlation matrix.",
+  "output": "Joint probability of a quarterback passing-yard leg and a receiver receiving-yard leg.",
+  "rule": "Only construct the parlay when the estimated within-game residual correlation exceeds a pre-registered floor and the combined price beats the correlated fair price.",
+  "lookahead": "None, but the estimator must be fitted on data strictly before the bet date.",
+  "status": "Blocked"
+ },
+ {
+  "id": "ST-06",
+  "name": "Game-Script Parlay: Favourite Side + Under",
+  "family": "Correlation",
+  "construction": "Parlay",
+  "inputs": "Official standings ratings plus the correlation matrix.",
+  "output": "Joint probability of a side and a total.",
+  "rule": "Construct only when the side/total correlation is estimated as positive and material; otherwise treat the legs as independent and reject the price.",
+  "lookahead": "None.",
+  "status": "Blocked"
+ },
+ {
+  "id": "ST-07",
+  "name": "Two-Leg Uncorrelated Parlay",
+  "family": "Correlation",
+  "construction": "Parlay",
+  "inputs": "Any two strategies from different families with an estimated near-zero return correlation.",
+  "output": "Joint probability under independence.",
+  "rule": "Permitted only after the cross-strategy correlation is measured below a pre-registered ceiling.",
+  "lookahead": "None.",
+  "status": "Blocked"
+ },
+ {
+  "id": "ST-08",
+  "name": "Backup-QB Unders",
+  "family": "Injury / depth",
+  "construction": "Single",
+  "inputs": "Official injury report and depth chart; whether the starting quarterback is Out and who the next man is.",
+  "output": "Indicator for a backup quarterback starting.",
+  "rule": "Play the team total under when a backup quarterback starts, sized by the depth of the replacement (2nd string vs 3rd string).",
+  "lookahead": "None.",
+  "status": "Registered"
+ },
+ {
+  "id": "ST-09",
+  "name": "Offensive-Line Continuity",
+  "family": "Injury / depth",
+  "construction": "Single",
+  "inputs": "Official injury report and depth chart across LT, LG, C, RG, RT.",
+  "output": "Count of offensive line starters unavailable, and the depth of each replacement.",
+  "rule": "Fade a team missing two or more offensive line starters, weighted toward the tackle positions.",
+  "lookahead": "None.",
+  "status": "Registered"
+ },
+ {
+  "id": "ST-10",
+  "name": "Prop Combo: Receiver + Opponent Secondary",
+  "family": "Correlation",
+  "construction": "Player prop combo",
+  "inputs": "Requires per-player projections and the correlation matrix.",
+  "output": "Joint probability of a receiver yardage over and the opposing team's secondary depletion indicator.",
+  "rule": "Construct only when the correlation between the two legs is estimated and the price is beaten after correlation adjustment.",
+  "lookahead": "None.",
+  "status": "Blocked"
+ }
+]

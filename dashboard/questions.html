@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Open Questions | X3 NFL</title>
+<style>
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--info);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1400px;margin:0 auto;padding:0 20px}
+header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:baseline;gap:12px;padding:14px 0 10px}
+.brand h1{font-size:19px;margin:0;letter-spacing:.5px}
+.brand span{color:var(--dim);font-size:12px}
+nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:10px}
+nav a{padding:6px 11px;border-radius:6px;color:var(--dim);font-size:13px}
+nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+nav a.on{background:var(--panel2);color:var(--txt);box-shadow:inset 0 -2px 0 var(--acc)}
+.xnav{padding:0 0 9px;font-size:12px;color:var(--mut)}
+.xnav a{color:var(--mut)}.xnav a:hover{color:var(--info)}
+main{padding:24px 0 60px}
+h2{font-size:22px;margin:0 0 4px}
+h3{font-size:16px;margin:26px 0 8px;color:var(--txt)}
+p.lede{color:var(--dim);margin:0 0 18px;max-width:100ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .k{font-size:26px;font-weight:600;line-height:1.1}
+.card .l{color:var(--dim);font-size:12px;margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
+.card.ok .k{color:var(--acc)}.card.warn .k{color:var(--warn)}.card.bad .k{color:var(--bad)}
+.card.info .k{color:var(--info)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.bar input,.bar select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+border-radius:6px;padding:7px 10px;font-size:13px}
+.bar input{min-width:230px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+.tw{overflow:auto;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);position:sticky;top:0;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.5px;color:var(--dim);cursor:pointer;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:#111823}
+.b{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;border:1px solid var(--line);
+white-space:nowrap}
+.b.ok{color:var(--acc);border-color:#1f6f37}.b.warn{color:var(--warn);border-color:#6b5210}
+.b.bad{color:var(--bad);border-color:#7d2b26}.b.info{color:var(--info);border-color:#1f4b7d}
+.b.mut{color:var(--mut)}
+.src{font-size:11px}
+.blank{color:var(--mut);font-style:italic}
+.mut{color:var(--dim)}
+small.note{color:var(--dim);display:block;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--dim);font-size:12px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;font-size:13px}
+.kv dt{color:var(--dim)}
+.kv dd{margin:0}
+ul.tight{margin:6px 0 0;padding-left:20px}ul.tight li{margin:3px 0}
+details{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.badge{font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--dim)}
+</style></head><body>
+<header><div class="wrap">
+<div class="brand"><h1>X3 &middot; NFL Decision System</h1>
+<span>2026 season &middot; Week 10 &middot; data as of 2026-11-14</span></div>
+<nav><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive Summary</a><a href="standings.html" class="">Standings</a><a href="schedule.html" class="">Schedule</a><a href="injuries.html" class="">Injuries</a><a href="depth-charts.html" class="">Depth &amp; Deficiencies</a><a href="lines.html" class="">Own Lines</a><a href="strategies.html" class="">Strategies</a><a href="validation.html" class="">Validation Gates</a><a href="correlation.html" class="">Correlation</a><a href="leaderboard.html" class="">Leaderboard</a><a href="questions.html" class="on">Open Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="requirements.html" class="">Requirements</a><a href="repo-review.html" class="">Repo Review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for Review</a><a href="coordination.html" class="">Coordination</a></nav>
+<div class="xnav">Other published views in this repo:
+<a href="../docs/index.html">docs dashboard</a> &middot;
+<a href="../site/index.html">site dashboard</a> &middot;
+<a href="../index.html">repo root</a></div></header>
+<main><div class="wrap">
+<h2>Open Questions</h2>
+<p class="lede">What we know, what we do not know, and how to find out.</p>
+
+<div class="grid">
+<div class="card warn"><div class="k">20</div><div class="l">Open questions</div></div>
+<div class="card bad"><div class="k">13</div><div class="l">Blocking</div></div>
+<div class="card ok"><div class="k">7</div><div class="l">Non-blocking</div></div>
+</div>
+<p class="lede">Every item splits into what is actually known, what is genuinely unknown, and the
+concrete step that would close it. Nothing is listed as known unless it was read from an official
+source.</p>
+<div class="bar"><input data-filter="#t-q" placeholder="Filter rows&hellip;"><span class="mut" id="c_t-q"></span></div><div class="tw"><table id="t-q"><thead><tr><th data-sort>ID</th><th data-sort>Area</th><th data-sort>Question</th><th data-sort>What we know</th><th data-sort>What we do not know</th><th data-sort>How to discover</th><th data-sort>Blocking</th></tr></thead><tbody><tr><td>Q-01</td><td>Data scope</td><td><b>What is the authoritative universe of games the model will be scored on?</b></td><td>Official 2026 regular-season standings, Week 10 schedule and Week 10 injury report are ingested and verified from NFL.com.</td><td>Game-level results by week (who beat whom, by how much) have NOT been ingested. That is why no schedule-strength adjustment exists yet.</td><td>Ingest https://www.nfl.com/schedules/2026/by-week/week-N for N=1..9 and parse final scores; store as a game-log table keyed by game URL.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-02</td><td>Market data</td><td><b>What are the market lines we are trying to beat?</b></td><td>Nothing. No market line has been ingested.</td><td>Closing spread, total, moneyline and every player-prop line are unknown. Without them the model cannot be scored against anything.</td><td>Licence a line feed, or record closing lines manually into a versioned CSV. No official NFL source publishes betting lines, so this can never satisfy the official-source rule; it must be handled as a separately-governed dataset.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-03</td><td>Market data</td><td><b>Are we allowed to use non-official sources at all?</b></td><td>The verification rule in COORDINATION.md requires an official source for every fact row.</td><td>Whether a vetted, non-official dataset (e.g. a licensed odds feed) may be used for the scoring layer only.</td><td>Owner decision. Recommendation: allow it, but tag the source tier on every row so a fact row can never be confused with a vendor row.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-04</td><td>Injuries</td><td><b>How stale is the official injury report relative to kickoff?</b></td><td>The Week 10 report lists a final practice status and a game status per player; it is dated by game day.</td><td>The report&#x27;s own last-updated timestamp is not exposed on the page, so we cannot prove how fresh it is at the moment we bet.</td><td>Record an HTTP fetch timestamp with every ingest run and store it next to the row. The pipeline already writes AS_OF; surface it per row.</td><td><span class="b mut">No</span></td></tr><tr><td>Q-05</td><td>Injuries</td><td><b>Does &#x27;Out&#x27; on the injury report mean the player is officially inactive?</b></td><td>Game Status values observed on the official report: Out, Doubtful, Questionable, and blank.</td><td>The distinction between the injury report designation and the 90-minute-before-kickoff inactives list is not captured.</td><td>Ingest the official inactives list per game. NFL.com publishes a per-week inactives article; link it per game.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-06</td><td>Depth charts</td><td><b>Are club depth charts official?</b></td><td>31 of 32 clubs publish a depth chart. Every one of them is labelled &#x27;unofficial&#x27; by the club itself. The Patriots page goes further and says it reflects the opinions of Patriots.com writers, not the organisation.</td><td>A machine-readable, club-authoritative starter designation does not exist on the club pages we read.</td><td>Use the NFL gamebook / official participation data as the ground truth for who actually started. That is an official next-gen/gamebook product and would replace the unofficial chart.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-07</td><td>Depth charts</td><td><b>How fresh is each club&#x27;s depth chart?</b></td><td>Four clubs print a date: CHI 10/31/2026, GB 2026-11-10, LV 2026-11-10, SF 2026-11-10, TEN 2026-11-10. The other 27 print no date at all.</td><td>For 27 of 32 clubs we cannot prove the chart is current. Chicago&#x27;s is 14 days old at fetch time.</td><td>Diff each club&#x27;s chart on every ingest run and store a change log; alert when a chart has not changed for 7+ days.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-08</td><td>Depth charts</td><td><b>Do depth charts reflect the current week&#x27;s injuries?</b></td><td>They do not. Detroit lists Cade Mays as the starting centre while the official injury report lists Cade Mays as Out for Week 10. Philadelphia still lists Hollywood Brown and Fred Johnson after the club&#x27;s own news page announced both were waived on 2026-11-13.</td><td>Whether any club auto-syncs its chart to the injury report. Evidence from DET and PHI says no.</td><td>Treat the chart as a static prior and always override it with the injury report. This is what the pipeline does; the conflict is surfaced as a flag rather than silently resolved.</td><td><span class="b mut">No</span></td></tr><tr><td>Q-09</td><td>Data gap</td><td><b>Which club is missing from the depth-chart layer?</b></td><td>Houston&#x27;s official depth-chart page renders the chart as an image; no table rows could be read.</td><td>The entire Houston depth chart.</td><td>Either OCR the image, or switch the whole layer to official gamebook participation data (see Q-06), which fixes this and Q-06 at once.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-10</td><td>Modelling</td><td><b>What is the correct home-field advantage constant?</b></td><td>Official standings expose a home/road split per team, so home and road performance can be measured separately per club.</td><td>A league-wide HFA constant has not been estimated; doing so requires the game log from Q-01.</td><td>Fit HFA as the intercept in a game-log regression once Q-01 is closed. Until then the model runs with HFA = 0.0 and says so.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-11</td><td>Modelling</td><td><b>How do we adjust for schedule strength?</b></td><td>Net points per game is computed for all 32 clubs from official standings.</td><td>An opponent-adjusted rating is impossible without the game log. Net points per game currently treats every opponent as average.</td><td>Close Q-01, then run an iterative (Bradley-Terry / least-squares) rating solve on the game log.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-12</td><td>Modelling</td><td><b>What is the model&#x27;s total and prop capability?</b></td><td>A spread can be derived from points-for and points-against per game.</td><td>Pace, success rate, explosive-play rate, red-zone efficiency and any per-player projection require play-by-play that has not been ingested. Totals and props are therefore not yet modelable.</td><td>Ingest official play-by-play / Next Gen Stats, then add a drive-level total model and a usage-based prop model.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-13</td><td>Validation</td><td><b>How much history do we need before a strategy is allowed to bet?</b></td><td>Nothing has been validated yet; zero strategies have a single graded result.</td><td>The minimum sample, the holdout design and the significance threshold are defined but untested against real results.</td><td>Gate definitions are published on the Validation page. They execute automatically the moment a graded result set exists.</td><td><span class="b mut">No</span></td></tr><tr><td>Q-14</td><td>Correlation</td><td><b>What are the correlations between parlay legs?</b></td><td>Correlations that depend only on official standings can be computed today and are published on the Correlation page.</td><td>Leg-level correlations (QB passing yards vs. his WR&#x27;s receiving yards, team total vs. game total, same-game spread vs. total) require play-by-play and are all blank.</td><td>Ingest play-by-play, then estimate the correlation matrix on a within-game residual basis, not on raw totals, to avoid the shared-game-driver bias.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-15</td><td>Correlation</td><td><b>How do we stop correlated strategies from being counted as independent evidence?</b></td><td>Each strategy declares a family. Strategies in the same family are treated as one cluster for multiplicity purposes.</td><td>The cross-strategy correlation matrix is unestimated, so the effective number of independent tests is unknown.</td><td>Estimate strategy-return correlations, then replace the Bonferroni bound with an effective-number-of-tests correction. Until then use the conservative bound.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-16</td><td>Competition</td><td><b>How are leaderboard rewards funded and paid?</b></td><td>A reward-tier structure is published on the Leaderboard page.</td><td>Whether rewards are real money, points, or notional. No decision has been recorded.</td><td>Owner decision. Recommendation: start notional. Cash rewards create an incentive to game the leaderboard that the anti-gaming rules in the spec only partially mitigate.</td><td><span class="b mut">No</span></td></tr><tr><td>Q-17</td><td>Legal</td><td><b>Is this system legal to operate in the owner&#x27;s jurisdiction?</b></td><td>The owner&#x27;s location is recorded as Tokyo, Japan.</td><td>Whether originating lines and staking real money is lawful there, and whether a leaderboard with rewards constitutes a prize promotion.</td><td>Legal review in the operating jurisdiction before any real-money staking. Not something the codebase can answer.</td><td><span class="b bad">Yes</span></td></tr><tr><td>Q-18</td><td>Ops</td><td><b>Who owns the model when a strategy fails its gates?</b></td><td>Gates produce a fail state and the strategy is marked blocked.</td><td>No human review step is wired into the pipeline for a blocked strategy.</td><td>Add the blocked strategy to the Suggestions page automatically so a reviewer picks a path: repair, retire, or re-scope.</td><td><span class="b mut">No</span></td></tr><tr><td>Q-19</td><td>Ops</td><td><b>How often does the pipeline run?</b></td><td>Ingest, build and publish are all scripted and can run without manual input.</td><td>No scheduler is wired up. Injury and depth data change daily, so a stale site is a real risk.</td><td>Add a GitHub Actions schedule (for example twice daily plus a pre-kickoff run) once Q-20 is closed.</td><td><span class="b mut">No</span></td></tr><tr><td>Q-20</td><td>Ops</td><td><b>Who can push to the branch, and is the site served from a stable URL?</b></td><td>The repo is on GitHub with GitHub authentication configured for this session.</td><td>Branch protection, required checks, and the final GitHub Pages URL are not yet confirmed.</td><td>Enable Pages from the branch, then confirm the deploy and record the URL in COORDINATION.md.</td><td><span class="b mut">No</span></td></tr></tbody></table></div>
+
+</div></main>
+<footer><div class="wrap">
+Verification rule: a row is verified only when its value was read from an official
+NFL source and the row carries that source's link. Values that could not be confirmed
+are blank and marked <span class="b warn">UNVERIFIED</span>; they are repeated on the
+<a href="flagged.html">Flagged for Review</a> page. Model output is always labelled
+<span class="b mut">DERIVED</span> and is never presented as fact.
+</div></footer>
+<script>
+document.querySelectorAll('th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){
+    var tb=th.closest('table');var i=[].indexOf.call(th.parentNode.children,th);
+    var asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+    var rows=[].slice.call(tb.tBodies[0].rows);
+    rows.sort(function(a,b){
+      var x=a.cells[i].dataset.sort!==undefined?a.cells[i].dataset.sort:a.cells[i].textContent;
+      var y=b.cells[i].dataset.sort!==undefined?b.cells[i].dataset.sort:b.cells[i].textContent;
+      var nx=parseFloat(x),ny=parseFloat(y);
+      if(!isNaN(nx)&&!isNaN(ny))return asc?nx-ny:ny-nx;
+      return asc?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+    });
+    rows.forEach(function(r){tb.tBodies[0].appendChild(r)});
+  });
+});
+document.querySelectorAll('input[data-filter]').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var q=inp.value.toLowerCase();var tb=document.querySelector(inp.dataset.filter);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+document.querySelectorAll('[data-filter]').forEach(function(inp){
+  function cnt(){var tb=document.querySelector(inp.dataset.filter);
+    if(!tb)return;var v=0;
+    [].forEach.call(tb.tBodies[0].rows,function(r){if(r.style.display!=='none')v++;});
+    var out=document.getElementById('c_'+tb.id);if(out)out.textContent=v+' rows';}
+  inp.addEventListener('input',cnt);cnt();
+});
+document.querySelectorAll('select[data-eq]').forEach(function(sel){
+  sel.addEventListener('change',function(){
+    var v=sel.value.toLowerCase();var tb=document.querySelector(sel.dataset.eq);
+    var col=parseInt(sel.dataset.col||'0',10);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      var c=(r.cells[col]?r.cells[col].textContent:'').toLowerCase();
+      r.style.display=(!v||c.indexOf(v)>-1)?'':'none';
+    });
+  });
+});
+</script></body></html>

@@ -3,6 +3,8 @@ name: Deploy X3 NFL site to GitHub Pages
 on:
   push:
     branches: [ arena/1a771fcd-x3, main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -26,7 +28,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           from html.parser import HTMLParser
-          pages = sorted(Path('.').glob('*.html')) + sorted(Path('pages').glob('*.html')) + sorted(Path('site').glob('*.html'))
+          pages = sorted(Path('.').glob('*.html')) + sorted(Path('pages').glob('*.html')) + sorted(Path('site').glob('*.html')) + sorted(Path('lab').glob('*.html'))
           assert pages, 'No HTML pages found'
           class Links(HTMLParser):
               def __init__(self):
@@ -36,7 +38,7 @@ jobs:
                       href = dict(attrs).get('href', '')
                       if href: self.hrefs.append(href)
           failures = []
-          roots = [Path('.'), Path('pages'), Path('site')]
+          roots = [Path('.'), Path('pages'), Path('site'), Path('lab')]
           for page in pages:
               parser = Links(); parser.feed(page.read_text())
               for href in parser.hrefs:
@@ -57,6 +59,19 @@ jobs:
       - name: Check dashboard site (docs/) rows have sources and no broken links
         run: python3 scripts/check_site.py
 
+      - name: Check other integrated root pages
+        run: python3 tools/check_links.py
+
+      - name: Check source-first decision dashboard
+        run: |
+          python3 scripts/check_dashboard.py
+          node --check assets/data.js
+          node --check assets/app.js
+          node --check scripts/check_data.js
+          node --check scripts/check_render.js
+          node scripts/check_data.js
+          node scripts/check_render.js
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
@@ -66,6 +81,7 @@ jobs:
           path: '.'
 
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
