@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for Review — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Flagged for Review</h1>
+<p class="meta">Irregularities, source conflicts, and unverified items — published with source links.
+Nothing here blocks the site; everything here wants a human verdict eventually.</p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html" class="active">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<table>
+<thead><tr><th>ID</th><th>Irregularity</th><th>Evidence / source links</th><th>What we did about it</th><th>What a reviewer should check</th></tr></thead>
+<tbody>
+<tr><td>F-01</td>
+<td><b>Lamar Jackson return timeline conflict across two official headlines:</b> "out 6-9 weeks" vs a roundup saying "expected to miss 6-10 weeks"</td>
+<td><a href="https://www.nfl.com/news/ravens-lamar-jackson-right-thumb-out-6-9-weeks-expects-to-return-this-season">nfl.com (6-9 weeks)</a> ·
+<a href="https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-friday-nov-13">nfl.com roundup (6-10 weeks)</a></td>
+<td>Both numbers recorded; neither chosen as "the" value; timeline shown blank in analysis</td>
+<td>Which timeline is current (check latest official personnel/IR reporting)</td></tr>
+
+<tr><td>F-02</td>
+<td><b>Player-team pairings in the official Week-10 report differ from widely-known 2025 rosters</b>
+(e.g., Aaron Donald, Myles Garrett, Trent McDuffie on LAR; Kyler Murray &amp; Carson Wentz on MIN;
+Kenneth Walker III on KC; Quenton Nelson on SEA; Mike Evans on SF; J.J. McCarthy on NYG;
+Dexter Lawrence &amp; Jonathan Allen on CIN)</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a> (rows transcribed verbatim);
+transactions context: <a href="https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-tuesday-nov-10">nfl.com news</a></td>
+<td>Recorded verbatim from the official source — never "corrected" by inference</td>
+<td>Cross-check against official personnel notices/transaction wire; confirm these are 2026 rosters (trades/moves), not source errors</td></tr>
+
+<tr><td>F-03</td>
+<td><b>No official or peer-reviewed numeric correlation coefficients found for NFL same-game legs</b> — only structural/directional claims and dated studies</td>
+<td><a href="correlation.html">Correlation page</a> (source table)</td>
+<td>All numeric cells left blank + flagged; estimation pipeline published instead</td>
+<td>Whether any licensed/proprietary dataset should be brought in to compute values (Q-05)</td></tr>
+
+<tr><td>F-04</td>
+<td><b>Official depth charts unreachable:</b> nfl.com/depthcharts and /teams/*/depth-chart/ return 404 (tested 2026-11-14)</td>
+<td><a href="https://www.nfl.com/depthcharts/">nfl.com/depthcharts</a> (404) ·
+<a href="https://www.nfl.com/teams/washington-commanders/depth-chart/">team depth-chart URL</a> (404)</td>
+<td>Depth-rank columns blank + UNVERIFIED everywhere (no inference of starter/backup)</td>
+<td>Find the working official depth-chart locations (club sites?) — Q-11</td></tr>
+
+<tr><td>F-05</td>
+<td><b>No LICENSE file in the repository</b></td>
+<td><a href="https://github.com/karagemop466-tech/X3">github.com/karagemop466-tech/X3</a></td>
+<td>Left as-is — license choice is an owner decision</td>
+<td>Pick a license (or explicitly keep private/all-rights-reserved)</td></tr>
+
+<tr><td>F-06</td>
+<td><b>Inactives timing policy ("~90 minutes before kickoff") not verified from an official policy text</b> this session — only headline-level evidence exists (e.g., "Week 9 inactives: Players ruled out")</td>
+<td><a href="https://www.nfl.com/news/nfl-week-9-inactives-players-ruled-out-sunday-2026-season">nfl.com news headline</a></td>
+<td>The 90-minute figure is shown nowhere as data; tracker docs mark the policy text unverified</td>
+<td>Locate the official policy text (NFL personnel/game operations policy)</td></tr>
+
+<tr><td>F-07</td>
+<td><b>Rest designations carry game status "Out":</b> two Jaguars listed "Not injury related - resting player → Out"</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a> (JAX rows: Jessie Bates, Jordan Davis)</td>
+<td>Excluded from injury-severity counts; tracked in a separate rest-outs column</td>
+<td>Keep the filter when severity models are calibrated (S-11)</td></tr>
+
+<tr><td>F-08</td>
+<td><b>DSR ≥ 0.95 and PBO ≤ 0.20 are the source papers' conventions, not NFL-validated constants</b></td>
+<td><a href="https://ssrn.com/abstract=2460551">ssrn.com/2460551</a> · <a href="https://ssrn.com/abstract=2326253">ssrn.com/2326253</a></td>
+<td>Adopted as house thresholds with this flag attached</td>
+<td>Recalibrate once the leaderboard has real entry distributions</td></tr>
+
+<tr><td>F-09</td>
+<td><b>185 Week-10 report rows have no game status</b>, including players who did not practice
+(e.g., Aaron Donald, Puka Nacua, Dexter Lawrence) — blank status ≠ healthy</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td>
+<td>Rows shown with blank status; interpretation policy documented (follow-up list)</td>
+<td>Game-day inactives &amp; news for these names (S-08 covers the fix)</td></tr>
+
+<tr><td>F-10</td>
+<td><b>Position-label variance:</b> e.g., Myles Garrett listed as LB (historically DE); unit-mapping
+assumptions could mis-bucket edge rushers</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a> (LAR row)</td>
+<td>Unit map kept literal to the source labels; no relabeling by inference</td>
+<td>Manual unit-map overrides, recorded with justification, when the depth system is built</td></tr>
+
+<tr><td>F-11</td>
+<td><b>Two standings columns are unlabeled in the source's own legend</b> (a record column and a
+"last 5"-style column)</td>
+<td><a href="https://www.nfl.com/standings/">nfl.com/standings</a></td>
+<td>Columns preserved in the CSV but hidden on the site; no invented labels</td>
+<td>Confirm official column meanings, then publish</td></tr>
+
+<tr><td>F-12</td>
+<td><b>Daiyan Henley appears on the Chargers' Week-10 report</b> although an official headline says
+"Broncos trade for Chargers' Daiyan Henley" (Nov 10) — roster-state conflict between two official pages</td>
+<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a> (LAC row) ·
+<a href="https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-tuesday-nov-10">nfl.com news roundup</a></td>
+<td>Recorded exactly as the report shows it, with this flag</td>
+<td>Whether the trade completed before the report was filed; which page is stale</td></tr>
+</tbody>
+</table>
+
+<blockquote>Policy: flagged items never block publication, never get silently "fixed," and always keep
+their source links visible. Requested changes to any flagged item are logged in
+<code>COORDINATION.md</code> and reflected here.</blockquote>
+
+</main>
+<footer><p>12 items · all evidence linked · reviewed state recorded here as it changes.</p></footer>
+</body>
+</html>
