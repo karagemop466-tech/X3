@@ -41,6 +41,39 @@ BADGE = {
     "FAIL": ('b', 'FAIL'), "NOT RUN": ('u', 'NOT RUN'), "INHERITED": ('p', 'INHERITED'),
     "ADOPTED IN THIS PR": ('d', 'ADOPTED'), "PROPOSED": ('u', 'PROPOSED'), "NOT USED YET": ('u', 'NOT USED'),
 }
+ARCHIVE_ROWS = [
+        ["docs/", "arena/0c38f465-x3", '<a href="../docs/index.html">docs/index.html</a>',
+         "generated from data/*.csv snapshots whose injury row count (205) disagrees with the official page"],
+        ["docs/pages/", "arena/4856379c-x3", '<a href="../docs/pages/injuries.html">docs/pages/</a>',
+         "research tree with strong method notes; its injury/standings CSVs match this session's read"],
+        ["pages/", "arena/1a771fcd-x3", '<a href="../pages/executive-summary.html">pages/</a>',
+         "produced when nfl.com could not be fetched: every data cell is blank by design"],
+        ["site/", "arena/1a771fcd-x3", '<a href="../site/index.html">site/index.html</a>', "single page"],
+        ["lab/", "arena/972ad7a5-x3", '<a href="../lab/index.html">lab/index.html</a>',
+         "framework-only: no data values at all, and it was the root redirect target until this PR"],
+        ["dashboard/", "arena/7e632805-x3", '<a href="../dashboard/index.html">dashboard/index.html</a>',
+         "345-row injury table and 31 charts - genuinely good work, but its standings carry the TB error "
+         "(F-11) and it is not re-verified by this session"],
+        ["x3lab/", "arena/e1c332ce-x3", '<a href="../x3lab/index.html">x3lab/index.html</a>',
+         "includes prices from third-party sportsbook pages; useful for method, not an official source"],
+        ["legacy/", "arena/0c38f465-x3", '<a href="../legacy/index.html">legacy/index.html</a>',
+         "the original landing page"],
+        ["desk/", "arena/3bf7cc8b-x3", '<a href="../desk/index.html">desk/index.html</a>',
+         "a second full pipeline (its own capture job, <code>data/desk/*.json</code>, its own "
+         "<code>scripts/desk_verify.py</code> gate in CI); its inputs are its own captures rather than the "
+         "two CSVs this hub is built from, so the two boards are comparable, not merged"],
+        ["verification-hub/", "arena/1e2d8ef2-x3",
+         '<a href="../verification-hub/index.html">verification-hub/index.html</a>',
+         "an audit of the integration itself (deployed-file checks); a report about the site, not a "
+         "competing data source"],
+        ["audit/", "arena/621bf404-x3", '<a href="../audit/index.html">audit/index.html</a>',
+         "a second independent transcription of the Week-10 report plus a row-level diff; retained as "
+         "corroborating evidence (see hub/verification.html), not as the canonical input"],
+        ["hub/ (their build)", "arena/621bf404-x3",
+         '<a href="../archive/hub-621bf404/index.html">archive/hub-621bf404/index.html</a>',
+         "the same integration goal reached twice; their 19 hub pages and their data files are preserved "
+         "verbatim here and were relocated, not deleted, when the two hub/ trees collided in the merge"]]
+
 NAV = [
     ("index", "Overview", "Status, what is verified, what is not"),
     ("executive-summary", "Executive summary", "The one-page brief for a decision"),
@@ -59,7 +92,7 @@ NAV = [
     ("verification", "Verification log", "How each line was checked"),
     ("repo-review", "Repo review", "Prior work audited line by line"),
     ("flagged", "Flagged for review", "Unverified items and irregularities"),
-    ("archive", "Prior trees", "The six older site trees"),
+    ("archive", "Prior trees", f"The {len(ARCHIVE_ROWS)} older site trees"),
 ]
 
 
@@ -1039,38 +1072,9 @@ def p_archive():
 <p class="lede">Earlier sessions each built a site and merged it additively, so six trees survive with
 overlapping content. Nothing is deleted - history is evidence - but only <code>hub/</code> is maintained
 and re-verified. Use this page to navigate the archive knowingly.</p>
-""" + table(["Tree", "Session", "Entry point", "Why it is not canonical"], [
-        ["docs/", "arena/0c38f465-x3", '<a href="../docs/index.html">docs/index.html</a>',
-         "generated from data/*.csv snapshots whose injury row count (205) disagrees with the official page"],
-        ["docs/pages/", "arena/4856379c-x3", '<a href="../docs/pages/injuries.html">docs/pages/</a>',
-         "research tree with strong method notes; its injury/standings CSVs match this session's read"],
-        ["pages/", "arena/1a771fcd-x3", '<a href="../pages/executive-summary.html">pages/</a>',
-         "produced when nfl.com could not be fetched: every data cell is blank by design"],
-        ["site/", "arena/1a771fcd-x3", '<a href="../site/index.html">site/index.html</a>', "single page"],
-        ["lab/", "arena/972ad7a5-x3", '<a href="../lab/index.html">lab/index.html</a>',
-         "framework-only: no data values at all, and it was the root redirect target until this PR"],
-        ["dashboard/", "arena/7e632805-x3", '<a href="../dashboard/index.html">dashboard/index.html</a>',
-         "345-row injury table and 31 charts - genuinely good work, but its standings carry the TB error "
-         "(F-11) and it is not re-verified by this session"],
-        ["x3lab/", "arena/e1c332ce-x3", '<a href="../x3lab/index.html">x3lab/index.html</a>',
-         "includes prices from third-party sportsbook pages; useful for method, not an official source"],
-        ["legacy/", "arena/0c38f465-x3", '<a href="../legacy/index.html">legacy/index.html</a>',
-         "the original landing page"],
-        ["desk/", "arena/3bf7cc8b-x3", '<a href="../desk/index.html">desk/index.html</a>',
-         "a second full pipeline (its own capture job, <code>data/desk/*.json</code>, its own "
-         "<code>scripts/desk_verify.py</code> gate in CI); its inputs are its own captures rather than the "
-         "two CSVs this hub is built from, so the two boards are comparable, not merged"],
-        ["verification-hub/", "arena/1e2d8ef2-x3",
-         '<a href="../verification-hub/index.html">verification-hub/index.html</a>',
-         "an audit of the integration itself (deployed-file checks); a report about the site, not a "
-         "competing data source"],
-        ["audit/", "arena/621bf404-x3", '<a href="../audit/index.html">audit/index.html</a>',
-         "a second independent transcription of the Week-10 report plus a row-level diff; retained as "
-         "corroborating evidence (see hub/verification.html), not as the canonical input"],
-        ["hub/ (their build)", "arena/621bf404-x3",
-         '<a href="../archive/hub-621bf404/index.html">archive/hub-621bf404/index.html</a>',
-         "the same integration goal reached twice; their 19 hub pages and their data files are preserved "
-         "verbatim here and were relocated, not deleted, when the two hub/ trees collided in the merge"]])
+""" + table(["Tree", "Session", "Entry point", "Why it is not canonical"], ARCHIVE_ROWS,
+                   note=f"{len(ARCHIVE_ROWS)} trees, all reachable; only hub/ is re-verified by this "
+                        "session. Rows are the same registry the landing page counts from.")
     page("archive.html", "Prior site trees",
          "What the earlier sessions published, where it lives, and how to read it.", body, "archive")
 
@@ -1231,7 +1235,7 @@ data does not exist here yet.</p>
 <a href="hub/suggestions.html"><b>Suggestions</b></a> to choose a path,
 <a href="hub/questions.html"><b>Open questions</b></a> for the information gaps, and
 <a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.</p>
-<p class="note">Earlier sessions published six overlapping site trees; they are preserved and indexed at
+<p class="note">Earlier sessions published {len(ARCHIVE_ROWS)} overlapping site trees; they are preserved and indexed at
 <a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
 is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is
 <a href="COORDINATION.md">COORDINATION.md</a>.</p></section>
