@@ -1,0 +1,6 @@
+# Runtime dependencies for the official-source fetch + build pipeline.
+# Pinned to compatible-release ranges so CI installs reproducibly.
+beautifulsoup4>=4.12,<5
+lxml>=5.0,<7
+requests>=2.31,<3
+numpy>=1.26,<3

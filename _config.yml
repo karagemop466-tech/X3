@@ -1,0 +1,28 @@
+# Jekyll configuration for the legacy GitHub Pages build that publishes this
+# repository root. Only the generated site is published; research code and
+# source datasets stay out of the published site.
+title: X3 — NFL Decision Support
+description: >-
+  NFL decision-support platform: requirements register, verification ledger,
+  strategy research, injury and depth tracking, and a self-originated line
+  leaderboard.
+url: https://karagemop466-tech.github.io
+baseurl: /X3
+
+exclude:
+  - .venv
+  - .github
+  - .gitignore
+  - requirements.txt
+  - scripts
+  - data
+  - docs
+  - site
+  - COORDINATION.md
+  - README.md
+  - LICENSE
+  - vendor
+  - node_modules
+
+include:
+  - .nojekyll
