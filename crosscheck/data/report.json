@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-14T18:56:54+00:00",
+ "generated_at": "2026-11-14T19:00:46+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
    "pages": 142,
-   "links": 6565,
-   "external": 4291,
-   "tables": 238,
-   "rows": 4659,
-   "rows_with_http": 3813,
-   "rows_flag_only": 192,
-   "rows_without": 654
+   "links": 6762,
+   "external": 4471,
+   "tables": 242,
+   "rows": 4752,
+   "rows_with_http": 3903,
+   "rows_flag_only": 191,
+   "rows_without": 658
   },
   "broken_internal": [],
   "per_page": [
    {
     "page": "archive/hub-621bf404/archive.html",
-    "links": 20,
+    "links": 21,
     "external": 9,
     "tables": 1,
     "rows": 9,
@@ -26,47 +26,47 @@
    },
    {
     "page": "archive/hub-621bf404/correlations.html",
-    "links": 22,
-    "external": 13,
-    "tables": 3,
-    "rows": 16,
-    "rows_with_http": 9,
-    "rows_flag_only": 7,
+    "links": 38,
+    "external": 28,
+    "tables": 4,
+    "rows": 20,
+    "rows_with_http": 14,
+    "rows_flag_only": 6,
     "rows_without": 0
    },
    {
     "page": "archive/hub-621bf404/deficiency.html",
-    "links": 40,
-    "external": 32,
-    "tables": 2,
-    "rows": 34,
-    "rows_with_http": 32,
+    "links": 193,
+    "external": 184,
+    "tables": 4,
+    "rows": 114,
+    "rows_with_http": 108,
     "rows_flag_only": 1,
-    "rows_without": 1
+    "rows_without": 5
    },
    {
     "page": "archive/hub-621bf404/executive-summary.html",
-    "links": 19,
-    "external": 9,
+    "links": 21,
+    "external": 10,
     "tables": 2,
-    "rows": 15,
-    "rows_with_http": 9,
+    "rows": 16,
+    "rows_with_http": 10,
     "rows_flag_only": 1,
     "rows_without": 5
    },
    {
     "page": "archive/hub-621bf404/flagged.html",
-    "links": 41,
-    "external": 39,
-    "tables": 3,
-    "rows": 21,
-    "rows_with_http": 21,
+    "links": 49,
+    "external": 46,
+    "tables": 4,
+    "rows": 25,
+    "rows_with_http": 25,
     "rows_flag_only": 0,
     "rows_without": 0
    },
    {
     "page": "archive/hub-621bf404/index.html",
-    "links": 19,
+    "links": 20,
     "external": 0,
     "tables": 0,
     "rows": 0,
@@ -76,7 +76,7 @@
    },
    {
     "page": "archive/hub-621bf404/injuries.html",
-    "links": 347,
+    "links": 348,
     "external": 345,
     "tables": 1,
     "rows": 345,
@@ -86,7 +86,7 @@
    },
    {
     "page": "archive/hub-621bf404/leaderboard.html",
-    "links": 16,
+    "links": 17,
     "external": 11,
     "tables": 3,
     "rows": 12,
@@ -96,7 +96,7 @@
    },
    {
     "page": "archive/hub-621bf404/lines.html",
-    "links": 43,
+    "links": 44,
     "external": 35,
     "tables": 4,
     "rows": 33,
@@ -106,8 +106,8 @@
    },
    {
     "page": "archive/hub-621bf404/questions.html",
-    "links": 58,
-    "external": 23,
+    "links": 61,
+    "external": 24,
     "tables": 4,
     "rows": 36,
     "rows_with_http": 15,
@@ -116,7 +116,7 @@
    },
    {
     "page": "archive/hub-621bf404/repo-review.html",
-    "links": 22,
+    "links": 23,
     "external": 20,
     "tables": 2,
     "rows": 20,
@@ -126,7 +126,7 @@
    },
    {
     "page": "archive/hub-621bf404/requirements.html",
-    "links": 32,
+    "links": 33,
     "external": 30,
     "tables": 1,
     "rows": 30,
@@ -136,17 +136,17 @@
    },
    {
     "page": "archive/hub-621bf404/sources.html",
-    "links": 18,
-    "external": 16,
+    "links": 22,
+    "external": 19,
     "tables": 1,
-    "rows": 16,
-    "rows_with_http": 16,
+    "rows": 19,
+    "rows_with_http": 19,
     "rows_flag_only": 0,
     "rows_without": 0
    },
    {
     "page": "archive/hub-621bf404/strategies.html",
-    "links": 48,
+    "links": 49,
     "external": 36,
     "tables": 3,
     "rows": 27,
@@ -156,17 +156,17 @@
    },
    {
     "page": "archive/hub-621bf404/suggestions.html",
-    "links": 22,
-    "external": 20,
+    "links": 24,
+    "external": 21,
     "tables": 1,
-    "rows": 20,
-    "rows_with_http": 20,
+    "rows": 21,
+    "rows_with_http": 21,
     "rows_flag_only": 0,
     "rows_without": 0
    },
    {
     "page": "archive/hub-621bf404/validation.html",
-    "links": 23,
+    "links": 24,
     "external": 18,
     "tables": 2,
     "rows": 21,
@@ -10620,7 +10620,7 @@
    "id": "X-14",
    "severity": "Medium",
    "area": "Rows without source or flag",
-   "finding": "654 table rows across 63 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: hub/requirements.html (26), hub/repo-review.html (22), verification-hub/index.html (22), dashboard/requirements.html (21), hub/index.html (21), dashboard/questions.html (20), docs/pages/requirements.html (20), hub/verification.html (20).",
+   "finding": "658 table rows across 63 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: hub/requirements.html (26), hub/repo-review.html (22), verification-hub/index.html (22), dashboard/requirements.html (21), hub/index.html (21), dashboard/questions.html (20), docs/pages/requirements.html (20), hub/verification.html (20).",
    "evidence": [
     "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json"
    ],

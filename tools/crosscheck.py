@@ -990,7 +990,7 @@ github.com or to the page it came from.</div>
 <h2>Start here</h2>
 <div class="grid">
 <a class="tile" href="executive-summary.html"><b>Executive summary</b><span>Verified facts, missing information, blocking decisions, recommended sequence</span></a>
-<a class="tile" href="requirements.html"><b>Requirements matrix</b><span>{rec['families'].get('requirements',{}).get('count',0)} requirements across 4 registers, reconciled</span></a>
+<a class="tile" href="requirements.html"><b>Requirements matrix</b><span>{rec['families'].get('requirements',{}).get('count',0)} requirements across {len(rec['families'].get('requirements',{}).get('modules',{}))} registers, reconciled</span></a>
 <a class="tile" href="questions.html"><b>Questions &amp; answers</b><span>What is known, what is missing, and how to obtain it</span></a>
 <a class="tile" href="suggestions.html"><b>Suggestions review queue</b><span>Every suggestion from every module — review before any change</span></a>
 <a class="tile" href="flagged.html"><b>Flagged for review</b><span>{len(findings)} session findings + the consolidated flag index of all modules</span></a>
