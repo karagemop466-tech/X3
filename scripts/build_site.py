@@ -427,6 +427,24 @@ dash_body = f"""
 <div class="notice"><b>Legal note:</b> Under Japanese Penal Code Article 185, betting on sports with a private bookmaker is
 gambling, and a bettor can be fined. This site does not recommend any wager.
 (<a href="{e(SOURCES['JP-PENAL-185']['url'])}" target="_blank" rel="noopener">Official text</a>)</div>
+<h2>Extended research &amp; verified data</h2>
+<p class="lede">Additional source-reviewed research pages are maintained separately from the data dashboard below.
+Unconfirmed values remain blank and are identified for review.</p>
+<div class="grid">
+<a class="tile" href="pages/executive-summary.html"><b>Extended executive summary</b><span>Research findings, decisions and evidence limits</span></a>
+<a class="tile" href="pages/requirements.html"><b>Requirements</b><span>Requirement inventory and completion status</span></a>
+<a class="tile" href="pages/strategies.html"><b>Line origination</b><span>Candidate signal classes and model framework</span></a>
+<a class="tile" href="pages/validation.html"><b>Validation gates</b><span>Out-of-sample, multiple-testing and uncertainty controls</span></a>
+<a class="tile" href="pages/correlation.html"><b>Correlation research</b><span>Method and data gaps; no unsupported coefficients</span></a>
+<a class="tile" href="pages/leaderboard.html"><b>Leaderboard design</b><span>Competition rules and reward decisions</span></a>
+<a class="tile" href="pages/injuries.html"><b>Extended injury tracker</b><span>Archived Week 10 report and source notes</span></a>
+<a class="tile" href="pages/standings.html"><b>Standings</b><span>Archived season snapshot with source links</span></a>
+<a class="tile" href="pages/questions.html"><b>Open questions</b><span>Known information, missing information and discovery paths</span></a>
+<a class="tile" href="pages/suggestions.html"><b>Suggestions for review</b><span>Options to assess before implementing changes</span></a>
+<a class="tile flagtile" href="pages/flagged.html"><b>Extended flagged items</b><span>Irregularities and unverified claims for review</span></a>
+<a class="tile" href="pages/sources.html"><b>Extended sources register</b><span>Research references and source notes</span></a>
+<a class="tile" href="pages/repo-audit.html"><b>Repository audit</b><span>Scope and findings from the repository review</span></a>
+</div>
 """
 page("index.html", "Dashboard", dash_body, "index.html")
 

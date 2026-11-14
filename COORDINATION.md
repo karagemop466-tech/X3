@@ -538,6 +538,15 @@ Branch: `arena/361edc3f-x3` (platform-assigned; retained as required). This sess
 
 | Task | Status | Files | Scope |
 |---|---|---|---|
-| QA-01 | in progress | `scripts/build_site.py`, `COORDINATION.md` | Preserve the previously integrated extended research links/data section when the docs dashboard is regenerated; add regression verification. |
+| QA-01 | done | `scripts/build_site.py`, generated `docs/index.html`, `COORDINATION.md` | Preserve the previously integrated extended research links/data section when the docs dashboard is regenerated; add regression verification. |
 
-Claim recorded before implementation. Initial discovery: the checked-in generated `docs/index.html` includes an extended research section, but `python3 scripts/build_site.py` rewrites that file and removes the section. No other files will be modified for this task.
+Claim recorded and pushed before implementation. Initial discovery: the checked-in generated `docs/index.html` included an extended research section, but `python3 scripts/build_site.py` rewrote the file and removed that section. The generated output was added to the task scope because it is the direct build artifact. Updated the dashboard generator to re-emit links to all 13 `docs/pages/` research pages. No NFL fact values were added or changed; source verification is not applicable to this generator-only fix.
+
+### Verification / irregularities
+- Ran `python3 scripts/build_site.py`; confirmed generated `docs/index.html` includes the extended section and all 13 expected page links.
+- `python3 scripts/check_site.py`: 352 table rows, 0 missing source links/flags; internal links pass.
+- `python3 tools/check_links.py`: 13 pages, 315 links, no broken internal links.
+- `python3 scripts/check_dashboard.py`: all local links and assets pass.
+- `python3 scripts/verify_data.py`: 2,134 checks pass; `python3 tools/verify_site.py`: 14 pages / 48 tables pass.
+- `node --check` for dashboard/test scripts, `node scripts/check_data.js`, and `node scripts/check_render.js` all pass.
+- No additional irregularities. GitHub Pages is already configured for `main /` and status was `built` during this session; a deployment for these changes requires merging the follow-up PR.
