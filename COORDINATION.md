@@ -2327,3 +2327,38 @@ how the following defect was found, and it is the kind of defect every internal 
 - **Result:** 0 mislabelled rows across the 9 pages; 22 rows are correctly badged UNVERIFIED and
   carry no link. `COUNCIL VERIFY PASSED (6 checks, 132 table rows)`. All 12 pre-existing gates still
   exit 0 on the merged tree.
+
+### Resolution of the CI failure, and a second drift fix (arena/dd5047b8-x3)
+
+**The CI failure was mine, and it is fixed.** The failing `pages.yml` step ends with
+`git diff --exit-code -- hub index.html data/hub`, so the check is not only "does it rebuild" but
+"does the rebuild reproduce the committed file". `tools/build_hub.py` regenerates the root landing
+from its own template; my hand-added nav row was not in that template, so the regenerated file
+differed from the committed one and the step failed. The live site was never affected — GitHub's
+`pages build and deployment` succeeded on both merges and serves the committed tree — but the build
+check was red, which is not acceptable.
+
+`arena/3b99e9ad-x3` fixed it by registering `council/` inside the NAV generator itself
+(a `__council__` sentinel, root-landing-only) rather than by hand-editing the output. Verified: a
+fresh detached worktree at `origin/main` now runs `x3_engine.py` → `build_hub.py` and leaves
+`git status` **empty**, i.e. the generated landing reproduces. Their fix supersedes my hand edit,
+and the committed landing on `main` now carries the council link from the generator.
+Main's latest runs (`Merge pull request #54`, 20:06:52Z) are **success** on both workflows and
+`pages build and deployment` is **success**.
+
+**Second drift fix, again found by reading the deployed page.** The suggestions page rendered
+`Status: IMPLEMENTED by origin/ (PR #47)` next to evidence text that still said "no moneyline exists
+anywhere" and "no demotion rule exists anywhere", and a decision cell that still read
+`PROPOSED - awaiting your pick`. A page whose status says *done* and whose evidence says *not done*
+is worse than either alone. The five affected evidence strings were rewritten to describe the
+current state, and the decision cell now reads `IMPLEMENTED - review only if you want it changed`
+(or `PARTIALLY IMPLEMENTED`) for anything another session has shipped, so status, evidence and
+decision can no longer disagree.
+
+**Final gate state on the merged tree (all exit 0):** `audit_all` · `verify_integration` ·
+`check_links` · `check_site` · `check_dashboard` · `verify_site` · `verify_data` · `check_hub` ·
+`verify_hub` · `desk_verify` · `origin_verify` (1,774 checks) · `council_verify`
+(6 checks, 132 table rows, determinism proven, 0 mislabelled rows) · `check_data.js` · `check_render.js`.
+
+**PRs from this session:** #55 (the tree), #56 (merge/deploy record), #59 (mislabel fix + gate),
+#60 (suggestion evidence/decision alignment). All merged.

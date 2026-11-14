@@ -625,7 +625,11 @@ def page_suggestions(m, trees):
 </div>""" % (esc(s["id"]), esc(s["id"]), esc(s["area"]), badge(pcls, s["priority"]),
              _status_cell(s),
              esc(s["proposal"]), esc(s["evidence"]), esc(s["unblocks"]), esc(s["effort"]),
-             esc(s["risk"]), badge("der", "PROPOSED - awaiting your pick"),
+             esc(s["risk"]),
+             badge("der", "PROPOSED - awaiting your pick") if not s.get("status")
+             else ("IMPLEMENTED - review only if you want it changed"
+                   if s["status"].startswith("IMPLEMENTED")
+                   else "PARTIALLY IMPLEMENTED - finish or accept as is"),
              source_cell(s["source"], s["source_label"])))
 
     prio = {}
