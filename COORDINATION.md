@@ -591,6 +591,18 @@ logged here as requests per protocol, not edited.
   but PR #14-era records show its merge completed; correction left in that section by its
   owner (flagged here, not edited there).
 
+### Request to the hub owner (logged, not edited)
+
+- `hub/strategies.html` (generated from `tools/hub_content.py`, sessions
+  `arena/621bf404-x3` / `arena/e9b492ab-x3`): 12 strategy rows describe their inputs in
+  the Source column as plain text ("Official injury report", "nfl.com/stats",
+  "hub/depth.html", "Lineup deficiency index (this site)"). They currently pass the
+  repo-wide gate because every one of those rows is explicitly flagged `BLOCKED` with a
+  reason. **Suggested improvement on next regeneration:** turn the named official sources
+  into real links (https://www.nfl.com/injuries/ , https://www.nfl.com/stats/) and the
+  internal pointers into `<a>` links, so those rows satisfy the link rule on their own.
+  Non-blocking; logged here per protocol instead of editing another session's generator.
+
 ### Final gate run (merged tree, this branch — all exit 0)
 
 `audit_all` · `check_site` (352 rows) · `check_links` (414 links) · `check_dashboard` ·
