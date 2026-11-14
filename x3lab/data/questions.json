@@ -143,7 +143,7 @@
     {
       "id": "Q-13",
       "category": "Legal",
-      "question": "Are real-money rewards / wagering permitted in the owner's jurisdiction (owner located in Japan)?",
+      "question": "Which jurisdiction applies, and are real-money rewards or wagering permitted there?",
       "blocks": "funded rewards, any real wagering",
       "discovery_suggestion": "SUG-05: legal review before any funded activity; competition defaults to points-only.",
       "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/questions.json"

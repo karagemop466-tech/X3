@@ -147,9 +147,9 @@
   "id": "Q-17",
   "area": "Legal",
   "question": "Is this system legal to operate in the owner's jurisdiction?",
-  "known": "The owner's location is recorded as Tokyo, Japan.",
-  "unknown": "Whether originating lines and staking real money is lawful there, and whether a leaderboard with rewards constitutes a prize promotion.",
-  "how": "Legal review in the operating jurisdiction before any real-money staking. Not something the codebase can answer.",
+  "known": "No operating jurisdiction has been provided. Approximate location does not establish legal domicile or applicable law.",
+  "unknown": "Which jurisdiction's rules apply to line origination, wagering, and leaderboard rewards.",
+  "how": "Identify the operating jurisdiction and intended use, then seek qualified legal review before real-money staking or funded rewards.",
   "blocking": "Yes"
  },
  {
