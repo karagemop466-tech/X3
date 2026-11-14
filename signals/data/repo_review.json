@@ -21,7 +21,7 @@
   "tree": "hub",
   "html_pages": 18,
   "data_files": 8,
-  "bytes": 429498,
+  "bytes": 430596,
   "maintained": "yes",
   "note": "presented by an earlier session as the canonical tree",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/hub"
@@ -138,7 +138,7 @@
   "tree": "verification-hub",
   "html_pages": 1,
   "data_files": 1,
-  "bytes": 22012,
+  "bytes": 23779,
   "maintained": "no",
   "note": "built by an earlier session; preserved, not maintained",
   "source": "https://github.com/karagemop466-tech/X3/tree/main/verification-hub"

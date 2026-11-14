@@ -460,7 +460,7 @@ four player-prop-combo strategies cannot be scored at all.</li>
 def p_reqs(reqs):
     rows = []
     for r in reqs:
-        rows.append([f'<a href="{esc(r["page"])}"><b>{esc(r["id"])}</b></a>', esc(r["requirement"]),
+        rows.append([f'<a href="{esc(r["page"].split("/")[-1])}"><b>{esc(r["id"])}</b></a>', esc(r["requirement"]),
                      f'<span class="badge ok">{esc(r["status"])}</span>', esc(r["evidence"]),
                      srcl("https://github.com/karagemop466-tech/X3")])
     body = """

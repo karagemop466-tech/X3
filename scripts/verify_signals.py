@@ -189,7 +189,10 @@ def check_determinism():
     def snapshot():
         h = {}
         for f in sorted(DATA.glob("*.json")):
-            if f.name == "meta.json":
+            # meta.json carries no build timestamp; repo_review.json is a report about
+            # the working tree, which other sessions' builders legitimately rewrite, so
+            # its bytes are a fact about the tree rather than an output of the engine.
+            if f.name in ("meta.json", "repo_review.json"):
                 continue
             h[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()
         return h
@@ -230,7 +233,9 @@ def main():
 
     dprob = check_determinism()
     problems += dprob
-    print(f"determinism      : {'PASS' if not dprob else 'FAIL'} (engine re-run reproduces the data)")
+    print(f"determinism      : {'PASS' if not dprob else 'FAIL'} "
+          f"(engine re-run reproduces the data; repo_review.json excluded - it reports on the "
+          f"working tree, which other builders rewrite)")
 
     if problems:
         print("\n".join("FAIL: " + p for p in problems))

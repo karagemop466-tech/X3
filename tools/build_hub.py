@@ -178,6 +178,10 @@ def page(fname, title, intro, body, active="index", extra_head=""):
     nav = "".join(  # __council__ sentinel is root-landing-only (PR #55 merge repair)
         f'<a href="{slug}.html"{" class=on" if slug == active else ""}">{esc(lbl)}</a>'
         for slug, lbl, _d in NAV if slug != "__council__")
+    # integration session arena/09f8c786-x3: one outbound link to the signals module.
+    # It lives outside hub/, so it is appended rather than added to NAV (which is
+    # rendered with two different relative prefixes).
+    nav += '<a href="../signals/index.html">Signals &amp; leaderboard</a>'
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1426,6 +1430,9 @@ def landing():
                     'requirements as pass/fail tests, plus the suggestion queue</span></a>')
         return f'<a href="hub/{slug}.html"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
     nav = "".join(nav_item(slug, lbl, desc) for slug, lbl, desc in NAV)
+    # integration session arena/09f8c786-x3: the signals module is a separate tree
+    nav += ('<a href="signals/index.html"><b>Signals &amp; leaderboard</b>'
+            '<span>Originated lines, price snapshots, signal vs staking</span></a>')
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1476,7 +1483,9 @@ data does not exist here yet.</p>
 <a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.
 The <a href="council/index.html"><b>decision council</b></a> restates the eight requirements of the
 brief as pass/fail acceptance tests, and holds the suggestion queue where a path is chosen before
-anything is implemented.</p>
+anything is implemented. <a href="signals/index.html"><b>signals/</b></a> originates its own side,
+total and moneyline in that order, stores an opening and a closing number for every market, and ranks
+strategies on signal with staking reported separately.</p>
 <p class="note">Earlier sessions published {len(ARCHIVE_ROWS)} overlapping site trees; they are preserved and indexed at
 <a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
 is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is
