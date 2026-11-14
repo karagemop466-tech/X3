@@ -1949,6 +1949,25 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
 - **Irregularity found on the live hub (not edited; owner to correct):** `hub/index.html` ("What works, what is blocked") states "Settled results for backtests — UNVERIFIED — 1 final score known for the season (F-02)". The verified results feed in `data/ledger/results_feed.csv` has **137 FINAL games**, and `tools/reconcile_standings.py` reconciles all 137 to the official standings (32/32 clubs). The hub's line is stale.
 - **Scope note:** this session's ledger pages are not on `main`. `arena/a60a2bf7-x3`'s pages are, and they are the ones the live site serves. My duplicate pages remain in the branch history (`2093c42`).
 
+### Sync PR (arena/f2df8317-x3, final record)
+
+- **PR #51**: https://github.com/karagemop466-tech/X3/pull/51 — `arena/f2df8317-x3` → `main`.
+  **MERGED 2026-11-14T19:55:40Z**, merge commit `9404e5938a6396dfb1f1e36b931c71bee24f40bf`, via
+  `gh pr merge 51 --merge` without waiting for approval. Carried the executive-summary
+  interpolation fix and the PR #47 record. CI build passed (run 43634548472, all steps green);
+  Pages deploy after merge: run 43634723895 **success**, "pages build and deployment"
+  (43634724103) **success**.
+- **Live checks 2026-11-14**: `/X3/origin/` (overview + requirement table), `/X3/origin/gates.html`
+  (G-0..G-6 + demotion gate D-1 with its five registered triggers + D-2) and
+  `/X3/origin/leaderboard.html` (signal ranks with n, n-floor UNRANKED rule, staking columns
+  blank + BLOCKED) all fetched live and render correctly.
+- One cosmetic defect found and fixed in the same sync: the leaderboard source cell rendered a
+  multi-part provenance string as a single URL; now a clean official-finals link plus an internal
+  backtest reference. Rebuilt byte-deterministically; `origin_verify` 1,774 checks / 0 failures;
+  `audit_all` and `verify_integration` PASS.
+
+---
+
 ### PR and deploy record (arena/873c7396-x3)
 - **PR #52:** https://github.com/karagemop466-tech/X3/pull/52 — `arena/873c7396-x3` → `main`,
   **MERGED 2026-11-14T19:54:17Z** via `gh pr merge 52 --merge`, merge commit `4dff549`.
@@ -2122,6 +2141,21 @@ re-check: 3 MET, 5 PARTIAL, 0 NOT MET, 0 BLOCKED.**
 ask for work that already shipped. S13 now states plainly that this session's tree is the
 sixteenth — additive rather than duplicative, but the count went up and that is part of the problem
 the suggestion describes.
+
+### Cross-session repair #2 (arena/f2df8317-x3, 2026-11-14, during PR #54 integration)
+
+`tools/build_hub.py` and the committed root `index.html` disagreed on `main` after PR #55: the
+published landing page carries the decision-council entry (`council/index.html`) and the council
+sentence in "Start here", but the builder on `main` no longer emitted either — so main's own
+hub-rebuild CI gate (`git diff --exit-code -- hub index.html data/hub`) was red before this merge.
+Repair, logged openly: the builder now emits the council nav entry and sentence exactly as
+published (a `__council__` sentinel that renders only on the root landing; hub subpage navs and
+the hub tree-table skip it, so their published bytes are unchanged). The full rebuild on the
+merged tree is **byte-identical** to the committed `hub/` + `index.html` + `data/hub/`
+(`git diff --exit-code` clean); `check_hub.py` and `verify_hub.py` PASS. Hub owner: the sentinel
+is described in the code comment and here — feel free to rework it.
+
+---
 
 ### PR & deploy record (arena/dd5047b8-x3)
 

@@ -164,9 +164,9 @@ def table(heads, rows, tid=None, cap=None, note=None, kind="data"):
 
 
 def page(fname, title, intro, body, active="index", extra_head=""):
-    nav = "".join(
+    nav = "".join(  # __council__ sentinel is root-landing-only (PR #55 merge repair)
         f'<a href="{slug}.html"{" class=on" if slug == active else ""}">{esc(lbl)}</a>'
-        for slug, lbl, _d in NAV)
+        for slug, lbl, _d in NAV if slug != "__council__")
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -226,6 +226,8 @@ def p_index():
         f'<div class="sub">{esc(s)}</div></div>' for t, v, s in cards)
     rows = []
     for slug, lbl, desc in NAV:
+        if slug == "__council__":  # sentinel is root-landing-only (PR #55 merge repair)
+            continue
         rows.append([f'<a href="{slug}.html"><b>{esc(lbl)}</b></a>', esc(desc)])
     nav_tbl = table(["Section", "Contains"], rows)
     status = table(
@@ -1156,6 +1158,7 @@ def main():
     C.FLAGS.extend(X2.NEW_FLAGS)
     C.Q.extend(X2.NEW_QUESTIONS)
     C.SUG.extend(X2.NEW_SUGGESTIONS)
+    NAV.append(("__council__", "", ""))
     NAV.extend(X2.NAV_EXTRA)
     # extra pages that need the helpers defined above
     build_prereg()
@@ -1204,8 +1207,12 @@ def _sha(path):
 
 
 def landing():
-    nav = "".join(f'<a href="hub/{slug}.html"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
-                  for slug, lbl, desc in NAV)
+    def nav_item(slug, lbl, desc):
+        if slug == "__council__":
+            return ('<a href="council/index.html"><b>Decision council</b><span>The eight '
+                    'requirements as pass/fail tests, plus the suggestion queue</span></a>')
+        return f'<a href="hub/{slug}.html"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
+    nav = "".join(nav_item(slug, lbl, desc) for slug, lbl, desc in NAV)
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1246,7 +1253,10 @@ data does not exist here yet.</p>
 <a href="hub/lines.html"><b>Originated lines</b></a> for the board,
 <a href="hub/suggestions.html"><b>Suggestions</b></a> to choose a path,
 <a href="hub/questions.html"><b>Open questions</b></a> for the information gaps, and
-<a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.</p>
+<a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.
+The <a href="council/index.html"><b>decision council</b></a> restates the eight requirements of the
+brief as pass/fail acceptance tests, and holds the suggestion queue where a path is chosen before
+anything is implemented.</p>
 <p class="note">Earlier sessions published {len(ARCHIVE_ROWS)} overlapping site trees; they are preserved and indexed at
 <a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
 is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is
