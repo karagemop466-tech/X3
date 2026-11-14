@@ -1,8 +1,7 @@
 [PASS] Internal links and assets resolve: 460 internal references checked across 16 pages
 [PASS] All external links point at official hosts: 74 external links checked against the official-host allowlist
-[FAIL] Every dataset row carries an official source link: 14711 dataset rows checked for an official source link; problems: 1
-[FAIL] Dataset source problem: manifest.json.datasets[0]: source_url is not an official host (https://www.<club>.com/ (official club sites))
-[PASS] Unverified values are rendered as explicit markers: 1 unverified markers rendered (dataset blank values: 12967)
+[PASS] Every dataset row carries an official source link: 14711 dataset rows checked for an official source link
+[PASS] Unverified values are rendered as explicit markers: 1 unverified markers rendered (dataset blank values: 12863)
 [FAIL] Official source URLs are reachable: 13 official URLs requested; unreachable: 1
 [FAIL] Unreachable official URL: https://www.nfl.com/news/nfl-communications -> HTTP 404
 overall: fail (16 pages)

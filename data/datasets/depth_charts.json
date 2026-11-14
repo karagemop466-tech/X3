@@ -5,8 +5,8 @@
       "sources": [
         {
           "url": "https://www.atlantafalcons.com/depth-chart",
-          "sha256": "dd13644de85158788c1759142b24f41ef57d5192212057b308b114db2c010bd8",
-          "fetched_at": "2026-11-14T03:26:08+00:00"
+          "sha256": "0c7f651673c9679a5d0cca616f0d867331d3b637becba8cab6c1f189db2e74d4",
+          "fetched_at": "2026-11-14T03:30:33+00:00"
         }
       ],
       "units": [
@@ -317,30 +317,34 @@
             {
               "name": "Chris Blair",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Jake Matthews",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Cameron Williams",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Matthew Bergeron",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Kyle Hinton",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -351,30 +355,34 @@
             {
               "name": "Corey Levin",
               "ordinal": 1
-            },
-            {
-              "name": "RG",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Chris Lindstrom",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Andrew Vorhees",
-              "ordinal": 4
-            },
-            {
-              "name": "RT",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Jawaan Taylor",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Ethan Onianwa",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -619,18 +627,20 @@
             {
               "name": "Mike Ford Jr",
               "ordinal": 3
-            },
-            {
-              "name": "NB",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "NB",
+          "label": "NB",
+          "players": [
             {
               "name": "Avieon Terrell",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Billy Bowman Jr.",
-              "ordinal": 6
+              "ordinal": 2
             }
           ]
         },
@@ -661,38 +671,42 @@
             {
               "name": "Liam McCullough",
               "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
+            {
+              "name": "Zachariah Branch",
+              "ordinal": 1
             },
             {
-              "name": "PR",
+              "name": "Olamide Zaccheaus",
               "ordinal": 2
             },
             {
-              "name": "Zachariah Branch",
-              "ordinal": 3
-            },
-            {
-              "name": "Olamide Zaccheaus",
-              "ordinal": 4
-            },
-            {
               "name": "Jahan Dotson",
-              "ordinal": 5
-            },
-            {
-              "name": "KR",
-              "ordinal": 6
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Olamide Zaccheaus",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Zachariah Branch",
-              "ordinal": 8
+              "ordinal": 2
             },
             {
               "name": "Khalil Herbert",
-              "ordinal": 9
+              "ordinal": 3
             }
           ]
         }
@@ -703,8 +717,8 @@
       "sources": [
         {
           "url": "https://www.baltimoreravens.com/team/depth-chart",
-          "sha256": "be60911758a18aa03fca2b18bd44a931bdf0612df555f61feea5e6ca493ad918",
-          "fetched_at": "2026-11-14T03:26:03+00:00"
+          "sha256": "b624ff89c1dbf21dc4651c083cef580bcbd99c9b043a312229cf90e3125d6991",
+          "fetched_at": "2026-11-14T03:30:28+00:00"
         }
       ],
       "units": [
@@ -982,30 +996,34 @@
             {
               "name": "LaJohntay Wester",
               "ordinal": 3
-            },
-            {
-              "name": "LT",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Ronnie Stanley",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Carson Vinson",
-              "ordinal": 6
-            },
-            {
-              "name": "LG",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "John Simpson",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Ryan Neuzil",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -1020,30 +1038,34 @@
             {
               "name": "Ryan Neuzil",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Vega Ioane",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Emery Jones Jr.",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Roger Rosengarten",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Carson Vinson",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -1146,58 +1168,66 @@
             {
               "name": "Aeneas Peebles",
               "ordinal": 2
-            },
-            {
-              "name": "RUSH",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "RUSH",
+          "label": "RUSH",
+          "players": [
             {
               "name": "Trey Hendrickson",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Mike Green",
-              "ordinal": 5
-            },
-            {
-              "name": "MLB",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "MLB",
+          "label": "MLB",
+          "players": [
             {
               "name": "Roquan Smith",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Jay Higgins IV",
-              "ordinal": 8
-            },
-            {
-              "name": "WLB",
-              "ordinal": 9
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "WLB",
+          "label": "WLB",
+          "players": [
             {
               "name": "Trenton Simpson",
-              "ordinal": 10
+              "ordinal": 1
             },
             {
               "name": "Teddye Buchanan",
-              "ordinal": 11
-            },
-            {
-              "name": "SAM",
-              "ordinal": 12
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "SAM",
+          "label": "SAM",
+          "players": [
             {
               "name": "Mike Green",
-              "ordinal": 13
+              "ordinal": 1
             },
             {
               "name": "Zion Young",
-              "ordinal": 14
+              "ordinal": 2
             },
             {
               "name": "Ethan Burke",
-              "ordinal": 15
+              "ordinal": 3
             }
           ]
         },
@@ -1212,22 +1242,24 @@
             {
               "name": "Chidobe Awuzie",
               "ordinal": 2
-            },
-            {
-              "name": "DB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "DB",
+          "label": "DB",
+          "players": [
             {
               "name": "Kyle Hamilton",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Keyon Martin",
-              "ordinal": 5
+              "ordinal": 2
             },
             {
               "name": "Chandler Rivers",
-              "ordinal": 6
+              "ordinal": 3
             }
           ]
         },
@@ -1286,14 +1318,15 @@
         {
           "position": "K",
           "label": "K",
+          "players": []
+        },
+        {
+          "position": "H",
+          "label": "H",
           "players": [
             {
-              "name": "H",
-              "ordinal": 1
-            },
-            {
               "name": "Ryan Eckley",
-              "ordinal": 2
+              "ordinal": 1
             }
           ]
         },
@@ -1304,34 +1337,38 @@
             {
               "name": "Nick Moore",
               "ordinal": 1
-            },
-            {
-              "name": "KOR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "KOR",
+          "label": "KOR",
+          "players": [
             {
               "name": "LaJohntay Wester",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Rasheen Ali",
-              "ordinal": 4
+              "ordinal": 2
             },
             {
               "name": "Justice Hill",
-              "ordinal": 5
-            },
-            {
-              "name": "PR",
-              "ordinal": 6
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "LaJohntay Wester",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Elijah Sarratt",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         }
@@ -1342,8 +1379,8 @@
       "sources": [
         {
           "url": "https://www.buffalobills.com/team/depth-chart",
-          "sha256": "5e70bd9f84171b44af8ee8ff3cc847d4f1d43a927bc5cd1b55f049fbc8b5b3b9",
-          "fetched_at": "2026-11-14T03:25:53+00:00"
+          "sha256": "d88fb6a0e63c9bfb1b8282b0f711eff0b80e8d6e6335f4c8386b567991cf4b78",
+          "fetched_at": "2026-11-14T03:30:18+00:00"
         }
       ],
       "units": [
@@ -1599,30 +1636,34 @@
             {
               "name": "Skyler Bell",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Dion Dawkins",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Jude Bowry",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Alec Anderson",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Austin Corbett",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -1637,30 +1678,34 @@
             {
               "name": "Lloyd Cushenberry",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "O'Cyrus Torrence",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Ar'maj Reed-Adams",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Spencer Brown",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Tylan Grable",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -1873,18 +1918,20 @@
             {
               "name": "Maxwell Hairston",
               "ordinal": 2
-            },
-            {
-              "name": "NCB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "NCB",
+          "label": "NCB",
+          "players": [
             {
               "name": "Dee Alford",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Te'Cory Couch",
-              "ordinal": 5
+              "ordinal": 2
             }
           ]
         },
@@ -1933,50 +1980,56 @@
             {
               "name": "Tommy Doman Jr.",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Tommy Doman Jr.",
-              "ordinal": 3
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Greg Dortch",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Dee Alford",
-              "ordinal": 6
+              "ordinal": 2
             },
             {
               "name": "Ray Davis",
-              "ordinal": 7
+              "ordinal": 3
             },
             {
               "name": "Khalil Shakir",
-              "ordinal": 8
-            },
-            {
-              "name": "KOR",
-              "ordinal": 9
-            },
+              "ordinal": 4
+            }
+          ]
+        },
+        {
+          "position": "KOR",
+          "label": "KOR",
+          "players": [
             {
               "name": "Ray Davis",
-              "ordinal": 10
+              "ordinal": 1
             },
             {
               "name": "Greg Dortch",
-              "ordinal": 11
+              "ordinal": 2
             },
             {
               "name": "Ty Johnson",
-              "ordinal": 12
+              "ordinal": 3
             }
           ]
         },
@@ -1997,8 +2050,8 @@
       "sources": [
         {
           "url": "https://www.panthers.com/team/depth-chart",
-          "sha256": "4815e3d7d0b124d148725724844708e84762d0b9483ad39a2f26f1d38e39b969",
-          "fetched_at": "2026-11-14T03:26:04+00:00"
+          "sha256": "268fdbeb67fcebaad51db8abf2b799fea60bae1685ad67ea014c007802f27254",
+          "fetched_at": "2026-11-14T03:30:28+00:00"
         }
       ],
       "units": [
@@ -2319,30 +2372,34 @@
             {
               "name": "Jalen Coker",
               "ordinal": 1
-            },
-            {
-              "name": "LT",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Rasheed Walker",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Stone Forsythe",
-              "ordinal": 4
-            },
-            {
-              "name": "LG",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Damien Lewis",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Corey Bullock",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -2357,30 +2414,34 @@
             {
               "name": "Sam Hecht",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Robert Hunt",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Torricelli Simpkins III",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Monroe Freeling",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Stone Forsythe",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -2619,26 +2680,30 @@
             {
               "name": "Isaiah Simmons",
               "ordinal": 3
-            },
-            {
-              "name": "KR",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Anthony Tyus III",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Trevor Etienne",
-              "ordinal": 6
-            },
-            {
-              "name": "PR",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Trevor Etienne",
-              "ordinal": 8
+              "ordinal": 1
             }
           ]
         },
@@ -2669,14 +2734,16 @@
             {
               "name": "Ryan Fitzgerald",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Sam Martin",
-              "ordinal": 3
+              "ordinal": 1
             }
           ]
         }
@@ -2687,8 +2754,8 @@
       "sources": [
         {
           "url": "https://www.chicagobears.com/team/depth-chart",
-          "sha256": "61c5a17a8e4859f799e00748eebb205bfc49ee5c8870888a87c5524318a9fa2e",
-          "fetched_at": "2026-11-14T03:25:53+00:00"
+          "sha256": "2110ece03ce603021e41f2d3abec8cb4d6a91c0740d122cda4bd33e73cac1f3f",
+          "fetched_at": "2026-11-14T03:30:18+00:00"
         }
       ],
       "units": [
@@ -2944,30 +3011,34 @@
             {
               "name": "Zavion Thomas",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Theo Benedet",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Ozzy Trapilo",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Joe Thuney",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Jordan McFadden",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -2982,30 +3053,34 @@
             {
               "name": "Logan Jones",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Jonah Jackson",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Luke Newman",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Darnell Wright",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Ozzy Trapilo",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -3212,18 +3287,6 @@
             {
               "name": "Skyler Thomas",
               "ordinal": 2
-            },
-            {
-              "name": "DB",
-              "ordinal": 3
-            },
-            {
-              "name": "Kyler Gordon",
-              "ordinal": 4
-            },
-            {
-              "name": "Malik Muhammad II",
-              "ordinal": 5
             }
           ]
         },
@@ -3272,22 +3335,6 @@
             {
               "name": "Tory Taylor",
               "ordinal": 1
-            },
-            {
-              "name": "KO",
-              "ordinal": 2
-            },
-            {
-              "name": "Cairo Santos",
-              "ordinal": 3
-            },
-            {
-              "name": "H",
-              "ordinal": 4
-            },
-            {
-              "name": "Tory Taylor",
-              "ordinal": 5
             }
           ]
         },
@@ -3298,30 +3345,34 @@
             {
               "name": "Scott Daly",
               "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
+            {
+              "name": "Kalif Raymond",
+              "ordinal": 1
             },
             {
-              "name": "KR",
+              "name": "Zavion Thomas",
               "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Kalif Raymond",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Zavion Thomas",
-              "ordinal": 4
-            },
-            {
-              "name": "PR",
-              "ordinal": 5
-            },
-            {
-              "name": "Kalif Raymond",
-              "ordinal": 6
-            },
-            {
-              "name": "Zavion Thomas",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         }
@@ -3332,8 +3383,8 @@
       "sources": [
         {
           "url": "https://www.bengals.com/team/depth-chart",
-          "sha256": "a015ddca5809e063165349100546d0c8527c38908994622309ceb7cfb330a8c5",
-          "fetched_at": "2026-11-14T03:25:54+00:00"
+          "sha256": "6902c36da6bfcae12d3e5cdbcea55e714782bd2cd0e970d63130ffe282b6ddbf",
+          "fetched_at": "2026-11-14T03:30:18+00:00"
         }
       ],
       "units": [
@@ -3551,30 +3602,34 @@
             {
               "name": "Mitch Tinsley",
               "ordinal": 2
-            },
-            {
-              "name": "LOT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "LOT",
+          "label": "LOT",
+          "players": [
             {
               "name": "Orlando Brown Jr.",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Javon Foster",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Dylan Fairchild",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Jalen Rivers",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -3589,30 +3644,34 @@
             {
               "name": "Connor Lew",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Dalton Risner",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Jacob Bayer",
-              "ordinal": 5
-            },
-            {
-              "name": "ROT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "ROT",
+          "label": "ROT",
+          "players": [
             {
               "name": "Amarius Mims",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Myles Hinton",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -3669,38 +3728,42 @@
             {
               "name": "Joe Flacco",
               "ordinal": 2
-            },
-            {
-              "name": "HB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "HB",
+          "label": "HB",
+          "players": [
             {
               "name": "Chase Brown",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Samaje Perine",
-              "ordinal": 5
+              "ordinal": 2
             },
             {
               "name": "Tahj Brooks",
-              "ordinal": 6
-            },
-            {
-              "name": "LDE",
-              "ordinal": 7
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "LDE",
+          "label": "LDE",
+          "players": [
             {
               "name": "Myles Murphy",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Shemar Stewart",
-              "ordinal": 9
+              "ordinal": 2
             },
             {
               "name": "Cedric Johnson",
-              "ordinal": 10
+              "ordinal": 3
             }
           ]
         },
@@ -3733,18 +3796,20 @@
             {
               "name": "Kris Jenkins Jr. Landon Robinson",
               "ordinal": 3
-            },
-            {
-              "name": "RDE",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "RDE",
+          "label": "RDE",
+          "players": [
             {
               "name": "Boye Mafe",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Cashius Howell",
-              "ordinal": 6
+              "ordinal": 2
             }
           ]
         },
@@ -3777,18 +3842,20 @@
             {
               "name": "Oren Burks",
               "ordinal": 2
-            },
-            {
-              "name": "NCB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "NCB",
+          "label": "NCB",
+          "players": [
             {
               "name": "Dax Hill",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Josh Newton",
-              "ordinal": 5
+              "ordinal": 2
             }
           ]
         },
@@ -3879,42 +3946,48 @@
             {
               "name": "William Wagner",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Ryan Rehkow",
-              "ordinal": 3
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Dohnte Meyers",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Mitch Tinsley",
-              "ordinal": 6
-            },
-            {
-              "name": "KOR",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KOR",
+          "label": "KOR",
+          "players": [
             {
               "name": "Dohnte Meyers",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Samaje Perine",
-              "ordinal": 9
+              "ordinal": 2
             },
             {
               "name": "Tahj Brooks",
-              "ordinal": 10
+              "ordinal": 3
             }
           ]
         }
@@ -3925,8 +3998,8 @@
       "sources": [
         {
           "url": "https://www.browns.com/team/depth-chart",
-          "sha256": "165322c2ae9aca619875613686b81d615d059f4e07b2811b87e1b950e2985260",
-          "fetched_at": "2026-11-14T03:25:59+00:00"
+          "sha256": "c7711d87d19dcd2d6ee4ff32f3b371fb207f4b0df4a4107ead94e2b6d96cea0a",
+          "fetched_at": "2026-11-14T03:30:23+00:00"
         }
       ],
       "units": [
@@ -4175,26 +4248,30 @@
             {
               "name": "Tylan Wallace",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Spencer Fano",
-              "ordinal": 4
-            },
-            {
-              "name": "LG",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Zion Johnson",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Zak Zinter",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -4213,26 +4290,30 @@
             {
               "name": "Parker Brailsford",
               "ordinal": 3
-            },
-            {
-              "name": "RG",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Austin Barber",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Tytus Howard",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Dawand Jones",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -4319,90 +4400,104 @@
             {
               "name": "Isaiah Bond",
               "ordinal": 2
-            },
-            {
-              "name": "LDE",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "LDE",
+          "label": "LDE",
+          "players": [
             {
               "name": "Jared Verse",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Sam Williams",
-              "ordinal": 5
-            },
-            {
-              "name": "LDT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "LDT",
+          "label": "LDT",
+          "players": [
             {
               "name": "Maliek Collins",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Mike Hall Jr.",
-              "ordinal": 8
+              "ordinal": 2
             },
             {
               "name": "Sam Kamara",
-              "ordinal": 9
-            },
-            {
-              "name": "RDT",
-              "ordinal": 10
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "RDT",
+          "label": "RDT",
+          "players": [
             {
               "name": "Mason Graham",
-              "ordinal": 11
+              "ordinal": 1
             },
             {
               "name": "Adin Huntington",
-              "ordinal": 12
-            },
-            {
-              "name": "RDE",
-              "ordinal": 13
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "RDE",
+          "label": "RDE",
+          "players": [
             {
               "name": "Isaiah McGuire",
-              "ordinal": 14
+              "ordinal": 1
             },
             {
               "name": "Derek Barnett",
-              "ordinal": 15
-            },
-            {
-              "name": "WILL",
-              "ordinal": 16
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "WILL",
+          "label": "WILL",
+          "players": [
             {
               "name": "Carson Schwesinger",
-              "ordinal": 17
-            },
-            {
-              "name": "MIKE",
-              "ordinal": 18
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "MIKE",
+          "label": "MIKE",
+          "players": [
             {
               "name": "Quincy Williams",
-              "ordinal": 19
+              "ordinal": 1
             },
             {
               "name": "Justin Jefferson",
-              "ordinal": 20
-            },
-            {
-              "name": "SAM",
-              "ordinal": 21
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "SAM",
+          "label": "SAM",
+          "players": [
             {
               "name": "Easton Mascarenas-Arnold",
-              "ordinal": 22
+              "ordinal": 1
             },
             {
               "name": "Winston Reid",
-              "ordinal": 23
+              "ordinal": 2
             }
           ]
         },
@@ -4491,38 +4586,44 @@
             {
               "name": "Andre Szmyt",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Corey Bojorquez",
-              "ordinal": 3
-            },
-            {
-              "name": "KR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Malachi Corley",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Dylan Sampson",
-              "ordinal": 6
-            },
-            {
-              "name": "PR",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "KC Concepcion Jr.",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Denzel Boston",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -4543,8 +4644,8 @@
       "sources": [
         {
           "url": "https://www.dallascowboys.com/team/depth-chart",
-          "sha256": "fb335454bd1f5ea6d65a131e4ce21572b0aa3c2bbeec139cd0b532877f45d1ed",
-          "fetched_at": "2026-11-14T03:26:03+00:00"
+          "sha256": "d49ce7e9c18e1b7c67ede54259b720afe8dcb7d5ab6eb392016ba0a0c108b5c9",
+          "fetched_at": "2026-11-14T03:30:28+00:00"
         }
       ],
       "units": [
@@ -4774,30 +4875,34 @@
             {
               "name": "Camden Brown",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Tyler Guyton",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Drew Shelton",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Tyler Smith",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "T.J. Bass",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -4812,30 +4917,34 @@
             {
               "name": "T.J. Bass",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Tyler Booker",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Ajani Cornelius",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Terence Steele",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Broderick Jones",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -5036,14 +5145,16 @@
             {
               "name": "Ameer Speed",
               "ordinal": 3
-            },
-            {
-              "name": "DB",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "DB",
+          "label": "DB",
+          "players": [
             {
               "name": "Caleb Downs",
-              "ordinal": 5
+              "ordinal": 1
             }
           ]
         },
@@ -5116,46 +5227,52 @@
             {
               "name": "Trent Sieg",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Bryan Anger",
-              "ordinal": 3
-            },
-            {
-              "name": "KR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "KaVontae Turpin",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Tyler Goodson",
-              "ordinal": 6
+              "ordinal": 2
             },
             {
               "name": "Jonathan Mingo",
-              "ordinal": 7
-            },
-            {
-              "name": "PR",
-              "ordinal": 8
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "KaVontae Turpin",
-              "ordinal": 9
+              "ordinal": 1
             },
             {
               "name": "Jonathan Mingo",
-              "ordinal": 10
+              "ordinal": 2
             },
             {
               "name": "Caleb Downs",
-              "ordinal": 11
+              "ordinal": 3
             }
           ]
         }
@@ -5166,8 +5283,8 @@
       "sources": [
         {
           "url": "https://www.denverbroncos.com/team/depth-chart",
-          "sha256": "0b6f1087bb9a7aa61a1b533cbdc0536555680322ed14731e15924ca61553d448",
-          "fetched_at": "2026-11-14T03:25:54+00:00"
+          "sha256": "9680c89f65efe94c20d637710441415e8c7c8db2650b68901afc58c4554632f1",
+          "fetched_at": "2026-11-14T03:30:18+00:00"
         }
       ],
       "units": [
@@ -5451,30 +5568,34 @@
             {
               "name": "Lil'Jordan Humphrey",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Garett Bolles",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Matt Peart",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Ben Powers",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Kage Casey",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -5489,30 +5610,34 @@
             {
               "name": "Alex Forsyth",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Quinn Meinerz",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Kage Casey",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Mike McGlinchey",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Alex Palczewski",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -5633,30 +5758,6 @@
             {
               "name": "Eyioma Uwazurike",
               "ordinal": 2
-            },
-            {
-              "name": "SLB",
-              "ordinal": 3
-            },
-            {
-              "name": "Nik Bonitto",
-              "ordinal": 4
-            },
-            {
-              "name": "Que Robinson",
-              "ordinal": 5
-            },
-            {
-              "name": "WLB",
-              "ordinal": 6
-            },
-            {
-              "name": "Jonathon Cooper",
-              "ordinal": 7
-            },
-            {
-              "name": "Dondrea Tillman",
-              "ordinal": 8
             }
           ]
         },
@@ -5685,42 +5786,6 @@
             {
               "name": "Karene Reid",
               "ordinal": 2
-            },
-            {
-              "name": "LCB",
-              "ordinal": 3
-            },
-            {
-              "name": "Pat Surtain II",
-              "ordinal": 4
-            },
-            {
-              "name": "Jahdae Barron",
-              "ordinal": 5
-            },
-            {
-              "name": "RCB",
-              "ordinal": 6
-            },
-            {
-              "name": "Riley Moss",
-              "ordinal": 7
-            },
-            {
-              "name": "Kris Abrams-Draine",
-              "ordinal": 8
-            },
-            {
-              "name": "NCB",
-              "ordinal": 9
-            },
-            {
-              "name": "Ja'Quan McMillian",
-              "ordinal": 10
-            },
-            {
-              "name": "Jahdae Barron",
-              "ordinal": 11
             }
           ]
         },
@@ -5757,22 +5822,6 @@
             {
               "name": "Taylor Rapp",
               "ordinal": 3
-            },
-            {
-              "name": "PK",
-              "ordinal": 4
-            },
-            {
-              "name": "Wil Lutz",
-              "ordinal": 5
-            },
-            {
-              "name": "KO",
-              "ordinal": 6
-            },
-            {
-              "name": "Wil Lutz",
-              "ordinal": 7
             }
           ]
         },
@@ -5783,14 +5832,6 @@
             {
               "name": "Jeremy Crawshaw",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
-            {
-              "name": "Jeremy Crawshaw",
-              "ordinal": 3
             }
           ]
         },
@@ -5801,26 +5842,30 @@
             {
               "name": "Mitchell Fraboni",
               "ordinal": 1
-            },
-            {
-              "name": "KR",
-              "ordinal": 2
-            },
-            {
-              "name": "Marvin Mims Jr.",
-              "ordinal": 3
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Marvin Mims Jr.",
-              "ordinal": 5
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
+            {
+              "name": "Marvin Mims Jr.",
+              "ordinal": 1
             },
             {
               "name": "Riley Moss",
-              "ordinal": 6
+              "ordinal": 2
             }
           ]
         }
@@ -5831,8 +5876,8 @@
       "sources": [
         {
           "url": "https://www.detroitlions.com/team/depth-chart",
-          "sha256": "3f0fbbddd912fb24aeb456a4198c6132c4e1dd4e9293e3fd96fca02b58c21372",
-          "fetched_at": "2026-11-14T03:25:54+00:00"
+          "sha256": "4ac9dee7251bdd996aa20e1957685fb2566e9e4370018341219e1c984847326c",
+          "fetched_at": "2026-11-14T03:30:18+00:00"
         }
       ],
       "units": [
@@ -6122,26 +6167,30 @@
             {
               "name": "DeAndre Carter",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Penei Sewell",
-              "ordinal": 4
-            },
-            {
-              "name": "LG",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Christian Mahogany",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Miles Frazier",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -6156,30 +6205,34 @@
             {
               "name": "Juice Scruggs",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Tate Ratledge",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Seth McLaughlin",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Blake Miller",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Larry Borom",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -6248,22 +6301,6 @@
             {
               "name": "Jacob Saylors",
               "ordinal": 3
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 4
-            },
-            {
-              "name": "Aidan Hutchinson",
-              "ordinal": 5
-            },
-            {
-              "name": "Derrick Moore",
-              "ordinal": 6
-            },
-            {
-              "name": "Eric O'Neill",
-              "ordinal": 7
             }
           ]
         },
@@ -6296,22 +6333,6 @@
             {
               "name": "Levi Onwuzurike",
               "ordinal": 2
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 3
-            },
-            {
-              "name": "DJ Wonnum",
-              "ordinal": 4
-            },
-            {
-              "name": "Tyler Lacy",
-              "ordinal": 5
-            },
-            {
-              "name": "Ahmed Hassanein",
-              "ordinal": 6
             }
           ]
         },
@@ -6428,14 +6449,6 @@
             {
               "name": "Jake Bates",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
-            {
-              "name": "Jack Fox",
-              "ordinal": 3
             }
           ]
         },
@@ -6456,26 +6469,30 @@
             {
               "name": "Hogan Hatten",
               "ordinal": 1
-            },
-            {
-              "name": "PR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "DeAndre Carter",
-              "ordinal": 3
-            },
-            {
-              "name": "KR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Jacob Saylors",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "DeAndre Carter",
-              "ordinal": 6
+              "ordinal": 2
             }
           ]
         }
@@ -6486,8 +6503,8 @@
       "sources": [
         {
           "url": "https://www.packers.com/team/depth-chart",
-          "sha256": "38369de934cf3b23d5b82dc94716573d4a426b25cdefba1e07005f24cb62ba6c",
-          "fetched_at": "2026-11-14T03:25:58+00:00"
+          "sha256": "015a116194c78a6be6d616c2297e1976fd83f16a4b0dff86fe45af14d9407ac4",
+          "fetched_at": "2026-11-14T03:30:23+00:00"
         }
       ],
       "units": [
@@ -6731,11 +6748,13 @@
             {
               "name": "J. Michael Sturdivant",
               "ordinal": 87
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Jordan Morgan",
               "ordinal": 77
@@ -6743,11 +6762,13 @@
             {
               "name": "John Williams",
               "ordinal": 73
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Aaron Banks",
               "ordinal": 65
@@ -6773,11 +6794,13 @@
             {
               "name": "Jager Burton",
               "ordinal": 52
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Laken Tomlinson",
               "ordinal": 72
@@ -6785,11 +6808,13 @@
             {
               "name": "Kevin Zeitler",
               "ordinal": 70
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Anthony Belton",
               "ordinal": 71
@@ -6815,10 +6840,6 @@
             {
               "name": "Mark Redman",
               "ordinal": 86
-            },
-            {
-              "name": "Josh Whyle",
-              "ordinal": 81
             }
           ]
         },
@@ -6865,10 +6886,6 @@
             {
               "name": "Pierre Strong Jr.",
               "ordinal": 22
-            },
-            {
-              "name": "Kaleb Johnson",
-              "ordinal": 26
             }
           ]
         },
@@ -6901,18 +6918,6 @@
             {
               "name": "Chris McClellan",
               "ordinal": 55
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 3
-            },
-            {
-              "name": "Lukas Van Ness",
-              "ordinal": 90
-            },
-            {
-              "name": "Brenton Cox Jr",
-              "ordinal": 57
             }
           ]
         },
@@ -6945,18 +6950,6 @@
             {
               "name": "Nick Niemann",
               "ordinal": 31
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 3
-            },
-            {
-              "name": "Barryn Sorrell",
-              "ordinal": 99
-            },
-            {
-              "name": "Dani Dennis-Sutton",
-              "ordinal": 51
             }
           ]
         },
@@ -7013,11 +7006,13 @@
             {
               "name": "Kitan Oladapo",
               "ordinal": 27
-            },
-            {
-              "name": "NB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "NB",
+          "label": "NB",
+          "players": [
             {
               "name": "Javon Bullard",
               "ordinal": 7
@@ -7045,19 +7040,13 @@
             {
               "name": "Daniel Whelan",
               "ordinal": 19
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
-            {
-              "name": "Daniel Whelan",
-              "ordinal": 19
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Coleman Owen",
               "ordinal": 13
@@ -7065,11 +7054,13 @@
             {
               "name": "Matthew Golden",
               "ordinal": 0
-            },
-            {
-              "name": "KR",
-              "ordinal": 7
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Bo Melton",
               "ordinal": 16
@@ -7097,8 +7088,8 @@
       "sources": [
         {
           "url": "https://www.colts.com/team/depth-chart",
-          "sha256": "eb3825f5409742b5055ef6962675cf42f89040f05de2a4708b1b62a3117a0507",
-          "fetched_at": "2026-11-14T03:26:08+00:00"
+          "sha256": "e735d4086d97d3a1fa9676523549b15d3fe7604addcf263ecf484891f6d0dc86",
+          "fetched_at": "2026-11-14T03:30:33+00:00"
         }
       ],
       "units": [
@@ -7347,30 +7338,34 @@
             {
               "name": "Nick Westbrook-Ikhine",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Bernhard Raimann",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Charlie Heck",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Jalen Farmer",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Dalton Tucker",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -7385,26 +7380,30 @@
             {
               "name": "Sedrick Van Pran-Granger",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Matt Goncalves",
-              "ordinal": 4
-            },
-            {
-              "name": "RT",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Jalen Travis",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Luke Tenuta",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -7547,38 +7546,42 @@
             {
               "name": "Caden Curry",
               "ordinal": 2
-            },
-            {
-              "name": "WLB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "WLB",
+          "label": "WLB",
+          "players": [
             {
               "name": "Jaylon Carlies",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Bryce Boettcher",
-              "ordinal": 5
+              "ordinal": 2
             },
             {
               "name": "Tahj Chambers",
-              "ordinal": 6
-            },
-            {
-              "name": "MLB",
-              "ordinal": 7
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "MLB",
+          "label": "MLB",
+          "players": [
             {
               "name": "Akeem Davis-Gaither",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "CJ Allen",
-              "ordinal": 9
+              "ordinal": 2
             },
             {
               "name": "Austin Ajiake",
-              "ordinal": 10
+              "ordinal": 3
             }
           ]
         },
@@ -7621,18 +7624,20 @@
             {
               "name": "Hunter Wohler",
               "ordinal": 2
-            },
-            {
-              "name": "N",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "N",
+          "label": "N",
+          "players": [
             {
               "name": "Justin Walley",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Kapena Gushiken",
-              "ordinal": 5
+              "ordinal": 2
             }
           ]
         },
@@ -7653,22 +7658,26 @@
             {
               "name": "Rigoberto Sanchez",
               "ordinal": 1
-            },
-            {
-              "name": "PK",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PK",
+          "label": "PK",
+          "players": [
             {
               "name": "Spencer Shrader",
-              "ordinal": 3
-            },
-            {
-              "name": "H",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Rigoberto Sanchez",
-              "ordinal": 5
+              "ordinal": 1
             }
           ]
         },
@@ -7679,30 +7688,34 @@
             {
               "name": "Luke Rhodes",
               "ordinal": 1
-            },
-            {
-              "name": "KR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Ashton Dulin",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Seth McGowan",
-              "ordinal": 4
-            },
-            {
-              "name": "PR",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Anthony Gould",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Ashton Dulin",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         }
@@ -7713,8 +7726,8 @@
       "sources": [
         {
           "url": "https://www.jaguars.com/team/depth-chart",
-          "sha256": "4720f18b317e52f9c4a6f48247119a7cb1061372a8f0ba856f230837a9bef462",
-          "fetched_at": "2026-11-14T03:25:54+00:00"
+          "sha256": "ac7892f0b9832ed9b91eb65d2a9cd59b24acf79e45ae37e58574fb271f3c3152",
+          "fetched_at": "2026-11-14T03:30:19+00:00"
         }
       ],
       "units": [
@@ -8066,26 +8079,30 @@
             {
               "name": "Josh Cameron",
               "ordinal": 2
-            },
-            {
-              "name": "RT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Cole Van Lanen",
-              "ordinal": 4
-            },
-            {
-              "name": "RG",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Ezra Cleveland",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Wyatt Milum",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -8100,26 +8117,30 @@
             {
               "name": "Jonah Monheim",
               "ordinal": 2
-            },
-            {
-              "name": "LG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Emmanuel Pregnon",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Daniel Faalele",
-              "ordinal": 5
-            },
-            {
-              "name": "LT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Walker Little",
-              "ordinal": 7
+              "ordinal": 1
             }
           ]
         },
@@ -8388,14 +8409,16 @@
             {
               "name": "Cam Little",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Logan Cooke",
-              "ordinal": 3
+              "ordinal": 1
             }
           ]
         },
@@ -8416,26 +8439,30 @@
             {
               "name": "Ross Matiscik",
               "ordinal": 1
-            },
-            {
-              "name": "PR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Parker Washington",
-              "ordinal": 3
-            },
-            {
-              "name": "KR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Bhayshul Tuten",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "LeQuint Allen Jr.",
-              "ordinal": 6
+              "ordinal": 2
             }
           ]
         }
@@ -8446,8 +8473,8 @@
       "sources": [
         {
           "url": "https://www.chiefs.com/team/depth-chart",
-          "sha256": "9ecb743ef5a18f9d03c0ec568b301c4eccd577734f57fc0efe112f44405a8a4f",
-          "fetched_at": "2026-11-14T03:25:57+00:00"
+          "sha256": "ddfae6bb2894a4637c9bc775d6a2720e21b2f7deac8ff701a44492ec5a1c2168",
+          "fetched_at": "2026-11-14T03:30:19+00:00"
         }
       ],
       "units": [
@@ -8700,30 +8727,34 @@
             {
               "name": "Andrew Armstrong",
               "ordinal": 3
-            },
-            {
-              "name": "LT",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Kahlil Benson",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Diego Pounds",
-              "ordinal": 6
-            },
-            {
-              "name": "LG",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Kingsley Suamataia",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Joshua Ezeudu",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -8738,30 +8769,34 @@
             {
               "name": "Hunter Nourzad",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Trey Smith",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Mike Caliendo",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Jaylon Moore",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Joshua Ezeudu",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -9024,14 +9059,16 @@
             {
               "name": "Harrison Butker",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Matt Araiza",
-              "ordinal": 3
+              "ordinal": 1
             }
           ]
         },
@@ -9052,30 +9089,34 @@
             {
               "name": "James Winchester",
               "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
+            {
+              "name": "Emmett Johnson",
+              "ordinal": 1
             },
             {
-              "name": "KR",
+              "name": "Cyrus Allen",
               "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Emmett Johnson",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Cyrus Allen",
-              "ordinal": 4
-            },
-            {
-              "name": "PR",
-              "ordinal": 5
-            },
-            {
-              "name": "Emmett Johnson",
-              "ordinal": 6
-            },
-            {
-              "name": "Cyrus Allen",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         }
@@ -9086,8 +9127,8 @@
       "sources": [
         {
           "url": "https://www.raiders.com/team/depth-chart",
-          "sha256": "1be9ad41d009603699a628c4db2aadeae588176c2dd1a90bf026eb754f15f178",
-          "fetched_at": "2026-11-14T03:26:03+00:00"
+          "sha256": "30b8d411c721762eb2ce0242ef1fda9ca3aee2da410537c3739aa4c4d981fc2d",
+          "fetched_at": "2026-11-14T03:30:28+00:00"
         }
       ],
       "units": [
@@ -9340,30 +9381,34 @@
             {
               "name": "Dont'e Thornton Jr.",
               "ordinal": 3
-            },
-            {
-              "name": "LT",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Kolton Miller",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Charles Grant",
-              "ordinal": 6
-            },
-            {
-              "name": "LG",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Spencer Burford",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Bryce Cabeldue",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -9374,30 +9419,34 @@
             {
               "name": "Tyler Linderbaum",
               "ordinal": 1
-            },
-            {
-              "name": "RG",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Jackson Powers-Johnson",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Caleb Rogers",
-              "ordinal": 4
-            },
-            {
-              "name": "RT",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "DJ Glaze",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Trey Zuhn III",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -9526,14 +9575,16 @@
             {
               "name": "Thomas Booker IV",
               "ordinal": 3
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "EDGE",
+          "label": "EDGE",
+          "players": [
             {
               "name": "Kwity Paye",
-              "ordinal": 5
+              "ordinal": 1
             }
           ]
         },
@@ -9660,14 +9711,16 @@
             {
               "name": "Matt Gay",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "AJ Cole",
-              "ordinal": 3
+              "ordinal": 1
             }
           ]
         },
@@ -9678,30 +9731,34 @@
             {
               "name": "Alex Ward",
               "ordinal": 1
-            },
-            {
-              "name": "KR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Dylan Laube",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Dareke Young",
-              "ordinal": 4
-            },
-            {
-              "name": "PR",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Malik Benson",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Dylan Laube",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         }
@@ -9712,8 +9769,8 @@
       "sources": [
         {
           "url": "https://www.chargers.com/team/depth-chart",
-          "sha256": "f0fb6c05710c1d8609ad55d40debcc4490ff15537ae4f73cfc42c519c92a1f80",
-          "fetched_at": "2026-11-14T03:26:09+00:00"
+          "sha256": "74020d2c3c84e09349d28cbc08c534e7b3fd8bdd9b88eaf165ece051f11bea97",
+          "fetched_at": "2026-11-14T03:30:33+00:00"
         }
       ],
       "units": [
@@ -9973,30 +10030,34 @@
             {
               "name": "Derius Davis Theo Wease Jr.",
               "ordinal": 3
-            },
-            {
-              "name": "LT",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Travis Burke",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Branson Taylor",
-              "ordinal": 6
-            },
-            {
-              "name": "LG",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Kayode Awosika",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Logan Taylor",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -10011,30 +10072,34 @@
             {
               "name": "Jacob Spomer",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Cole Strange",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Logan Taylor",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Joe Alt",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Alex Harkey",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -10109,18 +10174,20 @@
             {
               "name": "Kimani Vidal",
               "ordinal": 3
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "EDGE",
+          "label": "EDGE",
+          "players": [
             {
               "name": "Khalil Mack",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Akheem Mesidor",
-              "ordinal": 6
+              "ordinal": 2
             }
           ]
         },
@@ -10159,18 +10226,20 @@
             {
               "name": "Teair Tart",
               "ordinal": 1
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "EDGE",
+          "label": "EDGE",
+          "players": [
             {
               "name": "Tuli Tuipulotu",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Bud Dupree",
-              "ordinal": 4
+              "ordinal": 2
             }
           ]
         },
@@ -10291,22 +10360,26 @@
             {
               "name": "JK Scott",
               "ordinal": 1
-            },
-            {
-              "name": "KO",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "KO",
+          "label": "KO",
+          "players": [
             {
               "name": "Cameron Dicker",
-              "ordinal": 3
-            },
-            {
-              "name": "H",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "JK Scott",
-              "ordinal": 5
+              "ordinal": 1
             }
           ]
         },
@@ -10317,38 +10390,42 @@
             {
               "name": "Josh Harris",
               "ordinal": 1
-            },
-            {
-              "name": "KR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Derius Davis",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Keaton Mitchell",
-              "ordinal": 4
+              "ordinal": 2
             },
             {
               "name": "Kimani Vidal",
-              "ordinal": 5
-            },
-            {
-              "name": "PR",
-              "ordinal": 6
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Derius Davis",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Brenen Thompson",
-              "ordinal": 8
+              "ordinal": 2
             },
             {
               "name": "Ladd McConkey",
-              "ordinal": 9
+              "ordinal": 3
             }
           ]
         }
@@ -10359,8 +10436,8 @@
       "sources": [
         {
           "url": "https://www.therams.com/team/depth-chart",
-          "sha256": "473d12e3f2b4beea2e5f340cf5e0f0a9eb65879e652ce8740310098f44342619",
-          "fetched_at": "2026-11-14T03:25:59+00:00"
+          "sha256": "fea1af1a516ccfa9b8475d83f346c1a9e410318f0261e8a69d7ce18ba35d4a4a",
+          "fetched_at": "2026-11-14T03:30:23+00:00"
         }
       ],
       "units": [
@@ -10619,30 +10696,34 @@
             {
               "name": "Davis Allen Tyler Higbee",
               "ordinal": 1
-            },
-            {
-              "name": "LT",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Alaric Jackson",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "David Quessenberry",
-              "ordinal": 4
-            },
-            {
-              "name": "LG",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Steve Avila",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Bill Murray",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -10657,30 +10738,34 @@
             {
               "name": "Dylan McMahon",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Kevin Dotson",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Beaux Limmer",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Warren McClendon Jr.",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Keagen Trost",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -10927,14 +11012,16 @@
             {
               "name": "Joshua Karty",
               "ordinal": 2
-            },
-            {
-              "name": "H",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Ethan Evans",
-              "ordinal": 4
+              "ordinal": 1
             }
           ]
         },
@@ -10945,30 +11032,34 @@
             {
               "name": "Joe Cardona",
               "ordinal": 1
-            },
-            {
-              "name": "PR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Kyren Williams",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Tutu Atwell",
-              "ordinal": 4
-            },
-            {
-              "name": "KR",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Jordan Whittington",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Ronnie Rivers",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         }
@@ -10979,8 +11070,8 @@
       "sources": [
         {
           "url": "https://www.miamidolphins.com/team/depth-chart",
-          "sha256": "abccc03a310c0cc4dd89654a9db5bd902bd010bf71efc2eb99a8845953ce7f0f",
-          "fetched_at": "2026-11-14T03:26:08+00:00"
+          "sha256": "c5d25345c746471f6f020c25ef0c63dfdc334d1aabc2530cebb47c6afc655f70",
+          "fetched_at": "2026-11-14T03:30:33+00:00"
         }
       ],
       "units": [
@@ -11268,30 +11359,34 @@
             {
               "name": "Jared Wayne",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Patrick Paul",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Chukwuebuka Godrick",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Kadyn Proctor",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Jarrett Kingston",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -11306,34 +11401,38 @@
             {
               "name": "Andrew Meyer",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Jonah Savaiinaea",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Caedan Wallace",
-              "ordinal": 5
+              "ordinal": 2
             },
             {
               "name": "Christian Haynes",
-              "ordinal": 6
-            },
-            {
-              "name": "RT",
-              "ordinal": 7
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Austin Jackson",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Caedan Wallace",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -11446,34 +11545,38 @@
             {
               "name": "Zeek Biggers",
               "ordinal": 1
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "EDGE",
+          "label": "EDGE",
+          "players": [
             {
               "name": "Chop Robinson",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Malik Herring",
-              "ordinal": 4
+              "ordinal": 2
             },
             {
               "name": "Rodney McGraw",
-              "ordinal": 5
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 6
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "EDGE",
+          "label": "EDGE",
+          "players": [
             {
               "name": "Josh Uche",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Jamree Kromah",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -11506,14 +11609,16 @@
             {
               "name": "Willie Gay Jr.",
               "ordinal": 2
-            },
-            {
-              "name": "NB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "NB",
+          "label": "NB",
+          "players": [
             {
               "name": "Chris Johnson",
-              "ordinal": 4
+              "ordinal": 1
             }
           ]
         },
@@ -11589,14 +11694,16 @@
             {
               "name": "Bradley Pinion",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Bradley Pinion",
-              "ordinal": 3
+              "ordinal": 1
             }
           ]
         },
@@ -11607,30 +11714,34 @@
             {
               "name": "Tucker Addington",
               "ordinal": 1
-            },
-            {
-              "name": "KR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Malik Washington",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Jaylen Wright",
-              "ordinal": 4
-            },
-            {
-              "name": "PR",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Malik Washington",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Kevin Coleman Jr.",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         }
@@ -11641,8 +11752,8 @@
       "sources": [
         {
           "url": "https://www.vikings.com/team/depth-chart",
-          "sha256": "59a01c0cc7c78d3db4cf5eb56e69ffcb579affd39bca75810b175fffcf08a862",
-          "fetched_at": "2026-11-14T03:25:58+00:00"
+          "sha256": "165bdec1dd65c76160da6ce44a4757deee7d8d5365e1e914643dc2b0e9fec3b9",
+          "fetched_at": "2026-11-14T03:30:23+00:00"
         }
       ],
       "units": [
@@ -12050,26 +12161,30 @@
             {
               "name": "Gavin Bartholomew",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Christian Darrisaw",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Ryan Van Demark",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Joe Huber",
-              "ordinal": 7
+              "ordinal": 1
             }
           ]
         },
@@ -12088,26 +12203,30 @@
             {
               "name": "Nick Samac",
               "ordinal": 3
-            },
-            {
-              "name": "RG",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Will Fries",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Brian O'Neill",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Caleb Tiernan",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -12298,14 +12417,16 @@
             {
               "name": "Brett Thorson",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Brett Thorson",
-              "ordinal": 3
+              "ordinal": 1
             }
           ]
         },
@@ -12316,34 +12437,38 @@
             {
               "name": "Andrew DePaola",
               "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
+            {
+              "name": "Myles Price",
+              "ordinal": 1
             },
             {
-              "name": "KR",
+              "name": "Tai Felton",
               "ordinal": 2
             },
             {
-              "name": "Myles Price",
-              "ordinal": 3
-            },
-            {
-              "name": "Tai Felton",
-              "ordinal": 4
-            },
-            {
               "name": "Demond Claiborne",
-              "ordinal": 5
-            },
-            {
-              "name": "PR",
-              "ordinal": 6
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Myles Price",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Tai Felton",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         }
@@ -12354,8 +12479,8 @@
       "sources": [
         {
           "url": "https://www.patriots.com/team/depth-chart",
-          "sha256": "d59e3f088d8a71934151eecb0394e380dd1db9649398cfe39efc8a034d4fcb3b",
-          "fetched_at": "2026-11-14T03:25:59+00:00"
+          "sha256": "7449d722139dc00ac0cdb731430c7d451a10f72118dfa8560c4765aca393f488",
+          "fetched_at": "2026-11-14T03:30:23+00:00"
         }
       ],
       "units": [
@@ -12611,34 +12736,38 @@
             {
               "name": "Efton Chism III",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Will Campbell",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Dametrious Crownover",
-              "ordinal": 5
+              "ordinal": 2
             },
             {
               "name": "Marcus Bryant",
-              "ordinal": 6
-            },
-            {
-              "name": "LG",
-              "ordinal": 7
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Ben Brown",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Walter Rouse",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -12653,30 +12782,34 @@
             {
               "name": "Ben Brown",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Matt Pryor",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Walter Rouse",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Morgan Moses",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Caleb Lomu",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -12959,14 +13092,16 @@
             {
               "name": "Mitch Wishnowsky",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Mitch Wishnowsky",
-              "ordinal": 3
+              "ordinal": 1
             }
           ]
         },
@@ -12977,34 +13112,38 @@
             {
               "name": "Julian Ashby",
               "ordinal": 1
-            },
-            {
-              "name": "PR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Marcus Jones",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "DeMario Douglas",
-              "ordinal": 4
-            },
-            {
-              "name": "KR",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Kyle Williams",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Corey Kiner",
-              "ordinal": 7
+              "ordinal": 2
             },
             {
               "name": "Lan Larison",
-              "ordinal": 8
+              "ordinal": 3
             }
           ]
         }
@@ -13015,8 +13154,8 @@
       "sources": [
         {
           "url": "https://www.neworleanssaints.com/team/depth-chart",
-          "sha256": "3c66f460644579387d6551eee846282876cdc4844c5bcb788de3bd2734c37329",
-          "fetched_at": "2026-11-14T03:26:07+00:00"
+          "sha256": "b6a5050c256be6e9449812f82ce42f154fb79fba916fc5887266bf8385432f42",
+          "fetched_at": "2026-11-14T03:30:28+00:00"
         }
       ],
       "units": [
@@ -13279,30 +13418,34 @@
             {
               "name": "Barion Brown",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Kelvin Banks Jr.",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Asim Richards",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "David Edwards",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Jeremiah Wright",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -13317,30 +13460,34 @@
             {
               "name": "William Sherman",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Cesar Ruiz",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Jeremiah Wright",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Taliese Fuaga",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Mason Murphy",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -13423,18 +13570,6 @@
             {
               "name": "CJ Donaldson",
               "ordinal": 3
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 4
-            },
-            {
-              "name": "Chase Young Carl Granderson",
-              "ordinal": 5
-            },
-            {
-              "name": "Anfernee Jennings",
-              "ordinal": 6
             }
           ]
         },
@@ -13477,18 +13612,6 @@
             {
               "name": "Colby Wooden",
               "ordinal": 2
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 3
-            },
-            {
-              "name": "Cameron Jordan",
-              "ordinal": 4
-            },
-            {
-              "name": "Tyree Wilson",
-              "ordinal": 5
             }
           ]
         },
@@ -13615,14 +13738,6 @@
             {
               "name": "Charlie Smyth",
               "ordinal": 1
-            },
-            {
-              "name": "KO",
-              "ordinal": 2
-            },
-            {
-              "name": "Charlie Smyth",
-              "ordinal": 3
             }
           ]
         },
@@ -13633,38 +13748,34 @@
             {
               "name": "Zach Wood",
               "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
+            {
+              "name": "Barion Brown",
+              "ordinal": 1
             },
             {
-              "name": "H",
+              "name": "Bryce Lance",
               "ordinal": 2
-            },
-            {
-              "name": "Ryan Wright",
-              "ordinal": 3
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Barion Brown",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Bryce Lance",
-              "ordinal": 6
-            },
-            {
-              "name": "KR",
-              "ordinal": 7
-            },
-            {
-              "name": "Barion Brown",
-              "ordinal": 8
-            },
-            {
-              "name": "Bryce Lance",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         }
@@ -13675,8 +13786,8 @@
       "sources": [
         {
           "url": "https://www.giants.com/team/depth-chart",
-          "sha256": "e3a1008271825137cf13ad8ca646c792a27d315134f2a6b8d575d43a4793afc6",
-          "fetched_at": "2026-11-14T03:25:58+00:00"
+          "sha256": "956a4d6ba6b66b63286c1dfa0219d2860fe7181bc18342b9e7c0493549e8568b",
+          "fetched_at": "2026-11-14T03:30:23+00:00"
         }
       ],
       "units": [
@@ -13950,34 +14061,38 @@
             {
               "name": "Charlie Jones",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Andrew Thomas",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "J.C. Davis",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Jon Runyan Jr.",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Aaron Stinnie",
-              "ordinal": 8
+              "ordinal": 2
             },
             {
               "name": "Josh Sills",
-              "ordinal": 9
+              "ordinal": 3
             }
           ]
         },
@@ -13992,30 +14107,34 @@
             {
               "name": "John Michael Schmitz Jr.",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Francis \"Sisi\" Mauigoa",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Aaron Stinnie",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Jermaine Eluemunor",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Marcus Mbow",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -14122,54 +14241,6 @@
             {
               "name": "Darius Alexander",
               "ordinal": 1
-            },
-            {
-              "name": "RUSH",
-              "ordinal": 2
-            },
-            {
-              "name": "Kayvon Thibodeaux",
-              "ordinal": 3
-            },
-            {
-              "name": "Trace Ford",
-              "ordinal": 4
-            },
-            {
-              "name": "MLB",
-              "ordinal": 5
-            },
-            {
-              "name": "Micah McFadden",
-              "ordinal": 6
-            },
-            {
-              "name": "Zaire Barnes",
-              "ordinal": 7
-            },
-            {
-              "name": "WLB",
-              "ordinal": 8
-            },
-            {
-              "name": "Arvell Reese",
-              "ordinal": 9
-            },
-            {
-              "name": "Jack Kelly",
-              "ordinal": 10
-            },
-            {
-              "name": "SAM",
-              "ordinal": 11
-            },
-            {
-              "name": "Abdul Carter",
-              "ordinal": 12
-            },
-            {
-              "name": "Kayvon Thibodeaux",
-              "ordinal": 13
             }
           ]
         },
@@ -14234,18 +14305,20 @@
             {
               "name": "Colton Hood",
               "ordinal": 2
-            },
-            {
-              "name": "NB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "NB",
+          "label": "NB",
+          "players": [
             {
               "name": "Dru Phillips",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Nic Jones",
-              "ordinal": 5
+              "ordinal": 2
             }
           ]
         },
@@ -14266,14 +14339,6 @@
             {
               "name": "Dominic Zvada",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
-            {
-              "name": "Jordan Stout",
-              "ordinal": 3
             }
           ]
         },
@@ -14284,30 +14349,20 @@
             {
               "name": "Ben Mann",
               "ordinal": 1
-            },
-            {
-              "name": "KOR",
-              "ordinal": 2
-            },
-            {
-              "name": "Deonte Banks",
-              "ordinal": 3
-            },
-            {
-              "name": "Devin Singletary",
-              "ordinal": 4
-            },
-            {
-              "name": "PR",
-              "ordinal": 5
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Jevón Holland",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Charlie Jones",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         }
@@ -14318,8 +14373,8 @@
       "sources": [
         {
           "url": "https://www.newyorkjets.com/team/depth-chart",
-          "sha256": "2da6ffe7e2510fbec29191ce1abcdf81e1e4961374f2b43b3d66ae5cb6fa36e0",
-          "fetched_at": "2026-11-14T03:26:08+00:00"
+          "sha256": "73f487584e90d4449fa2337b8fdde029b6804db3eef2c2ad47c222e19d0e0781",
+          "fetched_at": "2026-11-14T03:30:33+00:00"
         }
       ],
       "units": [
@@ -14600,26 +14655,30 @@
             {
               "name": "Jelani Woods",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Olu Fashanu",
-              "ordinal": 4
-            },
-            {
-              "name": "LG",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Dylan Parham",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Jordan Meredith",
-              "ordinal": 7
+              "ordinal": 2
             }
           ]
         },
@@ -14634,30 +14693,34 @@
             {
               "name": "Jordan Meredith",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Joe Tippmann",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Kohl Levao",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Armand Membou",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Chukwuma Okorafor",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -14736,18 +14799,6 @@
             {
               "name": "Kene Nwangwu",
               "ordinal": 4
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 5
-            },
-            {
-              "name": "Kingsley Enagbare",
-              "ordinal": 6
-            },
-            {
-              "name": "Will McDonald IV",
-              "ordinal": 7
             }
           ]
         },
@@ -14786,22 +14837,6 @@
             {
               "name": "Darrell Jackson Jr.",
               "ordinal": 2
-            },
-            {
-              "name": "EDGE",
-              "ordinal": 3
-            },
-            {
-              "name": "David Bailey",
-              "ordinal": 4
-            },
-            {
-              "name": "Joseph Ossai",
-              "ordinal": 5
-            },
-            {
-              "name": "Nate Lynn",
-              "ordinal": 6
             }
           ]
         },
@@ -14830,18 +14865,20 @@
             {
               "name": "Jaden Keller",
               "ordinal": 2
-            },
-            {
-              "name": "NB",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "NB",
+          "label": "NB",
+          "players": [
             {
               "name": "Jarvis Brownlee Jr.",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "D'Angelo Ponds",
-              "ordinal": 5
+              "ordinal": 2
             }
           ]
         },
@@ -14914,42 +14951,38 @@
             {
               "name": "Austin McNamara",
               "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
+            {
+              "name": "Isaiah Williams",
+              "ordinal": 1
             },
             {
-              "name": "H",
+              "name": "Isaiah Davis",
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
+            {
+              "name": "Kene Nwangwu",
+              "ordinal": 1
+            },
+            {
+              "name": "Isaiah Williams",
               "ordinal": 2
             },
             {
-              "name": "Austin McNamara",
+              "name": "Isaiah Davis",
               "ordinal": 3
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
-            {
-              "name": "Isaiah Williams",
-              "ordinal": 5
-            },
-            {
-              "name": "Isaiah Davis",
-              "ordinal": 6
-            },
-            {
-              "name": "KR",
-              "ordinal": 7
-            },
-            {
-              "name": "Kene Nwangwu",
-              "ordinal": 8
-            },
-            {
-              "name": "Isaiah Williams",
-              "ordinal": 9
-            },
-            {
-              "name": "Isaiah Davis",
-              "ordinal": 10
             }
           ]
         },
@@ -14970,8 +15003,8 @@
       "sources": [
         {
           "url": "https://www.steelers.com/team/depth-chart",
-          "sha256": "01b30f49e105320b09d08b16c15e5fd2c11fd0492cce98fd1d9dc3c9cf848790",
-          "fetched_at": "2026-11-14T03:25:58+00:00"
+          "sha256": "cec4a8094af74e07984e31ce14c8a51cbe52e1774074f35455382566b45bcabc",
+          "fetched_at": "2026-11-14T03:30:23+00:00"
         }
       ],
       "units": [
@@ -15267,22 +15300,26 @@
             {
               "name": "Kaden Wetjen",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Troy Fautanu",
-              "ordinal": 4
-            },
-            {
-              "name": "LG",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Mason McCormick",
-              "ordinal": 6
+              "ordinal": 1
             }
           ]
         },
@@ -15297,30 +15334,34 @@
             {
               "name": "Ryan McCollum",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Brock Hoffman",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Spencer Anderson",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Max Iheanachor",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Dylan Cook",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -15455,50 +15496,58 @@
             {
               "name": "Cameron Heyward",
               "ordinal": 1
-            },
-            {
-              "name": "LOLB",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "LOLB",
+          "label": "LOLB",
+          "players": [
             {
               "name": "T.J. Watt",
-              "ordinal": 3
-            },
-            {
-              "name": "LILB",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "LILB",
+          "label": "LILB",
+          "players": [
             {
               "name": "Patrick Queen",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Carson Bruener",
-              "ordinal": 6
-            },
-            {
-              "name": "RILB",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "RILB",
+          "label": "RILB",
+          "players": [
             {
               "name": "Payton Wilson",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Cole Holcomb",
-              "ordinal": 9
-            },
-            {
-              "name": "ROLB",
-              "ordinal": 10
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "ROLB",
+          "label": "ROLB",
+          "players": [
             {
               "name": "Alex Highsmith",
-              "ordinal": 11
+              "ordinal": 1
             },
             {
               "name": "Jack Sawyer",
-              "ordinal": 12
+              "ordinal": 2
             }
           ]
         },
@@ -15527,18 +15576,20 @@
             {
               "name": "Doneiko Slaughter",
               "ordinal": 3
-            },
-            {
-              "name": "NCB",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "NCB",
+          "label": "NCB",
+          "players": [
             {
               "name": "Jalen Ramsey",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Brandin Echols",
-              "ordinal": 6
+              "ordinal": 2
             }
           ]
         },
@@ -15605,42 +15656,48 @@
             {
               "name": "Christian Kuntz",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Cameron Johnston",
-              "ordinal": 3
-            },
-            {
-              "name": "KR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Kaden Wetjen",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Jaylen Warren",
-              "ordinal": 6
+              "ordinal": 2
             },
             {
               "name": "Rico Dowdle",
-              "ordinal": 7
-            },
-            {
-              "name": "PR",
-              "ordinal": 8
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Kaden Wetjen",
-              "ordinal": 9
+              "ordinal": 1
             },
             {
               "name": "Rico Dowdle",
-              "ordinal": 10
+              "ordinal": 2
             }
           ]
         }
@@ -15651,8 +15708,8 @@
       "sources": [
         {
           "url": "https://www.49ers.com/team/depth-chart",
-          "sha256": "1da256967202811e31314074ea37c5e54ca606d6f6f6b28727d499b43d918aac",
-          "fetched_at": "2026-11-14T03:25:53+00:00"
+          "sha256": "b231cdef8b6921a0301c5d46d2616edaa7b23b69926bde4592b8d4b8d904b283",
+          "fetched_at": "2026-11-14T03:30:18+00:00"
         }
       ],
       "units": [
@@ -15912,34 +15969,38 @@
             {
               "name": "Brandin Cooks",
               "ordinal": 3
-            },
-            {
-              "name": "LT",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Trent Williams",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Vederian Lowe",
-              "ordinal": 6
+              "ordinal": 2
             },
             {
               "name": "Enrique Cruz Jr.",
-              "ordinal": 7
-            },
-            {
-              "name": "LG",
-              "ordinal": 8
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Connor Colby",
-              "ordinal": 9
+              "ordinal": 1
             },
             {
               "name": "Carver Willis",
-              "ordinal": 10
+              "ordinal": 2
             }
           ]
         },
@@ -15954,22 +16015,26 @@
             {
               "name": "Jarrett Patterson",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Dominick Puni",
-              "ordinal": 4
-            },
-            {
-              "name": "RT",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Colton McKivitz",
-              "ordinal": 6
+              "ordinal": 1
             }
           ]
         },
@@ -16052,126 +16117,146 @@
             {
               "name": "Kurtis Rourke",
               "ordinal": 3
-            },
-            {
-              "name": "LDE",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "LDE",
+          "label": "LDE",
+          "players": [
             {
               "name": "Keion White",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Mykel Williams",
-              "ordinal": 6
+              "ordinal": 2
             },
             {
               "name": "Khalid Kareem",
-              "ordinal": 7
-            },
-            {
-              "name": "LDT",
-              "ordinal": 8
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "LDT",
+          "label": "LDT",
+          "players": [
             {
               "name": "DeForest Buckner",
-              "ordinal": 9
+              "ordinal": 1
             },
             {
               "name": "Gracen Halton",
-              "ordinal": 10
+              "ordinal": 2
             },
             {
               "name": "Sebastian Valdez",
-              "ordinal": 11
-            },
-            {
-              "name": "RDT",
-              "ordinal": 12
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "RDT",
+          "label": "RDT",
+          "players": [
             {
               "name": "Osa Odighizuwa",
-              "ordinal": 13
+              "ordinal": 1
             },
             {
               "name": "James Thompson Jr.",
-              "ordinal": 14
-            },
-            {
-              "name": "RDE",
-              "ordinal": 15
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "RDE",
+          "label": "RDE",
+          "players": [
             {
               "name": "Nick Bosa",
-              "ordinal": 16
+              "ordinal": 1
             },
             {
               "name": "Romello Height",
-              "ordinal": 17
-            },
-            {
-              "name": "SAM",
-              "ordinal": 18
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "SAM",
+          "label": "SAM",
+          "players": [
             {
               "name": "Jaden Dugger",
-              "ordinal": 19
+              "ordinal": 1
             },
             {
               "name": "Luke Gifford",
-              "ordinal": 20
-            },
-            {
-              "name": "MIKE",
-              "ordinal": 21
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "MIKE",
+          "label": "MIKE",
+          "players": [
             {
               "name": "Fred Warner",
-              "ordinal": 22
+              "ordinal": 1
             },
             {
               "name": "Tatum Bethune",
-              "ordinal": 23
-            },
-            {
-              "name": "WILL",
-              "ordinal": 24
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "WILL",
+          "label": "WILL",
+          "players": [
             {
               "name": "Dre Greenlaw",
-              "ordinal": 25
+              "ordinal": 1
             },
             {
               "name": "Garret Wallow",
-              "ordinal": 26
-            },
-            {
-              "name": "LCB",
-              "ordinal": 27
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "LCB",
+          "label": "LCB",
+          "players": [
             {
               "name": "Renardo Green",
-              "ordinal": 28
-            },
-            {
-              "name": "RCB",
-              "ordinal": 29
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "RCB",
+          "label": "RCB",
+          "players": [
             {
               "name": "Deommodore Lenoir",
-              "ordinal": 30
+              "ordinal": 1
             },
             {
               "name": "Ephesians Prysock",
-              "ordinal": 31
-            },
-            {
-              "name": "NB",
-              "ordinal": 32
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "NB",
+          "label": "NB",
+          "players": [
             {
               "name": "Upton Stout",
-              "ordinal": 33
+              "ordinal": 1
             }
           ]
         },
@@ -16224,38 +16309,44 @@
             {
               "name": "Eddy Piñeiro",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Corliss Waitman",
-              "ordinal": 3
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Jacob Cowing",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Jordan Watkins",
-              "ordinal": 6
-            },
-            {
-              "name": "KOR",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KOR",
+          "label": "KOR",
+          "players": [
             {
               "name": "Deebo Samuel Sr.",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Jordan James",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -16276,8 +16367,8 @@
       "sources": [
         {
           "url": "https://www.seahawks.com/team/depth-chart",
-          "sha256": "c7faeb9a4ee5c5062634896a248422feeda6427cf63249cc66b8e5a3a3714f89",
-          "fetched_at": "2026-11-14T03:26:02+00:00"
+          "sha256": "9a882c2640cdd2f951a5a6ec30dea4fa2b6e07f708c85902db2919bd003a552f",
+          "fetched_at": "2026-11-14T03:30:24+00:00"
         }
       ],
       "units": [
@@ -16629,30 +16720,34 @@
             {
               "name": "Irvin Charles",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Charles Cross",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Josh Jones",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Quenton Nelson",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Anthony Bradford",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -16667,34 +16762,38 @@
             {
               "name": "Olu Oluwatimi",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Grey Zabel",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Anthony Bradford",
-              "ordinal": 5
+              "ordinal": 2
             },
             {
               "name": "Beau Stephens",
-              "ordinal": 6
-            },
-            {
-              "name": "RT",
-              "ordinal": 7
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Abraham Lucas",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Josh Jones",
-              "ordinal": 9
+              "ordinal": 2
             }
           ]
         },
@@ -16823,62 +16922,70 @@
             {
               "name": "Mike Morris",
               "ordinal": 2
-            },
-            {
-              "name": "RUSH",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "RUSH",
+          "label": "RUSH",
+          "players": [
             {
               "name": "DeMarcus Lawrence",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Derick Hall",
-              "ordinal": 5
-            },
-            {
-              "name": "MLB",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "MLB",
+          "label": "MLB",
+          "players": [
             {
               "name": "Ernest Jones IV",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Patrick O'Connell",
-              "ordinal": 8
-            },
-            {
-              "name": "WLB",
-              "ordinal": 9
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "WLB",
+          "label": "WLB",
+          "players": [
             {
               "name": "Drake Thomas",
-              "ordinal": 10
+              "ordinal": 1
             },
             {
               "name": "Tyrice Knight",
-              "ordinal": 11
+              "ordinal": 2
             },
             {
               "name": "Chazz Surratt",
-              "ordinal": 12
-            },
-            {
-              "name": "SLB",
-              "ordinal": 13
-            },
+              "ordinal": 3
+            }
+          ]
+        },
+        {
+          "position": "SLB",
+          "label": "SLB",
+          "players": [
             {
               "name": "Uchenna Nwosu",
-              "ordinal": 14
+              "ordinal": 1
             },
             {
               "name": "Dante Fowler Jr.",
-              "ordinal": 15
+              "ordinal": 2
             },
             {
               "name": "Connor O'Toole",
-              "ordinal": 16
+              "ordinal": 3
             }
           ]
         },
@@ -16961,50 +17068,56 @@
             {
               "name": "Michael Dickson",
               "ordinal": 1
-            },
-            {
-              "name": "H",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Michael Dickson",
-              "ordinal": 3
-            },
-            {
-              "name": "PR",
-              "ordinal": 4
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Rashid Shaheed",
-              "ordinal": 5
+              "ordinal": 1
             },
             {
               "name": "Tory Horton",
-              "ordinal": 6
-            },
-            {
-              "name": "KR",
-              "ordinal": 7
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Rashid Shaheed",
-              "ordinal": 8
+              "ordinal": 1
             },
             {
               "name": "Velus Jones Jr.",
-              "ordinal": 9
+              "ordinal": 2
             },
             {
               "name": "Tory Horton",
-              "ordinal": 10
+              "ordinal": 3
             },
             {
               "name": "George Holani",
-              "ordinal": 11
+              "ordinal": 4
             },
             {
               "name": "Emanuel Wilson",
-              "ordinal": 12
+              "ordinal": 5
             }
           ]
         },
@@ -17025,8 +17138,8 @@
       "sources": [
         {
           "url": "https://www.buccaneers.com/team/depth-chart",
-          "sha256": "b29072e12fc9b6bb1f6fa492f49cca973927ec7b438c26fa320836d12afb2cf7",
-          "fetched_at": "2026-11-14T03:26:11+00:00"
+          "sha256": "8fc14d290a4d6e9e5f38ded920e2aa4496307c24f618548a28ce75138aa91f86",
+          "fetched_at": "2026-11-14T03:30:33+00:00"
         }
       ],
       "units": [
@@ -17303,30 +17416,34 @@
             {
               "name": "Kameron Johnson",
               "ordinal": 2
-            },
-            {
-              "name": "LT",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "LT",
+          "players": [
             {
               "name": "Tristan Wirfs",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Benjamin Chukwuma",
-              "ordinal": 5
-            },
-            {
-              "name": "LG",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "LG",
+          "players": [
             {
               "name": "Ben Bredeson",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Billy Schrauth",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -17341,30 +17458,34 @@
             {
               "name": "Dan Feeney",
               "ordinal": 2
-            },
-            {
-              "name": "RG",
-              "ordinal": 3
-            },
+            }
+          ]
+        },
+        {
+          "position": "G",
+          "label": "RG",
+          "players": [
             {
               "name": "Cody Mauch",
-              "ordinal": 4
+              "ordinal": 1
             },
             {
               "name": "Trevor Keegan",
-              "ordinal": 5
-            },
-            {
-              "name": "RT",
-              "ordinal": 6
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "T",
+          "label": "RT",
+          "players": [
             {
               "name": "Luke Goedeke",
-              "ordinal": 7
+              "ordinal": 1
             },
             {
               "name": "Justin Skule",
-              "ordinal": 8
+              "ordinal": 2
             }
           ]
         },
@@ -17609,30 +17730,36 @@
             {
               "name": "Riley Dixon",
               "ordinal": 1
-            },
-            {
-              "name": "PK",
-              "ordinal": 2
-            },
-            {
-              "name": "Chase McLaughlin",
-              "ordinal": 3
-            },
-            {
-              "name": "KO",
-              "ordinal": 4
-            },
+            }
+          ]
+        },
+        {
+          "position": "PK",
+          "label": "PK",
+          "players": [
             {
               "name": "Chase McLaughlin",
-              "ordinal": 5
-            },
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "KO",
+          "label": "KO",
+          "players": [
             {
-              "name": "H",
-              "ordinal": 6
-            },
+              "name": "Chase McLaughlin",
+              "ordinal": 1
+            }
+          ]
+        },
+        {
+          "position": "H",
+          "label": "H",
+          "players": [
             {
               "name": "Riley Dixon",
-              "ordinal": 7
+              "ordinal": 1
             }
           ]
         },
@@ -17643,38 +17770,44 @@
             {
               "name": "Evan Deckers",
               "ordinal": 1
-            },
-            {
-              "name": "PR",
-              "ordinal": 2
-            },
+            }
+          ]
+        },
+        {
+          "position": "PR",
+          "label": "PR",
+          "players": [
             {
               "name": "Tez Johnson",
-              "ordinal": 3
+              "ordinal": 1
             },
             {
               "name": "Kameron Johnson",
-              "ordinal": 4
-            },
-            {
-              "name": "KR",
-              "ordinal": 5
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Kenny Gainwell",
-              "ordinal": 6
+              "ordinal": 1
             },
             {
               "name": "Sean Tucker",
-              "ordinal": 7
-            },
-            {
-              "name": "KR",
-              "ordinal": 8
-            },
+              "ordinal": 2
+            }
+          ]
+        },
+        {
+          "position": "KR",
+          "label": "KR",
+          "players": [
             {
               "name": "Kameron Johnson",
-              "ordinal": 9
+              "ordinal": 1
             }
           ]
         }

@@ -21,6 +21,7 @@
 [PASS] depth: unknown player is not guessed
 [PASS] depth: unknown position is not guessed
 [PASS] depth: explicit ordinals honoured
+[PASS] depth: side-by-side layout separates the units
 [PASS] skill share: skilled strategy has a high share
 [PASS] skill share: interval excludes zero
 [PASS] skill share: luck null rejects the skilled strategy
@@ -39,4 +40,4 @@
 [PASS] scoring: positive fold share
 [PASS] scoring: empty bets give None metrics
 
-40 passed, 0 failed
+41 passed, 0 failed

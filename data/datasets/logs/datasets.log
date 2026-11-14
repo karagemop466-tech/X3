@@ -1,5 +1,5 @@
 built 55 datasets -> /home/runner/work/X3/X3/data/datasets
-  depth_charts.json                            rows=81     src=https://www.<club>.com/ (official club sites)
+  depth_charts.json                            rows=81     src=https://www.nfl.com/teams/
   depth_resolution.json                        rows=79     src=https://www.nfl.com/injuries/
   injuries.json                                rows=182    src=https://www.nfl.com/injuries/
   injuries_history_2023.json                   rows=2696   src=https://www.nfl.com/injuries/league/2023/reg<week>

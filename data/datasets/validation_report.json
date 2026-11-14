@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-14T03:28:12+00:00",
+  "generated_at": "2026-11-14T03:32:37+00:00",
   "pages_checked": 16,
   "dataset_files_checked": 64,
   "dataset_rows_with_source": 14711,
-  "dataset_blank_values": 12967,
+  "dataset_blank_values": 12863,
   "external_urls_checked": true,
   "result": "fail",
   "checks": [
@@ -19,18 +19,13 @@
     },
     {
       "name": "Every dataset row carries an official source link",
-      "result": "fail",
-      "detail": "14711 dataset rows checked for an official source link; problems: 1"
-    },
-    {
-      "name": "Dataset source problem",
-      "result": "fail",
-      "detail": "manifest.json.datasets[0]: source_url is not an official host (https://www.<club>.com/ (official club sites))"
+      "result": "pass",
+      "detail": "14711 dataset rows checked for an official source link"
     },
     {
       "name": "Unverified values are rendered as explicit markers",
       "result": "pass",
-      "detail": "1 unverified markers rendered (dataset blank values: 12967)"
+      "detail": "1 unverified markers rendered (dataset blank values: 12863)"
     },
     {
       "name": "Official source URLs are reachable",
