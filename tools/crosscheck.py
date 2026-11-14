@@ -153,7 +153,11 @@ def status_norm(s: str) -> str:
     s = (s or "").strip().lower()
     if not s:
         return ""
+    if s in ("yes", "yes - blocking", "yes \u2014 blocking"):
+        return "BLOCKED"
     if any(k in s for k in ("done", "delivered", "complete", "merged", "pass", "resolved")):
+        return "DONE"
+    if "verified" in s and "unverified" not in s:
         return "DONE"
     if any(k in s for k in ("partial", "progress", "in review", "needs review", "pending gates")):
         return "PARTIAL"
@@ -405,6 +409,37 @@ REGS = [
          path="pages/flagged-for-review.html", page="pages/flagged-for-review.html",
          tables=[dict(index=0, id=0, title=1, status=3, source=4),
                  dict(index=1, id=0, title=1, status=4, source=3)]),
+    # ---- questions: desk (3bf7cc8b) ----------------------------------------
+    dict(fam="questions", mod="desk (3bf7cc8b)", kind="html",
+         path="desk/questions.html", page="desk/questions.html",
+         tables=[dict(match=["ID", "Question", "Status"], id=0, title=2, status=6, source=7),
+                 dict(match=["Missing item", "Status"], title=0, status=3)]),
+    # ---- questions: hub (e9b492ab) -----------------------------------------
+    dict(fam="questions", mod="hub (e9b492ab)", kind="html",
+         path="hub/questions.html", page="hub/questions.html",
+         tables=[dict(match=["ID", "Decision it gates"], id=0, title=2, status=1)]),
+    # ---- requirements: desk + hub ------------------------------------------
+    dict(fam="requirements", mod="desk (3bf7cc8b)", kind="html",
+         path="desk/requirements.html", page="desk/requirements.html",
+         tables=[dict(match=["ID", "Requirement", "Status"], id=0, title=2, status=4, source=5)]),
+    dict(fam="requirements", mod="hub (e9b492ab)", kind="html",
+         path="hub/requirements.html", page="hub/requirements.html",
+         tables=[dict(match=["ID", "Requirement", "Status"], id=0, title=2, status=4, source=5)]),
+    # ---- suggestions: desk + hub -------------------------------------------
+    dict(fam="suggestions", mod="desk (3bf7cc8b)", kind="html",
+         path="desk/suggestions.html", page="desk/suggestions.html",
+         tables=[dict(match=["ID", "Suggestion", "Recommendation"], id=0, title=1, status=8),
+                 dict(match=["Order", "Why this order"], id=1, title=2, status=3)]),
+    dict(fam="suggestions", mod="hub (e9b492ab)", kind="html",
+         path="hub/suggestions.html", page="hub/suggestions.html",
+         tables=[dict(match=["ID", "Suggestion", "Status"], id=0, title=1, status=7)]),
+    # ---- flags: desk + hub --------------------------------------------------
+    dict(fam="flags", mod="desk (3bf7cc8b)", kind="html",
+         path="desk/flagged.html", page="desk/flagged.html",
+         tables=[dict(match=["ID", "Item", "Source tried"], id=0, title=1, status=2, source=4)]),
+    dict(fam="flags", mod="hub (e9b492ab)", kind="html",
+         path="hub/flagged.html", page="hub/flagged.html",
+         tables=[dict(match=["ID", "Severity", "Finding"], id=0, title=3, severity=1, source=4)]),
     # ---- strategies --------------------------------------------------------
     dict(fam="strategies", mod="data (0c38f465)", kind="csv", path="data/strategies.csv",
          page="docs/strategies.html",
@@ -522,20 +557,29 @@ def reconcile(entries):
         g_out = {}
         for nid, grp in sorted(groups.items()):
             mods = sorted({e["module"] for e in grp})
-            titles = [e["title"] for e in grp if e["title"]]
-            scores = [jaccard(titles[i], titles[j])
-                      for i in range(len(titles)) for j in range(i + 1, len(titles))]
+            titled = [e for e in grp if e["title"]]
+            titles = [e["title"] for e in titled]
+            pairs = [(i, j, jaccard(titles[i], titles[j]))
+                     for i in range(len(titles)) for j in range(i + 1, len(titles))]
             # Score distribution is bimodal (verified 2026-11-14): paraphrases of the
-            # same item score >= 0.40, ID reuse scores <= 0.30.  Three classes:
-            if not scores or min(scores) >= 0.40:
+            # same item score >= 0.40, ID reuse scores <= 0.30.  Group identity uses
+            # the pairwise matrix so one divergent module cannot hide the rest:
+            same_pairs = [(i, j) for i, j, sc in pairs if sc >= 0.40]
+            if not pairs or len(same_pairs) == len(pairs):
                 identity = "same"
-            elif max(scores) < 0.40:
+            elif not same_pairs:
                 identity = "different"
             else:
                 identity = "mixed"
             same = identity == "same"
             stats = sorted({e["status_norm"] for e in grp if e["status_norm"]})
-            conflict = same and len(stats) > 1
+            # status conflict: ANY same-content pair whose statuses differ
+            conflict = False
+            for i, j in same_pairs:
+                si, sj = titled[i]["status_norm"], titled[j]["status_norm"]
+                if si and sj and si != sj:
+                    conflict = True
+            scores = [sc for _, _, sc in pairs]
             g_out[nid] = {
                 "modules": mods,
                 "variants": [{"module": e["module"], "raw_id": e["raw_id"],
@@ -683,7 +727,7 @@ def build_findings(audit, rec, parity, injury, ext, reg_errors):
         "Owner of x3lab/ should populate or remove the page from the navigation.")
     add("X-04", "High", "Stale session / failing CI",
         "Session arena/64164906-x3 (branch arena/64164906-x3, unrelated git history, its own "
-        "COORDINATION.md) has been stale since 2026-11-14T04:07Z (>14 h, no commits), never "
+        "COORDINATION.md) has been stale since 2026-11-14T04:07Z (>15 h, no commits), never "
         "opened a PR, and its data-pipeline workflow has 9 consecutive failed runs "
         "(last: schedule-parser capture steps). Protocol permits takeover after 60 minutes; "
         "merging an unrelated-history tree blind would risk discarding work, so it is handed "
@@ -693,14 +737,15 @@ def build_findings(audit, rec, parity, injury, ext, reg_errors):
          f"{REPO}/commit/7b3c700"],
         "A session should take over the data-pipeline branch deliberately, fix the schedule "
         "parser against fixtures, then open a PR.")
-    add("X-05", "Medium", "Competing claims",
-        "hub/** is claimed by two live sessions at once (arena/1e2d8ef2-x3 commit 07a7611 and "
-        "arena/e9b492ab-x3 commit 121ed14) and root index.html is claimed by four sessions "
-        "(plus arena/3bf7cc8b-x3 8f86ae7, arena/621bf404-x3 17b5369) — merge conflicts on the "
-        "shared landing page are near-certain.",
+    add("X-05", "Low", "Competing claims (resolved)",
+        "hub/** was claimed by two sessions at once (arena/1e2d8ef2-x3 07a7611 and "
+        "arena/e9b492ab-x3 121ed14) and root index.html four ways (3bf7cc8b 8f86ae7, "
+        "621bf404 17b5369). Recorded as RESOLVED on main: the collided build was relocated to "
+        "archive/hub-621bf404 (commit 21916c3) and root index.html is now a single canonical "
+        "landing page (decision-desk hub). The log is kept because the pattern will recur.",
         [f"{REPO}/commit/07a7611", f"{REPO}/commit/121ed14",
-         f"{REPO}/commit/8f86ae7", f"{REPO}/commit/17b5369"],
-        "One session must land the landing page first; others re-merge additively.")
+         f"{REPO}/commit/21916c3", BLOB + "archive/hub-621bf404/archive.html"],
+        "None - resolved. Keep one owner per shared path going forward.")
     add("X-06", "Medium", "Generator hazard",
         "Re-running scripts/build_site.py silently drops the arena-4856379c-x3 section from "
         "docs/index.html (observed this session; the edit was reverted). COORDINATION.md "
@@ -744,13 +789,13 @@ def build_findings(audit, rec, parity, injury, ext, reg_errors):
          BLOB + "data/flags.csv"],
         "Owner decision with local counsel before any staking feature ships.")
     add("X-11", "Medium", "CI coverage gap",
-        ".github/workflows/pages.yml runs the root/docs/lab/dashboard link checks but does NOT "
-        "run tools/verify_site.py (docs/pages 49-table verifier), scripts/verify_data.py "
-        "(x3lab 2,134-check verifier), or any checker for audit/ or x3lab/ pages, and does "
-        "not cover this crosscheck/ unit either.",
+        ".github/workflows/pages.yml now runs the root/docs/lab/dashboard link checks plus the "
+        "desk and hub gates, but still does NOT run tools/verify_site.py (docs/pages "
+        "49-table verifier), scripts/verify_data.py (x3lab 2,134-check verifier), any checker "
+        "for audit/ pages, or this session's crosscheck gate (tools/crosscheck.py --verify).",
         [BLOB + ".github/workflows/pages.yml"],
-        "pages.yml owner: add the two verifiers plus a crosscheck step "
-        "(request logged in COORDINATION.md).")
+        "pages.yml owner (arena/3bf7cc8b-x3): add `python3 tools/crosscheck.py --verify` plus "
+        "the two verifiers above (request logged in COORDINATION.md).")
     add("X-12", "Medium", "Sandbox egress",
         "Shell egress from the agent sandbox is restricted to github.com/api/codeload, npm and "
         "PyPI hosts; www.nfl.com and other official publishers cannot be fetched directly, so "
@@ -911,6 +956,9 @@ def build_index(audit, rec, registers, findings, facts):
         "pages": "../pages/flagged-for-review.html",
         "site": "../site/index.html", "legacy": "../legacy/index.html", "audit": "../audit/index.html",
         "research": "../README.md", "analysis": "../analysis/README.md",
+        "hub": "../hub/index.html", "desk": "../desk/index.html",
+        "verification-hub": "../verification-hub/index.html",
+        "archive": "../archive/hub-621bf404/index.html", "capture": "../capture/manifest.txt",
     }
     rows = []
     for m, d in sorted(modules.items()):
@@ -919,7 +967,7 @@ def build_index(audit, rec, registers, findings, facts):
             f"<tr><td>{esc(m)}</td><td class='num'>{d['pages']}</td>"
             f"<td class='num'>{d['links']}</td><td class='num'>{d['tables']}</td>"
             f"<td class='num'>{d['rows']}</td>"
-            f"<td>{src_cell(link if link.endswith('.html') else '../index.html', m if m != '(root)' else 'index.html')}</td></tr>"
+            f"<td>{src_cell(link if link.endswith(('.html', '.md', '.txt')) else '../index.html', m if m != '(root)' else 'index.html')}</td></tr>"
         )
     reg_rows = []
     for fam, fd in sorted(rec["families"].items()):
@@ -979,14 +1027,18 @@ rows without source or flag: <strong>{t['rows_without']}</strong>
 def build_requirements(rec):
     fam = rec["families"].get("requirements", {"id_groups": {}, "count": 0, "modules": {}})
     mods_order = ["data (0c38f465)", "dashboard (7e632805)", "docs/pages (4856379c)",
-                  "root page (3dbc4678)"]
+                  "desk (3bf7cc8b)", "hub (e9b492ab)"]
     rows = []
     for nid, g in sorted(fam["id_groups"].items()):
-        bym = {v["module"]: v for v in g["variants"]}
+        bym = {}
+        for v in g["variants"]:
+            bym.setdefault(v["module"], []).append(v)
         cells = []
         for m in mods_order:
-            v = bym.get(m)
-            _cell = status_badge(v["status_norm"], v["status"]) if v else EMPTY_CELL
+            vs = bym.get(m, [])
+            _cell = "<br>".join(
+                status_badge(v["status_norm"], v["status"]) for v in vs
+            ) if vs else EMPTY_CELL
             cells.append(f"<td>{_cell}</td>")
         best = max(g["variants"], key=lambda v: len(v["title"]))
         verdict = {"same": badge("same content", "ok"),
@@ -1029,7 +1081,8 @@ All rows link to the register file and the rendered page.</div>
 {len(rec['id_namespace_collisions'])} cross-module ID-content collisions site-wide
 (<a href="flagged.html">X-01</a>).</p>
 <table><thead><tr><th>ID</th><th>Requirement (variant titles)</th>
-<th>data</th><th>dashboard</th><th>docs/pages</th><th>Identity</th><th>Status</th><th>Source</th>
+<th>data</th><th>dashboard</th><th>docs/pages</th><th>desk</th><th>hub</th>
+<th>Identity</th><th>Status</th><th>Source</th>
 </tr></thead><tbody>{''.join(rows)}</tbody></table>
 <h2>Unnumbered register — root requirements.html</h2>
 <p class="small">This register has no IDs, so it cannot be reconciled at ID level; its rows are
@@ -1043,15 +1096,19 @@ listed as published. Flagged as part of <a href="flagged.html">X-01</a>.</p>
 def build_questions(rec):
     fam = rec["families"].get("questions", {"id_groups": {}, "count": 0, "modules": {}})
     mods_order = ["data (0c38f465)", "dashboard (7e632805)", "docs/pages (4856379c)",
-                  "x3lab (e1c332ce)", "lab (972ad7a5)"]
+                  "x3lab (e1c332ce)", "lab (972ad7a5)", "desk (3bf7cc8b)", "hub (e9b492ab)"]
     rows = []
     for nid, g in sorted(fam["id_groups"].items()):
-        bym = {v["module"]: v for v in g["variants"]}
+        bym = {}
+        for v in g["variants"]:
+            bym.setdefault(v["module"], []).append(v)
         best = max(g["variants"], key=lambda v: len(v["title"]))
         cells = []
         for m in mods_order:
-            v = bym.get(m)
-            _cell = status_badge(v["status_norm"], v["status"]) if v else EMPTY_CELL
+            vs = bym.get(m, [])
+            _cell = "<br>".join(
+                status_badge(v["status_norm"], v["status"]) for v in vs
+            ) if vs else EMPTY_CELL
             cells.append(f"<td>{_cell}</td>")
         verdict = {"same": badge("same question", "ok"),
                    "different": badge("ID reused", "flag"),
@@ -1089,6 +1146,7 @@ lives and which questions remain open.</div>
 <p class="small">{fam['count']} entries · {len(fam['id_groups'])} distinct normalized IDs.</p>
 <table><thead><tr><th>ID</th><th>Question (variant titles)</th>
 <th>data</th><th>dashboard</th><th>docs/pages</th><th>x3lab</th><th>lab</th>
+<th>desk</th><th>hub</th>
 <th>Identity</th><th>Status</th><th>Source</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table>
 <h2>Open / blocking entries (as published)</h2>
@@ -1101,15 +1159,20 @@ lives and which questions remain open.</div>
 def build_suggestions(rec):
     fam = rec["families"].get("suggestions", {"id_groups": {}, "count": 0, "modules": {}})
     mods_order = ["data (0c38f465)", "dashboard (7e632805)", "docs/pages (4856379c)",
-                  "x3lab (e1c332ce)", "root page (3dbc4678)", "lab (972ad7a5)"]
+                  "x3lab (e1c332ce)", "root page (3dbc4678)", "lab (972ad7a5)",
+                  "desk (3bf7cc8b)", "hub (e9b492ab)"]
     rows = []
     for nid, g in sorted(fam["id_groups"].items()):
-        bym = {v["module"]: v for v in g["variants"]}
+        bym = {}
+        for v in g["variants"]:
+            bym.setdefault(v["module"], []).append(v)
         best = max(g["variants"], key=lambda v: len(v["title"]))
         cells = []
         for m in mods_order:
-            v = bym.get(m)
-            _cell = status_badge(v["status_norm"], v["status"]) if v else EMPTY_CELL
+            vs = bym.get(m, [])
+            _cell = "<br>".join(
+                status_badge(v["status_norm"], v["status"]) for v in vs
+            ) if vs else EMPTY_CELL
             cells.append(f"<td>{_cell}</td>")
         verdict = {"same": badge("same idea", "ok"),
                    "different": badge("ID reused", "flag"),
@@ -1147,6 +1210,7 @@ the best path first. Choose a path in your module of record, then implement.</di
 statuses exactly as published (proposed / awaiting review / adopted / deferred …).</p>
 <table><thead><tr><th>ID</th><th>Suggestion (variant titles)</th>
 <th>data</th><th>dashboard</th><th>docs/pages</th><th>x3lab</th><th>root</th><th>lab</th>
+<th>desk</th><th>hub</th>
 <th>Identity</th><th>Status</th><th>Source</th></tr></thead>
 <tbody>{''.join(rows)}</tbody></table>
 <h2>Cross-ID duplicates inside the suggestion family</h2>
