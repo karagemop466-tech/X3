@@ -80,7 +80,7 @@ def describe_html(path: str, max_tables: int = 3, max_cells: int = 12) -> dict:
             if node.name in ("li", "article", "section", "div"):
                 cards.append(str(node))
                 break
-        if len(cards) >= 2:
+        if len(cards) >= 30:
             break
     if cards:
         out["game_card_sample"] = cards

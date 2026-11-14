@@ -387,9 +387,12 @@ def _build() -> int:
 
     # A readable sample of the official schedule markup, committed so that a
     # parser for it can be written or repaired without a network fetch.
-    sample = structure.get("schedule_2026_w05", {}).get("game_card_sample")
-    if sample:
-        with open(os.path.join(OUT, "logs", "schedule_sample.html"), "w", encoding="utf-8") as fh:
+    for key, payload in structure.items():
+        sample = payload.get("game_card_sample")
+        if not sample:
+            continue
+        name = "schedule_sample.html" if key.startswith("schedule_") else f"sample_{key}.html"
+        with open(os.path.join(OUT, "logs", name), "w", encoding="utf-8") as fh:
             fh.write("\n<!-- ---- next game card ---- -->\n".join(sample))
 
     write_report("build_report.json", {"built_at": built_at, "datasets": len(datasets), "ok": True})
