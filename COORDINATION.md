@@ -1416,6 +1416,39 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
 
 ---
 
+## Session `arena/cc3778ae-x3` (this session)
+
+Branch: `arena/cc3778ae-x3`, branched from `main` @ `996257b3bb1da823cd8356f327659a0fc585a632`. Platform-assigned branch; all work is committed to this branch only and a PR is opened from this branch to `main`.
+
+### Status legend
+unclaimed | in progress | done | needs review | blocked
+
+### Task board (arena/cc3778ae-x3)
+
+| ID | Task | Status | Files / scope | Result |
+|----|------|--------|---------------|--------|
+| C-01 | Session claim + task board | done | `COORDINATION.md` (this section) | Claimed; committed and pushed (commit 2a3c643) |
+| C-02 | Price-snapshot store (opening & closing per market) | done | `data/price_snapshots.csv`, `dashboard/data/price_snapshots.json` | 42 rows (14 games x side/total/moneyline); all price cells blank + `unverified` (no official NFL betting-lines source; Q03) |
+| C-03 | Verified results feed (for backtests / ROI) | done | `data/results_feed.csv`, `dashboard/data/results_feed.json` | 14 rows (Week 10 games); scores blank + `unverified` until official NFL box scores post-kickoff; not inferred |
+| C-04 | Originate side → total → moneyline; fair line / market line / difference columns | done | `dashboard/data/model_lines.json`, `dashboard/lines.html`, `dashboard/data/lines_provenance.json` | Fair line = model-originated (flagged); market home/away moneyline, spread, total blank + `unverified`; spread/total/moneyline diff columns added; origination order side->total->moneyline documented |
+| C-05 | Separate 'signal' from 'staking' in the leaderboard | done | `dashboard/leaderboard.html`, `x3lab/data/leaderboard.json` | Signal score and units-risked/stake-rule are separate columns; leaderboard ranked by signal first; anti-gaming explainer added |
+| C-06 | Track replacement depth (2nd/3rd/4th string), offense + defense | done | `data/replacement_depth.csv`, `dashboard/data/replacement_depth.json`, `dashboard/depth-charts.html` | 41 Out/Doubtful starters joined to official club depth charts; 38 with named replacement (25 at 2nd string, 13 at 3rd string); offense + defense + special teams |
+| C-07 | Correlations only from officially sourced numbers, publish n | done | `dashboard/correlation.html`, `dashboard/data/correlations.json` | 4 team-season correlations from official 2026 standings (NFL.com), each with n=32 and source link; leg/strategy-level correlations left blank + unverified pending official play-by-play/results |
+| C-08 | Demotion gate (live strategy → paper) | done | `dashboard/data/gates.json`, `data/gates.csv`, `dashboard/validation.html` | G-13 demotion gate: live strategy sent back to paper on significance/stability/drawdown/freshness/correlation-disclosure failure; must re-qualify to return to live |
+| C-09 | Executive summary update | unclaimed | `dashboard/executive-summary.html` | Regenerated from new stores/gates |
+| C-10 | Site build, verification (line-by-line), broken-link check | unclaimed | `scripts/*.py`, `tools/*.py`, dashboard pages | Run build + audit + link check; fix broken links; confirm Pages build |
+| C-11 | PR to main, merge, confirm Pages deploy, record result | unclaimed | `COORDINATION.md` | PR created, merged, Pages deploy confirmed, link + result recorded here |
+
+### Verification policy (this session)
+- Outbound network is limited to github.com / api.github.com / codeload.github.com / registry.npmjs.org / pypi.org / files.pythonhosted.org; nfl.com is not directly fetchable from bash. Official-source claims are verified via web_search / fetch_page and cited by URL.
+- No value is inferred or filled in. A cell that cannot be confirmed from an official source is left blank and flagged `unverified`.
+- Betting lines (opening/closing), player-prop prices and same-game parlay prices have no official NFL source; they are left blank + `unverified` pending a user-selected licensed odds source (Q03).
+
+### Claims log
+- `arena/cc3778ae-x3` claims `data/price_snapshots.csv`, `data/results_feed.csv`, `dashboard/data/model_lines.json`, `dashboard/data/strategies.json`, `dashboard/data/depth.json`, `dashboard/data/injuries.json`, `dashboard/data/correlations.json`, `dashboard/data/gates.json`, `dashboard/executive-summary.html`, `scripts/*.py`, `tools/*.py`, and the dashboard pages in its own scope. No other session's file is edited.
+
+---
+
 ## Session `arena/a60a2bf7-x3` — ledger, price store, results feed, governance (CLAIM, posted 2026-11-14)
 
 Session ID: `arena/a60a2bf7-x3`. Branch: `arena/a60a2bf7-x3` (platform-assigned; branched from `main` @ `996257b`).

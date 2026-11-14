@@ -9,3 +9,5 @@ G6,Stability across seasons,Positive result in at least the minimum number of se
 G7,Drawdown and ruin check,Maximum drawdown and simulated bankroll outcomes reported,Not started,Requires results
 G8,Correlation control,Parlay legs must have measured correlation below an agreed threshold,Not started,Requires correlation data (correlations.csv)
 G9,Legal and compliance check,Confirm the activity is lawful for the user's jurisdiction before any wager,Flagged,Wagering with private bookmakers from Japan is criminal under Penal Code Art. 185 per official source JP-PENAL-185
+
+G10,Demotion gate (live to paper),A live strategy is demoted to paper when it fails significance/stability, breaches max drawdown, uses post-kickoff inputs, or hides parlay correlation; must re-qualify to return to live,Proposed,Sends a live strategy back to paper so a decayed edge is not mistaken for skill
