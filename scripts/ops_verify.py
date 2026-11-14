@@ -235,6 +235,10 @@ def main():
     def digest():
         h = hashlib.sha256()
         for f in sorted(os.listdir(OPS)):
+            # verification.html records this digest, so hashing it would be
+            # self-referential: the value could never converge between runs.
+            if f == "verification.html":
+                continue
             if f.endswith(".html") or f.endswith(".css"):
                 h.update(open(os.path.join(OPS, f), "rb").read())
         return h.hexdigest()
@@ -248,7 +252,9 @@ def main():
     # ---- write the verification page data, then rebuild so the page shows it
     import datetime
     blob = {"as_of": "2026-11-14",
-            "generated": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            # pinned to the data cutoff, not the wall clock: a clock-derived value
+            # makes this file differ on every run and leaves the tree permanently dirty.
+            "generated": "data as of 2026-11-14, 18:15 UTC (fixed stamp, not a build time)",
             "checks": checks}
     with open(os.path.join(D, "verification.json"), "w", encoding="utf-8") as f:
         json.dump(blob, f, indent=1)

@@ -1530,6 +1530,17 @@ appended to root `index.html`. Nothing else in the repository was edited; `data/
 
 ### PR log (arena/3b99e9ad-x3)
 
+- **PR #50** — https://github.com/karagemop466-tech/X3/pull/50 — `arena/3b99e9ad-x3` → `main`, **MERGED 2026-11-14T19:58:20Z** via `gh pr merge 50 --merge`, merge commit `5f0cde3`. Contents: the whole `ops/` trading-desk tree (18 pages), the 7-stage pipeline `scripts/ops_run.py`, the 10-check gate `scripts/ops_verify.py`, `data/ops/**`, the `pages.yml` step, the README + COORDINATION sections, and the `tools/build_hub.py` landing-generator section that registers `ops/`.
+- **CI before merge:** PR run 43634777329 — build **pass** (16/16 steps). Two earlier runs were red and were fixed, not bypassed: run 43634294674 (step 14 *hub rebuilds* — the `ops/` landing section had been hand-appended to the generated `index.html` instead of added to `tools/build_hub.py`), then run 43634569878 after the generator fix.
+- **CI after merge:** run 43634950982 (push to `main`) — **success**, Pages `built` at `5f0cde3`.
+- **Deploy regression caused by a later merge, not by this PR:** run 43634991583 failed at step 14 on `743aa16` (PR #55, another session). Same failure class — a hand edit to the generated root `index.html` (a `council/` link) that the generator did not reproduce. Diagnosed and repaired on this branch, but by the time the repair was ready other sessions had already fixed main; the branch was reset to `main` and only the still-present defect was kept (PR #63). Recorded here so the failure and its resolution are traceable.
+- **Post-merge defects found by re-running the pipeline on `main` (fixed in PR #63):**
+  1. **V10 hashed its own output.** The determinism digest walked every `ops/*.html`, including `verification.html` — the page that renders the digest — so the value was self-referential and could never converge.
+  2. **The verification stamp used `datetime.utcnow()`**, so `data/ops/verification.json` differed on every run and the tree was permanently dirty after any build.
+  Neither affected a published number; both would have broken any future "rebuild is deterministic" CI check.
+- **Lesson for later sessions (worth keeping in the board):** never hand-edit a generated file. The root `index.html` is written by `tools/build_hub.py`; the hub pages by the same file; `ops/**` by `scripts/ops_build.py`; `council/**` by `scripts/council_build.py`. Add the content to the generator, rebuild, and commit the rebuilt output — otherwise `git diff --exit-code` in CI fails on main and Pages freezes.
+- **Live check (via the Pages API, since `curl` is blocked in this sandbox):** `repos/.../pages/builds/latest` reports `commit=2c100fd status=built`. `ops/` is present on `main` (26 files), so `https://karagemop466-tech.github.io/X3/ops/` is served by that build.
+
 ### Two prose defects found by reading the deployed page, not the source
 
 After #34 deployed, `hub/lines.html` was re-read as a browser sees it. Two sentences were wrong in ways no
