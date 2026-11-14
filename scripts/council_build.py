@@ -60,6 +60,17 @@ def source_cell(url: str, label: str, official: str = "") -> str:
     return '<span class="bad">%s</span>' % esc(label)
 
 
+def link_label(url: str) -> str:
+    """Human label for a source URL, so a linked row never renders the
+    UNVERIFIED text that belongs only to rows with no source at all."""
+    host = re.sub(r"^https?://(www\.)?", "", url or "").split("/")[0]
+    if "github.com" in host:
+        return "repository artifact (DERIVED)"
+    if host.endswith("nfl.com") or host.endswith("operations.nfl.com"):
+        return "official page"
+    return host
+
+
 def badge(kind: str, text: str) -> str:
     return '<span class="bad %s">%s</span>' % (kind, esc(text))
 
@@ -420,12 +431,13 @@ def page_index(m, trees):
     tbl = table(["ID", "Requirement", "Verdict", "Evidence"], rows)
 
     facts = []
-    for f in C.VERIFIED:
+    for f in sorted(C.VERIFIED, key=lambda x: x["id"]):
         val = f["value"] if f["value"] else '<span class="blanks">blank - no official source</span>'
         facts.append(tr([
             '<span class="mono">%s</span>' % esc(f["id"]),
             esc(f["area"]), esc(f["fact"]), val,
-            source_cell(f["source"], "UNVERIFIED - no official source"),
+            source_cell(f["source"], link_label(f["source"]) if f["source"]
+                        else "UNVERIFIED - no official source"),
         ]))
     facts_tbl = table(["ID", "Area", "Fact", "Verified value", "Source"], facts)
 
@@ -759,7 +771,8 @@ def page_repo_review(m, trees):
             '<span class="mono">%d</span>' % t["ext_links"],
             esc(t["purpose"]),
             source_cell(C.GH + "/tree/main/" + t["path"].rstrip("/"),
-                        "UNVERIFIED - path not published yet"),
+                        "repository path on main" if t["pages"]
+                        else "on main - no HTML committed yet"),
         ]))
     body = """
 <p>Every site tree in the repository, counted from the working tree on %s. Page, table-row and
@@ -813,7 +826,8 @@ def page_flagged(m, trees):
             esc(f["detail"]) + (("<br><b>Correction.</b> " + esc(f["detail_corrected"]))
                                 if f.get("detail_corrected") else ""),
             esc(f["action"]),
-            source_cell(f["source"], "UNVERIFIED - no official source"),
+            source_cell(f["source"], link_label(f["source"]) if f["source"]
+                        else "UNVERIFIED - no official source"),
         ]))
     body = """
 <p>Everything on this page is published rather than hidden. None of it blocks the site: the site is
@@ -849,7 +863,8 @@ def page_sources(m, trees):
             b = badge("der", "repository artifact - DERIVED")
         rows.append(tr([
             '<span class="mono">%s</span>' % esc(s["id"]), esc(s["name"]),
-            source_cell(s["url"], "UNVERIFIED - no URL"), b,
+            source_cell(s["url"], link_label(s["url"]) if s["url"]
+                        else "UNVERIFIED - no URL"), b,
             esc(s["used_for"]), esc(s["status"]),
         ]))
     body = """
