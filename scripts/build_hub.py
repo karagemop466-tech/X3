@@ -586,6 +586,9 @@ def build(write=True):
                    [[a["id"] + " " + a["param"], json.dumps(a["value"]), a.get("unit", ""), "yes" if a["verified"] else "no - ASSUMPTION", a["basis"],
                      Raw("%s &middot; %s" % (src(a.get("flag", "")), src("SRC-01; SRC-02")))] for a in cfg["assumptions"]]))
     b.append("<h2>Week 10 board (%d unplayed games)</h2>" % derived["unplayed_games"])
+    b.append(note("Sign convention on this page: <strong>home spread is negative when the home club is the favourite</strong> "
+                  "(standard betting notation), rounded to the nearest half point. The two prior in-repo models are shown in their "
+                  "own notation, which is why they disagree by a factor of two and a sign flip - see FLG-21."))
     b.append("<p>League scoring baseline used: <strong>%.2f</strong> points per team per game from official PF totals over %d club-games. "
              "Two prior in-repo models are shown so the disagreement between them is visible instead of hidden.</p>"
              % (derived["league_total_per_game"], derived["games_played"]))

@@ -205,11 +205,11 @@
    "id": "FLG-21",
    "severity": "Medium",
    "area": "Model readability",
-   "finding": "Prior trees publish model spreads with no stated sign convention. In dashboard/data/model_lines.json the WAS-NYG row shows model_home_spread +3.8 while its own expected scores are home 23.7 vs away 21.8, i.e. positive means home is favoured - the opposite of the betting convention where a negative spread marks the favourite. A reader comparing these numbers with a market line would invert every edge.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/model_lines.json ; https://github.com/karagemop466-tech/X3/blob/main/x3lab/data/lines_week10.json",
-   "impact": "silent sign inversion is the cheapest way to bet the wrong side of a model",
-   "action": "Every line table states its convention in the header; the hub uses 'negative = home favourite'",
-   "status": "OPEN for the legacy trees; documented in the hub"
+   "finding": "The prior model table in dashboard/data/model_lines.json publishes a 'model_home_spread' that follows neither the betting convention nor its own expected scores: all 14 rows carry the sign of (exp_home - exp_away) instead of its negation, and 12 of 14 are exactly twice that margin (the other 2 within 0.2). Example, KC at ATL: expected margin -5.6, i.e. the home club is a 5.6-point dog, yet the column reads -11.3, which in betting notation means an 11.3-point home favourite.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/model_lines.json ; recomputed row by row in this session",
+   "impact": "anyone copying that column slips the wrong side of every game, and the magnitudes are not comparable with a market line",
+   "action": "the hub states its convention in the table header (negative = home favourite) and shows both prior models side by side so the disagreement is visible",
+   "status": "OPEN for the legacy trees (not edited here); documented and corrected in the hub"
   }
  ]
 }
