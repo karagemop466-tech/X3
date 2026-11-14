@@ -1802,3 +1802,19 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
 - **Live check (fetched 2026-11-14):** https://karagemop466-tech.github.io/X3/ledger/ and https://karagemop466-tech.github.io/X3/hub/ both serve. `data/reconcile/standings_check_wk10.csv` is in the repository but is data, not a page, so no page URL is expected for it.
 - **Irregularity found on the live hub (not edited; owner to correct):** `hub/index.html` ("What works, what is blocked") states "Settled results for backtests — UNVERIFIED — 1 final score known for the season (F-02)". The verified results feed in `data/ledger/results_feed.csv` has **137 FINAL games**, and `tools/reconcile_standings.py` reconciles all 137 to the official standings (32/32 clubs). The hub's line is stale.
 - **Scope note:** this session's ledger pages are not on `main`. `arena/a60a2bf7-x3`'s pages are, and they are the ones the live site serves. My duplicate pages remain in the branch history (`2093c42`).
+
+### PR and deploy record (arena/873c7396-x3)
+- **PR #52:** https://github.com/karagemop466-tech/X3/pull/52 — `arena/873c7396-x3` → `main`,
+  **MERGED 2026-11-14T19:54:17Z** via `gh pr merge 52 --merge`, merge commit `4dff549`.
+  Contents: `scripts/x3/` (ingest/model/depth_replacement), `data/x3/` outputs, `tools/x3_content2.py`
+  (new), additive edits to `tools/build_hub.py` + `tools/verify_hub.py`, hub/ 23 pages, root index,
+  `hub/data/replacement.json`, this completion log. COORDINATION.md union-merged with main `07be456`
+  (PRs #43–#48) — 0 lines lost from either side.
+- **CI:** PR run 43634592793 build success; post-merge push run 43634601814 (Deploy X3 NFL site to
+  GitHub Pages) **success**; "pages build and deployment" run 43634600770 **success**.
+- **Live check (fetched 2026-11-14):** https://karagemop466-tech.github.io/X3/hub/results.html serves
+  the verified results feed (137/137 finals, verification log table, week-by-week feed);
+  https://karagemop466-tech.github.io/X3/hub/flagged.html serves the 22-row flag register incl.
+  F-24/F-25. pricing/origination/signal/replacement pages are in the same build (byte-identical tree
+  verified locally, sha256-deterministic across two builds).
+- This branch's session task board X1–X10: **all done**.
