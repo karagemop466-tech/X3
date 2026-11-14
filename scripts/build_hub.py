@@ -572,7 +572,7 @@ def build(write=True):
         ("Certified rows", "%d" % derived["injury_rows"], "Week-10 injury report rows transcribed from NFL.com and re-verified against the prior snapshot (%d of %d identical)" % (derived["injury_rows"] - 1, derived["injury_rows"]), "injuries.html"),
         ("Games to price", "%d" % derived["unplayed_games"], "unplayed Week-10 games with an originated spread and total, all unvalidated", "lines.html"),
         ("Blocking gates", "%d" % len(research["gates"]), "every one unpassed; the leaderboard is empty because of it", "validation.html"),
-        ("Correlations", "%d computed / %d blank" % (sum(1 for c in research["correlation_register"] if c["status"] == "COMPUTED"), sum(1 for c in research["correlation_register"] if c["status"] == "BLANK")), "measured from official standings; the tradable ones need data that does not exist yet", "correlations.html"),
+        ("Correlations", "%d computed / %d blank" % (sum(1 for c in research["correlation_register"] if c["status"].startswith("COMPUTED")), sum(1 for c in research["correlation_register"] if c["status"].startswith("BLANK"))), "measured from official standings; the tradable ones need data that does not exist yet", "correlations.html"),
         ("Open questions", "%d" % len(questions["open"]), "%d of them block a decision; each one names what is missing and how to get it" % sum(1 for q in questions["open"] if q["blocking"] == "yes"), "questions.html"),
         ("Suggestions to review", "%d" % len(suggestions["suggestions"]), "implemented ones are marked; the rest wait for your decision", "suggestions.html"),
         ("Flags published", "%d" % len(flags["flags"]), "irregularities and impossible requests, with source links - none block the site", "flagged.html"),
@@ -825,8 +825,8 @@ def build(write=True):
     active = "correlations.html"
     b = [note("Computed values are Pearson correlations over the 32 clubs in the official standings snapshot of 2026-11-14; "
               "they are descriptive, not tradable. Blank rows are blank because the input does not exist - never estimated.")]
-    comp = [c for c in research["correlation_register"] if c["status"] == "COMPUTED"]
-    blank = [c for c in research["correlation_register"] if c["status"] != "COMPUTED"]
+    comp = [c for c in research["correlation_register"] if c["status"].startswith("COMPUTED")]
+    blank = [c for c in research["correlation_register"] if not c["status"].startswith("COMPUTED")]
     b.append("<h2>Computed now (%d)</h2>" % len(comp))
     b.append(table(["#", "Pair", "r", "n", "Method", "Caveat", "Source"],
                    [[c["id"], c["pair"], c["value"], c["n"], c["method"], c["caveat"], src(c["source"] or "SRC-01")] for c in comp]))

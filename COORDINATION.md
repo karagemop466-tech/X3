@@ -1193,3 +1193,12 @@ Two items would close the collision cleanly: (1) rename or re-label `archive/hub
 `hub/archive.html`, and it holds the newer registers (25 flags incl. the retraction, 21 suggestions, 18 questions,
 the depth overlay and the game-log correlations). Record: **FLG-25** and the updated **S-01** in
 `archive/hub-621bf404/data/`.
+
+### Post-merge correction (2026-11-14): a prose count the gate did not cover
+
+The landing page and the nav described "the six older site trees". After the two merges the real number
+is twelve, which is exactly the drift this session exists to remove - and it slipped through because the
+count sat in a *description string*, not a table row. Fixed by making `hub/archive.html`'s row registry
+(`ARCHIVE_ROWS`) the single source: the nav label, the landing note and the archive caption all read
+`len(ARCHIVE_ROWS)`, so the number cannot disagree with the list it describes. All validators green;
+`scripts/check_hub.py` still passes on the relocated snapshot.
