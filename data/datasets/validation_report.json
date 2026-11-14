@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-11-14T02:49:36+00:00",
+  "pages_checked": 15,
+  "dataset_files_checked": 0,
+  "dataset_rows_with_source": 0,
+  "dataset_blank_values": 0,
+  "external_urls_checked": false,
+  "result": "pass",
+  "checks": [
+    {
+      "name": "Internal links and assets resolve",
+      "result": "pass",
+      "detail": "417 internal references checked across 15 pages"
+    },
+    {
+      "name": "All external links point at official hosts",
+      "result": "pass",
+      "detail": "73 external links checked against the official-host allowlist"
+    },
+    {
+      "name": "Every dataset row carries an official source link",
+      "result": "pass",
+      "detail": "0 dataset rows checked for an official source link"
+    },
+    {
+      "name": "Unverified values are rendered as explicit markers",
+      "result": "pass",
+      "detail": "1 unverified markers rendered (dataset blank values: 0)"
+    }
+  ]
+}

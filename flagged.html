@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for Review · X3 NFL Decision Support</title>
+<meta name="description" content="Unverified values, missing datasets, irregularities and open risks, published for review with the source that was checked.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234a9eff'/><text x='16' y='22' font-size='16' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%2306121f'>X3</text></svg>">
+
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">X3</span>
+      <span><a href="index.html">X3</a> <span class="brand-sub">NFL Decision Support</span></span>
+    </div>
+    <nav class="nav"><div class="nav-group"><a href="index.html">Overview<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="index.html" class="">Dashboard</a><a href="executive-summary.html" class="">Executive Summary</a><a href="findings.html" class="">Findings &amp; Analysis</a></div></div><div class="nav-group"><a href="requirements.html">Requirements<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="requirements.html" class="">Requirements Register</a></div></div><div class="nav-group"><a href="questions.html">Decision Support<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="questions.html" class="">Questions &amp; Information Needed</a><a href="suggestions.html" class="">Suggestions &amp; Decision Paths</a></div></div><div class="nav-group"><a href="strategies.html">Strategy<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="strategies.html" class="">Strategies &amp; Validation Gates</a><a href="leaderboard.html" class="">Leaderboard Competition</a></div></div><div class="nav-group"><a href="injuries.html">Data<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="injuries.html" class="">Official Injury Report</a><a href="depth.html" class="">Lineup Depth &amp; Deficiencies</a><a href="lines.html" class="">Our Originated Lines</a><a href="data.html" class="">Datasets &amp; Correlations</a></div></div><div class="nav-group"><a href="flagged.html">Governance<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="flagged.html" class="active">Flagged for Review</a><a href="sources.html" class="">Sources &amp; Methodology</a><a href="validation.html" class="">Validation Report</a></div></div></nav>
+    <span class="freshness">Data age unknown</span>
+  </div>
+</header>
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Governance</div>
+    <h1>Flagged for Review</h1>
+    <p class="sub">Unverified values, missing datasets, irregularities and open risks, published for review with the source that was checked.</p>
+  </div>
+  <p class="prose">Every value that could not be confirmed from an official source, and every irregularity found, is listed here with the source that was checked and what would resolve it. These items are published for review; they do not block the platform, and nothing is filled in by guesswork in the meantime.</p><div class="table-tools"><input type="search" placeholder="Filter rows…" aria-label="Filter rows"><span class="count"></span></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Category</th><th>Item and reason</th><th>Severity</th><th>Source checked</th><th>What would resolve it</th></tr></thead><tbody><tr><td><span class="id-chip">F-001</span></td><td>Coverage</td><td><strong>No official club depth chart was retrieved in this build</strong><br><span style="color:var(--text-dim)">The pipeline probes official club domains for depth charts. None resolved, so no depth string is published for any absence.</span></td><td><span class="badge bad">high</span></td><td><a href="https://www.nfl.com/teams/" target="_blank" rel="noopener">https://www.nfl.com/teams/</a></td><td>Inspect the failed official club URLs in the fetch provenance on the Sources page and extend the candidate patterns.</td></tr><tr><td><span class="id-chip">F-002</span></td><td>Repository review</td><td><strong>The repository contained only a one-line README and a single initial commit at the start of this work</strong><br><span style="color:var(--text-dim)">No prior requirements register, data pipeline, tests or site existed, so nothing could be migrated or cross-checked against earlier work.</span></td><td><span class="badge muted">low</span></td><td><span class="unverified" title="Not published by the official source. Left blank by policy; never inferred.">no source available</span></td><td>Nothing to resolve. Recorded because it bounds what earlier verification is possible.</td></tr><tr><td><span class="id-chip">F-003</span></td><td>Environment</td><td><strong>The build environment cannot reach nfl.com directly</strong><br><span style="color:var(--text-dim)">Shell egress in the authoring sandbox is restricted to github.com, api.github.com, codeload.github.com, registry.npmjs.org, pypi.org and files.pythonhosted.org. Official sources are therefore retrieved inside GitHub Actions, and the committed datasets are the verified snapshot of that run.</span></td><td><span class="badge muted">low</span></td><td><a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3</a></td><td>None. The pipeline design accounts for it: raw payloads are fetched in CI and the manifest records the hash of every payload.</td></tr><tr><td><span class="id-chip">F-004</span></td><td>Scope</td><td><strong>Three of the four strategy classes cannot yet be evaluated</strong><br><span style="color:var(--text-dim)">The parlay, player-prop and prop-combination classes need per-game official player logs and an evaluation reference, neither of which is available yet.</span></td><td><span class="badge bad">high</span></td><td><a href="https://www.nfl.com/stats/player-stats/" target="_blank" rel="noopener">https://www.nfl.com/stats/player-stats/</a></td><td>Answer question Q-005 and approve suggestion S-013 so official per-game box scores can be ingested.</td></tr><tr><td><span class="id-chip">F-005</span></td><td>Compliance</td><td><strong>The commercial nature of the platform is not yet settled</strong><br><span style="color:var(--text-dim)">The platform originates lines and publishes a leaderboard with a reward structure. Whether that constitutes a regulated activity depends on answers to Q-001, Q-002 and Q-003.</span></td><td><span class="badge bad">high</span></td><td><a href="https://www.nfl.com/news/nfl-communications" target="_blank" rel="noopener">https://www.nfl.com/news/nfl-communications</a></td><td>Answer Q-001, Q-002 and Q-003 and obtain a jurisdiction-specific legal review before any transactional feature is built (suggestion S-017).</td></tr></tbody></table></div><p class="caption">5 flagged items.</p>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <strong style="color:var(--text-dim)">X3 — NFL Decision Support.</strong>
+      Every value on this site is read from an official NFL or official NFL club source and carries a source link.
+      Values the official source does not publish are left blank and flagged, never inferred.
+    </div>
+    <div>
+      <a href="sources.html">Sources &amp; methodology</a> ·
+      <a href="flagged.html">Flagged for review</a> ·
+      <a href="validation.html">Validation report</a> ·
+      <a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

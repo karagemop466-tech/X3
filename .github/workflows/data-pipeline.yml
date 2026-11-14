@@ -68,6 +68,21 @@ jobs:
       - name: Build verified datasets
         run: python scripts/build_datasets.py
 
+      # Diagnostics are committed even when a step fails, so the failure can be
+      # diagnosed from the repository alone.
+      - name: Commit diagnostics
+        if: always()
+        run: |
+          git config user.name "x3-data-pipeline"
+          git config user.email "x3-data-pipeline@users.noreply.github.com"
+          git add data/datasets || true
+          if git diff --cached --quiet; then
+            echo "no diagnostics to commit"
+          else
+            git commit -m "ci: publish build diagnostics" || echo "diagnostic commit failed"
+            git push origin "HEAD:$BRANCH" || echo "diagnostic push failed"
+          fi
+
       - name: Compute signals, lines and correlations
         run: python scripts/compute_signals.py
 

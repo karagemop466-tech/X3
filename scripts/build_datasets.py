@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from lib.diagnostics import describe_html, failure_report, write_report
 from lib.parsers import (
     parse_depth_chart,
     parse_injuries,
@@ -57,10 +58,20 @@ def write_json(name: str, payload) -> str:
 
 
 def main() -> int:
+    """Entry point: runs the build and always leaves a diagnostic report."""
+    try:
+        return _build()
+    except Exception as exc:  # noqa: BLE001 - reported, then re-raised
+        failure_report("build_datasets", exc)
+        raise
+
+
+def _build() -> int:
     manifest = load_manifest()
     records = manifest["records"]
     datasets: list[dict] = []
     built_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    structure: dict = {}
 
     def note(name: str, rec: dict, rows: int, extra: dict | None = None) -> None:
         entry = {
@@ -188,6 +199,23 @@ def main() -> int:
         "datasets": sorted(datasets, key=lambda d: d["dataset"]),
     }
     write_json("manifest.json", summary)
+
+    # ------------------------------------------------------------ diagnostics
+    # A structural summary of the official payloads, so a parser can be written
+    # or repaired from the repository alone.
+    sample_keys = ["injuries_current", "standings_league_2026", "schedule_2026_w01",
+                   "schedule_2026_w10", "stats_player_passing_2026", "stats_player_receiving_2026"]
+    for rec in records:
+        path = raw_path(rec)
+        if not path:
+            continue
+        if rec["key"] in sample_keys or rec["key"].startswith("club_depth_"):
+            structure[rec["key"]] = describe_html(path)
+            if len(structure) > 24:
+                break
+    write_report("structure_report.json", {"sources": structure})
+    write_report("build_report.json", {"built_at": built_at, "datasets": len(datasets), "ok": True})
+
     print(f"built {len(datasets)} datasets -> {OUT}")
     for d in summary["datasets"]:
         print(f"  {d['dataset']:<44} rows={d['rows']:<6} src={d['source_url'][:80]}")

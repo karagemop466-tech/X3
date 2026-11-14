@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Findings &amp;amp; Analysis · X3 NFL Decision Support</title>
+<meta name="description" content="What the official data currently supports, and what it does not.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234a9eff'/><text x='16' y='22' font-size='16' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%2306121f'>X3</text></svg>">
+
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">X3</span>
+      <span><a href="index.html">X3</a> <span class="brand-sub">NFL Decision Support</span></span>
+    </div>
+    <nav class="nav"><div class="nav-group"><a href="index.html">Overview<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="index.html" class="">Dashboard</a><a href="executive-summary.html" class="">Executive Summary</a><a href="findings.html" class="active">Findings &amp; Analysis</a></div></div><div class="nav-group"><a href="requirements.html">Requirements<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="requirements.html" class="">Requirements Register</a></div></div><div class="nav-group"><a href="questions.html">Decision Support<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="questions.html" class="">Questions &amp; Information Needed</a><a href="suggestions.html" class="">Suggestions &amp; Decision Paths</a></div></div><div class="nav-group"><a href="strategies.html">Strategy<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="strategies.html" class="">Strategies &amp; Validation Gates</a><a href="leaderboard.html" class="">Leaderboard Competition</a></div></div><div class="nav-group"><a href="injuries.html">Data<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="injuries.html" class="">Official Injury Report</a><a href="depth.html" class="">Lineup Depth &amp; Deficiencies</a><a href="lines.html" class="">Our Originated Lines</a><a href="data.html" class="">Datasets &amp; Correlations</a></div></div><div class="nav-group"><a href="flagged.html">Governance<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="flagged.html" class="">Flagged for Review</a><a href="sources.html" class="">Sources &amp; Methodology</a><a href="validation.html" class="">Validation Report</a></div></div></nav>
+    <span class="freshness">Data age unknown</span>
+  </div>
+</header>
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Overview</div>
+    <h1>Findings &amp; Analysis</h1>
+    <p class="sub">What the official data currently supports, and what it does not.</p>
+  </div>
+  <div class="callout"><h4>What "a finding" means here</h4><p>A finding is a statement computed from an official dataset, published with its source. An observation that the platform could not compute because a dataset is missing is listed on the <a href="flagged.html">Flagged for Review</a> page instead of being stated loosely.</p></div><h2>Availability</h2><div class="callout warn"><p>No injury rows were present in this build, so no availability finding is published.</p></div><h2>League baseline</h2><div class="grid cols-3"><div class="card"><h3>Not computed</h3><p>The standings dataset was not available in this build, so no league baseline is stated.</p></div><div class="card"><h3>Not computed</h3><p>Official final scores were not available, so the margin scale is not stated.</p></div><div class="card"><h3>Not computed</h3><p>Official final scores were not available.</p></div></div><h2>Methodological findings</h2><div class="card"><ul class="tight"><li><strong>The official injury report is a participation record, not a clearance.</strong> A club lists only the players it wants to report, so a player absent from the report cannot be assumed healthy. The platform records such players as <em>not reported</em> and never converts that into an availability claim.</li><li><strong>Depth ordering is club-published and club-maintained.</strong> It is the only official route to a replacement's depth string, and its coverage is partial. The platform measures and publishes that coverage rather than filling the gaps.</li><li><strong>Scoring a strategy against the model that priced the game measures agreement, not skill.</strong> This is the central methodological trap of an own-line platform, and it is why suggestion S-002 exists and why every strategy in the register uses a signal deliberately different from the line model's inputs.</li><li><strong>A positive record is not evidence of skill at small sample.</strong> The platform therefore reports a skill share with a bootstrap interval and a permutation test against a pure-luck null, rather than a win rate alone.</li><li><strong>Correlated parlay legs manufacture apparent edge.</strong> Multiplying correlated probabilities overstates the probability of the combination. The platform computes the correlation matrix and prices a parlay from the joint, not the product of the marginals.</li><li><strong>Nothing is published that cannot be traced.</strong> Every table row links to the official page it came from, and the payload hash and fetch time are recorded for each source.</li></ul></div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <strong style="color:var(--text-dim)">X3 — NFL Decision Support.</strong>
+      Every value on this site is read from an official NFL or official NFL club source and carries a source link.
+      Values the official source does not publish are left blank and flagged, never inferred.
+    </div>
+    <div>
+      <a href="sources.html">Sources &amp; methodology</a> ·
+      <a href="flagged.html">Flagged for review</a> ·
+      <a href="validation.html">Validation report</a> ·
+      <a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
