@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X3 NFL decision desk - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html" class=on">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>X3 NFL decision desk</h1>
+<p class="lede">Collect, organise and analyse NFL evidence for originating our own lines, with every row tied to an official source and every gap published instead of filled.</p>
+
+<section class="callout"><h2>Read this first</h2>
+<p>This repository is an evidence-first decision desk, not a tipster. Three things are true at once:
+the injury and standings data on this site is <b>verified against official NFL pages</b>; the model lines
+are <b>derived arithmetic</b> on that data using parameters that are stated in the open and are not yet
+calibrated; and anything that would require a betting market - prices, closing-line value, settled bets,
+ROI, a populated leaderboard - is <b>blank and flagged</b>, because no such data exists in this repo.
+Nothing here was inferred to fill a gap.</p></section>
+<div class="grid"><div class="card"><div class="num">13/13</div><div class="lbl">Games priced</div><div class="sub">Week-10 games with an originated spread and total, modelled before the slate is played</div></div><div class="card"><div class="num">345</div><div class="lbl">Injury rows verified</div><div class="sub">every row re-read from the official report; 160 carry a game designation</div></div><div class="card"><div class="num">18</div><div class="lbl">Clubs with a 1st-stringer out</div><div class="sub">39 starter slots must be filled by a backup this week</div></div><div class="card"><div class="num">0 of 12</div><div class="lbl">Strategies eligible for the leaderboard</div><div class="sub">registered in the pre-registration ledger, blocked on data, not on analysis</div></div></div>
+<h2>Sections</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Section</th><th>Contains</th></tr></thead><tbody>
+<tr><td><a href="index.html"><b>Overview</b></a></td><td>Status, what is verified, what is not</td></tr>
+<tr><td><a href="executive-summary.html"><b>Executive summary</b></a></td><td>The one-page brief for a decision</td></tr>
+<tr><td><a href="lines.html"><b>Originated lines</b></a></td><td>Our own Week-10 spreads and totals</td></tr>
+<tr><td><a href="strategies.html"><b>Strategies &amp; signals</b></a></td><td>12 registered hypotheses, singles/props/parlays</td></tr>
+<tr><td><a href="gates.html"><b>Validation gates</b></a></td><td>The luck-removing tests each strategy must pass</td></tr>
+<tr><td><a href="correlation.html"><b>Correlation</b></a></td><td>Coefficients computed from official data</td></tr>
+<tr><td><a href="luck.html"><b>Luck decomposition</b></a></td><td>How much of a record is not skill</td></tr>
+<tr><td><a href="injuries.html"><b>Injury tracker</b></a></td><td>Every row of the official weekly report</td></tr>
+<tr><td><a href="depth.html"><b>Depth &amp; deficiencies</b></a></td><td>Who is starting instead of the starter</td></tr>
+<tr><td><a href="leaderboard.html"><b>Leaderboard</b></a></td><td>Competition design; deliberately empty</td></tr>
+<tr><td><a href="requirements.html"><b>Requirements</b></a></td><td>Full register with status and evidence</td></tr>
+<tr><td><a href="questions.html"><b>Open questions</b></a></td><td>What must be known before deciding</td></tr>
+<tr><td><a href="suggestions.html"><b>Suggestions</b></a></td><td>Review the paths before implementing</td></tr>
+<tr><td><a href="sources.html"><b>Sources</b></a></td><td>Official pages, method and retrieval date</td></tr>
+<tr><td><a href="verification.html"><b>Verification log</b></a></td><td>How each line was checked</td></tr>
+<tr><td><a href="repo-review.html"><b>Repo review</b></a></td><td>Prior work audited line by line</td></tr>
+<tr><td><a href="flagged.html"><b>Flagged for review</b></a></td><td>Unverified items and irregularities</td></tr>
+<tr><td><a href="archive.html"><b>Prior trees</b></a></td><td>The six older site trees</td></tr>
+</tbody></table>
+</div>
+<h2>What works, what is blocked</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Capability</th><th>State</th><th>Evidence</th></tr></thead><tbody>
+<tr><td>Own lines originated</td><td><span class="badge d">DERIVED</span></td><td>team ratings from <a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a> + <a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">injury report</a></td></tr>
+<tr><td>Official injury tracking</td><td><span class="badge v">VERIFIED</span></td><td>345 rows, 28 clubs, <a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">www.nfl.com/injuries/league/2026/reg10</a></td></tr>
+<tr><td>Backup/deficiency tracking</td><td><span class="badge d">DERIVED</span></td><td>31 of 32 club charts; Houston publishes an image only</td></tr>
+<tr><td>Correlation values</td><td><span class="badge p">PARTIAL</span></td><td>8 computed from official data; prop joint coefficients blank (no archive)</td></tr>
+<tr><td>Luck controls</td><td><span class="badge v">VERIFIED</span></td><td>walk-forward, FDR, DSR/PBO, min-sample defined; see gates</td></tr>
+<tr><td>Leaderboard with rewards</td><td><span class="badge b">BLOCKED</span></td><td>empty by design - G-2 fails; reward amounts need an owner decision</td></tr>
+<tr><td>Market comparison / CLV</td><td><span class="badge u">UNVERIFIED</span></td><td>no licensed price feed exists in the repo (F-01)</td></tr>
+<tr><td>Settled results for backtests</td><td><span class="badge u">UNVERIFIED</span></td><td>1 final score known for the season (F-02)</td></tr>
+</tbody></table>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

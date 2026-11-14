@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verification log - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html" class=on">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Verification log</h1>
+<p class="lede">How each published number was checked, what the check found, and how to reproduce it.</p>
+
+<h2>Line-by-line verification log (2026-11-14)</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Object</th><th>Method</th><th>What was compared</th><th>Result</th><th>State</th></tr></thead><tbody>
+<tr><td>Injury report, 345 rows</td><td>independent re-transcription of the official page (8 chunks read in full) vs the stored data module</td><td>row count, per-club counts, and all four fields (position, injury, practice, designation) compared key by key</td><td>345/345 rows match on every field; the only difference was the club-code convention (AZ/LAR vs ARI/LA), which silently dropped 29 rows in an unaliased join</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Standings, 32 clubs</td><td>live read of the league standings page vs the stored module</td><td>W-L-T, PF, PA, net, home/road/div/conf splits, streak and last 5, plus arithmetic checks (home+road = overall; PF-PA = net; pct recomputed; last-5 sums to 5)</td><td>32/32 rows verified; 0 arithmetic anomalies; &lt;b&gt;one real disagreement&lt;/b&gt;: TB division 2-0-0 on the page vs 1-2-0 in the stored file (flag F-11)</td><td><span class="badge p">PARTIAL</span></td></tr>
+<tr><td>Home/road splits</td><td>two independent tests: column sums, and per-club home+road vs overall</td><td>each game must contribute one home and one road appearance (column test); for every club, home games + road games must equal its overall games (club test)</td><td>137 home = 137 road appearances, and 32/32 clubs satisfy home+road = overall, so the split is internally consistent and the home win pct is a measurement, not an artefact of sloppy columns</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Week 10 slate</td><td>matchups cross-read from two official pages</td><td>14 games found on the injury report vs the schedule page; same 28 clubs; 4 byes</td><td>14/14 agree; the Munich label on NE@DET was confirmed on both the schedule page and the club page</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Detached snapshot</td><td>requested reg11 to test staleness</td><td>does the league publish a Week-11 report yet?</td><td>the reg11 URL returns the Week-10 page and the selector stops at Week 10, so the board is correctly labelled Week 10 (flag F-10)</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Depth chart, Detroit</td><td>live club page vs stored chart</td><td>slot order and every name compared</td><td>exact match on all 27 slots, including the empty as-of date; confirms the Mays/Reed starter-vs-out conflict is in the sources, not in our transcription</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Model arithmetic</td><td>recomputed by hand on two games</td><td>BUF@NYJ: 32.00 + 24.78 - 20.22 - 23.38 = +13.18 before injuries; matches the published base margin</td><td>formula in the page reproduces the table; deterministic rebuild reproduces every row</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Row-source gate</td><td>tools/verify_hub.py</td><td>every row of every table must carry an official URL or an explicit UNVERIFIED marker</td><td>run in CI; 0 failures required to build</td><td><span class="badge v">VERIFIED</span></td></tr>
+<tr><td>Counts in prose</td><td>build-time interpolation</td><td>no number may be typed into prose</td><td>build aborts on an unfilled token, which is how the row-count drift in earlier sessions was prevented from recurring</td><td><span class="badge v">VERIFIED</span></td></tr>
+</tbody></table>
+</div>
+<h2>Transcription integrity of the canonical inputs</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Integrity check</th><th>Rule tested</th><th>Observed in the canonical file</th><th>Handling</th></tr></thead><tbody>
+<tr><td>One kickoff per game</td><td>the 345 rows group into 14 game tables; each table prints one kickoff slot, so the slot is a per-game attribute</td><td>all games single-valued - the earlier SEA@LV mismatch (one row at 16:15 against 19 at 16:05) was normalised at game level, not row level</td><td>normalised in data/hub/injuries_2026_wk10.csv; the schedule page independently confirms 4:05 PM ET for LAR@AZ and SEA@LV</td></tr>
+<tr><td>Practice vs designation</td><td>a player who practised fully is rarely ruled out</td><td>Full participation yet Out: 1 row(s) (BJ Green II JAX)</td><td>designation wins: the game-status column is the operative field, practice is context only</td></tr>
+<tr><td>Blank designation</td><td>does an empty Game Status column mean healthy?</td><td>185 of 345 rows are blank, including 21 who did not practise at all</td><td>blank is NOT treated as healthy - it carries zero injury cost but the row is still listed, and the injury pages keep these players on the report</td></tr>
+<tr><td>Reason is not always an injury</td><td>is the Injuries column strictly medical?</td><td>non-injury reasons in the reason column: 4 row(s) (Jessie Bates: Not injury related - resting player; Jordan Davis: Not injury related - resting player; Azeez Al-Shaair: Groin, Not injury related - personal matter; Myles Garrett: Knee, Not injury related - resting player)</td><td>reported verbatim and kept in every calculation as written; the site never calls them injuries, and the Injuries column is labelled 'reason' in our schema</td></tr>
+<tr><td>Row count vs prose</td><td>no page may type a count by hand</td><td>345 rows in file; 14 games; every count on this page is interpolated from the CSV at build time</td><td>an unfilled token aborts the build, which is how the row-count drift in earlier sessions was prevented from recurring</td></tr>
+</tbody></table>
+<p class="note">Recomputed on every build: run <code>python3 tools/build_hub.py</code> and these numbers change with the file. Nothing here is hand-typed.</p>
+</div>
+<h2>Reproduce it</h2>
+<pre><code>python3 tools/x3_engine.py      # data -&gt; hub/data/*.json
+python3 tools/build_hub.py      # json -&gt; hub/*.html + root index.html
+python3 tools/verify_hub.py     # row-source + link gate (CI runs this)</code></pre>
+<p class="note">External pages are not re-fetched by the checks: they are read once, transcribed into
+<code>data/hub/*.csv</code>, and from then on the build is deterministic and offline-verifiable. That is
+deliberate - a table that changes when a source page changes cannot be reviewed.</p>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

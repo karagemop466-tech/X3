@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions for review - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html" class=on">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Suggestions for review</h1>
+<p class="lede">Proposals with impact, effort, risk and dependencies, so the best path can be chosen before anything is implemented.</p>
+
+<p class="lede">Nothing in this table has been implemented as a change to the model or the decision rules -
+that is the point of the page. The four items tagged ADOPTED are process choices this PR already applies
+(their 'implementation' is the ledger, the empty leaderboard and the build-time counts, all of which are
+reviewable here); the rest are proposals awaiting your selection.</p>
+<div class="tblwrap"><table class="k-meta" id="sgt">
+<thead><tr><th>ID</th><th>Suggestion</th><th>What and why</th><th>Impact</th><th>Effort</th><th>Risk</th><th>Depends on</th><th>Status</th><th>Your decision</th></tr></thead><tbody>
+<tr><td><b>S-01</b></td><td><b>Adopt hub/ as the single canonical site and label the other six trees ARCHIVE</b></td><td>Six parallel trees with overlapping tables are the main usability and audit problem in this repo: the same fact has up to five published values and only one is re-verified. One canonical tree plus a labelled archive removes the ambiguity without destroying history.</td><td>High</td><td>Low (this PR)</td><td>Low - nothing deleted</td><td>Q-09, Q-16</td><td><span class="badge u">PROPOSED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-02</b></td><td><b>Add a licensed price feed (or a weekly manual snapshot) so the model has an opponent</b></td><td>A line-origination project without a market reference cannot compute CLV, cannot detect where we disagree with the market, and cannot settle a bet. This is the single item that unblocks the most downstream work.</td><td>Critical</td><td>Medium (vendor + schema)</td><td>Low</td><td>Q-01, Q-02</td><td><span class="badge u">PROPOSED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-03</b></td><td><b>Ingest a 7-season game log with venue, scores and rest days</b></td><td>Converts the model from 'assumed parameters' to fitted ones: HFA, replacement cost, rest effect, schedule strength, and it is the substrate for every validation gate.</td><td>Critical</td><td>Medium</td><td>Low</td><td>Q-02, Q-06</td><td><span class="badge u">PROPOSED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-04</b></td><td><b>Preregister every strategy in a git-committed ledger before it is evaluated</b></td><td>The ledger (hub/data/prereg.json, committed with a SHA and timestamp) freezes the entry rule, exit rule and sample definition. That is what turns 'we found a signal' into a falsifiable claim and removes the biggest source of fake edge: post-hoc tuning.</td><td>High</td><td>Low</td><td>Low</td><td>none</td><td><span class="badge d">ADOPTED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-05</b></td><td><b>Keep the leaderboard empty until gates pass, and say so on the page</b></td><td>A populated leaderboard built on 0 settled bets would be marketing, not evidence. The empty state with the reason is the honest artifact and it also documents what the gates are for.</td><td>Medium</td><td>Low</td><td>Low</td><td>none</td><td><span class="badge d">ADOPTED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-06</b></td><td><b>Score strategies on CLV-qualified ROI, not raw win rate</b></td><td>Win rate over a handful of bets is mostly noise; closing-line value measures whether we beat the market's final information, and it converges far faster than settled ROI.</td><td>High</td><td>Low</td><td>Low</td><td>S-02</td><td><span class="badge u">PROPOSED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-07</b></td><td><b>Model parlays as joint distributions with an explicit dependence term, never as a product of marginals</b></td><td>Multiplying marginal prices assumes independence and systematically overprices correlated legs (game-script dependence on both sides of the same game). Any parlay strategy that ignores the covariance term is wrong before it starts.</td><td>High</td><td>Medium</td><td>Low</td><td>Q-07</td><td><span class="badge u">PROPOSED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-08</b></td><td><b>Publish the injury-report gap (IR/transactions) as a first-class dataset</b></td><td>The weekly report omits season-ending injuries, so a naive read says 'Lamar Jackson has no designation'. The site must join report + transactions + roster moves or it will mis-rank teams.</td><td>High</td><td>Medium</td><td>Low</td><td>Q-05</td><td><span class="badge u">PROPOSED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-09</b></td><td><b>Build the deficiency index from a per-play backup proxy instead of chart order alone</b></td><td>Club charts are self-labelled unofficial and mostly undated. Snap counts or the participation report give a defensible 'who actually lined up' signal to rank backup quality.</td><td>Medium</td><td>High</td><td>Medium</td><td>S-03, Q-04</td><td><span class="badge u">PROPOSED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-10</b></td><td><b>Add a per-game 'why' column to the lines board</b></td><td>The board already shows the injury delta; naming the drivers (e.g. SEA missing its starting QB, LT and two interior linemen) is what makes a table decision-useful instead of just numeric.</td><td>Medium</td><td>Low</td><td>Low</td><td>none</td><td><span class="badge d">ADOPTED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-11</b></td><td><b>Freeze the model parameters in a config file with a version tag</b></td><td>Parameters that live inside prose silently drift. PARAMS is already a dict in code; version-tagging it means a line published in Week 12 is reproducible in Week 20.</td><td>Medium</td><td>Low</td><td>Low</td><td>none</td><td><span class="badge d">ADOPTED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-12</b></td><td><b>Set a hard minimum sample (&gt;=300 bets, &gt;=3 seasons) before a strategy is leaderboard-eligible</b></td><td>At 30 bets the 95% CI on a 55% hit rate is roughly +/-18 points - wider than any real edge. The threshold is what stops the leaderboard rewarding a lucky run.</td><td>High</td><td>Low</td><td>Low</td><td>none</td><td><span class="badge d">ADOPTED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-13</b></td><td><b>Run the whole site build in CI, not only the old trees</b></td><td>The Pages workflow validated docs/, lab/, pages/ and site/ but not the tree that carries the current numbers; a regression in the canonical site would have shipped unverified. One added step now fails the build if any row loses its source.</td><td>High</td><td>Low</td><td>Medium - CI may fail and need fixing</td><td>none</td><td><span class="badge d">ADOPTED</span></td><td><span class='blank'></span></td></tr>
+<tr><td><b>S-14</b></td><td><b>Do not merge a claim into the site that is not in a data file</b></td><td>Three separate incidents in this repo's history came from prose numbers drifting from tables (row counts, strategy splits). All counts on hub/ pages are interpolated from the JSON at build time and the build aborts on an unfilled token.</td><td>Medium</td><td>Low</td><td>Low</td><td>none</td><td><span class="badge d">ADOPTED</span></td><td><span class='blank'></span></td></tr>
+</tbody></table>
+</div>
+<h2>Choosing a path</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Path</th><th>Sequence</th><th>What you get</th><th>What you do not get</th></tr></thead><tbody>
+<tr><td><b>A - Evidence first</b> (recommended)</td><td>S-01 archive policy -&gt; S-03 game log -&gt; S-02 prices -&gt; calibrate (S-09) -&gt; gates fire -&gt; leaderboard populates</td><td>a model whose parameters are measured, a leaderboard that means something, and a market-relative verdict on our own lines</td><td>nothing tradeable this month</td></tr>
+<tr><td><b>B - Lines now, data later</b></td><td>S-01 -&gt; publish the Week-10/11 boards on a weekly cadence -&gt; log our own lines as the record -&gt; S-02/S-03 when budget allows</td><td>a weekly decision aid immediately, plus a home-grown price/result archive built from our own published lines (which later becomes the backtest data)</td><td>no CLV against a real market until prices arrive; our own lines cannot validate themselves</td></tr>
+<tr><td><b>C - Signals first</b></td><td>S-04 preregistration (already adopted) -&gt; add injury-shift and lineup-deficiency flags to the board -&gt; manual record of bets you choose to place -&gt; score against the ledger</td><td>actionable flags on the pages you already read, and an honest record from day one</td><td>small samples for a long time; the min-sample gate will keep the board empty for seasons</td></tr>
+</tbody></table>
+</div>
+<section class="callout"><h2>Recommended</h2><p><b>Path B, then A.</b> Publish the weekly board now - it is
+already built and its inputs are verified - and start a self-owned line record from this week, because
+those rows are the one asset that appreciates with time and costs nothing but a weekly run. Then buy the
+game log and the price archive, which is what converts a nice-looking model into a validated one. Do not
+fund a leaderboard or set prize amounts before the gates pass: with zero settled bets, a funded competition
+is a coin flip with a prize.</p></section>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

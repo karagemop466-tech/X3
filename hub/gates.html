@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validation gates - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html" class=on">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Validation gates</h1>
+<p class="lede">The tests every strategy must pass before it may appear on a leaderboard or influence a stake.</p>
+
+<h2>Gates (10)</h2>
+<p class="lede">A strategy is a candidate until it passes every gate. The gates exist to make it expensive
+to be fooled: sample size, chronology, multiple-testing, intervals and exposure each remove a different way
+that luck masquerades as skill.</p>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Gate</th><th>Name</th><th>Requirement</th><th>What it removes</th><th>State</th><th>Evidence / what flips it</th></tr></thead><tbody>
+<tr><td><b>G-0</b></td><td>Pre-registration</td><td>Rule, sample definition and stakes frozen in a committed ledger before any outcome is seen.</td><td>Removes the ability to keep redefining the bet until it works.</td><td><span class="badge v">PASS</span></td><td>hub/data/prereg.json committed with the strategies; git SHA is the timestamp</td></tr>
+<tr><td><b>G-1</b></td><td>Data integrity</td><td>Every input row has an official source and passes the row-source gate.</td><td>Prevents a signal that is really a transcription error.</td><td><span class="badge v">PASS</span></td><td>345/345 injury rows re-verified field-for-field; 32/32 standings rows; verify_hub.py 0 failures</td></tr>
+<tr><td><b>G-2</b></td><td>Minimum sample</td><td>&gt;= 300 settled bets and &gt;= 3 seasons per strategy.</td><td>At n=30 the 95% CI on a 55% hit rate is about +/-18 points - pure noise.</td><td><span class="badge b">FAIL</span></td><td>0 settled bets exist; flips when a results archive is loaded (S-03)</td></tr>
+<tr><td><b>G-3</b></td><td>Chronological walk-forward</td><td>Fit on season t, test on t+1; no shuffling, no leakage.</td><td>Stops the model recognising the past it was fitted on.</td><td><span class="badge b">BLOCKED</span></td><td>needs &gt;= 3 seasons of results; no data</td></tr>
+<tr><td><b>G-4</b></td><td>Out-of-sample edge over baseline</td><td>Beat a naive baseline (home -2.5 / total 45.0) and a market-closing-line benchmark on untouched data.</td><td>A strategy must beat luck AND the market's aggregate information.</td><td><span class="badge b">BLOCKED</span></td><td>needs closing prices (S-02)</td></tr>
+<tr><td><b>G-5</b></td><td>Multiple-testing control</td><td>Benjamini-Hochberg FDR at 10% across all strategies evaluated in a window, and report the number of variants tried.</td><td>The more you look, the more you find; the correction prices that in.</td><td><span class="badge u">NOT RUN</span></td><td>0 strategies to test; the correction is registered in the ledger and will be applied to whatever is tested</td></tr>
+<tr><td><b>G-6</b></td><td>Uncertainty reporting</td><td>Bootstrap 95% CI on ROI, CLV and hit rate for every published number.</td><td>A point estimate with no interval is how luck looks like skill.</td><td><span class="badge p">PARTIAL</span></td><td>Correlation intervals are published; bet-level CIs blocked on outcomes</td></tr>
+<tr><td><b>G-7</b></td><td>Deflated Sharpe / PBO</td><td>Deflate the Sharpe ratio for the number of trials and compute probability of backtest overfitting on the full search.</td><td>Directly answers 'is this the best of a thousand lucky variants?'</td><td><span class="badge b">BLOCKED</span></td><td>needs a real backtest (G-3)</td></tr>
+<tr><td><b>G-8</b></td><td>Correlation and exposure integrity</td><td>Legs of any parlay must have a documented dependence term; simultaneous exposure across correlated games capped.</td><td>Stops a 'diversified' ticket that is one bet wearing three hats.</td><td><span class="badge p">PARTIAL</span></td><td>Structure defined and applied to ST-06/ST-07; numeric dependence blank (F-04)</td></tr>
+<tr><td><b>G-9</b></td><td>Capacity and cost</td><td>Model the vig/breakeven and the stake at which the edge disappears before promotion.</td><td>An edge you cannot bet at size is not an edge.</td><td><span class="badge b">BLOCKED</span></td><td>needs vig data (S-02)</td></tr>
+</tbody></table>
+</div>
+<section class="callout"><h2>Current verdict</h2>
+<p><b>0 of 12 strategies are leaderboard-eligible.</b> G-0 and G-1 pass - the rules are frozen
+and the inputs are verified field-for-field. G-2 fails on the only ground that matters: there is not one
+settled bet in the repository, because there are no prices and no results. That is a data gap, not an
+analysis gap; S-02 and S-03 close it.</p></section>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

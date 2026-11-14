@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html" class=on">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Executive summary</h1>
+<p class="lede">One page: what is verified, what is derived, what is blocked, and the four decisions that change the roadmap.</p>
+
+<h2>What the data says today</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Topic</th><th>Finding</th><th>Status</th><th>Where</th></tr></thead><tbody>
+<tr><td>Data quality</td><td>All 345 injury rows and 32 standings rows were re-read from the official pages this session and reconciled field for field</td><td><span class="badge v">VERIFIED</span></td><td>verification log</td></tr>
+<tr><td>Model</td><td>13 of 13 unplayed Week-10 games priced; league average 22.96 points per team-game; home win pct 0.4927 (95% CI 0.409-0.5764) over 137 games</td><td><span class="badge d">DERIVED</span></td><td>originated lines</td></tr>
+<tr><td>Largest injury shift</td><td>SEA@LV: +6.46 points, moving the model line to +1.08</td><td><span class="badge d">DERIVED</span></td><td>originated lines</td></tr>
+<tr><td>Injury signal</td><td>2 games with a shift of 3.5+ points, 3 with 1.5-3.5; the rest have no material shift</td><td><span class="badge d">DERIVED</span></td><td>originated lines</td></tr>
+<tr><td>Lineup deficiency</td><td>18 clubs must start a non-first-string player at 39 positions; 22 of those are on offence (QB, RB, WR, TE, O-line)</td><td><span class="badge d">DERIVED</span></td><td>depth &amp; deficiencies</td></tr>
+<tr><td>Luck</td><td>Net points per game explains r2=0.771 of win percentage; the Pythagorean residual has sd 1.064 wins, so a record can be +/-2 wins of luck with no change in team quality</td><td><span class="badge d">DERIVED</span></td><td>luck decomposition</td></tr>
+<tr><td>Correlation</td><td>8 coefficients computed with 95% intervals; the home-vs-road form correlation is only r=0.3501, so venue form is not portable</td><td><span class="badge p">PARTIAL</span></td><td>correlation</td></tr>
+<tr><td>Strategy pipeline</td><td>12 strategies registered and frozen in a committed ledger; none can be scored because G-2 (minimum sample) cannot see a single settled bet</td><td><span class="badge b">BLOCKED</span></td><td>strategies</td></tr>
+<tr><td>Blocker</td><td>No market prices and no game log exist in the repository; these two inputs unlock CLV, ROI, calibration, and every gate after G-2</td><td><span class="badge u">UNVERIFIED</span></td><td>flagged F-01, F-02</td></tr>
+<tr><td>Compliance</td><td>Originating a betting market and paying contest prizes needs legal review in the owner's jurisdiction before any reward is real</td><td><span class="badge b">BLOCKED</span></td><td>Q-13, F-07</td></tr>
+</tbody></table>
+</div>
+<h2>Decisions this project needs from you</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Decision</th><th>Why it is needed</th><th>If unanswered</th></tr></thead><tbody>
+<tr><td>Choose a price source class</td><td>Without any market price the site can never tell you whether our line disagrees with the market, which is the only external check a line model has</td><td>Board publishes as model-only with blank market columns</td></tr>
+<tr><td>Approve the game-log and prop-archive load</td><td>Every gate from G-2 onward, the correlation of prop legs, and any calibrated injury cost depend on it</td><td>Model keeps assumed parameters; leaderboard stays empty</td></tr>
+<tr><td>Rule on rewards</td><td>A funded leaderboard is a contest, and in some jurisdictions that is regulated activity; nothing in the repo establishes a prize</td><td>All reward amounts stay notional/blank</td></tr>
+<tr><td>Confirm the archive policy</td><td>The overlapping site trees listed on hub/archive.html publish different numbers for the same fact</td><td>hub/ stays canonical, older trees labelled ARCHIVE</td></tr>
+</tbody></table>
+</div>
+<h2>What is deliberately not claimed</h2>
+<p class="lede">No accuracy figure, no ROI, no edge, no "best bet", no populated leaderboard, and no
+assertion that any player is available or unavailable beyond what the official designation says. Those
+cells are blank because the inputs do not exist yet - not because they were checked and found empty.</p>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

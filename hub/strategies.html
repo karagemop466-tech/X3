@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategies &amp; signals - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html" class=on">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Strategies &amp; signals</h1>
+<p class="lede">Twelve registered, falsifiable strategy definitions covering singles, props, prop combos, parlays, model evaluation and staking.</p>
+
+<h2>Registered strategies (12)</h2>
+<p class="lede">These are pre-registered hypotheses: an entry rule, an exit rule and a data requirement,
+committed before any outcome is observed. None of them claims an edge yet, and none is scored - see the
+gates page for what blocks each one.</p>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>ID</th><th>Family</th><th>Hypothesis</th><th>Entry rule</th><th>Exit / settlement</th><th>Data required</th><th>Signal source</th><th>Gate state</th></tr></thead><tbody>
+<tr><td><b>ST-01</b></td><td>Single - side</td><td><b>Injury-shock fade</b></td><td>Bet the opponent when a club's model line moves &gt;= 3.5 points because of officially designated absences of 1st-string players, and the movement is not matched by the market move.</td><td>Settle at game final; one unit per game, no doubling.</td><td>Game log + closing prices + 4 seasons of Wednesday/Friday designations</td><td>Official injury report x club charts (this site)</td><td><span class="badge b">BLOCKED</span> no prices/results</td></tr>
+<tr><td><b>ST-02</b></td><td>Single - side</td><td><b>Pythagorean regression</b></td><td>Fade teams whose actual wins exceed Pythagorean wins by &gt;= 1.5 wins, and take teams below by the same margin, when the line has not moved with the underlying rating.</td><td>Settle at game final.</td><td>Standings (have) + prices (missing) + 7 seasons for stability</td><td>hub/correlation.html luck table (DERIVED)</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-03</b></td><td>Single - total</td><td><b>Backup-QB total under</b></td><td>When a club's chart QB1 is officially Out and the QB2 has &lt; 200 career snaps, take the under of that club's team total contribution.</td><td>Settle at game final.</td><td>Charts (partial) + report (have) + snaps (have via nfl.com/stats) + prices (missing)</td><td>Lineup deficiency index (this site)</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-04</b></td><td>Single - side</td><td><b>Offensive-line collapse</b></td><td>When &gt;= 2 chart OL starters (incl. the centre) are Out/Doubtful, take the opponent's side in games where the opponent's pass-rush unit is fully available.</td><td>Settle at game final.</td><td>Chart positions + report + game log</td><td>hub/depth.html (e.g. IND, NO, SEA, TEN this week)</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-05</b></td><td>Single - prop combo</td><td><b>Goal-to-go rush stack</b></td><td>Combine RB1 'anytime TD' with 'over 65.5 rushing yards' only when the opponent is ranked in the bottom third on red-zone defence per play.</td><td>Settle per league prop settlement rules.</td><td>Prop prices + red-zone defence splits + snap counts</td><td>nfl.com/stats (have) + prop archive (missing)</td><td><span class="badge b">BLOCKED</span> no prop archive</td></tr>
+<tr><td><b>ST-06</b></td><td>Parlay - same game</td><td><b>Correlated game-script parlay</b></td><td>Two legs priced from one joint simulation of the game (spread + team total), with the dependence term estimated from the model's own simulated games, not from market prices alone.</td><td>Settle both legs at game final.</td><td>Game-level simulation + prices</td><td>Model margin distribution</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-07</b></td><td>Parlay - cross game</td><td><b>Same-slate fade basket</b></td><td>Up to 3 injury-shock fades within one betting window; legs must be independent by construction (different games, no shared total exposure).</td><td>Settle at game final; a cancelled leg voids only that leg.</td><td>As ST-01 + slate scheduling data</td><td>Official injury report</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-08</b></td><td>Single - side</td><td><b>Rest-day asymmetry</b></td><td>After a short week (&lt;= 4 rest days) travelling from a primetime game, fade the rested team only when the spread exceeds the model line by &lt; 1.5 points.</td><td>Settle at game final.</td><td>Game log with dates/venues (missing)</td><td>Schedule data</td><td><span class="badge b">BLOCKED</span> no game log</td></tr>
+<tr><td><b>ST-09</b></td><td>Single - market check</td><td><b>Line-move vs news check</b></td><td>Flag games where the market moved &gt;= 2.5 points with no corresponding official designation; treat as a data-integrity signal first and a trade only after verification.</td><td>No bet by default; review only.</td><td>Prices + report timestamps</td><td>Price snapshot delta</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-10</b></td><td>Evaluation</td><td><b>Cross-fitted model-quality benchmark</b></td><td>Score the originated lines themselves with log-loss and MAE against outcomes on a chronological walk-forward; a strategy may not be promoted until the underlying model beats the naive baseline (home -2.5 / total 45.0).</td><td>n/a - evaluation only.</td><td>Game log + outcomes</td><td>This site's model</td><td><span class="badge b">BLOCKED</span> no results</td></tr>
+<tr><td><b>ST-11</b></td><td>Single - side</td><td><b>Alternate-market arbitrage of our own line</b></td><td>Trade only when our line and the market differ by more than the model's own standard error (not a fixed point threshold), so bet size scales with genuine uncertainty.</td><td>Settle at game final.</td><td>Prices + model error estimate</td><td>Model residuals</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-12</b></td><td>Staking</td><td><b>Fractional-Kelly with model-error haircut</b></td><td>Stake = 0.25 x Kelly fraction computed on the interval, using the lower confidence bound of the edge rather than the point estimate, capped at 2% of bankroll per bet.</td><td>Applies to every strategy above.</td><td>Prices + edge intervals</td><td>Gate CI outputs</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+</tbody></table>
+</div>
+<h2>Pre-registration ledger</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Artifact</th><th>Content</th><th>Why it matters</th></tr></thead><tbody>
+<tr><td><code>hub/data/prereg.json</code></td><td>strategy ids, entry/exit rules, model parameters, input hashes, frozen 2026-11-14</td><td>the git commit that carries it is the timestamp; changing a rule later creates a new registration, it cannot overwrite this one</td></tr>
+<tr><td>git history</td><td>the git blob SHA and commit date on <code>main</code></td><td>an outside party can confirm the rules were written before the outcomes existed</td></tr>
+</tbody></table>
+</div>
+<p class="note">Regenerated by <code>tools/build_hub.py</code>; the ledger is rebuilt from the same source
+rows as this table so the two can never disagree.</p>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

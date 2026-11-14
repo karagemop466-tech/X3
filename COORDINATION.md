@@ -598,4 +598,64 @@ Pages deploy.
 - **To `arena/361edc3f-x3`:** your PR #19 edits `docs/index.html` + `scripts/build_site.py`. No objection;
   `hub/` does not depend on either. Please do not edit root `index.html` (this session repoints it to `hub/`).
 - **To `arena/972ad7a5-x3`:** root `index.html` currently redirects to `lab/index.html`; the unified landing
-  page replaces that redirect. `lab/` stays intact and reachable from `hub/legacy.html`.
+  page replaces that redirect. `lab/` stays intact and reachable from `hub/archive.html`.
+
+
+### Completion log - arena/e9b492ab-x3 (2026-11-14)
+
+**Delivered.** The integrated hub is built and gated.
+
+| # | Task | Status | Files | Evidence |
+|---|------|--------|-------|----------|
+| U1 | Repo review of prior sessions | **done** | `hub/repo-review.html`, `hub/archive.html` | every prior tree inventoried; duplication and count conflicts stated, not silently rewritten |
+| U2 | Live re-verification from official pages | **done** | `data/hub/injuries_2026_wk10.csv` (345 rows), `data/hub/standings_2026_thru_wk9.csv` (32 rows) | re-transcribed field-for-field from `nfl.com/injuries/league/2026/reg10` and `nfl.com/standings/league/2026/REG`; 0 field mismatches on injuries, 1 open conflict on standings (TB division, F-11) |
+| U3 | Line origination model | **done** | `tools/x3_engine.py`, `hub/lines.html`, `hub/data/*.json` | 13 unplayed Week-10 games priced (spreads + totals), model `X3-v1`, every parameter in one published `PARAMS` dict; market columns blank by policy |
+| U4 | Strategies + signals | **done** | `hub/strategies.html` | 12 registered hypotheses across singles / parlays / prop combos, each with entry rule, exit rule, data requirement and gate state |
+| U5 | Gates, luck, correlation | **done** | `hub/gates.html`, `hub/luck.html`, `hub/correlation.html` | 10 gates (G-1 adopted, G-2 FAIL for want of settled bets); 8 coefficients recomputed with Pearson + Spearman + Fisher-z CI at n=32; Pythagorean luck residual sd 1.064 wins, R² 0.771 |
+| U6 | Leaderboard design | **done (deliberately empty)** | `hub/leaderboard.html` | categories, tiebreaks, anti-luck controls and 4 award rows specified; bet/ROI/CLV/Sharpe cells blank because no bet can be settled |
+| U7 | Injury + depth tracking | **done** | `hub/injuries.html`, `hub/depth.html` | 345 rows published verbatim with per-club rollup; 39 first-string vacancies at 18 clubs; 49 report rows with no chart match; 31/32 club charts readable, 26 of those undated |
+| U8 | Exec summary / requirements / questions / suggestions | **done** | `hub/executive-summary.html`, `hub/requirements.html`, `hub/questions.html`, `hub/suggestions.html` | 25 requirements, 16 questions (7 blocking), 14 suggestions, 3 decision paths |
+| U9 | Flagged for review | **done** | `hub/flagged.html` | 16 open items with severity, a real evidence link and the action that closes each one |
+| U10 | Integration | **done here, deploy pending merge** | 18 `hub/*.html`, root `index.html`, `.github/workflows/pages.yml` | see below |
+
+**Row-source gate (new, enforced in CI).** `tools/verify_hub.py` fails the build unless every row of
+every data table on every page either (a) carries a link to an approved host — `nfl.com`,
+`operations.nfl.com`, this repository, or a club domain taken from the repo's own team registry — or
+(b) states `UNVERIFIED` / `DERIVED` / an explicit no-data marker. Tables that describe the site itself
+(navigation, requirement registers, counts computed from the data files) are exempt, but the exemption
+is visible in the markup as `class="k-meta"`, so it is auditable rather than silent. Current result:
+**532 data rows checked, 185 register rows exempt, 0 failures, 0 warnings.** The gate was
+fault-injected and confirmed to catch an unsourced row before it was trusted.
+
+**Determinism.** `python3 tools/x3_engine.py && python3 tools/build_hub.py` twice in a row produces
+byte-identical HTML and JSON (sha256 over all 18 pages + assets + data compared). CI now rebuilds and
+runs `git diff --exit-code -- hub index.html data/hub`, so a committed page that is not the current
+build of the CSVs fails the workflow.
+
+**Corrections made during this session (recorded rather than hidden):**
+- the margin formula initially added the injured team's cost to the wrong side; found by hand-working
+  BUF@NYJ, not by a test. All numbers produced before that fix are void.
+- `home/road split imbalance` was reported mid-session as a defect in the official columns; that was
+  **my** arithmetic error. The columns balance (137 = 137) and every club satisfies
+  `home + road = overall` (32/32), so the split is used as a measurement.
+- the home win pct is **0.4927** (95% CI 0.409–0.576), i.e. no measurable home-field advantage in 2026
+  data to date; the model therefore applies **0.0 pts** and publishes a sensitivity grid instead of a
+  positive HFA number.
+- two prose counts that had been typed by hand were replaced with values computed at build time
+  (offensive vacancies: typed 10, actual 22; undated charts: typed 27, actual 26 of 31). This is the
+  same class of drift that earlier sessions shipped, and it is why no number may be typed into prose.
+- one transcription defect normalised: `SEA@LV` Jaxon Smith-Njigba carried kickoff slot 16:15 while the
+  same game table printed 16:05. Fixed as a **per-game rule** (one kickoff per game; schedule page
+  confirms 4:05 PM ET for SEA@LV and LAR@AZ), not as a one-row edit.
+- no synthetic player URLs. An earlier draft linked every player to a constructed
+  `nfl.com/players/<slug>/` address; that was removed, since a fabricated deep link is worse than no
+  link. Only URLs actually fetched this session are linked.
+
+**Still blank on purpose:** market spread/total, CLV, ROI, settled bets, leaderboard rows, prop prices.
+No official source publishes 2026 lines or prop prices (`api.nfl.com` returns 401; the Week-11 injury
+selector redirects to Week 10), and the only third-party price pages live in `x3lab/`, which stays an
+archive rather than being adopted as a price source. Closing these needs the owner's price-source
+decision (Q-01) and the game-log load (S-03).
+
+**Requests to other sessions (unchanged, restated):** do not edit root `index.html` or `hub/`;
+`scripts/check_*.py` and the `docs/` generator were left untouched by this session.

@@ -1,0 +1,219 @@
+{
+ "registered_at": "2026-11-14",
+ "session": "arena/e9b492ab-x3",
+ "model": "X3-v1",
+ "params": {
+  "shrinkage_games": 4.0,
+  "hfa_points_used": 0.0,
+  "hfa_conversion_sigma": 13.5,
+  "pyth_k": 2.37,
+  "status_weight": {
+   "Out": 1.0,
+   "Doubtful": 0.9,
+   "Questionable": 0.35,
+   "": 0.0
+  },
+  "string_weight": {
+   "1": 1.0,
+   "2": 0.6,
+   "3": 0.3,
+   "4": 0.15,
+   "0": 0.8
+  }
+ },
+ "pos_cost": {
+  "QB": 4.0,
+  "RB": 1.5,
+  "WR": 1.1,
+  "TE": 0.9,
+  "FB": 0.3,
+  "C": 1.2,
+  "G": 1.0,
+  "T": 1.0,
+  "OL": 1.0,
+  "LG": 1.0,
+  "RG": 1.0,
+  "LT": 1.0,
+  "RT": 1.0,
+  "DE": 1.0,
+  "DT": 0.8,
+  "LB": 0.6,
+  "EDGE": 1.0,
+  "CB": 0.9,
+  "S": 0.7,
+  "DL": 0.7,
+  "K": 0.1,
+  "P": 0.1,
+  "LS": 0.05
+ },
+ "inputs": {
+  "standings_sha": "169f3819ae795dc8",
+  "injuries_sha": "cf62be62e175e22e"
+ },
+ "strategies": [
+  {
+   "id": "ST-01",
+   "family": "Single - side",
+   "name": "Injury-shock fade",
+   "entry": "Bet the opponent when a club's model line moves >= 3.5 points because of officially designated absences of 1st-string players, and the movement is not matched by the market move.",
+   "settlement": "Settle at game final; one unit per game, no doubling.",
+   "data_required": "Game log + closing prices + 4 seasons of Wednesday/Friday designations"
+  },
+  {
+   "id": "ST-02",
+   "family": "Single - side",
+   "name": "Pythagorean regression",
+   "entry": "Fade teams whose actual wins exceed Pythagorean wins by >= 1.5 wins, and take teams below by the same margin, when the line has not moved with the underlying rating.",
+   "settlement": "Settle at game final.",
+   "data_required": "Standings (have) + prices (missing) + 7 seasons for stability"
+  },
+  {
+   "id": "ST-03",
+   "family": "Single - total",
+   "name": "Backup-QB total under",
+   "entry": "When a club's chart QB1 is officially Out and the QB2 has < 200 career snaps, take the under of that club's team total contribution.",
+   "settlement": "Settle at game final.",
+   "data_required": "Charts (partial) + report (have) + snaps (have via nfl.com/stats) + prices (missing)"
+  },
+  {
+   "id": "ST-04",
+   "family": "Single - side",
+   "name": "Offensive-line collapse",
+   "entry": "When >= 2 chart OL starters (incl. the centre) are Out/Doubtful, take the opponent's side in games where the opponent's pass-rush unit is fully available.",
+   "settlement": "Settle at game final.",
+   "data_required": "Chart positions + report + game log"
+  },
+  {
+   "id": "ST-05",
+   "family": "Single - prop combo",
+   "name": "Goal-to-go rush stack",
+   "entry": "Combine RB1 'anytime TD' with 'over 65.5 rushing yards' only when the opponent is ranked in the bottom third on red-zone defence per play.",
+   "settlement": "Settle per league prop settlement rules.",
+   "data_required": "Prop prices + red-zone defence splits + snap counts"
+  },
+  {
+   "id": "ST-06",
+   "family": "Parlay - same game",
+   "name": "Correlated game-script parlay",
+   "entry": "Two legs priced from one joint simulation of the game (spread + team total), with the dependence term estimated from the model's own simulated games, not from market prices alone.",
+   "settlement": "Settle both legs at game final.",
+   "data_required": "Game-level simulation + prices"
+  },
+  {
+   "id": "ST-07",
+   "family": "Parlay - cross game",
+   "name": "Same-slate fade basket",
+   "entry": "Up to 3 injury-shock fades within one betting window; legs must be independent by construction (different games, no shared total exposure).",
+   "settlement": "Settle at game final; a cancelled leg voids only that leg.",
+   "data_required": "As ST-01 + slate scheduling data"
+  },
+  {
+   "id": "ST-08",
+   "family": "Single - side",
+   "name": "Rest-day asymmetry",
+   "entry": "After a short week (<= 4 rest days) travelling from a primetime game, fade the rested team only when the spread exceeds the model line by < 1.5 points.",
+   "settlement": "Settle at game final.",
+   "data_required": "Game log with dates/venues (missing)"
+  },
+  {
+   "id": "ST-09",
+   "family": "Single - market check",
+   "name": "Line-move vs news check",
+   "entry": "Flag games where the market moved >= 2.5 points with no corresponding official designation; treat as a data-integrity signal first and a trade only after verification.",
+   "settlement": "No bet by default; review only.",
+   "data_required": "Prices + report timestamps"
+  },
+  {
+   "id": "ST-10",
+   "family": "Evaluation",
+   "name": "Cross-fitted model-quality benchmark",
+   "entry": "Score the originated lines themselves with log-loss and MAE against outcomes on a chronological walk-forward; a strategy may not be promoted until the underlying model beats the naive baseline (home -2.5 / total 45.0).",
+   "settlement": "n/a - evaluation only.",
+   "data_required": "Game log + outcomes"
+  },
+  {
+   "id": "ST-11",
+   "family": "Single - side",
+   "name": "Alternate-market arbitrage of our own line",
+   "entry": "Trade only when our line and the market differ by more than the model's own standard error (not a fixed point threshold), so bet size scales with genuine uncertainty.",
+   "settlement": "Settle at game final.",
+   "data_required": "Prices + model error estimate"
+  },
+  {
+   "id": "ST-12",
+   "family": "Staking",
+   "name": "Fractional-Kelly with model-error haircut",
+   "entry": "Stake = 0.25 x Kelly fraction computed on the interval, using the lower confidence bound of the edge rather than the point estimate, capped at 2% of bankroll per bet.",
+   "settlement": "Applies to every strategy above.",
+   "data_required": "Prices + edge intervals"
+  }
+ ],
+ "gates": [
+  {
+   "id": "G-0",
+   "name": "Pre-registration",
+   "threshold": "Rule, sample definition and stakes frozen in a committed ledger before any outcome is seen.",
+   "status_at_registration": "PASS"
+  },
+  {
+   "id": "G-1",
+   "name": "Data integrity",
+   "threshold": "Every input row has an official source and passes the row-source gate.",
+   "status_at_registration": "PASS"
+  },
+  {
+   "id": "G-2",
+   "name": "Minimum sample",
+   "threshold": ">= 300 settled bets and >= 3 seasons per strategy.",
+   "status_at_registration": "FAIL"
+  },
+  {
+   "id": "G-3",
+   "name": "Chronological walk-forward",
+   "threshold": "Fit on season t, test on t+1; no shuffling, no leakage.",
+   "status_at_registration": "BLOCKED"
+  },
+  {
+   "id": "G-4",
+   "name": "Out-of-sample edge over baseline",
+   "threshold": "Beat a naive baseline (home -2.5 / total 45.0) and a market-closing-line benchmark on untouched data.",
+   "status_at_registration": "BLOCKED"
+  },
+  {
+   "id": "G-5",
+   "name": "Multiple-testing control",
+   "threshold": "Benjamini-Hochberg FDR at 10% across all strategies evaluated in a window, and report the number of variants tried.",
+   "status_at_registration": "NOT RUN"
+  },
+  {
+   "id": "G-6",
+   "name": "Uncertainty reporting",
+   "threshold": "Bootstrap 95% CI on ROI, CLV and hit rate for every published number.",
+   "status_at_registration": "PARTIAL"
+  },
+  {
+   "id": "G-7",
+   "name": "Deflated Sharpe / PBO",
+   "threshold": "Deflate the Sharpe ratio for the number of trials and compute probability of backtest overfitting on the full search.",
+   "status_at_registration": "BLOCKED"
+  },
+  {
+   "id": "G-8",
+   "name": "Correlation and exposure integrity",
+   "threshold": "Legs of any parlay must have a documented dependence term; simultaneous exposure across correlated games capped.",
+   "status_at_registration": "PARTIAL"
+  },
+  {
+   "id": "G-9",
+   "name": "Capacity and cost",
+   "threshold": "Model the vig/breakeven and the stake at which the edge disappears before promotion.",
+   "status_at_registration": "BLOCKED"
+  }
+ ],
+ "promises": [
+  "No strategy in this list may be scored on data that predates its registration.",
+  "Changes to an entry rule create a new id; they do not edit this one.",
+  "Numbers with no official source stay blank; they are never estimated to make a table look complete.",
+  "Rewards remain notional until an owner decision and legal review exist."
+ ]
+}

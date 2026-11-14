@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo review - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html" class=on">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Repo review</h1>
+<p class="lede">Every prior session's published tree, inventoried and assessed - what holds up, what conflicts, and what this session did about it.</p>
+
+<h2>Tree inventory (13 areas) - what each contains and whether it was verified</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Path</th><th>Owner session</th><th>What it contains</th><th>Assessment</th><th>State</th></tr></thead><tbody>
+<tr><td><code>(root)</code></td><td>mixed: category pages from two sessions + a redirect</td><td>8 standalone category pages, inline styles, tables with sources</td><td>superseded by hub/; index.html now the landing page</td><td><span class="badge p">PARTIAL</span></td></tr>
+<tr><td><code>docs/</code></td><td>arena/0c38f465-x3</td><td>13-page CSV-driven dashboard, 352 rows</td><td>archive; its Week-10 injury count (205) disagrees with the official page</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>docs/data/</code></td><td>arena/4856379c-x3</td><td>canonical CSVs for their own tree (345 injury rows, 32 standings rows)</td><td>archive; row counts agree with this session's independent read</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>pages/</code></td><td>arena/1a771fcd-x3</td><td>4 pages: exec summary, suggestions, injuries, flagged</td><td>archive; all data cells blank - produced when no NFL page could be read</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>site/</code></td><td>arena/1a771fcd-x3</td><td>single index page</td><td>archive; dead end in navigation</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>lab/ + assets/</code></td><td>arena/972ad7a5-x3</td><td>11-page JS-driven decision lab</td><td>archive; was the root redirect target until this PR</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>dashboard/</code></td><td>arena/7e632805-x3</td><td>18-page dashboard with 345 injury rows, 31 charts, 76 starter-absent positions</td><td>archive; closest prior design to this one; carries the TB data error (F-11)</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>x3lab/</code></td><td>arena/e1c332ce-x3</td><td>13-page lab with model v0.1, gates G-0..G-8, third-party prices</td><td>archive; the only tree that recorded market prices, but from non-official sources</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>legacy/</code></td><td>arena/0c38f465-x3</td><td>the original root landing page</td><td>archive</td><td><span class="badge p">ARCHIVE</span></td></tr>
+<tr><td><code>data/</code></td><td>several sessions</td><td>CSVs: injury 205-row snapshot, questions, suggestions, flags</td><td>partially superseded; &lt;code&gt;data/hub/&lt;/code&gt; added by this session as the canonical inputs</td><td><span class="badge p">PARTIAL</span></td></tr>
+<tr><td><code>tools/</code></td><td>several sessions</td><td>4 generators + 3 checkers; tools/nfl_data.py is a 1,527-line data module</td><td>kept; new files namespaced (x3_engine, build_hub, verify_hub)</td><td><span class="badge p">ACTIVE</span></td></tr>
+<tr><td><code>scripts/</code></td><td>several sessions</td><td>legacy builders and checks wired into CI</td><td>kept; unchanged by this session</td><td><span class="badge p">ACTIVE</span></td></tr>
+<tr><td><code>.github/workflows/pages.yml</code></td><td>arena/1a771fcd-x3</td><td>Pages deploy + 4 validation steps</td><td>one step added by this PR for hub/; other steps untouched</td><td><span class="badge p">ACTIVE</span></td></tr>
+</tbody></table>
+</div>
+<h2>The structural problem, and the fix</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Symptom</th><th>Detail</th><th>Resolution here</th></tr></thead><tbody>
+<tr><td>Seven landing pages</td><td>root, docs/, pages/, site/, lab/, dashboard/, x3lab/ each have an index.html with a different set of numbers for the same week</td><td>root index.html is now one landing page; the others are reachable but labelled ARCHIVE</td></tr>
+<tr><td>Same fact, different values</td><td>Week-10 injury rows published as 205, 345 and 345; TB division record as 1-2-0 vs the official 2-0-0; four different team-code conventions</td><td>canonical CSVs in data/hub/ with a documented verification log; disagreements published as F-11, F-12, F-15</td></tr>
+<tr><td>Duplicate data plumbing</td><td>4 site generators, 3 row-source checkers, 2 CSS files per tree, 3 separate 'verified data' modules</td><td>one engine, one builder, one checker for hub/ (tools/x3_engine.py, tools/build_hub.py, tools/verify_hub.py)</td></tr>
+<tr><td>CI blind spots</td><td>the Pages workflow validated root/pages/site/lab and docs/ but not dashboard/ or x3lab/, so the two biggest trees were never link-checked in CI</td><td>hub/ validated in CI; the older trees remain unvalidated (documented, not silently fixed in other sessions' files)</td></tr>
+<tr><td>Unreachable work</td><td>docs/pages/, site/index.html and legacy/ have no inbound link from the previous landing page</td><td>hub/archive.html links every tree so nothing is lost to a reader</td></tr>
+</tbody></table>
+</div>
+<h2>Findings from reading the prior data modules line by line</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Check</th><th>Result</th></tr></thead><tbody>
+<tr><td>Were prior injury rows fabricated?</td><td>No. All 345 rows reproduced exactly, field for field, from a fresh read of the official page. The transcription discipline in this repo is genuinely high.</td></tr>
+<tr><td>Were prior standings rows fabricated?</td><td>No. 32/32 rows match the official page except one division record (TB), which disagrees by 3 games - a transcription slip, not an invention.</td></tr>
+<tr><td>Do the older trees overstate anything?</td><td>They carry the right caveat style (blank + flagged), but two trees publish row counts that no longer match their own data files, and one states 205 rows against the official 345.</td></tr>
+<tr><td>Does anything on the site claim a betting edge?</td><td>No. Price tables that exist in x3lab/ come from third-party sportsbook pages, not official sources, and are labelled as such; that tree stays an archive rather than being adopted as the canonical price source.</td></tr>
+<tr><td>Is anything irreversible or unsafe?</td><td>No credentials, no secrets, no destructive automation. No LICENSE file exists (F-16), and Pages settings cannot be changed with the repo token (prior sessions hit HTTP 403), so the site keeps being served from the repo root.</td></tr>
+</tbody></table>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

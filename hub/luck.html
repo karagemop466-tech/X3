@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luck decomposition - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html" class=on">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
+<main>
+<h1>Luck decomposition</h1>
+<p class="lede">Separating what the points say from what the wins say, so that 'skill' has to clear a measured noise floor.</p>
+
+<h2>How much of a record is not skill</h2>
+<p class="lede">Pythagorean wins = g * PF^k/(PF^k+PA^k), k=2.37. Luck residual = actual wins - Pythagorean wins. R^2 of net points per game on win pct is the share of record variance the scoring differential already explains; the remainder is outcome noise.</p>
+<div class="tblwrap"><table class="k-data" id="lucktbl">
+<thead><tr><th>Club</th><th>W-L-T</th><th>Pythagorean wins</th><th>Luck residual</th><th>Net PPG</th><th>Source</th></tr></thead><tbody>
+<tr><td>JAX</td><td>6-2-0</td><td>6.55</td><td>-0.55</td><td>+13.50</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>SF</td><td>7-1-0</td><td>5.80</td><td>+1.20</td><td>+9.88</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>BUF</td><td>7-1-0</td><td>5.42</td><td>+1.58</td><td>+8.62</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>CIN</td><td>6-2-0</td><td>5.43</td><td>+0.57</td><td>+8.12</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>KC</td><td>6-2-0</td><td>5.55</td><td>+0.45</td><td>+7.38</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>CHI</td><td>7-2-0</td><td>5.89</td><td>+1.11</td><td>+6.33</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>PIT</td><td>6-2-0</td><td>5.03</td><td>+0.97</td><td>+4.50</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>SEA</td><td>5-4-0</td><td>5.65</td><td>-0.65</td><td>+4.44</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>DET</td><td>6-2-0</td><td>4.75</td><td>+1.25</td><td>+4.12</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>MIN</td><td>6-2-0</td><td>5.06</td><td>+0.94</td><td>+3.75</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>LAR</td><td>5-4-0</td><td>5.38</td><td>-0.38</td><td>+3.67</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>GB</td><td>6-3-0</td><td>5.15</td><td>+0.85</td><td>+2.78</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>TB</td><td>3-6-0</td><td>5.17</td><td>-2.17</td><td>+2.67</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>HOU</td><td>3-5-0</td><td>4.40</td><td>-1.40</td><td>+2.12</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>DEN</td><td>7-2-0</td><td>4.83</td><td>+2.17</td><td>+1.33</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>DAL</td><td>4-5-0</td><td>4.72</td><td>-0.72</td><td>+1.11</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>NYG</td><td>5-3-1</td><td>4.69</td><td>+0.81</td><td>+0.78</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>NE</td><td>5-4-0</td><td>4.60</td><td>+0.40</td><td>+0.44</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>CAR</td><td>3-5-0</td><td>3.55</td><td>-0.55</td><td>-2.50</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>WAS</td><td>3-5-1</td><td>3.82</td><td>-0.32</td><td>-3.00</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>LV</td><td>4-5-0</td><td>3.87</td><td>+0.13</td><td>-3.33</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>NO</td><td>3-5-0</td><td>3.27</td><td>-0.27</td><td>-3.88</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>ATL</td><td>3-6-0</td><td>3.60</td><td>-0.60</td><td>-3.89</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>CLE</td><td>5-4-0</td><td>3.47</td><td>+1.53</td><td>-3.89</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>NYJ</td><td>2-7-0</td><td>3.44</td><td>-1.44</td><td>-4.56</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>BAL</td><td>4-5-0</td><td>3.34</td><td>+0.66</td><td>-5.22</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>TEN</td><td>1-7-0</td><td>2.54</td><td>-1.54</td><td>-6.88</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>IND</td><td>2-7-0</td><td>2.95</td><td>-0.95</td><td>-7.22</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>PHI</td><td>2-7-0</td><td>2.51</td><td>-0.51</td><td>-8.11</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>AZ</td><td>3-6-0</td><td>2.69</td><td>+0.31</td><td>-8.56</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>MIA</td><td>1-7-0</td><td>2.01</td><td>-1.01</td><td>-9.25</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+<tr><td>LAC</td><td>0-8-0</td><td>1.57</td><td>-1.57</td><td>-12.25</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
+</tbody></table>
+</div>
+<h2>Summary statistics</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Statistic</th><th>Value</th><th>Reading</th></tr></thead><tbody>
+<tr><td>R^2, net points per game on win pct</td><td>0.771</td><td>scoring differential explains 77.1% of the variance in records; 22.9% is not explained by it</td></tr>
+<tr><td>sd of luck residual</td><td>1.064 wins</td><td>a typical club is about a win off its &lsquo;true&rsquo; win total by chance alone; two wins is a 2-sigma event</td></tr>
+<tr><td>clubs overperforming by >= 1.5 wins</td><td>BUF, CLE, DEN</td><td>record better than the points say - fade candidates in an <em>hypothesis</em> sense only</td></tr>
+<tr><td>clubs underperforming by <= -1.5 wins</td><td>LAC, TB, TEN</td><td>record worse than the points say</td></tr>
+<tr><td>sample size</td><td>137 games, 274 team-games across 32 clubs</td><td>one snapshot; the regression hypothesis cannot be tested without a second week and results</td></tr>
+</tbody></table>
+</div>
+<section class="callout"><h2>Most / least fortunate</h2>
+<ul><li><b>DEN</b> 7-2-0 is <b>+2.17</b> wins above its Pythagorean win total (4.83)</li><li><b>BUF</b> 7-1-0 is <b>+1.58</b> wins above its Pythagorean win total (5.42)</li><li><b>CLE</b> 5-4-0 is <b>+1.53</b> wins above its Pythagorean win total (3.47)</li><li><b>DET</b> 6-2-0 is <b>+1.25</b> wins above its Pythagorean win total (4.75)</li><li><b>SF</b> 7-1-0 is <b>+1.20</b> wins above its Pythagorean win total (5.8)</li></ul>
+<ul><li><b>TB</b> 3-6-0 is <b>-2.17</b> wins below (5.17)</li><li><b>LAC</b> 0-8-0 is <b>-1.57</b> wins below (1.57)</li><li><b>TEN</b> 1-7-0 is <b>-1.54</b> wins below (2.54)</li><li><b>NYJ</b> 2-7-0 is <b>-1.44</b> wins below (3.44)</li><li><b>HOU</b> 3-5-0 is <b>-1.40</b> wins below (4.4)</li></ul>
+<p><b>Read carefully.</b> 'Luck residual' is a statement about how the points and the wins disagree on one
+date - it is not proof that a team was unlucky, and it is not by itself a tradable signal. Its only
+legitimate use here is as a warning: a 7-2 record and a 5-4 record can describe the same team, so any
+leaderboard that rewards a short record is rewarding a coin.</p></section>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>
