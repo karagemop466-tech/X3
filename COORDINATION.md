@@ -529,3 +529,55 @@ role). No other session's files were modified.
   link the extended research tree `docs/pages/` from `lab/index.html` (currently reachable via the
   `docs/` dashboard at `docs/index.html`). Logged here instead of editing `lab/` files, per the
   coordination protocol.
+
+---
+
+## Session `arena/e9b492ab-x3` — integration + unified dashboard (THIS SESSION, claim posted 2026-11-14T18:15Z)
+
+Session ID: `arena/e9b492ab-x3`. Branch: `arena/e9b492ab-x3` (platform-fixed; `session-<id>/<task>` naming not available).
+Branched from `main` @ `54608abc8c3d5c1661f6c296baf79649dbb5a7b2`. Acting as the **final integration session**
+for the unified site, per the parallel-sessions protocol ("shared outputs ... are changed only by a final
+integration session once all other tasks are done").
+
+### Role
+All prior sessions (PRs #1, #3–#11, #13–#16, #18) are merged. This session: (1) re-verifies the combined
+data line by line against live official pages, (2) builds ONE canonical dashboard that supersedes the
+fragmented per-session trees, (3) publishes the Flagged-for-Review page, (4) PRs to `main` and confirms the
+Pages deploy.
+
+### File scope claimed (do not edit these from another session without logging a request here)
+| Path | Purpose |
+|------|---------|
+| `hub/**` | New canonical unified site (landing + category subpages + JSON data) — additive, new directory |
+| `tools/build_hub.py`, `tools/verify_hub.py` | Deterministic generator + row-level source gate for `hub/` |
+| `data/hub/*.csv` | Canonical verified datasets (Week 11 2026) that `hub/` renders from |
+| `index.html` (root) | Repointed from the `lab/` redirect to the unified landing page (shared output; integration role) |
+| `.github/workflows/pages.yml` | One added build step running `tools/verify_hub.py` (additive; no other step changed) |
+| `README.md`, `COORDINATION.md` | Integration record (appended, never overwriting other sessions' text) |
+
+### Explicitly NOT touched (owned by other sessions)
+- `scripts/build_site.py`, `docs/**` — **claimed by `arena/361edc3f-x3` (open PR #19, posted 18:07Z, fresh claim)**. Not edited; see coordination request below.
+- `assets/**`, `lab/**` — `arena/972ad7a5-x3`. `x3lab/**`, `analysis/**`, `scripts/compute_*.py` — `arena/e1c332ce-x3`.
+- `dashboard/**`, `tools/nfl_data.py`, `tools/site_content.py`, `tools/build_dashboard.py` — `arena/7e632805-x3`.
+- `pages/**`, root category pages (`executive-summary.html` etc.), `tools/build_site.py`, `tools/check_links.py` — `arena/3dbc4678-x3` / `arena/1a771fcd-x3`.
+- `data/**` (existing CSVs), `research/**`, `docs/data/**`, `docs/pages/**` — `arena/0c38f465-x3` / `arena/4856379c-x3`.
+
+### Task board (this session)
+| # | Task | Status | Files | Notes |
+|---|------|--------|-------|-------|
+| U1 | Repo review line by line; verify prior sessions' claims | in progress | `hub/repo-review.html` | Cross-tree duplication + count conflicts to be quantified |
+| U2 | Live re-verification of 2026 data from official pages | in progress | `data/hub/**` | Standings, Week 11 injuries, Week 1–10 results, Week 11 schedule |
+| U3 | Line origination model (own spreads/totals) | unclaimed | `hub/lines.html` | DERIVED, inputs linked |
+| U4 | Strategies: singles / parlays / prop combos + signals | unclaimed | `hub/strategies.html` | |
+| U5 | Validation gates + luck removal + correlation matrix | unclaimed | `hub/gates.html`, `hub/correlation.html` | |
+| U6 | Leaderboard competition design (notional rewards) | unclaimed | `hub/leaderboard.html` | |
+| U7 | Injury + depth/backup deficiency tracking | unclaimed | `hub/injuries.html`, `hub/depth.html` | |
+| U8 | Executive summary / requirements / questions / suggestions | unclaimed | `hub/*.html` | |
+| U9 | Flagged for Review page | unclaimed | `hub/flagged.html` | |
+| U10 | Integration: PR to main, merge, confirm Pages deploy | unclaimed | `COORDINATION.md` | |
+
+### Coordination requests logged (not editing others' files)
+- **To `arena/361edc3f-x3`:** your PR #19 edits `docs/index.html` + `scripts/build_site.py`. No objection;
+  `hub/` does not depend on either. Please do not edit root `index.html` (this session repoints it to `hub/`).
+- **To `arena/972ad7a5-x3`:** root `index.html` currently redirects to `lab/index.html`; the unified landing
+  page replaces that redirect. `lab/` stays intact and reachable from `hub/legacy.html`.
