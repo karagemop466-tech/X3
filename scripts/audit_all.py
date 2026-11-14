@@ -29,7 +29,9 @@ Rules enforced (all hard, exit 1 on any violation):
                            marker — text stating the value cannot be confirmed
                            from an official source (strong markers: UNVERIFIED,
                            no official source, left blank, DERIVED (an explicit
-                           model-output badge, i.e. not a sourced fact), ...;
+                           model-output badge, i.e. not a sourced fact), BLOCKED
+                           (explicitly unusable, with reason — e.g. no prices
+                           exist), ...;
                            weak markers such as pending/proposed/open/n/a count
                            only inside the source cell itself).
                      Headers containing the word "sourced" (e.g. a
@@ -104,6 +106,7 @@ STRONG_RE = re.compile(
     | can\s+never
     | \bflagged\b
     | \bDERIVED\b
+    | \bBLOCKED\b
     | class="[^"]*\b(?:flag|blank|unverif)\b[^"]*
     | 404
     """,
