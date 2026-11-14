@@ -14,13 +14,13 @@
 [PASS] player stats: rows parsed
 [PASS] player stats: headers preserved
 [PASS] player stats: every row has a source_url
-[PASS] schedule: games parsed
-[FAIL] schedule: final scores captured got 1
+[FAIL] schedule: games parsed got 0
+[FAIL] schedule: final scores captured got 0
 [PASS] schedule: every game has both teams
 [PASS] schedule: every game carries its official link
 [PASS] schedule: every game carries a source_url
-[FAIL] schedule: the game week matches the requested week ['https://www.nfl.com/games/patriots-at-lions-2026-reg-10', 'https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10', 'https://www.nfl.com/games/texans-at-browns-2026-reg-10']
-[FAIL] schedule: network and date are captured [{'season': 2026, 'week': 5, 'game_date': '', 'game_time': '', 'game_timezone': '', 'network': 'FOX', 'away_team': 'NE', 'away_team_name': 'New England Patriots', 'away_record': '', 'away_score': '', 'home_team': 'DET', 'home_team_name': 'Detroit Lions', 'home_record': '', 'home_score': '', 'status': '', 'game_url': 'https://www.nfl.com/games/patriots-at-lions-2026-reg-10', 'source_url': 'https://www.nfl.com/schedules/2026/by-week/week-5'}]
+[PASS] schedule: the game week matches the requested week
+[FAIL] schedule: network and date are captured []
 [PASS] depth: positions normalised
 [PASS] depth: QB1 resolved
 [PASS] depth: QB3 resolved
@@ -48,6 +48,6 @@
 [PASS] scoring: empty bets give None metrics
 
 45 passed, 3 failed
-  FAILED: schedule: final scores captured: got 1
-  FAILED: schedule: the game week matches the requested week: ['https://www.nfl.com/games/patriots-at-lions-2026-reg-10', 'https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10', 'https://www.nfl.com/games/texans-at-browns-2026-reg-10']
-  FAILED: schedule: network and date are captured: [{'season': 2026, 'week': 5, 'game_date': '', 'game_time': '', 'game_timezone': '', 'network': 'FOX', 'away_team': 'NE', 'away_team_name': 'New England Patriots', 'away_record': '', 'away_score': '', 'home_team': 'DET', 'home_team_name': 'Detroit Lions', 'home_record': '', 'home_score': '', 'status': '', 'game_url': 'https://www.nfl.com/games/patriots-at-lions-2026-reg-10', 'source_url': 'https://www.nfl.com/schedules/2026/by-week/week-5'}]
+  FAILED: schedule: games parsed: got 0
+  FAILED: schedule: final scores captured: got 0
+  FAILED: schedule: network and date are captured: []

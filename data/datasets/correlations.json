@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T03:50:07+00:00",
+  "generated_at": "2026-11-14T03:53:41+00:00",
   "matrices": [
     {
       "id": "team_level_season",
@@ -100,28 +100,6 @@
       ],
       "source_url": "https://www.nfl.com/standings/league/2026/REG",
       "method": "Pearson product-moment correlation across the 32 official standings rows."
-    },
-    {
-      "id": "game_level_scores",
-      "title": "Game-level score relationships (official final scores)",
-      "unit": "NFL game",
-      "n": 0,
-      "labels": [
-        "home_margin",
-        "game_total"
-      ],
-      "matrix": [
-        [
-          1.0,
-          null
-        ],
-        [
-          null,
-          1.0
-        ]
-      ],
-      "source_url": "https://www.nfl.com/schedules/2026/REG2026/",
-      "method": "Pearson product-moment correlation across official final scores."
     }
   ],
   "unavailable": [
