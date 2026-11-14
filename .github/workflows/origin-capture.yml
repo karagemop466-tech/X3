@@ -35,7 +35,9 @@ jobs:
 
       - name: Capture official pages (results feed)
         if: ${{ inputs.phase != 'close' }}
-        run: python3 scripts/origin_capture.py results
+        run: |
+          python3 scripts/origin_capture.py results 2>&1 | tee capture_log.txt
+          test ${PIPESTATUS[0]} -eq 0
 
       - name: Cycle-close snapshot marker
         if: ${{ inputs.phase == 'close' }}
@@ -46,7 +48,7 @@ jobs:
         run: |
           git config user.name "origin-capture-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -f origin/data/results.json origin/data/capture_diag.json origin/data/close_marker.json 2>/dev/null || true
+          git add -f origin/data capture_log.txt 2>/dev/null || true
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -q -m "chore(origin): capture verified results feed from official pages (run $GITHUB_RUN_ID)"
           git pull --rebase --autostash origin "$GITHUB_REF_NAME"
