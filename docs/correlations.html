@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correlations (not yet computed) | X3 NFL Research</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
+<span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html" class=active>Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html">Flagged for Review</a></div><div class="navgroup"><span class="navlabel">Earlier</span><a href="../legacy/index.html">Earlier decision-lab landing (archived)</a></div></nav>
+<main>
+<h1>Correlations (not yet computed)</h1>
+
+<p class="lede">Correlation values between signals and between parlay or combo legs. Each value must come from measured
+data (gate G8 for parlays). <b>None has been computed.</b> Values stay blank because there is no verified historical dataset yet.</p>
+<div class="notice">Correlation between parlay legs is required before any parlay or same-game combo can be assessed.</div>
+<input class="search" type="search" placeholder="Filter rows..." data-target="tbl-corr" aria-label="Filter rows">
+<div class="tablewrap"><table id="tbl-corr"><thead><tr>
+<th>ID</th>
+<th>Signal A</th>
+<th>Signal B</th>
+<th>Correlation</th>
+<th>Method</th>
+<th>Sample</th>
+<th>Status</th>
+<th>Note</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>C01</td>
+<td>S01 injury-adjusted strength</td>
+<td>Closing spread outcome</td>
+<td><span class="flag">unverified</span></td>
+<td>Pearson/Spearman</td>
+<td>0 games</td>
+<td><span class="badge todo">Not computed - no data</span></td>
+<td>Left blank; no value may be inferred</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">2026 NFL Injury Report - Week 10 (league page)</a></td>
+</tr>
+<tr>
+<td>C02</td>
+<td>S02 QB availability</td>
+<td>Moneyline result</td>
+<td><span class="flag">unverified</span></td>
+<td>Logistic regression</td>
+<td>0 games</td>
+<td><span class="badge todo">Not computed - no data</span></td>
+<td>Left blank</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">2026 NFL Injury Report - Week 10 (league page)</a></td>
+</tr>
+<tr>
+<td>C03</td>
+<td>S04 WR1 Out</td>
+<td>WR2/WR3 receiving yards</td>
+<td><span class="flag">unverified</span></td>
+<td>Pearson</td>
+<td>0 games</td>
+<td><span class="badge todo">Not computed - no data</span></td>
+<td>Left blank</td>
+<td><a href="https://nextgenstats.nfl.com/" target="_blank" rel="noopener">NFL Next Gen Stats</a></td>
+</tr>
+<tr>
+<td>C04</td>
+<td>Leg A of parlay (S01)</td>
+<td>Leg B of parlay (S02)</td>
+<td><span class="flag">unverified</span></td>
+<td>Pearson on outcomes</td>
+<td>0 games</td>
+<td><span class="badge todo">Not computed - no data</span></td>
+<td>Required before any parlay is evaluated (gate G8)</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">2026 NFL Injury Report - Week 10 (league page)</a></td>
+</tr>
+<tr>
+<td>C05</td>
+<td>Player prop leg</td>
+<td>Team total leg (same game)</td>
+<td><span class="flag">unverified</span></td>
+<td>Pearson on outcomes</td>
+<td>0 games</td>
+<td><span class="badge todo">Not computed - no data</span></td>
+<td>Required before any same-game parlay is evaluated</td>
+<td><a href="https://nextgenstats.nfl.com/" target="_blank" rel="noopener">NFL Next Gen Stats</a></td>
+</tr>
+<tr>
+<td>C06</td>
+<td>Starter Out flag</td>
+<td>Backup output</td>
+<td><span class="flag">unverified</span></td>
+<td>Regression coefficient</td>
+<td>0 games</td>
+<td><span class="badge todo">Not computed - no data</span></td>
+<td>Requires depth charts (blocked)</td>
+<td><span class="flag">depth charts not retrieved</span></td>
+</tr>
+</tbody></table></div>
+
+</main>
+<footer>Every table row links to an official source where one exists. Blank cells are unverified and flagged.
+Wagering from Japan with private bookmakers is criminal for the bettor under Penal Code Art. 185
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">official text</a>).
+Built from data/ by scripts/build_site.py.</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

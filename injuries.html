@@ -1,0 +1,1642 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Injuries &amp; Lineups · X3 NFL Analytics</title>
+<meta name="description" content="Injury tracking and 2nd/3rd/4th-string backup deficiency analysis, verified from official sources.">
+<style>
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --muted:#9aa6bd;
+  --line:#2a3448; --accent:#4f8cff; --accent2:#22c55e; --warn:#f5a623; --bad:#ef4444;
+  --chip:#22304a;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header.top{position:sticky;top:0;z-index:20;background:rgba(15,20,32,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.top-inner{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:18px;letter-spacing:.5px}
+.brand span{color:var(--accent)}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14px}
+nav.main a:hover{background:var(--panel2);text-decoration:none;color:var(--ink)}
+nav.main a.active{background:var(--accent);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:26px 20px 80px}
+h1{font-size:28px;margin:0 0 6px}
+h2{font-size:21px;margin:34px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+h3{font-size:16px;margin:22px 0 8px;color:var(--ink)}
+p.lede{color:var(--muted);font-size:16px;max-width:80ch}
+.hero{background:linear-gradient(135deg,#1a2440,#141a28);border:1px solid var(--line);border-radius:14px;padding:24px;margin:18px 0 8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card .k{color:var(--muted);font-size:13px}
+.card .v{font-size:26px;font-weight:800;margin-top:4px}
+.card .s{color:var(--muted);font-size:12px;margin-top:4px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--muted);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.src{font-size:12px;color:var(--muted)}
+.src a{color:var(--accent)}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.b-verified{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.4)}
+.b-unverified{background:rgba(245,166,35,.15);color:#fbbf24;border:1px solid rgba(245,166,35,.4)}
+.b-flagged{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.4)}
+.b-pending{background:rgba(154,166,189,.15);color:#cbd5e1;border:1px solid rgba(154,166,189,.4)}
+ul.clean{list-style:none;padding:0;margin:10px 0}
+ul.clean li{padding:7px 0;border-bottom:1px solid var(--line)}
+ul.clean li:last-child{border-bottom:none}
+.tag{display:inline-block;background:var(--chip);color:var(--ink);border-radius:6px;padding:1px 7px;font-size:12px;margin-right:6px}
+.note{background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.3);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+.warn{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.3);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px;border-top:1px solid var(--line);margin-top:30px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner">
+  <div class="brand">X<span>3</span> · NFL Analytics</div>
+  <nav class="main"><a href="index.html" class="">Home</a>
+<a href="executive-summary.html" class="">Executive Summary</a>
+<a href="requirements.html" class="">Requirements &amp; Questions</a>
+<a href="suggestions.html" class="">Suggestions</a>
+<a href="lines.html" class="">Lines &amp; Signals</a>
+<a href="leaderboard.html" class="">Strategy Leaderboard</a>
+<a href="injuries.html" class="active">Injuries &amp; Lineups</a>
+<a href="verification.html" class="">Verification</a>
+<a href="flagged.html" class="">Flagged for Review</a></nav>
+</div></header>
+<main>
+<h1>Injuries &amp; Lineups</h1>
+<p class="lede">Injury tracking and 2nd/3rd/4th-string backup deficiency analysis, verified from official sources.</p>
+<h2>Week 10 injury report (verified)</h2>
+<p class="lede">Official NFL injury report, Week 10. Each row links to the source. 129 player rows across 11 teams are included; contaminated blocks (see Flagged) were excluded.</p>
+<table>
+<thead><tr>
+<th>Date</th>
+<th>Team</th>
+<th>Player</th>
+<th>Pos</th>
+<th>Injury</th>
+<th>Practice Status</th>
+<th>Game Status</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>John Bates</td>
+<td>TE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Treylon Burks</td>
+<td>WR</td>
+<td>—</td>
+<td>Did Not Participate</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Jayden Daniels</td>
+<td>QB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Matt Gulbin</td>
+<td>C</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Chig Okonkwo</td>
+<td>TE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Lucas Patrick</td>
+<td>C</td>
+<td>Concussion</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Amik Robertson</td>
+<td>CB</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Shy Tuttle</td>
+<td>DT</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>Washington Commanders</td>
+<td>Colson Yankoff</td>
+<td>TE</td>
+<td>Knee</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Abdul Carter</td>
+<td>LB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Jermaine Eluemunor</td>
+<td>T</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Malik Harrison</td>
+<td>LB</td>
+<td>Groin</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Colton Hood</td>
+<td>CB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Theo Johnson</td>
+<td>TE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Charlie Jones</td>
+<td>WR</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>J.J. McCarthy</td>
+<td>QB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Darnell Mooney</td>
+<td>WR</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Malik Nabers</td>
+<td>WR</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Cam Skattebo</td>
+<td>RB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Thu Nov 12</td>
+<td>New York Giants</td>
+<td>Andrew Thomas</td>
+<td>T</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Ben Brown</td>
+<td>C</td>
+<td>Knee</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>A.J. Brown</td>
+<td>WR</td>
+<td>Ankle, Knee</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Kevin Byard</td>
+<td>S</td>
+<td>Chest</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Carlton Davis III</td>
+<td>CB</td>
+<td>Knee</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Reggie Gilliam</td>
+<td>FB</td>
+<td>Knee</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>TreVeyon Henderson</td>
+<td>RB</td>
+<td>Illness</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Hunter Henry</td>
+<td>TE</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Cameron Latu</td>
+<td>TE</td>
+<td>Back</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Drake Maye</td>
+<td>QB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Morgan Moses</td>
+<td>T</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Walter Rouse</td>
+<td>T</td>
+<td>Concussion</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Brenden Schooler</td>
+<td>S</td>
+<td>Hamstring</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Rhamondre Stevenson</td>
+<td>RB</td>
+<td>Knee</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Greg Van Roten</td>
+<td>G</td>
+<td>Hamstring</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New England Patriots</td>
+<td>Charles Woods</td>
+<td>CB</td>
+<td>Hamstring</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>Brian Branch</td>
+<td>S</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>Jared Goff</td>
+<td>QB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>Kerby Joseph</td>
+<td>S</td>
+<td>Knee</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>Cade Mays</td>
+<td>C</td>
+<td>Ankle</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>D.J. Reed</td>
+<td>CB</td>
+<td>Hip</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>Jacob Saylors</td>
+<td>RB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>Amon-Ra St. Brown</td>
+<td>WR</td>
+<td>Rib</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>Sione Vaki</td>
+<td>RB</td>
+<td>Ankle</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Detroit Lions</td>
+<td>DJ Wonnum</td>
+<td>DE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Zachariah Branch</td>
+<td>WR</td>
+<td>Hamstring</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Kendal Daniels</td>
+<td>LB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Divine Deablo</td>
+<td>LB</td>
+<td>Forearm</td>
+<td>Did Not Participate</td>
+<td>Doubtful</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Gervon Dexter Sr.</td>
+<td>DT</td>
+<td>Illness</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Jake Matthews</td>
+<td>T</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Liam McCullough</td>
+<td>LS</td>
+<td>—</td>
+<td>Did Not Participate</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>James Pearce Jr.</td>
+<td>DE</td>
+<td>Back</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Za'Darius Smith</td>
+<td>DE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Jawaan Taylor</td>
+<td>T</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Cameron Thomas</td>
+<td>DE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Atlanta Falcons</td>
+<td>Josh Woods</td>
+<td>LB</td>
+<td>Ankle</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Aaron Banks</td>
+<td>G</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Chris Brooks</td>
+<td>RB</td>
+<td>Ankle</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Javon Bullard</td>
+<td>S</td>
+<td>Ankle, Knee</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Zaire Franklin</td>
+<td>LB</td>
+<td>Shin</td>
+<td>Did Not Participate</td>
+<td>Doubtful</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Travis Glover</td>
+<td>G</td>
+<td>Knee</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Ty'Ron Hopper</td>
+<td>LB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Josh Jacobs</td>
+<td>RB</td>
+<td>Finger</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Xavier McKinney</td>
+<td>S</td>
+<td>Foot</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Bo Melton</td>
+<td>WR</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Skyy Moore</td>
+<td>WR</td>
+<td>Ankle</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Micah Parsons</td>
+<td>LB</td>
+<td>Knee, Illness</td>
+<td>Limited</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Sean Rhyan</td>
+<td>C</td>
+<td>Ankle</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Trey Smack</td>
+<td>K</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Lukas Van Ness</td>
+<td>LB</td>
+<td>Back</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Josh Whyle</td>
+<td>TE</td>
+<td>Concussion</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Savion Williams</td>
+<td>WR</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Green Bay Packers</td>
+<td>Kevin Zeitler</td>
+<td>G</td>
+<td>Ankle, Triceps</td>
+<td>Did Not Participate</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Jessie Bates</td>
+<td>S</td>
+<td>Resting player (not injury)</td>
+<td>Limited</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Ezra Cleveland</td>
+<td>G</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Branson Combs</td>
+<td>LB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Jordan Davis</td>
+<td>DT</td>
+<td>Resting player (not injury)</td>
+<td>Limited</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>BJ Green II</td>
+<td>DE</td>
+<td>Forearm</td>
+<td>Full</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Robert Hainsey</td>
+<td>C</td>
+<td>Concussion</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Antonio Johnson</td>
+<td>S</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Jakobi Meyers</td>
+<td>WR</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Chris Rodriguez Jr.</td>
+<td>RB</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Bhayshul Tuten</td>
+<td>RB</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Jacksonville Jaguars</td>
+<td>Travon Walker</td>
+<td>DE</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Cody Barton</td>
+<td>LB</td>
+<td>Concussion</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>John Franklin-Myers</td>
+<td>DE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Marcus Harris</td>
+<td>CB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Anthony Hill Jr.</td>
+<td>LB</td>
+<td>Neck</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Jaylon Jones</td>
+<td>CB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>JC Latham</td>
+<td>T</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Tony Pollard</td>
+<td>RB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Peter Skoronski</td>
+<td>G</td>
+<td>Hamstring</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Tyjae Spears</td>
+<td>RB</td>
+<td>Knee</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Carnell Tate</td>
+<td>WR</td>
+<td>Shoulder</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Tommy Townsend</td>
+<td>P</td>
+<td>Knee, Achilles</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Tennessee Titans</td>
+<td>Kevin Winston Jr.</td>
+<td>S</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Alec Anderson</td>
+<td>G</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Christian Benford</td>
+<td>CB</td>
+<td>Wrist</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Terrel Bernard</td>
+<td>LB</td>
+<td>—</td>
+<td>Did Not Participate</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Spencer Brown</td>
+<td>T</td>
+<td>Ankle</td>
+<td>Did Not Participate</td>
+<td>Doubtful</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Dion Dawkins</td>
+<td>T</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Sam Franklin Jr.</td>
+<td>S</td>
+<td>Shoulder</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Greg Gaines</td>
+<td>DT</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Jordan Hancock</td>
+<td>CB</td>
+<td>Hamstring</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Dalton Kincaid</td>
+<td>TE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Connor McGovern</td>
+<td>C</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Ed Oliver</td>
+<td>DE</td>
+<td>—</td>
+<td>Did Not Participate</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Ar'maj Reed-Adams</td>
+<td>G</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>T.J. Sanders</td>
+<td>DE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Buffalo Bills</td>
+<td>Tyrell Shavers</td>
+<td>WR</td>
+<td>Knee</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Jarvis Brownlee Jr.</td>
+<td>CB</td>
+<td>Illness</td>
+<td>Limited</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Omar Cooper Jr.</td>
+<td>WR</td>
+<td>Ankle</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Adonai Mitchell</td>
+<td>WR</td>
+<td>Knee</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Joseph Ossai</td>
+<td>DE</td>
+<td>Ankle</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>VJ Payne</td>
+<td>S</td>
+<td>Knee</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Harrison Phillips</td>
+<td>DT</td>
+<td>Ankle</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Trevin Wallace</td>
+<td>LB</td>
+<td>Groin</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Garrett Wilson</td>
+<td>WR</td>
+<td>Concussion</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>New York Jets</td>
+<td>Nahshon Wright</td>
+<td>CB</td>
+<td>Back</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Tucker Addington</td>
+<td>LS</td>
+<td>—</td>
+<td>Limited</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Kaytron Allen</td>
+<td>RB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Darrell Baker Jr.</td>
+<td>CB</td>
+<td>Knee</td>
+<td>Full</td>
+<td>Questionable</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Chris Bell</td>
+<td>WR</td>
+<td>Knee</td>
+<td>Did Not Participate</td>
+<td>Doubtful</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Aaron Brewer</td>
+<td>C</td>
+<td>Concussion</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Malik Herring</td>
+<td>DE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Will Kacmarek</td>
+<td>TE</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Michael Taaffe</td>
+<td>S</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Dante Trader Jr.</td>
+<td>S</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Jared Wayne</td>
+<td>WR</td>
+<td>Quadricep</td>
+<td>Did Not Participate</td>
+<td>Out</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Sun Nov 15</td>
+<td>Miami Dolphins</td>
+<td>Jaylen Wright</td>
+<td>RB</td>
+<td>—</td>
+<td>Full</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+</tbody></table>
+<h2>Lineup & depth deficiencies — Detroit Lions (verified)</h2>
+<p class="lede">The Lions depth chart (official team site) is cross-referenced with the injury report to show where a 2nd/3rd/4th-string player must replace a starter. This is the core of the deficiency-tracking feature, demonstrated on verified data.</p>
+<h3>Depth chart (starter → 4th string)</h3>
+<table>
+<thead><tr>
+<th>Side</th>
+<th>Position</th>
+<th>1st (Starter)</th>
+<th>2nd</th>
+<th>3rd</th>
+<th>4th</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>Offense</td>
+<td>WR</td>
+<td>Jameson Williams</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>WR</td>
+<td>Amon-Ra St. Brown</td>
+<td>DeAndre Carter</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>WR</td>
+<td>Isaac TeSlaa</td>
+<td>Tay Martin</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>LT</td>
+<td>Penei Sewell</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>LG</td>
+<td>Christian Mahogany</td>
+<td>Miles Frazier</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>C</td>
+<td>Cade Mays</td>
+<td>Juice Scruggs</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>RG</td>
+<td>Tate Ratledge</td>
+<td>Seth McLaughlin</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>RT</td>
+<td>Blake Miller</td>
+<td>Larry Borom</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>TE</td>
+<td>Sam LaPorta</td>
+<td>Brock Wright</td>
+<td>Tyler Conklin</td>
+<td>Jackson Meeks</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>QB</td>
+<td>Jared Goff</td>
+<td>Joshua Dobbs</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Offense</td>
+<td>RB</td>
+<td>Jahmyr Gibbs</td>
+<td>Sione Vaki</td>
+<td>Jacob Saylors</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>EDGE</td>
+<td>Aidan Hutchinson</td>
+<td>Derrick Moore</td>
+<td>Eric O'Neill</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>EDGE</td>
+<td>DJ Wonnum</td>
+<td>Tyler Lacy</td>
+<td>Ahmed Hassanein</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>DL</td>
+<td>Alim McNeill</td>
+<td>Skyler Gill-Howard</td>
+<td>Mekhi Wingo</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>DL</td>
+<td>Tyleik Williams</td>
+<td>Levi Onwuzurike</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>LB</td>
+<td>Derrick Barnes</td>
+<td>Joe Bachie</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>LB</td>
+<td>Malcolm Rodriguez</td>
+<td>K.J. Britt</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>LB</td>
+<td>Trevor Nowaske</td>
+<td>Amen Ogbongbemiga</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>CB</td>
+<td>D.J. Reed</td>
+<td>Rock Ya-Sin</td>
+<td>Khalil Dorsey</td>
+<td>Nick Whiteside</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>CB</td>
+<td>Roger McCreary</td>
+<td>Ennis Rakestraw Jr.</td>
+<td>Keith Abney II</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>S</td>
+<td>Chuck Clark</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Defense</td>
+<td>S</td>
+<td>Brian Branch</td>
+<td>Christian Izien</td>
+<td>—</td>
+<td>—</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+</tbody></table>
+<h3>Starter-out → backup replacement analysis</h3>
+<table>
+<thead><tr>
+<th>Starter (injury report)</th>
+<th>Status</th>
+<th>Depth-chart role</th>
+<th>Replacing backup (string)</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>D.J. Reed (CB)</td>
+<td><span class="badge b-flagged">flagged</span></td>
+<td>CB — 1st string (starter)</td>
+<td>Rock Ya-Sin (CB, 2nd string)</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Cade Mays (C)</td>
+<td><span class="badge b-flagged">flagged</span></td>
+<td>C — 1st string (starter)</td>
+<td>Juice Scruggs (C, 2nd string)</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Amon-Ra St. Brown (WR)</td>
+<td><span class="badge b-pending">pending</span></td>
+<td>WR — 1st string (starter)</td>
+<td>DeAndre Carter (WR, 2nd string) — game-time decision</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+<tr>
+<td>Kerby Joseph (S)</td>
+<td><span class="badge b-flagged">flagged</span></td>
+<td>Not a listed starter on depth chart — role to confirm</td>
+<td>Requires roster confirmation</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+</tr>
+</tbody></table>
+<div class="warn"><strong>Note.</strong> The Lions depth chart is published on the official team site but is titled "Unofficial Depth Chart". Game-day inactive lists remain the authoritative lineup source. See the <a href="flagged.html">Flagged for Review</a> page.</div>
+<h2>How the system tracks deficiencies (design)</h2>
+<div class="panel"><ul class="clean"><li>Ingest the official injury report (player, practice status, game status) each week.</li><li>Ingest the official team depth chart (starter → 4th string) for every position group, offense and defense.</li><li>Reconcile both at game-day inactives; flag conflicts for review.</li><li>Produce a per-team <strong>missing-starter impact</strong> score for offense and defense, quantifying the expected drop from a 2nd/3rd/4th-string replacement.</li><li>Feed the impact score into signals and the leaderboard.</li></ul></div>
+</main>
+<footer>X3 NFL Analytics · Static site · All data rows link to official sources ·
+Unverified values are left blank and flagged. Built 2026-11-14.</footer>
+</body>
+</html>

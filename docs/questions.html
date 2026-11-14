@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions and information gaps | X3 NFL Research</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
+<span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html">Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html" class=active>Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html">Flagged for Review</a></div><div class="navgroup"><span class="navlabel">Earlier</span><a href="../legacy/index.html">Earlier decision-lab landing (archived)</a></div></nav>
+<main>
+<h1>Questions and information gaps</h1>
+
+<p class="lede">Questions and missing information that must be answered before a decision can reasonably be made.
+12 questions are open. Each row lists what we have, what is missing, and where to check it.</p>
+<input class="search" type="search" placeholder="Filter rows..." data-target="tbl-q" aria-label="Filter rows">
+<div class="tablewrap"><table id="tbl-q"><thead><tr>
+<th>ID</th>
+<th>Category</th>
+<th>Question</th>
+<th>Why it matters</th>
+<th>What we have</th>
+<th>What we lack</th>
+<th>Where to verify</th>
+<th>Decision owner</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>Q01</td>
+<td>Scope</td>
+<td>Should strategies cover single bets first, or also parlays and player-prop combos from the start?</td>
+<td>Sets the order of work and the validation effort</td>
+<td>Brief lists single bets, parlays and prop combos</td>
+<td>A decision on priority</td>
+<td>Not applicable (user decision) <span class="flag">no external source (user decision)</span></td>
+<td>User</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q02</td>
+<td>Legal</td>
+<td>Is the analysis for research only (no wagering), given that wagering with private bookmakers is criminal for bettors in Japan?</td>
+<td>Determines whether any strategy can be used for actual wagers</td>
+<td>Official Penal Code text: Article 185 penalises gambling; Article 186 habitual gambling</td>
+<td>Legal advice on the user&#x27;s personal position</td>
+<td><a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb</a></td>
+<td>User (with local counsel)</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q03</td>
+<td>Data</td>
+<td>Which licensed odds source (opening and closing lines) will be used? No official NFL source publishes betting lines.</td>
+<td>Needed for CLV, backtests and any ROI figure</td>
+<td>No odds data retrieved</td>
+<td>Odds history (open and close) from 2020 onward</td>
+<td>Not an official NFL source; user must choose and confirm terms <span class="flag">no external source (user decision)</span></td>
+<td>User</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q04</td>
+<td>Data</td>
+<td>Which official source will supply historical injury reports (prior seasons and daily snapshots)?</td>
+<td>Needed for designation drift and injury history</td>
+<td>Week 10 2026 report only</td>
+<td>Historical reports</td>
+<td><a href="https://www.nfl.com/injuries/ (check archive availability)" target="_blank" rel="noopener">https://www.nfl.com/injuries/ (check archive availability)</a></td>
+<td>Agent to verify</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q05</td>
+<td>Data</td>
+<td>Which official source will supply team depth charts for starter and backup mapping?</td>
+<td>Needed for defense and offense backup analysis</td>
+<td>None retrieved</td>
+<td>Depth charts for all 32 teams by week</td>
+<td><a href="https://www.nfl.com/teams/ (to be verified per team)" target="_blank" rel="noopener">https://www.nfl.com/teams/ (to be verified per team)</a></td>
+<td>Agent to verify</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q06</td>
+<td>Data</td>
+<td>Which official source will supply game results and player game logs?</td>
+<td>Needed for every strategy outcome</td>
+<td>NFL schedule release (partial); NGS homepage</td>
+<td>Results and box scores from 2020 onward</td>
+<td><a href="https://www.nfl.com/nfl-schedule-release/ and https://nextgenstats.nfl.com/" target="_blank" rel="noopener">https://www.nfl.com/nfl-schedule-release/ and https://nextgenstats.nfl.com/</a></td>
+<td>Agent to verify</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q07</td>
+<td>Validation</td>
+<td>What minimum sample size and number of seasons must a strategy pass before it can appear as validated?</td>
+<td>Sets gates G2 and G6</td>
+<td>Proposed values only</td>
+<td>User-approved thresholds</td>
+<td>Not applicable (user decision) <span class="flag">no external source (user decision)</span></td>
+<td>User</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q08</td>
+<td>Rewards</td>
+<td>How should leaderboard rewards work (points only, public ranking, or prizes)?</td>
+<td>Defines reward mechanics and any legal exposure</td>
+<td>Brief mentions rewards only</td>
+<td>Reward design</td>
+<td>Not applicable (user decision) <span class="flag">no external source (user decision)</span></td>
+<td>User</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q09</td>
+<td>Site</td>
+<td>Should the site stay public on GitHub Pages, given that it will contain strategy research?</td>
+<td>Privacy and publication scope</td>
+<td>Pages currently public</td>
+<td>Confirmation</td>
+<td><a href="https://github.com/karagemop466-tech/X3/settings/pages" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3/settings/pages</a></td>
+<td>User</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q10</td>
+<td>Repo</td>
+<td>Should the branch-naming rule (session-&lt;id&gt;/&lt;task&gt;) be used, or the platform-assigned branch?</td>
+<td>Affects how parallel sessions are coordinated</td>
+<td>Platform branch is arena/0c38f465-x3</td>
+<td>Decision</td>
+<td>Not applicable <span class="flag">no external source (user decision)</span></td>
+<td>User</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q11</td>
+<td>Injury</td>
+<td>Which injury designations and practice codes are defined in the official NFL policy, and does that policy attach any percentages to them?</td>
+<td>Needed before any probability is attached to a designation</td>
+<td>Official report shows Out / Doubtful / Questionable and DNP / LP / FP</td>
+<td>Official legend or policy text not retrieved</td>
+<td><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">https://www.nfl.com/injuries/</a></td>
+<td>Agent to verify</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+<tr>
+<td>Q12</td>
+<td>Injury</td>
+<td>Does the official injury report include players on injured reserve (IR)?</td>
+<td>Affects the count of starters Out</td>
+<td>Ravens QB on IR per NFL.com news; not on Week 10 report</td>
+<td>Confirmation of report scope</td>
+<td><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">https://www.nfl.com/injuries/</a></td>
+<td>Agent to verify</td>
+<td><span class="badge todo">Open</span></td>
+</tr>
+</tbody></table></div>
+
+</main>
+<footer>Every table row links to an official source where one exists. Blank cells are unverified and flagged.
+Wagering from Japan with private bookmakers is criminal for the bettor under Penal Code Art. 185
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">official text</a>).
+Built from data/ by scripts/build_site.py.</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
