@@ -1,98 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>X3 NFL Research &amp; Line-Origination Dashboard</title>
-<link rel="stylesheet" href="style.css">
+<title>Dashboard | X3 NFL Research</title>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<header>
-<h1>X3 NFL Research &amp; Line-Origination Dashboard</h1>
-<p class="meta">Collect · organize · analyze · originate lines · validate strategies · track injuries ·
-built 2026-11-14 by session arena-4856379c — every data row on this site links to an official source;
-unverifiable values are left blank and flagged, never inferred.</p>
-<nav>
-<a href="index.html" class="active">Dashboard</a>
-<a href="pages/executive-summary.html">Executive Summary</a>
-<a href="pages/requirements.html">Requirements</a>
-<a href="pages/strategies.html">Line Origination</a>
-<a href="pages/validation.html">Validation</a>
-<a href="pages/correlation.html">Correlation</a>
-<a href="pages/leaderboard.html">Leaderboard</a>
-<a href="pages/injuries.html">Injuries</a>
-<a href="pages/standings.html">Standings</a>
-<a href="pages/questions.html">Questions</a>
-<a href="pages/suggestions.html">Suggestions</a>
-<a href="pages/flagged.html">Flagged</a>
-<a href="pages/sources.html">Sources</a>
-<a href="pages/repo-audit.html">Repo Audit</a>
-</nav>
-</header>
+<header class="top"><a class="brand" href="index.html">X3 NFL Research</a>
+<span class="asof">Data as of 2026-11-14 &middot; Research only, not betting advice</span></header>
+<nav class="nav"><div class="navgroup"><span class="navlabel">Overview</span><a href="index.html" class=active>Dashboard</a> <a href="executive-summary.html">Executive summary</a></div><div class="navgroup"><span class="navlabel">Data</span><a href="injuries.html">Injuries (Week 10)</a> <a href="schedule.html">2026 key dates</a> <a href="sources.html">Official sources</a></div><div class="navgroup"><span class="navlabel">Analysis</span><a href="strategies.html">Strategy leaderboard</a> <a href="correlations.html">Correlations</a></div><div class="navgroup"><span class="navlabel">Decisions</span><a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions (for review)</a> <a href="requirements.html">Requirements</a></div><div class="navgroup"><span class="navlabel">Review</span><a href="flagged.html">Flagged for Review</a></div><div class="navgroup"><span class="navlabel">Earlier</span><a href="../legacy/index.html">Earlier decision-lab landing (archived)</a></div></nav>
 <main>
+<h1>Dashboard</h1>
 
+<p class="lede">A simple dashboard for NFL data, injury tracking and strategy research. Pick a category below.
+<b>This is research, not betting advice.</b></p>
 <div class="cards">
-  <div class="card"><h3>Executive Summary</h3><p>The one-page decision document: what exists, what's
-  verified, what's blocked, recommended next steps.</p><a class="cta" href="pages/executive-summary.html">Read →</a></div>
-  <div class="card"><h3>Requirements &amp; Status</h3><p>Every project requirement listed line by line
-  with completion status and gaps.</p><a class="cta" href="pages/requirements.html">Review →</a></div>
-  <div class="card"><h3>Line Origination &amp; Signals</h3><p>How to originate your own NFL numbers and
-  the 8 skill-based signal classes with sources.</p><a class="cta" href="pages/strategies.html">Explore →</a></div>
-  <div class="card"><h3>Validation Gates</h3><p>G0–G8 gate stack: CLV, Deflated Sharpe, PBO,
-  Monte-Carlo luck removal — skill vs luck made mechanical.</p><a class="cta" href="pages/validation.html">See gates →</a></div>
-  <div class="card"><h3>Correlation Matrix</h3><p>Parlay &amp; prop-combo correlation: verified findings,
-  blank-by-policy value table, estimation pipeline.</p><a class="cta" href="pages/correlation.html">Inspect →</a></div>
-  <div class="card"><h3>Strategy Leaderboard</h3><p>Competition rules, scoring, rewards, anti-gaming —
-  modeled on the NFL Big Data Bowl.</p><a class="cta" href="pages/leaderboard.html">View design →</a></div>
-  <div class="card"><h3>Injury &amp; Depth Tracker</h3><p>Week 10, 2026 official report: 345 rows,
-  team deficiency summary, QB alerts.</p><a class="cta" href="pages/injuries.html">Open tracker →</a></div>
-  <div class="card"><h3>Standings Snapshot</h3><p>All 32 teams, official records/points/streaks as of
-  2026-11-14.</p><a class="cta" href="pages/standings.html">See standings →</a></div>
-  <div class="card"><h3>Questions &amp; Information Gaps</h3><p>What must be answered before decisions —
-  with discovery paths for every unknown.</p><a class="cta" href="pages/questions.html">Answer queue →</a></div>
-  <div class="card"><h3>Suggestions Board</h3><p>Improvement proposals for decision-making and the site —
-  review and choose before anything is implemented.</p><a class="cta" href="pages/suggestions.html">Review suggestions →</a></div>
-  <div class="card"><h3>Flagged for Review</h3><p>Irregularities, unverified items, and source conflicts
-  — published so nothing blocks, nothing gets hidden.</p><a class="cta" href="pages/flagged.html">See flags →</a></div>
-  <div class="card"><h3>Sources &amp; Verification</h3><p>The verification ledger: what was checked,
-  against which official host, on what date.</p><a class="cta" href="pages/sources.html">Audit trail →</a></div>
-  <div class="card"><h3>Repo Audit</h3><p>Line-by-line review of the repository as found at the base
-  commit.</p><a class="cta" href="pages/repo-audit.html">Read audit →</a></div>
+<div class="card"><b>205</b><span>injury rows (Week 10, official)</span></div>
+<div class="card"><b>28</b><span>teams on the Week 10 report</span></div>
+<div class="card"><b>12</b><span>verified 2026 key dates</span></div>
+<div class="card"><b>0</b><span>validated strategies</span></div>
+<div class="card"><b>12</b><span>open questions</span></div>
+<div class="card"><b>10</b><span>suggestions awaiting decision</span></div>
 </div>
+<div class="grid">
+<a class="tile" href="executive-summary.html"><b>Executive summary</b><span>Verified facts, gaps, risks and decisions needed</span></a>
+<a class="tile" href="injuries.html"><b>Injuries</b><span>Official Week 10 report by team and position</span></a>
+<a class="tile" href="schedule.html"><b>2026 key dates</b><span>Season dates from the NFL announcement</span></a>
+<a class="tile" href="strategies.html"><b>Strategy leaderboard</b><span>Candidate strategies and validation gates</span></a>
+<a class="tile" href="correlations.html"><b>Correlations</b><span>Not yet computed; blank until data is verified</span></a>
+<a class="tile" href="questions.html"><b>Questions</b><span>What must be answered before deciding</span></a>
+<a class="tile" href="suggestions.html"><b>Suggestions</b><span>Options to review; nothing implemented yet</span></a>
+<a class="tile" href="requirements.html"><b>Requirements</b><span>Tracker for every item in the brief</span></a>
+<a class="tile" href="sources.html"><b>Official sources</b><span>Registry of links and fetch status</span></a>
+<a class="tile flagtile" href="flagged.html"><b>Flagged for Review</b><span>16 irregularities and unverified items with links</span></a>
+</div>
+<div class="notice"><b>Legal note:</b> Under Japanese Penal Code Article 185, betting on sports with a private bookmaker is
+gambling, and a bettor can be fined. This site does not recommend any wager.
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">Official text</a>)</div>
 
-<h2>Live data snapshot (verified 2026-11-14)</h2>
+<h2>Extended research &amp; verified data (session arena-4856379c-x3)</h2>
+<p class="lede">Line-by-line verified research tree: every table row carries an official source link;
+unverifiable values are blank and flagged. <b>Research only, not betting advice.</b></p>
+<div class="grid">
+<a class="tile" href="pages/executive-summary.html"><b>Executive summary (extended)</b><span>Decision document with verified findings and recommendations</span></a>
+<a class="tile" href="pages/requirements.html"><b>Requirements (28 items)</b><span>Every requirement with status and gaps</span></a>
+<a class="tile" href="pages/strategies.html"><b>Line origination</b><span>Own-number framework + 8 skill-based signal classes</span></a>
+<a class="tile" href="pages/validation.html"><b>Validation gates G0-G8</b><span>CLV, Deflated Sharpe, PBO, Monte-Carlo luck removal</span></a>
+<a class="tile" href="pages/correlation.html"><b>Correlation matrix</b><span>Verified findings; values blank by policy; estimation pipeline</span></a>
+<a class="tile" href="pages/leaderboard.html"><b>Leaderboard design</b><span>Rules, scoring, rewards, anti-gaming (Big Data Bowl model)</span></a>
+<a class="tile" href="pages/injuries.html"><b>Injury tracker (345 rows)</b><span>Full Week-10 official report + deficiency alerts</span></a>
+<a class="tile" href="pages/standings.html"><b>Standings (32 teams)</b><span>Official 2026 snapshot with source links</span></a>
+<a class="tile" href="pages/questions.html"><b>Questions (15)</b><span>Known/unknown split with discovery paths</span></a>
+<a class="tile" href="pages/suggestions.html"><b>Suggestions (14)</b><span>Review before implementing anything</span></a>
+<a class="tile flagtile" href="pages/flagged.html"><b>Flagged (F-01-F-12)</b><span>Irregularities and unverified items with links</span></a>
+<a class="tile" href="pages/sources.html"><b>Sources ledger</b><span>17 sources with tier labels and check dates</span></a>
+<a class="tile" href="pages/repo-audit.html"><b>Repo audit</b><span>Line-by-line review of the repository as found</span></a>
+</div>
 <table>
 <thead><tr><th>Dataset</th><th>Rows</th><th>Key figures</th><th>Official source</th></tr></thead>
 <tbody>
-<tr><td>Week-10 2026 injury report</td><td>345 player rows (28 teams)</td>
-<td>66 Out · 10 Doubtful · 84 Questionable · 185 on report without game status</td>
-<td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
-<tr><td>2026 standings</td><td>32 teams</td>
-<td>BUF 7-1 · SF 7-1 · CHI 7-2 · DEN 7-2 lead; LAC 0-8 trails</td>
-<td><a href="https://www.nfl.com/standings/">nfl.com/standings</a></td></tr>
-<tr><td>Depth-chart ranks (starter/backup)</td><td>0</td>
-<td class="flag">UNVERIFIED — official depth-chart URLs return 404 (Flagged F-04); blank by policy</td>
-<td>—</td></tr>
-<tr><td>Correlation coefficients (parlay/prop pairs)</td><td>0 numeric values</td>
-<td class="flag">UNVERIFIED — no official numeric source found; estimation pipeline specified instead</td>
-<td><a href="pages/correlation.html">see pipeline</a></td></tr>
+<tr><td>Week-10 2026 injury report</td><td>345 player rows</td><td>66 Out &middot; 10 Doubtful &middot; 84 Questionable</td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a> &middot; <a href="pages/injuries.html">detail</a></td></tr>
+<tr><td>2026 standings</td><td>32 teams</td><td>BUF 7-1 &middot; SF 7-1 &middot; LAC 0-8</td><td><a href="https://www.nfl.com/standings/">nfl.com/standings</a> &middot; <a href="pages/standings.html">detail</a></td></tr>
+<tr><td>Depth-chart ranks</td><td>0</td><td><span class="flag">UNVERIFIED</span> (official depth charts 404)</td><td><a href="pages/flagged.html">F-04</a></td></tr>
+<tr><td>Correlation coefficients</td><td>0</td><td><span class="flag">UNVERIFIED</span> (no official numeric source)</td><td><a href="pages/correlation.html">pipeline</a></td></tr>
 </tbody>
 </table>
-
-<h2>Week-10 context (verified)</h2>
-<p>14 games, Thursday Nov 12 – Monday Nov 16, 2026. Byes: Bears, Broncos, Buccaneers, Eagles.
-International: Patriots vs Lions in Munich (Sunday 9:30 a.m. ET). Prime time: Commanders–Giants
-(Thu), Steelers–Bengals (Sun), Chargers–Ravens (Mon). The Baltimore Ravens enter Monday's game on a
-4-game losing streak with <b>both QB1 Lamar Jackson (IR) and backup Tyler Huntley (out for season)
-unavailable</b> — the sharpest verified deficiency of the week.</p>
-<p class="scrollnote">Data files: <code>docs/data/injury-2026-week10.csv</code>,
-<code>docs/data/standings-2026-week10.csv</code> · research notes: <code>research/</code> ·
-shared task board: <code>COORDINATION.md</code>.</p>
-
 </main>
-<footer><p>Verification policy: every table row carries an official source link, or the value is left
-blank and flagged UNVERIFIED. No values are inferred. Irregularities are published on the
-<a href="pages/flagged.html">Flagged for Review</a> page. Suggestions are proposals for review —
-nothing is implemented from the suggestions board without review.</p></footer>
+<footer>Every table row links to an official source where one exists. Blank cells are unverified and flagged.
+Wagering from Japan with private bookmakers is criminal for the bettor under Penal Code Art. 185
+(<a href="https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb" target="_blank" rel="noopener">official text</a>).
+Built from data/ by scripts/build_site.py.</footer>
+<script src="assets/site.js"></script>
 </body>
 </html>

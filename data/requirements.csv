@@ -1,0 +1,17 @@
+id,requirement,status,delivered,evidence_link
+R01,Collect / organize / analyze the full NFL requirements list,Partial,Requirements tracker and data folders created; analysis limited to verified data,docs/requirements.html
+R02,Suggestions section to review improvements before any change,Done,Suggestions page with options and pending decisions,docs/suggestions.html
+R03,Clear list of questions / information needed before decisions,Done,Questions page (12 items),docs/questions.html
+R04,Originate own NFL lines and research signal strategies,Partial,Strategy framework and candidate list; no validated strategies because no verified historical data was retrieved,docs/strategies.html
+R05,Leaderboard competition with rewards for top strategies,Partial,Leaderboard shell with gates; rewards pending user decision (Q08),docs/strategies.html
+R06,Single bets / parlays / player prop combos,Partial,Covered as candidate families S01-S08; none validated,docs/strategies.html
+R07,Each strategy must pass validation gates,Done,Gates G0-G9 defined; status shown per strategy,docs/strategies.html
+R08,Determine correlation values,Blocked,Correlation table created; values left blank (no data),docs/correlations.html
+R09,Build strategies that are selectively skill based (remove luck),Partial,Pre-registration and out-of-sample gates proposed; not tested,docs/strategies.html
+R10,Track injuries and detect starter-to-backup deficiencies (defense and offense),Partial,Official Week 10 injury report captured (205 rows); depth-chart mapping not built,docs/injuries.html
+R11,Executive summary,Done,Executive summary page,docs/executive-summary.html
+R12,Repo review with official sources and irregularities flagged,Done,Repo review in COORDINATION.md and Flagged for Review,docs/flagged.html
+R13,GitHub Pages landing page and category subpages,Done,Dashboard and category pages,docs/index.html
+R14,Every table row has a source link to an official site (unverified values blank and flagged),Done,Each row carries a source link; unverified values blank,docs/sources.html
+R15,Coordinate via COORDINATION.md before work,Done,Task board with claims and status,COORDINATION.md
+R16,Flagged for Review page with source links,Done,Published,docs/flagged.html

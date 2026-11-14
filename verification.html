@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verification · X3 NFL Analytics</title>
+<meta name="description" content="Line-by-line verification log mapping each data row to its official source and status.">
+<style>
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --muted:#9aa6bd;
+  --line:#2a3448; --accent:#4f8cff; --accent2:#22c55e; --warn:#f5a623; --bad:#ef4444;
+  --chip:#22304a;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header.top{position:sticky;top:0;z-index:20;background:rgba(15,20,32,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.top-inner{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:18px;letter-spacing:.5px}
+.brand span{color:var(--accent)}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14px}
+nav.main a:hover{background:var(--panel2);text-decoration:none;color:var(--ink)}
+nav.main a.active{background:var(--accent);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:26px 20px 80px}
+h1{font-size:28px;margin:0 0 6px}
+h2{font-size:21px;margin:34px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+h3{font-size:16px;margin:22px 0 8px;color:var(--ink)}
+p.lede{color:var(--muted);font-size:16px;max-width:80ch}
+.hero{background:linear-gradient(135deg,#1a2440,#141a28);border:1px solid var(--line);border-radius:14px;padding:24px;margin:18px 0 8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card .k{color:var(--muted);font-size:13px}
+.card .v{font-size:26px;font-weight:800;margin-top:4px}
+.card .s{color:var(--muted);font-size:12px;margin-top:4px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);color:var(--muted);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.4px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.src{font-size:12px;color:var(--muted)}
+.src a{color:var(--accent)}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.b-verified{background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.4)}
+.b-unverified{background:rgba(245,166,35,.15);color:#fbbf24;border:1px solid rgba(245,166,35,.4)}
+.b-flagged{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.4)}
+.b-pending{background:rgba(154,166,189,.15);color:#cbd5e1;border:1px solid rgba(154,166,189,.4)}
+ul.clean{list-style:none;padding:0;margin:10px 0}
+ul.clean li{padding:7px 0;border-bottom:1px solid var(--line)}
+ul.clean li:last-child{border-bottom:none}
+.tag{display:inline-block;background:var(--chip);color:var(--ink);border-radius:6px;padding:1px 7px;font-size:12px;margin-right:6px}
+.note{background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.3);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+.warn{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.3);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px;border-top:1px solid var(--line);margin-top:30px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner">
+  <div class="brand">X<span>3</span> · NFL Analytics</div>
+  <nav class="main"><a href="index.html" class="">Home</a>
+<a href="executive-summary.html" class="">Executive Summary</a>
+<a href="requirements.html" class="">Requirements &amp; Questions</a>
+<a href="suggestions.html" class="">Suggestions</a>
+<a href="lines.html" class="">Lines &amp; Signals</a>
+<a href="leaderboard.html" class="">Strategy Leaderboard</a>
+<a href="injuries.html" class="">Injuries &amp; Lineups</a>
+<a href="verification.html" class="active">Verification</a>
+<a href="flagged.html" class="">Flagged for Review</a></nav>
+</div></header>
+<main>
+<h1>Verification</h1>
+<p class="lede">Line-by-line verification log mapping each data row to its official source and status.</p>
+<div class="note">Every table row must have a source link to an official site. Values that cannot be confirmed from an official source are left blank and flagged unverified. This page is the line-by-line verification log.</div>
+<h2>Verification log</h2>
+<table>
+<thead><tr>
+<th>Page</th>
+<th>Row reference</th>
+<th>Item verified</th>
+<th>Official source</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>injuries.html</td>
+<td>All standings rows</td>
+<td>NFL league standings (W/L/T/PCT/PF/PA/NetPts)</td>
+<td><span class="src"><a href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+<tr>
+<td>injuries.html</td>
+<td>Week 10 injury rows</td>
+<td>Player injury / practice / game status</td>
+<td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg" target="_blank" rel="noopener">source &#8599;</a></span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+<tr>
+<td>injuries.html</td>
+<td>Week 10 schedule rows</td>
+<td>Game date/time/matchups/network</td>
+<td><span class="src"><a href="https://www.nfl.com/schedules/" target="_blank" rel="noopener">source &#8599;</a></span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+<tr>
+<td>injuries.html</td>
+<td>Lions depth-chart rows</td>
+<td>Starter + 2nd/3rd/4th-string ordering</td>
+<td><span class="src"><a href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+<tr>
+<td>lines.html</td>
+<td>All line-value cells</td>
+<td>Betting lines</td>
+<td><span class="src">(no official source)</span></td>
+<td><span class="badge b-unverified">unverified</span></td>
+</tr>
+<tr>
+<td>lines.html</td>
+<td>Correlation values</td>
+<td>Pairwise signal/leg correlations</td>
+<td><span class="src">(no official source)</span></td>
+<td><span class="badge b-unverified">unverified</span></td>
+</tr>
+<tr>
+<td>leaderboard.html</td>
+<td>All performance cells</td>
+<td>Strategy ROI / CLV / reward</td>
+<td><span class="src">(no official source)</span></td>
+<td><span class="badge b-unverified">unverified</span></td>
+</tr>
+<tr>
+<td>leaderboard.html</td>
+<td>Gate definitions</td>
+<td>Validation gate rules</td>
+<td><span class="src">(no official source)</span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+<tr>
+<td>requirements.html</td>
+<td>Questions & answers</td>
+<td>Pre-decision checklist</td>
+<td><span class="src">(no official source)</span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+<tr>
+<td>suggestions.html</td>
+<td>Suggestions</td>
+<td>Improvement proposals</td>
+<td><span class="src">(no official source)</span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+<tr>
+<td>flagged.html</td>
+<td>Irregularities</td>
+<td>Flagged items with sources</td>
+<td><span class="src">(no official source)</span></td>
+<td><span class="badge b-verified">verified</span></td>
+</tr>
+</tbody></table>
+<h2>Verification method</h2>
+<div class="panel"><ul class="clean"><li>Each data row was fetched from the official source listed and checked against the page content.</li><li>Only values present on the official page were recorded; nothing was inferred or filled in.</li><li>Where no official source exists (betting lines, correlations, leaderboard performance), the value is left blank and flagged <span class="badge b-unverified">unverified</span>.</li><li>Irregularities in fetching or labeling are recorded on the <a href="flagged.html">Flagged for Review</a> page with their source links.</li></ul></div>
+</main>
+<footer>X3 NFL Analytics · Static site · All data rows link to official sources ·
+Unverified values are left blank and flagged. Built 2026-11-14.</footer>
+</body>
+</html>

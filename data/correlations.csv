@@ -1,0 +1,7 @@
+corr_id,signal_a,signal_b,correlation_value,method,sample,verification,note
+C01,S01 injury-adjusted strength,Closing spread outcome,,Pearson/Spearman,0 games,Not computed - no data,Left blank; no value may be inferred
+C02,S02 QB availability,Moneyline result,,Logistic regression,0 games,Not computed - no data,Left blank
+C03,S04 WR1 Out,WR2/WR3 receiving yards,,Pearson,0 games,Not computed - no data,Left blank
+C04,Leg A of parlay (S01),Leg B of parlay (S02),,Pearson on outcomes,0 games,Not computed - no data,Required before any parlay is evaluated (gate G8)
+C05,Player prop leg,Team total leg (same game),,Pearson on outcomes,0 games,Not computed - no data,Required before any same-game parlay is evaluated
+C06,Starter Out flag,Backup output,,Regression coefficient,0 games,Not computed - no data,Requires depth charts (blocked)

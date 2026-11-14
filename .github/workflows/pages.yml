@@ -1,0 +1,77 @@
+name: Deploy X3 NFL site to GitHub Pages
+
+on:
+  push:
+    branches: [ arena/1a771fcd-x3, main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check site files and internal links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          pages = sorted(Path('.').glob('*.html')) + sorted(Path('pages').glob('*.html')) + sorted(Path('site').glob('*.html'))
+          assert pages, 'No HTML pages found'
+          class Links(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.hrefs = []
+              def handle_starttag(self, tag, attrs):
+                  if tag == 'a':
+                      href = dict(attrs).get('href', '')
+                      if href: self.hrefs.append(href)
+          failures = []
+          roots = [Path('.'), Path('pages'), Path('site')]
+          for page in pages:
+              parser = Links(); parser.feed(page.read_text())
+              for href in parser.hrefs:
+                  if href.startswith(('http://', 'https://', '#', 'mailto:')): continue
+                  target = href.split('#', 1)[0]
+                  if not target: continue
+                  found = any((root / target).resolve() == (page.parent / target).resolve() for root in roots)
+                  found = found or (page.parent / target).exists()
+                  if not found:
+                      # allow cross-folder references that exist anywhere under a root
+                      if not any(list(root.rglob(target)) for root in roots if root.exists()):
+                          failures.append(f'{page}: {href}')
+          if failures:
+              raise SystemExit('Broken internal links:\n' + '\n'.join(failures))
+          print(f'Validated {len(pages)} HTML pages and their local links.')
+          PY
+
+      - name: Check dashboard site (docs/) rows have sources and no broken links
+        run: python3 scripts/check_site.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
