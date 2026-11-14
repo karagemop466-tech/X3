@@ -1,0 +1,84 @@
+{
+ "n_teams": 32,
+ "games_total": 274,
+ "r_net_to_win": 0.8781,
+ "r2_net_to_win": 0.771,
+ "unexplained_variance_share": 0.229,
+ "luck_residual_sd_wins": 1.064,
+ "most_fortunate": [
+  {
+   "team": "DEN",
+   "luck_wins": 2.17,
+   "w_l": "7-2-0",
+   "pyth_wins": 4.83
+  },
+  {
+   "team": "BUF",
+   "luck_wins": 1.58,
+   "w_l": "7-1-0",
+   "pyth_wins": 5.42
+  },
+  {
+   "team": "CLE",
+   "luck_wins": 1.53,
+   "w_l": "5-4-0",
+   "pyth_wins": 3.47
+  },
+  {
+   "team": "DET",
+   "luck_wins": 1.25,
+   "w_l": "6-2-0",
+   "pyth_wins": 4.75
+  },
+  {
+   "team": "SF",
+   "luck_wins": 1.2,
+   "w_l": "7-1-0",
+   "pyth_wins": 5.8
+  }
+ ],
+ "most_unlucky": [
+  {
+   "team": "TB",
+   "luck_wins": -2.17,
+   "w_l": "3-6-0",
+   "pyth_wins": 5.17
+  },
+  {
+   "team": "LAC",
+   "luck_wins": -1.57,
+   "w_l": "0-8-0",
+   "pyth_wins": 1.57
+  },
+  {
+   "team": "TEN",
+   "luck_wins": -1.54,
+   "w_l": "1-7-0",
+   "pyth_wins": 2.54
+  },
+  {
+   "team": "NYJ",
+   "luck_wins": -1.44,
+   "w_l": "2-7-0",
+   "pyth_wins": 3.44
+  },
+  {
+   "team": "HOU",
+   "luck_wins": -1.4,
+   "w_l": "3-5-0",
+   "pyth_wins": 4.4
+  }
+ ],
+ "regression_candidates_up": [
+  "BUF",
+  "CLE",
+  "DEN"
+ ],
+ "regression_candidates_down": [
+  "LAC",
+  "TB",
+  "TEN"
+ ],
+ "method": "Pythagorean wins = g * PF^k/(PF^k+PA^k), k=2.37. Luck residual = actual wins - Pythagorean wins. R^2 of net points per game on win pct is the share of record variance the scoring differential already explains; the remainder is outcome noise.",
+ "source": "https://www.nfl.com/standings/league/2026/REG"
+}

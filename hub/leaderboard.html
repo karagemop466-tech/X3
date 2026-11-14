@@ -3,76 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leaderboard and rewards &middot; X3 review hub</title>
-<link rel="stylesheet" href="style.css">
+<title>Leaderboard - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
 </head>
 <body>
 <header class="top">
-  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
-  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a' class="on"'ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
 </header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html" class=on">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
 <main>
-<h1>Leaderboard and rewards</h1>
-<p class="note">A competition structure with an empty table. Nothing may be promoted, and no reward is payable, until every blocking gate on the validation page is passed - which is why the standings below are deliberately blank.</p>
-<h2>Scoring model</h2><ul><li>primary: median closing-line value per bet, with a bootstrap 95% interval clustered by game-week</li><li>secondary: ROI at the stated vig, same interval treatment</li><li>qualification: DSR &gt; 0 (SRC-10) and PBO &lt; 0.5 (SRC-11) on the grid that was actually searched</li><li>display: never rank on a bare point estimate; an entry with an interval that spans zero is shown as undetermined</li></ul>
-<h2>Categories</h2><p>Single - spread, Single - moneyline, Single - total, Player prop, Prop combo (same game), Parlay (cross-game)</p>
-<h2>Season structure</h2><ol><li>Registration window (spec + hash committed)</li><li>Freeze (no parameter edits while grading)</li><li>Grading on untouched games only</li><li>Review: promote, park or ban with reasons published</li></ol>
-<h2>Anti-gaming rules</h2><ul><li>One leaderboard entry per spec; a variant that changes a parameter is a new entry and increases the trial count used in DSR</li><li>Disclose every variant tried, including discarded ones</li><li>No near-duplicate entries (same family, same construction, different threshold)</li><li>Retire an entry that misses its own stated threshold after the review period, publicly</li></ul>
-<h2>Registered strategies and their state</h2>
-<table class=""><thead><tr>
-<th>#</th>
-<th>Strategy</th>
-<th>Bet type</th>
-<th>State</th>
-<th>Gates blocking</th>
-<th>Reward tier</th>
-</tr></thead><tbody>
-<tr><td>ST-01</td><td>QB-Out Fade</td><td>Single (spread)</td><td>Registered, not graded</td><td>G-00 G-03 G-04</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
-<tr><td>ST-02</td><td>Secondary-Depletion Overs</td><td>Player prop</td><td>Registered, not graded</td><td>G-03 G-04 G-08</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
-<tr><td>ST-03</td><td>OffLine Ruin Unders</td><td>Single (team total under)</td><td>Registered, not graded</td><td>G-03 G-04</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
-<tr><td>ST-04</td><td>Same-game prop pair</td><td>Prop combo (2 legs, same game)</td><td>Blocked</td><td>G-06 G-09</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
-<tr><td>ST-05</td><td>3-Leg Parlay Discipline</td><td>Parlay</td><td>Rule only, no live bets</td><td>G-09</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
-<tr><td>ST-06</td><td>Residual Fader</td><td>Single (moneyline)</td><td>Registered, not graded</td><td>G-02 G-04 G-06</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
-<tr><td>ST-07</td><td>Neutral-Site Correction</td><td>Single (spread)</td><td>Registered, not graded</td><td>G-03 G-04</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
-<tr><td>ST-08</td><td>Availability Composite</td><td>Model-vs-market residual</td><td>Blocked - no price source</td><td>G-04 G-05 G-07 G-08 G-10</td><td>T3 (no reward) &middot; <a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">spec</a></td></tr>
+<h1>Leaderboard</h1>
+<p class="lede">A competition design that rewards strategies only after they beat a luck-adjusted baseline - and which is therefore empty today.</p>
+
+<h2>Categories</h2><div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Category</th><th>Scope</th><th>Primary metric</th><th>Tiebreak</th></tr></thead><tbody>
+<tr><td><b>Game side (single)</b></td><td>Spread and moneyline singles</td><td>CLV-qualified ROI per 100 staked</td><td>Brier score on our own win probability</td></tr>
+<tr><td><b>Game total (single)</b></td><td>Over/under singles</td><td>CLV-qualified ROI per 100 staked</td><td>MAE of model total</td></tr>
+<tr><td><b>Player prop (single)</b></td><td>Anytime TD, yards, completions</td><td>ROI per 100 staked</td><td>hit rate CI</td></tr>
+<tr><td><b>Prop combo (same game)</b></td><td>2-3 correlated legs, one game</td><td>ROI per 100 with dependence audit</td><td>correlation error vs simulated joint</td></tr>
+<tr><td><b>Parlay (cross game)</b></td><td>2-4 legs, independent games</td><td>ROI per 100 with max simultaneous exposure</td><td>leg independence violations</td></tr>
+<tr><td><b>Model quality</b></td><td>No bets: line accuracy only</td><td>log-loss vs market closing line</td><td>MAE in points</td></tr>
 </tbody></table>
-<h2>Leaderboard</h2>
-<table class=""><thead><tr>
-<th>Rank</th>
-<th>Strategy</th>
-<th>Owner</th>
-<th>Bets</th>
-<th>CLV (95% CI)</th>
-<th>ROI (95% CI)</th>
-<th>Max drawdown</th>
-<th>DSR</th>
-<th>PBO</th>
-<th>Tier</th>
-<th>Reward</th>
-</tr></thead><tbody>
-<tr><td>-</td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td><span class="bad">UNVERIFIED</span></td><td>no entries</td><td>blank - owner decision (Q-08)</td></tr>
+</div>
+<h2>Ranking rules</h2>
+<ol><li>A strategy is invisible to the leaderboard until G-1 through G-9 all return PASS.</li><li>Ranking is by risk-adjusted return, not by win count; a 30-20 record is not evidence.</li><li>Every published number carries its sample size and its interval; a row without n is not shown.</li><li>Re-rating happens only on new weeks; a strategy that decays is demoted automatically.</li><li>No real money, no payout and no bet placement exists in this repository.</li></ol>
+<h2>Luck controls baked into the competition</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Control</th><th>Mechanism</th></tr></thead><tbody>
+<tr><td><b>Walk-forward only</b></td><td>fit on the past, scored on the future, always</td></tr>
+<tr><td><b>Minimum n</b></td><td>&gt;= 300 settled bets before a row exists at all</td></tr>
+<tr><td><b>FDR control</b></td><td>Benjamini-Hochberg at 10% across the trial window</td></tr>
+<tr><td><b>Deflated Sharpe</b></td><td>penalise the best-of-N that a search always produces</td></tr>
+<tr><td><b>CLV as the primary lens</b></td><td>closing prices are the least noisy verdict available</td></tr>
+<tr><td><b>Luck floor disclosure</b></td><td>the Pythagorean residual sd (1.06 wins) is printed next to any record claim</td></tr>
+<tr><td><b>Stake haircut</b></td><td>Kelly on the lower bound of the edge interval</td></tr>
 </tbody></table>
-<p class="note">Empty by design: 10 of 11 blocking gates are unpassed and no graded bet exists anywhere in the repository.</p>
-<h2>Reward design (notional)</h2>
-<table class=""><thead><tr>
-<th>Tier</th>
-<th>Criteria</th>
-<th>Reward</th>
-<th>Amount</th>
-<th>Currency</th>
-<th>Status</th>
-<th>Evidence</th>
-</tr></thead><tbody>
-<tr><td>T1</td><td>all gates passed, top 3 by CLV lower bound</td><td>blank - owner decision</td><td>blank - UNVERIFIED</td><td>blank - UNVERIFIED</td><td>notional</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">leaderboard spec</a> &middot; <a href="flagged.html">FLG-14</a></td></tr>
-<tr><td>T2</td><td>all gates passed</td><td>blank - owner decision</td><td>blank - UNVERIFIED</td><td>blank - UNVERIFIED</td><td>notional</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">leaderboard spec</a> &middot; <a href="flagged.html">FLG-14</a></td></tr>
-<tr><td>T3</td><td>pre-registered, still grading</td><td>none</td><td>blank - UNVERIFIED</td><td>blank - UNVERIFIED</td><td>notional</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">leaderboard spec</a> &middot; <a href="flagged.html">FLG-14</a></td></tr>
+</div>
+<h2>Standings</h2><div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Rank</th><th>Strategy</th><th>Bets</th><th>ROI /100</th><th>CLV</th><th>Sharpe (deflated)</th><th>State</th></tr></thead><tbody>
+<tr><td>-</td><td><i>no strategy qualifies</i></td><td>0</td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td></tr>
+<tr><td>-</td><td><i>no strategy qualifies</i></td><td>0</td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td></tr>
+<tr><td>-</td><td><i>no strategy qualifies</i></td><td>0</td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td></tr>
 </tbody></table>
-<p class="note">Reward value, payout mechanism and legality are unanswered (Q-08, FLG-14); the design specifies tiers only</p>
+<p class="note">The empty standings are the correct output of the gate system: with zero settled bets (G-2 FAIL) there is nothing to rank. Filling this table now would mean ranking noise.</p>
+</div>
+<h2>Rewards</h2><div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Award</th><th>Form</th><th>Status</th></tr></thead><tbody>
+<tr><td>First place, per category, per season</td><td>notional</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>Promotion to 'funded' tier</td><td>notional</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>Contribution prize (best new documented signal)</td><td>notional</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+</tbody></table>
+</div>
+<p class="note">Amounts are blank by policy. Paying prizes for betting advice is a regulated activity in
+several jurisdictions, and no payout mechanism, bankroll or settlement service exists in this repository
+(flag F-06, F-07; decision Q-13).</p>
+
 </main>
 <footer>
-  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
-  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
-  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
 </footer>
-</body>
-</html>
+<script src="assets/hub.js" defer></script>
+</body></html>

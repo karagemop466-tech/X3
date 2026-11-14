@@ -13,6 +13,10 @@ Run: python3 scripts/check_hub.py
 import csv, hashlib, json, math, os, re, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# RETARGETED by the integration session arena/e9b492ab-x3 (2026-11-14): the tree this gate validates
+# lives at archive/hub-621bf404/ now (its pages collided with the canonical hub/ and were relocated
+# verbatim, not deleted). Override with X3_HUB_DIR. Every assertion below is unchanged.
+HUB_DIR = os.environ.get("X3_HUB_DIR", "archive/hub-621bf404")
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 FAIL = []
 
@@ -53,7 +57,7 @@ def main():
         ok("deterministic: %d pages, identical bytes on a second build" % len(pages_a))
 
     # 2. recompute the published statistics from the raw data
-    st = list(csv.DictReader(open(os.path.join(ROOT, "hub/data/standings_2026.csv"), encoding="utf-8")))
+    st = list(csv.DictReader(open(os.path.join(ROOT, HUB_DIR + "/data/standings_2026.csv"), encoding="utf-8")))
     g = lambda r: int(r["w"]) + int(r["l"]) + int(r["t"])
     def pearson(x, y):
         n = len(x); mx = sum(x) / n; my = sum(y) / n
@@ -86,7 +90,7 @@ def main():
         fail("per-club split inconsistencies: %s" % derived["standings_problems"])
 
     # 4. injury row counts and the diff against the previous repo snapshot
-    inj = list(csv.DictReader(open(os.path.join(ROOT, "hub/data/injuries_wk10_2026-11-14.csv"), encoding="utf-8")))
+    inj = list(csv.DictReader(open(os.path.join(ROOT, HUB_DIR + "/data/injuries_wk10_2026-11-14.csv"), encoding="utf-8")))
     if len(inj) != derived["injury_rows"]:
         fail("injury row count mismatch")
     else:
@@ -105,21 +109,21 @@ def main():
                "(practice statuses excluded from this check - they change between fetches)" % (len(mine), len(theirs)))
 
     # 5. every hub page exists, has no unfilled token, and every row links
-    pages_dir = os.path.join(ROOT, "hub")
+    pages_dir = os.path.join(ROOT, HUB_DIR)
     htmls = sorted(f for f in os.listdir(pages_dir) if f.endswith(".html"))
-    bad = [p for p in htmls if re.search(r"\{\{[A-Z_0-9]+\}\}", read("hub/" + p))]
+    bad = [p for p in htmls if re.search(r"\{\{[A-Z_0-9]+\}\}", read(HUB_DIR + "/" + p))]
     if bad:
         fail("unfilled tokens in %s" % bad)
     else:
         ok("%d hub pages carry no unfilled token" % len(htmls))
 
     # 6. data-row count parity for the injury page and the lines page
-    inj_page = read("hub/injuries.html")
+    inj_page = read(HUB_DIR + "/injuries.html")
     if inj_page.count("<tr>") - inj_page.count("<tr><th>") - 1 < len(inj):
         fail("injuries page renders fewer rows than the data file")
     else:
         ok("injuries page renders all %d rows" % len(inj))
-    lines_page = read("hub/lines.html")
+    lines_page = read(HUB_DIR + "/lines.html")
     if len(lines) != derived["unplayed_games"]:
         fail("lines count != unplayed games on the slate")
     else:
@@ -128,11 +132,18 @@ def main():
     # 7. links resolve on disk (after the last build wrote files)
     broken = 0
     root_html = read("index.html")
-    if 'href="hub/index.html"' not in root_html and 'href="hub/' not in root_html:
-        fail("the root landing page no longer links to the hub - the hub unit must be registered there")
+    hub_index = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+    entry = (open(os.path.join(ROOT, "hub", "archive.html"), encoding="utf-8").read()
+             if os.path.exists(os.path.join(ROOT, "hub", "archive.html")) else "")
+    if 'href="hub/index.html"' not in hub_index and "hub/" not in hub_index:
+        fail("the root landing page no longer links a hub - the hub unit must be registered there")
+    elif HUB_DIR not in entry and HUB_DIR not in hub_index:
+        fail(f"neither the landing page nor hub/archive.html links {HUB_DIR} - the tree would be orphaned")
+    else:
+        ok("the relocated hub tree is reachable from the site index")
     for name in htmls:
-        body = read("hub/" + name)
-        base = os.path.join(ROOT, "hub")
+        body = read(HUB_DIR + "/" + name)
+        base = os.path.join(ROOT, HUB_DIR)
         for m in re.finditer(r'(?:href|src)="([^"#<>]+?)"', body):
             u = m.group(1).strip()
             if " " in u:
@@ -150,7 +161,7 @@ def main():
     # 8. official-source discipline on the data pages
     official = ("www.nfl.com", "nfl.com")
     for page in ("injuries.html", "deficiency.html", "lines.html", "correlations.html"):
-        body = read("hub/" + page)
+        body = read(HUB_DIR + "/" + page)
         for tbl in re.findall(r"<table[^>]*>(.*?)</table>", body, re.S):
             head = tbl.split("</tr>", 1)[0]
             if "<th>Source</th>" not in head:
