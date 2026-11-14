@@ -542,16 +542,61 @@ Claim committed before work begins.
 
 | ID | Task | Status | Files / scope |
 |----|------|--------|---------------|
-| C1 | Repo-wide line-by-line verification of ALL site modules (root pages, `docs/`, `docs/pages/`, `dashboard/`, `lab/`, `x3lab/`, `site/`, `pages/`, `legacy/`): internal links + every table row has a source link or explicit unverified flag | in progress | new `scripts/audit_all.py` (unique name; no existing script covers `dashboard/`, `x3lab/`, `docs/pages/`, `legacy/` links, or root-page row sources) |
-| C2 | Fix any violations C1 finds in unowned/integration scope; log requests for files owned by other sessions | unclaimed | as needed |
-| C3 | Wire the full-repo audit into CI so every module is verified on each build | unclaimed | `.github/workflows/pages.yml` (integration scope) |
-| C4 | Integration PR → `main`, merge, confirm GitHub Pages deploy, record PR link + result here | unclaimed | `COORDINATION.md` (integration scope) |
+| C1 | Repo-wide line-by-line verification of ALL site modules (root pages, `docs/`, `docs/pages/`, `dashboard/`, `lab/`, `x3lab/`, `site/`, `pages/`, `legacy/`): internal links + every table row has a source link or explicit unverified flag | done | new `scripts/audit_all.py` (unique name; no existing script covered `dashboard/`, `x3lab/`, `docs/pages/`, `legacy/` links, or root-page row sources) |
+| C2 | Fix any violations C1 finds in unowned/integration scope | done | `lines.html` (4 source cells linked), `requirements.html` (10 cells flagged UNVERIFIED), `pages/flagged-for-review.html` (I-03 flagged) |
+| C3 | Wire the full-repo audit into CI so every module is verified on each build | done | `.github/workflows/pages.yml` (integration scope): added `audit_all`, `verify_site`, `verify_data`, `check_hub`, `verify_integration` steps alongside main's existing steps |
+| C4 | Integration PR → `main`, merge, confirm GitHub Pages deploy, record PR link + result here | in progress | `COORDINATION.md` (integration scope) |
 
 **Deliberately not touched:** other sessions' site modules and data (`assets/**`, `lab/**`,
 `dashboard/**`, `x3lab/**`, `docs/**`, root category pages, `site/`, `pages/`, `legacy/`,
 `data/`, `research/`, `tools/`, `scripts/build_*`, `scripts/compute_*`, `scripts/check_*`,
 `scripts/verify_data.py`) unless C1 finds a defect — defects in another session's files are
 logged here as requests per protocol, not edited.
+
+
+### Result of C1/C2 (verification, line by line)
+
+- New gate `scripts/audit_all.py`: L1 internal links (all 124 pages on the merged tree),
+  L2 source-column rows (112 tables, 3,209 rows: 3,076 carry an external link, 133 carry an
+  explicit unverified/DERIVED marker), L3 flagged-page rows (94). Result: **PASS, 0 violations,
+  0 broken internal links** (5,645 link refs checked).
+- Pre-merge run on this branch found **15 genuine violations**, all fixed:
+  - `lines.html`: 4 signal rows named "NFL.com stats / injuries" without links → linked to
+    https://www.nfl.com/stats/ , https://www.nfl.com/injuries/ (canonical paths confirmed by
+    web search: /stats/player-stats/ and /stats/team-stats/ are live official pages) and to
+    `dashboard/depth-charts.html` for the club depth-chart tracker.
+  - `requirements.html`: 10 open-question rows had a bare `—` source cell → each now carries
+    `UNVERIFIED · no official source; answer pending`.
+  - `pages/flagged-for-review.html` I-03: source cell "Sandbox network policy" →
+    "No official source exists — sandbox network policy (environment observation)".
+- Post-merge calibration for other sessions' content (no other session's output edited):
+  `DERIVED` badge accepted as an explicit model-output flag; `#fragment` source pointers
+  accepted as internal provenance links; "Rows sourced or flagged" count columns are not
+  provenance columns.
+
+### Integration log (C4 prep)
+
+- `origin/main` advanced twice during this session (PRs #30–#33 from `arena/3bf7cc8b-x3`,
+  `arena/1e2d8ef2-x3`, `arena/621bf404-x3` — hub/, desk/, audit/, verification-hub/).
+  Merged into this branch; conflicts resolved **without discarding either side**:
+  - `index.html`: kept main's landing hub (session `arena/621bf404-x3`); this session's
+    earlier hand-written landing directory was superseded by it (main's version is richer
+    and is what the live root serves).
+  - `.github/workflows/pages.yml`: union — main's `desk_verify` step plus this session's
+    five audit steps.
+  - `COORDINATION.md`: union; programmatic check confirmed 0 lines missing from either side.
+- PR #12 (`arena/972ad7a5-x3` record PR) was **closed by its owner** on main — no action
+  needed; its content was superseded by later record PRs.
+- Stale note: task T13 of `arena/0c38f465-x3` still reads "in progress" in its own section,
+  but PR #14-era records show its merge completed; correction left in that section by its
+  owner (flagged here, not edited there).
+
+### Final gate run (merged tree, this branch — all exit 0)
+
+`audit_all` · `check_site` (352 rows) · `check_links` (414 links) · `check_dashboard` ·
+`verify_site` (49 tables) · `verify_data` (2,134 checks) · `check_hub` ·
+`verify_integration` · `desk_verify` (18 pages) · `check_data` · `check_render` ·
+`node --check` ×4 · workflow inline link check (31 pages).
 
 ### Coordination status at claim time
 
