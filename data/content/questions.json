@@ -1,0 +1,635 @@
+{
+  "meta": {
+    "title": "Questions & Information Needed",
+    "subtitle": "The register of what must be settled before a decision can reasonably be made. Each question states what is already known (with an official source), what is not known, how to find out, and whether it blocks a decision.",
+    "reading_guide": "'Blocking' means a decision that changes the architecture, the legal position or the risk profile cannot be made until the question is answered. 'Non-blocking' questions can be answered while work continues.",
+    "as_of": "2026-11-14",
+    "source_policy": "Only NFL and official club sources are cited. Where no official source exists, the cell is left blank and the item is carried on the Flagged for Review page."
+  },
+  "questions": [
+    {
+      "id": "Q-001",
+      "topic": "Scope & Legal",
+      "question": "Is this platform for private analysis of games the owner bets on, or is it intended to publish lines that other people bet against (i.e. operate a book)?",
+      "why_it_matters": "The two answers produce completely different platforms. Publishing a line with a stake attached is a regulated activity in most jurisdictions; analysing one's own bets is not. Every downstream design decision - prize structure, 'rewards', public leaderboard - depends on this.",
+      "decision_blocked": "Reward design, whether the leaderboard is public or private, whether a wagering interface may ever be added, and the entire compliance workstream.",
+      "blocking": "yes",
+      "known": [
+        {
+          "fact": "The NFL publishes its official playing rules and rule changes through NFL Football Operations.",
+          "source_url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook",
+          "source_label": "NFL Football Operations - 2026 NFL Rulebook"
+        },
+        {
+          "fact": "The NFL publishes official league statements, including policy positions, through NFL Communications.",
+          "source_url": "https://www.nfl.com/news/nfl-communications",
+          "source_label": "NFL Communications (NFL.com)"
+        }
+      ],
+      "unknown": [
+        "Whether the platform will accept, hold or publish stakes.",
+        "Whether the leaderboard rewards real money, a points-based allowance, or recognition only.",
+        "Whether lines are made available to any third party."
+      ],
+      "how_to_obtain": [
+        "Answer the question in one sentence to the platform owner.",
+        "If the answer is 'publish lines to others', commission a jurisdiction-specific gaming-licensing review before any line is published.",
+        "If the answer is 'private analysis', record that decision in this register so the leaderboard reward design can be settled."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-002",
+      "topic": "Scope & Legal",
+      "question": "Which states or countries will any wagering activity be conducted from or into?",
+      "why_it_matters": "Sports-betting legality, licensing and tax treatment are jurisdiction-specific; a single global design can be illegal in a subset of target markets.",
+      "decision_blocked": "Whether any transactional feature may be built at all; the compliance gate in the release checklist.",
+      "blocking": "yes",
+      "known": [],
+      "unknown": [
+        "Legal entity and location of the operator.",
+        "Target jurisdictions and whether they are permitted for the intended activity.",
+        "Whether geofencing, identity checks and responsible-gambling controls are required."
+      ],
+      "how_to_obtain": [
+        "Obtain a written legal opinion or a licensed compliance review for each target jurisdiction.",
+        "Record the permitted activity type per jurisdiction in a compliance matrix before development continues."
+      ],
+      "owner": "Platform owner (with external counsel)",
+      "status": "open"
+    },
+    {
+      "id": "Q-003",
+      "topic": "Scope & Legal",
+      "question": "Do NFL rules or club policies restrict personnel with access to this platform from betting on games?",
+      "why_it_matters": "Personnel with access to non-public injury and line information can be subject to league restrictions that would materially change who may operate the system.",
+      "decision_blocked": "Who may be granted access to injury data and to unpublished lines.",
+      "blocking": "yes",
+      "known": [
+        {
+          "fact": "The NFL's official rulebook and rule-change summaries are published by NFL Football Operations.",
+          "source_url": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook",
+          "source_label": "NFL Football Operations - 2026 NFL Rulebook"
+        }
+      ],
+      "unknown": [
+        "The specific personnel policy section that applies to staff with access to the platform.",
+        "Whether the platform's operators are in scope."
+      ],
+      "how_to_obtain": [
+        "Read the current rulebook section on gambling and personnel for the 2026 season.",
+        "Have counsel confirm applicability to the operating individuals and entities."
+      ],
+      "owner": "Platform owner (with external counsel)",
+      "status": "open"
+    },
+    {
+      "id": "Q-004",
+      "topic": "Data",
+      "question": "What is the required history depth for back-testing (how many prior seasons of official data must be retained)?",
+      "why_it_matters": "Sample size drives every confidence interval on the site. Three seasons cannot distinguish skill from variance in NFL betting; one season cannot support a parlay strategy at all.",
+      "decision_blocked": "Validation gate G1 thresholds and the first leaderboard eligibility date.",
+      "blocking": "yes",
+      "known": [
+        {
+          "fact": "Official standings, schedules and player statistics are published by NFL.com for prior seasons, and the pipeline already ingests 2023-2026.",
+          "source_url": "https://www.nfl.com/standings/league/2026/REG",
+          "source_label": "NFL.com league standings (season/year selectable)"
+        }
+      ],
+      "unknown": [
+        "Minimum seasons required before a strategy may be scored as eligible.",
+        "Whether the owner will fund historical data that NFL.com does not publish at game level."
+      ],
+      "how_to_obtain": [
+        "Decide the minimum sample size per strategy class and encode it as gate G1.",
+        "Extend the season list in scripts/lib/official.py if more history is needed - the fetcher already handles arbitrary seasons."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-005",
+      "topic": "Data",
+      "question": "Is per-game player-level data (box score / game book) required, and is it acceptable to source it only from NFL.com game pages?",
+      "why_it_matters": "Player-prop strategies and any player-prop combination cannot be evaluated at all without game-level player logs, and the correlation matrix for prop combos is computed from them.",
+      "decision_blocked": "Whether the player-prop and prop-combination strategy classes can ever pass validation.",
+      "blocking": "yes",
+      "known": [
+        {
+          "fact": "NFL.com publishes the official player-statistics tables by category and season.",
+          "source_url": "https://www.nfl.com/stats/player-stats/",
+          "source_label": "NFL.com player statistics by category"
+        },
+        {
+          "fact": "NFL.com publishes the official weekly schedule and results, which is the game-level index used to build box-score URLs.",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule"
+        }
+      ],
+      "unknown": [
+        "Whether official game books (PDF) are the preferred per-game source or the HTML box score.",
+        "Whether per-game data must be retained for every season back to the chosen start year.",
+        "Whether the owner's own game logs may supplement official data (they may not, under the no-inference rule)."
+      ],
+      "how_to_obtain": [
+        "Run the box-score fetcher over one completed season and measure coverage against the official schedule.",
+        "Confirm the per-game field set required for each prop market the owner wants to trade."
+      ],
+      "owner": "Platform owner (field list) / data engineering (coverage)",
+      "status": "open"
+    },
+    {
+      "id": "Q-006",
+      "topic": "Data",
+      "question": "How deep should official depth-chart ingestion go, and who is responsible for keeping it correct?",
+      "why_it_matters": "The requirement to know when a second, third or fourth string replaces a starter is only satisfiable if the depth ordering is sourced, not inferred. Club depth charts are maintained by each club and are frequently stale or formatted differently.",
+      "decision_blocked": "The precision of the deficiency signal and therefore the size of the injury-related edge.",
+      "blocking": "no",
+      "known": [
+        {
+          "fact": "Official club websites publish their own depth charts; the pipeline probes all 32 official club domains and keeps only pages that resolve.",
+          "source_url": "https://www.nfl.com/teams/",
+          "source_label": "NFL.com team index"
+        },
+        {
+          "fact": "The official NFL injury report lists, per team, the players reported for each game and their practice and game status.",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        }
+      ],
+      "unknown": [
+        "Which clubs publish a machine-readable depth chart and which do not.",
+        "Whether a human curator will correct the gaps, and at what cadence.",
+        "Whether the official game book 'substitutions' order should be used as the fallback depth signal."
+      ],
+      "how_to_obtain": [
+        "Run the depth-chart coverage check across all 32 clubs and publish the coverage table.",
+        "Agree a fallback order: official club depth chart, then official game-book starters and substitutions, then blank-and-flag."
+      ],
+      "owner": "Data engineering (with owner approval of the fallback rule)",
+      "status": "open"
+    },
+    {
+      "id": "Q-007",
+      "topic": "Data",
+      "question": "What is the decision-time stamp for each piece of information, and how far back must snapshots be retained?",
+      "why_it_matters": "Back-testing that uses a Saturday injury report for a Thursday game is look-ahead bias and will manufacture edge that does not exist.",
+      "decision_blocked": "Every back-test and therefore every leaderboard row.",
+      "blocking": "yes",
+      "known": [
+        {
+          "fact": "The official NFL injury report is published per week and lists each reported player's practice participation and game status.",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        }
+      ],
+      "unknown": [
+        "The exact release time used as the decision stamp (NFL injury reports are released in windows).",
+        "How many weeks of historical snapshots must be retained for a valid back-test."
+      ],
+      "how_to_obtain": [
+        "Add a per-week snapshot archive keyed by the official report URL and the fetch timestamp.",
+        "Adopt the conservative rule: a snapshot may only inform a decision after its recorded fetch time."
+      ],
+      "owner": "Data engineering",
+      "status": "open"
+    },
+    {
+      "id": "Q-008",
+      "topic": "Model",
+      "question": "What is the minimum sample size and the maximum acceptable drawdown for each strategy class?",
+      "why_it_matters": "These are the numbers that decide who wins the competition. Without them, the leaderboard ranks luck.",
+      "decision_blocked": "Gate thresholds G1, G5 and the reward split.",
+      "blocking": "yes",
+      "known": [],
+      "unknown": [
+        "Minimum bets for a single-bet strategy, for a parlay strategy and for a prop-combo strategy.",
+        "Maximum tolerable peak-to-trough drawdown in units or percent of bankroll.",
+        "Whether a minimum live (out-of-sample) period is required in addition to a back-test."
+      ],
+      "how_to_obtain": [
+        "Start from the gate table published on the Strategies page and adjust the thresholds there.",
+        "Confirm the thresholds before the first reward cycle is funded."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-009",
+      "topic": "Model",
+      "question": "How is skill separated from luck, quantitatively, and what threshold must be cleared?",
+      "why_it_matters": "This is the core of the brief. A strategy that is lucky looks identical to a skilled strategy on a win/loss record; only variance decomposition and out-of-sample consistency separate them.",
+      "decision_blocked": "Eligibility for rewards; the ranking order of the leaderboard.",
+      "blocking": "yes",
+      "known": [],
+      "unknown": [
+        "The agreed skill-share threshold and the bootstrap interval width that satisfies it.",
+        "Whether the skill metric is computed per strategy in isolation or against a portfolio of all deployed strategies."
+      ],
+      "how_to_obtain": [
+        "Adopt the published skill-share definition (model-implied variance divided by total observed variance) and set the threshold.",
+        "Confirm with a stress test: re-run the harness with a synthetic pure-luck strategy and confirm it is rejected."
+      ],
+      "owner": "Platform owner (with quant review)",
+      "status": "open"
+    },
+    {
+      "id": "Q-010",
+      "topic": "Model",
+      "question": "May the evaluation reference an independent market consensus, or must every strategy be judged only against our own lines?",
+      "why_it_matters": "Judging a strategy against our own line is circular: our line is produced by the same family of models. Without an independent reference the leaderboard can only measure self-consistency, not skill.",
+      "decision_blocked": "The validity of the entire leaderboard.",
+      "blocking": "yes",
+      "known": [
+        {
+          "fact": "The platform's own lines are generated from official NFL data; no third-party line feed is ingested, which is the required 'originate our own lines' property.",
+          "source_url": "",
+          "source_label": "This repository - scripts/compute_signals.py"
+        }
+      ],
+      "unknown": [
+        "Whether an independent closing-line reference may be consulted for evaluation only (not for line generation).",
+        "If not, what objective reference replaces it - for example a held-out model trained on a different feature set and period."
+      ],
+      "how_to_obtain": [
+        "Option A: permit a market reference for evaluation only, with the line-generation path proven independent.",
+        "Option B: adopt a two-model design where a separately specified evaluator, trained on a disjoint period and feature set, produces the reference probability.",
+        "Option C: restrict rewards to strategies that beat a null model with a pre-registered significance threshold."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-011",
+      "topic": "Model",
+      "question": "What is the minimum acceptable correlation between a new strategy and the strategies already deployed?",
+      "why_it_matters": "A cluster of highly correlated strategies multiplies exposure and makes the leaderboard look diversified when it is not.",
+      "decision_blocked": "How many strategies may be rewarded at once, and the decorrelation rule for parlay legs.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "The correlation threshold above which a new strategy is treated as a duplicate.",
+        "Whether the correlation is computed on returns, on signals, or on both."
+      ],
+      "how_to_obtain": [
+        "Adopt the published correlation matrix method and set the threshold in the gate table.",
+        "Verify against the computed matrix published on the Strategies page."
+      ],
+      "owner": "Platform owner (with quant review)",
+      "status": "open"
+    },
+    {
+      "id": "Q-012",
+      "topic": "Model",
+      "question": "What is the intended bankroll and stake-sizing policy, including whether fractional Kelly is acceptable?",
+      "why_it_matters": "Stake sizing changes every performance metric in the leaderboard, and an unbounded policy can bankrupt a strategy that is genuinely skilled.",
+      "decision_blocked": "Reward sizing and the drawdown gate.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Bankroll per strategy and total.",
+        "Stake fraction per bet, and whether a hard per-bet cap applies.",
+        "Whether parlays are staked flat or scaled by leg count."
+      ],
+      "how_to_obtain": [
+        "Publish a stake policy with the platform, then encode it in the back-test harness.",
+        "Confirm whether the published metrics are per-unit or bankroll-normalised."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-013",
+      "topic": "Competition",
+      "question": "What is the reward pool, its funding source, and the payout cadence?",
+      "why_it_matters": "A leaderboard without rewards is a report, not a competition; the brief asks for a competition that rewards top performers.",
+      "decision_blocked": "The competition launch date and the eligibility rules.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Pool size and periodicity.",
+        "Whether rewards are money, an allocation of the platform's own bankroll, or recognition.",
+        "Tie-break rule when two strategies have identical composite scores."
+      ],
+      "how_to_obtain": [
+        "Fund and publish the reward schedule, or change the competition framing to a non-monetary scoreboard.",
+        "Publish the tie-break rule in the leaderboard specification before the first cycle closes."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-014",
+      "topic": "Competition",
+      "question": "Who is eligible to submit a strategy, and may the same person submit strategies in more than one class?",
+      "why_it_matters": "Determines whether the leaderboard is an open field or a single-operator research log, and how correlated submissions are handled.",
+      "decision_blocked": "Entrant rules and the correlation clustering policy.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Whether the competition is open to other people or is an internal research competition.",
+        "Whether one entrant may occupy multiple leaderboard positions."
+      ],
+      "how_to_obtain": [
+        "Decide and publish the entrant rules on the Leaderboard page.",
+        "Confirm whether a single entrant may have more than one strategy eligible in the same cycle."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-015",
+      "topic": "Competition",
+      "question": "Must every hypothesis ever tested be disclosed, including the failures?",
+      "why_it_matters": "Multiple-testing disclosure is the only defence against publishing a lucky strategy that was found by trying thousands of things.",
+      "decision_blocked": "Whether the leaderboard may be presented as a skill ranking at all.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Whether a rejected-hypothesis register will be maintained.",
+        "The maximum number of hypotheses permitted per cycle and the multiple-testing correction to be applied."
+      ],
+      "how_to_obtain": [
+        "Adopt a hypothesis register in the repository, with every tested hypothesis recorded whether it passed or failed.",
+        "Apply a Benjamini-Hochberg false-discovery-rate control across the hypothesis register."
+      ],
+      "owner": "Platform owner (with quant review)",
+      "status": "open"
+    },
+    {
+      "id": "Q-016",
+      "topic": "Decision Support",
+      "question": "Which decisions is this platform meant to support, and what is the explicit decision that each output feeds?",
+      "why_it_matters": "Without a named decision per output, the site becomes a data dump. Each page should end in an action.",
+      "decision_blocked": "The information architecture of the site and the required fields on every page.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "The primary decision: which games to bet, what price to accept, which strategy to fund, or all three.",
+        "Whether the owner wants a single ranked recommendation per game or a raw feed to choose from."
+      ],
+      "how_to_obtain": [
+        "Answer in one sentence per output family; the site is then reorganised around those decisions.",
+        "Validate the answer by naming the action that follows from a given page."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-017",
+      "topic": "Decision Support",
+      "question": "How should suggestions be prioritised when they conflict, and who has the final say?",
+      "why_it_matters": "The brief asks for a suggestions section so a reviewer can choose the best path. A prioritisation rule is what makes that review fast.",
+      "decision_blocked": "The ranking order of the Suggestions page.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Whether impact, cost, risk or reversibility dominates the ordering.",
+        "Who approves a suggestion and whether approval is recorded on the site."
+      ],
+      "how_to_obtain": [
+        "Adopt the published default ordering (impact, then reversibility, then cost) and change it if another rule is preferred.",
+        "Record each approval on the Suggestions page so the board of record is visible."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-018",
+      "topic": "Verification",
+      "question": "What counts as an acceptable official source when the NFL does not publish a datum (for example roster status codes)?",
+      "why_it_matters": "The verification rule is 'official site only'. Where no official source exists the value must be blank, which means some useful fields will permanently be blank unless a rule is set.",
+      "decision_blocked": "Which fields appear on the depth page at all.",
+      "blocking": "no",
+      "known": [
+        {
+          "fact": "The NFL publishes the official injury report, standings, schedules, statistics and team/player pages on nfl.com.",
+          "source_url": "https://www.nfl.com/",
+          "source_label": "NFL.com"
+        }
+      ],
+      "unknown": [
+        "Whether an official club's own site counts as an official source for roster status (the pipeline treats it as official and labels it as a club source).",
+        "Whether the NFL Players Association or NFL Enterprises pages may be used for contract and roster context."
+      ],
+      "how_to_obtain": [
+        "Confirm the source hierarchy to publish on the Sources page.",
+        "Any datum without a confirmed official source stays blank and appears on the Flagged for Review page."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-019",
+      "topic": "Verification",
+      "question": "Should the platform ever ingest non-official data, and if so, how is it labelled so it can never be confused with verified data?",
+      "why_it_matters": "The verification rule is the integrity of the whole site. A strict official-only policy is simplest, but it may block prop markets that need finer granularity.",
+      "decision_blocked": "The data-tier design and the labelling rules on every table.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Whether a second, clearly separated tier (for example 'model estimate' or 'owner-supplied') is permitted.",
+        "If permitted, whether tier-two data may ever appear on a decision page."
+      ],
+      "how_to_obtain": [
+        "Adopt the published two-tier rule: official-verified data is publishable; anything else is labelled and quarantined.",
+        "Decide whether the leaderboard may ever be computed from non-official inputs (recommended: no)."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-020",
+      "topic": "Operations",
+      "question": "How often should the site refresh, and what is the acceptable staleness for an injury-driven decision?",
+      "why_it_matters": "The official injury report changes several times a week. A stale injury table is worse than no injury table because it looks current.",
+      "decision_blocked": "The scheduled cadence and the staleness warning thresholds.",
+      "blocking": "no",
+      "known": [
+        {
+          "fact": "The official NFL injury report is a weekly publication covering all games, with practice participation and game status per player.",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        }
+      ],
+      "unknown": [
+        "The maximum acceptable age of the injury snapshot before the site refuses to show it as current.",
+        "Whether the owner wants intraday refreshes around NFL release windows."
+      ],
+      "how_to_obtain": [
+        "Adopt the published freshness policy and its warning banner.",
+        "Adjust the cron schedule in .github/workflows/data-pipeline.yml if intraday refreshes are wanted."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-021",
+      "topic": "Operations",
+      "question": "What is the expected weekly maintenance load for depth-chart and injury review, and who performs it?",
+      "why_it_matters": "Automation covers retrieval, not verification. If a human must review depth charts weekly, that is a real recurring cost and must be planned for.",
+      "decision_blocked": "Whether depth resolution is fully automated or human-in-the-loop.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Hours per week expected for manual verification.",
+        "Whether an exception queue (only flagged items need review) is acceptable."
+      ],
+      "how_to_obtain": [
+        "Run the depth coverage report for one week and count the number of clubs that need manual resolution.",
+        "Proceed with an exception-only workflow if the count is manageable."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-022",
+      "topic": "Operations",
+      "question": "What is the retention and archival policy for official snapshots and back-test artefacts?",
+      "why_it_matters": "Reproducing a past leaderboard result requires the exact snapshot and the exact code that consumed it.",
+      "decision_blocked": "Storage plan and the audit model for the leaderboard.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Retention period and storage location for raw official payloads.",
+        "Whether every leaderboard row is regenerated on demand or archived as a signed artefact."
+      ],
+      "how_to_obtain": [
+        "Adopt the published retention rule and store the artefacts with the code version.",
+        "Confirm storage capacity with the repository owner."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-023",
+      "topic": "Model",
+      "question": "Which markets are in scope: spread, moneyline, total, and which player-prop types?",
+      "why_it_matters": "Each market needs different data granularity and has a different correlation structure. Defining scope prevents building a half-supported prop model.",
+      "decision_blocked": "The line model output, the strategy register and the required official data fields.",
+      "blocking": "yes",
+      "known": [],
+      "unknown": [
+        "Whether props include passing yards, rushing yards, receptions, receiving yards, touchdowns, sacks, interceptions, fantasy points.",
+        "Whether first-half and player-vs-player prop markets are wanted.",
+        "Whether the platform prices only the pre-game market or also live in-game."
+      ],
+      "how_to_obtain": [
+        "Name the markets in priority order.",
+        "For each market, confirm that the official per-game field needed to evaluate it exists (link to Q-005)."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-024",
+      "topic": "Model",
+      "question": "How should games with limited history (a new coaching staff, a new quarterback) be handled?",
+      "why_it_matters": "Team-level season-to-date ratings are exactly wrong for rebuilt teams, and NFL rosters change between seasons more than any other major sport.",
+      "decision_blocked": "Shrinkage design in the line model and the treatment of these games in the back-test.",
+      "blocking": "no",
+      "known": [
+        {
+          "fact": "Official league standings publish points for and points against for every team, which are the inputs to a season-to-date strength model.",
+          "source_url": "https://www.nfl.com/standings/league/2026/REG",
+          "source_label": "NFL.com league standings"
+        }
+      ],
+      "unknown": [
+        "The minimum games before a team's rating is trusted.",
+        "Whether prior-year ratings may be carried forward, and with what weight."
+      ],
+      "how_to_obtain": [
+        "Adopt a published shrinkage rule and test it in the harness.",
+        "Report the shrinkage weight on the methodology page so the assumption is visible."
+      ],
+      "owner": "Quant (with owner approval)",
+      "status": "open"
+    },
+    {
+      "id": "Q-025",
+      "topic": "Model",
+      "question": "What is the house margin the platform's own lines should carry, and is the platform price-only or price-and-stake?",
+      "why_it_matters": "A published line without a stated margin is not actionable, and the margin determines whether a strategy can exist at all.",
+      "decision_blocked": "The line model output format and the reward mechanics.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Target hold per line (for example 2% to 4%).",
+        "Whether the platform takes the other side of a bet it quotes, or only publishes a price.",
+        "Whether a stake is offered alongside the price."
+      ],
+      "how_to_obtain": [
+        "Set the margin in the line model configuration and publish it.",
+        "Decide the quoting model before any external publication."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-026",
+      "topic": "Governance",
+      "question": "Who signs off on a strategy moving from research to funded deployment?",
+      "why_it_matters": "A model registry with no approval step lets an overfitted strategy reach real stakes.",
+      "decision_blocked": "The approval workflow for the leaderboard.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Whether the owner approves alone or a second reviewer is required.",
+        "Whether approval is per strategy, per class, or per cycle."
+      ],
+      "how_to_obtain": [
+        "Publish the approval rule on the Leaderboard page and record each approval.",
+        "Until this is answered, no strategy may be marked funded."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-027",
+      "topic": "Governance",
+      "question": "What is the change-control process for the line model, the strategy set and the published thresholds?",
+      "why_it_matters": "A silent threshold change mid-cycle invalidates the leaderboard. The repository already treats shared outputs as integration-only; the same rule should apply to model parameters.",
+      "decision_blocked": "Whether a cycle may be re-scored after a model change.",
+      "blocking": "no",
+      "known": [],
+      "unknown": [
+        "Whether model changes mid-cycle force a re-score or start a new cycle.",
+        "Whether the published gates are versioned and linked from the leaderboard."
+      ],
+      "how_to_obtain": [
+        "Adopt the published rule: any change to the line model or the gates starts a new cycle and does not re-score a closed one.",
+        "Version the gate table and link the version from each leaderboard row."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    },
+    {
+      "id": "Q-028",
+      "topic": "Verification",
+      "question": "How will the owner verify the published numbers independently, and against which comparison page?",
+      "why_it_matters": "The brief requires links for manual review. The comparison page must be named so that a discrepancy is detectable.",
+      "decision_blocked": "The Sources page layout and the row-level links.",
+      "blocking": "no",
+      "known": [
+        {
+          "fact": "Every published dataset row carries the official URL it was read from, and the page states the fetch timestamp and the SHA-256 of the raw payload.",
+          "source_url": "",
+          "source_label": "This repository - data/datasets/manifest.json"
+        }
+      ],
+      "unknown": [
+        "Which comparison page the owner will use to reconcile (for example the NFL.com injury report page for the current week).",
+        "Whether the owner wants an on-page reconciliation count (rows published versus rows on the official page)."
+      ],
+      "how_to_obtain": [
+        "Publish the reconciliation count on each data page.",
+        "Record the owner's chosen comparison page in the Sources page."
+      ],
+      "owner": "Platform owner",
+      "status": "open"
+    }
+  ]
+}

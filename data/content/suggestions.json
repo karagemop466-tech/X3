@@ -1,0 +1,1211 @@
+{
+  "meta": {
+    "title": "Suggestions & Decision Paths",
+    "subtitle": "Every suggestion is a proposal for review, not an applied change. Each carries the problem it addresses, alternative paths with trade-offs, expected impact, dependencies, and a recommendation. Nothing here is implemented until a reviewer chooses a path.",
+    "how_to_review": "Read the Problem and the Paths, then record a decision. A path that is not chosen is still a documented option; the reason for rejection is as valuable as the reason for acceptance.",
+    "default_ordering": "Priority (P0 first), then expected impact, then reversibility, then cost.",
+    "status_legend": {
+      "proposed": "Awaiting review. No code change has been made.",
+      "partially adopted": "Part of the suggestion is already in the platform; the remainder is still open.",
+      "adopted": "A reviewer chose a path and the change is implemented.",
+      "rejected": "A reviewer declined the suggestion; the reason is recorded."
+    }
+  },
+  "suggestions": [
+    {
+      "id": "S-001",
+      "title": "Make the verification ledger a hard gate on every published number",
+      "category": "Verification & Trust",
+      "priority": "P0",
+      "problem": "A decision-support platform is only trusted if every number can be traced. Today the trace exists in the manifest but it is not visible at the point of use, so a reader cannot tell an official figure from a derived one without opening the repository.",
+      "proposed_change": "Render the source URL, the fetch timestamp and the payload hash directly in the table rows, and make the CI validator refuse to build if any dataset row lacks a source link.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Row-level source links plus a CI gate (recommended)",
+          "description": "Every row carries an 'Official source' cell linking to the exact page it was read from; the validator fails the build on any row without one. The hash and timestamp stay on the Sources page.",
+          "pros": [
+            "Cheapest to build and already proven by the current validator.",
+            "Matches the brief's requirement that every table row has a source link.",
+            "Does not clutter the wide data tables."
+          ],
+          "cons": [
+            "Hash and timestamp are one click away rather than inline."
+          ],
+          "cost": "Low - validator and renderer already exist.",
+          "effort": "Days, not weeks.",
+          "risk": "Low",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Inline provenance on every cell",
+          "description": "Each individual value is stamped with its source, timestamp and hash.",
+          "pros": [
+            "Maximum auditability at the point of use."
+          ],
+          "cons": [
+            "Tables become unreadable on a dashboard.",
+            "Large performance and maintenance cost for little decision value."
+          ],
+          "cost": "High",
+          "effort": "Weeks.",
+          "risk": "Low technical risk, high usability risk.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Publish a separate audit appendix",
+          "description": "Keep the dashboard clean and put all provenance in an appendix document.",
+          "pros": [
+            "Cleanest reading experience."
+          ],
+          "cons": [
+            "Breaks the brief's requirement that each row has a source link."
+          ],
+          "cost": "Medium",
+          "effort": "Days.",
+          "risk": "Does not satisfy the stated requirement.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A satisfies the brief literally, keeps the dashboard readable and reuses machinery that already exists. Path B solves a problem the reader does not have.",
+      "expected_impact": "Removes the largest single trust risk: a reader can act on any published figure without leaving the page.",
+      "dependencies": [],
+      "evidence": [
+        {
+          "fact": "The brief requires that every table row have a source link to an official site, and that values which cannot be confirmed are left blank and flagged.",
+          "source_url": "",
+          "source_label": "Project brief, 2026-11-14"
+        }
+      ],
+      "status": "adopted",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-002",
+      "title": "Separate the line model from the evaluation reference to break circularity",
+      "category": "Model Design",
+      "priority": "P0",
+      "problem": "The platform originates its own lines. If a strategy is then scored against those same lines, the evaluation measures self-consistency rather than skill: any strategy that agrees with the line model looks correct by construction. This is the single most dangerous methodological trap in the brief.",
+      "proposed_change": "Introduce an explicit separation between the Line Model that prices games and an Evaluation Reference that scores strategies, with the two built on disjoint feature sets and disjoint time windows.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Two-model separation with a held-out evaluator (recommended)",
+          "description": "The line model uses team strength, scoring efficiency and availability. The evaluator is a separately specified model, trained on a disjoint period and a different feature set, that produces a reference probability used only for scoring.",
+          "pros": [
+            "Breaks the circularity without introducing any third-party data.",
+            "Stays entirely within the 'originate our own lines' requirement.",
+            "Makes the claim of skill testable against something that was not built to agree with the strategy."
+          ],
+          "cons": [
+            "Two models to maintain and two sets of parameters to version.",
+            "The evaluator can itself be overfitted; it needs its own gates."
+          ],
+          "cost": "Medium - both models already share the same data pipeline.",
+          "effort": "Weeks.",
+          "risk": "Medium - mitigated by applying the same validation discipline to the evaluator.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Permit an independent market reference for evaluation only",
+          "description": "Continue to originate every published line, but allow the evaluation harness to compare against a consensus closing price that is never ingested by the line model.",
+          "pros": [
+            "The strongest available test of skill, because the reference is external and independent.",
+            "Directly measures the standard the industry uses (closing line value)."
+          ],
+          "cons": [
+            "Requires a licence or a data source for consensus lines that the official-only rule does not currently allow.",
+            "Depends on the answer to Q-001 and Q-002 on whether commercial activity is in scope at all."
+          ],
+          "cost": "Medium to high, depending on the data source.",
+          "effort": "Weeks.",
+          "risk": "Legal and data-licensing risk, therefore blocked on Q-001/Q-002.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Score only against a pre-registered null model",
+          "description": "Require each strategy to beat a null (no-skill) baseline with a pre-registered significance threshold, and abandon any claim that the ranking measures market-relative skill.",
+          "pros": [
+            "Needs no second model and no external data.",
+            "Simple to explain and to audit."
+          ],
+          "cons": [
+            "Only proves the strategy is better than nothing, not that it is better than a well-built price.",
+            "Produces a leaderboard whose absolute level is unanchored."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - the leaderboard would overstate what it measures.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A is the only option that satisfies the owner's requirement to originate our own lines while still producing an honest skill measurement. Path B is stronger in principle but is blocked on the legal questions. Path C is an honest floor, not a destination.",
+      "expected_impact": "Turns the leaderboard from a measure of agreement with our own model into a defensible skill ranking.",
+      "dependencies": ["Q-010", "Q-009", "Q-027"],
+      "evidence": [
+        {
+          "fact": "The line model must originate its own lines from official data rather than consuming a commercial feed.",
+          "source_url": "",
+          "source_label": "Project brief, 2026-11-14"
+        }
+      ],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-003",
+      "title": "Adopt walk-forward validation with purging and embargo instead of a single train/test split",
+      "category": "Model Design",
+      "priority": "P0",
+      "problem": "NFL seasons are short and heavily autocorrelated. A random train/test split leaks information across adjacent games, which inflates measured edge and is one of the main reasons a back-tested strategy fails live.",
+      "proposed_change": "Replace the random split with anchored walk-forward evaluation: train on all data up to a cut point, evaluate on the next block, roll the cut point forward, and purge plus embargo games near each boundary that share a team.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Anchored walk-forward with purge and embargo (recommended)",
+          "description": "Expanding-window walk-forward evaluation. Around each boundary, remove training games for teams that also appear in the evaluation block (purge) and add a short buffer (embargo) so that features with slow decay, such as rolling scoring averages, cannot bridge the split.",
+          "pros": [
+            "Matches how the strategy would actually be used.",
+            "Removes the dominant source of optimistic back-test results.",
+            "Produces a natural record of how the strategy would have performed in each period."
+          ],
+          "cons": [
+            "Produces fewer evaluation observations than a random split.",
+            "Requires more seasons of history to reach a stable estimate."
+          ],
+          "cost": "Low - a scheduling change in the harness.",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Keep a random split but add multiple seeds",
+          "description": "Average over many random splits to reduce variance in the reported metric.",
+          "pros": [
+            "Simple.",
+            "Produces many more evaluation observations."
+          ],
+          "cons": [
+            "Averages the leakage rather than removing it; the bias survives the averaging.",
+            "Cannot be defended to a reviewer who understands leakage."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - retains the bias this suggestion exists to remove.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Nested cross-validation with an inner optimisation loop",
+          "description": "Use an outer loop for evaluation and an inner loop for hyper-parameter selection.",
+          "pros": [
+            "Controls for hyper-parameter overfitting, which walk-forward alone does not.",
+            "The most rigorous option available."
+          ],
+          "cons": [
+            "Expensive to run and to explain to a non-technical reviewer.",
+            "Given the small number of seasons, the outer folds are still few."
+          ],
+          "cost": "Medium",
+          "effort": "Weeks.",
+          "risk": "Low technically, high communication cost.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A is the standard remedy for time-series leakage and is cheap. Path C is stronger but its cost/benefit is poor at this sample size; it can be revisited if the history depth question (Q-004) is answered generously.",
+      "expected_impact": "Measured edge falls closer to true edge, which is the point: fewer strategies qualify, but those that do are real.",
+      "dependencies": ["Q-004", "Q-008"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-004",
+      "title": "Keep a register of every hypothesis tested, including the failures",
+      "category": "Model Design",
+      "priority": "P0",
+      "problem": "A strategy found by testing many variants will look excellent in-sample even when it has no edge. If only the winners are published, a reader cannot tell selection from skill.",
+      "proposed_change": "Maintain a hypothesis register in the repository. Every tested hypothesis is recorded whether it passed or failed, with its measured result, and a false-discovery-rate control is applied across the register before any strategy is declared eligible.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Full hypothesis register with false-discovery-rate control (recommended)",
+          "description": "A committed register of tested hypotheses and their measured results, with a Benjamini-Hochberg control across the family of tests performed in a cycle.",
+          "pros": [
+            "Makes selection bias visible rather than hiding it.",
+            "Standard practice in a research context and easy to defend.",
+            "Also functions as a record of dead ends, which stops the team re-testing them."
+          ],
+          "cons": [
+            "Requires discipline: every experiment must be logged, including the ones run and abandoned.",
+            "Publishing failures can be uncomfortable, but that is the point."
+          ],
+          "cost": "Low to medium",
+          "effort": "Days, ongoing.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Publish only the winner plus its rejection criteria",
+          "description": "State the gates in advance and publish only strategies that passed.",
+          "pros": [
+            "Much less operational discipline required.",
+            "The reader still sees the acceptance bar."
+          ],
+          "cons": [
+            "The reader cannot tell how many hypotheses were tried, so the multiple-testing problem is invisible.",
+            "Pre-registration alone does not bound selection bias if the pre-registration is not enforced."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - leaves the central bias unaddressed.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Only path A makes the selection process auditable, which is a precondition for calling a leaderboard a skill ranking rather than a lucky-moment ranking.",
+      "expected_impact": "The leaderboard becomes defensible: a reader can inspect how many ideas were tried and how many survived.",
+      "dependencies": ["Q-015", "Q-008"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-005",
+      "title": "Publish an explicit skill-share metric that separates model-implied variance from residual variance",
+      "category": "Measurement",
+      "priority": "P0",
+      "problem": "The brief asks to remove luck from the equation. A win rate or an ROI cannot do that: a strategy that wins 55 per cent of its bets by luck looks identical to one that wins 55 per cent through skill until the sample is large enough to tell.",
+      "proposed_change": "For each strategy compute a skill share: the proportion of observed outcome variance that is explained by the model's own probability (model-implied variance divided by total observed variance), report the residual share as the luck component, and attach a bootstrap confidence interval so that a strategy whose interval includes zero skill is visibly not proven.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Variance decomposition with bootstrap intervals (recommended)",
+          "description": "For each bet the model implies a win probability; the binomial variance implied by those probabilities is the model-explained component, and the remainder is residual. The ratio is reported with a bootstrap interval and with the permutation-test p-value for a pure-luck null.",
+          "pros": [
+            "Directly answers the brief: it quantifies how much of the outcome was skill.",
+            "Works for any market because it needs only the model's probability and the result.",
+            "The permutation test gives a clean 'no better than luck' verdict."
+          ],
+          "cons": [
+            "Depends on the quality of the model's probability, so it inherits the model's error.",
+            "Intervals are wide at small sample sizes, which is honest but unsatisfying."
+          ],
+          "cost": "Low - a standard computation over existing results.",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Stability-based test instead of variance decomposition",
+          "description": "Require the edge to be positive in a majority of independent time blocks and across seasons.",
+          "pros": [
+            "Intuitive and easy to explain.",
+            "Robust to a badly calibrated probability model."
+          ],
+          "cons": [
+            "A coarse measure: it can pass a lucky strategy that happened to be up in most blocks.",
+            "It does not quantify how much of the outcome was skill."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - weaker than the brief requires.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Skill measured against the market's implied probability",
+          "description": "Compare the strategy's result to the probability implied by the platform's own line.",
+          "pros": [
+            "Simple and familiar."
+          ],
+          "cons": [
+            "Circular: it measures agreement with the line model, not skill. This is exactly the trap described in S-002.",
+            "Cannot be used until S-002 is resolved."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "High - methodologically invalid on its own.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A is the only option that produces a quantity that can honestly be called a skill share, which is what the brief asks for. Path B is a useful companion gate, not a substitute.",
+      "expected_impact": "Makes the luck-versus-skill question answerable per strategy and gives the leaderboard a defensible eligibility rule.",
+      "dependencies": ["Q-009", "Q-008"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-006",
+      "title": "Build parlays from a correlation budget rather than from the strongest legs",
+      "category": "Strategy Design",
+      "priority": "P0",
+      "problem": "Parlay legs that look individually attractive are often driven by the same underlying event, such as a fast pace or a shootout. Multiplying them produces an apparent edge that is really a single bet with a worse price and a fatter tail.",
+      "proposed_change": "Constrain every parlay by an explicit correlation budget: the legs' pairwise correlations must sum below a limit, the effective number of independent legs must clear a minimum, and the combined implied probability is recomputed from the joint rather than the product of marginals.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Correlation budget with an effective-independent-legs floor (recommended)",
+          "description": "Compute the pairwise correlation matrix of candidate leg signals, reject any parlay whose legs exceed the budget, and re-price the parlay from the joint distribution implied by the correlation structure rather than from the product of marginals.",
+          "pros": [
+            "Directly prevents the most common parlay error.",
+            "Uses correlations the platform has to compute anyway for the leaderboard.",
+            "Makes the parlay's true probability visible, which the naive product overstates."
+          ],
+          "cons": [
+            "Reduces the number of eligible parlays, sometimes sharply.",
+            "Requires a longer history to estimate correlations reliably."
+          ],
+          "cost": "Low to medium",
+          "effort": "Weeks.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Simple rule-based leg exclusion",
+          "description": "Forbid legs that involve the same game, the same team or the same player.",
+          "pros": [
+            "Trivial to implement and explain.",
+            "Removes the worst cases immediately."
+          ],
+          "cons": [
+            "Misses subtler correlation between different games, which is the real problem.",
+            "Gives the appearance of control without the substance."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - insufficient for the stated goal.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Price parlays from a joint model directly",
+          "description": "Model the joint outcome distribution across games and price parlays from it, with no separate correlation filter.",
+          "pros": [
+            "The most principled pricing approach.",
+            "Automatically produces the correct probability for any leg combination."
+          ],
+          "cons": [
+            "Needs a joint model across games, which is a substantial modelling task.",
+            "Sensitive to model misspecification in a way that is hard to diagnose."
+          ],
+          "cost": "High",
+          "effort": "Months.",
+          "risk": "Medium.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A delivers the substance of path C at a fraction of the cost, and path B is too weak to satisfy the brief's requirement to determine correlation values.",
+      "expected_impact": "Prevents the platform from publishing parlays whose edge is an artefact of multiplied correlated probabilities.",
+      "dependencies": ["Q-011", "Q-023"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-007",
+      "title": "Adopt a two-tier data policy: official-verified data is publishable, everything else is quarantined",
+      "category": "Verification & Trust",
+      "priority": "P0",
+      "problem": "The brief forbids inferring values. In practice some useful quantities cannot be sourced officially. Without a stated policy, the temptation is to fill the cell, and the platform's central promise is lost.",
+      "proposed_change": "Two tiers. Tier 1 (official-verified) is the only tier that may appear on a decision page or feed a leaderboard row. Tier 2 (derived, estimated or owner-supplied) is stored with its derivation recorded and is visible only in the research appendix, permanently labelled.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Two tiers with hard separation (recommended)",
+          "description": "Tier 1 is publishable and feeds the leaderboard. Tier 2 is recorded with its derivation and shown only in the research appendix with an explicit label.",
+          "pros": [
+            "Preserves the no-inference promise on every decision surface.",
+            "Still permits useful research on quantities the NFL does not publish.",
+            "Makes the boundary auditable: a validator checks that no Tier 2 value appears on a decision page."
+          ],
+          "cons": [
+            "Some strategies will be limited to Tier 1 inputs and may be weaker.",
+            "Two storage and rendering paths to maintain."
+          ],
+          "cost": "Low to medium",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Official-only, full stop",
+          "description": "Reject anything that cannot be sourced officially, and accept that some research questions stay closed.",
+          "pros": [
+            "The simplest possible rule and the easiest to defend."
+          ],
+          "cons": [
+            "Closes off legitimate questions, for example depth ordering for clubs without a published chart.",
+            "Pushes researchers toward inference through the back door."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - practical pressure will push the team toward breaches.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A keeps the published promise intact while leaving a legitimate route for research questions, and the validator makes the separation enforceable rather than aspirational.",
+      "expected_impact": "Preserves the integrity of the platform while unblocking the research questions that official data alone cannot answer.",
+      "dependencies": ["Q-018", "Q-019"],
+      "evidence": [
+        {
+          "fact": "The brief states that if a value cannot be confirmed from an official source it must be left blank and flagged, and that values must never be inferred or filled in.",
+          "source_url": "",
+          "source_label": "Project brief, 2026-11-14"
+        }
+      ],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-008",
+      "title": "Treat the injury report as a timestamped snapshot, not a statement of fact",
+      "category": "Injury & Depth",
+      "priority": "P0",
+      "problem": "The official injury report is a practice-participation record published on a schedule. A player who is not on it is not thereby healthy, and a report read on Saturday may be superseded before kickoff. Treating either as a fact creates silent look-ahead bias and false confidence.",
+      "proposed_change": "Model each injury entry as a snapshot with an explicit as-of time, publish the age of the snapshot on the page, and add a rule that absence from the report is recorded as 'not reported' rather than 'healthy'.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Timestamped snapshots with an explicit not-reported state (recommended)",
+          "description": "Every injury row carries its source, its report week and the fetch time; the page shows the snapshot age and warns when it exceeds the agreed staleness limit; players outside the report are modelled as not-reported.",
+          "pros": [
+            "Removes the most common inference error in injury modelling.",
+            "Makes back-tests honest about what was knowable at decision time.",
+            "Simple to implement on top of the existing manifest."
+          ],
+          "cons": [
+            "Requires historical snapshot retention to back-test properly (Q-007).",
+            "Users must learn a third state between healthy and injured."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Infer availability from absence",
+          "description": "Treat a player missing from the report as available.",
+          "pros": [
+            "Simplest possible data model."
+          ],
+          "cons": [
+            "Explicitly the inference the brief forbids.",
+            "Systematically wrong, because clubs list only selected players.",
+            "Would corrupt every injury-driven signal."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "High - invalidates the injury signal.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A is the only path consistent with the brief's verification rule, and it also fixes a real look-ahead problem in the back-test.",
+      "expected_impact": "Makes every injury-driven signal auditable and back-testable on the information actually available at decision time.",
+      "dependencies": ["Q-007", "Q-020"],
+      "evidence": [
+        {
+          "fact": "The official NFL injury report lists, per team, the players reported for the game with their practice participation and game status.",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        }
+      ],
+      "status": "adopted",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-009",
+      "title": "Resolve replacement depth through a documented fallback chain instead of inference",
+      "category": "Injury & Depth",
+      "priority": "P0",
+      "problem": "The brief asks the platform to know when a second, third or fourth string backup replaces a starter. Depth ordering is published by clubs, not by the league, in inconsistent formats, and it changes between weeks. Any gap tempts a guess.",
+      "proposed_change": "A strict, published resolution order for the depth string of a replacement: (1) the club's official depth chart; (2) the official game book, which lists the starters and the order in which substitutes entered; (3) blank, with the item flagged for review. Never infer.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Three-step official fallback chain (recommended)",
+          "description": "Try the official club depth chart, then the official game book starters and substitution order, then leave the cell blank and flag it.",
+          "pros": [
+            "Uses only official sources at every step.",
+            "The substitution order in the game book is a genuine official signal of who is the second and third string at a position.",
+            "Gaps stay visible instead of being quietly filled."
+          ],
+          "cons": [
+            "Will not resolve every club in every week, so coverage will be partial.",
+            "Substitution order reflects who the coaches chose to use, which is not identical to the chart."
+          ],
+          "cost": "Low to medium",
+          "effort": "Weeks.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Club depth charts only",
+          "description": "Use the club's own depth chart and flag everything else.",
+          "pros": [
+            "Simple and consistent.",
+            "Exactly the position ordering the club publishes."
+          ],
+          "cons": [
+            "Leaves a large share of the league unresolved.",
+            "Some club charts are dated or omit positions entirely."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - coverage will be too thin to support the requirement.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Add a manually curated depth table",
+          "description": "Maintain a hand-built depth table in the repository.",
+          "pros": [
+            "Complete coverage and human judgement.",
+            "Can express nuance that a chart cannot."
+          ],
+          "cons": [
+            "A hand-built table is an unauditable, inferential input - exactly what the brief forbids.",
+            "It will be stale within a week and will drift silently."
+          ],
+          "cost": "High ongoing",
+          "effort": "Ongoing manual work.",
+          "risk": "High - directly contradicts the verification rule.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A is the only path that satisfies the requirement while keeping every input official and auditable. Path C would look more complete while destroying the platform's central guarantee.",
+      "expected_impact": "Makes the second, third and fourth string question answerable where official evidence exists and honestly blank where it does not.",
+      "dependencies": ["Q-006", "Q-018"],
+      "evidence": [
+        {
+          "fact": "Official club sites publish their own depth charts; the pipeline probes all 32 club domains and records coverage.",
+          "source_url": "https://www.nfl.com/teams/",
+          "source_label": "NFL.com team index"
+        }
+      ],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-010",
+      "title": "Score the leaderboard on risk-adjusted, sample-gated metrics instead of raw profit",
+      "category": "Competition",
+      "priority": "P0",
+      "problem": "A leaderboard ranked on profit rewards whichever strategy took the most risk or got the luckiest run. The brief asks for a competition that rewards the best strategies, not the luckiest outcomes.",
+      "proposed_change": "A composite score built from risk-adjusted return, drawdown, sign consistency across time blocks and skill share, with hard eligibility gates applied before scoring. Reward tiers are assigned from the composite, with ties broken by a published rule.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Gated composite score (recommended)",
+          "description": "A strategy must clear every gate to be scored at all. Eligible strategies are ranked by a composite of risk-adjusted return, maximum drawdown, block-wise sign consistency and skill share, each normalised and weighted. Ties are broken by the higher skill share, then by the earlier registration date.",
+          "pros": [
+            "Rewards quality rather than luck or risk-taking.",
+            "The gates make the ranking interpretable: each component is visible.",
+            "The published tie-break removes arbitrary outcomes."
+          ],
+          "cons": [
+            "The weights are a judgement call and must be published and versioned.",
+            "A composite can hide a weak component behind a strong one, so components are also shown separately."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Rank on return on capital with a drawdown cap",
+          "description": "Rank on profit divided by capital staked, subject to a maximum drawdown limit.",
+          "pros": [
+            "Very simple to explain to any participant."
+          ],
+          "cons": [
+            "Still rewards a lucky run during any finite sample.",
+            "The drawdown cap is enforced by refusing trades rather than by measuring skill."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Rank on out-of-sample performance only",
+          "description": "Score only the live, forward portion of each strategy's record.",
+          "pros": [
+            "The cleanest possible definition of skill, with no back-test contamination."
+          ],
+          "cons": [
+            "Needs a long live period before any ranking is meaningful.",
+            "Unsuitable for a competition that needs an early result."
+          ],
+          "cost": "Low",
+          "effort": "Days, plus waiting.",
+          "risk": "Low technically, but the competition cannot launch meaningfully.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A gives an immediately usable leaderboard while enforcing the gate discipline the brief requires. Path C should still run in parallel as the final arbiter once enough live data exists.",
+      "expected_impact": "Turns the leaderboard from a luck ranking into a skill ranking that can carry rewards.",
+      "dependencies": ["Q-008", "Q-009", "Q-011", "Q-013"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-011",
+      "title": "Publish a stake and bankroll policy with capped fractional sizing",
+      "category": "Model Design",
+      "priority": "P1",
+      "problem": "A skilled strategy with unbounded sizing fails for reasons unrelated to skill, and the leaderboard's drawdown numbers are meaningless without a stated stake policy.",
+      "proposed_change": "Define a stake policy: a fixed fractional stake per bet, a hard per-bet cap, a reduction rule for parlays with more legs, and a bankroll definition used for all normalised metrics.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Fixed fraction with per-bet caps (recommended)",
+          "description": "A fixed fraction of the bankroll per bet, scaled down as the number of parlay legs rises, with a hard cap per bet and a minimum bankroll stated for the metrics to be meaningful.",
+          "pros": [
+            "Makes every published metric comparable and reproducible.",
+            "Protects a skilled strategy from ruin.",
+            "Simple to state and to audit."
+          ],
+          "cons": [
+            "A fixed fraction is not optimal for every probability, so it forgoes some growth.",
+            "It makes the metrics slightly less flattering than Kelly sizing."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Fractional Kelly",
+          "description": "Bet a fixed fraction, for example a quarter, of the Kelly-optimal stake implied by the model's probability.",
+          "pros": [
+            "Theoretically strong growth; directly rewards a well-calibrated model.",
+            "Standard practice among serious operators."
+          ],
+          "cons": [
+            "Depends entirely on the model's probability being calibrated, which is exactly what is in question (S-002).",
+            "A mis-calibrated model plus Kelly sizing produces the fastest possible ruin."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium to high until calibration is demonstrated.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A is safe under every model-quality assumption, including the unresolved one about calibration. Kelly sizing can be enabled later, gated on demonstrated calibration.",
+      "expected_impact": "Makes drawdown, return and the skill-share metric comparable across strategies and reproducible by a third party.",
+      "dependencies": ["Q-012", "Q-010"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-012",
+      "title": "Make the line model transparent, versioned and margin-aware",
+      "category": "Model Design",
+      "priority": "P1",
+      "problem": "A line is only useful if the reader knows what it is made of. A black-box line cannot be audited, cannot be improved in a controlled way, and cannot be checked by the owner.",
+      "proposed_change": "Publish the line model's inputs, weights, margin and version on the site, keep each published line tagged with the model version that produced it, and never republish a historical line under a new version.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Published method card with per-line version tags (recommended)",
+          "description": "A method card page describing the model, its inputs, the margin and its version, with every published line carrying the version tag and its source timestamp.",
+          "pros": [
+            "Makes the platform's own output auditable, which is the same standard applied to official data.",
+            "Lets a reviewer reproduce any published line.",
+            "Enables the change-control rule in S-016."
+          ],
+          "cons": [
+            "Exposes the method, which makes it easier to copy.",
+            "Requires discipline that the published method matches the running model."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Publish the inputs but not the weights",
+          "description": "Disclose which data is used and disclose nothing about how it is combined.",
+          "pros": [
+            "Keeps the method proprietary."
+          ],
+          "cons": [
+            "The platform cannot then audit its own output, which is inconsistent with the standard it applies to official data.",
+            "A reader cannot tell whether a line changed because the data changed or the method changed."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A applies the platform's own verification standard to the platform's own output. That consistency is worth more than the theoretical advantage of opacity.",
+      "expected_impact": "Turns the originated lines from a black box into a reproducible artefact that the owner can check.",
+      "dependencies": ["Q-025", "Q-027"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-013",
+      "title": "Acquire official per-game player logs so prop strategies can be evaluated at all",
+      "category": "Data",
+      "priority": "P0",
+      "problem": "Season-level player statistics are sufficient for ranking players but not for evaluating a player-prop strategy, which depends on per-game variance. Without per-game logs the prop and prop-combination classes cannot be back-tested, so the leaderboard would cover only two of the three classes the brief names.",
+      "proposed_change": "Extend the fetcher to retrieve the official game-level box score for every completed game, keyed to the official schedule, and store it as a game log with the game date and the source link.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Official box scores for every completed game (recommended)",
+          "description": "Fetch the official NFL.com box score for each game in the official schedule, parse the per-player lines into a game log, and key it by season, week and game.",
+          "pros": [
+            "Official source, and the only route to evaluating prop markets.",
+            "Enables the prop-combination correlation matrix the brief asks for.",
+            "Automatically extends to future seasons without new code."
+          ],
+          "cons": [
+            "A large number of pages, so the fetch window and rate limiting need care.",
+            "Parsing must be defensive: a layout change must degrade to a flagged gap rather than a wrong number."
+          ],
+          "cost": "Medium",
+          "effort": "Weeks.",
+          "risk": "Medium - the main risk is silent parse drift, which the validator must catch by reconciling totals.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Official game books as PDFs",
+          "description": "Parse the official game book PDF for each game instead.",
+          "pros": [
+            "The game book is the authoritative statistical record.",
+            "Includes starters, substitutions and inactive lists, which also serves the depth requirement."
+          ],
+          "cons": [
+            "PDF parsing is more brittle than HTML parsing.",
+            "Larger files and slower to fetch."
+          ],
+          "cost": "Medium",
+          "effort": "Weeks.",
+          "risk": "Medium to high - PDF layout changes break extraction silently.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "C",
+          "name": "Restrict the competition to spread and total only",
+          "description": "Drop player-prop classes and compete only on team markets using season and schedule data.",
+          "pros": [
+            "Uses only data already collected.",
+            "Fastest route to a working leaderboard."
+          ],
+          "cons": [
+            "Directly reduces the scope the brief asks for.",
+            "Prop markets are where most of the published public interest sits."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium - scope reduction rather than risk reduction.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A satisfies the brief's three-class requirement from official sources and reuses the existing schedule-driven pipeline. Path B is more authoritative but more brittle; it can be added later for the depth fallback in S-009.",
+      "expected_impact": "Unlocks player-prop and prop-combination strategies and the prop correlation matrix, completing the strategy coverage the brief asks for.",
+      "dependencies": ["Q-005", "Q-023", "Q-004"],
+      "evidence": [
+        {
+          "fact": "NFL.com publishes the official weekly schedule and results, which identifies every completed game and therefore every box-score URL.",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule"
+        }
+      ],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-014",
+      "title": "Add week-over-week change views and a gap-filler for the site",
+      "category": "Site & UX",
+      "priority": "P1",
+      "problem": "A static dashboard tells you the current state but not what changed since the last look. The owner's actual question on a Monday morning is 'what is different from last week', and answering it requires a second manual pass over two pages.",
+      "proposed_change": "Store a weekly snapshot series and add (a) a change column on the injury and availability pages showing new, cleared and persisting entries, and (b) a 'what to check first' panel on the landing page that lists the largest week-over-week movements.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Snapshot series with a diff view (recommended)",
+          "description": "Retain weekly snapshots, compute the difference between the current and previous snapshot, and surface new absences, cleared absences and status changes.",
+          "pros": [
+            "Directly serves the decision the owner actually makes.",
+            "Also creates the historical archive needed for an honest back-test (Q-007).",
+            "Reuses the snapshot data the pipeline already collects."
+          ],
+          "cons": [
+            "Needs retention storage and a dated snapshot layout.",
+            "Diff logic must handle the official report's week boundary correctly."
+          ],
+          "cost": "Medium",
+          "effort": "Weeks.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Manual owner review each week",
+          "description": "The owner compares the current page with the previous one by eye.",
+          "pros": [
+            "No development cost."
+          ],
+          "cons": [
+            "The brief requires no manual input from the owner.",
+            "Defeats the purpose of the dashboard."
+          ],
+          "cost": "Recurring owner time.",
+          "effort": "Minutes each week.",
+          "risk": "High - contradicts the brief.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A both improves the decision experience and unlocks the historical data that honest back-testing requires.",
+      "expected_impact": "Turns the site from a reference into a daily working tool and enables out-of-sample validation on real snapshots.",
+      "dependencies": ["Q-007", "Q-020"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-015",
+      "title": "Put the suggestion review workflow on the site itself",
+      "category": "Site & UX",
+      "priority": "P1",
+      "problem": "The brief asks for a suggestions section so a reviewer can choose a path before anything is implemented. If the decision is only visible as prose in a repository file, the review is not really being invited.",
+      "proposed_change": "Render each suggestion with its paths as a comparable table, and publish the decision, the decision date and the reviewer, together with the reasons for rejection, so the board of record is visible to anyone.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Publish the decision trail on the site (recommended)",
+          "description": "Each suggestion shows the paths side by side with cost, effort, risk and reversibility, and shows the recorded decision with its rationale.",
+          "pros": [
+            "Makes the review real and auditable.",
+            "Records rejected ideas, which prevents them being re-proposed from scratch.",
+            "Requires no owner input to function; the owner simply records a decision when ready."
+          ],
+          "cons": [
+            "Needs a write path for the decision, which means either an edit-and-commit cycle or a form-backed service."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Static suggestion catalogue only",
+          "description": "Publish the suggestions and record decisions in the repository's coordination file.",
+          "pros": [
+            "Zero extra machinery."
+          ],
+          "cons": [
+            "The decision trail is invisible on the site, so a reader cannot see what was chosen or why.",
+            "Weakens the invitation to review."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A satisfies the brief's intent most directly and preserves the reasoning behind rejected options, which is where most of the value of the catalogue sits.",
+      "expected_impact": "Makes the suggestion section a genuine decision surface rather than a list.",
+      "dependencies": ["Q-017"],
+      "evidence": [
+        {
+          "fact": "The brief asks for a section dedicated to suggestions so that someone can review suggestions and choose the best path before implementing any changes.",
+          "source_url": "",
+          "source_label": "Project brief, 2026-11-14"
+        }
+      ],
+      "status": "adopted",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-016",
+      "title": "Introduce a model registry with versioned change control",
+      "category": "Governance",
+      "priority": "P1",
+      "problem": "A leaderboard that is re-scored after a model or threshold change is not a leaderboard; the cycle becomes uninterpretable and the competition becomes unfair.",
+      "proposed_change": "Register the line model, the evaluation reference and the gate thresholds as versioned artefacts. A change to any of them starts a new cycle and never re-scores a closed one. Every leaderboard row carries the versions that produced it.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Versioned registry with cycle boundaries (recommended)",
+          "description": "A registry file listing each component, its version, its parameters and its effective date; a cycle is bound to a fixed set of versions; leaderboard rows carry those versions.",
+          "pros": [
+            "Keeps every leaderboard result interpretable and reproducible.",
+            "Makes an accidental mid-cycle change impossible by default.",
+            "Works with the repository's existing discipline of committing shared outputs only through integration."
+          ],
+          "cons": [
+            "Adds ceremony when a parameter needs to change.",
+            "Requires the owner to decide who may authorise a new cycle (Q-026)."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Freeze the current configuration permanently",
+          "description": "Change nothing once the first cycle opens.",
+          "pros": [
+            "Maximum simplicity and fairness for the first cycle."
+          ],
+          "cons": [
+            "Prevents legitimate improvement and forces bad choices to stand.",
+            "Means a discovered flaw cannot be corrected mid-competition."
+          ],
+          "cost": "Low",
+          "effort": "None.",
+          "risk": "Medium.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A preserves competitiveness across cycles without compromising any single one.",
+      "expected_impact": "Makes the competition auditable over time and protects the meaning of the leaderboard.",
+      "dependencies": ["Q-026", "Q-027"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-017",
+      "title": "Put a compliance gate in front of any feature that could accept or publish a stake",
+      "category": "Scope & Legal",
+      "priority": "P0",
+      "problem": "The brief's wording about originating lines and rewarding strategies could, depending on the answer to Q-001, describe a regulated activity. Building such a feature before the legal position is settled creates real exposure that technical safeguards cannot undo.",
+      "proposed_change": "A release gate: any feature that accepts money, publishes a price for someone else to accept, or offers a stake is blocked until Q-001, Q-002 and Q-003 have documented answers on the platform.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Hard release gate tied to the open questions (recommended)",
+          "description": "A written gate in the release checklist that blocks transactional features until the scope questions are answered and recorded on the Questions page.",
+          "pros": [
+            "Costs nothing and removes the largest tail risk.",
+            "Keeps the platform fully useful for analysis in the meantime.",
+            "Makes the constraint visible rather than implicit."
+          ],
+          "cons": [
+            "Delays any revenue-linked feature.",
+            "Requires someone to honour the gate."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Build first, review later",
+          "description": "Implement the full feature set and obtain a legal review before launch.",
+          "pros": [
+            "Fastest route to a complete product."
+          ],
+          "cons": [
+            "The most expensive path if the review is unfavourable.",
+            "The work may have to be unwound."
+          ],
+          "cost": "High if unwound.",
+          "effort": "Weeks.",
+          "risk": "High.",
+          "reversible": "Partially."
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A protects the owner at negligible cost and blocks nothing that the analytical platform needs in order to be valuable.",
+      "expected_impact": "Removes the tail risk of a compliance failure while preserving all analytical capability.",
+      "dependencies": ["Q-001", "Q-002", "Q-003"],
+      "evidence": [
+        {
+          "fact": "NFL Communications is the League's official channel for statements and policy positions, and the rulebook is published by NFL Football Operations.",
+          "source_url": "https://www.nfl.com/news/nfl-communications",
+          "source_label": "NFL Communications (NFL.com)"
+        }
+      ],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-018",
+      "title": "Constrain player-prop combinations by leg count and an independence test",
+      "category": "Strategy Design",
+      "priority": "P1",
+      "problem": "Player-prop combinations are the most tempting way to manufacture a large number of apparent bets, and the most likely place for a player to be counted twice in the same parlay, which is a direct loss rather than a pricing question.",
+      "proposed_change": "Cap the number of legs in a prop combination, prohibit the same player appearing in more than one leg, and require the legs' outcomes to be conditionally independent conditional on the game's pace and score state, with the independence assumption tested rather than assumed.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Leg cap, player uniqueness and a conditional-independence check (recommended)",
+          "description": "A maximum leg count per class, a hard uniqueness rule per player, and a conditional-independence test on the leg signals given pace and scoring environment.",
+          "pros": [
+            "Removes the most common structural errors.",
+            "The conditional test catches the real correlation: two props in the same game are driven by the same game script."
+          ],
+          "cons": [
+            "The conditional-independence test needs enough games per prop type to have power.",
+            "Reduces the combinatorial space, which reduces the number of testable hypotheses, which is a feature under the hypothesis register (S-004)."
+          ],
+          "cost": "Low to medium",
+          "effort": "Weeks.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Leg cap and player uniqueness only",
+          "description": "Apply the structural rules without the statistical independence test.",
+          "pros": [
+            "Simple and quick."
+          ],
+          "cons": [
+            "Misses the game-script correlation, which is the dominant effect.",
+            "Gives a false sense of independence."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Medium.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A is the minimum treatment that addresses the actual mechanism of correlation in prop combinations, and it fits the brief's requirement to determine correlation values rather than assume them.",
+      "expected_impact": "Makes the prop-combination class safe to compete in and prevents the most common silent loss.",
+      "dependencies": ["Q-023", "Q-011"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-019",
+      "title": "Publish a change log and a data-freshness banner as first-class site elements",
+      "category": "Site & UX",
+      "priority": "P2",
+      "problem": "A reader cannot tell how old the information is or what changed in the platform itself. On a fast-moving dataset, an undated figure is close to worthless.",
+      "proposed_change": "Every data page shows the age of its snapshot against the official publication cadence, and the site carries a change log recording each pipeline run's effect on the published numbers.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Freshness banner plus an automated change log (recommended)",
+          "description": "A banner on each data page showing the snapshot age and the next expected official update, and a change log generated from the difference between consecutive dataset versions.",
+          "pros": [
+            "Removes the risk of acting on a stale injury table.",
+            "Creates a transparent audit of what the platform changed and when.",
+            "Cheap, because the pipeline already records timestamps and hashes."
+          ],
+          "cons": [
+            "Requires the pipeline to write a versioned dataset series rather than overwriting in place."
+          ],
+          "cost": "Low",
+          "effort": "Days.",
+          "risk": "Low.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "A single cheap change removes a whole class of misuse and reinforces the verification story of the platform.",
+      "expected_impact": "Protects the reader from acting on stale data and gives the pipeline an audit trail.",
+      "dependencies": ["Q-020", "Q-022"],
+      "evidence": [
+        {
+          "fact": "The official injury report is a weekly publication, so its contents change on the NFL's own schedule rather than on a schedule the platform controls.",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        }
+      ],
+      "status": "adopted",
+      "owner": "Session 64164906"
+    },
+    {
+      "id": "S-020",
+      "title": "Give the owner a single ranked recommendation per game, with the reasoning shown",
+      "category": "Decision Support",
+      "priority": "P1",
+      "problem": "The site currently presents tables of inputs. The owner's actual decision is 'what do I do with this game', and a table of raw inputs does not answer it.",
+      "proposed_change": "A per-game decision panel that ranks each game by expected value at the platform's own line, shows the model probability, the line, the implied probability, the expected value, the key drivers (including availability and depth changes), and states clearly when no recommendation is made because no game clears the eligibility threshold.",
+      "paths": [
+        {
+          "id": "A",
+          "name": "Ranked decision panel with explicit drivers and a no-trade state (recommended)",
+          "description": "One ranked row per game, with the model probability, the line, expected value, the top three drivers and a clear statement when the game does not qualify.",
+          "pros": [
+            "Answers the real question instead of presenting raw inputs.",
+            "The no-trade state is as valuable as the recommendations: it prevents the platform from manufacturing bets.",
+            "Drivers make the recommendation auditable rather than a black box."
+          ],
+          "cons": [
+            "Depends on a trustworthy model probability, so it inherits the issues in S-002.",
+            "Requires a per-game line and probability for the current week."
+          ],
+          "cost": "Medium",
+          "effort": "Weeks.",
+          "risk": "Medium - the presentation must not overstate certainty.",
+          "reversible": "Fully"
+        },
+        {
+          "id": "B",
+          "name": "Keep the site as a pure data and analysis product",
+          "description": "Publish inputs, findings and methodology, and let the owner decide independently.",
+          "pros": [
+            "Avoids overstating what the model knows.",
+            "Zero additional modelling."
+          ],
+          "cons": [
+            "Does not deliver the decision support the brief asks for."
+          ],
+          "cost": "Low",
+          "effort": "None.",
+          "risk": "Low technically, high against the brief.",
+          "reversible": "Fully"
+        }
+      ],
+      "recommended_path": "A",
+      "recommendation_rationale": "Path A delivers the decision the brief asks for, and its explicit no-trade state is what keeps the platform honest when the model is uncertain.",
+      "expected_impact": "Converts the platform from a research dashboard into a decision instrument.",
+      "dependencies": ["S-002", "Q-016", "Q-023", "Q-025"],
+      "evidence": [],
+      "status": "proposed",
+      "owner": "Session 64164906"
+    }
+  ]
+}

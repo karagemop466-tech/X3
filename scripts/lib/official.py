@@ -242,10 +242,18 @@ def fetch_one(
     source: Source,
     outdir: str,
     session: requests.Session | None = None,
-    retries: int = 3,
-    timeout: int = 45,
+    retries: int | None = None,
+    timeout: int | None = None,
 ) -> dict:
-    """Fetch one official source and persist the raw payload."""
+    """Fetch one official source and persist the raw payload.
+
+    Optional sources are given a shorter budget so that one slow club site
+    cannot stall the whole pipeline.
+    """
+    if retries is None:
+        retries = 2 if source.optional else 3
+    if timeout is None:
+        timeout = 25 if source.optional else 45
     own = session is None
     sess = session or requests.Session()
     sess.headers.update({"User-Agent": USER_AGENT, "Accept": "*/*"})

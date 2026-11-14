@@ -22,7 +22,7 @@ concurrency:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     env:
       BRANCH: ${{ github.event_name == 'schedule' && 'main' || github.ref_name }}
     steps:
@@ -43,22 +43,8 @@ jobs:
         run: |
           python scripts/fetch_official.py --out data/raw --manifest data/datasets/fetch_manifest.json
 
-      - name: Build verified datasets
-        run: |
-          python scripts/build_datasets.py
-
-      - name: Compute signals, lines and correlations
-        run: |
-          python scripts/compute_signals.py
-
-      - name: Build site
-        run: |
-          python scripts/build_site.py
-
-      - name: Validate site (links, source links, blank cells)
-        run: |
-          python scripts/validate_site.py
-
+      # Capture the raw official payloads before anything else can fail, so the
+      # evidence is always downloadable for review.
       - name: Upload raw official payloads (audit artifact, not committed)
         uses: actions/upload-artifact@v4
         with:
@@ -67,12 +53,35 @@ jobs:
           retention-days: 14
           if-no-files-found: warn
 
+      - name: Commit fetch manifest
+        run: |
+          git config user.name "x3-data-pipeline"
+          git config user.email "x3-data-pipeline@users.noreply.github.com"
+          git add data/datasets/fetch_manifest.json
+          if git diff --cached --quiet; then
+            echo "fetch manifest unchanged"
+          else
+            git commit -m "ci: refresh official-source fetch manifest"
+            git push origin "HEAD:$BRANCH"
+          fi
+
+      - name: Build verified datasets
+        run: python scripts/build_datasets.py
+
+      - name: Compute signals, lines and correlations
+        run: python scripts/compute_signals.py
+
+      - name: Build site
+        run: python scripts/build_site.py
+
+      - name: Validate site (links, source links, blank cells)
+        run: python scripts/validate_site.py
+
       - name: Commit regenerated data + site
         run: |
           git config user.name "x3-data-pipeline"
           git config user.email "x3-data-pipeline@users.noreply.github.com"
-          git add -A data site scripts || true
-          git add -A -- . ':!data/raw' || true
+          git add -A -- . ':!data/raw'
           if git diff --cached --quiet; then
             echo "no changes to commit"
             exit 0

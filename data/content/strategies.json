@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "title": "Strategy Research & Validation",
+    "subtitle": "Every strategy states a hypothesis, the signal that tests it, the official inputs it consumes, and the validation gates it must clear. A strategy that has not cleared the gates is shown for audit and is not eligible for reward.",
+    "classes": {
+      "single": "A single wager on a team market (point spread or game total).",
+      "parlay": "A multi-leg wager combining team markets.",
+      "prop": "A single wager on an individual player's statistical output.",
+      "prop_combo": "A multi-leg wager combining individual player outputs."
+    },
+    "principle": "All inputs are official NFL data. No commercial line, projection or injury feed is ingested. Every published line is originated by the platform's own line model."
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Data sufficiency",
+      "rule": "At least the class minimum number of evaluated observations, spanning at least one complete season and at least two independent evaluation folds.",
+      "threshold": "Single 120 / Parlay 80 / Prop 100 / Prop combo 60 observations",
+      "status": "proposed - awaiting owner decision (Q-008)",
+      "rationale": "Below these counts the confidence interval on the skill-share estimate is too wide for the result to mean anything."
+    },
+    {
+      "id": "G2",
+      "name": "Out-of-sample evaluation",
+      "rule": "All performance is measured by anchored walk-forward evaluation with purging and embargo, never by a random split and never on the training window.",
+      "threshold": "At least 3 evaluation folds",
+      "status": "proposed - awaiting owner decision (S-003, Q-008)",
+      "rationale": "Random splits leak information across adjacent games and inflate measured edge."
+    },
+    {
+      "id": "G3",
+      "name": "False-discovery control",
+      "rule": "The strategy's result must survive a Benjamini-Hochberg false-discovery-rate control applied across the register of every hypothesis tested in the cycle.",
+      "threshold": "FDR <= 0.10",
+      "status": "proposed - awaiting owner decision (S-004, Q-015)",
+      "rationale": "A strategy found by trying many variants will look excellent in-sample even with no edge."
+    },
+    {
+      "id": "G4",
+      "name": "Temporal stability",
+      "rule": "The edge must be positive in a majority of evaluation folds and must have a consistent sign across seasons.",
+      "threshold": "Positive in >= 60% of folds; consistent sign across >= 2 seasons",
+      "status": "proposed - awaiting owner decision (Q-008)",
+      "rationale": "A single good block is not a skill; it is a sample."
+    },
+    {
+      "id": "G5",
+      "name": "Risk limits",
+      "rule": "Peak-to-trough drawdown and risk-adjusted return must sit inside the stated limits under the published stake policy.",
+      "threshold": "Max drawdown <= 20% of stake; Sharpe >= 0.50",
+      "status": "proposed - awaiting owner decision (Q-008, Q-012)",
+      "rationale": "A strategy that is skilled but unbounded in risk is not deployable."
+    },
+    {
+      "id": "G6",
+      "name": "Correlation and independence",
+      "rule": "The strategy's own legs must not be strongly correlated, and the strategy must not duplicate exposure already held by another eligible strategy.",
+      "threshold": "Leg |rho| <= 0.35; |rho| vs eligible strategies <= 0.60",
+      "status": "proposed - awaiting owner decision (S-006, Q-011)",
+      "rationale": "Correlated bets multiplied into a parlay create fake edge and fake diversification."
+    },
+    {
+      "id": "G7",
+      "name": "Skill share (luck removed)",
+      "rule": "The share of observed outcome variance explained by the model's own probability must clear the threshold, and its bootstrap interval must exclude zero skill.",
+      "threshold": "Skill share >= 0.25 with bootstrap 95% CI lower bound > 0",
+      "status": "proposed - awaiting owner decision (S-005, Q-009)",
+      "rationale": "This is the gate that makes 'remove luck from the equation' operational rather than rhetorical."
+    },
+    {
+      "id": "G8",
+      "name": "Cost and margin adjusted",
+      "rule": "The edge must remain positive after the platform's stated margin and any commission or execution cost.",
+      "threshold": "Edge > margin + costs",
+      "status": "proposed - awaiting owner decision (Q-025)",
+      "rationale": "An edge that disappears inside the margin is not an edge."
+    },
+    {
+      "id": "G9",
+      "name": "Capacity and execution realism",
+      "rule": "The result must not depend on a line or a stake that could not actually be obtained, and no bet may exceed the stated per-bet cap.",
+      "threshold": "No assumption of unavailable prices; per-bet cap as published",
+      "status": "proposed - awaiting owner decision (Q-012, Q-025)",
+      "rationale": "Back-tests that assume a price the market never offered are worthless."
+    },
+    {
+      "id": "G10",
+      "name": "Drift monitoring",
+      "rule": "Every eligible strategy is re-measured on a fixed cadence; breaching any gate demotes it to ineligible pending review, and a demotion never re-scores a closed cycle.",
+      "threshold": "Monthly re-measurement; no re-scoring of closed cycles",
+      "status": "proposed - awaiting owner decision (S-016, Q-027)",
+      "rationale": "An edge that decays must leave the leaderboard, and the exit must be visible."
+    }
+  ],
+  "strategies": [
+    {
+      "id": "ST-001",
+      "name": "Scoring-efficiency spread",
+      "class": "single",
+      "market": "Point spread",
+      "hypothesis": "A team's expected point margin is better predicted by its scoring efficiency relative to the league than by its win-loss record, so a model margin built from official points for and against, shrunk toward the league mean, will beat a naive record-based line once it is sufficiently different from it.",
+      "signal_definition": "Expected margin = shrunk Pythagorean expectation of the league mean applied to the two teams' official points for and points against, plus a home-field term; signal = model margin minus the platform's own line.",
+      "inputs": [
+        {
+          "name": "Official league standings: points for, points against, home and road records",
+          "source_url": "https://www.nfl.com/standings/league/2026/REG",
+          "source_label": "NFL.com league standings"
+        },
+        {
+          "name": "Official weekly schedule and results",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule"
+        }
+      ],
+      "state": "Evaluated on team-level official data available now.",
+      "status": "research",
+      "notes": "Shrinkage weight for early-season teams is an open parameter (Q-024)."
+    },
+    {
+      "id": "ST-002",
+      "name": "Availability-adjusted game total",
+      "class": "single",
+      "market": "Game total",
+      "hypothesis": "The absence of a starting offensive player, replaced by a lower string, reduces expected scoring in a measurable way once the replacement's depth string is known, so a total adjusted for official absences should beat an unadjusted total.",
+      "signal_definition": "Expected total from both teams' official scoring rates, adjusted by the depth string of each absent offensive starter as published in the club's official depth chart, then shrunk toward the league mean.",
+      "inputs": [
+        {
+          "name": "Official weekly injury report: practice status and game status per player",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        },
+        {
+          "name": "Official club depth charts, for the replacement's depth string",
+          "source_url": "https://www.nfl.com/teams/",
+          "source_label": "NFL.com team index leading to each official club site"
+        }
+      ],
+      "state": "Blocked on official depth-chart coverage; the depth string is blank and flagged wherever no official chart resolves.",
+      "status": "research",
+      "notes": "Depends on S-009 for the fallback chain and on Q-006 for coverage."
+    },
+    {
+      "id": "ST-003",
+      "name": "Defence-discretion regression",
+      "class": "single",
+      "market": "Point spread",
+      "hypothesis": "Defences that have performed far better than their underlying talent measure will regress towards it, so a team whose points allowed are well below its expectation should be faded, and vice versa.",
+      "signal_definition": "Residual = actual points allowed minus the opponent-independent expectation from the team's official points for and against; signal = the regression adjustment applied to the spread.",
+      "inputs": [
+        {
+          "name": "Official league standings by season",
+          "source_url": "https://www.nfl.com/standings/league/2025/REG",
+          "source_label": "NFL.com league standings (season selectable)"
+        }
+      ],
+      "state": "Evaluable from standings plus results.",
+      "status": "research",
+      "notes": "Requires multiple seasons to separate regression from a genuine defensive scheme."
+    },
+    {
+      "id": "PL-001",
+      "name": "Correlation-budgeted two-leg parlay",
+      "class": "parlay",
+      "market": "Two-leg parlay of team markets",
+      "hypothesis": "Most parlay edge in a naive construction is an artefact of multiplying correlated probabilities. A two-leg parlay restricted to legs whose signal correlation is below budget will show a materially lower but genuinely positive expected value, and the joint-priced probability will be higher than the product of the marginals.",
+      "signal_definition": "Candidate legs are drawn from the eligible single-bet signals; any pair whose signal correlation exceeds the budget is excluded; the parlay probability is recomputed from the joint implied by the correlation structure rather than from the product of marginals.",
+      "inputs": [
+        {
+          "name": "Signal correlation matrix computed from official season results",
+          "source_url": "",
+          "source_label": "This repository - data/datasets/correlations.json"
+        },
+        {
+          "name": "Official weekly schedule",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule"
+        }
+      ],
+      "state": "Blocked on the evaluation reference (S-002) and on G6 thresholds.",
+      "status": "research",
+      "notes": "Leg correlation budget is a proposed threshold pending Q-011."
+    },
+    {
+      "id": "PL-002",
+      "name": "Half-season total pairing",
+      "class": "parlay",
+      "market": "Two-leg parlay combining a first-half and a full-game total",
+      "hypothesis": "First-half and full-game totals from the same game are strongly related through pace, so a pairing across different games, restricted to low correlation, will price more honestly than a same-game pairing.",
+      "signal_definition": "Two-leg parlay where both legs are totals from different games and the pair's signal correlation is within budget; the leg correlation is measured and reported, not assumed.",
+      "inputs": [
+        {
+          "name": "Official weekly schedule and results",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule"
+        },
+        {
+          "name": "Official player and team statistics",
+          "source_url": "https://www.nfl.com/stats/player-stats/",
+          "source_label": "NFL.com player statistics"
+        }
+      ],
+      "state": "Blocked on per-game team scoring splits, which the current dataset does not publish at game level.",
+      "status": "research",
+      "notes": "Depends on S-013 for game-level data."
+    },
+    {
+      "id": "PP-001",
+      "name": "Passer output against pass-defence concession",
+      "class": "prop",
+      "market": "Quarterback passing yards",
+      "hypothesis": "A quarterback's passing output against a defence that concedes above its own expectation should exceed the quarterback's baseline rate, and this relationship holds out of sample once opportunity and opponent strength are controlled.",
+      "signal_definition": "Baseline passing rate from official season passing statistics, adjusted by the opponent's official passing yards allowed relative to the league mean, adjusted by the quarter-back's official attempt share.",
+      "inputs": [
+        {
+          "name": "Official player passing statistics by season",
+          "source_url": "https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingyards/desc",
+          "source_label": "NFL.com passing statistics"
+        },
+        {
+          "name": "Official per-game box scores",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule and game pages"
+        }
+      ],
+      "state": "Blocked on per-game player logs (S-013). Season aggregates alone cannot evaluate a per-game prop.",
+      "status": "research",
+      "notes": "Requires the game-log dataset before it can enter the harness."
+    },
+    {
+      "id": "PP-002",
+      "name": "Receiver volume share",
+      "class": "prop",
+      "market": "Receptions",
+      "hypothesis": "A receiver's share of his quarterback's attempts is more stable than his yardage, so a receptions line set from official attempt share will beat a yardage line once the target share is stable over a sufficient sample.",
+      "signal_definition": "Target share from official receiving statistics, adjusted for the absence of higher-share receivers as listed in the official injury report, applied to the quarterback's official attempt projection.",
+      "inputs": [
+        {
+          "name": "Official player receiving statistics by season",
+          "source_url": "https://www.nfl.com/stats/player-stats/category/receiving/2026/reg/all/receivingreceptions/desc",
+          "source_label": "NFL.com receiving statistics"
+        },
+        {
+          "name": "Official weekly injury report",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        }
+      ],
+      "state": "Blocked on per-game player logs (S-013).",
+      "status": "research",
+      "notes": "The volume share is the more stable quantity; yardage is deliberately excluded from the signal."
+    },
+    {
+      "id": "PP-003",
+      "name": "Workhorse rushing volume",
+      "class": "prop",
+      "market": "Rushing yards and attempts",
+      "hypothesis": "Backs with a high and stable attempt share will continue to receive a high attempt share, so an attempts line set from official rushing share will beat a yards line, which is contaminated by red-zone and game-script variance.",
+      "signal_definition": "Attempt share from official rushing statistics, adjusted for offensive-line and depth-chart changes identified in the official injury report, applied to the team's official rushing-rate projection.",
+      "inputs": [
+        {
+          "name": "Official player rushing statistics by season",
+          "source_url": "https://www.nfl.com/stats/player-stats/category/rushing/2026/reg/all/rushingyards/desc",
+          "source_label": "NFL.com rushing statistics"
+        },
+        {
+          "name": "Official weekly injury report",
+          "source_url": "https://www.nfl.com/injuries/",
+          "source_label": "NFL.com official injury report"
+        }
+      ],
+      "state": "Blocked on per-game player logs (S-013).",
+      "status": "research",
+      "notes": "Explicitly avoids the yards signal, which has higher variance for the same reason a prop line is hard to beat."
+    },
+    {
+      "id": "PC-001",
+      "name": "Passer yards with team total",
+      "class": "prop_combo",
+      "market": "Two-leg: quarterback passing yards and team points over",
+      "hypothesis": "Quarterback passing yards and team scoring in the same game are driven by the same game script, so the pair is positively correlated. Pricing the combination from the joint rather than the product of the marginals will produce a materially different, and more accurate, probability.",
+      "signal_definition": "Two legs in one game, priced from a joint model conditioned on pace and scoring environment, with the conditional correlation measured on the official per-game data rather than assumed.",
+      "inputs": [
+        {
+          "name": "Official per-game box scores",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule and game pages"
+        },
+        {
+          "name": "Official player passing statistics",
+          "source_url": "https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingyards/desc",
+          "source_label": "NFL.com passing statistics"
+        }
+      ],
+      "state": "Blocked on per-game player logs (S-013) and on the conditional-independence test (S-018).",
+      "status": "research",
+      "notes": "This class is deliberately included to demonstrate the correlation problem the brief asks about, not because it is recommended."
+    },
+    {
+      "id": "PC-002",
+      "name": "Two-player volume pair across games",
+      "class": "prop_combo",
+      "market": "Two-leg: individual player volumes in different games",
+      "hypothesis": "Player volumes in different games are close to independent once each player's own opportunity is controlled, so a two-leg pair drawn from different games with no shared player has an effective number of independent legs of two, unlike a same-game pair.",
+      "signal_definition": "Legs drawn from different games, with the same player prohibited from appearing twice and a leg cap applied; effective independent leg count is computed from the measured correlation matrix.",
+      "inputs": [
+        {
+          "name": "Official per-game box scores",
+          "source_url": "https://www.nfl.com/schedules/2026/REG10/",
+          "source_label": "NFL.com weekly schedule and game pages"
+        }
+      ],
+      "state": "Blocked on per-game player logs (S-013).",
+      "status": "research",
+      "notes": "Effective-leg calculation is the reason the correlation matrix is a prerequisite rather than a nice-to-have."
+    }
+  ],
+  "removed_from_scope": [
+    {
+      "item": "Any strategy whose signal depends on a commercial betting line, projection service or non-official injury feed.",
+      "reason": "The brief requires the platform to originate its own lines and to verify every input against an official source."
+    },
+    {
+      "item": "Any strategy that infers a starter, a replacement or an availability state that no official source publishes.",
+      "reason": "The brief forbids inferring values; unresolved depth is left blank and flagged."
+    }
+  ]
+}
