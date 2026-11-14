@@ -1691,11 +1691,14 @@ def build_repo_review():
             continue
         htmls = sorted(p.rglob("*.html"))
         data_files = sorted(list(p.rglob("*.json")) + list(p.rglob("*.csv")))
+        all_files = sorted(p.rglob("*"))
+        other = [f for f in all_files if f.is_file() and f not in htmls and f not in data_files]
         rows.append({
             "tree": t,
             "html_pages": len(htmls),
             "data_files": len(data_files),
-            "bytes": sum(f.stat().st_size for f in htmls + data_files),
+            "other_files": len(other),
+            "bytes": sum(f.stat().st_size for f in all_files if f.is_file()),
             "maintained": "yes" if t == "hub" else "no",
             "note": ("presented by an earlier session as the canonical tree" if t == "hub"
                      else "built by an earlier session; preserved, not maintained"),

@@ -198,7 +198,7 @@ def check_repo_review():
     if found != expected:
         problems.append(f"repo review tree list changed: {found} != {expected}")
     for r in rows:
-        if r["html_pages"] + r["data_files"] == 0:
+        if r["html_pages"] + r["data_files"] + r.get("other_files", 0) == 0:
             problems.append(f"repo review row '{r['tree']}' has no pages and no data files")
         if not r.get("source"):
             problems.append(f"repo review row '{r['tree']}' has no source link")

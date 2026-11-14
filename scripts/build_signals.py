@@ -1181,7 +1181,7 @@ def p_repo(repo):
     rows = []
     for r in repo:
         rows.append([f'<code>{esc(r["tree"])}/</code>', str(r["html_pages"]), str(r["data_files"]),
-                     f'{r["bytes"] / 1024:.0f} KB',
+                     str(r.get("other_files", 0)), f'{r["bytes"] / 1024:.0f} KB',
                      '<span class="badge ok">yes</span>' if r["maintained"] == "yes"
                      else '<span class="badge neutral">no</span>',
                      esc(r["note"]), srcl(r["source"])])
@@ -1193,8 +1193,9 @@ None of them was deleted &mdash; deleting another session's work would be worse 
 but the duplication is itself a decision-making problem and it is logged as
 <a href="flagged.html">F-11</a> with a remedy in <a href="suggestions.html#S-12">suggestion S-12</a>.</p>
 <div class="tw"><table><thead><tr><th>Tree</th><th class="n">HTML pages</th><th class="n">Data files</th>
-<th class="n">Size</th><th>Maintained</th><th>Status</th><th>Repository</th></tr></thead><tbody>
-{''.join('<tr>' + ''.join('<td class="%s">%s</td>' % (c, v) for v, (h, c) in zip(r, H('Tree') + HN('Pages', 'Data', 'Size') + H('Maintained', 'Status', 'Repo'))) + '</tr>' for r in rows)}
+<th class="n">Other files</th><th class="n">Size</th><th>Maintained</th><th>Status</th><th>Repository</th>
+</tr></thead><tbody>
+{''.join('<tr>' + ''.join('<td class="%s">%s</td>' % (c, v) for v, (h, c) in zip(r, H('Tree') + HN('Pages', 'Data', 'Other', 'Size') + H('Maintained', 'Status', 'Repo'))) + '</tr>' for r in rows)}
 </tbody></table></div>
 
 <h2>Irregularities found in the review</h2>
