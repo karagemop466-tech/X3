@@ -49,6 +49,7 @@ FIXTURE_SOURCES = {
     "injuries.html": "injuries_current",
     "standings.html": "standings_league_2026",
     "player_stats_passing.html": "stats_player_passing_2026",
+    "schedule.html": "schedule_2026_w05",
 }
 
 

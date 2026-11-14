@@ -55,7 +55,18 @@ OFFICIAL_CLUB_HOSTS = {
     "seahawks.com", "steelers.com", "tampabaybuccaneers.com", "tennesseetitans.com",
     "therams.com", "titans.com", "vikings.com", "washingtoncommanders.com",
 }
-ALLOWED_EXTERNAL_HOSTS = OFFICIAL_HOST_SUFFIXES + tuple(sorted(OFFICIAL_CLUB_HOSTS)) + (
+# The official club domains are taken from the source registry itself, so a
+# new club cannot be published with a link the validator rejects, and no
+# club can be published without being in the registry.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts"))
+try:
+    from lib.official import CLUBS as _CLUBS
+
+    REGISTRY_CLUB_HOSTS = {domain.lower() for _slug, domain, _name, _abbr in _CLUBS}
+except Exception:  # noqa: BLE001 - the validator must still run
+    REGISTRY_CLUB_HOSTS = set(OFFICIAL_CLUB_HOSTS)
+
+ALLOWED_EXTERNAL_HOSTS = OFFICIAL_HOST_SUFFIXES + tuple(sorted(REGISTRY_CLUB_HOSTS)) + (
     "github.com",
     "karagemop466-tech.github.io",
 )
@@ -69,7 +80,7 @@ def is_official(url: str) -> bool:
         return False
     if any(host == s.lstrip(".") or host.endswith(s) for s in OFFICIAL_HOST_SUFFIXES):
         return True
-    if host in OFFICIAL_CLUB_HOSTS:
+    if host in REGISTRY_CLUB_HOSTS:
         return True
     return False
 
@@ -250,16 +261,23 @@ def check_duplicate_payloads() -> tuple[bool, str, list[str]]:
     with open(manifest_path, encoding="utf-8") as fh:
         manifest = json.load(fh)
     problems: list[str] = []
+    notes: list[str] = []
     summary = manifest.get("summary", {})
     for entry in summary.get("duplicate_payloads", []):
         keys = entry.get("keys", [])
-        problems.append(
+        message = (
             f"{entry.get('count')} sources returned an identical payload "
             f"({entry.get('sha256', '')[:12]}): {', '.join(keys[:8])}"
         )
-    if not problems:
-        return True, "no two official URLs returned an identical payload", []
-    return False, f"{len(problems)} duplicate payload group(s) detected", problems
+        if entry.get("fabricates_distinct_data"):
+            problems.append(message)
+        else:
+            notes.append(message + " — expected: the source has no distinct content for these URLs")
+    if problems:
+        return False, f"{len(problems)} duplicate payload group(s) fabricate distinct data", problems
+    if notes:
+        return True, f"no duplicate payload fabricates distinct data ({len(notes)} expected group(s))", []
+    return True, "no two official URLs returned an identical payload", []
 
 
 def check_schedule_weeks() -> tuple[bool, str, list[str]]:

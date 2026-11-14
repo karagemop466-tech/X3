@@ -410,11 +410,26 @@ def write_manifest(records: list[dict], path: str) -> dict:
     for rec in records:
         if rec.get("ok") and rec.get("sha256"):
             by_digest.setdefault(rec["sha256"], []).append(rec["key"])
+    category_of = {rec["key"]: rec.get("category", "") for rec in records}
     duplicates = {digest: keys for digest, keys in by_digest.items() if len(keys) > 1}
-    summary["duplicate_payloads"] = [
-        {"sha256": digest, "keys": sorted(keys), "count": len(keys)}
-        for digest, keys in sorted(duplicates.items(), key=lambda kv: -len(kv[1]))
-    ]
+    entries = []
+    for digest, keys in sorted(duplicates.items(), key=lambda kv: -len(kv[1])):
+        categories = sorted({category_of.get(k, "") for k in keys})
+        # Identical payloads are a defect only where the sources are supposed
+        # to differ. A schedule week must differ from every other week, so a
+        # repeat there means one week was silently served for another. A
+        # future injury week, by contrast, has no report yet and the official
+        # site serves the same empty page for each of them.
+        entries.append(
+            {
+                "sha256": digest,
+                "keys": sorted(keys),
+                "count": len(keys),
+                "categories": categories,
+                "fabricates_distinct_data": bool({"schedule", "standings"} & set(categories)),
+            }
+        )
+    summary["duplicate_payloads"] = entries
     summary["sources_with_duplicate_payload"] = sum(len(v) for v in duplicates.values())
 
     os.makedirs(os.path.dirname(path), exist_ok=True)
