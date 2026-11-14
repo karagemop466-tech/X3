@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 361,
-      "flagged_rows": 247,
-      "refs": 414,
+      "rows": 306,
+      "flagged_rows": 227,
+      "refs": 346,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -13,7 +13,23 @@
         "flagged.html: Live or historical betting lines / odds \u2014 No line archive or provider is present. NFL is not the source of bookmaker quo",
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
-        "index.html: Category Primary page (open) What you will find Data status Official source"
+        "injuries.html:  Date  Team  Player  Pos  Injury  Practice Status  Game Status  Source "
+      ]
+    },
+    "archive": {
+      "pages": 17,
+      "rows": 705,
+      "flagged_rows": 652,
+      "refs": 813,
+      "unsourced_examples": [
+        "archive/hub-621bf404/archive.html:  Tree  What it is  Repository  Live page ",
+        "archive/hub-621bf404/correlations.html:  #  Pair  r  n  Method  Caveat  Source ",
+        "archive/hub-621bf404/correlations.html:  Pair  Published by a prior tree  Recomputed here  Agreement  Evidence ",
+        "archive/hub-621bf404/deficiency.html:  Club  Record  Rows on report  Out  Doubtful  Questionable  Undesignated  Non-injury rest  Offensive loss (pts)  Defensi",
+        "archive/hub-621bf404/deficiency.html:  Claim  Supportable from official data?  Treatment here  Evidence ",
+        "archive/hub-621bf404/deficiency.html: Whether a backup's presence changes a prop market no - needs prop prices and usage data not attempted FLG-07 \u00b7 Q-12",
+        "archive/hub-621bf404/executive-summary.html:  Finding  Value  Basis  Source ",
+        "archive/hub-621bf404/executive-summary.html: No game log in repo no home-field estimate, no opponent adjustment, no parlay correlation matrix ingest schedule + box s"
       ]
     },
     "audit": {
@@ -45,8 +61,8 @@
     },
     "desk": {
       "pages": 18,
-      "rows": 823,
-      "flagged_rows": 786,
+      "rows": 824,
+      "flagged_rows": 787,
       "refs": 1240,
       "unsourced_examples": [
         "desk/archive.html: Site Path What it contains Status",
@@ -76,19 +92,19 @@
       ]
     },
     "hub": {
-      "pages": 17,
-      "rows": 705,
-      "flagged_rows": 652,
-      "refs": 813,
+      "pages": 18,
+      "rows": 768,
+      "flagged_rows": 555,
+      "refs": 994,
       "unsourced_examples": [
-        "hub/archive.html:  Tree  What it is  Repository  Live page ",
-        "hub/correlations.html:  #  Pair  r  n  Method  Caveat  Source ",
-        "hub/correlations.html:  Pair  Published by a prior tree  Recomputed here  Agreement  Evidence ",
-        "hub/deficiency.html:  Club  Record  Rows on report  Out  Doubtful  Questionable  Undesignated  Non-injury rest  Offensive loss (pts)  Defensi",
-        "hub/deficiency.html:  Claim  Supportable from official data?  Treatment here  Evidence ",
-        "hub/deficiency.html: Whether a backup's presence changes a prop market no - needs prop prices and usage data not attempted FLG-07 \u00b7 Q-12",
-        "hub/executive-summary.html:  Finding  Value  Basis  Source ",
-        "hub/executive-summary.html: No game log in repo no home-field estimate, no opponent adjustment, no parlay correlation matrix ingest schedule + box s"
+        "hub/archive.html: Tree Session Entry point Why it is not canonical",
+        "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
+        "hub/archive.html: docs/pages/ arena/4856379c-x3 docs/pages/ research tree with strong method notes; its injury/standings CSVs match this s",
+        "hub/archive.html: site/ arena/1a771fcd-x3 site/index.html single page",
+        "hub/archive.html: lab/ arena/972ad7a5-x3 lab/index.html framework-only: no data values at all, and it was the root redirect target until t",
+        "hub/archive.html: dashboard/ arena/7e632805-x3 dashboard/index.html 345-row injury table and 31 charts - genuinely good work, but its stan",
+        "hub/archive.html: x3lab/ arena/e1c332ce-x3 x3lab/index.html includes prices from third-party sportsbook pages; useful for method, not an o",
+        "hub/archive.html: legacy/ arena/0c38f465-x3 legacy/index.html the original landing page"
       ]
     },
     "lab": {
@@ -152,9 +168,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 124,
-  "rows_total": 4183,
-  "rows_flagged_or_sourced": 3649,
-  "internal_refs": 1873,
+  "pages_total": 142,
+  "rows_total": 4897,
+  "rows_flagged_or_sourced": 4185,
+  "internal_refs": 2265,
   "problems": []
 }

@@ -3,87 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Signals and strategies &middot; X3 review hub</title>
-<link rel="stylesheet" href="style.css">
+<title>Strategies &amp; signals - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
 </head>
 <body>
 <header class="top">
-  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
-  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a' class="on"'ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
 </header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="strategies.html" class=on">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a></nav>
 <main>
-<h1>Signals and strategies</h1>
-<p class="note">Twelve candidate signals, eight strategy constructions, and the gate each one is stuck on. A strategy is a hypothesis with a defined entry, exit and required dataset - nothing more until it is graded.</p>
-<h2>Signal catalog</h2>
-<table class=""><thead><tr>
-<th>#</th>
-<th>Signal</th>
-<th>Family</th>
-<th>Construction</th>
-<th>Input</th>
-<th>Target</th>
-<th>Expected direction</th>
-<th>Status</th>
-<th>Gate dependency</th>
-<th>Evidence</th>
-</tr></thead><tbody>
-<tr><td>SIG-01</td><td>Availability delta</td><td>Injury</td><td>Per club, per position group: sum of weight x status multiplier over official Week-10 rows.</td><td>SRC-02 + model_config weights</td><td>spread and team totals</td><td>Club with larger defensive-side loss concedes more points</td><td>Computed on 28 clubs</td><td>G-03 calibration pending; publishable as DERIVED</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <code>G-03</code>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-02</td><td>QB absence cascade</td><td>Injury</td><td>Starter-QB Out shifts that club&#x27;s expected points by A-04 QB weight and its opponent&#x27;s by the same amount, once only.</td><td>SRC-02; starter identity from SRC-07 news where available</td><td>spread, team total, all QB props for that game</td><td>Absence moves line against the club</td><td>Computed for SEA (Darnold Out, Lock starts per SRC-07); blank for BAL (starter unidentifiable, FLG-06)</td><td>G-00 blocked for BAL</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <a href="https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders">SRC-07</a>, <code>G-00</code>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-03</td><td>Practice trajectory</td><td>Injury</td><td>Direction of practice participation across the Wed/Thu/Fri reports (FP to LP to DNP) rather than a single day&#x27;s value.</td><td>requires repeated snapshots of SRC-02 - not yet stored</td><td>probability a Questionable player suits up</td><td>downgrading trajectory implies lower play probability</td><td>NOT COMPUTED - one day of data exists</td><td>needs S-05 snapshot history</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <a href="suggestions.html">S-05</a>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-04</td><td>Designation base rates</td><td>Calibration</td><td>Historic play rate by designation, per position and per rest-day context, used to replace A-03.</td><td>needs &gt;=2 seasons of archived reports + inactives</td><td>multiplier calibration</td><td>n/a</td><td>NOT COMPUTED - no archive</td><td>blocks G-03</td><td><code>G-03</code>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-05</td><td>Planned-absence filter</td><td>Data hygiene</td><td>Rows whose injury field reads &#x27;Not injury related&#x27; (rest, personal matter) are excluded from injury-risk features but kept in availability.</td><td>SRC-02, 5 such rows in Week 10</td><td>feature hygiene</td><td>n/a</td><td>Applied in build</td><td>G-00</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <code>G-00</code>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-06</td><td>Secondary depletion</td><td>Injury x Prop</td><td>Count of CB+S rows with Out/Doubtful for a club&#x27;s opponent-facing defense.</td><td>SRC-02</td><td>opponent WR/TE reception and receiving-yard props</td><td>more backups -&gt; more target volume for the other side</td><td>Computed (see deficiency page)</td><td>G-03, plus prop pricing missing (Q-12)</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <code>G-03</code>, <a href="questions.html">Q-12</a>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-07</td><td>Interior pass-rush depletion</td><td>Injury x Prop</td><td>Count of DT/DE Out or Doubtful.</td><td>SRC-02</td><td>opponent pass-protection, QB sack props, run-block win rate proxy</td><td>less pressure -&gt; higher opponent pass volume</td><td>Computed</td><td>G-03</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <code>G-03</code>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-08</td><td>Offensive-line depletion</td><td>Injury x Prop</td><td>Count of T/G/C Out or Doubtful.</td><td>SRC-02</td><td>team rush-yards under, sack-taken over</td><td>more line absences -&gt; worse rush, more sacks</td><td>Computed (IND, HOU, MIN, DAL heaviest)</td><td>G-03</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <code>G-03</code>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-09</td><td>Target vacancy</td><td>Injury x Prop</td><td>WR1/TE1 availability loss -&gt; next-man usage shift.</td><td>SRC-02 for loss; usage/snap-share data for the shift - absent from repo</td><td>WR2/TE receptions over</td><td>vacancy raises the replacement&#x27;s floor, not necessarily the team&#x27;s ceiling</td><td>PARTIAL - loss measured, usage unmeasured</td><td>blocked by Q-12</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a>, <a href="questions.html">Q-12</a>, <a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
-<tr><td>SIG-10</td><td>Scoring-baseline totals</td><td>Market-neutral</td><td>Expected total from per-game scoring and allowance, shrunk to the league mean (A-05).</td><td>SRC-01</td><td>game total</td><td>n/a</td><td>Computed for 13 games</td><td>G-04 needs a price to be scored against</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <code>G-04</code></td></tr>
-<tr><td>SIG-11</td><td>Record-versus-point-differential residual</td><td>Luck</td><td>Residual of W-L% after regressing on net points per game (league-wide r = ++0.8794 on 32 clubs).</td><td>SRC-01</td><td>identify over/under-achieving clubs before prices adjust</td><td>positive residual = winning on luck, mean-reverts</td><td>Computed (see correlation page); not tradable without prices</td><td>G-06</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <code>G-06</code></td></tr>
-<tr><td>SIG-12</td><td>Home/road asymmetry</td><td>Market-neutral</td><td>Club&#x27;s home win% minus road win%; league-wide home-vs-road win% correlation is only ++0.3506, so split-based HFA estimates are noisy per club.</td><td>SRC-01</td><td>HFA parameter calibration</td><td>n/a</td><td>Correlation computed; per-club HFA needs game logs (S-07)</td><td>G-03</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a>, <code>G-03</code></td></tr>
+<h1>Strategies &amp; signals</h1>
+<p class="lede">Twelve registered, falsifiable strategy definitions covering singles, props, prop combos, parlays, model evaluation and staking.</p>
+
+<h2>Registered strategies (12)</h2>
+<p class="lede">These are pre-registered hypotheses: an entry rule, an exit rule and a data requirement,
+committed before any outcome is observed. None of them claims an edge yet, and none is scored - see the
+gates page for what blocks each one.</p>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>ID</th><th>Family</th><th>Hypothesis</th><th>Entry rule</th><th>Exit / settlement</th><th>Data required</th><th>Signal source</th><th>Gate state</th></tr></thead><tbody>
+<tr><td><b>ST-01</b></td><td>Single - side</td><td><b>Injury-shock fade</b></td><td>Bet the opponent when a club's model line moves &gt;= 3.5 points because of officially designated absences of 1st-string players, and the movement is not matched by the market move.</td><td>Settle at game final; one unit per game, no doubling.</td><td>Game log + closing prices + 4 seasons of Wednesday/Friday designations</td><td>Official injury report x club charts (this site)</td><td><span class="badge b">BLOCKED</span> no prices/results</td></tr>
+<tr><td><b>ST-02</b></td><td>Single - side</td><td><b>Pythagorean regression</b></td><td>Fade teams whose actual wins exceed Pythagorean wins by &gt;= 1.5 wins, and take teams below by the same margin, when the line has not moved with the underlying rating.</td><td>Settle at game final.</td><td>Standings (have) + prices (missing) + 7 seasons for stability</td><td>hub/correlation.html luck table (DERIVED)</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-03</b></td><td>Single - total</td><td><b>Backup-QB total under</b></td><td>When a club's chart QB1 is officially Out and the QB2 has &lt; 200 career snaps, take the under of that club's team total contribution.</td><td>Settle at game final.</td><td>Charts (partial) + report (have) + snaps (have via nfl.com/stats) + prices (missing)</td><td>Lineup deficiency index (this site)</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-04</b></td><td>Single - side</td><td><b>Offensive-line collapse</b></td><td>When &gt;= 2 chart OL starters (incl. the centre) are Out/Doubtful, take the opponent's side in games where the opponent's pass-rush unit is fully available.</td><td>Settle at game final.</td><td>Chart positions + report + game log</td><td>hub/depth.html (e.g. IND, NO, SEA, TEN this week)</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-05</b></td><td>Single - prop combo</td><td><b>Goal-to-go rush stack</b></td><td>Combine RB1 'anytime TD' with 'over 65.5 rushing yards' only when the opponent is ranked in the bottom third on red-zone defence per play.</td><td>Settle per league prop settlement rules.</td><td>Prop prices + red-zone defence splits + snap counts</td><td>nfl.com/stats (have) + prop archive (missing)</td><td><span class="badge b">BLOCKED</span> no prop archive</td></tr>
+<tr><td><b>ST-06</b></td><td>Parlay - same game</td><td><b>Correlated game-script parlay</b></td><td>Two legs priced from one joint simulation of the game (spread + team total), with the dependence term estimated from the model's own simulated games, not from market prices alone.</td><td>Settle both legs at game final.</td><td>Game-level simulation + prices</td><td>Model margin distribution</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-07</b></td><td>Parlay - cross game</td><td><b>Same-slate fade basket</b></td><td>Up to 3 injury-shock fades within one betting window; legs must be independent by construction (different games, no shared total exposure).</td><td>Settle at game final; a cancelled leg voids only that leg.</td><td>As ST-01 + slate scheduling data</td><td>Official injury report</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-08</b></td><td>Single - side</td><td><b>Rest-day asymmetry</b></td><td>After a short week (&lt;= 4 rest days) travelling from a primetime game, fade the rested team only when the spread exceeds the model line by &lt; 1.5 points.</td><td>Settle at game final.</td><td>Game log with dates/venues (missing)</td><td>Schedule data</td><td><span class="badge b">BLOCKED</span> no game log</td></tr>
+<tr><td><b>ST-09</b></td><td>Single - market check</td><td><b>Line-move vs news check</b></td><td>Flag games where the market moved &gt;= 2.5 points with no corresponding official designation; treat as a data-integrity signal first and a trade only after verification.</td><td>No bet by default; review only.</td><td>Prices + report timestamps</td><td>Price snapshot delta</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-10</b></td><td>Evaluation</td><td><b>Cross-fitted model-quality benchmark</b></td><td>Score the originated lines themselves with log-loss and MAE against outcomes on a chronological walk-forward; a strategy may not be promoted until the underlying model beats the naive baseline (home -2.5 / total 45.0).</td><td>n/a - evaluation only.</td><td>Game log + outcomes</td><td>This site's model</td><td><span class="badge b">BLOCKED</span> no results</td></tr>
+<tr><td><b>ST-11</b></td><td>Single - side</td><td><b>Alternate-market arbitrage of our own line</b></td><td>Trade only when our line and the market differ by more than the model's own standard error (not a fixed point threshold), so bet size scales with genuine uncertainty.</td><td>Settle at game final.</td><td>Prices + model error estimate</td><td>Model residuals</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
+<tr><td><b>ST-12</b></td><td>Staking</td><td><b>Fractional-Kelly with model-error haircut</b></td><td>Stake = 0.25 x Kelly fraction computed on the interval, using the lower confidence bound of the edge rather than the point estimate, capped at 2% of bankroll per bet.</td><td>Applies to every strategy above.</td><td>Prices + edge intervals</td><td>Gate CI outputs</td><td><span class="badge b">BLOCKED</span> no prices</td></tr>
 </tbody></table>
-<h2>Strategies by bet type</h2>
-<table class=""><thead><tr>
-<th>#</th>
-<th>Strategy</th>
-<th>Bet type</th>
-<th>Family</th>
-<th>Construction</th>
-<th>Entry / exit</th>
-<th>Data still required</th>
-<th>State</th>
-<th>Gates blocking</th>
-<th>Note</th>
-<th>Evidence</th>
-</tr></thead><tbody>
-<tr><td>ST-01</td><td>QB-Out Fade</td><td>Single (spread)</td><td>Injury</td><td>When the official report marks a club&#x27;s starting QB Out, take the opponent on the spread; one bet per game, no averaging across positions.</td><td>after the Friday designation / closing</td><td>prices, 2 seasons of QB-Out games</td><td>Registered, not graded</td><td>G-00 G-03 G-04</td><td>Week 10 case study: SEA at LV (Darnold Out, Lock starts - SRC-07).</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>ST-02</td><td>Secondary-Depletion Overs</td><td>Player prop</td><td>Injury x Prop</td><td>Opponent WR1 receiving yards over when the defense faces &gt;=2 CB/S Out.</td><td>Friday report / closing</td><td>prop prices, snap counts</td><td>Registered, not graded</td><td>G-03 G-04 G-08</td><td>Signal computed for 6 games in Week 10; effect size unknown.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>ST-03</td><td>OffLine Ruin Unders</td><td>Single (team total under)</td><td>Injury</td><td>Club with &gt;=2 T/G/C Out: team total under, provided no QB-Injury offset.</td><td>Friday / closing</td><td>prices</td><td>Registered, not graded</td><td>G-03 G-04</td><td>Week 10 candidates: IND (4 OL rows), MIN, DAL, HOU - see deficiency table.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>ST-04</td><td>Same-game prop pair</td><td>Prop combo (2 legs, same game)</td><td>Correlation</td><td>Team rush-yards under + team sack-taken over, priced by the same book on the same slate; only if measured |r| &lt; 0.30 cap or the book&#x27;s joint price is beaten after haircut.</td><td>pre-kickoff / settlement at game end</td><td>parlay pricing, correlation matrix</td><td>Blocked</td><td>G-06 G-09</td><td>Correlation matrix does not exist yet; the only pilot (n=16 games) is in a legacy tree and is below the sample gate.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>ST-05</td><td>3-Leg Parlay Discipline</td><td>Parlay</td><td>Risk</td><td>Max 3 legs, no two legs from the same game unless the joint price is verified, and never more than one injury-leg per club.</td><td>after all designations final / game end</td><td>prices, correlation matrix</td><td>Rule only, no live bets</td><td>G-09</td><td>Explicitly a loss-limitation rule, not an edge.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>ST-06</td><td>Residual Fader</td><td>Single (moneyline)</td><td>Luck / mean reversion</td><td>Fade the club with the largest positive W-L% residual over net points per game once prices imply a materially smaller edge.</td><td>Wednesday / closing</td><td>prices, multi-season history</td><td>Registered, not graded</td><td>G-02 G-04 G-06</td><td>Directly uses SIG-11; the four computed correlations are the only evidence and they are descriptive, 32 team-seasons.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>ST-07</td><td>Neutral-Site Correction</td><td>Single (spread)</td><td>Model bias</td><td>Where the slate marks an international/neutral venue (Munich: NE at DET), remove HFA from the originated line and take the side the raw model favours only if the delta exceeds a stated threshold.</td><td>pre-kickoff / closing</td><td>prices</td><td>Registered, not graded</td><td>G-03 G-04</td><td>Parameter A-02 is itself an assumption (FLG-12).</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>ST-08</td><td>Availability Composite</td><td>Model-vs-market residual</td><td>Ensemble</td><td>Rank games by the gap between the originated line and the closing line; bet only the tails, sized by the published uncertainty.</td><td>post-close comparison / settlement</td><td>prices</td><td>Blocked - no price source</td><td>G-04 G-05 G-07 G-08 G-10</td><td>This is the strategy the whole pipeline exists to test; it cannot run today.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
+</div>
+<h2>Pre-registration ledger</h2>
+<div class="tblwrap"><table class="k-meta">
+<thead><tr><th>Artifact</th><th>Content</th><th>Why it matters</th></tr></thead><tbody>
+<tr><td><code>hub/data/prereg.json</code></td><td>strategy ids, entry/exit rules, model parameters, input hashes, frozen 2026-11-14</td><td>the git commit that carries it is the timestamp; changing a rule later creates a new registration, it cannot overwrite this one</td></tr>
+<tr><td>git history</td><td>the git blob SHA and commit date on <code>main</code></td><td>an outside party can confirm the rules were written before the outcomes existed</td></tr>
 </tbody></table>
-<h2>Coverage by bet type</h2>
-<table class=""><thead><tr>
-<th>Bet type</th>
-<th>Strategies proposed</th>
-<th>Gradable today</th>
-<th>Evidence</th>
-</tr></thead><tbody>
-<tr><td>Model-vs-market residual</td><td>1</td><td>no - no verified price source (<a href="flagged.html">FLG-07</a>)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>Parlay</td><td>1</td><td>no - no verified price source (<a href="flagged.html">FLG-07</a>)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>Player prop</td><td>1</td><td>no - no verified price source (<a href="flagged.html">FLG-07</a>)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>Prop combo (2 legs, same game)</td><td>1</td><td>no - no verified price source (<a href="flagged.html">FLG-07</a>)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>Single (moneyline)</td><td>1</td><td>no - no verified price source (<a href="flagged.html">FLG-07</a>)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>Single (spread)</td><td>2</td><td>no - no verified price source (<a href="flagged.html">FLG-07</a>)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-<tr><td>Single (team total under)</td><td>1</td><td>no - no verified price source (<a href="flagged.html">FLG-07</a>)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json">research.json</a></td></tr>
-</tbody></table>
-<h2>Luck-removal programme</h2><ul><li>Separate variance from skill by measuring against prices, not outcomes alone (G-04, G-05).</li><li>Correct for the trials you ran, not just the strategy you kept (G-06, G-07).</li><li>Require out-of-sample and leave-best-out tests before promotion (G-08, G-10).</li><li>Cap the things that make luck look like skill: correlated legs, small samples, post-hoc thresholds (G-01, G-09).</li><li>Publish the residual of W-L% over net points as a luck index for clubs, and treat its mean reversion as the hypothesis (SIG-11).</li></ul>
+</div>
+<p class="note">Regenerated by <code>tools/build_hub.py</code>; the ledger is rebuilt from the same source
+rows as this table so the two can never disagree.</p>
+
 </main>
 <footer>
-  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
-  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
-  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
 </footer>
-</body>
-</html>
+<script src="assets/hub.js" defer></script>
+</body></html>

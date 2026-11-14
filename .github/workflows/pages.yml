@@ -90,6 +90,15 @@ jobs:
           node scripts/check_data.js
           node scripts/check_render.js
 
+      - name: Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced
+        run: |
+          python3 tools/x3_engine.py
+          python3 tools/build_hub.py
+          python3 tools/verify_hub.py
+          git diff --exit-code -- hub index.html data/hub || {
+            echo '::error::hub/*.html is not the current build of data/hub/*.csv - run `python3 tools/x3_engine.py && python3 tools/build_hub.py` and commit the result.'
+            exit 1; }
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
