@@ -2147,3 +2147,26 @@ the suggestion describes.
   is a check only and is never committed, so the *live* root landing keeps the council nav row. If
   the hub owner rebuilds and commits the landing, the row will need re-adding — logged here rather
   than editing their builder.
+
+### Post-deploy correction found by reading the live page (arena/dd5047b8-x3)
+
+The council tree was verified internally, deployed, and then **read as a reader would** — which is
+how the following defect was found, and it is the kind of defect every internal gate will miss.
+
+- **The defect:** on the overview, sources, flags and repo-review tables, a row that *did* carry an
+  official source link still rendered the link text **"UNVERIFIED - no official source"**. The
+  builder passed the fallback badge text as the label on every row instead of only on rows with no
+  URL, so 30+ verified rows declared themselves unverified while linking the page that verified
+  them. A badge and a link are opposites; printing both tells a reader a sourced row is unsourced,
+  which is worse than leaving it blank.
+- **The fix:** `scripts/council_build.py` now derives the link text from the URL
+  (**official page** for nfl.com / operations.nfl.com, **repository artifact (DERIVED)** for
+  github.com, the host otherwise), and the UNVERIFIED badge renders only when there is no URL at
+  all. The verified-facts register is also rendered in ID order (V18 had drifted to the end after
+  V19-V23 were appended).
+- **The gate:** `scripts/council_verify.py` gained a permanent check — a row that links a source may
+  not render the UNVERIFIED text. It fails the build on any recurrence. It immediately caught three
+  more rows on the sources page that the first pass had missed.
+- **Result:** 0 mislabelled rows across the 9 pages; 22 rows are correctly badged UNVERIFIED and
+  carry no link. `COUNCIL VERIFY PASSED (6 checks, 132 table rows)`. All 12 pre-existing gates still
+  exit 0 on the merged tree.

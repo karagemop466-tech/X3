@@ -819,12 +819,12 @@
  ],
  "trees": [
   {
-   "ext_links": 112,
+   "ext_links": 117,
    "owner": "arena/dd5047b8-x3",
    "pages": 9,
    "path": "council/",
    "purpose": "this session - decision council: the eight requirements as acceptance tests, questions, the suggestion review queue, verification, flags",
-   "table_rows": 138
+   "table_rows": 143
   },
   {
    "ext_links": 1257,
@@ -1192,6 +1192,51 @@
    "official": "yes",
    "source": "https://www.nfl.com/stats/team-stats/",
    "value": "nfl.com team stats page (captured, HTTP 200)"
+  },
+  {
+   "area": "Origination",
+   "fact": "Originated markets per game, in the required order",
+   "id": "V19",
+   "note": "DERIVED. Sequence order re-checked this session: 0 violations across the 13 games.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "value": "39 rows: 13 games x side, total, moneyline"
+  },
+  {
+   "area": "Origination",
+   "fact": "Moneyline derivation as recorded on the row",
+   "id": "V20",
+   "note": "DERIVED. The moneyline records the margin and sigma it came from, so it reproduces.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "value": "P(home win) = Phi(adj_margin / 13.5); sigma 13.5 preregistered"
+  },
+  {
+   "area": "Schedule",
+   "fact": "Official venue of the Munich international game",
+   "id": "V21",
+   "note": "Read from the official game page game-info block. The repository publishes a different venue string that no official page supports - see flag C-11.",
+   "official": "yes",
+   "source": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
+   "value": "FC Bayern Munich Stadium (location: Munich)"
+  },
+  {
+   "area": "Leaderboard",
+   "fact": "Signal scores populated on the leaderboard",
+   "id": "V22",
+   "note": "DERIVED. Signal and staking are separate blocks on every row, as the requirement asks.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json",
+   "value": "side winner accuracy 0.595 (n=121); total over/under 0.4957 (n=117); moneyline Brier 0.2373 (n=121); staking 0 settled bets"
+  },
+  {
+   "area": "Roster",
+   "fact": "Replacement ordinal recorded for Week 10 absences",
+   "id": "V23",
+   "note": "Club-published and self-labelled unofficial. The desk tree records 41 of 76 for the same week - see flag C-12.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json",
+   "value": "42 of 76"
   },
   {
    "area": "Origination",
