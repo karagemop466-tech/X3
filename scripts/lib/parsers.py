@@ -400,3 +400,113 @@ def parse_depth_chart(html: str, source_url: str, club: str) -> dict:
         return {"club": club, "units": [], "source_url": source_url, "accepted": False,
                 "reason": "no table with at least five rows was found"}
     return {"club": club, "units": units, "source_url": source_url, "accepted": True, "reason": ""}
+
+
+# ---------------------------------------------------------------------------
+# Depth-chart normalisation and depth-string resolution
+# ---------------------------------------------------------------------------
+
+#: Position groups as clubs label them, mapped to a canonical position.
+POSITION_GROUPS: dict[str, str] = {
+    "quarterback": "QB", "quarterbacks": "QB", "qb": "QB",
+    "running back": "RB", "running backs": "RB", "rb": "RB", "halfback": "RB",
+    "wide receiver": "WR", "wide receivers": "WR", "wr": "WR",
+    "tight end": "TE", "tight ends": "TE", "te": "TE",
+    "offensive line": "OL", "offensive lineman": "OL", "offensive linemen": "OL", "ol": "OL",
+    "center": "C", "c": "C", "guard": "G", "guards": "G", "g": "G",
+    "tackle": "T", "tackles": "T", "t": "T",
+    "defensive line": "DL", "defensive lineman": "DL", "defensive linemen": "DL", "dl": "DL",
+    "defensive end": "DE", "defensive ends": "DE", "de": "DE",
+    "defensive tackle": "DT", "defensive tackles": "DT", "dt": "DT",
+    "nose tackle": "NT", "nt": "NT",
+    "linebacker": "LB", "linebackers": "LB", "lb": "LB",
+    "outside linebacker": "OLB", "olb": "OLB",
+    "inside linebacker": "ILB", "ilb": "ILB",
+    "cornerback": "CB", "cornerbacks": "CB", "cb": "CB",
+    "safety": "S", "safeties": "S", "s": "S",
+    "strong safety": "SS", "ss": "SS",
+    "free safety": "FS", "fs": "FS",
+    "kicker": "K", "k": "K",
+    "punter": "P", "p": "P",
+    "long snapper": "LS", "ls": "LS",
+    "returner": "RS", "return specialist": "RS",
+    "fullback": "FB", "fb": "FB",
+    "running back/fullback": "RB/FB", "fb/rb": "FB",
+}
+
+_ORDINAL_RE = re.compile(r"^\s*(\d{1,2})\s*[\.\)]?\s+(.+)$")
+
+
+def _is_position_label(text: str) -> bool:
+    key = text.strip().lower()
+    return key in POSITION_GROUPS
+
+
+def normalise_depth_groups(units: list[dict]) -> list[dict]:
+    """Turn parsed depth-chart tables into ordered position groups.
+
+    A group is a position label plus the players beneath it, in the order the
+    club publishes them. The order is what makes a depth string meaningful.
+    """
+    groups: list[dict] = []
+    for unit in units:
+        for row in unit.get("rows", []):
+            cells = [c for c in row if c.strip()]
+            if not cells:
+                continue
+            if _is_position_label(cells[0]):
+                label = cells[0].strip().lower()
+                players = cells[1:]
+            elif len(cells) >= 2 and _is_position_label(cells[1]):
+                # Layout where the position label sits in the second column.
+                label = cells[1].strip().lower()
+                players = [cells[0]] + cells[2:]
+            else:
+                # A row that continues the previous group with more players.
+                if groups:
+                    groups[-1]["players"].extend(cells)
+                    continue
+                continue
+            position = POSITION_GROUPS.get(label, label.upper())
+            groups.append({"position": position, "label": cells[0].strip(), "players": []})
+            for cell in players:
+                text = cell.strip()
+                if not text:
+                    continue
+                match = _ORDINAL_RE.match(text)
+                if match:
+                    groups[-1]["players"].append(
+                        {"name": match.group(2).strip(), "ordinal": int(match.group(1))}
+                    )
+                else:
+                    groups[-1]["players"].append({"name": text, "ordinal": None})
+    # Fill in ordinals where the club did not number them.
+    for group in groups:
+        for index, player in enumerate(group["players"], start=1):
+            if player["ordinal"] is None:
+                player["ordinal"] = index
+    return groups
+
+
+def resolve_depth_string(groups: list[dict], player_name: str, position: str = "") -> str:
+    """Return the depth string of a player, for example ``WR3``.
+
+    Returns an empty string when the player cannot be located in an official
+    depth chart. It is never guessed.
+    """
+    target = re.sub(r"[^a-z ]", "", (player_name or "").lower()).strip()
+    if not target:
+        return ""
+    last = target.split()[-1] if target.split() else ""
+    for group in groups:
+        if position and group["position"] != position.upper():
+            continue
+        for player in group["players"]:
+            name = re.sub(r"[^a-z ]", "", player["name"].lower()).strip()
+            if not name:
+                continue
+            if name == target or (last and last == name.split()[-1] and name.split()[-1] == last):
+                ordinal = player.get("ordinal")
+                if ordinal:
+                    return f"{group['position']}{ordinal}"
+    return ""

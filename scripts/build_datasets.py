@@ -20,6 +20,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from lib.diagnostics import describe_html, failure_report, write_report
+from lib.official import resolve_payload
 from lib.parsers import (
     parse_depth_chart,
     parse_injuries,
@@ -44,9 +45,8 @@ def load_manifest() -> dict:
 
 
 def raw_path(record: dict) -> str | None:
-    if not record.get("ok") or not record.get("content_path"):
-        return None
-    return os.path.join(ROOT, record["content_path"])
+    """Locate the cached payload for a fetch record."""
+    return resolve_payload(record, RAW)
 
 
 def write_json(name: str, payload) -> str:

@@ -27,7 +27,11 @@ from typing import Iterable
 import requests
 
 #: Repository root, used to store cache paths as repo-root-relative values.
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#: This module lives at <repo>/scripts/lib/official.py, so the root is three
+#: levels up.
+REPO_ROOT = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+)
 
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -350,6 +354,29 @@ def fetch_all(
     session.close()
     records.sort(key=lambda r: r["key"])
     return records
+
+
+def resolve_payload(record: dict, rawdir: str) -> str | None:
+    """Locate the cached payload for a fetch record.
+
+    The manifest stores a repo-root-relative path. The raw directory is also
+    tried directly, so a manifest written by an older fetcher still resolves
+    and the build never fails for a path-format reason.
+    """
+    if not record.get("ok"):
+        return None
+    candidates = []
+    if record.get("content_path"):
+        candidates.append(os.path.join(REPO_ROOT, record["content_path"]))
+    key = record.get("key")
+    if key:
+        candidates.append(os.path.join(rawdir, f"{key}.html"))
+        candidates.append(os.path.join(rawdir, f"{key}.pdf"))
+        candidates.append(os.path.join(rawdir, f"{key}.json"))
+    for candidate in candidates:
+        if os.path.exists(candidate):
+            return candidate
+    return None
 
 
 def write_manifest(records: list[dict], path: str) -> dict:

@@ -43,6 +43,12 @@ jobs:
         run: |
           python scripts/fetch_official.py --out data/raw --manifest data/datasets/fetch_manifest.json
 
+      - name: Capture parser fixtures
+        run: python scripts/capture_fixtures.py
+
+      - name: Run offline self-tests
+        run: python scripts/selftest.py
+
       # Capture the raw official payloads before anything else can fail, so the
       # evidence is always downloadable for review.
       - name: Upload raw official payloads (audit artifact, not committed)

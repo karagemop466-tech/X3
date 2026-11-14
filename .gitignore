@@ -17,3 +17,5 @@ data/raw/*.txt
 # OS noise
 .DS_Store
 Thumbs.db
+data/raw/
+scripts/fixtures/

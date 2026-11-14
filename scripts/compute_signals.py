@@ -337,7 +337,7 @@ def walk_forward_backtest(schedule_by_season: dict, strategy_signals: dict) -> d
                     sig = fn(ctx, g)
                     if not sig:
                         continue
-                    p_model = p_home_fair if sig["side"] == "home" else 1.0 - p_home_fair
+                    p_model = sig["p_model"]
                     price = p_home_price if sig["side"] == "home" else p_away_price
                     edge = sig["p_model"] - price
                     if edge <= 0:
@@ -436,7 +436,9 @@ def score_bets(bets: list[dict]) -> dict:
             "skill_share": None,
             "skill_share_ci_low": None,
             "skill_share_ci_high": None,
-            "luck_permutation_p": None,
+            "luck_null_p": None,
+            "permutation_p": None,
+            "edge_t_stat": None,
             "avg_edge": None,
         }
     profits = [b["profit"] for b in bets]
@@ -452,11 +454,9 @@ def score_bets(bets: list[dict]) -> dict:
         peak = max(peak, cum)
         max_dd = max(max_dd, peak - cum)
 
-    # Skill share: model-implied Bernoulli variance over observed variance.
-    ps = [b.get("p_model") for b in bets if b.get("p_model") is not None]
-    ys = [b["won"] for b in bets if b.get("p_model") is not None]
-    skill_share, ci_low, ci_high, pval = skill_share_stats(ps, ys)
+    skill_share, ci_low, ci_high, null_p, perm_p, t_stat = skill_share_stats(bets)
     edges = [b["edge"] for b in bets if b.get("edge") is not None]
+    wins = [b["won"] for b in bets if b.get("won") is not None]
 
     return {
         "bets": len(bets),
@@ -465,63 +465,133 @@ def score_bets(bets: list[dict]) -> dict:
         "sharpe": round(sharpe, 4) if sharpe is not None else None,
         "max_drawdown_units": round(max_dd, 4),
         "max_drawdown_pct": round(max_dd / risked, 6) if risked else None,
-        "win_rate": round(sum(ys) / len(ys), 4) if ys else None,
+        "win_rate": round(sum(wins) / len(wins), 4) if wins else None,
         "avg_edge": round(mean(edges), 6) if edges else None,
         "skill_share": skill_share,
         "skill_share_ci_low": ci_low,
         "skill_share_ci_high": ci_high,
-        "luck_permutation_p": pval,
+        "luck_null_p": null_p,
+        "permutation_p": perm_p,
+        "edge_t_stat": t_stat,
     }
 
 
-def skill_share_stats(probs: list[float], outcomes: list[int], blocks: int = 20, iters: int = 2000):
-    """Skill share with a block-bootstrap interval and a permutation test.
+def _profit(won: int, price: float) -> float:
+    """Profit in units for a 1-unit bet at decimal odds 1/price."""
+    return (1.0 / price - 1.0) if won else -1.0
 
-    The model-implied variance of a Bernoulli outcome with probability p is
-    p(1-p). The share of the observed variance that the model explains is the
-    skill share; the remainder is luck. A permutation test shuffles the
-    outcomes against the probabilities to give the probability of observing a
-    skill share this large by chance alone.
+
+def _skill_components(bets: list[dict], outcomes: list[int]) -> tuple[float, float, float, float]:
+    """Return (skill share, t statistic, null mean, standard error).
+
+    The no-skill null is a fair coin quoted at the same prices. Its expected
+    profit per bet is 0.5/price - 1, and its variance per bet is
+    0.25*((1/price) - 1)^2 + 0.25, so a coin at 55% loses 9.1 cents a bet and
+    the standard error of its mean falls as 1/sqrt(n).
+
+    ``signal_excess`` is how much the strategy's own probabilities claim it
+    will beat that null by. ``realised_excess`` is how much it actually did.
+    The skill share is the share of the variance of the realised excess that
+    the model's edge accounts for rather than sampling variation:
+
+        skill share = signal_excess^2 / (signal_excess^2 + se_null^2)
+
+    It is 0 for a strategy with no edge whatever, and it approaches 1 as the
+    edge grows large relative to the noise in a finite sample. This is the
+    quantity that separates a skilled strategy from a lucky one: luck inflates
+    the realised excess but cannot inflate the claimed one.
     """
-    if len(probs) < 10:
-        return None, None, None, None
-    implied = sum(p * (1 - p) for p in probs)
-    p_bar = sum(probs) / len(probs)
-    observed = sum((y - p_bar) ** 2 for y in outcomes)
-    if observed <= 0:
-        return None, None, None, None
-    share = implied / observed
+    n = len(bets)
+    if n < 5:
+        return 0.0, 0.0, 0.0, 0.0
+    prices = [b["price"] for b in bets]
+    null_profits = [0.5 / q - 1.0 for q in prices]
+    mu_0 = sum(null_profits) / n
+    var_0 = sum(0.25 * ((1.0 / q) - 1.0) ** 2 + 0.25 for q in prices) / n
+    se_0 = math.sqrt(var_0 / n) if var_0 > 0 else 0.0
+    if se_0 <= 0:
+        return 0.0, 0.0, mu_0, se_0
 
+    realised = sum(_profit(o, q) for o, q in zip(outcomes, prices)) / n
+    t = (realised - mu_0) / se_0
+
+    model_probs = [b.get("p_model") for b in bets]
+    if all(p is not None for p in model_probs):
+        model_profits = [p / q - 1.0 for p, q in zip(model_probs, prices)]
+        signal_excess = sum(model_profits) / n - mu_0
+    else:
+        signal_excess = 0.0
+    denom = signal_excess**2 + se_0**2
+    skill = (signal_excess**2 / denom) if denom > 0 else 0.0
+    return skill, t, mu_0, se_0
+
+
+def skill_share_stats(bets: list[dict], blocks: int = 20, iters: int = 2000):
+    """Skill share with a block-bootstrap interval and two luck tests.
+
+    ``skill_share`` is the share of the strategy's outperformance that its own
+    model explains rather than sampling variation. ``luck_null_p`` is the
+    probability of observing a t statistic this large if the strategy had no
+    edge at all, simulated from the fair-coin null. ``permutation_p``
+    additionally shuffles the realised outcomes across the bets, which tests
+    whether the model actually identified the wins; it is only informative
+    when the prices vary across bets.
+    """
+    if len(bets) < 10:
+        return None, None, None, None, None, None
+    outcomes = [b["won"] for b in bets]
+    skill, t_stat, _mu0, _se0 = _skill_components(bets, outcomes)
     rng = random.Random(20261114)
-    n = len(probs)
-    size = max(1, n // blocks)
-    shares = []
-    for _ in range(iters):
-        sample_probs = [probs[(i * 7 + rng.randrange(n)) % n] for i in range(n)]
-        sample_out = [outcomes[(i * 5 + rng.randrange(n)) % n] for i in range(n)]
-        imp = sum(p * (1 - p) for p in sample_probs)
-        pb = sum(sample_probs) / n
-        obs = sum((y - pb) ** 2 for y in sample_out)
-        if obs > 0:
-            shares.append(imp / obs)
-    shares.sort()
-    if not shares:
-        return round(share, 4), None, None, None
-    ci_low = shares[int(0.025 * len(shares))]
-    ci_high = shares[min(int(0.975 * len(shares)), len(shares) - 1)]
 
-    # Permutation test: shuffle outcomes, keep the probabilities.
-    perm_shares = []
+    # Null distribution: a fair coin quoted at the same prices.
+    null_t: list[float] = []
     for _ in range(iters):
-        shuffled = outcomes[:]
-        rng.shuffle(shuffled)
-        imp = sum(p * (1 - p) for p in probs)
-        pb = sum(probs) / n
-        obs = sum((y - pb) ** 2 for y in shuffled)
-        if obs > 0:
-            perm_shares.append(imp / obs)
-    pval = (sum(1 for s in perm_shares if s >= share) + 1) / (len(perm_shares) + 1)
-    return round(share, 4), round(ci_low, 4), round(ci_high, 4), round(pval, 4)
+        simulated = [1 if rng.random() < 0.5 else 0 for _ in outcomes]
+        _s, t_null, _m, _se = _skill_components(bets, simulated)
+        null_t.append(t_null)
+    null_p = (sum(1 for t in null_t if abs(t) >= abs(t_stat)) + 1) / (len(null_t) + 1)
+
+    # Permutation test: shuffle the realised outcomes across the bets.
+    prices = {round(b["price"], 6) for b in bets}
+    perm_p = None
+    if len(prices) > 1:
+        perm_t: list[float] = []
+        for _ in range(iters):
+            shuffled = outcomes[:]
+            rng.shuffle(shuffled)
+            _s, t_perm, _m, _se = _skill_components(bets, shuffled)
+            perm_t.append(t_perm)
+        perm_p = (sum(1 for t in perm_t if abs(t) >= abs(t_stat)) + 1) / (len(perm_t) + 1)
+
+    # Block bootstrap over the chronological order for a confidence interval.
+    n = len(bets)
+    boot: list[float] = []
+    for _ in range(iters):
+        idx = [(i * 7 + rng.randrange(n)) % n for i in range(n)]
+        sample = [bets[i] for i in idx]
+        sample_outcomes = [outcomes[i] for i in idx]
+        s, _t, _m, _se = _skill_components(sample, sample_outcomes)
+        boot.append(s)
+    boot.sort()
+    if not boot:
+        return (
+            round(skill, 4),
+            None,
+            None,
+            round(null_p, 4),
+            (round(perm_p, 4) if perm_p is not None else None),
+            round(t_stat, 4),
+        )
+    ci_low = boot[int(0.025 * len(boot))]
+    ci_high = boot[min(int(0.975 * len(boot)), len(boot) - 1)]
+    return (
+        round(skill, 4),
+        round(ci_low, 4),
+        round(ci_high, 4),
+        round(null_p, 4),
+        (round(perm_p, 4) if perm_p is not None else None),
+        round(t_stat, 4),
+    )
 
 
 def fold_consistency(bets: list[dict]) -> dict:
