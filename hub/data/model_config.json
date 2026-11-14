@@ -1,0 +1,36 @@
+{
+  "version": "hub-lines-v0.3",
+  "generated_by": "scripts/build_hub.py",
+  "as_of": "2026-11-14T18:15Z",
+  "purpose": "Originate a spread and a total for every unplayed Week 10 game from certified league inputs only, so that the arithmetic is public and reviewable. This is a baseline for grading, not a prediction anyone should act on.",
+  "inputs": {
+    "team_strength": {"from": "SRC-01", "fields": ["pf", "pa", "w", "l", "t"], "per_game": "points and points-against divided by games played (W+L+T)"},
+    "availability": {"from": "SRC-02", "fields": ["game_status", "position", "injury"]},
+    "slate": {"from": "SRC-03", "fields": ["away", "home", "venue_note"]}
+  },
+  "formula": [
+    "ppg_t = pf_t / games_t ; apg_t = pa_t / games_t",
+    "exp_home_base = (ppg_home + apg_away) / 2 ; exp_away_base = (ppg_away + apg_home) / 2",
+    "injury_adj_t = sum over that club's Week-10 rows of weight[position_group] * multiplier[game_status]",
+    "exp_home = exp_home_base + HFA/2 - injury_adj_offense(home) + injury_adj_defense(away)",
+    "exp_away = exp_home_base_away_side - HFA/2 - injury_adj_offense(away) + injury_adj_defense(home)",
+    "total = league_mean_total + SHRINK_ADJ * (exp_home + exp_away - league_mean_total)",
+    "margin = exp_home - exp_away ; home_spread = -round(margin * 2) / 2",
+    "signal = |home_spread| relative to the two prior in-repo models (delta shown, no model adopted)"
+  ],
+  "assumptions": [
+    {"id":"A-01","param":"HFA","value":2.0,"unit":"points","verified":false,"basis":"repo convention; two prior sessions used 0.0 and 2.0 and neither calibrated it","flag":"FLG-12"},
+    {"id":"A-02","param":"HFA_neutral_site","value":0.0,"unit":"points","verified":false,"basis":"Munich game (NE at DET) treated as no home edge; not verified against any league document","flag":"FLG-12"},
+    {"id":"A-03","param":"status_multiplier","value":{"Out":1.0,"Doubtful":0.25,"Questionable":0.5,"none":0.0},"verified":false,"basis":"availability expectation, not a league rule; the play-rate convention is cited to a secondary source (SRC-12)","flag":"FLG-11"},
+    {"id":"A-04","param":"position_impact_points","value":{"QB":3.5,"RB":1.4,"WR":0.8,"TE":0.6,"T/G/C":1.1,"DE/DT":0.9,"LB":0.8,"CB/S":0.7,"K/P/LS/FB":0.1},"verified":false,"basis":"analyst placeholder; must be replaced by calibration (Q-07) before any use","flag":"FLG-12"},
+    {"id":"A-05","param":"total_shrinkage","value":0.6,"unit":"fraction of raw total kept","verified":false,"basis":"a prior session used 0.5; shrinkage is a hedge against 9-week noise, untested","flag":"FLG-12"},
+    {"id":"A-06","param":"rounding","value":0.5,"unit":"points","verified":true,"basis":"published rounding rule of this build, not a market claim"},
+    {"id":"A-07","param":"starter_identity","value":"assumed starter if listed Out/Doubtful and named as a starter by an official news page; otherwise treated as unspecified","verified":false,"basis":"no official depth chart exists (FLG-08); BAL excluded from QB-based adjustment (FLG-06)","flag":"FLG-06"}
+  ],
+  "exclusions": [
+    "No game where the starting quarterback cannot be established from an official source is given a QB-based adjustment (LAC@BAL).",
+    "No row on the site uses a market price; market columns are blank by policy (FLG-07).",
+    "Freiermuth is excluded entirely: two official NFL surfaces disagree on his designation (FLG-04)."
+  ],
+  "non_goals": ["No staking, no bankroll, no execution, no settlement, no reward payout.", "No claim of edge: gates G-00..G-10 are unpassed, so no strategy is promotable."]
+}

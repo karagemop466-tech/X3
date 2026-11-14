@@ -1,15 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10273b">
-  <meta http-equiv="refresh" content="0; url=lab/index.html">
-  <link rel="canonical" href="lab/index.html">
-  <title>NFL Decision Lab</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>X3 - NFL lines, injuries and strategy lab</title>
+<meta name="description" content="NFL decision workspace: verified injury and standings data, originated lines, validation gates, suggestions queue and flagged-for-review register.">
+<link rel="stylesheet" href="hub/style.css">
 </head>
 <body>
-  <p>Opening the source-first <a href="lab/index.html">NFL Decision Lab</a>.</p>
-  <p>The previous source-reviewed data dashboard is preserved at <a href="docs/index.html">docs/index.html</a>.</p>
+<header class="top">
+  <div class="brand"><strong>X3</strong> NFL review hub</div>
+  <nav><a href="hub/index.html">Hub</a> <a href="hub/executive-summary.html">Executive summary</a>
+  <a href="hub/suggestions.html">Suggestions</a> <a href="hub/lines.html">Lines</a>
+  <a href="hub/flagged.html">Flagged</a> <a href="hub/archive.html">Archive</a></nav>
+</header>
+<main><p class='lead'>NFL line origination, injury and depth tracking, and a strategy-validation programme - one dashboard, one review queue, one list of what is still unknown.</p>
+<div class='cards'><a class='card' href='hub/injuries.html'><h3>Certified rows</h3><div class='big'>345</div><div class='sub'>Week-10 injury report rows transcribed from NFL.com and re-verified against the prior snapshot (344 of 345 identical)</div></a><a class='card' href='hub/lines.html'><h3>Games to price</h3><div class='big'>13</div><div class='sub'>unplayed Week-10 games with an originated spread and total, all unvalidated</div></a><a class='card' href='hub/validation.html'><h3>Blocking gates</h3><div class='big'>11</div><div class='sub'>every one unpassed; the leaderboard is empty because of it</div></a><a class='card' href='hub/correlations.html'><h3>Correlations</h3><div class='big'>5 computed / 7 blank</div><div class='sub'>measured from official standings; the tradable ones need data that does not exist yet</div></a><a class='card' href='hub/questions.html'><h3>Open questions</h3><div class='big'>18</div><div class='sub'>9 of them block a decision; each one names what is missing and how to get it</div></a><a class='card' href='hub/suggestions.html'><h3>Suggestions to review</h3><div class='big'>20</div><div class='sub'>implemented ones are marked; the rest wait for your decision</div></a><a class='card' href='hub/flagged.html'><h3>Flags published</h3><div class='big'>21</div><div class='sub'>irregularities and impossible requests, with source links - none block the site</div></a><a class='card' href='hub/flagged.html'><h3>Market prices</h3><div class='big'>UNVERIFIED</div><div class='sub'>no official NFL source publishes lines or prop prices, so every price cell is blank by policy</div></a></div>
+<div class='status'><strong>Data as of</strong> 2026-11-14 18:15 UTC &middot; Week 10 of the 2026 season &middot; official sources: <a href='https://www.nfl.com/injuries/'>injury report</a>, <a href='https://www.nfl.com/standings/league/2026/REG'>standings</a>, <a href='https://www.nfl.com/schedules/2026/by-week/week-10'>schedule</a>. <strong>Prices and depth strings are blank</strong> because no official source publishes them.</div>
+<h2>Sections</h2><div class='toc'><a href='hub/executive-summary.html'><strong>Executive summary</strong></a><a href='hub/requirements.html'><strong>Requirements</strong></a><a href='hub/questions.html'><strong>Questions &amp; gaps</strong></a><a href='hub/suggestions.html'><strong>Suggestions</strong></a><a href='hub/lines.html'><strong>Originated lines</strong></a><a href='hub/strategies.html'><strong>Signals &amp; strategies</strong></a><a href='hub/validation.html'><strong>Validation gates</strong></a><a href='hub/correlations.html'><strong>Correlations</strong></a><a href='hub/injuries.html'><strong>Injuries</strong></a><a href='hub/deficiency.html'><strong>Depth &amp; deficiencies</strong></a><a href='hub/leaderboard.html'><strong>Leaderboard</strong></a><a href='hub/repo-review.html'><strong>Repo review</strong></a><a href='hub/sources.html'><strong>Sources</strong></a><a href='hub/verification.html'><strong>Verification</strong></a><a href='hub/flagged.html'><strong>Flagged for review</strong></a><a href='hub/archive.html'><strong>Archive</strong></a></div>
+<h2>Read this first</h2><ul><li>345 verified injury rows, 13 originated lines, 11 validation gates, <strong>0</strong> graded bets.</li><li>The next blocking step is a price archive (S-04); the second is nightly snapshots (S-05).</li><li>21 irregularities are published rather than buried, including one corrected value in a prior tree.</li></ul>
+<h2>Archive</h2><p>Eight earlier site trees remain online and untouched: <a href='hub/archive.html'>docs/</a>, <a href='hub/archive.html'>dashboard/</a>, <a href='hub/archive.html'>lab/</a>, <a href='hub/archive.html'>x3lab/</a>, <a href='hub/archive.html'>pages/</a>, <a href='hub/archive.html'>site/</a> - see <a href='hub/archive.html'>the full archive index</a>.</p></main>
+<footer><p>Static site generated by <code>scripts/build_hub.py</code>. No betting advice, no wagers, no rewards paid.</p></footer>
 </body>
 </html>

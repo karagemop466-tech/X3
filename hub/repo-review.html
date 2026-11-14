@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo review &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a' class="on"'ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Repo review</h1>
+<p class="note">Read of the repository as it stands on main, item by item, with the link to review each one by hand. Nothing here was deleted: two shared files (root index.html, COORDINATION.md) were touched under the integration role.</p>
+<h2>Site trees found in the repo</h2>
+<table class=""><thead><tr>
+<th>Tree</th>
+<th>Page title</th>
+<th>Tables on its index</th>
+<th>Index bytes</th>
+<th>Notes</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr><td>/</td><td>X3 - NFL lines, injuries and strategy lab</td><td>0</td><td>5001</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main">tree on github</a></td></tr>
+<tr><td>docs</td><td>Dashboard | X3 NFL Research</td><td>1</td><td>7081</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/docs">tree on github</a></td></tr>
+<tr><td>dashboard</td><td>Overview | X3 NFL</td><td>2</td><td>19980</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/dashboard">tree on github</a></td></tr>
+<tr><td>lab</td><td>NFL Decision Lab</td><td>0</td><td>595</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/lab">tree on github</a></td></tr>
+<tr><td>x3lab</td><td>X3 — NFL Lines &amp;amp; Strategy Lab</td><td>0</td><td>5088</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/x3lab">tree on github</a></td></tr>
+<tr><td>site</td><td>X3 — NFL Decision Intelligence</td><td>0</td><td>4036</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/site">tree on github</a></td></tr>
+<tr><td>legacy</td><td>NFL Decision Lab</td><td>0</td><td>3408</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/legacy">tree on github</a></td></tr>
+<tr><td>hub</td><td>Overview &amp;middot; X3 review hub</td><td>0</td><td>5104</td><td>content page</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/hub">tree on github</a></td></tr>
+</tbody></table>
+<h2>Findings and irregularities</h2>
+<table class=""><thead><tr>
+<th>#</th>
+<th>Finding</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr><td>H-01</td><td>Eight site trees from eight merged sessions, nine index files; the root was a redirect with no information</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main">tree</a></td></tr>
+<tr><td>H-02</td><td>The Pages workflow still triggers on the merged branch arena/1a771fcd-x3 and chains five checkers over all trees</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/.github/workflows/pages.yml">workflow</a></td></tr>
+<tr><td>H-03</td><td>Branch arena/64164906-x3 has 5 failing data-pipeline runs (a workflow not in main), last seen 14h ago</td><td><a href="https://github.com/karagemop466-tech/X3/actions?query=branch%3Aarena%2F64164906-x3">runs</a></td></tr>
+<tr><td>H-04</td><td>PR #12 from another session is still open while the shared files it touches have moved on</td><td><a href="https://github.com/karagemop466-tech/X3/pull/12">pull/12</a></td></tr>
+<tr><td>H-05</td><td>No LICENSE, no CODEOWNERS, no branch protection, no unit tests for the builders</td><td><a href="https://github.com/karagemop466-tech/X3">repo</a></td></tr>
+<tr><td>H-06</td><td>Four data directories hold overlapping registers with different team ids (LA/LAR, ARI/AZ)</td><td><a href="https://github.com/karagemop466-tech/X3/tree/main/data">data</a></td></tr>
+<tr><td>H-07</td><td>A prior tree&#x27;s standings table carries a wrong TB division record (1-2-0 vs the official 2-0-0)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/standings.json">file</a></td></tr>
+<tr><td>H-08</td><td>A prior session published correlations from a standings snapshot that no longer reproduces exactly</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/correlations.json">file</a></td></tr>
+<tr><td>H-09</td><td>Pages source is legacy main /, so every experimental tree is publicly served; changing it needs repo-admin rights</td><td><a href="https://api.github.com/repos/karagemop466-tech/X3/pages">api</a></td></tr>
+<tr><td>H-10</td><td>Two sessions recorded the owner&#x27;s jurisdiction as Japan; the environment reports the Netherlands - unresolved</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">log</a></td></tr>
+<tr><td>H-11</td><td>Injury data quality is good: this session&#x27;s fresh transcription matches the prior snapshot on all 345 rows except one practice status</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/docs/data/injury-2026-week10.csv">diff</a></td></tr>
+<tr><td>H-12</td><td>No betting line or prop price exists on any official NFL property, so all price columns stay blank by policy</td><td><a href="https://www.nfl.com/injuries/">injuries</a></td></tr>
+</tbody></table>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
+  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
+  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>
