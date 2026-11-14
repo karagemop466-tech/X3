@@ -239,8 +239,18 @@ def main():
         # a favourite (negative spread) must carry a negative moneyline
         sp = p["side"]["number_home"]
         ml = p["moneyline"]["home"]
+        aml = p["moneyline"]["away"]
         ck((sp < 0 and ml < 0) or (sp > 0 and ml > 0) or sp == 0,
            f"{p['game']}: spread {sp} and home moneyline {ml} disagree on the favourite")
+        # The two-way price must be fair: the model has no vig, so the two implied
+        # probabilities must sum to 1. This is the check that caught a real defect
+        # where the away price was derived by negating rather than from its own
+        # probability, producing an implied sum of 1.22.
+        def implied(a):
+            return abs(a) / (abs(a) + 100) if a < 0 else 100 / (a + 100)
+        tot = implied(ml) + implied(aml)
+        ck(abs(tot - 1.0) < 0.005,
+           f"{p['game']}: moneylines {ml}/{aml} imply {tot:.4f}, expected a fair 1.000")
 
     # ---------------- snapshot store
     snaprows = list(csv.DictReader(open(os.path.join(ROOT, "data/snapshots/snapshots_2026_wk10.csv"),

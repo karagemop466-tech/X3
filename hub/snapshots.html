@@ -66,6 +66,32 @@ documented here rather than quietly fixed.</p>
 </tbody></table>
 </div>
 
+<h2>Moneyline, priced fairly and checked</h2>
+<p>The model has no margin, so the two-way price must imply exactly 1.000 across the two sides.
+Each side is priced from its own probability (<code>-100p/(1-p)</code> and
+<code>+100(1-p)/p</code>), which is symmetric: a 0.612 home probability prices at -158 / +158.
+Deriving the away price by negating the home price instead would give -158 / +63, an implied sum
+of 1.226 - a 22% margin the model does not have. That defect existed in the first build of this
+module and is now a permanent gate.</p>
+<div class="tblwrap"><table class="k-data">
+<caption>Every pair must imply 1.000</caption>
+<thead><tr><th>Game</th><th>Home ML</th><th>Away ML</th><th>Implied sum</th><th>Verdict</th></tr></thead><tbody>
+<tr><td><b>NE@DET</b></td><td>-158</td><td>+158</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>BUF@NYJ</b></td><td>-354</td><td>+354</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>CAR@NO</b></td><td>-121</td><td>+121</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>HOU@CLE</b></td><td>-107</td><td>+107</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>JAX@TEN</b></td><td>-738</td><td>+738</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>KC@ATL</b></td><td>+220</td><td>-220</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>MIA@IND</b></td><td>-107</td><td>+107</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>MIN@GB</b></td><td>-130</td><td>+130</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>LAR@AZ</b></td><td>+354</td><td>-354</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>SEA@LV</b></td><td>-114</td><td>+114</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>SF@DAL</b></td><td>+288</td><td>-288</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>PIT@CIN</b></td><td>+100</td><td>+100</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>LAC@BAL</b></td><td>-180</td><td>+180</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+</tbody></table>
+</div>
+
 <h2>Third-party prices: present, and deliberately unused</h2>
 <p>A separate tree in this repository (<code>x3lab</code>) carries Week-10 prices from a commercial
 odds page. They are surfaced here for transparency and are excluded from every calculation, because

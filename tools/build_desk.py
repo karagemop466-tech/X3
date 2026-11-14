@@ -170,7 +170,8 @@ def p_summary():
 <div class="sub">the rest are blank, not guessed</div></div>
 <div class="card"><div class="num">{g['pass']}/{len(gates['gates'])}</div>
 <div class="lbl">validation gates passing</div>
-<div class="sub">{g['blocked']} blocked on data that does not exist here</div></div>
+<div class="sub">{g['fail']} fail, {g['partial']} partial, {g['blocked']} blocked on data that
+does not exist here, {g['not_run']} not run</div></div>
 </div>"""
 
     body = cards + f"""
@@ -377,6 +378,20 @@ def p_snapshots():
                          ('<code>third_party_ref</code> recorded, not linked '
                           '<span class="mut">(non-official host)</span>')
                          if r["third_party_ref"] else ""])
+    rows_ml = []
+    import csv as _csv
+    with open(os.path.join(SNAP, "snapshots_2026_wk10.csv"), encoding="utf-8") as f:
+        for r in _csv.DictReader(f):
+            if r["market"] != "MONEYLINE":
+                continue
+            h, a = int(r["our_ml_home"]), int(r["our_ml_away"])
+
+            def implied(x):
+                return abs(x) / (abs(x) + 100) if x < 0 else 100 / (x + 100)
+
+            tot = implied(h) + implied(a)
+            rows_ml.append([f"<b>{r['game']}</b>", f"{h:+d}", f"{a:+d}", f"{tot:.4f}",
+                            badge("PASS") if abs(tot - 1) < 0.005 else badge("FAIL")])
     body = f"""
 <section class="callout"><h2>What a snapshot store is for</h2>
 <p>A backtest needs the price that existed when a decision was made. Without a timestamped open
@@ -410,6 +425,16 @@ documented here rather than quietly fixed.</p>
 <h2>Side prices, week 10</h2>
 {table(["Game", "Our line", "Market line", "Difference", "Market status", "Third-party reference"],
        rows, cap="Our number is real; the market columns are blank on purpose")}
+
+<h2>Moneyline, priced fairly and checked</h2>
+<p>The model has no margin, so the two-way price must imply exactly 1.000 across the two sides.
+Each side is priced from its own probability (<code>-100p/(1-p)</code> and
+<code>+100(1-p)/p</code>), which is symmetric: a 0.612 home probability prices at -158 / +158.
+Deriving the away price by negating the home price instead would give -158 / +63, an implied sum
+of 1.226 - a 22% margin the model does not have. That defect existed in the first build of this
+module and is now a permanent gate.</p>
+{table(["Game", "Home ML", "Away ML", "Implied sum", "Verdict"],
+       rows_ml, cap="Every pair must imply 1.000")}
 
 <h2>Third-party prices: present, and deliberately unused</h2>
 <p>A separate tree in this repository (<code>x3lab</code>) carries Week-10 prices from a commercial

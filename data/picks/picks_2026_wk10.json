@@ -423,8 +423,8 @@
     "basis": "club scoring rates shrunk to the league mean; NOT better than a constant on the backtest (Q-03)"
    },
    "moneyline": {
-    "home": -100,
-    "away": -100,
+    "home": 100,
+    "away": 100,
     "basis": "Phi(-spread / 12.307); monotone in the spread, so it carries no independent signal"
    },
    "market_side": "",

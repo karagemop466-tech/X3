@@ -92,12 +92,19 @@ def main():
         # every favourite at plus-money, which is the kind of silent sign error that
         # makes a board look plausible and be worthless.
         p_home = phi(-fair_spread / sigma_used)
-        if p_home >= 0.5:
-            ml_home = round(-100 * p_home / (1 - p_home))
-            ml_away = round(100 * (1 - p_home) / p_home)
-        else:
-            ml_home = round(100 * (1 - p_home) / p_home)
-            ml_away = round(-100 * p_home / (1 - p_home))
+        # Each side is priced from ITS OWN probability: -100p/(1-p) for the favourite
+        # and +100(1-p)/p for the underdog, with p=0.5 at even money. Those two are
+        # symmetric, so a fair two-way pair has the SAME magnitude on both sides:
+        # p=0.6124 prices at -158 / +158, and those imply 0.6124 and 0.3876, which sum
+        # to exactly 1.000. Pricing the away side off the home side's magnitude in the
+        # other direction (-158 / +138) would imply 1.033, i.e. a 3.3% margin the model
+        # does not have. Computed independently below so that check stays visible.
+        def american(p):
+            if p == 0.5:
+                return 100
+            return int(round(-100 * p / (1 - p))) if p > 0.5 else int(round(100 * (1 - p) / p))
+        ml_home = american(p_home)
+        ml_away = american(1.0 - p_home)
 
         ref = tp.get(game, {})
         for market in ("SIDE", "TOTAL", "MONEYLINE"):

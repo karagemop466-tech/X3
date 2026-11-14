@@ -44,9 +44,14 @@ def main():
     import math
     phi = lambda z: 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
 
+    def ml_from_prob(p):
+        """American price for a win probability. p=0.5 is even money."""
+        if p == 0.5:
+            return 100
+        return int(round(-100 * p / (1 - p))) if p > 0.5 else int(round(100 * (1 - p) / p))
+
     def ml_from_spread(spread_home):
-        p = phi(-spread_home / sigma)
-        return int(round(-100 * p / (1 - p))) if p >= 0.5 else int(round(100 * (1 - p) / p))
+        return ml_from_prob(phi(-spread_home / sigma))
 
     picks = []
     for g in lines["rows"]:
@@ -84,8 +89,11 @@ def main():
                          "constant on the backtest (Q-03)",
             },
             "moneyline": {
+                # each side priced from its own probability. A fair two-way pair has
+                # equal magnitude (-158 / +158) because -100p/(1-p) and +100(1-p)/p are
+                # symmetric and together imply exactly 1.000.
                 "home": ml,
-                "away": ml_from_spread(-sp),
+                "away": ml_from_prob(phi(sp / sigma)),
                 "basis": f"Phi(-spread / {sigma}); monotone in the spread, so it carries no "
                          f"independent signal",
             },
