@@ -184,6 +184,27 @@ def check_correlations():
     return problems, len(corr)
 
 
+EXPECTED_TREES = ["analysis", "archive", "audit", "capture", "crosscheck", "dashboard", "desk",
+                  "docs", "hub", "lab", "legacy", "pages", "research", "site", "verification-hub",
+                  "x3lab"]
+
+
+def check_repo_review():
+    """repo_review is a live report on the working tree, so its bytes move; its STRUCTURE must not."""
+    problems = []
+    rows = json.loads((DATA / "repo_review.json").read_text())
+    found = sorted(r["tree"] for r in rows)
+    expected = [t for t in EXPECTED_TREES if (ROOT / t).exists()]
+    if found != expected:
+        problems.append(f"repo review tree list changed: {found} != {expected}")
+    for r in rows:
+        if r["html_pages"] + r["data_files"] == 0:
+            problems.append(f"repo review row '{r['tree']}' has no pages and no data files")
+        if not r.get("source"):
+            problems.append(f"repo review row '{r['tree']}' has no source link")
+    return problems, len(rows)
+
+
 def check_determinism():
     import hashlib
     def snapshot():
@@ -222,12 +243,16 @@ def main():
         problems += plb
         pcorr, n_corr = check_correlations()
         problems += pcorr
+        prev, n_trees = check_repo_review()
+        problems += prev
         print(f"pages            : {len(list(SIG.glob('*.html')))}")
         print(f"table rows       : {total_rows}  (linked to an official source: {linked}, "
               f"carrying an UNVERIFIED marker: {flagged})")
         print(f"markets          : {n_mkts} stored, {n_orig} originated (G11: both snapshots present)")
         print(f"leaderboard      : {n_lb} rows, {n_ranked} ranked on the signal interval (G12)")
         print(f"correlations     : {n_corr}, each with n, interval, p and source")
+        print(f"repo review      : {n_trees} trees, structure stable (bytes excluded - they track "
+              f"the working tree, which other builders rewrite)")
     else:
         print("determinism      : re-running the engine ...")
 
