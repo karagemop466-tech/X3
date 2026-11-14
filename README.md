@@ -1,6 +1,6 @@
 # NFL Decision Lab
 
-An evidence-first, static GitHub Pages research workspace for NFL line modeling, injury/lineup analysis, correlation, strategy validation, and a proposed leaderboard. The root page is the current dashboard; its research subpages live in `lab/`.
+An evidence-first, static GitHub Pages research workspace for NFL line modeling, injury/lineup analysis, correlation, strategy validation, and a proposed leaderboard. The root page is a landing directory for every module on the site; the primary research dashboard lives in `lab/`.
 
 Earlier material integrated on `main` is preserved under `docs/`, `data/`, `pages/`, and other root files. It is not imported into the new dashboard's source-first data module; re-verify those historical tables and assumptions before treating them as current facts.
 
@@ -38,11 +38,20 @@ python3 scripts/build_site.py
 python3 scripts/check_site.py
 python3 tools/check_links.py
 python3 scripts/check_dashboard.py
+python3 scripts/audit_all.py
+python3 tools/verify_site.py
+python3 scripts/verify_data.py
 node --check assets/data.js
 node --check assets/app.js
 node scripts/check_data.js
 node scripts/check_render.js
 ```
+
+`scripts/audit_all.py` is the repo-wide gate: it checks **every** HTML page in the
+repository (root, `docs/`, `docs/pages/`, `dashboard/`, `lab/`, `x3lab/`, `site/`,
+`pages/`, `legacy/`) for broken internal links, for source-column table rows that
+neither link an official source nor flag UNVERIFIED, and for flagged-page rows
+missing a marker. It runs in CI on every push and pull request.
 
 The checks validate local navigation/assets, JavaScript syntax, source IDs, approved official-source hosts, and the rule that each published data row references at least one source. External sources are not fetched by the test scripts; the source register records pages reviewed on 2026-11-14 UTC and links each claim to the official page for manual review.
 
@@ -61,7 +70,7 @@ source links) plus build tooling. It was merged into the integrated dashboard
 without overwriting the shared `index.html` navigation or the integrated `docs/`
 dashboard. Its standalone pages are served from the repo root:
 
-- `index.html` — root redirect to the dashboard (shared output, unchanged).
+- `index.html` — root landing directory linking every module (shared output; it replaced the earlier redirect to the dashboard in session `arena/35b167ca-x3`, which keeps the dashboard as its primary action).
 - `executive-summary.html`, `requirements.html`, `suggestions.html`, `lines.html`,
   `leaderboard.html`, `injuries.html`, `verification.html`, `flagged.html`
   (root) — this session's category pages.
