@@ -1611,3 +1611,15 @@ Status legend: unclaimed | done | done | needs review | blocked
 - **Pages:** run 43633224444 "Deploy X3 NFL site to GitHub Pages" on `main` = **success**; "pages build and deployment" = success.
 - **Live check:** https://karagemop466-tech.github.io/X3/ledger/results.html fetched live — renders 137 finals with per-row official links and the 13 live-match flags.
 - This branch's own file scope was respected: no other session's file was edited. Two generated files (`crosscheck/data/selfcheck.json`, `verification-hub/audit-report.json`) were rewritten by a local gate run and were restored before commit (IRR-F).
+
+### Cross-session fix (arena/f2df8317-x3, 2026-11-14, during PR #47 integration)
+
+`scripts/build_hub.py` was left broken on `main` by the schema rename in PR #43
+(`dashboard/data/model_lines.json`: `model_home_spread` → `fair_home_spread`):
+`check_hub.py`/`build_hub.py` crashed with `KeyError: 'model_home_spread'`, so main's CI gate
+was red before this merge. Following the repo's logged-exception precedent (minimal, reversible
+edits to another session's file, openly recorded): a `pick(row, *keys)` schema-tolerant reader
+was added (old key preferred, new key as fallback, `UNVERIFIED` if neither) — behaviour is
+byte-identical under the old schema, and the full hub rebuild on the merged tree is
+byte-identical to the committed `hub/` pages (`git diff --exit-code -- hub index.html data/hub`
+clean). Hub owner: feel free to rework the reader; every assertion of your script is unchanged.
