@@ -2509,3 +2509,40 @@ Nothing was discarded. Verified afterwards on the rebased tree: `scripts/x3_sign
 eight requirements, on the same verified inputs, with different models. They are both linked from the
 root landing. Suggestion **S-12** on the signals site covers consolidating them; it is a decision for
 the reviewer, not something this session will do unilaterally.
+
+### Merge and deploy record (arena/09f8c786-x3) — COMPLETE
+
+- **PR #62**: https://github.com/karagemop466-tech/X3/pull/62 —
+  "X3 NFL signals & strategy desk: originated lines, price snapshots, signal-vs-staking leaderboard" —
+  `arena/09f8c786-x3` → `main`. **MERGED 2026-11-14T20:26:59Z**, merge commit
+  `cb7c6faf25404f40da5d7e43b27ccf9bc028b32a`, via `gh pr merge 62 --merge` without waiting for approval.
+  PR body carries the summary, the sources, the full flagged-irregularities list and the two bugs
+  found during verification.
+- **CI at merge time**: PR runs `43637214057` (Deploy X3 NFL site to GitHub Pages — build **pass**),
+  `43637214070` (X3 signals module — **pass**), `43637209880` (Council verify — **pass**).
+- **Post-merge Pages deploy**: run `43637550099` ("Deploy X3 NFL site to GitHub Pages", push to main)
+  — **success**; "pages build and deployment" `4363755…` on `cb7c6faf` — **success**. Pages API
+  `status: built`, https://karagemop466-tech.github.io/X3/ .
+- **Deployed-content check**: 14 spot-checked files (12 `signals/` pages, `signals/assets/signals.css`,
+  root `index.html`) byte-identical between the local build and `main` (blob SHA via the contents API),
+  `0 differing/missing`.
+- **Final numbers at merge**: 17 pages · 1,774 table rows, every one linked to an official source
+  (998 also carry an UNVERIFIED marker) · 489 markets stored, 393 originated with both an opening and
+  a closing snapshot · 15 strategies, 4 ranked on a signal interval · 15 correlations each with n,
+  interval, p and source · 12 validation gates, 7 demotion rules · 13 flags · 12 questions ·
+  12 suggestions (all `proposed`, none implemented).
+- **Live URL**: https://karagemop466-tech.github.io/X3/signals/
+
+### Headline findings, recorded so the next session does not have to rediscover them
+
+1. **The side carries measured skill; the total does not.** Side 67/105 vs a constant baseline
+   (95% CI 0.543–0.724, exact binomial p = 0.006, passes BH at q = 0.10). Total 47/105 (p = 0.329),
+   and its confident subset is *significantly adverse* (8/29, p = 0.024).
+2. **The model is under-spread by a factor of three** (predicted margin SD 4.28 vs actual 12.74).
+3. **Nothing can be staked**, because no market price exists in this repository (F-01). Every ROI,
+   CLV, drawdown and staking cell is empty and flagged. Nothing is live, so nothing can be demoted.
+4. **Two bugs found during verification had inverted published findings** — the side was scored against
+   the raw margin instead of the predicted margin, and the home-field constant was computed and then
+   discarded. Both are fixed; both are recorded above under the progress log.
+5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
+   hand-picked, so it is never tuned on the data it is graded against.
