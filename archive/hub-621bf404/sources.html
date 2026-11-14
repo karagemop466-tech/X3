@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Source register &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a''ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a' class="on"'ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Source register</h1>
+<p class="note">Every published row in the hub cites one of these ids. class OFFICIAL = operated by the NFL or a club; MARKET = third-party pricing; ACADEMIC = peer-reviewed/working paper; SECONDARY = commentary about the league. A row citing only SECONDARY or MARKET data is never presented as fact.</p>
+<table class=""><thead><tr>
+<th>#</th>
+<th>Source</th>
+<th>Class</th>
+<th>Accessed</th>
+<th>Used for</th>
+<th>Verification status</th>
+<th>URL</th>
+</tr></thead><tbody>
+<tr><td>SRC-01</td><td>NFL.com - Official league standings, 2026 regular season</td><td>OFFICIAL</td><td>2026-11-14T18:07Z</td><td>32-club W-L-T, PF, PA, net, home/road/division/conference splits; derived correlations</td><td>fetched and parsed this session (2 chunks)</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>SRC-02</td><td>NFL.com - Official Week 10 injury report</td><td>OFFICIAL</td><td>2026-11-14T18:08Z</td><td>345 practice/game-status rows for the 28 clubs playing in Week 10</td><td>fetched and transcribed this session (8 chunks)</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>SRC-03</td><td>NFL.com - Week 10 2026 schedule (by week)</td><td>OFFICIAL</td><td>2026-11-14T18:11Z</td><td>14 games, kickoff times, broadcasts, Munich venue, 4 byes, Thu result line</td><td>fetched and parsed this session (chunks 0-1)</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">SRC-03</a></td></tr>
+<tr><td>SRC-04</td><td>NFL.com Game Center - Commanders at Giants, Week 10</td><td>OFFICIAL</td><td>2026-11-14T18:14Z</td><td>final score WAS 24 NYG 21, scoring drives, MetLife Stadium, standings widget</td><td>fetched this session; also exposes flag FLG-02 (stale standings widget)</td><td><a href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10">SRC-04</a></td></tr>
+<tr><td>SRC-05</td><td>NFL.com news - Week 9 injury report (2026)</td><td>OFFICIAL</td><td>2026-11-14T18:13Z</td><td>independent cross-check of designations for 2026-11-08 games</td><td>fetched chunk 0 this session</td><td><a href="https://www.nfl.com/news/nfl-week-9-injury-report-2026-season">SRC-05</a></td></tr>
+<tr><td>SRC-06</td><td>NFL.com news roundup - Saturday Nov 14, 2026</td><td>OFFICIAL</td><td>2026-11-14T18:08Z (headline as printed on SRC-02)</td><td>Freiermuth questionable claim; Colts activate Arden Key from IR</td><td>headline only; article body not fetched this session - see FLG-04</td><td><a href="https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-saturday-nov-14">SRC-06</a></td></tr>
+<tr><td>SRC-07</td><td>NFL.com news - Seahawks at Raiders QB note</td><td>OFFICIAL</td><td>2026-11-14T18:08Z (headline as printed on SRC-02)</td><td>confirms Drew Lock (not on report as designated) starts for SEA with Sam Darnold Out</td><td>headline only</td><td><a href="https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders">SRC-07</a></td></tr>
+<tr><td>SRC-08</td><td>NFL.com news - Ravens Lamar Jackson IR</td><td>OFFICIAL</td><td>2026-11-14T18:08Z (headline as printed on SRC-02)</td><td>Jackson placed on IR 2026-11-05; absence window conflicts across official pages</td><td>headline only - see FLG-05</td><td><a href="https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-thursday-nov-5">SRC-08</a></td></tr>
+<tr><td>SRC-09</td><td>Club depth-chart pages (32 clubs)</td><td>OFFICIAL</td><td>prior session 2026-11-14 (arena/7e632805-x3)</td><td>intended source for 2nd/3rd/4th-string depth; self-labelled unofficial by the clubs</td><td>NOT re-fetched this session; string-rank claims left blank - see FLG-08</td><td><a href="https://www.nfl.com/teams/">SRC-09</a></td></tr>
+<tr><td>SRC-10</td><td>Bailey &amp; Lopez de Prado - The Deflated Sharpe Ratio (SSRN 2460551)</td><td>ACADEMIC</td><td>2026-11-14T18:16Z</td><td>gate G-07: selection bias / multiple testing correction for a strategy leaderboard</td><td>title, authors, journal cite (J. Portfolio Mgmt 40(5):94-107, 2014) confirmed by search result</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551">SRC-10</a></td></tr>
+<tr><td>SRC-11</td><td>Bailey, Borwein, Lopez de Prado &amp; Zhu - The Probability of Backtest Overfitting (SSRN 2326253)</td><td>ACADEMIC</td><td>2026-11-14T18:16Z</td><td>gate G-06: CSCV/PBO test that the selected strategy is not an in-sample artefact</td><td>abstract, method (CSCV) and later journal publication confirmed by search result</td><td><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253">SRC-11</a></td></tr>
+<tr><td>SRC-12</td><td>NFL injury-report cadence explained (secondary)</td><td>SECONDARY</td><td>2026-11-14T18:16Z</td><td>Wed/Thu/Fri 4pm ET filing and Out/Doubtful/Questionable convention</td><td>NOT verified against a league rulebook page this session - see FLG-11</td><td><a href="https://www.pro-football-reference.com/players/injuries.htm">SRC-12</a></td></tr>
+<tr><td>SRC-13</td><td>ESPN NFL odds (used by a prior session for market lines)</td><td>MARKET</td><td>prior session 2026-11-14 (arena/e1c332ce-x3)</td><td>no hub row uses this; listed so the earlier x3lab market columns can be traced</td><td>not re-fetched, not verified - see FLG-07</td><td><a href="https://www.espn.com/nfl/odds">SRC-13</a></td></tr>
+<tr><td>SRC-14</td><td>GitHub Pages - repo pages API status for karagemop466-tech/X3</td><td>OFFICIAL</td><td>2026-11-14T18:06Z</td><td>deploy target and build status (source main /, build_type legacy, status built)</td><td>read with gh api this session</td><td><a href="https://api.github.com/repos/karagemop466-tech/X3/pages">SRC-14</a></td></tr>
+<tr><td>SRC-15</td><td>GitHub Pages product docs</td><td>OFFICIAL</td><td>prior session 2026-11-14</td><td>how the deploy workflow and Pages source behave</td><td>not re-fetched this session</td><td><a href="https://docs.github.com/en/pages">SRC-15</a></td></tr>
+<tr><td>SRC-16</td><td>Repo snapshot data - docs/data/injury-2026-week10.csv (345 rows, permalinks added by the integration session)</td><td>REPO</td><td>2026-11-14T18:12Z</td><td>independent diff against this session&#x27;s fresh transcription (VER-03)</td><td>compared row by row this session: 345/345 players and game statuses identical, 1 practice-status drift. Independently corroborated by the audit unit&#x27;s diff (audit/summary.json: 294 MATCH / 51 DIFF, mismatches confined to the game and tv label columns)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/docs/data/injury-2026-week10.csv">SRC-16</a></td></tr>
+</tbody></table>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
+  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
+  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>

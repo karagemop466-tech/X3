@@ -1,0 +1,32 @@
+{
+  "fetched": "2026-11-14",
+  "injury_source": "https://www.nfl.com/injuries/league/2026/reg10",
+  "schedule_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+  "official_rows": 345,
+  "repo_rows": 345,
+  "repo_duplicate_keys": 0,
+  "row_results": {
+    "MATCH": 294,
+    "DIFF": 51
+  },
+  "field_mismatch_counts": {
+    "game": 24,
+    "tv": 27
+  },
+  "official_status_counts": {
+    "Out": 66,
+    "Doubtful": 10,
+    "Questionable": 84,
+    "blank_game_status": 185
+  },
+  "repo_source_url_values": {
+    "https://www.nfl.com/injuries/": 345
+  },
+  "schedule_games": 14,
+  "schedule_byes": [
+    "CHI",
+    "DEN",
+    "PHI",
+    "TB"
+  ]
+}

@@ -839,10 +839,94 @@ def p_verification():
         ]], kind="meta",
         note="Recomputed on every build: run <code>python3 tools/build_hub.py</code> and these numbers "
              "change with the file. Nothing here is hand-typed.")
+    # Independent cross-session reconciliation, recomputed at build time: a second session
+    # transcribed the same official page into a different schema. If their file is present the
+    # two are joined and compared; if not, the row says so instead of claiming a check ran.
+    _x_path = os.path.join(ROOT, "archive", "hub-621bf404", "data", "injuries_wk10_2026-11-14.csv")
+    if os.path.exists(_x_path):
+        _x = list(_csv.DictReader(open(_x_path, encoding="utf-8")))
+        _xm = {(r["team"], r["player"]): r for r in _inj}
+        _xo = {(r["team"], r["player"]): r for r in _x}
+        _both = set(_xm) & set(_xo)
+        _PR = {"FP": "Full Participation in Practice", "LP": "Limited Participation in Practice",
+               "DNP": "Did Not Participate In Practice"}
+        st_bad = [k for k in _both if (_xm[k]["status"] or "").strip().lower()
+                  != (_xo[k]["game_status"] or "").strip().lower()]
+        pos_bad = [k for k in _both if (_xm[k]["pos"] or "").upper() != (_xo[k]["position"] or "").upper()]
+        pr_bad = [k for k in _both
+                  if _PR.get(_xo[k]["practice"], _xo[k]["practice"]) != _xm[k]["practice"]]
+        xs_rows = [
+            ("player keys", f"{len(_inj)} rows here, {len(_x)} rows there",
+             f"{len(_both)} keys join; {len(set(_xm) - set(_xo))} only here, "
+             f"{len(set(_xo) - set(_xm))} only there"),
+            ("game designation", "the operative field for every calculation",
+             f"{len(_both) - len(st_bad)}/{len(_both)} agree"
+             + ("" if not st_bad else "; disagree: " + ", ".join(f"{p[0]} {p[1]}" for p in st_bad))),
+            ("position", "position used by the cost model",
+             f"{len(_both) - len(pos_bad)}/{len(_both)} agree"),
+            ("practice status", "context only, not an input",
+             f"{len(_both) - len(pr_bad)}/{len(_both)} agree"
+             + ("" if not pr_bad else "; disagree: " + ", ".join(f"{p[0]} {p[1]}" for p in pr_bad))
+             + " - logged as flag F-17 rather than adjudicated, because the final report has superseded "
+               "the page that would settle it"),
+        ]
+    else:
+        xs_rows = [("unavailable", "the other session's file is not in the tree", "no comparison run")]
+    import importlib.util as _ilu
+    _spec = _ilu.spec_from_file_location("nfl_data_prior", os.path.join(ROOT, "tools", "nfl_data.py"))
+    _prior = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_prior)
+    # the earlier module stores STANDINGS as positional tuples (abbr, w, l, t, pct, pf, pa, net,
+    # home, road, div, ...); read it defensively so a shape change reports itself instead of lying.
+    _prior_div = "not recorded"
+    _st = getattr(_prior, "STANDINGS", None)
+    if isinstance(_st, dict) and "TB" in _st:
+        _prior_div = _st["TB"].get("div", "not recorded") if isinstance(_st["TB"], dict) else "not recorded"
+    elif isinstance(_st, list):
+        for _row in _st:
+            if isinstance(_row, (list, tuple)) and _row and _row[0] == "TB":
+                _prior_div = _row[10] if len(_row) > 10 else "not recorded"
+    _s_path = os.path.join(ROOT, "archive", "hub-621bf404", "data", "standings_2026.csv")
+    st_rows = []
+    if os.path.exists(_s_path):
+        _sm = {r["team"]: r for r in _csv.DictReader(
+            open(os.path.join(ROOT, "data", "hub", "standings_2026_thru_wk9.csv"), encoding="utf-8"))}
+        _so = {r["abbr"]: r for r in _csv.DictReader(open(_s_path, encoding="utf-8"))}
+        _cols = [("w", "w"), ("l", "l"), ("t", "t"), ("pct", "pct"), ("pf", "pf"), ("pa", "pa"),
+                 ("net", "net"), ("home", "home"), ("road", "road"), ("div", "div"), ("last5", "last5")]
+        _keys = sorted(set(_sm) & set(_so))
+        _mis = [(k, a) for k in _keys for a, b in _cols
+                if str(_sm[k].get(a, "")).strip() != str(_so[k].get(b, "")).strip()]
+        st_rows = [("clubs in both files", f"{len(_sm)} here, {len(_so)} there",
+                    f"{len(_keys)} join on club code; {len(set(_sm) - set(_so))} only here, "
+                    f"{len(set(_so) - set(_sm))} only there"),
+                   ("field-by-field comparison", f"{len(_keys)} clubs x {len(_cols)} columns = "
+                    f"{len(_keys) * len(_cols)} comparisons",
+                    f"{len(_keys) * len(_cols) - len(_mis)}/{len(_keys) * len(_cols)} agree"
+                    + ("" if not _mis else "; disagree: "
+                       + ", ".join(f"{k}.{c}" for k, c in _mis[:8]))),
+                   ("the open standings conflict (F-11)", "which file carries the disputed Tampa Bay "
+                    "division record",
+                    f"both independent reads print TB {_sm['TB']['div']}; the value that disagrees is "
+                    f"{_prior_div} and it lives only in the earlier session's data module, so the fix "
+                    "belongs in that module, not in the canonical snapshot")]
+    xsec = ('<h3>Injury report - 345 rows</h3>'
+            + table(["Field compared", "Basis", "Result of the two-session comparison"],
+                 [[f"<b>{esc(a)}</b>", esc(b), esc(c)] for a, b, c in xs_rows],
+                 note="Two sessions read the same official page on the same day into two different "
+                      "schemas and joined on (club, player). Agreement here is corroboration that no "
+                      "single transcription pipeline systematically mangled the report.", kind="meta")
+            + '<h3>Standings - 32 clubs</h3>'
+            + table(["Field compared", "Basis", "Result of the two-session comparison"],
+                    [[f"<b>{esc(a)}</b>", esc(b), esc(c)] for a, b, c in st_rows],
+                    note="Same treatment for the standings file the other session wrote: both reads "
+                         "joined on club code and compared column by column.", kind="meta"))
     hoisted_tbl1 = table(['Object', 'Method', 'What was compared', 'Result', 'State'], rows)
     body = f"""
 <h2>Line-by-line verification log ({AS_OF})</h2>
 {hoisted_tbl1}
+<h2>Cross-session reconciliation: a second session read the same two pages</h2>
+{xsec}
 <h2>Transcription integrity of the canonical inputs</h2>
 {audit}
 <h2>Reproduce it</h2>
@@ -969,7 +1053,18 @@ and re-verified. Use this page to navigate the archive knowingly.</p>
         ["x3lab/", "arena/e1c332ce-x3", '<a href="../x3lab/index.html">x3lab/index.html</a>',
          "includes prices from third-party sportsbook pages; useful for method, not an official source"],
         ["legacy/", "arena/0c38f465-x3", '<a href="../legacy/index.html">legacy/index.html</a>',
-         "the original landing page"]])
+         "the original landing page"],
+        ["verification-hub/", "arena/1e2d8ef2-x3",
+         '<a href="../verification-hub/index.html">verification-hub/index.html</a>',
+         "an audit of the integration itself (deployed-file checks); a report about the site, not a "
+         "competing data source"],
+        ["audit/", "arena/621bf404-x3", '<a href="../audit/index.html">audit/index.html</a>',
+         "a second independent transcription of the Week-10 report plus a row-level diff; retained as "
+         "corroborating evidence (see hub/verification.html), not as the canonical input"],
+        ["hub/ (their build)", "arena/621bf404-x3",
+         '<a href="../archive/hub-621bf404/index.html">archive/hub-621bf404/index.html</a>',
+         "the same integration goal reached twice; their 19 hub pages and their data files are preserved "
+         "verbatim here and were relocated, not deleted, when the two hub/ trees collided in the merge"]])
     page("archive.html", "Prior site trees",
          "What the earlier sessions published, where it lives, and how to read it.", body, "archive")
 

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Depth and deficiency tracking &middot; X3 review hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html"><strong>X3</strong> NFL review hub</a></div>
+  <nav><a''ef="index.html">Overview</a> <a''ef="executive-summary.html">Executive summary</a> <a''ef="requirements.html">Requirements</a> <a''ef="questions.html">Questions &amp; gaps</a> <a''ef="suggestions.html">Suggestions</a> <a''ef="lines.html">Originated lines</a> <a''ef="strategies.html">Signals &amp; strategies</a> <a''ef="validation.html">Validation gates</a> <a''ef="correlations.html">Correlations</a> <a''ef="injuries.html">Injuries</a> <a' class="on"'ef="deficiency.html">Depth &amp; deficiencies</a> <a''ef="leaderboard.html">Leaderboard</a> <a''ef="repo-review.html">Repo review</a> <a''ef="sources.html">Sources</a> <a''ef="verification.html">Verification</a> <a''ef="flagged.html">Flagged for review</a> <a''ef="archive.html">Archive</a></nav>
+</header>
+<main>
+<h1>Depth and deficiency tracking</h1>
+<p class="note">Two layers, deliberately kept apart. The certified layer counts who is unavailable from the official report. The string layer - whether a 2nd, 3rd or 4th-quarterback is in - cannot be certified because no official depth chart exists (FLG-08), so those columns are blank by policy. Loss numbers are DERIVED using the uncalibrated weights in the model config.</p>
+<h2>Per-club availability loss (Week 10)</h2>
+<table class=""><thead><tr>
+<th>Club</th>
+<th>Record</th>
+<th>Rows on report</th>
+<th>Out</th>
+<th>Doubtful</th>
+<th>Questionable</th>
+<th>Undesignated</th>
+<th>Non-injury rest</th>
+<th>Offensive loss (pts)</th>
+<th>Defensive loss (pts)</th>
+<th>Deficiency score</th>
+<th>Positions with a starter Out/Doubtful</th>
+<th>2nd/3rd string identity</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td>MIN</td><td>6-2-0</td><td>13</td><td>5</td><td>0</td><td>3</td><td>5</td><td>0</td><td>5.30</td><td>2.45</td><td>7.75</td><td>linebackers: Blake Cashman (LB); pass rush: Tyrion Ingram-Dawkins (DT); quarterback: Kyler Murray (QB); tight end: T.J. Hockenson (TE); wide receiver: Jauan Jennings (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>GB</td><td>6-3-0</td><td>17</td><td>4</td><td>1</td><td>7</td><td>5</td><td>0</td><td>5.30</td><td>2.10</td><td>7.40</td><td>backfield: Josh Jacobs (RB); linebackers: Zaire Franklin (LB), Micah Parsons (LB); offensive line: Sean Rhyan (C); tight end: Josh Whyle (TE)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>HOU</td><td>3-5-0</td><td>16</td><td>5</td><td>0</td><td>6</td><td>5</td><td>1</td><td>4.30</td><td>2.90</td><td>7.20</td><td>linebackers: Azeez Al-Shaair (LB); offensive line: Keylan Rutledge (G); pass rush: Danielle Hunter (DE); tight end: Brevin Jordan (TE); wide receiver: Marvin Harrison Jr. (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>NE</td><td>5-4-0</td><td>15</td><td>3</td><td>0</td><td>9</td><td>3</td><td>0</td><td>5.05</td><td>1.75</td><td>6.80</td><td>backfield: TreVeyon Henderson (RB); offensive line: Ben Brown (C); secondary: Carlton Davis III (CB)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>SEA</td><td>5-4-0</td><td>15</td><td>4</td><td>0</td><td>0</td><td>11</td><td>0</td><td>5.70</td><td>0.90</td><td>6.60</td><td>offensive line: Charles Cross (T), Quenton Nelson (G); pass rush: Leonard Williams (DT); quarterback: Sam Darnold (QB)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>DAL</td><td>4-5-0</td><td>19</td><td>5</td><td>1</td><td>5</td><td>8</td><td>0</td><td>2.80</td><td>3.52</td><td>6.32</td><td>backfield: Tyler Goodson (RB); linebackers: Donovan Ezeiruaku (LB); secondary: P.J. Locke (S), Juanyeh Thomas (S); tight end: Jake Ferguson (TE); wide receiver: Jonathan Mingo (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>AZ</td><td>3-6-0</td><td>15</td><td>3</td><td>0</td><td>6</td><td>6</td><td>0</td><td>3.05</td><td>2.50</td><td>5.55</td><td>offensive line: Hjalte Froholdt (C), Jon Gaines II (G); pass rush: Zachary Carter (DT)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>NO</td><td>3-5-0</td><td>12</td><td>4</td><td>0</td><td>2</td><td>6</td><td>0</td><td>4.30</td><td>1.25</td><td>5.55</td><td>backfield: CJ Donaldson (RB); offensive line: Taliese Fuaga (T), Erik McCoy (C); pass rush: Christen Miller (DT)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>IND</td><td>2-7-0</td><td>14</td><td>6</td><td>0</td><td>2</td><td>6</td><td>0</td><td>2.00</td><td>2.95</td><td>4.95</td><td>LS: Luke Rhodes (LS); linebackers: Jaylon Carlies (LB), Akeem Davis-Gaither (LB); offensive line: Jalen Travis (T); pass rush: Jerry Tillery (DT); tight end: Mo Alie-Cox (TE)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>KC</td><td>6-2-0</td><td>13</td><td>3</td><td>0</td><td>3</td><td>7</td><td>0</td><td>2.50</td><td>2.15</td><td>4.65</td><td>offensive line: Jaylon Moore (T); pass rush: Omarr Norman-Lott (DT), Peter Woods (DT)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>TEN</td><td>1-7-0</td><td>12</td><td>5</td><td>0</td><td>1</td><td>6</td><td>0</td><td>2.60</td><td>1.60</td><td>4.20</td><td>P: Tommy Townsend (P); linebackers: Cody Barton (LB), Anthony Hill Jr. (LB); offensive line: Peter Skoronski (G); wide receiver: Carnell Tate (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>NYJ</td><td>2-7-0</td><td>9</td><td>1</td><td>0</td><td>8</td><td>0</td><td>0</td><td>1.20</td><td>2.75</td><td>3.95</td><td>linebackers: Trevin Wallace (LB)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>DET</td><td>6-2-0</td><td>9</td><td>3</td><td>0</td><td>2</td><td>4</td><td>0</td><td>2.20</td><td>1.40</td><td>3.60</td><td>offensive line: Cade Mays (C); secondary: Kerby Joseph (S), D.J. Reed (CB)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>SF</td><td>7-1-0</td><td>12</td><td>1</td><td>0</td><td>7</td><td>4</td><td>0</td><td>1.35</td><td>2.25</td><td>3.60</td><td>wide receiver: Mike Evans (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>LAR</td><td>5-4-0</td><td>14</td><td>2</td><td>0</td><td>5</td><td>7</td><td>1</td><td>2.00</td><td>1.10</td><td>3.10</td><td>offensive line: Steve Avila (G); tight end: Terrance Ferguson (TE)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>JAX</td><td>6-2-0</td><td>11</td><td>3</td><td>0</td><td>1</td><td>7</td><td>2</td><td>0.55</td><td>2.50</td><td>3.05</td><td>pass rush: Jordan Davis (DT), BJ Green II (DE); secondary: Jessie Bates (S)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>CAR</td><td>3-5-0</td><td>12</td><td>1</td><td>2</td><td>4</td><td>5</td><td>0</td><td>1.30</td><td>1.73</td><td>3.03</td><td>backfield: Jonathon Brooks (RB); linebackers: Bobby Okereke (LB); secondary: Mike Jackson (CB)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>MIA</td><td>1-7-0</td><td>11</td><td>2</td><td>1</td><td>1</td><td>7</td><td>0</td><td>2.10</td><td>0.35</td><td>2.45</td><td>offensive line: Aaron Brewer (C); wide receiver: Chris Bell (WR), Jared Wayne (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>ATL</td><td>3-6-0</td><td>11</td><td>1</td><td>1</td><td>3</td><td>6</td><td>0</td><td>0.80</td><td>1.50</td><td>2.30</td><td>linebackers: Divine Deablo (LB); wide receiver: Zachariah Branch (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>BUF</td><td>7-1-0</td><td>14</td><td>0</td><td>1</td><td>4</td><td>9</td><td>0</td><td>0.68</td><td>1.05</td><td>1.73</td><td>offensive line: Spencer Brown (T)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>WAS</td><td>3-5-1</td><td>9</td><td>2</td><td>0</td><td>0</td><td>7</td><td>0</td><td>1.70</td><td>0.00</td><td>1.70</td><td>offensive line: Lucas Patrick (C); tight end: Colson Yankoff (TE)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>CIN</td><td>6-2-0</td><td>9</td><td>1</td><td>3</td><td>0</td><td>5</td><td>0</td><td>0.48</td><td>0.88</td><td>1.36</td><td>offensive line: Brian Parker II (G); secondary: Jalen Davis (CB), Kyle Dugger (S); wide receiver: Andrei Iosivas (WR)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>CLE</td><td>5-4-0</td><td>12</td><td>2</td><td>0</td><td>1</td><td>9</td><td>0</td><td>0.50</td><td>0.70</td><td>1.20</td><td>FB: Michael Burton (FB); secondary: Ronnie Hickman Jr. (S)</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>LV</td><td>4-5-0</td><td>5</td><td>0</td><td>0</td><td>2</td><td>3</td><td>0</td><td>0.40</td><td>0.45</td><td>0.85</td><td>-</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>PIT</td><td>6-2-0</td><td>8</td><td>0</td><td>0</td><td>1</td><td>7</td><td>0</td><td>0.00</td><td>0.45</td><td>0.45</td><td>-</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>NYG</td><td>5-3-1</td><td>11</td><td>0</td><td>0</td><td>1</td><td>10</td><td>0</td><td>0.00</td><td>0.40</td><td>0.40</td><td>-</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>BAL</td><td>4-5-0</td><td>8</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0</td><td>0.00</td><td>0.00</td><td>0.00</td><td>-</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+<tr><td>LAC</td><td>0-8-0</td><td>19</td><td>0</td><td>0</td><td>0</td><td>19</td><td>0</td><td>0.00</td><td>0.00</td><td>0.00</td><td>-</td><td><span class="bad">UNVERIFIED</span></td><td><a href="https://www.nfl.com/injuries/">nfl.com/injuries</a></td></tr>
+</tbody></table>
+<h2>Where the slate is thinnest</h2>
+<ul><li><strong>MIN</strong> - deficiency 7.75, 5 starters Out or Doubtful (3 offensive, 2 defensive): linebackers: Blake Cashman (LB); pass rush: Tyrion Ingram-Dawkins (DT); quarterback: Kyler Murray (QB); tight end: T.J. Hockenson (TE); wide receiver: Jauan Jennings (WR)</li><li><strong>GB</strong> - deficiency 7.40, 5 starters Out or Doubtful (3 offensive, 2 defensive): backfield: Josh Jacobs (RB); linebackers: Zaire Franklin (LB), Micah Parsons (LB); offensive line: Sean Rhyan (C); tight end: Josh Whyle (TE)</li><li><strong>HOU</strong> - deficiency 7.20, 5 starters Out or Doubtful (3 offensive, 2 defensive): linebackers: Azeez Al-Shaair (LB); offensive line: Keylan Rutledge (G); pass rush: Danielle Hunter (DE); tight end: Brevin Jordan (TE); wide receiver: Marvin Harrison Jr. (WR)</li><li><strong>NE</strong> - deficiency 6.80, 3 starters Out or Doubtful (2 offensive, 1 defensive): backfield: TreVeyon Henderson (RB); offensive line: Ben Brown (C); secondary: Carlton Davis III (CB)</li><li><strong>SEA</strong> - deficiency 6.60, 4 starters Out or Doubtful (3 offensive, 1 defensive): offensive line: Charles Cross (T), Quenton Nelson (G); pass rush: Leonard Williams (DT); quarterback: Sam Darnold (QB)</li><li><strong>DAL</strong> - deficiency 6.32, 6 starters Out or Doubtful (3 offensive, 3 defensive): backfield: Tyler Goodson (RB); linebackers: Donovan Ezeiruaku (LB); secondary: P.J. Locke (S), Juanyeh Thomas (S); tight end: Jake Ferguson (TE); wide receiver: Jonathan Mingo (WR)</li></ul>
+<h2>What a deficiency score can and cannot say</h2>
+<table class=""><thead><tr>
+<th>Claim</th>
+<th>Supportable from official data?</th>
+<th>Treatment here</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr><td>A named starter will not play</td><td>yes - the report states Out</td><td>used, cited</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>How much that absence costs</td><td>no - requires calibration</td><td>shown as DERIVED with the weight table printed</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/model_config.json">model_config.json</a> &middot; <a href="flagged.html">FLG-12</a></td></tr>
+<tr><td>Who replaces them, and what string they are</td><td>no official source exists</td><td>blank + UNVERIFIED</td><td><a href="flagged.html">FLG-08</a></td></tr>
+<tr><td>Whether a backup&#x27;s presence changes a prop market</td><td>no - needs prop prices and usage data</td><td>not attempted</td><td><a href="flagged.html">FLG-07</a> &middot; <a href="questions.html">Q-12</a></td></tr>
+<tr><td>Whether the club is resting someone on purpose</td><td>partly - the report says &#x27;Not injury related&#x27;</td><td>kept in availability, excluded from injury risk (<a href="questions.html">Q-16</a>)</td><td><a href="https://www.nfl.com/injuries/">SRC-02</a></td></tr>
+<tr><td>Whether the Sunday inactive list agrees</td><td>not yet - it lands about 90 min before kickoff</td><td>re-snapshot then (<a href="flagged.html">FLG-17</a>)</td><td><a href="https://www.pro-football-reference.com/players/injuries.htm">SRC-12</a></td></tr>
+</tbody></table>
+</main>
+<footer>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
+  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
+  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+</footer>
+</body>
+</html>

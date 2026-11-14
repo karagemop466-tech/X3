@@ -510,7 +510,9 @@ FLAGS = [
      "https://www.nfl.com/injuries/league/2026/reg11", "Schedule the pull for Wednesday"),
     ("F-11", "HIGH", "Repo data conflict", "The published dashboard data module records Tampa Bay's "
      "division record as 1-2-0; the official standings page reads 2-0-0 (pct 1.000). The canonical CSV "
-     "here uses 2-0-0; tools/nfl_data.py was NOT edited (owned by another session).",
+     "here uses 2-0-0, and a second session's independent transcription of the same page also reads "
+     "2-0-0, so the module that needs the one-line fix is tools/nfl_data.py - which was NOT edited here "
+     "(owned by another session).",
      S["standings"] + " vs https://github.com/karagemop466-tech/X3/blob/main/tools/nfl_data.py",
      "Owner: approve the one-line fix in the other session's file (Q-11)"),
     ("F-12", "MEDIUM", "Repo data conflict", "Prior sessions published 205, 345 and 345 Week-10 injury "
@@ -534,4 +536,12 @@ FLAGS = [
     ("F-16", "LOW", "Repo hygiene", "No LICENSE file exists, and the repo has no branch protection; the "
      "Pages token cannot change Pages settings (a prior session hit HTTP 403), so the Pages source stays "
      "'main /'.", "https://github.com/karagemop466-tech/X3", "Owner: add a licence if the code is shared"),
+    ("F-17", "LOW", "Cross-session transcription", "One practice-status field disagrees between the two "
+     "independent transcriptions of the Week-10 report: KC DT Omarr Norman-Lott is Limited Participation "
+     "here and Did Not Participate in the other session's file. Every game designation, position and "
+     "player key agrees; practice status is not an input to any published number, so nothing on this site "
+     "changes.",
+     "https://www.nfl.com/injuries/league/2026/reg10",
+     "No action needed for the model. The Wednesday participation report would settle it, and the final "
+     "report has already superseded that page - the disagreement is recorded rather than adjudicated."),
 ]
