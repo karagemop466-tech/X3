@@ -234,6 +234,24 @@ def main():
             "source": "n/a - build reproducibility",
         },
         {
+            "id": "R-14", "area": "Venue name",
+            "claim": "The Week-10 Munich game is played at 'Alemun & Munchen / Munich (NFL "
+                     "International Game)'.",
+            "where": "hub/data/lines.json (neutral_site field, NE@DET), surfaced on hub/lines.html",
+            "check": "read the official game page for Patriots at Lions and the Week-10 "
+                     "schedule page for the location and stadium",
+            "result": "FLAG",
+            "detail": "The official game page prints LOCATION: MUNICH and STADIUM: FC BAYERN "
+                      "MUNICH STADIUM. The Week-10 schedule page prints only 'International "
+                      "Game / Munich'. No official page contains the string 'Alemun & Munchen', "
+                      "which reads like an unverified placeholder that was carried forward. The "
+                      "venue does not affect any number on this site, and this session's own "
+                      "pages record only the structural neutral-site flag, but the string is "
+                      "printed on the canonical lines page and should be corrected there by its "
+                      "owner. Independently raised by another session as C-11.",
+            "source": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
+        },
+        {
             "id": "R-13", "area": "Moneyline derivation",
             "claim": "A moneyline can be derived from the model spread and is published on the "
                      "board.",
