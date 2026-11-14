@@ -1,48 +1,72 @@
-# X3 — NFL Lines, Signals & Strategy Analytics
+# X3 — NFL Decision Intelligence (NFL Decision Lab)
 
-A self-contained analytics site that collects, organizes, and analyzes NFL data to
-support decision-making around **originating NFL betting lines** and **skill-based
-betting strategies**. The site is a clean, dashboard-style static site with a landing
-page and category subpages. Every data row carries a link to an **official source**;
-any value that cannot be confirmed from an official source is left blank and flagged
-as **unverified** on the *Flagged for Review* page.
+A source-first framework for building and evaluating NFL betting signals: originate NFL lines, generate and validate betting signals, track injuries and depth-chart deficiencies, and review improvement suggestions before any change is implemented. The site separates verified facts, methods to test, and missing information; it does not publish live lines, picks, injury assertions, or performance claims without verified data.
 
-## What's inside
+## Site
+GitHub Pages site with landing page + category subpages (Executive Summary, Suggestions & Review, Flagged for Review, Strategies & Signals, Injuries & Depth, Sources), plus the root decision-lab pages (overview/executive summary, strategy validation, data & availability, suggestions/questions, flagged review, sources/methods). Every table row carries a source link to an official site; unverified values are left blank and flagged. Nothing is inferred or filled in.
 
-| Page | Purpose |
-|------|---------|
-| [Landing](index.html) | Overview, key metrics, navigation. |
-| [Executive Summary](executive-summary.html) | Key details, scope, status, risks. |
-| [Requirements & Questions](requirements.html) | Questions / information / answers needed before any decision. |
-| [Suggestions](suggestions.html) | Dedicated suggestions for review before implementation. |
-| [Lines & Signals](lines.html) | NFL lines, signal generation, validation gates, correlation methodology. |
-| [Strategy Leaderboard](leaderboard.html) | Strategy designs, validation gates, rewards framework. |
-| [Injuries & Lineups](injuries.html) | Injury tracking + 2nd/3rd/4th-string backup deficiencies. |
-| [Verification](verification.html) | Line-by-line verification log with official source links. |
-| [Flagged for Review](flagged.html) | Irregularities and unverified items for review. |
+## Verification standard
+- Every table row must have a source link to an official site.
+- If a value cannot be confirmed from an official source, leave it blank and flag it unverified.
+- Never infer or fill in values.
 
-## Method
+## Contents
+- `site/` — GitHub Pages static site (this session, `arena/1a771fcd-x3`)
+- `pages/` — supplementary category pages (this session)
+- root `index.html`, `strategy.html`, `data.html`, `flagged.html`, `review.html`, `sources.html`, `style.css` — prior session (`arena/d667d44d-x3`) decision-lab site
+- `.github/workflows/pages.yml` — Pages deployment
+- `COORDINATION.md` — shared task board (both sessions)
+- `docs/` — (planned) detailed findings
 
-- All data is pulled from **official / trusted sources** (NFL.com, official team sites).
-- **No hallucinations.** Values that cannot be confirmed from an official source are
-  left blank and flagged `unverified`.
-- Betting lines are **not** published by the NFL; line values are left blank and
-  flagged `unverified` until a confirmed source is provided.
-- Correlation values and leaderboard performance require a data pipeline + backtest
-  that does not yet exist; they are left blank and flagged `unverified`.
+## Run locally
+Open `index.html` (root) or `site/index.html` in a browser, or serve the directory with any static HTTP server.
 
-## Build & verify
+## Project status
+The repository began with no NFL datasets or application. Live NFL odds, dated official injury reports, historical closing lines, play-by-play inputs, and validated strategy results are not present. Missing values are intentionally blank and clearly flagged, not inferred. See Flagged for Review and Sources & methods.
+
+## Branch
+`arena/1a771fcd-x3` (from `main` @ e124230); integrated with `arena/d667d44d-x3` work on `main`.
+
+---
+
+## Data, injuries, strategy validation and suggestions (branch arena/0c38f465-x3)
+
+Published site (single Pages build): `docs/` at the site root, with the earlier root-level and `site/`/`pages/` sites preserved under `/legacy/`.
+
+| Path | Contents |
+|------|----------|
+| `docs/` | Static site for the dashboard, injuries, schedule, strategies, correlations, questions, suggestions, requirements, sources, executive summary and Flagged for Review (generated) |
+| `data/` | Source-of-truth CSVs: injury report (Week 10 2026), 2026 key dates, strategies, gates, correlations, questions, suggestions, requirements, flags, sources |
+| `scripts/build_site.py` | Builds `docs/` from `data/` (Python standard library) |
+| `scripts/check_site.py` | Checks internal links and that every table row has a source link or unverified flag |
+| `COORDINATION.md` | Shared task board for all sessions |
+
+Rebuild and check:
 
 ```bash
-python3 tools/build_site.py     # regenerate the static site from tools/site_data.py
-python3 tools/check_links.py    # verify no broken internal links
+python3 scripts/build_site.py
+python3 scripts/check_site.py
 ```
 
-## Coordination
+Rules: table values come only from official sources (linked); anything unconfirmed is left blank and flagged unverified; suggestions are not implemented until a decision is recorded.
 
-Task ownership and the verification/irregularity log live in
-[COORDINATION.md](COORDINATION.md).
+**Research only, not betting advice.** Wagering with private bookmakers from Japan is criminal for the bettor under Penal Code Article 185 ([official text](https://www.japaneselawtranslation.go.jp/en/laws/view/3581/tb)).
 
-## Live site
+## Session `arena/3dbc4678-x3` contributions
 
-Published to GitHub Pages from `main` (source path `/`).
+This session added a parallel, self-contained static site (inline styles, per-row
+source links) plus build tooling. It was merged into the integrated dashboard
+without overwriting the shared `index.html` navigation or the integrated `docs/`
+dashboard. Its standalone pages are served from the repo root:
+
+- `index.html` — root redirect to the dashboard (shared output, unchanged).
+- `executive-summary.html`, `requirements.html`, `suggestions.html`, `lines.html`,
+  `leaderboard.html`, `injuries.html`, `verification.html`, `flagged.html`
+  (root) — this session's category pages.
+- `tools/build_site.py` — generates the standalone pages from verified data.
+- `tools/check_links.py` — verifies no broken internal links (9 pages, 297 links).
+
+All data rows link to official sources; betting lines, correlation values, and
+leaderboard performance have no official source and are left blank + flagged
+unverified. See `COORDINATION.md` (this session's section) for the full
+verification log and irregularity flags.

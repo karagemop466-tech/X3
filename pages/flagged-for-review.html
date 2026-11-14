@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for Review &mdash; X3 NFL</title>
+<meta name="description" content="Unverified values and irregularities flagged for review, with source links.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand"><span class="mark">X3</span><span>X3 &middot; NFL Decision Intelligence</span></div>
+    <div class="tagline">Unverified items and irregularities published for review</div>
+  </div>
+</header>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="../index.html">Dashboard</a>
+    <a href="executive-summary.html">Executive Summary</a>
+    <a href="suggestions.html">Suggestions &amp; Review</a>
+    <a href="flagged-for-review.html" class="active">Flagged for Review</a>
+    <a href="strategies.html">Strategies &amp; Signals</a>
+    <a href="injuries.html">Injuries &amp; Depth</a>
+    <a href="sources.html">Sources</a>
+    <div class="nav-spacer"></div>
+    <span class="nav-badge">Does not block merge</span>
+  </div>
+</nav>
+
+<main id="content" class="container">
+  <h1 class="section-title">Flagged for Review</h1>
+  <p class="section-sub">Unverified values and irregularities are published here with source links. These do <strong>not</strong> block the merge; they are reviewed after the site is live.</p>
+
+  <div class="callout warn">
+    <h4>&nbsp; Flagging standard</h4>
+    <p>Every table row carries a source link to an official site. If a value cannot be confirmed from an official source, the cell is left blank and flagged <strong>unverified</strong>. Values are never inferred or filled in.</p>
+  </div>
+
+  <div class="section-title"><span class="num">1</span>Unverified values (left blank &mdash; not inferred)</div>
+  <table>
+    <thead>
+      <tr><th>Ref</th><th>Item</th><th>Value</th><th>Why unverified</th><th>Official source to check</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>U-01</td>
+        <td>Weekly NFL injury report &mdash; current week players / statuses</td>
+        <td class="blank">Not fetched &mdash; left blank</td>
+        <td>Sandbox network cannot reach nfl.com directly; row-level data not confirmed</td>
+        <td class="source-cell"><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries</a></td>
+      </tr>
+      <tr>
+        <td>U-02</td>
+        <td>Weekly depth charts &mdash; starters and 2nd/3rd/4th string backups</td>
+        <td class="blank">Not fetched &mdash; left blank</td>
+        <td>Official feed is a partner API, not a public page; not yet ingested</td>
+        <td class="source-cell"><a href="https://developer.sportradar.com/football/docs/nfl-ig-rosters" target="_blank" rel="noopener">Sportradar NFL feeds docs</a></td>
+      </tr>
+      <tr>
+        <td>U-03</td>
+        <td>Originating NFL betting lines (game lines)</td>
+        <td class="blank">Not confirmed &mdash; left blank</td>
+        <td>No official NFL-published lines source identified</td>
+        <td class="source-cell"><span class="blank">None identified &mdash; to be searched</span></td>
+      </tr>
+      <tr>
+        <td>U-04</td>
+        <td>Player-prop markets and prices</td>
+        <td class="blank">Not confirmed &mdash; left blank</td>
+        <td>No official NFL-published props source identified</td>
+        <td class="source-cell"><span class="blank">None identified &mdash; to be searched</span></td>
+      </tr>
+      <tr>
+        <td>U-05</td>
+        <td>Correlation values for parlay / prop-combo legs</td>
+        <td class="blank">Not computed &mdash; left blank</td>
+        <td>Requires historical game/player data that is not yet collected</td>
+        <td class="source-cell"><span class="blank">Internal computation &mdash; no official source</span></td>
+      </tr>
+      <tr>
+        <td>U-06</td>
+        <td>Validation gate thresholds and leaderboard reward rules</td>
+        <td class="blank">Not defined &mdash; left blank</td>
+        <td>Internal governance decision pending reviewer approval</td>
+        <td class="source-cell"><a href="suggestions.html">Suggestions &amp; Review (this site)</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title"><span class="num">2</span>Irregularities flagged</div>
+  <table>
+    <thead>
+      <tr><th>Ref</th><th>Irregularity</th><th>Detail</th><th>Source / reference</th><th>Suggested action</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>I-01</td>
+        <td>Repository was empty at branch point</td>
+        <td>Only README.md ("# X3"); no data, docs, or site configuration existed</td>
+        <td>git log @ e124230 (main)</td>
+        <td>Create site, docs, and Pages workflow (this session)</td>
+      </tr>
+      <tr>
+        <td>I-02</td>
+        <td>No official NFL betting-lines publication found</td>
+        <td>NFL.com publishes injury reports but not betting lines/odds</td>
+        <td><a href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries</a></td>
+        <td>Identify a compliant odds data source or originate lines internally and flag as internal</td>
+      </tr>
+      <tr>
+        <td>I-03</td>
+        <td>Direct fetch of nfl.com blocked in sandbox</td>
+        <td>Outbound network limited to GitHub hosts and package registries</td>
+        <td>Sandbox network policy</td>
+        <td>Verify row-level data manually against nfl.com after the site is live</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title"><span class="num">3</span>Review process</div>
+  <div class="callout info">
+    <p>Reviewer opens each flagged item, checks the linked official source, and either confirms (fills in value), corrects, or leaves blank with a note. Resolved items move out of this table; unresolved items remain until confirmed.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    X3 &middot; NFL project &middot; Branch <code>arena/1a771fcd-x3</code> &middot; Built with GitHub Pages &middot; No manual input &mdash; all entries sourced or flagged unverified.
+  </div>
+</footer>
+
+</body>
+</html>
