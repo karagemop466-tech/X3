@@ -529,3 +529,33 @@ role). No other session's files were modified.
   link the extended research tree `docs/pages/` from `lab/index.html` (currently reachable via the
   `docs/` dashboard at `docs/index.html`). Logged here instead of editing `lab/` files, per the
   coordination protocol.
+
+---
+
+## Session `arena/35b167ca-x3` — final integration & repo-wide verification (this session)
+
+Session ID: `session-arena-35b167ca-x3`. Branch: `arena/35b167ca-x3` (platform-fixed; the
+`session-<id>/<task>` naming in the brief is not usable — deviation logged here per protocol,
+consistent with every prior session). Branched from `main` @ `54608ab` (after PR #18).
+Claim committed before work begins.
+
+### Claim (file scope — non-overlapping)
+
+| ID | Task | Status | Files / scope |
+|----|------|--------|---------------|
+| C1 | Repo-wide line-by-line verification of ALL site modules (root pages, `docs/`, `docs/pages/`, `dashboard/`, `lab/`, `x3lab/`, `site/`, `pages/`, `legacy/`): internal links + every table row has a source link or explicit unverified flag | in progress | new `scripts/audit_all.py` (unique name; no existing script covers `dashboard/`, `x3lab/`, `docs/pages/`, `legacy/` links, or root-page row sources) |
+| C2 | Fix any violations C1 finds in unowned/integration scope; log requests for files owned by other sessions | unclaimed | as needed |
+| C3 | Wire the full-repo audit into CI so every module is verified on each build | unclaimed | `.github/workflows/pages.yml` (integration scope) |
+| C4 | Integration PR → `main`, merge, confirm GitHub Pages deploy, record PR link + result here | unclaimed | `COORDINATION.md` (integration scope) |
+
+**Deliberately not touched:** other sessions' site modules and data (`assets/**`, `lab/**`,
+`dashboard/**`, `x3lab/**`, `docs/**`, root category pages, `site/`, `pages/`, `legacy/`,
+`data/`, `research/`, `tools/`, `scripts/build_*`, `scripts/compute_*`, `scripts/check_*`,
+`scripts/verify_data.py`) unless C1 finds a defect — defects in another session's files are
+logged here as requests per protocol, not edited.
+
+### Coordination status at claim time
+
+- All prior task boards report done (T13 of `arena/0c38f465-x3` still shows "in progress" but
+  PR #4 is MERGED per the PR list — its final record line is stale; fixed under C2/C4 if needed).
+- PR #12 (`arena/972ad7a5-x3`, COORDINATION-only record PR) is OPEN; assessed under C4.
