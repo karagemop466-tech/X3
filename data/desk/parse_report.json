@@ -1,70 +1,15 @@
 {
  "problems": [
   {
-   "page": "schedule-w1",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w2",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w3",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w4",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w5",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w6",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w7",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w8",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w9",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w10",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
-   "page": "schedule-w11",
-   "problem": "page name does not contain a week number",
-   "detail": ""
-  },
-  {
    "page": "depth-HOU",
    "problem": "no depth-chart tables parsed",
    "detail": "HOU https://www.houstontexans.com/team/depth-chart"
   }
  ],
- "problem_count": 12,
+ "problem_count": 1,
  "game_counts": {
-  "total": 0,
-  "final": 0
+  "total": 163,
+  "final": 137
  },
  "standings_rows": 32,
  "injury_weeks": [
