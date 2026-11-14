@@ -1671,3 +1671,30 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
 - **Fix (two lines, behaviour-preserving):** `scripts/build_hub.py` reads the new key when the old one is absent. No other line changed.
 - **Verified after the fix:** every `pages.yml` step run locally in order, exit 0: check_site, check_links, audit_all, verify_site, verify_data, check_hub, verify_integration, desk_verify, check_dashboard + node checks, check_data, check_render, x3_engine + build_hub + verify_hub + `git diff --exit-code -- hub index.html data/hub`, and tools/reconcile_standings.py.
 - **Request (not edited):** owner of `scripts/build_hub.py` and `arena/cc3778ae-x3`: keep one key name in `dashboard/data/model_lines.json` and update the reader to match, so the two-key fallback can be removed.
+
+### PR and deploy log (arena/f2df8317-x3, final)
+
+- **PR #47**: https://github.com/karagemop466-tech/X3/pull/47 — `arena/f2df8317-x3` → `main`.
+  **MERGED 2026-11-14T19:49:50Z**, merge commit `07be456d67222698a67d853c616b1cae7ce1a3ff`,
+  via `gh pr merge 47 --merge` without waiting for approval.
+- **CI on the PR merge commit**: all 14 build steps passed, including the hub-rebuild drift gate
+  (with the schema-tolerant prior-lines reader), `audit_all` (repo-wide row-source audit),
+  `verify_integration`, `desk_verify`, `verify_hub`, and `check_hub`. Deploy correctly skipped for
+  the PR.
+- **Merge-conflict handling**: two main-advances during the session (PRs #45/#46 then #44), both
+  resolved by union merges — COORDINATION.md kept both sessions' sections verbatim (0 lines lost,
+  programmatic check); `scripts/build_hub.py` conflict resolved in favour of main's inline
+  `fair_*`-fallback fix (functionally identical to the one this session had logged).
+- **Pages deploy after merge**: run
+  [43634204059](https://github.com/karagemop466-tech/X3/actions/runs/43634204059)
+  ("Deploy X3 NFL site to GitHub Pages", push to main) — build **success**, deploy **success**;
+  "pages build and deployment" (43634203617) **success**.
+- **Live verification 2026-11-14**: https://karagemop466-tech.github.io/X3/origin/ fetched live —
+  renders the module overview with the requirement table and executive summary; subpages
+  (results, markets, snapshots, backtest, leaderboard, depth, correlations, gates, questions,
+  suggestions, flagged, sources, verification) are reachable from the module nav.
+- **Post-merge correction**: the live executive summary had one wrong interpolation
+  (`summary[0]` vs `summary[1]` — the results-feed line printed the markets text). Fixed in the
+  builder (prose counts are f-strings of computed values), rebuilt byte-deterministically,
+  re-verified (`origin_verify` 1,774 checks, 0 failures; `audit_all` PASS), and shipped in the
+  final sync PR below.
