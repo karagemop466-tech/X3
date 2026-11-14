@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T04:04:03+00:00",
+  "generated_at": "2026-11-14T04:07:15+00:00",
   "datasets": [
     {
       "dataset": "depth_charts.json",
@@ -7,24 +7,24 @@
       "source_url": "https://www.nfl.com/teams/",
       "official_org": "Official NFL club sites",
       "sha256": [
-        "bbde5d16f5a6b1307100caa4bcc1be1de420c80d7312d83c1a7a3d5f075cfeff",
-        "bbf625cb420046dd65e533643af9eac681b2afebbdc2e76fd73826f21e8f245a",
-        "76d767fdff5682987fb50250353f877035d679e5edf26fea3a0545d36a9af543",
-        "e32d99430023af5129d458542b9549013ffb3d759f0ec5815a354f3f84ee1511",
-        "2e091bfa943f3d31caf15ccb963d7288361509c1cb849637b8b3f1d02f81aff3",
-        "5bdec1fcf8731cf01b0c41f04369f1342b7d1f950958f689f7b4340ad63ce254",
+        "cf4845513e47acaa407ffffbc624831cb53ee77ca7090293e0a5ee1f1c673418",
+        "35c10a42fff51e70319170143f1e26cf0d308b57d0ee2a02233381ff4810cd04",
+        "fe5ef0e03bbf1624bbe25a33bd21c6db2ef6f8b0f9df2c3605a940f294fe06c1",
+        "52ae6aaf8dae906cc14d62fc0babe42c49a46987ac213b224389bb589436de49",
+        "c20e2364cbfa721de118ad3b1f345c6156e6c8d726185efda2ed5780edb71ae9",
+        "f26ffd7605b4708480862a5cf10d16306545e166b267de22c4d242d065c7112f",
         "b69590b7fb291578c83b7507810974f549d392b77e9a8d05f903ba2e72d0ebdc",
-        "a1adaa67a2e6c43434b1d601550db333f809bd219401f5dc04af5ea64cbf7142"
+        "7f8dad039fd835d8841a9bdf957ff8a5e4d3bd50a7d8d9eda66e1a8bc280dd5f"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:21+00:00",
-        "2026-11-14T04:02:16+00:00",
-        "2026-11-14T04:02:07+00:00",
-        "2026-11-14T04:02:17+00:00",
-        "2026-11-14T04:02:07+00:00",
-        "2026-11-14T04:02:07+00:00",
-        "2026-11-14T04:02:12+00:00",
-        "2026-11-14T04:02:17+00:00"
+        "2026-11-14T04:05:31+00:00",
+        "2026-11-14T04:05:27+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:27+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:22+00:00",
+        "2026-11-14T04:05:27+00:00"
       ],
       "rows": 81
     },
@@ -42,8 +42,8 @@
       "source_key": "injuries_current",
       "source_url": "https://www.nfl.com/injuries/",
       "official_org": "National Football League",
-      "sha256": "0f333258166e808f5eafdc4a7957fb379a20b358a52a93f39d9f2723dc257a03",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "sha256": "bd2d433c52d0e1de575a1142d266720e925d6c29d180379d6f1c1fd422386909",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 182,
       "week": 10
     },
@@ -53,24 +53,24 @@
       "source_url": "https://www.nfl.com/injuries/league/2023/reg<week>",
       "official_org": "National Football League",
       "sha256": [
-        "3b1925931fa2bd27b550592d27e490e8952398cc7c287b065cd2b64db9cb396f",
-        "e4de255879491d07a5acf1d5fb3f1ec6ddcddb4acb6bbe41b8caffaef035f3e7",
-        "ad023486ca9de4d671f7247c197b42ab311eb5223e1b25f72b1b05684836b03e",
-        "7b4fe9a81ae3ead431328a57c1145b9322820bbe1235e640cb98529d9cd23048",
-        "b85ff7ad48539cf62e3edab4474344409408c4f360db20f3fe4b83f2475b4fc9",
-        "9914c9725394ca756850ab1c4bea534d022aed2e01b984e8b5d6130c92f1eb72",
+        "ab34a4b0fb2b5e3db82be27cfdbc5cb1a33ed913db76b0c9f6bba2715e6b1954",
+        "04b8852fdecd917cc117531bb63f0849fe30c02411252c3ad603f4faeecd3f9d",
+        "cda455680ccb48050aac157d5b3c00952a2dfd72bcc033151e35e6c34ef320bd",
+        "7a3654d6b1d199380029995167d77f60a38a42b3a9dfc86a3ddcc2664c303e7e",
+        "0dbc85132d8eb5f01101dac1a582c11b6dd8027e3a99357f5fce761129a86eb2",
+        "68f984a1d732e2c980b92d2af7a968b6fef69f9327813ba0a61ab3257c15dcbb",
         "e2985356be4ac624d55e6a2ed9ee4f5b1454e316e5055c7dcb22cc0b4e881482",
-        "5c4e01fbd191ec27d85912641c779cdf451a6845dc9f5447f6545bafba8ad1c6"
+        "167ac4b3854328d342162feb3ba355330bfc791728c6d16c51beb0033ec527d1"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00"
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00"
       ],
       "rows": 2696
     },
@@ -80,24 +80,24 @@
       "source_url": "https://www.nfl.com/injuries/league/2024/reg<week>",
       "official_org": "National Football League",
       "sha256": [
-        "902783fd54f8751964fda7aa41005dffd5b62a06b19bac6c1e3351fad99e1968",
-        "72ec2c734e58c721604fa4b245dba0bad50a4e2d5b777c1bfc929bc4c877ab8c",
-        "09a84c85827a3a49fb47191ffaf9e3ad02ebc2bf3e4330004675c39bc76c1c99",
-        "c9c4b3ef83981d06a8c31a728e6417648a82abefedc80a37528c6f10556ee509",
-        "292b0c5d8f72a1a16133d684716183e8a459b0fdbb2a7b4516dbfe18e7272da5",
-        "44aeedcff5ddaaa6c3e1f4d3ac60edc66e17751e103c0f7a78c7301f3d59e8a6",
-        "2b569c9840ba96cff2bf744b6f8990ddd37fa9d1006582708ab9a47ea3381755",
-        "09dc594efa976b1bd59ad39972c31076586e8c140c1c2d01c5701892fc5a247a"
+        "6c7aadf50d3e558572cb6b4d8d68b056ec14400fa9c53921b7a4536aaacb4b2c",
+        "9652da2bdc9b3287b9488b2b8eb6df06a1e6ec589549a83c676d179242574aa3",
+        "8c89bcdc0b7358a72576a54e1cf7a0f642e513c04692bfac9b07300fadcb9974",
+        "938a72e786b827ed1b4e06246a24a793aa003dc7c3702ee9b7168a4644067b1c",
+        "562716ba8ce8860793e3d8ab03d78dbed3997c8b70028e1bd14716a15b2045b2",
+        "fa913152e10bdaa1891df34e003bc60e3c48f6deeb4ebddf893fb4d156ef1e5b",
+        "de7b69367a9989e28ece116088f8f534bfb30b6a4f88dad1efe88426c3805d59",
+        "cc8fec8a1b2b2bfb0427ef23be95ed9024d3b766be5c546084110cfb3bb469f8"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00",
-        "2026-11-14T04:02:05+00:00"
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00",
+        "2026-11-14T04:05:16+00:00"
       ],
       "rows": 3286
     },
@@ -107,24 +107,24 @@
       "source_url": "https://www.nfl.com/injuries/league/2025/reg<week>",
       "official_org": "National Football League",
       "sha256": [
-        "e0de81acc14433e11dbed93181eeba19e4e2d17d1b4549431eee264b36f3a40b",
-        "a6055d7a4f9766d8db0fb3006290e011d75890bf4d42ff1cf2be2dcd3c6d9d3b",
-        "ac55cc9754fba559bba80915f289fbd06d1f7fe4c3e0bafd82721502e86b9531",
-        "923815454497a074ef264be639612ec17d6bf416a3f878f344af888043cfd3c0",
-        "5e04fdb7197f2f53499b1326c9a956cf7f8317a088dcf115ccd8e69e70dfbb13",
-        "98920fad2cd0adaf95b56fc7c8600e769f41b1a3ec793240369fad791f5c0aa9",
-        "4414e821e82c3ec635451f42f5610890289fff98b0bf0b875871dc7e56f37059",
-        "e56c6560a28685bbf5b17145d382665177d49e638d262b81e5479fdbf43e9786"
+        "fe7016db671d1b2db46e30d4f8b38ac4ac837f9e085ff549dbecc66ba37de81b",
+        "38ce8d58786c0bd60d056fd9823847287d25bcef629f822e1e634434b9b7097c",
+        "3428bf8fef130aeb2407a392b2d2f603ad36e94983da69c08b6854a0a38d3936",
+        "c4b559aa3ee00cc41b500061514fd60a2e31e6e12af366fe78797f0e135cd9b1",
+        "3119f2b6d3e656c09396c4d1c09f76ea34a9ed87178ad3635e5c4b325d9cfd6a",
+        "9c7361c757fa93c72a5bee168d98c0b8c00b42e788f6e763a4dd557e4ef7a41a",
+        "7fa29ae6c7f0749d45bececd76eabd566c406d6689760b4e60ff39b4aacd9ea6",
+        "62ac7e310733a7c971066cce8cf3a31581af5cde7472f00080eab65db3d4a215"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00"
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00"
       ],
       "rows": 2920
     },
@@ -134,24 +134,24 @@
       "source_url": "https://www.nfl.com/injuries/league/2026/reg<week>",
       "official_org": "National Football League",
       "sha256": [
-        "5a4c1d30abc1c64c7859e4652719ec10631dca8d5b0851f44b9634ade6de5e29",
-        "ddbd689dc62fdf7ca849588f8645fb7b425cbdf371a6f4ac08b3f2e68d1e891b",
-        "fe0eb0ee6e4c756c10c6307e9d33995107c78ade948088322b3853d7d7d7b2f7",
-        "9d813e9b81db350c83460e47e744d5fc395408b13106043f2e848d3700318b2f",
-        "2c2b05bcbf2342e2289ca95aea0ed09aba0057d72b8b9d8eba2fec2762c9ee07",
-        "557299b79b2bd2b52fa18ab00473bf021693e3bc088e6365ecd2f27b3878da95",
-        "da079c3c4a1571cbf4f6341ba0c1cb40a432f0919f5656a10d8357b8eb29ad64",
-        "495b21c4d0aa4fbb67b72f02c21b9bd52a6b830713bd92f04d3c5e8daa5ddbbf"
+        "744b20208f06c9d8851c77ee17d2421e07f07777b7e94782b6d8f4ac69de8830",
+        "0c2610fa686acaf806976d2e7c6fa425973c0ab071b8745177f1a81f9297947f",
+        "40cbe1994e7a173ab48a3784ca01e8440f3b71bc8767c127b8f480ecb8341604",
+        "3092f7f433fa046ae7875681cf40537e45e05ee5f4c5381e874ea05ec77c3516",
+        "a62147c00a82920f459c117aca7bae0c79091c31069b0ea00b169c0c9243b92d",
+        "2188613999f2e6ae23e02bfb9a6cbda4ac4f7becc364ae93c368d8a03b91581e",
+        "f084c2ccac964d458116268cef84ac2e48df2489e3719a6445b906767a875a81",
+        "bfb98a3fc20ac45bfc5bd9b0ced9368850111f62ec72a772892c66b13ca60e67"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:06+00:00",
-        "2026-11-14T04:02:07+00:00",
-        "2026-11-14T04:02:07+00:00"
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00",
+        "2026-11-14T04:05:17+00:00"
       ],
       "rows": 3030
     },
@@ -161,7 +161,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/field-goals/2023/reg/all/kickingfgmade/desc",
       "official_org": "National Football League",
       "sha256": "b9c212a4cd408f0e07e3fbd1226c1a558e04ace5a72f80b16490a4f4ab74d59c",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -170,7 +170,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/field-goals/2024/reg/all/kickingfgmade/desc",
       "official_org": "National Football League",
       "sha256": "b6afcd61794ab08d24c47b46f1a21236e543c8ede6ca1566dc6db7d3148dab2c",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -179,7 +179,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/field-goals/2025/reg/all/kickingfgmade/desc",
       "official_org": "National Football League",
       "sha256": "892a81f194cd42cc5996c0d510f6f2a88773f28be0714726fcfd1c4fefc69ea7",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -188,7 +188,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/field-goals/2026/reg/all/kickingfgmade/desc",
       "official_org": "National Football League",
       "sha256": "51a3d0089173e035c223d5488f4de64e29d2001bf6d5fca00b580007f5df1c08",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -197,7 +197,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2023/reg/all/defensiveforcedfumble/desc",
       "official_org": "National Football League",
       "sha256": "2ecc7fa326022166f4e6dd612b1be8cf2dc5c805cfcc229bc02492f4b3bdbd7b",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -206,7 +206,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2024/reg/all/defensiveforcedfumble/desc",
       "official_org": "National Football League",
       "sha256": "98d06a5ae6c7f54eb7e320d034941ad67ee9db7b2bc7e504a69fa75f46fc6cb8",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -215,7 +215,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2025/reg/all/defensiveforcedfumble/desc",
       "official_org": "National Football League",
       "sha256": "68a9dbac6ca1108c22176d644ecc3679b1c6b5cee955ffb5bc030547c1636862",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -224,7 +224,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/fumbles/2026/reg/all/defensiveforcedfumble/desc",
       "official_org": "National Football League",
       "sha256": "00513073380edbb55b74aeeeb0caf38e09ab6052d12dd2a312ab7af0f7d6fb19",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -233,7 +233,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2023/reg/all/defensiveinterceptions/desc",
       "official_org": "National Football League",
       "sha256": "67bcef607f9dc8b839a51b1ecfec211e6c2f80a32674bd884367ede0f85c7eb2",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -242,7 +242,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2024/reg/all/defensiveinterceptions/desc",
       "official_org": "National Football League",
       "sha256": "6000d784864fb2bb35bf4d09aeff1ee1610e42a71a947af2febaf93fa8eb37a0",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -251,7 +251,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2025/reg/all/defensiveinterceptions/desc",
       "official_org": "National Football League",
       "sha256": "cf85ff7ec1aa46c4dade72b243e48fce98b8445ca9f998f89d128178c97b3d49",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -260,7 +260,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/interceptions/2026/reg/all/defensiveinterceptions/desc",
       "official_org": "National Football League",
       "sha256": "f20472fa4c7f669c01759f435ba741d575feba92d20d5c593b35a9fabd6d47cb",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -269,7 +269,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoff-returns/2023/reg/all/kickreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "927ce497f28449a6893fdde4c8fc35daf1208f9c10bf788f15bdaa54f266d023",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -278,7 +278,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoff-returns/2024/reg/all/kickreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "5f855811c41bc69281e57b84bf4a90438d55ad47499ec66317070c5880afd719",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -287,7 +287,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoff-returns/2025/reg/all/kickreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "43ac4d0e73f0d2b26a6171ee33e3f3d229858d864e7eb74819ce84266b47fc9d",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -296,7 +296,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoff-returns/2026/reg/all/kickreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "5173100fadf8c1ed855736d6650235cdcaead01d56078492debce9a9bdff2c2d",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -305,7 +305,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoffs/2023/reg/all/kickofftotal/desc",
       "official_org": "National Football League",
       "sha256": "2bf3e1289ccb649687794a8b1ea79a3366083508d6c9db021c8ebc1c86a72909",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -314,7 +314,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoffs/2024/reg/all/kickofftotal/desc",
       "official_org": "National Football League",
       "sha256": "0c03545d6906729daf480a43ecfbba177305a963509207964d75bb050e244cc8",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -323,7 +323,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoffs/2025/reg/all/kickofftotal/desc",
       "official_org": "National Football League",
       "sha256": "2ac322201dfcad76ba4128020c34b9fbe696eff690e877aebefdf39f35a4a4ec",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -332,7 +332,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/kickoffs/2026/reg/all/kickofftotal/desc",
       "official_org": "National Football League",
       "sha256": "c363516556752198d7eda42ef534e587f4f781f2d45f53cc7cb3eacda4184bab",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -341,7 +341,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/passing/2023/reg/all/passingyards/desc",
       "official_org": "National Football League",
       "sha256": "b6fcb83fc36f2b312d69452b9646605ed5a870b8a785e5daced6e0c09f3136b2",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -350,7 +350,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/passing/2024/reg/all/passingyards/desc",
       "official_org": "National Football League",
       "sha256": "177c39a57cb798b15487389f592ba3c84125086a590c6fb99d236f353b133362",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -359,7 +359,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/passing/2025/reg/all/passingyards/desc",
       "official_org": "National Football League",
       "sha256": "eddeec92f6018460f06d3d9dc3bcb93a11fc987ff071799c0750c550638befac",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -368,7 +368,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/passing/2026/reg/all/passingyards/desc",
       "official_org": "National Football League",
       "sha256": "8576921aa00f3e7c39a791a36b0907f7769509b36194fd267050e872c74d91e1",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -377,7 +377,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punt-returns/2023/reg/all/puntreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "2457883f52c93a73b749d48c2cc0218d027effdc8fd47552e643baddde589cf0",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -386,7 +386,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punt-returns/2024/reg/all/puntreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "f290684b8ffb5a57c272ce9fb289d8d0ffec5d6bdea46800107f0abe77770ebb",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -395,7 +395,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punt-returns/2025/reg/all/puntreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "4d5df875ad95a68c773688e533eef8e7f5e0070d9e366a9331bd2c659e00367e",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -404,7 +404,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punt-returns/2026/reg/all/puntreturnsaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "b8412a57e85735ea1d71dec0fd63ea605fd0fe04919a5b281485892a980b6d7e",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -413,7 +413,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punting/2023/reg/all/puntingaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "aec178a370048ce8d6452e4a6f08d758dfffb8a6fdb3637e9298dfdffb516b1d",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -422,7 +422,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punting/2024/reg/all/puntingaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "762d2471ff417025d9e71dc32d88fc393460c03c10939854e9a0a47673d25534",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -431,7 +431,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punting/2025/reg/all/puntingaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "617bf7c7f0a14323ecdc1fac4e9e9d52ffcc228ffc15aea5c868693d03e7e1cd",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -440,7 +440,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/punting/2026/reg/all/puntingaverageyards/desc",
       "official_org": "National Football League",
       "sha256": "5ca3da8f083f4033152eea2c118ecc6e09e2ae6676e09400fa89ebdd99760292",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -449,7 +449,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/receiving/2023/reg/all/receivingreceptions/desc",
       "official_org": "National Football League",
       "sha256": "441a321c79a63ebca7ecaf09891383286ea4dc0b6ddd8745d9391c4a6cfacfd2",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -458,7 +458,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/receiving/2024/reg/all/receivingreceptions/desc",
       "official_org": "National Football League",
       "sha256": "b99d5482b365e326f17ce53ca91c29ea7352517d4cec7480a8d1b65b2628888b",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -467,7 +467,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/receiving/2025/reg/all/receivingreceptions/desc",
       "official_org": "National Football League",
       "sha256": "cefad179c69963763150e01b7cf787af21b3f97a74e1a7604024efe05f5340f8",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -475,8 +475,8 @@
       "source_key": "stats_player_receiving_2026",
       "source_url": "https://www.nfl.com/stats/player-stats/category/receiving/2026/reg/all/receivingreceptions/desc",
       "official_org": "National Football League",
-      "sha256": "5461cac7871991f88da66ff0397f6e24bb0fc387b001082bcc2d13a150147452",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "sha256": "fda428ef50133afde7a9a1594f2d8def5aebdf1483f18123bdf22e4f8b32fc94",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -485,7 +485,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/rushing/2023/reg/all/rushingyards/desc",
       "official_org": "National Football League",
       "sha256": "897a0d86b37682b6850beccb1bb972d25c708fa1516cedb00ac840548f5987d7",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -494,7 +494,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/rushing/2024/reg/all/rushingyards/desc",
       "official_org": "National Football League",
       "sha256": "e7c3cf89621c5da232a7858eba6c7327820c318b7f6ca1591081d8070cfafbb3",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -503,7 +503,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/rushing/2025/reg/all/rushingyards/desc",
       "official_org": "National Football League",
       "sha256": "62ff77c79cf361833c5d5d7952bb1013a842e833ba85245edeedf4b7c00017e4",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -512,7 +512,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/rushing/2026/reg/all/rushingyards/desc",
       "official_org": "National Football League",
       "sha256": "356a30d98023b0e9e0126ff048761ff6c0ede778f3d20cf59da153393f873a68",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -521,7 +521,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2023/reg/all/defensivecombinetackles/desc",
       "official_org": "National Football League",
       "sha256": "228570dac309b4bce7dd9c5b4825a0f64ae95d76403f3bb998210838ec8e9356",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 25
     },
     {
@@ -530,7 +530,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2024/reg/all/defensivecombinetackles/desc",
       "official_org": "National Football League",
       "sha256": "147e183d882f67da73041f604320d68982dc2dd62960209240f2a074695d3c89",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -539,7 +539,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2025/reg/all/defensivecombinetackles/desc",
       "official_org": "National Football League",
       "sha256": "d01ebf4ebb9cea9e610d24ff1ddbde522daccb61e0ecc7567257e82477fb8e79",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -548,7 +548,7 @@
       "source_url": "https://www.nfl.com/stats/player-stats/category/tackles/2026/reg/all/defensivecombinetackles/desc",
       "official_org": "National Football League",
       "sha256": "6d6602abbc867f24db6dc57ef34b719c63722f2e99f245cf8f64279c4a1e869a",
-      "fetched_at": "2026-11-14T04:02:07+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 25
     },
     {
@@ -557,10 +557,10 @@
       "source_url": "https://www.nfl.com/schedules/2023/",
       "official_org": "National Football League",
       "sha256": [
-        "8874620999fc510b3f66822df44e528e960741df58b8ab14536a4838be97e1c2"
+        "b464f85c3e7177888267c8d011239aee645f44fa6768ef955429eca0a54282d0"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:05+00:00"
+        "2026-11-14T04:05:16+00:00"
       ],
       "rows": 14
     },
@@ -570,10 +570,10 @@
       "source_url": "https://www.nfl.com/schedules/2024/",
       "official_org": "National Football League",
       "sha256": [
-        "626107f7142deec19601d02a26eee79887c5e414e01d2d80866a779a7eb2b251"
+        "1939be78d33795e100386c8923f97c0340422f2bc2090a0bee0eb8399262c0d7"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:06+00:00"
+        "2026-11-14T04:05:17+00:00"
       ],
       "rows": 14
     },
@@ -583,10 +583,10 @@
       "source_url": "https://www.nfl.com/schedules/2025/",
       "official_org": "National Football League",
       "sha256": [
-        "6901ed142d0fcd15899ed804a8a609a3f7347b373d61641aabbc7747ac5ad9f3"
+        "9b0f3a007c3f11935143ca7ef4507bcf9b4e5db0046ae40e9a11e72e5afac779"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:06+00:00"
+        "2026-11-14T04:05:17+00:00"
       ],
       "rows": 14
     },
@@ -596,10 +596,10 @@
       "source_url": "https://www.nfl.com/schedules/2026/",
       "official_org": "National Football League",
       "sha256": [
-        "ac02b76a5684a1c822cb44d78493ad5781d16648d23b4fef156ec48d5c3e945f"
+        "6eb351a0089f763de4c44702a66cb5fae9596af3f4020c32856761a1aedbfdeb"
       ],
       "fetched_at": [
-        "2026-11-14T04:02:07+00:00"
+        "2026-11-14T04:05:17+00:00"
       ],
       "rows": 14
     },
@@ -609,7 +609,7 @@
       "source_url": "https://www.nfl.com/standings/league/2023/REG",
       "official_org": "National Football League",
       "sha256": "ac09435b7528e477570d51ad3ebb85de24b6df879952c72877a0a4a85ecc7bd1",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 32
     },
     {
@@ -618,7 +618,7 @@
       "source_url": "https://www.nfl.com/standings/league/2024/REG",
       "official_org": "National Football League",
       "sha256": "8aca71da4a9e3ff12116e5f7ce24f9226fc59a971f7423f336ed9859c34f4d41",
-      "fetched_at": "2026-11-14T04:02:05+00:00",
+      "fetched_at": "2026-11-14T04:05:16+00:00",
       "rows": 32
     },
     {
@@ -627,7 +627,7 @@
       "source_url": "https://www.nfl.com/standings/league/2025/REG",
       "official_org": "National Football League",
       "sha256": "15173667913e23750c0c513bdeb895103ae840aa08009ea7b771da20f5e0b6ea",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 32
     },
     {
@@ -636,7 +636,7 @@
       "source_url": "https://www.nfl.com/standings/league/2026/REG",
       "official_org": "National Football League",
       "sha256": "721a810ace4439ff4ea015e02c8c56c5bf36302e44cddb41bce842c78c553c00",
-      "fetched_at": "2026-11-14T04:02:06+00:00",
+      "fetched_at": "2026-11-14T04:05:17+00:00",
       "rows": 32
     }
   ]
