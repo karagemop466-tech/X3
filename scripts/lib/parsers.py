@@ -461,9 +461,17 @@ def normalise_depth_groups(units: list[dict]) -> list[dict]:
                 players = [cells[0]] + cells[2:]
             else:
                 # A row that continues the previous group with more players.
-                if groups:
-                    groups[-1]["players"].extend(cells)
+                if not groups:
                     continue
+                for cell in cells:
+                    text = cell.strip()
+                    if not text:
+                        continue
+                    match = _ORDINAL_RE.match(text)
+                    groups[-1]["players"].append(
+                        {"name": match.group(2).strip() if match else text,
+                         "ordinal": int(match.group(1)) if match else None}
+                    )
                 continue
             position = POSITION_GROUPS.get(label, label.upper())
             groups.append({"position": position, "label": cells[0].strip(), "players": []})

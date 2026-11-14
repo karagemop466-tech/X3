@@ -96,10 +96,10 @@ CLUBS: list[tuple[str, str, str]] = [
 ]
 
 #: Club depth-chart URL candidates, probed in order until one resolves.
+#: Only the two patterns that resolve on the official club sites are probed;
+#: the wider list only produced 404 noise in the fetch manifest.
 DEPTH_CHART_CANDIDATES = (
     "/team/depth-chart",
-    "/team/depth-chart/offense",
-    "/team/depth-chart/defense",
     "/depth-chart",
 )
 
