@@ -154,3 +154,78 @@ Originate our own Week-10 NFL lines (model v0.1, deterministic), run strategies 
 - Data: `x3lab/data/*.json` · Notes: `analysis/` · Gate: `python3 scripts/verify_data.py` (must PASS)
 - Model: `scripts/compute_lines.py` · Pilots (correlations, Pythagorean luck): `scripts/compute_analysis.py`
 - Review before anything changes: `x3lab/suggestions.html` (12 proposals) · `x3lab/questions.html` (15 open) · `x3lab/flagged.html` (10 flags)
+
+---
+
+## Consolidated decision desk — `/desk/` (session `arena/3bf7cc8b-x3`)
+
+**Live:** https://karagemop466-tech.github.io/X3/desk/ — the repository root redirects here.
+Eighteen pages, one verification gate, one capture pipeline.
+
+### What it is
+
+A single desk that answers four questions with linked evidence: what is verified, what the model
+says, which strategies are allowed to compete, and who is missing from each lineup.
+
+| Page | Contents |
+|------|----------|
+| `desk/index.html` | Executive dashboard |
+| `desk/executive-summary.html` | Status, verified findings, what cannot be claimed, next decisions |
+| `desk/lines.html` | Own originated spreads and totals (DERIVED) |
+| `desk/model.html` | Club ratings, walk-forward calibration, limitations |
+| `desk/strategies.html` | 10 strategy hypotheses with a 10-gate ledger |
+| `desk/leaderboard.html` | Competition rules, anti-gaming, reward design (board empty by design) |
+| `desk/correlations.html` | Measured coefficients with n and 95% CI |
+| `desk/injuries.html` | Official injury reports, weeks 8-10 |
+| `desk/lineups.html` | Out/Doubtful players joined to their depth string |
+| `desk/questions.html` | 18 questions: known / missing / what each blocks |
+| `desk/suggestions.html` | 12 suggestions to review before implementing anything |
+| `desk/requirements.html` | 24 requirements with acceptance tests |
+| `desk/games.html` | Verified game log (137 finals) |
+| `desk/standings.html` | 2026 standings, reconciled against the game log |
+| `desk/sources.html` | Source register and method references |
+| `desk/repo-review.html` | Repository review and irregularities |
+| `desk/flagged.html` | Flagged for review: every unverified item |
+| `desk/archive.html` | Earlier session sites, preserved unchanged |
+
+### How the data gets here without manual input
+
+```
+scripts/desk_capture.py      fetch official pages from a GitHub runner -> capture/
+scripts/desk_extract.py      page text + nfl.com link maps
+scripts/desk_parse.py        games / standings / injuries / depth charts -> data/desk/*.json
+scripts/desk_join.py         injury report x depth chart -> deficiencies.json
+scripts/desk_model.py        ratings, walk-forward backtest, correlations, strategies
+scripts/desk_build.py        -> desk/**.html  (with desk_content.py for prose)
+scripts/desk_verify.py       hard gate; CI fails if any check fails
+```
+
+The authoring sandbox cannot reach `nfl.com`, so `.github/workflows/desk-capture.yml` runs the
+capture and parse on a GitHub-hosted runner and commits the structured result to the branch. The
+parser self-test fails the run if a parser returns nothing, so an empty dataset cannot be committed
+silently.
+
+### Verification performed
+
+| Check | Result |
+|-------|--------|
+| Standings vs game log | W-L-T, PF, PA match for all 32 clubs |
+| Every dataset row has an official source URL | pass |
+| Injury statuses inside the official vocabulary | pass |
+| Correlation inside its own 95% CI | pass |
+| Broken internal links | none |
+| Table row without a source link or an explicit UNVERIFIED badge | none |
+| Unfilled placeholder tokens | none |
+
+Run `python3 scripts/desk_verify.py` to reproduce.
+
+### Known limits (published, not hidden)
+
+* **No market prices.** No official NFL source publishes spreads or totals, so every market column
+  is blank and flagged, and no strategy can be graded. The leaderboard is empty by design.
+* **No player-prop history.** The prop-combo strategy family is registered and blocked.
+* **Small sample.** One season to date; the walk-forward correlation is around +0.20 on 121 games.
+* **Club depth charts are club-published**; most are labelled unofficial, and Houston publishes an
+  image, so its rows cannot be joined.
+* **Luck is bounded, not removed.** Walk-forward testing, a Pythagorean residual and 95% CIs bound
+  it; a single game stays mostly noise.
