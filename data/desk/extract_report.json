@@ -58,7 +58,7 @@
   },
   "depth-DAL": {
    "url": "https://www.nfl.com/games/depth-DAL",
-   "html_bytes": 281518,
+   "html_bytes": 281366,
    "text_bytes": 4677,
    "lines": 167,
    "tabbed_cell_lines": 0
@@ -100,7 +100,7 @@
   },
   "depth-JAX": {
    "url": "https://www.nfl.com/games/depth-JAX",
-   "html_bytes": 310697,
+   "html_bytes": 310836,
    "text_bytes": 5314,
    "lines": 221,
    "tabbed_cell_lines": 0
@@ -226,21 +226,21 @@
   },
   "games__49ers-at-cowboys-2026-reg-10": {
    "url": "https://www.nfl.com/games/49ers-at-cowboys-2026-reg-10",
-   "html_bytes": 1173122,
+   "html_bytes": 1173269,
    "text_bytes": 8696,
    "lines": 615,
    "tabbed_cell_lines": 0
   },
   "games__49ers-at-falcons-2026-reg-7": {
    "url": "https://www.nfl.com/games/49ers-at-falcons-2026-reg-7",
-   "html_bytes": 1237375,
+   "html_bytes": 1237198,
    "text_bytes": 6352,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__49ers-at-rams-2026-reg-1": {
    "url": "https://www.nfl.com/games/49ers-at-rams-2026-reg-1",
-   "html_bytes": 1140158,
+   "html_bytes": 1140286,
    "text_bytes": 6361,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -254,35 +254,35 @@
   },
   "games__bears-at-falcons-2026-reg-6": {
    "url": "https://www.nfl.com/games/bears-at-falcons-2026-reg-6",
-   "html_bytes": 1224690,
+   "html_bytes": 1224733,
    "text_bytes": 6307,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bears-at-packers-2026-reg-5": {
    "url": "https://www.nfl.com/games/bears-at-packers-2026-reg-5",
-   "html_bytes": 1189889,
+   "html_bytes": 1189804,
    "text_bytes": 6284,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bears-at-panthers-2026-reg-1": {
    "url": "https://www.nfl.com/games/bears-at-panthers-2026-reg-1",
-   "html_bytes": 1304446,
+   "html_bytes": 1304448,
    "text_bytes": 6330,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bears-at-seahawks-2026-reg-8": {
    "url": "https://www.nfl.com/games/bears-at-seahawks-2026-reg-8",
-   "html_bytes": 1240593,
+   "html_bytes": 1240369,
    "text_bytes": 6294,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bengals-at-commanders-2026-reg-11": {
    "url": "https://www.nfl.com/games/bengals-at-commanders-2026-reg-11",
-   "html_bytes": 1087299,
+   "html_bytes": 1087097,
    "text_bytes": 8429,
    "lines": 558,
    "tabbed_cell_lines": 0
@@ -310,49 +310,49 @@
   },
   "games__bengals-at-steelers-2026-reg-3": {
    "url": "https://www.nfl.com/games/bengals-at-steelers-2026-reg-3",
-   "html_bytes": 1224784,
+   "html_bytes": 1224783,
    "text_bytes": 6360,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bengals-at-texans-2026-reg-2": {
    "url": "https://www.nfl.com/games/bengals-at-texans-2026-reg-2",
-   "html_bytes": 1219342,
+   "html_bytes": 1214680,
    "text_bytes": 6336,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bills-at-jets-2026-reg-10": {
    "url": "https://www.nfl.com/games/bills-at-jets-2026-reg-10",
-   "html_bytes": 1142099,
+   "html_bytes": 1142014,
    "text_bytes": 8572,
    "lines": 615,
    "tabbed_cell_lines": 0
   },
   "games__bills-at-raiders-2026-reg-6": {
    "url": "https://www.nfl.com/games/bills-at-raiders-2026-reg-6",
-   "html_bytes": 1275147,
+   "html_bytes": 1275277,
    "text_bytes": 6318,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bills-at-rams-2026-reg-5": {
    "url": "https://www.nfl.com/games/bills-at-rams-2026-reg-5",
-   "html_bytes": 1280591,
+   "html_bytes": 1280549,
    "text_bytes": 6370,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__bills-at-texans-2026-reg-1": {
    "url": "https://www.nfl.com/games/bills-at-texans-2026-reg-1",
-   "html_bytes": 1261681,
+   "html_bytes": 1261725,
    "text_bytes": 6296,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__bills-at-vikings-2026-reg-9": {
    "url": "https://www.nfl.com/games/bills-at-vikings-2026-reg-9",
-   "html_bytes": 1236246,
+   "html_bytes": 1236289,
    "text_bytes": 6329,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -366,42 +366,42 @@
   },
   "games__broncos-at-cardinals-2026-reg-7": {
    "url": "https://www.nfl.com/games/broncos-at-cardinals-2026-reg-7",
-   "html_bytes": 1245816,
+   "html_bytes": 1245988,
    "text_bytes": 6340,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__broncos-at-chargers-2026-reg-5": {
    "url": "https://www.nfl.com/games/broncos-at-chargers-2026-reg-5",
-   "html_bytes": 1178586,
+   "html_bytes": 1178543,
    "text_bytes": 6330,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__broncos-at-chiefs-2026-reg-1": {
    "url": "https://www.nfl.com/games/broncos-at-chiefs-2026-reg-1",
-   "html_bytes": 1178895,
+   "html_bytes": 1178938,
    "text_bytes": 6323,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__broncos-at-panthers-2026-reg-9": {
    "url": "https://www.nfl.com/games/broncos-at-panthers-2026-reg-9",
-   "html_bytes": 1251730,
+   "html_bytes": 1251729,
    "text_bytes": 6354,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__browns-at-buccaneers-2026-reg-2": {
    "url": "https://www.nfl.com/games/browns-at-buccaneers-2026-reg-2",
-   "html_bytes": 1247018,
+   "html_bytes": 1247060,
    "text_bytes": 6374,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__browns-at-jaguars-2026-reg-1": {
    "url": "https://www.nfl.com/games/browns-at-jaguars-2026-reg-1",
-   "html_bytes": 1199751,
+   "html_bytes": 1199752,
    "text_bytes": 6372,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -415,7 +415,7 @@
   },
   "games__browns-at-saints-2026-reg-9": {
    "url": "https://www.nfl.com/games/browns-at-saints-2026-reg-9",
-   "html_bytes": 1272601,
+   "html_bytes": 1272554,
    "text_bytes": 6426,
    "lines": 421,
    "tabbed_cell_lines": 0
@@ -429,126 +429,126 @@
   },
   "games__browns-at-titans-2026-reg-7": {
    "url": "https://www.nfl.com/games/browns-at-titans-2026-reg-7",
-   "html_bytes": 1228225,
+   "html_bytes": 1228314,
    "text_bytes": 6335,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__buccaneers-at-bears-2026-reg-9": {
    "url": "https://www.nfl.com/games/buccaneers-at-bears-2026-reg-9",
-   "html_bytes": 1253599,
+   "html_bytes": 1253685,
    "text_bytes": 6361,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__buccaneers-at-bengals-2026-reg-1": {
    "url": "https://www.nfl.com/games/buccaneers-at-bengals-2026-reg-1",
-   "html_bytes": 1205486,
+   "html_bytes": 1205531,
    "text_bytes": 6405,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__buccaneers-at-cowboys-2026-reg-5": {
    "url": "https://www.nfl.com/games/buccaneers-at-cowboys-2026-reg-5",
-   "html_bytes": 1217186,
+   "html_bytes": 1217099,
    "text_bytes": 6373,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__buccaneers-at-lions-2026-reg-11": {
    "url": "https://www.nfl.com/games/buccaneers-at-lions-2026-reg-11",
-   "html_bytes": 1096219,
+   "html_bytes": 1096302,
    "text_bytes": 8448,
    "lines": 570,
    "tabbed_cell_lines": 0
   },
   "games__buccaneers-at-panthers-2026-reg-7": {
    "url": "https://www.nfl.com/games/buccaneers-at-panthers-2026-reg-7",
-   "html_bytes": 1201869,
+   "html_bytes": 1201954,
    "text_bytes": 6398,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cardinals-at-49ers-2026-reg-3": {
    "url": "https://www.nfl.com/games/cardinals-at-49ers-2026-reg-3",
-   "html_bytes": 1225549,
+   "html_bytes": 1225678,
    "text_bytes": 6343,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cardinals-at-chargers-2026-reg-1": {
    "url": "https://www.nfl.com/games/cardinals-at-chargers-2026-reg-1",
-   "html_bytes": 1192391,
+   "html_bytes": 1192477,
    "text_bytes": 6369,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cardinals-at-chiefs-2026-reg-11": {
    "url": "https://www.nfl.com/games/cardinals-at-chiefs-2026-reg-11",
-   "html_bytes": 1094946,
+   "html_bytes": 1095163,
    "text_bytes": 8467,
    "lines": 570,
    "tabbed_cell_lines": 0
   },
   "games__cardinals-at-cowboys-2026-reg-8": {
    "url": "https://www.nfl.com/games/cardinals-at-cowboys-2026-reg-8",
-   "html_bytes": 1306920,
+   "html_bytes": 1306611,
    "text_bytes": 6402,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__cardinals-at-giants-2026-reg-4": {
    "url": "https://www.nfl.com/games/cardinals-at-giants-2026-reg-4",
-   "html_bytes": 1252646,
+   "html_bytes": 1252518,
    "text_bytes": 6351,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cardinals-at-rams-2026-reg-6": {
    "url": "https://www.nfl.com/games/cardinals-at-rams-2026-reg-6",
-   "html_bytes": 1215712,
+   "html_bytes": 1215670,
    "text_bytes": 6315,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cardinals-at-seahawks-2026-reg-9": {
    "url": "https://www.nfl.com/games/cardinals-at-seahawks-2026-reg-9",
-   "html_bytes": 1104060,
+   "html_bytes": 1104061,
    "text_bytes": 6321,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__chargers-at-bills-2026-reg-3": {
    "url": "https://www.nfl.com/games/chargers-at-bills-2026-reg-3",
-   "html_bytes": 1244576,
+   "html_bytes": 1244619,
    "text_bytes": 6350,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__chargers-at-chiefs-2026-reg-6": {
    "url": "https://www.nfl.com/games/chargers-at-chiefs-2026-reg-6",
-   "html_bytes": 1179534,
+   "html_bytes": 1179578,
    "text_bytes": 6362,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__chargers-at-rams-2026-reg-8": {
    "url": "https://www.nfl.com/games/chargers-at-rams-2026-reg-8",
-   "html_bytes": 1132977,
+   "html_bytes": 1132890,
    "text_bytes": 6351,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__chargers-at-ravens-2026-reg-10": {
    "url": "https://www.nfl.com/games/chargers-at-ravens-2026-reg-10",
-   "html_bytes": 1173963,
+   "html_bytes": 1173747,
    "text_bytes": 8669,
    "lines": 603,
    "tabbed_cell_lines": 0
   },
   "games__chargers-at-seahawks-2026-reg-4": {
    "url": "https://www.nfl.com/games/chargers-at-seahawks-2026-reg-4",
-   "html_bytes": 1263375,
+   "html_bytes": 1263418,
    "text_bytes": 6357,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -562,35 +562,35 @@
   },
   "games__chiefs-at-dolphins-2026-reg-3": {
    "url": "https://www.nfl.com/games/chiefs-at-dolphins-2026-reg-3",
-   "html_bytes": 1206846,
+   "html_bytes": 1206799,
    "text_bytes": 6340,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__chiefs-at-falcons-2026-reg-10": {
    "url": "https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10",
-   "html_bytes": 1177205,
+   "html_bytes": 1177377,
    "text_bytes": 8718,
    "lines": 615,
    "tabbed_cell_lines": 0
   },
   "games__chiefs-at-raiders-2026-reg-4": {
    "url": "https://www.nfl.com/games/chiefs-at-raiders-2026-reg-4",
-   "html_bytes": 1231744,
+   "html_bytes": 1231743,
    "text_bytes": 6332,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__chiefs-at-seahawks-2026-reg-7": {
    "url": "https://www.nfl.com/games/chiefs-at-seahawks-2026-reg-7",
-   "html_bytes": 1161647,
+   "html_bytes": 1161644,
    "text_bytes": 6336,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__colts-at-chiefs-2026-reg-2": {
    "url": "https://www.nfl.com/games/colts-at-chiefs-2026-reg-2",
-   "html_bytes": 1295264,
+   "html_bytes": 1295220,
    "text_bytes": 6425,
    "lines": 421,
    "tabbed_cell_lines": 0
@@ -604,21 +604,21 @@
   },
   "games__colts-at-jaguars-2026-reg-8": {
    "url": "https://www.nfl.com/games/colts-at-jaguars-2026-reg-8",
-   "html_bytes": 1169407,
+   "html_bytes": 1169360,
    "text_bytes": 6353,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__colts-at-steelers-2026-reg-5": {
    "url": "https://www.nfl.com/games/colts-at-steelers-2026-reg-5",
-   "html_bytes": 1260595,
+   "html_bytes": 1255889,
    "text_bytes": 6366,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__colts-at-texans-2026-reg-11": {
    "url": "https://www.nfl.com/games/colts-at-texans-2026-reg-11",
-   "html_bytes": 1073712,
+   "html_bytes": 1073625,
    "text_bytes": 8371,
    "lines": 570,
    "tabbed_cell_lines": 0
@@ -632,35 +632,35 @@
   },
   "games__commanders-at-49ers-2026-reg-6": {
    "url": "https://www.nfl.com/games/commanders-at-49ers-2026-reg-6",
-   "html_bytes": 1219441,
+   "html_bytes": 1219481,
    "text_bytes": 6407,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__commanders-at-cowboys-2026-reg-2": {
    "url": "https://www.nfl.com/games/commanders-at-cowboys-2026-reg-2",
-   "html_bytes": 1176541,
+   "html_bytes": 1176497,
    "text_bytes": 6358,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__commanders-at-eagles-2026-reg-1": {
    "url": "https://www.nfl.com/games/commanders-at-eagles-2026-reg-1",
-   "html_bytes": 1204009,
+   "html_bytes": 1204053,
    "text_bytes": 6413,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__commanders-at-giants-2026-reg-10": {
    "url": "https://www.nfl.com/games/commanders-at-giants-2026-reg-10",
-   "html_bytes": 1213667,
+   "html_bytes": 1213886,
    "text_bytes": 6381,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cowboys-at-colts-2026-reg-9": {
    "url": "https://www.nfl.com/games/cowboys-at-colts-2026-reg-9",
-   "html_bytes": 1262820,
+   "html_bytes": 1262863,
    "text_bytes": 6361,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -674,42 +674,42 @@
   },
   "games__cowboys-at-giants-2026-reg-1": {
    "url": "https://www.nfl.com/games/cowboys-at-giants-2026-reg-1",
-   "html_bytes": 1131054,
+   "html_bytes": 1131095,
    "text_bytes": 6328,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cowboys-at-packers-2026-reg-6": {
    "url": "https://www.nfl.com/games/cowboys-at-packers-2026-reg-6",
-   "html_bytes": 1229783,
+   "html_bytes": 1229738,
    "text_bytes": 6344,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__cowboys-at-texans-2026-reg-4": {
    "url": "https://www.nfl.com/games/cowboys-at-texans-2026-reg-4",
-   "html_bytes": 1263738,
+   "html_bytes": 1263654,
    "text_bytes": 6326,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__dolphins-at-49ers-2026-reg-2": {
    "url": "https://www.nfl.com/games/dolphins-at-49ers-2026-reg-2",
-   "html_bytes": 1203994,
+   "html_bytes": 1204080,
    "text_bytes": 6341,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__dolphins-at-bills-2026-reg-11": {
    "url": "https://www.nfl.com/games/dolphins-at-bills-2026-reg-11",
-   "html_bytes": 1061328,
+   "html_bytes": 1061286,
    "text_bytes": 8258,
    "lines": 558,
    "tabbed_cell_lines": 0
   },
   "games__dolphins-at-colts-2026-reg-10": {
    "url": "https://www.nfl.com/games/dolphins-at-colts-2026-reg-10",
-   "html_bytes": 1171473,
+   "html_bytes": 1171301,
    "text_bytes": 8740,
    "lines": 615,
    "tabbed_cell_lines": 0
@@ -723,21 +723,21 @@
   },
   "games__dolphins-at-raiders-2026-reg-1": {
    "url": "https://www.nfl.com/games/dolphins-at-raiders-2026-reg-1",
-   "html_bytes": 1225879,
+   "html_bytes": 1225966,
    "text_bytes": 6333,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__dolphins-at-vikings-2026-reg-4": {
    "url": "https://www.nfl.com/games/dolphins-at-vikings-2026-reg-4",
-   "html_bytes": 1202692,
+   "html_bytes": 1202650,
    "text_bytes": 6344,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__eagles-at-bears-2026-reg-3": {
    "url": "https://www.nfl.com/games/eagles-at-bears-2026-reg-3",
-   "html_bytes": 1181609,
+   "html_bytes": 1181523,
    "text_bytes": 6340,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -751,70 +751,70 @@
   },
   "games__eagles-at-jaguars-2026-reg-5": {
    "url": "https://www.nfl.com/games/eagles-at-jaguars-2026-reg-5",
-   "html_bytes": 1229273,
+   "html_bytes": 1229359,
    "text_bytes": 6402,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__eagles-at-titans-2026-reg-2": {
    "url": "https://www.nfl.com/games/eagles-at-titans-2026-reg-2",
-   "html_bytes": 1236537,
+   "html_bytes": 1236450,
    "text_bytes": 6367,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__falcons-at-buccaneers-2026-reg-8": {
    "url": "https://www.nfl.com/games/falcons-at-buccaneers-2026-reg-8",
-   "html_bytes": 1101593,
+   "html_bytes": 1101592,
    "text_bytes": 6371,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__falcons-at-packers-2026-reg-3": {
    "url": "https://www.nfl.com/games/falcons-at-packers-2026-reg-3",
-   "html_bytes": 1239855,
+   "html_bytes": 1240026,
    "text_bytes": 6356,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__falcons-at-saints-2026-reg-4": {
    "url": "https://www.nfl.com/games/falcons-at-saints-2026-reg-4",
-   "html_bytes": 1224758,
+   "html_bytes": 1224760,
    "text_bytes": 6351,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__falcons-at-steelers-2026-reg-1": {
    "url": "https://www.nfl.com/games/falcons-at-steelers-2026-reg-1",
-   "html_bytes": 1198952,
+   "html_bytes": 1198863,
    "text_bytes": 6382,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__giants-at-commanders-2026-reg-5": {
    "url": "https://www.nfl.com/games/giants-at-commanders-2026-reg-5",
-   "html_bytes": 1253906,
+   "html_bytes": 1253949,
    "text_bytes": 6441,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__giants-at-eagles-2026-reg-9": {
    "url": "https://www.nfl.com/games/giants-at-eagles-2026-reg-9",
-   "html_bytes": 1215143,
+   "html_bytes": 1215100,
    "text_bytes": 6365,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__giants-at-rams-2026-reg-2": {
    "url": "https://www.nfl.com/games/giants-at-rams-2026-reg-2",
-   "html_bytes": 1196815,
+   "html_bytes": 1196772,
    "text_bytes": 6331,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__giants-at-texans-2026-reg-7": {
    "url": "https://www.nfl.com/games/giants-at-texans-2026-reg-7",
-   "html_bytes": 1236449,
+   "html_bytes": 1236492,
    "text_bytes": 6401,
    "lines": 421,
    "tabbed_cell_lines": 0
@@ -828,49 +828,49 @@
   },
   "games__jaguars-at-broncos-2026-reg-2": {
    "url": "https://www.nfl.com/games/jaguars-at-broncos-2026-reg-2",
-   "html_bytes": 1203740,
+   "html_bytes": 1203697,
    "text_bytes": 6361,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__jaguars-at-giants-2026-reg-11": {
    "url": "https://www.nfl.com/games/jaguars-at-giants-2026-reg-11",
-   "html_bytes": 1090352,
+   "html_bytes": 1090308,
    "text_bytes": 8374,
    "lines": 558,
    "tabbed_cell_lines": 0
   },
   "games__jaguars-at-ravens-2026-reg-9": {
    "url": "https://www.nfl.com/games/jaguars-at-ravens-2026-reg-9",
-   "html_bytes": 1154696,
+   "html_bytes": 1154914,
    "text_bytes": 6358,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__jaguars-at-titans-2026-reg-10": {
    "url": "https://www.nfl.com/games/jaguars-at-titans-2026-reg-10",
-   "html_bytes": 1136777,
+   "html_bytes": 1136950,
    "text_bytes": 8821,
    "lines": 615,
    "tabbed_cell_lines": 0
   },
   "games__jets-at-bears-2026-reg-4": {
    "url": "https://www.nfl.com/games/jets-at-bears-2026-reg-4",
-   "html_bytes": 1140932,
+   "html_bytes": 1140891,
    "text_bytes": 6280,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__jets-at-chargers-2026-reg-11": {
    "url": "https://www.nfl.com/games/jets-at-chargers-2026-reg-11",
-   "html_bytes": 1096147,
+   "html_bytes": 1096063,
    "text_bytes": 8428,
    "lines": 570,
    "tabbed_cell_lines": 0
   },
   "games__jets-at-chiefs-2026-reg-9": {
    "url": "https://www.nfl.com/games/jets-at-chiefs-2026-reg-9",
-   "html_bytes": 1245725,
+   "html_bytes": 1245639,
    "text_bytes": 6324,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -884,119 +884,119 @@
   },
   "games__jets-at-patriots-2026-reg-6": {
    "url": "https://www.nfl.com/games/jets-at-patriots-2026-reg-6",
-   "html_bytes": 1223003,
+   "html_bytes": 1223002,
    "text_bytes": 6320,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__jets-at-titans-2026-reg-1": {
    "url": "https://www.nfl.com/games/jets-at-titans-2026-reg-1",
-   "html_bytes": 1158429,
+   "html_bytes": 1158343,
    "text_bytes": 6307,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__lions-at-bills-2026-reg-2": {
    "url": "https://www.nfl.com/games/lions-at-bills-2026-reg-2",
-   "html_bytes": 1277088,
+   "html_bytes": 1277132,
    "text_bytes": 6287,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__lions-at-cardinals-2026-reg-5": {
    "url": "https://www.nfl.com/games/lions-at-cardinals-2026-reg-5",
-   "html_bytes": 1266345,
+   "html_bytes": 1266388,
    "text_bytes": 6316,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__lions-at-dolphins-2026-reg-9": {
    "url": "https://www.nfl.com/games/lions-at-dolphins-2026-reg-9",
-   "html_bytes": 1155311,
+   "html_bytes": 1155313,
    "text_bytes": 6298,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__lions-at-panthers-2026-reg-4": {
    "url": "https://www.nfl.com/games/lions-at-panthers-2026-reg-4",
-   "html_bytes": 1272018,
+   "html_bytes": 1271889,
    "text_bytes": 6330,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__packers-at-buccaneers-2026-reg-4": {
    "url": "https://www.nfl.com/games/packers-at-buccaneers-2026-reg-4",
-   "html_bytes": 1175054,
+   "html_bytes": 1174926,
    "text_bytes": 6366,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__packers-at-jets-2026-reg-2": {
    "url": "https://www.nfl.com/games/packers-at-jets-2026-reg-2",
-   "html_bytes": 1239577,
+   "html_bytes": 1239753,
    "text_bytes": 6387,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__packers-at-lions-2026-reg-7": {
    "url": "https://www.nfl.com/games/packers-at-lions-2026-reg-7",
-   "html_bytes": 1185425,
+   "html_bytes": 1185381,
    "text_bytes": 6274,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__packers-at-patriots-2026-reg-9": {
    "url": "https://www.nfl.com/games/packers-at-patriots-2026-reg-9",
-   "html_bytes": 1266817,
+   "html_bytes": 1266816,
    "text_bytes": 6358,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__packers-at-vikings-2026-reg-1": {
    "url": "https://www.nfl.com/games/packers-at-vikings-2026-reg-1",
-   "html_bytes": 1223210,
+   "html_bytes": 1222900,
    "text_bytes": 6326,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__panthers-at-browns-2026-reg-3": {
    "url": "https://www.nfl.com/games/panthers-at-browns-2026-reg-3",
-   "html_bytes": 1253030,
+   "html_bytes": 1253073,
    "text_bytes": 6381,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__panthers-at-eagles-2026-reg-6": {
    "url": "https://www.nfl.com/games/panthers-at-eagles-2026-reg-6",
-   "html_bytes": 1233144,
+   "html_bytes": 1233101,
    "text_bytes": 6407,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__panthers-at-falcons-2026-reg-2": {
    "url": "https://www.nfl.com/games/panthers-at-falcons-2026-reg-2",
-   "html_bytes": 1190094,
+   "html_bytes": 1190092,
    "text_bytes": 6354,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__panthers-at-packers-2026-reg-8": {
    "url": "https://www.nfl.com/games/panthers-at-packers-2026-reg-8",
-   "html_bytes": 1221273,
+   "html_bytes": 1221229,
    "text_bytes": 6371,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__panthers-at-saints-2026-reg-10": {
    "url": "https://www.nfl.com/games/panthers-at-saints-2026-reg-10",
-   "html_bytes": 1147320,
+   "html_bytes": 1147125,
    "text_bytes": 8779,
    "lines": 615,
    "tabbed_cell_lines": 0
   },
   "games__patriots-at-bears-2026-reg-7": {
    "url": "https://www.nfl.com/games/patriots-at-bears-2026-reg-7",
-   "html_bytes": 1217507,
+   "html_bytes": 1217547,
    "text_bytes": 6331,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -1010,7 +1010,7 @@
   },
   "games__patriots-at-dolphins-2026-reg-8": {
    "url": "https://www.nfl.com/games/patriots-at-dolphins-2026-reg-8",
-   "html_bytes": 1175162,
+   "html_bytes": 1175119,
    "text_bytes": 6338,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -1024,56 +1024,56 @@
   },
   "games__patriots-at-lions-2026-reg-10": {
    "url": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
-   "html_bytes": 1173757,
+   "html_bytes": 1173756,
    "text_bytes": 8733,
    "lines": 623,
    "tabbed_cell_lines": 0
   },
   "games__patriots-at-seahawks-2026-reg-1": {
    "url": "https://www.nfl.com/games/patriots-at-seahawks-2026-reg-1",
-   "html_bytes": 1190473,
+   "html_bytes": 1185853,
    "text_bytes": 6352,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__raiders-at-49ers-2026-reg-9": {
    "url": "https://www.nfl.com/games/raiders-at-49ers-2026-reg-9",
-   "html_bytes": 1229988,
+   "html_bytes": 1229858,
    "text_bytes": 6355,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__raiders-at-broncos-2026-reg-11": {
    "url": "https://www.nfl.com/games/raiders-at-broncos-2026-reg-11",
-   "html_bytes": 1086621,
+   "html_bytes": 1086711,
    "text_bytes": 8383,
    "lines": 570,
    "tabbed_cell_lines": 0
   },
   "games__raiders-at-chargers-2026-reg-2": {
    "url": "https://www.nfl.com/games/raiders-at-chargers-2026-reg-2",
-   "html_bytes": 1176601,
+   "html_bytes": 1176558,
    "text_bytes": 6345,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__raiders-at-jets-2026-reg-8": {
    "url": "https://www.nfl.com/games/raiders-at-jets-2026-reg-8",
-   "html_bytes": 1268248,
+   "html_bytes": 1268204,
    "text_bytes": 6327,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__raiders-at-patriots-2026-reg-5": {
    "url": "https://www.nfl.com/games/raiders-at-patriots-2026-reg-5",
-   "html_bytes": 1245956,
+   "html_bytes": 1245999,
    "text_bytes": 6370,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__raiders-at-saints-2026-reg-3": {
    "url": "https://www.nfl.com/games/raiders-at-saints-2026-reg-3",
-   "html_bytes": 1268533,
+   "html_bytes": 1268619,
    "text_bytes": 6358,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -1087,14 +1087,14 @@
   },
   "games__rams-at-cardinals-2026-reg-10": {
    "url": "https://www.nfl.com/games/rams-at-cardinals-2026-reg-10",
-   "html_bytes": 1157691,
+   "html_bytes": 1157863,
    "text_bytes": 8810,
    "lines": 627,
    "tabbed_cell_lines": 0
   },
   "games__rams-at-commanders-2026-reg-9": {
    "url": "https://www.nfl.com/games/rams-at-commanders-2026-reg-9",
-   "html_bytes": 1235372,
+   "html_bytes": 1235329,
    "text_bytes": 6371,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -1108,91 +1108,91 @@
   },
   "games__rams-at-raiders-2026-reg-7": {
    "url": "https://www.nfl.com/games/rams-at-raiders-2026-reg-7",
-   "html_bytes": 1252107,
+   "html_bytes": 1252064,
    "text_bytes": 6335,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__ravens-at-bills-2026-reg-8": {
    "url": "https://www.nfl.com/games/ravens-at-bills-2026-reg-8",
-   "html_bytes": 1229100,
+   "html_bytes": 1229101,
    "text_bytes": 6322,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__ravens-at-browns-2026-reg-6": {
    "url": "https://www.nfl.com/games/ravens-at-browns-2026-reg-6",
-   "html_bytes": 1159385,
+   "html_bytes": 1159384,
    "text_bytes": 6329,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__ravens-at-colts-2026-reg-1": {
    "url": "https://www.nfl.com/games/ravens-at-colts-2026-reg-1",
-   "html_bytes": 1227457,
+   "html_bytes": 1227414,
    "text_bytes": 6356,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__ravens-at-cowboys-2026-reg-3": {
    "url": "https://www.nfl.com/games/ravens-at-cowboys-2026-reg-3",
-   "html_bytes": 1264078,
+   "html_bytes": 1264207,
    "text_bytes": 6330,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__ravens-at-falcons-2026-reg-5": {
    "url": "https://www.nfl.com/games/ravens-at-falcons-2026-reg-5",
-   "html_bytes": 1279413,
+   "html_bytes": 1279459,
    "text_bytes": 6414,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__ravens-at-panthers-2026-reg-11": {
    "url": "https://www.nfl.com/games/ravens-at-panthers-2026-reg-11",
-   "html_bytes": 1101144,
+   "html_bytes": 1101232,
    "text_bytes": 8457,
    "lines": 570,
    "tabbed_cell_lines": 0
   },
   "games__saints-at-bears-2026-reg-11": {
    "url": "https://www.nfl.com/games/saints-at-bears-2026-reg-11",
-   "html_bytes": 1089446,
+   "html_bytes": 1094371,
    "text_bytes": 8320,
    "lines": 558,
    "tabbed_cell_lines": 0
   },
   "games__saints-at-giants-2026-reg-6": {
    "url": "https://www.nfl.com/games/saints-at-giants-2026-reg-6",
-   "html_bytes": 1289745,
+   "html_bytes": 1289530,
    "text_bytes": 6370,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__saints-at-lions-2026-reg-1": {
    "url": "https://www.nfl.com/games/saints-at-lions-2026-reg-1",
-   "html_bytes": 1290200,
+   "html_bytes": 1290157,
    "text_bytes": 6403,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__saints-at-ravens-2026-reg-2": {
    "url": "https://www.nfl.com/games/saints-at-ravens-2026-reg-2",
-   "html_bytes": 1218785,
+   "html_bytes": 1218827,
    "text_bytes": 6368,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__seahawks-at-broncos-2026-reg-6": {
    "url": "https://www.nfl.com/games/seahawks-at-broncos-2026-reg-6",
-   "html_bytes": 1230812,
+   "html_bytes": 1230770,
    "text_bytes": 6418,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__seahawks-at-cardinals-2026-reg-2": {
    "url": "https://www.nfl.com/games/seahawks-at-cardinals-2026-reg-2",
-   "html_bytes": 1124403,
+   "html_bytes": 1124404,
    "text_bytes": 6337,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -1206,70 +1206,70 @@
   },
   "games__seahawks-at-raiders-2026-reg-10": {
    "url": "https://www.nfl.com/games/seahawks-at-raiders-2026-reg-10",
-   "html_bytes": 1174850,
+   "html_bytes": 1174851,
    "text_bytes": 8832,
    "lines": 625,
    "tabbed_cell_lines": 0
   },
   "games__steelers-at-bengals-2026-reg-10": {
    "url": "https://www.nfl.com/games/steelers-at-bengals-2026-reg-10",
-   "html_bytes": 1141181,
+   "html_bytes": 1141503,
    "text_bytes": 8714,
    "lines": 609,
    "tabbed_cell_lines": 0
   },
   "games__steelers-at-browns-2026-reg-4": {
    "url": "https://www.nfl.com/games/steelers-at-browns-2026-reg-4",
-   "html_bytes": 1231764,
+   "html_bytes": 1231722,
    "text_bytes": 6353,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__steelers-at-buccaneers-2026-reg-6": {
    "url": "https://www.nfl.com/games/steelers-at-buccaneers-2026-reg-6",
-   "html_bytes": 1291837,
+   "html_bytes": 1291881,
    "text_bytes": 6470,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__steelers-at-eagles-2026-reg-11": {
    "url": "https://www.nfl.com/games/steelers-at-eagles-2026-reg-11",
-   "html_bytes": 1096060,
+   "html_bytes": 1096322,
    "text_bytes": 8425,
    "lines": 558,
    "tabbed_cell_lines": 0
   },
   "games__steelers-at-patriots-2026-reg-2": {
    "url": "https://www.nfl.com/games/steelers-at-patriots-2026-reg-2",
-   "html_bytes": 1190242,
+   "html_bytes": 1190374,
    "text_bytes": 6390,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__steelers-at-saints-2026-reg-7": {
    "url": "https://www.nfl.com/games/steelers-at-saints-2026-reg-7",
-   "html_bytes": 1184664,
+   "html_bytes": 1184665,
    "text_bytes": 6366,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__texans-at-browns-2026-reg-10": {
    "url": "https://www.nfl.com/games/texans-at-browns-2026-reg-10",
-   "html_bytes": 1176081,
+   "html_bytes": 1175762,
    "text_bytes": 8734,
    "lines": 614,
    "tabbed_cell_lines": 0
   },
   "games__texans-at-chargers-2026-reg-9": {
    "url": "https://www.nfl.com/games/texans-at-chargers-2026-reg-9",
-   "html_bytes": 1263633,
+   "html_bytes": 1263453,
    "text_bytes": 6339,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__texans-at-colts-2026-reg-3": {
    "url": "https://www.nfl.com/games/texans-at-colts-2026-reg-3",
-   "html_bytes": 1207390,
+   "html_bytes": 1207434,
    "text_bytes": 6316,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -1283,77 +1283,77 @@
   },
   "games__texans-at-titans-2026-reg-5": {
    "url": "https://www.nfl.com/games/texans-at-titans-2026-reg-5",
-   "html_bytes": 1174651,
+   "html_bytes": 1174737,
    "text_bytes": 6295,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__titans-at-bengals-2026-reg-8": {
    "url": "https://www.nfl.com/games/titans-at-bengals-2026-reg-8",
-   "html_bytes": 1300056,
+   "html_bytes": 1300055,
    "text_bytes": 6416,
    "lines": 421,
    "tabbed_cell_lines": 0
   },
   "games__titans-at-colts-2026-reg-6": {
    "url": "https://www.nfl.com/games/titans-at-colts-2026-reg-6",
-   "html_bytes": 1199357,
+   "html_bytes": 1199269,
    "text_bytes": 6328,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__titans-at-cowboys-2026-reg-11": {
    "url": "https://www.nfl.com/games/titans-at-cowboys-2026-reg-11",
-   "html_bytes": 1085858,
+   "html_bytes": 1085901,
    "text_bytes": 8281,
    "lines": 558,
    "tabbed_cell_lines": 0
   },
   "games__titans-at-giants-2026-reg-3": {
    "url": "https://www.nfl.com/games/titans-at-giants-2026-reg-3",
-   "html_bytes": 1188828,
+   "html_bytes": 1188870,
    "text_bytes": 6333,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__titans-at-ravens-2026-reg-4": {
    "url": "https://www.nfl.com/games/titans-at-ravens-2026-reg-4",
-   "html_bytes": 1217707,
+   "html_bytes": 1217665,
    "text_bytes": 6331,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__vikings-at-49ers-2026-reg-11": {
    "url": "https://www.nfl.com/games/vikings-at-49ers-2026-reg-11",
-   "html_bytes": 1081597,
+   "html_bytes": 1081855,
    "text_bytes": 8280,
    "lines": 554,
    "tabbed_cell_lines": 0
   },
   "games__vikings-at-bears-2026-reg-2": {
    "url": "https://www.nfl.com/games/vikings-at-bears-2026-reg-2",
-   "html_bytes": 1172923,
+   "html_bytes": 1173232,
    "text_bytes": 6283,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__vikings-at-buccaneers-2026-reg-3": {
    "url": "https://www.nfl.com/games/vikings-at-buccaneers-2026-reg-3",
-   "html_bytes": 1238633,
+   "html_bytes": 1238586,
    "text_bytes": 6369,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__vikings-at-lions-2026-reg-8": {
    "url": "https://www.nfl.com/games/vikings-at-lions-2026-reg-8",
-   "html_bytes": 1175276,
+   "html_bytes": 1175233,
    "text_bytes": 6277,
    "lines": 413,
    "tabbed_cell_lines": 0
   },
   "games__vikings-at-packers-2026-reg-10": {
    "url": "https://www.nfl.com/games/vikings-at-packers-2026-reg-10",
-   "html_bytes": 1155200,
+   "html_bytes": 1155115,
    "text_bytes": 8709,
    "lines": 615,
    "tabbed_cell_lines": 0
@@ -1395,7 +1395,7 @@
   },
   "schedule-w1": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-1",
-   "html_bytes": 2354655,
+   "html_bytes": 2349971,
    "text_bytes": 8783,
    "lines": 477,
    "tabbed_cell_lines": 0
@@ -1423,28 +1423,28 @@
   },
   "schedule-w3": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-3",
-   "html_bytes": 2352899,
+   "html_bytes": 2352897,
    "text_bytes": 8781,
    "lines": 477,
    "tabbed_cell_lines": 0
   },
   "schedule-w4": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-4",
-   "html_bytes": 2353151,
+   "html_bytes": 2353152,
    "text_bytes": 8728,
    "lines": 477,
    "tabbed_cell_lines": 0
   },
   "schedule-w5": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-5",
-   "html_bytes": 2338385,
+   "html_bytes": 2338383,
    "text_bytes": 8745,
    "lines": 475,
    "tabbed_cell_lines": 0
   },
   "schedule-w6": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-6",
-   "html_bytes": 2323194,
+   "html_bytes": 2323195,
    "text_bytes": 8710,
    "lines": 471,
    "tabbed_cell_lines": 0

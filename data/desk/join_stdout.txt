@@ -1,0 +1,26 @@
+{
+ "rows": 286,
+ "matched": 210,
+ "unmatched": 144,
+ "by_depth_string": {
+  "1": 142,
+  "2": 55,
+  "3": 13,
+  "4": 0,
+  "unknown": 76
+ },
+ "by_group": {
+  "offense": 151,
+  "defense": 128,
+  "special": 7,
+  "unknown": 0
+ },
+ "weeks": [
+  8,
+  9,
+  10,
+  11
+ ],
+ "starter_outs": 142,
+ "backup_promotions": 68
+}
