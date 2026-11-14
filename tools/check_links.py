@@ -28,14 +28,30 @@ def main():
             if not os.path.exists(os.path.join(ROOT, target)):
                 problems.append(f"{page}: broken link -> {href}")
 
-    # Sanity: every data table should contain a source link cell.
-    # We approximate by ensuring each data page contains 'class="src"'.
-    for page in pages:
-        with open(os.path.join(ROOT, page), encoding="utf-8") as f:
+    # Sanity: verified-data pages must carry per-row source cells; the flagged
+    # page must carry external source links. Methodology pages (requirements,
+    # suggestions) have no per-row official source and are covered by the
+    # broken-link check + the integrated scripts/check_site.py.
+    data_pages = {
+        "executive-summary.html", "lines.html", "leaderboard.html",
+        "injuries.html", "verification.html",
+    }
+    for page in data_pages:
+        path = os.path.join(ROOT, page)
+        if not os.path.exists(path):
+            problems.append(f"{page}: authored page missing")
+            continue
+        with open(path, encoding="utf-8") as f:
             txt = f.read()
-        if "source" in page or page in ("index.html",):
-            if 'class="src"' not in txt:
-                problems.append(f"{page}: data page has no source-link cells")
+        if 'class="src"' not in txt:
+            problems.append(f"{page}: data page has no source-link cells")
+
+    flag_path = os.path.join(ROOT, "flagged.html")
+    if os.path.exists(flag_path):
+        with open(flag_path, encoding="utf-8") as f:
+            txt = f.read()
+        if 'href="https://' not in txt:
+            problems.append("flagged.html: no external source links")
 
     if problems:
         print("FAIL — issues found:")
