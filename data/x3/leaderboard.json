@@ -1,0 +1,121 @@
+{
+ "as_of": "2026-11-14",
+ "clv_note": "True CLV needs an opening or bet-time market snapshot; no 2026 opening-line source exists (Q-01/F-01), so published signal = pre-close edge vs the PFF closing line.",
+ "flat_stake": "1u at market close, paper",
+ "leaderboard": [
+  {
+   "bets": 1139,
+   "breakeven": 0.4762,
+   "brier": 0.2809,
+   "by_season": [
+    {
+     "bets": 222,
+     "roi_flat": -0.0405,
+     "season": 2021
+    },
+    {
+     "bets": 208,
+     "roi_flat": 0.0105,
+     "season": 2022
+    },
+    {
+     "bets": 210,
+     "roi_flat": -0.1294,
+     "season": 2023
+    },
+    {
+     "bets": 208,
+     "roi_flat": -0.017,
+     "season": 2024
+    },
+    {
+     "bets": 206,
+     "roi_flat": 0.015,
+     "season": 2025
+    },
+    {
+     "bets": 85,
+     "roi_flat": -0.0439,
+     "season": 2026
+    }
+   ],
+   "exp_hit_from_fair": 0.6618,
+   "hit_ci90": [
+    0.4812,
+    0.5305
+   ],
+   "hit_rate": 0.5058,
+   "kelly_final_bank": 20.82,
+   "kelly_max_drawdown": 0.8511,
+   "losses": 550,
+   "luck_z": -10.995,
+   "mean_edge_pts": 6.115,
+   "min_roll20_edge": 4.05,
+   "note": "flat 1u at market close; paper only",
+   "profit_units_flat": -38.18,
+   "pushes": 26,
+   "roi_flat": -0.0335,
+   "seasons_profitable": 2,
+   "strategy": "SID",
+   "wins": 563
+  },
+  {
+   "bets": 1042,
+   "breakeven": 0.4762,
+   "brier": 0.2751,
+   "by_season": [
+    {
+     "bets": 203,
+     "roi_flat": 0.0443,
+     "season": 2021
+    },
+    {
+     "bets": 188,
+     "roi_flat": -0.0701,
+     "season": 2022
+    },
+    {
+     "bets": 192,
+     "roi_flat": -0.0303,
+     "season": 2023
+    },
+    {
+     "bets": 192,
+     "roi_flat": -0.0152,
+     "season": 2024
+    },
+    {
+     "bets": 180,
+     "roi_flat": -0.0242,
+     "season": 2025
+    },
+    {
+     "bets": 87,
+     "roi_flat": -0.1442,
+     "season": 2026
+    }
+   ],
+   "exp_hit_from_fair": 0.6458,
+   "hit_ci90": [
+    0.4831,
+    0.5343
+   ],
+   "hit_rate": 0.5087,
+   "kelly_final_bank": 27.3,
+   "kelly_max_drawdown": 0.8313,
+   "losses": 508,
+   "luck_z": -9.218,
+   "mean_edge_pts": 4.968,
+   "min_roll20_edge": 3.475,
+   "note": "flat 1u at market close; paper only",
+   "profit_units_flat": -29.82,
+   "pushes": 8,
+   "roi_flat": -0.0286,
+   "seasons_profitable": 1,
+   "strategy": "TOT",
+   "wins": 526
+  }
+ ],
+ "luck_note": "luck_z is the binomial z of realized hit rate vs the fair-probability expectation; Kelly row uses quarter-Kelly capped 3%; all paper.",
+ "signal_note": "SIGNAL columns (mean pre-close edge, Brier, hit-rate CI) measure the line, not the money; STAKING columns (ROI flat, Kelly bank, drawdown) are shown separately so a lucky staking run cannot mask a bad signal."
+}
