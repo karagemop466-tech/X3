@@ -635,3 +635,52 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 - **Live verification:** https://karagemop466-tech.github.io/X3/audit/ fetched 2026-11-14 and renders the summary, the flagged list (F-A01 to F-A06), the schedule check, and the 345-row table with per-row NFL.com source links.
 - Not done by this session (logged as requests above): link `audit/` from the root landing and `docs/` navigation; correct the NE/DET label and LAC/BAL TV field in the shared dataset. Both belong to the integration owner.
 
+
+---
+
+## Session `arena/37c71381-x3` — cross-module register reconciliation (CLAIM)
+
+- **Session ID:** `session-arena-37c71381-x3`. **Branch:** `arena/37c71381-x3` (platform-fixed; the
+  `session-<id>/<task>` naming from the brief is not available on this platform — deviation logged,
+  as every prior session has done). **Base:** `main` @ `54608abc` (PR #18); `origin/main` is merged
+  into this branch before every push, per protocol.
+- **Claim (committed before any work, per protocol):** a cross-module reconciliation layer. Eight
+  merged sessions each published their own registers (requirements, questions, suggestions, flags,
+  strategies) and no session ever compared its register with another's. This session reads every
+  register line by line, reconciles them, publishes the result as a new additive site unit with a
+  consolidated Flagged-for-Review index and site-improvement suggestions, and runs one repo-wide
+  checker over all modules.
+- **File scope claimed (non-overlapping; new paths only):**
+
+| Path | Purpose |
+|---|---|
+| `crosscheck/**` | new site unit: landing + requirements / questions / suggestions / flagged / executive-summary / verification subpages |
+| `crosscheck/data/**` | machine-readable reconciliation report emitted by the checker |
+| `tools/crosscheck.py` | one deterministic tool: repo-wide internal-link audit + table-row source/flag audit + register reconciliation → `crosscheck/data/report.json`, then generates `crosscheck/*.html` |
+| `COORDINATION.md` | this appended section only |
+
+- **Explicitly NOT touched:** `index.html`, `README.md`, `.github/workflows/pages.yml` (claimed by
+  the hub/integration sessions), and every other session's tree: `docs/**`, `dashboard/**`, `lab/**`,
+  `x3lab/**`, `pages/**`, `site/**`, `legacy/**`, `audit/**`, `data/**` (existing CSVs),
+  `research/**`, `analysis/**`, `assets/**`, `scripts/*`, `tools/*` files owned by others, and the
+  root category pages.
+- **Nav requests logged (not edited):** hub/integration owners (`arena/1e2d8ef2-x3`,
+  `arena/e9b492ab-x3`, `arena/3bf7cc8b-x3`, `arena/621bf404-x3`) — please link
+  `crosscheck/index.html` from your landing pages when you own them. `crosscheck/` already links
+  outward to every existing module.
+- **Overlap notes logged, not edited:** `hub/**` is claimed twice (`arena/1e2d8ef2-x3` +
+  `arena/e9b492ab-x3`) and root `index.html` is claimed four ways; `arena/64164906-x3`
+  (data-pipeline, unrelated git history, own COORDINATION.md) has been stale since
+  2026-11-14T04:07Z (>14 h) with 9 failing workflow runs — takeover is permitted by protocol but
+  merging an unrelated-history tree blind would risk discarding work, so it is handed off here
+  instead.
+
+### Task board (arena/37c71381-x3)
+
+| # | Task | Status | Files |
+|---|------|--------|-------|
+| C1 | Read COORDINATION.md; claim scope; push claim first | done | `COORDINATION.md` |
+| C2 | `tools/crosscheck.py`: repo-wide link + row-source audit + register reconciliation | in progress | `tools/crosscheck.py`, `crosscheck/data/report.json` |
+| C3 | `crosscheck/` site unit (landing + subpages), every row linked or flagged | pending | `crosscheck/**` |
+| C4 | Line-by-line verification of this session's output; rerun all pre-existing checkers | pending | `crosscheck/verification.html` |
+| C5 | PR → merge → confirm GitHub Pages deploy → record here | pending | `COORDINATION.md` |
