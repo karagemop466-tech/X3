@@ -501,15 +501,21 @@ published for that player at capture time. It never means available.</div>
     s = d["summary"]
     lrows = []
     for r_ in d["rows"]:
-        if r_["join"].startswith("matched") and isinstance(r_["depth_string"], int):
+        if r_["join"] in ("matched", "matched-no-backup"):
             lrows.append([r_["team"], e(r_["player"]), e(r_["pos"]), e(r_["status"]),
-                          str(r_["week"]), e(r_["unit"]), e(r_["slot"]),
+                          str(r_["week"]), e(r_["unit"] if r_["unit"] not in ("", "Unknown") else "unit not stated"), e(r_["slot"]),
                           f"<b>{r_['depth_string']}</b>",
                           e(r_["replacement"] or "—"),
-                          e(str(r_["replacement_depth"]) or "—"),
+                          e(str(r_["replacement_depth"]) if r_["replacement"] else "—"),
                           src(r_["depth_source"], "club chart"),
                           src(r_["injury_source"], "injury report")])
-    unmatched = [r_ for r_ in d["rows"] if not r_["join"].startswith("matched")]
+    partial = [r_ for r_ in d["rows"] if r_["join"] == "matched-name-only"]
+    prows = [[r_["team"], e(r_["player"]), e(r_["status"]), e(r_["pos"]),
+              e(r_["slot"]), str(r_["depth_string"]),
+              src(r_["depth_source"], "club chart"), src(r_["injury_source"], "injury report"),
+              flag("UNVERIFIED: position differs")] for r_ in partial]
+    unmatched = [r_ for r_ in d["rows"]
+                 if r_["join"] not in ("matched", "matched-no-backup", "matched-name-only")]
     urows = [[r_["team"], e(r_["player"]), e(r_["pos"]), e(r_["status"]),
               e(r_["join"] or "no join reason recorded"),
               src(r_["injury_source"], "injury report"), flag("UNVERIFIED: depth string")]
@@ -523,19 +529,25 @@ string 1 is the starter, string 2 the primary backup, strings 3 and 4 the emerge
 Rows are per player per week, so a player out for two weeks appears twice.</p>
 <div class="kpis">
 {kpi(str(s['rows']), 'Out/Doubtful rows', f"weeks {s['weeks'][0]}–{s['weeks'][-1]}")}
-{kpi(str(s['matched']), 'Joined to a depth string')}
+{kpi(str(s['matched']), 'Exact-position joins', 'used in the headline counts')}
+{kpi(str(s['matched_name_only']), 'Partial matches', 'name only; flagged and excluded')}
 {kpi(str(starter_out), 'String-1 absences', 'starters missing from the top of the chart')}
-{kpi(str(s['by_depth_string']['2'] + s['by_depth_string']['3'] + s['by_depth_string']['4']),
-     'Backup promotions', 'string 2+ absences, forcing a deeper body')}
+{kpi(str(s['by_depth_string']['2'] + s['by_depth_string']['3']),
+     'Backup absences', 'string 2+ missing, forcing a deeper body')}
 {kpi(str(s['unmatched']), 'Not joinable', 'kept visible, never guessed')}
 </div>
 {table(['Team', 'Player', 'Pos', 'Status', 'Wk', 'Unit', 'Slot', 'String', 'Next man up', 'NMU string', 'Depth source', 'Injury source'],
        lrows, numeric={4, 7, 9},
        caption='"Next man up" is the player listed one string lower at the same slot on the same club chart. Club charts are club-published and most are labelled unofficial by the publisher.')}
+<h2>Partially matched — name on the chart, position differs</h2>
+<p class="lede">{len(partial)} rows where the player's name appears on his club's depth chart but at
+a different position code than the injury report gives. The string is shown for transparency and
+flagged; none of these rows contributes to the headline counts above.</p>
+{table(['Team', 'Player', 'Status', 'Report pos', 'Chart slot', 'String', 'Depth source', 'Injury source', 'Flag'], prows)}
+
 <h2>Not joinable to a depth string</h2>
-<p class="lede">These players are on the official injury report but could not be matched to their
-club's captured depth chart. They are listed with the reason and flagged; no depth string is
-invented for them.</p>
+<p class="lede">{len(unmatched)} players on the official injury report could not be matched to their
+club's captured depth chart. Each row keeps the reason and the sources; no depth string is invented.</p>
 {table(['Team', 'Player', 'Pos', 'Status', 'Why no join', 'Injury source', 'Flag'], urows)}
 <h2>Defensive vs offensive split</h2>
 {table(['Group', 'Out/Doubtful rows', 'Source'], [[g.capitalize(), str(n), derivation('data/desk/deficiencies.json')] for g, n in s['by_group'].items()], numeric={1})}
