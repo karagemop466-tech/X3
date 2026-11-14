@@ -70,7 +70,7 @@ def a(url, text=None):
 def table(headers, rows, cls="", caption=None, note=None):
     h = "".join(f"<th>{x}</th>" for x in headers)
     body = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
-    cap = f"<caption>{caption}</caption>" if caption else ""
+    cap = f"<caption>{esc(caption)} </caption>" if caption else ""
     nt = f'<p class="note">{note}</p>' if note else ""
     return f'<div class="tw"><table class="{cls}">{cap}<thead><tr>{h}</tr></thead><tbody>{body}</tbody></table></div>{nt}'
 
@@ -752,7 +752,7 @@ any check fails. The tests are listed with their result on {a("verification.html
 
 def p_questions(q):
     rows = [[esc(r["id"]), esc(r["question"]), badge(esc(r["status"])), esc(r["have"]), esc(r["missing"]),
-             esc(r["blocks"]), a(r["look"], "how to find it") if r.get("look") else "-"] for r in q["rows"]]
+             esc(r["blocks"]), a(r["look"], r.get("look_text", "open")) if r.get("look") else "-"] for r in q["rows"]]
     body = f"""
 <p class="lede">Questions, information and answers, in one place, so a decision can be made on what is actually
 known. Each row says what we have, what we do not have, what it blocks, and how to go get it. A question marked
