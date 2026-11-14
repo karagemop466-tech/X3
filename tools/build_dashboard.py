@@ -41,6 +41,7 @@ DEF_POS = {"DE", "DT", "NT", "DL", "EDGE", "LB", "MLB", "WLB", "SLB", "ILB", "OL
 ST_POS = {"K", "P", "LS", "H", "KR", "PR", "KOR", "KO", "PK"}
 
 FLAGGED: list[dict] = []
+PCTX: dict = {}
 
 
 def flag(item_id, area, severity, what, why, source, action=""):
@@ -422,6 +423,48 @@ def esc(s):
     return html.escape("" if s is None else str(s), quote=True)
 
 
+def fill(text: str, ctx: dict) -> str:
+    """Substitute {TOKEN} placeholders with live counts.
+
+    Every count quoted in prose must come from the data, never from a literal,
+    so the narrative cannot drift away from the tables it describes.
+    """
+    out = text
+    for k, v in ctx.items():
+        out = out.replace("{" + k + "}", str(v))
+    leftover = re.findall(r"\{[A-Z]+\}", out)
+    if leftover:
+        raise SystemExit(f"unfilled prose tokens: {sorted(set(leftover))} in: {text[:80]!r}")
+    return out
+
+
+def prose_ctx() -> dict:
+    """Live counts used inside the executive-summary and other narrative text."""
+    import collections
+    st = collections.Counter(s[8] for s in C.STRATEGIES)
+    su = collections.Counter(s[10] for s in C.SUGGESTIONS)
+    co = collections.Counter(c[4] for c in C.CORRELATION)
+    return {
+        "INJ": len(D.INJURIES),
+        "NDEP": len(D.DEPTH),
+        "NSTRAT": len(C.STRATEGIES),
+        "NREG": st.get("Registered", 0),
+        "NBLK": st.get("Blocked", 0),
+        "NGATE": len(C.GATES),
+        "NCORR": co.get("Computed", 0),
+        "NCORRP": co.get("Not estimated", 0),
+        "NSUG": len(C.SUGGESTIONS),
+        "NAD": su.get("Adopted", 0),
+        "NPRO": su.get("Proposed", 0),
+        "NDEF": su.get("Deferred", 0),
+        "NQ": len(C.QUESTIONS),
+        "NQB": len([q for q in C.QUESTIONS if q[6] == "Yes"]),
+        "NREQ": len(C.REQUIREMENTS),
+        "NREQD": len([r for r in C.REQUIREMENTS if r[4] == "done"]),
+        "NFLAG": len(FLAGGED),
+    }
+
+
 def page(title, active, body, subtitle=""):
     nav = "".join(
         f'<a href="{u}" class="{"on" if u == active else ""}">{esc(t)}</a>'
@@ -490,6 +533,7 @@ def badge(text, kind):
 
 # ---------------------------------------------------------------- page bodies
 def p_index(b):
+    exec_bullets = [(t, fill(x, PCTX), u) for t, x, u in C.EXEC_SUMMARY["bullets"]]
     kpi = [
         ("32", "Clubs in standings", "ok"),
         ("14", "Week 10 games", "info"),
@@ -510,7 +554,7 @@ def p_index(b):
         f'<li><b>{esc(t)}</b> &mdash; {esc(x)}'
         + (f' {src(u, "official source")}' if u else "")
         + "</li>"
-        for t, x, u in C.EXEC_SUMMARY["bullets"]
+        for t, x, u in exec_bullets
     )
     ml = [
         f'<td>{esc(g["away_name"])}</td><td>{esc(g["home_name"])}</td>'
@@ -528,7 +572,7 @@ def p_index(b):
     )
     body = f"""
 <div class="panel"><h3 style="margin-top:0">Executive summary</h3>
-<p>{esc(C.EXEC_SUMMARY['headline'])}</p>
+<p>{esc(fill(C.EXEC_SUMMARY['headline'], PCTX))}</p>
 <ul class="tight">{bullets}</ul></div>
 <div class="grid">{cards}</div>
 <h3>Model board &mdash; Week 10 {badge("DERIVED", "mut")}</h3>
@@ -556,6 +600,7 @@ adjustment is applied, because both require a game log that has not been ingeste
 
 
 def p_exec(b):
+    exec_bullets = [(t, fill(x, PCTX), u) for t, x, u in C.EXEC_SUMMARY["bullets"]]
     rows = "".join(
         f"<tr><td><b>{esc(t)}</b></td><td>{esc(x)}</td>"
         f"<td>{src(u, 'official source') if u else '<span class=mut>not applicable</span>'}</td></tr>"
@@ -574,12 +619,12 @@ def p_exec(b):
 </div>"""
     body = f"""
 <div class="panel"><h3 style="margin-top:0">Bottom line</h3>
-<p>{esc(C.EXEC_SUMMARY['headline'])}</p></div>
+<p>{esc(fill(C.EXEC_SUMMARY['headline'], PCTX))}</p></div>
 {kpi}
 <h3>Detail</h3>
 {table(["Area", "Finding", "Source"],
        [[f'<td><b>{esc(t)}</b></td>', cell(x), f'<td>{src(u, "official source") if u else "<span class=mut>n/a</span>"}</td>']
-        for t, x, u in C.EXEC_SUMMARY["bullets"]],
+        for t, x, u in exec_bullets],
        filter_id="t-exec")}
 """
     return page("Executive Summary", "executive-summary.html", body,
@@ -1290,6 +1335,9 @@ def main():
         "audit": audit,
     }
     emit_json(bundle)
+
+    global PCTX
+    PCTX = prose_ctx()
 
     b = {"deficiencies": deficiencies, "model_lines": model_lines, "rates": rates,
          "correlations": correlations, "audit": audit}

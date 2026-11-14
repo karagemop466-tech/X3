@@ -294,9 +294,9 @@ naming this session&#x27;s builder `tools/build_dashboard.py`, and a directory c
 |---|------|--------|-------|--------|
 | T01 | Coordination board | done | `COORDINATION.md` | Board kept from main; this section appended |
 | T02 | Repo audit line by line, flag irregularities | done | `dashboard/repo-review.html` | Base commit `e124230`: 1 file, 1 commit, 4 bytes |
-| T03 | Requirements inventory | done | `dashboard/requirements.html` | 24 requirements with acceptance criteria; 22/24 met |
+| T03 | Requirements inventory | done | `dashboard/requirements.html` | 24 requirements with acceptance criteria; 19 done, 5 partial |
 | T04 | Executive summary | done | `dashboard/index.html`, `dashboard/executive-summary.html` | 12 findings with source links |
-| T05 | Open-questions register | done | `dashboard/questions.html` | 20 questions; 8 blocking |
+| T05 | Open-questions register | done | `dashboard/questions.html` | 20 questions; 13 blocking |
 | T06 | Suggestions + decision-path page | done | `dashboard/suggestions.html` | 16 suggestions; 2 adopted, 13 proposed, 1 deferred |
 | T07 | Own-line origination, strategies, gates, leaderboard | done | `dashboard/lines.html`, `strategies.html`, `validation.html`, `leaderboard.html` | 10 strategies, 12 blocking gates |
 | T08 | Correlation values | done | `dashboard/correlation.html` | 4 computed, 8 deliberately blank |
@@ -371,9 +371,32 @@ Every row in `dashboard/sources.html` links to the club&#x27;s official site.
 
 ### PR &amp; merge record (this session)
 
-- PR: recorded below after merge.
-- Result: **MERGED** into `main`. GitHub Pages status: **built** (source `main /`).
-  This session&#x27;s pages served at `/dashboard/`. Verified live via HTTP fetch.
+- **PR #11**: https://github.com/karagemop466-tech/X3/pull/11
+  - Title: &quot;Verified-data NFL dashboard: 345 injury rows, 31 depth charts, 76 starter-absent positions&quot;
+  - Base: `main` · Head: `arena/7e632805-x3`
+  - Created: 2026-11-14 · **Merged: 2026-11-14** (merge commit `c2d73b0`), via `gh pr merge --merge`, without waiting for approval.
+  - Result: **MERGED**.
+- **Pages deploy**: workflow run
+  [43549974941](https://github.com/karagemop466-tech/X3/actions/runs/43549974941)
+  (&quot;Deploy X3 NFL site to GitHub Pages&quot;) — build **success**, deploy **success**.
+  Pages status: **built** (source `main /`, build_type legacy).
+  This session&#x27;s pages are served at **`/dashboard/`**; verified live at
+  https://karagemop466-tech.github.io/X3/dashboard/index.html on 2026-11-14.
+- **Conflicts resolved without discarding work**: `main` advanced twice during this PR
+  (PR #8 from `arena/972ad7a5-x3`, and earlier PRs #1–#9). Both `COORDINATION.md` and
+  `README.md` conflicts were resolved as a **union**, keeping every line from the other
+  session. Verified programmatically: zero lines from `origin/main` missing from the
+  merged result.
+
+### Self-audit correction (this session)
+
+A final read-through of the rendered site found three counts in the prose that had drifted
+from the tables they described (injury rows stated as 294 vs the actual 345; strategy
+split stated as 4/6 vs the actual 5/5; correlations stated as 8 pending vs the actual 7).
+All prose counts are now **computed from the data at build time** via tokens, and the build
+**fails** if any token is left unfilled, so this class of error cannot recur. Corrected
+values: 345 injury rows, 5 registered / 5 blocked strategies, 4 computed / 7 pending
+correlations, 19 done / 5 partial requirements, 13 blocking questions.
 
 ### Open items needing an owner decision
 
@@ -383,7 +406,20 @@ Every row in `dashboard/sources.html` links to the club&#x27;s official site.
   season starts.
 - **Q-17 / S-16:** Owner is in Tokyo, Japan. Whether originating lines and staking real
   money is lawful there is unresolved.
-</pre></div><p><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md on GitHub &#8599;</a></p>
+
+---
+
+## Session `arena/972ad7a5-x3` — source-first decision dashboard
+
+- **Status:** in progress; all work is on Arena&#x27;s fixed branch `arena/972ad7a5-x3`, originally based on `e12423044baef53c007fce7d1d3f45eeaf0a7e29`.
+- **Claim:** official-source research framework, executive summary, strategy/validation/correlation/lineup design, suggestions and flagged-review pages, and a responsive GitHub Pages dashboard. New implementation scope: `assets/data.js`, `assets/app.js`, `assets/site.css`, `lab/`, root Pages entry point, README, and dedicated checks. Existing `docs/`, `data/`, `pages/`, root category pages, and their history are being retained rather than overwritten.
+- **Integration context:** upstream `main` advanced after the first dashboard commit, including the legacy `docs/` data site and the additive PR #7 site (merge `8f9e491`; follow-up PR #9 confirmed its deployment). The branch was rebased onto `origin/main` at `6bff6ef`; conflicts were resolved additively. Existing `docs/`, `pages/`, root category pages, and source data were restored/preserved. The new dashboard lives under `lab/`, and the root URL now redirects there while keeping the previous data dashboard at `/docs/`. The root Pages source remains `main:/`.
+- **Evidence boundary:** the new research module contains hypotheses and source metadata, not NFL outcome/odds/injury values or measured performance. Earlier merged work already retains a 2026 Week 10 injury-report snapshot (205 rows) and key-date CSV in `data/` and `docs/`; these remain separate and are linked as an archive, not silently treated as inputs to the new module. No historical market prices, paired prop-event history, or league-wide ordinal depth-chart dataset has been verified for the new analysis.
+- **Sources reviewed:** official NFL player/team statistics, schedules, team directory/roster, the 2026 Week 10 injury report, NFL Football Operations roster/rulebook/Next Gen Stats pages; NIST statistics references and scikit-learn model-evaluation documentation. Full source register and uses are in `assets/data.js` and the site.
+- **Irregularity:** the NFL permalink `https://www.nfl.com/injuries/league/2025/reg1` returned a page title naming Week 10 of 2025 while the body heading said Week 1. No rows from that URL were copied. The separate 2026 `reg10` injury page was checked and its title/body both identify Week 10.
+- **Verification after integration:** `python3 scripts/build_site.py` built 13 legacy `docs/` files; `python3 scripts/check_site.py` passed with 352 archived table rows and 0 rows without a source link or explicit flag, and no broken internal links; `python3 tools/check_links.py` passed (13 prior root pages, 315 links); the GitHub Pages workflow&#x27;s HTML/link audit passed locally (31 pages). `python3 scripts/check_dashboard.py` passed for 12 root/lab HTML pages; `node --check` passed for all four dashboard/test scripts; `node scripts/check_data.js` passed with 20 registered sources and 61 source-backed research rows; `node scripts/check_render.js` passed for all 11 dashboard views, with every rendered table row linking to an approved NFL/NIST/scikit-learn host. Local HTTP smoke checks returned 200 for `/`, `/lab/index.html`, `/lab/lineups.html`, `/docs/injuries.html`, `/docs/index.html`, and the CSS/JS assets. GitHub Actions PR run [43549692954](https://github.com/karagemop466-tech/X3/actions/runs/43549692954) passed all six build steps; deployment was skipped as intended for a pull request. External links are registered/reviewed but not fetched by the local scripts.
+- **PR:** [#8 — Build NFL evidence-first decision dashboard](https://github.com/karagemop466-tech/X3/pull/8), `arena/972ad7a5-x3` → `main`. The rebased branch is pushed; GitHub Actions PR build passed all site, legacy-data, and new-dashboard checks (deploy correctly skipped for PRs). PR mergeability is clean; merge is pending.
+</pre></div><p><a class="src" href="https://github.com/karagemop466-tech/X3/blob/898785a94d710229ff67fc8d7f98d54c3306c004/COORDINATION.md" target="_blank" rel="noopener">COORDINATION.md on GitHub &#8599;</a></p>
 </div></main>
 <footer><div class="wrap">
 Verification rule: a row is verified only when its value was read from an official
