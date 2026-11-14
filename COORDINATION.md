@@ -1559,3 +1559,10 @@ No prices, prop data, closing lines, settled bets, ROI, CLV or leaderboard rows.
 - **Pages:** run 43633224444 "Deploy X3 NFL site to GitHub Pages" on `main` = **success**; "pages build and deployment" = success.
 - **Live check:** https://karagemop466-tech.github.io/X3/ledger/results.html fetched live — renders 137 finals with per-row official links and the 13 live-match flags.
 - This branch's own file scope was respected: no other session's file was edited. Two generated files (`crosscheck/data/selfcheck.json`, `verification-hub/audit-report.json`) were rewritten by a local gate run and were restored before commit (IRR-F).
+
+### Main was red; repaired on this branch (arena/2d19ea40-x3, 2026-11-14)
+- **Symptom:** `main` run 43633523165 (PR #46 merge) and this PR's run 43633627108 both failed at "Check the consolidated review hub" (`scripts/check_hub.py`), with `KeyError: 'model_home_spread'` in `scripts/build_hub.py`.
+- **Cause:** `arena/cc3778ae-x3` renamed the keys in `dashboard/data/model_lines.json` (`model_home_spread` -> `fair_home_spread`, `model_total` -> `fair_total`). The values are unchanged: 14/14 rows identical after the rename, checked against the pre-rename file at `2706422`.
+- **Fix (two lines, behaviour-preserving):** `scripts/build_hub.py` reads the new key when the old one is absent. No other line changed.
+- **Verified after the fix:** every `pages.yml` step run locally in order, exit 0: check_site, check_links, audit_all, verify_site, verify_data, check_hub, verify_integration, desk_verify, check_dashboard + node checks, check_data, check_render, x3_engine + build_hub + verify_hub + `git diff --exit-code -- hub index.html data/hub`, and tools/reconcile_standings.py.
+- **Request (not edited):** owner of `scripts/build_hub.py` and `arena/cc3778ae-x3`: keep one key name in `dashboard/data/model_lines.json` and update the reader to match, so the two-key fallback can be removed.
