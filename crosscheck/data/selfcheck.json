@@ -1,0 +1,49 @@
+{
+ "generated_at": "2026-11-14T18:56:54+00:00",
+ "pages": [
+  {
+   "page": "executive-summary.html",
+   "rows": 23,
+   "rows_without_source_or_flag": 0,
+   "broken_internal": []
+  },
+  {
+   "page": "flagged.html",
+   "rows": 182,
+   "rows_without_source_or_flag": 0,
+   "broken_internal": []
+  },
+  {
+   "page": "index.html",
+   "rows": 19,
+   "rows_without_source_or_flag": 0,
+   "broken_internal": []
+  },
+  {
+   "page": "questions.html",
+   "rows": 78,
+   "rows_without_source_or_flag": 0,
+   "broken_internal": []
+  },
+  {
+   "page": "requirements.html",
+   "rows": 45,
+   "rows_without_source_or_flag": 0,
+   "broken_internal": []
+  },
+  {
+   "page": "suggestions.html",
+   "rows": 29,
+   "rows_without_source_or_flag": 0,
+   "broken_internal": []
+  },
+  {
+   "page": "verification.html",
+   "rows": 165,
+   "rows_without_source_or_flag": 0,
+   "broken_internal": []
+  }
+ ],
+ "failures": 0,
+ "result": "PASS"
+}
