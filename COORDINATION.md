@@ -339,8 +339,7 @@ correlations, 19 done / 5 partial requirements, 13 blocking questions.
   cannot fire without a licensed or manually-recorded odds feed.
 - **Q-16 / S-12:** Leaderboard rewards are specified as notional. Confirm before any
   season starts.
-- **Q-17 / S-16:** Owner is in Tokyo, Japan. Whether originating lines and staking real
-  money is lawful there is unresolved.
+- **Q-17 / S-16 (corrected by session arena/a8e2b617-x3):** A prior session asserted Tokyo, Japan without a supporting source. The repository/user request does not establish the operating jurisdiction; it is unspecified. No jurisdiction-specific legal claim is made.
 
 ---
 
@@ -534,8 +533,12 @@ role). No other session's files were modified.
 
 ## Session arena/a8e2b617-x3 — audit & factual corrections
 
-- **Status:** in progress (claim); current platform-assigned branch `arena/a8e2b617-x3`.
+- **Status:** done; current platform-assigned branch `arena/a8e2b617-x3`.
 - **Claimed task:** audit existing published NFL decision pages for unsupported factual assertions; specifically remove the unsourced claim that the owner is in Tokyo/Japan and leave jurisdiction unspecified. No jurisdiction will be inferred from approximate location.
-- **File scope:** `tools/site_content.py`, generated `dashboard/**` outputs containing that assertion, `x3lab/data/{flagged,questions,suggestions}.json`, `x3lab/{executive-summary,questions,suggestions,flagged}.html`, this section of `COORDINATION.md`.
-- **Status:** claim recorded before edits. Existing verification commands passed at claim time: `scripts/check_site.py`, `tools/check_links.py`, `scripts/check_dashboard.py`, `scripts/check_data.js`, `scripts/check_render.js`, `scripts/verify_data.py`.
+- **File scope:** `tools/site_content.py`, generated `dashboard/**` outputs, `x3lab/data/{flagged,questions,suggestions}.json`, `x3lab/{executive-summary,questions,suggestions}.html`, and this section of `COORDINATION.md`.
+- **Claim/initial checks:** claim recorded before edits. Existing verification commands passed at claim time: `scripts/check_site.py`, `tools/check_links.py`, `scripts/check_dashboard.py`, `scripts/check_data.js`, `scripts/check_render.js`, `scripts/verify_data.py`.
 - **Verification/source policy:** user-provided approximate location is not an authoritative domicile/jurisdiction source; legal jurisdiction remains unspecified and flagged pending user/legal confirmation. No external legal claim will be substituted.
+- **Finding/irregularity:** prior dashboard and lab text asserted Tokyo/Japan without any supporting source in the repository. Removed those assertions from source data and published pages; the issue remains flagged as unknown, not resolved.
+- **Additional correction:** fixed the X3 Lab Suggestions page's status-edit instruction, which pointed to the unrelated `docs/data/suggestions.json` path instead of `x3lab/data/suggestions.json`.
+- **Build/verification:** `python3 tools/build_dashboard.py` regenerated the dashboard after the shallow checkout was unshallowed with `git fetch --unshallow origin main`; build reported 345 injury rows, 31/32 depth charts, 76 deficiencies, 12 flags, and 18 pages. All local checks passed: `scripts/check_site.py` (356 rows, 0 lacking source/flag), `tools/check_links.py` (13 pages / 315 links), `scripts/check_dashboard.py`, `node scripts/check_data.js` (20 sources / 61 research rows), `node scripts/check_render.js` (11 views), and `scripts/verify_data.py` (2,134 checks). JSON parse and targeted published-copy checks passed.
+- **Sources/limits:** no official or trusted source identifies the applicable operating jurisdiction; no jurisdiction-specific legal statement was added. A user-supplied approximate location is not used as a substitute for legal domicile. External legal review remains a flagged prerequisite, not a verified conclusion.
