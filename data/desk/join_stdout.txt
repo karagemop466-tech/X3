@@ -1,26 +1,25 @@
 {
- "rows": 286,
- "matched": 210,
- "unmatched": 144,
+ "rows": 210,
+ "matched": 156,
+ "unmatched": 108,
  "by_depth_string": {
-  "1": 142,
-  "2": 55,
-  "3": 13,
+  "1": 102,
+  "2": 43,
+  "3": 11,
   "4": 0,
-  "unknown": 76
+  "unknown": 54
  },
  "by_group": {
-  "offense": 151,
-  "defense": 128,
-  "special": 7,
+  "offense": 109,
+  "defense": 96,
+  "special": 5,
   "unknown": 0
  },
  "weeks": [
   8,
   9,
-  10,
-  11
+  10
  ],
- "starter_outs": 142,
- "backup_promotions": 68
+ "starter_outs": 102,
+ "backup_promotions": 54
 }

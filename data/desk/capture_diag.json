@@ -11,21 +11,21 @@
    "file": "schedule-w2.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-2",
    "status": 200,
-   "bytes": 2345609,
+   "bytes": 2345479,
    "attempts": 1
   },
   {
    "file": "schedule-w3.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-3",
    "status": 200,
-   "bytes": 2353143,
+   "bytes": 2353014,
    "attempts": 1
   },
   {
    "file": "schedule-w4.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-4",
    "status": 200,
-   "bytes": 2353397,
+   "bytes": 2353268,
    "attempts": 1
   },
   {
@@ -39,42 +39,42 @@
    "file": "schedule-w6.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-6",
    "status": 200,
-   "bytes": 2323308,
+   "bytes": 2323352,
    "attempts": 1
   },
   {
    "file": "schedule-w7.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-7",
    "status": 200,
-   "bytes": 2323484,
+   "bytes": 2323571,
    "attempts": 1
   },
   {
    "file": "schedule-w8.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-8",
    "status": 200,
-   "bytes": 2318838,
+   "bytes": 2318967,
    "attempts": 1
   },
   {
    "file": "schedule-w9.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-9",
    "status": 200,
-   "bytes": 2339739,
+   "bytes": 2339610,
    "attempts": 1
   },
   {
    "file": "schedule-w10.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
    "status": 200,
-   "bytes": 2372406,
+   "bytes": 2372144,
    "attempts": 1
   },
   {
    "file": "schedule-w11.html",
    "url": "https://www.nfl.com/schedules/2026/by-week/week-11",
    "status": 200,
-   "bytes": 2354879,
+   "bytes": 2354880,
    "attempts": 1
   },
   {
@@ -158,7 +158,7 @@
    "file": "depth-CHI.html",
    "url": "https://www.chicagobears.com/team/depth-chart",
    "status": 200,
-   "bytes": 291424,
+   "bytes": 291926,
    "attempts": 1
   },
   {
@@ -403,7 +403,7 @@
    "file": "games/bengals-at-commanders-2026-reg-11.html",
    "url": "https://www.nfl.com/games/bengals-at-commanders-2026-reg-11",
    "status": 200,
-   "bytes": 1087176,
+   "bytes": 1087349,
    "attempts": 1
   },
   {
@@ -417,7 +417,7 @@
    "file": "games/bengals-at-falcons-2026-reg-9.html",
    "url": "https://www.nfl.com/games/bengals-at-falcons-2026-reg-9",
    "status": 200,
-   "bytes": 1227713,
+   "bytes": 1227670,
    "attempts": 1
   },
   {
@@ -445,7 +445,7 @@
    "file": "games/bills-at-jets-2026-reg-10.html",
    "url": "https://www.nfl.com/games/bills-at-jets-2026-reg-10",
    "status": 200,
-   "bytes": 1141950,
+   "bytes": 1142079,
    "attempts": 1
   },
   {
@@ -473,7 +473,7 @@
    "file": "games/bills-at-vikings-2026-reg-9.html",
    "url": "https://www.nfl.com/games/bills-at-vikings-2026-reg-9",
    "status": 200,
-   "bytes": 1237568,
+   "bytes": 1237483,
    "attempts": 1
   },
   {
@@ -508,7 +508,7 @@
    "file": "games/broncos-at-panthers-2026-reg-9.html",
    "url": "https://www.nfl.com/games/broncos-at-panthers-2026-reg-9",
    "status": 200,
-   "bytes": 1252899,
+   "bytes": 1252900,
    "attempts": 1
   },
   {
@@ -536,14 +536,14 @@
    "file": "games/browns-at-saints-2026-reg-9.html",
    "url": "https://www.nfl.com/games/browns-at-saints-2026-reg-9",
    "status": 200,
-   "bytes": 1273811,
+   "bytes": 1273769,
    "attempts": 1
   },
   {
    "file": "games/browns-at-steelers-2026-reg-8.html",
    "url": "https://www.nfl.com/games/browns-at-steelers-2026-reg-8",
    "status": 200,
-   "bytes": 1199089,
+   "bytes": 1199000,
    "attempts": 1
   },
   {
@@ -613,7 +613,7 @@
    "file": "games/cardinals-at-cowboys-2026-reg-8.html",
    "url": "https://www.nfl.com/games/cardinals-at-cowboys-2026-reg-8",
    "status": 200,
-   "bytes": 1308042,
+   "bytes": 1308087,
    "attempts": 1
   },
   {
@@ -676,7 +676,7 @@
    "file": "games/chiefs-at-broncos-2026-reg-8.html",
    "url": "https://www.nfl.com/games/chiefs-at-broncos-2026-reg-8",
    "status": 200,
-   "bytes": 1221438,
+   "bytes": 1221482,
    "attempts": 1
   },
   {
@@ -690,7 +690,7 @@
    "file": "games/chiefs-at-falcons-2026-reg-10.html",
    "url": "https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10",
    "status": 200,
-   "bytes": 1177142,
+   "bytes": 1177127,
    "attempts": 1
   },
   {
@@ -830,7 +830,7 @@
    "file": "games/dolphins-at-colts-2026-reg-10.html",
    "url": "https://www.nfl.com/games/dolphins-at-colts-2026-reg-10",
    "status": 200,
-   "bytes": 1171494,
+   "bytes": 1171193,
    "attempts": 1
   },
   {
@@ -886,7 +886,7 @@
    "file": "games/falcons-at-buccaneers-2026-reg-8.html",
    "url": "https://www.nfl.com/games/falcons-at-buccaneers-2026-reg-8",
    "status": 200,
-   "bytes": 1102408,
+   "bytes": 1102322,
    "attempts": 1
   },
   {
@@ -970,7 +970,7 @@
    "file": "games/jaguars-at-titans-2026-reg-10.html",
    "url": "https://www.nfl.com/games/jaguars-at-titans-2026-reg-10",
    "status": 200,
-   "bytes": 1136928,
+   "bytes": 1136842,
    "attempts": 1
   },
   {
@@ -1068,7 +1068,7 @@
    "file": "games/packers-at-patriots-2026-reg-9.html",
    "url": "https://www.nfl.com/games/packers-at-patriots-2026-reg-9",
    "status": 200,
-   "bytes": 1267930,
+   "bytes": 1267886,
    "attempts": 1
   },
   {
@@ -1110,7 +1110,7 @@
    "file": "games/panthers-at-saints-2026-reg-10.html",
    "url": "https://www.nfl.com/games/panthers-at-saints-2026-reg-10",
    "status": 200,
-   "bytes": 1147514,
+   "bytes": 1147146,
    "attempts": 1
   },
   {
@@ -1145,7 +1145,7 @@
    "file": "games/patriots-at-lions-2026-reg-10.html",
    "url": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
    "status": 200,
-   "bytes": 1173545,
+   "bytes": 1173821,
    "attempts": 1
   },
   {
@@ -1159,7 +1159,7 @@
    "file": "games/raiders-at-49ers-2026-reg-9.html",
    "url": "https://www.nfl.com/games/raiders-at-49ers-2026-reg-9",
    "status": 200,
-   "bytes": 1230886,
+   "bytes": 1231015,
    "attempts": 1
   },
   {
@@ -1180,7 +1180,7 @@
    "file": "games/raiders-at-jets-2026-reg-8.html",
    "url": "https://www.nfl.com/games/raiders-at-jets-2026-reg-8",
    "status": 200,
-   "bytes": 1269404,
+   "bytes": 1269446,
    "attempts": 1
   },
   {
@@ -1208,7 +1208,7 @@
    "file": "games/rams-at-cardinals-2026-reg-10.html",
    "url": "https://www.nfl.com/games/rams-at-cardinals-2026-reg-10",
    "status": 200,
-   "bytes": 1157887,
+   "bytes": 1157717,
    "attempts": 1
   },
   {
@@ -1327,7 +1327,7 @@
    "file": "games/seahawks-at-raiders-2026-reg-10.html",
    "url": "https://www.nfl.com/games/seahawks-at-raiders-2026-reg-10",
    "status": 200,
-   "bytes": 1175090,
+   "bytes": 1175176,
    "attempts": 1
   },
   {
@@ -1341,7 +1341,7 @@
    "file": "games/steelers-at-browns-2026-reg-4.html",
    "url": "https://www.nfl.com/games/steelers-at-browns-2026-reg-4",
    "status": 200,
-   "bytes": 1232780,
+   "bytes": 1232952,
    "attempts": 1
   },
   {
@@ -1376,7 +1376,7 @@
    "file": "games/texans-at-browns-2026-reg-10.html",
    "url": "https://www.nfl.com/games/texans-at-browns-2026-reg-10",
    "status": 200,
-   "bytes": 1176104,
+   "bytes": 1175785,
    "attempts": 1
   },
   {
@@ -1411,7 +1411,7 @@
    "file": "games/titans-at-bengals-2026-reg-8.html",
    "url": "https://www.nfl.com/games/titans-at-bengals-2026-reg-8",
    "status": 200,
-   "bytes": 1301404,
+   "bytes": 1301627,
    "attempts": 1
   },
   {
@@ -1474,7 +1474,7 @@
    "file": "games/vikings-at-packers-2026-reg-10.html",
    "url": "https://www.nfl.com/games/vikings-at-packers-2026-reg-10",
    "status": 200,
-   "bytes": 1155136,
+   "bytes": 1155180,
    "attempts": 1
   },
   {
