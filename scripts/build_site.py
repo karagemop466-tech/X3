@@ -14,7 +14,13 @@ import html
 import json
 import os
 import shutil
+import sys
 from datetime import datetime, timezone
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from lib.diagnostics import failure_report
+from lib.markdown import render as render_markdown
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT = os.path.join(ROOT, "data", "content")
@@ -69,6 +75,7 @@ NAV = [
         [
             ("flagged.html", "Flagged for Review"),
             ("sources.html", "Sources &amp; Methodology"),
+            ("methodology.html", "Methodology"),
             ("validation.html", "Validation Report"),
         ],
     ),
@@ -1750,6 +1757,27 @@ def build_sources() -> str:
     )
 
 
+def build_methodology() -> str:
+    path = os.path.join(ROOT, "docs", "methodology.md")
+    if not os.path.exists(path):
+        return page(
+            "Methodology",
+            "Governance",
+            "How every published number is computed.",
+            '<div class="callout bad"><p>The methodology document is not present in this build.</p></div>',
+            "methodology.html",
+        )
+    with open(path, encoding="utf-8") as fh:
+        body = render_markdown(fh.read())
+    return page(
+        "Methodology",
+        "Governance",
+        "Exactly how each published number is produced: provenance, the no-inference rule, injury semantics, depth resolution, the line model, validation, the skill-share metric and correlation.",
+        body,
+        "methodology.html",
+    )
+
+
 def build_validation() -> str:
     report = STATE.get("validation", {})
     b = []
@@ -1984,6 +2012,7 @@ def _impl() -> int:
         "findings.html": build_findings(),
         "flagged.html": build_flagged(),
         "sources.html": build_sources(),
+        "methodology.html": build_methodology(),
         "validation.html": build_validation(),
     }
 

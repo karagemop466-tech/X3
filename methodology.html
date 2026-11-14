@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology · X3 NFL Decision Support</title>
+<meta name="description" content="Exactly how each published number is produced: provenance, the no-inference rule, injury semantics, depth resolution, the line model, validation, the skill-share metric and correlation.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%234a9eff'/><text x='16' y='22' font-size='16' font-family='sans-serif' font-weight='bold' text-anchor='middle' fill='%2306121f'>X3</text></svg>">
+
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">X3</span>
+      <span><a href="index.html">X3</a> <span class="brand-sub">NFL Decision Support</span></span>
+    </div>
+    <nav class="nav"><div class="nav-group"><a href="index.html">Overview<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="index.html" class="">Dashboard</a><a href="executive-summary.html" class="">Executive Summary</a><a href="findings.html" class="">Findings &amp; Analysis</a></div></div><div class="nav-group"><a href="requirements.html">Requirements<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="requirements.html" class="">Requirements Register</a></div></div><div class="nav-group"><a href="questions.html">Decision Support<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="questions.html" class="">Questions &amp; Information Needed</a><a href="suggestions.html" class="">Suggestions &amp; Decision Paths</a></div></div><div class="nav-group"><a href="strategies.html">Strategy<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="strategies.html" class="">Strategies &amp; Validation Gates</a><a href="leaderboard.html" class="">Leaderboard Competition</a></div></div><div class="nav-group"><a href="injuries.html">Data<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="injuries.html" class="">Official Injury Report</a><a href="depth.html" class="">Lineup Depth &amp; Deficiencies</a><a href="lines.html" class="">Our Originated Lines</a><a href="data.html" class="">Datasets &amp; Correlations</a></div></div><div class="nav-group"><a href="flagged.html">Governance<span class="nav-caret">▼</span></a><div class="nav-menu"><a href="flagged.html" class="">Flagged for Review</a><a href="sources.html" class="">Sources &amp; Methodology</a><a href="methodology.html" class="active">Methodology</a><a href="validation.html" class="">Validation Report</a></div></div></nav>
+    <span class="freshness">Data as of 2026-11-14 02:46 UTC · 0h old</span>
+  </div>
+</header>
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Governance</div>
+    <h1>Methodology</h1>
+    <p class="sub">Exactly how each published number is produced: provenance, the no-inference rule, injury semantics, depth resolution, the line model, validation, the skill-share metric and correlation.</p>
+  </div>
+  <h2>Methodology</h2>
+<p class="prose">Everything the platform publishes is computed from official NFL sources. This document states exactly how, so that a reviewer can reproduce or challenge any number on the site.</p>
+<hr>
+<h3>1. Data provenance</h3>
+<p class="prose"><code>scripts/fetch_official.py</code> retrieves every source from the registry in <code>scripts/lib/official.py</code>. The registry contains only:</p>
+<div class="table-wrap"><table><thead><tr><th>Publisher</th><th>Hosts</th></tr></thead><tbody><tr><td>NFL</td><td><code>nfl.com</code>, <code>operations.nfl.com</code>, <code>media.nfl.com</code>, <code>static.www.nfl.com</code></td></tr><tr><td>Official NFL clubs</td><td>the 32 club-operated domains listed in <code>scripts/lib/official.py</code></td></tr></tbody></table></div>
+<p class="prose">For each source the fetcher records, in <code>data/datasets/fetch_manifest.json</code>:</p>
+<ul class="tight"><li>the exact URL requested and the final URL after redirects,</li><li>the HTTP status,</li><li>the byte count,</li><li>the <strong>SHA-256 of the raw payload</strong>,</li><li>the UTC timestamp of the fetch.</li></ul>
+<p class="prose">The raw payloads are cached in <code>data/raw/</code> (git-ignored) and uploaded as a CI artefact for audit. The committed artefacts are the parsed datasets, each of which carries <code>source_url</code> on every row.</p>
+<p class="prose"><code>scripts/build_datasets.py</code> converts the raw payloads into flat datasets. <code>scripts/validate_site.py</code> then refuses to pass the build if any dataset row lacks an official <code>source_url</code>, or if any published link points at a non-official host.</p>
+<hr>
+<h3>2. The no-inference rule</h3>
+<p class="prose">A value is published only if an official source publishes it.</p>
+<ul class="tight"><li>A blank official cell is rendered as an explicit <strong>unverified</strong> marker, never</li></ul>
+<p class="prose">as a zero, a dash or a best guess.</p>
+<ul class="tight"><li>A statistic that cannot be computed because its dataset is missing is</li></ul>
+<p class="prose"><strong>omitted</strong>, and the omission is recorded on the Flagged for Review page with the reason and the source that was checked.</p>
+<ul class="tight"><li>No commercial betting line, projection service, injury feed or third-party</li></ul>
+<p class="prose">aggregator is ingested anywhere in the pipeline.</p>
+<hr>
+<h3>3. Injury-report semantics</h3>
+<p class="prose">The official NFL injury report is a <strong>practice-participation record</strong>, not a statement of fact.</p>
+<ul class="tight"><li>A player who is absent from the report is recorded as <strong>not reported</strong>.</li></ul>
+<p class="prose">Absence is not evidence of availability.</p>
+<ul class="tight"><li>A player with no game-status designation is recorded as <strong>no designation</strong>.</li><li>The report week, the game date and the fetch timestamp are stored with every</li></ul>
+<p class="prose">row, so a back-test can only use information that existed at decision time.</p>
+<ul class="tight"><li>Historical weeks are retrieved from the official archive at</li></ul>
+<p class="prose"><code>https://www.nfl.com/injuries/league/&lt;season&gt;/reg&lt;week&gt;</code>. Note that this is the archive <strong>as published today</strong>: a week&#x27;s page may have been revised after the fact, so it can contain late information (for example game-day inactives) that was not available when the bet was placed. This limitation applies to every availability back-test and is flagged on the site.</p>
+<hr>
+<h3>4. Depth resolution</h3>
+<p class="prose">Depth ordering is published by clubs, not by the league, so the resolution order is strict:</p>
+<ol class="tight"><li><strong>The club&#x27;s own official depth chart.</strong> The pipeline probes every official</li></ol>
+<p class="prose">club domain, accepts a page only when it genuinely contains a depth-chart table, and keeps one page per club so that a club&#x27;s application shell cannot be counted twice.</p>
+<ol class="tight"><li><strong>The official game book</strong>, which lists the starters and the order in which</li></ol>
+<p class="prose">substitutes entered. (Not yet implemented; see S-009.)</p>
+<ol class="tight"><li><strong>Blank and flagged.</strong> When neither resolves, the replacement&#x27;s depth string</li></ol>
+<p class="prose">is left blank and the gap appears on the Flagged for Review page.</p>
+<p class="prose">A depth string is never inferred from a player&#x27;s reputation, from statistics or from a previous season.</p>
+<hr>
+<h3>5. The line model</h3>
+<p class="prose"><code>scripts/compute_signals.py</code> originates every published line. Model version <code>line-model-v1.0</code>.</p>
+<p class="prose"><strong>Inputs</strong> (official only): team points for and points against from the official league standings; the number of games each team has played; the official final scores of completed games.</p>
+<p class="prose"><strong>Step 1 — league baseline.</strong> <code>league_points_per_game</code> is the total points scored across all teams divided by the total team-games played.</p>
+<p class="prose"><strong>Step 2 — team adjustments.</strong></p>
+<pre><code>adj_off_i = (PF_i / G_i − league_ppg) × G_i / (G_i + k)     k = 4
+adj_def_i = (PA_i / G_i − league_ppg) × G_i / (G_i + k)</code></pre>
+<p class="prose">The factor <code>G_i / (G_i + k)</code> shrinks a team towards the league mean. A team with four games played is pulled 50 per cent towards the mean; a team with sixteen games is pulled 20 per cent. <code>k = 4</code> is a <strong>model choice</strong>, not an observed quantity, and it is versioned with the model.</p>
+<p class="prose"><strong>Step 3 — expected scores.</strong></p>
+<pre><code>exp_home = league_ppg + (adj_off_home + adj_def_away) / 2 + HFA / 2
+exp_away = league_ppg + (adj_off_away + adj_def_home) / 2 − HFA / 2</code></pre>
+<p class="prose"><code>HFA</code> is the average home margin across all completed official games, so the home-field term is measured rather than assumed.</p>
+<p class="prose"><strong>Step 4 — published lines.</strong> The spread is rounded to the nearest half point and shifted against the favourite by <code>MARGIN_PCT × margin standard deviation</code>, where <code>MARGIN_PCT = 3%</code>. The quoted prices are <code>p_fair − margin / 2</code> on both sides, which carries the same hold.</p>
+<p class="prose"><strong>Known limitation.</strong> The model does not adjust for availability. The depth string of a replacement cannot be resolved for every club from official sources, so an availability adjustment is not published rather than being estimated. This is recorded as the state of strategy ST-002.</p>
+<hr>
+<h3>6. Validation: walk-forward, purged</h3>
+<p class="prose">The back-test uses an <strong>anchored walk-forward</strong> scheme:</p>
+<ul class="tight"><li>For each week, ratings are built from games completed strictly before that</li></ul>
+<p class="prose">week.</p>
+<ul class="tight"><li>No random split is used, so no information leaks backwards in time.</li><li>A team&#x27;s games immediately adjacent to a boundary are excluded from the</li></ul>
+<p class="prose">training window when that team also appears in the evaluation block (a team-level purge), so that slow-moving features cannot bridge the split.</p>
+<ul class="tight"><li>Each evaluation week is a fold. Stability is measured as the share of folds</li></ul>
+<p class="prose">in which the edge was positive.</p>
+<hr>
+<h3>7. Skill share: removing luck from the equation</h3>
+<p class="prose">For a strategy with beliefs <code>p_i</code> about each bet and binary outcomes <code>y_i</code>:</p>
+<pre><code>model-implied variance = Σ p_i (1 − p_i)
+observed variance      = Σ (y_i − mean(p))²
+skill share           = model-implied variance / observed variance</code></pre>
+<p class="prose">The <strong>residual share</strong> is the luck component: the part of the outcome the model did not explain. The skill share is reported with:</p>
+<ul class="tight"><li>a <strong>block-bootstrap</strong> 95 per cent interval, and</li><li>a <strong>permutation test</strong> that shuffles the outcomes against the probabilities</li></ul>
+<p class="prose">to give the probability of observing a skill share that large by chance.</p>
+<p class="prose">A strategy is only eligible if its skill share clears the gate threshold <em>and</em> the bootstrap interval excludes zero skill. A strategy that wins by luck produces a skill share indistinguishable from zero and fails the gate.</p>
+<hr>
+<h3>8. Correlation</h3>
+<p class="prose"><code>scripts/compute_signals.py</code> publishes Pearson correlations between team-level signals computed from the official standings, and between game-level score relationships computed from official final scores. The unit of observation, the sample size and the method are stated next to each matrix.</p>
+<p class="prose">Correlations that cannot be computed from the available official data are <strong>not published</strong>. The player-prop correlation matrix requires per-game official player logs; until those are ingested, the matrix is listed as unavailable with the reason rather than estimated.</p>
+<hr>
+<h3>9. The circularity problem, stated plainly</h3>
+<p class="prose">The platform originates its own lines, so a strategy evaluated against those lines is, by construction, being compared with the model that produced them. Three safeguards apply:</p>
+<ol class="tight"><li>Every strategy in the register uses a signal <strong>deliberately different</strong> from</li></ol>
+<p class="prose">the line model&#x27;s inputs (for example a Pythagorean-expectation residual rather than a points adjustment).</p>
+<ol class="tight"><li>The line model itself is published as the <strong>benchmark</strong>, not as a</li></ol>
+<p class="prose">competitor, so its skill is visible without it being ranked against itself.</p>
+<ol class="tight"><li>Suggestion <strong>S-002</strong> proposes a stronger design — a separately specified</li></ol>
+<p class="prose">evaluation reference, trained on a disjoint period and a disjoint feature set — and records that it is open.</p>
+<hr>
+<h3>10. Gates</h3>
+<p class="prose">Ten gates (G1–G10) are defined on the Strategies page, together with their thresholds and the measured value for each strategy. A strategy must clear every gate to be eligible for scoring and reward. Thresholds are labelled as proposals where they depend on an unanswered question.</p>
+<hr>
+<h3>11. Reproducibility</h3>
+<p class="prose">Every published artefact can be regenerated from the committed code:</p>
+<pre><code>python scripts/fetch_official.py     # official payloads + provenance manifest
+python scripts/build_datasets.py     # verified datasets
+python scripts/compute_signals.py    # lines, correlations, back-test
+python scripts/build_site.py         # the site
+python scripts/validate_site.py      # links, source links, unverified markers</code></pre>
+<p class="prose">The same sequence runs unattended in GitHub Actions on every push and on a twice-daily schedule.</p>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <strong style="color:var(--text-dim)">X3 — NFL Decision Support.</strong>
+      Every value on this site is read from an official NFL or official NFL club source and carries a source link.
+      Values the official source does not publish are left blank and flagged, never inferred.
+    </div>
+    <div>
+      <a href="sources.html">Sources &amp; methodology</a> ·
+      <a href="flagged.html">Flagged for review</a> ·
+      <a href="validation.html">Validation report</a> ·
+      <a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">Repository</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
