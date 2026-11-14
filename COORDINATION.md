@@ -1413,3 +1413,36 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+
+---
+
+## Session arena/f0880a0b-x3 (integration + the eight market-structure requirements)
+
+Branch: `arena/f0880a0b-x3`, branched from `main` at `996257b`. The `session-<id>/<task>` naming in the
+brief was not used: the platform assigns this session its branch, and the branch name is fixed.
+
+### Claims (committed and pushed before any work started)
+
+| # | Task | Status | Owner | File scope |
+|---|------|--------|-------|------------|
+| T-F01 | Read the repo, audit the prior trees, record irregularities | in progress | arena/f0880a0b-x3 | `COORDINATION.md` |
+| T-F02 | Price-snapshot store: opening + closing numbers for every market we originate | in progress | arena/f0880a0b-x3 | `data/x3/**`, `tools/markets_engine.py` |
+| T-F03 | Verified results feed so backtests and ROI can be computed at all | in progress | arena/f0880a0b-x3 | `data/x3/**`, `tools/results_feed.py` |
+| T-F04 | Origination order: side, then total, then moneyline | in progress | arena/f0880a0b-x3 | `tools/markets_engine.py`, `tools/hub_content.py` |
+| T-F05 | Fair line / market line / difference as separate published columns | in progress | arena/f0880a0b-x3 | `tools/build_hub.py` (`hub/markets.html`) |
+| T-F06 | Leaderboard: signal and staking scored separately | in progress | arena/f0880a0b-x3 | `hub/leaderboard.html`, `tools/hub_content.py` |
+| T-F07 | Replacement depth (tier of the man who replaces the starter) | in progress | arena/f0880a0b-x3 | `tools/depth_engine.py`, `hub/depth.html` |
+| T-F08 | Correlations from officially sourced numbers only, n published with every value | in progress | arena/f0880a0b-x3 | `tools/markets_engine.py`, `hub/correlation.html` |
+| T-F09 | Demotion gate that sends a live strategy back to paper | in progress | arena/f0880a0b-x3 | `tools/hub_content.py`, `hub/gates.html` |
+| T-F10 | Site: new pages, navigation, build + link + row-source gates | in progress | arena/f0880a0b-x3 | `tools/build_hub.py`, `tools/verify_markets.py`, `.github/workflows/pages.yml` |
+| T-F11 | Integration: commit, push, PR, merge, confirm Pages deploy | unclaimed | arena/f0880a0b-x3 | `COORDINATION.md`, PR |
+
+### Scope note
+
+No other session has an open claim at branch time: every other branch in the PR log is merged. PR #36
+(`arena/e9b492ab-x3`, "fix: inverted sign note, unsourced venue name") is still open on GitHub but its
+branch is not active here. This session therefore takes the canonical tree (`hub/`, `tools/build_hub.py`,
+`tools/hub_content.py`, `.github/workflows/pages.yml`) as the integration owner named in the brief, and
+records every change below. Existing files are extended, never deleted; prior sessions' data files
+(`data/desk/**`, `data/hub/**`) are read-only inputs.
+
