@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for review - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="summary.html">Executive summary</a><a href="results.html">Results feed</a><a href="picks.html">Board: side/total/ML</a><a href="snapshots.html">Price snapshots</a><a href="correlation-live.html">Correlation</a><a href="leaderboard-live.html">Leaderboard &amp; demotion</a><a href="depth-tiers.html">Replacement depth</a><a href="decisions.html">Review queue</a><a href="repo-review-live.html">Repo review</a><a href="flagged-live.html" class='on'>Flagged for review</a><a href="index.html">Canonical hub</a></nav>
+<main>
+<h1>Flagged for review</h1>
+<p class="lede">Everything published on this site that is unverified, ambiguous or unanswerable, with the source links so each one can be checked by hand.</p>
+
+<section class="callout"><h2>Nothing here blocks the site</h2>
+<p>This page is the review queue. Every item is either a question that cannot be answered from
+data, a claim that is ambiguous rather than wrong, or a value with no official source. Publishing
+them is the point: an unverified number that is written down can be checked, and one that is
+quietly filled in cannot.</p></section>
+
+<h2>Flagged claims</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>3 claims that need a human decision</caption>
+<thead><tr><th>ID</th><th>Area</th><th>Claim</th><th>Why it is flagged</th><th>Source</th><th>Status</th></tr></thead><tbody>
+<tr><td>R-06</td><td>Depth capture</td><td>31 club depth charts captured, 26 undated, Houston publishes an image only.</td><td>The hub's numbers come from tools/nfl_data.py: 31 charts, 26 undated, Houston absent. The desk capture in data/desk/depth.json tells a different story: 31 charts with parseable slots (30 undated), and Houston PRESENT but with zero parseable rows. Both files are internally correct and they are different captures, so neither page is wrong - but a reader comparing them will see two different counts for the same week. Label the capture source on both pages, or consolidate to one capture, before either count is quoted in a decision.</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10 and each club's own depth-chart page" target="_blank" rel="noopener">official</a></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>R-08</td><td>Model parameters</td><td>Injury status weights and positional cost figures drive the originated lines.</td><td>No derivation exists. The positional costs and status weights are priors with no measured basis, and they move lines by up to 6.5 points on the Week-10 slate. They are correctly labelled as parameters on the site, but a reader may not realise the largest single adjustment to the board is an opinion. Published as Q-08 and Q-14.</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">official</a></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>R-11</td><td>Backtest claim</td><td>The desk model reports walk-forward MAE 10.52 with r 0.20 on 121 games.</td><td>This session's walk-forward, with the parameters fixed and printed, gives MAE 9.29 and r 0.3082 on 89 games - better than the published figure on a smaller sample, using a different rating definition. Both can be right. The discrepancy is a difference in method, not an error, but two published MAE values for the same model on the same season is exactly the kind of drift this review exists to surface. One definition should be adopted before either is quoted.</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">official</a></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+</tbody></table>
+</div>
+
+<h2>Open and blocked questions</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>5 of 14 questions remain open or blocked</caption>
+<thead><tr><th>ID</th><th>Category</th><th>Question</th><th>Status</th><th>What would close it</th><th>Evidence</th></tr></thead><tbody>
+<tr><td>Q-04</td><td>Market</td><td>Can we obtain an official market price, opening and closing?</td><td><span class="badge u">BLOCKED</span></td><td>buy or license a price feed with open and close per market; this is a purchasing decision, not an engineering one</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/snapshots/store_meta.json" target="_blank" rel="noopener"><code>data/snapshots/store_meta.json</code></a></td></tr>
+<tr><td>Q-05</td><td>Market</td><td>If we had prices, would our line differ from the market enough to matter?</td><td><span class="badge u">BLOCKED</span></td><td>same as Q-04; the difference column is already wired and will populate the day prices arrive</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/snapshots/snapshots_2026_wk10.csv" target="_blank" rel="noopener"><code>data/snapshots/snapshots_2026_wk10.csv</code></a></td></tr>
+<tr><td>Q-08</td><td>Injuries</td><td>How much is a starting-calibre absence actually worth in points?</td><td><span class="badge b">OPEN</span></td><td>regress margin on absences x position once several seasons of designations and results are joined; needs more than one season</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/meta.json" target="_blank" rel="noopener"><code>hub/data/meta.json (pos_cost)</code></a></td></tr>
+<tr><td>Q-13</td><td>Policy</td><td>Are we permitted to publish lines, run a contest, and pay rewards?</td><td><span class="badge b">OPEN</span></td><td>obtain review from a lawyer in the operating jurisdiction; no amount of modelling substitutes</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/decisions/suggestions.json" target="_blank" rel="noopener"><code>data/decisions/suggestions.json</code></a></td></tr>
+<tr><td>Q-14</td><td>Model</td><td>Is the injury adjustment even in the right direction from week to week?</td><td><span class="badge b">OPEN</span></td><td>the same regression as Q-08; needs seasons, not weeks</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/data/lines.json" target="_blank" rel="noopener"><code>hub/data/lines.json</code></a></td></tr>
+</tbody></table>
+<p class="note">An OPEN question has an answer that needs more data. A BLOCKED one needs something that does not exist in this repository at all, usually a purchase or a legal opinion.</p>
+</div>
+
+<h2>Values deliberately left blank</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>What is blank, and the honest reason</caption>
+<thead><tr><th>Where</th><th>What is blank</th><th>Why</th><th>What would fill it</th><th>Source</th><th>Status</th></tr></thead><tbody>
+<tr><td>Every market column</td><td>open, close and difference for all 39 game-markets</td><td>no official NFL price publication and no licensed feed</td><td>a price-feed contract (S-02)</td><td>n/a - absence verified structurally</td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>Player props</td><td>every joint-outcome coefficient</td><td>no official prop archive exists</td><td>a prop archive, which does not exist officially</td><td><a class="src" href="https://www.nfl.com/stats/player-stats/" target="_blank" rel="noopener">nfl.com/stats</a></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>Injury cost weights</td><td>any measured coefficient</td><td>no regression exists; the priors are unverified</td><td>several seasons of joined data</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">injury report</a></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>37 depth rows</td><td>the replacement's name</td><td>the club chart lists no lower tier, or the player was not on the captured chart</td><td>a deeper chart capture; the join is already built</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">injury report</a></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+<tr><td>Leaderboard</td><td>every rank and ROI</td><td>0 settled priced bets, so G-3 fails</td><td>time and a price feed</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">schedule pages</a></td><td><span class="badge u">UNVERIFIED</span></td></tr>
+</tbody></table>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_desk.py</code> from files in <code>data/verified/</code>,
+  <code>data/decisions/</code>, <code>data/picks/</code> and <code>data/snapshots/</code>.
+  Source rows are read from official NFL.com pages on 2026-11-14; values with no official source
+  are left blank and flagged. Model output is DERIVED and is arithmetic, not a prediction of
+  results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="index.html">Canonical hub</a> -
+  <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

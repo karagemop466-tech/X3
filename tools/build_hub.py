@@ -102,6 +102,8 @@ NAV = [
     ("leaderboard-live", "Leaderboard and demotion", "Signal separated from staking"),
     ("depth-tiers", "Replacement depth", "Which string actually steps in"),
     ("decisions", "Review queue", "Questions, answers and suggestions"),
+    ("repo-review-live", "Repo review", "Prior claims rechecked line by line"),
+    ("flagged-live", "Flagged for review", "Everything that needs a human decision"),
 ]
 
 

@@ -22,7 +22,8 @@ from urllib.parse import urlparse
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HUB = os.path.join(ROOT, "hub")
 PAGES = ["summary", "results", "picks", "snapshots", "correlation-live",
-         "leaderboard-live", "depth-tiers", "decisions"]
+         "leaderboard-live", "depth-tiers", "decisions",
+         "repo-review-live", "flagged-live"]
 PROBLEMS = []
 CHECKS = 0
 

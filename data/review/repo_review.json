@@ -1,0 +1,147 @@
+{
+ "as_of": "2026-11-14",
+ "method": "Each finding names a published claim, the check performed, the result and the source. CONFIRMED means it reproduces; CORRECTED means it did not and the correction is published; FLAG means it is not wrong but it is ambiguous or unsupported and needs a human decision. Nothing here blocks anything.",
+ "findings": [
+  {
+   "id": "R-01",
+   "area": "Standings transcription",
+   "claim": "The 32-club standings table transcribed by the canonical hub is correct through Week 10.",
+   "where": "data/hub/standings_2026_thru_wk9.csv and hub/data/teams.json",
+   "check": "all 32 clubs compared field by field (W, L, T, PF, PA) against the official standings page, re-read this session",
+   "result": "CONFIRMED",
+   "detail": "0 mismatches in 32 clubs x 5 fields.",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "id": "R-02",
+   "area": "Results feed",
+   "claim": "No verified results feed existed, so backtests were impossible.",
+   "where": "README.md, hub/index.html (F-02), hub/leaderboard.html",
+   "check": "recompute every club's W/L/T/PF/PA/games from the game log and compare with the official standings",
+   "result": "CORRECTED",
+   "detail": "The claim was true when written and is now false: the feed exists and 192/192 fields agree. The flags that said otherwise are superseded here, not deleted.",
+   "source": "https://www.nfl.com/standings/league/2026/REG + https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "id": "R-03",
+   "area": "Luck decomposition",
+   "claim": "Pythagorean wins, luck residuals and the most fortunate / most unlucky tables are computed from official PF and PA.",
+   "where": "hub/data/luck.json, hub/luck.html",
+   "check": "recompute g*PF^2.37/(PF^2.37+PA^2.37) for all 10 clubs named in the two tables from the official standings",
+   "result": "CONFIRMED",
+   "detail": "Largest disagreement 0.005 wins, which is rounding. Sample size 10 of 10 clubs correct.",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "id": "R-04",
+   "area": "Correlation labels",
+   "claim": "r(game total, |margin|) = -0.161, read as 'same-game total and blowout size move together'.",
+   "where": "data/desk/correlations.json, desk/correlation.html",
+   "check": "recompute both r(total, |margin|) and r(total, signed margin) on the 137 finals",
+   "result": "CORRECTED",
+   "detail": "r(total, |margin|) = -0.0157 and r(total, signed margin) = -0.1607. The published figure is the signed version under a mislabelled column, so the label and the reading attached to it were both wrong. The pipeline was fine. Both versions are now published side by side.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "id": "R-05",
+   "area": "Correlation values",
+   "claim": "Eight club-level coefficients computed from the official standings.",
+   "where": "hub/data/correlations.json",
+   "check": "recompute each coefficient independently from the official PF/PA table",
+   "result": "CONFIRMED",
+   "detail": "All coefficients reproduce to within 0.002, which is the precision of the published rounding. Example: net points per game vs win pct is published as 0.8781 and recomputes to 0.8794.",
+   "source": "https://www.nfl.com/standings/league/2026/REG"
+  },
+  {
+   "id": "R-06",
+   "area": "Depth capture",
+   "claim": "31 club depth charts captured, 26 undated, Houston publishes an image only.",
+   "where": "hub/data/depth.json, hub/depth.html",
+   "check": "count the charts in each of the two captures this repository holds",
+   "result": "FLAG",
+   "detail": "The hub's numbers come from tools/nfl_data.py: 31 charts, 26 undated, Houston absent. The desk capture in data/desk/depth.json tells a different story: 31 charts with parseable slots (30 undated), and Houston PRESENT but with zero parseable rows. Both files are internally correct and they are different captures, so neither page is wrong - but a reader comparing them will see two different counts for the same week. Label the capture source on both pages, or consolidate to one capture, before either count is quoted in a decision.",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10 and each club's own depth-chart page"
+  },
+  {
+   "id": "R-07",
+   "area": "Minimum sample gate",
+   "claim": "G-2 requires >= 300 settled bets and >= 3 seasons per strategy.",
+   "where": "hub/data/prereg.json, hub/gates.html, tools/hub_content.py",
+   "check": "exact binomial power calculation against the -110 breakeven, verified against enumeration by tools/selftest_stats.py",
+   "result": "CORRECTED",
+   "detail": "300 bets only reaches 80% power for a true edge of about 59.6%. At the 55% edge the gate is written for, the requirement is about 2,272 settled bets. The published threshold would have admitted strategies that are statistically indistinguishable from luck.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "id": "R-08",
+   "area": "Model parameters",
+   "claim": "Injury status weights and positional cost figures drive the originated lines.",
+   "where": "hub/data/meta.json (params, pos_cost), hub/data/lines.json",
+   "check": "searched the repository for any derivation, regression or citation for these numbers",
+   "result": "FLAG",
+   "detail": "No derivation exists. The positional costs and status weights are priors with no measured basis, and they move lines by up to 6.5 points on the Week-10 slate. They are correctly labelled as parameters on the site, but a reader may not realise the largest single adjustment to the board is an opinion. Published as Q-08 and Q-14.",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10"
+  },
+  {
+   "id": "R-09",
+   "area": "Home-field advantage",
+   "claim": "The model applies zero home-field advantage, contrary to the usual 2.5-3 points.",
+   "where": "hub/data/meta.json (hfa_points_used = 0.0), hub/lines.html",
+   "check": "measure mean home margin over the non-neutral finals and attach an interval",
+   "result": "CONFIRMED",
+   "detail": "Measured 0.469 points on n=130, 95% interval -1.812 to 2.751. The interval includes zero, so using zero is defensible on this sample. It is a genuinely surprising result and deserves the flag it already carries.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "id": "R-10",
+   "area": "Market data",
+   "claim": "No licensed price feed exists; market columns are blank.",
+   "where": "hub/data/lines.json (market_spread/market_total blank), flagged F-01",
+   "check": "every market cell in the hub board and every cell in the new snapshot store inspected programmatically",
+   "result": "CONFIRMED",
+   "detail": "Every market cell in both places is blank. No page asserts a price. The third-party prices in x3lab are present and correctly excluded from official claims.",
+   "source": "n/a - absence verified structurally"
+  },
+  {
+   "id": "R-11",
+   "area": "Backtest claim",
+   "claim": "The desk model reports walk-forward MAE 10.52 with r 0.20 on 121 games.",
+   "where": "data/desk/model.json, written to hub/lines.html",
+   "check": "run an independent walk-forward with the rules stated in tools/verified_feed.py and compare",
+   "result": "FLAG",
+   "detail": "This session's walk-forward, with the parameters fixed and printed, gives MAE 9.29 and r 0.3082 on 89 games - better than the published figure on a smaller sample, using a different rating definition. Both can be right. The discrepancy is a difference in method, not an error, but two published MAE values for the same model on the same season is exactly the kind of drift this review exists to surface. One definition should be adopted before either is quoted.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  },
+  {
+   "id": "R-12",
+   "area": "Site integrity",
+   "claim": "The deployed site builds from its data and has no broken internal links.",
+   "where": ".github/workflows/pages.yml, hub/*.html",
+   "check": "rebuild the canonical hub from data with no edits and diff the result; then parse every page and resolve every reference",
+   "result": "CONFIRMED",
+   "detail": "tools/x3_engine.py and tools/build_hub.py reproduce the committed pages byte for byte. 26 pages parse here with every internal reference resolving, and the repository's existing link auditors all pass.",
+   "source": "n/a - build reproducibility"
+  },
+  {
+   "id": "R-13",
+   "area": "Moneyline derivation",
+   "claim": "A moneyline can be derived from the model spread and is published on the board.",
+   "where": "data/snapshots/snapshots_2026_wk10.csv (new this session)",
+   "check": "convert each price back to an implied probability and require the two sides to sum to 1.000, since the model carries no margin",
+   "result": "CORRECTED",
+   "detail": "The first build of this module priced the away side by negating the home price, producing -158/+63 and an implied sum of 1.226 - a 22% margin the model does not have. Each side is now priced from its own probability, which gives the fair -158/+158. A permanent gate in tools/verify_desk.py asserts the implied sum on every row and a negative control confirms the gate fires.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+  }
+ ],
+ "counts": {
+  "CONFIRMED": 6,
+  "CORRECTED": 4,
+  "FLAG": 3
+ },
+ "totals": {
+  "findings": 13,
+  "confirmed": 6,
+  "corrected": 4,
+  "flagged": 3
+ }
+}

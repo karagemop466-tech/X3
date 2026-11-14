@@ -46,6 +46,7 @@ hfa = J("data", "verified", "hfa.json")
 kn = J("data", "verified", "key_numbers.json")
 gates = J("data", "decisions", "gates.json")
 qs = J("data", "decisions", "questions.json")
+review = J("data", "review", "repo_review.json")
 led = J("data", "decisions", "strategy_ledger.json")
 picks = J("data", "picks", "picks_2026_wk10.json")
 snap_meta = J("data", "snapshots", "store_meta.json")
@@ -61,6 +62,8 @@ NAV = [
     ("leaderboard-live", "Leaderboard & demotion", "Signal vs staking"),
     ("depth-tiers", "Replacement depth", "Which string actually plays"),
     ("decisions", "Review queue", "Questions, answers, suggestions"),
+    ("repo-review-live", "Repo review", "Prior claims, rechecked line by line"),
+    ("flagged-live", "Flagged for review", "Everything that needs a human decision"),
     ("@index.html", "Canonical hub", "The original 18-page desk"),
 ]
 
@@ -719,6 +722,102 @@ here that no amount of data can resolve.</li>
          "evidence, and the suggestions waiting for a yes or a no.", body, "decisions")
 
 
+def p_repo_review():
+    rows = []
+    BADGE = {"CONFIRMED": "v", "CORRECTED": "p", "FLAG": "u"}
+    for f in review["findings"]:
+        rows.append([f["id"], esc(f["area"]), esc(f["claim"]), f"<code>{esc(f['where'])}</code>",
+                     esc(f["check"]),
+                     f'<span class="badge {BADGE[f["result"]]}">{esc(f["result"])}</span>',
+                     esc(f["detail"]),
+                     (src(f["source"], "official") if f["source"].startswith("http")
+                      else f"<span class='mut'>{esc(f['source'])}</span>")
+                     + " " + (badge("DERIVED") if not f["source"].startswith("http") else "")])
+    t = review["totals"]
+    body = f"""
+<section class="callout"><h2>What this page is</h2>
+<p>Every claim an earlier tree published was put back through a check, and the result is
+recorded whether it passed or not. A claim that reproduces is worth more once someone has
+verified it; a claim that does not is worth knowing before it reaches a decision.</p>
+<p>{t['findings']} findings: <b>{t['confirmed']}</b> confirmed, <b>{t['corrected']}</b> corrected,
+<b>{t['flagged']}</b> flagged for review. Nothing here blocks anything - a flag is a request for a
+decision, not a verdict.</p></section>
+
+<h2>Findings</h2>
+{table(["ID", "Area", "Claim as published", "Where", "What was checked", "Result",
+        "Detail", "Source"], rows,
+       cap=f"{t['findings']} claims rechecked against official data or their own inputs")}
+
+<h2>The three that matter most</h2>
+<ol>
+<li><b>R-07, the minimum sample gate.</b> The published 300-bet minimum would admit strategies
+indistinguishable from luck. It is corrected to about 2,272 bets for a 55% edge, derived from exact
+power rather than opinion.</li>
+<li><b>R-08, the model's largest adjustment is unmeasured.</b> The injury and positional costs
+move lines by up to 6.5 points with no derivation anywhere in the repository. They are honestly
+labelled as parameters, but the label understates how much of the board they decide.</li>
+<li><b>R-06, two depth captures disagree.</b> Two files, both internally correct, giving different
+counts for the same week. Neither page is wrong and a reader comparing them will be confused, so
+the capture source needs labelling or consolidating.</li>
+</ol>
+"""
+    page("repo-review-live.html", "Repo review",
+         "Thirteen claims from earlier trees, each rechecked against official data with the "
+         "result published whether it passed or not.", body, "repo-review-live")
+
+
+def p_flagged():
+    flags = [f for f in review["findings"] if f["result"] == "FLAG"]
+    rows = [[f["id"], esc(f["area"]), esc(f["claim"]), esc(f["detail"]),
+             src(f["source"], "official") if f["source"].startswith("http") else esc(f["source"]),
+             badge("UNVERIFIED")] for f in flags]
+    q_open = [q for q in qs["questions"] if q["answer_status"] in ("OPEN", "BLOCKED")]
+    qrows = [[q["id"], esc(q["category"]), esc(q["question"]), badge(q["answer_status"]),
+              esc(q["how_to_close"]),
+              "<br>".join(filelink(u) for u in q["source"])] for q in q_open]
+    body = f"""
+<section class="callout"><h2>Nothing here blocks the site</h2>
+<p>This page is the review queue. Every item is either a question that cannot be answered from
+data, a claim that is ambiguous rather than wrong, or a value with no official source. Publishing
+them is the point: an unverified number that is written down can be checked, and one that is
+quietly filled in cannot.</p></section>
+
+<h2>Flagged claims</h2>
+{table(["ID", "Area", "Claim", "Why it is flagged", "Source", "Status"], rows,
+       cap=f"{len(flags)} claims that need a human decision")}
+
+<h2>Open and blocked questions</h2>
+{table(["ID", "Category", "Question", "Status", "What would close it", "Evidence"],
+       qrows, cap=f"{len(q_open)} of {qs['summary']['questions_total']} questions remain open or blocked",
+       note="An OPEN question has an answer that needs more data. A BLOCKED one needs something "
+            "that does not exist in this repository at all, usually a purchase or a legal opinion.")}
+
+<h2>Values deliberately left blank</h2>
+{table(["Where", "What is blank", "Why", "What would fill it", "Source", "Status"],
+       [["Every market column", "open, close and difference for all 39 game-markets",
+         "no official NFL price publication and no licensed feed",
+         "a price-feed contract (S-02)", "n/a - absence verified structurally",
+         badge("UNVERIFIED")],
+        ["Player props", "every joint-outcome coefficient",
+         "no official prop archive exists", "a prop archive, which does not exist officially",
+         src("https://www.nfl.com/stats/player-stats/", "nfl.com/stats"), badge("UNVERIFIED")],
+        ["Injury cost weights", "any measured coefficient",
+         "no regression exists; the priors are unverified", "several seasons of joined data",
+         src("https://www.nfl.com/injuries/league/2026/reg10", "injury report"), badge("UNVERIFIED")],
+        ["37 depth rows", "the replacement's name",
+         "the club chart lists no lower tier, or the player was not on the captured chart",
+         "a deeper chart capture; the join is already built",
+         src("https://www.nfl.com/injuries/league/2026/reg10", "injury report"), badge("UNVERIFIED")],
+        ["Leaderboard", "every rank and ROI", "0 settled priced bets, so G-3 fails",
+         "time and a price feed", src("https://www.nfl.com/schedules/2026/by-week/week-N", "schedule pages"),
+         badge("UNVERIFIED")]],
+       cap="What is blank, and the honest reason")}
+"""
+    page("flagged-live.html", "Flagged for review",
+         "Everything published on this site that is unverified, ambiguous or unanswerable, "
+         "with the source links so each one can be checked by hand.", body, "flagged-live")
+
+
 def main():
     p_summary()
     p_results()
@@ -728,7 +827,9 @@ def main():
     p_leader()
     p_depth()
     p_decisions()
-    print("wrote 8 pages into hub/")
+    p_repo_review()
+    p_flagged()
+    print("wrote 10 pages into hub/")
 
 
 if __name__ == "__main__":
