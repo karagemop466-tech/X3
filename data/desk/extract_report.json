@@ -30,7 +30,7 @@
   },
   "depth-CAR": {
    "url": "",
-   "html_bytes": 330450,
+   "html_bytes": 330952,
    "text_bytes": 4601,
    "lines": 183,
    "tabbed_cell_lines": 0
@@ -254,21 +254,21 @@
   },
   "schedule-w1": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-1",
-   "html_bytes": 2354655,
+   "html_bytes": 2354654,
    "text_bytes": 8783,
    "lines": 477,
    "tabbed_cell_lines": 0
   },
   "schedule-w10": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
-   "html_bytes": 2372305,
+   "html_bytes": 2372306,
    "text_bytes": 8739,
    "lines": 492,
    "tabbed_cell_lines": 0
   },
   "schedule-w11": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-11",
-   "html_bytes": 2354780,
+   "html_bytes": 2354647,
    "text_bytes": 8693,
    "lines": 487,
    "tabbed_cell_lines": 0
@@ -310,7 +310,7 @@
   },
   "schedule-w7": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-7",
-   "html_bytes": 2323109,
+   "html_bytes": 2323372,
    "text_bytes": 8719,
    "lines": 471,
    "tabbed_cell_lines": 0
@@ -324,7 +324,7 @@
   },
   "schedule-w9": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-9",
-   "html_bytes": 2339273,
+   "html_bytes": 2339667,
    "text_bytes": 8745,
    "lines": 475,
    "tabbed_cell_lines": 0
