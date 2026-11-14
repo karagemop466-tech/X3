@@ -828,8 +828,15 @@ def build(write=True):
     comp = [c for c in research["correlation_register"] if c["status"].startswith("COMPUTED")]
     blank = [c for c in research["correlation_register"] if not c["status"].startswith("COMPUTED")]
     b.append("<h2>Computed now (%d)</h2>" % len(comp))
+    def reg_src(c):
+        base = src(c["source"] or "SRC-01")
+        if str(c.get("source", "")).startswith(("SRC-17", "SRC-18", "SRC-19")):
+            return Raw('%s &middot; <a href="https://www.nfl.com/schedules/2026/by-week/week-1">official Wk1</a> '
+                       '&middot; <a href="https://www.nfl.com/schedules/2026/by-week/week-10">Wk10</a>' % str(base))
+        return base
+
     b.append(table(["#", "Pair", "r", "n", "Method", "Caveat", "Source"],
-                   [[c["id"], c["pair"], c["value"], c["n"], c["method"], c["caveat"], src(c["source"] or "SRC-01")] for c in comp]))
+                   [[c["id"], c["pair"], c["value"], c["n"], c["method"], c["caveat"], reg_src(c)] for c in comp]))
     def logsrc():
         return Raw('%s &middot; <a href="https://www.nfl.com/schedules/2026/by-week/week-1">official Wk1</a> &middot; '
                    '<a href="https://www.nfl.com/schedules/2026/by-week/week-10">Wk10</a> (the log covers weeks 1-11 finals)'
