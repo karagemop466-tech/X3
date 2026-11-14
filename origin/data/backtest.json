@@ -1,0 +1,212 @@
+{
+ "schema": "origin-backtest-v1",
+ "generated_at": "2026-11-14T19:33:18Z",
+ "method": "ridge least squares (registered lambda), walk-forward: fit weeks < w, score week w",
+ "params": {
+  "ridge_lambda": 1.0,
+  "sigma": 13.5,
+  "baseline_total": 45.0,
+  "registered_before": "any Week-10 Sunday result exists"
+ },
+ "results_feed": {
+  "games": 163,
+  "finals": 137,
+  "source": "origin/data/results.json (official pages; 163/163 cross-check)"
+ },
+ "weekly": [
+  {
+   "week": 2,
+   "n": 16,
+   "mae_margin": 14.81,
+   "mae_total": 15.47,
+   "winner_acc": 0.375,
+   "ou_hit": 0.5,
+   "ou_n": 16,
+   "brier": 0.3107,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-2"
+  },
+  {
+   "week": 3,
+   "n": 16,
+   "mae_margin": 11.42,
+   "mae_total": 17.88,
+   "winner_acc": 0.5,
+   "ou_hit": 0.3125,
+   "ou_n": 16,
+   "brier": 0.3072,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+  },
+  {
+   "week": 4,
+   "n": 16,
+   "mae_margin": 7.38,
+   "mae_total": 13.05,
+   "winner_acc": 0.75,
+   "ou_hit": 0.5625,
+   "ou_n": 16,
+   "brier": 0.1962,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 5,
+   "n": 15,
+   "mae_margin": 12.15,
+   "mae_total": 14.48,
+   "winner_acc": 0.5333,
+   "ou_hit": 0.4,
+   "ou_n": 15,
+   "brier": 0.2164,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 6,
+   "n": 14,
+   "mae_margin": 6.42,
+   "mae_total": 12.5,
+   "winner_acc": 0.6429,
+   "ou_hit": 0.3571,
+   "ou_n": 12,
+   "brier": 0.2518,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 7,
+   "n": 14,
+   "mae_margin": 11.88,
+   "mae_total": 9.9,
+   "winner_acc": 0.5714,
+   "ou_hit": 0.5714,
+   "ou_n": 14,
+   "brier": 0.2592,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 8,
+   "n": 14,
+   "mae_margin": 11.94,
+   "mae_total": 14.36,
+   "winner_acc": 0.6429,
+   "ou_hit": 0.5,
+   "ou_n": 14,
+   "brier": 0.2052,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 9,
+   "n": 15,
+   "mae_margin": 7.78,
+   "mae_total": 11.56,
+   "winner_acc": 0.8,
+   "ou_hit": 0.6667,
+   "ou_n": 14,
+   "brier": 0.1395,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 10,
+   "n": 1,
+   "mae_margin": 5.43,
+   "mae_total": 3.4,
+   "winner_acc": 0.0,
+   "ou_hit": 0.0,
+   "ou_n": 0,
+   "brier": 0.3266,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  }
+ ],
+ "overall": {
+  "n": 121,
+  "weeks": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "mae_margin": 10.46,
+  "mae_total": 13.64,
+  "winner_acc": 0.595,
+  "ou_hit": 0.4957,
+  "brier": 0.2373,
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+  "ou_n": 117
+ },
+ "parlay2": {
+  "n_weeks": 8,
+  "joint_hit": 0.625,
+  "leg_acc": 0.375,
+  "phi": 0.488,
+  "table": [
+   {
+    "week": 2,
+    "game1": "JAX@DEN",
+    "game2": "IND@KC",
+    "leg1_win": false,
+    "leg2_win": true
+   },
+   {
+    "week": 3,
+    "game1": "ATL@GB",
+    "game2": "SEA@WAS",
+    "leg1_win": false,
+    "leg2_win": false
+   },
+   {
+    "week": 4,
+    "game1": "NYJ@CHI",
+    "game2": "MIA@MIN",
+    "leg1_win": true,
+    "leg2_win": true
+   },
+   {
+    "week": 5,
+    "game1": "CHI@GB",
+    "game2": "PHI@JAX",
+    "leg1_win": false,
+    "leg2_win": true
+   },
+   {
+    "week": 6,
+    "game1": "WAS@SF",
+    "game2": "LAC@KC",
+    "leg1_win": true,
+    "leg2_win": true
+   },
+   {
+    "week": 7,
+    "game1": "IND@MIN",
+    "game2": "DEN@ARI",
+    "leg1_win": true,
+    "leg2_win": true
+   },
+   {
+    "week": 8,
+    "game1": "TEN@CIN",
+    "game2": "IND@JAX",
+    "leg1_win": true,
+    "leg2_win": true
+   },
+   {
+    "week": 9,
+    "game1": "JAX@BAL",
+    "game2": "ARI@SEA",
+    "leg1_win": true,
+    "leg2_win": true
+   }
+  ],
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-N"
+ },
+ "roi": {
+  "status": "BLOCKED \u2014 no market prices exist (Q-01 open); ROI would be invented",
+  "unlocks_when": "price-snapshot store gains market_line values (S-A01)"
+ },
+ "notes": [
+  "Week 1 excluded: no training data.",
+  "Deterministic: no randomness anywhere.",
+  "Ties count as 0.5 win probability targets for the Brier score."
+ ]
+}

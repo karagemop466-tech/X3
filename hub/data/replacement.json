@@ -1,0 +1,97 @@
+{
+ "as_of": "2026-11-14",
+ "backup_also_out": 0,
+ "chart_missing": [
+  "HOU"
+ ],
+ "clubs_with_chart": 31,
+ "irregularities": [
+  "HOU club depth chart page did not render a table on 2026-11-14 (2 attempts) - club flagged",
+  "MIA chart has an EMPTY kicker slot (K row lists no player)",
+  "BAL chart has an EMPTY kicker slot (K row lists no player)",
+  "LA chart lists a player at DE who has not been on an NFL roster since 2023 (Aaron Donald) - template error on club page",
+  "Charts are club-published UNOFFICIAL depth charts on official club domains; several pages are undated"
+ ],
+ "no_backup_listed": 3,
+ "no_chart_match_sample": [
+  [
+   "WAS",
+   "Lucas Patrick",
+   "C",
+   "Out"
+  ],
+  [
+   "DET",
+   "Kerby Joseph",
+   "S",
+   "Out"
+  ],
+  [
+   "KC",
+   "Omarr Norman-Lott",
+   "DT",
+   "Out"
+  ],
+  [
+   "GB",
+   "Micah Parsons",
+   "LB",
+   "Out"
+  ],
+  [
+   "GB",
+   "Josh Whyle",
+   "TE",
+   "Out"
+  ],
+  [
+   "JAX",
+   "BJ Green II",
+   "DE",
+   "Out"
+  ],
+  [
+   "CAR",
+   "Jonathon Brooks",
+   "RB",
+   "Doubtful"
+  ],
+  [
+   "CAR",
+   "Mike Jackson",
+   "CB",
+   "Doubtful"
+  ],
+  [
+   "HOU",
+   "Azeez Al-Shaair",
+   "LB",
+   "Out"
+  ],
+  [
+   "HOU",
+   "Marvin Harrison Jr.",
+   "WR",
+   "Out"
+  ],
+  [
+   "HOU",
+   "Danielle Hunter",
+   "DE",
+   "Out"
+  ],
+  [
+   "HOU",
+   "Brevin Jordan",
+   "TE",
+   "Out"
+  ]
+ ],
+ "not_a_starter_rows": 16,
+ "replacement_depth_counts": {
+  "": 3,
+  "2": 36
+ },
+ "report_rows_without_chart_match": 21,
+ "starters_out_or_doubtful": 39
+}

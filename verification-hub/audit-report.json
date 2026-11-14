@@ -137,6 +137,22 @@
       "refs": 14,
       "unsourced_examples": []
     },
+    "origin": {
+      "pages": 14,
+      "rows": 481,
+      "flagged_rows": 430,
+      "refs": 856,
+      "unsourced_examples": [
+        "origin/backtest.html: Week n MAE margin (pts) MAE total (pts) Winner accuracy Over/under hit (vs 45.0 baseline) O/U n Brier (win prob) Results",
+        "origin/backtest.html: Window n MAE margin MAE total Winner accuracy O/U hit O/U n Brier Basis",
+        "origin/correlations.html: ID X Y Pearson r Spearman \u03c1 n 95% CI Official sources Note",
+        "origin/correlations.html: ID X Y Pearson r Spearman \u03c1 n 95% CI Status Note",
+        "origin/depth.html: Club Out/Doubtful absences Replacements identified Deficiency index (pts) Injury source Chart source",
+        "origin/depth.html: Club Game Player out Pos Status Starter string Replacement (next up) Deficiency pts Basis Sources",
+        "origin/gates.html: ID Gate Requirement State Evidence / what flips it",
+        "origin/gates.html: G-0 Pre-registration Rules, sample definition and thresholds frozen in committed ledgers before outcomes are seen. PASS "
+      ]
+    },
     "pages": {
       "pages": 6,
       "rows": 82,
@@ -184,9 +200,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 149,
-  "rows_total": 5555,
-  "rows_flagged_or_sourced": 4817,
-  "internal_refs": 3125,
+  "pages_total": 163,
+  "rows_total": 6036,
+  "rows_flagged_or_sourced": 5247,
+  "internal_refs": 3453,
   "problems": []
 }
