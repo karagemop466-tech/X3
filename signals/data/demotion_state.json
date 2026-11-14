@@ -1,0 +1,49 @@
+[
+ {
+  "gate": "D1",
+  "measured": "trailing 50 graded games: win rate 0.6381, exact p 0.006",
+  "fires_now": "no",
+  "note": "Fires only when the rate is at or below no-skill AND the result is not significant."
+ },
+ {
+  "gate": "D2",
+  "measured": "MAE delta vs baseline 0.792 pts (trailing window overlaps the full graded set at this sample size)",
+  "fires_now": "no",
+  "note": "Positive delta is the model being closer to the truth than the constant baseline."
+ },
+ {
+  "gate": "D3",
+  "measured": "not evaluable \u2014 no settled payoff series exists",
+  "fires_now": "UNEVALUABLE",
+  "flag": "F-02",
+  "note": "Recorded, not waived. It becomes live the day a price series lands."
+ },
+ {
+  "gate": "D4",
+  "measured": "every row in this module links an official source or carries a flag",
+  "fires_now": "PASS",
+  "flag": "",
+  "note": "Checked by scripts/verify_signals.py on every build and in CI."
+ },
+ {
+  "gate": "D5",
+  "measured": "no strategy has ever been promoted, so the count since promotion is 0",
+  "fires_now": "YES (by definition, while nothing is live)",
+  "flag": "",
+  "note": "Promotion requires the sample-size gate, so this is a safety net, not the binding constraint."
+ },
+ {
+  "gate": "D6",
+  "measured": "ratings for week W use only finals from weeks before W; the injury report is used only for its own week",
+  "fires_now": "PASS",
+  "flag": "",
+  "note": "Structurally enforced by the walk-forward fit."
+ },
+ {
+  "gate": "D7",
+  "measured": "longest run of weeks at or below the no-skill rate: 1 (threshold is 3 consecutive)",
+  "fires_now": "no",
+  "flag": "",
+  "note": "Weekly side win rate is printed in full on the leaderboard page."
+ }
+]

@@ -1,0 +1,8 @@
+id,name,rule,action,measurement
+D1,Trailing record,"Over the trailing 50 graded decisions, contest win rate <= 0.50 AND the exact binomial p >= 0.05.",live -> paper,Trailing contest win rate and p are computed every build from the reserved window.
+D2,Baseline regression,Trailing 30 decisions: MAE worse than the no-knowledge baseline (delta < 0).,live -> paper,MAE delta is computed every build; the trailing-30 slice is printed as soon as n allows.
+D3,Drawdown,Notional drawdown greater than 20 units.,live -> paper,"UNEVALUABLE — needs a settled payoff series (F-01). Recorded, not waived."
+D4,Provenance break,"Any input row loses its official source link, or a source fetch fails.",live -> paper (immediate),Checked by scripts/verify_signals.py on every build and in CI.
+D5,Under-powered,Fewer than 30 graded decisions since promotion.,live -> paper,"Promotion itself requires the sample-size gate, so this is a safety net."
+D6,Look-ahead,Any input is found to be published after the decision cutoff for the graded game.,live -> paper (immediate),Structurally prevented by the walk-forward fit; checked by re-running G10.
+D7,Closing-value collapse,Fair line stops being closer to the truth than the baseline in 3 consecutive weeks.,live -> paper,Weekly contest win rate is printed on the leaderboard page.

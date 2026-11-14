@@ -1,0 +1,9 @@
+week,games,side_wins,side_losses,side_rate,side_mae_delta,total_wins,total_losses,total_rate,verdict,source
+3,16,8,8,0.5,-0.807,4,12,0.25,side did not beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-3
+4,16,11,5,0.6875,1.074,9,7,0.5625,side beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-4
+5,15,8,7,0.5333,0.193,9,6,0.6,side beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-5
+6,14,7,7,0.5,0.046,4,10,0.2857,side did not beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-6
+7,14,9,5,0.6429,0.12,8,6,0.5714,side beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-7
+8,14,11,3,0.7857,1.259,6,8,0.4286,side beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-8
+9,15,13,2,0.8667,3.864,6,9,0.4,side beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-9
+10,1,0,1,0.0,-1.973,1,0,1.0,side did not beat the baseline this week,https://www.nfl.com/schedules/2026/by-week/week-10

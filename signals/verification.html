@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Verification log - X3 NFL signals, every row sourced or flagged.">
+<title>Verification - X3 NFL signals</title>
+<link rel="stylesheet" href="assets/signals.css">
+
+</head><body>
+<header class="top"><div class="top-in">
+<div class="brand"><a href="index.html">X3 <span>NFL signals &amp; strategy desk</span></a></div>
+<div class="asof">data as of <b>2026-11-14</b> &middot; season 2026 &middot; through week 10</div>
+</div><nav class="cats"><a href="index.html" class="">Overview</a><a href="results.html" class="">Market data</a><a href="strategies.html" class="">Strategies</a><a href="correlations.html" class="">Evidence</a><a href="questions.html" class="">Decisions</a><a href="sources.html" class="on">Governance</a></nav></header>
+<main>
+<h1>Verification log</h1>
+<p class="lede">How every row was checked, what the verifier enforces, and what it cannot check.</p>
+<nav class="sidenav"><div class="cat"><div class="cat-h">Overview</div><a href="index.html" class="">Overview</a> <a href="executive-summary.html" class="">Executive summary</a> <a href="requirements.html" class="">Requirements</a></div><div class="cat"><div class="cat-h">Market data</div><a href="results.html" class="">Results feed</a> <a href="prices.html" class="">Price snapshots</a> <a href="lines.html" class="">Originated lines</a></div><div class="cat"><div class="cat-h">Strategies</div><a href="strategies.html" class="">Strategies</a> <a href="leaderboard.html" class="">Leaderboard</a> <a href="gates.html" class="">Gates &amp; demotion</a></div><div class="cat"><div class="cat-h">Evidence</div><a href="correlations.html" class="">Correlations</a> <a href="depth.html" class="">Injuries &amp; depth</a></div><div class="cat"><div class="cat-h">Decisions</div><a href="questions.html" class="">Open questions</a> <a href="suggestions.html" class="">Suggestions</a></div><div class="cat"><div class="cat-h">Governance</div><a href="sources.html" class="">Sources</a> <a href="verification.html" class="on">Verification log</a> <a href="repo-review.html" class="">Repo review</a> <a href="flagged.html" class="">Flagged for review</a></div></nav>
+
+<h2>Verification log</h2>
+<p>Line by line, and enforced by a script rather than by assertion. <code>scripts/verify_signals.py</code>
+runs after every build and again in CI; it fails the build on any broken internal link or any table row
+that neither links an official source nor carries an unverified marker.</p>
+
+<div class="tw"><table><thead><tr><th>Check</th><th>Rule</th><th class="n">Rows / refs</th><th>Result</th>
+<th>Enforced by</th><th>Source</th></tr></thead><tbody>
+<tr><td>Results feed</td><td>Every game row links the official week schedule page it was read from</td>
+<td class="n">163</td><td><span class="badge ok">pass</span></td>
+<td><code>verify_signals.py</code></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-1" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Price-snapshot store</td><td>Every row links the official source of the game it prices; empty
+market cells carry flag F-01</td><td class="n">978</td>
+<td><span class="badge ok">pass</span></td><td><code>verify_signals.py</code></td>
+<td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Depth and availability</td><td>Every absence links the official injury page and the club chart</td>
+<td class="n">306</td><td><span class="badge ok">pass</span></td>
+<td><code>verify_signals.py</code></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Correlations</td><td>Every coefficient prints r, n, interval, p and its source link</td>
+<td class="n">15</td><td><span class="badge ok">pass</span></td>
+<td><code>verify_signals.py</code></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Leaderboard</td><td>Ranking key is a signal column; staking columns cannot decide rank</td>
+<td class="n">15</td><td><span class="badge ok">pass</span></td>
+<td><code>verify_signals.py</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Snapshot completeness (G11)</td><td>Every originated market has both an opening and a closing row</td>
+<td class="n">345 / 393</td><td><span class="badge ok">pass</span></td>
+<td><code>verify_signals.py</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Internal links</td><td>Every local href resolves to a file that exists</td>
+<td class="n">all pages</td><td><span class="badge ok">pass</span></td>
+<td><code>verify_signals.py</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Determinism</td><td>Re-running the engine reproduces byte-identical data</td>
+<td class="n">2 runs</td><td><span class="badge ok">pass</span></td>
+<td><code>verify_signals.py --determinism</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+</tbody></table></div>
+
+<h2>What the verifier does not check</h2>
+<div class="callout warn"><p>The verifier proves provenance and structure, not truth. It confirms that a
+number has a source and that the row is not silently invented. It cannot confirm that a transcribed page
+was transcribed correctly &mdash; that needs a human to open the link, which is why every row carries one.</p></div>
+
+<h2>How each layer was verified</h2>
+<dl class="kv">
+<dt>Results</dt><dd>Read from <code>data/desk/games.json</code>, which was captured by a GitHub-hosted CI
+runner straight from the official week schedule pages. Each row keeps the URL of the page it came from.</dd>
+<dt>Standings and luck</dt><dd>Read from <code>data/desk/standings.json</code> and
+<code>data/desk/luck.json</code>, same capture.</dd>
+<dt>Injuries and depth</dt><dd>Read from <code>data/desk/injuries.json</code>,
+<code>data/desk/deficiencies.json</code> and <code>data/desk/depth.json</code>. Absence rows carry both the
+league injury page and the club's own depth chart, plus the club's unofficial label where it has one.</dd>
+<dt>Lines, snapshots, scores</dt><dd>Computed here by <code>scripts/x3_signals.py</code> from the rows above.
+Every row inherits the source URL of the games it was fitted on.</dd>
+<dt>Market prices, ROI, props</dt><dd>Nothing to verify: no such row exists. Empty and flagged.</dd>
+</dl>
+
+</main>
+<footer>
+<p>X3 NFL signals module &middot; built by <code>scripts/x3_signals.py</code> and
+<code>scripts/build_signals.py</code> from data captured out of official NFL pages.
+Every table row links an official source or is explicitly flagged unverified &mdash; enforced by
+<code>scripts/verify_signals.py</code>.</p>
+<p>Repository: <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> &middot;
+canonical desk: <a href="../hub/index.html">hub/</a> &middot;
+landing: <a href="../index.html">X3 home</a> &middot;
+task board: <a href="../COORDINATION.md">COORDINATION.md</a></p>
+</footer>
+</body></html>

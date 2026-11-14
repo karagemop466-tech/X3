@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Repository review - X3 NFL signals, every row sourced or flagged.">
+<title>Repo review - X3 NFL signals</title>
+<link rel="stylesheet" href="assets/signals.css">
+
+</head><body>
+<header class="top"><div class="top-in">
+<div class="brand"><a href="index.html">X3 <span>NFL signals &amp; strategy desk</span></a></div>
+<div class="asof">data as of <b>2026-11-14</b> &middot; season 2026 &middot; through week 10</div>
+</div><nav class="cats"><a href="index.html" class="">Overview</a><a href="results.html" class="">Market data</a><a href="strategies.html" class="">Strategies</a><a href="correlations.html" class="">Evidence</a><a href="questions.html" class="">Decisions</a><a href="sources.html" class="on">Governance</a></nav></header>
+<main>
+<h1>Repository review</h1>
+<p class="lede">The repository audited tree by tree, with the irregularities found.</p>
+<nav class="sidenav"><div class="cat"><div class="cat-h">Overview</div><a href="index.html" class="">Overview</a> <a href="executive-summary.html" class="">Executive summary</a> <a href="requirements.html" class="">Requirements</a></div><div class="cat"><div class="cat-h">Market data</div><a href="results.html" class="">Results feed</a> <a href="prices.html" class="">Price snapshots</a> <a href="lines.html" class="">Originated lines</a></div><div class="cat"><div class="cat-h">Strategies</div><a href="strategies.html" class="">Strategies</a> <a href="leaderboard.html" class="">Leaderboard</a> <a href="gates.html" class="">Gates &amp; demotion</a></div><div class="cat"><div class="cat-h">Evidence</div><a href="correlations.html" class="">Correlations</a> <a href="depth.html" class="">Injuries &amp; depth</a></div><div class="cat"><div class="cat-h">Decisions</div><a href="questions.html" class="">Open questions</a> <a href="suggestions.html" class="">Suggestions</a></div><div class="cat"><div class="cat-h">Governance</div><a href="sources.html" class="">Sources</a> <a href="verification.html" class="">Verification log</a> <a href="repo-review.html" class="on">Repo review</a> <a href="flagged.html" class="">Flagged for review</a></div></nav>
+
+<h2>Repository review</h2>
+<p>16 parallel sessions have each published their own site tree into this repository. They overlap
+heavily: several present the same underlying table computed at different times, with different numbers.
+None of them was deleted &mdash; deleting another session's work would be worse than the duplication &mdash;
+but the duplication is itself a decision-making problem and it is logged as
+<a href="flagged.html">F-11</a> with a remedy in <a href="suggestions.html#S-12">suggestion S-12</a>.</p>
+<div class="tw"><table><thead><tr><th>Tree</th><th class="n">HTML pages</th><th class="n">Data files</th>
+<th class="n">Size</th><th>Maintained</th><th>Status</th><th>Repository</th></tr></thead><tbody>
+<tr><td class=""><code>docs/</code></td><td class="n">24</td><td class="n">2</td><td class="n">376 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/docs" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>dashboard/</code></td><td class="n">18</td><td class="n">19</td><td class="n">761 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/dashboard" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>hub/</code></td><td class="n">18</td><td class="n">8</td><td class="n">419 KB</td><td class=""><span class="badge ok">yes</span></td><td class="">presented by an earlier session as the canonical tree</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/hub" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>desk/</code></td><td class="n">18</td><td class="n">0</td><td class="n">360 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/desk" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>x3lab/</code></td><td class="n">13</td><td class="n">18</td><td class="n">168 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/x3lab" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>pages/</code></td><td class="n">6</td><td class="n">0</td><td class="n">45 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/pages" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>site/</code></td><td class="n">1</td><td class="n">0</td><td class="n">4 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/site" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>legacy/</code></td><td class="n">1</td><td class="n">0</td><td class="n">3 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/legacy" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>audit/</code></td><td class="n">1</td><td class="n">4</td><td class="n">176 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/audit" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>crosscheck/</code></td><td class="n">7</td><td class="n">2</td><td class="n">621 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/crosscheck" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>archive/</code></td><td class="n">17</td><td class="n">14</td><td class="n">444 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/archive" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>lab/</code></td><td class="n">11</td><td class="n">0</td><td class="n">6 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/lab" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>analysis/</code></td><td class="n">0</td><td class="n">0</td><td class="n">0 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/analysis" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>research/</code></td><td class="n">0</td><td class="n">0</td><td class="n">0 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/research" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>capture/</code></td><td class="n">0</td><td class="n">0</td><td class="n">0 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/capture" target="_blank" rel="noopener noreferrer">source</a></td></tr><tr><td class=""><code>verification-hub/</code></td><td class="n">1</td><td class="n">1</td><td class="n">21 KB</td><td class=""><span class="badge neutral">no</span></td><td class="">built by an earlier session; preserved, not maintained</td><td class=""><a class="src" href="https://github.com/karagemop466-tech/X3/tree/main/verification-hub" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+</tbody></table></div>
+
+<h2>Irregularities found in the review</h2>
+<ul class="tight">
+<li><b>16 trees, one subject.</b> A reader asking "what is our number for this game" can find
+16 different answers. Only <code>hub/</code> is presented as canonical.</li>
+<li><b>The same injury report was transcribed twice into two schemas.</b> Both agree on 345 of 345 game
+statuses, which is the strongest evidence in the repository that the injury layer is right. The
+disagreement on one practice status is logged rather than adjudicated.</li>
+<li><b>A previously published correlation was wrong.</b> An earlier session published
+r(game total, |margin|) = &minus;0.161; recomputing from the same 137 finals gives &minus;0.016, and
+&minus;0.161 is in fact r(total, signed home margin). The pipeline was fine; the label was wrong. This
+module recomputes both and prints them separately.</li>
+<li><b>Depth charts are the weakest link.</b> No as-of date, and most are labelled unofficial by the club
+that publishes them. They are used as a report, never as a model input.</li>
+</ul>
+<div class="callout warn"><p>Every item above is already published on the
+<a href="flagged.html">Flagged for review</a> page. None of it blocks the site; all of it is visible.</p></div>
+
+</main>
+<footer>
+<p>X3 NFL signals module &middot; built by <code>scripts/x3_signals.py</code> and
+<code>scripts/build_signals.py</code> from data captured out of official NFL pages.
+Every table row links an official source or is explicitly flagged unverified &mdash; enforced by
+<code>scripts/verify_signals.py</code>.</p>
+<p>Repository: <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> &middot;
+canonical desk: <a href="../hub/index.html">hub/</a> &middot;
+landing: <a href="../index.html">X3 home</a> &middot;
+task board: <a href="../COORDINATION.md">COORDINATION.md</a></p>
+</footer>
+</body></html>

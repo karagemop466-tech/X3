@@ -1,0 +1,58 @@
+[
+ {
+  "id": "X3-01",
+  "requirement": "Add a price-snapshot store that records opening and closing numbers for every market we originate",
+  "status": "done",
+  "evidence": "signals/data/price_snapshots.csv \u2014 one row per market per snapshot (open, close).",
+  "page": "signals/prices.html"
+ },
+ {
+  "id": "X3-02",
+  "requirement": "Add a verified results feed so backtests and ROI can be computed at all",
+  "status": "done",
+  "evidence": "signals/data/results.csv \u2014 163 games, 137 verified finals, every row linked to the official week page.",
+  "page": "signals/results.html"
+ },
+ {
+  "id": "X3-03",
+  "requirement": "Originate the side first, then the total, then the moneyline",
+  "status": "done",
+  "evidence": "Fixed pipeline order with the origination order recorded per market row; the moneyline is derived from the side plus the margin sigma.",
+  "page": "signals/lines.html"
+ },
+ {
+  "id": "X3-04",
+  "requirement": "Publish the model's fair line, the market line, and the difference as separate columns",
+  "status": "done",
+  "evidence": "Three separate columns per market. Market and difference are empty and flagged F-01.",
+  "page": "signals/lines.html"
+ },
+ {
+  "id": "X3-05",
+  "requirement": "Separate 'signal' from 'staking' in the leaderboard so a lucky staking run cannot mask a bad signal",
+  "status": "done",
+  "evidence": "Two blocks per strategy; ranking uses signal only; enforced by scripts/verify_signals.py.",
+  "page": "signals/leaderboard.html"
+ },
+ {
+  "id": "X3-06",
+  "requirement": "Track the depth of the replacement, not just the fact of a replacement",
+  "status": "done",
+  "evidence": "depth_string and replacement_depth (2nd/3rd/4th) are published per absence, with a per-club-week load roll-up.",
+  "page": "signals/depth.html"
+ },
+ {
+  "id": "X3-07",
+  "requirement": "Compute correlations only from officially sourced numbers and publish n with each value",
+  "status": "done",
+  "evidence": "Every coefficient on signals/correlations.html carries r, n, a 95% CI, a p-value and its source link.",
+  "page": "signals/correlations.html"
+ },
+ {
+  "id": "X3-08",
+  "requirement": "Define a demotion gate that sends a live strategy back to paper",
+  "status": "done",
+  "evidence": "Seven demotion rules (D1-D7) with measured values and the action each one triggers.",
+  "page": "signals/gates.html"
+ }
+]

@@ -1,0 +1,9 @@
+id,name,kind,url,retrieved,used_for,rows,note
+SRC-01,"NFL.com week schedule pages (weeks 1-11, 2026)",Official,https://www.nfl.com/schedules/2026/by-week/week-1,2026-11-14,"Final scores, schedule, neutral-site flag",163 games / 137 verified finals,"Captured by the CI runner to data/desk/games.json, which this module reads and never writes."
+SRC-02,NFL.com league standings 2026,Official,https://www.nfl.com/standings/league/2026/reg,2026-11-14,"Club records, points for and against",32 clubs,Read from data/desk/standings.json.
+SRC-03,"NFL.com official injury report (weeks 8-10, 2026)",Official,https://www.nfl.com/injuries/league/2026/reg10,2026-11-14,"Player, position, injury, practice status, game status","1,027 rows across three weeks",Read from data/desk/injuries.json and data/desk/deficiencies.json.
+SRC-04,Club depth charts (32 clubs),Club-published,https://www.azcardinals.com/team/depth-chart,2026-11-14,First / second / third / fourth string by position,32 clubs,"Read from data/desk/depth.json. Club-published, not league-published; most are labelled unofficial by the club."
+SRC-05,NFL.com player pages,Official,https://www.nfl.com/players/,2026-11-14,Player identity link for each absence,210 absence rows,"Used only as an identity link, never as a value."
+SRC-06,GitHub repository,Primary,https://github.com/karagemop466-tech/X3,2026-11-14,"Version history, CI runs, Pages deploy",803 tracked files,Every claim on this site is reproducible from the repository.
+SRC-07,GitHub Pages,Primary,https://karagemop466-tech.github.io/X3/,2026-11-14,Live deployment of this site,1 site,Deployment is confirmed from the Pages API after every merge.
+SRC-08,NFL.com statistics,Official,https://www.nfl.com/stats,2026-11-14,NOT YET USED — the official route to player-prop markets,no rows captured,Identified as the official source that would unlock the prop-combo family (see F-04 and S-02).

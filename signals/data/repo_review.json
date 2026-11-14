@@ -1,0 +1,146 @@
+[
+ {
+  "tree": "docs",
+  "html_pages": 24,
+  "data_files": 2,
+  "bytes": 385370,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/docs"
+ },
+ {
+  "tree": "dashboard",
+  "html_pages": 18,
+  "data_files": 19,
+  "bytes": 779713,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/dashboard"
+ },
+ {
+  "tree": "hub",
+  "html_pages": 18,
+  "data_files": 8,
+  "bytes": 429498,
+  "maintained": "yes",
+  "note": "presented by an earlier session as the canonical tree",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/hub"
+ },
+ {
+  "tree": "desk",
+  "html_pages": 18,
+  "data_files": 0,
+  "bytes": 368380,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/desk"
+ },
+ {
+  "tree": "x3lab",
+  "html_pages": 13,
+  "data_files": 18,
+  "bytes": 172391,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/x3lab"
+ },
+ {
+  "tree": "pages",
+  "html_pages": 6,
+  "data_files": 0,
+  "bytes": 46349,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/pages"
+ },
+ {
+  "tree": "site",
+  "html_pages": 1,
+  "data_files": 0,
+  "bytes": 4036,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/site"
+ },
+ {
+  "tree": "legacy",
+  "html_pages": 1,
+  "data_files": 0,
+  "bytes": 3408,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/legacy"
+ },
+ {
+  "tree": "audit",
+  "html_pages": 1,
+  "data_files": 4,
+  "bytes": 180121,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/audit"
+ },
+ {
+  "tree": "crosscheck",
+  "html_pages": 7,
+  "data_files": 2,
+  "bytes": 635725,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/crosscheck"
+ },
+ {
+  "tree": "archive",
+  "html_pages": 17,
+  "data_files": 14,
+  "bytes": 454313,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/archive"
+ },
+ {
+  "tree": "lab",
+  "html_pages": 11,
+  "data_files": 0,
+  "bytes": 6489,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/lab"
+ },
+ {
+  "tree": "analysis",
+  "html_pages": 0,
+  "data_files": 0,
+  "bytes": 0,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/analysis"
+ },
+ {
+  "tree": "research",
+  "html_pages": 0,
+  "data_files": 0,
+  "bytes": 0,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/research"
+ },
+ {
+  "tree": "capture",
+  "html_pages": 0,
+  "data_files": 0,
+  "bytes": 0,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/capture"
+ },
+ {
+  "tree": "verification-hub",
+  "html_pages": 1,
+  "data_files": 1,
+  "bytes": 22012,
+  "maintained": "no",
+  "note": "built by an earlier session; preserved, not maintained",
+  "source": "https://github.com/karagemop466-tech/X3/tree/main/verification-hub"
+ }
+]

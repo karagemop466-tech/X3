@@ -1,0 +1,1065 @@
+{
+ "as_of": "2026-11-14",
+ "season": 2026,
+ "generated_by": "scripts/x3_signals.py",
+ "counts": {
+  "results_rows": 163,
+  "verified_finals": 137,
+  "scheduled_games": 26,
+  "originated_games": 163,
+  "graded_games": 105,
+  "graded_weeks": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "price_snapshot_rows": 978,
+  "open_snapshots": 345,
+  "close_snapshots": 393,
+  "not_originated": 240,
+  "depth_rows": 210,
+  "club_availability_rows": 96,
+  "correlations": 15,
+  "strategies": 15,
+  "gates": 12,
+  "demotion_rules": 7,
+  "requirements": 8,
+  "questions": 12,
+  "suggestions": 12,
+  "flags": 13,
+  "sources": 8
+ },
+ "scoring": {
+  "n_graded_total": 105,
+  "graded_weeks": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "calibration": {
+   "margin": {
+    "n": 105,
+    "sd_predicted": 4.283,
+    "sd_actual": 12.736,
+    "ratio": 0.336,
+    "mean_predicted": -0.276,
+    "mean_actual": -0.086
+   },
+   "total": {
+    "n": 105,
+    "sd_predicted": 4.308,
+    "sd_actual": 13.449,
+    "ratio": 0.32,
+    "mean_predicted": 46.017,
+    "mean_actual": 46.219
+   },
+   "reading": "A ratio below 1 means the model is under-spread: it ranks teams in the right order but pulls every number toward the league mean. Under-spreading costs accuracy on the extremes and is the usual symptom of a small training window."
+  },
+  "benjamini_hochberg": {
+   "q": 0.1,
+   "tests": 6,
+   "discoveries": 3,
+   "note": "BH is applied to every strategy with a computable p-value. A discovery whose effect is adverse is a finding, not a skill claim."
+  },
+  "weekly": [
+   {
+    "week": 3,
+    "games": 16,
+    "side_wins": 8,
+    "side_losses": 8,
+    "side_rate": 0.5,
+    "side_mae_delta": -0.807,
+    "total_wins": 4,
+    "total_losses": 12,
+    "total_rate": 0.25,
+    "verdict": "side did not beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+   },
+   {
+    "week": 4,
+    "games": 16,
+    "side_wins": 11,
+    "side_losses": 5,
+    "side_rate": 0.6875,
+    "side_mae_delta": 1.074,
+    "total_wins": 9,
+    "total_losses": 7,
+    "total_rate": 0.5625,
+    "verdict": "side beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+   },
+   {
+    "week": 5,
+    "games": 15,
+    "side_wins": 8,
+    "side_losses": 7,
+    "side_rate": 0.5333,
+    "side_mae_delta": 0.193,
+    "total_wins": 9,
+    "total_losses": 6,
+    "total_rate": 0.6,
+    "verdict": "side beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+   },
+   {
+    "week": 6,
+    "games": 14,
+    "side_wins": 7,
+    "side_losses": 7,
+    "side_rate": 0.5,
+    "side_mae_delta": 0.046,
+    "total_wins": 4,
+    "total_losses": 10,
+    "total_rate": 0.2857,
+    "verdict": "side did not beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+   },
+   {
+    "week": 7,
+    "games": 14,
+    "side_wins": 9,
+    "side_losses": 5,
+    "side_rate": 0.6429,
+    "side_mae_delta": 0.12,
+    "total_wins": 8,
+    "total_losses": 6,
+    "total_rate": 0.5714,
+    "verdict": "side beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+   },
+   {
+    "week": 8,
+    "games": 14,
+    "side_wins": 11,
+    "side_losses": 3,
+    "side_rate": 0.7857,
+    "side_mae_delta": 1.259,
+    "total_wins": 6,
+    "total_losses": 8,
+    "total_rate": 0.4286,
+    "verdict": "side beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+   },
+   {
+    "week": 9,
+    "games": 15,
+    "side_wins": 13,
+    "side_losses": 2,
+    "side_rate": 0.8667,
+    "side_mae_delta": 3.864,
+    "total_wins": 6,
+    "total_losses": 9,
+    "total_rate": 0.4,
+    "verdict": "side beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+   },
+   {
+    "week": 10,
+    "games": 1,
+    "side_wins": 0,
+    "side_losses": 1,
+    "side_rate": 0.0,
+    "side_mae_delta": -1.973,
+    "total_wins": 1,
+    "total_losses": 0,
+    "total_rate": 1.0,
+    "verdict": "side did not beat the baseline this week",
+    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+   }
+  ],
+  "scores": {
+   "side": {
+    "n_games": 105,
+    "n_decisive": 105,
+    "wins": 67,
+    "losses": 38,
+    "ties": 0,
+    "win_rate": 0.6381,
+    "ci95_low": 0.5428,
+    "ci95_high": 0.7236,
+    "p_exact_binomial": 0.006,
+    "mae_model": 9.308,
+    "mae_baseline": 10.1,
+    "mae_delta": 0.792
+   },
+   "total": {
+    "n_games": 105,
+    "n_decisive": 105,
+    "wins": 47,
+    "losses": 58,
+    "ties": 0,
+    "win_rate": 0.4476,
+    "ci95_low": 0.356,
+    "ci95_high": 0.5429,
+    "p_exact_binomial": 0.3291,
+    "mae_model": 11.871,
+    "mae_baseline": 11.122,
+    "mae_delta": -0.75
+   },
+   "side_selective": {
+    "n_games": 41,
+    "n_decisive": 41,
+    "wins": 28,
+    "losses": 13,
+    "ties": 0,
+    "win_rate": 0.6829,
+    "ci95_low": 0.5302,
+    "ci95_high": 0.8044,
+    "p_exact_binomial": 0.0275,
+    "mae_model": 9.262,
+    "mae_baseline": 10.849,
+    "mae_delta": 1.588
+   },
+   "total_selective": {
+    "n_games": 29,
+    "n_decisive": 29,
+    "wins": 8,
+    "losses": 21,
+    "ties": 0,
+    "win_rate": 0.2759,
+    "ci95_low": 0.147,
+    "ci95_high": 0.4572,
+    "p_exact_binomial": 0.0241,
+    "mae_model": 13.491,
+    "mae_baseline": 10.961,
+    "mae_delta": -2.53
+   }
+  },
+  "brier": {
+   "model": 0.23434,
+   "baseline": 0.25495,
+   "n": 105,
+   "bss": 0.0808,
+   "selective": {
+    "value": 0.22391,
+    "n": 52
+   },
+   "extreme": {
+    "value": 0.28251,
+    "baseline": 0.23778,
+    "bss": -0.1881,
+    "n": 13
+   }
+  },
+  "parlay": {
+   "same_game": {
+    "n": 105,
+    "p_leg_side": 0.6381,
+    "p_leg_total": 0.4476,
+    "joint_observed": 0.3048,
+    "joint_if_independent": 0.2856,
+    "phi": {
+     "r": 0.0801,
+     "n": 105,
+     "ci95": [
+      -0.1133,
+      0.2676
+     ],
+     "p": 0.4167,
+     "t": 0.8155
+    },
+    "ratio_obs_over_independent": 1.067
+   },
+   "cross_game": {
+    "n_pairs": 51,
+    "p_leg_a": 0.6275,
+    "p_leg_b": 0.6471,
+    "joint_observed": 0.3922,
+    "phi": {
+     "r": -0.0599,
+     "n": 51,
+     "ci95": [
+      -0.33,
+      0.2193
+     ],
+     "p": 0.6763,
+     "t": -0.4201
+    },
+    "joint_if_independent": 0.406,
+    "ratio_obs_over_independent": 0.966
+   }
+  },
+  "strategies": [
+   {
+    "id": "S1",
+    "family": "Single",
+    "market": "Side",
+    "name": "Model side vs no-knowledge baseline",
+    "rule": "Every originated game. Signal = per-game contest: is our side closer to the actual margin than a constant home-margin baseline fitted on the same training weeks?",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 105,
+    "signal_metric": "contest win rate vs baseline",
+    "signal_value": 0.6381,
+    "signal_ci95": [
+     0.5428,
+     0.7236
+    ],
+    "signal_p": 0.006,
+    "secondary": "MAE 9.308 pts vs baseline 10.1 pts (delta 0.792)",
+    "demo_window_n": 50,
+    "passed": [
+     "G1",
+     "G3",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": 0.0167,
+    "bh_pass": "yes",
+    "no_skill_value": 0.5,
+    "skill_gap": 0.1381,
+    "direction": "favourable"
+   },
+   {
+    "id": "S2",
+    "family": "Single",
+    "market": "Total",
+    "name": "Model total vs league-average baseline",
+    "rule": "Every originated game. Signal = per-game contest against a constant total fitted on the same training weeks.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 105,
+    "signal_metric": "contest win rate vs baseline",
+    "signal_value": 0.4476,
+    "signal_ci95": [
+     0.356,
+     0.5429
+    ],
+    "signal_p": 0.3291,
+    "secondary": "MAE 11.871 pts vs baseline 11.122 pts (delta -0.75)",
+    "demo_window_n": 50,
+    "passed": [
+     "G1",
+     "G3",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": 0.0667,
+    "bh_pass": "no",
+    "no_skill_value": 0.5,
+    "skill_gap": -0.0524,
+    "direction": "adverse"
+   },
+   {
+    "id": "S3",
+    "family": "Single",
+    "market": "Moneyline",
+    "name": "Model moneyline probability (Brier skill)",
+    "rule": "Every originated game. Signal = Brier skill score of our home-win probability against a constant training-set home-win rate.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 105,
+    "signal_metric": "Brier skill score (1 = perfect, 0 = baseline)",
+    "signal_value": 0.0808,
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "Brier model 0.23434 vs baseline 0.25495 on n=105",
+    "demo_window_n": 50,
+    "passed": [
+     "G1",
+     "G3",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": 0.0,
+    "skill_gap": 0.0808,
+    "direction": "favourable"
+   },
+   {
+    "id": "S4",
+    "family": "Single",
+    "market": "Side",
+    "name": "Selective side (|fair - baseline| >= 3.0 pts)",
+    "rule": "Fire only when our side differs from the baseline by at least 3.0 points. Pre-registered threshold, not tuned on graded data.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 41,
+    "signal_metric": "contest win rate vs baseline",
+    "signal_value": 0.6829,
+    "signal_ci95": [
+     0.5302,
+     0.8044
+    ],
+    "signal_p": 0.0275,
+    "secondary": "MAE delta 1.588 pts on n=41",
+    "demo_window_n": "",
+    "passed": [
+     "G1",
+     "G3",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": 0.05,
+    "bh_pass": "yes",
+    "no_skill_value": 0.5,
+    "skill_gap": 0.1829,
+    "direction": "favourable"
+   },
+   {
+    "id": "S5",
+    "family": "Single",
+    "market": "Total",
+    "name": "Selective total (|fair - baseline| >= 3.0 pts)",
+    "rule": "Fire only when our total differs from the league-average baseline by at least 3.0 points. Pre-registered threshold.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 29,
+    "signal_metric": "contest win rate vs baseline",
+    "signal_value": 0.2759,
+    "signal_ci95": [
+     0.147,
+     0.4572
+    ],
+    "signal_p": 0.0241,
+    "secondary": "MAE delta -2.53 pts on n=29",
+    "demo_window_n": "",
+    "passed": [
+     "G1",
+     "G3",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": 0.0333,
+    "bh_pass": "yes",
+    "no_skill_value": 0.5,
+    "skill_gap": -0.2241,
+    "direction": "adverse"
+   },
+   {
+    "id": "S6",
+    "family": "Single",
+    "market": "Moneyline",
+    "name": "Selective moneyline (|p - 0.5| >= 0.08)",
+    "rule": "Fire only when our home-win probability is at least 0.08 away from even. Pre-registered threshold.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 52,
+    "signal_metric": "Brier score on the selected subset",
+    "signal_value": 0.22391,
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "n=52 of 105 graded games selected",
+    "demo_window_n": "",
+    "passed": [
+     "G1",
+     "G3",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": 0.0,
+    "skill_gap": 0.2239,
+    "direction": "favourable"
+   },
+   {
+    "id": "S7",
+    "family": "Single",
+    "market": "Side",
+    "name": "Extreme-fade screen (|fair side| >= 7.0 pts)",
+    "rule": "Isolate the biggest favourites. Signal = Brier skill of the implied win probability on that subset only.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 13,
+    "signal_metric": "Brier skill score on extreme lines",
+    "signal_value": -0.1881,
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "Brier 0.28251 vs baseline 0.23778 on n=13",
+    "demo_window_n": "",
+    "passed": [
+     "G1",
+     "G3",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": 0.0,
+    "skill_gap": -0.1881,
+    "direction": "adverse"
+   },
+   {
+    "id": "S8",
+    "family": "Single",
+    "market": "Side",
+    "name": "Measured home-field arbitrage vs an assumed 3.0 pts",
+    "rule": "Compare our fitted home-field constant to the conventional 3.0-point assumption and fire only when the gap moves the side across a whole point.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 105,
+    "signal_metric": "fitted home-field constant (points)",
+    "signal_value": "",
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "home-field is refitted every week; the constant is reported on the lines page",
+    "demo_window_n": "",
+    "passed": [
+     "G1",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G3",
+     "G5",
+     "G6",
+     "G7"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": "",
+    "skill_gap": "",
+    "direction": ""
+   },
+   {
+    "id": "P1",
+    "family": "Parlay",
+    "market": "Same-game side + total",
+    "name": "Same-game double (side leg x total leg)",
+    "rule": "Two legs in one game. Signal = the MEASURED joint of the two leg outcomes against the product of their marginals. Payoff columns stay empty until prices exist.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 105,
+    "signal_metric": "joint(obs) / joint(independent)",
+    "signal_value": 1.067,
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": 0.4167,
+    "secondary": "phi 0.0801 n=105; joint 0.3048 vs independent 0.2856",
+    "demo_window_n": "",
+    "passed": [
+     "G1",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7",
+     "G8"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": 0.0833,
+    "bh_pass": "no",
+    "no_skill_value": 1.0,
+    "skill_gap": 0.067,
+    "direction": "favourable"
+   },
+   {
+    "id": "P2",
+    "family": "Parlay",
+    "market": "Cross-game side doubles",
+    "name": "Cross-game double (two side legs in different games)",
+    "rule": "Two side legs from different games in the same week, paired in schedule order. Signal = measured joint vs independent product.",
+    "inputs": "verified finals only (nfl.com week schedule pages)",
+    "n_graded": 51,
+    "signal_metric": "joint(obs) / joint(independent)",
+    "signal_value": 0.966,
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": 0.6763,
+    "secondary": "phi -0.0599 on n=51 pairs",
+    "demo_window_n": "",
+    "passed": [
+     "G1",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G5",
+     "G6",
+     "G7",
+     "G8"
+    ],
+    "status": "hypothesis",
+    "bh_threshold": 0.1,
+    "bh_pass": "no",
+    "no_skill_value": 1.0,
+    "skill_gap": -0.034,
+    "direction": "adverse"
+   },
+   {
+    "id": "P3",
+    "family": "Parlay",
+    "market": "Moneyline round robin",
+    "name": "Moneyline round robin of the highest-confidence sides",
+    "rule": "Take the three largest |p - 0.5| games each week and combine. Requires a price per leg; no leg price exists in this repository.",
+    "inputs": "would need a price per leg \u2014 none available (F-01)",
+    "n_graded": 0,
+    "signal_metric": "",
+    "signal_value": "",
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "blocked: no official market price source (F-01)",
+    "demo_window_n": 0,
+    "passed": [
+     "G1",
+     "G9",
+     "G10"
+    ],
+    "failed": [
+     "G2",
+     "G3",
+     "G5",
+     "G6",
+     "G7",
+     "G8"
+    ],
+    "status": "blocked",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": "",
+    "skill_gap": "",
+    "direction": ""
+   },
+   {
+    "id": "R1",
+    "family": "Player prop combo",
+    "market": "QB passing props",
+    "name": "Passing-yard / passing-TD combo",
+    "rule": "Would originate a fair number for a quarterback passing market and combine legs. No per-game official player data is held in this repository.",
+    "inputs": "MISSING: official per-game player statistics (F-04)",
+    "n_graded": 0,
+    "signal_metric": "",
+    "signal_value": "",
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "blocked: no official per-game player stats captured (F-04)",
+    "demo_window_n": 0,
+    "passed": [
+     "G1",
+     "G9"
+    ],
+    "failed": [
+     "G2",
+     "G3",
+     "G5",
+     "G6",
+     "G7",
+     "G8",
+     "G10"
+    ],
+    "status": "blocked",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": "",
+    "skill_gap": "",
+    "direction": ""
+   },
+   {
+    "id": "R2",
+    "family": "Player prop combo",
+    "market": "RB rushing props",
+    "name": "Rushing-yard / anytime-TD combo",
+    "rule": "Same construction for the running-back rushing markets. Correlated with game script, so the leg dependence must be measured (G8).",
+    "inputs": "MISSING: official per-game player statistics (F-04)",
+    "n_graded": 0,
+    "signal_metric": "",
+    "signal_value": "",
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "blocked: no official per-game player stats captured (F-04)",
+    "demo_window_n": 0,
+    "passed": [
+     "G1",
+     "G9"
+    ],
+    "failed": [
+     "G2",
+     "G3",
+     "G5",
+     "G6",
+     "G7",
+     "G8",
+     "G10"
+    ],
+    "status": "blocked",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": "",
+    "skill_gap": "",
+    "direction": ""
+   },
+   {
+    "id": "R3",
+    "family": "Player prop combo",
+    "market": "WR/TE receiving props",
+    "name": "Receptions / receiving-yards combo",
+    "rule": "Same construction for receiving markets, with the injury-and-depth layer as an input (a starter out raises the target share of the next string).",
+    "inputs": "MISSING: official per-game player statistics (F-04)",
+    "n_graded": 0,
+    "signal_metric": "",
+    "signal_value": "",
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "blocked: no official per-game player stats captured (F-04)",
+    "demo_window_n": 0,
+    "passed": [
+     "G1",
+     "G9"
+    ],
+    "failed": [
+     "G2",
+     "G3",
+     "G5",
+     "G6",
+     "G7",
+     "G8",
+     "G10"
+    ],
+    "status": "blocked",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": "",
+    "skill_gap": "",
+    "direction": ""
+   },
+   {
+    "id": "R4",
+    "family": "Player prop combo",
+    "market": "Player x team combo",
+    "name": "Player prop correlated with the same-game total",
+    "rule": "The classic same-game-parlay leg pair. Requires both a player price and a measured leg dependence; neither exists here.",
+    "inputs": "MISSING: official per-game player statistics (F-04) and market prices (F-01)",
+    "n_graded": 0,
+    "signal_metric": "",
+    "signal_value": "",
+    "signal_ci95": [
+     "",
+     ""
+    ],
+    "signal_p": "",
+    "secondary": "blocked: F-01 and F-04",
+    "demo_window_n": 0,
+    "passed": [
+     "G1",
+     "G9"
+    ],
+    "failed": [
+     "G2",
+     "G3",
+     "G5",
+     "G6",
+     "G7",
+     "G8",
+     "G10"
+    ],
+    "status": "blocked",
+    "bh_threshold": "",
+    "bh_pass": "not tested (no p-value computable for this metric)",
+    "no_skill_value": "",
+    "skill_gap": "",
+    "direction": ""
+   }
+  ],
+  "staking": {
+   "policy": "Staking is scored separately from signal and can never promote a strategy. Every payoff column is empty because this repository holds no price series (F-01); the rules below are pre-registered so the column can be filled without re-litigating the design.",
+   "rules": [
+    {
+     "id": "K1",
+     "name": "Flat 1 unit",
+     "rule": "One unit per selection. The default: it isolates the signal, because stake size cannot vary with confidence.",
+     "roi": "",
+     "roi_ci95": [
+      "",
+      ""
+     ],
+     "max_drawdown": "",
+     "n": "",
+     "flag": "F-01"
+    },
+    {
+     "id": "K2",
+     "name": "Fractional Kelly (25%)",
+     "rule": "Stake = 0.25 * (p*odds - 1) / (odds - 1), capped at 2 units. Needs a price per selection.",
+     "roi": "",
+     "roi_ci95": [
+      "",
+      ""
+     ],
+     "max_drawdown": "",
+     "n": "",
+     "flag": "F-01"
+    },
+    {
+     "id": "K3",
+     "name": "Confidence-weighted (signal-scaled)",
+     "rule": "Stake proportional to |fair - baseline|, normalised to 1 unit mean. Needs a price per selection.",
+     "roi": "",
+     "roi_ci95": [
+      "",
+      ""
+     ],
+     "max_drawdown": "",
+     "n": "",
+     "flag": "F-01"
+    },
+    {
+     "id": "K4",
+     "name": "Fixed-fraction of bankroll (1%)",
+     "rule": "One percent of the running bankroll per selection. Needs a price per selection.",
+     "roi": "",
+     "roi_ci95": [
+      "",
+      ""
+     ],
+     "max_drawdown": "",
+     "n": "",
+     "flag": "F-01"
+    }
+   ]
+  },
+  "demo_window_n": 50
+ },
+ "stages": [
+  {
+   "week": 1,
+   "games": 16,
+   "finals_in_week": 16,
+   "open_train_finals": 0,
+   "close_train_finals": 0,
+   "open_originated": "no",
+   "close_originated": "no",
+   "sigma_n": 0,
+   "sigma_source": "not available (no prior finals)"
+  },
+  {
+   "week": 2,
+   "games": 16,
+   "finals_in_week": 16,
+   "open_train_finals": 0,
+   "close_train_finals": 16,
+   "open_originated": "no",
+   "close_originated": "no",
+   "sigma_n": 0,
+   "sigma_source": "not available (no prior finals)"
+  },
+  {
+   "week": 3,
+   "games": 16,
+   "finals_in_week": 16,
+   "open_train_finals": 16,
+   "close_train_finals": 32,
+   "open_originated": "no",
+   "close_originated": "yes",
+   "sigma_n": 32,
+   "sigma_source": "in-sample training residuals, fallback (n=32)"
+  },
+  {
+   "week": 4,
+   "games": 16,
+   "finals_in_week": 16,
+   "open_train_finals": 32,
+   "close_train_finals": 48,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 16,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=16)"
+  },
+  {
+   "week": 5,
+   "games": 15,
+   "finals_in_week": 15,
+   "open_train_finals": 48,
+   "close_train_finals": 64,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 32,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=32)"
+  },
+  {
+   "week": 6,
+   "games": 14,
+   "finals_in_week": 14,
+   "open_train_finals": 64,
+   "close_train_finals": 79,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 47,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=47)"
+  },
+  {
+   "week": 7,
+   "games": 14,
+   "finals_in_week": 14,
+   "open_train_finals": 79,
+   "close_train_finals": 93,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 61,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=61)"
+  },
+  {
+   "week": 8,
+   "games": 14,
+   "finals_in_week": 14,
+   "open_train_finals": 93,
+   "close_train_finals": 107,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 75,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=75)"
+  },
+  {
+   "week": 9,
+   "games": 15,
+   "finals_in_week": 15,
+   "open_train_finals": 107,
+   "close_train_finals": 121,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 89,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=89)"
+  },
+  {
+   "week": 10,
+   "games": 14,
+   "finals_in_week": 1,
+   "open_train_finals": 121,
+   "close_train_finals": 136,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 104,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=104)"
+  },
+  {
+   "week": 11,
+   "games": 13,
+   "finals_in_week": 0,
+   "open_train_finals": 136,
+   "close_train_finals": 137,
+   "open_originated": "yes",
+   "close_originated": "yes",
+   "sigma_n": 105,
+   "sigma_source": "walk-forward out-of-sample margin residuals (n=105)"
+  }
+ ],
+ "pipeline_order": [
+  {
+   "order": 1,
+   "market": "side",
+   "how": "ridge margin model: home_field + net[home] - net[away]; published as the home spread"
+  },
+  {
+   "order": 2,
+   "market": "total",
+   "how": "ridge pace model: base + pace[home] + pace[away]"
+  },
+  {
+   "order": 3,
+   "market": "moneyline",
+   "how": "derived from the side (step 1) and the walk-forward margin sigma via the normal CDF; converted to American odds"
+  }
+ ],
+ "constants": {
+  "min_train_games": 24,
+  "lambda_net": 2.0,
+  "lambda_pace": 2.0,
+  "fit_iters": 400,
+  "sel_side_pts": 3.0,
+  "sel_total_pts": 3.0,
+  "sel_ml_prob": 0.08,
+  "sel_extreme_pts": 7.0,
+  "min_graded_for_skill": 200,
+  "demotion_window": 50,
+  "status_weights": {
+   "Out": 1.0,
+   "Doubtful": 0.6
+  },
+  "depth_weights": {
+   "1": 1.0,
+   "2": 0.45,
+   "3": 0.2,
+   "4": 0.1
+  },
+  "replacement_weights": {
+   "2": 1.0,
+   "3": 1.3,
+   "4": 1.55
+  }
+ }
+}

@@ -1,0 +1,13 @@
+id,gate,rule,blocking,evidence
+G1,Pre-registration,"Rule, inputs, thresholds and staking written to the repo before any graded result.",yes,Every strategy on the strategy page is written before its numbers are computed; the builder runs once.
+G2,Sample size,At least 200 graded decisions before any skill claim.,yes,Measured n is printed for every strategy; none reaches the threshold.
+G3,Walk-forward only,"Fit on earlier weeks, grade on later weeks. Never fit and grade the same game.",yes,The open snapshot fits through week W-2 and the close snapshot through week W-1; grading uses week W only.
+G4,Multiple-testing control,Benjamini-Hochberg FDR at q=0.10 across every strategy tested in a family.,yes,Applied to the family of strategies once any member reaches the sample-size gate.
+G5,Benchmark beat,"Must beat a named benchmark, not a guess. Here: the no-knowledge constant baseline.",yes,Every signal is a contest against a baseline fitted on the same training weeks.
+G6,Uncertainty,95% interval on the signal metric must exclude the no-skill value before promotion.,yes,Wilson intervals and exact binomial p-values are printed; none excludes no-skill yet.
+G7,Luck control,Deflated Sharpe: the reward is discounted by the number of strategies tried.,yes,Deflated Sharpe is reported with the trial count; unevaluable until a payoff series exists (F-01).
+G8,Correlation integrity,"Parlay legs must show a measured joint distribution, not a product of marginals.",yes,"Measured for the same-game and cross-game doubles on the correlation page, with n."
+G9,Data provenance,Every input row carries an official source URL and a retrieval date.,yes,Enforced by scripts/verify_signals.py: every row links an official source or carries a flag.
+G10,No look-ahead,Inputs must be published before the decision cutoff for that game.,yes,Ratings use only finals from earlier weeks; the injury report is only used for the week it covers.
+G11,Snapshot completeness,Every originated market has both an opening and a closing number in the store.,yes,Enforced by scripts/verify_signals.py against the price-snapshot store.
+G12,Separation of signal and staking,A leaderboard rank can never be earned by staking alone.,yes,Enforced by scripts/verify_signals.py: the leaderboard ranks on signal columns only.

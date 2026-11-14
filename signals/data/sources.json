@@ -1,0 +1,82 @@
+[
+ {
+  "id": "SRC-01",
+  "name": "NFL.com week schedule pages (weeks 1-11, 2026)",
+  "kind": "Official",
+  "url": "https://www.nfl.com/schedules/2026/by-week/week-1",
+  "retrieved": "2026-11-14",
+  "used_for": "Final scores, schedule, neutral-site flag",
+  "rows": "163 games / 137 verified finals",
+  "note": "Captured by the CI runner to data/desk/games.json, which this module reads and never writes."
+ },
+ {
+  "id": "SRC-02",
+  "name": "NFL.com league standings 2026",
+  "kind": "Official",
+  "url": "https://www.nfl.com/standings/league/2026/reg",
+  "retrieved": "2026-11-14",
+  "used_for": "Club records, points for and against",
+  "rows": "32 clubs",
+  "note": "Read from data/desk/standings.json."
+ },
+ {
+  "id": "SRC-03",
+  "name": "NFL.com official injury report (weeks 8-10, 2026)",
+  "kind": "Official",
+  "url": "https://www.nfl.com/injuries/league/2026/reg10",
+  "retrieved": "2026-11-14",
+  "used_for": "Player, position, injury, practice status, game status",
+  "rows": "1,027 rows across three weeks",
+  "note": "Read from data/desk/injuries.json and data/desk/deficiencies.json."
+ },
+ {
+  "id": "SRC-04",
+  "name": "Club depth charts (32 clubs)",
+  "kind": "Club-published",
+  "url": "https://www.azcardinals.com/team/depth-chart",
+  "retrieved": "2026-11-14",
+  "used_for": "First / second / third / fourth string by position",
+  "rows": "32 clubs",
+  "note": "Read from data/desk/depth.json. Club-published, not league-published; most are labelled unofficial by the club."
+ },
+ {
+  "id": "SRC-05",
+  "name": "NFL.com player pages",
+  "kind": "Official",
+  "url": "https://www.nfl.com/players/",
+  "retrieved": "2026-11-14",
+  "used_for": "Player identity link for each absence",
+  "rows": "210 absence rows",
+  "note": "Used only as an identity link, never as a value."
+ },
+ {
+  "id": "SRC-06",
+  "name": "GitHub repository",
+  "kind": "Primary",
+  "url": "https://github.com/karagemop466-tech/X3",
+  "retrieved": "2026-11-14",
+  "used_for": "Version history, CI runs, Pages deploy",
+  "rows": "803 tracked files",
+  "note": "Every claim on this site is reproducible from the repository."
+ },
+ {
+  "id": "SRC-07",
+  "name": "GitHub Pages",
+  "kind": "Primary",
+  "url": "https://karagemop466-tech.github.io/X3/",
+  "retrieved": "2026-11-14",
+  "used_for": "Live deployment of this site",
+  "rows": "1 site",
+  "note": "Deployment is confirmed from the Pages API after every merge."
+ },
+ {
+  "id": "SRC-08",
+  "name": "NFL.com statistics",
+  "kind": "Official",
+  "url": "https://www.nfl.com/stats",
+  "retrieved": "2026-11-14",
+  "used_for": "NOT YET USED \u2014 the official route to player-prop markets",
+  "rows": "no rows captured",
+  "note": "Identified as the official source that would unlock the prop-combo family (see F-04 and S-02)."
+ }
+]

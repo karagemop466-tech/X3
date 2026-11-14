@@ -1,0 +1,106 @@
+[
+ {
+  "id": "F-01",
+  "kind": "unverified",
+  "title": "No official market price source",
+  "detail": "The NFL does not publish betting lines or odds. The league's official sportsbook partners (Caesars, DraftKings, FanDuel) and its official data distributor (Genius Sports) are commercial, not open, feeds.",
+  "effect": "Every market-line column and every difference column on the lines and price pages is empty. ROI, closing-line value and staking are unevaluable.",
+  "source": "https://www.nfl.com/"
+ },
+ {
+  "id": "F-02",
+  "kind": "unverified",
+  "title": "No settled-bet or payout series",
+  "detail": "Follows from F-01: without a price there is no payout, so no ROI, drawdown or Kelly figure can be computed.",
+  "effect": "Every staking column on the leaderboard is empty; demotion gate D3 is recorded as unevaluable rather than passed.",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+ },
+ {
+  "id": "F-03",
+  "kind": "unverified",
+  "title": "Club depth charts carry no as-of date and are labelled unofficial",
+  "detail": "0 of the captured club charts expose a machine-readable as-of date; most carry the club's own 'unofficial' label.",
+  "effect": "The depth layer is published as advisory. No published line is adjusted by it.",
+  "source": "https://www.azcardinals.com/team/depth-chart"
+ },
+ {
+  "id": "F-04",
+  "kind": "unverified",
+  "title": "No official per-game player statistics captured",
+  "detail": "The capture covers week schedule pages, standings, injury reports and club depth charts. No per-game player numbers exist in the repository.",
+  "effect": "All four player-prop-combo strategies (R1-R4) are registered with every value empty.",
+  "source": "https://www.nfl.com/stats"
+ },
+ {
+  "id": "F-05",
+  "kind": "coverage",
+  "title": "Injury coverage is weeks 8-10 only",
+  "detail": "The official injury capture began at week 8 of the 2026 season.",
+  "effect": "The availability layer covers 3 of 10 played weeks; no availability coefficient is fitted (see Q10).",
+  "source": "https://www.nfl.com/injuries/league/2026/reg10"
+ },
+ {
+  "id": "F-06",
+  "kind": "sample",
+  "title": "Sample below the pre-registered skill gate",
+  "detail": "The gate is 200 graded decisions; the largest graded set in this build is smaller.",
+  "effect": "No strategy is promoted. Every leaderboard row is ranked on signal but labelled short of the gate.",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+ },
+ {
+  "id": "F-07",
+  "kind": "assumption",
+  "title": "Moneyline uses a normal margin distribution",
+  "detail": "NFL margins cluster on 3 and 7, so a normal CDF is an approximation, not a measurement. This is our assumption and is not sourced from any official page.",
+  "effect": "Moneyline probabilities and the Brier skill score inherit the approximation.",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+ },
+ {
+  "id": "F-08",
+  "kind": "method",
+  "title": "Neutral-site games are flagged, not adjusted",
+  "detail": "The model applies one home-field constant to every game, including neutral-site games.",
+  "effect": "A known small bias on the neutral-site slate. Rows are flagged in the results feed.",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-1"
+ },
+ {
+  "id": "F-09",
+  "kind": "assumption",
+  "title": "Availability load weights are pre-registered, not measured",
+  "detail": "The weights (Out 1.0, Doubtful 0.6; 1st string 1.0, 2nd 0.45, 3rd 0.2, 4th 0.1; replacement 3rd string x1.3, 4th x1.55) are our design choices. They are printed in full so a reviewer can change them.",
+  "effect": "The load columns are comparable between clubs and weeks but are not on a measured scale.",
+  "source": "https://www.nfl.com/injuries/league/2026/reg10"
+ },
+ {
+  "id": "F-10",
+  "kind": "coverage",
+  "title": "Weeks 1-3 carry no opening snapshot",
+  "detail": "A market is only originated with at least 24 training finals, so the earliest weeks have a close number but no open number.",
+  "effect": "Open-to-close movement is undefined for those games and is left empty.",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-3"
+ },
+ {
+  "id": "F-11",
+  "kind": "site",
+  "title": "Overlapping site trees from earlier sessions all present the same subject",
+  "detail": "Earlier sessions each published their own site tree into this repository (root, docs, dashboard, hub, desk, x3lab, pages, site, legacy, audit, crosscheck, archive, lab, and others). They present overlapping tables computed at different times, so the same question can have several different answers depending on which page you open.",
+  "effect": "Only hub/ is presented as canonical; this module is self-contained and links out rather than editing the others.",
+  "source": "https://github.com/karagemop466-tech/X3"
+ },
+ {
+  "id": "F-12",
+  "kind": "method",
+  "title": "The baseline is a constant, not a market",
+  "detail": "With no market price the only benchmark available is a no-knowledge constant fitted on the same training weeks. Beating it proves the ratings carry information; it does not prove a bet would have won.",
+  "effect": "Every signal score on the leaderboard should be read as 'more accurate than nothing', not 'profitable'.",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+ },
+ {
+  "id": "F-13",
+  "kind": "unverified",
+  "title": "Week 11 availability data not captured",
+  "detail": "Week 11 is the upcoming slate; the official injury report for week 11 was not in the capture.",
+  "effect": "The week-11 rows carry empty availability columns. The lines themselves are complete.",
+  "source": "https://www.nfl.com/injuries/league/2026/reg11"
+ }
+]
