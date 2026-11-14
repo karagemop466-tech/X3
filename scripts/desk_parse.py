@@ -58,7 +58,11 @@ def iso_date(month_name: str, day_text: str, season: int = 2026) -> str:
 
 
 def parse_schedule(page: str, raw: str) -> list[dict]:
-    week = int(re.search(r"week-(\d+)", page).group(1))
+    m = re.search(r"week-(\d+)", page)
+    if not m:
+        problem(page, "page name does not contain a week number")
+        return []
+    week = int(m.group(1))
     src = SCHEDULE_URL.format(week)
     rows: list[dict] = []
     for line in text_of(raw).splitlines():
