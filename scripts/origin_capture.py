@@ -101,11 +101,13 @@ def iso_date(month_name: str, day_text: str, season: int = SEASON) -> str:
 
 
 def text_of(raw: str) -> str:
-    """Visible text of the page, one non-empty line per block (same approach as
-    scripts/desk_extract.py, whose output two prior sessions parsed)."""
+    """Visible text of the page, one non-empty line per block. Byte-for-byte the
+    same approach as scripts/desk_extract.py text_of (proven on these pages by
+    two prior sessions) — including tab-preservation for table cells."""
     s = SCRIPT_RE.sub(" ", raw)
-    s = re.sub(r"</(p|div|li|h[1-6]|table|section|article|td|th)>", "\n", s, flags=re.I)
+    s = re.sub(r"</t[dh]>", "\t", s, flags=re.I)
     s = re.sub(r"</tr>", "\n", s, flags=re.I)
+    s = re.sub(r"</(p|div|li|h[1-6]|table|section|article)>", "\n", s, flags=re.I)
     s = re.sub(r"<br\s*/?>", "\n", s, flags=re.I)
     s = re.sub(r"<a\b[^>]*>(.*?)</a>", r"\1", s, flags=re.S | re.I)
     s = TAG_RE.sub(" ", s)
@@ -113,6 +115,7 @@ def text_of(raw: str) -> str:
     lines = []
     for line in s.splitlines():
         line = WS_RE.sub(" ", line).strip()
+        line = re.sub(r"\t+", "\t", line).strip("\t")
         if line:
             lines.append(line)
     return "\n".join(lines) + "\n"
@@ -240,71 +243,146 @@ def cross_check(rows: list[dict]) -> dict:
             "matched": matched, "agree": agree, "conflicts": conflicts}
 
 
+def selftest() -> list[str]:
+    """Offline proof that this parser agrees with the proven desk transcription.
+    Runs the parser over the desk-extracted official page text
+    (data/desk/text/schedule-w*.txt, committed by session arena/3bf7cc8b-x3) and
+    compares the finals against data/desk/games.json. Any mismatch is a parser
+    bug in THIS script, not in the data."""
+    fails: list[str] = []
+    desk = json.loads((ROOT / "data" / "desk" / "games.json").read_text())["games"]
+    desk_idx = {(g["week"], g["away"], g["home"]): g for g in desk}
+    textdir = ROOT / "data" / "desk" / "text"
+    mine = {}
+    for w in range(1, 12):
+        f = textdir / f"schedule-w{w}.txt"
+        if not f.exists():
+            fails.append(f"desk text missing: {f.name}")
+            continue
+        for g in parse_schedule(f"schedule-w{w}", f.read_text(errors="replace")):
+            key = (g["week"], g["away"], g["home"])
+            mine[key] = g
+    agree = disagree = missing = 0
+    for key, g in mine.items():
+        d = desk_idx.get(key)
+        if d is None:
+            missing += 1
+            continue
+        if (g["status"] == d["status"] and g["away_score"] == d["away_score"]
+                and g["home_score"] == d["home_score"]):
+            agree += 1
+        else:
+            disagree += 1
+            fails.append(f"mismatch {key}: origin={g['status']}/{g['away_score']}/{g['home_score']} "
+                         f"desk={d['status']}/{d['away_score']}/{d['home_score']}")
+    desk_only = [k for k in desk_idx if k not in mine]
+    summary = f"selftest vs desk transcription: agree={agree} disagree={disagree} " \
+              f"unique-to-origin={missing} unique-to-desk={len(desk_only)}"
+    print(summary)
+    if disagree:
+        fails.insert(0, summary)
+    elif missing > 2 or len(desk_only) > 6:
+        # small asymmetries are expected (descheduled/renamed rows), wholesale
+        # divergence is not
+        fails.append(f"{summary} — divergence too large for two parsers of the same pages")
+    return fails
+
+
 def cmd_results() -> int:
-    diag: dict = {"pages": [], "captured_at": now_iso(), "notes": []}
-    all_rows: list[dict] = []
-    if "--local" in sys.argv:
-        idx = sys.argv.index("--local")
-        capdir = Path(sys.argv[idx + 1]) if len(sys.argv) > idx + 1 else CAPTURE
-        files = sorted(capdir.glob("week-*.html"))
-        if not files:
-            print(f"no captured pages in {capdir}", file=sys.stderr)
-            return 1
-        for f in files:
-            all_rows.extend(parse_schedule(f.name, f.read_text(errors="replace")))
-        diag["notes"].append(f"parsed locally from {capdir}")
-    else:
-        for week in WEEKS:
-            url = SCHEDULE_URL.format(week)
-            dest = CAPTURE / f"week-{week}.html"
-            d = get(url, dest)
-            diag["pages"].append(d)
-            if d["status"] != 200:
-                problem(f"week-{week}", f"fetch failed ({d.get('error', d['status'])})")
-                continue
-            all_rows.extend(parse_schedule(f"week-{week}.html", dest.read_text(errors="replace")))
-            time.sleep(1)
-    ts = now_iso()
-    for r in all_rows:
-        r["captured_at"] = ts
-    finals = [r for r in all_rows if r["status"] == "FINAL"]
-    cc = cross_check(all_rows)
-    feed = {
-        "season": SEASON,
-        "generated_at": ts,
-        "source_pages": [SCHEDULE_URL.format(w) for w in WEEKS],
-        "source_note": "Official NFL.com 2026 week schedule pages; one row per game; "
-                       "scores transcribed from the page's own final-score lines; "
-                       "nothing typed by hand or inferred.",
-        "counts": {
-            "total": len(all_rows),
-            "final": len(finals),
-            "scheduled": len(all_rows) - len(finals),
-        },
-        "cross_check_vs_desk_transcription": cc,
-        "problems": PROBLEMS,
-        "games": sorted(all_rows, key=lambda g: (g["week"], g["date_iso"], g["away"])),
-    }
+    global PROBLEMS
+    diag: dict = {"pages": [], "captured_at": now_iso(), "notes": [], "problems": [],
+                  "fatal": None, "selftest": None}
+    PROBLEMS = diag["problems"]
     DATA.mkdir(parents=True, exist_ok=True)
-    (DATA / "results.json").write_text(json.dumps(feed, indent=1) + "\n")
-    (DATA / "capture_diag.json").write_text(json.dumps(diag, indent=1) + "\n")
-    ok_fetch = sum(1 for p in diag["pages"] if p.get("status") == 200)
-    print(f"origin_capture results: {ok_fetch}/{len(diag['pages'])} pages fetched, "
-          f"{len(all_rows)} games ({len(finals)} finals) parsed, "
-          f"{len(PROBLEMS)} problems")
-    if cc.get("available"):
-        print(f"cross-check vs desk transcription: {cc['agree']}/{cc['matched']} matched rows agree; "
-              f"{len(cc['conflicts'])} conflicts")
-        for c in cc["conflicts"][:10]:
-            print("  CONFLICT:", c)
-    for p in PROBLEMS[:10]:
-        print("  PROBLEM:", p)
-    # A results feed with zero finals parsed while official pages were fetched
-    # is a broken capture, not an empty season: fail loudly.
-    if ok_fetch and not finals:
-        print("FATAL: pages fetched but no finals parsed - parser is broken", file=sys.stderr)
+    diag_path = DATA / "capture_diag.json"
+
+    def flush() -> None:
+        diag_path.write_text(json.dumps(diag, indent=1) + "\n")
+
+    try:
+        fails = selftest()
+        diag["selftest"] = {"passed": not fails, "detail": fails[:20]}
+        flush()
+        if fails:
+            print("PARSER SELF-TEST FAILED:", file=sys.stderr)
+            for f in fails[:20]:
+                print("  ", f, file=sys.stderr)
+            return 1
+        all_rows: list[dict] = []
+        if "--local" in sys.argv:
+            idx = sys.argv.index("--local")
+            capdir = Path(sys.argv[idx + 1]) if len(sys.argv) > idx + 1 else CAPTURE
+            files = sorted(capdir.glob("week-*.html"))
+            if not files:
+                print(f"no captured pages in {capdir}", file=sys.stderr)
+                return 1
+            for f in files:
+                all_rows.extend(parse_schedule(f.name, f.read_text(errors="replace")))
+            diag["notes"].append(f"parsed locally from {capdir}")
+        else:
+            for week in WEEKS:
+                url = SCHEDULE_URL.format(week)
+                dest = CAPTURE / f"week-{week}.html"
+                d = get(url, dest)
+                diag["pages"].append(d)
+                flush()
+                if d["status"] != 200:
+                    PROBLEMS.append({"page": f"week-{week}",
+                                     "problem": f"fetch failed ({d.get('error', d['status'])})"})
+                    continue
+                all_rows.extend(parse_schedule(f"week-{week}.html",
+                                               dest.read_text(errors="replace")))
+                time.sleep(1)
+        ts = now_iso()
+        for r_ in all_rows:
+            r_["captured_at"] = ts
+        finals = [r_ for r_ in all_rows if r_["status"] == "FINAL"]
+        cc = cross_check(all_rows)
+        diag["problems"] = PROBLEMS
+        feed = {
+            "season": SEASON,
+            "generated_at": ts,
+            "source_pages": [SCHEDULE_URL.format(w) for w in WEEKS],
+            "source_note": "Official NFL.com 2026 week schedule pages; one row per game; "
+                           "scores transcribed from the page's own final-score lines; "
+                           "nothing typed by hand or inferred.",
+            "counts": {
+                "total": len(all_rows),
+                "final": len(finals),
+                "scheduled": len(all_rows) - len(finals),
+            },
+            "cross_check_vs_desk_transcription": cc,
+            "problems": PROBLEMS,
+            "games": sorted(all_rows, key=lambda g: (g["week"], g["date_iso"], g["away"])),
+        }
+        (DATA / "results.json").write_text(json.dumps(feed, indent=1) + "\n")
+        ok_fetch = sum(1 for p in diag["pages"] if p.get("status") == 200)
+        print(f"origin_capture results: {ok_fetch}/{len(diag['pages'])} pages fetched, "
+              f"{len(all_rows)} games ({len(finals)} finals) parsed, "
+              f"{len(PROBLEMS)} problems")
+        if cc.get("available"):
+            print(f"cross-check vs desk transcription: {cc['agree']}/{cc['matched']} matched "
+                  f"rows agree; {len(cc['conflicts'])} conflicts")
+            for c in cc["conflicts"][:10]:
+                print("  CONFLICT:", c)
+        for p in PROBLEMS[:10]:
+            print("  PROBLEM:", p)
+        # A results feed with zero finals parsed while official pages were fetched
+        # is a broken capture, not an empty season: fail loudly.
+        if ok_fetch and not finals:
+            print("FATAL: pages fetched but no finals parsed - parser is broken", file=sys.stderr)
+            diag["fatal"] = "pages fetched but no finals parsed"
+            flush()
+            return 1
+        return 0
+    except Exception as e:  # noqa: BLE001 — always leave diagnostics behind
+        import traceback
+        diag["fatal"] = f"{type(e).__name__}: {e}"
+        diag["traceback"] = traceback.format_exc()[-4000:]
+        flush()
+        print("FATAL:", diag["fatal"], file=sys.stderr)
+        print(diag.get("traceback", ""), file=sys.stderr)
         return 1
-    return 0
 
 
 def cmd_close() -> int:
