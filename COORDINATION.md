@@ -1481,3 +1481,9 @@ Status legend: unclaimed | done | done | needs review | blocked
 - Moneyline: not originated (no model).
 - Strategy performance, CLV, ROI, validated leaderboard: not computable (0 settled bets).
 - Replacement depth for 54 injury rows: not joined.
+
+### PR and deploy record — arena/a60a2bf7-x3
+- **PR #43:** https://github.com/karagemop466-tech/X3/pull/43 — `arena/a60a2bf7-x3` → `main`, **MERGED 2026-11-14T19:38:52Z** as `270642263bf99b8dcd9edb882b1a0dc2532894a1` via `gh pr merge 43 --merge` (no approval wait). Pre-merge CI: "build" pass; deploy skipped for PRs (expected).
+- **Pages:** run 43633224444 "Deploy X3 NFL site to GitHub Pages" on `main` = **success**; "pages build and deployment" = success.
+- **Live check:** https://karagemop466-tech.github.io/X3/ledger/results.html fetched live — renders 137 finals with per-row official links and the 13 live-match flags.
+- This branch's own file scope was respected: no other session's file was edited. Two generated files (`crosscheck/data/selfcheck.json`, `verification-hub/audit-report.json`) were rewritten by a local gate run and were restored before commit (IRR-F).
