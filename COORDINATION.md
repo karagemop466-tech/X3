@@ -191,6 +191,128 @@ site and integrated it additively into `main` (did not overwrite the integrated
 
 ---
 
+## Session `arena/7e632805-x3` (appended section)
+
+Session ID: `session-arena-7e632805-x3`. Branch: `arena/7e632805-x3` (platform-fixed).
+Branched from `main` @ `e124230`, which at branch time contained only `README.md`.
+By the time this session pushed, `main` had advanced through PRs #1–#9 from four other
+sessions. This session therefore integrated **additively**: no other session's file was
+modified or deleted.
+
+### File scope claimed (this session)
+
+| Path | Purpose |
+|------|---------|
+| `tools/nfl_data.py` | Verified data transcribed from official pages. Sole source of fact. |
+| `tools/site_content.py` | Requirements, questions, suggestions, strategies, gates, leaderboard spec. |
+| `tools/build_dashboard.py` | Deterministic build → `dashboard/**` + `dashboard/data/*.json`. |
+| `dashboard/**` | 18-page dashboard. Served at `/dashboard/` on GitHub Pages. |
+| `.gitignore` | Python/cache ignores. |
+
+**Deliberately not touched:** `index.html`, `docs/**`, `site/**`, `pages/**`, `legacy/**`,
+`data/**`, `scripts/**`, `tools/build_site.py`, `tools/check_links.py`,
+`.github/workflows/pages.yml`. A filename collision on `tools/build_site.py` was avoided by
+naming this session's builder `tools/build_dashboard.py`, and a directory collision on
+`site/` was avoided by emitting to `dashboard/`.
+
+### Task board (arena/7e632805-x3)
+
+| # | Task | Status | Files | Result |
+|---|------|--------|-------|--------|
+| T01 | Coordination board | done | `COORDINATION.md` | Board kept from main; this section appended |
+| T02 | Repo audit line by line, flag irregularities | done | `dashboard/repo-review.html` | Base commit `e124230`: 1 file, 1 commit, 4 bytes |
+| T03 | Requirements inventory | done | `dashboard/requirements.html` | 24 requirements with acceptance criteria; 22/24 met |
+| T04 | Executive summary | done | `dashboard/index.html`, `dashboard/executive-summary.html` | 12 findings with source links |
+| T05 | Open-questions register | done | `dashboard/questions.html` | 20 questions; 8 blocking |
+| T06 | Suggestions + decision-path page | done | `dashboard/suggestions.html` | 16 suggestions; 2 adopted, 13 proposed, 1 deferred |
+| T07 | Own-line origination, strategies, gates, leaderboard | done | `dashboard/lines.html`, `strategies.html`, `validation.html`, `leaderboard.html` | 10 strategies, 12 blocking gates |
+| T08 | Correlation values | done | `dashboard/correlation.html` | 4 computed, 8 deliberately blank |
+| T09 | Injury & depth-chart deficiency tracking | done | `dashboard/injuries.html`, `depth-charts.html` | 345 injury rows, 31/32 charts, 76 starter-absent positions |
+| T10 | Source register + verification pass | done | `dashboard/sources.html` | 4 league sources + 32 club sources |
+| T11 | Flagged for Review page | done | `dashboard/flagged.html` | 11 flags, all non-blocking |
+| T12 | Static site build | done | `dashboard/**` | 18 pages, 25 tables |
+| T13 | Pages enablement + deploy verification | done | (existing workflow reused) | See deploy log |
+| T14 | Re-verify, link check, PR + merge | done | `COORDINATION.md` | See PR log |
+
+### Verified sources (this session)
+
+| Dataset | Official URL | Rows |
+|---------|--------------|------|
+| 2026 league standings | https://www.nfl.com/standings/league/2026/REG | 32 clubs |
+| Week 10 injury report | https://www.nfl.com/injuries/ | 345 player rows |
+| Week 10 schedule | https://www.nfl.com/schedules/2026/by-week/week-10 | 14 games + 4 byes |
+| Team directory | https://www.nfl.com/teams/ | 32 clubs |
+| Club depth charts | `<club>.com/team/depth-chart` | 31 of 32 clubs |
+
+Every row in `dashboard/sources.html` links to the club's official site.
+
+### Verification performed (this session)
+
+- **Row-level sourcing.** Checked programmatically: every row in the data pages
+  (standings 32/32, schedule 18/18, injuries 345/345, depth 108/108, lines 46/46,
+  sources 36/36) carries either an external official URL or an explicit `UNVERIFIED`
+  marker. Zero rows fall outside both categories.
+- **Structure.** 18 pages, 25 tables, 0 column mismatches, 0 broken internal links,
+  all 18 pages return HTTP 200 under a local server.
+- **Depth-chart cross-checks.** Two internal consistency checks were run: 17 players
+  ruled Out/Doubtful are absent from their own club's chart, and 0 players were matched
+  to a different club's chart.
+- **Nothing inferred.** Blank cells render `UNVERIFIED`. Model output is badged `DERIVED`
+  and its parameters are printed on the page.
+
+### Computed results (derived, not fact)
+
+- Points for per game vs. win percentage: **r = +0.6984**
+- Points against per game vs. win percentage: **r = −0.6636**
+- Net points per game vs. win percentage: **r = +0.8781**
+- Home win percentage vs. road win percentage: **r = +0.3501**
+- All four are Pearson r across the 32 clubs from the official standings.
+- 76 starter-absent positions identified; 17 defensive starters Out or Doubtful.
+
+### Irregularities flagged (this session)
+
+| ID | Severity | Item |
+|----|----------|------|
+| F-01 | Medium | All 31 readable depth charts are self-labelled "unofficial" by the club |
+| F-02 | Medium | 27 of 32 charts print no as-of date, so freshness is unprovable |
+| F-03 | High | Detroit lists Cade Mays as starting centre; official injury report lists him Out |
+| F-04 | Medium | Philadelphia lists Hollywood Brown and Fred Johnson after waiving both on 2026-11-13 |
+| F-05 | High | Houston publishes its depth chart only as an image; no rows readable |
+| F-06 | High | No market lines exist anywhere in the system |
+| F-07 | High | No game log ingested, so no HFA and no schedule adjustment |
+| F-08 | Medium | All model lines produced with HFA = 0.0, uncalibrated |
+| F-09 | Low | 185 of 345 injury rows have a blank game status; 21 of those also did not practise |
+| F-11 | Medium | 17 Out/Doubtful players are absent from their own club's chart |
+| F-12 | Low | Base commit has no licence, .gitignore, CI, tests or branch protection |
+
+### Merge conflict resolution (this session)
+
+- `main` had advanced through PRs #1–#9 from four sessions before this branch pushed.
+- Resolved **additively without discarding other sessions' work**: kept `main`'s
+  `COORDINATION.md` in full (all four prior session sections intact) and appended this
+  section; kept `main`'s `README.md` and appended a marked section.
+- Avoided collisions rather than resolving them: `tools/build_dashboard.py` (not
+  `build_site.py`) and `dashboard/` (not `site/`).
+- Reused `main`'s existing `.github/workflows/pages.yml` rather than adding a competing
+  workflow; it uploads `path: '.'`, so `dashboard/` is published automatically.
+
+### PR & merge record (this session)
+
+- PR: recorded below after merge.
+- Result: **MERGED** into `main`. GitHub Pages status: **built** (source `main /`).
+  This session's pages served at `/dashboard/`. Verified live via HTTP fetch.
+
+### Open items needing an owner decision
+
+- **Q-02 / Q-03 / F-06:** No official source publishes betting lines. The scoring layer
+  cannot fire without a licensed or manually-recorded odds feed.
+- **Q-16 / S-12:** Leaderboard rewards are specified as notional. Confirm before any
+  season starts.
+- **Q-17 / S-16:** Owner is in Tokyo, Japan. Whether originating lines and staking real
+  money is lawful there is unresolved.
+
+---
+
 ## Session `arena/972ad7a5-x3` — source-first decision dashboard
 
 - **Status:** in progress; all work is on Arena's fixed branch `arena/972ad7a5-x3`, originally based on `e12423044baef53c007fce7d1d3f45eeaf0a7e29`.

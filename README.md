@@ -56,4 +56,69 @@ The checks validate local navigation/assets, JavaScript syntax, source IDs, appr
 6. Luck cannot be eliminated from NFL outcomes. The goal is to test whether a signal is repeatable and quantify its uncertainty.
 7. No market-price feed, settlement rules, real-money execution, jurisdiction-specific contest review, or reward payout is configured.
 
+This session added a parallel, self-contained static site (inline styles, per-row
+source links) plus build tooling. It was merged into the integrated dashboard
+without overwriting the shared `index.html` navigation or the integrated `docs/`
+dashboard. Its standalone pages are served from the repo root:
+
+- `index.html` — root redirect to the dashboard (shared output, unchanged).
+- `executive-summary.html`, `requirements.html`, `suggestions.html`, `lines.html`,
+  `leaderboard.html`, `injuries.html`, `verification.html`, `flagged.html`
+  (root) — this session's category pages.
+- `tools/build_site.py` — generates the standalone pages from verified data.
+- `tools/check_links.py` — verifies no broken internal links (9 pages, 297 links).
+
+All data rows link to official sources; betting lines, correlation values, and
+leaderboard performance have no official source and are left blank + flagged
+unverified. See `COORDINATION.md` (this session's section) for the full
+verification log and irregularity flags.
+
+---
+
+## Verified-data dashboard (branch arena/7e632805-x3)
+
+An 18-page dashboard built from data transcribed row by row from official sources.
+Served at **`/dashboard/`** on the published Pages site. Added additively: no other
+session's files were modified.
+
+| Path | Contents |
+|------|----------|
+| `dashboard/` | 18-page dashboard: overview, executive summary, standings, schedule, injuries, depth & deficiencies, own lines, strategies, validation gates, correlation, leaderboard, open questions, suggestions, requirements, repo review, sources, flagged, coordination |
+| `dashboard/data/` | Same content as JSON, emitted by the build |
+| `tools/nfl_data.py` | Verified data: standings, schedule, injury report, depth charts. Sole source of fact |
+| `tools/site_content.py` | Requirements, questions, suggestions, strategies, gates, leaderboard spec |
+| `tools/build_dashboard.py` | Deterministic build → `dashboard/**` |
+
+### Data verified this session
+
+| Dataset | Official source | Rows |
+|---------|-----------------|------|
+| 2026 league standings | https://www.nfl.com/standings/league/2026/REG | 32 clubs |
+| Week 10 injury report | https://www.nfl.com/injuries/ | 345 player rows |
+| Week 10 schedule | https://www.nfl.com/schedules/2026/by-week/week-10 | 14 games + 4 byes |
+| Club depth charts | `<club>.com/team/depth-chart` | 31 of 32 clubs |
+
+### Rebuild
+
+```bash
+python3 tools/build_dashboard.py
+```
+
+Deterministic: reads only `tools/nfl_data.py` and `tools/site_content.py`.
+
+### Known limits
+
+* Houston's official depth chart is published only as an image, so it is recorded as a
+  gap rather than filled in.
+* All 31 readable depth charts are self-labelled "unofficial" by the publishing club.
+* No market lines and no game log have been ingested, so the model runs with
+  home-field advantage at 0.0 and no schedule-strength adjustment. Every model output is
+  badged `DERIVED`.
+* 11 items are on the Flagged for Review page. None blocks the site.
+
+See `dashboard/questions.html` for the blocking unknowns and `dashboard/suggestions.html`
+for the decision queue.
+
+---
+
 See [`COORDINATION.md`](COORDINATION.md) for scope, source review, verification performed, and flagged irregularities.

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suggestions | X3 NFL</title>
+<style>
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--info);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1400px;margin:0 auto;padding:0 20px}
+header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:baseline;gap:12px;padding:14px 0 10px}
+.brand h1{font-size:19px;margin:0;letter-spacing:.5px}
+.brand span{color:var(--dim);font-size:12px}
+nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:10px}
+nav a{padding:6px 11px;border-radius:6px;color:var(--dim);font-size:13px}
+nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+nav a.on{background:var(--panel2);color:var(--txt);box-shadow:inset 0 -2px 0 var(--acc)}
+.xnav{padding:0 0 9px;font-size:12px;color:var(--mut)}
+.xnav a{color:var(--mut)}.xnav a:hover{color:var(--info)}
+main{padding:24px 0 60px}
+h2{font-size:22px;margin:0 0 4px}
+h3{font-size:16px;margin:26px 0 8px;color:var(--txt)}
+p.lede{color:var(--dim);margin:0 0 18px;max-width:100ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .k{font-size:26px;font-weight:600;line-height:1.1}
+.card .l{color:var(--dim);font-size:12px;margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
+.card.ok .k{color:var(--acc)}.card.warn .k{color:var(--warn)}.card.bad .k{color:var(--bad)}
+.card.info .k{color:var(--info)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.bar input,.bar select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+border-radius:6px;padding:7px 10px;font-size:13px}
+.bar input{min-width:230px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+.tw{overflow:auto;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);position:sticky;top:0;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.5px;color:var(--dim);cursor:pointer;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:#111823}
+.b{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;border:1px solid var(--line);
+white-space:nowrap}
+.b.ok{color:var(--acc);border-color:#1f6f37}.b.warn{color:var(--warn);border-color:#6b5210}
+.b.bad{color:var(--bad);border-color:#7d2b26}.b.info{color:var(--info);border-color:#1f4b7d}
+.b.mut{color:var(--mut)}
+.src{font-size:11px}
+.blank{color:var(--mut);font-style:italic}
+.mut{color:var(--dim)}
+small.note{color:var(--dim);display:block;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--dim);font-size:12px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;font-size:13px}
+.kv dt{color:var(--dim)}
+.kv dd{margin:0}
+ul.tight{margin:6px 0 0;padding-left:20px}ul.tight li{margin:3px 0}
+details{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.badge{font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--dim)}
+</style></head><body>
+<header><div class="wrap">
+<div class="brand"><h1>X3 &middot; NFL Decision System</h1>
+<span>2026 season &middot; Week 10 &middot; data as of 2026-11-14</span></div>
+<nav><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive Summary</a><a href="standings.html" class="">Standings</a><a href="schedule.html" class="">Schedule</a><a href="injuries.html" class="">Injuries</a><a href="depth-charts.html" class="">Depth &amp; Deficiencies</a><a href="lines.html" class="">Own Lines</a><a href="strategies.html" class="">Strategies</a><a href="validation.html" class="">Validation Gates</a><a href="correlation.html" class="">Correlation</a><a href="leaderboard.html" class="">Leaderboard</a><a href="questions.html" class="">Open Questions</a><a href="suggestions.html" class="on">Suggestions</a><a href="requirements.html" class="">Requirements</a><a href="repo-review.html" class="">Repo Review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for Review</a><a href="coordination.html" class="">Coordination</a></nav>
+<div class="xnav">Other published views in this repo:
+<a href="../docs/index.html">docs dashboard</a> &middot;
+<a href="../site/index.html">site dashboard</a> &middot;
+<a href="../index.html">repo root</a></div></header>
+<main><div class="wrap">
+<h2>Suggestions</h2>
+<p class="lede">Improvement suggestions, with paths and recommendations for review before any change ships.</p>
+
+<p class="lede">A decision queue, not a backlog. Each suggestion sets out the problem, three paths,
+and a recommendation, so a reviewer can pick a path and nothing ships before that choice is made.</p>
+<div class="grid">
+<div class="card info"><div class="k">13</div><div class="l">Proposed</div></div><div class="card info"><div class="k">2</div><div class="l">Adopted</div></div><div class="card info"><div class="k">1</div><div class="l">Deferred</div></div>
+</div>
+<div class="bar"><input data-filter="#t-sug" placeholder="Filter rows&hellip;"><span class="mut" id="c_t-sug"></span></div><div class="tw"><table id="t-sug"><thead><tr><th data-sort>ID</th><th data-sort>Area</th><th data-sort>Suggestion</th><th data-sort>Problem</th><th data-sort>Option A</th><th data-sort>Option B</th><th data-sort>Option C</th><th data-sort>Recommendation</th><th data-sort>Effort</th><th data-sort>Risk</th><th data-sort>Status</th></tr></thead><tbody><tr><td>S-01</td><td>Data</td><td><b>Ingest the full 2026 game log</b></td><td>Only standings are available, so the model cannot adjust for opponent strength or estimate home-field advantage.</td><td>Scrape nfl.com/schedules/2026/by-week/week-N for N=1..9 and store final scores.</td><td>Use an official gamebook feed if one is licensed.</td><td>Do nothing; keep raw net-points ratings.</td><td><b>Option A. It is the cheapest path and it unblocks Q-01, Q-10 and Q-11 at once.</b></td><td>Low</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-02</td><td>Data</td><td><b>Replace unofficial depth charts with official participation data</b></td><td>31 of 32 club charts are self-labelled unofficial, 27 print no date, and Houston publishes only an image. Two clubs contradict their own news pages.</td><td>Switch the starter flag to official gamebook participation data.</td><td>Keep club charts but add a staleness diff and a conflict flag on every run.</td><td>Drop the depth layer entirely and rely only on the injury report.</td><td><b>Option A as the target, Option B as the immediate stop-gap. Option C loses the 2nd/3rd/4th-string requirement in R-17.</b></td><td>Medium</td><td>Medium</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-03</td><td>Data</td><td><b>Create a separate, clearly-labelled vendor tier for market lines</b></td><td>The system is meant to beat a market, but no market data exists and no official source publishes it.</td><td>Add a second dataset tier with its own badge; fact rows stay official-only, vendor rows are marked vendor.</td><td>Refuse to use any non-official data at all.</td><td>Mix them into one table with no tier badge.</td><td><b>Option A. Option B makes R-09 unachievable. Option C breaks the verification rule in R-04.</b></td><td>Low</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-04</td><td>Verification</td><td><b>Surface a fetch timestamp on every ingested row</b></td><td>We cannot currently prove how fresh an injury row or a depth chart was at the moment a signal fired.</td><td>Store and render an ISO fetch timestamp next to every row.</td><td>Store the timestamp but only show it on the Flagged page.</td><td>Do nothing.</td><td><b>Option A. It is the only way to audit a losing bet after the fact.</b></td><td>Low</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-05</td><td>Injuries</td><td><b>Always override the depth chart with the injury report</b></td><td>Detroit lists Cade Mays as starting centre while the official report lists him Out. Philadelphia lists two players the club waived.</td><td>Make the injury report authoritative for availability and the chart authoritative only for the replacement order.</td><td>Make the chart authoritative.</td><td>Show both and let the user decide per row.</td><td><b>Option A, already implemented. Option B produces known-wrong starters. Option C does not scale to 32 clubs.</b></td><td>Low</td><td>Low</td><td><span class="b ok">Adopted</span></td></tr><tr><td>S-06</td><td>Injuries</td><td><b>Add the official inactives list as a final pre-kickoff gate</b></td><td>An &#x27;Out&#x27; injury designation is not the same as being on the official inactives list.</td><td>Ingest the per-week inactives article and treat it as the final override.</td><td>Treat &#x27;Out&#x27; as final.</td><td>Ignore inactives.</td><td><b>Option A. Option B will occasionally produce a signal on a player who was never going to play.</b></td><td>Medium</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-07</td><td>Modelling</td><td><b>Publish model output with its parameters visible</b></td><td>A rating with HFA = 0.0 and no schedule adjustment looks like a line but is not one.</td><td>Render every model output with its parameter set and an explicit &#x27;uncalibrated&#x27; badge until Q-10/Q-11 are closed.</td><td>Suppress model output until it is fully calibrated.</td><td>Publish it unbadged.</td><td><b>Option A. Option B hides progress; Option C is how a bad model gets trusted.</b></td><td>Low</td><td>Medium</td><td><span class="b ok">Adopted</span></td></tr><tr><td>S-08</td><td>Validation</td><td><b>Control for multiplicity across the whole strategy book</b></td><td>With many strategies, some will look profitable by chance alone.</td><td>Use Benjamini-Hochberg FDR at 10% within declared strategy families, and report the effective number of independent tests.</td><td>Use a plain p &lt; 0.05 per strategy.</td><td>Use Bonferroni across everything.</td><td><b>Option A. Option B manufactures false positives. Option C is defensible but needlessly strict; it is the fallback until Q-15 is closed.</b></td><td>Low</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-09</td><td>Validation</td><td><b>Make out-of-sample performance a hard gate, not a report</b></td><td>A strategy tuned on the same data it is scored on is not evidence.</td><td>Require a pre-registered parameter set, then grade it only on data after the registration date.</td><td>Allow tuning but penalise the score.</td><td>No holdout requirement.</td><td><b>Option A. It is the only version of this that actually removes hindsight.</b></td><td>Medium</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-10</td><td>Validation</td><td><b>Add a market-vig break-even floor to every gate</b></td><td>A strategy that beats nothing but loses less than the vig is still losing.</td><td>Require the modelled edge to clear the book&#x27;s margin before a bet is allowed.</td><td>Ignore vig at the research stage.</td><td>Use a fixed arbitrary edge threshold.</td><td><b>Option A. Option B is fine for research but must not gate capital; Option C is arbitrary.</b></td><td>Low</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-11</td><td>Correlation</td><td><b>Estimate leg correlations on within-game residuals</b></td><td>Correlating raw totals makes unrelated legs look correlated because they share a game script.</td><td>De-mean each statistic within game and correlate the residuals.</td><td>Correlate raw game totals.</td><td>Assume zero correlation.</td><td><b>Option A. Option C systematically under-prices parlay variance and is the single most common way a parlay book blows up.</b></td><td>Medium</td><td>Medium</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-12</td><td>Competition</td><td><b>Start the leaderboard on notional stakes</b></td><td>Cash rewards create an incentive to game the scoring function.</td><td>Score in notional units for the first full season; revisit once the gate machinery has a track record.</td><td>Pay cash from day one.</td><td>No rewards at all.</td><td><b>Option A. Option B invites gaming before we know the gates work. Option C removes the incentive the brief asks for.</b></td><td>Low</td><td>Medium</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-13</td><td>Site</td><td><b>Add a strategy detail page per strategy</b></td><td>The strategy register is dense; each strategy needs its own parameters, gate history and result log.</td><td>One page per strategy, generated from the register.</td><td>Keep everything on one page with filters.</td><td>Export to a spreadsheet.</td><td><b>Option A once any strategy has graded results. Option B is fine while everything is pre-launch.</b></td><td>Medium</td><td>Low</td><td><span class="b mut">Deferred</span></td></tr><tr><td>S-14</td><td>Site</td><td><b>Wire an automated pre-kickoff pipeline run</b></td><td>Injury and depth data change daily; a stale site is a real risk once signals are acted on.</td><td>Schedule the ingest+build workflow twice daily plus a run before kickoff.</td><td>Run it manually.</td><td>Run it weekly.</td><td><b>Option A. Option B contradicts R-24. Option C is worse than useless for injury data.</b></td><td>Low</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-15</td><td>Governance</td><td><b>Auto-file blocked strategies into the Suggestions queue</b></td><td>When a strategy fails its gates nothing currently happens to it.</td><td>On gate failure, create a suggestion with the failure reason attached so a reviewer picks a path.</td><td>Email an alert.</td><td>Do nothing.</td><td><b>Option A. It closes the loop between validation and decision-making, which is the point of the Suggestions page.</b></td><td>Low</td><td>Low</td><td><span class="b info">Proposed</span></td></tr><tr><td>S-16</td><td>Legal</td><td><b>Get a jurisdiction opinion before any real staking</b></td><td>The owner is in Tokyo. Whether originating lines and staking is lawful there is unanswered.</td><td>Legal review before the first real-money bet.</td><td>Paper-trade indefinitely.</td><td>Proceed and review later.</td><td><b>Option A, then B while A is pending. Option C is not acceptable.</b></td><td>Low</td><td>High</td><td><span class="b info">Proposed</span></td></tr></tbody></table></div>
+<div class="panel"><h3 style="margin-top:0">How to use this page</h3>
+<ul class="tight">
+<li>Pick a row. Read the three options and the recommendation.</li>
+<li>Change the status to <b>Adopted</b> when a path is chosen, <b>Deferred</b> when it is knowingly
+postponed. Nothing is implemented on <b>Proposed</b>.</li>
+<li>Anything marked <b>Adopted</b> only takes effect when the matching change is committed. The two
+adopted items on this page are already reflected in the pipeline.</li>
+</ul></div>
+
+</div></main>
+<footer><div class="wrap">
+Verification rule: a row is verified only when its value was read from an official
+NFL source and the row carries that source's link. Values that could not be confirmed
+are blank and marked <span class="b warn">UNVERIFIED</span>; they are repeated on the
+<a href="flagged.html">Flagged for Review</a> page. Model output is always labelled
+<span class="b mut">DERIVED</span> and is never presented as fact.
+</div></footer>
+<script>
+document.querySelectorAll('th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){
+    var tb=th.closest('table');var i=[].indexOf.call(th.parentNode.children,th);
+    var asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+    var rows=[].slice.call(tb.tBodies[0].rows);
+    rows.sort(function(a,b){
+      var x=a.cells[i].dataset.sort!==undefined?a.cells[i].dataset.sort:a.cells[i].textContent;
+      var y=b.cells[i].dataset.sort!==undefined?b.cells[i].dataset.sort:b.cells[i].textContent;
+      var nx=parseFloat(x),ny=parseFloat(y);
+      if(!isNaN(nx)&&!isNaN(ny))return asc?nx-ny:ny-nx;
+      return asc?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+    });
+    rows.forEach(function(r){tb.tBodies[0].appendChild(r)});
+  });
+});
+document.querySelectorAll('input[data-filter]').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var q=inp.value.toLowerCase();var tb=document.querySelector(inp.dataset.filter);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+document.querySelectorAll('[data-filter]').forEach(function(inp){
+  function cnt(){var tb=document.querySelector(inp.dataset.filter);
+    if(!tb)return;var v=0;
+    [].forEach.call(tb.tBodies[0].rows,function(r){if(r.style.display!=='none')v++;});
+    var out=document.getElementById('c_'+tb.id);if(out)out.textContent=v+' rows';}
+  inp.addEventListener('input',cnt);cnt();
+});
+document.querySelectorAll('select[data-eq]').forEach(function(sel){
+  sel.addEventListener('change',function(){
+    var v=sel.value.toLowerCase();var tb=document.querySelector(sel.dataset.eq);
+    var col=parseInt(sel.dataset.col||'0',10);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      var c=(r.cells[col]?r.cells[col].textContent:'').toLowerCase();
+      r.style.display=(!v||c.indexOf(v)>-1)?'':'none';
+    });
+  });
+});
+</script></body></html>

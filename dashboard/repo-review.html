@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Repo Review | X3 NFL</title>
+<style>
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--info);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1400px;margin:0 auto;padding:0 20px}
+header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:baseline;gap:12px;padding:14px 0 10px}
+.brand h1{font-size:19px;margin:0;letter-spacing:.5px}
+.brand span{color:var(--dim);font-size:12px}
+nav{display:flex;flex-wrap:wrap;gap:2px;padding-bottom:10px}
+nav a{padding:6px 11px;border-radius:6px;color:var(--dim);font-size:13px}
+nav a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+nav a.on{background:var(--panel2);color:var(--txt);box-shadow:inset 0 -2px 0 var(--acc)}
+.xnav{padding:0 0 9px;font-size:12px;color:var(--mut)}
+.xnav a{color:var(--mut)}.xnav a:hover{color:var(--info)}
+main{padding:24px 0 60px}
+h2{font-size:22px;margin:0 0 4px}
+h3{font-size:16px;margin:26px 0 8px;color:var(--txt)}
+p.lede{color:var(--dim);margin:0 0 18px;max-width:100ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card .k{font-size:26px;font-weight:600;line-height:1.1}
+.card .l{color:var(--dim);font-size:12px;margin-top:4px;text-transform:uppercase;letter-spacing:.6px}
+.card.ok .k{color:var(--acc)}.card.warn .k{color:var(--warn)}.card.bad .k{color:var(--bad)}
+.card.info .k{color:var(--info)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.bar input,.bar select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);
+border-radius:6px;padding:7px 10px;font-size:13px}
+.bar input{min-width:230px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+.tw{overflow:auto;border:1px solid var(--line);border-radius:10px;margin:10px 0}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--panel2);position:sticky;top:0;font-size:11.5px;text-transform:uppercase;
+letter-spacing:.5px;color:var(--dim);cursor:pointer;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:#111823}
+.b{display:inline-block;padding:1px 7px;border-radius:20px;font-size:11px;border:1px solid var(--line);
+white-space:nowrap}
+.b.ok{color:var(--acc);border-color:#1f6f37}.b.warn{color:var(--warn);border-color:#6b5210}
+.b.bad{color:var(--bad);border-color:#7d2b26}.b.info{color:var(--info);border-color:#1f4b7d}
+.b.mut{color:var(--mut)}
+.src{font-size:11px}
+.blank{color:var(--mut);font-style:italic}
+.mut{color:var(--dim)}
+small.note{color:var(--dim);display:block;margin-top:6px}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--dim);font-size:12px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:6px 14px;font-size:13px}
+.kv dt{color:var(--dim)}
+.kv dd{margin:0}
+ul.tight{margin:6px 0 0;padding-left:20px}ul.tight li{margin:3px 0}
+details{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.badge{font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid var(--line);color:var(--dim)}
+</style></head><body>
+<header><div class="wrap">
+<div class="brand"><h1>X3 &middot; NFL Decision System</h1>
+<span>2026 season &middot; Week 10 &middot; data as of 2026-11-14</span></div>
+<nav><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive Summary</a><a href="standings.html" class="">Standings</a><a href="schedule.html" class="">Schedule</a><a href="injuries.html" class="">Injuries</a><a href="depth-charts.html" class="">Depth &amp; Deficiencies</a><a href="lines.html" class="">Own Lines</a><a href="strategies.html" class="">Strategies</a><a href="validation.html" class="">Validation Gates</a><a href="correlation.html" class="">Correlation</a><a href="leaderboard.html" class="">Leaderboard</a><a href="questions.html" class="">Open Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="requirements.html" class="">Requirements</a><a href="repo-review.html" class="on">Repo Review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for Review</a><a href="coordination.html" class="">Coordination</a></nav>
+<div class="xnav">Other published views in this repo:
+<a href="../docs/index.html">docs dashboard</a> &middot;
+<a href="../site/index.html">site dashboard</a> &middot;
+<a href="../index.html">repo root</a></div></header>
+<main><div class="wrap">
+<h2>Repo Review</h2>
+<p class="lede">Line-by-line review of the base commit, with links for manual verification.</p>
+
+<p class="lede">The repository was reviewed line by line. At the base commit it contained exactly
+one tracked file. There was no prior code, data set, documentation or configuration to audit.</p>
+<div class="panel"><h3 style="margin-top:0">Repository facts</h3>
+<dl class="kv">
+<dt>Branch reviewed</dt><dd><code>arena/7e632805-x3</code></dd>
+<dt>Base commit</dt><dd><code>ba757220c45f1d2a617e27cca49b8707f677e3d3</code> &mdash; <a class="src" href="https://github.com/karagemop466-tech/X3/commit/ba757220c45f1d2a617e27cca49b8707f677e3d3" target="_blank" rel="noopener">open on GitHub &#8599;</a></dd>
+<dt>Commit count</dt><dd>29</dd>
+<dt>Tracked files at base</dt><dd>99</dd>
+<dt>Total bytes at base</dt><dd>1467161</dd>
+</dl></div>
+<h3>File-by-file</h3>
+<div class="bar"><input data-filter="#t-repo" placeholder="Filter rows&hellip;"><span class="mut" id="c_t-repo"></span></div><div class="tw"><table id="t-repo"><thead><tr><th data-sort>Path</th><th data-sort>Bytes</th><th data-sort>Lines</th><th data-sort>Content as committed</th><th data-sort>Links for manual review</th></tr></thead><tbody><tr><td><code>.github/workflows/pages.yml</code></td><td class="num">2642</td><td class="num">77</td><td><code>name: Deploy X3 NFL site to GitHub Pages
+
+on:
+  push:
+    branches: [ arena/1a771fcd-x3, main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: &quot;pages&quot;
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check site files and in</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/.github/workflows/pages.yml" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/.github/workflows/pages.yml" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>.gitignore</code></td><td class="num">52</td><td class="num">6</td><td><code>__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+venv/
+*.swp
+</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/.gitignore" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/.gitignore" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>.nojekyll</code></td><td class="num">0</td><td class="num">0</td><td><code></code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/.nojekyll" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/.nojekyll" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>COORDINATION.md</code></td><td class="num">22752</td><td class="num">312</td><td><code># COORDINATION.md
+
+Shared task board for the X3 (NFL) project.
+Integrated branches: `arena/1a771fcd-x3` (this session) and `arena/d667d44d-x3` (prior session, merged to `main` via PR #1).
+Status legend: unclaimed | in progress | done | needs review
+
+## Sessions
+- `arena/1a771fcd-x3` — current integration session (branch → main)
+- `arena/d667d44d-x3` — prior session; root decision-lab site + Pages </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/COORDINATION.md" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/COORDINATION.md" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>README.md</code></td><td class="num">6765</td><td class="num">118</td><td><code># X3 — NFL Decision Intelligence (NFL Decision Lab)
+
+A source-first framework for building and evaluating NFL betting signals: originate NFL lines, generate and validate betting signals, track injuries and depth-chart deficiencies, and review improvement suggestions before any change is implemented. The site separates verified facts, methods to test, and missing information; it does not publish li</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/README.md" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/README.md" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>assets/style.css</code></td><td class="num">6334</td><td class="num">111</td><td><code>/* X3 — NFL Decision Intelligence */
+:root{
+  --ink:#0f172a;
+  --muted:#475569;
+  --line:#e2e8f0;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --accent:#0b5ed6;
+  --accent-hover:#084faf;
+  --flag:#b45309;
+  --flag-bg:#fff7ed;
+  --ok:#166534;
+  --ok-bg:#f0fdf4;
+  --warn:#b45309;
+  --warn-bg:#fffbeb;
+  --radius:10px;
+  --shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+* { box-sizing: </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/assets/style.css" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/assets/style.css" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/assets-style.css</code></td><td class="num">3573</td><td class="num">55</td><td><code>
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);
+font:15px/1.55 -apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--info);text-decoration:none}a:hover{text-deco</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/assets-style.css" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/assets-style.css" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/coordination.html</code></td><td class="num">13552</td><td class="num">207</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Coordination | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--b</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/coordination.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/coordination.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/correlation.html</code></td><td class="num">12280</td><td class="num">133</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Correlation | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/correlation.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/correlation.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/audit.json</code></td><td class="num">4511</td><td class="num">63</td><td><code>{
+ &quot;sha&quot;: &quot;304b01c24a33f6afd04f22804f7f80c390899cb1&quot;,
+ &quot;short&quot;: &quot;304b01c&quot;,
+ &quot;commit_url&quot;: &quot;https://github.com/karagemop466-tech/X3/commit/304b01c24a33f6afd04f22804f7f80c390899cb1&quot;,
+ &quot;branch&quot;: &quot;arena/7e632805-x3&quot;,
+ &quot;commit_count&quot;: &quot;2&quot;,
+ &quot;files&quot;: [
+  {
+   &quot;path&quot;: &quot;.gitignore&quot;,
+   &quot;bytes&quot;: 52,
+   &quot;lines&quot;: 6,
+   &quot;content&quot;: &quot;__pycache__/\n*.py[cod]\n.DS_Store\n.venv/\nvenv/\n*.swp\n&quot;,
+   &quot;truncated&quot;: f</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/audit.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/audit.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/bye.json</code></td><td class="num">433</td><td class="num">22</td><td><code>[
+ {
+  &quot;abbr&quot;: &quot;CHI&quot;,
+  &quot;record&quot;: &quot;7-2&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/schedules/2026/by-week/week-10&quot;
+ },
+ {
+  &quot;abbr&quot;: &quot;DEN&quot;,
+  &quot;record&quot;: &quot;7-2&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/schedules/2026/by-week/week-10&quot;
+ },
+ {
+  &quot;abbr&quot;: &quot;PHI&quot;,
+  &quot;record&quot;: &quot;2-7&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/schedules/2026/by-week/week-10&quot;
+ },
+ {
+  &quot;abbr&quot;: &quot;TB&quot;,
+  &quot;record&quot;: &quot;3-6&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/sch</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/bye.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/bye.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/correlations.json</code></td><td class="num">1183</td><td class="num">42</td><td><code>[
+ {
+  &quot;pair&quot;: &quot;Points for per game vs. win percentage&quot;,
+  &quot;kind&quot;: &quot;Team-season&quot;,
+  &quot;estimator&quot;: &quot;Pearson r across all 32 clubs&quot;,
+  &quot;data&quot;: &quot;Official 2026 league standings&quot;,
+  &quot;value&quot;: &quot;+0.6984&quot;,
+  &quot;n&quot;: 32,
+  &quot;status&quot;: &quot;Computed&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/standings/league/2026/REG&quot;
+ },
+ {
+  &quot;pair&quot;: &quot;Points against per game vs. win percentage&quot;,
+  &quot;kind&quot;: &quot;Team-season&quot;,
+  &quot;estimator&quot;: &quot;Pears</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/correlations.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/correlations.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/deficiencies.json</code></td><td class="num">31889</td><td class="num">1218</td><td><code>[
+ {
+  &quot;team&quot;: &quot;WAS&quot;,
+  &quot;team_name&quot;: &quot;Washington Commanders&quot;,
+  &quot;player&quot;: &quot;Lucas Patrick&quot;,
+  &quot;pos&quot;: &quot;C&quot;,
+  &quot;injury&quot;: &quot;Concussion&quot;,
+  &quot;game_status&quot;: &quot;Out&quot;,
+  &quot;unit&quot;: &quot;Offense&quot;,
+  &quot;slot&quot;: &quot;&quot;,
+  &quot;out_depth&quot;: &quot;&quot;,
+  &quot;replacement&quot;: &quot;&quot;,
+  &quot;replacement_depth&quot;: &quot;&quot;,
+  &quot;note&quot;: &quot;Listed on the official injury report but not found on the club&#x27;s own depth chart. Treated as unknown, never as healthy.&quot;,
+  &quot;src_inj</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/deficiencies.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/deficiencies.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/depth.json</code></td><td class="num">114384</td><td class="num">7496</td><td><code>[
+ {
+  &quot;abbr&quot;: &quot;ARI&quot;,
+  &quot;name&quot;: &quot;Arizona Cardinals&quot;,
+  &quot;url&quot;: &quot;https://www.azcardinals.com/team/depth-chart&quot;,
+  &quot;as_of&quot;: &quot;&quot;,
+  &quot;label&quot;: &quot;Arizona Cardinals Official Depth Chart&quot;,
+  &quot;slots&quot;: [
+   {
+    &quot;pos&quot;: &quot;WR&quot;,
+    &quot;unit&quot;: &quot;Offense&quot;,
+    &quot;players&quot;: [
+     &quot;Reggie Virgil&quot;,
+     &quot;Harrison Wallace III&quot;
+    ]
+   },
+   {
+    &quot;pos&quot;: &quot;LT&quot;,
+    &quot;unit&quot;: &quot;Offense&quot;,
+    &quot;players&quot;: [
+     &quot;Jayden Williams&quot;,</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/depth.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/depth.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/depth_missing.json</code></td><td class="num">271</td><td class="num">9</td><td><code>[
+ {
+  &quot;abbr&quot;: &quot;HOU&quot;,
+  &quot;name&quot;: &quot;Houston Texans&quot;,
+  &quot;url&quot;: &quot;https://www.houstontexans.com/team/depth-chart&quot;,
+  &quot;reason&quot;: &quot;Official page publishes the depth chart as an image; no table rows could be read.&quot;,
+  &quot;source&quot;: &quot;https://www.houstontexans.com/team/depth-chart&quot;
+ }
+]</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/depth_missing.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/depth_missing.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/flagged.json</code></td><td class="num">4794</td><td class="num">101</td><td><code>[
+ {
+  &quot;id&quot;: &quot;F-01&quot;,
+  &quot;area&quot;: &quot;Source quality&quot;,
+  &quot;severity&quot;: &quot;Medium&quot;,
+  &quot;what&quot;: &quot;Every club depth chart is labelled &#x27;unofficial&#x27; by the club that publishes it.&quot;,
+  &quot;why&quot;: &quot;31 of 31 readable charts carry a self-declared unofficial label, so no chart can be treated as a club-authoritative starter designation.&quot;,
+  &quot;source&quot;: &quot;https://www.detroitlions.com/team/depth-chart&quot;,
+  &quot;action&quot;: &quot;Use official</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/flagged.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/flagged.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/gates.json</code></td><td class="num">2985</td><td class="num">86</td><td><code>[
+ {
+  &quot;id&quot;: &quot;G-01&quot;,
+  &quot;gate&quot;: &quot;Pre-registration&quot;,
+  &quot;threshold&quot;: &quot;Parameters, selection rule and staking rule are committed to the repo and timestamped before any graded result is recorded.&quot;,
+  &quot;why&quot;: &quot;Anything tuned after seeing results is hindsight, not skill.&quot;,
+  &quot;blocking&quot;: &quot;Yes&quot;
+ },
+ {
+  &quot;id&quot;: &quot;G-02&quot;,
+  &quot;gate&quot;: &quot;Minimum sample&quot;,
+  &quot;threshold&quot;: &quot;At least 200 graded bets at the declared unit s</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/gates.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/gates.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/injuries.json</code></td><td class="num">81243</td><td class="num">3452</td><td><code>[
+ {
+  &quot;team&quot;: &quot;WAS&quot;,
+  &quot;team_name&quot;: &quot;Washington Commanders&quot;,
+  &quot;player&quot;: &quot;John Bates&quot;,
+  &quot;pos&quot;: &quot;TE&quot;,
+  &quot;injury&quot;: &quot;&quot;,
+  &quot;practice&quot;: &quot;Full Participation in Practice&quot;,
+  &quot;status&quot;: &quot;&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/injuries/&quot;
+ },
+ {
+  &quot;team&quot;: &quot;WAS&quot;,
+  &quot;team_name&quot;: &quot;Washington Commanders&quot;,
+  &quot;player&quot;: &quot;Treylon Burks&quot;,
+  &quot;pos&quot;: &quot;WR&quot;,
+  &quot;injury&quot;: &quot;&quot;,
+  &quot;practice&quot;: &quot;Did Not Participate In Practice&quot;,
+</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/injuries.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/injuries.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/meta.json</code></td><td class="num">140</td><td class="num">7</td><td><code>{
+ &quot;season&quot;: 2026,
+ &quot;week&quot;: 10,
+ &quot;as_of&quot;: &quot;2026-11-14&quot;,
+ &quot;sha&quot;: &quot;304b01c24a33f6afd04f22804f7f80c390899cb1&quot;,
+ &quot;branch&quot;: &quot;arena/7e632805-x3&quot;
+}</code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/meta.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/meta.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/model_lines.json</code></td><td class="num">5066</td><td class="num">212</td><td><code>[
+ {
+  &quot;day&quot;: &quot;Thu&quot;,
+  &quot;date&quot;: &quot;2026-11-12&quot;,
+  &quot;time&quot;: &quot;8:15 PM&quot;,
+  &quot;away&quot;: &quot;WAS&quot;,
+  &quot;home&quot;: &quot;NYG&quot;,
+  &quot;away_name&quot;: &quot;Washington Commanders&quot;,
+  &quot;home_name&quot;: &quot;New York Giants&quot;,
+  &quot;net&quot;: &quot;Prime Video&quot;,
+  &quot;url&quot;: &quot;https://www.nfl.com/games/commanders-at-giants-2026-reg-10&quot;,
+  &quot;model_home_spread&quot;: &quot;+3.8&quot;,
+  &quot;model_total&quot;: &quot;45.4&quot;,
+  &quot;exp_home&quot;: &quot;23.7&quot;,
+  &quot;exp_away&quot;: &quot;21.8&quot;
+ },
+ {
+  &quot;day&quot;: &quot;Sun&quot;,
+  &quot;date&quot;:</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/model_lines.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/model_lines.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/questions.json</code></td><td class="num">10563</td><td class="num">182</td><td><code>[
+ {
+  &quot;id&quot;: &quot;Q-01&quot;,
+  &quot;area&quot;: &quot;Data scope&quot;,
+  &quot;question&quot;: &quot;What is the authoritative universe of games the model will be scored on?&quot;,
+  &quot;known&quot;: &quot;Official 2026 regular-season standings, Week 10 schedule and Week 10 injury report are ingested and verified from NFL.com.&quot;,
+  &quot;unknown&quot;: &quot;Game-level results by week (who beat whom, by how much) have NOT been ingested. That is why no schedule-strength a</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/questions.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/questions.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/rates.json</code></td><td class="num">2834</td><td class="num">194</td><td><code>{
+ &quot;BUF&quot;: {
+  &quot;gp&quot;: 8,
+  &quot;pf&quot;: 32.0,
+  &quot;pa&quot;: 23.375,
+  &quot;net&quot;: 8.625
+ },
+ &quot;SF&quot;: {
+  &quot;gp&quot;: 8,
+  &quot;pf&quot;: 29.375,
+  &quot;pa&quot;: 19.5,
+  &quot;net&quot;: 9.875
+ },
+ &quot;CHI&quot;: {
+  &quot;gp&quot;: 9,
+  &quot;pf&quot;: 26.77777777777778,
+  &quot;pa&quot;: 20.444444444444443,
+  &quot;net&quot;: 6.333333333333333
+ },
+ &quot;DEN&quot;: {
+  &quot;gp&quot;: 9,
+  &quot;pf&quot;: 22.0,
+  &quot;pa&quot;: 20.666666666666668,
+  &quot;net&quot;: 1.3333333333333333
+ },
+ &quot;CIN&quot;: {
+  &quot;gp&quot;: 8,
+  &quot;pf&quot;: 30.0,
+  &quot;pa&quot;: 21.875,
+  &quot;net</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/rates.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/rates.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/requirements.json</code></td><td class="num">6685</td><td class="num">194</td><td><code>[
+ {
+  &quot;id&quot;: &quot;R-01&quot;,
+  &quot;category&quot;: &quot;Data&quot;,
+  &quot;requirement&quot;: &quot;Collect a full list of requirements for the NFL decision system.&quot;,
+  &quot;acceptance&quot;: &quot;Every requirement has an ID, an acceptance criterion, and a status on the Requirements page.&quot;,
+  &quot;status&quot;: &quot;done&quot;,
+  &quot;blocking&quot;: &quot;&quot;
+ },
+ {
+  &quot;id&quot;: &quot;R-02&quot;,
+  &quot;category&quot;: &quot;Data&quot;,
+  &quot;requirement&quot;: &quot;Organise and analyse the requirement set into categories.&quot;,
+</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/requirements.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/requirements.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/schedule.json</code></td><td class="num">3760</td><td class="num">156</td><td><code>[
+ {
+  &quot;day&quot;: &quot;Thu&quot;,
+  &quot;date&quot;: &quot;2026-11-12&quot;,
+  &quot;time&quot;: &quot;8:15 PM&quot;,
+  &quot;away&quot;: &quot;WAS&quot;,
+  &quot;home&quot;: &quot;NYG&quot;,
+  &quot;away_name&quot;: &quot;Washington Commanders&quot;,
+  &quot;home_name&quot;: &quot;New York Giants&quot;,
+  &quot;network&quot;: &quot;Prime Video&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/games/commanders-at-giants-2026-reg-10&quot;
+ },
+ {
+  &quot;day&quot;: &quot;Sun&quot;,
+  &quot;date&quot;: &quot;2026-11-15&quot;,
+  &quot;time&quot;: &quot;9:30 AM&quot;,
+  &quot;away&quot;: &quot;NE&quot;,
+  &quot;home&quot;: &quot;DET&quot;,
+  &quot;away_name&quot;: &quot;New Engl</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/schedule.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/schedule.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/standings.json</code></td><td class="num">9980</td><td class="num">578</td><td><code>[
+ {
+  &quot;abbr&quot;: &quot;BUF&quot;,
+  &quot;name&quot;: &quot;Buffalo Bills&quot;,
+  &quot;w&quot;: 7,
+  &quot;l&quot;: 1,
+  &quot;t&quot;: 0,
+  &quot;pct&quot;: &quot;.875&quot;,
+  &quot;pf&quot;: 256,
+  &quot;pa&quot;: 187,
+  &quot;net&quot;: 69,
+  &quot;home&quot;: &quot;3-1-0&quot;,
+  &quot;road&quot;: &quot;4-0-0&quot;,
+  &quot;div&quot;: &quot;0-1-0&quot;,
+  &quot;conf&quot;: &quot;4-1-0&quot;,
+  &quot;strk&quot;: &quot;4W&quot;,
+  &quot;last5&quot;: &quot;4-1-0&quot;,
+  &quot;source&quot;: &quot;https://www.nfl.com/standings/league/2026/REG&quot;
+ },
+ {
+  &quot;abbr&quot;: &quot;SF&quot;,
+  &quot;name&quot;: &quot;San Francisco 49ers&quot;,
+  &quot;w&quot;: 7,
+  &quot;l&quot;: 1,
+  &quot;t&quot;: 0,
+  &quot;pct&quot;:</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/standings.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/standings.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/strategies.json</code></td><td class="num">5026</td><td class="num">112</td><td><code>[
+ {
+  &quot;id&quot;: &quot;ST-01&quot;,
+  &quot;name&quot;: &quot;Starter-Delta Fade&quot;,
+  &quot;family&quot;: &quot;Injury / depth&quot;,
+  &quot;construction&quot;: &quot;Single&quot;,
+  &quot;inputs&quot;: &quot;Official Week 10 injury report (game status Out/Doubtful) joined to the official club depth chart; replacement depth (2nd, 3rd, 4th string).&quot;,
+  &quot;output&quot;: &quot;Signed availability delta in position groups, split offense and defense.&quot;,
+  &quot;rule&quot;: &quot;Bet the side whose opponent is st</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/strategies.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/strategies.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/suggestions.json</code></td><td class="num">9241</td><td class="num">210</td><td><code>[
+ {
+  &quot;id&quot;: &quot;S-01&quot;,
+  &quot;area&quot;: &quot;Data&quot;,
+  &quot;title&quot;: &quot;Ingest the full 2026 game log&quot;,
+  &quot;problem&quot;: &quot;Only standings are available, so the model cannot adjust for opponent strength or estimate home-field advantage.&quot;,
+  &quot;a&quot;: &quot;Scrape nfl.com/schedules/2026/by-week/week-N for N=1..9 and store final scores.&quot;,
+  &quot;b&quot;: &quot;Use an official gamebook feed if one is licensed.&quot;,
+  &quot;c&quot;: &quot;Do nothing; keep raw net-point</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/suggestions.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/suggestions.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/data/teams.json</code></td><td class="num">6073</td><td class="num">258</td><td><code>[
+ {
+  &quot;abbr&quot;: &quot;ARI&quot;,
+  &quot;name&quot;: &quot;Arizona Cardinals&quot;,
+  &quot;profile&quot;: &quot;https://www.nfl.com/teams/arizona-cardinals/&quot;,
+  &quot;site&quot;: &quot;https://www.azcardinals.com/&quot;,
+  &quot;conf&quot;: &quot;NFC&quot;,
+  &quot;div&quot;: &quot;West&quot;
+ },
+ {
+  &quot;abbr&quot;: &quot;ATL&quot;,
+  &quot;name&quot;: &quot;Atlanta Falcons&quot;,
+  &quot;profile&quot;: &quot;https://www.nfl.com/teams/atlanta-falcons/&quot;,
+  &quot;site&quot;: &quot;https://www.atlantafalcons.com/&quot;,
+  &quot;conf&quot;: &quot;NFC&quot;,
+  &quot;div&quot;: &quot;South&quot;
+ },
+ {
+  &quot;abbr&quot;: &quot;BA</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/teams.json" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/data/teams.json" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/depth-charts.html</code></td><td class="num">52943</td><td class="num">129</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Depth &amp;amp; Deficiencies | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;backgr</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/depth-charts.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/depth-charts.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/executive-summary.html</code></td><td class="num">12266</td><td class="num">134</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Executive Summary | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:va</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/executive-summary.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/executive-summary.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/flagged.html</code></td><td class="num">14015</td><td class="num">127</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Flagged for Review | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:v</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/flagged.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/flagged.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/index.html</code></td><td class="num">19697</td><td class="num">138</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Overview | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);c</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/index.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/index.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/injuries.html</code></td><td class="num">111467</td><td class="num">118</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Injuries | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);c</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/injuries.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/injuries.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/leaderboard.html</code></td><td class="num">13186</td><td class="num">136</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Leaderboard | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/leaderboard.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/leaderboard.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/lines.html</code></td><td class="num">23111</td><td class="num">137</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Own Lines | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/lines.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/lines.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/questions.html</code></td><td class="num">18832</td><td class="num">128</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Open Questions | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(-</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/questions.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/questions.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/repo-review.html</code></td><td class="num">18473</td><td class="num">192</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Repo Review | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/repo-review.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/repo-review.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/requirements.html</code></td><td class="num">15712</td><td class="num">126</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Requirements | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--b</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/requirements.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/requirements.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/schedule.html</code></td><td class="num">12701</td><td class="num">118</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Schedule | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);c</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/schedule.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/schedule.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/sources.html</code></td><td class="num">22610</td><td class="num">125</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Sources | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);co</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/sources.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/sources.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/standings.html</code></td><td class="num">23350</td><td class="num">118</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Standings | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/standings.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/standings.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/strategies.html</code></td><td class="num">13344</td><td class="num">128</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Strategies | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg)</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/strategies.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/strategies.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/suggestions.html</code></td><td class="num">17939</td><td class="num">133</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Suggestions | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/suggestions.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/suggestions.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>dashboard/validation.html</code></td><td class="num">15052</td><td class="num">140</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+&lt;title&gt;Validation Gates | X3 NFL&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#0d1117;--panel:#151b23;--panel2:#1b2430;--line:#263241;--txt:#e6edf3;
+--dim:#8b98a5;--acc:#3fb950;--warn:#d29922;--bad:#f85149;--info:#58a6ff;--mut:#6e7681}
+*{box-sizing:border-box}
+body{margin:0;background:var</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/validation.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/dashboard/validation.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data.html</code></td><td class="num">4935</td><td class="num">1</td><td><code>&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;title&gt;Data &amp; Injuries · NFL Decision Lab&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;aside class=&quot;sidebar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;N&lt;/span&gt;&lt;span&gt;NFL &lt;small&gt;DECISION LAB&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;◫ &amp;nbsp</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/correlations.csv</code></td><td class="num">834</td><td class="num">7</td><td><code>corr_id,signal_a,signal_b,correlation_value,method,sample,verification,note
+C01,S01 injury-adjusted strength,Closing spread outcome,,Pearson/Spearman,0 games,Not computed - no data,Left blank; no value may be inferred
+C02,S02 QB availability,Moneyline result,,Logistic regression,0 games,Not computed - no data,Left blank
+C03,S04 WR1 Out,WR2/WR3 receiving yards,,Pearson,0 games,Not computed - no dat</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/correlations.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/correlations.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/flags.csv</code></td><td class="num">5237</td><td class="num">17</td><td><code>id,severity,area,issue,evidence,source_link,action_for_user
+F01,High,Legal,&quot;Wagering with private bookmakers from Japan is criminal for the bettor under Penal Code Art. 185 (fine up to 500,000 yen); habitual gambling is Art. 186. The project therefore has legal exposure if it is used for wagering.&quot;,Official translation of Penal Code Art. 185 (search excerpt of the official page; full text not re-r</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/flags.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/flags.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/gates.csv</code></td><td class="num">1565</td><td class="num">11</td><td><code>gate_id,gate,definition,status,note
+G0,Data provenance,&quot;Every input is traced to an official source or a documented, reproducible dataset with a link&quot;,Pass for injury and schedule inputs only,No strategy inputs cleared beyond injury and schedule
+G1,Pre-registration,&quot;Hypothesis, metric and sample rules written and committed before any test runs&quot;,Not started,Proposed process (Suggestions S04)
+G2,Min</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/gates.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/gates.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/injury_report_2026_wk10.csv</code></td><td class="num">23306</td><td class="num">206</td><td><code>source_id,as_of,slot,team,player,position,injury,practice_status,game_status,note
+NFL-INJ-W10,2026-11-14,Thu 11/12 8:15pm ET,WAS,Treylon Burks,WR,,Did Not Participate In Practice,,
+NFL-INJ-W10,2026-11-14,Thu 11/12 8:15pm ET,WAS,Lucas Patrick,C,Concussion,Did Not Participate In Practice,Out,
+NFL-INJ-W10,2026-11-14,Thu 11/12 8:15pm ET,WAS,Amik Robertson,CB,,Limited Participation in Practice,,
+NFL-IN</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/injury_report_2026_wk10.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/injury_report_2026_wk10.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/questions.csv</code></td><td class="num">3490</td><td class="num">13</td><td><code>id,category,question,why_it_matters,what_we_have,what_we_lack,where_to_verify,decision_owner,status
+Q01,Scope,&quot;Should strategies cover single bets first, or also parlays and player-prop combos from the start?&quot;,Sets the order of work and the validation effort,&quot;Brief lists single bets, parlays and prop combos&quot;,A decision on priority,Not applicable (user decision),User,Open
+Q02,Legal,&quot;Is the analysis</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/questions.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/questions.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/requirements.csv</code></td><td class="num">2235</td><td class="num">17</td><td><code>id,requirement,status,delivered,evidence_link
+R01,Collect / organize / analyze the full NFL requirements list,Partial,Requirements tracker and data folders created; analysis limited to verified data,docs/requirements.html
+R02,Suggestions section to review improvements before any change,Done,Suggestions page with options and pending decisions,docs/suggestions.html
+R03,Clear list of questions / info</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/requirements.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/requirements.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/schedule_2026_key_dates.csv</code></td><td class="num">2955</td><td class="num">16</td><td><code>item,date_or_window,detail,verification,source_id,source_url
+Season kickoff game,Wed Sep 9 2026,&quot;Seattle Seahawks host New England Patriots at Lumen Field (8:20pm ET, NBC)&quot;,Verified,NFL-SCHED-PR,https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced
+Regular season length,18 weeks,272 regular-season games; each team plays 17 games,Verified,NFL-SCHED-PR,https://media.nfl.co</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/schedule_2026_key_dates.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/schedule_2026_key_dates.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/sources.csv</code></td><td class="num">2901</td><td class="num">12</td><td><code>source_id,name,publisher,url,type,used_for,fetch_status,checked_on,notes
+NFL-INJ-W10,2026 NFL Injury Report - Week 10 (league page),NFL.com (NFL official site),https://www.nfl.com/injuries/league/2026/reg10,Official,Injury rows in data/injury_report_2026_wk10.csv,Fetched 8 of 8 chunks,2026-11-14,Page shows no publication timestamp; as-of date is the access date
+NFL-INJ-NEWS-W10,NFL news: Week 10 i</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/sources.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/sources.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/strategies.csv</code></td><td class="num">3065</td><td class="num">9</td><td><code>strategy_id,name,bet_type,hypothesis,inputs_needed,official_input_available,gate_status,sample_size,roi,clv,correlation_note,leaderboard_rank,status
+S01,Injury-adjusted team strength (starter availability vs backup),Single (spread/moneyline),Teams with more designated starters Out or Doubtful underperform their market line,Injury report history; depth charts; game results; closing lines,Partial - </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/strategies.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/strategies.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>data/suggestions.csv</code></td><td class="num">4063</td><td class="num">11</td><td><code>id,area,suggestion,options,pros,cons,source_link,decision,status
+S01,Data pipeline,Snapshot the official NFL injury report every Tuesday to Saturday and store each snapshot in git,A) Manual daily copy; B) Scheduled GitHub Action that saves the page; C) Defer,A: no tooling. B: builds history for designation drift. C: no history,A: error-prone. B: needs an allowed fetch host and review of NFL terms.</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/suggestions.csv" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/data/suggestions.csv" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/.nojekyll</code></td><td class="num">0</td><td class="num">0</td><td><code></code></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/.nojekyll" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/.nojekyll" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/assets/site.js</code></td><td class="num">476</td><td class="num">11</td><td><code>// Simple row filter for tables: &lt;input class=&quot;search&quot; data-target=&quot;table-id&quot;&gt;
+document.querySelectorAll(&#x27;input.search&#x27;).forEach(function (box) {
+  var table = document.getElementById(box.dataset.target);
+  if (!table) return;
+  box.addEventListener(&#x27;input&#x27;, function () {
+    var q = box.value.toLowerCase();
+    table.querySelectorAll(&#x27;tbody tr&#x27;).forEach(function (tr) {
+      tr.style.display = tr</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/assets/site.js" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/assets/site.js" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/assets/style.css</code></td><td class="num">3009</td><td class="num">40</td><td><code>:root{--ink:#1d2433;--muted:#5b6475;--line:#dfe3ea;--bg:#f7f8fa;--accent:#0b5cad;--ok:#1f7a3d;--warn:#9a5b00;--flag:#b42318}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;background:#fff;padding:14px 22p</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/assets/style.css" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/assets/style.css" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/correlations.html</code></td><td class="num">5048</td><td class="num">106</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Correlations (not yet computed) | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/correlations.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/correlations.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/executive-summary.html</code></td><td class="num">4730</td><td class="num">61</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Executive summary | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, not betting ad</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/executive-summary.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/executive-summary.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/flagged.html</code></td><td class="num">10995</td><td class="num">185</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Flagged for Review | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, not betting a</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/flagged.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/flagged.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/index.html</code></td><td class="num">4059</td><td class="num">49</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Dashboard | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, not betting advice&lt;/sp</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/index.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/index.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/injuries.html</code></td><td class="num">78686</td><td class="num">2622</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Injuries - Week 10 2026 (official report) | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Resea</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/injuries.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/injuries.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/questions.html</code></td><td class="num">8394</td><td class="num">171</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Questions and information gaps | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, n</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/questions.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/questions.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/requirements.html</code></td><td class="num">7166</td><td class="num">147</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Requirements tracker | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, not betting</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/requirements.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/requirements.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/schedule.html</code></td><td class="num">7967</td><td class="num">144</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;2026 season key dates | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, not bettin</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/schedule.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/schedule.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/sources.html</code></td><td class="num">7366</td><td class="num">160</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Official sources registry | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, not be</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/sources.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/sources.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/strategies.html</code></td><td class="num">11668</td><td class="num">244</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Strategy leaderboard and validation gates | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Resea</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/strategies.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/strategies.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>docs/suggestions.html</code></td><td class="num">8918</td><td class="num">151</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Suggestions (awaiting review) | X3 NFL Research&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header class=&quot;top&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;X3 NFL Research&lt;/a&gt;
+&lt;span class=&quot;asof&quot;&gt;Data as of 2026-11-14 &amp;middot; Research only, no</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/suggestions.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/docs/suggestions.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>executive-summary.html</code></td><td class="num">9655</td><td class="num">153</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Executive Summary · X3 NFL Analytics&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Key details, scope, status, and risks for the X3 NFL analytics project.&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --muted:#9aa6bd;
+  --line:#</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/executive-summary.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/executive-summary.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>flagged.html</code></td><td class="num">6567</td><td class="num">13</td><td><code>&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;title&gt;Flagged for Review · NFL Decision Lab&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;aside class=&quot;sidebar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;N&lt;/span&gt;&lt;span&gt;NFL &lt;small&gt;DECISION LAB&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;◫ &amp;n</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/flagged.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/flagged.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>index.html</code></td><td class="num">516</td><td class="num">14</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=docs/index.html&quot;&gt;
+&lt;link rel=&quot;canonical&quot; href=&quot;docs/index.html&quot;&gt;
+&lt;title&gt;X3 NFL Research Dashboard&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p&gt;Opening the X3 NFL research dashboard: &lt;a href=&quot;docs/index.html&quot;&gt;docs/index.html&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The earli</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/index.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/index.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>injuries.html</code></td><td class="num">50382</td><td class="num">1642</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Injuries &amp;amp; Lineups · X3 NFL Analytics&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Injury tracking and 2nd/3rd/4th-string backup deficiency analysis, verified from official sources.&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8e</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/injuries.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/injuries.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>leaderboard.html</code></td><td class="num">9061</td><td class="num">205</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Strategy Leaderboard · X3 NFL Analytics&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Strategy designs, validation gates, and the rewards framework for top-performing strategies.&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --m</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/leaderboard.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/leaderboard.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>legacy/index.html</code></td><td class="num">3408</td><td class="num">2</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;meta name=&quot;description&quot; content=&quot;NFL strategy research, evidence, and decision gates&quot;&gt;&lt;title&gt;NFL Decision Lab&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;aside class=&quot;sidebar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;N&lt;/span&gt;&lt;span&gt;NFL &lt;</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/legacy/index.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/legacy/index.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>legacy/style.css</code></td><td class="num">5704</td><td class="num">2</td><td><code>@import url(&#x27;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap&#x27;);
+:root{--navy:#102237;--blue:#2d6de0;--text:#172b40;--muted:#6d7d8e;--line:#e7edf2;--bg:#f7f9fb;--green:#13795b;--amber:#a76500}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px &#x27;DM Sans&#x27;,sans-serif}.sidebar{width:246px;posit</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/legacy/style.css" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/legacy/style.css" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>lines.html</code></td><td class="num">12310</td><td class="num">270</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Lines &amp;amp; Signals · X3 NFL Analytics&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;NFL line origination, signal families, bet types, validation gates, and correlation methodology.&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/lines.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/lines.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>pages/executive-summary.html</code></td><td class="num">6609</td><td class="num">127</td><td><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Executive Summary &amp;mdash; X3 NFL&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Executive summary of the X3 NFL decision-intelligence project: purpose, components, findings, sources.&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;a class=&quot;skip</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/executive-summary.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/executive-summary.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>pages/flagged-for-review.html</code></td><td class="num">6292</td><td class="num">138</td><td><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Flagged for Review &amp;mdash; X3 NFL&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Unverified values and irregularities flagged for review, with source links.&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;a class=&quot;skip-link&quot; href=&quot;#content&quot;&gt;Ski</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/flagged-for-review.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/flagged-for-review.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>pages/injuries.html</code></td><td class="num">7041</td><td class="num">156</td><td><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Injuries &amp;amp; Depth &amp;mdash; X3 NFL&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Injury tracking and defense/offense depth-chart deficiencies: backups (2nd, 3rd, 4th string) replacing starters.&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/injuries.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/injuries.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>pages/sources.html</code></td><td class="num">4392</td><td class="num">98</td><td><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Sources &amp;mdash; X3 NFL&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Official and reference sources used across the X3 NFL decision-intelligence site.&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;a class=&quot;skip-link&quot; href=&quot;#content&quot;&gt;Skip to </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/sources.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/sources.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>pages/strategies.html</code></td><td class="num">9348</td><td class="num">192</td><td><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Strategies &amp;amp; Signals &amp;mdash; X3 NFL&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;NFL line-origination strategies, signal generation, validation gates, correlations, single/parlay/prop combos, and a leaderboard competition.&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;../ass</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/strategies.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/strategies.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>pages/suggestions.html</code></td><td class="num">12611</td><td class="num">256</td><td><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Suggestions &amp;amp; Review &amp;mdash; X3 NFL&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Improvement suggestions reviewed before implementation, plus the open questions, required information, and answers that must be addressed before decisions.&quot;&gt;
+&lt;link rel=&quot;stylesheet</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/suggestions.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/pages/suggestions.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>requirements.html</code></td><td class="num">9833</td><td class="num">198</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Requirements &amp;amp; Questions · X3 NFL Analytics&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;The clear list of questions, information, and answers to address before any decision.&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/requirements.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/requirements.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>review.html</code></td><td class="num">6363</td><td class="num">1</td><td><code>&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;title&gt;Suggestions · NFL Decision Lab&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;aside class=&quot;sidebar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;N&lt;/span&gt;&lt;span&gt;NFL &lt;small&gt;DECISION LAB&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;◫ &amp;nbsp; Ov</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/review.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/review.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>scripts/build_site.py</code></td><td class="num">23180</td><td class="num">433</td><td><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Build the static GitHub Pages site in docs/ from the CSV data in data/.
+
+Standard library only. Run from the repository root:  python3 scripts/build_site.py
+Every table row carries a source link taken from data/ (official URLs where available).
+Blank values that could not be confirmed are shown blank and marked &#x27;unverified&#x27;.
+&quot;&quot;&quot;
+import csv
+import html
+import os
+from colle</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/scripts/build_site.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/scripts/build_site.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>scripts/check_site.py</code></td><td class="num">2047</td><td class="num">41</td><td><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Check docs/: internal links resolve, and each table body row has a source link or an explicit flag.&quot;&quot;&quot;
+import os, re, sys
+from html.parser import HTMLParser
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DOCS = os.path.join(ROOT_DIR, &quot;docs&quot;)
+errors, ext_links, rows_total, rows_missing = [], set(), 0, 0
+
+class P(HTMLParser):
+    def __init__(self):</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/scripts/check_site.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/scripts/check_site.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>site/assets/style.css</code></td><td class="num">6334</td><td class="num">111</td><td><code>/* X3 — NFL Decision Intelligence */
+:root{
+  --ink:#0f172a;
+  --muted:#475569;
+  --line:#e2e8f0;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --accent:#0b5ed6;
+  --accent-hover:#084faf;
+  --flag:#b45309;
+  --flag-bg:#fff7ed;
+  --ok:#166534;
+  --ok-bg:#f0fdf4;
+  --warn:#b45309;
+  --warn-bg:#fffbeb;
+  --radius:10px;
+  --shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+* { box-sizing: </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/site/assets/style.css" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/site/assets/style.css" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>site/index.html</code></td><td class="num">4036</td><td class="num">84</td><td><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;X3 — NFL Decision Intelligence&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Originate NFL lines, generate signals, validate strategies, track injuries and depth charts. All findings sourced from official sites or flagged unverified.&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/site/index.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/site/index.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>sources.html</code></td><td class="num">4389</td><td class="num">1</td><td><code>&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;title&gt;Sources &amp; Methods · NFL Decision Lab&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;aside class=&quot;sidebar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;N&lt;/span&gt;&lt;span&gt;NFL &lt;small&gt;DECISION LAB&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;◫ &amp;nb</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/sources.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/sources.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>strategy.html</code></td><td class="num">5346</td><td class="num">1</td><td><code>&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;title&gt;Strategy Lab · NFL Decision Lab&lt;/title&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;&lt;/head&gt;&lt;body&gt;&lt;aside class=&quot;sidebar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;index.html&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;N&lt;/span&gt;&lt;span&gt;NFL &lt;small&gt;DECISION LAB&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;◫ &amp;nbsp; O</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/strategy.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/strategy.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>style.css</code></td><td class="num">5704</td><td class="num">2</td><td><code>@import url(&#x27;https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap&#x27;);
+:root{--navy:#102237;--blue:#2d6de0;--text:#172b40;--muted:#6d7d8e;--line:#e7edf2;--bg:#f7f9fb;--green:#13795b;--amber:#a76500}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px &#x27;DM Sans&#x27;,sans-serif}.sidebar{width:246px;posit</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/style.css" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/style.css" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>suggestions.html</code></td><td class="num">9170</td><td class="num">157</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Suggestions · X3 NFL Analytics&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Dedicated suggestions for review — choose the best path before implementing changes.&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --muted:#9aa6bd;
+  -</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/suggestions.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/suggestions.html" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/build_dashboard.py</code></td><td class="num">64913</td><td class="num">1336</td><td><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Build the X3 static site.
+
+Stage 1  compute derived layers (injury x depth join, correlations, model lines)
+Stage 2  emit data/*.json
+Stage 3  emit site/*.html
+
+Nothing here invents a value. Derived columns are labelled &quot;derived&quot;; anything
+that could not be read from an official source is emitted as &quot;&quot; and pushed onto
+the flagged list.
+&quot;&quot;&quot;
+from __future__ import annotat</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/build_dashboard.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/build_dashboard.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/build_site.py</code></td><td class="num">60264</td><td class="num">836</td><td><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Build the X3 NFL analytics static site from verified data.
+
+Every data row carries a link to an official source. Values that cannot be
+confirmed from an official source are left blank and flagged `unverified`.
+This script is the single source for the HTML so tables stay consistent and
+every row keeps its source link.
+&quot;&quot;&quot;
+import os
+import html
+
+ROOT = os.path.dirname(os.pa</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/build_site.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/build_site.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/check_links.py</code></td><td class="num">2352</td><td class="num">65</td><td><code>#!/usr/bin/env python3
+&quot;&quot;&quot;Verify the built static site: no broken internal links and every data-table
+row carries a source link. Run after tools/build_site.py.&quot;&quot;&quot;
+import os
+import re
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+LINK_RE = re.compile(r&#x27;href=&quot;([^&quot;]+)&quot;&#x27;)
+
+
+def main():
+    pages = [f for f in os.listdir(ROOT) if f.endswith(&quot;.html&quot;)]
+    problems = []
+</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/check_links.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/check_links.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/nfl_data.py</code></td><td class="num">85638</td><td class="num">1527</td><td><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+X3 / NFL decision-support data layer.
+
+EVERY value in this module was transcribed by reading an official source page
+(NFL.com or an NFL club&#x27;s official site) on 2026-11-14. Nothing is inferred,
+interpolated or recalled from model memory. Cells that could not be read from an
+official page are stored as empty strings and are surfaced by the site as
+&quot;unverified&quot; rows on th</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/nfl_data.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/nfl_data.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>tools/site_content.py</code></td><td class="num">37978</td><td class="num">510</td><td><code># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Narrative / analysis content for the X3 site.
+
+Rules that bind this module:
+  * Anything asserted as FACT must carry an official source URL.
+  * Model output, thresholds, and recommendations are marked kind=&quot;derived&quot; or
+    kind=&quot;proposal&quot; and must never be presented as verified fact.
+  * Any value that could not be read from an official source is &quot;&quot; (blank) and is
+    </code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/site_content.py" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/tools/site_content.py" target="_blank" rel="noopener">history &#8599;</a></td></tr><tr><td><code>verification.html</code></td><td class="num">8941</td><td class="num">175</td><td><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Verification · X3 NFL Analytics&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Line-by-line verification log mapping each data row to its official source and status.&quot;&gt;
+&lt;style&gt;
+:root{
+  --bg:#0f1420; --panel:#171d2b; --panel2:#1e2536; --ink:#e8edf6; --muted:#9aa6bd;
+</code> &hellip;</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/ba757220c45f1d2a617e27cca49b8707f677e3d3/verification.html" target="_blank" rel="noopener">blob &#8599;</a> &middot; <a class="src" href="https://github.com/karagemop466-tech/X3/commits/ba757220c45f1d2a617e27cca49b8707f677e3d3/verification.html" target="_blank" rel="noopener">history &#8599;</a></td></tr></tbody></table></div>
+<h3>Irregularities found</h3>
+<div class="bar"><input data-filter="#t-repo2" placeholder="Filter rows&hellip;"><span class="mut" id="c_t-repo2"></span></div><div class="tw"><table id="t-repo2"><thead><tr><th data-sort>ID</th><th data-sort>Area</th><th data-sort>Severity</th><th data-sort>What</th><th data-sort>Why it is irregular</th><th data-sort>Source</th></tr></thead><tbody><tr><td>F-01</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>Every club depth chart is labelled &#x27;unofficial&#x27; by the club that publishes it.</td><td>31 of 31 readable charts carry a self-declared unofficial label, so no chart can be treated as a club-authoritative starter designation.</td><td><a class="src" href="https://www.detroitlions.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-02</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>27 of 32 club depth charts print no &#x27;as of&#x27; date, so freshness cannot be proven.</td><td>Only CHI, GB, LV, SF and TEN print a date. The others give no evidence of when the chart was last updated.</td><td><a class="src" href="https://www.chicagobears.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-03</td><td>Source quality</td><td><span class="b bad">High</span></td><td>Detroit lists Cade Mays as its starting centre while the official injury report lists him Out.</td><td>The club chart is not synced to the injury report. Trusting the chart would have produced a wrong starter.</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-04</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>Philadelphia&#x27;s depth chart lists Hollywood Brown and Fred Johnson, both waived by the club on 2026-11-13.</td><td>The club&#x27;s own news page and the club&#x27;s own depth chart disagree.</td><td><a class="src" href="https://www.philadelphiaeagles.com/news/eagles-waive-hollywood-brown-fred-johnson" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-05</td><td>Data gap</td><td><span class="b bad">High</span></td><td>Houston&#x27;s official depth chart is published only as an image; no rows could be read.</td><td>The page renders the chart inside a picture, so there is no machine-readable table.</td><td><a class="src" href="https://www.houstontexans.com/team/depth-chart" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-06</td><td>Data gap</td><td><span class="b bad">High</span></td><td>No market lines exist anywhere in the system.</td><td>No spread, total, moneyline or player-prop price has been ingested, so no signal can be converted into a bet or scored against the market.</td><td><span class="b mut">n/a</span></td></tr><tr><td>F-07</td><td>Data gap</td><td><span class="b bad">High</span></td><td>No game log has been ingested.</td><td>Without week-by-week results there is no home-field-advantage estimate and no schedule-strength adjustment, so the model runs uncalibrated.</td><td><span class="b mut">n/a</span></td></tr><tr><td>F-09</td><td>Source quality</td><td><span class="b info">Low</span></td><td>185 of 345 injury rows have a blank game status, and 21 of those also show the player did not practise.</td><td>The official report leaves the Game Status column empty for a majority of listed players, so availability cannot be read from that column alone. Counted against the official page: 66 Out, 10 Doubtful, 84 Questionable.</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-11</td><td>Source quality</td><td><span class="b warn">Medium</span></td><td>17 players ruled Out or Doubtful are absent from their own club&#x27;s depth chart.</td><td>Players on injured reserve or recently signed are frequently missing from the chart, so the chart cannot be used as a completeness check.</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">source &#8599;</a></td></tr><tr><td>F-12</td><td>Repository</td><td><span class="b info">Low</span></td><td>The base commit contains 99 tracked file(s) totalling 1467161 bytes.</td><td>There is no licence, no .gitignore, no CI, no tests, no documentation and no branch protection recorded at the base commit.</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/commit/ba757220c45f1d2a617e27cca49b8707f677e3d3" target="_blank" rel="noopener">source &#8599;</a></td></tr></tbody></table></div>
+<p class="lede">Every row above links to the exact blob and its history on GitHub so it can be
+checked by hand. Nothing in this audit is inferred.</p>
+
+</div></main>
+<footer><div class="wrap">
+Verification rule: a row is verified only when its value was read from an official
+NFL source and the row carries that source's link. Values that could not be confirmed
+are blank and marked <span class="b warn">UNVERIFIED</span>; they are repeated on the
+<a href="flagged.html">Flagged for Review</a> page. Model output is always labelled
+<span class="b mut">DERIVED</span> and is never presented as fact.
+</div></footer>
+<script>
+document.querySelectorAll('th[data-sort]').forEach(function(th){
+  th.addEventListener('click',function(){
+    var tb=th.closest('table');var i=[].indexOf.call(th.parentNode.children,th);
+    var asc=th.dataset.asc!=='1';th.dataset.asc=asc?'1':'0';
+    var rows=[].slice.call(tb.tBodies[0].rows);
+    rows.sort(function(a,b){
+      var x=a.cells[i].dataset.sort!==undefined?a.cells[i].dataset.sort:a.cells[i].textContent;
+      var y=b.cells[i].dataset.sort!==undefined?b.cells[i].dataset.sort:b.cells[i].textContent;
+      var nx=parseFloat(x),ny=parseFloat(y);
+      if(!isNaN(nx)&&!isNaN(ny))return asc?nx-ny:ny-nx;
+      return asc?String(x).localeCompare(String(y)):String(y).localeCompare(String(x));
+    });
+    rows.forEach(function(r){tb.tBodies[0].appendChild(r)});
+  });
+});
+document.querySelectorAll('input[data-filter]').forEach(function(inp){
+  inp.addEventListener('input',function(){
+    var q=inp.value.toLowerCase();var tb=document.querySelector(inp.dataset.filter);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      r.style.display=r.textContent.toLowerCase().indexOf(q)>-1?'':'none';
+    });
+  });
+});
+document.querySelectorAll('[data-filter]').forEach(function(inp){
+  function cnt(){var tb=document.querySelector(inp.dataset.filter);
+    if(!tb)return;var v=0;
+    [].forEach.call(tb.tBodies[0].rows,function(r){if(r.style.display!=='none')v++;});
+    var out=document.getElementById('c_'+tb.id);if(out)out.textContent=v+' rows';}
+  inp.addEventListener('input',cnt);cnt();
+});
+document.querySelectorAll('select[data-eq]').forEach(function(sel){
+  sel.addEventListener('change',function(){
+    var v=sel.value.toLowerCase();var tb=document.querySelector(sel.dataset.eq);
+    var col=parseInt(sel.dataset.col||'0',10);
+    [].forEach.call(tb.tBodies[0].rows,function(r){
+      var c=(r.cells[col]?r.cells[col].textContent:'').toLowerCase();
+      r.style.display=(!v||c.indexOf(v)>-1)?'':'none';
+    });
+  });
+});
+</script></body></html>
