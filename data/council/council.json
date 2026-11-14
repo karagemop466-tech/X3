@@ -64,12 +64,13 @@
  ],
  "flags": [
   {
-   "action": "Fix under S08, or withdraw the pair. Not edited by this session - the file is owned by another session.",
+   "action": "Withdraw or correct the stale desk copy, and record the correction rather than overwriting it. Not edited by this session - both files belong to other sessions.",
    "area": "Statistics",
    "detail": "data/desk/correlations.json publishes r = -0.161 labelled 'game total vs |margin|', n = 137, reading 'same-game total and blowout size move together'. Recomputed this session from the same 137 verified finals: r(total, |margin|) = -0.0157 and r(total, signed home margin) = -0.1607. The published number is the signed-margin statistic under an absolute-margin label, and a negative r means the two quantities move in opposite directions, not together. Its 95% CI contains 0 either way.",
-   "finding": "A published correlation does not reproduce from the data it cites and its reading has the sign backwards.",
+   "detail_corrected": "origin/data/correlations.json (merged in PR #47) now publishes both pairs separately and correctly: game total vs |home margin| = -0.0157 and signed home margin vs total = -0.1607, each with n, a 95% interval and the official source. The decision register should record the correction, because a silent overwrite would destroy the audit trail.",
+   "finding": "A published correlation did not reproduce from the data it cited. The correction is now published on one tree and the wrong label is still published on another.",
    "id": "C-01",
-   "severity": "high",
+   "severity": "medium",
    "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json"
   },
   {
@@ -143,6 +144,24 @@
    "id": "C-09",
    "severity": "low",
    "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json"
+  },
+  {
+   "action": "Replace with the official string, or print only 'Munich (NFL International Game)' as PR #36 does. Files not edited by this session - both belong to other sessions.",
+   "area": "Schedule",
+   "detail": "hub/data/lines.json and origin/data/markets.json both carry the string 'Alemun & Munchen / Munich (NFL International Game) - no home field' as the venue of the Patriots at Lions game. The official nfl.com game page states LOCATION MUNICH and STADIUM FC BAYERN MUNICH STADIUM; the Week 10 schedule page states International Game, Munich. Nothing read from any official page prints 'Alemun & Munchen'. An open pull request (#36) already removes this string from hub/lines.html, so the fix is in flight on that tree; origin/ re-introduces it.",
+   "finding": "A venue name is published that no official page supports, and the official page gives a different one.",
+   "id": "C-11",
+   "severity": "medium",
+   "source": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10"
+  },
+  {
+   "action": "Reconcile the two joins and publish one number, or publish both with the reason for the difference. Files not edited by this session.",
+   "area": "Roster",
+   "detail": "data/desk/deficiencies.json resolves a named replacement for 41 of the 76 Week 10 absences; origin/data/depth.json populates replacement_ordinal for 42 of 76 on the same week and the same injury report. One join finds a replacement the other misses. Both counts are published as fact on their own tree.",
+   "finding": "Two trees count the same join differently: 41 of 76 versus 42 of 76 replacements.",
+   "id": "C-12",
+   "severity": "low",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json"
   },
   {
    "action": "S15. Non-blocking; the rows are on archived trees.",
@@ -220,11 +239,11 @@
   },
   {
    "area": "Moneyline",
-   "blocks": "R3. The moneyline is the third market and cannot be originated without it.",
+   "blocks": "Precision of the moneyline. R3 is satisfied; this is about how good the number is.",
    "discover": "S03",
    "id": "Q05",
-   "known": "The desk model produces an expected margin and a total. No win-probability conversion exists in the repository.",
-   "missing": "A sigma estimate, fitted on data the model has not seen, plus the distributional assumption (normal on margin is the usual first pass and is known to be wrong in the tails).",
+   "known": "origin/data/markets.json now derives the moneyline from the side: P(home win) = Phi(adj_margin / 13.5), with sigma 13.5 preregistered in the module's backtest parameters and the derivation recorded on the row itself.",
+   "missing": "A sigma fitted on data the model has not seen. 13.5 is a registered constant, not an estimate from this season, and a normal-on-margin assumption is known to be wrong in the tails. Neither fact is currently published with the number.",
    "question": "What sigma converts an expected margin into a moneyline, and on what data was it fitted?",
    "source": "",
    "source_label": "UNVERIFIED - not derivable from any official page"
@@ -286,11 +305,11 @@
   },
   {
    "area": "Leaderboard",
-   "blocks": "R5.",
+   "blocks": "Nothing structural. It blocks the claim that any of this is skill.",
    "discover": "S05",
    "id": "Q11",
-   "known": "The brief requires signal and staking to be scored separately. No formula exists.",
-   "missing": "A definition. The obvious one is mean closing-line value per bet, which needs R1 first.",
+   "known": "Every leaderboard row now carries a signal block (metric, value, n, rank) and a separate staking block. Side: winner-direction accuracy 0.595, n = 121. Total: over/under hit rate 0.4957, n = 117. Moneyline: Brier 0.2373, n = 121.",
+   "missing": "The staking-side formula is defined in the schema but has no data, and the signal metrics are baseline-relative rather than market-relative because no price exists to be relative to.",
    "question": "What is the signal score, numerically?",
    "source": "",
    "source_label": "UNVERIFIED"
@@ -308,11 +327,11 @@
   },
   {
    "area": "Demotion",
-   "blocks": "R8.",
+   "blocks": "Nothing. R8 is satisfied as a rule; see Q14 on execution.",
    "discover": "S04",
    "id": "Q13",
-   "known": "Promotion gates G1-G8 exist. No demotion gate exists.",
-   "missing": "Numbers: a look-back window, a closing-line-value floor, an ROI CI condition, and an automatic trigger on data-provenance failure.",
+   "known": "Gate D-1 now defines them: rolling median closing-line value <= 0 twice in a row over 20-bet windows (D-1a), drawdown >= 25% from peak (D-1b), signal below 50% for three consecutive cycles (D-1c), any data-integrity failure (D-1d), any unregistered model change (D-1e).",
+   "missing": "Nothing on the thresholds. What is missing is enforcement: nothing runs them, and D-1a to D-1c cannot fire until prices exist.",
    "question": "What thresholds send a live strategy back to paper?",
    "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json",
    "source_label": "repo artifact - promotion gates only"
@@ -333,7 +352,7 @@
    "blocks": "Nothing technically. It wastes review effort and hides the real gaps.",
    "discover": "S13",
    "id": "Q15",
-   "known": "Fifteen overlapping trees exist. The repository root currently redirects into hub/, and a sixteenth (origin/) is being built now.",
+   "known": "Sixteen overlapping trees exist. The repository root links into hub/, origin/ merged in PR #47, and council/ is this session's addition.",
    "missing": "A decision. Every new session adds a tree, and each tree restates the same blanks.",
    "question": "Which site tree is canonical?",
    "source": "https://github.com/karagemop466-tech/X3/branches",
@@ -376,98 +395,98 @@
  "requirements": [
   {
    "acceptance": "For every originated market there is one row per book carrying market_id, book, open_price, open_timestamp, close_price, close_timestamp, price_format and source_url. A market cannot be graded unless open and close are both present.",
-   "blocker": "A data-rights decision, not code. See suggestion S01.",
-   "evidence": "",
-   "evidence_label": "UNVERIFIED - no price feed",
+   "blocker": "No price provider. The store is waiting on a data-rights decision, not on code. See Q01 and S01.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/snapshots.json",
+   "evidence_label": "repo artifact - schema live, prices blank",
    "id": "R1",
-   "owner": "origin/data/snapshots.json (claimed by session arena/f2df8317-x3, in progress)",
-   "status_text": "Store specified, zero rows. No price feed exists in the repository.",
+   "owner": "origin/data/snapshots.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "Store is live with schema origin-snapshots-v1, append-only by (market_id, phase): 39 open rows RECORDED, 39 close rows PENDING. Every market_line is blank, so no closing-line value can be computed yet.",
    "title": "Price-snapshot store that records opening and closing numbers for every market we originate",
-   "verdict": "BLOCKED",
+   "verdict": "PARTIAL",
    "why": "Without both ends of the price, closing-line value cannot be measured, and without closing-line value a hit rate is not evidence of skill."
   },
   {
    "acceptance": "One row per completed game with final score for both clubs, the official source URL, the retrieval timestamp, and a written settlement rule per market type (side, total, moneyline) including how ties and pushes are treated.",
-   "blocker": "No settlement rule is written down, and no player-prop results exist. See S02, S09.",
-   "evidence": "https://www.nfl.com/schedules/2026/by-week/week-10",
-   "evidence_label": "nfl.com week schedule pages (captured 11/11 HTTP 200)",
+   "blocker": "No settlement rule, and no player-prop results. See Q04, S02, S09.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/results.json",
+   "evidence_label": "repo artifact - transcription of official week pages",
    "id": "R2",
-   "owner": "data/desk/games.json (session arena/3bf7cc8b-x3) + origin/data/results.json (claimed)",
-   "status_text": "Game results are in place and verified; settlement rules and prop results are not.",
+   "owner": "origin/data/results.json and origin/data/backtest.json (session arena/f2df8317-x3, merged in PR #47); data/desk/games.json (session arena/3bf7cc8b-x3)",
+   "status_text": "The feed exists and backtests now run on it: origin/data/results.json holds 163 games / 137 finals with a per-row official URL, cross-checked 163/163 against the desk game log, and a walk-forward backtest is published per week. ROI still cannot be computed, and no settlement rule is written down.",
    "title": "Verified results feed so backtests and ROI can be computed at all",
    "verdict": "PARTIAL",
    "why": "ROI is (settled return - stake) / stake. Every term needs a settled result, so without a results feed no leaderboard row can be scored."
   },
   {
    "acceptance": "Each game carries three originated rows in the order side, total, moneyline. The moneyline row records the margin and the sigma it was derived from, so it is reproducible.",
-   "blocker": "Third market type not built yet. See S03.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
-   "evidence_label": "repo artifact - side and total, DERIVED",
+   "blocker": "None. The order requirement is satisfied.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "evidence_label": "repo artifact - order verified 0 violations of 13",
    "id": "R3",
-   "owner": "data/desk/model.json (side + total) ; moneyline claimed by origin/ (session arena/f2df8317-x3)",
-   "status_text": "Side and total exist for 13 games. No moneyline is originated anywhere in the repository.",
+   "owner": "origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "39 originated rows, 13 games x 3 market types, with seq order side then total then moneyline. This session re-checked the order for all 13 games: 0 violations. The moneyline records its own derivation - P(home win) = Phi(adj_margin / 13.5) on the side's adjusted margin - so it is reproducible from the side.",
    "title": "Originate the side first, then the total, then the moneyline",
-   "verdict": "NOT MET",
+   "verdict": "MET",
    "why": "The moneyline is a function of the expected margin and its uncertainty. Deriving it last keeps the three markets mutually consistent; deriving them independently produces arbitrage against yourself."
   },
   {
    "acceptance": "Three distinct columns per market: fair_line, market_line, and edge = fair_line - market_line, each with its own units label and sign convention.",
-   "blocker": "Depends on R1. No official source publishes NFL prices. See S01.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
-   "evidence_label": "repo artifact - market columns empty",
+   "blocker": "Depends on R1. No official source publishes NFL prices. See Q01 and S01.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "evidence_label": "repo artifact - columns present, market and diff blank",
    "id": "R4",
-   "owner": "data/desk/model.json",
-   "status_text": "Fair line published and badged DERIVED. Market line is an empty string in all 13 rows, so the difference cannot be computed.",
+   "owner": "origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "The column contract exists: fair_line, market_line and diff are three separate fields on all 39 rows, each with a unit label and a recorded sign convention. fair_line is populated for every market. market_line and diff are blank in all 39 rows because no source publishes a price.",
    "title": "Publish the model's fair line, the market line, and the difference as separate columns",
-   "verdict": "BLOCKED",
+   "verdict": "PARTIAL",
    "why": "The difference is the whole signal. Publishing only a fair line leaves the reader to do the subtraction against a price they cannot see."
   },
   {
    "acceptance": "Every leaderboard row carries two independently computed scores: a signal score that is stake-independent (mean closing-line value per bet, with n and a 95% CI) and a staking score that is PnL-dependent (ROI, drawdown, units). A strategy must be able to rank top-decile on signal while flat on staking, and the board must show both columns.",
-   "blocker": "Nothing can be graded until R1 and R2 close. See S05.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/desk/leaderboard.html",
-   "evidence_label": "repo artifact - design only, board empty",
+   "blocker": "The staking half needs prices and a settlement rule. See Q01, Q04, S05.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json",
+   "evidence_label": "repo artifact - signal populated, staking blocked",
    "id": "R5",
-   "owner": "desk/leaderboard.html, hub/leaderboard.html (design) ; origin/leaderboard.html (claimed)",
-   "status_text": "Design written on two trees; the board has zero rows because zero bets are graded.",
+   "owner": "origin/data/leaderboard.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "The separation is implemented in the data rather than only described: every leaderboard row carries a signal block (metric, value, n, rank) and a separate staking block. The signal half is populated - side winner-direction accuracy 0.595 (n = 121), total over/under hit rate 0.4957 (n = 117), moneyline Brier 0.2373 (n = 121). The staking half is blocked with 0 settled bets.",
    "title": "Separate 'signal' from 'staking' in the leaderboard so a lucky staking run cannot mask a bad signal",
-   "verdict": "NOT MET",
+   "verdict": "PARTIAL",
    "why": "A flat-stake record measures whether the fair line was right. A sized record mixes that with how much was risked. Ranking on the blend lets a Kelly run on coin-flips outrank a real edge."
   },
   {
    "acceptance": "For each absent starter: the ordinal depth of the replacement (1st, 2nd, 3rd, 4th string or undrafted/free-agent pickup), the club chart URL, and the chart's as-of date. A row without an as-of date is published as unverified, not as fact.",
-   "blocker": "Club charts are club-published, usually labelled unofficial, carry no date, and one club (Houston) publishes an image. See S06, S07.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json",
-   "evidence_label": "repo artifact - club charts, self-labelled unofficial",
+   "blocker": "No chart carries a date, so an ordinal cannot be tied to a point in time. See Q06, S06, S07, and flag C-12 for a count discrepancy between the two trees.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json",
+   "evidence_label": "repo artifact - club charts, no as-of date",
    "id": "R6",
-   "owner": "data/desk/deficiencies.json, data/desk/depth.json",
-   "status_text": "A named replacement is joined for 41 of 76 Week 10 absences. Zero of 76 carry a chart as-of date, and no ordinal depth string is recorded anywhere.",
+   "owner": "origin/data/depth.json (session arena/f2df8317-x3, merged in PR #47); data/desk/deficiencies.json (session arena/3bf7cc8b-x3)",
+   "status_text": "An ordinal is now recorded, not just a name: replacement_ordinal is populated for 42 of 76 Week 10 absences, with a reason_if_blank field explaining each gap. Zero of 76 rows carry a chart as-of date, and the club charts are self-labelled unofficial by the clubs that publish them.",
    "title": "Track the depth of the replacement, not just the fact of a replacement",
-   "verdict": "NOT MET",
+   "verdict": "PARTIAL",
    "why": "'Starter out' and 'third-string guard starting' are different events with different expected effects. Counting only the fact treats them as identical and throws away the signal."
   },
   {
    "acceptance": "Every published coefficient carries n, the official source URL, a 95% CI, and a plain reading. A coefficient whose CI contains 0 is labelled 'not distinguishable from no relationship' and is not used to price anything.",
-   "blocker": "None: this is a defect, not a data gap. Fix is in S08.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json",
-   "evidence_label": "repo artifact - recomputed this session, one value wrong",
+   "blocker": "None. See flag C-01 for the stale copy still published on another tree.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/correlations.json",
+   "evidence_label": "repo artifact - n and CI published with every value",
    "id": "R7",
-   "owner": "data/desk/correlations.json",
-   "status_text": "n is published with every value, but one published coefficient does not reproduce from the data it cites, and its prose reading has the sign backwards. See V-C1 on the verification page for the recomputation.",
+   "owner": "origin/data/correlations.json (session arena/f2df8317-x3, merged in PR #47); data/desk/correlations.json (stale copy)",
+   "status_text": "Every coefficient carries n, a 95% interval, and the official source URL, and the mislabelled pair has been republished correctly: game total vs |home margin| is now -0.0157 and signed home margin vs total is -0.1607, as two separate rows. The older desk copy still carries the wrong label - see flag C-01.",
    "title": "Compute correlations only from officially sourced numbers and publish n with each value",
-   "verdict": "PARTIAL - DEFECT CONFIRMED",
+   "verdict": "MET",
    "why": "A correlation is the input to the parlay leg screen. An r with no n is unfalsifiable, and an r computed on unlogged data is a guess dressed as a measurement."
   },
   {
    "acceptance": "A written rule with numeric thresholds, a look-back window, and an automatic action: for example, return to paper when the rolling 200-bet closing-line value is negative, or when the 95% CI on ROI contains zero over the last 200 graded bets, or on any data provenance failure. Every demotion is logged with its trigger.",
-   "blocker": "Thresholds need a decision, not a fetch. See S04.",
-   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json",
-   "evidence_label": "repo artifact - promotion gates only",
+   "blocker": "None on the rule. Enforcement is still manual - see Q14 and S04.",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/gates.json",
+   "evidence_label": "repo artifact - D-1 triggers and D-2 re-promotion",
    "id": "R8",
-   "owner": "data/desk/strategies.json (gates G1-G8) ; origin/data/gates.json (claimed)",
-   "status_text": "Promotion gates G1-G8 are written. No demotion threshold exists anywhere in the repository.",
+   "owner": "origin/data/gates.json (session arena/f2df8317-x3, merged in PR #47)",
+   "status_text": "Gate D-1 is written with five numeric triggers and an automatic action: rolling median closing-line value of the last 20 settled bets <= 0 twice in a row (D-1a); drawdown from peak >= 25% (D-1b); signal below 50% for three consecutive cycles (D-1c); any data-integrity failure (D-1d); any unregistered model change (D-1e). D-1d and D-1e are armed now; D-1a to D-1c arm at promotion. D-2 defines re-promotion.",
    "title": "Define a demotion gate that sends a live strategy back to paper",
-   "verdict": "NOT MET",
+   "verdict": "MET",
    "why": "A promotion gate with no demotion gate is a one-way door: a strategy that was lucky once stays live forever. The demotion rule is what makes the promotion rule mean anything."
   }
  ],
@@ -609,6 +628,7 @@
    "risk": "A normal-on-margin assumption is wrong in the tails and will misprice large favourites. Publish it as an assumption, not a fact.",
    "source": "",
    "source_label": "UNVERIFIED - not derivable from any official page",
+   "status": "IMPLEMENTED by origin/ (PR #47) - 39 rows in side, total, moneyline order, 0 violations. Open only if you want a different sigma.",
    "unblocks": "R3, Q05"
   },
   {
@@ -621,6 +641,7 @@
    "risk": "Thresholds chosen after seeing results are fitted to the past. Choose them now, before there is anything to demote.",
    "source": "",
    "source_label": "UNVERIFIED - decision, not a fetch",
+   "status": "IMPLEMENTED by origin/ (PR #47) - gate D-1 with five triggers plus D-2 re-promotion. Still open: automating enforcement.",
    "unblocks": "R8, Q13, Q14"
   },
   {
@@ -633,6 +654,7 @@
    "risk": "A blended ranking is exactly the failure the requirement is written to prevent.",
    "source": "",
    "source_label": "UNVERIFIED - design, no graded bets exist",
+   "status": "IMPLEMENTED by origin/ (PR #47) - signal and staking are separate blocks on every row; the signal half is populated, the staking half is blocked.",
    "unblocks": "R5, Q11"
   },
   {
@@ -657,6 +679,7 @@
    "risk": "Parsed ordinals are inferred from page layout, not stated by the club. Badge them DERIVED.",
    "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json",
    "source_label": "repo artifact - club charts",
+   "status": "IMPLEMENTED by origin/ (PR #47) - replacement_ordinal is populated for 42 of 76 absences. Still open: the ordinals are club-published and unverified.",
    "unblocks": "R6, Q06, Q07"
   },
   {
@@ -669,6 +692,7 @@
    "risk": "A silent edit destroys the audit trail. Publish both.",
    "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json",
    "source_label": "repo artifact - recomputed here",
+   "status": "PARTIALLY IMPLEMENTED by origin/ (PR #47) - the corrected pair is published there. Still open: the stale desk copy still carries the wrong label (C-01).",
    "unblocks": "R7"
   },
   {
@@ -725,7 +749,7 @@
    "evidence": "Fifteen trees exist; a sixteenth is being built now (Q15).",
    "id": "S13",
    "priority": "P1 - high",
-   "proposal": "Stop adding site trees. Declare one canonical tree, freeze the rest as an archive, and require new work to land as pages inside the canonical tree instead of as a new root directory.",
+   "proposal": "Stop adding duplicate site trees. Declare one canonical tree, freeze the rest as an archive, and require new work to land as pages inside the canonical tree instead of as a new root directory. This session is not exempt from the criticism: council/ is the sixteenth tree. It is additive rather than duplicative - it holds no table that another tree already publishes - but the count still went up, and a reviewer should read that as part of the problem rather than as a solution to it.",
    "risk": "Freezing the wrong tree loses the newest registers. Check which tree holds them first.",
    "source": "https://github.com/karagemop466-tech/X3",
    "source_label": "GitHub repository",
@@ -765,6 +789,7 @@
    "risk": "Low, provided the blanks stay visibly blank.",
    "source": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
    "source_label": "repo artifact - market columns empty",
+   "status": "IMPLEMENTED by origin/ (PR #47) - fair_line, market_line and diff are separate fields on all 39 rows; market and diff stay blank until prices exist.",
    "unblocks": "R4"
   },
   {
@@ -794,12 +819,12 @@
  ],
  "trees": [
   {
-   "ext_links": 104,
-   "owner": "this session",
+   "ext_links": 112,
+   "owner": "arena/dd5047b8-x3",
    "pages": 9,
    "path": "council/",
-   "purpose": "Decision council: requirements as acceptance tests, questions, suggestion review queue, verification, flags",
-   "table_rows": 132
+   "purpose": "this session - decision council: the eight requirements as acceptance tests, questions, the suggestion review queue, verification, flags",
+   "table_rows": 138
   },
   {
    "ext_links": 550,
@@ -818,12 +843,12 @@
    "table_rows": 824
   },
   {
-   "ext_links": 0,
+   "ext_links": 528,
    "owner": "arena/f2df8317-x3",
-   "pages": 0,
+   "pages": 14,
    "path": "origin/",
-   "purpose": "Under construction: the eight requirements as code",
-   "table_rows": 0
+   "purpose": "Merged in PR #47: the eight requirements implemented as code - snapshot store, markets, moneyline, depth ordinals, gates D-1/D-2",
+   "table_rows": 481
   },
   {
    "ext_links": 837,
@@ -978,10 +1003,10 @@
    "result": "50 of 50 MATCH"
   },
   {
-   "check": "Published correlation r(game total, |margin|) = -0.161, n = 137",
+   "check": "Published correlation r(game total, |margin|) = -0.161, n = 137 (data/desk/correlations.json)",
    "id": "V-C1",
    "method": "Recomputed from the same 137 verified finals: r(total, |margin|) = -0.0157; r(total, signed home margin) = -0.1607. The published value is the signed-margin statistic under an absolute-margin label. Its reading ('move together') is also a sign error: a negative r means opposite directions. See flag C-01.",
-   "result": "DOES NOT REPRODUCE"
+   "result": "DOES NOT REPRODUCE - CORRECTED IN origin/"
   },
   {
    "check": "Published correlation r(away score, home score) = +0.076, n = 137",
@@ -1167,6 +1192,51 @@
    "official": "yes",
    "source": "https://www.nfl.com/stats/team-stats/",
    "value": "nfl.com team stats page (captured, HTTP 200)"
+  },
+  {
+   "area": "Origination",
+   "fact": "Originated markets per game, in the required order",
+   "id": "V19",
+   "note": "DERIVED. Sequence order re-checked this session: 0 violations across the 13 games.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "value": "39 rows: 13 games x side, total, moneyline"
+  },
+  {
+   "area": "Origination",
+   "fact": "Moneyline derivation as recorded on the row",
+   "id": "V20",
+   "note": "DERIVED. The moneyline records the margin and sigma it came from, so it reproduces.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/markets.json",
+   "value": "P(home win) = Phi(adj_margin / 13.5); sigma 13.5 preregistered"
+  },
+  {
+   "area": "Schedule",
+   "fact": "Official venue of the Munich international game",
+   "id": "V21",
+   "note": "Read from the official game page game-info block. The repository publishes a different venue string that no official page supports - see flag C-11.",
+   "official": "yes",
+   "source": "https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
+   "value": "FC Bayern Munich Stadium (location: Munich)"
+  },
+  {
+   "area": "Leaderboard",
+   "fact": "Signal scores populated on the leaderboard",
+   "id": "V22",
+   "note": "DERIVED. Signal and staking are separate blocks on every row, as the requirement asks.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/leaderboard.json",
+   "value": "side winner accuracy 0.595 (n=121); total over/under 0.4957 (n=117); moneyline Brier 0.2373 (n=121); staking 0 settled bets"
+  },
+  {
+   "area": "Roster",
+   "fact": "Replacement ordinal recorded for Week 10 absences",
+   "id": "V23",
+   "note": "Club-published and self-labelled unofficial. The desk tree records 41 of 76 for the same week - see flag C-12.",
+   "official": "no",
+   "source": "https://github.com/karagemop466-tech/X3/blob/main/origin/data/depth.json",
+   "value": "42 of 76"
   },
   {
    "area": "Rules",

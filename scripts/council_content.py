@@ -132,6 +132,39 @@ VERIFIED = [
          official="yes",
          source=NFL_STATS,
          note="Captured by the repository's CI runner; see capture/manifest.txt."),
+    dict(id="V19", area="Origination",
+         fact="Originated markets per game, in the required order",
+         value="39 rows: 13 games x side, total, moneyline",
+         official="no",
+         source=GH_BLOB + "origin/data/markets.json",
+         note="DERIVED. Sequence order re-checked this session: 0 violations across the 13 games."),
+    dict(id="V20", area="Origination",
+         fact="Moneyline derivation as recorded on the row",
+         value="P(home win) = Phi(adj_margin / 13.5); sigma 13.5 preregistered",
+         official="no",
+         source=GH_BLOB + "origin/data/markets.json",
+         note="DERIVED. The moneyline records the margin and sigma it came from, so it reproduces."),
+    dict(id="V21", area="Schedule",
+         fact="Official venue of the Munich international game",
+         value="FC Bayern Munich Stadium (location: Munich)",
+         official="yes",
+         source="https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
+         note="Read from the official game page game-info block. The repository publishes a different "
+              "venue string that no official page supports - see flag C-11."),
+    dict(id="V22", area="Leaderboard",
+         fact="Signal scores populated on the leaderboard",
+         value="side winner accuracy 0.595 (n=121); total over/under 0.4957 (n=117); "
+               "moneyline Brier 0.2373 (n=121); staking 0 settled bets",
+         official="no",
+         source=GH_BLOB + "origin/data/leaderboard.json",
+         note="DERIVED. Signal and staking are separate blocks on every row, as the requirement asks."),
+    dict(id="V23", area="Roster",
+         fact="Replacement ordinal recorded for Week 10 absences",
+         value="42 of 76",
+         official="no",
+         source=GH_BLOB + "origin/data/depth.json",
+         note="Club-published and self-labelled unofficial. The desk tree records 41 of 76 for the "
+              "same week - see flag C-12."),
     dict(id="V18", area="Rules",
          fact="League rule book used as the settlement reference",
          value="operations.nfl.com 2026 NFL rule book",
@@ -155,12 +188,15 @@ REQUIREMENTS = [
         acceptance="For every originated market there is one row per book carrying "
                     "market_id, book, open_price, open_timestamp, close_price, close_timestamp, "
                     "price_format and source_url. A market cannot be graded unless open and close are both present.",
-        verdict="BLOCKED",
-        status_text="Store specified, zero rows. No price feed exists in the repository.",
-        owner="origin/data/snapshots.json (claimed by session arena/f2df8317-x3, in progress)",
-        evidence="",
-        evidence_label="UNVERIFIED - no price feed",
-        blocker="A data-rights decision, not code. See suggestion S01.",
+        verdict="PARTIAL",
+        status_text="Store is live with schema origin-snapshots-v1, append-only by (market_id, phase): "
+                    "39 open rows RECORDED, 39 close rows PENDING. Every market_line is blank, so no "
+                    "closing-line value can be computed yet.",
+        owner="origin/data/snapshots.json (session arena/f2df8317-x3, merged in PR #47)",
+        evidence=GH_BLOB + "origin/data/snapshots.json",
+        evidence_label="repo artifact - schema live, prices blank",
+        blocker="No price provider. The store is waiting on a data-rights decision, not on code. "
+                "See Q01 and S01.",
     ),
     dict(
         id="R2",
@@ -171,11 +207,15 @@ REQUIREMENTS = [
                     "URL, the retrieval timestamp, and a written settlement rule per market type "
                     "(side, total, moneyline) including how ties and pushes are treated.",
         verdict="PARTIAL",
-        status_text="Game results are in place and verified; settlement rules and prop results are not.",
-        owner="data/desk/games.json (session arena/3bf7cc8b-x3) + origin/data/results.json (claimed)",
-        evidence=NFL_SCHED,
-        evidence_label="nfl.com week schedule pages (captured 11/11 HTTP 200)",
-        blocker="No settlement rule is written down, and no player-prop results exist. See S02, S09.",
+        status_text="The feed exists and backtests now run on it: origin/data/results.json holds 163 "
+                    "games / 137 finals with a per-row official URL, cross-checked 163/163 against the "
+                    "desk game log, and a walk-forward backtest is published per week. ROI still cannot "
+                    "be computed, and no settlement rule is written down.",
+        owner="origin/data/results.json and origin/data/backtest.json (session arena/f2df8317-x3, "
+              "merged in PR #47); data/desk/games.json (session arena/3bf7cc8b-x3)",
+        evidence=GH_BLOB + "origin/data/results.json",
+        evidence_label="repo artifact - transcription of official week pages",
+        blocker="No settlement rule, and no player-prop results. See Q04, S02, S09."
     ),
     dict(
         id="R3",
@@ -185,12 +225,15 @@ REQUIREMENTS = [
             "arbitrage against yourself.",
         acceptance="Each game carries three originated rows in the order side, total, moneyline. The "
                     "moneyline row records the margin and the sigma it was derived from, so it is reproducible.",
-        verdict="NOT MET",
-        status_text="Side and total exist for 13 games. No moneyline is originated anywhere in the repository.",
-        owner="data/desk/model.json (side + total) ; moneyline claimed by origin/ (session arena/f2df8317-x3)",
-        evidence=GH_BLOB + "data/desk/model.json",
-        evidence_label="repo artifact - side and total, DERIVED",
-        blocker="Third market type not built yet. See S03.",
+        verdict="MET",
+        status_text="39 originated rows, 13 games x 3 market types, with seq order side then total then "
+                    "moneyline. This session re-checked the order for all 13 games: 0 violations. The "
+                    "moneyline records its own derivation - P(home win) = Phi(adj_margin / 13.5) on the "
+                    "side's adjusted margin - so it is reproducible from the side.",
+        owner="origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)",
+        evidence=GH_BLOB + "origin/data/markets.json",
+        evidence_label="repo artifact - order verified 0 violations of 13",
+        blocker="None. The order requirement is satisfied."
     ),
     dict(
         id="R4",
@@ -199,13 +242,15 @@ REQUIREMENTS = [
             "the subtraction against a price they cannot see.",
         acceptance="Three distinct columns per market: fair_line, market_line, and edge = fair_line - "
                     "market_line, each with its own units label and sign convention.",
-        verdict="BLOCKED",
-        status_text="Fair line published and badged DERIVED. Market line is an empty string in all 13 rows, "
-                    "so the difference cannot be computed.",
-        owner="data/desk/model.json",
-        evidence=GH_BLOB + "data/desk/model.json",
-        evidence_label="repo artifact - market columns empty",
-        blocker="Depends on R1. No official source publishes NFL prices. See S01.",
+        verdict="PARTIAL",
+        status_text="The column contract exists: fair_line, market_line and diff are three separate "
+                    "fields on all 39 rows, each with a unit label and a recorded sign convention. "
+                    "fair_line is populated for every market. market_line and diff are blank in all 39 "
+                    "rows because no source publishes a price.",
+        owner="origin/data/markets.json (session arena/f2df8317-x3, merged in PR #47)",
+        evidence=GH_BLOB + "origin/data/markets.json",
+        evidence_label="repo artifact - columns present, market and diff blank",
+        blocker="Depends on R1. No official source publishes NFL prices. See Q01 and S01."
     ),
     dict(
         id="R5",
@@ -216,12 +261,16 @@ REQUIREMENTS = [
                     "stake-independent (mean closing-line value per bet, with n and a 95% CI) and a staking "
                     "score that is PnL-dependent (ROI, drawdown, units). A strategy must be able to rank "
                     "top-decile on signal while flat on staking, and the board must show both columns.",
-        verdict="NOT MET",
-        status_text="Design written on two trees; the board has zero rows because zero bets are graded.",
-        owner="desk/leaderboard.html, hub/leaderboard.html (design) ; origin/leaderboard.html (claimed)",
-        evidence=GH_BLOB + "desk/leaderboard.html",
-        evidence_label="repo artifact - design only, board empty",
-        blocker="Nothing can be graded until R1 and R2 close. See S05.",
+        verdict="PARTIAL",
+        status_text="The separation is implemented in the data rather than only described: every "
+                    "leaderboard row carries a signal block (metric, value, n, rank) and a separate "
+                    "staking block. The signal half is populated - side winner-direction accuracy 0.595 "
+                    "(n = 121), total over/under hit rate 0.4957 (n = 117), moneyline Brier 0.2373 "
+                    "(n = 121). The staking half is blocked with 0 settled bets.",
+        owner="origin/data/leaderboard.json (session arena/f2df8317-x3, merged in PR #47)",
+        evidence=GH_BLOB + "origin/data/leaderboard.json",
+        evidence_label="repo artifact - signal populated, staking blocked",
+        blocker="The staking half needs prices and a settlement rule. See Q01, Q04, S05."
     ),
     dict(
         id="R6",
@@ -231,14 +280,17 @@ REQUIREMENTS = [
         acceptance="For each absent starter: the ordinal depth of the replacement (1st, 2nd, 3rd, 4th string "
                     "or undrafted/free-agent pickup), the club chart URL, and the chart's as-of date. A row "
                     "without an as-of date is published as unverified, not as fact.",
-        verdict="NOT MET",
-        status_text="A named replacement is joined for 41 of 76 Week 10 absences. Zero of 76 carry a chart "
-                    "as-of date, and no ordinal depth string is recorded anywhere.",
-        owner="data/desk/deficiencies.json, data/desk/depth.json",
-        evidence=GH_BLOB + "data/desk/deficiencies.json",
-        evidence_label="repo artifact - club charts, self-labelled unofficial",
-        blocker="Club charts are club-published, usually labelled unofficial, carry no date, and one "
-                "club (Houston) publishes an image. See S06, S07.",
+        verdict="PARTIAL",
+        status_text="An ordinal is now recorded, not just a name: replacement_ordinal is populated for 42 "
+                    "of 76 Week 10 absences, with a reason_if_blank field explaining each gap. Zero of 76 "
+                    "rows carry a chart as-of date, and the club charts are self-labelled unofficial by "
+                    "the clubs that publish them.",
+        owner="origin/data/depth.json (session arena/f2df8317-x3, merged in PR #47); "
+              "data/desk/deficiencies.json (session arena/3bf7cc8b-x3)",
+        evidence=GH_BLOB + "origin/data/depth.json",
+        evidence_label="repo artifact - club charts, no as-of date",
+        blocker="No chart carries a date, so an ordinal cannot be tied to a point in time. See Q06, S06, "
+                "S07, and flag C-12 for a count discrepancy between the two trees."
     ),
     dict(
         id="R7",
@@ -248,14 +300,16 @@ REQUIREMENTS = [
         acceptance="Every published coefficient carries n, the official source URL, a 95% CI, and a plain "
                     "reading. A coefficient whose CI contains 0 is labelled 'not distinguishable from no "
                     "relationship' and is not used to price anything.",
-        verdict="PARTIAL - DEFECT CONFIRMED",
-        status_text="n is published with every value, but one published coefficient does not reproduce from "
-                    "the data it cites, and its prose reading has the sign backwards. See V-C1 on the "
-                    "verification page for the recomputation.",
-        owner="data/desk/correlations.json",
-        evidence=GH_BLOB + "data/desk/correlations.json",
-        evidence_label="repo artifact - recomputed this session, one value wrong",
-        blocker="None: this is a defect, not a data gap. Fix is in S08.",
+        verdict="MET",
+        status_text="Every coefficient carries n, a 95% interval, and the official source URL, and the "
+                    "mislabelled pair has been republished correctly: game total vs |home margin| is now "
+                    "-0.0157 and signed home margin vs total is -0.1607, as two separate rows. The older "
+                    "desk copy still carries the wrong label - see flag C-01.",
+        owner="origin/data/correlations.json (session arena/f2df8317-x3, merged in PR #47); "
+              "data/desk/correlations.json (stale copy)",
+        evidence=GH_BLOB + "origin/data/correlations.json",
+        evidence_label="repo artifact - n and CI published with every value",
+        blocker="None. See flag C-01 for the stale copy still published on another tree."
     ),
     dict(
         id="R8",
@@ -266,12 +320,16 @@ REQUIREMENTS = [
                     "for example, return to paper when the rolling 200-bet closing-line value is negative, "
                     "or when the 95% CI on ROI contains zero over the last 200 graded bets, or on any data "
                     "provenance failure. Every demotion is logged with its trigger.",
-        verdict="NOT MET",
-        status_text="Promotion gates G1-G8 are written. No demotion threshold exists anywhere in the repository.",
-        owner="data/desk/strategies.json (gates G1-G8) ; origin/data/gates.json (claimed)",
-        evidence=GH_BLOB + "data/desk/strategies.json",
-        evidence_label="repo artifact - promotion gates only",
-        blocker="Thresholds need a decision, not a fetch. See S04.",
+        verdict="MET",
+        status_text="Gate D-1 is written with five numeric triggers and an automatic action: rolling "
+                    "median closing-line value of the last 20 settled bets <= 0 twice in a row (D-1a); "
+                    "drawdown from peak >= 25% (D-1b); signal below 50% for three consecutive cycles "
+                    "(D-1c); any data-integrity failure (D-1d); any unregistered model change (D-1e). "
+                    "D-1d and D-1e are armed now; D-1a to D-1c arm at promotion. D-2 defines re-promotion.",
+        owner="origin/data/gates.json (session arena/f2df8317-x3, merged in PR #47)",
+        evidence=GH_BLOB + "origin/data/gates.json",
+        evidence_label="repo artifact - D-1 triggers and D-2 re-promotion",
+        blocker="None on the rule. Enforcement is still manual - see Q14 and S04."
     ),
 ]
 
@@ -339,11 +397,13 @@ QUESTIONS = [
          source="", source_label="UNVERIFIED"),
     dict(id="Q05", area="Moneyline",
          question="What sigma converts an expected margin into a moneyline, and on what data was it fitted?",
-         known="The desk model produces an expected margin and a total. No win-probability conversion "
-               "exists in the repository.",
-         missing="A sigma estimate, fitted on data the model has not seen, plus the distributional "
-                 "assumption (normal on margin is the usual first pass and is known to be wrong in the tails).",
-         blocks="R3. The moneyline is the third market and cannot be originated without it.",
+         known="origin/data/markets.json now derives the moneyline from the side: "
+               "P(home win) = Phi(adj_margin / 13.5), with sigma 13.5 preregistered in the module's "
+               "backtest parameters and the derivation recorded on the row itself.",
+         missing="A sigma fitted on data the model has not seen. 13.5 is a registered constant, not an "
+                 "estimate from this season, and a normal-on-margin assumption is known to be wrong in "
+                 "the tails. Neither fact is currently published with the number.",
+         blocks="Precision of the moneyline. R3 is satisfied; this is about how good the number is.",
          discover="S03",
          source="", source_label="UNVERIFIED - not derivable from any official page"),
     dict(id="Q06", area="Roster",
@@ -390,9 +450,13 @@ QUESTIONS = [
          source=GH_BLOB + "data/desk/strategies.json", source_label="repo artifact - gate register"),
     dict(id="Q11", area="Leaderboard",
          question="What is the signal score, numerically?",
-         known="The brief requires signal and staking to be scored separately. No formula exists.",
-         missing="A definition. The obvious one is mean closing-line value per bet, which needs R1 first.",
-         blocks="R5.",
+         known="Every leaderboard row now carries a signal block (metric, value, n, rank) and a separate "
+               "staking block. Side: winner-direction accuracy 0.595, n = 121. Total: over/under hit "
+               "rate 0.4957, n = 117. Moneyline: Brier 0.2373, n = 121.",
+         missing="The staking-side formula is defined in the schema but has no data, and the signal "
+                 "metrics are baseline-relative rather than market-relative because no price exists to "
+                 "be relative to.",
+         blocks="Nothing structural. It blocks the claim that any of this is skill.",
          discover="S05",
          source="", source_label="UNVERIFIED"),
     dict(id="Q12", area="Leaderboard",
@@ -405,10 +469,13 @@ QUESTIONS = [
          source="", source_label="UNVERIFIED"),
     dict(id="Q13", area="Demotion",
          question="What thresholds send a live strategy back to paper?",
-         known="Promotion gates G1-G8 exist. No demotion gate exists.",
-         missing="Numbers: a look-back window, a closing-line-value floor, an ROI CI condition, and an "
-                 "automatic trigger on data-provenance failure.",
-         blocks="R8.",
+         known="Gate D-1 now defines them: rolling median closing-line value <= 0 twice in a row over "
+               "20-bet windows (D-1a), drawdown >= 25% from peak (D-1b), signal below 50% for three "
+               "consecutive cycles (D-1c), any data-integrity failure (D-1d), any unregistered model "
+               "change (D-1e).",
+         missing="Nothing on the thresholds. What is missing is enforcement: nothing runs them, and "
+                 "D-1a to D-1c cannot fire until prices exist.",
+         blocks="Nothing. R8 is satisfied as a rule; see Q14 on execution.",
          discover="S04",
          source=GH_BLOB + "data/desk/strategies.json", source_label="repo artifact - promotion gates only"),
     dict(id="Q14", area="Demotion",
@@ -420,8 +487,8 @@ QUESTIONS = [
          source="", source_label="UNVERIFIED"),
     dict(id="Q15", area="Repository",
          question="Which site tree is canonical?",
-         known="Fifteen overlapping trees exist. The repository root currently redirects into hub/, "
-               "and a sixteenth (origin/) is being built now.",
+         known="Sixteen overlapping trees exist. The repository root links into hub/, origin/ merged in "
+               "PR #47, and council/ is this session's addition.",
          missing="A decision. Every new session adds a tree, and each tree restates the same blanks.",
          blocks="Nothing technically. It wastes review effort and hides the real gaps.",
          discover="S13",
@@ -481,7 +548,7 @@ SUGGESTIONS = [
          effort="Small. It is a document, not a system.",
          risk="Low, but if it is written after the first bet is graded the early record becomes unfixable.",
          source="", source_label="UNVERIFIED - decision, not a fetch"),
-    dict(id="S03", area="Origination", priority="P1 - high",
+    dict(id="S03", status="IMPLEMENTED by origin/ (PR #47) - 39 rows in side, total, moneyline order, 0 violations. Open only if you want a different sigma.", area="Origination", priority="P1 - high",
          proposal="Originate the moneyline last, from the side and the total, and print the sigma used. "
                   "Record the conversion on the row so a reviewer can reproduce the price from the spread.",
          evidence="Side and total exist for 13 games (V09). No moneyline exists anywhere (R3).",
@@ -490,7 +557,7 @@ SUGGESTIONS = [
          risk="A normal-on-margin assumption is wrong in the tails and will misprice large favourites. "
               "Publish it as an assumption, not a fact.",
          source="", source_label="UNVERIFIED - not derivable from any official page"),
-    dict(id="S04", area="Governance", priority="P1 - high",
+    dict(id="S04", status="IMPLEMENTED by origin/ (PR #47) - gate D-1 with five triggers plus D-2 re-promotion. Still open: automating enforcement.", area="Governance", priority="P1 - high",
          proposal="Write the demotion gate as numbers with an owner and an enforcement point. A concrete "
                   "default: return to paper if the rolling 200-bet mean closing-line value is negative, "
                   "or if the 95% CI on ROI contains zero over the last 200 graded bets, or immediately on "
@@ -501,7 +568,7 @@ SUGGESTIONS = [
          risk="Thresholds chosen after seeing results are fitted to the past. Choose them now, before "
               "there is anything to demote.",
          source="", source_label="UNVERIFIED - decision, not a fetch"),
-    dict(id="S05", area="Leaderboard", priority="P1 - high",
+    dict(id="S05", status="IMPLEMENTED by origin/ (PR #47) - signal and staking are separate blocks on every row; the signal half is populated, the staking half is blocked.", area="Leaderboard", priority="P1 - high",
          proposal="Split the leaderboard into two boards from the start: a signal board scored on "
                   "stake-independent mean closing-line value per bet with n and a 95% CI, and a staking "
                   "board scored on ROI, units and drawdown. Rank them separately and never blend them "
@@ -520,7 +587,7 @@ SUGGESTIONS = [
          effort="Small: the capture pipeline already exists for nfl.com pages.",
          risk="Club charts are self-labelled unofficial. Store the disclaimer with the row.",
          source=GH_BLOB + "data/desk/depth.json", source_label="repo artifact - club charts"),
-    dict(id="S07", area="Roster", priority="P2 - medium",
+    dict(id="S07", status="IMPLEMENTED by origin/ (PR #47) - replacement_ordinal is populated for 42 of 76 absences. Still open: the ordinals are club-published and unverified.", area="Roster", priority="P2 - medium",
          proposal="Add an ordinal depth field: 1st, 2nd, 3rd, 4th string, or a free-agent pickup sourced "
                   "from the transaction wire rather than the depth chart. Treat the two sources as "
                   "independent evidence and publish where they disagree.",
@@ -529,7 +596,7 @@ SUGGESTIONS = [
          effort="Medium. Requires parsing each club's chart layout, which varies by club.",
          risk="Parsed ordinals are inferred from page layout, not stated by the club. Badge them DERIVED.",
          source=GH_BLOB + "data/desk/depth.json", source_label="repo artifact - club charts"),
-    dict(id="S08", area="Statistics", priority="P0 - blocking",
+    dict(id="S08", status="PARTIALLY IMPLEMENTED by origin/ (PR #47) - the corrected pair is published there. Still open: the stale desk copy still carries the wrong label (C-01).", area="Statistics", priority="P0 - blocking",
          proposal="Fix the published correlation. Recompute r(game total, |margin|) from the 137 verified "
                   "finals and publish the corrected value with a corrected reading, or withdraw the pair. "
                   "Do not silently overwrite: publish the correction with the old value and the date.",
@@ -573,9 +640,12 @@ SUGGESTIONS = [
          risk="Contest design is regulated. This is not a legal-advice surface; get a review.",
          source="", source_label="UNVERIFIED"),
     dict(id="S13", area="Repository", priority="P1 - high",
-         proposal="Stop adding site trees. Declare one canonical tree, freeze the rest as an archive, and "
-                  "require new work to land as pages inside the canonical tree instead of as a new root "
-                  "directory.",
+         proposal="Stop adding duplicate site trees. Declare one canonical tree, freeze the rest as an "
+                  "archive, and require new work to land as pages inside the canonical tree instead of "
+                  "as a new root directory. This session is not exempt from the criticism: council/ is "
+                  "the sixteenth tree. It is additive rather than duplicative - it holds no table that "
+                  "another tree already publishes - but the count still went up, and a reviewer should "
+                  "read that as part of the problem rather than as a solution to it.",
          evidence="Fifteen trees exist; a sixteenth is being built now (Q15).",
          unblocks="Q15",
          effort="Medium: a decision plus a one-time archive move.",
@@ -601,7 +671,7 @@ SUGGESTIONS = [
          effort="Small. The pattern already exists in scripts/audit_all.py.",
          risk="Low. It makes blanks visible instead of hiding them.",
          source=GH_BLOB + "scripts/audit_all.py", source_label="repo artifact - existing gate"),
-    dict(id="S16", area="Origination", priority="P2 - medium",
+    dict(id="S16", status="IMPLEMENTED by origin/ (PR #47) - fair_line, market_line and diff are separate fields on all 39 rows; market and diff stay blank until prices exist.", area="Origination", priority="P2 - medium",
          proposal="Publish the fair, market and difference columns even while the market column is empty: "
                   "three headers, two blanks, and a cell that says why. The column contract is then in "
                   "place when prices arrive.",
@@ -634,17 +704,22 @@ SUGGESTIONS = [
 # ---------------------------------------------------------------------------
 
 FLAGS = [
-    dict(id="C-01", severity="high", area="Statistics",
-         finding="A published correlation does not reproduce from the data it cites and its reading has "
-                 "the sign backwards.",
+    dict(id="C-01", severity="medium", area="Statistics",
+         finding="A published correlation did not reproduce from the data it cited. The correction is "
+                 "now published on one tree and the wrong label is still published on another.",
          detail="data/desk/correlations.json publishes r = -0.161 labelled 'game total vs |margin|', "
                 "n = 137, reading 'same-game total and blowout size move together'. Recomputed this "
                 "session from the same 137 verified finals: r(total, |margin|) = -0.0157 and "
                 "r(total, signed home margin) = -0.1607. The published number is the signed-margin "
                 "statistic under an absolute-margin label, and a negative r means the two quantities move "
                 "in opposite directions, not together. Its 95% CI contains 0 either way.",
-         action="Fix under S08, or withdraw the pair. Not edited by this session - the file is owned by "
-                "another session.",
+         detail_corrected="origin/data/correlations.json (merged in PR #47) now publishes both pairs "
+                "separately and correctly: game total vs |home margin| = -0.0157 and signed home margin "
+                "vs total = -0.1607, each with n, a 95% interval and the official source. The decision "
+                "register should record the correction, because a silent overwrite would destroy the "
+                "audit trail.",
+         action="Withdraw or correct the stale desk copy, and record the correction rather than "
+                "overwriting it. Not edited by this session - both files belong to other sessions.",
          source=GH_BLOB + "data/desk/correlations.json"),
     dict(id="C-02", severity="high", area="Market data",
          finding="Every market column on the site is empty, and that is a data-rights gap rather than a "
@@ -700,6 +775,28 @@ FLAGS = [
                 "verified depth data to adjust with.",
          action="Revisit only after R6 closes. S06, Q17.",
          source=GH_BLOB + "data/desk/model.json"),
+    dict(id="C-11", severity="medium", area="Schedule",
+         finding="A venue name is published that no official page supports, and the official page gives "
+                 "a different one.",
+         detail="hub/data/lines.json and origin/data/markets.json both carry the string "
+                "'Alemun & Munchen / Munich (NFL International Game) - no home field' as the venue of "
+                "the Patriots at Lions game. The official nfl.com game page states LOCATION MUNICH and "
+                "STADIUM FC BAYERN MUNICH STADIUM; the Week 10 schedule page states International Game, "
+                "Munich. Nothing read from any official page prints 'Alemun & Munchen'. An open pull "
+                "request (#36) already removes this string from hub/lines.html, so the fix is in flight "
+                "on that tree; origin/ re-introduces it.",
+         action="Replace with the official string, or print only 'Munich (NFL International Game)' as "
+                "PR #36 does. Files not edited by this session - both belong to other sessions.",
+         source="https://www.nfl.com/games/patriots-at-lions-2026-reg-10"),
+    dict(id="C-12", severity="low", area="Roster",
+         finding="Two trees count the same join differently: 41 of 76 versus 42 of 76 replacements.",
+         detail="data/desk/deficiencies.json resolves a named replacement for 41 of the 76 Week 10 "
+                "absences; origin/data/depth.json populates replacement_ordinal for 42 of 76 on the same "
+                "week and the same injury report. One join finds a replacement the other misses. Both "
+                "counts are published as fact on their own tree.",
+         action="Reconcile the two joins and publish one number, or publish both with the reason for "
+                "the difference. Files not edited by this session.",
+         source=GH_BLOB + "origin/data/depth.json"),
     dict(id="C-10", severity="low", area="Verification",
          finding="Some published rows carry neither a source link nor an unverified badge.",
          detail="A prior cross-tree audit counted 658 such rows across the older trees. This session's "
@@ -784,8 +881,9 @@ VERIFICATION = [
          result="50 of 50 MATCH", method="WAS (9), NYG (11), NE (15), DET (9) and the first 6 KC rows "
                                          "compared on player, position, injury, practice status and game "
                                          "status against nfl.com/injuries/league/2026/reg10."),
-    dict(id="V-C1", check="Published correlation r(game total, |margin|) = -0.161, n = 137",
-         result="DOES NOT REPRODUCE",
+    dict(id="V-C1", check="Published correlation r(game total, |margin|) = -0.161, n = 137 "
+                          "(data/desk/correlations.json)",
+         result="DOES NOT REPRODUCE - CORRECTED IN origin/",
          method="Recomputed from the same 137 verified finals: r(total, |margin|) = -0.0157; "
                 "r(total, signed home margin) = -0.1607. The published value is the signed-margin "
                 "statistic under an absolute-margin label. Its reading ('move together') is also a sign "
@@ -817,7 +915,8 @@ TREES = [
                                  "suggestion review queue, verification, flags"),
     ("hub/", "arena/e9b492ab-x3, arena/621bf404-x3", "Canonical review hub; the repository root points here"),
     ("desk/", "arena/3bf7cc8b-x3", "Consolidated decision desk; owns the verified game log and the model"),
-    ("origin/", "arena/f2df8317-x3", "Under construction: the eight requirements as code"),
+    ("origin/", "arena/f2df8317-x3", "Merged in PR #47: the eight requirements implemented as code - "
+                                     "snapshot store, markets, moneyline, depth ordinals, gates D-1/D-2"),
     ("crosscheck/", "arena/37c71381-x3", "Cross-tree register reconciliation and link audit"),
     ("docs/", "arena/4856379c-x3, arena/0c38f465-x3", "First verified-data dashboard"),
     ("dashboard/", "arena/7e632805-x3", "18-page dashboard built from transcribed official data"),
@@ -854,16 +953,21 @@ EXEC_FINDINGS = [
      "single fact is why the fair-versus-market difference, closing-line value, ROI and the leaderboard "
      "are all blank. It is a data-rights decision, not an engineering task, and it is the first thing to "
      "resolve."),
-    ("A confirmed defect",
-     "One published correlation does not reproduce from the data it cites, and its written reading has "
-     "the sign backwards. The pipeline is sound; the label and the prose are not. The recomputation is "
-     "published on the verification page."),
+    ("A confirmed defect, and its correction",
+     "One published correlation did not reproduce from the data it cites: r(game total, |margin|) was "
+     "published as -0.161 when the correct value is -0.0157, and -0.161 is in fact the signed-margin "
+     "statistic. Its written reading had the sign backwards too. The corrected pairs are now published "
+     "separately in origin/, with n and a 95% interval each; a stale copy carrying the wrong label is "
+     "still on the desk tree. The pipeline was always sound - the label and the prose were not."),
     ("What is genuinely missing",
-     "Replacement depth, player-prop history, a settlement rule, a demotion gate and a moneyline. Four of "
-     "those five need a decision or a purchase. None can be fetched."),
+     "Player-prop history, a settlement rule, a dated depth chart and price data. Three of those four "
+     "need a decision or a purchase; none can be fetched. The moneyline and the demotion gate were on "
+     "this list at the start of the session and are no longer, because another session's module merged "
+     "while this page was being written."),
     ("The honest read on skill",
      "Zero bets have been graded, so no strategy on any tree has demonstrated skill, and none has been "
-     "shown to lack it. {{n_requirements_met}} of {{n_requirements}} requirements are met today. That is "
-     "not a failure of analysis; it is the correct state of a project that has not yet bought its price "
-     "data."),
+     "shown to lack it. {{n_requirements_met}} of {{n_requirements}} requirements are met today and the "
+     "rest are partly met, with the same blocker behind almost all of them. That is not a failure of "
+     "analysis; it is the correct state of a project that has not yet bought its price data. The "
+     "origination machinery - side, total, moneyline, fair line, gates, demotion - is built and waiting."),
 ]

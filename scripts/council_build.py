@@ -193,10 +193,30 @@ def measure():
     )
 
 
+def measure_self():
+    """Page, row and external-link counts for the tree this builder just wrote."""
+    pages = links = trs = 0
+    for fn in sorted(os.listdir(OUT_DIR)):
+        if not fn.endswith(".html"):
+            continue
+        pages += 1
+        txt = open(os.path.join(OUT_DIR, fn), encoding="utf-8", errors="ignore").read()
+        links += len(re.findall(r'href="http', txt))
+        trs += txt.count("<tr>")
+    return dict(path="council/", owner=C.SESSION, purpose=(
+        "this session - decision council: the eight requirements as acceptance tests, questions, "
+        "the suggestion review queue, verification, flags"),
+                pages=pages, ext_links=links, table_rows=trs)
+
+
 def scan_trees():
     """Inventory every site tree in the repository. Read-only."""
     rows = []
     for path, owner, purpose in C.TREES:
+        if path == "council/":
+            # Measured from the freshly written pages after the build, so the tree
+            # never counts a stale copy of itself. See measure_self() below.
+            continue
         full = os.path.join(ROOT, path)
         pages, links, trs = 0, 0, 0
         if path == "(repository root)":
@@ -568,12 +588,22 @@ question. It is listed as a decision on the
                  body, "questions.html")
 
 
+def _status_cell(s):
+    """A suggestion another session has already built says so; everything else stays
+    explicitly PROPOSED, so nothing on the page reads as already decided."""
+    st = s.get("status", "")
+    if st.startswith(("IMPLEMENTED", "PARTIALLY")):
+        return '<b>%s</b>' % esc(st)
+    return esc("PROPOSED - not started")
+
+
 def page_suggestions(m, trees):
     blocks = []
     for s in C.SUGGESTIONS:
         pcls = s["priority"].split(" ")[0].lower()
         blocks.append("""<div class="rq" id="%s">
 <h3><span class="mono">%s</span> %s %s</h3>
+<p class="m"><b>Status.</b> %s</p>
 <p><b>Proposal.</b> %s</p>
 <p class="m"><b>Evidence.</b> %s</p>
 <p class="m"><b>Unblocks.</b> %s</p>
@@ -581,6 +611,7 @@ def page_suggestions(m, trees):
 <p class="m"><b>Risk.</b> %s</p>
 <p class="m"><b>Decision.</b> %s &nbsp;|&nbsp; <b>Source.</b> %s</p>
 </div>""" % (esc(s["id"]), esc(s["id"]), esc(s["area"]), badge(pcls, s["priority"]),
+             _status_cell(s),
              esc(s["proposal"]), esc(s["evidence"]), esc(s["unblocks"]), esc(s["effort"]),
              esc(s["risk"]), badge("der", "PROPOSED - awaiting your pick"),
              source_cell(s["source"], s["source_label"])))
@@ -779,7 +810,8 @@ def page_flagged(m, trees):
             badge(cls, f["severity"]),
             esc(f["area"]),
             "<b>%s</b>" % esc(f["finding"]),
-            esc(f["detail"]),
+            esc(f["detail"]) + (("<br><b>Correction.</b> " + esc(f["detail_corrected"]))
+                                if f.get("detail_corrected") else ""),
             esc(f["action"]),
             source_cell(f["source"], "UNVERIFIED - no official source"),
         ]))
@@ -892,6 +924,13 @@ def main():
     for name, body in pages.items():
         with open(os.path.join(OUT_DIR, name), "w", encoding="utf-8") as fh:
             fh.write(body)
+
+    # The tree inventory counts every tree except this one; this one is measured
+    # from the files just written, then rendered and written again.
+    trees.insert(0, measure_self())
+    pages["repo-review.html"] = fill(page_repo_review(m, trees), tokens)
+    with open(os.path.join(OUT_DIR, "repo-review.html"), "w", encoding="utf-8") as fh:
+        fh.write(pages["repo-review.html"])
 
     payload = dict(
         session=C.SESSION, as_of=C.AS_OF, season=C.SEASON, week=C.WEEK,

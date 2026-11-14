@@ -27,9 +27,9 @@
 
 <h3>Verified and solid</h3><p>The results foundation is real. 137 completed games are logged with a per-row official source URL, the 32 club standings reconcile, and the 345 row Week 10 injury report was spot-checked 50 rows against the official page with zero mismatches. This session read nfl.com directly; the long-standing note that it cannot be reached is wrong.</p>
 <h3>The blocking gap</h3><p>No market price exists anywhere in the repository, and no NFL or club page publishes one. That single fact is why the fair-versus-market difference, closing-line value, ROI and the leaderboard are all blank. It is a data-rights decision, not an engineering task, and it is the first thing to resolve.</p>
-<h3>A confirmed defect</h3><p>One published correlation does not reproduce from the data it cites, and its written reading has the sign backwards. The pipeline is sound; the label and the prose are not. The recomputation is published on the verification page.</p>
-<h3>What is genuinely missing</h3><p>Replacement depth, player-prop history, a settlement rule, a demotion gate and a moneyline. Four of those five need a decision or a purchase. None can be fetched.</p>
-<h3>The honest read on skill</h3><p>Zero bets have been graded, so no strategy on any tree has demonstrated skill, and none has been shown to lack it. 0 of 8 requirements are met today. That is not a failure of analysis; it is the correct state of a project that has not yet bought its price data.</p>
+<h3>A confirmed defect, and its correction</h3><p>One published correlation did not reproduce from the data it cites: r(game total, |margin|) was published as -0.161 when the correct value is -0.0157, and -0.161 is in fact the signed-margin statistic. Its written reading had the sign backwards too. The corrected pairs are now published separately in origin/, with n and a 95% interval each; a stale copy carrying the wrong label is still on the desk tree. The pipeline was always sound - the label and the prose were not.</p>
+<h3>What is genuinely missing</h3><p>Player-prop history, a settlement rule, a dated depth chart and price data. Three of those four need a decision or a purchase; none can be fetched. The moneyline and the demotion gate were on this list at the start of the session and are no longer, because another session's module merged while this page was being written.</p>
+<h3>The honest read on skill</h3><p>Zero bets have been graded, so no strategy on any tree has demonstrated skill, and none has been shown to lack it. 3 of 8 requirements are met today and the rest are partly met, with the same blocker behind almost all of them. That is not a failure of analysis; it is the correct state of a project that has not yet bought its price data. The origination machinery - side, total, moneyline, fair line, gates, demotion - is built and waiting.</p>
 <h2>The numbers, as measured</h2>
 <div class="grid">
 <div class="card"><div class="num">137</div><div class="lbl">completed games verified</div>
@@ -48,14 +48,14 @@
 <th>Requirement</th>
 <th>Verdict</th>
 </tr></thead><tbody>
-<tr><td><span class="mono">R1</span></td><td>Price-snapshot store that records opening and closing numbers for every market we originate</td><td><span class="bad bad hi">BLOCKED</span></td></tr>
+<tr><td><span class="mono">R1</span></td><td>Price-snapshot store that records opening and closing numbers for every market we originate</td><td><span class="bad warn">PARTIAL</span></td></tr>
 <tr><td><span class="mono">R2</span></td><td>Verified results feed so backtests and ROI can be computed at all</td><td><span class="bad warn">PARTIAL</span></td></tr>
-<tr><td><span class="mono">R3</span></td><td>Originate the side first, then the total, then the moneyline</td><td><span class="bad bad hi">NOT MET</span></td></tr>
-<tr><td><span class="mono">R4</span></td><td>Publish the model&#x27;s fair line, the market line, and the difference as separate columns</td><td><span class="bad bad hi">BLOCKED</span></td></tr>
-<tr><td><span class="mono">R5</span></td><td>Separate &#x27;signal&#x27; from &#x27;staking&#x27; in the leaderboard so a lucky staking run cannot mask a bad signal</td><td><span class="bad bad hi">NOT MET</span></td></tr>
-<tr><td><span class="mono">R6</span></td><td>Track the depth of the replacement, not just the fact of a replacement</td><td><span class="bad bad hi">NOT MET</span></td></tr>
-<tr><td><span class="mono">R7</span></td><td>Compute correlations only from officially sourced numbers and publish n with each value</td><td><span class="bad warn">PARTIAL - DEFECT CONFIRMED</span></td></tr>
-<tr><td><span class="mono">R8</span></td><td>Define a demotion gate that sends a live strategy back to paper</td><td><span class="bad bad hi">NOT MET</span></td></tr>
+<tr><td><span class="mono">R3</span></td><td>Originate the side first, then the total, then the moneyline</td><td><span class="bad ok">MET</span></td></tr>
+<tr><td><span class="mono">R4</span></td><td>Publish the model&#x27;s fair line, the market line, and the difference as separate columns</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R5</span></td><td>Separate &#x27;signal&#x27; from &#x27;staking&#x27; in the leaderboard so a lucky staking run cannot mask a bad signal</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R6</span></td><td>Track the depth of the replacement, not just the fact of a replacement</td><td><span class="bad warn">PARTIAL</span></td></tr>
+<tr><td><span class="mono">R7</span></td><td>Compute correlations only from officially sourced numbers and publish n with each value</td><td><span class="bad ok">MET</span></td></tr>
+<tr><td><span class="mono">R8</span></td><td>Define a demotion gate that sends a live strategy back to paper</td><td><span class="bad ok">MET</span></td></tr>
 </tbody></table>
 
 <h2>What to decide first</h2>

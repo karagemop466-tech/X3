@@ -32,6 +32,7 @@ marked <b>PROPOSED</b>.</p></div>
 <p><span class="bad p0">P0 - blocking: 3</span> <span class="bad p1">P1 - high: 7</span> <span class="bad p2">P2 - medium: 6</span> <span class="bad p3">P3 - low: 2</span></p>
 <div class="rq" id="S01">
 <h3><span class="mono">S01</span> Market data <span class="bad p0">P0 - blocking</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Decide the price source before building more on top of it. Three paths: (a) buy a historical odds licence and ingest it in CI; (b) run the GitHub Actions runner on a schedule to snapshot one public book&#x27;s board at a fixed time each day and retain only what is needed for closing-line value; (c) declare prices out of scope and re-scope the site to model accuracy against results, dropping every ROI and leaderboard claim.</p>
 <p class="m"><b>Evidence.</b> Every market column in the repository is empty (V11-V14). Path (c) is the only one that costs nothing and it is also the only one that is honest today.</p>
 <p class="m"><b>Unblocks.</b> R1, R4, R5, R8, Q01, Q02, Q03, Q18</p>
@@ -41,6 +42,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S02">
 <h3><span class="mono">S02</span> Settlement <span class="bad p0">P0 - blocking</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Write the settlement rule down before any bet is graded: how a side settles on a tie, how a total settles on an exact landing, whether overtime counts, and what a push does to the record. One page, versioned, linked from every leaderboard row.</p>
 <p class="m"><b>Evidence.</b> 137 finals are verified and gradeable today (V04), but nothing states how they grade.</p>
 <p class="m"><b>Unblocks.</b> R2, R5, Q04</p>
@@ -50,6 +52,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S03">
 <h3><span class="mono">S03</span> Origination <span class="bad p1">P1 - high</span></h3>
+<p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - 39 rows in side, total, moneyline order, 0 violations. Open only if you want a different sigma.</b></p>
 <p><b>Proposal.</b> Originate the moneyline last, from the side and the total, and print the sigma used. Record the conversion on the row so a reviewer can reproduce the price from the spread.</p>
 <p class="m"><b>Evidence.</b> Side and total exist for 13 games (V09). No moneyline exists anywhere (R3).</p>
 <p class="m"><b>Unblocks.</b> R3, Q05</p>
@@ -59,6 +62,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S04">
 <h3><span class="mono">S04</span> Governance <span class="bad p1">P1 - high</span></h3>
+<p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - gate D-1 with five triggers plus D-2 re-promotion. Still open: automating enforcement.</b></p>
 <p><b>Proposal.</b> Write the demotion gate as numbers with an owner and an enforcement point. A concrete default: return to paper if the rolling 200-bet mean closing-line value is negative, or if the 95% CI on ROI contains zero over the last 200 graded bets, or immediately on any data-provenance failure. Log every demotion with its trigger.</p>
 <p class="m"><b>Evidence.</b> Promotion gates G1-G8 exist; no demotion rule exists anywhere (R8).</p>
 <p class="m"><b>Unblocks.</b> R8, Q13, Q14</p>
@@ -68,6 +72,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S05">
 <h3><span class="mono">S05</span> Leaderboard <span class="bad p1">P1 - high</span></h3>
+<p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - signal and staking are separate blocks on every row; the signal half is populated, the staking half is blocked.</b></p>
 <p><b>Proposal.</b> Split the leaderboard into two boards from the start: a signal board scored on stake-independent mean closing-line value per bet with n and a 95% CI, and a staking board scored on ROI, units and drawdown. Rank them separately and never blend them into one number.</p>
 <p class="m"><b>Evidence.</b> The design is described on two trees; neither board has a row (R5).</p>
 <p class="m"><b>Unblocks.</b> R5, Q11</p>
@@ -77,6 +82,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S06">
 <h3><span class="mono">S06</span> Roster <span class="bad p1">P1 - high</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Capture depth charts on a fixed schedule in CI and store the capture date with every chart. A chart without a date is not evidence of a lineup, it is evidence that a page once existed.</p>
 <p class="m"><b>Evidence.</b> 0 of 76 Week 10 absences carry a chart as-of date (R6).</p>
 <p class="m"><b>Unblocks.</b> R6, Q06, Q17</p>
@@ -86,6 +92,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S07">
 <h3><span class="mono">S07</span> Roster <span class="bad p2">P2 - medium</span></h3>
+<p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - replacement_ordinal is populated for 42 of 76 absences. Still open: the ordinals are club-published and unverified.</b></p>
 <p><b>Proposal.</b> Add an ordinal depth field: 1st, 2nd, 3rd, 4th string, or a free-agent pickup sourced from the transaction wire rather than the depth chart. Treat the two sources as independent evidence and publish where they disagree.</p>
 <p class="m"><b>Evidence.</b> 41 of 76 absences resolve to a named replacement, none to a depth string (R6, V15).</p>
 <p class="m"><b>Unblocks.</b> R6, Q06, Q07</p>
@@ -95,6 +102,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S08">
 <h3><span class="mono">S08</span> Statistics <span class="bad p0">P0 - blocking</span></h3>
+<p class="m"><b>Status.</b> <b>PARTIALLY IMPLEMENTED by origin/ (PR #47) - the corrected pair is published there. Still open: the stale desk copy still carries the wrong label (C-01).</b></p>
 <p><b>Proposal.</b> Fix the published correlation. Recompute r(game total, |margin|) from the 137 verified finals and publish the corrected value with a corrected reading, or withdraw the pair. Do not silently overwrite: publish the correction with the old value and the date.</p>
 <p class="m"><b>Evidence.</b> The published -0.161 is r(total, signed home margin), not r(total, |margin|). Correct value: see the recomputation on the verification page.</p>
 <p class="m"><b>Unblocks.</b> R7</p>
@@ -104,6 +112,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S09">
 <h3><span class="mono">S09</span> Player props <span class="bad p2">P2 - medium</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Either fund a prop feed or formally close the prop strategy family and say so on the leaderboard, rather than leaving strategies registered and permanently blocked.</p>
 <p class="m"><b>Evidence.</b> No official source publishes prop prices or results (Q08, V16).</p>
 <p class="m"><b>Unblocks.</b> The prop-combo leg of the brief, Q08</p>
@@ -113,6 +122,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S10">
 <h3><span class="mono">S10</span> Statistics <span class="bad p1">P1 - high</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Ingest at least one prior season of official results before making any skill claim. The 2026 season alone cannot support a walk-forward test or a 200-bet minimum.</p>
 <p class="m"><b>Evidence.</b> 137 verified finals (V04); gates already specify 200 graded bets (G2).</p>
 <p class="m"><b>Unblocks.</b> R5, R7, R8, Q09</p>
@@ -122,6 +132,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S11">
 <h3><span class="mono">S11</span> Statistics <span class="bad p2">P2 - medium</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Preregister the number of strategy tests before testing. FDR control needs a denominator, and an unbounded search space makes any correction meaningless.</p>
 <p class="m"><b>Evidence.</b> Gate G4 specifies Benjamini-Hochberg at q = 0.10 with no test count registered (Q10).</p>
 <p class="m"><b>Unblocks.</b> R5, R7, R8, Q10</p>
@@ -131,6 +142,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S12">
 <h3><span class="mono">S12</span> Rewards <span class="bad p3">P3 - low</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Keep rewards out of the research system. If a competition is wanted, design it as a separate surface with its own rules and its own review, and do not let prize structure feed back into the signal scores.</p>
 <p class="m"><b>Evidence.</b> Nothing is configured; the site already states it does not promise rewards (Q12).</p>
 <p class="m"><b>Unblocks.</b> Q12</p>
@@ -140,7 +152,8 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S13">
 <h3><span class="mono">S13</span> Repository <span class="bad p1">P1 - high</span></h3>
-<p><b>Proposal.</b> Stop adding site trees. Declare one canonical tree, freeze the rest as an archive, and require new work to land as pages inside the canonical tree instead of as a new root directory.</p>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
+<p><b>Proposal.</b> Stop adding duplicate site trees. Declare one canonical tree, freeze the rest as an archive, and require new work to land as pages inside the canonical tree instead of as a new root directory. This session is not exempt from the criticism: council/ is the sixteenth tree. It is additive rather than duplicative - it holds no table that another tree already publishes - but the count still went up, and a reviewer should read that as part of the problem rather than as a solution to it.</p>
 <p class="m"><b>Evidence.</b> Fifteen trees exist; a sixteenth is being built now (Q15).</p>
 <p class="m"><b>Unblocks.</b> Q15</p>
 <p class="m"><b>Effort.</b> Medium: a decision plus a one-time archive move.</p>
@@ -149,6 +162,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S14">
 <h3><span class="mono">S14</span> Verification <span class="bad p1">P1 - high</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Correct the standing claim that the authoring environment cannot reach nfl.com, and re-run every blank table against the official pages. Several blanks are fetchable, not unknowable.</p>
 <p class="m"><b>Evidence.</b> This session read nfl.com schedule, standings and injury pages directly and matched 50 injury rows field by field (V08, Q16).</p>
 <p class="m"><b>Unblocks.</b> Q16</p>
@@ -158,6 +172,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S15">
 <h3><span class="mono">S15</span> Verification <span class="bad p2">P2 - medium</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Add one gate that refuses to publish a numeric cell unless it carries either an official source URL or an explicit UNVERIFIED badge. Enforce it in CI on every tree, not only on the tree that happens to own the newest page.</p>
 <p class="m"><b>Evidence.</b> A repo-wide link and source-row gate exists, but prior sessions report 658 published rows that carry neither a link nor a flag.</p>
 <p class="m"><b>Unblocks.</b> R7 hygiene, Q15</p>
@@ -167,6 +182,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S16">
 <h3><span class="mono">S16</span> Origination <span class="bad p2">P2 - medium</span></h3>
+<p class="m"><b>Status.</b> <b>IMPLEMENTED by origin/ (PR #47) - fair_line, market_line and diff are separate fields on all 39 rows; market and diff stay blank until prices exist.</b></p>
 <p><b>Proposal.</b> Publish the fair, market and difference columns even while the market column is empty: three headers, two blanks, and a cell that says why. The column contract is then in place when prices arrive.</p>
 <p class="m"><b>Evidence.</b> All 13 originated rows already carry empty market fields (V11, V12).</p>
 <p class="m"><b>Unblocks.</b> R4</p>
@@ -176,6 +192,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S17">
 <h3><span class="mono">S17</span> Model <span class="bad p3">P3 - low</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Report model accuracy against a published naive baseline (home team by a fixed margin, or last week&#x27;s spread) so &#x27;MAE 10.52&#x27; has something to be better than.</p>
 <p class="m"><b>Evidence.</b> Walk-forward MAE 10.52, r 0.20, n 121, with no baseline published (V10, Q18).</p>
 <p class="m"><b>Unblocks.</b> Q18</p>
@@ -185,6 +202,7 @@ marked <b>PROPOSED</b>.</p></div>
 </div>
 <div class="rq" id="S18">
 <h3><span class="mono">S18</span> Governance <span class="bad p2">P2 - medium</span></h3>
+<p class="m"><b>Status.</b> PROPOSED - not started</p>
 <p><b>Proposal.</b> Adopt an as-of contract for every dataset: each file declares the week, the retrieval timestamp and the source URL in the data itself, so no reader has to infer a cut-off.</p>
 <p class="m"><b>Evidence.</b> A prior session published a false &#x27;standings lag the finished game&#x27; flag purely because no cut-off was recorded anywhere.</p>
 <p class="m"><b>Unblocks.</b> R2, R6</p>
