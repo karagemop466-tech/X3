@@ -282,7 +282,7 @@
   },
   "games__bengals-at-commanders-2026-reg-11": {
    "url": "https://www.nfl.com/games/bengals-at-commanders-2026-reg-11",
-   "html_bytes": 1087143,
+   "html_bytes": 1087098,
    "text_bytes": 8429,
    "lines": 558,
    "tabbed_cell_lines": 0
@@ -849,7 +849,7 @@
   },
   "games__jaguars-at-titans-2026-reg-10": {
    "url": "https://www.nfl.com/games/jaguars-at-titans-2026-reg-10",
-   "html_bytes": 1136778,
+   "html_bytes": 1136906,
    "text_bytes": 8821,
    "lines": 615,
    "tabbed_cell_lines": 0
@@ -1220,7 +1220,7 @@
   },
   "games__steelers-at-browns-2026-reg-4": {
    "url": "https://www.nfl.com/games/steelers-at-browns-2026-reg-4",
-   "html_bytes": 1231722,
+   "html_bytes": 1231764,
    "text_bytes": 6353,
    "lines": 413,
    "tabbed_cell_lines": 0
@@ -1353,7 +1353,7 @@
   },
   "games__vikings-at-packers-2026-reg-10": {
    "url": "https://www.nfl.com/games/vikings-at-packers-2026-reg-10",
-   "html_bytes": 1155157,
+   "html_bytes": 1155028,
    "text_bytes": 8709,
    "lines": 615,
    "tabbed_cell_lines": 0
@@ -1402,7 +1402,7 @@
   },
   "schedule-w10": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
-   "html_bytes": 2372306,
+   "html_bytes": 2372305,
    "text_bytes": 8739,
    "lines": 492,
    "tabbed_cell_lines": 0

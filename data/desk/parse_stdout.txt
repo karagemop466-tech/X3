@@ -1,11 +1,8 @@
-Traceback (most recent call last):
-  File "/home/runner/work/X3/X3/scripts/desk_parse.py", line 331, in <module>
-    sys.exit(main(sys.argv[1], sys.argv[2]))
-             ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/X3/X3/scripts/desk_parse.py", line 281, in main
-    games += parse_schedule(f"schedule-w{w}", f.read_text(errors="replace"))
-             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/X3/X3/scripts/desk_parse.py", line 61, in parse_schedule
-    week = int(re.search(r"week-(\d+)", page).group(1))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'group'
+{
+ "problems": 12,
+ "games": 0,
+ "final": 0,
+ "standings": 32,
+ "injuries": 1372,
+ "depth_clubs": 32
+}

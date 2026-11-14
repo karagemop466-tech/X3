@@ -1,11 +1,34 @@
 PASS schedule-w1 captured
-Traceback (most recent call last):
-  File "/home/runner/work/X3/X3/scripts/desk_parse_selftest.py", line 68, in <module>
-    sys.exit(main(sys.argv[1]))
-             ~~~~^^^^^^^^^^^^^
-  File "/home/runner/work/X3/X3/scripts/desk_parse_selftest.py", line 31, in main
-    rows = P.parse_schedule(f"schedule-w{w}", f.read_text(errors="replace"))
-  File "/home/runner/work/X3/X3/scripts/desk_parse.py", line 61, in parse_schedule
-    week = int(re.search(r"week-(\d+)", page).group(1))
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'group'
+FAIL schedule-w1 parsed rows  [0 games, 0 final]
+PASS schedule-w1 all clubs mapped
+PASS schedule-w1 dates parsed
+PASS schedule-w9 captured
+FAIL schedule-w9 parsed rows  [0 games, 0 final]
+PASS schedule-w9 all clubs mapped
+PASS schedule-w9 dates parsed
+PASS schedule-w10 captured
+FAIL schedule-w10 parsed rows  [0 games, 0 final]
+PASS schedule-w10 all clubs mapped
+PASS schedule-w10 dates parsed
+PASS schedule-w11 captured
+FAIL schedule-w11 parsed rows  [0 games, 0 final]
+PASS schedule-w11 all clubs mapped
+PASS schedule-w11 dates parsed
+PASS injuries-w9 captured
+PASS injuries-w9 rows  [362 rows, 30 teams]
+PASS injuries-w9 team headers  [30 teams]
+PASS injuries-w10 captured
+PASS injuries-w10 rows  [345 rows, 28 teams]
+PASS injuries-w10 team headers  [28 teams]
+PASS standings captured
+PASS standings 32 rows  [32]
+PASS standings clubs unique
+PASS depth-ARI captured
+PASS depth-ARI units  [3 units]
+PASS depth-ARI slots
+
+4 failing checks
+  - schedule-w1 parsed rows
+  - schedule-w9 parsed rows
+  - schedule-w10 parsed rows
+  - schedule-w11 parsed rows
