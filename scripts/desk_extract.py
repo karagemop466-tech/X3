@@ -65,14 +65,16 @@ def main(src: str, dst: str) -> int:
     textdir = out / "text"
     textdir.mkdir(parents=True, exist_ok=True)
     report = {"pages": {}, "notes": []}
-    for f in sorted(cap.glob("*.html")):
+    for f in sorted(cap.rglob("*.html")):
+        rel = f.relative_to(cap)
         raw = f.read_text(errors="replace")
         txt = text_of(raw)
-        (textdir / (f.stem + ".txt")).write_text(txt)
-        (textdir / (f.stem + ".links")).write_text(links_of(raw))
+        stem = "__".join(rel.with_suffix("").parts)
+        (textdir / (stem + ".txt")).write_text(txt)
+        (textdir / (stem + ".links")).write_text(links_of(raw))
         lines = txt.splitlines()
-        report["pages"][f.stem] = {
-            "url": CAPTURE_URLS.get(f.name, ""),
+        report["pages"][stem] = {
+            "url": CAPTURE_URLS.get(f.name, "") or ("https://www.nfl.com/games/" + f.stem.replace("-2026-reg-", "-2026-reg-")),
             "html_bytes": len(raw),
             "text_bytes": len(txt),
             "lines": len(lines),
