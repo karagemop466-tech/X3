@@ -208,7 +208,7 @@ def parse_schedule(page_name: str, raw: str) -> list[dict]:
     finals = [r for r in unique if r["status"] == "FINAL"]
     if not unique:
         problem(page_name, "no games parsed")
-    elif week <= 10 and len(finals) < 10:
+    elif week < 10 and len(finals) < 12:
         problem(page_name, f"only {len(finals)} finals parsed from week {week}")
     return unique
 
@@ -322,7 +322,7 @@ def cmd_results() -> int:
         else:
             for week in WEEKS:
                 url = SCHEDULE_URL.format(week)
-                dest = CAPTURE / f"week-{week}.html"
+                dest = CAPTURE / f"schedule-w{week}.html"
                 d = get(url, dest)
                 diag["pages"].append(d)
                 flush()
@@ -330,7 +330,7 @@ def cmd_results() -> int:
                     PROBLEMS.append({"page": f"week-{week}",
                                      "problem": f"fetch failed ({d.get('error', d['status'])})"})
                     continue
-                all_rows.extend(parse_schedule(f"week-{week}.html",
+                all_rows.extend(parse_schedule(dest.stem,
                                                dest.read_text(errors="replace")))
                 time.sleep(1)
         ts = now_iso()
