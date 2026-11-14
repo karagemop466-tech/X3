@@ -3,12 +3,12 @@
  "schema": "market_id | week | game | market | open_model | close_model | open_market | close_market | move | source. Market columns stay null until a licensed feed is attached; the schema does not change when it is.",
  "snapshots": [
   {
-   "snapshot_id": "SNAP-2026-11-14-003",
-   "sha256": "0c767a4148ff055ed54bee8bcd18cdfe3919fc5164a9066238cf2bc0c1482e93",
-   "prev_sha256": "3883b8815f51c8511c66ac044a822028bfb4f0f9e13ec1c8e14bc81bdee252f3",
+   "snapshot_id": "SNAP-2026-11-14-001",
+   "sha256": "749643be87e7329c3f7ebe70cfa57564a6227c64380d46289a7e538e81fa6b98",
+   "prev_sha256": "GENESIS",
    "markets": 78,
    "as_of": "2026-11-14",
-   "path": "data/ops/snapshots/SNAP-2026-11-14-003.json"
+   "path": "data/ops/snapshots/SNAP-2026-11-14-001.json"
   }
  ],
  "chain_ok": true,
@@ -27,7 +27,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-BUF-NYJ-SIDE",
@@ -43,7 +43,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-BUF-NYJ-TOTAL",
@@ -59,7 +59,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-CAR-NO-ML",
@@ -75,7 +75,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-CAR-NO-SIDE",
@@ -91,7 +91,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-CAR-NO-TOTAL",
@@ -107,7 +107,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-HOU-CLE-ML",
@@ -123,7 +123,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-HOU-CLE-SIDE",
@@ -139,7 +139,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-HOU-CLE-TOTAL",
@@ -155,7 +155,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-JAX-TEN-ML",
@@ -171,7 +171,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-JAX-TEN-SIDE",
@@ -187,7 +187,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-JAX-TEN-TOTAL",
@@ -203,7 +203,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-KC-ATL-ML",
@@ -219,7 +219,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-KC-ATL-SIDE",
@@ -235,7 +235,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-KC-ATL-TOTAL",
@@ -251,7 +251,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-LA-ARI-ML",
@@ -267,7 +267,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-LA-ARI-SIDE",
@@ -283,7 +283,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-LA-ARI-TOTAL",
@@ -299,7 +299,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-LAC-BAL-ML",
@@ -315,7 +315,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-LAC-BAL-SIDE",
@@ -331,7 +331,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-LAC-BAL-TOTAL",
@@ -347,7 +347,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-MIA-IND-ML",
@@ -363,7 +363,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-MIA-IND-SIDE",
@@ -379,7 +379,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-MIA-IND-TOTAL",
@@ -395,7 +395,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-MIN-GB-ML",
@@ -411,7 +411,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-MIN-GB-SIDE",
@@ -427,7 +427,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-MIN-GB-TOTAL",
@@ -443,7 +443,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-NE-DET-ML",
@@ -459,7 +459,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-NE-DET-SIDE",
@@ -475,7 +475,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-NE-DET-TOTAL",
@@ -491,7 +491,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-PIT-CIN-ML",
@@ -507,7 +507,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-PIT-CIN-SIDE",
@@ -523,7 +523,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-PIT-CIN-TOTAL",
@@ -539,7 +539,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-SEA-LV-ML",
@@ -555,7 +555,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-SEA-LV-SIDE",
@@ -571,7 +571,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-SEA-LV-TOTAL",
@@ -587,7 +587,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-SF-DAL-ML",
@@ -603,7 +603,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-SF-DAL-SIDE",
@@ -619,7 +619,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "10-SF-DAL-TOTAL",
@@ -635,7 +635,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-ARI-KC-ML",
@@ -651,7 +651,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-ARI-KC-SIDE",
@@ -667,7 +667,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-ARI-KC-TOTAL",
@@ -683,7 +683,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-BAL-CAR-ML",
@@ -699,7 +699,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-BAL-CAR-SIDE",
@@ -715,7 +715,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-BAL-CAR-TOTAL",
@@ -731,7 +731,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-CIN-WAS-ML",
@@ -747,7 +747,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-CIN-WAS-SIDE",
@@ -763,7 +763,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-CIN-WAS-TOTAL",
@@ -779,7 +779,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-IND-HOU-ML",
@@ -795,7 +795,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-IND-HOU-SIDE",
@@ -811,7 +811,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-IND-HOU-TOTAL",
@@ -827,7 +827,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-JAX-NYG-ML",
@@ -843,7 +843,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-JAX-NYG-SIDE",
@@ -859,7 +859,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-JAX-NYG-TOTAL",
@@ -875,7 +875,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-LV-DEN-ML",
@@ -891,7 +891,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-LV-DEN-SIDE",
@@ -907,7 +907,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-LV-DEN-TOTAL",
@@ -923,7 +923,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-MIA-BUF-ML",
@@ -939,7 +939,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-MIA-BUF-SIDE",
@@ -955,7 +955,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-MIA-BUF-TOTAL",
@@ -971,7 +971,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-MIN-SF-ML",
@@ -987,7 +987,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-MIN-SF-SIDE",
@@ -1003,7 +1003,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-MIN-SF-TOTAL",
@@ -1019,7 +1019,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-NO-CHI-ML",
@@ -1035,7 +1035,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-NO-CHI-SIDE",
@@ -1051,7 +1051,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-NO-CHI-TOTAL",
@@ -1067,7 +1067,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-NYJ-LAC-ML",
@@ -1083,7 +1083,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-NYJ-LAC-SIDE",
@@ -1099,7 +1099,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-NYJ-LAC-TOTAL",
@@ -1115,7 +1115,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-PIT-PHI-ML",
@@ -1131,7 +1131,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-PIT-PHI-SIDE",
@@ -1147,7 +1147,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-PIT-PHI-TOTAL",
@@ -1163,7 +1163,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-TB-DET-ML",
@@ -1179,7 +1179,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-TB-DET-SIDE",
@@ -1195,7 +1195,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-TB-DET-TOTAL",
@@ -1211,7 +1211,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-TEN-DAL-ML",
@@ -1227,7 +1227,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-TEN-DAL-SIDE",
@@ -1243,7 +1243,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   },
   {
    "market_id": "11-TEN-DAL-TOTAL",
@@ -1259,7 +1259,7 @@
    "close_market": null,
    "market_reason": "NO_OFFICIAL_SOURCE",
    "open_snapshot": "SNAP-2026-11-14-001.json",
-   "close_snapshot": "SNAP-2026-11-14-003.json"
+   "close_snapshot": "SNAP-2026-11-14-001.json"
   }
  ],
  "counts": {

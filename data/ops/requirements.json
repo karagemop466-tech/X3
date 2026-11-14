@@ -1,0 +1,149 @@
+{
+ "as_of": "2026-11-14",
+ "rows": [
+  {
+   "id": "R-01",
+   "area": "Data",
+   "status": "VERIFIED",
+   "where": "snapshots.html",
+   "req": "Price-snapshot store records an opening and a closing number for every market we originate",
+   "evidence": "78 markets x open + close, 1 hash-chained snapshot file, 0 with an official market price (none exists)"
+  },
+  {
+   "id": "R-02",
+   "area": "Data",
+   "status": "VERIFIED",
+   "where": "results.html",
+   "req": "Verified results feed, so backtests and ROI can be computed at all",
+   "evidence": "137 finals from official week pages, reconciled against official standings on all 32 clubs"
+  },
+  {
+   "id": "R-03",
+   "area": "Model",
+   "status": "DERIVED",
+   "where": "order.html",
+   "req": "Originate the side first, then the total, then the moneyline",
+   "evidence": "fixed code path in scripts/ops_model.py; moneyline is Phi(side/sigma) so it cannot contradict the side"
+  },
+  {
+   "id": "R-04",
+   "area": "Model",
+   "status": "PARTIAL",
+   "where": "lines.html",
+   "req": "Publish the model's fair line, the market line and the difference as separate columns",
+   "evidence": "fair and difference columns present; market column null with reason NO_OFFICIAL_SOURCE on every row"
+  },
+  {
+   "id": "R-05",
+   "area": "Governance",
+   "status": "VERIFIED",
+   "where": "leaderboard.html",
+   "req": "Separate signal from staking so a lucky staking run cannot mask a bad signal",
+   "evidence": "two independent columns, promotion reads signal only; 5 strategies in paper, 0 live"
+  },
+  {
+   "id": "R-06",
+   "area": "Data",
+   "status": "PARTIAL",
+   "where": "depth.html",
+   "req": "Track the depth of the replacement, not just the fact of a replacement",
+   "evidence": "29 absences resolved with a depth string, 25 published as having nobody below them, 22 not joinable"
+  },
+  {
+   "id": "R-07",
+   "area": "Data",
+   "status": "VERIFIED",
+   "where": "correlation.html",
+   "req": "Compute correlations only from officially sourced numbers and publish n with each value",
+   "evidence": "9 coefficients, each with n, 95% CI and p, all from official pages"
+  },
+  {
+   "id": "R-08",
+   "area": "Governance",
+   "status": "VERIFIED",
+   "where": "gates.html",
+   "req": "Define a demotion gate that sends a live strategy back to paper",
+   "evidence": "6 demotion gates defined; D-1 dry-run gate fires at bet 146"
+  },
+  {
+   "id": "R-09",
+   "area": "Site",
+   "status": "VERIFIED",
+   "where": "index.html",
+   "req": "Clean dashboard landing page with category subpages, all entries in tables",
+   "evidence": "18 pages, one navigation, every data page in table form"
+  },
+  {
+   "id": "R-10",
+   "area": "Governance",
+   "status": "VERIFIED",
+   "where": "requirements.html",
+   "req": "A suggestions section someone can review and choose a path from before anything is implemented",
+   "evidence": "proposal register with status, effort, impact, risk and the decision each needs"
+  },
+  {
+   "id": "R-11",
+   "area": "Governance",
+   "status": "VERIFIED",
+   "where": "questions.html",
+   "req": "A clear list of questions, information and answers that must be settled before a decision",
+   "evidence": "each row carries what we have, what is missing, what it blocks and how to find it"
+  },
+  {
+   "id": "R-12",
+   "area": "Data",
+   "status": "PARTIAL",
+   "where": "props.html",
+   "req": "Single bets, parlays and player-prop bet combos can be originated",
+   "evidence": "10 prop markets and 54 graded legs; parlays blocked on a measured joint probability (G-8) and on market prices (G-5)"
+  },
+  {
+   "id": "R-13",
+   "area": "Data",
+   "status": "VERIFIED",
+   "where": "results.html",
+   "req": "Every table row carries a source link to an official site, or is blank and flagged",
+   "evidence": "enforced by scripts/ops_verify.py on every build and in CI"
+  },
+  {
+   "id": "R-14",
+   "area": "Model",
+   "status": "PARTIAL",
+   "where": "depth.html",
+   "req": "Injury and lineup deficiencies (2nd/3rd/4th string) are tracked for offence and defense",
+   "evidence": "tracked on both sides of the ball ({'secondary': 4, 'offense': 16, 'dline': 2, 'lb': 6, 'kicking': 1}); no validated effect size, so not a model input"
+  },
+  {
+   "id": "R-15",
+   "area": "Model",
+   "status": "PARTIAL",
+   "where": "leaderboard.html",
+   "req": "Leaderboard competition with rewards for top-performing strategies",
+   "evidence": "competition, gates and demotion defined; reward rule undecided, nothing promised"
+  },
+  {
+   "id": "R-16",
+   "area": "Governance",
+   "status": "VERIFIED",
+   "where": "executive-summary.html",
+   "req": "Executive summary outlining the important details",
+   "evidence": "one page: what the desk does, what the data says, what cannot be claimed, decisions needed"
+  },
+  {
+   "id": "R-17",
+   "area": "Data",
+   "status": "VERIFIED",
+   "where": "verification.html",
+   "req": "No manual input: every artifact generated by a committed script",
+   "evidence": "six scripts regenerate the whole tree from official captures; the verification gate proves it"
+  },
+  {
+   "id": "R-18",
+   "area": "Model",
+   "status": "BLOCKED",
+   "where": "lines.html",
+   "req": "Determine correlation values for combos and remove luck from the equation",
+   "evidence": "9 correlations measured with CI; luck bounded by walk-forward, CI and demotion, but never removed - a single game stays mostly noise"
+  }
+ ]
+}

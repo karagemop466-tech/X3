@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL trading desk operations: originated lines, price snapshots, verified results, receiver props, correlation and a signal-vs-staking leaderboard.">
+<title>Method and sources - X3 NFL trading desk</title>
+<link rel="stylesheet" href="assets/ops.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3 <span>NFL trading desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> &middot; season 2026, week 10 of record &middot;
+  <a href="verification.html">verification</a> &middot; <a href="flagged.html">flagged</a></div>
+</header>
+<nav class="main"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="lines.html" class="">Originated lines</a><a href="order.html" class="">Origination order</a><a href="snapshots.html" class="">Price snapshots</a><a href="props.html" class="">Player props</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Gates &amp; demotion</a><a href="correlation.html" class="">Correlation</a><a href="depth.html" class="">Replacement depth</a><a href="results.html" class="">Results feed</a><a href="requirements.html" class="">Requirements</a><a href="questions.html" class="">Open questions</a><a href="suggestions.html" class="">Suggestions</a><a href="method.html" class="on">Method &amp; sources</a><a href="verification.html" class="">Verification</a><a href="flagged.html" class="">Flagged for review</a><a href="repo-review.html" class="">Repo review</a></nav>
+<main>
+<div class="crumb"><a href="../index.html">Site root</a> / <a href="index.html">Trading desk</a></div>
+<h1>Method and sources</h1>
+
+<p class="lede">Method and sources. Every parameter the model uses is printed here with its fitted value, and
+every input is an official page that can be opened and checked by hand. Nothing is imported that is not linked.</p>
+<h2>Sources</h2>
+<div class="tw"><table class=""><caption>Source register</caption><thead><tr><th>Input</th><th>Official URL</th><th>Coverage</th><th>State</th></tr></thead><tbody><tr><td>Game log</td><td>https://www.nfl.com/schedules/2026/by-week/week-1 ... week-11</td><td>137 finals</td><td><span class="badge ok">VERIFIED</span></td></tr><tr><td>Standings</td><td>https://www.nfl.com/standings/league/2026/REG</td><td>32 clubs</td><td><span class="badge ok">VERIFIED</span></td></tr><tr><td>Injury report</td><td>https://www.nfl.com/injuries/league/2026/reg10</td><td>week 10, 345 rows</td><td><span class="badge ok">VERIFIED</span></td></tr><tr><td>Depth charts</td><td>club.com/team/depth-chart (32 clubs)</td><td>32 captured</td><td><span class="badge mid">PARTIAL</span></td></tr><tr><td>Team passing offense</td><td>https://www.nfl.com/stats/team-stats/offense/passing/2026/reg/all</td><td>32 clubs</td><td><span class="badge ok">VERIFIED</span></td></tr><tr><td>Team passing defense</td><td>https://www.nfl.com/stats/team-stats/defense/passing/2026/reg/all</td><td>32 clubs</td><td><span class="badge ok">VERIFIED</span></td></tr><tr><td>Player per-week logs</td><td>nfl.com/players/<player>/stats/</td><td>5 players</td><td><span class="badge ok">VERIFIED</span></td></tr><tr><td>Market prices</td><td>none exists in this repository</td><td>0 rows</td><td><span class="badge bad">BLOCKED</span></td></tr><tr><td>Closing lines</td><td>depends on market prices</td><td>0 rows</td><td><span class="badge bad">BLOCKED</span></td></tr></tbody></table></div>
+<h2>Fitted parameters</h2>
+<div class="tw"><table class=""><caption>Every constant in the model</caption><thead><tr><th>Parameter</th><th>Value</th><th>What it does</th></tr></thead><tbody><tr><td>Shrinkage (pseudo-games)</td><td>2.0</td><td>pulls every club rating toward the league mean; stops a fast start being priced as a champion</td></tr><tr><td>Minimum prior games</td><td>3</td><td>a club with fewer games than this is not priced at all</td></tr><tr><td>Home field (points)</td><td>0.11</td><td>fitted jointly with the ratings, not assumed; neutral sites carry none</td></tr><tr><td>Residual sigma (points)</td><td>10.38</td><td>turns the side into a moneyline probability</td></tr><tr><td>League average total</td><td>45.94</td><td>baseline the pace ratings move away from</td></tr><tr><td>Neutral-site finals</td><td>7</td><td>international games, excluded from the home-field estimate</td></tr><tr><td>Break-even rate at -110</td><td>0.5238</td><td>the rate a bettor must beat; used by the demotion gate</td></tr><tr><td>Decimal odds at -110</td><td>0.909</td><td>for any future ROI arithmetic</td></tr></tbody></table></div>
+<h2>Procedure, exactly</h2>
+<ol>
+<li>Read the official week pages, keep one row per game with both scores, the week, the date and any neutral-site
+banner.</li>
+<li>For a game in week W: fit the side on finals from weeks &lt; W only; fit the total the same way.</li>
+<li>Side = ridge regression of final margin on club identity plus fitted home field; neutral sites carry no
+home-field term. Total = ridge regression of game total on club pace plus a base.</li>
+<li>Moneyline = Phi(side / sigma), so the probability is a function of the spread and cannot contradict it.</li>
+<li>Grade against reality on the following week. Never fit on the game being graded.</li>
+<li>Attach a market price, if one exists. None does, so every market column stays null with reason
+NO_OFFICIAL_SOURCE.</li>
+</ol>
+<h2>Statistical machinery</h2>
+<ul>
+<li><b>Pearson r</b> with a <b>Fisher z</b> 95% interval and a two-sided p from Student t computed through the
+incomplete beta function - no table lookup, no approximation by eye.</li>
+<li><b>Wilson score interval</b> for every proportion (hit rates, over rates). It behaves correctly at small n
+and near 0 or 1, which is where an NFL season lives.</li>
+<li><b>Ridge least squares</b> solved by Gaussian elimination on the normal equations; the matrix is at most
+33x33 and positive definite.</li>
+<li><b>SHA-256 hash chain</b> over every snapshot, so a stored number cannot be edited after the fact.</li>
+</ul>
+<h2>Reproduce</h2>
+<pre><code>python3 scripts/ops_teamstats_source.py   # official team stats + reconciliation assertion
+python3 scripts/ops_model.py              # ratings, origination, backtest
+python3 scripts/ops_join.py               # injury x depth replacement join
+python3 scripts/ops_market.py             # snapshots, props, correlations, leaderboard
+python3 scripts/ops_build.py              # ops/**.html
+python3 scripts/ops_verify.py             # the gate - must print ALL CHECKS PASS</code></pre>
+<p class="note">Deterministic: two consecutive builds produce byte-identical pages, which the verification
+script asserts.</p>
+
+</main>
+<footer>Built by <code>scripts/ops_build.py</code> from <code>data/ops/*.json</code>. Every table row links to
+an official source or is badged. No market price exists in this repository, so market columns are blank by
+policy, never estimated. Shared task board: <a href="../COORDINATION.md">COORDINATION.md</a>.</footer>
+</body></html>

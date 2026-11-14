@@ -213,8 +213,8 @@ def props_block(model, logs):
             ys = [v for _a, b in pairs for v in b]
             if metric == "receptions":
                 by[metric] = corr_row("receptions vs same-game receiving yards (pooled across players)",
-                                      xs, ys, "prop-combo screening", "official player pages",
-                                      "pooled correlation over 5 players; see the within-player version below")
+                                      xs, ys, "prop-combo screening", logs["players"][0]["url"],
+                                      "pooled correlation over every logged player; see the within-player version below")
     return rows, backtest, [agg("receiving yards"), agg("receptions")], by
 
 
@@ -257,7 +257,7 @@ def correlations_block(model, games, standings, teamstats, logs):
         ys += [r["yds"] - my for r in rs]
     if xs:
         rows.append(corr_row("receptions vs receiving yards, within player (fixed effects)",
-                             xs, ys, "prop leg shopping: same-player combo", "official player pages",
+                             xs, ys, "prop leg shopping: same-player combo", logs["players"][0]["url"],
                              "removes between-player talent so the coefficient measures the same-game relationship"))
     # same-team two-player yard correlation (CIN pair) - the only club with two logged players
     by_team = {}
@@ -315,15 +315,9 @@ def write_snapshots(model):
     exists; the model price is never allowed into the market field.
     """
     os.makedirs(SNAP_DIR, exist_ok=True)
-    prev = "GENESIS"
     index = []
-    seq = 0
     existing = sorted(f for f in os.listdir(SNAP_DIR) if f.startswith("SNAP-"))
-    for f in existing:                      # keep the chain over what is already on disk
-        try:
-            prev = json.load(open(os.path.join(SNAP_DIR, f), encoding="utf-8"))["sha256"]
-        except Exception:
-            pass
+    prev = "GENESIS"
 
     markets = []
     for g in model["originated"]:
@@ -344,14 +338,28 @@ def write_snapshots(model):
             "schema_version": 1, "prev_sha256": prev, "source": "data/ops/model.json"}
     digest = _sha(body)
     body["sha256"] = digest
-    rec = {"snapshot_id": f"SNAP-{AS_OF}-{len(existing) + 1:03d}", "sha256": digest,
-           "prev_sha256": prev, "markets": len(markets), "as_of": AS_OF,
-           "path": f"data/ops/snapshots/SNAP-{AS_OF}-{len(existing) + 1:03d}.json"}
-    path = os.path.join(SNAP_DIR, f"SNAP-{AS_OF}-{len(existing) + 1:03d}.json")
-    if not os.path.exists(path):
-        with open(path, "w", encoding="utf-8") as f:
+    body["prev_sha256"] = prev
+    # Find the newest existing snapshot: if the markets are unchanged, reuse it (so re-running
+    # the build is a no-op); otherwise append the next sequence number in the chain.
+    last = existing[-1] if existing else None
+    same = False
+    if last:
+        try:
+            d = json.load(open(os.path.join(SNAP_DIR, last), encoding="utf-8"))
+            same = d.get("markets") == markets and d.get("as_of") == AS_OF
+        except Exception:
+            same = False
+    if same:
+        digest = d["sha256"]
+        name = last
+        body = d
+    else:
+        name = f"SNAP-{AS_OF}-{len(existing) + 1:03d}.json"
+        with open(os.path.join(SNAP_DIR, name), "w", encoding="utf-8") as f:
             json.dump(body, f, indent=1, sort_keys=True)
-    index.append(rec)
+    index.append({"snapshot_id": name[:-5], "sha256": digest,
+                  "prev_sha256": body.get("prev_sha256", "GENESIS"),
+                  "markets": len(markets), "as_of": AS_OF, "path": f"data/ops/snapshots/{name}"})
 
     # opening/closing view over every capture on disk
     opens, closes = {}, {}

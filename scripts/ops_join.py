@@ -92,54 +92,70 @@ def build():
         if not c or not c.get("units"):
             unmatched.append({**base, "reason": "club depth chart not machine-readable in capture"})
             continue
-        # Walk the chart in its own printed order across every slot of the same position,
-        # so a club that lists two CB columns is read the way the club prints it.
-        found = None
-        ordered = []
+        # Build the club's printed depth ladder for this player's ROLE GROUP: every slot whose
+        # position code is in the same role group (so G, LG and RG form one interior-line ladder,
+        # and CB and DB form one secondary ladder), in the order the club prints them. A slot in a
+        # different role group is never traversed - a kick returner is not a running back.
+        grp = group(pos) if pos else None
+        ladder, slot_tiers_of_hit, hit_slot = [], None, None
         for u in c["units"]:
             for slot in u.get("slots", []):
-                if slot.get("pos") == pos:
-                    for names in (slot.get("tiers") or []):
-                        ordered.extend(names)
-        if ordered:
-            for i, nm in enumerate(ordered):
-                if norm(nm) == norm(player):
-                    found = ("chart-order", pos, i, [ordered[j:j + 1] for j in range(len(ordered))])
-                    break
-        if not found:
-            for u in c["units"]:
-                for slot in u.get("slots", []):
-                    if slot.get("pos") != pos:
-                        continue
-                    tiers = slot.get("tiers") or []
-                    for ti, names in enumerate(tiers):
-                        for nm in names:
-                            if norm(nm) == norm(player):
-                                found = (u.get("unit", ""), slot.get("pos", ""), ti, tiers)
-                                break
-                        if found:
-                            break
-                    if found:
-                        break
-                if found:
-                    break
-        if not found:
-            unmatched.append({**base, "reason": "player not listed on his own club's depth chart"})
+                if grp and group(slot.get("pos", "")) != grp:
+                    continue
+                for names in (slot.get("tiers") or []):
+                    for nm in names:
+                        ladder.append({"name": nm, "slot_pos": slot.get("pos", ""), "tiers": slot.get("tiers") or []})
+        hit = next((i for i, x in enumerate(ladder) if norm(x["name"]) == norm(player)), None)
+        if hit is None:
+            # name exists on the chart, but only at a position in another role group -> refused
+            anywhere = any(norm(nm) == norm(player)
+                           for u in c["units"] for sl in u.get("slots", [])
+                           for nm in [n for t in (sl.get("tiers") or []) for n in t])
+            if anywhere:
+                partial.append({**base, "reason": "name appears only at a position in a different role group - refused"})
+            else:
+                unmatched.append({**base, "reason": "player not listed on his own club's depth chart"})
             continue
-        unit, slot_pos, tier, tiers = found
-        if group(slot_pos) != group(pos) and pos:
-            partial.append({**base, "unit": unit, "slot_pos": slot_pos, "depth_string": tier + 1,
-                            "reason": f"name appears at {slot_pos} but the report lists {pos} - not treated as a match"})
-            continue
-        if found[2] is not None and found[0] == "chart-order":
-            nxt = ordered[found[2] + 1] if found[2] + 1 < len(ordered) else None
-            rep, rep_depth = (nxt, found[2] + 2) if nxt else (None, None)
+        h = ladder[hit]
+        tiers = h["tiers"]
+        slot_tiers_of_hit = tiers
+        # inside the hit slot, find the tier index of the player
+        tier = next((ti for ti, names in enumerate(tiers) if any(norm(n) == norm(player) for n in names)), 0)
+        # --- the two honest scalars, no synthesis ---
+        # column_rank : which column at this exact position code is he printed in (1-based).
+        #               3 = the club printed two earlier WR columns before his.
+        # tier        : his depth inside his own column. 1 = the starter of that column.
+        cols = []
+        for x in ladder[:hit + 1]:
+            if x["slot_pos"] not in cols:
+                cols.append(x["slot_pos"])
+        column_rank = len(cols)
+        tier_number = tier + 1
+        duplicate = sum(1 for x in ladder if norm(x["name"]) == norm(player)) > 1
+
+        # --- replacement, only ever at the SAME position code ---
+        # 1. next man in his own column (the club's own answer)
+        # 2. first name in the next column at the same position code
+        # Anything further down a different position code is NOT a replacement at this position,
+        # so it is recorded as "no backup at this position" instead of being invented.
+        rep, rep_kind, rep_col, rep_tier = "", "", None, None
+        if tier + 1 < len(tiers) and tiers[tier + 1]:
+            rep, rep_kind, rep_col, rep_tier = tiers[tier + 1][0], "next man in his own column", column_rank, tier_number + 1
         else:
-            rep, rep_depth = second(tiers[tier])
-        row = {**base, "unit": unit, "slot_pos": slot_pos, "depth_string": tier + 1,
-               "chart_size": len(tiers), "replacement": rep or "", "replacement_depth": rep_depth}
+            same = [x for x in ladder[hit + 1:] if x["slot_pos"] == h["slot_pos"]]
+            if same:
+                rep, rep_kind, rep_col, rep_tier = same[0]["name"], "first man in the next column at this position", column_rank + 1, 1
+        row = {**base, "unit": "", "slot_pos": h["slot_pos"],
+               "depth_string": column_rank, "chart_size": len([x for x in ladder if x["slot_pos"] == h["slot_pos"]]),
+               "pos_tier": tier_number, "pos_column": column_rank,
+               "replacement": rep, "replacement_depth": rep_col,
+               "replacement_tier": rep_tier,
+               "replacement_kind": rep_kind,
+               "replacement_by_slot": rep if rep_kind.startswith("next man") else "",
+               "duplicate_listing": duplicate,
+               "reading": (f'column {column_rank} at {h["slot_pos"]}, tier {tier_number} inside it')}
         if not rep:
-            no_backup.append({**row, "reason": "no name below him on his own club's chart"})
+            no_backup.append({**row, "reason": "the club lists nobody else at this position code below him"})
         else:
             out.append(row)
 
@@ -149,6 +165,14 @@ def build():
     by_rep = {}
     for r in out:
         by_rep[str(r["replacement_depth"])] = by_rep.get(str(r["replacement_depth"]), 0) + 1
+    by_tier = {}
+    for r in out:
+        by_tier[str(r["pos_tier"])] = by_tier.get(str(r["pos_tier"]), 0) + 1
+    by_starters = sum(1 for r in out if r["pos_column"] == 1 and r["pos_tier"] == 1)
+    by_kind = {}
+    for r in out:
+        by_kind[r["replacement_kind"]] = by_kind.get(r["replacement_kind"], 0) + 1
+    dupes = [f'{r["team"]} {r["player"]}' for r in out + no_backup if r.get("duplicate_listing")]
     by_group = {}
     for r in out:
         g = group(r["pos"])
@@ -174,13 +198,17 @@ def build():
         "matched_wrong_position": len(partial),
         "unmatched": len(unmatched),
         "by_depth_string": by_depth,
+        "by_pos_tier": by_tier,
+        "by_replacement_kind": by_kind,
+        "starters_affected_column1_tier1": by_starters,
+        "duplicate_chart_listings": dupes,
         "by_replacement_depth": by_rep,
         "by_group": by_group,
         "charts_with_as_of_date": sum(1 for a in chart_as_of if chart_as_of[a]),
         "charts_labelled_unofficial": sum(1 for a in chart_unofficial if chart_unofficial[a]),
         "charts_total": len(chart),
     }
-    joined_exact = [r for r in out if r["depth_string"] == 1]
+    joined_exact = [r for r in out if r["pos_column"] == 1 and r["pos_tier"] == 1]
     summary["starter_absences_with_a_named_backup"] = len(joined_exact)
     summary["starter_absences_needing_2nd_or_deeper"] = sum(1 for r in out if r["replacement_depth"] and r["replacement_depth"] >= 2)
 

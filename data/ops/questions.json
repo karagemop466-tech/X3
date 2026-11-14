@@ -1,0 +1,95 @@
+{
+ "as_of": "2026-11-14",
+ "rows": [
+  {
+   "id": "Q-01",
+   "status": "BLOCKED",
+   "look": "suggestions.html",
+   "question": "Where does a market price come from, and may this repository store it?",
+   "have": "0 market prices; a snapshot schema that already carries the field",
+   "missing": "a licensed feed, or written permission to record public board prices with timestamps",
+   "blocks": "every market column, ROI, CLV, staking, promotion"
+  },
+  {
+   "id": "Q-02",
+   "status": "OPEN",
+   "look": "suggestions.html",
+   "question": "What exactly is scored and rewarded on the leaderboard?",
+   "have": "signal and staking measured separately; promotion reads signal",
+   "missing": "a rule naming which column pays, who pays, and under what terms",
+   "blocks": "rewards, competition start"
+  },
+  {
+   "id": "Q-03",
+   "status": "OPEN",
+   "look": "depth.html",
+   "question": "Is a club-published depth chart an acceptable input for a price?",
+   "have": "32 charts captured; 14 self-labelled unofficial",
+   "missing": "an authoritative depth source, or an owner decision to accept the club's own",
+   "blocks": "any injury-driven adjustment to a line"
+  },
+  {
+   "id": "Q-04",
+   "status": "BLOCKED",
+   "look": "method.html",
+   "question": "How much history is available to fit on?",
+   "have": "89 walk-forward games from one partial season",
+   "missing": "prior seasons; the 200-bet gate cannot be met on this sample",
+   "blocks": "any skill claim, the FDR control"
+  },
+  {
+   "id": "Q-05",
+   "status": "ANSWERED",
+   "look": "order.html",
+   "question": "Can the side, total and moneyline be made mutually consistent?",
+   "have": "yes - the moneyline is generated from the side as Phi(side/sigma)",
+   "missing": "nothing",
+   "blocks": "nothing"
+  },
+  {
+   "id": "Q-06",
+   "status": "PARTIAL",
+   "look": "correlation.html",
+   "question": "What is the joint probability of two legs in the same game?",
+   "have": "9 coefficients; the parlay-relevant pair is measured at n=8",
+   "missing": "a same-game joint sample large enough to price a combo",
+   "blocks": "parlays, prop combos"
+  },
+  {
+   "id": "Q-07",
+   "status": "ANSWERED",
+   "look": "gates.html",
+   "question": "Can a demotion rule be made to actually fire?",
+   "have": "yes at a 100-bet window; a 40-bet window provably cannot fire above 35% accuracy",
+   "missing": "nothing - the dry run is in the repo",
+   "blocks": "nothing"
+  },
+  {
+   "id": "Q-08",
+   "status": "PARTIAL",
+   "look": "props.html",
+   "question": "How many players need official per-week logs before props are representative?",
+   "have": "5 players logged, all with reconciliation to season totals",
+   "missing": "a league-wide per-week feed (400+ skill players)",
+   "blocks": "a representative prop board"
+  },
+  {
+   "id": "Q-09",
+   "status": "OPEN",
+   "look": "results.html",
+   "question": "Who settles a result - the box score, the official stat feed, or the book's rules?",
+   "have": "official final scores; official per-week player lines",
+   "missing": "a written settlement rule for props (e.g. does a stat correction after the game change a settled bet)",
+   "blocks": "grading any prop bet"
+  },
+  {
+   "id": "Q-10",
+   "status": "OPEN",
+   "look": "suggestions.html",
+   "question": "Which jurisdiction and rule set would any reward scheme sit under?",
+   "have": "nothing asserted",
+   "missing": "a decision; this desk makes no legal claim either way",
+   "blocks": "any real-money or prize element"
+  }
+ ]
+}

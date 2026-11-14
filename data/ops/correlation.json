@@ -110,7 +110,7 @@
    ],
    "p": 0.0,
    "used_for": "prop leg shopping: same-player combo",
-   "source": "official player pages",
+   "source": "https://www.nfl.com/players/ceedee-lamb/stats/",
    "note": "removes between-player talent so the coefficient measures the same-game relationship",
    "reading": "CI excludes 0 at n=42"
   },

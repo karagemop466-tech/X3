@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL trading desk operations: originated lines, price snapshots, verified results, receiver props, correlation and a signal-vs-staking leaderboard.">
+<title>Executive summary - X3 NFL trading desk</title>
+<link rel="stylesheet" href="assets/ops.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3 <span>NFL trading desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> &middot; season 2026, week 10 of record &middot;
+  <a href="verification.html">verification</a> &middot; <a href="flagged.html">flagged</a></div>
+</header>
+<nav class="main"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="on">Executive summary</a><a href="lines.html" class="">Originated lines</a><a href="order.html" class="">Origination order</a><a href="snapshots.html" class="">Price snapshots</a><a href="props.html" class="">Player props</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Gates &amp; demotion</a><a href="correlation.html" class="">Correlation</a><a href="depth.html" class="">Replacement depth</a><a href="results.html" class="">Results feed</a><a href="requirements.html" class="">Requirements</a><a href="questions.html" class="">Open questions</a><a href="suggestions.html" class="">Suggestions</a><a href="method.html" class="">Method &amp; sources</a><a href="verification.html" class="">Verification</a><a href="flagged.html" class="">Flagged for review</a><a href="repo-review.html" class="">Repo review</a></nav>
+<main>
+<div class="crumb"><a href="../index.html">Site root</a> / <a href="index.html">Trading desk</a></div>
+<h1>Executive summary</h1>
+
+<p class="lede">Executive summary. Every figure below is computed by a committed script from official inputs;
+none is typed by hand. Where a number cannot exist, the reason is stated instead of a placeholder.</p>
+
+<h2>1. What this desk now does</h2>
+<ul>
+<li><b>Originates side, then total, then moneyline</b> for all 26
+week-11 games, using ratings fitted on weeks 1-10 only. The moneyline is a transform of the side, so the three
+markets cannot contradict each other (<a href="order.html">detailed here</a>).</li>
+<li><b>Stores an opening and a closing number for every market</b>: 78 markets across
+1 immutable, hash-chained snapshot file.</li>
+<li><b>Grades against official final scores</b>: 89 walk-forward games, each linked to the official
+nfl.com week page. MAE 9.263 pts on the margin, 11.414 on the total, Brier
+0.217 on the home-win probability.</li>
+<li><b>Prices receiver props</b> from official per-week player logs: 10 markets across
+5 players, with a 54-leg walk-forward backtest.</li>
+<li><b>Tracks replacement depth</b>: of the 76 week-10 Out/Doubtful designations,
+45 resolve to a named backup at a known depth string, 8 have
+nobody below them on their own club's chart, 22 cannot be joined at all.</li>
+<li><b>Publishes 9 correlations with n and CI</b>, and a leaderboard that scores signal and
+staking separately, with 5 strategies in paper and 0 live.</li>
+</ul>
+
+<h2>2. What the data actually says</h2>
+<div class="tw"><table class=""><caption>Headline measurements</caption><thead><tr><th>Finding</th><th>Value</th><th>n</th><th>CI95</th><th>Reading</th></tr></thead><tbody><tr><td>Model side picks the winner</td><td>0.659</td><td>88</td><td>0.555 - 0.75</td><td>well above a coin flip, but n is under the 200-bet skill bar, so it is not a skill claim yet</td></tr><tr><td>Always-home baseline</td><td>0.443</td><td>88</td><td>0.344 - 0.547</td><td>the no-skill reference the model must beat, and does</td></tr><tr><td>Side + total two-leg parlay</td><td>0.375</td><td>88</td><td>0.281 - 0.479</td><td>worse than the product of its marginals - the legs are not independent, which is exactly why G-8 blocks it</td></tr><tr><td>Receiving-yards line is fair</td><td>0.444 over-rate</td><td>27</td><td>0.276 - 0.627</td><td>indistinguishable from a coin flip, i.e. the line is not yet a signal</td></tr></tbody></table></div>
+
+<h2>3. What cannot be claimed</h2>
+<div class="callout warn"><ul>
+<li><b>No ROI, no CLV, no profitability.</b> There is no official market price in this repository, so the
+difference column, the staking column and closing-line value are all mechanically blank. This is a data gap,
+not a modelling result.</li>
+<li><b>No validated skill.</b> The 200-bet sample gate is not met by any strategy; the strongest signal has
+n=88.</li>
+<li><b>No injury-adjusted price.</b> The replacement-depth join exists and is published, but no validated
+points-per-replacement effect size exists, so it is deliberately not an input to any price.</li>
+<li><b>No claim that the depth charts are current.</b> Most clubs label them "unofficial" and only
+1 of 32 captured charts prints an as-of date.</li>
+</ul></div>
+
+<h2>4. Decisions this desk needs from you</h2>
+<div class="tw"><table class=""><thead><tr><th>#</th><th>Decision</th><th>Why it blocks progress</th><th>Options on the table</th></tr></thead><tbody><tr><td>1</td><td>Attach a licensed market-price feed (or authorise one to be recorded)</td><td>Without it, fair-vs-market, ROI, CLV and the whole staking column stay blank</td><td><a href="suggestions.html">S-01, S-02</a></td></tr><tr><td>2</td><td>Choose the leaderboard's reward rule</td><td>Rewards change behaviour; the competition cannot start without a rule</td><td><a href="leaderboard.html">reward section</a></td></tr><tr><td>3</td><td>Accept or reject using club depth charts as the depth input</td><td>14 of 32 captured charts are self-labelled unofficial, and 22 absences cannot be joined</td><td><a href="depth.html">depth page</a></td></tr><tr><td>4</td><td>Widen the data capture to prior seasons</td><td>One partial season cannot support a 200-bet skill claim at any reasonable bet rate</td><td><a href="questions.html">Q-04</a></td></tr></tbody></table></div>
+<p class="note">Full register: <a href="requirements.html">Requirements</a> ·
+<a href="questions.html">Open questions</a> · <a href="suggestions.html">Suggestions</a> ·
+<a href="flagged.html">Flagged for review</a>.</p>
+
+</main>
+<footer>Built by <code>scripts/ops_build.py</code> from <code>data/ops/*.json</code>. Every table row links to
+an official source or is badged. No market price exists in this repository, so market columns are blank by
+policy, never estimated. Shared task board: <a href="../COORDINATION.md">COORDINATION.md</a>.</footer>
+</body></html>
