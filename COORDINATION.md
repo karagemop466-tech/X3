@@ -569,3 +569,51 @@ Claim recorded and pushed before implementation. Initial discovery: the checked-
 ### PR / deployment record
 - **PR #19:** https://github.com/karagemop466-tech/X3/pull/19 — `arena/361edc3f-x3` → `main`; merged 2026-11-14 at 18:08 UTC. Merge commit: `4166f1f83e6de27dd77281a5bbb7fe93d9396478`.
 - The post-merge build + deploy workflow run [43624884173](https://github.com/karagemop466-tech/X3/actions/runs/43624884173) and Pages build/deployment run [43624883989](https://github.com/karagemop466-tech/X3/actions/runs/43624883989) both completed successfully. Pages API reports `built`; live URL: https://karagemop466-tech.github.io/X3/.
+
+---
+
+## Session `arena/3bf7cc8b-x3` — consolidated decision desk (integration session)
+
+- **Session ID:** `arena/3bf7cc8b-x3`
+- **Branch:** `arena/3bf7cc8b-x3` (platform-assigned; the `session-<id>/<task>` naming is not usable here)
+- **Role:** integration session. No other session branch is open on `origin` at claim time
+  (`git branch -r` → `origin/main` only; last merge PR #20). If a new session appears,
+  this section will be updated before any shared file is touched again.
+- **Claim recorded before any edit**, 2026-11-14. Commit pushed immediately after this claim.
+
+### File scope claimed (non-overlapping)
+
+| Path | Purpose |
+|------|---------|
+| `data/desk/**` | New verified datasets built this session (2026 game log, model outputs, correlations, deficiency join, registries) |
+| `desk/**` | New consolidated dashboard site: landing page + category subpages + per-row source links |
+| `scripts/desk_build.py` | Deterministic build: `data/desk/*.json` → `desk/**` |
+| `scripts/desk_verify.py` | Line-by-line verification gate (row-level source check, PF/PA reconciliation, link check) |
+| `scripts/desk_fetch_notes.md` | Fetch/transcription notes for every dataset |
+| `index.html` | **Shared output** (integration role): canonical landing page pointing at `desk/` |
+| `.github/workflows/pages.yml` | **Shared output** (integration role): add the `desk` verification step only; nothing removed |
+| `README.md` | **Shared output** (integration role): append this session's section only |
+| `COORDINATION.md` | This section only |
+
+**Deliberately not touched:** `docs/**`, `dashboard/**`, `x3lab/**`, `lab/**`, `pages/**`,
+`site/**`, `legacy/**`, `analysis/**`, `research/**`, `data/*.csv` (existing), `tools/**`,
+`scripts/*.py` (existing). Those remain the record of prior sessions and stay linked from
+`desk/archive.html`.
+
+### Task board (arena/3bf7cc8b-x3)
+
+| ID | Task | Status | Files | Sources / verification |
+|----|------|--------|-------|------------------------|
+| D01 | Coordination claim | done | `COORDINATION.md` | this section; pushed before edits |
+| D02 | Repo line-by-line review + irregularity log | in progress | `desk/repo-review.html` | file inventory, git history, prior-session claims |
+| D03 | Verified 2026 game log W1–W10 | in progress | `data/desk/games_2026.json` | nfl.com per-week schedule pages, one URL per game |
+| D04 | Own-line model (opponent-adjusted ratings, measured HFA, totals) | unclaimed | `data/desk/model.json` | inputs = verified game log only |
+| D05 | Correlation values with n and 95% CI | unclaimed | `data/desk/correlations.json` | computed from official scores; no invented coefficients |
+| D06 | Strategy competition, gates, rewards, leaderboard | unclaimed | `data/desk/strategies.json` | hypotheses labelled as such |
+| D07 | Injury → depth-string deficiency join | unclaimed | `data/desk/deficiencies.json` | nfl.com injury report + club depth charts (club-published) |
+| D08 | Questions / missing information / decisions | unclaimed | `desk/questions.html` | evidence boundary stated per row |
+| D09 | Suggestions for review before implementation | unclaimed | `desk/suggestions.html` | nothing implemented without a recorded decision |
+| D10 | Executive summary | unclaimed | `desk/executive-summary.html` | counts computed at build time |
+| D11 | Consolidated dashboard site + link check | unclaimed | `desk/**` | every table row has a source link or UNVERIFIED flag |
+| D12 | Verification gate green | unclaimed | `scripts/desk_verify.py` | runs locally and in CI |
+| D13 | PR → merge → Pages deploy confirmation | unclaimed | `COORDINATION.md` | PR link + run IDs recorded below |
