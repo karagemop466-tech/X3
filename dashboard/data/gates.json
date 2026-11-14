@@ -1,86 +1,93 @@
 [
- {
-  "id": "G-01",
-  "gate": "Pre-registration",
-  "threshold": "Parameters, selection rule and staking rule are committed to the repo and timestamped before any graded result is recorded.",
-  "why": "Anything tuned after seeing results is hindsight, not skill.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-02",
-  "gate": "Minimum sample",
-  "threshold": "At least 200 graded bets at the declared unit size.",
-  "why": "Below roughly this sample the confidence interval on ROI is wider than any plausible edge.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-03",
-  "gate": "Out-of-sample holdout",
-  "threshold": "Graded only on results dated after the pre-registration timestamp.",
-  "why": "In-sample performance does not predict out-of-sample performance.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-04",
-  "gate": "Break-even after vig",
-  "threshold": "Modelled edge must exceed the book's overround on the relevant market.",
-  "why": "Beating a number that already contains the margin is the only definition of profitable.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-05",
-  "gate": "Statistical significance",
-  "threshold": "Two-sided test of hit rate against the implied break-even probability; nominal p below 0.05.",
-  "why": "Separates a real edge from a run of luck.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-06",
-  "gate": "Multiplicity control",
-  "threshold": "Benjamini-Hochberg FDR at 10% applied within the declared strategy family.",
-  "why": "With many strategies, naive p-values manufacture winners.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-07",
-  "gate": "Bootstrap stability",
-  "threshold": "The 5th percentile of a bet-level bootstrap of ROI is above zero.",
-  "why": "Guards against a result carried by a handful of outliers.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-08",
-  "gate": "Parameter sensitivity",
-  "threshold": "Edge remains positive across the full pre-declared parameter neighbourhood, not only at the fitted point.",
-  "why": "A sharp optimum is usually a fitted artefact.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-09",
-  "gate": "Capacity and line availability",
-  "threshold": "The line was actually obtainable at the recorded price for the declared stake.",
-  "why": "A price you cannot get is not an edge.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-10",
-  "gate": "Time stability",
-  "threshold": "Edge is not concentrated in a single season-week or a single team.",
-  "why": "Concentration means the signal is really one event, not a strategy.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-11",
-  "gate": "Data freshness",
-  "threshold": "Every input row used by the signal carries a fetch timestamp earlier than kickoff.",
-  "why": "A signal built on post-kickoff data is not tradeable.",
-  "blocking": "Yes"
- },
- {
-  "id": "G-12",
-  "gate": "Correlation disclosure",
-  "threshold": "Every parlay or prop combo declares its estimated leg correlation and the estimator's fit window.",
-  "why": "Undeclared correlation understates parlay variance.",
-  "blocking": "Yes"
- }
+  {
+    "id": "G-01",
+    "gate": "Pre-registration",
+    "threshold": "Parameters, selection rule and staking rule are committed to the repo and timestamped before any graded result is recorded.",
+    "why": "Anything tuned after seeing results is hindsight, not skill.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-02",
+    "gate": "Minimum sample",
+    "threshold": "At least 200 graded bets at the declared unit size.",
+    "why": "Below roughly this sample the confidence interval on ROI is wider than any plausible edge.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-03",
+    "gate": "Out-of-sample holdout",
+    "threshold": "Graded only on results dated after the pre-registration timestamp.",
+    "why": "In-sample performance does not predict out-of-sample performance.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-04",
+    "gate": "Break-even after vig",
+    "threshold": "Modelled edge must exceed the book's overround on the relevant market.",
+    "why": "Beating a number that already contains the margin is the only definition of profitable.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-05",
+    "gate": "Statistical significance",
+    "threshold": "Two-sided test of hit rate against the implied break-even probability; nominal p below 0.05.",
+    "why": "Separates a real edge from a run of luck.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-06",
+    "gate": "Multiplicity control",
+    "threshold": "Benjamini-Hochberg FDR at 10% applied within the declared strategy family.",
+    "why": "With many strategies, naive p-values manufacture winners.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-07",
+    "gate": "Bootstrap stability",
+    "threshold": "The 5th percentile of a bet-level bootstrap of ROI is above zero.",
+    "why": "Guards against a result carried by a handful of outliers.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-08",
+    "gate": "Parameter sensitivity",
+    "threshold": "Edge remains positive across the full pre-declared parameter neighbourhood, not only at the fitted point.",
+    "why": "A sharp optimum is usually a fitted artefact.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-09",
+    "gate": "Capacity and line availability",
+    "threshold": "The line was actually obtainable at the recorded price for the declared stake.",
+    "why": "A price you cannot get is not an edge.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-10",
+    "gate": "Time stability",
+    "threshold": "Edge is not concentrated in a single season-week or a single team.",
+    "why": "Concentration means the signal is really one event, not a strategy.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-11",
+    "gate": "Data freshness",
+    "threshold": "Every input row used by the signal carries a fetch timestamp earlier than kickoff.",
+    "why": "A signal built on post-kickoff data is not tradeable.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-12",
+    "gate": "Correlation disclosure",
+    "threshold": "Every parlay or prop combo declares its estimated leg correlation and the estimator's fit window.",
+    "why": "Undeclared correlation understates parlay variance.",
+    "blocking": "Yes"
+  },
+  {
+    "id": "G-13",
+    "gate": "Demotion gate (live strategy -> paper)",
+    "threshold": "A live strategy is demoted back to paper trading if it fails G-05 (significance), fails G-07 (bootstrap stability), breaches its pre-registered maximum drawdown, violates G-11 (data freshness / post-kickoff input), or fails to disclose parlay/prop-leg correlation (G-12).",
+    "why": "A live edge can decay; a demotion gate stops a decaying strategy from being mistaken for skill and keeps it out of the live leaderboard until it re-qualifies.",
+    "blocking": "Yes - demotes live to paper; must re-pre-register and re-pass gates to return to live"
+  }
 ]
