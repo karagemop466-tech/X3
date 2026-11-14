@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 348,
+      "rows": 349,
       "flagged_rows": 230,
-      "refs": 383,
+      "refs": 384,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -14,6 +14,17 @@
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
         "index.html: Category Primary page (open) What you will find Data status Official source"
+      ]
+    },
+    "audit": {
+      "pages": 1,
+      "rows": 368,
+      "flagged_rows": 365,
+      "refs": 390,
+      "unsourced_examples": [
+        "audit/index.html: ID Issue Repo value Official value Proposed action Sources",
+        "audit/index.html: Game (away @ home) Day Time Network (schedule) Note Injury page kickoff Injury page TV Sources",
+        "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
       ]
     },
     "dashboard": {
@@ -87,18 +98,18 @@
     },
     "verification-hub": {
       "pages": 1,
-      "rows": 32,
-      "flagged_rows": 13,
-      "refs": 26,
+      "rows": 38,
+      "flagged_rows": 17,
+      "refs": 32,
       "unsourced_examples": [
         "verification-hub/index.html: (root pages) 13 348 230 383 index.html",
+        "verification-hub/index.html: audit/ 1 368 365 390 audit/index.html",
         "verification-hub/index.html: dashboard/ 18 797 681 1,192 dashboard/index.html",
         "verification-hub/index.html: docs/ 24 1,009 846 1,334 docs/index.html",
         "verification-hub/index.html: pages/ 6 82 54 87 pages/executive-summary.html",
         "verification-hub/index.html: verification-hub/ 1 32 13 26 this page",
-        "verification-hub/index.html: Total 88 2,268 1,824 1,302 internal \u2014",
-        "verification-hub/index.html: Dataset Official page (link) Verification performed Result",
-        "verification-hub/index.html: Check Command Covers Last result Owner session"
+        "verification-hub/index.html: Total 89 2,636 2,189 1,303 internal \u2014",
+        "verification-hub/index.html: Dataset Official page (link) Verification performed Result"
       ]
     },
     "x3lab": {
@@ -109,9 +120,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 88,
-  "rows_total": 2268,
-  "rows_flagged_or_sourced": 1824,
-  "internal_refs": 1302,
+  "pages_total": 89,
+  "rows_total": 2643,
+  "rows_flagged_or_sourced": 2193,
+  "internal_refs": 1305,
   "problems": []
 }

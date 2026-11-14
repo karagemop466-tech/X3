@@ -27,6 +27,7 @@
     <thead><tr><th>Unit</th><th>Pages</th><th>Table rows</th><th>Rows sourced or flagged</th><th>Refs</th><th>Entry page</th></tr></thead>
     <tbody>
       <tr><td>(root pages)</td><td>13</td><td>348</td><td>230</td><td>383</td><td><a href="../index.html">index.html</a></td></tr>
+      <tr><td>audit/</td><td>1</td><td>368</td><td>365</td><td>390</td><td><a href="../audit/index.html">audit/index.html</a></td></tr>
       <tr><td>dashboard/</td><td>18</td><td>797</td><td>681</td><td>1,192</td><td><a href="../dashboard/index.html">dashboard/index.html</a></td></tr>
       <tr><td>docs/</td><td>24</td><td>1,009</td><td>846</td><td>1,334</td><td><a href="../docs/index.html">docs/index.html</a></td></tr>
       <tr><td>lab/</td><td>11</td><td>0 (client-side render)</td><td>n/a — render test covers rows</td><td>33</td><td><a href="../lab/index.html">lab/index.html</a></td></tr>
@@ -35,7 +36,7 @@
       <tr><td>site/</td><td>1</td><td>0</td><td>n/a</td><td>13</td><td><a href="../site/index.html">site/index.html</a></td></tr>
       <tr><td>x3lab/</td><td>13</td><td>0 (client-side render)</td><td>n/a — render test covers rows</td><td>83</td><td><a href="../x3lab/index.html">x3lab/index.html</a></td></tr>
       <tr><td>verification-hub/</td><td>1</td><td>32</td><td>13</td><td>26</td><td>this page</td></tr>
-      <tr><td><strong>Total</strong></td><td><strong>88</strong></td><td><strong>2,268</strong></td><td><strong>1,824</strong></td><td><strong>1,302 internal</strong></td><td>—</td></tr>
+      <tr><td><strong>Total</strong></td><td><strong>89</strong></td><td><strong>2,636</strong></td><td><strong>2,189</strong></td><td><strong>1,303 internal</strong></td><td>—</td></tr>
     </tbody>
   </table>
   <p><strong>Result: 0 parse problems, 0 broken internal links.</strong></p>
@@ -73,6 +74,24 @@
       <tr><td>Pages workflow audit</td><td>GitHub Actions “Deploy X3 NFL site to GitHub Pages”</td><td>HTML/link audit, docs rows, root pages, dashboard checks, upload</td><td>Runs on every push/PR to main</td><td>arena/1a771fcd-x3</td></tr>
     </tbody>
   </table>
+</section>
+
+<section>
+  <h2>3b · Corrections applied to the shared dataset (verified first, logged)</h2>
+  <p>Requested by session <code>arena/d968fa97-x3</code> (audit unit) and re-verified independently by this
+  session against the official pages before applying to <code>docs/data/injury-2026-week10.csv</code>:</p>
+  <table>
+    <thead><tr><th>Ref</th><th>Correction</th><th>Rows</th><th>Official basis (fetched 2026-11-14)</th></tr></thead>
+    <tbody>
+      <tr><td>F-A01</td><td>Game label <code>NE vs DET (Munich)</code> → <code>NE @ DET (Munich)</code></td><td>24</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com schedule page</a>: “Patriots at Lions, Sunday, November 15th, 9:30 AM, FOX”, tagged International Game · Munich</td></tr>
+      <tr><td>F-A02</td><td>TV field <code>ESPN, ABC, ESPN2</code> → <code>ESPN, ABC, ESPN2, ESPN DEPORTES</code></td><td>27</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com injury page</a> (the rows' own source) prints the full list; cross-checked: <a href="https://www.nfl.com/games/chargers-at-ravens-2026-reg-10">game page</a> shows ESPN+ABC logos, schedule page lists ESPN (primary) — the injury page is the sourced page and is the most complete official listing</td></tr>
+      <tr><td>F-A03</td><td>Per-row source URL generic injuries index → week permalink <code>.../reg10</code></td><td>345</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">Week-10 injury report permalink</a> — each row now traces to the exact report</td></tr>
+      <tr><td>S-N2</td><td>Standings CSV source URL generic → league permalink</td><td>32</td><td><a href="https://www.nfl.com/standings/league/2026/REG">nfl.com/standings/league/2026/REG</a> (values already verified 32/32 exact)</td></tr>
+    </tbody>
+  </table>
+  <p>After regeneration (<code>tools/build_data_pages.py</code>) and re-verification: <code>tools/verify_site.py</code>,
+  <code>scripts/check_site.py</code>, and this integration audit all PASS. The audit unit's
+  <code>audit/diff_report.csv</code> is preserved as the pre-correction comparison record.</p>
 </section>
 
 <section>
