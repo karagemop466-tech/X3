@@ -529,3 +529,35 @@ role). No other session's files were modified.
   link the extended research tree `docs/pages/` from `lab/index.html` (currently reachable via the
   `docs/` dashboard at `docs/index.html`). Logged here instead of editing `lab/` files, per the
   coordination protocol.
+
+---
+
+## Session `arena/1e2d8ef2-x3` — integration + review hub (CLAIM)
+
+- **Session ID:** `session-arena-1e2d8ef2-x3` · **Branch:** `arena/1e2d8ef2-x3` (platform-fixed; the
+  `session-<id>/<task>` naming in the brief is not available on this platform — deviation logged, same
+  as every prior session). **Base:** `54608abc` (main after PR #18).
+- **Role taken:** final integration session for shared outputs. Eight merged sessions each shipped
+  their own site tree (`/`, `docs/`, `dashboard/`, `lab/`, `x3lab/`, `pages/`, `site/`, `legacy/`); no
+  session consolidated them. That consolidation is this session's job, so the shared outputs
+  (`index.html`, `COORDINATION.md`, `README.md`) are edited here under the integration exception.
+- **Scope claimed (this session):**
+  | Path | Purpose |
+  |---|---|
+  | `hub/**` | new consolidated review hub: landing + category subpages, one table row = one source link |
+  | `hub/data/**.json` | single source of truth for the hub, transcribed from official pages |
+  | `scripts/build_hub.py` | deterministic generator for `hub/**` (fails on any row without a source or UNVERIFIED) |
+  | `scripts/check_hub.py` | link + row-source + JSON gate for the hub |
+  | `index.html` | root landing page (replaces the bare `<meta http-equiv=refresh>` redirect; every archive kept linked) |
+  | `COORDINATION.md`, `README.md` | this section + append-only notes |
+- **Explicitly NOT touched:** `docs/**`, `dashboard/**`, `lab/**`, `x3lab/**`, `pages/**`, `site/**`,
+  `legacy/**`, `data/**`, `analysis/**`, `research/**`, `assets/**`, `scripts/*` owned by other
+  sessions, `tools/*` owned by other sessions, `.github/workflows/pages.yml`.
+- **Open overlap:** PR #12 (`arena/972ad7a5-x3`) is still OPEN and touches `README.md` /
+  `COORDINATION.md` / `index.html`. `arena/64164906-x3` has 5 failing `data-pipeline` workflow runs.
+  Both are logged, not edited. If PR #12 lands first, this branch re-merges `main` additively.
+- **Tasks:** T1 repo audit + irregularities · T2 official data refresh (standings, Week 10 injuries,
+  schedule/results) · T3 line-origination strategy catalog + validation gates + luck controls ·
+  T4 correlation register · T5 injury + depth-deficiency tracker · T6 suggestions review queue ·
+  T7 questions/knowledge-gap register · T8 executive summary · T9 Flagged for Review ·
+  T10 hub build + checks · T11 PR + merge + Pages deploy confirmation. **Status: in progress.**
