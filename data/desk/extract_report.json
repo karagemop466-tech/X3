@@ -16,7 +16,7 @@
   },
   "depth-BAL": {
    "url": "",
-   "html_bytes": 298866,
+   "html_bytes": 299005,
    "text_bytes": 5103,
    "lines": 220,
    "tabbed_cell_lines": 0
@@ -254,14 +254,14 @@
   },
   "schedule-w1": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-1",
-   "html_bytes": 2354655,
+   "html_bytes": 2354783,
    "text_bytes": 8783,
    "lines": 477,
    "tabbed_cell_lines": 0
   },
   "schedule-w10": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-10",
-   "html_bytes": 2372307,
+   "html_bytes": 2372306,
    "text_bytes": 8739,
    "lines": 492,
    "tabbed_cell_lines": 0
@@ -275,21 +275,21 @@
   },
   "schedule-w2": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-2",
-   "html_bytes": 2345366,
+   "html_bytes": 2345365,
    "text_bytes": 8743,
    "lines": 475,
    "tabbed_cell_lines": 0
   },
   "schedule-w3": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-3",
-   "html_bytes": 2353028,
+   "html_bytes": 2352898,
    "text_bytes": 8781,
    "lines": 477,
    "tabbed_cell_lines": 0
   },
   "schedule-w4": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-4",
-   "html_bytes": 2353153,
+   "html_bytes": 2353152,
    "text_bytes": 8728,
    "lines": 477,
    "tabbed_cell_lines": 0
@@ -303,28 +303,28 @@
   },
   "schedule-w6": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-6",
-   "html_bytes": 2323195,
+   "html_bytes": 2323323,
    "text_bytes": 8710,
    "lines": 471,
    "tabbed_cell_lines": 0
   },
   "schedule-w7": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-7",
-   "html_bytes": 2323109,
+   "html_bytes": 2323372,
    "text_bytes": 8719,
    "lines": 471,
    "tabbed_cell_lines": 0
   },
   "schedule-w8": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-8",
-   "html_bytes": 2318856,
+   "html_bytes": 2318727,
    "text_bytes": 8689,
    "lines": 469,
    "tabbed_cell_lines": 0
   },
   "schedule-w9": {
    "url": "https://www.nfl.com/schedules/2026/by-week/week-9",
-   "html_bytes": 2339494,
+   "html_bytes": 2339495,
    "text_bytes": 8745,
    "lines": 475,
    "tabbed_cell_lines": 0
