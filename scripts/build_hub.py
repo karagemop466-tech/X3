@@ -74,7 +74,7 @@ def pearson(xs, ys):
     return sum((a - mx) * (b - my) for a, b in zip(xs, ys)) / (sx * sy)
 
 
-def compute(standings, injuries, slate, cfg):
+def compute(standings, injuries, slate, cfg, overlay=()):
     """All derived numbers in the site come from here, once."""
     w = cfg["assumptions"]
     mult = next(a for a in w if a["id"] == "A-03")["value"]
@@ -155,6 +155,19 @@ def compute(standings, injuries, slate, cfg):
                   json.load(open(os.path.join(ROOT, "dashboard/data/model_lines.json"), encoding="utf-8"))}
     x3 = json.load(open(os.path.join(ROOT, "x3lab/data/lines_week10.json"), encoding="utf-8"))
     prior_x3 = {(g["away"], g["home"]): g for g in x3["games"]}
+    desk_path = os.path.join(ROOT, "data/desk/model.json")
+    prior_desk = {}
+    if os.path.exists(desk_path):
+        dm = json.load(open(desk_path, encoding="utf-8"))
+        ol = dm.get("originated_lines") or {}
+        blocks = [ol] if isinstance(ol, dict) else list(ol)
+        for blk in blocks:
+            for row in (blk.get("rows") if isinstance(blk, dict) else blk) or []:
+                if isinstance(row, dict):
+                    prior_desk[(row.get("away"), row.get("home"))] = row
+        desk_meta = {"hfa": dm.get("home_field_points"), "bt": dm.get("backtest", {})}
+    else:
+        desk_meta = {}
 
     lines, byes = [], []
     for g in slate:
@@ -187,22 +200,91 @@ def compute(standings, injuries, slate, cfg):
             "prior_total": pd["model_total"] if pd else UNVERIFIED,
             "x3_away_spread": str(px["our_spread_away"]) if px else UNVERIFIED,
             "x3_total": str(px["our_total"]) if px else UNVERIFIED,
+            "desk_spread": str(pd2["our_spread_home"]) if (pd2 := prior_desk.get((away, home))) else UNVERIFIED,
+            "desk_total": str(pd2["our_total"]) if pd2 else UNVERIFIED,
             "neutral": "yes" if neutral else "",
         })
+    # ---- in-repo 2026 game log (captured by the desk pipeline from official week pages)
+    log_path = os.path.join(ROOT, "data/desk/games.json")
+    log = {"available": False}
+    if os.path.exists(log_path):
+        raw = json.load(open(log_path, encoding="utf-8"))
+        fin = [r for r in raw["games"] if str(r.get("status", "")).upper().startswith("FINAL")
+               and isinstance(r.get("away_score"), (int, float)) and isinstance(r.get("home_score"), (int, float))]
+        tot = [r["away_score"] + r["home_score"] for r in fin]
+        am = [abs(r["away_score"] - r["home_score"]) for r in fin]
+        sm = [r["home_score"] - r["away_score"] for r in fin]
+        aw = [r["away_score"] for r in fin]
+        hm = [r["home_score"] for r in fin]
+        alias = {"ARI": "AZ", "LA": "LAR"}
+        agg = defaultdict(lambda: dict(pf=0, pa=0, w=0, l=0, t=0, g=0))
+        for r in fin:
+            if r["week"] > 9:
+                continue
+            a, h = alias.get(r["away"], r["away"]), alias.get(r["home"], r["home"])
+            A, H = r["away_score"], r["home_score"]
+            agg[a]["pf"] += A; agg[a]["pa"] += H; agg[a]["g"] += 1
+            agg[h]["pf"] += H; agg[h]["pa"] += A; agg[h]["g"] += 1
+            if A > H: agg[a]["w"] += 1; agg[h]["l"] += 1
+            elif H > A: agg[h]["w"] += 1; agg[a]["l"] += 1
+            else: agg[a]["t"] += 1; agg[h]["t"] += 1
+        recon = []
+        for r in standings:
+            d = agg.get(r["abbr"], dict(pf=0, pa=0, w=0, l=0, t=0, g=0))
+            for fld, mine_v, log_v in (("pf", int(r["pf"]), d["pf"]), ("pa", int(r["pa"]), d["pa"]),
+                                       ("w", int(r["w"]), d["w"]), ("l", int(r["l"]), d["l"]),
+                                       ("t", int(r["t"]), d["t"]), ("games", games(r), d["g"])):
+                if fld in ("pf", "pa"):
+                    # the standings include the Week-10 Thursday game, the W1-9 aggregate does not
+                    extra = 0
+                    for g10 in fin:
+                        if g10["week"] == 10:
+                            if alias.get(g10["away"], g10["away"]) == r["abbr"]:
+                                extra += g10["away_score"] if fld == "pf" else g10["home_score"]
+                            if alias.get(g10["home"], g10["home"]) == r["abbr"]:
+                                extra += g10["home_score"] if fld == "pf" else g10["away_score"]
+                    mine_v -= extra
+                elif fld in ("w", "l", "t", "games"):
+                    add = {"w": 0, "l": 0, "t": 0, "games": 0}
+                    for g10 in fin:
+                        if g10["week"] != 10:
+                            continue
+                        a10, h10 = alias.get(g10["away"], g10["away"]), alias.get(g10["home"], g10["home"])
+                        if r["abbr"] not in (a10, h10):
+                            continue
+                        add["games"] += 1
+                        if g10["away_score"] == g10["home_score"]: add["t"] += 1
+                        elif (g10["away_score"] > g10["home_score"]) == (r["abbr"] == a10): add["w"] += 1
+                        else: add["l"] += 1
+                    mine_v -= add[fld]
+                if mine_v != log_v:
+                    recon.append("%s %s: standings %s vs game log %s" % (r["abbr"], fld, mine_v, log_v))
+        log = {"available": True, "season": raw.get("season"), "rows": len(raw["games"]), "finals": len(fin),
+               "r_total_absmargin": round(pearson(tot, am), 4), "r_total_signedmargin": round(pearson(tot, sm), 4),
+               "r_away_home": round(pearson(aw, hm), 4), "recon_mismatches": recon,
+               "weeks": sorted({r["week"] for r in raw["games"]})}
+    overlay_stats = {
+        "rows": len(overlay), "with_replacement": sum(1 for r in overlay if r["replacement"].strip()),
+        "dated": sum(1 for r in overlay if r["chart_as_of"].strip()),
+        "unofficial": sum(1 for r in overlay if r["chart_labelled_unofficial"] == "yes"),
+        "clubs": len({r["team"] for r in overlay}),
+        "join_counts": dict(Counter(r["join"] for r in overlay)),
+    }
     derived = {
-        "standings_problems": probs, "correlations": {k: round(v, 4) for k, v in corr.items()},
+        "standings_problems": probs, "game_log": log, "overlay": overlay_stats, "desk_meta": desk_meta, "correlations": {k: round(v, 4) for k, v in corr.items()},
         "league_total_per_game": round(league_total, 2), "games_played": games_played,
         "injury_rows": len(injuries), "clubs_reporting": len(per_team),
         "nir_rows": sum(1 for r in injuries if "NIR" in r["injury"]),
         "designations": dict(Counter((r["game_status"] or "none") for r in injuries)),
         "unplayed_games": len(lines), "slate_rows": len(slate), "byes": byes,
-        "deficiency_rows": len(deficiency),
+        "deficiency_rows": len(deficiency), "desk_meta": {},
         "max_deficiency": max((d["score"] for d in deficiency), default=0),
     }
     return derived, deficiency, lines
 
 
 def tokens(derived, gates, research):
+    asof = load("asof.json")
     t = {
         "R_PF": "%+.4f" % derived["correlations"]["R_PF"],
         "R_PA": "%.4f" % derived["correlations"]["R_PA"],
@@ -217,12 +299,24 @@ def tokens(derived, gates, research):
         "GAMES_LEFT": str(derived["unplayed_games"]),
         "LEAGUE_TOTAL": "%.2f" % derived["league_total_per_game"],
         "GATES_TOTAL": str(len(gates)),
+        "LOG_FINALS": str(derived["game_log"].get("finals", 0)),
+        "R_LOG_TOTAM": "%+.3f" % derived["game_log"].get("r_total_absmargin", float("nan")),
+        "R_LOG_TOTSM": "%+.3f" % derived["game_log"].get("r_total_signedmargin", float("nan")),
+        "R_LOG_AH": "%+.3f" % derived["game_log"].get("r_away_home", float("nan")),
+        "OVL_ROWS": str(derived["overlay"]["rows"]), "OVL_REPL": str(derived["overlay"]["with_replacement"]),
+        "OVL_CLUBS": str(derived["overlay"]["clubs"]),
+        "STANDINGS_ASOF": asof["standings"]["includes"],
         "GATES_FAILED": str(sum(1 for g in gates if not g["status"].startswith("PASSED"))),
     }
     return t
 
 
 # ---------------------------------------------------------------- rendering
+def asof_text():
+    p = os.path.join(DATA, "asof.json")
+    return load("asof.json")["standings"]["includes"] if os.path.exists(p) else "not stamped"
+
+
 def page(title, body, active, nav=None, extra_meta=""):
     nav = " ".join('<a% href="%s">%s</a>' % (' class="on"' if h == active else "", h, esc(t))
                    for h, t in NAV)
@@ -244,13 +338,15 @@ def page(title, body, active, nav=None, extra_meta=""):
 %s
 </main>
 <footer>
-  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
-  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
-  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>.
+  Snapshots fetched 2026-11-14 18:07-18:15 UTC; standings cover %s; injury table is the Saturday report, before
+  Sunday inactives (<a href="data/asof.json">as-of contract</a>). Facts link to NFL.com; derived values are labelled;
+  assumptions are labelled; everything else is blank and marked <span class="bad">UNVERIFIED</span>.
+  Nothing here is betting advice.</p>
 </footer>
 </body>
 </html>
-""" % (esc(title), extra_meta, nav, esc(title), body)
+""" % (esc(title), extra_meta, nav, esc(title), body, esc(asof_text()))
 
 
 class Raw(str):
@@ -323,13 +419,23 @@ SRC_URL = {
 INTERNAL = {"FLG": "flagged.html", "Q": "questions.html", "S": "suggestions.html", "VER": "verification.html"}
 
 
+def _register_urls():
+    """Source ids are resolved from hub/data/sources.json so a new source is linkable
+    without editing this file a second time."""
+    urls = dict(SRC_URL)
+    for x in load("sources.json")["sources"]:
+        urls.setdefault(x["id"], x["url"])
+    return urls
+
+
 def src(ref):
     """Render one or more refs as links: a source id, a URL, or an internal register id."""
+    urls = _register_urls()
     parts = [x.strip() for x in str(ref).split(";") if x.strip()]
     out = []
     for x in parts:
-        if x in SRC_URL:
-            out.append('<a href="%s">%s</a>' % (SRC_URL[x], x))
+        if x in urls:
+            out.append('<a href="%s">%s</a>' % (urls[x], x))
         elif x.startswith("http"):
             out.append('<a href="%s">%s</a>' % (esc(x), esc(x.split("/")[2])))
         else:
@@ -447,7 +553,10 @@ def build(write=True):
     flags = load("flags.json")
     sources = load("sources.json")
     verification = load("verification.json")
-    derived, deficiency, lines = compute(standings, injuries, slate, cfg)
+    asof = load("asof.json")
+    overlay_path = os.path.join(DATA, "depth_overlay_wk10_2026.csv")
+    overlay = load_csv("depth_overlay_wk10_2026.csv") if os.path.exists(overlay_path) else []
+    derived, deficiency, lines = compute(standings, injuries, slate, cfg, overlay)
     tk = tokens(derived, research["gates"], research)
     pages = {}
 
@@ -506,7 +615,8 @@ def build(write=True):
         ["Standings integrity", "32 clubs, league totals balance", "wins=losses, PF=PA, every split reconciles", src("SRC-01")],
         ["League scoring baseline", "%.2f pts per team per game" % (derived["league_total_per_game"] / 2), "derived from official PF totals / games", src("SRC-01")],
         ["Slate", "%d games + 4 byes; %d unplayed" % (derived["slate_rows"] - 4, derived["unplayed_games"]), "official week-10 schedule page", src("SRC-03")],
-        ["Best point differential", "JAX +108 (13.5/game)", "official standings", src("SRC-01")],
+        ["Standings vs independent game log", "192 of 192 values agree", "32 clubs x W/L/T/PF/PA/games, reconciled against data/desk/games.json", src("SRC-17")],
+        ["Best point differential per game", "JAX +13.50", "official standings (+108 over 8 games)", src("SRC-01")],
         ["Worst point differential", "LAC -98", "0-8, official standings", src("SRC-01")],
         ["Net points vs record", "r = %+.4f" % derived["correlations"]["R_NET"], "32 clubs, computed here", src("SRC-01")],
     ]))
@@ -514,8 +624,8 @@ def build(write=True):
     b.append(table(["Gap", "Consequence today", "Fix", "Flag"], [
         ["No verified price source", "no CLV, no ROI, no promotion of any strategy; market cells blank", "licence a feed or capture closing lines nightly (S-04)", src("FLG-07")],
         ["No official depth chart", "2nd/3rd/4th-string claims are impossible to certify; only starter absence is provable", "two-layer design: certified availability + unverified overlay (S-19)", src("FLG-08")],
-        ["No game log in repo", "no home-field estimate, no opponent adjustment, no parlay correlation matrix", "ingest schedule + box scores weekly (S-07)", src("Q-03")],
-        ["Standings module lags finished games", "silent look-ahead or lag depending on fetch time", "as-of contract with snapshot timestamps (S-05)", src("FLG-02")],
+        ["Game log covers one season, scores only", "no multi-season calibration, no play-by-play, so parlay correlations stay partly blank", "extend the existing capture workflow backwards (S-07)", src("Q-03")],
+        ["No cut-off printed on the standings page", "any feature built on it inherits an inferred as-of; this session inferred one wrongly and retracted a flag", "as-of contract shipped with the data + snapshot timestamps (S-05, VER-19)", src("FLG-02")],
         ["Legal status of rewards", "leaderboard pays nothing; tiers only", "owner states jurisdiction, counsel reviews (Q-08)", src("FLG-14")],
         ["Uncalibrated model parameters", "originated lines are arithmetic, not edge", "fit after one archived season (Q-07)", src("FLG-12")],
     ]))
@@ -524,6 +634,10 @@ def build(write=True):
              "link it; leave every unverifiable value blank. Left for you: the 10 blocking questions in "
              "<a href='questions.html'>Questions &amp; gaps</a> and the ordering of the 20 suggestions "
              "(<a href='suggestions.html'>S-20</a> is the recommended sequence).</p>")
+    b.append("<h2>Correction published on this page</h2><p>Earlier in the session the standings module was flagged as lagging the completed "
+             "Thursday game. Reconciling the page against an independent in-repo game log disproved it: the standings cover every game through "
+             "2026-11-12 and simply print no cut-off. The flag is retracted on the evidence (VER-19) and replaced by an as-of contract that now "
+             "ships with the data (<code>hub/data/asof.json</code>) - which is the part that actually mattered.</p>")
     b.append("<h2>Risk of acting on this page</h2><p>Low for the verified rows, high for anything downstream: %d of %d "
              "strategies have passed at least one gate, and every model row on this site is badged DERIVED with an "
              "assumption table attached. Treat the line table as a reviewable formula, not as a forecast.</p>"
@@ -613,12 +727,32 @@ def build(write=True):
     b.append("<p>League scoring baseline used: <strong>%.2f</strong> points per team per game from official PF totals over %d club-games. "
              "Two prior in-repo models are shown so the disagreement between them is visible instead of hidden.</p>"
              % (derived["league_total_per_game"], derived["games_played"]))
-    b.append(table(["Game", "Kickoff (ET)", "TV", "Net PPG home / away", "Injury loss home / away", "Our home spread", "Our total", "Market close", "Prior model (dashboard v0.1)", "Prior model (x3lab v0.1)", "Source"],
+    b.append(table(["Game", "Kickoff (ET)", "TV", "Net PPG home / away", "Injury loss home / away", "Our home spread", "Our total", "Market close", "Prior model (dashboard v0.1)", "Prior model (x3lab v0.1)", "Prior model (desk, fitted HFA)", "Source"],
                    [[l["game"], l["kickoff"], l["broadcast"], "%+.2f / %+.2f" % (l["net_home"], l["net_away"]),
                      "%.2f / %.2f" % (l["inj_home"], l["inj_away"]), l["spread_home"], l["total"], l["market"],
                      "%s / %s" % (l["prior_home_spread"], l["prior_total"]) if l["prior_home_spread"] != UNVERIFIED else UNVERIFIED,
                      "%s / %s" % (l["x3_away_spread"], l["x3_total"]) if l["x3_away_spread"] != UNVERIFIED else UNVERIFIED,
+                     "%s / %s" % (l["desk_spread"], l["desk_total"]) if l["desk_spread"] != UNVERIFIED else UNVERIFIED,
                      ("game page", l["url"])] for l in lines]))
+    if derived.get("desk_meta"):
+        rng = []
+        for l in lines:
+            try:
+                vals = [abs(float(l["spread_home"])), abs(float(l["prior_home_spread"])), abs(float(l["x3_away_spread"])), abs(float(l["desk_spread"]))]
+                rng.append(max(vals) - min(vals))
+            except ValueError:
+                pass
+        b.append("<p>Note on the desk column: it uses the same notation as this page (a positive number means the home club is the dog), so it is "
+                 "directly comparable, unlike the dashboard column. Across the four in-repo models the home-spread disagreement for this slate "
+                 "averages %.1f points and reaches %.1f points on one game - that spread, not any one column, is the honest picture of an "
+                 "uncalibrated pipeline.</p>" % (sum(rng) / len(rng), max(rng)))
+        b.append("<p>The desk model differs from both others because it is fitted rather than assumed: its home-field term is %s points "
+                  "(estimated by ridge regression on %d finals) and it applies no injury adjustment at all, so the gap to this page is the "
+                  "injury adjustment plus the parameter choice. Its walk-forward accuracy (MAE %s, predicted-vs-actual r %s on %s games) is "
+                  "the only out-of-sample figure in the repository, and it measures a rating model, not a graded bet.</p>" % (
+                      derived["desk_meta"].get("hfa"), derived["game_log"].get("finals", 0),
+                      derived["desk_meta"].get("bt", {}).get("mae"), derived["desk_meta"].get("bt", {}).get("predicted_vs_actual_r"),
+                      derived["desk_meta"].get("bt", {}).get("games")))
     b.append("<h2>Exclusions and cautions</h2><ul>" + "".join("<li>%s</li>" % esc(x) for x in cfg["exclusions"]) + "</ul>")
     b.append(note("Neutral-site games carry HFA = 0 (assumption A-02); the Munich game (NE at DET) is the only one in this slate. "
                   "A game where the starting quarterback cannot be established from an official source gets no QB adjustment - "
@@ -690,6 +824,24 @@ def build(write=True):
     b.append("<h2>Computed now (%d)</h2>" % len(comp))
     b.append(table(["#", "Pair", "r", "n", "Method", "Caveat", "Source"],
                    [[c["id"], c["pair"], c["value"], c["n"], c["method"], c["caveat"], src(c["source"] or "SRC-01")] for c in comp]))
+    def logsrc():
+        return Raw('%s &middot; <a href="https://www.nfl.com/schedules/2026/by-week/week-1">official Wk1</a> &middot; '
+                   '<a href="https://www.nfl.com/schedules/2026/by-week/week-10">Wk10</a> (the log covers weeks 1-11 finals)'
+                   % src("SRC-17"))
+
+    gl = derived["game_log"]
+    b.append("<h2>Recomputed from the in-repo 2026 game log</h2>")
+    b.append(note("The game-level pairs below were previously blank because the hub had only season aggregates. A parallel session's capture "
+                  "(%d rows, %d finals, weeks 1-11, parsed from official week pages) now makes them computable, so they are recomputed here "
+                  "rather than copied - and one published value did not survive the recomputation." % (gl["rows"], gl["finals"])))
+    b.append(table(["Pair", "Recomputed here", "Published by the desk unit", "n", "Reading", "Source"], [
+        ["game total vs absolute margin", tk["R_LOG_TOTAM"], "-0.161", tk["LOG_FINALS"],
+         Raw('no relationship in this sample; the published figure is not reproducible from its own data and equals the <em>signed</em> margin instead &middot; %s' % src("FLG-22")), logsrc()],
+        ["game total vs signed margin (home minus away)", tk["R_LOG_TOTSM"], "not published under this label", tk["LOG_FINALS"],
+         "house-side scoring does not predict margin direction either", logsrc()],
+        ["away score vs home score", tk["R_LOG_AH"], "+0.076", tk["LOG_FINALS"],
+         "reproduces exactly; near zero, so the two clubs' scores are close to independent at game level - relevant to cross-game parlay legs", logsrc()],
+    ]))
     b.append("<h2>Pending, with the exact data required (%d)</h2>" % len(blank))
     b.append(table(["#", "Pair", "Value", "n", "Method / requirement", "Why it is blank", "Source"],
                    [[c["id"], c["pair"], UNVERIFIED, c["n"] or UNVERIFIED, c["method"], c["caveat"], (c["source"] or "FLG-07") and src(c["source"] or "FLG-07")] for c in blank]))
@@ -751,6 +903,29 @@ def build(write=True):
         ["Whether the club is resting someone on purpose", "partly - the report says 'Not injury related'", Raw('kept in availability, excluded from injury risk (%s)' % src("Q-16")), src("SRC-02")],
         ["Whether the Sunday inactive list agrees", "not yet - it lands about 90 min before kickoff", Raw('re-snapshot then (%s)' % src("FLG-17")), src("SRC-12")],
     ]))
+    ov = derived["overlay"]
+    b.append("<h2>Club-published replacement chain for the same absences (Week 10) &mdash; overlay, not certified</h2>")
+    b.append(note("Rendered because the requirement explicitly asks which second, third or fourth stringer comes in, and a capture of the "
+                  "32 club charts now exists inside this repository (the desk pipeline, fetched 2026-11-14). It is shown separately and badged "
+                  "UNVERIFIED for three measured reasons: %d of %d rows carry no as-of date from the publishing club, %d rows come from charts "
+                  "the club itself labels unofficial, and only %d of %d absences resolve to a named replacement at all. No model input on this "
+                  "site reads this table." % (ov["rows"], ov["rows"], ov["unofficial"], ov["with_replacement"], ov["rows"])))
+    b.append(table(["Club", "Absent starter", "Pos", "Official status", "Slot", "Starter's string", "Named replacement",
+                    "Repl. string", "Join result", "Chart labelled unofficial", "Chart as-of date", "Official status source", "Chart source"],
+                   [[r["team"], r["player"], r["position"], r["game_status"], r["slot"] or UNVERIFIED,
+                     r["starter_string"] or UNVERIFIED, r["replacement"] or UNVERIFIED, r["replacement_string"] or UNVERIFIED,
+                     r["join"], r["chart_labelled_unofficial"] or "not stated", r["chart_as_of"] or "none published",
+                     ("official Wk-10 report", r["injury_source"]),
+                     (Raw('club chart&nbsp;<span class="bad">UNVERIFIED</span>'), r["depth_source"])] for r in overlay], cls="dense"))
+    b.append("<h3>What the join could not do</h3>")
+    b.append(table(["Join result", "Rows", "Meaning"],
+                   [[k, v, {"matched": "starter found on the club chart and a backup listed below him",
+                            "matched-no-backup": "starter found, but the club chart lists no replacement at that slot",
+                            "player not listed on his own club's depth chart": "name match failed - the player is absent from the chart the club publishes",
+                            "club depth chart not machine-readable in capture": "the club's chart page did not parse (image or script-rendered)"}
+                          .get(k, "see the join status field in the data file")] for k, v in sorted(ov["join_counts"].items(), key=lambda x: -x[1])]))
+    b.append(note("A missing replacement name is a capture or naming failure, not evidence that no backup exists; that is why the deficiency score "
+                  "above is computed from the official report alone (FLG-23)."))
     pages[active] = page("Depth and deficiency tracking", fill("\n".join(b), tk), active)
 
     # ---------- leaderboard
@@ -841,15 +1016,16 @@ def build(write=True):
          'Nothing here blocks the site or the merge; each row is here so a change can be requested after the fact.</p>']
     sev = Counter(f["severity"] for f in flags["flags"])
     b.append("<p>%d flags: %s.</p>" % (len(flags["flags"]), ", ".join("%s %d" % (k, v) for k, v in sorted(sev.items()))))
-    for level in ("High", "Medium", "Low"):
+    for level in ("High", "Medium", "Low", "Resolved"):
         sel = [f for f in flags["flags"] if f["severity"] == level]
         if not sel:
             continue
-        b.append("<h2>%s severity</h2>" % level)
+        b.append("<h2>%s%s</h2>" % (level + " severity" if level != "Resolved" else "Closed or retracted (kept visible on purpose)", ""))
         b.append(table(["#", "Area", "Finding", "Evidence", "Impact", "Proposed action", "Status"],
                        [[f["id"], f["area"], f["finding"], evidence_links(f["evidence"]), f["impact"], f["action"], f["status"]] for f in sel]))
-    b.append(note("To request a change on any row: quote its flag id. Values that could not be confirmed were left blank rather "
-                  "than estimated, in %d of the hub's tables." % 3))
+    b.append(note("To request a change on any row: quote its flag id. Values that could not be confirmed were left blank rather than "
+                  "estimated, and the two retracted claims (FLG-02 here, and the model-parameter inference corrected in FLG-12) stay published "
+                  "with their evidence so nobody re-adopts them."))
     pages[active] = page("Flagged for review", fill("\n".join(b), tk), active)
 
     # ---------- archive

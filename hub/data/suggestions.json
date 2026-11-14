@@ -1,26 +1,285 @@
 {
-  "workflow": ["1. Read the problem column - each one is evidenced, not opinion.", "2. Pick an option, or write a third.", "3. Items marked 'Proposed' change nothing until the owner decides.", "4. Items marked 'Done this session' are already implemented in the hub, so the review can start from a working example."],
-  "note": "Review queue: nothing here is implemented in the analytical layer without an owner decision. Impact/effort are this session's estimates, flagged as judgement, not measurement.",
-  "suggestions": [
-    {"id":"S-01","area":"Site structure","problem":"The same fact exists in up to five places across eight site trees, so two reviewers can quote different numbers for one question and both be right about their own page.","options":["A) Declare this hub canonical and link every other tree from one labelled archive page (done this session as a first step); B) additionally delete or physically move the legacy trees under /archive; C) leave as is.","Recommendation: A now, B as a single follow-up cleanup PR."],"impact":"High","effort":"Low (A) / Medium (B)","risk":"A is additive and reversible; B touches files owned by other sessions and needs the integration role","status":"Proposed (A delivered, B open)","evidence":"https://github.com/karagemop466-tech/X3/tree/main"},
-    {"id":"S-02","area":"Decision quality","problem":"No page answers 'what do we already know for certain, what is missing, and what unblocks it', so discussion keeps re-litigating settled facts.","options":["A) Keep a questions register with known/missing/discovery path (implemented in hub/questions.html); B) also add a per-question owner-decision log with dates; C) none."],"impact":"High","effort":"Low","risk":"Register goes stale if not re-checked weekly","status":"Proposed (A delivered, B open)","evidence":"https://github.com/karagemop466-tech/X3/blob/main/hub/data/questions.json"},
-    {"id":"S-03","area":"Data contract","problem":"Four overlapping data directories with different team ids (LA vs LAR, ARI vs AZ) and no schema broke a cross-tree join this session.","options":["A) One JSON schema + one builder + one id table, other trees read-only; B) per-tree schemas with an alias map; C) status quo."],"impact":"High","effort":"Medium","risk":"Migration touches shared outputs; needs the integration session","status":"Proposed","evidence":"https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/standings.json"},
-    {"id":"S-04","area":"Scoring layer","problem":"Every performance claim is impossible right now because no verified price source exists; the hub therefore shows blank market cells.","options":["A) License a market-data feed; B) hand-capture closing lines nightly into CSV (free, slow, auditable); C) accept a third-party page and label it MARKET/unverified; D) publish lines with no grading at all (current state). Recommendation: B immediately, then A if volume justifies it."],"impact":"High","effort":"Medium (B) / High (A)","risk":"B is manual labour and error-prone unless the capture is scripted and diffed; C weakens the evidence policy","status":"Proposed - blocks gates G-04..G-09","evidence":"https://github.com/karagemop466-tech/X3/blob/main/hub/data/sources.json"},
-    {"id":"S-05","area":"Ingestion","problem":"The official injury page mutates between fetches (1 of 345 rows changed in a day) and the standings module lags finished games, so an undated fetch is unreproducible.","options":["A) Nightly + Friday-4pm + Sunday-90-min git snapshots with an automated diff report on every build (the diff logic already runs in scripts/check_hub.py); B) fetch only when needed; C) none."],"impact":"High","effort":"Low","risk":"A CI job needs permission to write to the repo; keep it non-blocking so it cannot break deploys","status":"Proposed (diff implemented, job not)","evidence":"https://www.nfl.com/injuries/"},
-    {"id":"S-06","area":"Evidence policy","problem":"Facts, derived model output and assumptions currently render with equal confidence on the older pages.","options":["A) Three mandatory badges - VERIFIED / DERIVED / ASSUMPTION - enforced by the build (implemented in the hub); B) prose caveats only; C) none."],"impact":"High","effort":"Done","risk":"None","status":"Done this session","evidence":"https://github.com/karagemop466-tech/X3/blob/main/scripts/build_hub.py"},
-    {"id":"S-07","area":"Ingestion","problem":"No game log, no roster page and no venue table are in the repo, so home-field advantage, schedule adjustment and player-club pairings are all unverifiable.","options":["A) Ingest official schedule + per-game box score + club roster pages weekly; B) buy a stats feed; C) none. Recommendation: A - it is all official and already fetchable."],"impact":"High","effort":"Medium","risk":"Parser maintenance; page structure changes mid-season","status":"Proposed","evidence":"https://www.nfl.com/schedules/2026/by-week/week-10"},
-    {"id":"S-08","area":"Strategy design","problem":"ROI over a short sample is mostly noise, and the repo has no uncertainty reporting at all.","options":["A) Grade CLV as primary with a bootstrap interval per strategy, ROI secondary (needs S-04); B) ROI only; C) no grading."],"impact":"High","effort":"Medium","risk":"CLV needs the same price archive as S-04","status":"Proposed","evidence":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551"},
-    {"id":"S-09","area":"Anti-overfit","problem":"Nothing in the repo is pre-registered; a strategy can be tuned after seeing results and still be reported.","options":["A) Pre-registration: commit the spec + hash, timestamp it, then forbid edits during a grading window; B) informal notes; C) none."],"impact":"High","effort":"Low","risk":"Requires discipline in how branches are used","status":"Proposed (spec rows in hub/strategies.html are ready to hash)","evidence":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253"},
-    {"id":"S-10","area":"Parlays","problem":"Correlated legs are the fastest way to look good then blow up; a pilot matrix exists on 16 games, which is not decision-grade.","options":["A) Estimate a real matrix before allowing combos and cap |r| per parlay; B) allow combos with a fixed hair-cut on each extra leg; C) no parlays. Recommendation: A with a published per-book pricing check."],"impact":"High","effort":"Medium","risk":"Blocked by S-04 for joint-price validation","status":"Proposed","evidence":"https://github.com/karagemop466-tech/X3/blob/main/x3lab/data/correlation.json"},
-    {"id":"S-11","area":"Leaderboard","problem":"A leaderboard ranked on raw ROI rewards variance; and rewards themselves are unresolved legally.","options":["A) Rank on skill-adjusted, uncertainty-penalised score with notional-only rewards until counsel clears it; B) no rewards, reputation only; C) pause the leaderboard. Recommendation: A now, B if Q-08 stays unanswered."],"impact":"Medium","effort":"Low","risk":"Any real-money or prize element changes the legal picture (FLG-14)","status":"Proposed","evidence":"https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json"},
-    {"id":"S-12","area":"Citations","problem":"Key rule mechanics (injury filing cadence, designation meanings, inactive deadline) are cited to a secondary site; the rulebook text was never fetched.","options":["A) Fetch and quote the league operations rulebook page; B) keep the secondary citation and label it; C) drop the claims. Recommendation: A, then B is unnecessary."],"impact":"Medium","effort":"Low","risk":"Rulebook PDF parsing","status":"Proposed (labelled SECONDARY meanwhile, FLG-11)","evidence":"https://www.pro-football-reference.com/players/injuries.htm"},
-    {"id":"S-13","area":"Repo hygiene","problem":"No licence, no CODEOWNERS, no branch protection, and two shared registers already disagree on a value.","options":["A) Add LICENSE, CODEOWNERS, protected main, required status checks; B) hygiene only; C) none."],"impact":"Medium","effort":"Low","risk":"Needs repo-admin rights for protection settings","status":"Proposed","evidence":"https://github.com/karagemop466-tech/X3/blob/main/.gitignore"},
-    {"id":"S-14","area":"CI","problem":"The Pages workflow still triggers on a merged branch and chains five checkers over eight trees, while an in-flight branch has 5 failing runs; red/green has become noise.","options":["A) Trigger on main + PRs only, make the hub checks the required status, keep other checkers advisory; B) split workflows per tree; C) none."],"impact":"Medium","effort":"Low","risk":"Workflow file is a shared output; needs the integration role","status":"Proposed (workflow not edited this session, FLG-10)","evidence":"https://github.com/karagemop466-tech/X3/blob/main/.github/workflows/pages.yml"},
-    {"id":"S-15","area":"Verification","problem":"Table values can silently drift from the prose that describes them; a prior session had to fix three such drifts in a follow-up PR.","options":["A) All prose counts computed from data at build time and the build fails on any unfilled token (implemented in this hub's builder); B) manual review; C) none."],"impact":"High","effort":"Done","risk":"None","status":"Done this session","evidence":"https://github.com/karagemop466-tech/X3/pull/14"},
-    {"id":"S-16","area":"Model design","problem":"The hub's own lines reproduce neither prior in-repo model, because inputs, HFA and shrinkage differ; nobody can tell which variance is signal.","options":["A) Version the model, publish the full config, and show model-to-model deltas per game (implemented here); B) pick one model and delete the others; C) none."],"impact":"Medium","effort":"Low","risk":"Deltas tempt overfitting to the gap rather than to outcomes","status":"Done this session (deltas shown, no model adopted)","evidence":"https://github.com/karagemop466-tech/X3/blob/main/hub/data/model_config.json"},
-    {"id":"S-17","area":"Missing information","problem":"Several required inputs have no source at all (market prices, official depth strings, snap counts), and that fact was spread across prose notes.","options":["A) A dedicated Gap register listing each missing input, its blocking questions and the acquisition path (implemented as the missing-input table in hub/questions.html); B) keep gaps in flags only."],"impact":"High","effort":"Done","risk":"None","status":"Done this session","evidence":"https://github.com/karagemop466-tech/X3/blob/main/hub/data/flags.json"},
-    {"id":"S-18","area":"Site usability","problem":"The root URL was a meta-refresh redirect with no information, so a first-time visitor could not see status, freshness or what is unverified.","options":["A) A real landing page with KPI cards, as-of stamps and archive links (implemented this session); B) keep the redirect; C) full app rewrite."],"impact":"Medium","effort":"Done","risk":"None","status":"Done this session","evidence":"https://karagemop466-tech.github.io/X3/"},
-    {"id":"S-19","area":"Depth proxies","problem":"The 2nd/3rd/4th-string requirement cannot be met officially, but 'starter absent' is provable and is what actually moves markets.","options":["A) Build the deficiency score from certified availability only (implemented in hub/deficiency.html); B) wait for a licensed depth feed; C) use unofficial club charts silently. Recommendation: A, with C only as an explicitly unverified overlay."],"impact":"High","effort":"Done","risk":"Deficiency scores inherit the weights' uncalibrated status","status":"Done this session","evidence":"https://www.nfl.com/injuries/"},
-    {"id":"S-20","area":"Priorities","problem":"If only three things get done next, there is no stated order.","options":["Recommended order: (1) S-04 price archive - nothing can be graded without it; (2) S-05 + S-07 snapshots - history compounds, so every week delayed is a week unrecoverable; (3) S-01 + S-14 consolidation - stops contradictory numbers and false CI signals. Then S-08/S-09/S-10 once data exists."],"impact":"High","effort":"-","risk":"Delaying (2) permanently costs data","status":"Proposed - awaiting owner decision","evidence":"https://github.com/karagemop466-tech/X3/blob/main/hub/data/suggestions.json"}
-  ]
+ "workflow": [
+  "1. Read the problem column - each one is evidenced, not opinion.",
+  "2. Pick an option, or write a third.",
+  "3. Items marked 'Proposed' change nothing until the owner decides.",
+  "4. Items marked 'Done this session' are already implemented in the hub, so the review can start from a working example."
+ ],
+ "note": "Review queue: nothing here is implemented in the analytical layer without an owner decision. Impact/effort are this session's estimates, flagged as judgement, not measurement.",
+ "suggestions": [
+  {
+   "id": "S-01",
+   "area": "Site structure",
+   "problem": "The same fact exists in up to five places across eight site trees, so two reviewers can quote different numbers for one question and both be right about their own page.",
+   "options": [
+    "A) Declare this hub canonical and link every other tree from one labelled archive page (done this session as a first step); B) additionally delete or physically move the legacy trees under /archive; C) leave as is.",
+    "Recommendation: A now, B as a single follow-up cleanup PR."
+   ],
+   "impact": "High",
+   "effort": "Low (A) / Medium (B)",
+   "risk": "A is additive and reversible; B touches files owned by other sessions and needs the integration role",
+   "status": "Proposed (A delivered, B open)",
+   "evidence": "https://github.com/karagemop466-tech/X3/tree/main"
+  },
+  {
+   "id": "S-02",
+   "area": "Decision quality",
+   "problem": "No page answers 'what do we already know for certain, what is missing, and what unblocks it', so discussion keeps re-litigating settled facts.",
+   "options": [
+    "A) Keep a questions register with known/missing/discovery path (implemented in hub/questions.html); B) also add a per-question owner-decision log with dates; C) none."
+   ],
+   "impact": "High",
+   "effort": "Low",
+   "risk": "Register goes stale if not re-checked weekly",
+   "status": "Proposed (A delivered, B open)",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/questions.json"
+  },
+  {
+   "id": "S-03",
+   "area": "Data contract",
+   "problem": "Four overlapping data directories with different team ids (LA vs LAR, ARI vs AZ) and no schema broke a cross-tree join this session.",
+   "options": [
+    "A) One JSON schema + one builder + one id table, other trees read-only; B) per-tree schemas with an alias map; C) status quo."
+   ],
+   "impact": "High",
+   "effort": "Medium",
+   "risk": "Migration touches shared outputs; needs the integration session",
+   "status": "Proposed",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/dashboard/data/standings.json"
+  },
+  {
+   "id": "S-04",
+   "area": "Scoring layer",
+   "problem": "Every performance claim is impossible right now because no verified price source exists; the hub therefore shows blank market cells.",
+   "options": [
+    "A) License a market-data feed; B) hand-capture closing lines nightly into CSV (free, slow, auditable); C) accept a third-party page and label it MARKET/unverified; D) publish lines with no grading at all (current state). Recommendation: B immediately, then A if volume justifies it."
+   ],
+   "impact": "High",
+   "effort": "Medium (B) / High (A)",
+   "risk": "B is manual labour and error-prone unless the capture is scripted and diffed; C weakens the evidence policy",
+   "status": "Proposed - blocks gates G-04..G-09",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/sources.json"
+  },
+  {
+   "id": "S-05",
+   "area": "Ingestion",
+   "problem": "The official injury page mutates between fetches (1 of 345 rows changed in a day) and no official standings or injury page prints a cut-off, so an undated fetch cannot be reproduced or even interpreted - this session published a wrong 'the standings are stale' flag for exactly that reason and had to retract it (VER-19).",
+   "options": [
+    "A) Nightly + Friday-4pm + Sunday-90-min git snapshots, each with an explicit as-of file, and an automated diff report on every build (both the diff logic and hub/data/asof.json now exist); B) fetch only when needed; C) none."
+   ],
+   "impact": "High",
+   "effort": "Low",
+   "risk": "A CI job needs permission to write to the repo; keep it non-blocking so it cannot break deploys",
+   "status": "Proposed (diff implemented here; a runner-based capture pattern already exists in .github/workflows/desk-capture.yml)",
+   "evidence": "https://www.nfl.com/injuries/"
+  },
+  {
+   "id": "S-06",
+   "area": "Evidence policy",
+   "problem": "Facts, derived model output and assumptions currently render with equal confidence on the older pages.",
+   "options": [
+    "A) Three mandatory badges - VERIFIED / DERIVED / ASSUMPTION - enforced by the build (implemented in the hub); B) prose caveats only; C) none."
+   ],
+   "impact": "High",
+   "effort": "Done",
+   "risk": "None",
+   "status": "Done this session",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/scripts/build_hub.py"
+  },
+  {
+   "id": "S-07",
+   "area": "Ingestion",
+   "problem": "Home-field advantage, opponent adjustment and player-club pairings were unverifiable from the hub's own inputs. A parallel session has since landed a 163-row 2026 game log and 32 club depth charts captured on a GitHub runner, so the remaining gap is depth of history (one season, scores only) rather than the absence of any log.",
+   "options": [
+    "A) extend the existing capture workflow backwards one season and add box scores; B) write a second pipeline in the hub; C) none. Recommendation: A - the parsers, self-tests and CI job already exist and are green."
+   ],
+   "impact": "High",
+   "effort": "Medium",
+   "risk": "Parser maintenance; page structure changes mid-season",
+   "status": "Proposed - scope reduced: a 2026 game log and club-chart capture already exist in repo (data/desk/, session arena/3bf7cc8b-x3)",
+   "evidence": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  },
+  {
+   "id": "S-08",
+   "area": "Strategy design",
+   "problem": "ROI over a short sample is mostly noise, and the repo has no uncertainty reporting at all.",
+   "options": [
+    "A) Grade CLV as primary with a bootstrap interval per strategy, ROI secondary (needs S-04); B) ROI only; C) no grading."
+   ],
+   "impact": "High",
+   "effort": "Medium",
+   "risk": "CLV needs the same price archive as S-04",
+   "status": "Proposed",
+   "evidence": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460551"
+  },
+  {
+   "id": "S-09",
+   "area": "Anti-overfit",
+   "problem": "Nothing in the repo is pre-registered; a strategy can be tuned after seeing results and still be reported.",
+   "options": [
+    "A) Pre-registration: commit the spec + hash, timestamp it, then forbid edits during a grading window; B) informal notes; C) none."
+   ],
+   "impact": "High",
+   "effort": "Low",
+   "risk": "Requires discipline in how branches are used",
+   "status": "Proposed (spec rows in hub/strategies.html are ready to hash)",
+   "evidence": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2326253"
+  },
+  {
+   "id": "S-10",
+   "area": "Parlays",
+   "problem": "Correlated legs are the fastest way to look good then blow up; a pilot matrix exists on 16 games, which is not decision-grade.",
+   "options": [
+    "A) Estimate a real matrix before allowing combos and cap |r| per parlay; B) allow combos with a fixed hair-cut on each extra leg; C) no parlays. Recommendation: A with a published per-book pricing check."
+   ],
+   "impact": "High",
+   "effort": "Medium",
+   "risk": "Blocked by S-04 for joint-price validation",
+   "status": "Proposed",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/x3lab/data/correlation.json"
+  },
+  {
+   "id": "S-11",
+   "area": "Leaderboard",
+   "problem": "A leaderboard ranked on raw ROI rewards variance; and rewards themselves are unresolved legally.",
+   "options": [
+    "A) Rank on skill-adjusted, uncertainty-penalised score with notional-only rewards until counsel clears it; B) no rewards, reputation only; C) pause the leaderboard. Recommendation: A now, B if Q-08 stays unanswered."
+   ],
+   "impact": "Medium",
+   "effort": "Low",
+   "risk": "Any real-money or prize element changes the legal picture (FLG-14)",
+   "status": "Proposed",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/research.json"
+  },
+  {
+   "id": "S-12",
+   "area": "Citations",
+   "problem": "Key rule mechanics (injury filing cadence, designation meanings, inactive deadline) are cited to a secondary site; the rulebook text was never fetched.",
+   "options": [
+    "A) Fetch and quote the league operations rulebook page; B) keep the secondary citation and label it; C) drop the claims. Recommendation: A, then B is unnecessary."
+   ],
+   "impact": "Medium",
+   "effort": "Low",
+   "risk": "Rulebook PDF parsing",
+   "status": "Proposed (labelled SECONDARY meanwhile, FLG-11)",
+   "evidence": "https://www.pro-football-reference.com/players/injuries.htm"
+  },
+  {
+   "id": "S-13",
+   "area": "Repo hygiene",
+   "problem": "No licence, no CODEOWNERS, no branch protection, and two shared registers already disagree on a value.",
+   "options": [
+    "A) Add LICENSE, CODEOWNERS, protected main, required status checks; B) hygiene only; C) none."
+   ],
+   "impact": "Medium",
+   "effort": "Low",
+   "risk": "Needs repo-admin rights for protection settings",
+   "status": "Proposed",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/.gitignore"
+  },
+  {
+   "id": "S-14",
+   "area": "CI",
+   "problem": "The Pages workflow still triggers on a merged branch and chains five checkers over eight trees, while an in-flight branch has 5 failing runs; red/green has become noise.",
+   "options": [
+    "A) Trigger on main + PRs only, make the hub checks the required status, keep other checkers advisory; B) split workflows per tree; C) none."
+   ],
+   "impact": "Medium",
+   "effort": "Low",
+   "risk": "Workflow file is a shared output; needs the integration role",
+   "status": "Proposed (workflow not edited this session, FLG-10)",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/.github/workflows/pages.yml"
+  },
+  {
+   "id": "S-15",
+   "area": "Verification",
+   "problem": "Table values can silently drift from the prose that describes them; a prior session had to fix three such drifts in a follow-up PR.",
+   "options": [
+    "A) All prose counts computed from data at build time and the build fails on any unfilled token (implemented in this hub's builder); B) manual review; C) none."
+   ],
+   "impact": "High",
+   "effort": "Done",
+   "risk": "None",
+   "status": "Done this session",
+   "evidence": "https://github.com/karagemop466-tech/X3/pull/14"
+  },
+  {
+   "id": "S-16",
+   "area": "Model design",
+   "problem": "The hub's own lines reproduce neither prior in-repo model, because inputs, HFA and shrinkage differ; nobody can tell which variance is signal.",
+   "options": [
+    "A) Version the model, publish the full config, and show model-to-model deltas per game (implemented here); B) pick one model and delete the others; C) none."
+   ],
+   "impact": "Medium",
+   "effort": "Low",
+   "risk": "Deltas tempt overfitting to the gap rather than to outcomes",
+   "status": "Done this session (deltas shown, no model adopted)",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/model_config.json"
+  },
+  {
+   "id": "S-17",
+   "area": "Missing information",
+   "problem": "Several required inputs have no source at all (market prices, official depth strings, snap counts), and that fact was spread across prose notes.",
+   "options": [
+    "A) A dedicated Gap register listing each missing input, its blocking questions and the acquisition path (implemented as the missing-input table in hub/questions.html); B) keep gaps in flags only."
+   ],
+   "impact": "High",
+   "effort": "Done",
+   "risk": "None",
+   "status": "Done this session",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/flags.json"
+  },
+  {
+   "id": "S-18",
+   "area": "Site usability",
+   "problem": "The root URL was a meta-refresh redirect with no information, so a first-time visitor could not see status, freshness or what is unverified.",
+   "options": [
+    "A) A real landing page with KPI cards, as-of stamps and archive links (implemented this session); B) keep the redirect; C) full app rewrite."
+   ],
+   "impact": "Medium",
+   "effort": "Done",
+   "risk": "None",
+   "status": "Done this session",
+   "evidence": "https://karagemop466-tech.github.io/X3/"
+  },
+  {
+   "id": "S-19",
+   "area": "Depth proxies",
+   "problem": "The 2nd/3rd/4th-string requirement cannot be met officially, but 'starter absent' is provable and is what actually moves markets.",
+   "options": [
+    "A) Build the deficiency score from certified availability only (implemented in hub/deficiency.html); B) wait for a licensed depth feed; C) use unofficial club charts silently. Recommendation: A, with C only as an explicitly unverified overlay."
+   ],
+   "impact": "High",
+   "effort": "Done",
+   "risk": "Deficiency scores inherit the weights' uncalibrated status",
+   "status": "Done this session",
+   "evidence": "https://www.nfl.com/injuries/"
+  },
+  {
+   "id": "S-20",
+   "area": "Priorities",
+   "problem": "If only three things get done next, there is no stated order.",
+   "options": [
+    "Recommended order: (1) S-04 price archive - nothing can be graded without it; (2) S-05 + S-07 snapshots - history compounds, so every week delayed is a week unrecoverable; (3) S-01 + S-14 consolidation - stops contradictory numbers and false CI signals. Then S-08/S-09/S-10 once data exists."
+   ],
+   "impact": "High",
+   "effort": "-",
+   "risk": "Delaying (2) permanently costs data",
+   "status": "Proposed - awaiting owner decision",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/suggestions.json"
+  },
+  {
+   "id": "S-21",
+   "area": "Reconciliation",
+   "problem": "Three sessions now publish overlapping Week-10 injury tables and two publish model lines, with no cross-check between them: the desk join, the dashboard standings copy and this hub each had a defect the others did not catch (TB division record, a mislabelled correlation, a retracted staleness flag).",
+   "options": [
+    "A) make the build diff every hub table against the corresponding in-repo file and print the mismatches on the verification page (implemented for injuries, standings and the game log); B) pick one file per fact and delete the others; C) leave each tree self-checked. Recommendation: A now, B after S-01."
+   ],
+   "impact": "High",
+   "effort": "Done",
+   "risk": "diffs depend on the other tree's schema, so a schema change shows up as a failure rather than silent drift",
+   "status": "Done this session (VER-03, VER-19, VER-20, VER-21 all run inside the build/check)",
+   "evidence": "https://github.com/karagemop466-tech/X3/blob/main/hub/data/asof.json"
+  }
+ ]
 }

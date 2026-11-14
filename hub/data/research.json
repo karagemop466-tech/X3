@@ -1,79 +1,556 @@
 {
-  "signals": [
-    {"id":"SIG-01","name":"Availability delta","family":"Injury","construction":"Per club, per position group: sum of weight x status multiplier over official Week-10 rows.","input":"SRC-02 + model_config weights","target":"spread and team totals","direction":"Club with larger defensive-side loss concedes more points","status":"Computed on 28 clubs","gate":"G-03 calibration pending; publishable as DERIVED"},
-    {"id":"SIG-02","name":"QB absence cascade","family":"Injury","construction":"Starter-QB Out shifts that club's expected points by A-04 QB weight and its opponent's by the same amount, once only.","input":"SRC-02; starter identity from SRC-07 news where available","target":"spread, team total, all QB props for that game","direction":"Absence moves line against the club","status":"Computed for SEA (Darnold Out, Lock starts per SRC-07); blank for BAL (starter unidentifiable, FLG-06)","gate":"G-00 blocked for BAL"},
-    {"id":"SIG-03","name":"Practice trajectory","family":"Injury","construction":"Direction of practice participation across the Wed/Thu/Fri reports (FP to LP to DNP) rather than a single day's value.","input":"requires repeated snapshots of SRC-02 - not yet stored","target":"probability a Questionable player suits up","direction":"downgrading trajectory implies lower play probability","status":"NOT COMPUTED - one day of data exists","gate":"needs S-05 snapshot history"},
-    {"id":"SIG-04","name":"Designation base rates","family":"Calibration","construction":"Historic play rate by designation, per position and per rest-day context, used to replace A-03.","input":"needs >=2 seasons of archived reports + inactives","target":"multiplier calibration","direction":"n/a","status":"NOT COMPUTED - no archive","gate":"blocks G-03"},
-    {"id":"SIG-05","name":"Planned-absence filter","family":"Data hygiene","construction":"Rows whose injury field reads 'Not injury related' (rest, personal matter) are excluded from injury-risk features but kept in availability.","input":"SRC-02, 5 such rows in Week 10","target":"feature hygiene","direction":"n/a","status":"Applied in build","gate":"G-00"},
-    {"id":"SIG-06","name":"Secondary depletion","family":"Injury x Prop","construction":"Count of CB+S rows with Out/Doubtful for a club's opponent-facing defense.","input":"SRC-02","target":"opponent WR/TE reception and receiving-yard props","direction":"more backups -> more target volume for the other side","status":"Computed (see deficiency page)","gate":"G-03, plus prop pricing missing (Q-12)"},
-    {"id":"SIG-07","name":"Interior pass-rush depletion","family":"Injury x Prop","construction":"Count of DT/DE Out or Doubtful.","input":"SRC-02","target":"opponent pass-protection, QB sack props, run-block win rate proxy","direction":"less pressure -> higher opponent pass volume","status":"Computed","gate":"G-03"},
-    {"id":"SIG-08","name":"Offensive-line depletion","family":"Injury x Prop","construction":"Count of T/G/C Out or Doubtful.","input":"SRC-02","target":"team rush-yards under, sack-taken over","direction":"more line absences -> worse rush, more sacks","status":"Computed (IND, HOU, MIN, DAL heaviest)","gate":"G-03"},
-    {"id":"SIG-09","name":"Target vacancy","family":"Injury x Prop","construction":"WR1/TE1 availability loss -> next-man usage shift.","input":"SRC-02 for loss; usage/snap-share data for the shift - absent from repo","target":"WR2/TE receptions over","direction":"vacancy raises the replacement's floor, not necessarily the team's ceiling","status":"PARTIAL - loss measured, usage unmeasured","gate":"blocked by Q-12"},
-    {"id":"SIG-10","name":"Scoring-baseline totals","family":"Market-neutral","construction":"Expected total from per-game scoring and allowance, shrunk to the league mean (A-05).","input":"SRC-01","target":"game total","direction":"n/a","status":"Computed for 13 games","gate":"G-04 needs a price to be scored against"},
-    {"id":"SIG-11","name":"Record-versus-point-differential residual","family":"Luck","construction":"Residual of W-L% after regressing on net points per game (league-wide r = +{{R_NET}} on 32 clubs).","input":"SRC-01","target":"identify over/under-achieving clubs before prices adjust","direction":"positive residual = winning on luck, mean-reverts","status":"Computed (see correlation page); not tradable without prices","gate":"G-06"},
-    {"id":"SIG-12","name":"Home/road asymmetry","family":"Market-neutral","construction":"Club's home win% minus road win%; league-wide home-vs-road win% correlation is only +{{R_HR}}, so split-based HFA estimates are noisy per club.","input":"SRC-01","target":"HFA parameter calibration","direction":"n/a","status":"Correlation computed; per-club HFA needs game logs (S-07)","gate":"G-03"}
-  ],
-  "strategies": [
-    {"id":"ST-01","name":"QB-Out Fade","bet_type":"Single (spread)","family":"Injury","construction":"When the official report marks a club's starting QB Out, take the opponent on the spread; one bet per game, no averaging across positions.","entry":"after the Friday designation","exit":"closing","required_data":["prices","2 seasons of QB-Out games"],"state":"Registered, not graded","gates_blocking":"G-00 G-03 G-04","notes":"Week 10 case study: SEA at LV (Darnold Out, Lock starts - SRC-07)."},
-    {"id":"ST-02","name":"Secondary-Depletion Overs","bet_type":"Player prop","family":"Injury x Prop","construction":"Opponent WR1 receiving yards over when the defense faces >=2 CB/S Out.","entry":"Friday report","exit":"closing","required_data":["prop prices","snap counts"],"state":"Registered, not graded","gates_blocking":"G-03 G-04 G-08","notes":"Signal computed for 6 games in Week 10; effect size unknown."},
-    {"id":"ST-03","name":"OffLine Ruin Unders","bet_type":"Single (team total under)","family":"Injury","construction":"Club with >=2 T/G/C Out: team total under, provided no QB-Injury offset.","entry":"Friday","exit":"closing","required_data":["prices"],"state":"Registered, not graded","gates_blocking":"G-03 G-04","notes":"Week 10 candidates: IND (4 OL rows), MIN, DAL, HOU - see deficiency table."},
-    {"id":"ST-04","name":"Same-game prop pair","bet_type":"Prop combo (2 legs, same game)","family":"Correlation","construction":"Team rush-yards under + team sack-taken over, priced by the same book on the same slate; only if measured |r| < 0.30 cap or the book's joint price is beaten after haircut.","entry":"pre-kickoff","exit":"settlement at game end","required_data":["parlay pricing","correlation matrix"],"state":"Blocked","gates_blocking":"G-06 G-09","notes":"Correlation matrix does not exist yet; the only pilot (n=16 games) is in a legacy tree and is below the sample gate."},
-    {"id":"ST-05","name":"3-Leg Parlay Discipline","bet_type":"Parlay","family":"Risk","construction":"Max 3 legs, no two legs from the same game unless the joint price is verified, and never more than one injury-leg per club.","entry":"after all designations final","exit":"game end","required_data":["prices","correlation matrix"],"state":"Rule only, no live bets","gates_blocking":"G-09","notes":"Explicitly a loss-limitation rule, not an edge."},
-    {"id":"ST-06","name":"Residual Fader","bet_type":"Single (moneyline)","family":"Luck / mean reversion","construction":"Fade the club with the largest positive W-L% residual over net points per game once prices imply a materially smaller edge.","entry":"Wednesday","exit":"closing","required_data":["prices","multi-season history"],"state":"Registered, not graded","gates_blocking":"G-02 G-04 G-06","notes":"Directly uses SIG-11; the four computed correlations are the only evidence and they are descriptive, 32 team-seasons."},
-    {"id":"ST-07","name":"Neutral-Site Correction","bet_type":"Single (spread)","family":"Model bias","construction":"Where the slate marks an international/neutral venue (Munich: NE at DET), remove HFA from the originated line and take the side the raw model favours only if the delta exceeds a stated threshold.","entry":"pre-kickoff","exit":"closing","required_data":["prices"],"state":"Registered, not graded","gates_blocking":"G-03 G-04","notes":"Parameter A-02 is itself an assumption (FLG-12)."},
-    {"id":"ST-08","name":"Availability Composite","bet_type":"Model-vs-market residual","family":"Ensemble","construction":"Rank games by the gap between the originated line and the closing line; bet only the tails, sized by the published uncertainty.","entry":"post-close comparison","exit":"settlement","required_data":["prices"],"state":"Blocked - no price source","gates_blocking":"G-04 G-05 G-07 G-08 G-10","notes":"This is the strategy the whole pipeline exists to test; it cannot run today."}
-  ],
-  "gates": [
-    {"id":"G-00","name":"Provenance","requirement":"Every input row carries a source URL and an as-of timestamp; unknown values are blank, never imputed.","threshold":"100% of rows; enforced by scripts/check_hub.py at build","blocking":"yes","status":"PASSED for the hub's own tables","why":"One unlabelled fetch makes the whole backtest unreproducible"},
-    {"id":"G-01","name":"Pre-registration","requirement":"Strategy spec, parameters, entry/exit and staking rule committed and hash-stamped before any graded outcome is recorded.","threshold":"git commit + sha256 of the spec file recorded in the row","blocking":"yes","status":"NOT MET (no hash recorded yet)","why":"Anything tuned after seeing results is hindsight"},
-    {"id":"G-02","name":"Sample size","requirement":"Minimum graded bets, weeks and seasons before a strategy is ranked.","threshold":">=200 bets, >=40 distinct game-weeks, >=2 seasons (convention, not a league rule)","blocking":"yes","status":"NOT MET (0 graded bets exist)","why":"Small samples are variance wearing a costume"},
-    {"id":"G-03","name":"Calibration","requirement":"Model parameters fitted on data the strategy is not scored on, with a held-out year.","threshold":"no shared season between fit and test; reported fit error","blocking":"yes","status":"NOT MET (all parameters are assumptions, FLG-12)","why":"Uncalibrated weights just encode the author's priors"},
-    {"id":"G-04","name":"Cost-aware pricing","requirement":"Grading uses real captured prices including vig, at a stated capture time.","threshold":"median |model - close| and CLV computed on >=200 bets","blocking":"yes","status":"IMPOSSIBLE TODAY - no verified price source (FLG-07)","why":"Beating a midpoint is not beating a market"},
-    {"id":"G-05","name":"Uncertainty reporting","requirement":"Every published performance figure carries an interval and a max-drawdown; no bare point estimates.","threshold":"bootstrap 95% CI over bets, clustered by game-week","blocking":"yes","status":"NOT MET","why":"A number without error bars is an invitation to overbet"},
-    {"id":"G-06","name":"Overfitting test","requirement":"Probability of backtest overfitting estimated by CSCV across the parameter grid actually searched.","threshold":"PBO < 0.5 (paper convention)","blocking":"yes","status":"NOT MET","why":"The best in-sample setting is usually the most overfit one (SRC-11)"},
-    {"id":"G-07","name":"Selection-bias correction","requirement":"Deflated Sharpe ratio accounting for the number of variants tried, skew and kurtosis of returns.","threshold":"DSR > 0 at 95% (paper convention)","blocking":"yes","status":"NOT MET","why":"Trials you discarded still inflate the survivor's score (SRC-10)"},
-    {"id":"G-08","name":"Robustness","requirement":"Performance survives subset and leave-out tests: home/away, rest days, division, removing the best 5% of bets.","threshold":"sign of edge preserved in >=80% of subsets","blocking":"yes","status":"NOT MET","why":"Three lucky weeks can carry a whole backtest"},
-    {"id":"G-09","name":"Correlation and exposure","requirement":"Leg-correlation matrix measured; per-game and per-club caps enforced; parlays priced jointly not multiplied.","threshold":"max |r| per parlay 0.30 until validated; single-club exposure cap stated in Q-10","blocking":"yes","status":"NOT MET (no matrix beyond an n=16 pilot)","why":"Correlation is how two edges become one bet"},
-    {"id":"G-10","name":"Paper-trade gate","requirement":"After all above: a forward, untouched period run at the stated staking rule before any reward consideration.","threshold":">=4 weeks of forward results, published before review","blocking":"yes","status":"NOT MET","why":"The only test that cannot be gamed is the one you have not seen yet"}
-  ],
-  "correlation_register": [
-    {"id":"COR-01","pair":"Points for per game vs win percentage","status":"COMPUTED","value":"+{{R_PF}}","n":32,"method":"Pearson r on the official 2026 standings snapshot of 2026-11-14","source":"SRC-01","caveat":"descriptive, not tradable; 9-week sample"},
-    {"id":"COR-02","pair":"Points against per game vs win percentage","status":"COMPUTED","value":"{{R_PA}}","n":32,"method":"same","source":"SRC-01","caveat":"as above"},
-    {"id":"COR-03","pair":"Net points per game vs win percentage","status":"COMPUTED","value":"+{{R_NET}}","n":32,"method":"same","source":"SRC-01","caveat":"mechanically high: net points embed wins; useful as a luck-residual base, not as a signal"},
-    {"id":"COR-04","pair":"Home win percentage vs road win percentage","status":"COMPUTED","value":"+{{R_HR}}","n":32,"method":"same, ties excluded from denominators","source":"SRC-01","caveat":"weak: split-based home/road talent estimates are noisy at 8-9 games"},
-    {"id":"COR-05","pair":"Net points per game vs points for per game","status":"COMPUTED","value":"+{{R_NETPF}}","n":32,"method":"identity-contamination check","source":"SRC-01","caveat":"published deliberately: shows how a derived quantity re-uses its own inputs"},
-    {"id":"COR-06","pair":"Total points scored by both clubs vs absolute margin","status":"BLANK","value":"","n":"","method":"requires game logs (272 games) - not in repo","source":"","caveat":"the only in-repo version is an n=16 pilot in a legacy tree; below G-02 by an order of magnitude"},
-    {"id":"COR-07","pair":"Rushing yards vs game total (same club)","status":"BLANK","value":"","n":"","method":"needs play-by-play or box-score ingestion","source":"","caveat":"needed before any run-pass parlay is allowed"},
-    {"id":"COR-08","pair":"QB passing yards vs WR1 receiving yards","status":"BLANK","value":"","n":"","method":"needs prop-level history","source":"","caveat":"the core combo correlation; blocked by Q-12 and S-04"},
-    {"id":"COR-09","pair":"Sack total vs offensive-line absences","status":"BLANK","value":"","n":"","method":"injury rows joined to defensive box scores","source":"","caveat":"input availability measured, outcome data absent"},
-    {"id":"COR-10","pair":"Injury designation change vs line movement","status":"BLANK","value":"","n":"","method":"snapshot diff of SRC-02 against price moves","source":"","caveat":"impossible until S-04 and S-05 both exist"},
-    {"id":"COR-11","pair":"Model residual vs next-week residual","status":"BLANK","value":"","n":"","method":"autocorrelation of model-minus-close","source":"","caveat":"the honest test of whether the model has any persistence"},
-    {"id":"COR-12","pair":"Same-day club exposure correlation","status":"BLANK","value":"","n":"","method":"cross-game: same-club legs and divisional opponents","source":"","caveat":"required by G-09 before parlays across games are allowed"}
-  ],
-  "leaderboard": {
-    "categories": ["Single - spread", "Single - moneyline", "Single - total", "Player prop", "Prop combo (same game)", "Parlay (cross-game)"],
-    "score_model": [
-      "primary: median closing-line value per bet, with a bootstrap 95% interval clustered by game-week",
-      "secondary: ROI at the stated vig, same interval treatment",
-      "qualification: DSR > 0 (SRC-10) and PBO < 0.5 (SRC-11) on the grid that was actually searched",
-      "display: never rank on a bare point estimate; an entry with an interval that spans zero is shown as undetermined"
-    ],
-    "season_structure": ["Registration window (spec + hash committed)", "Freeze (no parameter edits while grading)", "Grading on untouched games only", "Review: promote, park or ban with reasons published"],
-    "anti_gaming": [
-      "One leaderboard entry per spec; a variant that changes a parameter is a new entry and increases the trial count used in DSR",
-      "Disclose every variant tried, including discarded ones",
-      "No near-duplicate entries (same family, same construction, different threshold)",
-      "Retire an entry that misses its own stated threshold after the review period, publicly"
-    ],
-    "rewards": {"status":"notional","amount":null,"currency":null,"basis":"Reward value, payout mechanism and legality are unanswered (Q-08, FLG-14); the design specifies tiers only","tiers":[{"tier":"T1","criteria":"all gates passed, top 3 by CLV lower bound","reward":"blank - owner decision"},{"tier":"T2","criteria":"all gates passed","reward":"blank - owner decision"},{"tier":"T3","criteria":"pre-registered, still grading","reward":"none"}]},
-    "entries": [],
-    "entries_note": "Empty by design: {{GATES_FAILED}} of {{GATES_TOTAL}} blocking gates are unpassed and no graded bet exists anywhere in the repository."
+ "signals": [
+  {
+   "id": "SIG-01",
+   "name": "Availability delta",
+   "family": "Injury",
+   "construction": "Per club, per position group: sum of weight x status multiplier over official Week-10 rows.",
+   "input": "SRC-02 + model_config weights",
+   "target": "spread and team totals",
+   "direction": "Club with larger defensive-side loss concedes more points",
+   "status": "Computed on 28 clubs",
+   "gate": "G-03 calibration pending; publishable as DERIVED"
   },
-  "luck_controls": [
-    "Separate variance from skill by measuring against prices, not outcomes alone (G-04, G-05).",
-    "Correct for the trials you ran, not just the strategy you kept (G-06, G-07).",
-    "Require out-of-sample and leave-best-out tests before promotion (G-08, G-10).",
-    "Cap the things that make luck look like skill: correlated legs, small samples, post-hoc thresholds (G-01, G-09).",
-    "Publish the residual of W-L% over net points as a luck index for clubs, and treat its mean reversion as the hypothesis (SIG-11)."
-  ]
+  {
+   "id": "SIG-02",
+   "name": "QB absence cascade",
+   "family": "Injury",
+   "construction": "Starter-QB Out shifts that club's expected points by A-04 QB weight and its opponent's by the same amount, once only.",
+   "input": "SRC-02; starter identity from SRC-07 news where available",
+   "target": "spread, team total, all QB props for that game",
+   "direction": "Absence moves line against the club",
+   "status": "Computed for SEA (Darnold Out, Lock starts per SRC-07); blank for BAL (starter unidentifiable, FLG-06)",
+   "gate": "G-00 blocked for BAL"
+  },
+  {
+   "id": "SIG-03",
+   "name": "Practice trajectory",
+   "family": "Injury",
+   "construction": "Direction of practice participation across the Wed/Thu/Fri reports (FP to LP to DNP) rather than a single day's value.",
+   "input": "requires repeated snapshots of SRC-02 - not yet stored",
+   "target": "probability a Questionable player suits up",
+   "direction": "downgrading trajectory implies lower play probability",
+   "status": "NOT COMPUTED - one day of data exists",
+   "gate": "needs S-05 snapshot history"
+  },
+  {
+   "id": "SIG-04",
+   "name": "Designation base rates",
+   "family": "Calibration",
+   "construction": "Historic play rate by designation, per position and per rest-day context, used to replace A-03.",
+   "input": "needs >=2 seasons of archived reports + inactives",
+   "target": "multiplier calibration",
+   "direction": "n/a",
+   "status": "NOT COMPUTED - no archive",
+   "gate": "blocks G-03"
+  },
+  {
+   "id": "SIG-05",
+   "name": "Planned-absence filter",
+   "family": "Data hygiene",
+   "construction": "Rows whose injury field reads 'Not injury related' (rest, personal matter) are excluded from injury-risk features but kept in availability.",
+   "input": "SRC-02, 5 such rows in Week 10",
+   "target": "feature hygiene",
+   "direction": "n/a",
+   "status": "Applied in build",
+   "gate": "G-00"
+  },
+  {
+   "id": "SIG-06",
+   "name": "Secondary depletion",
+   "family": "Injury x Prop",
+   "construction": "Count of CB+S rows with Out/Doubtful for a club's opponent-facing defense.",
+   "input": "SRC-02",
+   "target": "opponent WR/TE reception and receiving-yard props",
+   "direction": "more backups -> more target volume for the other side",
+   "status": "Computed (see deficiency page)",
+   "gate": "G-03, plus prop pricing missing (Q-12)"
+  },
+  {
+   "id": "SIG-07",
+   "name": "Interior pass-rush depletion",
+   "family": "Injury x Prop",
+   "construction": "Count of DT/DE Out or Doubtful.",
+   "input": "SRC-02",
+   "target": "opponent pass-protection, QB sack props, run-block win rate proxy",
+   "direction": "less pressure -> higher opponent pass volume",
+   "status": "Computed",
+   "gate": "G-03"
+  },
+  {
+   "id": "SIG-08",
+   "name": "Offensive-line depletion",
+   "family": "Injury x Prop",
+   "construction": "Count of T/G/C Out or Doubtful.",
+   "input": "SRC-02",
+   "target": "team rush-yards under, sack-taken over",
+   "direction": "more line absences -> worse rush, more sacks",
+   "status": "Computed (IND, HOU, MIN, DAL heaviest)",
+   "gate": "G-03"
+  },
+  {
+   "id": "SIG-09",
+   "name": "Target vacancy",
+   "family": "Injury x Prop",
+   "construction": "WR1/TE1 availability loss -> next-man usage shift.",
+   "input": "SRC-02 for loss; usage/snap-share data for the shift - absent from repo",
+   "target": "WR2/TE receptions over",
+   "direction": "vacancy raises the replacement's floor, not necessarily the team's ceiling",
+   "status": "PARTIAL - loss measured, usage unmeasured",
+   "gate": "blocked by Q-12"
+  },
+  {
+   "id": "SIG-10",
+   "name": "Scoring-baseline totals",
+   "family": "Market-neutral",
+   "construction": "Expected total from per-game scoring and allowance, shrunk to the league mean (A-05).",
+   "input": "SRC-01",
+   "target": "game total",
+   "direction": "n/a",
+   "status": "Computed for 13 games",
+   "gate": "G-04 needs a price to be scored against"
+  },
+  {
+   "id": "SIG-11",
+   "name": "Record-versus-point-differential residual",
+   "family": "Luck",
+   "construction": "Residual of W-L% after regressing on net points per game (league-wide r = +{{R_NET}} on 32 clubs).",
+   "input": "SRC-01",
+   "target": "identify over/under-achieving clubs before prices adjust",
+   "direction": "positive residual = winning on luck, mean-reverts",
+   "status": "Computed (see correlation page); not tradable without prices",
+   "gate": "G-06"
+  },
+  {
+   "id": "SIG-12",
+   "name": "Home/road asymmetry",
+   "family": "Market-neutral",
+   "construction": "Club's home win% minus road win%; league-wide home-vs-road win% correlation is only +{{R_HR}}, so split-based HFA estimates are noisy per club.",
+   "input": "SRC-01",
+   "target": "HFA parameter calibration",
+   "direction": "n/a",
+   "status": "Correlation computed; per-club HFA needs game logs (S-07)",
+   "gate": "G-03"
+  }
+ ],
+ "strategies": [
+  {
+   "id": "ST-01",
+   "name": "QB-Out Fade",
+   "bet_type": "Single (spread)",
+   "family": "Injury",
+   "construction": "When the official report marks a club's starting QB Out, take the opponent on the spread; one bet per game, no averaging across positions.",
+   "entry": "after the Friday designation",
+   "exit": "closing",
+   "required_data": [
+    "prices",
+    "2 seasons of QB-Out games"
+   ],
+   "state": "Registered, not graded",
+   "gates_blocking": "G-00 G-03 G-04",
+   "notes": "Week 10 case study: SEA at LV (Darnold Out, Lock starts - SRC-07)."
+  },
+  {
+   "id": "ST-02",
+   "name": "Secondary-Depletion Overs",
+   "bet_type": "Player prop",
+   "family": "Injury x Prop",
+   "construction": "Opponent WR1 receiving yards over when the defense faces >=2 CB/S Out.",
+   "entry": "Friday report",
+   "exit": "closing",
+   "required_data": [
+    "prop prices",
+    "snap counts"
+   ],
+   "state": "Registered, not graded",
+   "gates_blocking": "G-03 G-04 G-08",
+   "notes": "Signal computed for 6 games in Week 10; effect size unknown."
+  },
+  {
+   "id": "ST-03",
+   "name": "OffLine Ruin Unders",
+   "bet_type": "Single (team total under)",
+   "family": "Injury",
+   "construction": "Club with >=2 T/G/C Out: team total under, provided no QB-Injury offset.",
+   "entry": "Friday",
+   "exit": "closing",
+   "required_data": [
+    "prices"
+   ],
+   "state": "Registered, not graded",
+   "gates_blocking": "G-03 G-04",
+   "notes": "Week 10 candidates: IND (4 OL rows), MIN, DAL, HOU - see deficiency table."
+  },
+  {
+   "id": "ST-04",
+   "name": "Same-game prop pair",
+   "bet_type": "Prop combo (2 legs, same game)",
+   "family": "Correlation",
+   "construction": "Team rush-yards under + team sack-taken over, priced by the same book on the same slate; only if measured |r| < 0.30 cap or the book's joint price is beaten after haircut.",
+   "entry": "pre-kickoff",
+   "exit": "settlement at game end",
+   "required_data": [
+    "parlay pricing",
+    "correlation matrix"
+   ],
+   "state": "Blocked",
+   "gates_blocking": "G-06 G-09",
+   "notes": "Correlation matrix does not exist yet; the only pilot (n=16 games) is in a legacy tree and is below the sample gate."
+  },
+  {
+   "id": "ST-05",
+   "name": "3-Leg Parlay Discipline",
+   "bet_type": "Parlay",
+   "family": "Risk",
+   "construction": "Max 3 legs, no two legs from the same game unless the joint price is verified, and never more than one injury-leg per club.",
+   "entry": "after all designations final",
+   "exit": "game end",
+   "required_data": [
+    "prices",
+    "correlation matrix"
+   ],
+   "state": "Rule only, no live bets",
+   "gates_blocking": "G-09",
+   "notes": "Explicitly a loss-limitation rule, not an edge."
+  },
+  {
+   "id": "ST-06",
+   "name": "Residual Fader",
+   "bet_type": "Single (moneyline)",
+   "family": "Luck / mean reversion",
+   "construction": "Fade the club with the largest positive W-L% residual over net points per game once prices imply a materially smaller edge.",
+   "entry": "Wednesday",
+   "exit": "closing",
+   "required_data": [
+    "prices",
+    "multi-season history"
+   ],
+   "state": "Registered, not graded",
+   "gates_blocking": "G-02 G-04 G-06",
+   "notes": "Directly uses SIG-11; the four computed correlations are the only evidence and they are descriptive, 32 team-seasons."
+  },
+  {
+   "id": "ST-07",
+   "name": "Neutral-Site Correction",
+   "bet_type": "Single (spread)",
+   "family": "Model bias",
+   "construction": "Where the slate marks an international/neutral venue (Munich: NE at DET), remove HFA from the originated line and take the side the raw model favours only if the delta exceeds a stated threshold.",
+   "entry": "pre-kickoff",
+   "exit": "closing",
+   "required_data": [
+    "prices"
+   ],
+   "state": "Registered, not graded",
+   "gates_blocking": "G-03 G-04",
+   "notes": "Parameter A-02 is itself an assumption (FLG-12)."
+  },
+  {
+   "id": "ST-08",
+   "name": "Availability Composite",
+   "bet_type": "Model-vs-market residual",
+   "family": "Ensemble",
+   "construction": "Rank games by the gap between the originated line and the closing line; bet only the tails, sized by the published uncertainty.",
+   "entry": "post-close comparison",
+   "exit": "settlement",
+   "required_data": [
+    "prices"
+   ],
+   "state": "Blocked - no price source",
+   "gates_blocking": "G-04 G-05 G-07 G-08 G-10",
+   "notes": "This is the strategy the whole pipeline exists to test; it cannot run today."
+  }
+ ],
+ "gates": [
+  {
+   "id": "G-00",
+   "name": "Provenance",
+   "requirement": "Every input row carries a source URL and an as-of timestamp; unknown values are blank, never imputed.",
+   "threshold": "100% of rows; enforced by scripts/check_hub.py at build",
+   "blocking": "yes",
+   "status": "PASSED for the hub's own tables",
+   "why": "One unlabelled fetch makes the whole backtest unreproducible"
+  },
+  {
+   "id": "G-01",
+   "name": "Pre-registration",
+   "requirement": "Strategy spec, parameters, entry/exit and staking rule committed and hash-stamped before any graded outcome is recorded.",
+   "threshold": "git commit + sha256 of the spec file recorded in the row",
+   "blocking": "yes",
+   "status": "NOT MET (no hash recorded yet)",
+   "why": "Anything tuned after seeing results is hindsight"
+  },
+  {
+   "id": "G-02",
+   "name": "Sample size",
+   "requirement": "Minimum graded bets, weeks and seasons before a strategy is ranked.",
+   "threshold": ">=200 bets, >=40 distinct game-weeks, >=2 seasons (convention, not a league rule)",
+   "blocking": "yes",
+   "status": "NOT MET (0 graded bets exist)",
+   "why": "Small samples are variance wearing a costume"
+  },
+  {
+   "id": "G-03",
+   "name": "Calibration",
+   "requirement": "Model parameters fitted on data the strategy is not scored on, with a held-out year.",
+   "threshold": "no shared season between fit and test; reported fit error",
+   "blocking": "yes",
+   "status": "NOT MET (all parameters are assumptions, FLG-12)",
+   "why": "Uncalibrated weights just encode the author's priors"
+  },
+  {
+   "id": "G-04",
+   "name": "Cost-aware pricing",
+   "requirement": "Grading uses real captured prices including vig, at a stated capture time.",
+   "threshold": "median |model - close| and CLV computed on >=200 bets",
+   "blocking": "yes",
+   "status": "IMPOSSIBLE TODAY - no verified price source (FLG-07)",
+   "why": "Beating a midpoint is not beating a market"
+  },
+  {
+   "id": "G-05",
+   "name": "Uncertainty reporting",
+   "requirement": "Every published performance figure carries an interval and a max-drawdown; no bare point estimates.",
+   "threshold": "bootstrap 95% CI over bets, clustered by game-week",
+   "blocking": "yes",
+   "status": "NOT MET",
+   "why": "A number without error bars is an invitation to overbet"
+  },
+  {
+   "id": "G-06",
+   "name": "Overfitting test",
+   "requirement": "Probability of backtest overfitting estimated by CSCV across the parameter grid actually searched.",
+   "threshold": "PBO < 0.5 (paper convention)",
+   "blocking": "yes",
+   "status": "NOT MET",
+   "why": "The best in-sample setting is usually the most overfit one (SRC-11)"
+  },
+  {
+   "id": "G-07",
+   "name": "Selection-bias correction",
+   "requirement": "Deflated Sharpe ratio accounting for the number of variants tried, skew and kurtosis of returns.",
+   "threshold": "DSR > 0 at 95% (paper convention)",
+   "blocking": "yes",
+   "status": "NOT MET",
+   "why": "Trials you discarded still inflate the survivor's score (SRC-10)"
+  },
+  {
+   "id": "G-08",
+   "name": "Robustness",
+   "requirement": "Performance survives subset and leave-out tests: home/away, rest days, division, removing the best 5% of bets.",
+   "threshold": "sign of edge preserved in >=80% of subsets",
+   "blocking": "yes",
+   "status": "NOT MET",
+   "why": "Three lucky weeks can carry a whole backtest"
+  },
+  {
+   "id": "G-09",
+   "name": "Correlation and exposure",
+   "requirement": "Leg-correlation matrix measured; per-game and per-club caps enforced; parlays priced jointly not multiplied.",
+   "threshold": "max |r| per parlay 0.30 until validated; single-club exposure cap stated in Q-10",
+   "blocking": "yes",
+   "status": "NOT MET (no matrix beyond an n=16 pilot)",
+   "why": "Correlation is how two edges become one bet"
+  },
+  {
+   "id": "G-10",
+   "name": "Paper-trade gate",
+   "requirement": "After all above: a forward, untouched period run at the stated staking rule before any reward consideration.",
+   "threshold": ">=4 weeks of forward results, published before review",
+   "blocking": "yes",
+   "status": "NOT MET",
+   "why": "The only test that cannot be gamed is the one you have not seen yet"
+  }
+ ],
+ "correlation_register": [
+  {
+   "id": "COR-01",
+   "pair": "Points for per game vs win percentage",
+   "status": "COMPUTED",
+   "value": "+{{R_PF}}",
+   "n": 32,
+   "method": "Pearson r on the official 2026 standings snapshot of 2026-11-14",
+   "source": "SRC-01",
+   "caveat": "descriptive, not tradable; 9-week sample"
+  },
+  {
+   "id": "COR-02",
+   "pair": "Points against per game vs win percentage",
+   "status": "COMPUTED",
+   "value": "{{R_PA}}",
+   "n": 32,
+   "method": "same",
+   "source": "SRC-01",
+   "caveat": "as above"
+  },
+  {
+   "id": "COR-03",
+   "pair": "Net points per game vs win percentage",
+   "status": "COMPUTED",
+   "value": "+{{R_NET}}",
+   "n": 32,
+   "method": "same",
+   "source": "SRC-01",
+   "caveat": "mechanically high: net points embed wins; useful as a luck-residual base, not as a signal"
+  },
+  {
+   "id": "COR-04",
+   "pair": "Home win percentage vs road win percentage",
+   "status": "COMPUTED",
+   "value": "+{{R_HR}}",
+   "n": 32,
+   "method": "same, ties excluded from denominators",
+   "source": "SRC-01",
+   "caveat": "weak: split-based home/road talent estimates are noisy at 8-9 games"
+  },
+  {
+   "id": "COR-05",
+   "pair": "Net points per game vs points for per game",
+   "status": "COMPUTED",
+   "value": "+{{R_NETPF}}",
+   "n": 32,
+   "method": "identity-contamination check",
+   "source": "SRC-01",
+   "caveat": "published deliberately: shows how a derived quantity re-uses its own inputs"
+  },
+  {
+   "id": "COR-06",
+   "pair": "Total points scored by both clubs vs absolute margin",
+   "status": "COMPUTED (this session, from the in-repo 2026 game log)",
+   "value": "{{R_LOG_TOTAM}} (abs margin) / {{R_LOG_TOTSM}} (signed margin)",
+   "n": "{{LOG_FINALS}}",
+   "method": "Pearson r over every final 2026 score in data/desk/games.json (SRC-17), recomputed here rather than copied",
+   "source": "SRC-17",
+   "caveat": "the desk unit publishes -0.161 for this pair; recomputation shows -0.161 is r against the SIGNED margin while r against |margin| is -0.016, i.e. no blowout relationship in this sample (FLG-22)"
+  },
+  {
+   "id": "COR-07",
+   "pair": "Rushing yards vs game total (same club)",
+   "status": "BLANK",
+   "value": "",
+   "n": "",
+   "method": "needs play-by-play or box-score ingestion (the in-repo game log is score-only)",
+   "source": "",
+   "caveat": "needed before any run-pass parlay is allowed"
+  },
+  {
+   "id": "COR-08",
+   "pair": "QB passing yards vs WR1 receiving yards",
+   "status": "BLANK",
+   "value": "",
+   "n": "",
+   "method": "needs prop-level history",
+   "source": "",
+   "caveat": "the core combo correlation; blocked by Q-12 and S-04"
+  },
+  {
+   "id": "COR-09",
+   "pair": "Sack total vs offensive-line absences",
+   "status": "BLANK",
+   "value": "",
+   "n": "",
+   "method": "injury rows joined to defensive box scores",
+   "source": "",
+   "caveat": "input availability measured, outcome data absent"
+  },
+  {
+   "id": "COR-10",
+   "pair": "Injury designation change vs line movement",
+   "status": "BLANK",
+   "value": "",
+   "n": "",
+   "method": "snapshot diff of SRC-02 against price moves",
+   "source": "",
+   "caveat": "impossible until S-04 and S-05 both exist"
+  },
+  {
+   "id": "COR-11",
+   "pair": "Model residual vs next-week residual",
+   "status": "BLANK",
+   "value": "",
+   "n": "",
+   "method": "autocorrelation of model-minus-close; blocked with G-04 (no prices), not blocked by game data",
+   "source": "",
+   "caveat": "the honest test of whether the model has any persistence"
+  },
+  {
+   "id": "COR-12",
+   "pair": "Same-day club exposure correlation",
+   "status": "BLANK",
+   "value": "",
+   "n": "",
+   "method": "cross-game: same-club legs and divisional opponents",
+   "source": "",
+   "caveat": "required by G-09 before parlays across games are allowed"
+  },
+  {
+   "id": "COR-13",
+   "pair": "away score vs home score (same game)",
+   "status": "COMPUTED (this session)",
+   "value": "{{R_LOG_AH}}",
+   "n": "{{LOG_FINALS}}",
+   "method": "Pearson r over the same 137 finals",
+   "source": "SRC-17",
+   "caveat": "reproduces the desk unit's figure exactly; near zero, so game-level scores are close to independent - relevant to cross-game parlay legs"
+  }
+ ],
+ "leaderboard": {
+  "categories": [
+   "Single - spread",
+   "Single - moneyline",
+   "Single - total",
+   "Player prop",
+   "Prop combo (same game)",
+   "Parlay (cross-game)"
+  ],
+  "score_model": [
+   "primary: median closing-line value per bet, with a bootstrap 95% interval clustered by game-week",
+   "secondary: ROI at the stated vig, same interval treatment",
+   "qualification: DSR > 0 (SRC-10) and PBO < 0.5 (SRC-11) on the grid that was actually searched",
+   "display: never rank on a bare point estimate; an entry with an interval that spans zero is shown as undetermined"
+  ],
+  "season_structure": [
+   "Registration window (spec + hash committed)",
+   "Freeze (no parameter edits while grading)",
+   "Grading on untouched games only",
+   "Review: promote, park or ban with reasons published"
+  ],
+  "anti_gaming": [
+   "One leaderboard entry per spec; a variant that changes a parameter is a new entry and increases the trial count used in DSR",
+   "Disclose every variant tried, including discarded ones",
+   "No near-duplicate entries (same family, same construction, different threshold)",
+   "Retire an entry that misses its own stated threshold after the review period, publicly"
+  ],
+  "rewards": {
+   "status": "notional",
+   "amount": null,
+   "currency": null,
+   "basis": "Reward value, payout mechanism and legality are unanswered (Q-08, FLG-14); the design specifies tiers only",
+   "tiers": [
+    {
+     "tier": "T1",
+     "criteria": "all gates passed, top 3 by CLV lower bound",
+     "reward": "blank - owner decision"
+    },
+    {
+     "tier": "T2",
+     "criteria": "all gates passed",
+     "reward": "blank - owner decision"
+    },
+    {
+     "tier": "T3",
+     "criteria": "pre-registered, still grading",
+     "reward": "none"
+    }
+   ]
+  },
+  "entries": [],
+  "entries_note": "Empty by design: {{GATES_FAILED}} of {{GATES_TOTAL}} blocking gates are unpassed and no graded bet exists anywhere in the repository."
+ },
+ "luck_controls": [
+  "Separate variance from skill by measuring against prices, not outcomes alone (G-04, G-05).",
+  "Correct for the trials you ran, not just the strategy you kept (G-06, G-07).",
+  "Require out-of-sample and leave-best-out tests before promotion (G-08, G-10).",
+  "Cap the things that make luck look like skill: correlated legs, small samples, post-hoc thresholds (G-01, G-09).",
+  "Publish the residual of W-L% over net points as a luck index for clubs, and treat its mean reversion as the hypothesis (SIG-11)."
+ ]
 }

@@ -1,35 +1,283 @@
 {
-  "note": "Every open question below states what is already verified, what is missing, the concrete path to get it, and whether it blocks a decision. `blocking: yes` means no reasonable decision can be made on the dependent item until the owner answers.",
-  "open": [
-    {"id":"Q-01","area":"Scoring layer","question":"Which price do we grade against: pre-game consensus, a single book's closing line, or the line available at the moment we publish?","known":"No official NFL property publishes lines or prop prices (SRC-01..SRC-05 searched 2026-11-14); prior market columns came from a third-party page this session did not verify (SRC-13, FLG-07).","missing":"A named, licensed price source plus the capture time and the archive location.","discovery":"Owner selects a vendor or approves a manual capture protocol; then a nightly snapshot job writes prices into the repo as CSV with a timestamp.","owner":"Owner","blocking":"yes","status":"OPEN","affects":"Every ROI, CLV and leaderboard claim; gates G-04..G-09"},
-    {"id":"Q-02","area":"Skill metric","question":"Is the primary skill measure closing-line value, with ROI secondary, or ROI only?","known":"Overfitting controls exist in the literature and are cited here (SRC-10 DSR, SRC-11 PBO); CLV needs Q-01 to be computable at all.","missing":"Decision on the objective function and the noise floor a strategy must clear.","discovery":"Adopt CLV as primary once prices exist; preregister the threshold before grading anything.","owner":"Owner","blocking":"yes","status":"OPEN","affects":"Leaderboard promotion rules"},
-    {"id":"Q-03","area":"Backtest data","question":"Which historical seasons, at what granularity, are we allowed to store and rebuild from?","known":"The repo has only current-week snapshots; there is no odds archive and no game log in version control (analysis docs say so and this session found no such file).","missing":"Season range, price granularity (game/total/prop), injury-report history, and the licence terms for redistribution.","discovery":"Either an institutional data request or a self-built archive from this week forward; the archive is free to start today by snapshotting nightly.","owner":"Owner + repo admin","blocking":"yes","status":"OPEN","affects":"Any calibration of HFA, injury weights, or totals shrinkage"},
-    {"id":"Q-04","area":"Scope","question":"What is the game universe: all 272 regular-season games, excluding or adjusting international/neutral-site games?","known":"Week 10 2026 contains a Munich game (NE at DET, 09:30 ET, SRC-03), which is why the neutral-site HFA assumption exists (model_config A-02).","missing":"Explicit inclusion rule and the venue list for 2026 (London, Munich, Madrid, Rio, Frankfurt, Toronto).","discovery":"Parse the official schedule pages per week (already proven: SRC-03) and tag `neutral_site` from the venue field.","owner":"Owner","blocking":"no","status":"OPEN","affects":"Model input, parlay correlation across same-day games"},
-    {"id":"Q-05","area":"Depth authority","question":"Do we accept club-published depth charts, which the clubs themselves label unofficial, as the basis for 2nd/3rd/4th-string claims?","known":"No league depth chart is published; club charts were readable for 31 of 32 teams in a prior pass, 27 of 32 had no as-of date, Houston publishes an image only (FLG-08).","missing":"A policy: certified-availability layer only, or an explicitly unverified depth overlay.","discovery":"Recommend the two-layer design already built here: injuries = OFFICIAL, string depth = UNVERIFIED overlay, never mixed in one column.","owner":"Owner","blocking":"no","status":"OPEN","affects":"deficiency page, prop totals for back-up-dependent positions"},
-    {"id":"Q-06","area":"Unknown starters","question":"When no official source identifies the starting quarterback, do we skip the game or model it with a prior?","known":"Baltimore's Week 10 report lists 8 players and no QB while the starter is on IR and the backup is reported out for the season (FLG-06); Seattle's case is resolved by an official news page naming Drew Lock (SRC-07).","missing":"A written rule for unresolvable lineup facts.","discovery":"Add a `lineup_certainty` field per game; if below threshold, the game is excluded from the board and logged as skipped.","owner":"Owner","blocking":"yes","status":"OPEN","affects":"LAC@BAL Monday game is currently unpriceable under a strict rule"},
-    {"id":"Q-07","area":"Model parameters","question":"Where do the positional injury-impact weights come from, and who calibrates them?","known":"Every weight in `hub/data/model_config.json` is an assumption printed on the page (FLG-12); no verified source supplies them.","missing":"A calibration dataset (historical prices + lineup + box scores) and a fitting protocol with held-out years.","discovery":"Cannot be solved with current data; start the archive now, calibrate after one full season of self-collected snapshots.","owner":"Analyst (post-Q-01)","blocking":"yes","status":"BLOCKED","affects":"All spread and total numbers on the lines page"},
-    {"id":"Q-08","area":"Legal","question":"Are funded rewards for a strategy leaderboard, and any personal wagering, lawful where the owner is resident?","known":"Nothing is verified: two prior sessions assumed Japan, the Arena environment reports the Netherlands, and the specific regulator page tried this session returned 404 (FLG-14).","missing":"A jurisdiction answer and legal review of contests, rewards and data scraping terms.","discovery":"Owner states the jurisdiction; counsel reviews the national gambling act and the operator-terms question. Until then rewards stay notional.","owner":"Owner + counsel","blocking":"yes","status":"OPEN","affects":"leaderboard rewards, any payout automation"},
-    {"id":"Q-09","area":"Promotion rule","question":"What sample must a strategy clear before it appears on a leaderboard: games, bets, or calendar weeks?","known":"The statistical machinery to correct for selection bias and backtest overfitting is specified and cited (SRC-10, SRC-11); the numeric thresholds in gates G-06/G-07 are conventions from those papers, not league rules.","missing":"The owner's floor: minimum bet count, minimum weeks, and the maximum trials allowed per season.","discovery":"Adopt the published defaults (n>=200 bets, >=2 seasons, DSR>0, PBO<0.5) as a starting rule set, then freeze them.","owner":"Owner","blocking":"no","status":"OPEN","affects":"leaderboard emptiness"},
-    {"id":"Q-10","area":"Risk","question":"What staking rule and exposure caps apply to singles, parlays and prop combos?","known":"Nothing is set anywhere in the repo; no file defines a bankroll or a unit.","missing":"Unit size, Kelly fraction, max per game, max same-day correlated exposure, and a losing-streak circuit breaker.","discovery":"Owner picks one rule; the hub then prints it as a gate so no strategy can be promoted without it.","owner":"Owner","blocking":"yes","status":"OPEN","affects":"strategy promotion, parlay leg caps"},
-    {"id":"Q-11","area":"Correlation","question":"How do we treat joint probability when a book prices same-game parlay legs jointly rather than as a product of marginals?","known":"A prior pilot computed game-level r from 16 games only (x3lab/data/correlation.json) and a |r|>=0.3 leg cap; that pilot sample is far below the gate threshold (FLG-12).","missing":"A correlation matrix estimated on a real sample plus the vendor's parlay pricing rule.","discovery":"Estimate from the archive built after Q-01; until then the matrix rows here stay blank by design.","owner":"Analyst","blocking":"yes","status":"OPEN","affects":"all parlay and combo strategies"},
-    {"id":"Q-12","area":"Player props","question":"Which prop markets are in scope, and are they available at the prices we can capture?","known":"Props depend on snap counts, route participation and volume, none of which is in the repo; the official injury report gives availability only (SRC-02).","missing":"Market list (yds/rec/tds/first-down/SGP), and whether advanced participation data is licensed (NFL Next Gen Stats is official but not ingested here).","discovery":"Start with availability-driven props that the injury report can actually inform; defer snap-share dependent props until a participation feed exists.","owner":"Owner","blocking":"yes","status":"OPEN","affects":"prop-combo strategies, prop correlation rows"},
-    {"id":"Q-13","area":"Freshness","question":"What is the refresh cadence and the cut-off for publishing a line?","known":"The report mutates between fetches - one of 345 rows changed in 24h (FLG-03) and Sunday inactives arrive about 90 min before kickoff (SRC-12, secondary, FLG-11, FLG-17).","missing":"An agreed schedule: Wednesday, Thursday, Friday 4 pm ET, plus Sunday -90 min snapshots.","discovery":"Implement the snapshot job (S-05); the hub already stamps `as_of` on every table.","owner":"Owner","blocking":"no","status":"OPEN","affects":"all model rows, deficiency counts"},
-    {"id":"Q-14","area":"Governance","question":"Which tree is canonical for the site, and who owns `index.html`, navigation and the shared registers?","known":"Nine `index.html` files exist across eight trees; the root was a meta-refresh redirect to one of them (FLG-01).","missing":"A written ruling: hub canonical, others archived and read-only.","discovery":"Decide S-01 (recommend yes); then move legacy trees under `/archive` in one cleanup PR, and scope Pages to a built artifact (FLG-15 needs admin rights).","owner":"Owner","blocking":"no","status":"OPEN","affects":"every future session's file claims"},
-    {"id":"Q-15","area":"Semantics","question":"Does 'no game designation' mean expected-to-play, and are the 185 undesignated rows usable as availability evidence?","known":"Of 345 Week-10 rows, 185 carry no game status, 84 Questionable, 66 Out, 10 Doubtful (VER-02); the 'expected to play' reading comes from a secondary source (FLG-11).","missing":"The rulebook sentence that defines the convention.","discovery":"Fetch the league operations policy page and quote it; until then treat undesignated as 'no official constraint', not as 'playing'.","owner":"Analyst","blocking":"no","status":"OPEN","affects":"deficiency scoring, prop availability models"},
-    {"id":"Q-16","area":"Semantics","question":"How do we treat non-injury absences (rest, personal matter) that appear in the injury column?","known":"{{NIR}} Week-10 rows carry 'Not injury related' in the injury field (JAX Jessie Bates, JAX Jordan Davis, HOU Azeez Al-Shaair, LAR Myles Garrett); they change availability but not injury risk (VER-07).","missing":"A rule separating planned rest from injury in the feature set.","discovery":"Keep one `availability` field and one `injury_flag` field; models that use injury risk must read the second only.","owner":"Analyst","blocking":"no","status":"OPEN","affects":"deficiency weights, injury-trend features"},
-    {"id":"Q-17","area":"Model target","question":"Do we also originate season-long futures (playoff/division) from a 9-week sample?","known":"Standings after Week 9 are complete and internally consistent (VER-04: sum W = sum L, sum PF = sum PA, 32 clubs), but nine weeks is a small sample; ties exist (WAS-NYG 27-27, Week 5, SRC-04).","missing":"Whether futures are in scope at all, and the settlement date convention.","discovery":"If yes, model with explicit uncertainty bands and publish the regression-to-mean caveat; if no, remove futures from the requirements list.","owner":"Owner","blocking":"no","status":"OPEN","affects":"requirements R-22"},
-    {"id":"Q-18","area":"Data quality","question":"What is the team-identifier standard across the repo?","known":"Prior trees mix `LA`/`LAR` for the Rams and `ARI`/`AZ` for the Cardinals; the official pages render both `logos/LA` and the `AZ` abbreviation (VER-08), which broke a naive join in this session's cross-check.","missing":"One canonical id list (club code from the NFL team directory) plus a mapping table for legacy files.","discovery":"Freeze the 32-code list used in `hub/data/standings_2026.csv` as canonical; add an alias map to the data contract (S-03).","owner":"Integration session","blocking":"no","status":"OPEN","affects":"every cross-tree comparison"}
-  ],
-  "answered": [
-    {"id":"A-01","question":"Does an official, machine-readable NFL injury report exist, and what does it contain?","answer":"Yes. The Week 10 2026 report published 345 rows across 28 clubs (the 4 on bye publish none), each with position, injury, practice participation and, for 160 of them, a game status of Out, Doubtful or Questionable.","source":"SRC-02"},
-    {"id":"A-02","question":"Can the hub quote a market line or a prop price as fact?","answer":"No. No official NFL page publishes lines or prop prices, so every market cell in this hub is blank and flagged rather than filled from an unverified third party.","source":"FLG-07"},
-    {"id":"A-03","question":"Is there an official depth chart that identifies second, third or fourth string players?","answer":"No. Only club self-published charts, labelled unofficial by the clubs, with coverage and dating gaps; string-depth columns are therefore blank here and availability is tracked from the injury report instead.","source":"FLG-08"},
-    {"id":"A-04","question":"Can standings be used as a clean as-of feature?","answer":"Not without a rule. The standings module lags completed games (WAS-NYG Week 10 was final but still excluded), so any feature built on it must carry a snapshot timestamp.","source":"FLG-02"},
-    {"id":"A-05","question":"Can luck be removed from NFL results?","answer":"No, it can only be bounded and measured. The defensible programme is to pre-register a strategy, require an out-of-sample track record, then correct for selection bias and backtest overfitting.","source":"SRC-10 ; SRC-11"},
-    {"id":"A-06","question":"Is the injury data already in this repo trustworthy?","answer":"Verified row by row against the live official page: 344 of 345 rows identical on player and status, 1 practice-status drift in 24 hours. Game-status column reproduces exactly, 345/345.","source":"SRC-16 ; FLG-03"},
-    {"id":"A-07","question":"Are the published correlations from a prior session reproducible?","answer":"Close but not exactly. Recomputation gives +0.7001 / -0.6639 / +0.8794 / +0.3506 against the published +0.6984 / -0.6636 / +0.8781 / +0.3501, which pins them to a different standings snapshot, not to a different formula.","source":"FLG-13"},
-    {"id":"A-08","question":"Did a prior session's table contain a transcription error?","answer":"Yes. `dashboard/data/standings.json` records Tampa Bay's division record as 1-2-0; the official page shows 2-0-0, which is also the only value consistent with the 1.000 division percentage printed beside it.","source":"SRC-01 ; FLG-18"},
-    {"id":"A-09","question":"What is the state of the site today?","answer":"Fragmented: eight site trees from eight sessions, nine index files, four injury pages and five suggestions pages, and the root URL was a redirect. Consolidation is proposed as S-01 and the hub is the proposed canonical surface.","source":"FLG-01"},
-    {"id":"A-10","question":"Which facts are already certified enough to build on?","answer":"Standings (32 clubs, all internal checks pass), Week 10 slate (14 games, 4 byes), Thursday result (24-21), and the full Week 10 availability table. Everything about price, depth strings and performance is not.","source":"SRC-01 ; SRC-02 ; SRC-03 ; SRC-04"}
-  ]
+ "note": "Every open question below states what is already verified, what is missing, the concrete path to get it, and whether it blocks a decision. `blocking: yes` means no reasonable decision can be made on the dependent item until the owner answers.",
+ "open": [
+  {
+   "id": "Q-01",
+   "area": "Scoring layer",
+   "question": "Which price do we grade against: pre-game consensus, a single book's closing line, or the line available at the moment we publish?",
+   "known": "No official NFL property publishes lines or prop prices (SRC-01..SRC-05 searched 2026-11-14); prior market columns came from a third-party page this session did not verify (SRC-13, FLG-07).",
+   "missing": "A named, licensed price source plus the capture time and the archive location.",
+   "discovery": "Owner selects a vendor or approves a manual capture protocol; then a nightly snapshot job writes prices into the repo as CSV with a timestamp.",
+   "owner": "Owner",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "Every ROI, CLV and leaderboard claim; gates G-04..G-09"
+  },
+  {
+   "id": "Q-02",
+   "area": "Skill metric",
+   "question": "Is the primary skill measure closing-line value, with ROI secondary, or ROI only?",
+   "known": "Overfitting controls exist in the literature and are cited here (SRC-10 DSR, SRC-11 PBO); CLV needs Q-01 to be computable at all.",
+   "missing": "Decision on the objective function and the noise floor a strategy must clear.",
+   "discovery": "Adopt CLV as primary once prices exist; preregister the threshold before grading anything.",
+   "owner": "Owner",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "Leaderboard promotion rules"
+  },
+  {
+   "id": "Q-03",
+   "area": "Backtest data",
+   "question": "Which historical seasons, at what granularity, are we allowed to store and rebuild from?",
+   "known": "One season now exists in the repository: data/desk/games.json holds 163 rows for 2026 weeks 1-11 with 137 finals, and this session reconciled it against the official standings on all 32 clubs (VER-19). There are still no prices, no prior seasons and no box-score or play-by-play detail.",
+   "missing": "seasons before 2026, price history, and per-play data; plus the licence terms for redistribution",
+   "discovery": "extend the existing capture workflow (.github/workflows/desk-capture.yml, scripts/desk_*.py) backwards one season and forwards nightly, instead of writing a second pipeline",
+   "owner": "Owner + repo admin",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "Any calibration of HFA, injury weights, or totals shrinkage"
+  },
+  {
+   "id": "Q-04",
+   "area": "Scope",
+   "question": "What is the game universe: all 272 regular-season games, excluding or adjusting international/neutral-site games?",
+   "known": "Week 10 2026 contains a Munich game (NE at DET, 09:30 ET, SRC-03), which is why the neutral-site HFA assumption exists (model_config A-02).",
+   "missing": "Explicit inclusion rule and the venue list for 2026 (London, Munich, Madrid, Rio, Frankfurt, Toronto).",
+   "discovery": "Parse the official schedule pages per week (already proven: SRC-03) and tag `neutral_site` from the venue field.",
+   "owner": "Owner",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "Model input, parlay correlation across same-day games"
+  },
+  {
+   "id": "Q-05",
+   "area": "Depth authority",
+   "question": "Do we accept club-published depth charts, which the clubs themselves label unofficial, as the basis for 2nd/3rd/4th-string claims?",
+   "known": "No league depth chart exists. A club-chart capture does now exist in this repo (data/desk/depth.json, 32 clubs, joined to the injury report for weeks 8-10), but 0 of 76 Week-10 rows carry a chart as-of date and 50 come from charts the club labels unofficial (VER-21).",
+   "missing": "A policy: certified-availability layer only, or an explicitly unverified depth overlay.",
+   "discovery": "use the two-layer design now published: certified availability on the deficiency table, the club-chart replacement chain below it badged UNVERIFIED; never feed the overlay into a model input",
+   "owner": "Owner",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "deficiency page, prop totals for back-up-dependent positions"
+  },
+  {
+   "id": "Q-06",
+   "area": "Unknown starters",
+   "question": "When no official source identifies the starting quarterback, do we skip the game or model it with a prior?",
+   "known": "Baltimore's Week 10 report lists 8 players and no QB while the starter is on IR and the backup is reported out for the season (FLG-06); Seattle's case is resolved by an official news page naming Drew Lock (SRC-07).",
+   "missing": "A written rule for unresolvable lineup facts.",
+   "discovery": "Add a `lineup_certainty` field per game; if below threshold, the game is excluded from the board and logged as skipped.",
+   "owner": "Owner",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "LAC@BAL Monday game is currently unpriceable under a strict rule"
+  },
+  {
+   "id": "Q-07",
+   "area": "Model parameters",
+   "question": "Where do the positional injury-impact weights come from, and who calibrates them?",
+   "known": "Every weight in `hub/data/model_config.json` is an assumption printed on the page (FLG-12); no verified source supplies them.",
+   "missing": "A calibration dataset (historical prices + lineup + box scores) and a fitting protocol with held-out years.",
+   "discovery": "Cannot be solved with current data; start the archive now, calibrate after one full season of self-collected snapshots.",
+   "owner": "Analyst (post-Q-01)",
+   "blocking": "yes",
+   "status": "BLOCKED",
+   "affects": "All spread and total numbers on the lines page"
+  },
+  {
+   "id": "Q-08",
+   "area": "Legal",
+   "question": "Are funded rewards for a strategy leaderboard, and any personal wagering, lawful where the owner is resident?",
+   "known": "Nothing is verified: two prior sessions assumed Japan, the Arena environment reports the Netherlands, and the specific regulator page tried this session returned 404 (FLG-14).",
+   "missing": "A jurisdiction answer and legal review of contests, rewards and data scraping terms.",
+   "discovery": "Owner states the jurisdiction; counsel reviews the national gambling act and the operator-terms question. Until then rewards stay notional.",
+   "owner": "Owner + counsel",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "leaderboard rewards, any payout automation"
+  },
+  {
+   "id": "Q-09",
+   "area": "Promotion rule",
+   "question": "What sample must a strategy clear before it appears on a leaderboard: games, bets, or calendar weeks?",
+   "known": "The statistical machinery to correct for selection bias and backtest overfitting is specified and cited (SRC-10, SRC-11); the numeric thresholds in gates G-06/G-07 are conventions from those papers, not league rules.",
+   "missing": "The owner's floor: minimum bet count, minimum weeks, and the maximum trials allowed per season.",
+   "discovery": "Adopt the published defaults (n>=200 bets, >=2 seasons, DSR>0, PBO<0.5) as a starting rule set, then freeze them.",
+   "owner": "Owner",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "leaderboard emptiness"
+  },
+  {
+   "id": "Q-10",
+   "area": "Risk",
+   "question": "What staking rule and exposure caps apply to singles, parlays and prop combos?",
+   "known": "Nothing is set anywhere in the repo; no file defines a bankroll or a unit.",
+   "missing": "Unit size, Kelly fraction, max per game, max same-day correlated exposure, and a losing-streak circuit breaker.",
+   "discovery": "Owner picks one rule; the hub then prints it as a gate so no strategy can be promoted without it.",
+   "owner": "Owner",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "strategy promotion, parlay leg caps"
+  },
+  {
+   "id": "Q-11",
+   "area": "Correlation",
+   "question": "How do we treat joint probability when a book prices same-game parlay legs jointly rather than as a product of marginals?",
+   "known": "A prior pilot computed game-level r from 16 games only (x3lab/data/correlation.json) and a |r|>=0.3 leg cap; that pilot sample is far below the gate threshold (FLG-12).",
+   "missing": "A correlation matrix estimated on a real sample plus the vendor's parlay pricing rule.",
+   "discovery": "Estimate from the archive built after Q-01; until then the matrix rows here stay blank by design.",
+   "owner": "Analyst",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "all parlay and combo strategies"
+  },
+  {
+   "id": "Q-12",
+   "area": "Player props",
+   "question": "Which prop markets are in scope, and are they available at the prices we can capture?",
+   "known": "Props depend on snap counts, route participation and volume, none of which is in the repo; the official injury report gives availability only (SRC-02).",
+   "missing": "Market list (yds/rec/tds/first-down/SGP), and whether advanced participation data is licensed (NFL Next Gen Stats is official but not ingested here).",
+   "discovery": "Start with availability-driven props that the injury report can actually inform; defer snap-share dependent props until a participation feed exists.",
+   "owner": "Owner",
+   "blocking": "yes",
+   "status": "OPEN",
+   "affects": "prop-combo strategies, prop correlation rows"
+  },
+  {
+   "id": "Q-13",
+   "area": "Freshness",
+   "question": "What is the refresh cadence and the cut-off for publishing a line?",
+   "known": "The report mutates between fetches - one of 345 rows changed in 24h (FLG-03) and Sunday inactives arrive about 90 min before kickoff (SRC-12, secondary, FLG-11, FLG-17).",
+   "missing": "An agreed schedule: Wednesday, Thursday, Friday 4 pm ET, plus Sunday -90 min snapshots.",
+   "discovery": "Implement the snapshot job (S-05); the hub already stamps `as_of` on every table.",
+   "owner": "Owner",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "all model rows, deficiency counts"
+  },
+  {
+   "id": "Q-14",
+   "area": "Governance",
+   "question": "Which tree is canonical for the site, and who owns `index.html`, navigation and the shared registers?",
+   "known": "Nine `index.html` files exist across eight trees; the root was a meta-refresh redirect to one of them (FLG-01).",
+   "missing": "A written ruling: hub canonical, others archived and read-only.",
+   "discovery": "Decide S-01 (recommend yes); then move legacy trees under `/archive` in one cleanup PR, and scope Pages to a built artifact (FLG-15 needs admin rights).",
+   "owner": "Owner",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "every future session's file claims"
+  },
+  {
+   "id": "Q-15",
+   "area": "Semantics",
+   "question": "Does 'no game designation' mean expected-to-play, and are the 185 undesignated rows usable as availability evidence?",
+   "known": "Of 345 Week-10 rows, 185 carry no game status, 84 Questionable, 66 Out, 10 Doubtful (VER-02); the 'expected to play' reading comes from a secondary source (FLG-11).",
+   "missing": "The rulebook sentence that defines the convention.",
+   "discovery": "Fetch the league operations policy page and quote it; until then treat undesignated as 'no official constraint', not as 'playing'.",
+   "owner": "Analyst",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "deficiency scoring, prop availability models"
+  },
+  {
+   "id": "Q-16",
+   "area": "Semantics",
+   "question": "How do we treat non-injury absences (rest, personal matter) that appear in the injury column?",
+   "known": "{{NIR}} Week-10 rows carry 'Not injury related' in the injury field (JAX Jessie Bates, JAX Jordan Davis, HOU Azeez Al-Shaair, LAR Myles Garrett); they change availability but not injury risk (VER-07).",
+   "missing": "A rule separating planned rest from injury in the feature set.",
+   "discovery": "Keep one `availability` field and one `injury_flag` field; models that use injury risk must read the second only.",
+   "owner": "Analyst",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "deficiency weights, injury-trend features"
+  },
+  {
+   "id": "Q-17",
+   "area": "Model target",
+   "question": "Do we also originate season-long futures (playoff/division) from a 9-week sample?",
+   "known": "Standings after Week 9 are complete and internally consistent (VER-04: sum W = sum L, sum PF = sum PA, 32 clubs), but nine weeks is a small sample; ties exist (WAS-NYG 27-27, Week 5, SRC-04).",
+   "missing": "Whether futures are in scope at all, and the settlement date convention.",
+   "discovery": "If yes, model with explicit uncertainty bands and publish the regression-to-mean caveat; if no, remove futures from the requirements list.",
+   "owner": "Owner",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "requirements R-22"
+  },
+  {
+   "id": "Q-18",
+   "area": "Data quality",
+   "question": "What is the team-identifier standard across the repo?",
+   "known": "Prior trees mix `LA`/`LAR` for the Rams and `ARI`/`AZ` for the Cardinals; the official pages render both `logos/LA` and the `AZ` abbreviation (VER-08), which broke a naive join in this session's cross-check.",
+   "missing": "One canonical id list (club code from the NFL team directory) plus a mapping table for legacy files.",
+   "discovery": "Freeze the 32-code list used in `hub/data/standings_2026.csv` as canonical; add an alias map to the data contract (S-03).",
+   "owner": "Integration session",
+   "blocking": "no",
+   "status": "OPEN",
+   "affects": "every cross-tree comparison"
+  }
+ ],
+ "answered": [
+  {
+   "id": "A-01",
+   "question": "Does an official, machine-readable NFL injury report exist, and what does it contain?",
+   "answer": "Yes. The Week 10 2026 report published 345 rows across 28 clubs (the 4 on bye publish none), each with position, injury, practice participation and, for 160 of them, a game status of Out, Doubtful or Questionable.",
+   "source": "SRC-02"
+  },
+  {
+   "id": "A-02",
+   "question": "Can the hub quote a market line or a prop price as fact?",
+   "answer": "No. No official NFL page publishes lines or prop prices, so every market cell in this hub is blank and flagged rather than filled from an unverified third party.",
+   "source": "FLG-07"
+  },
+  {
+   "id": "A-03",
+   "question": "Is there an official depth chart that identifies second, third or fourth string players?",
+   "answer": "No. Only club self-published charts, labelled unofficial by the clubs, with coverage and dating gaps; string-depth columns are therefore blank here and availability is tracked from the injury report instead.",
+   "source": "FLG-08"
+  },
+  {
+   "id": "A-04",
+   "question": "Can standings be used as a clean as-of feature?",
+   "answer": "Yes, once stamped - and an assumption about the cut-off is exactly what produced a wrong flag here. This session first published 'the standings module lags the completed Thursday game', then disproved it by reconciling the page against an independent game log: the page covers every game through 2026-11-12 and simply prints no cut-off. The surviving rule is to record the last included game with the snapshot (hub/data/asof.json).",
+   "source": "SRC-01 ; SRC-17 ; VER-19"
+  },
+  {
+   "id": "A-05",
+   "question": "Can luck be removed from NFL results?",
+   "answer": "No, it can only be bounded and measured. The defensible programme is to pre-register a strategy, require an out-of-sample track record, then correct for selection bias and backtest overfitting.",
+   "source": "SRC-10 ; SRC-11"
+  },
+  {
+   "id": "A-06",
+   "question": "Is the injury data already in this repo trustworthy?",
+   "answer": "Verified row by row against the live official page: 344 of 345 rows identical on player and status, 1 practice-status drift in 24 hours. Game-status column reproduces exactly, 345/345.",
+   "source": "SRC-16 ; FLG-03"
+  },
+  {
+   "id": "A-07",
+   "question": "Are the published correlations from a prior session reproducible?",
+   "answer": "Close but not exactly. Recomputation gives +0.7001 / -0.6639 / +0.8794 / +0.3506 against the published +0.6984 / -0.6636 / +0.8781 / +0.3501, which pins them to a different standings snapshot, not to a different formula.",
+   "source": "FLG-13"
+  },
+  {
+   "id": "A-08",
+   "question": "Did a prior session's table contain a transcription error?",
+   "answer": "Yes. `dashboard/data/standings.json` records Tampa Bay's division record as 1-2-0; the official page shows 2-0-0, which is also the only value consistent with the 1.000 division percentage printed beside it.",
+   "source": "SRC-01 ; FLG-18"
+  },
+  {
+   "id": "A-09",
+   "question": "What is the state of the site today?",
+   "answer": "Fragmented: eight site trees from eight sessions, nine index files, four injury pages and five suggestions pages, and the root URL was a redirect. Consolidation is proposed as S-01 and the hub is the proposed canonical surface.",
+   "source": "FLG-01"
+  },
+  {
+   "id": "A-10",
+   "question": "Which facts are already certified enough to build on?",
+   "answer": "Standings (32 clubs, all internal checks pass), Week 10 slate (14 games, 4 byes), Thursday result (24-21), and the full Week 10 availability table. Everything about price, depth strings and performance is not.",
+   "source": "SRC-01 ; SRC-02 ; SRC-03 ; SRC-04"
+  }
+ ]
 }
