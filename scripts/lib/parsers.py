@@ -311,7 +311,7 @@ def parse_player_stats(html: str, source_url: str, category: str, season: int | 
 # ---------------------------------------------------------------------------
 
 
-_GAME_SLUG_RE = re.compile(r"/games/([a-z0-9\-]+)-([a-z0-9]+)-at-([a-z0-9]+)-(\d{4})-reg-(\d+)")
+_GAME_SLUG_RE = re.compile(r"/games/(?P<slug>[a-z0-9\-]+?)-(?P<year>\d{4})-reg-(?P<week>\d+)")
 _SCORE_RE = re.compile(r"^\d{1,3}$")
 _RECORD_RE = re.compile(r"^\d{1,2}-\d{1,2}(-\d{1,2})?$")
 _TIME_RE = re.compile(r"\d{1,2}:\d{2}\s*(AM|PM)", re.I)
@@ -357,10 +357,21 @@ def _score_rows(card) -> list[dict]:
         img = row.find("img", src=re.compile(r"/clubs/logos/"))
         if img is not None:
             abbr = (img.get("src") or "").rsplit("/", 1)[-1].split(".")[0].upper()
-        label = row.find("span", class_=re.compile(r"sr-only"))
-        if label is not None:
-            name = _txt(label)
+            alt = (img.get("alt") or "").strip()
+            if alt.lower().endswith(" logo"):
+                name = alt[: -len(" logo")].strip()
+        if not name:
+            label = row.find("span", class_=re.compile(r"sr-only"))
+            if label is not None:
+                candidate = _txt(label)
+                # The score's own screen-reader text is not a club name.
+                if candidate and "score" not in candidate.lower():
+                    name = candidate
         score = _txt(score_node)
+        if not _SCORE_RE.match(score):
+            # "Hidden Score" is what the page shows for a game that has not
+            # been played. It is not a score, so the cell stays blank.
+            score = ""
         rows.append({"abbr": abbr, "name": name, "score": score})
     if rows:
         return rows
@@ -368,8 +379,9 @@ def _score_rows(card) -> list[dict]:
     # Fallback for a card without the score container: read the club logos.
     for img in card.find_all("img", src=re.compile(r"/clubs/logos/")):
         abbr = (img.get("src") or "").rsplit("/", 1)[-1].split(".")[0].upper()
-        label = img.find_next("span", class_=re.compile(r"sr-only"))
-        rows.append({"abbr": abbr, "name": _txt(label) if label else "", "score": ""})
+        alt = (img.get("alt") or "").strip()
+        name = alt[: -len(" logo")].strip() if alt.lower().endswith(" logo") else ""
+        rows.append({"abbr": abbr, "name": name, "score": ""})
     return rows
 
 
@@ -401,6 +413,7 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
     soup = BeautifulSoup(html, "lxml")
     games: list[dict] = []
     seen: set[str] = set()
+    by_key: dict[str, dict] = {}
 
     for card in _game_cards(soup):
         link = card.find("a", href=re.compile(r"/games/"))
@@ -408,11 +421,15 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
             continue
         slug_match = _GAME_SLUG_RE.search(link.get("href", ""))
         if slug_match:
-            away_slug, _at, home_slug, slug_season, slug_week = slug_match.groups()
-            game_week = int(slug_week)
+            slug = slug_match.group("slug")
+            game_week = int(slug_match.group("week"))
+            slug_year = int(slug_match.group("year"))
             if week is not None and game_week != int(week):
                 continue
-            slug_year = int(slug_season)
+            if "-at-" in slug:
+                away_slug, home_slug = slug.split("-at-", 1)
+            else:
+                away_slug, home_slug = slug, ""
             away_fallback = _title_from_slug(away_slug)
             home_fallback = _title_from_slug(home_slug)
         else:
@@ -450,32 +467,54 @@ def parse_schedule(html: str, source_url: str, season: int | None, week: int | N
                 break
 
         key = f"{away_abbr}@{home_abbr}#{game_week}"
+        record = {
+            "season": slug_year if slug_year else season,
+            "week": game_week,
+            "game_date": date_text or time_text,
+            "game_time": time_text,
+            "game_timezone": "",
+            "network": network,
+            "away_team": away_abbr,
+            "away_team_name": away["name"] or away_fallback,
+            "away_record": records[0] if len(records) > 0 else "",
+            "away_score": away["score"],
+            "home_team": home_abbr,
+            "home_team_name": home["name"] or home_fallback,
+            "home_record": records[1] if len(records) > 1 else "",
+            "home_score": home["score"],
+            "status": "",
+            "game_url": "https://www.nfl.com" + link.get("href", ""),
+            "source_url": source_url,
+        }
         if key in seen:
+            # The page shows a game more than once: in the by-week strip and
+            # in the week's own list. The richer version wins, so a stripped
+            # card never overwrites the full one.
+            existing = by_key[key]
+            if _schedule_richness(record) > _schedule_richness(existing):
+                by_key[key] = record
             continue
         seen.add(key)
+        by_key[key] = record
 
-        games.append(
-            {
-                "season": slug_year if slug_year else season,
-                "week": game_week,
-                "game_date": date_text or time_text,
-                "game_time": time_text,
-                "game_timezone": "",
-                "network": network,
-                "away_team": away_abbr,
-                "away_team_name": away["name"] or away_fallback,
-                "away_record": records[0] if len(records) > 0 else "",
-                "away_score": away["score"],
-                "home_team": home_abbr,
-                "home_team_name": home["name"] or home_fallback,
-                "home_record": records[1] if len(records) > 1 else "",
-                "home_score": home["score"],
-                "status": "",
-                "game_url": "https://www.nfl.com" + link.get("href", ""),
-                "source_url": source_url,
-            }
-        )
+    games = list(by_key.values())
+    games.sort(key=lambda g: (g.get("game_date") or "", g.get("away_team") or ""))
     return {"season": season, "week": week, "games": games, "source_url": source_url}
+
+
+def _schedule_richness(game: dict) -> int:
+    """How much official detail a parsed game carries."""
+    score = 2
+    fields = (
+        "game_date", "game_time", "network", "away_record", "home_record",
+        "away_score", "home_score", "away_team_name", "home_team_name",
+    )
+    for field in fields:
+        if game.get(field):
+            score += 1
+    return score
+
+
 
 
 # ---------------------------------------------------------------------------
