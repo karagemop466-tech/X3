@@ -1,0 +1,68 @@
+{
+  "description": "Depth chart snapshots (Starter/2nd/3rd/4th) with availability tags exactly as displayed. Source: ESPN team depth charts, 'Powered by RotoWire' - a TRUSTED THIRD-PARTY chart, not an official team depth chart (flag F-05). String-level claims are made ONLY for teams in this file. Tags per ESPN glossary: Q=Questionable, O=Out, PUP, SUS, IR=Injured reserve.",
+  "fetched": "2026-11-14",
+  "source_class": "trusted (RotoWire via ESPN)",
+  "teams": {
+    "PIT": {
+      "source": "https://www.espn.com/nfl/team/depth/_/name/pit",
+      "offense": [
+        {"pos": "QB", "s1": "Aaron Rodgers", "s2": "Mason Rudolph", "s3": "Will Howard", "s4": "Drew Allar"},
+        {"pos": "RB", "s1": "Jaylen Warren", "s2": "Rico Dowdle", "s3": "Lew Nichols", "s4": "Travis Homer"},
+        {"pos": "WR", "s1": "DK Metcalf", "s2": "Brandon Smith", "s3": "Roman Wilson (IR)", "s4": "-"},
+        {"pos": "WR", "s1": "Germie Bernard", "s2": "Kaden Wetjen", "s3": "Cole Burgess (IR)", "s4": "-"},
+        {"pos": "WR", "s1": "Ben Skowronek", "s2": "Michael Pittman Jr. (IR)", "s3": "-", "s4": "-"},
+        {"pos": "TE", "s1": "Darnell Washington", "s2": "Pat Freiermuth", "s3": "Robert Tonyan", "s4": "-"},
+        {"pos": "LT", "s1": "Troy Fautanu", "s2": "Dylan Cook", "s3": "Jack Driscoll (IR)", "s4": "-"},
+        {"pos": "LG", "s1": "Mason McCormick", "s2": "Brock Hoffman", "s3": "Gennings Dunker (IR)", "s4": "-"},
+        {"pos": "C", "s1": "Zach Frazier", "s2": "Ryan McCollum", "s3": "-", "s4": "-"},
+        {"pos": "RG", "s1": "Brock Hoffman", "s2": "Spencer Anderson", "s3": "-", "s4": "-"},
+        {"pos": "RT", "s1": "Max Iheanachor", "s2": "Dylan Cook", "s3": "-", "s4": "-"}
+      ],
+      "defense": [
+        {"pos": "LDE", "s1": "Yahya Black", "s2": "Gabriel Rubio", "s3": "Derrick Harmon (IR)", "s4": "-"},
+        {"pos": "NT", "s1": "Keeanu Benton", "s2": "Sebastian Joseph-Day (IR)", "s3": "-", "s4": "-"},
+        {"pos": "RDE", "s1": "Cameron Heyward", "s2": "Kevin Jobity Jr.", "s3": "Logan Lee (IR)", "s4": "-"},
+        {"pos": "WLB", "s1": "T.J. Watt", "s2": "Nick Herbig", "s3": "-", "s4": "-"},
+        {"pos": "LILB", "s1": "Payton Wilson", "s2": "Cole Holcomb", "s3": "-", "s4": "-"},
+        {"pos": "RILB", "s1": "Patrick Queen", "s2": "Carson Bruener", "s3": "-", "s4": "-"},
+        {"pos": "SLB", "s1": "Alex Highsmith", "s2": "Jack Sawyer", "s3": "-", "s4": "-"},
+        {"pos": "LCB", "s1": "Asante Samuel Jr.", "s2": "Sean Murphy-Bunting", "s3": "Terell Smith", "s4": "-"},
+        {"pos": "SS", "s1": "DeShon Elliott", "s2": "Robert Spears-Jennings", "s3": "-", "s4": "-"},
+        {"pos": "FS", "s1": "Jaquan Brisker", "s2": "-", "s3": "-", "s4": "-"},
+        {"pos": "RCB", "s1": "Jamel Dean", "s2": "Daylen Everette", "s3": "Doneiko Slaughter", "s4": "Daequan Hardy"},
+        {"pos": "NB", "s1": "Jalen Ramsey", "s2": "Brandin Echols", "s3": "Donte Kent (O)", "s4": "-"}
+      ]
+    },
+    "BAL": {
+      "source": "https://www.espn.com/nfl/team/depth/_/name/bal",
+      "offense": [
+        {"pos": "QB", "s1": "Jacoby Brissett", "s2": "Joe Fagnano", "s3": "Kedon Slovis", "s4": "Lamar Jackson (IR)"},
+        {"pos": "RB", "s1": "Derrick Henry", "s2": "Justice Hill", "s3": "Rasheen Ali", "s4": "Adam Randall (IR)"},
+        {"pos": "WR", "s1": "Zay Flowers", "s2": "Devontez Walker", "s3": "-", "s4": "-"},
+        {"pos": "WR", "s1": "Rashod Bateman", "s2": "LaJohntay Wester", "s3": "-", "s4": "-"},
+        {"pos": "WR", "s1": "Ja'Kobi Lane", "s2": "Elijah Sarratt", "s3": "-", "s4": "-"},
+        {"pos": "TE", "s1": "Mark Andrews", "s2": "Josh Cuevas", "s3": "Matt Hibner", "s4": "Durham Smythe (IR)"},
+        {"pos": "LT", "s1": "Ronnie Stanley", "s2": "Carson Vinson", "s3": "-", "s4": "-"},
+        {"pos": "LG", "s1": "John Simpson", "s2": "Ryan Neuzil", "s3": "-", "s4": "-"},
+        {"pos": "C", "s1": "Cam Jurgens", "s2": "Ryan Neuzil", "s3": "Olaivavega Ioane", "s4": "Ethan Pocic (IR)"},
+        {"pos": "RG", "s1": "Olaivavega Ioane", "s2": "Ryan Neuzil", "s3": "Emery Jones Jr.", "s4": "-"},
+        {"pos": "RT", "s1": "Roger Rosengarten", "s2": "Carson Vinson", "s3": "-", "s4": "-"}
+      ],
+      "defense": [
+        {"pos": "LDE", "s1": "Nnamdi Madubuike", "s2": "Aeneas Peebles", "s3": "-", "s4": "-"},
+        {"pos": "NT", "s1": "Travis Jones", "s2": "John Jenkins", "s3": "-", "s4": "-"},
+        {"pos": "RDE", "s1": "Calais Campbell", "s2": "Broderick Washington Jr.", "s3": "-", "s4": "-"},
+        {"pos": "WLB", "s1": "Mike Green", "s2": "Zion Young", "s3": "Tavius Robinson (IR)", "s4": "-"},
+        {"pos": "LILB", "s1": "Roquan Smith", "s2": "Jay Higgins IV", "s3": "-", "s4": "-"},
+        {"pos": "RILB", "s1": "Trenton Simpson", "s2": "Teddye Buchanan", "s3": "-", "s4": "-"},
+        {"pos": "SLB", "s1": "Trey Hendrickson", "s2": "Ethan Burke", "s3": "-", "s4": "-"},
+        {"pos": "LCB", "s1": "Nate Wiggins", "s2": "Chidobe Awuzie", "s3": "Bilhal Kone (IR)", "s4": "-"},
+        {"pos": "SS", "s1": "Jaylinn Hawkins (Q)", "s2": "Keondre Jackson", "s3": "Jahquez Robinson (IR)", "s4": "-"},
+        {"pos": "FS", "s1": "Malaki Starks", "s2": "K'Von Wallace", "s3": "-", "s4": "-"},
+        {"pos": "RCB", "s1": "Marlon Humphrey", "s2": "T.J. Tampa", "s3": "Chandler Rivers", "s4": "-"},
+        {"pos": "NB", "s1": "Kyle Hamilton", "s2": "Keyon Martin", "s3": "-", "s4": "-"}
+      ],
+      "note": "Chart lists Lamar Jackson as 4th-string QB with IR tag (franchise QB on injured reserve per injuries.json). Tyler Huntley and Skylar Thompson also on IR per injuries.json but not shown on the chart (flag F-05)."
+    }
+  }
+}

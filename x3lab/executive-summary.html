@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive Summary — X3 NFL Lines &amp; Strategy Lab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Executive Summary</h1>
+  <p>2026-11-14 · NFL 2026 season, Week 10 in progress · every figure below is sourced or labeled as model output</p>
+</header>
+<main>
+  <h2>The situation</h2>
+  <p class="lead">We now run an originations pipeline: verified league data in, our own Week-10 lines out, compared against the market, with injury/depth deficiencies tracked and a strategy competition scaffolded behind validation gates that strip luck from results. All data is verified line-by-line against official (NFL.com) or trusted (ESPN reports, DraftKings via ESPN) sources with links on every row; 10 irregularities are published on the <a href="flagged.html">Flagged for Review</a> page instead of being silently smoothed over.</p>
+
+  <h2>Key findings (verified)</h2>
+  <ul class="compact">
+    <li><strong>Top of league:</strong> Buffalo Bills and San Francisco 49ers both 7-1. Jacksonville owns the league's best scoring margin (+108) despite two losses. Denver (7-2) has won 5 straight but is +2.17 wins over its Pythagorean expectation — the biggest luck-flag in the league. Tampa Bay sits 3-6 with a positive point differential (+24) and a −2.17 luck delta — the strongest regression candidate. <a href="results.html">standings</a> · <a href="strategies.html">S3</a></li>
+    <li><strong>Week 10 (in progress):</strong> TNF final WAS 24 @ NYG 21. 13 games remain, including Munich (NE @ DET, Sun 9:30 AM ET). Byes: CHI, DEN, PHI, TB. <a href="lines.html">board</a></li>
+    <li><strong>QB chaos is the week's dominant signal:</strong> BAL Lamar Jackson on IR (thumb, 6–10 weeks per coach Minter) — with Tyler Huntley and Skylar Thompson also on IR, 2nd-string Jacoboby Brissett starts MNF (chart-verified). MIN Kyler Murray OUT (hamstring) vs GB. SEA Sam Darnold OUT — Drew Lock starts (reported). PHI Jalen Hurts out for the season (blood clots). NYG Jaxson Dart on IR. ARI Gardner Minshew out for the season. <a href="injuries.html">board</a> · <a href="depth.html">depth</a></li>
+    <li><strong>Cluster deficiencies (2+ players down at one group):</strong> 24 groups flagged — BAL QB (3 on IR), CAR CB (4 down), DET secondary (2 out + 2 IR for the Munich game), HOU WR and edge, SF WR (4 down incl. IR/Aiyuk), GB DL/LB and OL/TE, TEN LB, NYG CB, DAL secondary. <a href="depth.html">table</a></li>
+    <li><strong>Market moves align with news:</strong> LAC-BAL total fell 48.5→38.5 and BAL-CAR flipped BAL −4.5 → CAR −1.5 after the Lamar news; JAX-TEN moved 8 points; MIA-IND total fell 9 points. Open-line posting times are not shown by the source (flag F-03), so move attribution is provisional. <a href="flagged.html">F-03</a></li>
+    <li><strong>Our originated lines (model v0.1, unvalidated):</strong> all 13 Week-10 games priced from official scoring data. Largest model-vs-market gaps: JAX-TEN −8.0 and LAC-BAL +4.5 — the latter is a textbook case of what v0.1 cannot see (it prices pre-injury margins). Totals are heuristic and not decision-grade. <a href="lines.html">table</a> · <a href="flagged.html">F-06</a></li>
+    <li><strong>Luck removal is operational:</strong> gate G-7 requires Bayesian shrinkage, binomial tests vs break-even, and deflated Sharpe ratios. Pilot correlations (n=16) are published with sample size attached and explicitly fail the G-8 bar for parlays. <a href="leaderboard.html">gates</a></li>
+  </ul>
+
+  <h2>Decisions waiting on you</h2>
+  <ul class="compact">
+    <li><strong>Bankroll, risk tolerance, book-of-record, source whitelist</strong> (Q-01/02/04/12) — everything staking-related stays frozen until these land.</li>
+    <li><strong>12 suggestions in the review queue</strong> (SUG-01…12): adopt gates before wagering; start CLV tracking now; automate snapshots; vendor archive; legal review; depth-chart automation; PBP/prop ingestion; owner questionnaire; model v0.2; variance simulator; weekly review ritual; source SOP. Each is prioritized with effort/impact — pick the path. <a href="suggestions.html">review queue</a></li>
+    <li><strong>Legal caution:</strong> the owner is located in Japan, where sports wagering and funded contests may be unlawful. The competition is points-only until counsel confirms otherwise (F-09 / SUG-05).</li>
+  </ul>
+
+  <h2>Risks &amp; integrity notes</h2>
+  <ul class="compact">
+    <li>Everything on the leaderboard is empty by design — no strategy has passed a gate, and fabricating performance is forbidden.</li>
+    <li>Depth-chart strings are chart-verified for PIT and BAL only (trusted third-party chart, not official) — all other string claims are blank and flagged (F-05).</li>
+    <li>ESPN injury rows contain status/comment mismatches (F-04) and several 2026 roster assignments look surprising (F-10) — both listed verbatim for review.</li>
+    <li>No prop market data is in hand — player-prop strategies are explicitly blocked rather than estimated (Q-06).</li>
+  </ul>
+
+  <h2>Bottom line</h2>
+  <p class="lead">The machine works: verified data → originated numbers → honest gaps. What converts it from interesting to dangerous-edge is next week's data discipline (CLV timestamps, snapshots) and your calls on the review queue. Nothing here is a betting recommendation until gates pass.</p>
+</main>
+<footer class="site">X3 · session e1c332ce · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>renderNav('executive-summary.html');</script>
+</body>
+</html>

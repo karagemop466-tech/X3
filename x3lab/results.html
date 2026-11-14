@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results &amp; Standings — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Results &amp; Standings</h1>
+  <p>Verified game results (Week 9 + Week-10 TNF) and the full 32-team table · every row sourced to NFL.com</p>
+</header>
+<main>
+  <h2>2026 standings (through Nov 12 TNF)</h2>
+  <p class="small">Splits as displayed at NFL.com. The trailing split column is labeled <code>non_conf</code> per the arithmetic partition that verified the mapping for all 32 rows — see flag F-02. Seed = current playoff seed (conference standings page).</p>
+  <div id="standings"></div>
+
+  <h2>Week 9 results (15 games)</h2>
+  <div id="wk9"></div>
+
+  <h2>Week 10 schedule</h2>
+  <div id="wk10"></div>
+</main>
+<footer class="site">X3 · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('results.html');
+(async () => {
+  const [st, w9, w10] = await Promise.all([
+    loadJSON('data/standings.json'),
+    loadJSON('data/week9.json'),
+    loadJSON('data/week10.json')
+  ]);
+  renderTable('standings', [
+    { key: 'team', label: 'Team' },
+    { key: 'rec', label: 'W-L-T', fmt: (v, r) => record(r.w, r.l, r.t) },
+    { key: 'pct', label: 'PCT' },
+    { key: 'pf', label: 'PF' },
+    { key: 'pa', label: 'PA' },
+    { key: 'diff', label: 'Diff', fmt: v => v > 0 ? '+' + v : String(v) },
+    { key: 'home', label: 'Home' },
+    { key: 'road', label: 'Road' },
+    { key: 'div', label: 'Div' },
+    { key: 'conf', label: 'Conf' },
+    { key: 'non_conf', label: 'Non-conf*' },
+    { key: 'streak', label: 'Strk' },
+    { key: 'last5', label: 'L5' },
+    { key: 'conf_rank', label: 'Seed' }
+  ], st.teams.map(t => ({ ...t, source: t.source })));
+
+  renderTable('wk9', [
+    { key: 'when', label: 'Date' },
+    { key: 'game', label: 'Matchup' },
+    { key: 'score', label: 'Score' },
+    { key: 'note', label: 'Note' }
+  ], w9.games.map(g => ({
+    when: g.date,
+    game: `${g.away} @ ${g.home}`,
+    score: `${g.away_score} – ${g.home_score}`,
+    note: g.note,
+    source: g.source
+  })).concat(w9.games_week10_played.map(g => ({
+    when: g.date + ' (Wk10)',
+    game: `${g.away} @ ${g.home}`,
+    score: `${g.away_score} – ${g.home_score}`,
+    note: g.note,
+    source: g.source
+  }))));
+
+  renderTable('wk10', [
+    { key: 'when', label: 'Kickoff (ET)' },
+    { key: 'game', label: 'Matchup' },
+    { key: 'tv', label: 'TV' },
+    { key: 'slot', label: 'Slot' },
+    { key: 'status', label: 'Status', fmt: v => `<span class="badge status">${esc(v)}</span>` }
+  ], w10.games.map(g => ({
+    when: g.date + ' ' + g.time_et,
+    game: `${g.away} @ ${g.home}`,
+    tv: g.tv,
+    slot: g.slot,
+    status: g.status + (g.result ? ' — ' + g.result : ''),
+    source: g.source
+  })));
+})();
+</script>
+</body>
+</html>

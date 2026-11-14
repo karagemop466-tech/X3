@@ -1,0 +1,31 @@
+{
+  "description": "Correlation values computed from verified game scores only. PILOT sample - NOT decision-grade (validation gate G-2 requires n>=200 games per market type).",
+  "generated_by": "scripts/compute_analysis.py",
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-9",
+  "source_class": "official",
+  "sample": "n=16 games (Week 9 + Week-10 TNF final)",
+  "values": [
+    {
+      "pair": "game_total vs abs_margin",
+      "r": 0.246,
+      "n": 16,
+      "reading": "positive r would mean higher-scoring games also tend to be more lopsided in this sample"
+    },
+    {
+      "pair": "away_score vs home_score",
+      "r": -0.02,
+      "n": 16,
+      "reading": "game-level scoring correlation relevant for same-game parlay leg selection"
+    }
+  ],
+  "policy_thresholds": {
+    "parlay_leg_pair_max_abs_r": 0.3,
+    "note": "legs with |r| >= 0.3 may not be combined in a parlay under strategy policy S-PARLAY-1 until a validated correlation matrix exists"
+  },
+  "missing_for_production": [
+    "play-by-play data (player props, drive outcomes)",
+    "multi-season game logs (n>=200 per market type)",
+    "closing lines with timestamps (CLV and correlation at close)"
+  ],
+  "flag": "F-08"
+}
