@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions - X3 decision council</title>
+<link rel="stylesheet" href="assets/council.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>decision council</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<div class="wrap">
+<nav class="nav"><a href="index.html"><b>Overview</b><span>The eight requirements at a glance</span></a>
+<a href="executive-summary.html"><b>Executive summary</b><span>The one-page brief</span></a>
+<a href="requirements.html"><b>Requirements</b><span>Each requirement as an acceptance test</span></a>
+<a href="questions.html"><b>Questions &amp; answers</b><span>What is known, what is missing, what it blocks</span></a>
+<a class="on" href="suggestions.html"><b>Suggestions</b><span>Review the paths, then choose</span></a>
+<a href="verification.html"><b>Verification</b><span>Line by line, with the recomputation</span></a>
+<a href="repo-review.html"><b>Repo review</b><span>Every tree audited</span></a>
+<a href="flagged.html"><b>Flagged for review</b><span>Unverified items and irregularities</span></a>
+<a href="sources.html"><b>Sources</b><span>Official pages and repository artifacts</span></a></nav>
+<main>
+<h1>Suggestion review queue</h1>
+<p class="lede">Eighteen proposals to improve the site's decision value, none of them implemented. Review, pick a path, then build. Each proposal names what it unblocks, what it costs, and how it could go wrong.</p>
+
+<div class="callout"><h3 style="margin-top:0">Nothing on this page has been implemented</h3>
+<p>These are paths, not changes. Each one states what it would unblock, what it would cost, and what
+could go wrong. Pick a path and it gets built; until then the repository stays as it is. Every item is
+marked <b>PROPOSED</b>.</p></div>
+<p><span class="bad p0">P0 - blocking: 3</span> <span class="bad p1">P1 - high: 7</span> <span class="bad p2">P2 - medium: 6</span> <span class="bad p3">P3 - low: 2</span></p>
+<div class="rq" id="S01">
+<h3><span class="mono">S01</span> Market data <span class="bad p0">P0 - blocking</span></h3>
+<p><b>Proposal.</b> Decide the price source before building more on top of it. Three paths: (a) buy a historical odds licence and ingest it in CI; (b) run the GitHub Actions runner on a schedule to snapshot one public book&#x27;s board at a fixed time each day and retain only what is needed for closing-line value; (c) declare prices out of scope and re-scope the site to model accuracy against results, dropping every ROI and leaderboard claim.</p>
+<p class="m"><b>Evidence.</b> Every market column in the repository is empty (V11-V14). Path (c) is the only one that costs nothing and it is also the only one that is honest today.</p>
+<p class="m"><b>Unblocks.</b> R1, R4, R5, R8, Q01, Q02, Q03, Q18</p>
+<p class="m"><b>Effort.</b> Path (c): an hour. Paths (a) and (b): a procurement or legal step plus a pipeline.</p>
+<p class="m"><b>Risk.</b> Path (b) risks a terms-of-use problem and a single-book bias. Path (a) costs money. Path (c) removes the competition half of the brief.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - decision, not a fetch</span></p>
+</div>
+<div class="rq" id="S02">
+<h3><span class="mono">S02</span> Settlement <span class="bad p0">P0 - blocking</span></h3>
+<p><b>Proposal.</b> Write the settlement rule down before any bet is graded: how a side settles on a tie, how a total settles on an exact landing, whether overtime counts, and what a push does to the record. One page, versioned, linked from every leaderboard row.</p>
+<p class="m"><b>Evidence.</b> 137 finals are verified and gradeable today (V04), but nothing states how they grade.</p>
+<p class="m"><b>Unblocks.</b> R2, R5, Q04</p>
+<p class="m"><b>Effort.</b> Small. It is a document, not a system.</p>
+<p class="m"><b>Risk.</b> Low, but if it is written after the first bet is graded the early record becomes unfixable.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - decision, not a fetch</span></p>
+</div>
+<div class="rq" id="S03">
+<h3><span class="mono">S03</span> Origination <span class="bad p1">P1 - high</span></h3>
+<p><b>Proposal.</b> Originate the moneyline last, from the side and the total, and print the sigma used. Record the conversion on the row so a reviewer can reproduce the price from the spread.</p>
+<p class="m"><b>Evidence.</b> Side and total exist for 13 games (V09). No moneyline exists anywhere (R3).</p>
+<p class="m"><b>Unblocks.</b> R3, Q05</p>
+<p class="m"><b>Effort.</b> Small once sigma is chosen.</p>
+<p class="m"><b>Risk.</b> A normal-on-margin assumption is wrong in the tails and will misprice large favourites. Publish it as an assumption, not a fact.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - not derivable from any official page</span></p>
+</div>
+<div class="rq" id="S04">
+<h3><span class="mono">S04</span> Governance <span class="bad p1">P1 - high</span></h3>
+<p><b>Proposal.</b> Write the demotion gate as numbers with an owner and an enforcement point. A concrete default: return to paper if the rolling 200-bet mean closing-line value is negative, or if the 95% CI on ROI contains zero over the last 200 graded bets, or immediately on any data-provenance failure. Log every demotion with its trigger.</p>
+<p class="m"><b>Evidence.</b> Promotion gates G1-G8 exist; no demotion rule exists anywhere (R8).</p>
+<p class="m"><b>Unblocks.</b> R8, Q13, Q14</p>
+<p class="m"><b>Effort.</b> Small to write, larger to automate.</p>
+<p class="m"><b>Risk.</b> Thresholds chosen after seeing results are fitted to the past. Choose them now, before there is anything to demote.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - decision, not a fetch</span></p>
+</div>
+<div class="rq" id="S05">
+<h3><span class="mono">S05</span> Leaderboard <span class="bad p1">P1 - high</span></h3>
+<p><b>Proposal.</b> Split the leaderboard into two boards from the start: a signal board scored on stake-independent mean closing-line value per bet with n and a 95% CI, and a staking board scored on ROI, units and drawdown. Rank them separately and never blend them into one number.</p>
+<p class="m"><b>Evidence.</b> The design is described on two trees; neither board has a row (R5).</p>
+<p class="m"><b>Unblocks.</b> R5, Q11</p>
+<p class="m"><b>Effort.</b> Small once R1 closes. Nothing to build until then.</p>
+<p class="m"><b>Risk.</b> A blended ranking is exactly the failure the requirement is written to prevent.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - design, no graded bets exist</span></p>
+</div>
+<div class="rq" id="S06">
+<h3><span class="mono">S06</span> Roster <span class="bad p1">P1 - high</span></h3>
+<p><b>Proposal.</b> Capture depth charts on a fixed schedule in CI and store the capture date with every chart. A chart without a date is not evidence of a lineup, it is evidence that a page once existed.</p>
+<p class="m"><b>Evidence.</b> 0 of 76 Week 10 absences carry a chart as-of date (R6).</p>
+<p class="m"><b>Unblocks.</b> R6, Q06, Q17</p>
+<p class="m"><b>Effort.</b> Small: the capture pipeline already exists for nfl.com pages.</p>
+<p class="m"><b>Risk.</b> Club charts are self-labelled unofficial. Store the disclaimer with the row.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json">repo artifact - club charts</a></p>
+</div>
+<div class="rq" id="S07">
+<h3><span class="mono">S07</span> Roster <span class="bad p2">P2 - medium</span></h3>
+<p><b>Proposal.</b> Add an ordinal depth field: 1st, 2nd, 3rd, 4th string, or a free-agent pickup sourced from the transaction wire rather than the depth chart. Treat the two sources as independent evidence and publish where they disagree.</p>
+<p class="m"><b>Evidence.</b> 41 of 76 absences resolve to a named replacement, none to a depth string (R6, V15).</p>
+<p class="m"><b>Unblocks.</b> R6, Q06, Q07</p>
+<p class="m"><b>Effort.</b> Medium. Requires parsing each club&#x27;s chart layout, which varies by club.</p>
+<p class="m"><b>Risk.</b> Parsed ordinals are inferred from page layout, not stated by the club. Badge them DERIVED.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json">repo artifact - club charts</a></p>
+</div>
+<div class="rq" id="S08">
+<h3><span class="mono">S08</span> Statistics <span class="bad p0">P0 - blocking</span></h3>
+<p><b>Proposal.</b> Fix the published correlation. Recompute r(game total, |margin|) from the 137 verified finals and publish the corrected value with a corrected reading, or withdraw the pair. Do not silently overwrite: publish the correction with the old value and the date.</p>
+<p class="m"><b>Evidence.</b> The published -0.161 is r(total, signed home margin), not r(total, |margin|). Correct value: see the recomputation on the verification page.</p>
+<p class="m"><b>Unblocks.</b> R7</p>
+<p class="m"><b>Effort.</b> Small. The fix is arithmetic; the discipline is publishing the correction.</p>
+<p class="m"><b>Risk.</b> A silent edit destroys the audit trail. Publish both.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json">repo artifact - recomputed here</a></p>
+</div>
+<div class="rq" id="S09">
+<h3><span class="mono">S09</span> Player props <span class="bad p2">P2 - medium</span></h3>
+<p><b>Proposal.</b> Either fund a prop feed or formally close the prop strategy family and say so on the leaderboard, rather than leaving strategies registered and permanently blocked.</p>
+<p class="m"><b>Evidence.</b> No official source publishes prop prices or results (Q08, V16).</p>
+<p class="m"><b>Unblocks.</b> The prop-combo leg of the brief, Q08</p>
+<p class="m"><b>Effort.</b> Small to close; a purchase to open.</p>
+<p class="m"><b>Risk.</b> Leaving blocked strategies registered inflates the apparent progress of the project.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED - no official prop source exists</span></p>
+</div>
+<div class="rq" id="S10">
+<h3><span class="mono">S10</span> Statistics <span class="bad p1">P1 - high</span></h3>
+<p><b>Proposal.</b> Ingest at least one prior season of official results before making any skill claim. The 2026 season alone cannot support a walk-forward test or a 200-bet minimum.</p>
+<p class="m"><b>Evidence.</b> 137 verified finals (V04); gates already specify 200 graded bets (G2).</p>
+<p class="m"><b>Unblocks.</b> R5, R7, R8, Q09</p>
+<p class="m"><b>Effort.</b> Medium. Historical week pages are the same format as the current ones.</p>
+<p class="m"><b>Risk.</b> Low. More data is strictly better here.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://www.nfl.com/schedules/2026/by-week/week-10">nfl.com week schedule pages</a></p>
+</div>
+<div class="rq" id="S11">
+<h3><span class="mono">S11</span> Statistics <span class="bad p2">P2 - medium</span></h3>
+<p><b>Proposal.</b> Preregister the number of strategy tests before testing. FDR control needs a denominator, and an unbounded search space makes any correction meaningless.</p>
+<p class="m"><b>Evidence.</b> Gate G4 specifies Benjamini-Hochberg at q = 0.10 with no test count registered (Q10).</p>
+<p class="m"><b>Unblocks.</b> R5, R7, R8, Q10</p>
+<p class="m"><b>Effort.</b> Small.</p>
+<p class="m"><b>Risk.</b> Registering too few tests and then testing more is the failure mode; log additions.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json">repo artifact - gate register</a></p>
+</div>
+<div class="rq" id="S12">
+<h3><span class="mono">S12</span> Rewards <span class="bad p3">P3 - low</span></h3>
+<p><b>Proposal.</b> Keep rewards out of the research system. If a competition is wanted, design it as a separate surface with its own rules and its own review, and do not let prize structure feed back into the signal scores.</p>
+<p class="m"><b>Evidence.</b> Nothing is configured; the site already states it does not promise rewards (Q12).</p>
+<p class="m"><b>Unblocks.</b> Q12</p>
+<p class="m"><b>Effort.</b> Large, and mostly legal rather than technical.</p>
+<p class="m"><b>Risk.</b> Contest design is regulated. This is not a legal-advice surface; get a review.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <span class="bad">UNVERIFIED</span></p>
+</div>
+<div class="rq" id="S13">
+<h3><span class="mono">S13</span> Repository <span class="bad p1">P1 - high</span></h3>
+<p><b>Proposal.</b> Stop adding site trees. Declare one canonical tree, freeze the rest as an archive, and require new work to land as pages inside the canonical tree instead of as a new root directory.</p>
+<p class="m"><b>Evidence.</b> Fifteen trees exist; a sixteenth is being built now (Q15).</p>
+<p class="m"><b>Unblocks.</b> Q15</p>
+<p class="m"><b>Effort.</b> Medium: a decision plus a one-time archive move.</p>
+<p class="m"><b>Risk.</b> Freezing the wrong tree loses the newest registers. Check which tree holds them first.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3">GitHub repository</a></p>
+</div>
+<div class="rq" id="S14">
+<h3><span class="mono">S14</span> Verification <span class="bad p1">P1 - high</span></h3>
+<p><b>Proposal.</b> Correct the standing claim that the authoring environment cannot reach nfl.com, and re-run every blank table against the official pages. Several blanks are fetchable, not unknowable.</p>
+<p class="m"><b>Evidence.</b> This session read nfl.com schedule, standings and injury pages directly and matched 50 injury rows field by field (V08, Q16).</p>
+<p class="m"><b>Unblocks.</b> Q16</p>
+<p class="m"><b>Effort.</b> Medium: re-fetch and re-verify, page by page.</p>
+<p class="m"><b>Risk.</b> None. It only removes false blanks.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com official injury report</a></p>
+</div>
+<div class="rq" id="S15">
+<h3><span class="mono">S15</span> Verification <span class="bad p2">P2 - medium</span></h3>
+<p><b>Proposal.</b> Add one gate that refuses to publish a numeric cell unless it carries either an official source URL or an explicit UNVERIFIED badge. Enforce it in CI on every tree, not only on the tree that happens to own the newest page.</p>
+<p class="m"><b>Evidence.</b> A repo-wide link and source-row gate exists, but prior sessions report 658 published rows that carry neither a link nor a flag.</p>
+<p class="m"><b>Unblocks.</b> R7 hygiene, Q15</p>
+<p class="m"><b>Effort.</b> Small. The pattern already exists in scripts/audit_all.py.</p>
+<p class="m"><b>Risk.</b> Low. It makes blanks visible instead of hiding them.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/audit_all.py">repo artifact - existing gate</a></p>
+</div>
+<div class="rq" id="S16">
+<h3><span class="mono">S16</span> Origination <span class="bad p2">P2 - medium</span></h3>
+<p><b>Proposal.</b> Publish the fair, market and difference columns even while the market column is empty: three headers, two blanks, and a cell that says why. The column contract is then in place when prices arrive.</p>
+<p class="m"><b>Evidence.</b> All 13 originated rows already carry empty market fields (V11, V12).</p>
+<p class="m"><b>Unblocks.</b> R4</p>
+<p class="m"><b>Effort.</b> Small.</p>
+<p class="m"><b>Risk.</b> Low, provided the blanks stay visibly blank.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">repo artifact - market columns empty</a></p>
+</div>
+<div class="rq" id="S17">
+<h3><span class="mono">S17</span> Model <span class="bad p3">P3 - low</span></h3>
+<p><b>Proposal.</b> Report model accuracy against a published naive baseline (home team by a fixed margin, or last week&#x27;s spread) so &#x27;MAE 10.52&#x27; has something to be better than.</p>
+<p class="m"><b>Evidence.</b> Walk-forward MAE 10.52, r 0.20, n 121, with no baseline published (V10, Q18).</p>
+<p class="m"><b>Unblocks.</b> Q18</p>
+<p class="m"><b>Effort.</b> Small.</p>
+<p class="m"><b>Risk.</b> Low. It may show the model is not yet better than the baseline, which is useful to know.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">repo artifact - DERIVED</a></p>
+</div>
+<div class="rq" id="S18">
+<h3><span class="mono">S18</span> Governance <span class="bad p2">P2 - medium</span></h3>
+<p><b>Proposal.</b> Adopt an as-of contract for every dataset: each file declares the week, the retrieval timestamp and the source URL in the data itself, so no reader has to infer a cut-off.</p>
+<p class="m"><b>Evidence.</b> A prior session published a false &#x27;standings lag the finished game&#x27; flag purely because no cut-off was recorded anywhere.</p>
+<p class="m"><b>Unblocks.</b> R2, R6</p>
+<p class="m"><b>Effort.</b> Small.</p>
+<p class="m"><b>Risk.</b> None.</p>
+<p class="m"><b>Decision.</b> <span class="bad der">PROPOSED - awaiting your pick</span> &nbsp;|&nbsp; <b>Source.</b> <a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json">repo artifact - verified game log</a></p>
+</div>
+<h2>How to read the priorities</h2>
+<ul class="tight">
+<li><b>P0</b> - blocking. Nothing downstream can be finished until this is decided.</li>
+<li><b>P1</b> - high. Large effect on whether the project can make a skill claim at all.</li>
+<li><b>P2</b> - medium. Real improvement, not on the critical path.</li>
+<li><b>P3</b> - low. Worth doing, safe to defer.</li>
+</ul>
+<p class="note">Priorities are this session's recommendation, not a decision. Change them; the point of
+the page is that the choice is made before the work starts.</p>
+
+</main>
+<footer>
+<p>X3 decision council - session arena/dd5047b8-x3. Every row carries an official source link or an explicit
+UNVERIFIED badge; nothing is inferred. Repository:
+<a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>.
+Back to the <a href="../index.html">site landing</a>.</p>
+</footer>
+</div>
+</body>
+</html>

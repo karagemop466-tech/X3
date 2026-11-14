@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for review - X3 decision council</title>
+<link rel="stylesheet" href="assets/council.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>decision council</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<div class="wrap">
+<nav class="nav"><a href="index.html"><b>Overview</b><span>The eight requirements at a glance</span></a>
+<a href="executive-summary.html"><b>Executive summary</b><span>The one-page brief</span></a>
+<a href="requirements.html"><b>Requirements</b><span>Each requirement as an acceptance test</span></a>
+<a href="questions.html"><b>Questions &amp; answers</b><span>What is known, what is missing, what it blocks</span></a>
+<a href="suggestions.html"><b>Suggestions</b><span>Review the paths, then choose</span></a>
+<a href="verification.html"><b>Verification</b><span>Line by line, with the recomputation</span></a>
+<a href="repo-review.html"><b>Repo review</b><span>Every tree audited</span></a>
+<a class="on" href="flagged.html"><b>Flagged for review</b><span>Unverified items and irregularities</span></a>
+<a href="sources.html"><b>Sources</b><span>Official pages and repository artifacts</span></a></nav>
+<main>
+<h1>Flagged for review</h1>
+<p class="lede">Unverified items and irregularities, with the source behind each one. Nothing here blocks the build; all of it is worth a look before the next decision.</p>
+
+<p>Everything on this page is published rather than hidden. None of it blocks the site: the site is
+live, and these are the things a reviewer should look at after it. Every row links the file or page
+the finding came from.</p>
+<table><thead><tr>
+<th>ID</th>
+<th>Severity</th>
+<th>Area</th>
+<th>Finding</th>
+<th>Detail</th>
+<th>Action</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr><td><span class="mono">C-01</span></td><td><span class="bad bad hi">high</span></td><td>Statistics</td><td><b>A published correlation does not reproduce from the data it cites and its reading has the sign backwards.</b></td><td>data/desk/correlations.json publishes r = -0.161 labelled &#x27;game total vs |margin|&#x27;, n = 137, reading &#x27;same-game total and blowout size move together&#x27;. Recomputed this session from the same 137 verified finals: r(total, |margin|) = -0.0157 and r(total, signed home margin) = -0.1607. The published number is the signed-margin statistic under an absolute-margin label, and a negative r means the two quantities move in opposite directions, not together. Its 95% CI contains 0 either way.</td><td>Fix under S08, or withdraw the pair. Not edited by this session - the file is owned by another session.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/correlations.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-02</span></td><td><span class="bad bad hi">high</span></td><td>Market data</td><td><b>Every market column on the site is empty, and that is a data-rights gap rather than a parsing gap.</b></td><td>market_spread_home and market_total are empty strings in all 13 originated rows. No NFL or club page publishes prices. Any ROI, closing-line value, edge or leaderboard figure on the site is therefore unavailable, not merely missing.</td><td>Decide a path under S01. Do not fill these cells from any non-official source.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-03</span></td><td><span class="bad warn">medium</span></td><td>Roster</td><td><b>The replacement-depth requirement cannot be met from the sources in use.</b></td><td>Club depth charts name a replacement for 41 of 76 Week 10 absences. Zero of 76 carry a chart as-of date, 50 of the charts are labelled unofficial by the publishing club, and Houston&#x27;s chart is published as an image and cannot be parsed. No ordinal depth string is recorded anywhere in the repository.</td><td>S06 and S07. Until then, publish as UNVERIFIED and use it for no model input.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-04</span></td><td><span class="bad warn">medium</span></td><td>Verification</td><td><b>A standing project-wide claim is false: the authoring environment can reach nfl.com.</b></td><td>COORDINATION.md and the README record that nfl.com is not directly fetchable from the sandbox and that this is why tables were left blank. This session read the Week 10 schedule, the 2026 league standings and the Week 10 official injury report directly, and matched 50 injury rows field by field against the official page.</td><td>S14. Re-run the blank tables.</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-05</span></td><td><span class="bad warn">medium</span></td><td>Repository</td><td><b>Fifteen overlapping site trees publish the same blanks under different IDs.</b></td><td>Each session built its own root directory, so the same unanswered question appears as a Q-row, an S-row and an F-row in several trees with different identifiers and different wording. A sixteenth tree (origin/) is under construction.</td><td>S13. Nothing is deleted by this flag; it asks for a decision.</td><td><a href="https://github.com/karagemop466-tech/X3">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-06</span></td><td><span class="bad warn">medium</span></td><td>Leaderboard</td><td><b>The leaderboard is empty by design and cannot be filled by any current workstream.</b></td><td>Zero bets are graded. Grading needs prices (R1) and a settlement rule (R2). Every strategy on every tree is registered and blocked, not competing.</td><td>Close R1 and R2 first. S01, S02.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/desk/leaderboard.html">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-07</span></td><td><span class="bad low">low</span></td><td>Origination</td><td><b>The third market type in the required origination order does not exist.</b></td><td>The brief requires side, then total, then moneyline. Side and total are originated for 13 games; no moneyline is originated anywhere in the repository.</td><td>S03.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-08</span></td><td><span class="bad low">low</span></td><td>Governance</td><td><b>Promotion gates exist without any demotion gate, so promotion is irreversible.</b></td><td>Gates G1-G8 define how a strategy becomes live. No rule defines how it stops being live.</td><td>S04.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/strategies.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-09</span></td><td><span class="bad low">low</span></td><td>Model</td><td><b>The model applies no injury adjustment and says so.</b></td><td>Stated in the model&#x27;s own limitations. This is correct behaviour given C-03: there is no verified depth data to adjust with.</td><td>Revisit only after R6 closes. S06, Q17.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json">UNVERIFIED - no official source</a></td></tr>
+<tr><td><span class="mono">C-10</span></td><td><span class="bad low">low</span></td><td>Verification</td><td><b>Some published rows carry neither a source link nor an unverified badge.</b></td><td>A prior cross-tree audit counted 658 such rows across the older trees. This session&#x27;s own tables are gated so that cannot happen here.</td><td>S15. Non-blocking; the rows are on archived trees.</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/audit_all.py">UNVERIFIED - no official source</a></td></tr>
+</tbody></table>
+<h2>What is <i>not</i> flagged</h2>
+<ul class="tight">
+<li>The 137 completed games. They are transcribed from official pages and were spot-checked
+against them.</li>
+<li>The 32-club standings. League points for equals league points against, as it must.</li>
+<li>The 345-row Week 10 injury report. Fifty rows were verified field by field with zero mismatches.</li>
+<li>The model's own honesty about itself: every originated line is badged DERIVED and its limitations
+are printed with it.</li>
+</ul>
+
+</main>
+<footer>
+<p>X3 decision council - session arena/dd5047b8-x3. Every row carries an official source link or an explicit
+UNVERIFIED badge; nothing is inferred. Repository:
+<a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>.
+Back to the <a href="../index.html">site landing</a>.</p>
+</footer>
+</div>
+</body>
+</html>
