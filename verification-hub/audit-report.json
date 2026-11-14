@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 306,
       "flagged_rows": 227,
-      "refs": 370,
+      "refs": 371,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -125,9 +125,9 @@
     },
     "hub": {
       "pages": 37,
-      "rows": 1964,
+      "rows": 1965,
       "flagged_rows": 1501,
-      "refs": 3043,
+      "refs": 3067,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -249,8 +249,8 @@
     }
   },
   "pages_total": 214,
-  "rows_total": 8303,
+  "rows_total": 8304,
   "rows_flagged_or_sourced": 6962,
-  "internal_refs": 4997,
+  "internal_refs": 5022,
   "problems": []
 }

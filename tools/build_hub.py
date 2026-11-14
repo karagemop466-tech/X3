@@ -109,6 +109,11 @@ NAV = [
     ("decisions", "Cross-check: review queue", "Questions, answers and suggestions"),
     ("repo-review-live", "Cross-check: repo audit", "14 prior claims rechecked line by line"),
     ("flagged-live", "Cross-check: review flags", "Everything that needs a human decision"),
+    # Registered here rather than hand-edited into the generated landing. On main the
+    # council row lived only in the committed index.html, so every rebuild deleted it
+    # and the deploy gate failed with "hub is not the current build". A page that the
+    # generator does not know about cannot survive a rebuild.
+    ("@../council/index.html", "Decision council", "The eight requirements as pass/fail tests"),
 ]
 
 
@@ -179,13 +184,32 @@ def table(heads, rows, tid=None, cap=None, note=None, kind="data"):
     return "\n".join(out)
 
 
+def nav_href(slug, depth=0):
+    """Resolve a NAV entry to an href.
+
+    Convention: a slug prefixed with "@../" is rooted at the repository root
+    (the council tree lives there, not inside hub/). Every other slug is a page
+    inside hub/.
+
+    depth is how many directories below hub/ the linking page sits: 0 for
+    hub/x.html, 1 for hub/x3/x.html. Getting this wrong is what made every nav
+    target 404 on the subdirectory pages, so it is computed once here.
+    """
+    up = "../" * depth
+    if slug.startswith("@../"):
+        return up + "../" + slug[4:]          # repo root, from inside hub/
+    return up + slug + ".html"
+
+
 def page(fname, title, intro, body, active="index", extra_head=""):
     # Pages emitted into a subdirectory need their relative links prefixed, or they
     # resolve against the wrong directory and every nav target 404s. `up` is the
     # number of path segments between the page and hub/.
     up = "../" * max(0, fname.count("/"))
+
     nav = "".join(
-        f'<a href="{up}{slug}.html"{" class=on" if slug == active else ""}">{esc(lbl)}</a>'
+        f'<a href="{nav_href(slug, fname.count("/"))}"'
+        f'{" class=on" if slug == active else ""}>{esc(lbl)}</a>'
         for slug, lbl, _d in NAV)
     html = f"""<!doctype html>
 <html lang="en">
@@ -248,7 +272,8 @@ def p_index():
         f'<div class="sub">{esc(s)}</div></div>' for t, v, s in cards)
     rows = []
     for slug, lbl, desc in NAV:
-        rows.append([f'<a href="{slug}.html"><b>{esc(lbl)}</b></a>', esc(desc)])
+        href = nav_href(slug, 0)
+        rows.append([f'<a href="{href}"><b>{esc(lbl)}</b></a>', esc(desc)])
     nav_tbl = table(["Section", "Contains"], rows)
     status = table(
         ["Capability", "State", "Evidence"],
@@ -1234,8 +1259,18 @@ def _sha(path):
 
 
 def landing():
-    nav = "".join(f'<a href="hub/{slug}.html"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
-                  for slug, lbl, desc in NAV)
+    # root landing links everything under hub/, except "@" literals which are
+    # already relative to the repository root (the council tree lives there).
+    def _root_href(slug):
+        # The landing sits at the repository root, so it reaches hub/ pages with a
+        # "hub/" prefix and "@../" literals by dropping the marker.
+        if slug.startswith("@../"):
+            return slug[4:]
+        return slug[1:] if slug.startswith("@") else "hub/" + slug + ".html"
+
+    nav = "".join(
+        f'<a href="{_root_href(slug)}"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
+        for slug, lbl, desc in NAV)
     html = f"""<!doctype html>
 <html lang="en">
 <head>
