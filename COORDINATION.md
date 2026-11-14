@@ -1413,3 +1413,37 @@ count sat in a *description string*, not a table row. Fixed by making `hub/archi
   73 same-ID-different-content groups · 3 status conflicts (R01, R05, S11) · 8 mixed-identity
   groups · 8 cross-family ID reuses (S01–S08) · 50 cross-ID duplicates · post-write gate
   `tools/crosscheck.py --verify` = PASS · all 8 pre-existing verifiers exit 0.
+
+---
+
+## Session `arena/2d19ea40-x3` — Decision ledger: price store, results feed, signal/staking split (CLAIM)
+
+Session ID: `arena/2d19ea40-x3` (platform branch; `session-<id>/<task>` naming not available). Branched from `main` @ `996257b`.
+
+### Why this claim exists
+The brief asks for capabilities the canonical hub (`hub/`, merged via PR #35) does not yet have as data: a price-snapshot store (opening/closing per originated market), a verified results feed, moneyline origination after side and total, fair-line / market-line / difference columns, a leaderboard that separates signal from staking, a demotion gate, and correlations with n. Nothing in `hub/` is edited, because PR #36 (`arena/e9b492ab-x3`, OPEN, CONFLICTING) currently owns `hub/`, `tools/build_hub.py`, `tools/x3_engine.py`, `tools/verify_hub.py`, `hub/data/lines.json`, and `COORDINATION.md` edits.
+
+### File scope claimed (non-overlapping; nothing below is owned by another open PR)
+| Path | Purpose |
+|------|---------|
+| `data/ledger/**` | Verified CSV inputs: results feed, price-snapshot store, replacement-depth rows, leaderboard schema, demotion-gate definitions |
+| `tools/build_ledger.py` | Deterministic generator: reads `data/ledger/*.csv` and `hub/data/lines.json` (read-only), writes `ledger/**` |
+| `tools/verify_ledger.py` | Row-level source gate: every table row links an official host or is flagged UNVERIFIED |
+| `ledger/**` | Generated subpages: landing, results, prices, leaderboard, correlation, flagged |
+| `COORDINATION.md`, `README.md` | Append-only log entries |
+
+### Explicitly NOT touched
+`hub/**`, root `index.html`, `.github/workflows/pages.yml`, `tools/build_hub.py`, `tools/x3_engine.py`, `tools/verify_hub.py`, `scripts/**`, `docs/**`, `dashboard/**`, `x3lab/**`, `audit/**`, `archive/**`, `data/desk/**`, `data/hub/**`.
+
+### Request logged (not edited)
+- **To the canonical-hub owner / integration session:** please add a link to `ledger/index.html` from `index.html` and `hub/index.html`, and add `python3 tools/verify_ledger.py` to `.github/workflows/pages.yml`. Until then the ledger is reachable by direct URL and from README.
+
+### Task board (arena/2d19ea40-x3)
+| # | Task | Status |
+|---|------|--------|
+| L1 | Results feed: 2026 Weeks 1–10 finals with per-row official source; reconciled line by line against nfl.com standings | in progress |
+| L2 | Price-snapshot store: every originated market (side → total → moneyline) with opening/closing columns, fair / market / difference columns | unclaimed |
+| L3 | Replacement-depth rows for Week 10 first-string absences | unclaimed |
+| L4 | Leaderboard schema: signal and staking split + demotion gate (PROPOSED thresholds) | unclaimed |
+| L5 | Correlations recomputed from the verified results feed, n published with each value | unclaimed |
+| L6 | Pages (`ledger/`), verifier, README entry, COORDINATION completion record | unclaimed |
