@@ -65,6 +65,18 @@ def page_files():
     return out
 
 
+MISLABEL_RE = re.compile(r'<a href="https?://[^"]+"[^>]*>[^<]*(?:UNVERIFIED|no official source)')
+
+
+def check_mislabels(fn, txt):
+    """A row that links a source must never render the UNVERIFIED text. A link and a
+    badge are opposites: printing both on one row tells the reader the row is
+    unsourced when it is not."""
+    for mo in MISLABEL_RE.finditer(txt):
+        fail("%s: a row links a source but is labelled UNVERIFIED: %s"
+             % (fn, mo.group(0)[:110]))
+
+
 def check_rows(fn, txt):
     """Every <tr> must contain either an external link or an explicit badge."""
     n = 0
@@ -129,12 +141,13 @@ def main():
 
         total_rows += check_rows(fn, txt)
         check_links(fn, txt)
+        check_mislabels(fn, txt)
 
     if total_rows < 40:
         fail("only %d table rows found across the tree - expected the full registers" % total_rows)
     else:
-        ok("%d table rows checked across %d pages; every row is linked or badged"
-           % (total_rows, len(files)))
+        ok("%d table rows checked across %d pages; every row is linked or badged, and no "
+           "linked row is labelled UNVERIFIED" % (total_rows, len(files)))
 
     # 3. css present and referenced ----------------------------------------
     css = os.path.join(COUNCIL, "assets", "council.css")
