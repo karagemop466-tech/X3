@@ -1,0 +1,94 @@
+{
+ "season": 2026,
+ "generated_at": "2026-11-14T19:31:22Z",
+ "source_pages": [
+  "https://www.nfl.com/schedules/2026/by-week/week-1",
+  "https://www.nfl.com/schedules/2026/by-week/week-2",
+  "https://www.nfl.com/schedules/2026/by-week/week-3",
+  "https://www.nfl.com/schedules/2026/by-week/week-4",
+  "https://www.nfl.com/schedules/2026/by-week/week-5",
+  "https://www.nfl.com/schedules/2026/by-week/week-6",
+  "https://www.nfl.com/schedules/2026/by-week/week-7",
+  "https://www.nfl.com/schedules/2026/by-week/week-8",
+  "https://www.nfl.com/schedules/2026/by-week/week-9",
+  "https://www.nfl.com/schedules/2026/by-week/week-10",
+  "https://www.nfl.com/schedules/2026/by-week/week-11"
+ ],
+ "source_note": "Official NFL.com 2026 week schedule pages; one row per game; scores transcribed from the page's own final-score lines; nothing typed by hand or inferred.",
+ "counts": {
+  "total": 0,
+  "final": 0,
+  "scheduled": 0
+ },
+ "cross_check_vs_desk_transcription": {
+  "available": true,
+  "desk_rows": 163,
+  "origin_rows": 0,
+  "matched": 0,
+  "agree": 0,
+  "conflicts": []
+ },
+ "problems": [
+  {
+   "page": "schedule-w10",
+   "problem": "only 1 finals parsed from week 10",
+   "detail": ""
+  },
+  {
+   "page": "week-1.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-2.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-3.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-4.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-5.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-6.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-7.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-8.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-9.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-10.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  },
+  {
+   "page": "week-11.html",
+   "problem": "page name does not contain a week number",
+   "detail": ""
+  }
+ ],
+ "games": []
+}

@@ -1,0 +1,14 @@
+FATAL: pages fetched but no finals parsed - parser is broken
+selftest vs desk transcription: agree=163 disagree=0 unique-to-origin=0 unique-to-desk=0
+origin_capture results: 11/11 pages fetched, 0 games (0 finals) parsed, 12 problems
+cross-check vs desk transcription: 0/0 matched rows agree; 0 conflicts
+  PROBLEM: {'page': 'schedule-w10', 'problem': 'only 1 finals parsed from week 10', 'detail': ''}
+  PROBLEM: {'page': 'week-1.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-2.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-3.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-4.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-5.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-6.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-7.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-8.html', 'problem': 'page name does not contain a week number', 'detail': ''}
+  PROBLEM: {'page': 'week-9.html', 'problem': 'page name does not contain a week number', 'detail': ''}
