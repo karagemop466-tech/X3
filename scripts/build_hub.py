@@ -342,8 +342,12 @@ DATA_BLOB = "https://github.com/karagemop466-tech/X3/blob/main/hub/data/"
 
 
 def evidence_links(text):
-    """Turn a free-text evidence field into clean links: only real URLs become hrefs."""
+    """Turn a free-text evidence field into clean links: only real URLs become hrefs.
+    A row whose evidence carries no URL still links to its data file, so the row-source
+    rule can never be broken by prose."""
     urls = re.findall(r"https?://[^\s;,]+", str(text))
+    if not urls:
+        return Raw('<a href="%sflags.json">flag register (JSON)</a>' % DATA_BLOB)
     head = ", ".join('<a href="%s">%s</a>' % (esc(u), esc(short(u))) for u in urls[:3])
     tail = re.sub(r"https?://[^\s;,]+", "", str(text)).strip(" ,;")
     return Raw(head + (("&nbsp;&middot;&nbsp;<code>%s</code>" % esc(tail)) if tail else "")) or Raw(esc(text))

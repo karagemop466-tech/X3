@@ -196,7 +196,7 @@
    "severity": "Low",
    "area": "Sample caveat",
    "finding": "The hub's four computed correlations use 32 team-seasons from a 9-week sample. They describe the relationship between scoring and winning in 2026 to date; they are not evidence of a betting edge.",
-   "evidence": "recomputed in scripts/check_hub.py from SRC-01",
+   "evidence": "https://www.nfl.com/standings/league/2026/REG ; https://github.com/karagemop466-tech/X3/blob/main/scripts/check_hub.py",
    "impact": "Readers may mistake a descriptive statistic for a tradable signal",
    "action": "Labelled on the page; keep out of any strategy promotion",
    "status": "OPEN by design"
