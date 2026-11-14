@@ -3,7 +3,8 @@
 import os, re, sys
 from html.parser import HTMLParser
 
-DOCS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs")
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DOCS = os.path.join(ROOT_DIR, "docs")
 errors, ext_links, rows_total, rows_missing = [], set(), 0, 0
 
 class P(HTMLParser):
@@ -29,7 +30,12 @@ for name in sorted(os.listdir(DOCS)):
         if href.startswith("http"): ext_links.add(href); continue
         if href.startswith("#") or href.startswith("mailto:"): continue
         target = href.split("#")[0]
-        if not os.path.exists(os.path.join(DOCS, target)):
+        if target.startswith("legacy/"):
+            # /legacy/ is assembled from the repo root (earlier sessions' pages) by the Pages workflow
+            ok = os.path.exists(os.path.join(ROOT_DIR, target[len("legacy/"):]))
+        else:
+            ok = os.path.exists(os.path.join(DOCS, target))
+        if not ok:
             errors.append(f"{name}: broken internal link -> {href}")
     rows_total += len(p.rows); rows_missing += sum(1 for ok in p.rows if not ok)
     print(f"{name:26s} table rows={len(p.rows):4d} rows-without-link-or-flag={sum(1 for ok in p.rows if not ok)}")

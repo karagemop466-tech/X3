@@ -1,17 +1,56 @@
-# COORDINATION.md — X3 shared task board
+# COORDINATION.md
 
-Created: 2026-11-14 (UTC). Owner of all tasks in this file: session on branch `arena/0c38f465-x3`.
+Shared task board for the X3 (NFL) project.
+Integrated branches: `arena/1a771fcd-x3` (this session) and `arena/d667d44d-x3` (prior session, merged to `main` via PR #1).
+Status legend: unclaimed | in progress | done | needs review
 
-## Branch / session rules used
+## Sessions
+- `arena/1a771fcd-x3` — current integration session (this branch → main)
+- `arena/d667d44d-x3` — prior session; work merged to `main` (PR #1): root decision-lab site + Pages workflow
+
+## Tasks
+
+| # | Task | Status | Owner | File scope | Sources / verification | Irregularities |
+|---|------|--------|-------|------------|------------------------|----------------|
+| 1 | Repository audit / coordination board | done | arena/d667d44d-x3 | `COORDINATION.md` | Repo began with only a 4-byte README.md; no data, site, or board | none |
+| 2 | NFL evidence & research (official sources) | done | arena/d667d44d-x3 | `docs/**`, root sources | nfl.com/injuries, nfl.com/stats, operations.nfl.com 2026 rulebook, docs.github.com/pages | Some candidate URLs 404'd; replaced with working official URLs |
+| 3 | Landing page, navigation, data tables, Pages integration | done | arena/d667d44d-x3 | root site files (`index.html`, `strategy.html`, `data.html`, `flagged.html`, `review.html`, `sources.html`, `style.css`, `.github/workflows/pages.yml`) | Six static pages parsed; all relative links verified | No deployed Pages URL asserted until GitHub confirms |
+| 4 | GitHub Pages static site: landing page + category subpages (this session) | done | arena/1a771fcd-x3 | `site/`, `pages/` | All HTML validated; internal links checked | HTML pages parse cleanly |
+| 5 | Executive summary | done | arena/1a771fcd-x3 | `pages/executive-summary.html` | nfl.com/injuries; Sportradar feeds docs | Betting lines & props: no official source identified |
+| 6 | Suggestions & decision framework (questions, info, answers, missing-info discovery) | done | arena/1a771fcd-x3 | `pages/suggestions.html` | nfl.com/injuries; Sportradar feeds docs | All data cells blank/unverified pending official fetch |
+| 7 | Flagged for Review page (unverified items + irregularities) | done | arena/1a771fcd-x3 | `pages/flagged-for-review.html` | nfl.com/injuries; Sportradar feeds docs | I-01 empty repo at branch point; I-02 no NFL lines source; I-03 fetch blocked |
+| 8 | NFL lines origination: strategies, signals, validation gates, correlations, single/parlay/prop combos, leaderboard design | done | arena/1a771fcd-x3 | `pages/strategies.html` | Sportradar docs; nfl.com/injuries (cycle only) | No strategy/correlation/reward value confirmed from official source |
+| 9 | Injury & backup (depth-chart) tracking system design | done | arena/1a771fcd-x3 | `pages/injuries.html` | nfl.com/injuries; Sportradar docs | All depth values blank/unverified |
+| 10 | Sources page (official sources only) | done | arena/1a771fcd-x3 | `pages/sources.html` | nfl.com/injuries; Sportradar docs | No official NFL betting-lines or player-prop source identified |
+| 11 | GitHub Actions Pages deploy workflow | in progress | arena/1a771fcd-x3 | `.github/workflows/pages.yml` | docs.github.com/pages | Deploy check not yet confirmed on merged `main` |
+| 12 | Integration: merge branches, re-verify combined data, confirm site builds with no broken links | in progress | arena/1a771fcd-x3 | all | Internal link check in pages.yml | Merge conflicts resolved on 3 shared files |
+| 13 | Create PR from integration branch to main; merge; confirm Pages deploy; record PR link & result | in progress | arena/1a771fcd-x3 | `COORDINATION.md` | PR #3 | PR #3 not yet merged |
+
+## Claims log
+- `arena/d667d44d-x3` claimed root site files, `docs/**`, `COORDINATION.md` (merged to main via PR #1).
+- `arena/1a771fcd-x3` claims `site/`, `pages/`, and integration of both branches on `arena/1a771fcd-x3` → `main`. No overlap with root site files owned by `arena/d667d44d-x3`; shared files (`COORDINATION.md`, `README.md`, `.github/workflows/pages.yml`) resolved during integration without discarding either session's work.
+
+## Notes
+- Sandbox outbound network is restricted to github.com / api.github.com / codeload.github.com / registry.npmjs.org / pypi.org / files.pythonhosted.org. Official NFL sources (nfl.com, team sites) cannot be fetched directly with curl; verification is via web_search and cited by URL. Any value that cannot be confirmed from an official source is left blank and flagged "unverified" on the Flagged for Review page. No values are inferred or filled in.
+- Live Pages source is `main` branch root (`/`). After merge, GitHub's legacy root build serves root HTML files; the Actions workflow also deploys the root artifact.
+
+---
+
+## Session arena/0c38f465-x3 (integration, this branch)
+
+
+Session section added 2026-11-14 (UTC) by branch `arena/0c38f465-x3`.
+
+### Branch / session rules used (arena/0c38f465-x3)
 
 - The session branch is fixed by Arena: **`arena/0c38f465-x3`** (branched from `main` @ `e124230`). The
   `session-<id>/<task>` naming in the brief could not be used, because the platform instructs this session to work
   only on its assigned branch. All task claims, commits and pushes therefore happen on `arena/0c38f465-x3`.
-- Only one session has worked this repo so far. No other session claims appear in this file, so no conflicts exist.
+- Other sessions on `main`: `arena/d667d44d-x3` (PR #1, merged), `arena/1a771fcd-x3` (PR #3, merged), and `arena/64164906-x3` (T2 official-source registry / data pipeline, in progress). This session did not edit their files; see Overlap notes.
 - Shared outputs (site index, navigation, combined data) were produced by the same session acting as the
   **final integration session**. Integration steps are logged in the Integration log below.
 
-## Status legend
+### Status legend
 
 - `unclaimed` — nobody has started it
 - `in progress` — claimed by a session
@@ -19,7 +58,7 @@ Created: 2026-11-14 (UTC). Owner of all tasks in this file: session on branch `a
 - `needs review` — published on the **Flagged for Review** page; does not block anything
 - `blocked` — cannot proceed without missing data (listed in Questions page)
 
-## Task board
+### Task board (arena/0c38f465-x3)
 
 | ID | Task | Status | Owner (session) | Files / scope | Notes |
 |----|------|--------|-----------------|---------------|-------|
@@ -37,7 +76,7 @@ Created: 2026-11-14 (UTC). Owner of all tasks in this file: session on branch `a
 | T12 | Flagged for Review page | done | arena/0c38f465-x3 | data/flags.csv, docs/flagged.html | Published, does not block merge |
 | T13 | Integration: re-verify combined data, build, PR, merge, Pages check | in progress | arena/0c38f465-x3 | COORDINATION.md | See Integration log |
 
-## Repo review (T01)
+### Repo review (T01)
 
 Checked: `git status`, `git log`, `README.md`, remote config, GitHub Pages config.
 
@@ -50,7 +89,7 @@ Checked: `git status`, `git log`, `README.md`, remote config, GitHub Pages confi
 | Branch rule conflict | Brief asks for `session-<id>/<task>` branches; platform rule requires the assigned branch. Platform rule followed. | Flagged |
 | Pages source | Site is published from `docs/` after merge; Pages source must be switched from `/` to `/docs` (see Integration log). | Flagged |
 
-## Integration log
+#### Integration log (arena/0c38f465-x3)
 
 - 2026-11-14: T02–T12 completed by the same session. Pending: T13 steps (build, link check, PR, merge, Pages verification).
 
@@ -64,7 +103,19 @@ Checked: `git status`, `git log`, `README.md`, remote config, GitHub Pages confi
 
 - F01-F16 in data/flags.csv (legal exposure, conflicting NFL.com pages, injury field gaps, name/position variants, no odds/depth data, repo and branch-rule issues).
 
-## Integration log
+#### Integration log (arena/0c38f465-x3)
 
-- 2026-11-14: T02-T12 completed by the same session. Site built from data/ with 0 broken internal links.
-- Pending in this session: commit, push to arena/0c38f465-x3, pull request to main, merge, switch Pages source to main /docs, confirm Pages deploy.
+- 2026-11-14: T02-T12 completed by this session. Site built from data/ with 0 broken internal links (scripts/check_site.py).
+- 2026-11-14: PR #4 (arena/0c38f465-x3 -> main) first showed merge conflicts because `main` had advanced (PRs #1 and #3 from other sessions merged). Resolved by merging origin/main into this branch (not rebasing, so no history was rewritten):
+  - `COORDINATION.md` (add/add): kept the full board from main and appended this session's section. Statements about being the only session were corrected.
+  - `README.md`: kept main's README and appended this session's layout and rules.
+  - `.github/workflows/pages.yml`: kept all existing steps (link validation, deploy). Added the docs check and an assembly step so one Pages artifact serves this session's site at the root and the earlier root/`site/`/`pages/` pages under `/legacy/`. Upload path changed from `.` to `_site`.
+  - `scripts/build_site.py` nav: added an 'Earlier' link to `legacy/index.html`.
+- Pages build type change: from legacy (main /) to GitHub Actions workflow, so the assembled artifact is what is published. This is done after the PR is updated and before the merge, so the merge push triggers the workflow deploy.
+- Pending: merge PR #4, confirm the `Deploy X3 NFL site to GitHub Pages` run succeeds, confirm https://karagemop466-tech.github.io/X3/ and /legacy/ respond, record PR link and merge result here.
+
+### Overlap notes (added at integration)
+
+- `arena/64164906-x3` (T2: official-source registry, fetcher with provenance, CI data validation) overlaps with `data/sources.csv` in this branch (source registry). This branch's registry is the one used by the Pages build (`scripts/build_site.py`). Please coordinate before merging to avoid duplicate registries; the simplest path is to keep one file and extend it.
+- The earlier root-level site (`index.html`, `style.css`, etc.) and `site/`, `pages/` from prior sessions are NOT replaced or deleted. The integrated Pages build publishes them unchanged under `/legacy/`, and this branch's site (`docs/`) is published at the site root.
+- The Pages source changed from legacy `main /` to the GitHub Actions workflow in `.github/workflows/pages.yml` so that one artifact contains both sites (see Integration log).
