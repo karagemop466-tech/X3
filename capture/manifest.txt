@@ -4,11 +4,11 @@
 200 2353006 https://www.nfl.com/schedules/2026/by-week/week-4
 200 2338233 https://www.nfl.com/schedules/2026/by-week/week-5
 200 2323308 https://www.nfl.com/schedules/2026/by-week/week-6
-200 2323484 https://www.nfl.com/schedules/2026/by-week/week-7
-200 2318705 https://www.nfl.com/schedules/2026/by-week/week-8
-200 2339609 https://www.nfl.com/schedules/2026/by-week/week-9
-200 2372246 https://www.nfl.com/schedules/2026/by-week/week-10
-200 2354746 https://www.nfl.com/schedules/2026/by-week/week-11
+200 2323221 https://www.nfl.com/schedules/2026/by-week/week-7
+200 2318837 https://www.nfl.com/schedules/2026/by-week/week-8
+200 2339388 https://www.nfl.com/schedules/2026/by-week/week-9
+200 2372405 https://www.nfl.com/schedules/2026/by-week/week-10
+200 2354879 https://www.nfl.com/schedules/2026/by-week/week-11
 200 258159 https://www.nfl.com/standings/league/2026/reg
 200 245766 https://www.nfl.com/stats/team-stats/
 200 406999 https://www.nfl.com/injuries/league/2026/reg8

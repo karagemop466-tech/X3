@@ -1,0 +1,1346 @@
+{
+ "depth-ARI.html": {
+  "html_bytes": 293577,
+  "script_blocks": 39,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52436,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-ATL.html": {
+  "html_bytes": 320211,
+  "script_blocks": 36,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52434,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-BAL.html": {
+  "html_bytes": 298503,
+  "script_blocks": 39,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-BUF.html": {
+  "html_bytes": 301364,
+  "script_blocks": 38,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52432,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-CAR.html": {
+  "html_bytes": 330450,
+  "script_blocks": 42,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52435,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4567,
+    "head": "(function(){'use strict';if(window.__cpdmInit)return;window.__cpdmInit=true;var KEY='cpdm-theme',ATTR='data-cpdm-theme';var root=document.documentElement;var btn=null;var SUN='<svg viewBox=\"0 0 24 24\""
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-CHI.html": {
+  "html_bytes": 291913,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52432,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-CIN.html": {
+  "html_bytes": 296127,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52434,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-CLE.html": {
+  "html_bytes": 298155,
+  "script_blocks": 42,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-DAL.html": {
+  "html_bytes": 281366,
+  "script_blocks": 39,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52434,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-DEN.html": {
+  "html_bytes": 295582,
+  "script_blocks": 39,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52437,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-DET.html": {
+  "html_bytes": 292353,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52432,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-GB.html": {
+  "html_bytes": 294885,
+  "script_blocks": 37,
+  "jsonish": [
+   {
+    "type": "application/ld+json",
+    "attrs": "type=\"application/ld+json\"",
+    "len": 662,
+    "head": "{\"@type\":\"NewsArticle\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"1892ab98-52b7-41dd-b54c-f680c7c3060d\",\"@context\":\"http://schema.org\"},\"image\":[],\"articleBody\":\"OFFENSEDEFENSESPECIAL TEAMSUnofficia"
+   }
+  ],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4064,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": true
+ },
+ "depth-HOU.html": {
+  "html_bytes": 489615,
+  "script_blocks": 42,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 82165,
+    "head": "(function(){\"use strict\";var ENABLED=true;var FEATURES={viewer:true,filters:true,download:true,share:true,credit:true,justify:false,entrybar:true,filmstrip:true,hint:true,frames:true};var FRAMES_READY"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 29791,
+    "head": "(function(){\"use strict\";var API=\"https://read-next.texansdigital.workers.dev\";var YT_CHANNEL_URL=\"https://www.youtube.com/@HoustonTexans\";var CARD=300;var MAX=16;var state={queue:[],used:0,loading:fa"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": true
+ },
+ "depth-IND.html": {
+  "html_bytes": 347848,
+  "script_blocks": 43,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52432,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-JAX.html": {
+  "html_bytes": 310697,
+  "script_blocks": 39,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52434,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-KC.html": {
+  "html_bytes": 302512,
+  "script_blocks": 36,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52435,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4064,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-LA.html": {
+  "html_bytes": 293434,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52430,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4064,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-LAC.html": {
+  "html_bytes": 360262,
+  "script_blocks": 42,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52435,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-LV.html": {
+  "html_bytes": 297926,
+  "script_blocks": 41,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4064,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-MIA.html": {
+  "html_bytes": 285874,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52435,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-MIN.html": {
+  "html_bytes": 308274,
+  "script_blocks": 36,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52434,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-NE.html": {
+  "html_bytes": 356582,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52434,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4064,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-NO.html": {
+  "html_bytes": 509847,
+  "script_blocks": 48,
+  "jsonish": [
+   {
+    "type": "application/json",
+    "attrs": "type=\"application/json\" id=\"playlist-72f7d516-9407-46c0-a732-3233ff067c48\"",
+    "len": 44521,
+    "head": "{\"analytics\":{\"reportSuite\":\"nflclubssaints\",\"pageDetail\":\"depth-chart\",\"siteName\":\"saints\",\"siteSection\":\"team\",\"siteSubsection\":\"team\"},\"autoplay\":true,\"clubs\":true,\"playlist\":[{\"audio\":false,\"descr"
+   }
+  ],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52432,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "application/json",
+    "attrs": "type=\"application/json\" id=\"playlist-72f7d516-9407-46c0-a732-3233ff067c48\"",
+    "len": 44521,
+    "head": "{\"analytics\":{\"reportSuite\":\"nflclubssaints\",\"pageDetail\":\"depth-chart\",\"siteName\":\"saints\",\"siteSection\":\"team\",\"siteSubsection\":\"team\"},\"autoplay\":true,\"clubs\":true,\"playlist\":[{\"audio\":false,\"descr"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-NYG.html": {
+  "html_bytes": 296145,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-NYJ.html": {
+  "html_bytes": 293997,
+  "script_blocks": 42,
+  "jsonish": [
+   {
+    "type": "application/ld+json",
+    "attrs": "type=\"application/ld+json\"",
+    "len": 710,
+    "head": "{\"@type\":\"NewsArticle\",\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"e93746d9-d63f-490e-a2e3-e4285e2aed28\",\"@context\":\"http://schema.org\"},\"image\":[],\"articleBody\":\"The unofficial depth chart is compil"
+   }
+  ],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52430,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4064,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": true
+ },
+ "depth-PHI.html": {
+  "html_bytes": 360103,
+  "script_blocks": 33,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-PIT.html": {
+  "html_bytes": 309301,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52438,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-SEA.html": {
+  "html_bytes": 312199,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52438,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-SF.html": {
+  "html_bytes": 288583,
+  "script_blocks": 34,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52434,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4064,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-TB.html": {
+  "html_bytes": 296114,
+  "script_blocks": 36,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52437,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-TEN.html": {
+  "html_bytes": 304201,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52433,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "depth-WAS.html": {
+  "html_bytes": 302269,
+  "script_blocks": 40,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52437,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 4066,
+    "head": "var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.secureSignalProviders=googletag.secureSignalProviders||[];googletag.cmd.push(function(){if(document.getElementById('adv_league')){"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "injuries-w10.html": {
+  "html_bytes": 413298,
+  "script_blocks": 29,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52448,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6291,
+    "head": "var previousViewport=window.innerWidth;var templateAdSlots=[];var headlineStackAdSlots=[];var headlineStackMobileSlot={};var headlineStackDesktopSlot={};var googletag=window.googletag||{};googletag.cm"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "injuries-w11.html": {
+  "html_bytes": 413298,
+  "script_blocks": 29,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52448,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6291,
+    "head": "var previousViewport=window.innerWidth;var templateAdSlots=[];var headlineStackAdSlots=[];var headlineStackMobileSlot={};var headlineStackDesktopSlot={};var googletag=window.googletag||{};googletag.cm"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "injuries-w8.html": {
+  "html_bytes": 406986,
+  "script_blocks": 29,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52447,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6291,
+    "head": "var previousViewport=window.innerWidth;var templateAdSlots=[];var headlineStackAdSlots=[];var headlineStackMobileSlot={};var headlineStackDesktopSlot={};var googletag=window.googletag||{};googletag.cm"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "injuries-w9.html": {
+  "html_bytes": 420473,
+  "script_blocks": 29,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52447,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6291,
+    "head": "var previousViewport=window.innerWidth;var templateAdSlots=[];var headlineStackAdSlots=[];var headlineStackMobileSlot={};var headlineStackDesktopSlot={};var googletag=window.googletag||{};googletag.cm"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w1.html": {
+  "html_bytes": 2354655,
+  "script_blocks": 135,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1613705,
+    "head": "self.__next_f.push([1,\"2c:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679956374,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"42:[\\\"$\\\",\\\"$L57\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"29:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679956367,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w10.html": {
+  "html_bytes": 2372305,
+  "script_blocks": 172,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1575390,
+    "head": "self.__next_f.push([1,\"2b:[\\\"$\\\",\\\"$L55\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679975325,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101969,
+    "head": "self.__next_f.push([1,\"59:[\\\"$\\\",\\\"$L5a\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"28:[\\\"$\\\",\\\"$L55\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679975362,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w11.html": {
+  "html_bytes": 2354780,
+  "script_blocks": 168,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1563181,
+    "head": "self.__next_f.push([1,\"2c:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794680012358,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101969,
+    "head": "self.__next_f.push([1,\"42:[\\\"$\\\",\\\"$L57\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"29:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794680012346,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w2.html": {
+  "html_bytes": 2345101,
+  "script_blocks": 135,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1606036,
+    "head": "self.__next_f.push([1,\"2b:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679982039,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"41:[\\\"$\\\",\\\"$L56\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"28:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679982029,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w3.html": {
+  "html_bytes": 2352764,
+  "script_blocks": 138,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1611972,
+    "head": "self.__next_f.push([1,\"2a:[\\\"$\\\",\\\"$L54\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679984174,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"55:[\\\"$\\\",\\\"$L56\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"27:[\\\"$\\\",\\\"$L54\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679984150,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w4.html": {
+  "html_bytes": 2352890,
+  "script_blocks": 135,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1612382,
+    "head": "self.__next_f.push([1,\"2b:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679981734,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"41:[\\\"$\\\",\\\"$L56\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"28:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679981722,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w5.html": {
+  "html_bytes": 2338122,
+  "script_blocks": 135,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1600487,
+    "head": "self.__next_f.push([1,\"2b:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679988651,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"41:[\\\"$\\\",\\\"$L56\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"28:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679988646,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w6.html": {
+  "html_bytes": 2323194,
+  "script_blocks": 134,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1589851,
+    "head": "self.__next_f.push([1,\"2c:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679980641,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"42:[\\\"$\\\",\\\"$L57\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"29:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679980632,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w7.html": {
+  "html_bytes": 2323109,
+  "script_blocks": 134,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1590035,
+    "head": "self.__next_f.push([1,\"2b:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794680054446,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"41:[\\\"$\\\",\\\"$L56\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"28:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794680054440,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w8.html": {
+  "html_bytes": 2318726,
+  "script_blocks": 134,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1586937,
+    "head": "self.__next_f.push([1,\"2c:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679867242,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"42:[\\\"$\\\",\\\"$L57\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"29:[\\\"$\\\",\\\"$L41\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679867236,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "schedule-w9.html": {
+  "html_bytes": 2339273,
+  "script_blocks": 135,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 1601598,
+    "head": "self.__next_f.push([1,\"2b:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679943570,\\\"state\\\":{\\\"data\\\":{\\\"10408600-77a1-8b0f-8f54-99b7e0a7d1b2\\\":{\\\"id\\\":\\\"1040860"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 101968,
+    "head": "self.__next_f.push([1,\"41:[\\\"$\\\",\\\"$L56\\\",null,{\\\"flexibleLinksMenu\\\":{\\\"path\\\":\\\"~/_libraries/header-v2/flexible-nav-links\\\",\\\"name\\\":\\\"flexible-nav-links\\\",\\\"items\\\":[{\\\"id\\\":\\\"7206eb1c-02fa-4003-a4"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 61574,
+    "head": "self.__next_f.push([1,\"28:[\\\"$\\\",\\\"$L40\\\",null,{\\\"state\\\":{\\\"mutations\\\":[],\\\"queries\\\":[{\\\"dehydratedAt\\\":1794679943563,\\\"state\\\":{\\\"data\\\":{\\\"data\\\":{\\\"carouselCardPropsList\\\":[{\\\"analyticsPropertie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "standings-2026.html": {
+  "html_bytes": 258146,
+  "script_blocks": 31,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52447,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6291,
+    "head": "var previousViewport=window.innerWidth;var templateAdSlots=[];var headlineStackAdSlots=[];var headlineStackMobileSlot={};var headlineStackDesktopSlot={};var googletag=window.googletag||{};googletag.cm"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ },
+ "team-stats.html": {
+  "html_bytes": 245753,
+  "script_blocks": 29,
+  "jsonish": [],
+  "largest": [
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 52447,
+    "head": "window._taboola=window._taboola||[];function filterByDmaCode(games,dmaCode){return games.filter(function(game){return Array.isArray(game.DmaCodes)&&game.DmaCodes.includes(dmaCode);});}\nconst rawToken="
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6291,
+    "head": "var previousViewport=window.innerWidth;var templateAdSlots=[];var headlineStackAdSlots=[];var headlineStackMobileSlot={};var headlineStackDesktopSlot={};var googletag=window.googletag||{};googletag.cm"
+   },
+   {
+    "type": "text/javascript",
+    "attrs": "",
+    "len": 6057,
+    "head": "function OptanonWrapper(){oneTrustAppendScriptHelper();oneTrustInsertScriptHelper();oneTrustDataRequire();enforcePrebidPubcidConsent();setAdsRestrictDataProcessingLocalStorage();refreshPageAfterCookie"
+   }
+  ],
+  "has_next_data": false,
+  "has_ld_json": false
+ }
+}
