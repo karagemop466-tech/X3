@@ -382,3 +382,45 @@ role). No other session's files were modified.
 - Academic references verified at SSRN/publisher/university hosts; Kaggle verified for BDB prizes.
 - At merge time: `tools/verify_site.py` (this session) and `scripts/check_site.py` (arena/0c38f465
   session) both pass on the combined tree; the Pages workflow's link check replicated locally.
+
+---
+
+## Session `arena/e1c332ce-x3` — NFL Lines & Strategy Lab (appended section)
+
+- **Status:** integration in progress. Session ID `e1c332ce`. Branch `arena/e1c332ce-x3` (platform-fixed; the `session-<id>/<task>` naming in the brief was not usable — deviation logged here per protocol).
+- **Claim (committed before work, e48e046, 2026-11-14):** line-origination model + validation-gate framework + leaderboard design + injury/2nd-3rd-4th-string deficiency tracker + an additive site unit, owning `x3lab/**`, `scripts/compute_lines.py`, `scripts/compute_analysis.py`, `scripts/verify_data.py`, `analysis/**`, and this appended section. No files owned by other sessions were edited.
+- **Live site (this session):** https://karagemop466-tech.github.io/X3/x3lab/ — dashboard + 12 category subpages; every table row carries a source link or an explicit UNVERIFIED badge. Data single-sourced in `x3lab/data/*.json`; machine gate `python3 scripts/verify_data.py` = PASS (2,134 checks).
+
+### Task board (session e1c332ce)
+
+| # | Task | Status | Files |
+|---|------|--------|-------|
+| T1 | Research: standings/seeds, weeks 9-11 schedules+results | done | `x3lab/data/standings.json`, `week9.json`, `week10.json`, `week11` in odds file |
+| T2 | Research: market odds wk10/wk11 + futures | done | `x3lab/data/odds_week10.json`, `odds_week11.json` |
+| T3 | Research: injuries, all 32 teams | done | `x3lab/data/injuries.json` |
+| T4 | Depth charts + deficiency rule R-1 | done | `x3lab/data/depth.json`, `deficiencies.json`, `analysis/depth-deficiency.md` |
+| T5 | Line origination model v0.1 | done (unvalidated) | `scripts/compute_lines.py`, `x3lab/data/lines_week10.json`, `analysis/line-origination.md` |
+| T6 | Signals, strategies, validation gates G-0..G-8, correlation method + pilot values, leaderboard design | done (pending gates) | `x3lab/data/strategies.json`, `validation_gates.json`, `correlation.json`, `leaderboard.json`, `luck.json` |
+| T7 | Questions/information-gap register + suggestions review queue | done | `x3lab/data/questions.json`, `suggestions.json` |
+| T8 | Site: dashboard landing + category subpages | done | `x3lab/` |
+| T9 | Verification gate + line-by-line log | done | `scripts/verify_data.py`, `analysis/verification-log.md` |
+
+### Sources (all fetched 2026-11-14; full register at x3lab/sources.html)
+
+NFL.com standings league+conference (OFFICIAL) · NFL.com schedules by-week week-9/10/11 (OFFICIAL) · NFL.com game pages (OFFICIAL) · ESPN NFL injuries, all 32 teams (TRUSTED — aggregates official team reports) · DraftKings lines via ESPN odds (MARKET) · ESPN/RotoWire depth charts PIT+BAL (TRUSTED, not official — flag F-05) · ESPN report SEA@LV starter note (TRUSTED).
+
+### Irregularities (published at x3lab/flagged.html)
+
+F-01 nfl.com schedule URL redirect quirk · F-02 standings split-column mapping inferred by arithmetic partition · F-03 odds open-column timestamps unknown + extreme moves (JAX-TEN 8 pts; LAC-BAL total 10 pts; two direction flips) · F-04 ESPN injury status/comment mismatches · F-05 depth charts third-party + PIT/BAL only (string claims blank elsewhere) · F-06 totals heuristic (no pace data) · F-07 HFA assumptions (neutral-site HFA unverified) · F-08 correlations pilot-only (n=16) · F-09 legal status of wagering/funded rewards in owner jurisdiction (consistent with the Penal Code note already on the docs dashboard) · F-10 2026 roster assignments recorded as-reported.
+
+### Integration log (session e1c332ce)
+
+- 2026-11-14: claim committed/pushed first (e48e046); research, data, model, site, verification built in small commits (d0d7cdc, 10992b7, f10ed41).
+- 2026-11-14: `git pull --rebase` showed `main` had advanced with PRs #1-#9 from five sessions. Rebase stopped at an add/add conflict in `COORDINATION.md`; abandoned in favor of a merge (repo precedent).
+- 2026-11-14: to avoid add/add collisions with session `arena/0c38f465-x3`'s `docs/` dashboard, this session's site was relocated to `x3lab/` (b1c260a). Nothing of other sessions was discarded or edited; root `index.html` (claimed by session `arena/972ad7a5-x3`) was NOT touched.
+- 2026-11-14: merge of `origin/main` into this branch; conflicts in `COORDINATION.md` and `README.md` resolved **additively** (main's full content kept, this section appended), per the convention used by PRs #4 and #7.
+- Pending: PR `arena/e1c332ce-x3` → `main`, merge, live verification, then a follow-up record of the PR link + merge result below.
+
+### PR & deploy record (session e1c332ce)
+
+- (to be completed after merge — see follow-up)

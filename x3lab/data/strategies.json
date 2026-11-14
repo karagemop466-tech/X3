@@ -1,0 +1,214 @@
+{
+  "description": "Strategy library v1. Every entry is a PROPOSAL. No strategy is validated yet - all fail gates G-0..G-6 until backtests and forward records exist. Nothing here is a betting recommendation.",
+  "generated_at": "2026-11-14",
+  "signals": [
+    {
+      "id": "S1",
+      "name": "Line-move vs news sync",
+      "definition": "A market line moved >= 3 points between open and current AND the move is time-aligned with a verified injury/status announcement for that game.",
+      "data_needed": "timestamped odds, official injury report timestamps",
+      "example_this_week": "BAL-CAR Wk11: BAL open -4.5 flipped to CAR -1.5 after Nov 13 Lamar Jackson 6-10 week report (see odds_week11.json)",
+      "state": "observable now (open timestamps missing - partial)",
+      "source": "https://www.espn.com/nfl/odds"
+    },
+    {
+      "id": "S2",
+      "name": "Backup-cluster deficiency",
+      "definition": "A position group with 2+ unavailable players (Out/Doubtful/IR) or a chart-verified 2nd/3rd/4th stringer pressed into the top 2 strings on one side of the ball.",
+      "data_needed": "injury reports + depth charts",
+      "example_this_week": "BAL QB: 3 on IR, 2nd-string Brissett starting (depth.json); CAR CB: 4 unavailable (deficiencies.json)",
+      "state": "active - see deficiencies.json",
+      "source": "https://www.espn.com/nfl/injuries"
+    },
+    {
+      "id": "S3",
+      "name": "Pythagorean luck delta",
+      "definition": "Teams whose actual wins differ from Pythagorean expected wins by >= 1.5 games are regression candidates (definition only - not a bet signal until gate G-7 passes).",
+      "data_needed": "PF/PA (have), multi-season logs (missing)",
+      "example_this_week": "DEN +2.17, BUF +1.58, CLE +1.53 over; TB -2.17, LAC -1.57, TEN -1.54 under (luck.json)",
+      "state": "computed this week (n=8-9 games/team - tiny)",
+      "source": "https://www.nfl.com/standings/league/2026/REG"
+    },
+    {
+      "id": "S4",
+      "name": "Market gap (model vs market)",
+      "definition": "Model v0.1 spread differs from market by >= 3 points. NOT an edge claim - v0.1 has no injury inputs; gaps often reflect missing information (see LAC-BAL).",
+      "data_needed": "model inputs + market",
+      "example_this_week": "JAX-TEN gap -8.0; LAC-BAL gap +4.5 (model unaware Lamar is out)",
+      "state": "computed - unvalidated",
+      "source": "https://www.espn.com/nfl/odds"
+    },
+    {
+      "id": "S5",
+      "name": "Neutral-site HFA mispricing",
+      "definition": "International/neutral games have no established HFA; market convention vs model HFA=0 creates systematic gaps.",
+      "data_needed": "neutral-site historical results",
+      "example_this_week": "NE-DET Munich Wk10; MIN-SF Mexico City Wk11 SNF",
+      "state": "flagged - no verified neutral HFA value (F-07)",
+      "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+    },
+    {
+      "id": "S6",
+      "name": "Totals deflation with offensive attrition",
+      "definition": "Games where both teams lost starting QB/WR/TE/OL production show open-to-current total drops; the size of the drop vs historical response curves is the potential edge.",
+      "data_needed": "timestamped totals, injury response curves (missing)",
+      "example_this_week": "LAC-BAL total 48.5 -> 38.5 after Lamar news; MIA-IND 47.5 -> 38.5",
+      "state": "observable - response curves missing",
+      "source": "https://www.espn.com/nfl/odds"
+    },
+    {
+      "id": "S7",
+      "name": "Rest/look-ahead spot",
+      "definition": "Team on post-bye or short-week scheduling asymmetry with lineup instability.",
+      "data_needed": "schedule (have), practice participation (partial)",
+      "example_this_week": "PIT off Wk9 bye into SNF at CIN; LAC on MNF short week to Wk11 vs NYJ",
+      "state": "partial",
+      "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+    },
+    {
+      "id": "S8",
+      "name": "Backup-cluster defensive prop attack",
+      "definition": "Player prop combos targeting offenses facing defenses missing 2+ secondary players (yards/attempt, deep completions).",
+      "data_needed": "prop lines (MISSING - no source yet), snap counts (missing), play-by-play (missing)",
+      "example_this_week": "SF-DAL: DAL secondary down Porter/Bland/Thomas/Locke",
+      "state": "BLOCKED - no verified prop data source (Q-06)",
+      "source": null,
+      "unverified": true,
+      "note": "Source is null because no verified player-prop source exists yet (Q-06) - this is the flag, not an omission."
+    }
+  ],
+  "strategies": [
+    {
+      "id": "STR-01",
+      "name": "Deficiency fade/attack singles",
+      "type": "single",
+      "signals": [
+        "S2",
+        "S1"
+      ],
+      "hypothesis": "Sides/totals adjusted AFTER verified lineup deficiencies are priced slowly relative to true impact.",
+      "legs": "1",
+      "validation_required": [
+        "G-1",
+        "G-2",
+        "G-3",
+        "G-4",
+        "G-5"
+      ],
+      "state": "proposed - unvalidated",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json"
+    },
+    {
+      "id": "STR-02",
+      "name": "Model-market gap v0.1",
+      "type": "single",
+      "signals": [
+        "S4"
+      ],
+      "hypothesis": "Persistent gaps between originated lines and market at close contain information.",
+      "legs": "1",
+      "validation_required": [
+        "G-1",
+        "G-2",
+        "G-3",
+        "G-4",
+        "G-5",
+        "G-6"
+      ],
+      "state": "proposed - unvalidated (v0.1 lacks injury inputs)",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json"
+    },
+    {
+      "id": "STR-03",
+      "name": "Regression singles (luck delta)",
+      "type": "single",
+      "signals": [
+        "S3"
+      ],
+      "hypothesis": "Pythagorean underperformers cover more than break-even when facing overperformers, after vig.",
+      "legs": "1",
+      "validation_required": [
+        "G-1",
+        "G-2",
+        "G-3",
+        "G-7"
+      ],
+      "state": "proposed - unvalidated",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json"
+    },
+    {
+      "id": "STR-04",
+      "name": "Correlated same-game parlay (spread+total)",
+      "type": "parlay",
+      "signals": [
+        "S6"
+      ],
+      "hypothesis": "Favorite + under legs in games with offensive attrition are positively correlated enough that combined price > product of independent probabilities.",
+      "legs": "2-3",
+      "correlation_policy": "S-PARLAY-1: leg pair |r| must be measured and |r| < 0.3 unless the parlay pricing explicitly models the dependency",
+      "validation_required": [
+        "G-1",
+        "G-2",
+        "G-8"
+      ],
+      "state": "proposed - blocked until correlation matrix validated (F-08)",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json"
+    },
+    {
+      "id": "STR-05",
+      "name": "Cross-game parlay of uncorrelated singles",
+      "type": "parlay",
+      "signals": [
+        "S1",
+        "S2"
+      ],
+      "hypothesis": "Parlaying independent +EV singles across different games keeps variance structure simple and correlations ~0.",
+      "legs": "2-4, different games only",
+      "correlation_policy": "S-PARLAY-2: no two legs from the same game; no two legs on the same team; cap 4 legs",
+      "validation_required": [
+        "G-1",
+        "G-2",
+        "G-3"
+      ],
+      "state": "proposed - unvalidated",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json"
+    },
+    {
+      "id": "STR-06",
+      "name": "Player prop combo vs depleted secondary",
+      "type": "player_prop_combo",
+      "signals": [
+        "S8",
+        "S2"
+      ],
+      "hypothesis": "Passing/receiving props correlate with opponent secondary attrition; combos across the same game require explicit joint modeling.",
+      "legs": "2-3 props, same game",
+      "correlation_policy": "S-PROPS-1: same-game prop combos must use a measured joint distribution; independence assumption is FORBIDDEN",
+      "validation_required": [
+        "G-1",
+        "G-2",
+        "G-8"
+      ],
+      "state": "BLOCKED - needs prop data source (Q-06) and play-by-play (Q-07)",
+      "source": "https://github.com/karagemop466-tech/X3/blob/main/docs/data/strategies.json"
+    }
+  ],
+  "bet_types": {
+    "single": {
+      "status": "framework ready",
+      "kelly_cap": "quarter-Kelly max per pick (policy, pending Q-02 bankroll answers)"
+    },
+    "parlay": {
+      "status": "framework ready, correlation gates pending",
+      "max_legs": 4
+    },
+    "player_prop_combo": {
+      "status": "blocked on data",
+      "missing": [
+        "prop lines source",
+        "snap counts",
+        "play-by-play"
+      ]
+    }
+  }
+}

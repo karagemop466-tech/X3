@@ -1,0 +1,30 @@
+{
+  "description": "NFL 2026 Week 11 look-ahead market odds. Book: DraftKings via ESPN.com/nfl/odds. These are EARLY lines for next week; injury reports for Week 11 are not yet final. Values copied verbatim. Open-column posting date not stated by source (flag F-03).",
+  "fetched": "2026-11-14",
+  "source": "https://www.espn.com/nfl/odds",
+  "source_class": "trusted (market data)",
+  "games": [
+    {"away": "IND", "home": "HOU", "date": "2026-11-19", "slot": "TNF", "spread_away": 10, "spread_away_juice": -110, "spread_home": -10, "spread_home_juice": -110, "total": 44.5, "over_juice": -110, "under_juice": -110, "ml_away": 350, "ml_home": -455, "open_spread_home": -5.5, "open_total": 45.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "ARI", "home": "KC", "date": "2026-11-22", "slot": "", "spread_away": 14, "spread_away_juice": -110, "spread_home": -14, "spread_home_juice": -110, "total": 42.5, "over_juice": -105, "under_juice": -115, "ml_away": 650, "ml_home": -1000, "open_spread_home": -11.5, "open_total": 44.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "BAL", "home": "CAR", "date": "2026-11-22", "slot": "", "note": "BAL open -4.5 flipped to CAR -1.5 after Lamar Jackson IR news", "spread_away": 1.5, "spread_away_juice": -110, "spread_home": -1.5, "spread_home_juice": -110, "total": 44.5, "over_juice": -115, "under_juice": -105, "ml_away": 105, "ml_home": -125, "open_spread_away": -4.5, "open_total": 46.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "MIA", "home": "BUF", "date": "2026-11-22", "slot": "", "spread_away": 16.5, "spread_away_juice": -110, "spread_home": -16.5, "spread_home_juice": -110, "total": 46.5, "over_juice": -110, "under_juice": -110, "ml_away": 950, "ml_home": -1650, "open_spread_home": -11.5, "open_total": 47.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "NO", "home": "CHI", "date": "2026-11-22", "slot": "", "spread_away": 9.5, "spread_away_juice": -110, "spread_home": -9.5, "spread_home_juice": -110, "total": 48.5, "over_juice": -110, "under_juice": -110, "ml_away": 370, "ml_home": -485, "open_spread_home": -6.5, "open_total": 46.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "TB", "home": "DET", "date": "2026-11-22", "slot": "", "spread_away": 3.5, "spread_away_juice": -115, "spread_home": -3.5, "spread_home_juice": -105, "total": 47.5, "over_juice": -110, "under_juice": -110, "ml_away": 150, "ml_home": -180, "open_spread_home": -4.5, "open_total": 49.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "TEN", "home": "DAL", "date": "2026-11-22", "slot": "", "spread_away": 7.5, "spread_away_juice": -105, "spread_home": -7.5, "spread_home_juice": -115, "total": 51.5, "over_juice": -110, "under_juice": -110, "ml_away": 330, "ml_home": -425, "open_spread_home": -6.5, "open_total": 48.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "PIT", "home": "PHI", "date": "2026-11-22", "slot": "", "note": "open PHI -5.5 flipped to PIT -4.5 (PHI 2-7, Hurts on IR)", "spread_away": -4.5, "spread_away_juice": -110, "spread_home": 4.5, "spread_home_juice": -110, "total": 38.5, "over_juice": -110, "under_juice": -110, "ml_away": -198, "ml_home": 164, "open_spread_home": -5.5, "open_total": 42.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "NYJ", "home": "LAC", "date": "2026-11-22", "slot": "", "spread_away": 1.5, "spread_away_juice": -110, "spread_home": -1.5, "spread_home_juice": -110, "total": 42.5, "over_juice": -110, "under_juice": -110, "ml_away": 105, "ml_home": -125, "open_spread_home": -9.5, "open_total": 41.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "JAX", "home": "NYG", "date": "2026-11-22", "slot": "", "spread_away": -6, "spread_away_juice": -110, "spread_home": 6, "spread_home_juice": -110, "total": 44.5, "over_juice": -110, "under_juice": -110, "ml_away": -265, "ml_home": 215, "open_spread_away": -1.5, "open_total": 46.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "LV", "home": "DEN", "date": "2026-11-22", "slot": "", "spread_away": 8.5, "spread_away_juice": -110, "spread_home": -8.5, "spread_home_juice": -110, "total": 41.5, "over_juice": -110, "under_juice": -110, "ml_away": 340, "ml_home": -440, "open_spread_home": -8.5, "open_total": 41.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "MIN", "home": "SF", "date": "2026-11-22", "slot": "SNF", "spread_away": 3.5, "spread_away_juice": -105, "spread_home": -3.5, "spread_home_juice": -115, "total": 45.5, "over_juice": -115, "under_juice": -105, "ml_away": 170, "ml_home": -205, "open_spread_home": -3.5, "open_total": 46.5, "source": "https://www.espn.com/nfl/odds"},
+    {"away": "CIN", "home": "WAS", "date": "2026-11-23", "slot": "MNF", "spread_away": -3.5, "spread_away_juice": -115, "spread_home": 3.5, "spread_home_juice": -105, "total": 51.5, "over_juice": -110, "under_juice": -110, "ml_away": -205, "ml_home": 170, "open_spread_away": -1.5, "open_total": 52.5, "source": "https://www.espn.com/nfl/odds"}
+  ],
+  "super_bowl_futures": [
+    {"team": "SF", "odds": "+540"}, {"team": "BUF", "odds": "+580"}, {"team": "JAX", "odds": "+750"},
+    {"team": "CHI", "odds": "+850"}, {"team": "KC", "odds": "+1000"}, {"team": "CIN", "odds": "+1200"},
+    {"team": "LAR", "odds": "+1300"}, {"team": "DEN", "odds": "+1500"}, {"team": "SEA", "odds": "+1600"},
+    {"team": "DET", "odds": "+1900"}, {"team": "GB", "odds": "+2100"}, {"team": "MIN", "odds": "+2200"},
+    {"team": "NE", "odds": "+2400"}, {"team": "HOU", "odds": "+4500"}, {"team": "PIT", "odds": "+4500"},
+    {"team": "DAL", "odds": "+6000"}
+  ],
+  "futures_note": "Top-16 Super Bowl winner odds as displayed (DraftKings via ESPN), fetched 2026-11-14. Teams below +6000 not displayed on the captured page region."
+}

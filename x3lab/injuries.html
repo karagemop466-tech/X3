@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Injuries — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Injury Board</h1>
+  <p>All 32 teams · game-day designations (Out / Doubtful / Questionable) + line-moving IR subset · as of 2026-11-14</p>
+</header>
+<main>
+  <div class="note">Scope: the game-day table lists every Out/Doubtful/Questionable row on the source page for all teams (including bye teams). The IR table is the line-moving subset (QB, season-ending, market-moving names) selected by the documented rule in the data file — full IR lists live at the source. Rows where the source contradicts itself are kept verbatim and tagged <a href="flagged.html">F-04</a>.</div>
+
+  <h2>Game-day designations</h2>
+  <div class="filters">
+    <label>Team <select id="teamFilter"><option value="">All</option></select></label>
+    <label>Status <select id="statusFilter">
+      <option value="">All</option><option>Out</option><option>Doubtful</option><option>Questionable</option>
+    </select></label>
+    <span class="small" id="gdCount"></span>
+  </div>
+  <div id="gameday"></div>
+
+  <h2>Season-impact IR / long-term (subset)</h2>
+  <div id="season"></div>
+</main>
+<footer class="site">X3 · source: <a href="https://www.espn.com/nfl/injuries">ESPN NFL injuries</a> (aggregates official team reports) · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('injuries.html');
+(async () => {
+  const data = await loadJSON('data/injuries.json');
+  const teams = [...new Set(data.game_day.map(r => r.t))].sort();
+  const sel = document.getElementById('teamFilter');
+  for (const t of teams) {
+    const o = document.createElement('option');
+    o.value = t; o.textContent = t;
+    sel.appendChild(o);
+  }
+  const cols = [
+    { key: 't', label: 'Team' },
+    { key: 'n', label: 'Player' },
+    { key: 'p', label: 'Pos' },
+    { key: 's', label: 'Status', fmt: v => statusBadge(v) },
+    { key: 'c', label: 'Detail (from source comment)' }
+  ];
+  function draw() {
+    const t = sel.value, s = document.getElementById('statusFilter').value;
+    const rows = data.game_day.filter(r => (!t || r.t === t) && (!s || r.s === s))
+      .map(r => ({ ...r, source: r.source || data.source }));
+    renderTable('gameday', cols, rows, { countId: 'gdCount' });
+  }
+  sel.onchange = draw;
+  document.getElementById('statusFilter').onchange = draw;
+  draw();
+  renderTable('season', [
+    { key: 't', label: 'Team' },
+    { key: 'n', label: 'Player' },
+    { key: 'p', label: 'Pos' },
+    { key: 's', label: 'Status', fmt: v => statusBadge(v) },
+    { key: 'c', label: 'Detail (from source comment)' }
+  ], data.season_impact.map(r => ({ ...r, source: r.source || data.source })));
+})();
+</script>
+</body>
+</html>

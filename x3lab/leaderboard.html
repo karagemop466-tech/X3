@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard &amp; Gates — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Leaderboard &amp; Validation Gates</h1>
+  <p>Strategy competition with rewards for top performers · entries must pass gates first · standings are empty by design</p>
+</header>
+<main>
+  <div class="note"><strong>Why the leaderboard is empty.</strong> No strategy has passed a single gate yet — and inventing results would defeat the entire purpose. Entries appear here only after G-0/G-1 (sandbox → shadow) and are scored live only after G-2…G-7 (plus G-8 for parlays/props).</div>
+
+  <h2>Validation gates</h2>
+  <div id="gates"></div>
+
+  <h2>Competition phases</h2>
+  <div id="phases"></div>
+
+  <h2>Scoring &amp; rewards</h2>
+  <div id="scoring"></div>
+
+  <h2>Rules</h2>
+  <div id="rules"></div>
+
+  <h2>Current standings</h2>
+  <div id="entries"></div>
+
+  <h2>Pilot correlation values (reference only)</h2>
+  <p class="small">Computed from verified Week-9 results + TNF final (n=16). These fail gate G-8 and are published so the method is visible, not because they are ready for use.</p>
+  <div id="corr"></div>
+</main>
+<footer class="site">X3 · <a href="strategies.html">strategies</a> · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('leaderboard.html');
+(async () => {
+  const [g, c] = await Promise.all([
+    loadJSON('data/validation_gates.json'),
+    loadJSON('data/correlation.json')
+  ]);
+  renderTable('gates', [
+    { key: 'id', label: 'Gate' },
+    { key: 'name', label: 'Name' },
+    { key: 'rule', label: 'Rule' },
+    { key: 'threshold', label: 'Threshold' },
+    { key: 'status', label: 'Status' },
+    { key: 'blocks', label: 'Blocks' }
+  ], g.gates.map(x => ({ ...x, source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/validation_gates.json' })));
+
+  const lb = await loadJSON('data/leaderboard.json');
+  renderTable('phases', [
+    { key: 'phase', label: 'Phase' },
+    { key: 'goal', label: 'Goal' },
+    { key: 'entry', label: 'Entry requirement' },
+    { key: 'reward', label: 'Reward' }
+  ], lb.phases.map(x => ({ ...x, source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/leaderboard.json' })));
+
+  const sc = lb.scoring, rw = lb.rewards;
+  renderTable('scoring', [
+    { key: 'k', label: 'Item' },
+    { key: 'v', label: 'Definition' }
+  ], [
+    { k: 'Primary metric', v: sc.primary, source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/leaderboard.json' },
+    { k: 'Secondary metrics', v: sc.secondary.join(' · '), source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/leaderboard.json' },
+    { k: 'Tie-breakers', v: sc.tie_breakers.join(' · '), source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/leaderboard.json' },
+    { k: 'Reward structure', v: rw.structure + ' — ' + rw.default_proposal.season_pool + '; ' + rw.default_proposal.split + '; ' + rw.default_proposal.anti_gaming + ' (' + rw.status + ')', source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/leaderboard.json' }
+  ]);
+
+  renderTable('rules', [
+    { key: 'id', label: 'Rule' },
+    { key: 'rule', label: 'Text' }
+  ], lb.rules.map(x => ({ ...x, source: 'https://github.com/karagemop466-tech/X3/blob/main/docs/data/leaderboard.json' })));
+
+  renderTable('entries', [
+    { key: 'id', label: 'Strategy' },
+    { key: 'name', label: 'Name' },
+    { key: 'type', label: 'Type' },
+    { key: 'gates_passed', label: 'Gates passed' },
+    { key: 'dSR', label: 'dSR' },
+    { key: 'clv', label: 'CLV median' },
+    { key: 'status', label: 'Status' }
+  ], []);
+  document.getElementById('entries').insertAdjacentHTML('afterend',
+    '<p class="small">Zero entries. <strong>Goal: 0 strategies scored, 6 proposed.</strong> Schema fields: id, name, type, registered_at, gates_passed, picks_settled, roi_pct, clv_median_pts, dSR, status.</p>');
+
+  renderTable('corr', [
+    { key: 'pair', label: 'Measured pair' },
+    { key: 'r', label: 'Pearson r' },
+    { key: 'n', label: 'n' },
+    { key: 'reading', label: 'Reading' }
+  ], c.values.map(v => ({ ...v, source: 'https://www.nfl.com/schedules/2026/by-week/week-9' })));
+  document.getElementById('corr').insertAdjacentHTML('afterend',
+    `<p class="small">Sample: ${esc(c.sample)}. Policy threshold: parlay leg pairs must have measured |r| &lt; 0.3 unless explicitly modeled. Missing for production: ${esc(c.missing_for_production.join('; '))} (flag F-08).</p>`);
+})();
+</script>
+</body>
+</html>
