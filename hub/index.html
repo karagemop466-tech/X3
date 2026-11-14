@@ -18,13 +18,15 @@
 <p class="lede">Collect, organise and analyse NFL evidence for originating our own lines, with every row tied to an official source and every gap published instead of filled.</p>
 
 <section class="callout"><h2>Read this first</h2>
-<p>This repository is an evidence-first decision desk, not a tipster. Three things are true at once:
-the injury and standings data on this site is <b>verified against official NFL pages</b>; the model lines
-are <b>derived arithmetic</b> on that data using parameters that are stated in the open and are not yet
-calibrated; and anything that would require a betting market - prices, closing-line value, settled bets,
-ROI, a populated leaderboard - is <b>blank and flagged</b>, because no such data exists in this repo.
-Nothing here was inferred to fill a gap.</p></section>
-<div class="grid"><div class="card"><div class="num">13/13</div><div class="lbl">Games priced</div><div class="sub">Week-10 games with an originated spread and total, modelled before the slate is played</div></div><div class="card"><div class="num">345</div><div class="lbl">Injury rows verified</div><div class="sub">every row re-read from the official report; 160 carry a game designation</div></div><div class="card"><div class="num">18</div><div class="lbl">Clubs with a 1st-stringer out</div><div class="sub">39 starter slots must be filled by a backup this week</div></div><div class="card"><div class="num">0 of 12</div><div class="lbl">Strategies eligible for the leaderboard</div><div class="sub">registered in the pre-registration ledger, blocked on data, not on analysis</div></div></div>
+<p>This repository is an evidence-first decision desk, not a tipster. Four things are true at once:
+the injury and standings data is <b>verified against official NFL pages</b>; the results are
+<b>verified too</b>, because 137 final scores reconcile to the official standings
+with 0 mismatches across
+32 clubs; the model lines are <b>derived arithmetic</b> on that data with every
+parameter stated in the open; and anything that would require a <b>betting market</b> - a market line, a
+difference, closing-line value, ROI, a populated leaderboard - is <b>blank and flagged</b>, because
+NFL.com publishes no odds at all. Nothing here was inferred to fill a gap.</p></section>
+<div class="grid"><div class="card"><div class="num">13/13</div><div class="lbl">Games priced</div><div class="sub">Week-10 games with an originated spread and total, modelled before the slate is played</div></div><div class="card"><div class="num">345</div><div class="lbl">Injury rows verified</div><div class="sub">every row re-read from the official report; 160 carry a game designation</div></div><div class="card"><div class="num">18</div><div class="lbl">Clubs with a 1st-stringer out</div><div class="sub">39 starter slots must be filled by a backup this week</div></div><div class="card"><div class="num">0 of 12</div><div class="lbl">Strategies eligible for the leaderboard</div><div class="sub">11 untested, 1 inconclusive, 12 with no staking score</div></div></div>
 <h2>Sections</h2>
 <div class="tblwrap"><table class="k-meta">
 <thead><tr><th>Section</th><th>Contains</th></tr></thead><tbody>
@@ -62,7 +64,10 @@ Nothing here was inferred to fill a gap.</p></section>
 <tr><td>Luck controls</td><td><span class="badge v">VERIFIED</span></td><td>walk-forward, FDR, DSR/PBO, min-sample defined; see gates</td></tr>
 <tr><td>Leaderboard with rewards</td><td><span class="badge b">BLOCKED</span></td><td>empty by design - G-2 fails; reward amounts need an owner decision</td></tr>
 <tr><td>Market comparison / CLV</td><td><span class="badge u">UNVERIFIED</span></td><td>no licensed price feed exists in the repo (F-01)</td></tr>
-<tr><td>Settled results for backtests</td><td><span class="badge u">UNVERIFIED</span></td><td>1 final score known for the season (F-02)</td></tr>
+<tr><td>Settled results for backtests</td><td><span class="badge v">VERIFIED</span></td><td>137 finals reconciled to the official standings with 0 mismatches on 32 clubs - <a href='results.html'>results feed</a></td></tr>
+<tr><td>Price snapshot store</td><td><span class="badge d">DERIVED</span></td><td>786 markets with an opening number; 156 closes PENDING by design - <a href='price-store.html'>store</a></td></tr>
+<tr><td>Depth of the replacement</td><td><span class="badge d">DERIVED</span></td><td>36 of 76 absences resolved to a named replacement, 5 at third string or deeper - <a href='replacements.html'>who replaces whom</a></td></tr>
+<tr><td>Demotion gate</td><td><span class="badge v">VERIFIED</span></td><td>G-10 defined with four clauses; D-4 fires today, so every strategy is on paper</td></tr>
 </tbody></table>
 </div>
 
