@@ -256,7 +256,9 @@ def p_index():
           "coefficients blank (no archive)"],
          [esc("Luck controls"), badge("VERIFIED"), "walk-forward, FDR, DSR/PBO, min-sample defined; see gates"],
          [esc("Leaderboard with rewards"), badge("BLOCKED"), "empty by design - G-2 fails; reward amounts need an owner decision"],
-         [esc("Market comparison / CLV"), badge("UNVERIFIED"), "no licensed price feed exists in the repo (F-01)"],
+         [esc("Market comparison / CLV"), badge("UNVERIFIED"),
+          "no licensed price feed exists in the repo (F-01) and NFL.com publishes no odds at all "
+          "(F-18) - the difference column is structurally blank"],
          [esc("Settled results for backtests"), badge("VERIFIED"),
           f"{_res['counts']['finals']} finals reconciled to the official standings with "
           f"{_res['checks']['R2_standings_reconciliation']['mismatches']} mismatches on "

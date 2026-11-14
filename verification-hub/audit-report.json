@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 306,
       "flagged_rows": 227,
-      "refs": 346,
+      "refs": 353,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -61,9 +61,9 @@
     },
     "dashboard": {
       "pages": 18,
-      "rows": 797,
-      "flagged_rows": 681,
-      "refs": 1192,
+      "rows": 802,
+      "flagged_rows": 685,
+      "refs": 1193,
       "unsourced_examples": [
         "dashboard/correlation.html: Pair Kind Estimator Data used Value n Status Source",
         "dashboard/correlation.html: Pair Kind Estimator Required data Value Status",
@@ -93,7 +93,7 @@
     },
     "docs": {
       "pages": 24,
-      "rows": 1009,
+      "rows": 1010,
       "flagged_rows": 846,
       "refs": 1334,
       "unsourced_examples": [
@@ -108,10 +108,10 @@
       ]
     },
     "hub": {
-      "pages": 18,
-      "rows": 768,
-      "flagged_rows": 555,
-      "refs": 994,
+      "pages": 22,
+      "rows": 1327,
+      "flagged_rows": 1018,
+      "refs": 1777,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -129,6 +129,22 @@
       "flagged_rows": 0,
       "refs": 33,
       "unsourced_examples": []
+    },
+    "ledger": {
+      "pages": 5,
+      "rows": 405,
+      "flagged_rows": 388,
+      "refs": 650,
+      "unsourced_examples": [
+        "ledger/depth.html: Replacement depth Rows Basis",
+        "ledger/depth.html: 2 93 COMPUTED from the rows below",
+        "ledger/depth.html: 3 17 COMPUTED from the rows below",
+        "ledger/depth.html: 4 1 COMPUTED from the rows below",
+        "ledger/depth.html: Wk Team Player Pos Status Injury Group Unit Slot Starter depth Replacement Replacement depth Join Injury source Depth so",
+        "ledger/governance.html: Gate Name Rule Status Current evaluation Source",
+        "ledger/governance.html: Rank by signal Strategy Signal metric (CLV, n, CI) Flat-stake result (n, CI) Staking policy Staking result (not ranked) ",
+        "ledger/governance.html: Pair n r 95% CI low 95% CI high Source"
+      ]
     },
     "legacy": {
       "pages": 1,
@@ -200,9 +216,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 163,
-  "rows_total": 6036,
-  "rows_flagged_or_sourced": 5247,
-  "internal_refs": 3453,
+  "pages_total": 172,
+  "rows_total": 7006,
+  "rows_flagged_or_sourced": 6102,
+  "internal_refs": 3702,
   "problems": []
 }

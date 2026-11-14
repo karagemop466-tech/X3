@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-11-14T19:00:46+00:00",
+ "generated_at": "2026-11-14T19:53:40+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
-   "pages": 142,
-   "links": 6762,
-   "external": 4471,
-   "tables": 242,
-   "rows": 4752,
-   "rows_with_http": 3903,
-   "rows_flag_only": 191,
-   "rows_without": 658
+   "pages": 165,
+   "links": 9065,
+   "external": 6196,
+   "tables": 292,
+   "rows": 6152,
+   "rows_with_http": 5047,
+   "rows_flag_only": 230,
+   "rows_without": 875
   },
   "broken_internal": [],
   "per_page": [
@@ -226,13 +226,13 @@
    },
    {
     "page": "dashboard/executive-summary.html",
-    "links": 25,
-    "external": 3,
+    "links": 26,
+    "external": 4,
     "tables": 1,
-    "rows": 12,
-    "rows_with_http": 3,
-    "rows_flag_only": 0,
-    "rows_without": 9
+    "rows": 16,
+    "rows_with_http": 4,
+    "rows_flag_only": 1,
+    "rows_without": 11
    },
    {
     "page": "dashboard/flagged.html",
@@ -789,10 +789,10 @@
     "links": 25,
     "external": 10,
     "tables": 2,
-    "rows": 18,
+    "rows": 19,
     "rows_with_http": 9,
     "rows_flag_only": 0,
-    "rows_without": 9
+    "rows_without": 10
    },
    {
     "page": "docs/suggestions.html",
@@ -826,7 +826,7 @@
    },
    {
     "page": "hub/archive.html",
-    "links": 36,
+    "links": 40,
     "external": 1,
     "tables": 1,
     "rows": 12,
@@ -836,17 +836,17 @@
    },
    {
     "page": "hub/correlation.html",
-    "links": 32,
-    "external": 9,
-    "tables": 2,
-    "rows": 13,
-    "rows_with_http": 8,
+    "links": 48,
+    "external": 21,
+    "tables": 4,
+    "rows": 25,
+    "rows_with_http": 20,
     "rows_flag_only": 5,
     "rows_without": 0
    },
    {
     "page": "hub/depth.html",
-    "links": 67,
+    "links": 71,
     "external": 44,
     "tables": 2,
     "rows": 43,
@@ -856,27 +856,27 @@
    },
    {
     "page": "hub/executive-summary.html",
-    "links": 24,
+    "links": 28,
     "external": 1,
     "tables": 2,
-    "rows": 14,
+    "rows": 24,
     "rows_with_http": 0,
-    "rows_flag_only": 1,
-    "rows_without": 13
+    "rows_flag_only": 4,
+    "rows_without": 20
    },
    {
     "page": "hub/flagged.html",
-    "links": 41,
-    "external": 18,
+    "links": 54,
+    "external": 27,
     "tables": 1,
-    "rows": 17,
-    "rows_with_http": 17,
+    "rows": 26,
+    "rows_with_http": 26,
     "rows_flag_only": 0,
     "rows_without": 0
    },
    {
     "page": "hub/gates.html",
-    "links": 24,
+    "links": 28,
     "external": 1,
     "tables": 1,
     "rows": 10,
@@ -886,17 +886,17 @@
    },
    {
     "page": "hub/index.html",
-    "links": 45,
+    "links": 56,
     "external": 4,
     "tables": 2,
-    "rows": 26,
+    "rows": 33,
     "rows_with_http": 2,
-    "rows_flag_only": 3,
-    "rows_without": 21
+    "rows_flag_only": 2,
+    "rows_without": 29
    },
    {
     "page": "hub/injuries.html",
-    "links": 369,
+    "links": 373,
     "external": 346,
     "tables": 2,
     "rows": 354,
@@ -906,17 +906,17 @@
    },
    {
     "page": "hub/leaderboard.html",
-    "links": 24,
+    "links": 28,
     "external": 1,
-    "tables": 4,
-    "rows": 19,
+    "tables": 8,
+    "rows": 44,
     "rows_with_http": 0,
     "rows_flag_only": 3,
-    "rows_without": 16
+    "rows_without": 41
    },
    {
     "page": "hub/lines.html",
-    "links": 98,
+    "links": 102,
     "external": 75,
     "tables": 4,
     "rows": 54,
@@ -926,7 +926,7 @@
    },
    {
     "page": "hub/luck.html",
-    "links": 56,
+    "links": 60,
     "external": 33,
     "tables": 2,
     "rows": 37,
@@ -935,18 +935,48 @@
     "rows_without": 5
    },
    {
+    "page": "hub/markets.html",
+    "links": 184,
+    "external": 157,
+    "tables": 4,
+    "rows": 92,
+    "rows_with_http": 78,
+    "rows_flag_only": 1,
+    "rows_without": 13
+   },
+   {
+    "page": "hub/price-store.html",
+    "links": 40,
+    "external": 13,
+    "tables": 3,
+    "rows": 23,
+    "rows_with_http": 12,
+    "rows_flag_only": 1,
+    "rows_without": 10
+   },
+   {
     "page": "hub/questions.html",
-    "links": 24,
+    "links": 28,
     "external": 1,
     "tables": 1,
-    "rows": 16,
+    "rows": 24,
     "rows_with_http": 0,
-    "rows_flag_only": 1,
-    "rows_without": 15
+    "rows_flag_only": 3,
+    "rows_without": 21
+   },
+   {
+    "page": "hub/replacements.html",
+    "links": 226,
+    "external": 199,
+    "tables": 3,
+    "rows": 113,
+    "rows_with_http": 113,
+    "rows_flag_only": 0,
+    "rows_without": 0
    },
    {
     "page": "hub/repo-review.html",
-    "links": 24,
+    "links": 28,
     "external": 1,
     "tables": 3,
     "rows": 24,
@@ -956,57 +986,67 @@
    },
    {
     "page": "hub/requirements.html",
-    "links": 24,
+    "links": 28,
     "external": 1,
     "tables": 2,
-    "rows": 29,
+    "rows": 40,
     "rows_with_http": 0,
-    "rows_flag_only": 3,
-    "rows_without": 26
+    "rows_flag_only": 5,
+    "rows_without": 35
+   },
+   {
+    "page": "hub/results.html",
+    "links": 229,
+    "external": 202,
+    "tables": 4,
+    "rows": 201,
+    "rows_with_http": 201,
+    "rows_flag_only": 0,
+    "rows_without": 0
    },
    {
     "page": "hub/sources.html",
-    "links": 34,
-    "external": 11,
+    "links": 42,
+    "external": 15,
     "tables": 1,
-    "rows": 10,
-    "rows_with_http": 10,
+    "rows": 14,
+    "rows_with_http": 14,
     "rows_flag_only": 0,
     "rows_without": 0
    },
    {
     "page": "hub/strategies.html",
-    "links": 24,
+    "links": 28,
     "external": 1,
-    "tables": 2,
-    "rows": 14,
+    "tables": 3,
+    "rows": 20,
     "rows_with_http": 0,
     "rows_flag_only": 0,
-    "rows_without": 14
-   },
-   {
-    "page": "hub/suggestions.html",
-    "links": 24,
-    "external": 1,
-    "tables": 2,
-    "rows": 17,
-    "rows_with_http": 0,
-    "rows_flag_only": 1,
-    "rows_without": 16
-   },
-   {
-    "page": "hub/verification.html",
-    "links": 24,
-    "external": 1,
-    "tables": 4,
-    "rows": 21,
-    "rows_with_http": 0,
-    "rows_flag_only": 1,
     "rows_without": 20
    },
    {
-    "page": "index.html",
+    "page": "hub/suggestions.html",
     "links": 28,
+    "external": 1,
+    "tables": 2,
+    "rows": 29,
+    "rows_with_http": 0,
+    "rows_flag_only": 2,
+    "rows_without": 27
+   },
+   {
+    "page": "hub/verification.html",
+    "links": 28,
+    "external": 1,
+    "tables": 4,
+    "rows": 26,
+    "rows_with_http": 0,
+    "rows_flag_only": 2,
+    "rows_without": 24
+   },
+   {
+    "page": "index.html",
+    "links": 35,
     "external": 1,
     "tables": 0,
     "rows": 0,
@@ -1145,6 +1185,56 @@
     "rows_without": 10
    },
    {
+    "page": "ledger/depth.html",
+    "links": 431,
+    "external": 421,
+    "tables": 2,
+    "rows": 215,
+    "rows_with_http": 210,
+    "rows_flag_only": 1,
+    "rows_without": 4
+   },
+   {
+    "page": "ledger/governance.html",
+    "links": 14,
+    "external": 4,
+    "tables": 3,
+    "rows": 9,
+    "rows_with_http": 3,
+    "rows_flag_only": 6,
+    "rows_without": 0
+   },
+   {
+    "page": "ledger/index.html",
+    "links": 16,
+    "external": 1,
+    "tables": 1,
+    "rows": 4,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 4
+   },
+   {
+    "page": "ledger/prices.html",
+    "links": 28,
+    "external": 18,
+    "tables": 3,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "ledger/results.html",
+    "links": 161,
+    "external": 151,
+    "tables": 2,
+    "rows": 150,
+    "rows_with_http": 150,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
     "page": "legacy/index.html",
     "links": 14,
     "external": 0,
@@ -1156,13 +1246,153 @@
    },
    {
     "page": "lines.html",
-    "links": 16,
-    "external": 7,
+    "links": 22,
+    "external": 12,
     "tables": 4,
     "rows": 23,
+    "rows_with_http": 11,
+    "rows_flag_only": 0,
+    "rows_without": 12
+   },
+   {
+    "page": "origin/backtest.html",
+    "links": 25,
+    "external": 10,
+    "tables": 2,
+    "rows": 10,
+    "rows_with_http": 9,
+    "rows_flag_only": 0,
+    "rows_without": 1
+   },
+   {
+    "page": "origin/correlations.html",
+    "links": 27,
+    "external": 12,
+    "tables": 2,
+    "rows": 9,
     "rows_with_http": 7,
     "rows_flag_only": 0,
-    "rows_without": 16
+    "rows_without": 2
+   },
+   {
+    "page": "origin/depth.html",
+    "links": 214,
+    "external": 199,
+    "tables": 2,
+    "rows": 99,
+    "rows_with_http": 99,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "origin/flagged.html",
+    "links": 22,
+    "external": 3,
+    "tables": 1,
+    "rows": 6,
+    "rows_with_http": 2,
+    "rows_flag_only": 3,
+    "rows_without": 1
+   },
+   {
+    "page": "origin/gates.html",
+    "links": 29,
+    "external": 2,
+    "tables": 2,
+    "rows": 12,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 12
+   },
+   {
+    "page": "origin/index.html",
+    "links": 24,
+    "external": 1,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 0,
+    "rows_flag_only": 2,
+    "rows_without": 6
+   },
+   {
+    "page": "origin/leaderboard.html",
+    "links": 21,
+    "external": 5,
+    "tables": 1,
+    "rows": 5,
+    "rows_with_http": 4,
+    "rows_flag_only": 1,
+    "rows_without": 0
+   },
+   {
+    "page": "origin/markets.html",
+    "links": 134,
+    "external": 119,
+    "tables": 1,
+    "rows": 39,
+    "rows_with_http": 39,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "origin/questions.html",
+    "links": 23,
+    "external": 2,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 1,
+    "rows_flag_only": 2,
+    "rows_without": 4
+   },
+   {
+    "page": "origin/results.html",
+    "links": 180,
+    "external": 164,
+    "tables": 1,
+    "rows": 163,
+    "rows_with_http": 163,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "origin/snapshots.html",
+    "links": 94,
+    "external": 1,
+    "tables": 1,
+    "rows": 78,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 78
+   },
+   {
+    "page": "origin/sources.html",
+    "links": 23,
+    "external": 8,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 7,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "origin/suggestions.html",
+    "links": 24,
+    "external": 1,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "origin/verification.html",
+    "links": 16,
+    "external": 1,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 0,
+    "rows_flag_only": 3,
+    "rows_without": 9
    },
    {
     "page": "pages/executive-summary.html",
@@ -1231,8 +1461,8 @@
     "tables": 2,
     "rows": 17,
     "rows_with_http": 0,
-    "rows_flag_only": 0,
-    "rows_without": 17
+    "rows_flag_only": 10,
+    "rows_without": 7
    },
    {
     "page": "review.html",
@@ -1627,7 +1857,7 @@
    "path": "hub/questions.html",
    "page": "hub/questions.html",
    "kind": "html",
-   "rows": 16
+   "rows": 24
   },
   {
    "family": "requirements",
@@ -1643,7 +1873,7 @@
    "path": "hub/requirements.html",
    "page": "hub/requirements.html",
    "kind": "html",
-   "rows": 25
+   "rows": 36
   },
   {
    "family": "suggestions",
@@ -1659,7 +1889,7 @@
    "path": "hub/suggestions.html",
    "page": "hub/suggestions.html",
    "kind": "html",
-   "rows": 14
+   "rows": 26
   },
   {
    "family": "flags",
@@ -1675,7 +1905,7 @@
    "path": "hub/flagged.html",
    "page": "hub/flagged.html",
    "kind": "html",
-   "rows": 17
+   "rows": 26
   },
   {
    "family": "strategies",
@@ -1730,7 +1960,7 @@
  "reconciliation": {
   "families": {
    "flags": {
-    "count": 108,
+    "count": 117,
     "modules": {
      "data (0c38f465)": 16,
      "dashboard (7e632805)": 12,
@@ -1740,7 +1970,7 @@
      "root page (3dbc4678)": 14,
      "pages (1a771fcd)": 9,
      "desk (3bf7cc8b)": 10,
-     "hub (e9b492ab)": 17
+     "hub (e9b492ab)": 26
     },
     "id_groups": {
      "F01": {
@@ -2913,6 +3143,222 @@
       ],
       "status_conflict": false
      },
+     "F18": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-18",
+        "title": "NFL.com publishes no odds at all. The LAC@BAL Week-10 game centre (checked 2026-11-14) carries participation, team stats and standings and no spread, total or moneyline, and nfl.com/odds/ returns a 404. The official-source class for a market price therefore does not exist, which is why the difference column is structurally blank rather than merely unfilled.",
+        "status": "HIGH",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F19": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-19",
+        "title": "Two models price the same Week-10 games and disagree. X3-v1 (hub/lines.html) uses injury-cost priors with home-field advantage set to 0.0; X3-v2 (hub/markets.html) fits on 137 verified finals and measures a home-field term of 0.08 points. The largest gap between the two boards is 10.9 points on one game.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F20": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-20",
+        "title": "Old F-02 ('no game log; one final score known') is RETRACTED. A 163-game capture with 137 finals exists in data/desk/games.json, captured by this repository's own CI runner (212/212 pages HTTP 200). The new results feed reconciles it to the official standings with 0 mismatches on 32 clubs, so the data was there and the flag was wrong.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F21": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-21",
+        "title": "The total model loses to a constant. Walk-forward MAE is 12.50 points against 11.14 for a constant 45.0 on n=105 games. It is published with the loss attached rather than tuned until it looks better.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F22": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-22",
+        "title": "Only 5 of 32 club depth charts print an as-of date, and all 32 are self-labelled unofficial by the club. 40 of 76 Week-10 absences therefore cannot be resolved to a named replacement from an official source and are published UNVERIFIED instead of guessed.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F23": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-23",
+        "title": "16 player names matched a club depth chart only inside a different position group (a tight end matched to a running-back slot, a tackle to a guard slot). The engine refuses a cross-role match rather than using it to name a replacement, so those rows are UNVERIFIED by design.",
+        "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F24": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-24",
+        "title": "5 of 12 registered strategies (both prop-combo and parlay families, plus the prop single) cannot be tested at all: no prop price and no prop settlement history exists, and no official source publishes either.",
+        "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F25": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-25",
+        "title": "The signal score for the side model is +0.205 points of absolute-error improvement over the naive baseline, with a bootstrap 95% CI of [-1.047, +1.478]. The interval contains zero, so the honest label is INCONCLUSIVE, not 'beats the baseline'. The direction hit rate (62.9%, CI [53.3%, 71.5%]) is a different and weaker claim, and is published next to its own baseline.",
+        "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F26": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-26",
+        "title": "The store has one snapshot milestone. Every close in it is a reconstructed close (our own number refitted on finals before kickoff), not a captured one, and every open for the live slate is a single fit rather than a before-kickoff capture. The distinction is printed in every row's note column, because a reconstructed close and a captured close are not the same evidence.",
+        "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
      "I01": {
       "modules": [
        "pages (1a771fcd)"
@@ -2974,7 +3420,7 @@
         "status_norm": "OTHER",
         "page": "pages/flagged-for-review.html",
         "register": "pages/flagged-for-review.html",
-        "source": "Sandbox network policy"
+        "source": "No official source exists \u2014 sandbox network policy (environment observation)"
        }
       ],
       "identity": "same",
@@ -3132,7 +3578,7 @@
     }
    },
    "questions": {
-    "count": 122,
+    "count": 130,
     "modules": {
      "data (0c38f465)": 12,
      "dashboard (7e632805)": 20,
@@ -3140,7 +3586,7 @@
      "x3lab (e1c332ce)": 20,
      "lab (972ad7a5)": 14,
      "desk (3bf7cc8b)": 25,
-     "hub (e9b492ab)": 16
+     "hub (e9b492ab)": 24
     },
     "id_groups": {
      "Q01": {
@@ -4532,7 +4978,8 @@
      "Q17": {
       "modules": [
        "dashboard (7e632805)",
-       "desk (3bf7cc8b)"
+       "desk (3bf7cc8b)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -4554,6 +5001,16 @@
         "page": "desk/questions.html",
         "register": "desk/questions.html",
         "source": "source"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-17",
+        "title": "Whether the difference column can ever be filled",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
        }
       ],
       "identity": "different",
@@ -4568,7 +5025,8 @@
      "Q18": {
       "modules": [
        "dashboard (7e632805)",
-       "desk (3bf7cc8b)"
+       "desk (3bf7cc8b)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -4590,10 +5048,20 @@
         "page": "desk/questions.html",
         "register": "desk/questions.html",
         "source": "source"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-18",
+        "title": "Whether two models may coexist on the site",
+        "status": "no",
+        "status_norm": "OTHER",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
        }
       ],
       "identity": "different",
-      "min_score": 0.07,
+      "min_score": 0.0,
       "same_content": false,
       "statuses": [
        "OPEN",
@@ -4603,7 +5071,8 @@
      },
      "Q19": {
       "modules": [
-       "dashboard (7e632805)"
+       "dashboard (7e632805)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -4615,19 +5084,31 @@
         "page": "dashboard/questions.html",
         "register": "dashboard/data/questions.json",
         "source": "Ingest, build and publish are all scripted and can run without manual input."
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-19",
+        "title": "Whether to buy prior-season results",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
+       "BLOCKED",
        "OTHER"
       ],
       "status_conflict": false
      },
      "Q20": {
       "modules": [
-       "dashboard (7e632805)"
+       "dashboard (7e632805)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -4639,6 +5120,113 @@
         "page": "dashboard/questions.html",
         "register": "dashboard/data/questions.json",
         "source": "The repo is on GitHub with GitHub authentication configured for this session."
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-20",
+        "title": "What a reward may legally be",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       }
+      ],
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
+      "statuses": [
+       "BLOCKED",
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "Q21": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-21",
+        "title": "Whether to keep a total model that loses to a constant",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "BLOCKED"
+      ],
+      "status_conflict": false
+     },
+     "Q22": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-22",
+        "title": "Whether club depth charts are acceptable evidence",
+        "status": "no",
+        "status_norm": "OTHER",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "Q23": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-23",
+        "title": "How a staking score is funded once prices exist",
+        "status": "no",
+        "status_norm": "OTHER",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "Q24": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-24",
+        "title": "Whether a prop or parlay strategy may be published as UNTESTED indefinitely",
+        "status": "no",
+        "status_norm": "OTHER",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
        }
       ],
       "identity": "same",
@@ -4772,14 +5360,14 @@
     }
    },
    "requirements": {
-    "count": 134,
+    "count": 145,
     "modules": {
      "data (0c38f465)": 16,
      "dashboard (7e632805)": 24,
      "docs/pages (4856379c)": 28,
      "root page (3dbc4678)": 17,
      "desk (3bf7cc8b)": 24,
-     "hub (e9b492ab)": 25
+     "hub (e9b492ab)": 36
     },
     "id_groups": {
      "R01": {
@@ -6384,7 +6972,8 @@
      },
      "R26": {
       "modules": [
-       "docs/pages (4856379c)"
+       "docs/pages (4856379c)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -6396,11 +6985,21 @@
         "page": "docs/pages/requirements.html",
         "register": "docs/pages/requirements.html",
         "source": "COORDINATION.md log"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-26",
+        "title": "Price-snapshot store with an opening and a closing number for every market we originate",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "data/x3/price_store.csv - counts are interpolated from the file at build time, never typed"
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "DONE"
       ],
@@ -6408,7 +7007,8 @@
      },
      "R27": {
       "modules": [
-       "docs/pages (4856379c)"
+       "docs/pages (4856379c)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -6420,11 +7020,21 @@
         "page": "docs/pages/requirements.html",
         "register": "docs/pages/requirements.html",
         "source": "Flagged for Review"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-27",
+        "title": "Verified results feed so backtests and ROI can be computed at all",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "data/x3/results_2026.csv - every club's results aggregate to the official standings with 0 mismatches, and the 16 Week-1 box scores match an independent live read"
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "DONE"
       ],
@@ -6432,7 +7042,8 @@
      },
      "R28": {
       "modules": [
-       "docs/pages (4856379c)"
+       "docs/pages (4856379c)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -6444,6 +7055,208 @@
         "page": "docs/pages/requirements.html",
         "register": "docs/pages/requirements.html",
         "source": "Verification pass + deploy check"
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-28",
+        "title": "Originate the side first, then the total, then the moneyline",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "data/x3/markets.json origination_order; hub/markets.html prints the order per row and the moneyline is computed from the same margin model"
+       }
+      ],
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R29": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-29",
+        "title": "Publish fair line, market line and difference as separate columns",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/markets.html - one row per originated market per game, market columns blank and flagged (F-18)"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R30": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-30",
+        "title": "Separate signal from staking so a lucky staking run cannot mask a bad signal",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/leaderboard.html + data/x3/strategies.json scoring_contract"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R31": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-31",
+        "title": "Track the depth of the replacement, not just the fact of a replacement",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/replacements.html - each absence either names a replacement with his chart tier or is published UNVERIFIED with the reason"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R32": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-32",
+        "title": "Compute correlations only from officially sourced numbers and publish n with each value",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/correlation.html - 7 computed rows, each with n and a source; 5 blank rows"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R33": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-33",
+        "title": "Define a demotion gate that sends a live strategy back to paper",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/gates.html G-10 - D-4 currently fires; every strategy is on paper"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R34": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-34",
+        "title": "A reviewable Suggestions section so a path can be chosen before any change",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/suggestions.html - every proposal carries impact, effort, risk and a blank decision column"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R35": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-35",
+        "title": "A clear list of questions, information and answers needed before a decision",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/questions.html - known / missing / discovery path / owner / default per row"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "DONE"
+      ],
+      "status_conflict": false
+     },
+     "R36": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "R-36",
+        "title": "Executive summary of the important details",
+        "status": "VERIFIED",
+        "status_norm": "DONE",
+        "page": "hub/requirements.html",
+        "register": "hub/requirements.html",
+        "source": "hub/executive-summary.html"
        }
       ],
       "identity": "same",
@@ -7529,7 +8342,7 @@
     }
    },
    "suggestions": {
-    "count": 104,
+    "count": 116,
     "modules": {
      "data (0c38f465)": 10,
      "dashboard (7e632805)": 16,
@@ -7538,7 +8351,7 @@
      "root page (3dbc4678)": 10,
      "lab (972ad7a5)": 7,
      "desk (3bf7cc8b)": 24,
-     "hub (e9b492ab)": 14
+     "hub (e9b492ab)": 26
     },
     "id_groups": {
      "S01": {
@@ -8602,7 +9415,8 @@
      },
      "S15": {
       "modules": [
-       "dashboard (7e632805)"
+       "dashboard (7e632805)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -8614,11 +9428,21 @@
         "page": "dashboard/suggestions.html",
         "register": "dashboard/data/suggestions.json",
         "source": "When a strategy fails its gates nothing currently happens to it."
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-15",
+        "title": "Record one weekly price snapshot by hand, with a timestamp and a hash, and label it as such",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
        }
       ],
-      "identity": "same",
-      "min_score": null,
-      "same_content": true,
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
       "statuses": [
        "OPEN"
       ],
@@ -8626,7 +9450,8 @@
      },
      "S16": {
       "modules": [
-       "dashboard (7e632805)"
+       "dashboard (7e632805)",
+       "hub (e9b492ab)"
       ],
       "variants": [
        {
@@ -8638,6 +9463,256 @@
         "page": "dashboard/suggestions.html",
         "register": "dashboard/data/suggestions.json",
         "source": "The operating jurisdiction is unspecified, so the applicable rules for originating lines, staking, and rewards are unknown."
+       },
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-16",
+        "title": "Treat a market price as a three-class object: OFFICIAL, RECORDED, BLANK",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "different",
+      "min_score": 0.0,
+      "same_content": false,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S17": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-17",
+        "title": "Run the market engine weekly in CI so opening numbers are captured before kickoff",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S18": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-18",
+        "title": "Add prior-season scores (2018-2025) so gates G-2 and G-3 can ever pass",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S19": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-19",
+        "title": "Retire X3-v1 from the main navigation once X3-v2 has three weeks of walk-forward",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S20": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-20",
+        "title": "Price parlay legs from one joint simulation rather than a product of marginals",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S21": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-21",
+        "title": "Replace club depth charts with game-day participation once captured",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S22": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-22",
+        "title": "Publish a weekly movement digest from the price store",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S23": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-23",
+        "title": "Keep the leaderboard paper-only until a staking contract and a legal answer exist",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S24": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-24",
+        "title": "Make snapshot files write-once and verify them by hash in CI",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S25": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-25",
+        "title": "Show the model's own error bar on every published number",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OPEN"
+      ],
+      "status_conflict": false
+     },
+     "S26": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "S-26",
+        "title": "Archive the prop and parlay strategies, or label them UNTESTABLE rather than UNTESTED",
+        "status": "PROPOSED",
+        "status_norm": "OPEN",
+        "page": "hub/suggestions.html",
+        "register": "hub/suggestions.html",
+        "source": ""
        }
       ],
       "identity": "same",
@@ -9325,7 +10400,8 @@
     "nid": "Q17",
     "modules": [
      "dashboard (7e632805)",
-     "desk (3bf7cc8b)"
+     "desk (3bf7cc8b)",
+     "hub (e9b492ab)"
     ]
    },
    {
@@ -9333,7 +10409,24 @@
     "nid": "Q18",
     "modules": [
      "dashboard (7e632805)",
-     "desk (3bf7cc8b)"
+     "desk (3bf7cc8b)",
+     "hub (e9b492ab)"
+    ]
+   },
+   {
+    "family": "questions",
+    "nid": "Q19",
+    "modules": [
+     "dashboard (7e632805)",
+     "hub (e9b492ab)"
+    ]
+   },
+   {
+    "family": "questions",
+    "nid": "Q20",
+    "modules": [
+     "dashboard (7e632805)",
+     "hub (e9b492ab)"
     ]
    },
    {
@@ -9536,6 +10629,30 @@
     ]
    },
    {
+    "family": "requirements",
+    "nid": "R26",
+    "modules": [
+     "docs/pages (4856379c)",
+     "hub (e9b492ab)"
+    ]
+   },
+   {
+    "family": "requirements",
+    "nid": "R27",
+    "modules": [
+     "docs/pages (4856379c)",
+     "hub (e9b492ab)"
+    ]
+   },
+   {
+    "family": "requirements",
+    "nid": "R28",
+    "modules": [
+     "docs/pages (4856379c)",
+     "hub (e9b492ab)"
+    ]
+   },
+   {
     "family": "signals",
     "nid": "S01",
     "modules": [
@@ -9729,6 +10846,22 @@
      "dashboard (7e632805)",
      "hub (e9b492ab)"
     ]
+   },
+   {
+    "family": "suggestions",
+    "nid": "S15",
+    "modules": [
+     "dashboard (7e632805)",
+     "hub (e9b492ab)"
+    ]
+   },
+   {
+    "family": "suggestions",
+    "nid": "S16",
+    "modules": [
+     "dashboard (7e632805)",
+     "hub (e9b492ab)"
+    ]
    }
   ],
   "id_mixed_identity": [
@@ -9875,6 +11008,24 @@
     "title": "Are club depth charts official?",
     "page_a": "dashboard/questions.html",
     "page_b": "docs/pages/questions.html"
+   },
+   {
+    "family": "questions",
+    "a": "desk (3bf7cc8b):",
+    "b": "hub (e9b492ab):Q-19",
+    "score": 0.6,
+    "title": "Prior-season results",
+    "page_a": "desk/questions.html",
+    "page_b": "hub/questions.html"
+   },
+   {
+    "family": "requirements",
+    "a": "data (0c38f465):R03",
+    "b": "hub (e9b492ab):R-35",
+    "score": 0.67,
+    "title": "Clear list of questions / information needed before decisions",
+    "page_a": "docs/requirements.html",
+    "page_b": "hub/requirements.html"
    },
    {
     "family": "requirements",
@@ -10184,6 +11335,15 @@
    },
    {
     "family": "requirements",
+    "a": "dashboard (7e632805):R-19",
+    "b": "hub (e9b492ab):R-36",
+    "score": 0.8,
+    "title": "Produce an executive summary of the important details.",
+    "page_a": "dashboard/requirements.html",
+    "page_b": "hub/requirements.html"
+   },
+   {
+    "family": "requirements",
     "a": "dashboard (7e632805):R-24",
     "b": "hub (e9b492ab):R-02",
     "score": 1.0,
@@ -10283,6 +11443,15 @@
    },
    {
     "family": "requirements",
+    "a": "docs/pages (4856379c):R15",
+    "b": "hub (e9b492ab):R-36",
+    "score": 1.0,
+    "title": "Executive summary of important details",
+    "page_a": "docs/pages/requirements.html",
+    "page_b": "hub/requirements.html"
+   },
+   {
+    "family": "requirements",
     "a": "docs/pages (4856379c):R17",
     "b": "hub (e9b492ab):R-22",
     "score": 0.62,
@@ -10304,6 +11473,15 @@
     "a": "desk (3bf7cc8b):R03",
     "b": "hub (e9b492ab):R-16",
     "score": 0.67,
+    "title": "List the questions, information and answers needed before a decision",
+    "page_a": "desk/requirements.html",
+    "page_b": "hub/requirements.html"
+   },
+   {
+    "family": "requirements",
+    "a": "desk (3bf7cc8b):R03",
+    "b": "hub (e9b492ab):R-35",
+    "score": 0.88,
     "title": "List the questions, information and answers needed before a decision",
     "page_a": "desk/requirements.html",
     "page_b": "hub/requirements.html"
@@ -10412,16 +11590,16 @@
     "requirements.html          table rows=  16 rows-without-link-or-flag=0",
     "schedule.html              table rows=  15 rows-without-link-or-flag=0",
     "sources.html               table rows=  11 rows-without-link-or-flag=0",
-    "strategies.html            table rows=  18 rows-without-link-or-flag=0",
+    "strategies.html            table rows=  19 rows-without-link-or-flag=0",
     "suggestions.html           table rows=  10 rows-without-link-or-flag=0",
-    "external links referenced: 18; table rows: 352; rows without link/flag: 0"
+    "external links referenced: 18; table rows: 353; rows without link/flag: 0"
    ]
   },
   {
    "cmd": "python3 tools/check_links.py",
    "exit": 0,
    "tail": [
-    "OK \u2014 13 pages, 340 links checked, no broken internal links."
+    "OK \u2014 13 pages, 353 links checked, no broken internal links."
    ]
   },
   {
@@ -10472,7 +11650,7 @@
    "id": "X-01",
    "severity": "High",
    "area": "ID namespaces",
-   "finding": "Identical normalized IDs denote different content across modules: 73 same-ID/different-content groups (e.g. F-01, Q-01, S-01 each mean different things in different modules), 8 mixed-identity groups, and 3 groups where the same ID is the same item but carries conflicting statuses.",
+   "finding": "Identical normalized IDs denote different content across modules: 80 same-ID/different-content groups (e.g. F-01, Q-01, S-01 each mean different things in different modules), 8 mixed-identity groups, and 3 groups where the same ID is the same item but carries conflicting statuses.",
    "evidence": [
     "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json",
     "https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md"
@@ -10620,7 +11798,7 @@
    "id": "X-14",
    "severity": "Medium",
    "area": "Rows without source or flag",
-   "finding": "658 table rows across 63 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: hub/requirements.html (26), hub/repo-review.html (22), verification-hub/index.html (22), dashboard/requirements.html (21), hub/index.html (21), dashboard/questions.html (20), docs/pages/requirements.html (20), hub/verification.html (20).",
+   "finding": "875 table rows across 76 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: origin/snapshots.html (78), hub/leaderboard.html (41), hub/requirements.html (35), hub/index.html (29), hub/suggestions.html (27), hub/verification.html (24), hub/repo-review.html (22), verification-hub/index.html (22).",
    "evidence": [
     "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json"
    ],

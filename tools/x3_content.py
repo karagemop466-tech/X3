@@ -273,4 +273,13 @@ FLAGS2 = [
      "same evidence.",
      "https://github.com/karagemop466-tech/X3/blob/main/data/x3/price_store.csv",
      "S-17 / S-24: schedule the capture and hash the files."),
+    ("F-27", "MEDIUM", "Repository duplication",
+     "A parallel session independently implemented the same eight market-structure requirements in a "
+     "second tree (ledger/ with data/ledger/*.csv and its own builder and verifier), and both trees now "
+     "ship. This is the eighth time this repository has grown a parallel site for the same facts, which "
+     "is the single largest usability and audit problem here.",
+     "https://github.com/karagemop466-tech/X3/blob/main/hub/archive.html",
+     "hub/ stays canonical because it is the only tree the Pages workflow rebuilds and diffs, and the "
+     "only one whose navigation carries every page. Reconcile or archive ledger/ in a later session; "
+     "nothing is deleted."),
 ]
