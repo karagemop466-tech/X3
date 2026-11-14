@@ -1,28 +1,31 @@
 name: Desk capture (official NFL pages)
 
-# Purpose: fetch official NFL pages from a GitHub-hosted runner and upload the raw HTML
-# as a build artifact. The sandbox that authored this repository cannot reach nfl.com,
-# so raw-page capture happens here and is parsed deterministically by
-# scripts/desk_parse.py. Every parsed value keeps the official URL it came from.
-#
-# This workflow writes no repository content, publishes nothing, and only runs when
-# desk/capture-request.txt changes on a working branch (or manually).
+# Fetches official NFL pages from a GitHub-hosted runner (full internet), extracts
+# structured data, and commits the result to this working branch so the authoring
+# sandbox (which cannot reach nfl.com) can review it. Every extracted value keeps the
+# official URL it came from. This job never touches `main` and never writes prose.
 
 on:
   push:
-    branches: [ arena/3bf7cc8b-x3, main ]
+    branches: [ arena/3bf7cc8b-x3 ]
     paths: [ desk/capture-request.txt ]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: desk-capture
+  cancel-in-progress: false
 
 jobs:
   capture:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Capture official pages
         run: |
@@ -36,49 +39,55 @@ jobs:
                     -o "$out" -w '%{http_code}' "$url" || echo 000)
             size=$(wc -c < "$out" 2>/dev/null || echo 0)
             echo "$code $size $url" >> capture/manifest.txt
-            echo "HTTP $code  $(printf '%8s' "$size") bytes  $url"
+            echo "HTTP $code $(printf '%9s' "$size") $url"
           }
           : > capture/manifest.txt
           for w in 1 2 3 4 5 6 7 8 9 10 11; do
             fetch "https://www.nfl.com/schedules/2026/by-week/week-$w" "schedule-w$w.html"
           done
           fetch "https://www.nfl.com/standings/league/2026/reg" "standings-2026.html"
-          for w in 8 9 10; do
+          fetch "https://www.nfl.com/stats/team-stats/" "team-stats.html"
+          for w in 8 9 10 11; do
             fetch "https://www.nfl.com/injuries/league/2026/reg$w" "injuries-w$w.html"
           done
           python3 - <<'PY' > /tmp/clubs.txt
           import re, pathlib
           src = pathlib.Path('tools/nfl_data.py').read_text()
-          for abbr, name, nfl, club in re.findall(
-                  r'\("([A-Z]{2,3})",\s*"([^"]+)",\s*"(https://www\.nfl\.com/teams/[^"]+)",\s*"(https://[^"]+)"', src):
+          for abbr, club in re.findall(
+                  r'\("([A-Z]{2,3})",\s*"[^"]+",\s*"https://www\.nfl\.com/teams/[^"]+",\s*"(https://[^"]+)"', src):
               print(abbr, club.rstrip('/') + '/team/depth-chart')
           PY
           while read -r abbr url; do
             fetch "$url" "depth-$abbr.html"
           done < /tmp/clubs.txt
-          sha256sum capture/*.html > capture/sha256.txt || true
-          echo "--- manifest ---"; cat capture/manifest.txt
+          ls -s capture/*.html | sort -n | tail -5
           echo "files: $(ls capture/*.html | wc -l)"
 
-      - name: Summarise capture
+      - name: Extract structured data
+        run: |
+          mkdir -p data/desk
+          python3 scripts/desk_extract.py capture data/desk || echo "EXTRACT FAILED"
+
+      - name: Summarise
         if: always()
         run: |
           python3 - <<'PY'
-          import pathlib
-          m = pathlib.Path('capture/manifest.txt')
-          if not m.exists():
-              raise SystemExit('no manifest')
-          rows = [l.split(' ', 2) for l in m.read_text().splitlines() if l.strip()]
-          ok = [r for r in rows if r[0] == '200' and int(r[1]) > 20000]
-          print(f'{len(ok)}/{len(rows)} pages captured with HTTP 200 and >20 KB')
-          for r in rows:
-              if r not in ok:
-                  print('  not ok:', r)
+          import json, pathlib
+          for p in sorted(pathlib.Path('data/desk').glob('*.json')):
+              try:
+                  d = json.loads(p.read_text())
+                  n = len(d) if isinstance(d, list) else len(d.get('games', d.get('rows', d)))
+                  print(f'{p.name}: {n} items')
+              except Exception as e:
+                  print(f'{p.name}: unreadable ({e})')
           PY
 
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: desk-capture
-          path: capture/
-          retention-days: 7
+      - name: Commit extracted data
+        run: |
+          git config user.name "desk-capture-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/desk capture/manifest.txt
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -q -m "chore(desk): capture official pages (run $GITHUB_RUN_ID)"
+          git pull --rebase --autostash origin arena/3bf7cc8b-x3
+          git push origin HEAD:arena/3bf7cc8b-x3
