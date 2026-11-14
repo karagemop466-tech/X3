@@ -69,7 +69,7 @@ jobs:
         run: |
           git config user.name "x3-data-pipeline"
           git config user.email "x3-data-pipeline@users.noreply.github.com"
-          git add data/datasets || true
+          git add -f data/datasets || true
           if git diff --cached --quiet; then
             echo "no diagnostics to commit"
           else
@@ -90,6 +90,7 @@ jobs:
           git config user.name "x3-data-pipeline"
           git config user.email "x3-data-pipeline@users.noreply.github.com"
           git add -A -- . ':!data/raw'
+          git add -f data/datasets || true
           if git diff --cached --quiet; then
             echo "no changes to commit"
           else
