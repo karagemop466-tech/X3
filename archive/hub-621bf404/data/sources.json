@@ -144,6 +144,33 @@
    "accessed": "2026-11-14T18:12Z",
    "used_for": "independent diff against this session's fresh transcription (VER-03)",
    "status": "compared row by row this session: 345/345 players and game statuses identical, 1 practice-status drift. Independently corroborated by the audit unit's diff (audit/summary.json: 294 MATCH / 51 DIFF, mismatches confined to the game and tv label columns)"
+  },
+  {
+   "id": "SRC-17",
+   "name": "In-repo 2026 game log captured by the desk pipeline (data/desk/games.json)",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json",
+   "class": "REPO",
+   "accessed": "2026-11-14T18:44Z",
+   "used_for": "163 rows / 137 finals W1-W11; reconciliation of the standings snapshot and the two game-level correlations; each log row carries its own official week-page URL",
+   "status": "fetched by a GitHub-hosted runner from official week pages (session arena/3bf7cc8b-x3); this session re-derived W1-9 points and records from it and they match the official standings on all 32 clubs once LA/ARI aliases are applied (VER-19)"
+  },
+  {
+   "id": "SRC-18",
+   "name": "Club-published depth charts + injury join captured by the desk pipeline (data/desk/depth.json, deficiencies.json)",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/deficiencies.json",
+   "class": "REPO",
+   "accessed": "2026-11-14T18:44Z",
+   "used_for": "replacement-chain overlay for Week 10 (76 Out/Doubtful rows, 42 with a listed backup)",
+   "status": "club-published charts, 76/76 with no as-of date and 50 explicitly labelled unofficial by the club; rendered only as an UNVERIFIED overlay (FLG-08, FLG-23)"
+  },
+  {
+   "id": "SRC-19",
+   "name": "Desk model output with walk-forward backtest (data/desk/model.json)",
+   "url": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/model.json",
+   "class": "REPO",
+   "accessed": "2026-11-14T18:44Z",
+   "used_for": "third in-repo model for the comparison columns; fitted HFA 0.08 and backtest MAE 10.52 / r 0.20 on 121 games",
+   "status": "DERIVED by that session from the game log; not re-fitted here, metrics reproduced arithmetically where possible (VER-22)"
   }
  ]
 }

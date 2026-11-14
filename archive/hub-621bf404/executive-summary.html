@@ -27,7 +27,8 @@
 <tr><td>Standings integrity</td><td>32 clubs, league totals balance</td><td>wins=losses, PF=PA, every split reconciles</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
 <tr><td>League scoring baseline</td><td>22.96 pts per team per game</td><td>derived from official PF totals / games</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
 <tr><td>Slate</td><td>14 games + 4 byes; 13 unplayed</td><td>official week-10 schedule page</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10">SRC-03</a></td></tr>
-<tr><td>Best point differential</td><td>JAX +108 (13.5/game)</td><td>official standings</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
+<tr><td>Standings vs independent game log</td><td>192 of 192 values agree</td><td>32 clubs x W/L/T/PF/PA/games, reconciled against data/desk/games.json</td><td><a href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json">SRC-17</a></td></tr>
+<tr><td>Best point differential per game</td><td>JAX +13.50</td><td>official standings (+108 over 8 games)</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
 <tr><td>Worst point differential</td><td>LAC -98</td><td>0-8, official standings</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
 <tr><td>Net points vs record</td><td>r = +0.8794</td><td>32 clubs, computed here</td><td><a href="https://www.nfl.com/standings/league/2026/REG">SRC-01</a></td></tr>
 </tbody></table>
@@ -40,19 +41,22 @@
 </tr></thead><tbody>
 <tr><td>No verified price source</td><td>no CLV, no ROI, no promotion of any strategy; market cells blank</td><td>licence a feed or capture closing lines nightly (S-04)</td><td><a href="flagged.html">FLG-07</a></td></tr>
 <tr><td>No official depth chart</td><td>2nd/3rd/4th-string claims are impossible to certify; only starter absence is provable</td><td>two-layer design: certified availability + unverified overlay (S-19)</td><td><a href="flagged.html">FLG-08</a></td></tr>
-<tr><td>No game log in repo</td><td>no home-field estimate, no opponent adjustment, no parlay correlation matrix</td><td>ingest schedule + box scores weekly (S-07)</td><td><a href="questions.html">Q-03</a></td></tr>
-<tr><td>Standings module lags finished games</td><td>silent look-ahead or lag depending on fetch time</td><td>as-of contract with snapshot timestamps (S-05)</td><td><a href="flagged.html">FLG-02</a></td></tr>
+<tr><td>Game log covers one season, scores only</td><td>no multi-season calibration, no play-by-play, so parlay correlations stay partly blank</td><td>extend the existing capture workflow backwards (S-07)</td><td><a href="questions.html">Q-03</a></td></tr>
+<tr><td>No cut-off printed on the standings page</td><td>any feature built on it inherits an inferred as-of; this session inferred one wrongly and retracted a flag</td><td>as-of contract shipped with the data + snapshot timestamps (S-05, VER-19)</td><td><a href="flagged.html">FLG-02</a></td></tr>
 <tr><td>Legal status of rewards</td><td>leaderboard pays nothing; tiers only</td><td>owner states jurisdiction, counsel reviews (Q-08)</td><td><a href="flagged.html">FLG-14</a></td></tr>
 <tr><td>Uncalibrated model parameters</td><td>originated lines are arithmetic, not edge</td><td>fit after one archived season (Q-07)</td><td><a href="flagged.html">FLG-12</a></td></tr>
 </tbody></table>
 <h2>Decisions this session took, and the ones it left for you</h2>
 <p>Taken: build one consolidated review surface rather than a ninth site tree; keep every legacy tree intact and link it; leave every unverifiable value blank. Left for you: the 10 blocking questions in <a href='questions.html'>Questions &amp; gaps</a> and the ordering of the 20 suggestions (<a href='suggestions.html'>S-20</a> is the recommended sequence).</p>
+<h2>Correction published on this page</h2><p>Earlier in the session the standings module was flagged as lagging the completed Thursday game. Reconciling the page against an independent in-repo game log disproved it: the standings cover every game through 2026-11-12 and simply print no cut-off. The flag is retracted on the evidence (VER-19) and replaced by an as-of contract that now ships with the data (<code>hub/data/asof.json</code>) - which is the part that actually mattered.</p>
 <h2>Risk of acting on this page</h2><p>Low for the verified rows, high for anything downstream: 0 of 8 strategies have passed at least one gate, and every model row on this site is badged DERIVED with an assumption table attached. Treat the line table as a reviewable formula, not as a forecast.</p>
 </main>
 <footer>
-  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>. Data as of 2026-11-14 18:15 UTC
-  (Week 10 of the 2026 season). Facts link to NFL.com; derived values are labelled; assumptions are labelled;
-  everything else is blank and marked <span class="bad">UNVERIFIED</span>. Nothing here is betting advice.</p>
+  <p>Built by <code>scripts/build_hub.py</code> from <code>hub/data/</code>.
+  Snapshots fetched 2026-11-14 18:07-18:15 UTC; standings cover every regular-season game completed on or before 2026-11-12, i.e. all of Week 9 plus the Week 10 Thursday game (WAS 24, NYG 21); injury table is the Saturday report, before
+  Sunday inactives (<a href="data/asof.json">as-of contract</a>). Facts link to NFL.com; derived values are labelled;
+  assumptions are labelled; everything else is blank and marked <span class="bad">UNVERIFIED</span>.
+  Nothing here is betting advice.</p>
 </footer>
 </body>
 </html>

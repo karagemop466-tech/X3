@@ -1,0 +1,33 @@
+{
+  "purpose": "Explicit cut-off contract for every snapshot in this directory, because none of the official pages prints one (see the corrected FLG-02). Anything read from these files inherits these timestamps.",
+  "fetched_at_utc": "2026-11-14T18:07Z - 18:15Z",
+  "standings": {
+    "file": "hub/data/standings_2026.csv",
+    "includes": "every regular-season game completed on or before 2026-11-12, i.e. all of Week 9 plus the Week 10 Thursday game (WAS 24, NYG 21)",
+    "excludes": "Week 10 Saturday/Sunday/Monday games (unplayed at fetch time)",
+    "evidence": "reconciled against data/desk/games.json: weeks 1-9 sums plus the Week-10 Thursday final reproduce every club's W, L, T, PF and PA exactly (VER-19)",
+    "games_per_club": "8 or 9 depending on bye"
+  },
+  "injuries": {
+    "file": "hub/data/injuries_wk10_2026-11-14.csv",
+    "includes": "the Week 10 practice and game-status designations as published on Saturday 2026-11-14 18:08 UTC",
+    "excludes": "Sunday inactive lists (published about 90 minutes before kickoff) and any Monday re-designation",
+    "note": "the page mutates between fetches: one practice status changed in 24 hours (FLG-03), so this file is a snapshot, not a record of the week"
+  },
+  "slate": {
+    "file": "hub/data/slate_wk10_2026.csv",
+    "includes": "the Week 10 schedule as published 2026-11-14, including the Thursday result and the four byes",
+    "note": "Weeks 16-18 kickoffs remain subject to flex scheduling per the same page, so later weeks are not frozen"
+  },
+  "depth_overlay": {
+    "file": "hub/data/depth_overlay_wk10_2026.csv",
+    "includes": "club-published depth charts captured 2026-11-14 by the desk pipeline and joined to the Week 10 injury report",
+    "note": "76 of 76 rows carry no as-of date from the publishing club and 50 come from charts the club labels unofficial: this file is an UNVERIFIED overlay and no model input uses it"
+  },
+  "game_log": {
+    "file": "https://github.com/karagemop466-tech/X3/blob/main/data/desk/games.json",
+    "includes": "163 scheduled rows for 2026 weeks 1-11, of which 137 are final",
+    "note": "one season only; no prices and no prior seasons, so it cannot calibrate the model parameters (Q-03, Q-07)"
+  },
+  "rule": "a derived statistic must name the snapshot it came from; if a page cannot state its cut-off, the value is not published as current"
+}

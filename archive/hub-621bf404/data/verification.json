@@ -119,10 +119,10 @@
   },
   {
    "id": "VER-15",
-   "target": "Thursday result and the standings lag",
+   "target": "Thursday result, and what the standings page actually covers",
    "method": "fetch the game page and compare its final score with the standings module on the same page and on the league standings page",
-   "result": "game page: Commanders 24, Giants 21, Final, MetLife Stadium; standings on both pages still show WAS 3-5-1 and NYG 5-3-1, so the module excludes the completed game; the Week 5 tie between them (27-27) is the only tie in the league and it reconciles with sum T = 2 across 32 clubs",
-   "status": "PASS, lag documented",
+   "result": "game page: Commanders 24, Giants 21, Final, MetLife Stadium; the same page's NFC East widget shows NYG 5-3-1, WAS 3-5-1, DAL 4-5-0, PHI 2-7-0, identical to the league standings page. Cross-checked against the in-repo game log (VER-19): the standings include the Thursday game, so no lag exists - but the page prints no cut-off, which is what this site stamps. The Week 5 tie between them (27-27) is the league's only tie and reconciles with sum T = 2 across 32 clubs",
+   "status": "PASS - and it retracted this session's FLG-02",
    "source": "SRC-04 ; FLG-02"
   },
   {
@@ -150,6 +150,39 @@
    "result": "verify_integration.py: 106 pages, 3,349 table rows, 1,458 internal refs, 0 problems; check_site.py, tools/check_links.py, check_dashboard.py, tools/verify_site.py, node check_data.js and check_render.js all pass; docs/data standings now agrees with the hub (TB div 2-0-0) while dashboard/data/standings.json still carries the 1-2-0 error (FLG-18)",
    "status": "PASS",
    "source": "https://github.com/karagemop466-tech/X3/blob/main/scripts/verify_integration.py"
+  },
+  {
+   "id": "VER-19",
+   "target": "Standings snapshot reconciled against an independent in-repo game log",
+   "method": "aggregate data/desk/games.json finals for weeks 1-9 per club (aliasing ARI->AZ, LA->LAR), add the Week-10 Thursday final, and compare wins, losses, ties, points for, points against and games with hub/data/standings_2026.csv for all 32 clubs",
+   "expected": "0 field mismatches if the standings page is 'all games through 2026-11-12'",
+   "result": "0 mismatches on 32 clubs x 6 fields (192 values). This disproves the 'standings module lags the Thursday game' hypothesis this session had published as FLG-02; the page simply has no printed cut-off, so the flag is retracted and replaced by an as-of contract (hub/data/asof.json)",
+   "status": "PASS - and it corrected this session's own earlier flag",
+   "source": "SRC-17"
+  },
+  {
+   "id": "VER-20",
+   "target": "Desk unit's published correlations re-derived from its own data",
+   "method": "recompute r(game total, |margin|), r(game total, signed margin) and r(away score, home score) from the 137 finals in data/desk/games.json and compare with data/desk/correlations.json",
+   "result": "away vs home +{{R_LOG_AH}} reproduces the published +0.076 exactly; the published -0.161 for 'total vs |margin|' does NOT reproduce (recomputed {{R_LOG_TOTAM}}) and equals r against the signed margin ({{R_LOG_TOTSM}}) - a label/definition error, reported as FLG-22 rather than edited in another session's file",
+   "status": "PASS with 1 finding",
+   "source": "SRC-17"
+  },
+  {
+   "id": "VER-21",
+   "target": "Independent corroboration of the Week-10 designation counts",
+   "method": "compare the Out and Doubtful tallies in this session's transcription with the desk pipeline's own Week-10 join (76 rows) and with the depth-overlay join status distribution",
+   "result": "66 Out + 10 Doubtful in both; the overlay resolves 41 of those 76 absences to a named replacement, 13 have no backup listed at the slot, 17 name a player absent from their own club's chart, 5 clubs' charts were not machine-readable, and 0 of 76 rows carry a chart as-of date",
+   "status": "PASS",
+   "source": "SRC-18"
+  },
+  {
+   "id": "VER-22",
+   "target": "Only out-of-sample performance figure available in the repo",
+   "method": "read the desk walk-forward backtest (fit on earlier weeks only) and record it without reuse",
+   "result": "121 games, MAE 10.52, RMSE 13.82, bias -1.02, predicted-vs-actual r = 0.20, fitted home-field term 0.08 points; recorded as context for gate G-04, not as evidence of a tradable edge (it is a rating-model accuracy figure, not a graded bet record)",
+   "status": "RECORDED (not a check of mine)",
+   "source": "SRC-19"
   }
  ]
 }
