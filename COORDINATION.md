@@ -529,3 +529,13 @@ role). No other session's files were modified.
   link the extended research tree `docs/pages/` from `lab/index.html` (currently reachable via the
   `docs/` dashboard at `docs/index.html`). Logged here instead of editing `lab/` files, per the
   coordination protocol.
+
+---
+
+## Session arena/a8e2b617-x3 — audit & factual corrections
+
+- **Status:** in progress (claim); current platform-assigned branch `arena/a8e2b617-x3`.
+- **Claimed task:** audit existing published NFL decision pages for unsupported factual assertions; specifically remove the unsourced claim that the owner is in Tokyo/Japan and leave jurisdiction unspecified. No jurisdiction will be inferred from approximate location.
+- **File scope:** `tools/site_content.py`, generated `dashboard/**` outputs containing that assertion, `x3lab/data/{flagged,questions,suggestions}.json`, `x3lab/{executive-summary,questions,suggestions,flagged}.html`, this section of `COORDINATION.md`.
+- **Status:** claim recorded before edits. Existing verification commands passed at claim time: `scripts/check_site.py`, `tools/check_links.py`, `scripts/check_dashboard.py`, `scripts/check_data.js`, `scripts/check_render.js`, `scripts/verify_data.py`.
+- **Verification/source policy:** user-provided approximate location is not an authoritative domicile/jurisdiction source; legal jurisdiction remains unspecified and flagged pending user/legal confirmation. No external legal claim will be substituted.
