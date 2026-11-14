@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Sources</h1>
+  <p>Every source used, its class, and fetch date · proposed whitelist pending owner approval (Q-12)</p>
+</header>
+<main>
+  <div class="note"><strong>Classes.</strong> <span class="badge official">OFFICIAL</span> league/team properties · <span class="badge trusted">TRUSTED</span> established aggregators citing official reports · <span class="badge market">MARKET</span> sportsbook feeds (no official league source exists for odds) · <span class="badge model">MODEL</span> this repo's own derived output. A row with no source shows an UNVERIFIED badge instead of a link — by design.</div>
+  <div id="srcs"></div>
+</main>
+<footer class="site">X3 · data fetched 2026-11-14 · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('sources.html');
+(async () => {
+  const s = await loadJSON('data/sources.json');
+  const cls = { OFFICIAL: 'official', TRUSTED: 'trusted', MARKET: 'market', MODEL: 'model' };
+  renderTable('srcs', [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'Source' },
+    { key: 'class', label: 'Class', fmt: v => `<span class="badge ${cls[v] || 'status'}">${esc(v)}</span>` },
+    { key: 'used_for', label: 'Used for' },
+    { key: 'fetched', label: 'Fetched' }
+  ], s.sources.map(x => ({ ...x, source: x.url })));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Originated Lines — X3</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <h1>Originated Lines — Week 10</h1>
+  <p>Our own numbers (model v0.1) vs the market (DraftKings via ESPN) · spreads from the away team's perspective (favorite negative) · model output, NOT betting advice</p>
+</header>
+<main>
+  <div class="note"><strong>Model v0.1.</strong> Spreads = season scoring-margin ratings + home-field assumption A-01 (2.0 pts, 0 for neutral sites). Totals = heuristic shrunk 50% to the league mean (45.92) — no pace data exists yet (F-06). The model sees no injuries: its LAC-BAL number is pre-Lamar-Jackson. All outputs fail validation gates until backtested (G-1…G-7). <a href="https://github.com/karagemop466-tech/X3/blob/main/scripts/compute_lines.py">source script</a> · <a href="flagged.html">flags F-06/F-07</a></div>
+
+  <h2>Week 10 — model vs market</h2>
+  <p class="small">Market at 2026-11-14. "Open" = the Open column on the ESPN odds page (posting date unknown — F-03). Gaps ≥ 3 points are highlighted by the eye, not endorsed.</p>
+  <div id="lines"></div>
+
+  <h2>Week 11 look-ahead market board</h2>
+  <p class="small">Early lines; Week-11 injury reports are not final. Six teams on bye: ATL, CLE, GB, LAR, NE, SEA. Note MIN @ SF is the Mexico City international game (SF listed home).</p>
+  <div id="wk11"></div>
+
+  <h2>Super Bowl futures (context only)</h2>
+  <div id="futures"></div>
+</main>
+<footer class="site">X3 · data 2026-11-14 · <a href="index.html">dashboard</a></footer>
+<script src="app.js"></script>
+<script>
+renderNav('lines.html');
+(async () => {
+  const [lines, odds, odds11] = await Promise.all([
+    loadJSON('data/lines_week10.json'),
+    loadJSON('data/odds_week10.json'),
+    loadJSON('data/odds_week11.json')
+  ]);
+  const oddsMap = {};
+  for (const g of odds.games) oddsMap[g.away + '@' + g.home] = g;
+
+  renderTable('lines', [
+    { key: 'game', label: 'Game' },
+    { key: 'when', label: 'Kickoff (ET)' },
+    { key: 'our_spread_away', label: 'Our spread', fmt: v => v > 0 ? '+' + v : String(v) },
+    { key: 'market_spread_away', label: 'Market spread', fmt: v => v > 0 ? '+' + v : String(v) },
+    { key: 'spread_gap', label: 'Gap', fmt: v => (v >= 3 || v <= -3) ? `<strong>${v > 0 ? '+' + v : v}</strong>` : (v > 0 ? '+' + v : v) },
+    { key: 'our_total', label: 'Our total' },
+    { key: 'market_total', label: 'Market total' },
+    { key: 'total_gap', label: 'Gap', fmt: v => (v >= 3 || v <= -3) ? `<strong>${v > 0 ? '+' + v : v}</strong>` : (v > 0 ? '+' + v : v) },
+    { key: 'open', label: 'Open (spread / total)' }
+  ], lines.games.map(g => {
+    const o = oddsMap[g.away + '@' + g.home] || {};
+    const openSpread = o.open_spread_away ?? (o.open_spread_home != null ? 'home ' + o.open_spread_home : '');
+    return {
+      ...g,
+      game: `${g.away} @ ${g.home}` + (g.neutral_site ? ' (neutral)' : ''),
+      when: g.date + ' ' + g.time_et,
+      open: `${openSpread} / ${o.open_total ?? ''}`,
+      source: o.source || g.model_inputs_source
+    };
+  }), { });
+
+  renderTable('wk11', [
+    { key: 'game', label: 'Game' },
+    { key: 'when', label: 'Date / slot' },
+    { key: 'spread', label: 'Current spread' },
+    { key: 'total', label: 'Total' },
+    { key: 'ml', label: 'ML' },
+    { key: 'open', label: 'Open (spread / total)' }
+  ], odds11.games.map(g => ({
+    game: `${g.away} @ ${g.home}`,
+    when: g.date + (g.slot ? ' ' + g.slot : ''),
+    spread: `${g.spread_away > 0 ? '+' + g.spread_away : g.spread_away}`,
+    total: String(g.total),
+    ml: `${g.ml_away > 0 ? '+' + g.ml_away : g.ml_away} / ${g.ml_home > 0 ? '+' + g.ml_home : g.ml_home}`,
+    open: `${g.open_spread_away != null ? g.open_spread_away : 'home ' + g.open_spread_home} / ${g.open_total}`,
+    source: g.source
+  })));
+
+  renderTable('futures', [
+    { key: 'team', label: 'Team' },
+    { key: 'odds', label: 'Super Bowl odds' }
+  ], odds11.super_bowl_futures.map(f => ({ ...f, source: 'https://www.espn.com/nfl/odds' })));
+})();
+</script>
+</body>
+</html>
