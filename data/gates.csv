@@ -1,0 +1,11 @@
+gate_id,gate,definition,status,note
+G0,Data provenance,"Every input is traced to an official source or a documented, reproducible dataset with a link",Pass for injury and schedule inputs only,No strategy inputs cleared beyond injury and schedule
+G1,Pre-registration,"Hypothesis, metric and sample rules written and committed before any test runs",Not started,Proposed process (Suggestions S04)
+G2,Minimum sample,Minimum graded bets per strategy,Not started,"Threshold is a PROPOSAL, not sourced; user to set (Questions Q07)"
+G3,Out-of-sample test,Walk-forward test on seasons not used to design the strategy,Not started,Requires historical data
+G4,Closing line value,Strategy price beats the closing line on average,Not started,"Requires closing-line data, which is not official"
+G5,Multiple-comparison control,Adjust for the number of strategies tested (e.g. Bonferroni or FDR),Not started,Method to be chosen by user (Suggestions S05)
+G6,Stability across seasons,Positive result in at least the minimum number of seasons specified,Not started,Threshold to be set by user
+G7,Drawdown and ruin check,Maximum drawdown and simulated bankroll outcomes reported,Not started,Requires results
+G8,Correlation control,Parlay legs must have measured correlation below an agreed threshold,Not started,Requires correlation data (correlations.csv)
+G9,Legal and compliance check,Confirm the activity is lawful for the user's jurisdiction before any wager,Flagged,Wagering with private bookmakers from Japan is criminal under Penal Code Art. 185 per official source JP-PENAL-185
