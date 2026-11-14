@@ -97,4 +97,8 @@ All items above are published on the *Flagged for Review* page with source links
 
 ## PR & merge record
 
-_(to be recorded after the pull request is created, merged, and the GitHub Pages deploy is confirmed)_
+- **PR #7**: https://github.com/karagemop466-tech/X3/pull/7
+  - Title: "X3: NFL lines, signals & strategy analytics site"
+  - Base: `main` · Head: `arena/3dbc4678-x3`
+  - Created: 2026-11-14
+  - Status: created; merge in progress (do not auto-merge; merge explicitly).
