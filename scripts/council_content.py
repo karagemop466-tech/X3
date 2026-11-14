@@ -165,12 +165,46 @@ VERIFIED = [
          source=GH_BLOB + "origin/data/depth.json",
          note="Club-published and self-labelled unofficial. The desk tree records 41 of 76 for the "
               "same week - see flag C-12."),
+    dict(id="V19", area="Origination",
+         fact="Originated markets per game, in the required order",
+         value="39 rows: 13 games x side, total, moneyline",
+         official="no",
+         source=GH_BLOB + "origin/data/markets.json",
+         note="DERIVED. Sequence order re-checked this session: 0 violations across the 13 games."),
+    dict(id="V20", area="Origination",
+         fact="Moneyline derivation as recorded on the row",
+         value="P(home win) = Phi(adj_margin / 13.5); sigma 13.5 preregistered",
+         official="no",
+         source=GH_BLOB + "origin/data/markets.json",
+         note="DERIVED. The moneyline records the margin and sigma it came from, so it reproduces."),
+    dict(id="V21", area="Schedule",
+         fact="Official venue of the Munich international game",
+         value="FC Bayern Munich Stadium (location: Munich)",
+         official="yes",
+         source="https://www.nfl.com/games/patriots-at-lions-2026-reg-10",
+         note="Read from the official game page game-info block. The repository publishes a different "
+              "venue string that no official page supports - see flag C-11."),
+    dict(id="V22", area="Leaderboard",
+         fact="Signal scores populated on the leaderboard",
+         value="side winner accuracy 0.595 (n=121); total over/under 0.4957 (n=117); "
+               "moneyline Brier 0.2373 (n=121); staking 0 settled bets",
+         official="no",
+         source=GH_BLOB + "origin/data/leaderboard.json",
+         note="DERIVED. Signal and staking are separate blocks on every row, as the requirement asks."),
+    dict(id="V23", area="Roster",
+         fact="Replacement ordinal recorded for Week 10 absences",
+         value="42 of 76",
+         official="no",
+         source=GH_BLOB + "origin/data/depth.json",
+         note="Club-published and self-labelled unofficial. The desk tree records 41 of 76 for the "
+              "same week - see flag C-12."),
     dict(id="V18", area="Rules",
          fact="League rule book used as the settlement reference",
          value="operations.nfl.com 2026 NFL rule book",
          official="yes",
          source=NFL_RULEBOOK,
          note="Determines what counts as a final score. It does not determine betting settlement."),
+
 ]
 
 # ---------------------------------------------------------------------------

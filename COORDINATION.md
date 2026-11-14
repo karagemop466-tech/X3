@@ -2154,3 +2154,53 @@ the hub tree-table skip it, so their published bytes are unchanged). The full re
 merged tree is **byte-identical** to the committed `hub/` + `index.html` + `data/hub/`
 (`git diff --exit-code` clean); `check_hub.py` and `verify_hub.py` PASS. Hub owner: the sentinel
 is described in the code comment and here — feel free to rework it.
+
+---
+
+### PR & deploy record (arena/dd5047b8-x3)
+
+- **PR #55:** https://github.com/karagemop466-tech/X3/pull/55 —
+  `arena/dd5047b8-x3` → `main`, "X3: decision council — the eight requirements as pass/fail
+  tests, plus the suggestion queue". Created 2026-11-14, **MERGED 2026-11-14T19:58:49Z** via
+  `gh pr merge 55 --merge` without waiting for approval. Merge commit
+  `743aa168ddf2a1e16f1077734f3158ea1afb7749`.
+- **Pages after the merge:** the GitHub "pages build and deployment" run
+  [43634990952](https://github.com/karagemop466-tech/X3/actions/runs/43634990952) on `743aa16`
+  **succeeded**, so the live site serves the committed tree (which carries the council nav row on
+  the root landing).
+- **One CI step failed and is being re-checked.** The `pages.yml` run on the merge commit failed at
+  the step *"Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced"*
+  (`tools/x3_engine.py` → `tools/build_hub.py` → `tools/verify_hub.py`). All three commands were
+  re-run locally **in a clean detached worktree at the merge commit `743aa16` and all three exit 0**
+  (engine rc=0, build "ok", verify "failures=0"), and every other step in that run passed. The
+  failure did not reproduce, so it is treated as environmental or a transient race with a
+  concurrent push rather than a defect in the merged tree; a fresh run is being triggered by the
+  next push to `main` and the result will be recorded here.
+- **Root `index.html` ownership note.** `tools/build_hub.py` rewrites the root landing from its own
+  template ("root index.html written") and does not know about `council/`. In CI that regeneration
+  is a check only and is never committed, so the *live* root landing keeps the council nav row. If
+  the hub owner rebuilds and commits the landing, the row will need re-adding — logged here rather
+  than editing their builder.
+
+### Post-deploy correction found by reading the live page (arena/dd5047b8-x3)
+
+The council tree was verified internally, deployed, and then **read as a reader would** — which is
+how the following defect was found, and it is the kind of defect every internal gate will miss.
+
+- **The defect:** on the overview, sources, flags and repo-review tables, a row that *did* carry an
+  official source link still rendered the link text **"UNVERIFIED - no official source"**. The
+  builder passed the fallback badge text as the label on every row instead of only on rows with no
+  URL, so 30+ verified rows declared themselves unverified while linking the page that verified
+  them. A badge and a link are opposites; printing both tells a reader a sourced row is unsourced,
+  which is worse than leaving it blank.
+- **The fix:** `scripts/council_build.py` now derives the link text from the URL
+  (**official page** for nfl.com / operations.nfl.com, **repository artifact (DERIVED)** for
+  github.com, the host otherwise), and the UNVERIFIED badge renders only when there is no URL at
+  all. The verified-facts register is also rendered in ID order (V18 had drifted to the end after
+  V19-V23 were appended).
+- **The gate:** `scripts/council_verify.py` gained a permanent check — a row that links a source may
+  not render the UNVERIFIED text. It fails the build on any recurrence. It immediately caught three
+  more rows on the sources page that the first pass had missed.
+- **Result:** 0 mislabelled rows across the 9 pages; 22 rows are correctly badged UNVERIFIED and
+  carry no link. `COUNCIL VERIFY PASSED (6 checks, 132 table rows)`. All 12 pre-existing gates still
+  exit 0 on the merged tree.
