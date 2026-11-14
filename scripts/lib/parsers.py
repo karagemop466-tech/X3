@@ -73,7 +73,6 @@ def parse_injuries(html: str, source_url: str) -> dict:
         # day heading ("THURSDAY, NOVEMBER 12TH") preceding each day's games.
         # Walk the wrapper in document order so each unit inherits the day
         # heading that actually precedes it.
-        units = wrap.select("section.nfl-o-injury-report__unit")
         ordered: list[tuple[int, str, object]] = []
         for child in wrap.descendants:
             if not getattr(child, "name", None):
@@ -230,7 +229,6 @@ def parse_standings(html: str, source_url: str, season: int | None = None) -> li
     table = soup.find("table")
     if table is None:
         return []
-    headers = [_txt(th) for th in table.select("thead th")]
     # The team cell carries the logo; the visible header row starts with an
     # empty column when the table is league/conference scoped.
     rows: list[dict] = []

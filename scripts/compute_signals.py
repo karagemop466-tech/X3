@@ -339,7 +339,7 @@ def walk_forward_backtest(schedule_by_season: dict, strategy_signals: dict) -> d
                         continue
                     p_model = sig["p_model"]
                     price = p_home_price if sig["side"] == "home" else p_away_price
-                    edge = sig["p_model"] - price
+                    edge = p_model - price
                     if edge <= 0:
                         continue
                     stake = 1.0

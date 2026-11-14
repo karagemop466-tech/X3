@@ -39,6 +39,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Static check
+        run: python -m pyflakes scripts/*.py scripts/lib/*.py
+
       - name: Fetch official sources
         run: |
           python scripts/fetch_official.py --out data/raw --manifest data/datasets/fetch_manifest.json
@@ -61,6 +64,20 @@ jobs:
 
       - name: Build verified datasets
         run: python scripts/build_datasets.py
+
+      # A failure report is committed even when a step fails, so the problem
+      # can be diagnosed from the repository alone.
+      - name: Commit diagnostics
+        if: always()
+        run: |
+          git config user.name "x3-data-pipeline"
+          git config user.email "x3-data-pipeline@users.noreply.github.com"
+          git add -f data/datasets || true
+          if git diff --cached --quiet; then
+            echo "no diagnostics to commit"
+          else
+            git commit -m "ci: publish build diagnostics" || echo "diagnostic commit failed"
+          fi
 
       - name: Compute signals, lines and correlations
         run: python scripts/compute_signals.py

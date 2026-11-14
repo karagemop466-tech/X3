@@ -299,10 +299,8 @@ def build_index() -> str:
     reqs = load("requirements.json")["requirements"]
     qs = load("questions.json")["questions"]
     sug = load("suggestions.json")["suggestions"]
-    strat = load("strategies.json")["strategies"]
     inj = load("injuries.json", DATA)
     lines = load("our_lines.json", DATA)
-    lb = load("leaderboard_rows.json", DATA)
     derived = load("derived.json", DATA) or {}
 
     implemented = sum(1 for r in reqs if r["status"] == "implemented")
@@ -312,9 +310,6 @@ def build_index() -> str:
     proposed = [s for s in sug if s["status"] == "proposed"]
     flagged = STATE.get("flagged_count", 0)
 
-    rows_elig = lb.get("rows", []) if lb else []
-    evaluated = [r for r in rows_elig if (r.get("metrics") or {}).get("bets")]
-    eligible = [r for r in evaluated if STATE.get("eligible_ids", []) and r["strategy_id"] in STATE["eligible_ids"]]
 
     week = (inj or {}).get("week")
     inj_rows = (inj or {}).get("rows", [])
@@ -1173,7 +1168,6 @@ def build_depth() -> str:
     b = []
 
     absent = [r for r in inj.get("rows", []) if r.get("game_status") in ("Out", "Doubtful", "Questionable")]
-    club_teams = sorted({r.get("team", "") for r in absent if r.get("team")})
     clubs_with_chart = {c["club"] for c in depth.get("clubs", [])}
     resolved = resolution.get("resolved", [])
     unresolved = resolution.get("unresolved", [])

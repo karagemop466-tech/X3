@@ -21,7 +21,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from lib.official import all_sources, fetch_all, league_sources, club_sources, write_manifest
+from lib.official import club_sources, fetch_all, league_sources, write_manifest
 
 
 def main() -> int:

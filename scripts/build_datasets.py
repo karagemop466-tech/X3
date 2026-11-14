@@ -110,6 +110,7 @@ def _build() -> int:
         datasets.append(entry)
 
     # ---------------------------------------------------------------- injuries
+    injuries: dict | None = None
     for rec in records:
         if rec["key"] != "injuries_current":
             continue
@@ -118,6 +119,7 @@ def _build() -> int:
             continue
         with open(path, encoding="utf-8", errors="replace") as fh:
             parsed = parse_injuries(fh.read(), rec["url"])
+        injuries = parsed
         write_json("injuries.json", parsed)
         note("injuries.json", rec, len(parsed["rows"]), {"week": parsed["week"]})
 
