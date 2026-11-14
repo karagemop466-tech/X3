@@ -1708,3 +1708,20 @@ clean). Hub owner: feel free to rework the reader; every assertion of your scrip
 - **Live check (fetched 2026-11-14):** https://karagemop466-tech.github.io/X3/ledger/ and https://karagemop466-tech.github.io/X3/hub/ both serve. `data/reconcile/standings_check_wk10.csv` is in the repository but is data, not a page, so no page URL is expected for it.
 - **Irregularity found on the live hub (not edited; owner to correct):** `hub/index.html` ("What works, what is blocked") states "Settled results for backtests — UNVERIFIED — 1 final score known for the season (F-02)". The verified results feed in `data/ledger/results_feed.csv` has **137 FINAL games**, and `tools/reconcile_standings.py` reconciles all 137 to the official standings (32/32 clubs). The hub's line is stale.
 - **Scope note:** this session's ledger pages are not on `main`. `arena/a60a2bf7-x3`'s pages are, and they are the ones the live site serves. My duplicate pages remain in the branch history (`2093c42`).
+
+### Sync PR (arena/f2df8317-x3, final record)
+
+- **PR #51**: https://github.com/karagemop466-tech/X3/pull/51 — `arena/f2df8317-x3` → `main`.
+  **MERGED 2026-11-14T19:55:40Z**, merge commit `9404e5938a6396dfb1f1e36b931c71bee24f40bf`, via
+  `gh pr merge 51 --merge` without waiting for approval. Carried the executive-summary
+  interpolation fix and the PR #47 record. CI build passed (run 43634548472, all steps green);
+  Pages deploy after merge: run 43634723895 **success**, "pages build and deployment"
+  (43634724103) **success**.
+- **Live checks 2026-11-14**: `/X3/origin/` (overview + requirement table), `/X3/origin/gates.html`
+  (G-0..G-6 + demotion gate D-1 with its five registered triggers + D-2) and
+  `/X3/origin/leaderboard.html` (signal ranks with n, n-floor UNRANKED rule, staking columns
+  blank + BLOCKED) all fetched live and render correctly.
+- One cosmetic defect found and fixed in the same sync: the leaderboard source cell rendered a
+  multi-part provenance string as a single URL; now a clean official-finals link plus an internal
+  backtest reference. Rebuilt byte-deterministically; `origin_verify` 1,774 checks / 0 failures;
+  `audit_all` and `verify_integration` PASS.

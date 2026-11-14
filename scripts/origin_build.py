@@ -986,7 +986,9 @@ def pg_leaderboard(lb) -> str:
             esc(st["clv_per_bet"]) if st["clv_per_bet"] else badge("blank — no prices (Q-01)"),
             str(st["settled_bets"]),
             esc(x["note"])[:220],
-            a(x["source"], "official finals") if x["source"].startswith("http") else esc(x["source"]),
+            (a(x["source"].split(" ")[0], "official finals") +
+             " · " + a("backtest.html", "backtest (DERIVED)")
+             if x["source"].startswith("http") else esc(x["source"])),
         ])
     rules = "".join(f"<li>{r}</li>" for r in lb["rules"])
     body = f"""
