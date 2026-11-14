@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Walk-forward backtest · X3 origination module</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header><div class="wrap"><h1>X3 · Origination module</h1>
+<nav><a href="index.html">Overview</a> <a href="results.html">Results feed</a> <a href="markets.html">Markets</a> <a href="snapshots.html">Price snapshots</a> <a href="backtest.html">Backtest</a> <a href="leaderboard.html">Leaderboard</a> <a href="depth.html">Replacement depth</a> <a href="correlations.html">Correlations</a> <a href="gates.html">Gates &amp; demotion</a> <a href="questions.html">Questions</a> <a href="suggestions.html">Suggestions</a> <a href="flagged.html">Flagged for review</a> <a href="sources.html">Sources</a> <a href="verification.html">Verification log</a></nav></div></header>
+<main class="wrap"><h2>Walk-forward backtest</h2>
+
+<p class="sub">Requirement R2 delivered: with the verified results feed in place, backtests are
+computable. Method (registered before any Week-10 result exists): ridge least squares
+(λ=1) on margin = home-field + net[home] − net[away] and total = mean + pace[home] +
+pace[away], fitted on weeks &lt; w and scored on week w finals (walk-forward, no leakage, no
+randomness). ROI is <em>not</em> published here: no market prices exist, so any ROI number would
+be invented (flagged F-A01). What the feed enables today is signal evaluation; what it cannot
+yet do is money-weighted evaluation.</p>
+<h3>Per-week walk-forward</h3>
+<table class="grid"><thead><tr><th>Week</th><th>n</th><th>MAE margin (pts)</th><th>MAE total (pts)</th><th>Winner accuracy</th><th>Over/under hit (vs 45.0 baseline)</th><th>O/U n</th><th>Brier (win prob)</th><th>Results source</th></tr></thead><tbody><tr><td>2</td><td>16</td><td>14.81</td><td>15.47</td><td>0.375</td><td>0.500</td><td>16</td><td>0.3107</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-2" rel="noopener">official week page</a></td></tr><tr><td>3</td><td>16</td><td>11.42</td><td>17.88</td><td>0.500</td><td>0.312</td><td>16</td><td>0.3072</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-3" rel="noopener">official week page</a></td></tr><tr><td>4</td><td>16</td><td>7.38</td><td>13.05</td><td>0.750</td><td>0.562</td><td>16</td><td>0.1962</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-4" rel="noopener">official week page</a></td></tr><tr><td>5</td><td>15</td><td>12.15</td><td>14.48</td><td>0.533</td><td>0.400</td><td>15</td><td>0.2164</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-5" rel="noopener">official week page</a></td></tr><tr><td>6</td><td>14</td><td>6.42</td><td>12.50</td><td>0.643</td><td>0.357</td><td>12</td><td>0.2518</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-6" rel="noopener">official week page</a></td></tr><tr><td>7</td><td>14</td><td>11.88</td><td>9.90</td><td>0.571</td><td>0.571</td><td>14</td><td>0.2592</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-7" rel="noopener">official week page</a></td></tr><tr><td>8</td><td>14</td><td>11.94</td><td>14.36</td><td>0.643</td><td>0.500</td><td>14</td><td>0.2052</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-8" rel="noopener">official week page</a></td></tr><tr><td>9</td><td>15</td><td>7.78</td><td>11.56</td><td>0.800</td><td>0.667</td><td>14</td><td>0.1395</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-9" rel="noopener">official week page</a></td></tr><tr><td>10</td><td>1</td><td>5.43</td><td>3.40</td><td>0.000</td><td>0.000</td><td>0</td><td>0.3266</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">official week page</a></td></tr></tbody></table>
+<h3>Overall</h3>
+<table class="grid"><thead><tr><th>Window</th><th>n</th><th>MAE margin</th><th>MAE total</th><th>Winner accuracy</th><th>O/U hit</th><th>O/U n</th><th>Brier</th><th>Basis</th></tr></thead><tbody><tr><td>Walk-forward overall</td><td>121</td><td>10.46</td><td>13.64</td><td>0.595</td><td>0.496</td><td>117</td><td>0.2373</td><td><span class="badge d">DERIVED — computed from the official results feed</span></td></tr></tbody></table>
+<p>Week 1 has no training data (excluded). Week 10 has 1
+settled game(s) so far; the remaining Week-10 games settle this weekend and enter the feed at the
+next capture.</p>
+
+<footer><p>Session <code>arena/f2df8317-x3</code> · built 2026-11-14T19:33:18Z ·
+repo <a href="https://github.com/karagemop466-tech/X3" rel="noopener">karagemop466-tech/X3</a> ·
+every value is computed from the frozen inputs; unconfirmable values are blank and flagged.</p></footer>
+</main></body></html>

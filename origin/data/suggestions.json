@@ -1,0 +1,76 @@
+{
+ "rows": [
+  {
+   "id": "S-A01",
+   "suggestion": "Adopt a closing-price provider and archive every close into the snapshot store",
+   "rationale": "CLV is the least noisy verdict on a signal; without closes the store is half-empty forever.",
+   "unlocks": "fair-vs-market diff, CLV, ROI, demotion trigger D-1a, gate G-4",
+   "decision_needed": "Which provider, and budget (none identified in-repo)",
+   "status": "PROPOSED",
+   "dependency": "Q-A01"
+  },
+  {
+   "id": "S-A02",
+   "suggestion": "Schedule the cycle-close capture (cron before Sunday kickoff) in the capture workflow",
+   "rationale": "The close phase exists; automating it makes the snapshot store complete for every cycle without manual input.",
+   "unlocks": "closing model lines per market; clean open\u2192close lineage",
+   "decision_needed": "Approve the schedule (and confirm it runs before first kickoff)",
+   "status": "PROPOSED",
+   "dependency": "Q-A02"
+  },
+  {
+   "id": "S-A03",
+   "suggestion": "Add a post-cycle CI job that evaluates D-1 triggers and flips strategy states automatically",
+   "rationale": "The demotion gate is only credible if it fires mechanically, not by someone's judgement.",
+   "unlocks": "live\u2192paper transitions without manual input",
+   "decision_needed": "Approve running the gate job against staking history once prices exist",
+   "status": "PROPOSED",
+   "dependency": "S-A01, Q-A01"
+  },
+  {
+   "id": "S-A04",
+   "suggestion": "Backfill multiple prior seasons of official results",
+   "rationale": "G-2 needs >= 3 seasons; walk-forward CIs shrink with n; luck separation needs a real sample.",
+   "unlocks": "gate G-2/G-3 unblocking, sharper correlations, real CLV baselines",
+   "decision_needed": "Approve the storage cost (a few thousand rows) and the capture time",
+   "status": "PROPOSED",
+   "dependency": "none"
+  },
+  {
+   "id": "S-A05",
+   "suggestion": "Keep the prop layer BLOCKED until an official prop source exists",
+   "rationale": "No official source publishes prop results or prop prices; estimating them would be exactly the hallucination the brief forbids.",
+   "unlocks": "nothing by itself; prevents a fabricated leaderboard row",
+   "decision_needed": "Confirm the block stands (owner review)",
+   "status": "PROPOSED",
+   "dependency": "Q-A01"
+  },
+  {
+   "id": "S-A06",
+   "suggestion": "Publish originated moneylines as FAIR (no-vig) lines only",
+   "rationale": "We originate fair lines; presenting them as bookmaker prices would confuse fair-vs-market comparisons.",
+   "unlocks": "clean semantics for the diff column",
+   "decision_needed": "Confirm the convention",
+   "status": "PROPOSED",
+   "dependency": "none"
+  },
+  {
+   "id": "S-A07",
+   "suggestion": "Rank strategies by walk-forward signal score with a minimum-n floor before any reward is paid",
+   "rationale": "The brief wants rewards for top performers; paying on tiny samples rewards luck \u2014 exactly what the leaderboard separation exists to prevent.",
+   "unlocks": "a defensible reward rule once Q-A06 is decided",
+   "decision_needed": "Approve the floor (proposal: n >= 300 settled signals, per G-2)",
+   "status": "PROPOSED",
+   "dependency": "Q-A06, G-2"
+  },
+  {
+   "id": "S-A08",
+   "suggestion": "Link this module from the root landing page",
+   "rationale": "Root `index.html` and `hub/` are owned by the hub session (CI-guarded); this module is reachable today only by URL.",
+   "unlocks": "discoverability of the origination module",
+   "decision_needed": "Integration owner adds one link (logged as a request in COORDINATION.md, not self-applied)",
+   "status": "PROPOSED",
+   "dependency": "integration owner"
+  }
+ ]
+}

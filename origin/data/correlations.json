@@ -1,0 +1,146 @@
+{
+ "rows": [
+  {
+   "id": "C-01",
+   "x": "home points",
+   "y": "away points",
+   "pearson_r": 0.0759,
+   "spearman_rho": 0.0896,
+   "n": 137,
+   "ci95_low": -0.093,
+   "ci95_high": 0.2405,
+   "sources": [
+    "https://www.nfl.com/schedules/2026/by-week/week-N"
+   ],
+   "inputs_official": true,
+   "note": "both axes are official final scores from the results feed"
+  },
+  {
+   "id": "C-02",
+   "x": "game total",
+   "y": "absolute home margin",
+   "pearson_r": -0.0157,
+   "spearman_rho": -0.0759,
+   "n": 137,
+   "ci95_low": -0.1829,
+   "ci95_high": 0.1524,
+   "sources": [
+    "https://www.nfl.com/schedules/2026/by-week/week-N"
+   ],
+   "inputs_official": true,
+   "note": "label states |margin| exactly; a prior session's mislabel (FLG-22) is why the label is verbatim here"
+  },
+  {
+   "id": "C-03",
+   "x": "signed home margin",
+   "y": "game total",
+   "pearson_r": -0.1607,
+   "spearman_rho": -0.1263,
+   "n": 137,
+   "ci95_low": -0.3198,
+   "ci95_high": 0.0073,
+   "sources": [
+    "https://www.nfl.com/schedules/2026/by-week/week-N"
+   ],
+   "inputs_official": true,
+   "note": "signed margin vs total"
+  },
+  {
+   "id": "C-04",
+   "x": "points for per game",
+   "y": "win pct",
+   "pearson_r": 0.6984,
+   "spearman_rho": 0.679,
+   "n": 32,
+   "ci95_low": 0.4622,
+   "ci95_high": 0.842,
+   "sources": [
+    "https://www.nfl.com/standings/league/2026/REG",
+    "https://www.nfl.com/schedules/2026/by-week/week-N"
+   ],
+   "inputs_official": true,
+   "note": "standings aggregate recomputed from the official game log; n = 32 clubs"
+  },
+  {
+   "id": "C-05",
+   "x": "points against per game",
+   "y": "win pct",
+   "pearson_r": -0.6636,
+   "spearman_rho": -0.6868,
+   "n": 32,
+   "ci95_low": -0.8221,
+   "ci95_high": -0.4097,
+   "sources": [
+    "https://www.nfl.com/standings/league/2026/REG",
+    "https://www.nfl.com/schedules/2026/by-week/week-N"
+   ],
+   "inputs_official": true,
+   "note": "defence -> wins"
+  },
+  {
+   "id": "C-06",
+   "x": "net points per game",
+   "y": "win pct",
+   "pearson_r": 0.8781,
+   "spearman_rho": 0.8658,
+   "n": 32,
+   "ci95_low": 0.763,
+   "ci95_high": 0.9392,
+   "sources": [
+    "https://www.nfl.com/standings/league/2026/REG",
+    "https://www.nfl.com/schedules/2026/by-week/week-N"
+   ],
+   "inputs_official": true,
+   "note": "net margin -> wins"
+  },
+  {
+   "id": "C-07",
+   "x": "Week-10 official Out+Doubtful designation count",
+   "y": "win pct through week 10",
+   "pearson_r": -0.0851,
+   "spearman_rho": -0.1086,
+   "n": 28,
+   "ci95_low": -0.4441,
+   "ci95_high": 0.2974,
+   "sources": [
+    "https://www.nfl.com/injuries/league/2026/reg10",
+    "https://www.nfl.com/standings/league/2026/REG"
+   ],
+   "inputs_official": true,
+   "note": "counts come straight from the official Week-10 report (no depth weights); n = clubs on the Week-10 slate"
+  }
+ ],
+ "model_diagnostics": [
+  {
+   "id": "MD-01",
+   "x": "predicted home margin (walk-forward)",
+   "y": "actual home margin",
+   "pearson_r": 0.1994,
+   "spearman_rho": 0.2929,
+   "n": 121,
+   "ci95_low": 0.0216,
+   "ci95_high": 0.3649,
+   "sources": [
+    "https://www.nfl.com/schedules/2026/by-week/week-N",
+    "origin/data/backtest.json (DERIVED)"
+   ],
+   "note": "one axis is a model output, NOT an officially sourced number - kept out of the officially-sourced table by rule R7"
+  },
+  {
+   "id": "MD-02",
+   "x": "predicted total (walk-forward)",
+   "y": "actual total",
+   "pearson_r": -0.0595,
+   "spearman_rho": -0.0668,
+   "n": 121,
+   "ci95_low": -0.2355,
+   "ci95_high": 0.1203,
+   "sources": [
+    "https://www.nfl.com/schedules/2026/by-week/week-N",
+    "origin/data/backtest.json (DERIVED)"
+   ],
+   "note": "same rule: model diagnostics, not sourced-number correlation"
+  }
+ ],
+ "rule": "Every row in `rows` correlates two axes whose numbers both come from official NFL pages, and publishes n. Anything with a derived axis lives in model_diagnostics and is labelled."
+}
