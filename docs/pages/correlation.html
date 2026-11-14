@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correlation Matrix — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Correlation Values — parlays &amp; player-prop combos</h1>
+<p class="meta">Verified structural findings + blank-by-policy value matrix + estimation pipeline · research notes: <code>research/correlation.md</code></p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html" class="active">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<blockquote><b>Verification outcome:</b> no official or peer-reviewed source available to this
+session publishes numeric pairwise correlation coefficients for NFL same-game legs. Per project
+rules, every numeric value is left <b>blank</b> and flagged <span class="flag">UNVERIFIED</span>.
+What follows: verified structural findings (with sources), the ready-to-fill matrix schema, and a
+reproducible estimation pipeline to produce the values honestly.</blockquote>
+
+<h2>Verified structural findings</h2>
+<table>
+<thead><tr><th>Finding</th><th>Source</th><th>Source tier</th></tr></thead>
+<tbody>
+<tr><td>Same-game legs are correlated; books apply proprietary correlation adjustments ("SGP tax") that shorten payouts vs independent multiplication; the same SGP prices differently at different books</td>
+<td><a href="https://www.oddsshopper.com/articles/betting-101/nfl-parlay-betting">oddsshopper.com</a></td>
+<td><span class="flag">Industry secondary — flagged</span></td></tr>
+<tr><td>Directional examples: QB pass yds × top-WR rec yds (positive); favorite cover × team total over (positive); blowout for A × QB-B passing (negative)</td>
+<td><a href="https://nfl-prop-bets.com/articles/nfl-same-game-parlay/">nfl-prop-bets.com</a></td>
+<td><span class="flag">Industry secondary — flagged</span></td></tr>
+<tr><td>Practitioner audit: book correlation adjustments estimated 5–15 points more aggressive than historical data; SGP hold 20–35% vs ~4.5% spread hold; cross-game 3-leg compounding hold ~13–14%</td>
+<td><a href="https://bestnflfuturesbets.com/articles/nfl-same-game-parlays-futures-trap/">bestnflfuturesbets.com</a></td>
+<td><span class="flag">Industry secondary — flagged</span></td></tr>
+<tr><td>Favorites covering (ATS) and totals going over are positively correlated in college football; drove "correlated parlay" profitability analysis (Davis, 2018)</td>
+<td>Primary paper not directly retrievable this session — cited via
+<a href="https://www.bettoredge.com/post/parlay-betting-strategy-tips-and-tricks-to-win-and-maximize-payouts">bettoredge.com</a></td>
+<td><span class="flag">Academic via secondary — flagged</span></td></tr>
+<tr><td>NFL 2013–2019 OLS study: in-sample profits for home favorite + over (prime time, non-divisional); home underdog + under (divisional, 10–13.5); under in divisional high-wind. Abstract warns "unlikely to persist"</td>
+<td><a href="https://digitalcoll.skidmore.edu/record/6451">digitalcoll.skidmore.edu</a> (Skidmore College official repository)</td>
+<td>Academic (student thesis)</td></tr>
+</tbody>
+</table>
+
+<h2>The matrix to fill (values blank = UNVERIFIED, never inferred)</h2>
+<p class="scrollnote">Estimation spec: joint outcomes from ≥ 3 seasons of official play-by-play +
+player stats (pipeline: <a href="https://github.com/nflverse/nflverse-data">nflverse</a> trusted-secondary;
+cross-check <a href="https://www.nfl.com/stats/">nfl.com/stats</a> official). Pearson φ/tetrachoric
+for binary legs, rank correlation for continuous props; game-level block bootstrap (10,000 resamples)
+for 95% CIs.</p>
+<table>
+<thead><tr><th>Leg A</th><th>Leg B</th><th>Sign hypothesis (testable, not a value)</th><th>Correlation value</th><th>95% CI</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>QB passing yards OVER</td><td>Primary WR receiving yards OVER</td><td>positive</td><td></td><td></td><td class="flag">UNVERIFIED — no official numeric source</td></tr>
+<tr><td>QB passing yards OVER</td><td>Game total OVER</td><td>positive</td><td></td><td></td><td class="flag">UNVERIFIED</td></tr>
+<tr><td>Team spread cover</td><td>Team total OVER</td><td>positive (direction supported by Davis 2018 via secondary)</td><td></td><td></td><td class="flag">UNVERIFIED</td></tr>
+<tr><td>Favorite ML</td><td>Game total OVER</td><td>weak positive</td><td></td><td></td><td class="flag">UNVERIFIED</td></tr>
+<tr><td>RB anytime TD</td><td>Team win</td><td>positive</td><td></td><td></td><td class="flag">UNVERIFIED</td></tr>
+<tr><td>Opposing QB passing yards OVER</td><td>Blowout for the other team</td><td>negative</td><td></td><td></td><td class="flag">UNVERIFIED</td></tr>
+<tr><td>Home favorite + over parlay (prime time, non-divisional)</td><td>— (combo study)</td><td>positive EV in-sample 2013–2019 (Skidmore thesis)</td><td></td><td></td><td class="flag">UNVERIFIED as current value (dated study)</td></tr>
+<tr><td>Home underdog + under parlay (divisional, spread 10–13.5)</td><td>— (combo study)</td><td>positive EV in-sample 2013–2019 (Skidmore thesis)</td><td></td><td></td><td class="flag">UNVERIFIED as current value (dated study)</td></tr>
+</tbody>
+</table>
+
+<h2>Estimation pipeline (produces the values in a later run)</h2>
+<ol>
+<li><b>Data:</b> nflverse play-by-play + weekly rosters + player stats
+(<a href="https://github.com/nflverse/nflverse-data">github.com/nflverse</a>); official cross-check vs
+<a href="https://www.nfl.com/stats/">nfl.com/stats</a>.</li>
+<li><b>Unit:</b> game × player × market leg. EV work additionally needs closing consensus lines —
+data gap <a href="questions.html">Q-07</a>.</li>
+<li><b>Estimation:</b> contingency tables (binary legs) / rank-copula (continuous props);
+game-level block bootstrap (10,000) for CIs.</li>
+<li><b>Publication rule:</b> value + CI + sample size + data version hash; any pair whose CI spans 0
+is displayed blank.</li>
+<li><b>Refresh:</b> re-estimate each offseason; freeze within-season (Gate
+<a href="validation.html">G8</a>).</li>
+</ol>
+
+<h2>How this feeds strategies &amp; the leaderboard</h2>
+<p>Combo strategies score only when their joint-probability model beats the book's implied joint
+probability after de-vigging (gate stack G0–G8 + parlay gates). The leaderboard's correlation credit
+is binary: use the published matrix (verified rows only), or submit your own estimate with CI and
+reproducible code.</p>
+
+</main>
+<footer><p>Sign hypotheses are testable claims, not verified values · numeric cells intentionally
+blank · see <a href="flagged.html">Flagged F-03</a> and <a href="questions.html">Q-05</a>.</p></footer>
+</body>
+</html>

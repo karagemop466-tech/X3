@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategy Leaderboard — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Strategy Leaderboard Competition</h1>
+<p class="meta">Rules, scoring, rewards, anti-gaming · precedent facts verified on Kaggle (official competition host) · notes: <code>research/leaderboard.md</code></p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html" class="active">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>Verified precedent — NFL Big Data Bowl (official NFL × Kaggle)</h2>
+<table>
+<thead><tr><th>Fact</th><th>Source (official host)</th></tr></thead>
+<tbody>
+<tr><td>Skills-based competition; submissions scored/ranked by a stated metric; public leaderboard during the competition</td>
+<td><a href="https://www.kaggle.com/competitions/nfl-big-data-bowl-2027/rules">kaggle.com — BDB 2027 rules</a></td></tr>
+<tr><td>BDB 2021 rubric: Innovation (actionable? novel? creative?) + Accuracy (correct? claims backed by data? models appropriate?); judged by NFL/team analytics staff</td>
+<td><a href="https://www.kaggle.com/c/nfl-big-data-bowl-2021">kaggle.com — BDB 2021</a></td></tr>
+<tr><td>BDB 2021 prizes: five × $15,000 (open) plus $10,000 presentation prize; college category existed</td>
+<td><a href="https://www.kaggle.com/c/nfl-big-data-bowl-2021">kaggle.com — BDB 2021</a></td></tr>
+<tr><td>BDB 2022: college prizes 3 × $5,000 + $10,000 presentation prize; open-source winner license</td>
+<td><a href="https://www.kaggle.com/c/nfl-big-data-bowl-2022/rules">kaggle.com — BDB 2022 rules</a></td></tr>
+<tr><td>Team prize money splits evenly unless the team unanimously decides otherwise</td>
+<td><a href="https://www.kaggle.com/competitions/nfl-big-data-bowl-2027/rules">kaggle.com — BDB 2027 rules</a></td></tr>
+</tbody>
+</table>
+
+<h2>Entry format — a strategy is a spec, not a bet slip</h2>
+<table>
+<thead><tr><th>Field</th><th>Requirement</th></tr></thead>
+<tbody>
+<tr><td><span class="pill pill-part">RULE</span> ID + class</td><td>Single bet / parlay (≤ 4 legs) / player-prop combo</td></tr>
+<tr><td><span class="pill pill-part">RULE</span> Rules block</td><td>Exact markets, selection rule, timing rule (when the bet fires in the week), stake rule, void handling — mechanically executable, no discretion</td></tr>
+<tr><td><span class="pill pill-part">RULE</span> Declared trials</td><td>How many strategy variants were tried before submission (feeds DSR; falsifying disqualifies)</td></tr>
+<tr><td><span class="pill pill-part">RULE</span> Data manifest</td><td>Every input feed + version</td></tr>
+</tbody>
+</table>
+
+<h2>Scoring (composite; components defined on the Validation page)</h2>
+<table>
+<thead><tr><th>Component</th><th>Weight (proposal)</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Luck-adjusted ROI (Monte-Carlo null-corrected)</td><td>40%</td><td>Removes luck directly (<a href="validation.html">Gate G6</a>)</td></tr>
+<tr><td>Mean CLV (no-vig closing consensus)</td><td>30%</td><td>Skill visible early; hard to fake (<a href="validation.html">Gate G2</a>)</td></tr>
+<tr><td>DSR (multiplicity-corrected)</td><td>20%</td><td>Punishes data mining (<a href="validation.html">Gate G3</a>)</td></tr>
+<tr><td>Stability (season-over-season sign consistency)</td><td>10%</td><td>Anti-overfit (<a href="validation.html">Gate G8</a>)</td></tr>
+</tbody>
+</table>
+<p>Rank = Bayesian-shrunken composite (shrinkage ∝ 1/sample size): small samples hover at the pool
+mean instead of riding hot streaks. Bet grading at closing-consensus prices (theoretical scoring);
+verified sportsbook P&amp;L optional.</p>
+
+<h2>Seasons, cadence, rewards</h2>
+<table>
+<thead><tr><th>Item</th><th>Design</th><th>Amount</th></tr></thead>
+<tbody>
+<tr><td><span class="pill pill-part">RULE</span> Cadence</td><td>Two-week rolling evaluation windows; season + all-time leaderboards; reward snapshot at end of regular season</td><td>—</td></tr>
+<tr><td>Season champion</td><td>Top shrunken composite among gate-clearing strategies</td><td class="flag">blank — budget Q-01</td></tr>
+<tr><td>2nd / 3rd</td><td>Top shrunken composite</td><td class="flag">blank — budget Q-01</td></tr>
+<tr><td>Class awards</td><td>Best single bet / best parlay / best prop combo</td><td class="flag">blank — budget Q-01</td></tr>
+<tr><td>Innovation prize</td><td>BDB-style rubric: novelty + actionability + accuracy</td><td class="flag">blank — budget Q-01</td></tr>
+<tr><td>Gates-clearing bonus</td><td>Paid per strategy clearing G0–G8 even if unranked</td><td class="flag">blank — budget Q-01</td></tr>
+</tbody>
+</table>
+<p>Precedent anchor for budgeting: BDB 2021 paid $15,000 × 5 (<a href="https://www.kaggle.com/c/nfl-big-data-bowl-2021">source</a>).</p>
+
+<h2>Anti-gaming &amp; fairness rules</h2>
+<ol>
+<li>Timestamped, immutable submissions before the first kickoff the strategy touches.</li>
+<li>No editing after kickoff; amendments create new entries and add to declared trials.</li>
+<li>Max 25 live entries per participant per week; entries sharing games are grouped for DSR/PBO
+(same-game betting across entries is not independent evidence).</li>
+<li>Public rules, public metric, public leaderboard during play (BDB model).</li>
+<li>Post-season audit: every logged price re-verified against an archived consensus; unreconcilable
+bets are voided for scoring.</li>
+<li>Disqualification: look-ahead, falsified trials, price-sourcing violations (Gate G0).</li>
+</ol>
+
+<h2>How luck is removed in ranking — worked mechanism</h2>
+<p>A 20-bet entry at 60% win rate sounds elite — but at −110 prices a no-skill process produces
+wild ROI swings over 20 bets. The Monte-Carlo null shows the 95th percentile of luck; an entry ranks
+only if it clears that, and shrinkage holds its displayed score near the pool mean until the sample
+supports the claim. DSR further deflates entries selected from many tried variants.</p>
+
+<h2>Build status</h2>
+<table>
+<thead><tr><th>Component</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Rules + scoring spec</td><td><span class="ok">Drafted here — open for review on the Suggestions board</span></td></tr>
+<tr><td>Bet/price logging + consensus archive</td><td class="flag">Not built — data gap Q-07</td></tr>
+<tr><td>Monte Carlo + DSR/PBO engine</td><td class="flag">Not built — requires logged entries first</td></tr>
+<tr><td>Prize funding</td><td class="flag">Not set — Q-01</td></tr>
+</tbody>
+</table>
+
+</main>
+<footer><p>Precedent facts verified on Kaggle · reward amounts intentionally blank until budgeted ·
+proposal rows await review on the <a href="suggestions.html">Suggestions board</a>.</p></footer>
+</body>
+</html>

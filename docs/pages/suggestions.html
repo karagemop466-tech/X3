@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions Board — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Suggestions Board — review before implementing</h1>
+<p class="meta">Every proposal here is a suggestion for review. Nothing on this board is implemented
+until it is accepted. Choose the best path before changes are made.</p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html" class="active">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>How this board works (change control)</h2>
+<ol>
+<li>Anyone reviews a proposal and sets its status: <b>Accepted</b> / <b>Rejected</b> / <b>Needs changes</b>.</li>
+<li>Accepted proposals are implemented in a later change with their own verification pass.</li>
+<li>Rejected proposals stay on the record with the reason — nothing is silently dropped.</li>
+<li>Each row states impact, effort, risk, and what it depends on, so the best path can be chosen
+with eyes open.</li>
+</ol>
+
+<h2>Board A — decision-making &amp; analysis</h2>
+<table>
+<thead><tr><th>ID</th><th>Suggestion</th><th>Why it helps decisions</th><th>Impact</th><th>Effort</th><th>Risk</th><th>Depends on</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>S-01</td><td>Adopt the G0–G8 gate stack as the house standard for any strategy or signal</td>
+<td>Makes "skill" a testable claim; stops lucky streaks from driving decisions</td><td>High</td><td>Low</td><td>Low</td><td>—</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-02</td><td>Run a one-week "discovery sprint" on the OPEN questions (Q-01, Q-02, Q-07, Q-11, Q-13)</td>
+<td>Unblocks odds data, depth charts, budget, and legal scope in one pass</td><td>High</td><td>Medium</td><td>Low</td><td>—</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-03</td><td>Ingest play-by-play + snap counts (nflverse, cross-checked vs nfl.com/stats) as the first data build</td>
+<td>Powers origination numbers, correlation estimation, and replacement detection</td><td>High</td><td>Medium</td><td>Low</td><td>Storage plan</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-04</td><td>Start CLV logging from the very first simulated bet (before any real staking)</td>
+<td>CLV is the earliest honest skill signal; builds the sample the gates need</td><td>High</td><td>Low</td><td>Low</td><td>Q-07 odds archive</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-05</td><td>Compute the correlation matrix per the published pipeline; publish only CI-cleared values</td>
+<td>Turns parlay/prop-combo strategy from folklore into math</td><td>High</td><td>Medium</td><td>Low</td><td>S-03</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-06</td><td>Build the Monte-Carlo luck engine as a standalone tool usable by every strategy class</td>
+<td>The literal "remove luck" mechanism; required for leaderboard ranking</td><td>High</td><td>Medium</td><td>Low</td><td>S-04</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-07</td><td>Backfill historical injury reports (2019→present) via the official year/week selectors</td>
+<td>Enables injury-impact calibration (EPA deltas with/without starters)</td><td>High</td><td>Medium</td><td>Low</td><td>Storage plan</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-08</td><td>Add official inactives + "will start" news to the tracker's game-day pass</td>
+<td>Turns Questionable tags into known outcomes 90 minutes pre-kickoff — critical for backup-QB detection</td>
+<td>High</td><td>Low</td><td>Low</td><td>Automation</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-09</td><td>Adopt fractional-Kelly ≤ ¼ and exposure caps as standing bankroll rules (Gate G7)</td>
+<td>Survives variance even when signals are right</td><td>Medium</td><td>Low</td><td>Low</td><td>Q-01/Q-02</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-10</td><td>Open the leaderboard in "paper mode" first — one full season of scoring without rewards</td>
+<td>Free live test of gates/scoring before money is at stake</td><td>Medium</td><td>Low</td><td>Low</td><td>S-06</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-11</td><td>Calibrate injury severity unit-weights from historical EPA/play deltas, then freeze per season</td>
+<td>Replaces guesswork in deficiency scoring with measured impact</td><td>Medium</td><td>High</td><td>Medium</td><td>S-03, S-07</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+</tbody>
+</table>
+
+<h2>Board B — site &amp; usability</h2>
+<table>
+<thead><tr><th>ID</th><th>Suggestion</th><th>Why it helps</th><th>Impact</th><th>Effort</th><th>Risk</th><th>Depends on</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>S-12</td><td>Add a "verified / unverified" filter toggle on data tables</td>
+<td>Lets a reviewer separate solid ground from gaps instantly</td><td>Medium</td><td>Low</td><td>Low</td><td>—</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-13</td><td>Auto-generate the Sources ledger from row source links (one command, publishable audit)</td>
+<td>Removes any drift between tables and the ledger</td><td>Medium</td><td>Medium</td><td>Low</td><td>—</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+<tr><td>S-14</td><td>Weekly refresh pipeline: pull official report → regenerate data pages → run verify script → commit</td>
+<td>The tracker stays current without manual work (R16)</td><td>High</td><td>Medium</td><td>Low</td><td>Automation host</td>
+<td><span class="pill pill-open">PROPOSED</span></td></tr>
+</tbody>
+</table>
+
+<blockquote>To act on a suggestion: change its Status (Accepted / Rejected / Needs changes) and add a
+short reason. Implementation happens in a later, separately verified change — never straight from
+this board.</blockquote>
+
+</main>
+<footer><p>Board seeded 2026-11-14 by session arena-4856379c · review decisions belong to the project
+owner · see also <a href="questions.html">Questions</a> for the discovery paths these proposals rely on.</p></footer>
+</body>
+</html>

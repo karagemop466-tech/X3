@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo Audit — X3 NFL Research</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header><h1>Repo Audit — line-by-line review</h1>
+<p class="meta">Repository state as found at base commit e124230 · reviewed 2026-11-14 · session arena-4856379c</p>
+<nav>
+<a href="../index.html">Dashboard</a>
+<a href="executive-summary.html">Executive Summary</a>
+<a href="requirements.html">Requirements</a>
+<a href="strategies.html">Line Origination</a>
+<a href="validation.html">Validation</a>
+<a href="correlation.html">Correlation</a>
+<a href="leaderboard.html">Leaderboard</a>
+<a href="injuries.html">Injuries</a>
+<a href="standings.html">Standings</a>
+<a href="questions.html">Questions</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="flagged.html">Flagged</a>
+<a href="sources.html">Sources</a>
+<a href="repo-audit.html" class="active">Repo Audit</a>
+</nav>
+</header>
+<main>
+
+<h2>Inventory at base commit e124230 ("Initial commit")</h2>
+<table>
+<thead><tr><th>#</th><th>File</th><th>Bytes</th><th>Content (line by line)</th><th>Verdict</th><th>Irregularity</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><code>README.md</code></td><td>4</td>
+<td>Line 1: <code># X3</code> — a bare H1 heading. No factual claims to verify externally.</td>
+<td><span class="flag">INCOMPLETE</span></td>
+<td>No description, contents, license, or usage docs — README rewritten during site build;
+license choice flagged as owner decision (<a href="flagged.html">F-05</a>)</td></tr>
+</tbody>
+</table>
+<p>No other tracked files existed: no .gitignore, no LICENSE, no data, no site, no CI. Verified via
+<code>git ls-tree -r</code> and <code>git log</code> (both run 2026-11-14; the audit source is git
+itself — the repository: <a href="https://github.com/karagemop466-tech/X3">github.com/karagemop466-tech/X3</a>).</p>
+
+<h2>Git history review</h2>
+<table>
+<thead><tr><th>Commit</th><th>Message</th><th>Review</th></tr></thead>
+<tbody>
+<tr><td><code>e124230</code></td><td>Initial commit</td>
+<td>Adds README.md only. Nothing irregular in the commit itself. <span class="ok">REVIEWED</span></td></tr>
+</tbody>
+</table>
+
+<h2>How verification worked for everything added afterwards</h2>
+<p>Because the repo contained no data, all factual content added by this session was verified
+line-by-line against official external sources (nfl.com, SSRN/publishers, Kaggle, university
+repositories) before publication. The verification ledger is the
+<a href="sources.html">Sources page</a>; each data row on the site carries its own source link;
+values that could not be confirmed are blank and flagged. Full write-up also kept at
+<code>research/repo-audit.md</code>.</p>
+
+</main>
+<footer><p>Audit method: byte-level file read + git metadata · no external claims existed in the
+original repo to fact-check.</p></footer>
+</body>
+</html>
