@@ -75,7 +75,7 @@ def parse_schedule(page: str, raw: str) -> list[dict]:
                 "away_score": int(ascore), "home_score": int(hscore),
                 "status": "FINAL", "date_text": date_text,
                 "date_iso": iso_date(date_text.split()[0], date_text),
-                "kickoff_et": "", "network": "", "source": src,
+                "kickoff_et": "", "network": "", "neutral_site": False, "neutral_site_name": "", "source": src,
             })
             if not rows[-1]["away"] or not rows[-1]["home"]:
                 problem(page, "club not mapped to an abbreviation", line)
@@ -88,10 +88,30 @@ def parse_schedule(page: str, raw: str) -> list[dict]:
                 "away_name": away, "home_name": home,
                 "away_score": None, "home_score": None, "status": "SCHEDULED",
                 "date_text": date_text, "date_iso": iso_date(date_text.split()[0], date_text),
-                "kickoff_et": kickoff, "network": network.strip(), "source": src,
+                "kickoff_et": kickoff, "network": network.strip(), "neutral_site": False, "neutral_site_name": "",
+                "source": src,
             })
             if not rows[-1]["away"] or not rows[-1]["home"]:
                 problem(page, "club not mapped to an abbreviation", line)
+    # Neutral-site (international) games: the page prints an "International Game" banner and a
+    # host city immediately before that game's line. A city name alone is ambiguous, so a match
+    # requires the banner; the city is recorded as published, not interpreted.
+    lines = text_of(raw).splitlines()
+    HOST_CITIES = {"MUNICH", "MADRID", "LONDON", "SAO PAULO", "MELBOURNE", "DUBLIN", "PARIS",
+                   "FRANKFURT", "MEXICO CITY", "TORONTO", "RIO DE JANEIRO", "BERLIN", "TOKYO", "EAST MELBOURNE"}
+    for idx, line in enumerate(lines):
+        m2 = FINAL_RE.match(line) or SCHED_RE.match(line)
+        if not m2:
+            continue
+        back = lines[max(0, idx - 4):idx]
+        if not any("International Game" in b for b in back):
+            continue
+        city = next((b.strip() for b in reversed(back) if b.strip().upper() in HOST_CITIES), "")
+        home_name = m2.group(3) if m2.re is FINAL_RE else m2.group(2)
+        for r in rows:
+            if r["away_name"] == m2.group(1) and r["home_name"] == home_name:
+                r["neutral_site"] = True
+                r["neutral_site_name"] = city
     seen, unique = set(), []
     for r in rows:
         key = (r["away"], r["home"])
@@ -302,6 +322,26 @@ def main(src: str, dst: str) -> int:
             problem(f"depth-{abbr}", "page not captured", url)
             continue
         depth.append(parse_depth(f"depth-{abbr}", f.read_text(errors="replace"), abbr))
+
+    # Guard against NFL.com serving the current week's report for a future week.
+    sig = {}
+    for w in inj_stats:
+        rows_w = [r for r in injuries if r["week"] == w["week"]]
+        sig[w["week"]] = tuple(sorted((r["team"], r["player"], r["status"]) for r in rows_w))
+    dup_weeks = []
+    weeks_sorted = sorted(sig)
+    for i, w in enumerate(weeks_sorted[:-1]):
+        for later in weeks_sorted[i + 1:]:
+            if sig[w] == sig[later] and sig[w]:
+                dup_weeks.append(later)
+    if dup_weeks:
+        keep = min(dup_weeks)
+        drop = set(dup_weeks) - {keep}
+        injuries = [r for r in injuries if r["week"] not in drop]
+        inj_stats = [w for w in inj_stats if w["week"] not in drop]
+        for w in dup_weeks:
+            problem(f"injuries-w{w}", "identical to an earlier week's report; dropped as a "
+                                     "duplicate served for a future week")
 
     final = [g for g in games if g["status"] == "FINAL"]
     (out / "games.json").write_text(json.dumps({
