@@ -1,0 +1,115 @@
+{
+ "as_of": "2026-11-14",
+ "rows": [
+  {
+   "id": "S-01",
+   "status": "PROPOSED",
+   "effort": "High",
+   "impact": "Very high",
+   "title": "Attach a licensed market-price feed",
+   "what": "Ingest opening and closing spreads, totals and moneylines for the games we originate; write them into the existing snapshot schema.",
+   "why": "It is the only change that turns four blank columns into real ones, and it is a prerequisite for every staking number.",
+   "risk": "Licensing cost; redistribution terms may forbid publishing the numbers even if we hold them.",
+   "decide": "Budget, vendor, and whether published prices may be shown."
+  },
+  {
+   "id": "S-02",
+   "status": "PROPOSED",
+   "effort": "Low",
+   "impact": "High",
+   "title": "Record a manual board snapshot with timestamps while a feed is arranged",
+   "what": "A human reads a public board at a fixed time and records it with the source and the minute.",
+   "why": "Produces a real opening/closing pair immediately, which is enough to exercise CLV, ROI and the demotion gates end to end.",
+   "risk": "Manual entry contradicts the no-manual-input rule and cannot be automated; it would have to be clearly badged.",
+   "decide": "Whether a badged manual snapshot is acceptable as an interim input."
+  },
+  {
+   "id": "S-03",
+   "status": "PROPOSED",
+   "effort": "Low",
+   "impact": "High",
+   "title": "Widen the game log to prior seasons",
+   "what": "Capture the same official week pages for earlier seasons so ratings start with a prior.",
+   "why": "Fixes the cold-start problem (a week-1 model knows nothing) and is the only route to a 200-bet sample.",
+   "risk": "More data invites more multiple testing; the FDR control becomes mandatory rather than optional.",
+   "decide": "How many seasons to capture and whether to keep them in-repo."
+  },
+  {
+   "id": "S-04",
+   "status": "PROPOSED",
+   "effort": "Medium",
+   "impact": "High",
+   "title": "Make the injury join a priced input, with a measured effect size",
+   "what": "Regress margin and total on the replacement-depth features produced here; keep the coefficient only if it survives walk-forward.",
+   "why": "The join already exists and is the desk's most distinctive asset; unused, it is just a table.",
+   "risk": "Depth charts are noisy, mostly undated and club-published; a spurious coefficient is easy to fit.",
+   "decide": "Whether to accept club charts as the depth source (Q-03)."
+  },
+  {
+   "id": "S-05",
+   "status": "PROPOSED",
+   "effort": "Low",
+   "impact": "High",
+   "title": "Decide the reward rule, scoring signal and staking as two prizes",
+   "what": "Two awards: best signal (hit rate with n and CI) and best staking (ROI with CI). Neither can buy the other.",
+   "why": "A single award on staking rewards luck; a single award on signal ignores whether it can be monetised.",
+   "risk": "Two prizes may fragment attention; a minimum n is needed to qualify for either.",
+   "decide": "Prize structure, eligibility threshold, who funds it."
+  },
+  {
+   "id": "S-06",
+   "status": "PROPOSED",
+   "effort": "Medium",
+   "impact": "Medium",
+   "title": "Automate the capture on a schedule rather than on demand",
+   "what": "A scheduled workflow captures the official pages weekly, rebuilds, verifies and commits.",
+   "why": "A snapshot is only an opening or closing number if captures happen at the right times automatically.",
+   "risk": "Scheduled jobs generate commits and noise; needs a stable parser and a clear failure path.",
+   "decide": "Whether a scheduled bot may commit to this branch."
+  },
+  {
+   "id": "S-07",
+   "status": "PROPOSED",
+   "effort": "High",
+   "impact": "Medium",
+   "title": "League-wide per-week player stats feed for props",
+   "what": "Capture every skill player's per-week receiving/rushing lines instead of five hand-picked players.",
+   "why": "Five players is an illustration, not a board; prop pricing needs coverage.",
+   "risk": "Cost and rate limits; hundreds of page fetches per week.",
+   "decide": "Budget for a stats vendor versus scraping official pages."
+  },
+  {
+   "id": "S-08",
+   "status": "PROPOSED",
+   "effort": "Low",
+   "impact": "Medium",
+   "title": "Publish a settlement rule for every prop market",
+   "what": "Write down, per market, exactly what settles it and how a stat correction is handled.",
+   "why": "Without it two people can grade the same bet differently, and no backtest is reproducible.",
+   "risk": "None material; it is documentation.",
+   "decide": "Adopt the book's rules or the official box score."
+  },
+  {
+   "id": "S-09",
+   "status": "PROPOSED",
+   "effort": "Medium",
+   "impact": "Medium",
+   "title": "Add a calibration curve to the moneyline",
+   "what": "Bin predicted probabilities and plot realised frequency, with n per bin.",
+   "why": "Brier alone hides whether the model is overconfident in the tails, which is where money is lost.",
+   "risk": "Small n per bin will make the curve noisy; needs pooling across seasons.",
+   "decide": "Nothing - it is additive analysis."
+  },
+  {
+   "id": "S-10",
+   "status": "PROPOSED",
+   "effort": "Low",
+   "impact": "Low",
+   "title": "Consolidate the older site trees into an archive index",
+   "what": "One page listing every earlier tree with what it contains and whether it is superseded.",
+   "why": "A reviewer should not have to guess which of a dozen dashboards is current.",
+   "risk": "Touches other sessions' files; only the archive index should change.",
+   "decide": "Which tree is canonical for each topic."
+  }
+ ]
+}

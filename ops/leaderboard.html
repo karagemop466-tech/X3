@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL trading desk operations: originated lines, price snapshots, verified results, receiver props, correlation and a signal-vs-staking leaderboard.">
+<title>Leaderboard - X3 NFL trading desk</title>
+<link rel="stylesheet" href="assets/ops.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3 <span>NFL trading desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> &middot; season 2026, week 10 of record &middot;
+  <a href="verification.html">verification</a> &middot; <a href="flagged.html">flagged</a></div>
+</header>
+<nav class="main"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="lines.html" class="">Originated lines</a><a href="order.html" class="">Origination order</a><a href="snapshots.html" class="">Price snapshots</a><a href="props.html" class="">Player props</a><a href="leaderboard.html" class="on">Leaderboard</a><a href="gates.html" class="">Gates &amp; demotion</a><a href="correlation.html" class="">Correlation</a><a href="depth.html" class="">Replacement depth</a><a href="results.html" class="">Results feed</a><a href="requirements.html" class="">Requirements</a><a href="questions.html" class="">Open questions</a><a href="suggestions.html" class="">Suggestions</a><a href="method.html" class="">Method &amp; sources</a><a href="verification.html" class="">Verification</a><a href="flagged.html" class="">Flagged for review</a><a href="repo-review.html" class="">Repo review</a></nav>
+<main>
+<div class="crumb"><a href="../index.html">Site root</a> / <a href="index.html">Trading desk</a></div>
+<h1>Leaderboard - signal and staking, kept apart</h1>
+
+<p class="lede">The leaderboard has two columns that are not allowed to talk to each other. <b>Signal</b> asks
+"did the call beat a coin flip, and by how much, with what n and what interval". <b>Staking</b> asks "what would
+that have returned at a real price". A strategy is promoted on the signal column alone. That is the whole point:
+a lucky staking run - a hot streak at generous prices - cannot promote a strategy whose calls are no better than
+a coin flip, because staking is not read during promotion.</p>
+<h2>The board</h2>
+<div class="tw"><table class=""><caption>5 strategies, 5 in paper, 0 live </caption><thead><tr><th>Strategy</th><th>Family</th><th>n</th><th>Signal rate</th><th>CI95</th><th>Signal</th><th>Staking</th><th>ROI</th><th>CLV</th><th>State</th><th>Blocked by</th><th>Definition</th></tr></thead><tbody><tr><td>S1 model side</td><td>single</td><td>88</td><td>0.659</td><td>0.555 - 0.75</td><td><span class="badge mid">DERIVED</span></td><td><span class="badge bad">BLOCKED</span></td><td>no official price</td><td><span class="badge bad">BLOCKED</span></td><td><span class="badge mid">PAPER</span></td><td>G-2, G-3, G-5, G-6</td><td>pick the club our fair spread favours</td></tr><tr><td>S2 model side, decisive only</td><td>single</td><td>56</td><td>0.714</td><td>0.585 - 0.816</td><td><span class="badge mid">DERIVED</span></td><td><span class="badge bad">BLOCKED</span></td><td>no official price</td><td><span class="badge bad">BLOCKED</span></td><td><span class="badge mid">PAPER</span></td><td>G-2, G-3, G-5, G-6</td><td>same signal, only where our fair line disagrees with a coin flip by 10 points of probability</td></tr><tr><td>S3 always home</td><td>baseline</td><td>88</td><td>0.443</td><td>0.344 - 0.547</td><td><span class="badge mid">DERIVED</span></td><td><span class="badge bad">BLOCKED</span></td><td>no official price</td><td><span class="badge bad">BLOCKED</span></td><td><span class="badge mid">PAPER</span></td><td>G-2, G-3, G-4, G-5, G-6</td><td>no-skill baseline: home teams win at a fixed rate</td></tr><tr><td>S4 model moneyline</td><td>single</td><td>88</td><td>0.659</td><td>0.555 - 0.75</td><td><span class="badge mid">DERIVED</span></td><td><span class="badge bad">BLOCKED</span></td><td>no official price</td><td><span class="badge bad">BLOCKED</span></td><td><span class="badge mid">PAPER</span></td><td>G-2, G-3, G-5, G-6</td><td>favourite-only reading of the same moneyline; measured separately because it is a different thesis</td></tr><tr><td>S5 side+total same-game 2-leg</td><td>parlay</td><td>88</td><td>0.375</td><td>0.281 - 0.479</td><td><span class="badge mid">DERIVED</span></td><td><span class="badge bad">BLOCKED</span></td><td>no official price</td><td><span class="badge bad">BLOCKED</span></td><td><span class="badge mid">PAPER</span></td><td>G-2, G-3, G-4, G-5, G-6, G-8</td><td>legs graded independently and then combined; the independent_product column is what you get if you multiply marginals, and the gap is why G-8 exists</td></tr></tbody></table></div><p class="note">Signal is the hit rate against reality. ROI and CLV are blank because no market price exists to grade against - the two columns are deliberately independent.</p>
+<h2>Why every strategy is still in paper</h2>
+<p>The blocking gates are listed per row. In aggregate: no strategy has reached the 200 graded bets G-2
+requires (88 is the largest sample), the multiple-testing control has not been
+run because it needs that sample (G-3), and <b>no market price exists anywhere in the repository</b> (G-5), which alone blocks staking,
+ROI and CLV. A strategy in paper is not a failure of the analysis; it is the analysis working.</p>
+<h2>Promotion gates</h2>
+<div class="tw"><table class=""><caption>Promotion gates </caption><thead><tr><th>Gate</th><th>Name</th><th>Rule</th><th>Blocking</th></tr></thead><tbody><tr><td>G-0</td><td>Pre-registration</td><td>Rule, inputs and staking written before any graded result</td><td>blocking</td></tr><tr><td>G-1</td><td>No look-ahead</td><td>Every week-W grade uses weeks &lt; W only (walk-forward)</td><td>blocking</td></tr><tr><td>G-2</td><td>Sample size</td><td>n &gt;= 200 graded bets for a skill claim</td><td>blocking</td></tr><tr><td>G-3</td><td>Multiple-testing control</td><td>Benjamini-Hochberg FDR at q=0.10 across all tested strategies</td><td>blocking</td></tr><tr><td>G-4</td><td>Signal exists</td><td>Signal CI95 lower bound &gt; 0.500 (coin flip), independent of staking</td><td>blocking</td></tr><tr><td>G-5</td><td>Market exists</td><td>A verified market price is attached to every graded bet</td><td>blocking</td></tr><tr><td>G-6</td><td>Beat the price</td><td>CI95 lower bound on ROI &gt; 0 at the realised price</td><td>blocking</td></tr><tr><td>G-7</td><td>Uncertainty</td><td>95% CI reported on hit rate, ROI and CLV for every published number</td><td>blocking</td></tr><tr><td>G-8</td><td>Correlation integrity</td><td>Every multi-leg price uses a measured joint probability with n printed</td><td>blocking</td></tr><tr><td>G-9</td><td>Data integrity</td><td>Every input row carries an official source link and passes scripts/ops_verify.py</td><td>blocking</td></tr></tbody></table></div>
+<h2>Rewards</h2>
+<div class="callout warn">No reward is configured, and none is promised. Rewards for a top-performing strategy
+require a decision this desk cannot make alone: what is scored (signal, staking, or both), who pays, and under
+what rules. A reward paid on staking alone would reward luck by construction, which is exactly what this page
+exists to prevent. Options are on <a href="suggestions.html">Suggestions, S-05</a>.</div>
+<h2>How a strategy enters the competition</h2>
+<ol>
+<li>Write the rule, the inputs and the staking plan into the repo <i>before</i> the first graded bet (G-0).</li>
+<li>Grade walk-forward only, weeks before the graded week (G-1).</li>
+<li>Reach 200 graded bets (G-2), then run the FDR control across every tested strategy (G-3).</li>
+<li>Attach a verified market price and beat it out of sample (G-5, G-6).</li>
+<li>Stay live until a demotion gate fires (<a href="gates.html">Gates &amp;amp; demotion</a>).</li>
+</ol>
+
+</main>
+<footer>Built by <code>scripts/ops_build.py</code> from <code>data/ops/*.json</code>. Every table row links to
+an official source or is badged. No market price exists in this repository, so market columns are blank by
+policy, never estimated. Shared task board: <a href="../COORDINATION.md">COORDINATION.md</a>.</footer>
+</body></html>
