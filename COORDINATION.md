@@ -531,6 +531,61 @@ role). No other session's files were modified.
 
 ---
 
+## Session `arena/d968fa97-x3` — independent official-source audit (claim)
+
+- **Status:** in progress. Branch `arena/d968fa97-x3` (platform-assigned; the `session-<id>/<task>` naming in the brief is not usable on this session, per the platform rule; deviation logged here).
+- **Claim (committed before work):** an independent, row-by-row re-verification of the 2026 Week 10 NFL injury report against the official page `https://www.nfl.com/injuries/league/2026/reg10`, plus a standalone audit page.
+- **File scope claimed:** `audit/**` only (new folder). No other file is edited. Existing datasets (`data/`, `docs/`, `dashboard/`, `x3lab/`, `lab/`, `pages/`, `site/`, root HTML) are read, not changed.
+- **Requests for integration (logged, not edited):** link `audit/index.html` from the root landing and the `docs/` dashboard navigation; reconcile the abbreviated practice-status labels in `docs/data/injury-2026-week10.csv` with the official wording (see audit page).
+
+### Task board (arena/d968fa97-x3)
+
+| # | Task | Status | Files |
+|---|------|--------|-------|
+| A1 | Claim + coordination record | done | `COORDINATION.md` |
+| A2 | Transcribe official Week 10 2026 rows (8 chunks of nfl.com) | done | `audit/official_injury_wk10_2026.raw.txt`, `audit/official_injury_wk10_2026.csv` (345 rows) |
+| A3 | Row-by-row diff against `docs/data/injury-2026-week10.csv` + schedule orientation check | done | `audit/build_and_diff.py`, `audit/diff_report.csv`, `audit/schedule_check_wk10.csv`, `audit/summary.json` |
+| A4 | Audit page + flagged irregularities | done | `audit/index.html`, `audit/build_audit_page.py`, `audit/README.md` |
+| A5 | Checks, PR, merge, Pages status | in progress | — |
+
+### Result (arena/d968fa97-x3)
+
+- Official rows: 345 (https://www.nfl.com/injuries/league/2026/reg10, fetched 2026-11-14, 8 chunks).
+- Repo rows: 345 (`docs/data/injury-2026-week10.csv`); no duplicate keys.
+- Rows matching on every compared field: 294. Rows differing: 51 (24 NE/DET game label; 27 LAC/BAL TV list).
+- Mismatches in team record, position, injury, practice status, game status: **0** (all 345 rows).
+- Official counts: 66 Out, 10 Doubtful, 84 Questionable, 185 blank (matches the repo).
+- Schedule check (https://www.nfl.com/schedules/2026/by-week/week-10): 14 games; orientation matches for 13; NE/DET is "Patriots at Lions" (Munich), not "NE vs DET".
+
+### Sources used (this session)
+
+- Official injury report, Week 10 2026: https://www.nfl.com/injuries/league/2026/reg10
+- Official Week 10 schedule: https://www.nfl.com/schedules/2026/by-week/week-10
+- Game pages linked from the schedule: `https://www.nfl.com/games/<away>-at-<home>-2026-reg-10`
+
+### Irregularities (published on `audit/index.html`, "Flagged for review")
+
+- F-A01 Game label "NE vs DET (Munich)" (24 rows): official orientation is NE @ DET; Munich is supported by the schedule's International Game tag.
+- F-A02 TV list for LAC @ BAL (27 rows): repo "ESPN, ABC, ESPN2"; injury page "ESPN, ABC, ESPN2, ESPN DEPORTES"; schedule "ESPN". Not changed.
+- F-A03 Repo `source_url` column is the generic `https://www.nfl.com/injuries/` for all 345 rows.
+- F-A04 Thursday WAS @ NYG (20 rows) is already FINAL on the schedule page (Commanders 24, Giants 21); rows are a pre-game snapshot.
+- F-A05 Practice labels are abbreviated in the repo (Full / Limited / DNP); mapping is one-to-one.
+- F-A06 The page extract has no update timestamp.
+
+### Requests for integration (logged, not edited)
+
+- Integration owner: correct the NE/DET label and the LAC/BAL TV field in `docs/data/injury-2026-week10.csv` (and any generator that writes it) after review; re-point `source_url` to the week-specific page.
+- Link `audit/index.html` from the root landing and from the `docs/` navigation. This session did not edit those files.
+
+### Verification performed
+
+- Every official row transcribed from the fetched page and compared field by field with the repo (script: `audit/build_and_diff.py`).
+- Counts asserted in code: 345 official rows, 28 teams with records, 14 games.
+- Audit page: every one of the 345 rows and 14 schedule rows links to the official NFL.com page it was checked against; HTML tag balance checked; no broken local links (only `../` home link).
+- Limit: the sandbox cannot reach NFL.com directly; text was read via the fetch tool and transcribed, not diffed against raw HTML.
+
+---
+
 ## Session arena/a8e2b617-x3 — audit & factual corrections
 
 - **Status:** done; current platform-assigned branch `arena/a8e2b617-x3`.
