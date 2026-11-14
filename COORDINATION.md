@@ -229,7 +229,7 @@ naming this session's builder `tools/build_dashboard.py`, and a directory collis
 | T08 | Correlation values | done | `dashboard/correlation.html` | 4 computed, 8 deliberately blank |
 | T09 | Injury & depth-chart deficiency tracking | done | `dashboard/injuries.html`, `depth-charts.html` | 345 injury rows, 31/32 charts, 76 starter-absent positions |
 | T10 | Source register + verification pass | done | `dashboard/sources.html` | 4 league sources + 32 club sources |
-| T11 | Flagged for Review page | done | `dashboard/flagged.html` | 11 flags, all non-blocking |
+| T11 | Flagged for Review page | done | `dashboard/flagged.html` | 12 flags, all non-blocking |
 | T12 | Static site build | done | `dashboard/**` | 18 pages, 25 tables |
 | T13 | Pages enablement + deploy verification | done | (existing workflow reused) | See deploy log |
 | T14 | Re-verify, link check, PR + merge | done | `COORDINATION.md` | See PR log |

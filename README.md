@@ -114,7 +114,7 @@ Deterministic: reads only `tools/nfl_data.py` and `tools/site_content.py`.
 * No market lines and no game log have been ingested, so the model runs with
   home-field advantage at 0.0 and no schedule-strength adjustment. Every model output is
   badged `DERIVED`.
-* 11 items are on the Flagged for Review page. None blocks the site.
+* 12 items are on the Flagged for Review page. None blocks the site.
 
 See `dashboard/questions.html` for the blocking unknowns and `dashboard/suggestions.html`
 for the decision queue.

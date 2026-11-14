@@ -27,6 +27,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "dashboard")
 DATA = os.path.join(SITE, "data")
 
+# The commit this session branched from (from the Arena branch note). Audited as the
+# "repo review" baseline; the current tree is reported separately.
+BASE_COMMIT = "e12423044baef53c007fce7d1d3f45eeaf0a7e29"
+
 TNAME = {t[0]: t[1] for t in D.TEAMS}
 TPROF = {t[0]: t[2] for t in D.TEAMS}
 TSITE = {t[0]: t[3] for t in D.TEAMS}
@@ -244,41 +248,65 @@ def build_model_lines():
 # Stage 1e: repo audit
 # ---------------------------------------------------------------------------
 def repo_audit():
+    """Audit the commit this session branched from, and report the current tree.
+
+    Two different things must not be conflated:
+      * the BASE commit this session started from (what the "repo review" is about);
+      * the CURRENT tree, which by now contains every other session's work as well.
+
+    Earlier code used `git ls-files` (the current index) while describing it as the
+    base commit, which produced a wrong file count once other sessions merged.
+    """
     import subprocess
 
     def git(*args):
         return subprocess.run(["git", "-C", ROOT] + list(args),
                               capture_output=True, text=True).stdout.strip()
 
-    sha = git("rev-parse", "HEAD")
-    short = sha[:7]
-    files = git("ls-files").splitlines()
-    out = []
-    for f in files:
-        p = os.path.join(ROOT, f)
-        size = os.path.getsize(p) if os.path.exists(p) else 0
-        with open(p, "rb") as fh:
-            raw = fh.read()
-        nlines = 0 if not raw else raw.count(b"\n") + (0 if raw.endswith(b"\n") else 1)
-        try:
-            body = raw.decode("utf-8")
-        except UnicodeDecodeError:
-            body = ""
-        out.append({
-            "path": f,
-            "bytes": size,
-            "lines": nlines,
-            "content": body if size <= 400 else body[:400],
-            "truncated": size > 400,
-            "blob": f"https://github.com/karagemop466-tech/X3/blob/{sha}/{f}",
-            "history": f"https://github.com/karagemop466-tech/X3/commits/{sha}/{f}",
-        })
+    def tree_at(sha):
+        """(path, blob bytes, text) for every file in a commit's tree."""
+        out = []
+        for line in git("ls-tree", "-r", "-z", "--long", sha).split("\0"):
+            if not line.strip():
+                continue
+            meta, path = line.split("\t", 1)
+            parts = meta.split()
+            size = int(parts[3]) if len(parts) > 3 else 0
+            blob = git("cat-file", "blob", f"{sha}:{path}")
+            nlines = 0 if not blob else blob.count("\n") + (0 if blob.endswith("\n") else 1)
+            out.append({
+                "path": path,
+                "bytes": size,
+                "lines": nlines,
+                "content": blob if len(blob) <= 400 else blob[:400],
+                "truncated": len(blob) > 400,
+                "blob": f"https://github.com/karagemop466-tech/X3/blob/{sha}/{path}",
+                "history": f"https://github.com/karagemop466-tech/X3/commits/{sha}/{path}",
+            })
+        return out
+
+    base = BASE_COMMIT
+    # fail loudly rather than silently auditing the wrong commit
+    rc = subprocess.run(["git", "-C", ROOT, "merge-base", "--is-ancestor", base, "HEAD"])
+    if rc.returncode != 0:
+        raise SystemExit(f"BASE_COMMIT {base} is not an ancestor of HEAD; audit would be wrong")
+
+    head = git("rev-parse", "HEAD")
+    base_files = tree_at(base)
+    cur = git("ls-files").splitlines()
     return {
-        "sha": sha, "short": short,
-        "commit_url": f"https://github.com/karagemop466-tech/X3/commit/{sha}",
+        "sha": base, "short": base[:7],
+        "commit_url": f"https://github.com/karagemop466-tech/X3/commit/{base}",
+        "head": head, "head_short": head[:7],
+        "head_url": f"https://github.com/karagemop466-tech/X3/commit/{head}",
         "branch": git("rev-parse", "--abbrev-ref", "HEAD"),
         "commit_count": git("rev-list", "--count", "HEAD"),
-        "files": out,
+        "base_commit_count": git("rev-list", "--count", base),
+        "files": base_files,
+        "current_file_count": len(cur),
+        "current_bytes": sum(
+            os.path.getsize(os.path.join(ROOT, f)) for f in cur if os.path.exists(os.path.join(ROOT, f))
+        ),
     }
 
 
@@ -1089,17 +1117,25 @@ def p_repo(b):
         for x in FLAGGED if x["area"] in ("Repository", "Data gap", "Source quality")
     )
     body = f"""
-<p class="lede">The repository was reviewed line by line. At the base commit it contained exactly
-one tracked file. There was no prior code, data set, documentation or configuration to audit.</p>
+<p class="lede">The repository was reviewed line by line at the base commit
+<code>{esc(a['short'])}</code>: it contained exactly {len(a['files'])} tracked file(s). There was no prior
+code, data set, documentation or configuration to audit.</p>
 <div class="panel"><h3 style="margin-top:0">Repository facts</h3>
 <dl class="kv">
 <dt>Branch reviewed</dt><dd><code>{esc(a['branch'])}</code></dd>
-<dt>Base commit</dt><dd><code>{esc(a['sha'])}</code> &mdash; {src(a['commit_url'], 'open on GitHub')}</dd>
-<dt>Commit count</dt><dd>{esc(a['commit_count'])}</dd>
+<dt>Base commit</dt><dd><code>{esc(a['sha'])}</code> ({esc(a['short'])}) &mdash; {src(a['commit_url'], 'open on GitHub')}</dd>
+<dt>Commits at base</dt><dd>{esc(a['base_commit_count'])}</dd>
 <dt>Tracked files at base</dt><dd>{len(a['files'])}</dd>
 <dt>Total bytes at base</dt><dd>{sum(f['bytes'] for f in a['files'])}</dd>
-</dl></div>
-<h3>File-by-file</h3>
+<dt>Current HEAD</dt><dd><code>{esc(a['head'])}</code> ({esc(a['head_short'])}) &mdash; {src(a['head_url'], 'open on GitHub')}</dd>
+<dt>Commits now</dt><dd>{esc(a['commit_count'])}</dd>
+<dt>Tracked files now</dt><dd>{esc(a['current_file_count'])}</dd>
+<dt>Total bytes now</dt><dd>{'{:,}'.format(a['current_bytes'])} (all sessions combined)</dd>
+</dl>
+<small class="note">The audit below covers the <b>base commit</b>, the state this session started
+from. The repository has since grown with work from several parallel sessions; those counts are
+shown separately above so the two are never confused.</small></div>
+<h3>File-by-file (base commit)</h3>
 {table(["Path", "Bytes", "Lines", "Content as committed", "Links for manual review"], rows,
        filter_id="t-repo")}
 <h3>Irregularities found</h3>
@@ -1286,11 +1322,21 @@ def main():
 
     if audit["files"]:
         flag("F-12", "Repository", "Low",
-             f"The base commit contains {len(audit['files'])} tracked file(s) totalling "
-             f"{sum(f['bytes'] for f in audit['files'])} bytes.",
-             "There is no licence, no .gitignore, no CI, no tests, no documentation and no "
-             "branch protection recorded at the base commit.",
+             f"The base commit {audit['short']} contains {len(audit['files'])} tracked file(s) "
+             f"totalling {sum(f['bytes'] for f in audit['files'])} bytes.",
+             "There is no licence, no .gitignore, no CI, no tests and no documentation at the "
+             "base commit. The repo was an empty skeleton when this session started.",
              audit["commit_url"], "Add licence, .gitignore, CI and branch protection.")
+    flag("F-13", "Repository", "Low",
+         f"The repository now holds {audit['current_file_count']} tracked files "
+         f"({audit['current_bytes']:,} bytes) across "
+         f"{audit['commit_count']} commits from multiple parallel agent sessions.",
+         "Six or more sessions each published their own site (root category pages, docs/, site/, "
+         "pages/, lab/, x3lab/, research/, dashboard/). Nothing was deleted, so there are now "
+         "several overlapping dashboards with no single canonical landing page.",
+         audit["head_url"],
+         "Pick one canonical dashboard and make the others legacy, or add a root index that "
+         "lists all of them. Owner decision.")
 
     # ---- bundle ----------------------------------------------------------
     bundle = {
