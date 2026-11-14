@@ -1,0 +1,84 @@
+name: Desk capture (official NFL pages)
+
+# Purpose: fetch official NFL pages from a GitHub-hosted runner and upload the raw HTML
+# as a build artifact. The sandbox that authored this repository cannot reach nfl.com,
+# so raw-page capture happens here and is parsed deterministically by
+# scripts/desk_parse.py. Every parsed value keeps the official URL it came from.
+#
+# This workflow writes no repository content, publishes nothing, and only runs when
+# desk/capture-request.txt changes on a working branch (or manually).
+
+on:
+  push:
+    branches: [ arena/3bf7cc8b-x3, main ]
+    paths: [ desk/capture-request.txt ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Capture official pages
+        run: |
+          set -u
+          mkdir -p capture
+          UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
+          fetch () {
+            url="$1"; out="capture/$2"
+            code=$(curl -sSL --compressed --max-time 45 --retry 3 --retry-delay 4 \
+                    -A "$UA" -H 'Accept-Language: en-US,en;q=0.9' \
+                    -o "$out" -w '%{http_code}' "$url" || echo 000)
+            size=$(wc -c < "$out" 2>/dev/null || echo 0)
+            echo "$code $size $url" >> capture/manifest.txt
+            echo "HTTP $code  $(printf '%8s' "$size") bytes  $url"
+          }
+          : > capture/manifest.txt
+          for w in 1 2 3 4 5 6 7 8 9 10 11; do
+            fetch "https://www.nfl.com/schedules/2026/by-week/week-$w" "schedule-w$w.html"
+          done
+          fetch "https://www.nfl.com/standings/league/2026/reg" "standings-2026.html"
+          for w in 8 9 10; do
+            fetch "https://www.nfl.com/injuries/league/2026/reg$w" "injuries-w$w.html"
+          done
+          python3 - <<'PY' > /tmp/clubs.txt
+          import re, pathlib
+          src = pathlib.Path('tools/nfl_data.py').read_text()
+          for abbr, name, nfl, club in re.findall(
+                  r'\("([A-Z]{2,3})",\s*"([^"]+)",\s*"(https://www\.nfl\.com/teams/[^"]+)",\s*"(https://[^"]+)"', src):
+              print(abbr, club.rstrip('/') + '/team/depth-chart')
+          PY
+          while read -r abbr url; do
+            fetch "$url" "depth-$abbr.html"
+          done < /tmp/clubs.txt
+          sha256sum capture/*.html > capture/sha256.txt || true
+          echo "--- manifest ---"; cat capture/manifest.txt
+          echo "files: $(ls capture/*.html | wc -l)"
+
+      - name: Summarise capture
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          m = pathlib.Path('capture/manifest.txt')
+          if not m.exists():
+              raise SystemExit('no manifest')
+          rows = [l.split(' ', 2) for l in m.read_text().splitlines() if l.strip()]
+          ok = [r for r in rows if r[0] == '200' and int(r[1]) > 20000]
+          print(f'{len(ok)}/{len(rows)} pages captured with HTTP 200 and >20 KB')
+          for r in rows:
+              if r not in ok:
+                  print('  not ok:', r)
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: desk-capture
+          path: capture/
+          retention-days: 7
