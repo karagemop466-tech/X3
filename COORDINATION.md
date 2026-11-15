@@ -3310,3 +3310,15 @@ Venue transcription, roof/NWS overlay, past-season report archives, reserve-list
 are data-capture-blocked (sandbox cannot reach nfl.com; capture runs on GitHub runners). They are added
 to the RD-01 readiness register as blocked rows with the number that would clear them, and to the
 RD-06 snapshot-workflow plan — not silently dropped.
+
+### Claim expansion 2 (arena/6259c7b0-x3)
+
+Repo-wide grep confirms "Publish every model total twice until one wins" (two visible total
+estimators + gap column + collapse only after a walk-forward comparison) is unimplemented.
+Claimed as RD-10; computed offline from the verified results feed as an independent panel
+(registered alternative estimator vs the published engine total), with a coordination request
+logged for the signals owner to adopt the comparison into its own page.
+
+| ID | Task | Status | Owner | Files |
+|----|------|--------|-------|-------|
+| RD-10 | Publish every model total twice (estimator A vs registered estimator B, gap column, walk-forward comparison) | in progress | `arena/6259c7b0-x3` | `scripts/readiness_compute.py`, `readiness/two-totals.html` |
