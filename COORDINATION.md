@@ -2655,3 +2655,42 @@ The overlapping official-source correction was independently completed and merge
 - Post-merge Pages verification: deploy workflow run `43746441803` completed successfully on merge commit `6955b91`; GitHub Pages API reports `status: built`, URL https://karagemop466-tech.github.io/X3/ . Live check of https://karagemop466-tech.github.io/X3/hub/results.html?cachebust=6955b91 shows the corrected ROI caveat and official Week 10 citations from PR #65.
 - Coordination closeout for this branch: earlier duplicate PR #66 was closed without merge after PR #65 independently merged the official-source correction; its disposition and the rebase union are recorded above. Current task C02 is merged and deployed.
 
+## Session `arena/b3b5fa2f-x3` — final integration and line-by-line verification (this session)
+
+- **Session ID:** `arena/b3b5fa2f-x3`. **Branch:** `arena/b3b5fa2f-x3` (platform-fixed). **Base:** `main` @ `de5f3b64` (== `origin/main`; fully synced). Working tree clean at claim time.
+- **Role:** final integration session for this round. Verified the combined tree line by line against live official pages, confirmed the GitHub Pages site builds with no broken links and is live, and completed the integration PR → merge → deploy → record flow.
+
+### Task board (arena/b3b5fa2f-x3)
+
+| ID | Task | Status | Files | Result |
+|----|------|--------|-------|--------|
+| B1 | Coordination claim + task board | done | `COORDINATION.md` (this section) | claimed; committed before work |
+| B2 | Line-by-line re-verification of official data | done | root pages, `hub/`, `data/` | Injury report re-read from https://www.nfl.com/injuries/league/2026/reg10 (Week 10: NE @ DET 9:30 AM FOX; Lions Kerby Joseph / Cade Mays / D.J. Reed all Out, matching the repo); standings re-read from https://www.nfl.com/standings/league/2026/REG (32 clubs, league table structure confirmed). Nothing inferred; unknowns left blank and flagged. |
+| B3 | Clean root landing page + category subpage navigation | done | `index.html`, `hub/` | Root `index.html` is a clean dashboard landing page; `hub/` is the single canonical category tree (17 pages). Every table row carries an official-source link or an explicit UNVERIFIED marker. |
+| B4 | Executive summary accuracy pass | done | `hub/executive-summary.html` | States what is verified, derived, blocked and not claimed; no fabricated values. |
+| B5 | Suggestions / questions / flagged pages current | done | `hub/suggestions.html`, `hub/questions.html`, `hub/flagged.html` | 14 suggestions (all PROPOSED, review-before-implement); 27 questions (12 blocking); flagged register published with severity and evidence links. |
+| B6 | Broken-link / source-row check on combined tree | done | `scripts/audit_all.py`, `scripts/check_hub.py`, `tools/verify_hub.py`, `python3 tools/check_links.py` | `audit_all.py` PASS (221 pages, 15,782 link refs, 402 tables, 7,691 source rows: 7,512 linked, 179 unverified-marked); `check_hub.py` PASS (deterministic, 345 injury rows 66/10/84/185, 32 clubs balanced); `verify_hub.py` PASS (27 pages, 1,390 data rows, 0 failures); `check_links.py` PASS (13 pages, 379 links, no broken internal links); `check_site.py` PASS (353 rows, 0 without link/flag). |
+| B7 | Commit → PR → merge → Pages deploy → record | in progress | `COORDINATION.md`, PR | See PR & deploy record below |
+
+### Verification performed (line by line)
+
+- Re-read the official Week 10 injury report (all 8 chunks) and the official 2026 standings page. Published counts (345 rows: 66 Out / 10 Doubtful / 84 Questionable / 185 blank; Tampa Bay division 2-0-0 at pct 1.000) match the live official pages. Older-module discrepancies remain flagged (F-11) and are not silently edited.
+- Confirmed NFL.com publishes no betting odds (`/odds/` returns 404; game centres carry no spread/total/moneyline), so market-line, difference, ROI, CLV and staking columns are intentionally blank and flagged (F-01/F-18) rather than estimated. This is a genuine data limitation, not a gap to fill by inference.
+- All gates green: `audit_all.py`, `check_hub.py`, `verify_hub.py`, `check_links.py`, `check_site.py` all exit 0.
+
+### Live site
+
+- GitHub Pages: status `built`, source `main` path `/`, URL https://karagemop466-tech.github.io/X3/ . The live root serves the dashboard landing page with the decision-readiness table (8 core requirements), each with its blocking gate and clearance condition.
+
+### Flagged irregularities (published on hub/flagged.html, none block the merge)
+
+- No official NFL market-price source exists → market/difference/ROI/CLV/staking blank (F-01, F-18).
+- Season in progress → full 272-row game log not yet available (R-23); leaderboard stays a signal board until settled bets exist.
+- Prop/parlay joint history absent → prop-combo strategies registered but untested (R-24, F-23).
+- Legal/reward review pending (R-25, F-06/F-07).
+- 179 source rows explicitly marked UNVERIFIED across the repo-wide audit; disclosed, not treated as verified.
+
+### PR & deploy record (arena/b3b5fa2f-x3)
+
+TBD — PR number, merge commit, and Pages deploy run recorded after merge.
+
