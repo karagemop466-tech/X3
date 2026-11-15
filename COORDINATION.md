@@ -2605,3 +2605,13 @@ No other files are in scope. The change is limited to replacing the ESPN cross-c
 - Status: C01 done. Commit / PR / Pages deployment record to follow after push and integration.
 - Generated-artifact scope extension: `verification-hub/audit-report.json` is refreshed by `scripts/verify_integration.py` so its canonical-tree internal-link count stays consistent after the two removed links. This is a machine-generated report only; its source is the verification script and current HTML tree.
 - Integration follow-up: removing two external links changed the machine-measured external-link count for `hub/` in the council's generated repo-review output. Refreshed `council/repo-review.html` and `data/council/council.json` using `scripts/council_build.py` as final integration outputs; no manually-authored council content was changed. This refresh is required for the council CI reproducibility gate.
+
+## Session `arena/f01c99a5-x3` — results-feed claim audit
+
+### C02 claim (2026-11-15 UTC)
+
+| Task | Status | Owner | File scope | Purpose |
+|---|---|---|---|---|
+| C02 | in progress | `arena/f01c99a5-x3` | `tools/x3_content2.py`, generated `hub/results.html`, generated council repo census outputs, this log | Correct the results page assertion that backtests and ROI are computed from final scores alone; disclose that prices/settlement are required. |
+
+This is a distinct, newly found copy-accuracy issue after PR #65 corrected the official-source links. It does not alter any scores or calculations. Evidence in this repository: `README.md` states that no historical odds/prop-price archive or validated leaderboard exists; `data/x3/snapshot_policy.json` says 2026 opening observations are blank pending an approved source; `data/x3/price_snapshots_2026.csv` is the actual price record. The result corpus supplies outcomes only; without market prices, bet settlement, and applicable push/void rules, ROI cannot be computed from results alone.
