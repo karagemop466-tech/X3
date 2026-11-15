@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 321,
-      "flagged_rows": 240,
-      "refs": 417,
+      "rows": 358,
+      "flagged_rows": 276,
+      "refs": 429,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -125,9 +125,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1840,
-      "flagged_rows": 1441,
-      "refs": 2815,
+      "rows": 1918,
+      "flagged_rows": 1518,
+      "refs": 2834,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -281,8 +281,8 @@
     }
   },
   "pages_total": 228,
-  "rows_total": 10349,
-  "rows_flagged_or_sourced": 8950,
-  "internal_refs": 5563,
+  "rows_total": 10464,
+  "rows_flagged_or_sourced": 9063,
+  "internal_refs": 5565,
   "problems": []
 }
