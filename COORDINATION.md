@@ -3322,3 +3322,84 @@ logged for the signals owner to adopt the comparison into its own page.
 | ID | Task | Status | Owner | Files |
 |----|------|--------|-------|-------|
 | RD-10 | Publish every model total twice (estimator A vs registered estimator B, gap column, walk-forward comparison) | in progress | `arena/6259c7b0-x3` | `scripts/readiness_compute.py`, `readiness/two-totals.html` |
+
+### Progress log (arena/6259c7b0-x3)
+
+- 2026-11-15 — RD-01..RD-10 built. New module `readiness/` (11 pages), `scripts/readiness_compute.py`,
+  `scripts/build_readiness.py`, `scripts/verify_readiness.py`, `scripts/drift_alarm.py`,
+  `scripts/availability_snapshot.py`, workflows `readiness.yml` + `availability-snapshots.yml`.
+- RD-01: decision-readiness register (74 requirement rows: status, gate that blocks, number that
+  clears, source per row) rendered on the root landing page (via `tools/build_hub.py`) and at
+  `readiness/decision-readiness.html`. Counts: 44 done | 13 partial | 13 blocked | 2 registered | 2 rejected.
+- RD-02: `readiness/data/change_mind.json` + page — 42 strategy entries (signals 15, desk 10, ops 5,
+  hub prereg 12), each with both sides of the field (toward-belief evidence / abandon evidence).
+- RD-03: 14 datasets pinned (exact/min row counts, required fields, status vocabulary, value pins,
+  conditional requirements); `scripts/drift_alarm.py` exits 1 with a loud per-field report; runs in CI
+  (readiness.yml). While calibrating the pins it correctly caught real schema facts (price rows blank
+  only where status != originated; leaderboard signal cells blank only for unranked strategies) — pins
+  freeze those rules.
+- RD-04: control baselines computed with the engine's own pipeline and contest rule on the identical
+  graded set (n=105, weeks 1-10): coin flip SU 0.5619 / contest 0.5769; favourites SU 0.6286 /
+  contest 0.6190; published model side contest 0.6381. The controls give the leaderboard its luck
+  lines: the side's edge over a naive favourites rule is 0.019 contest wins. Coordination request
+  logged below to join them into signals/leaderboard.html.
+- RD-05: weekly what-changed diff (rank via win-pct rule, rating via engine margin refit through each
+  week, availability change from stored report snapshots) + per-week snapshot CSVs stored under
+  `readiness/data/history/2026/week-XX/`. Availability change computable only for weeks 8-10 (stored
+  snapshots); earlier weeks blank and flagged, never inferred.
+- RD-06: `scripts/availability_snapshot.py` + scheduled workflow (cron Wed/Thu/Fri 21:00 UTC, Sun
+  17:00 UTC): raw HTML + SHA-256 + append-only manifest, >20% row-count delta prints SCHEMA CHANGE
+  alert, >4-day staleness exits 1 with FRESHNESS ALERT. Status published as "first run pending" until
+  the scheduled workflow executes on the default branch.
+- RD-07: availability-feature ablation (same ridge form, lambda 2.0 both arms, chronological holdouts,
+  paired bootstrap 10k, seed 20261115): pooled n=16 test games, MAE delta -0.549 pts, 95% CI
+  [-5.567, +3.979] -> inconclusive at this sample size; verdict published with the CI, and the panel
+  states what would make it decisive (>= 6 weeks of availability snapshots).
+- RD-08: announced-starter evidence register — 8 dated rows / 5 distinct announcements verified on
+  official nfl.com pages (Drew Lock x2, Jacoby Brissett x2, Kyle McCord x2, Deshaun Watson, Carson
+  Beck). Only official nfl.com/news and nfl.com/videos links published; verifier V4 enforces this.
+- RD-09: matchup deficiency matrix (week-10 fixtures, per side per unit, starter out + replacement
+  named + replacement string, join evidence per row) from data/desk/deficiencies.json.
+- RD-10: two totals published (estimator A = engine total; estimator B = registered lagged-mean total)
+  with gap column on n=105 graded games; MAE 11.871 vs 11.757, paired CI [-0.907, +1.098] -> keep
+  both; collapse deferred by pre-registered rule.
+
+### Verification performed (arena/6259c7b0-x3)
+
+- `python3 scripts/verify_readiness.py` — PASS (V1 links, V2 source-or-flag rows, V3 register
+  completeness, V4 official-only announcement links, V5 42-entry union no duplicates, V6 drift report
+  agrees with pins, V7 byte-identical rebuild, V8 controls reproduce with fixed seed).
+- `python3 scripts/drift_alarm.py` — PASS (14 pinned datasets, 0 alarms).
+- Repo-wide regression suite re-run green: `audit_all.py` (232 pages, 219 source tables, 8,043 source
+  rows, all linked or flagged), `verify_integration.py`, `check_links.py` (13 root pages, 529 links),
+  `check_hub.py`, `tools/verify_hub.py` (27 pages, 1,390 rows), `verify_signals.py`, `desk_verify.py`,
+  `check_dashboard.py`, `verify_data.py`, `tools/verify_ledger.py`, `tools/verify_markets.py`,
+  `ops_run.py`, `council_verify.py` (after a census rebuild), `check_site.py`, `tools/verify_site.py`.
+- Smoke test: all checked pages serve HTTP 200 locally.
+- Official-source verification for RD-08 done via web search against nfl.com pages on 2026-11-15
+  (URLs published on readiness/announced-starters.html); no number was filled from a non-official page.
+
+### Coordination requests (logged; files NOT edited)
+
+- To the signals owner (session arena/09f8c786-x3, tree complete): please join the RD-04 control rows
+  (readiness/data/control_baselines.json) into signals/leaderboard.html on its next rebuild so every
+  leaderboard run carries the random/favourites controls on its own page.
+- To the hub replacements owner: please join the announced-starter evidence field
+  (readiness/data + readiness/announced-starters.html) as a column on hub/replacements.html.
+
+### Irregularities flagged by this session (also on readiness pages; non-blocking)
+
+- IR-24 (this session's numbering): the committed root index.html carried a "Verification status"
+  section that was NOT emitted by its generator (tools/build_hub.py); regenerating would have silently
+  deleted another session's published content. Resolution: the section is now emitted by the generator
+  byte-identically (verified against the committed blob) and nothing was discarded.
+- IR-25: no scheduled capture exists anywhere in the repo prior to this session — every capture
+  workflow ran only on manual dispatch or legacy-branch pushes, so the "dated history" requirement was
+  structurally unmet; RD-06 closes the automation, first run pending on the default branch.
+- IR-26: availability load is published by the signals engine but never fitted (line 56 of
+  scripts/x3_signals.py: "the COEFFICIENT is not fitted"); the RD-07 ablation is the with/without test
+  the brief asks for, and its verdict at current n is inconclusive with the CI published.
+- IR-27 (inherited, restated on the readiness register): 13 of 74 requirement rows are blocked and 13
+  partial; the dominant blocker is F-01 (no official/verifiable market-price source) plus four
+  capture-class gaps (inactives, snap counts, reserve/IR, venue, past-season reports, weather).
+
