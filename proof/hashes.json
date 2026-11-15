@@ -1,0 +1,91 @@
+{
+ "source_results": "github.com/nflverse/nfldata",
+ "source_availability": "github.com/nflverse/nflverse-data",
+ "files": {
+  "closing_lines.csv": {
+   "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/closing_lines.csv",
+   "bytes": 942229,
+   "sha256": "3571e1c9fc8d7396f405fb7c17d43c15676d335ffc932fbb03ff18da691d1729"
+  },
+  "games.csv": {
+   "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
+   "bytes": 2189677,
+   "sha256": "92455dde6d6dfba95620000af3ae7dba13cd3bb8d15f2ebf3971baa88a934e0a"
+  },
+  "injuries_2018.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2018.csv",
+   "bytes": 665119,
+   "sha256": "4724e1f37cc3076f564e997fbf269190e7dbe795a39315b903788e0a9c40065e"
+  },
+  "injuries_2019.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2019.csv",
+   "bytes": 700757,
+   "sha256": "daddfe8e04ddc3a29bce14f362e774fbadfb274c807f1f0fde7b5bf32aaf6cdf"
+  },
+  "injuries_2020.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2020.csv",
+   "bytes": 737474,
+   "sha256": "706cca82824214f6b73ba0c6e537d3ee39766a50c644b8974b9fc28d7518de90"
+  },
+  "injuries_2021.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2021.csv",
+   "bytes": 737083,
+   "sha256": "1049fb9ff0fe7cfcf3ba8bfe1f5a35d3aba985c461c8fb7bf5201735b6d34254"
+  },
+  "injuries_2022.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2022.csv",
+   "bytes": 752433,
+   "sha256": "5f0d60324e597edd1a2ced8540b04e40b51dd440591dd1df11b8d96343387c9e"
+  },
+  "injuries_2023.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2023.csv",
+   "bytes": 738501,
+   "sha256": "16b04e21da5aa3944cfa9c22cafcc84ed7e6d9866eaddf0344e9b8cbf2f63afe"
+  },
+  "injuries_2024.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2024.csv",
+   "bytes": 816989,
+   "sha256": "498bce8e13cb64b2ab9bb0ad6cb81d0a63c2ddb24016c9fc90c2de2126fae449"
+  },
+  "injuries_2025.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2025.csv",
+   "bytes": 696006,
+   "sha256": "873ca1606dd575bd01152508a243ef6b3a0f8f97b90b707217e62ee8c7ceb735"
+  },
+  "injuries_2026.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2026.csv",
+   "bytes": 362797,
+   "sha256": "8169fb6947f3e86b436fabd025df6211f77eca5f2a38c3d91d2412b568b58441"
+  },
+  "snap_counts_2021.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2021.csv",
+   "bytes": 2388493,
+   "sha256": "8e4dae054a4749cf2d4919508d9161a6068fd67509979aefa385bfb3803d0ee5"
+  },
+  "snap_counts_2022.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2022.csv",
+   "bytes": 2379719,
+   "sha256": "0018a4833fbf0f825286c1c27450c6254391b548d6c55bcde728e93e4816815a"
+  },
+  "snap_counts_2023.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2023.csv",
+   "bytes": 2394875,
+   "sha256": "303b61aa5c33ffda863f93a750fc14483f397f9187ad502b1ce71e9b516a64c0"
+  },
+  "snap_counts_2024.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2024.csv",
+   "bytes": 2402841,
+   "sha256": "a2aa58efe093f8aa0ad5aadf09f81d8ec690a1183bd2dde68d20e7f109a9c335"
+  },
+  "snap_counts_2025.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv",
+   "bytes": 2401290,
+   "sha256": "3fc2deb0e9ad86d34d4578cb80bb21c95253e088ee22ca028adf46f7485eff1f"
+  },
+  "snap_counts_2026.csv": {
+   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.csv",
+   "bytes": 1147455,
+   "sha256": "ba54197d9e1e9a5473153f984f4880e736020c9e20565d1df246bf1e62714866"
+  }
+ }
+}
