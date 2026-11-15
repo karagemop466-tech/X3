@@ -92,8 +92,9 @@ REQ = [
     ("R-22", "Quality", "Repo reviewed line by line with links for manual review",
      "Per-file/per-claim table with repo path and official URL", "VERIFIED", "hub/repo-review.html"),
     ("R-23", "Data", "Game results by week and venue for model calibration",
-     "272-row game log with venue, scores, rest days", "BLOCKED",
-     "No ingested game log; only 1 final score known (F-02)"),
+     "A chronological, multi-season game corpus with score, venue and rest days for every fixture, reconciled to official NFL results",
+     "PARTIAL",
+     "137 final 2026 games are present and aggregate to official standings; only 7 of 163 feed rows have a venue value, leaving 156 blank; multi-season history is absent (see Q-19/Q-25)"),
     ("R-24", "Data", "Player-prop history and line movement history",
      "Daily prop prices + closing lines per game", "BLOCKED", "Not present in repo (F-03)"),
     ("R-25", "Compliance", "Legal review of originating/publishing lines and rewards in the owner's jurisdiction",
@@ -115,11 +116,17 @@ Q = [
      "Owner (commercial decision)",
      "Keep market columns blank and label the board 'model-only'."),
     ("Q-02", "YES", "Whether any strategy can ever be ranked on a leaderboard",
-     "Gates G0-G9 are defined; G2 (minimum sample) needs >= 300 settled bets per strategy.",
-     "Historical game results and prices: no game log, no odds archive in the repo.",
-     "Ingest a results archive (2018-2025) and a price archive; both are one-time bulk loads.",
+     "137 final 2026 games are recorded; prices and earlier seasons are not available in the canonical feed. G-2 currently proposes >=300 settled bets and >=3 seasons.",
+     "No historical multi-season game corpus or usable price archive is present in the canonical feed.",
+     "Load 3+ chronological seasons of official results and a separately licensed price history; reconcile each season before scoring.",
      "Owner + data vendor",
      "Leaderboard stays empty; it is not a defect, it is the gate working."),
+    ("Q-25", "YES", "Whether venue-dependent modelling can proceed",
+     "The 163-row results feed has 137 finals, but only 7 rows have a populated venue field; 156 are blank. Game score sources are official weekly schedule pages; the venue field has not been transcribed per fixture.",
+     "Official NFL Game Center evidence and a venue value for the remaining fixtures; neutral-site status must also be sourced, not inferred.",
+     "Capture each official game-centre page with retrieval time and source URL, transcribe the displayed venue, then verify 100% of the current 163 rows and each new fixture. Keep unknown venue cells blank.",
+     "This project",
+     "Do not use venue/travel features until 163/163 fixtures have official venue evidence; preserve the 156 blanks."),
     ("Q-03", "YES", "How to treat 1st-string vacancies in the model",
      "39 positions across 18 clubs have a chart-named starter marked Out/Doubtful (DERIVED from "
      "official report + club charts).",
@@ -477,30 +484,30 @@ FLAGS = [
     ("F-01", "HIGH", "Market data", "No market prices exist anywhere in the repo, so the originated "
      "lines cannot be compared, CLV cannot be computed, and no bet can be settled. Market columns on the "
      "lines board are intentionally blank.",
-     "https://github.com/karagemop466-tech/X3/blob/main/" + "data - the canonical data directory contains no odds file",
+     "https://github.com/karagemop466-tech/X3/tree/main/data",
      "Owner: choose a price source class (Q-01)"),
-    ("F-02", "HIGH", "Results data", "No game log. The only final score confirmed for the 2026 season is "
-     "Commanders 24, Giants 21 (Week 10 TNF) on the schedule page.",
-     S["sched10"], "Load a results archive (S-03)"),
+    ("F-02", "HIGH", "Results data", "The canonical 2026 feed contains 137 final scores reconciled to all 32 clubs' official standings; it is not a multi-season backtest corpus, and historical seasons remain absent.",
+     S["standings"],
+     "Load and reconcile at least 3 chronological seasons before a multi-season strategy backtest (G-2/G-3)."),
     ("F-03", "HIGH", "Prop data", "No player-prop prices or outcomes, so the prop-combo and parlay "
      "strategies cannot be evaluated at all; every numeric cell on those rows is blank.",
-'https://github.com/karagemop466-tech/X3/blob/main/data/hub - the canonical inputs (no prop rows)', "Prop archive (Q-07)"),
+'https://github.com/karagemop466-tech/X3/tree/main/data/hub', "Prop archive (Q-07)"),
     ("F-04", "HIGH", "Correlation", "No official source publishes prop or parlay correlation "
      "coefficients. The joint-dependence values needed to price a same-game parlay honestly can only be "
      "estimated internally, from the game log.",
-'https://github.com/karagemop466-tech/X3/blob/main/hub/correlation.html - the blank rows published for review', "Estimate after S-03/S-04"),
+'https://github.com/karagemop466-tech/X3/blob/main/hub/correlation.html', "Estimate after S-03/S-04"),
     ("F-05", "MEDIUM", "Depth charts", "31 of 32 club depth charts are readable but self-labelled "
      "'unofficial'; Houston publishes only an image, so its chart has no machine-readable rows.",
      "https://www.houstontexans.com/team/depth-chart", "Use the participation report as the source of truth"),
     ("F-06", "MEDIUM", "Leaderboard", "Reward amounts are blank. Nothing in the repo establishes a prize, "
      "payout mechanism or eligibility rule, and the site does not accept bets.",
-'https://github.com/karagemop466-tech/X3/blob/main/hub/leaderboard.html - rewards table with blank amounts', "Owner decision (Q-13)"),
+'https://github.com/karagemop466-tech/X3/blob/main/hub/leaderboard.html', "Owner decision (Q-13)"),
     ("F-07", "MEDIUM", "Compliance", "Legal status of publishing an original betting market and paying "
-     "contest prizes in the owner's jurisdiction is unresolved.", 'https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md - prior sessions logged the same unresolved question',
+     "contest prizes in the owner's jurisdiction is unresolved.", 'https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md',
      "Owner: legal review before any reward exists"),
     ("F-08", "MEDIUM", "Model", "Home-field advantage is applied as 0.0 and every injury-impact cost is an "
      "assumed prior, not a fitted value. Model output is labelled DERIVED, never 'prediction accuracy'.",
-'https://github.com/karagemop466-tech/X3/blob/main/hub/data/meta.json - the frozen PARAMS block', "Recalibrate after S-03"),
+'https://github.com/karagemop466-tech/X3/blob/main/hub/data/meta.json', "Recalibrate after S-03"),
     ("F-09", "LOW", "Source data", "185 of 345 injury rows carry no game designation (practice-only "
      "listings); treating them as 'available' or 'unavailable' would both be wrong.",
      S["injuries"], "Keep blank; do not impute (already done)"),
@@ -513,7 +520,7 @@ FLAGS = [
      "here uses 2-0-0, and a second session's independent transcription of the same page also reads "
      "2-0-0, so the module that needs the one-line fix is tools/nfl_data.py - which was NOT edited here "
      "(owned by another session).",
-     S["standings"] + " vs https://github.com/karagemop466-tech/X3/blob/main/tools/nfl_data.py",
+     S["standings"],
      "Owner: approve the one-line fix in the other session's file (Q-11)"),
     ("F-12", "MEDIUM", "Repo data conflict", "Prior sessions published 205, 345 and 345 Week-10 injury "
      "row counts from the same official page. This session's independent transcription is 345 rows "
@@ -523,7 +530,7 @@ FLAGS = [
      "pages/, site/, lab/, "
      "dashboard/, x3lab/) with overlapping tables and different numbers; the root index.html was a "
      "redirect into one of them. A reader cannot tell which figures are current.",
-'https://github.com/karagemop466-tech/X3/blob/main/hub/archive.html - the tree index', "Adopt S-01 (archive labels) - done in this PR"),
+'https://github.com/karagemop466-tech/X3/blob/main/hub/archive.html', "Adopt S-01 (archive labels) - done in this PR"),
     ("F-14", "MEDIUM", "Repo structure", "The Pages workflow validated root, pages/, site/, lab/ and "
      "docs/ but not dashboard/ or x3lab/, so two published trees were never link- or source-checked in CI.",
      "https://github.com/karagemop466-tech/X3/blob/main/.github/workflows/pages.yml",
@@ -531,7 +538,7 @@ FLAGS = [
     ("F-15", "LOW", "Repo hygiene", "Team codes are inconsistent across official pages and repo files: "
      "standings print 'AZ' and 'LA', the injury page prints 'AZ' and 'LAR', and tools/nfl_data.py uses "
      "'ARI' and 'LA'. An unaliased join silently drops 29 Cardinals/Rams rows.",
-     S["standings"] + " vs " + S["injuries"], "Alias map added (tools/x3_engine.py); add a canonical "
+     S["injuries"], "Alias map added (tools/x3_engine.py); add a canonical "
      "team-code table as part of S-03"),
     ("F-16", "LOW", "Repo hygiene", "No LICENSE file exists, and the repo has no branch protection; the "
      "Pages token cannot change Pages settings (a prior session hit HTTP 403), so the Pages source stays "
@@ -544,4 +551,53 @@ FLAGS = [
      "https://www.nfl.com/injuries/league/2026/reg10",
      "No action needed for the model. The Wednesday participation report would settle it, and the final "
      "report has already superseded that page - the disagreement is recorded rather than adjudicated."),
+    ("F-29", "MEDIUM", "Validation threshold", "As of 2026-11-15 UTC, the canonical G-2 gate sets a minimum of 300 settled bets across at least 3 seasons. Open PR #58 proposes 2,272 bets instead; GitHub reports that pull request is unmerged and has a dirty merge state. Neither number is an NFL-published fact, and the final project threshold is unresolved.",
+     "https://github.com/karagemop466-tech/X3/pull/58",
+     "Resolve the competing preregistered threshold proposal before interpreting leaderboard eligibility; no strategy currently qualifies under either proposal."),
+    ("F-31", "HIGH", "Fixture venue data", "The canonical 163-row results feed has venue populated for only 7 fixtures; 156 venue cells are blank. Do not infer venue from the home-team field or assume a neutral site. Official NFL Game Center capture is still required for each fixture.",
+     "https://www.nfl.com/games/",
+     "Capture official Game Center evidence per fixture; publish venue only when verified. Keep venue-dependent model features blocked until coverage is complete."),
 ]
+
+# Decision-readiness register. These are project gates, not NFL-issued thresholds.
+# Each row maps a brief requirement to its current blocker and a measurable exit condition.
+# Sources are official only when they establish an underlying NFL observation; project policy
+# and user/commercial decisions are explicitly left as UNVERIFIED rather than dressed up as facts.
+READINESS = {
+    "R-01": ("G-COORD", "0 tasks missing an owner, status, or file scope", None),
+    "R-02": ("G-AUTO", "0 required manual entry steps; every scheduled job has a successful logged run", None),
+    "R-03": ("G-1", "100% of published data rows link a primary source or are explicitly marked UNVERIFIED", None),
+    "R-04": ("G-1", "0 unsupported values presented as verified; 100% of unknowns remain blank and flagged", None),
+    "R-05": ("G-ORIGIN", "100% of scheduled fixtures receive the preregistered fair-line output", S["sched10"]),
+    "R-06": ("G-PRICE", "100% of originated markets have a lawfully usable, timestamped comparison price", None),
+    "R-07": ("G-REG", "3/3 families registered: singles, parlays, and player-prop combos", None),
+    "R-08": ("G-VALIDATE", "100% of applicable validation gates pass before promotion; currently 0 strategies eligible", None),
+    "R-09": ("G-4 / G-5 / G-6", "Untouched holdout skill interval clears the preregistered baseline, with multiplicity adjustment and uncertainty", None),
+    "R-10": ("G-CORR", "100% of published coefficients use official inputs and include method, n, and interval", S["standings"]),
+    "R-11": ("G-1 / AVAIL", "100% of dated official injury-report rows captured with retrieval time and raw hash", S["injuries"]),
+    "R-12": ("G-DEPTH", "32/32 clubs have a verified depth source or a documented unavailable-source flag; replacement evidence is not inferred", S["teams"]),
+    "R-13": ("G-DEPTH", "100% of offense and defense availability records are tied to dated official evidence; unknowns remain blank", S["teams"]),
+    "R-14": ("G-LEGAL / G-LEADERBOARD", "1 written legal/compliance decision; reward amount remains 0 until approved", None),
+    "R-15": ("G-REVIEW", "100% of suggestions state options, trade-offs, dependencies, and an explicit review status", None),
+    "R-16": ("G-DECISION", "0 blocking questions without a known/missing/discovery path and accountable owner", None),
+    "R-17": ("G-REPORT", "100% of executive-summary factual claims trace to a data row or are labeled derived/unverified", None),
+    "R-18": ("G-SITE", "1 canonical current landing path; 0 broken internal links", None),
+    "R-19": ("G-ACCESS", "0 critical mobile/keyboard navigation failures in the published pages", None),
+    "R-20": ("G-FLAGS", "100% of unresolved irregularities published with an evidence link or an explicit source gap", None),
+    "R-21": ("G-CI", "0 failures across the repo-wide link, build, source-row, and deterministic-output checks", None),
+    "R-22": ("G-AUDIT", "100% of in-scope tracked files inventoried; every factual claim under review is linked or flagged", None),
+    "R-23": ("G-3 / G-VENUE", "At least 3 chronological seasons with 100% of fixtures' scores and venues sourced; current feed has 137 finals and only 7/163 venue values populated (156 blank)", S["standings"]),
+    "R-24": ("G-PROP-DATA", "At least 3 seasons of timestamped prices and settled outcomes for every registered prop market; availability is currently unverified", S["stats"]),
+    "R-25": ("G-LEGAL", "1 written jurisdiction-specific legal review before any real-money use or funded reward", None),
+    "R-26": ("G-PRICE-STORE", "100% of originated markets have an immutable OPEN and CLOSE record; unavailable observations stay blank/PENDING", None),
+    "R-27": ("G-RESULTS", "137/137 current final-game records reconcile to official club aggregates; 0 mismatches", S["standings"]),
+    "R-28": ("G-ORDER", "3/3 stages recorded in order for every game: side, total, moneyline", S["sched10"]),
+    "R-29": ("G-PRICE", "3 distinct columns per market; 100% of unavailable market observations are blank and flagged", None),
+    "R-30": ("G-SIGNAL / G-STAKING", "2 separate scores published; each ranked strategy independently passes its own gates", None),
+    "R-31": ("G-REPLACEMENT", "100% of named replacement tiers cite a dated source; every unresolved absence is explicitly UNVERIFIED", S["teams"]),
+    "R-32": ("G-CORR", "100% of computed correlation rows include official source, n > 0, method, and uncertainty interval", S["standings"]),
+    "R-33": ("G-10", "4/4 documented demotion clauses have automated tests; any triggered clause moves LIVE to PAPER", None),
+    "R-34": ("G-REVIEW", "100% of suggestions expose a choice and decision status before implementation", None),
+    "R-35": ("G-DECISION", "0 blocking questions missing known facts, missing facts, discovery path, owner, or default", None),
+    "R-36": ("G-REPORT", "100% of summary claims match the current generated data and carry verified/derived/blocked labels", None),
+}
