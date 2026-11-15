@@ -2546,3 +2546,49 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+---
+
+## Session `arena/21bbf6c1-x3` — live-capture desk (CLAIM, posted 2026-11-15T00:00Z)
+
+Branch: `arena/21bbf6c1-x3`. Base: `main` @ `8a889d7190ec230f5c9940d2e95e533358e84c65`.
+Platform rule: all work happens on this assigned branch; the `session-<id>/<task>` naming in the
+brief yields to it. Status legend: unclaimed | in progress | done | needs review | blocked
+
+**Why this session exists.** Every earlier session recorded the same blocker: "Sandbox outbound
+network restricted … nfl.com not directly fetchable — verification via web_search". That is no
+longer true: the platform page-retrieval channel reaches `www.nfl.com` directly. This session's
+contribution is therefore the thing no prior session could do — a **second, dated, complete read of
+the live official sources**, and the delta against what the site already published.
+
+### Task board (arena/21bbf6c1-x3)
+
+| ID | Task | Status | Scope (all NEW files except append-only COORDINATION.md) |
+|----|------|--------|------------------------------------------------------------|
+| L01 | Full re-capture of the Week 10 official injury report (all chunks, clock time, digest) + delta vs the 2026-11-14 capture | in progress | `data/live/capture_injuries_wk10_*.csv`, `live/capture-injuries.html` |
+| L02 | Week 10 slate register transcribed from the official schedule (venue, date, kickoff, network) | in progress | `data/live/slate_2026_wk10.csv`, `live/slate.html` |
+| L03 | Roster-event register from the official transactions log (IR, releases, trades) | in progress | `data/live/transactions.csv`, `live/roster-events.html` |
+| L04 | Depth-chart route audit, club by club, on the clubs prior sessions flagged (BAL GB HOU SEA WAS) | in progress | `data/live/depth_route.csv`, `live/depth-route.html` |
+| L05 | Correction ledger: every repo-published row that disagrees with today's official page | in progress | `data/live/corrections.csv`, `live/corrections.html` |
+| L06 | Consolidated suggestion register: dedup across all trees, each with the paths, the cost, the missing information and the probe that finds it — proposed, nothing implemented | in progress | `data/live/suggestions.csv`, `live/suggestions.html` |
+| L07 | Questions ledger: what we have / what we lack / the answer that closes it / where it comes from | in progress | `data/live/questions.csv`, `live/questions.html` |
+| L08 | Executive summary of the refresh | in progress | `live/executive-summary.html` |
+| L09 | Flagged for review (unverified + irregularities found today) | in progress | `data/live/flags.csv`, `live/flagged.html` |
+| L10 | Build + verify scripts and a CI gate (new workflow file, `pages.yml` untouched) | in progress | `scripts/live_build.py`, `scripts/live_verify.py`, `.github/workflows/live.yml` |
+| L11 | Landing page for the module + one nav entry on the root index (integration remit) | in progress | `live/index.html`, `index.html` (one line) |
+| L12 | Integration: PR to main, merge, confirm Pages deploy, record result | unclaimed | `COORDINATION.md`, PR |
+
+### File-scope declaration (non-overlapping)
+
+This session **creates** `live/**`, `data/live/**`, `scripts/live_build.py`, `scripts/live_verify.py`,
+`.github/workflows/live.yml`. It **reads but never writes** `hub/**`, `signals/**`, `council/**`,
+`ops/**`, `origin/**`, `desk/**`, `data/desk/**`, `data/x3/**`, `data/hub/**`, `dashboard/**`,
+`x3lab/**`, `crosscheck/**`, `audit/**`, `ledger/**`, `pages/**`, `site/**`, `docs/**`, `lab/**`,
+`legacy/**`, `analysis/**`, `research/**`, `archive/**`, `capture/**`, `verification-hub/**`,
+`tools/**`, every other session's `scripts/**`, and every existing workflow file including
+`pages.yml`. `COORDINATION.md` and `README.md` are append-only. `index.html` gains exactly one nav
+entry, per the integration-session remit; no other session-owned content is edited.
+
+### Log
+
+- 2026-11-15 — claim posted, scope declared, pushed.
