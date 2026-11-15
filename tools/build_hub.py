@@ -182,6 +182,8 @@ def page(fname, title, intro, body, active="index", extra_head=""):
     # It lives outside hub/, so it is appended rather than added to NAV (which is
     # rendered with two different relative prefixes).
     nav += '<a href="../signals/index.html">Signals &amp; leaderboard</a>'
+    # integration session arena/4c2f61cd-x3: one outbound link to the round2 module.
+    nav += '<a href="../round2/index.html">Round 2 readiness</a>'
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1433,6 +1435,10 @@ def landing():
     # integration session arena/09f8c786-x3: the signals module is a separate tree
     nav += ('<a href="signals/index.html"><b>Signals &amp; leaderboard</b>'
             '<span>Originated lines, price snapshots, signal vs staking</span></a>')
+    # integration session arena/4c2f61cd-x3: the round2 module (fresh-day verification
+    # + the decision-readiness matrix the brief asks for on the landing page).
+    nav += ('<a href="round2/index.html"><b>Round 2 readiness</b>'
+            '<span>66 requirements mapped: gate that blocks, number that clears</span></a>')
     html = f"""<!doctype html>
 <html lang="en">
 <head>

@@ -2577,3 +2577,50 @@ through the established integration pattern (logged above).
 ### Log
 
 - 2026-11-15: claim posted; pushed.
+
+### Progress log (arena/4c2f61cd-x3)
+
+- 2026-11-15 — R2-01/R2-03: all 12+ repo gates re-run on the working tree before any edit; every
+  gate passes (`scripts/audit_all.py` 221 pages / 7,686 source rows; ops V8 137 finals reconcile to
+  official standings 0 failed; market engines rebuild byte-identical; hub rebuild deterministic).
+- 2026-11-15 — R2-01 fresh-day official captures (fetch tool, sandbox network itself cannot reach
+  nfl.com): official league standings (32 rows, 16 columns each), official Week-10 slate (14 games +
+  4 byes, 2 finals / 2 live / 7 scheduled + MNF), official Game Center NE@DET, and the official
+  **NFL Game Book PDF** (44 starting positions, 12 Not Active players, venue, game-day weather,
+  roof/surface, officials, attendance). All transcribed into `round2/data/*.csv` with source links.
+- 2026-11-15 — **Standings reconciliation (line by line)**: 30/32 repo rows byte-identical to the
+  official page; the only two diffs (DET, NE) are exactly the Munich final played that morning
+  (DET 35, NE 10: PF/PA deltas match to the point). The repo's 137-final feed is consistent with the
+  official record as of 2026-11-15. One new final recorded in the round-2 delta; owned modules' data
+  deliberately NOT overwritten.
+- 2026-11-15 — R2-02: decision-readiness matrix built — 66 requirement lines, each with
+  implementing page, blocking gate and the number that would clear it: 32 done, 20 partial,
+  13 not covered, 1 blocked (`round2/readiness.html`, data in `round2/data/requirements_full.csv`).
+  Every status claim was checked against the repo by search (e.g. no "what would change our mind"
+  field in `signals/data/strategies.csv`; no ablation run anywhere; no reserve/IR capture; no
+  past-seasons injury archive; `dashboard/data/rates.json` is team scoring rates, not designation
+  play rates).
+- 2026-11-15 — R2-04: 7 flags and 10 suggestions published (`round2/flagged.html`,
+  `round2/suggestions.html`). Two NEW evidence irregularities: **R2-F1** Kerby Joseph (officially
+  Out) absent from the rendered Game Book Not Active list (possible PDF-extraction truncation —
+  only 6 DET inactives visible; also **R2-F5**); **R2-F2** the two official sources name the Munich
+  venue differently (Game Center "FC Bayern Munich Stadium" vs Game Book "Allianz Arena").
+- 2026-11-15 — R2-05: `scripts/build_round2.py` (deterministic builder), `scripts/verify_round2.py`
+  (module gate: parse, no root-absolute links, determinism, source-row rule, row counts) and
+  `.github/workflows/round2.yml` (new file, no overlap with existing workflows) — all green.
+- 2026-11-15 — R2-06 integration: `tools/build_hub.py` gained two nav-link lines (hub nav + root
+  landing card) following the PR #62 precedent; hub pages and root `index.html` regenerated with
+  exactly that change (verified by diff); `tools/verify_hub.py`, `scripts/verify_round2.py`,
+  `scripts/audit_all.py` all PASS after regeneration. COORDINATION.md and README.md append-only.
+
+### Sources and verification performed (arena/4c2f61cd-x3)
+
+- https://www.nfl.com/standings/league/2026/REG — fetched 2026-11-15 (game day); full 32-team table.
+- https://www.nfl.com/schedules/2026/by-week/week-10 — fetched 2026-11-15 (early window live); slate + byes.
+- https://www.nfl.com/games/patriots-at-lions-2026-reg-10 — fetched 2026-11-15 after the final; score, quarters, venue, Game Book link.
+- https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf — official NFL Game Book (NE@DET), fetched 2026-11-15; lineups, Not Active, officials, weather, roof/surface, attendance.
+- Repo searches (grep across all modules) performed 2026-11-15 for each "not covered" readiness row; negative results recorded in the matrix rows.
+
+### Merge and deploy record (arena/4c2f61cd-x3)
+
+- Pending at the time of this entry; updated below after the PR is merged and Pages redeploys.
