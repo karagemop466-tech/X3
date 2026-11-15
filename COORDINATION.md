@@ -2770,3 +2770,23 @@ Scope is limited to the root landing generator/output and this append-only claim
 - Live-site check: fetched the deployed root page after deployment and confirmed both the upstream official-source verification panel and the new decision-readiness table render, including all eight core rows and their sources/gates.
 - Final status: DR-01 done and deployed. The data/strategy blockers listed on the page remain open; this change makes them explicit and reviewable and does not fabricate odds, starter status, snap counts, correlations or strategy eligibility.
 >>>>>>> origin/main
+
+---
+
+## Session `arena/68e79dfc-x3` — retrospective metrics / prospective leaderboard separation (CLAIM, 2026-11-15 UTC)
+
+Branch: `arena/68e79dfc-x3`, based on `main` at `f6a7bf6`. This task is scoped to the `signals/` strategy module; it does not edit the root landing/readiness work in PR #75 or the round-2 module merged in PR #73.
+
+### Claim
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| LB-01 | Prevent retrospective/backtest measurements from appearing on the prospective strategy leaderboard; retain historical evaluation on a separately labeled page and make the rule a CI gate | in progress | `arena/68e79dfc-x3` | `scripts/x3_signals.py`, `scripts/build_signals.py`, `scripts/verify_signals.py`, generated `signals/leaderboard.html`, new `signals/backtest.html`, `signals/data/leaderboard.{json,csv}`, `signals/data/backtest.{json,csv}`, this append-only section |
+
+### Reason for claim / initial finding
+The current `signals/leaderboard.html` publishes retrospective walk-forward results as ranked rows (for example, the historical side-model score with `n=105`, an estimated rate, interval and p-value). The source builder computes those rows from prior game outcomes in `scripts/x3_signals.py`; the current validator checks only that rank order is based on signal and that staking cells are blank. A historical walk-forward/backtest is not a prospective contest result, so ranking those rows conflicts with the request to forbid backtest numbers on the leaderboard. The historical estimates will be preserved, labeled as retrospective evaluation, and moved out of the prospective leaderboard; no result value will be changed or recast as prospective.
+
+### Scope discipline
+No changes to market/result inputs, model rules, source transcriptions, injury/depth data, home page, or other session-owned site trees. The new leaderboard gate will reject retrospective records and admit only forecasts whose immutable registration and pre-kickoff capture evidence identify them as prospective. Until such records exist, the leaderboard stays empty. Existing historical metrics remain available only on a separately titled evaluation page with their provenance and limitations.
+
+### Progress log
+- 2026-11-15 — task claimed after reading the shared coordination board and confirming no open PR owns `signals/` or its engine/verifier. Active PRs #73/#75 cover other scopes and will not be edited by this task.
