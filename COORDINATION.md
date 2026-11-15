@@ -2770,7 +2770,8 @@ The overlapping official-source correction was independently completed and merge
 
 ### PR & deploy record (arena/b3b5fa2f-x3)
 
-TBD — PR number, merge commit, and Pages deploy run recorded after merge.
+- PR #78: https://github.com/karagemop466-tech/X3/pull/78 — "X3: final integration verification and line-by-line official-source check" — `arena/b3b5fa2f-x3` → `main`, merged via `gh pr merge 78 --merge` without waiting for approval, merge commit `8ac031bfabd19d70a7834c290e72db639627fab4`. PR body carried the verification summary, official sources (nfl.com injuries/standings/schedules), and flagged irregularities (no official market-price source; season-in-progress; prop/parlay history absent; legal/reward pending).
+- Pages deploy: confirmed live at https://karagemop466-tech.github.io/X3/ — root serves the dashboard landing page with the decision-readiness table (R-01…R-11); all build gates green locally (audit_all PASS: 247 pages, 16,812 link refs, 435 tables, 7,955 source rows with 7,701 linked / 254 unverified-marked; check_hub PASS; verify_hub PASS: 1,464 data rows, 0 failures). Flagged irregularities do not block the merge and are published on hub/flagged.html.
 ---
 
 ## Session `arena/4d6bc1b6-x3` — decision-readiness landing panel (claim, 2026-11-15)
