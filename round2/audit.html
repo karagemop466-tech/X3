@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo audit - X3 round 2</title>
+<meta name="description" content="Repo-wide gate results re-run on 2026-11-15">
+<style>
+:root{--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--brand:#0b3b5c;--acc:#0e7490;--ok:#047857;--warn:#b45309;--bad:#b91c1c}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f8fafc}
+header.top{background:var(--brand);color:#fff;padding:14px 20px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+header.top .brand{font-weight:700;font-size:17px}
+header.top nav a{color:#dbeafe;margin-right:12px;text-decoration:none;font-size:13.5px}
+header.top nav a:hover{text-decoration:underline}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+h1{font-size:24px;margin:6px 0 4px}
+h2{font-size:19px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{font-size:16px;margin:18px 0 6px}
+p.lede{color:var(--mut);margin-top:0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:#334155}
+tr:nth-child(even) td{background:#fcfdfe}
+a.src{color:var(--acc);text-decoration:none;border-bottom:1px dotted var(--acc)}
+a.inl{color:var(--brand);text-decoration:none;border-bottom:1px dotted var(--brand)}
+.st{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.st-done{background:#d1fae5;color:var(--ok)}
+.st-partial{background:#fef3c7;color:var(--warn)}
+.st-missing{background:#fee2e2;color:var(--bad)}
+.st-blocked{background:#e2e8f0;color:#334155}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--mut);font-size:12.5px}
+.note{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:12px;color:var(--mut);font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="brand">X3 &middot; round 2 (2026-11-15)</div>
+<nav>
+<a href="index.html">Round 2</a>
+<a href="verification.html">Verification</a>
+<a href="readiness.html">Decision readiness</a>
+<a href="audit.html">Repo audit</a>
+<a href="flagged.html">Flagged for review</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="sources.html">Sources</a>
+<a href="../index.html">Site root</a>
+</nav></header>
+
+<main>
+
+<h1>Repo audit - 2026-11-15</h1>
+<p class="lede">Every gate in the repository was run by this session on 2026-11-15 before any change
+was made. All gates pass on the working tree, and the market engines rebuild byte-identical
+(deterministic). Numbers are the scripts' own reported values.</p>
+<table><thead><tr><th>gate</th><th>script</th><th>result</th><th>key_numbers</th><th>source</th></tr></thead><tbody><tr><td>Repo-wide audit (links + sourced rows + flagged markers)</td><td><a class="inl" href="../scripts/audit_all.py" target="_blank" rel="noopener">../scripts/audit_all.py</a></td><td><span class="st st-done">PASS</span></td><td>221 pages, 15778 link refs (5359 internal), 401 tables; source rows 7686 (7509 linked, 177 unverified-marked); 372 flagged-page rows all carry markers</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/audit_all.py" target="_blank" rel="noopener">source</a></td></tr><tr><td>Signals module gate</td><td><a class="inl" href="../scripts/verify_signals.py" target="_blank" rel="noopener">../scripts/verify_signals.py</a></td><td><span class="st st-done">PASS</span></td><td>15 leaderboard rows (4 signal-ranked), 15 correlations with n/CI/p/source, determinism PASS</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/verify_signals.py" target="_blank" rel="noopener">source</a></td></tr><tr><td>Integration audit</td><td><a class="inl" href="../scripts/verify_integration.py" target="_blank" rel="noopener">../scripts/verify_integration.py</a></td><td><span class="st st-done">PASS</span></td><td>pages=6 signals=17 site=1 verification-hub=1 x3lab=13; all pages parse, all internal links resolve</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/verify_integration.py" target="_blank" rel="noopener">source</a></td></tr><tr><td>Council verify</td><td><a class="inl" href="../scripts/council_verify.py" target="_blank" rel="noopener">../scripts/council_verify.py</a></td><td><span class="st st-done">PASS</span></td><td>6 checks, 132 table rows, deterministic rebuild, approved hosts only</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/council_verify.py" target="_blank" rel="noopener">source</a></td></tr><tr><td>Ops trading desk verify</td><td><a class="inl" href="../scripts/ops_verify.py" target="_blank" rel="noopener">../scripts/ops_verify.py</a></td><td><span class="st st-done">PASS</span></td><td>10 checks; V8: 137 finals reconcile to official standings (32 clubs, 0 failed)</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/ops_verify.py" target="_blank" rel="noopener">source</a></td></tr><tr><td>Origin module gates</td><td><a class="inl" href="../scripts/origin_verify.py" target="_blank" rel="noopener">../scripts/origin_verify.py</a></td><td><span class="st st-done">PASS</span></td><td>1782 checks, 0 failures</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/origin_verify.py" target="_blank" rel="noopener">source</a></td></tr><tr><td>Decision desk verify</td><td><a class="inl" href="../scripts/desk_verify.py" target="_blank" rel="noopener">../scripts/desk_verify.py</a></td><td><span class="st st-done">PASS</span></td><td>18 pages checked</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/desk_verify.py" target="_blank" rel="noopener">source</a></td></tr><tr><td>Hub rebuild + verify</td><td><a class="inl" href="../tools/x3_engine.py" target="_blank" rel="noopener">../tools/x3_engine.py + tools/build_hub.py + tools/verify_hub.py</a></td><td><span class="st st-done">PASS</span></td><td>27 pages, 1390 data rows checked; 2 warnings (external ESPN corroboration links on results.html - flagged for review, non-official host)</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/results.html" target="_blank" rel="noopener">source</a></td></tr><tr><td>Market engines rebuild (determinism)</td><td><a class="inl" href="../tools/results_feed.py" target="_blank" rel="noopener">../tools/results_feed.py + markets_engine.py + correlation_engine.py + depth_engine.py + strategies_engine.py + tools/verify_markets.py</a></td><td><span class="st st-done">PASS</span></td><td>data/x3/verified/* byte-identical after rebuild</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/verified/markets.json" target="_blank" rel="noopener">source</a></td></tr><tr><td>Round-2 standings reconciliation</td><td><a class="inl" href="../verification.html" target="_blank" rel="noopener">../verification.html - this session (fresh-day captures)</a></td><td><span class="st st-done">PASS</span> with explained deltas</td><td>30/32 rows identical; DET and NE differ by exactly the 2026-11-15 Munich final (DET 35, NE 10)</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source</a></td></tr><tr><td>Round-2 official Game Book capture</td><td><a class="inl" href="../verification.html" target="_blank" rel="noopener">../verification.html - this session (fresh-day captures)</a></td><td><span class="st st-done">CAPTURED</span></td><td>44 starters, 12 Not Active, venue, weather, roof/surface, officials, attendance transcribed with source links</td><td><a class="src" href="https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td>Round-2 Week 10 slate capture</td><td><a class="inl" href="../verification.html" target="_blank" rel="noopener">../verification.html - this session (fresh-day captures)</a></td><td><span class="st st-done">CAPTURED</span></td><td>14 games + 4 byes; 2 finals, 2 live (0-0 Q1 at capture), 7 scheduled + MNF</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">source</a></td></tr></tbody></table>
+<h2>Gate scope</h2>
+<p>The repo-wide audit (<code>scripts/audit_all.py</code>) covers every HTML page in the repository:
+221 pages, 15,778 link references (5,359 internal), 401 tables; 7,686 source rows, of which 7,509
+carry a link and 177 carry an explicit UNVERIFIED marker; all 372 flagged-page rows carry a marker.
+This round's pages are built to the same rule and are picked up automatically.</p>
+
+<footer>
+Session <code>arena/4c2f61cd-x3</code> &middot; 2026-11-15 &middot; built by
+<code>scripts/build_round2.py</code> from <code>round2/data/*.csv</code> &middot;
+<a href="../COORDINATION.md">coordination log</a> &middot;
+<a href="https://www.nfl.com/">nfl.com</a> is the primary data authority; every value is linked or flagged.
+</footer>
+</main>
+</body>
+</html>

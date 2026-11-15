@@ -1,0 +1,15 @@
+game_id,date,window,away,home,status_at_capture,score_at_capture,network,source_url
+commanders-at-giants-2026-reg-10,2026-11-12,Thursday Night Football,WAS,NYG,FINAL,24-21,NFL+ replay listed,https://www.nfl.com/games/commanders-at-giants-2026-reg-10
+patriots-at-lions-2026-reg-10,2026-11-15,International Game (Munich),NE,DET,FINAL,10-35,NFL Network window; replay listed,https://www.nfl.com/games/patriots-at-lions-2026-reg-10
+chiefs-at-falcons-2026-reg-10,2026-11-15,Sunday early,KC,ATL,LIVE,0-0 (Q1),CBS,https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10
+texans-at-browns-2026-reg-10,2026-11-15,Sunday early,HOU,CLE,LIVE,0-0 (Q1),FOX,https://www.nfl.com/games/texans-at-browns-2026-reg-10
+vikings-at-packers-2026-reg-10,2026-11-15,Sunday early,MIN,GB,LIVE,0-0 (Q1),FOX,https://www.nfl.com/games/vikings-at-packers-2026-reg-10
+dolphins-at-colts-2026-reg-10,2026-11-15,Sunday early,MIA,IND,LIVE,0-0 (Q1),CBS,https://www.nfl.com/games/dolphins-at-colts-2026-reg-10
+panthers-at-saints-2026-reg-10,2026-11-15,Sunday early,CAR,NO,LIVE,0-0 (Q1),FOX,https://www.nfl.com/games/panthers-at-saints-2026-reg-10
+bills-at-jets-2026-reg-10,2026-11-15,Sunday early,BUF,NYJ,LIVE,0-0 (Q1),CBS,https://www.nfl.com/games/bills-at-jets-2026-reg-10
+jaguars-at-titans-2026-reg-10,2026-11-15,Sunday early,JAX,TEN,LIVE,0-0 (Q1),FOX,https://www.nfl.com/games/jaguars-at-titans-2026-reg-10
+rams-at-cardinals-2026-reg-10,2026-11-15,Sunday late,LAR,AZ,SCHEDULED,4:05 PM,CBS,https://www.nfl.com/games/rams-at-cardinals-2026-reg-10
+seahawks-at-raiders-2026-reg-10,2026-11-15,Sunday late,SEA,LV,SCHEDULED,4:05 PM,CBS,https://www.nfl.com/games/seahawks-at-raiders-2026-reg-10
+49ers-at-cowboys-2026-reg-10,2026-11-15,Sunday late,SF,DAL,SCHEDULED,4:25 PM,FOX,https://www.nfl.com/games/49ers-at-cowboys-2026-reg-10
+steelers-at-bengals-2026-reg-10,2026-11-15,Sunday Night Football,PIT,CIN,SCHEDULED,8:20 PM,NBC,https://www.nfl.com/games/steelers-at-bengals-2026-reg-10
+chargers-at-ravens-2026-reg-10,2026-11-16,Monday Night Football,LAC,BAL,SCHEDULED,8:15 PM,ESPN,https://www.nfl.com/games/chargers-at-ravens-2026-reg-10

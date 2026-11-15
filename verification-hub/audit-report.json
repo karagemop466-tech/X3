@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 321,
       "flagged_rows": 240,
-      "refs": 415,
+      "refs": 417,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -127,7 +127,7 @@
       "pages": 27,
       "rows": 1840,
       "flagged_rows": 1441,
-      "refs": 2788,
+      "refs": 2815,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -217,6 +217,22 @@
         "pages/sources.html:  SRC-03  No official NFL betting-lines source identified  Not found  Originating game lines / odds  No "
       ]
     },
+    "round2": {
+      "pages": 7,
+      "rows": 247,
+      "flagged_rows": 150,
+      "refs": 308,
+      "unsourced_examples": [
+        "round2/audit.html: gate script result key_numbers source",
+        "round2/readiness.html: id requirement status where blocking_gate clear source",
+        "round2/sources.html: source url fetched what status",
+        "round2/suggestions.html: id suggestion addresses first_step decision source",
+        "round2/verification.html: check repo_value official_value_2026-11-15 verdict detail source_url",
+        "round2/verification.html: game_id date window away home status_at_capture score_at_capture network source_url",
+        "round2/verification.html: item value verbatim_context source_url",
+        "round2/verification.html: team unit slot player notes"
+      ]
+    },
     "signals": {
       "pages": 17,
       "rows": 1802,
@@ -264,9 +280,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 221,
-  "rows_total": 10102,
-  "rows_flagged_or_sourced": 8800,
-  "internal_refs": 5384,
+  "pages_total": 228,
+  "rows_total": 10349,
+  "rows_flagged_or_sourced": 8950,
+  "internal_refs": 5563,
   "problems": []
 }

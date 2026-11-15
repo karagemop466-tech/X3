@@ -1,0 +1,9 @@
+check,repo_value,official_value_2026-11-15,verdict,detail,source_url
+Standings rows compared,32 (data/hub/standings_2026_thru_wk9.csv),32,MATCH (30 of 32 identical),"Every team identical in W-L-T, PF, PA except the two teams that played the Munich final earlier today",https://www.nfl.com/standings/league/2026/REG
+Detroit Lions,"6-2-0, PF 222, PA 189","7-2-0, PF 257, PA 199",EXPLAINED DELTA,"Official minus repo = exactly the Munich final (DET 35, NE 10): PF +35, PA +10, W +1",https://www.nfl.com/standings/league/2026/REG
+New England Patriots,"5-4-0, PF 211, PA 207","5-5-0, PF 221, PA 242",EXPLAINED DELTA,"Official minus repo = exactly the Munich final (DET 35, NE 10): PF +10, PA +35, L +1",https://www.nfl.com/standings/league/2026/REG
+Results feed Week 10 TNF,FINAL WAS 24 @ NYG 21,FINAL WAS 24 @ NYG 21,MATCH,Repo feed and verification log already carried the Thursday final,https://www.nfl.com/schedules/2026/by-week/week-10
+Results feed Week 10 Munich game,"SCHEDULED (venue Munich, neutral site)","FINAL DET 35, NE 10",NEW FINAL,The only result the repo feed lacks as of the capture; recorded in round2/results_delta,https://www.nfl.com/games/patriots-at-lions-2026-reg-10
+Results feed other Week 10 games,12 SCHEDULED,2 LIVE (early window) + 7 upcoming; LAC@BAL Mon,CONSISTENT,Live games were 0-0 in Q1 at capture; not yet finals,https://www.nfl.com/schedules/2026/by-week/week-10
+Week 10 byes,"CHI, DEN, PHI, TB (schedule page 2026-11-14)","CHI (7-2), DEN (7-2), PHI (2-7), TB (3-6)",MATCH,Same four clubs; records as displayed today,https://www.nfl.com/schedules/2026/by-week/week-10
+Munich game venue (results feed),"venue=Munich, neutral_site=True","Game Center: FC Bayern Munich Stadium; Game Book: Allianz Arena, Munich, Germany",CONFIRMED with naming irregularity,Both official sources name the same venue differently; flag R2-F2,https://www.nfl.com/games/patriots-at-lions-2026-reg-10

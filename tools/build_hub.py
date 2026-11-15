@@ -182,6 +182,8 @@ def page(fname, title, intro, body, active="index", extra_head=""):
     # It lives outside hub/, so it is appended rather than added to NAV (which is
     # rendered with two different relative prefixes).
     nav += '<a href="../signals/index.html">Signals &amp; leaderboard</a>'
+    # integration session arena/4c2f61cd-x3: one outbound link to the round2 module.
+    nav += '<a href="../round2/index.html">Round 2 readiness</a>'
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1498,7 +1500,7 @@ def landing():
 <tbody>
 <tr><td>Week-10 injury report (345 rows)</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td><td><b>VERIFIED</b></td><td>Capture dated 2026-11-14; 66 Out / 10 Doubtful / 84 Questionable / 185 blank, matching the recorded total; see the linked report and verification log.</td></tr>
 <tr><td>2026 league standings (32 clubs)</td><td><a href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td><b>VERIFIED</b></td><td>Captured values checked against the official standings; older-module discrepancies remain flagged in the repository.</td></tr>
-<tr><td>Week-10 schedule / orientation</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td><td><b>PARTIAL / UNVERIFIED</b></td><td>Official page identifies New England at Detroit as the Munich International Game. Game count, bye count, kickoff time and broadcast channel are not confirmed here and are left blank.</td></tr>
+<tr><td>Week-10 schedule / orientation</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">official NFL Week 10 schedule</a><br><a href="https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">official Munich Game Book</a></td><td><b>VERIFIED</b></td><td>Official schedule lists 14 matchups and four bye clubs: CHI, DEN, PHI, TB. Munich Game Book records a 3:33 PM CET start. Broadcast channel is not published in these cited rows and is left blank.</td></tr>
 <tr><td>Originated lines / fair vs market / difference</td><td><span class="badge u">UNVERIFIED</span></td><td><b>BLOCKED</b></td><td>No NFL-official odds rows identified (the odds probe returns no price feed); market and difference fields stay blank. See F-18.</td></tr>
 <tr><td>Strategy leaderboard / ROI / CLV</td><td><span class="badge u">UNVERIFIED</span></td><td><b>BLOCKED</b></td><td>No price-settled wager series; ROI, CLV and staking cannot be computed from game outcomes alone. See the readiness table and Flagged for review.</td></tr>
 </tbody>
@@ -1508,6 +1510,10 @@ def landing():
     # integration session arena/09f8c786-x3: the signals module is a separate tree
     nav += ('<a href="signals/index.html"><b>Signals &amp; leaderboard</b>'
             '<span>Originated lines, price snapshots, signal vs staking</span></a>')
+    # integration session arena/4c2f61cd-x3: the round2 module (fresh-day verification
+    # + the decision-readiness matrix the brief asks for on the landing page).
+    nav += ('<a href="round2/index.html"><b>Round 2 readiness</b>'
+            '<span>66 requirements mapped: gate that blocks, number that clears</span></a>')
     html = f"""<!doctype html>
 <html lang="en">
 <head>
