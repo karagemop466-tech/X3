@@ -2676,3 +2676,14 @@ No other session has an active claim in this scope. The repository's existing ma
 ### Rebase conflict record (2026-11-15)
 
 - While publishing the claim, `origin/main` advanced from `8a889d7` to `de5f3b6` (PR #70). `git pull --rebase origin main` conflicted on append-only `COORDINATION.md` because both branches appended session logs. Resolved by preserving the entire incoming main log and re-appending UI-01 verbatim. No main-side lines were discarded; the working UI diff was stashed during claim publication and will be reapplied after the rebase.
+
+### Additional task claim (arena/01b89691-x3)
+
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| UI-02 | Reconcile the source register with the separately published X3-v2 third-party data; disclose the provenance and backtest/price limitations on the site and flag the affected pages | in progress | `arena/01b89691-x3` | `tools/x3_content2.py`, `tools/build_hub.py`, generated `hub/sources.html`, `hub/flagged.html`, `hub/results.html`, `hub/pricing.html`, `hub/origination.html`, `hub/signal.html`, append-only `COORDINATION.md` |
+
+Reason for the extension: line-by-line review found that `tools/x3_content2.py` documents PFF/nflverse values as third-party, while the generated source register states that no third-party value is used. The X3-v2 comparison pages also expose those values. This task will make the contradiction visible and add a non-blocking Flagged for Review entry; it does not change raw data or recast third-party values as official.
+
+- 2026-11-15 — UI-02 claimed before editing its additional scope; all other data files remain read-only.
+- Rebase follow-up: the second append-only conflict occurred while replaying UI-02. Preserved the main-side PR #70 audit log, UI-01 claim and rebase record, then appended UI-02. No data or session content was removed.
