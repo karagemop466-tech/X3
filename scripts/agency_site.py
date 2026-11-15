@@ -78,11 +78,13 @@ def load(name, default=None):
         return default
 
 def page(title, body, nav_active=None):
+    if isinstance(body, list):
+        body = "".join(body)
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{escape(title)} — X3 Agency</title><style>{CSS}</style></head>
 <body><header><h1>X3 Agency</h1><p>NFL origination dashboard · clean analysis layer · every table row sourced or flagged</p></header>
 <nav><ul>{nav(nav_active)}</ul></nav>
 <main>{body}</main>
-<footer class="foot">Source discipline: official NFL pages (nfl.com Game Books, standings, schedules, injury report and club depth charts) only. Values that cannot be confirmed officially are left blank and flagged unverified. Nothing here is inferred. Generated {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}.</footer></body></html>"""
+<footer class="foot">Source discipline: official NFL pages (nfl.com Game Books, standings, schedules, injury report and club depth charts) only. Values that cannot be confirmed officially are left blank and flagged unverified. Nothing here is inferred. Outputs are deterministic: a fresh engine + site build reproduces the committed files byte for byte (CI reproducibility gate).</footer></body></html>"""
 
 def nav(active=None):
     items = [
