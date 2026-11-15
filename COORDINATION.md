@@ -3299,3 +3299,5 @@ Open flags raised here:
 - F-60: brief's 254-row / 279-row / SEA-CIN injury-free claims not reproduced (SEA 15 and CIN 9 both list players).
 - F-68: duplicate flag IDs F-24..F-27 between `tools/x3_content.py` and `tools/x3_content2.py` (pre-existing on main; not renumbered here).
 - Not yet done: BAL/LAC/IND row-level re-check against the chunk text beyond the reconcile output; schedule chunks 1-2; NFL.com venue check; Colts starting-receiver trades; the 136 vs 137 game-count question.
+
+Derived refresh (council census), arena/c0176769-x3: the council-verify CI gate failed on the PR because `council/repo-review.html` and `data/council/council.json` are derived from a hub census (page and link counts) and the three new hub pages changed it. The gate instructs committing the regenerated tree. The change is the output of `scripts/council_build.py` only; no council source was edited. Owner of council/ may rebuild and supersede this at any time.
