@@ -1,0 +1,7 @@
+source,url,fetched_at_utc,what_was_taken,status
+NFL league standings 2026,https://www.nfl.com/standings/league/2026/REG,"2026-11-15 (game day, mid-afternoon UTC)",Full 32-team league table (16 columns each) for the standings reconciliation,HTTP 200 via page fetch
+NFL Week 10 schedule page,https://www.nfl.com/schedules/2026/by-week/week-10,2026-11-15 (early window live),14 games with status/score at capture + 4 byes with records,HTTP 200 via page fetch
+NFL Game Center NE@DET (Munich),https://www.nfl.com/games/patriots-at-lions-2026-reg-10,2026-11-15 after final,"Final score, quarter scores, venue (Game Center wording), Game Book link",HTTP 200 via page fetch
+Official NFL Game Book PDF (NE@DET),https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf,2026-11-15,"Lineups (44 starters), Not Active (12), officials, weather, roof/surface, attendance, scoring",HTTP 200 via PDF fetch (7 text chunks)
+"NFL injuries league page (referenced, not re-captured)",https://www.nfl.com/injuries/league/2026/reg10,referenced 2026-11-15,Cross-checks for the Lions designation rows; full re-capture deferred to the capture job,referenced
+media.nfl.com dated schedule announcement (referenced),https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced,"referenced (first verified by session arena/0c38f465-x3, 2026-11-14)",League dated schedule announcement paired with the live schedule page in docs/schedule.html,referenced

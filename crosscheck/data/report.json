@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-11-14T20:08:58+00:00",
+ "generated_at": "2026-11-15T18:44:39+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
-   "pages": 197,
-   "links": 11219,
-   "external": 7349,
-   "tables": 355,
-   "rows": 7268,
-   "rows_with_http": 5809,
-   "rows_flag_only": 254,
-   "rows_without": 1205
+   "pages": 235,
+   "links": 15440,
+   "external": 10226,
+   "tables": 445,
+   "rows": 10043,
+   "rows_with_http": 8215,
+   "rows_flag_only": 378,
+   "rows_without": 1450
   },
   "broken_internal": [],
   "per_page": [
@@ -916,7 +916,7 @@
    },
    {
     "page": "hub/archive.html",
-    "links": 45,
+    "links": 58,
     "external": 1,
     "tables": 1,
     "rows": 12,
@@ -925,8 +925,18 @@
     "rows_without": 12
    },
    {
+    "page": "hub/correlation-live.html",
+    "links": 29,
+    "external": 12,
+    "tables": 3,
+    "rows": 14,
+    "rows_with_http": 11,
+    "rows_flag_only": 3,
+    "rows_without": 0
+   },
+   {
     "page": "hub/correlation.html",
-    "links": 53,
+    "links": 66,
     "external": 21,
     "tables": 4,
     "rows": 25,
@@ -935,8 +945,28 @@
     "rows_without": 0
    },
    {
+    "page": "hub/decisions.html",
+    "links": 49,
+    "external": 32,
+    "tables": 2,
+    "rows": 22,
+    "rows_with_http": 22,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "hub/depth-tiers.html",
+    "links": 215,
+    "external": 198,
+    "tables": 3,
+    "rows": 106,
+    "rows_with_http": 102,
+    "rows_flag_only": 0,
+    "rows_without": 4
+   },
+   {
     "page": "hub/depth.html",
-    "links": 76,
+    "links": 89,
     "external": 44,
     "tables": 2,
     "rows": 43,
@@ -946,27 +976,37 @@
    },
    {
     "page": "hub/executive-summary.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 2,
-    "rows": 24,
+    "rows": 25,
     "rows_with_http": 0,
     "rows_flag_only": 4,
-    "rows_without": 20
+    "rows_without": 21
+   },
+   {
+    "page": "hub/flagged-live.html",
+    "links": 31,
+    "external": 14,
+    "tables": 3,
+    "rows": 14,
+    "rows_with_http": 13,
+    "rows_flag_only": 1,
+    "rows_without": 0
    },
    {
     "page": "hub/flagged.html",
-    "links": 65,
-    "external": 33,
+    "links": 74,
+    "external": 29,
     "tables": 1,
-    "rows": 32,
-    "rows_with_http": 32,
-    "rows_flag_only": 0,
+    "rows": 34,
+    "rows_with_http": 28,
+    "rows_flag_only": 6,
     "rows_without": 0
    },
    {
     "page": "hub/gates.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 1,
     "rows": 10,
@@ -976,17 +1016,17 @@
    },
    {
     "page": "hub/index.html",
-    "links": 66,
-    "external": 4,
-    "tables": 2,
-    "rows": 38,
-    "rows_with_http": 2,
-    "rows_flag_only": 2,
-    "rows_without": 34
+    "links": 102,
+    "external": 15,
+    "tables": 3,
+    "rows": 85,
+    "rows_with_http": 13,
+    "rows_flag_only": 27,
+    "rows_without": 45
    },
    {
     "page": "hub/injuries.html",
-    "links": 378,
+    "links": 391,
     "external": 346,
     "tables": 2,
     "rows": 354,
@@ -995,8 +1035,18 @@
     "rows_without": 9
    },
    {
+    "page": "hub/leaderboard-live.html",
+    "links": 18,
+    "external": 1,
+    "tables": 6,
+    "rows": 39,
+    "rows_with_http": 0,
+    "rows_flag_only": 1,
+    "rows_without": 38
+   },
+   {
     "page": "hub/leaderboard.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 8,
     "rows": 44,
@@ -1006,7 +1056,7 @@
    },
    {
     "page": "hub/lines.html",
-    "links": 107,
+    "links": 120,
     "external": 75,
     "tables": 4,
     "rows": 54,
@@ -1016,7 +1066,7 @@
    },
    {
     "page": "hub/luck.html",
-    "links": 65,
+    "links": 78,
     "external": 33,
     "tables": 2,
     "rows": 37,
@@ -1026,7 +1076,7 @@
    },
    {
     "page": "hub/markets.html",
-    "links": 189,
+    "links": 191,
     "external": 157,
     "tables": 4,
     "rows": 92,
@@ -1036,7 +1086,7 @@
    },
    {
     "page": "hub/origination.html",
-    "links": 92,
+    "links": 94,
     "external": 60,
     "tables": 5,
     "rows": 77,
@@ -1045,8 +1095,18 @@
     "rows_without": 19
    },
    {
+    "page": "hub/picks.html",
+    "links": 26,
+    "external": 9,
+    "tables": 3,
+    "rows": 24,
+    "rows_with_http": 8,
+    "rows_flag_only": 13,
+    "rows_without": 3
+   },
+   {
     "page": "hub/price-store.html",
-    "links": 45,
+    "links": 47,
     "external": 13,
     "tables": 3,
     "rows": 23,
@@ -1056,7 +1116,7 @@
    },
    {
     "page": "hub/pricing.html",
-    "links": 64,
+    "links": 66,
     "external": 32,
     "tables": 4,
     "rows": 25,
@@ -1066,17 +1126,17 @@
    },
    {
     "page": "hub/questions.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 1,
-    "rows": 27,
+    "rows": 28,
     "rows_with_http": 0,
     "rows_flag_only": 4,
-    "rows_without": 23
+    "rows_without": 24
    },
    {
     "page": "hub/replacement.html",
-    "links": 88,
+    "links": 90,
     "external": 56,
     "tables": 3,
     "rows": 68,
@@ -1086,7 +1146,7 @@
    },
    {
     "page": "hub/replacements.html",
-    "links": 231,
+    "links": 233,
     "external": 199,
     "tables": 3,
     "rows": 113,
@@ -1095,8 +1155,18 @@
     "rows_without": 0
    },
    {
+    "page": "hub/repo-review-live.html",
+    "links": 30,
+    "external": 13,
+    "tables": 1,
+    "rows": 14,
+    "rows_with_http": 12,
+    "rows_flag_only": 1,
+    "rows_without": 1
+   },
+   {
     "page": "hub/repo-review.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 3,
     "rows": 24,
@@ -1106,27 +1176,27 @@
    },
    {
     "page": "hub/requirements.html",
-    "links": 33,
-    "external": 1,
-    "tables": 2,
-    "rows": 40,
-    "rows_with_http": 0,
-    "rows_flag_only": 5,
+    "links": 58,
+    "external": 13,
+    "tables": 3,
+    "rows": 76,
+    "rows_with_http": 11,
+    "rows_flag_only": 30,
     "rows_without": 35
    },
    {
     "page": "hub/results.html",
-    "links": 586,
-    "external": 553,
+    "links": 162,
+    "external": 145,
     "tables": 3,
-    "rows": 282,
-    "rows_with_http": 278,
-    "rows_flag_only": 1,
-    "rows_without": 3
+    "rows": 150,
+    "rows_with_http": 144,
+    "rows_flag_only": 0,
+    "rows_without": 6
    },
    {
     "page": "hub/signal.html",
-    "links": 33,
+    "links": 35,
     "external": 1,
     "tables": 5,
     "rows": 23,
@@ -1135,8 +1205,18 @@
     "rows_without": 21
    },
    {
+    "page": "hub/snapshots.html",
+    "links": 18,
+    "external": 1,
+    "tables": 4,
+    "rows": 37,
+    "rows_with_http": 0,
+    "rows_flag_only": 17,
+    "rows_without": 20
+   },
+   {
     "page": "hub/sources.html",
-    "links": 47,
+    "links": 60,
     "external": 15,
     "tables": 1,
     "rows": 14,
@@ -1146,7 +1226,7 @@
    },
    {
     "page": "hub/strategies.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 3,
     "rows": 20,
@@ -1156,7 +1236,7 @@
    },
    {
     "page": "hub/suggestions.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 2,
     "rows": 34,
@@ -1165,8 +1245,18 @@
     "rows_without": 32
    },
    {
+    "page": "hub/summary.html",
+    "links": 32,
+    "external": 4,
+    "tables": 3,
+    "rows": 14,
+    "rows_with_http": 3,
+    "rows_flag_only": 0,
+    "rows_without": 11
+   },
+   {
     "page": "hub/verification.html",
-    "links": 33,
+    "links": 46,
     "external": 1,
     "tables": 4,
     "rows": 26,
@@ -1176,22 +1266,72 @@
    },
    {
     "page": "hub/verified-results.html",
-    "links": 235,
-    "external": 202,
+    "links": 236,
+    "external": 201,
     "tables": 4,
     "rows": 201,
-    "rows_with_http": 201,
-    "rows_flag_only": 0,
+    "rows_with_http": 200,
+    "rows_flag_only": 1,
     "rows_without": 0
    },
    {
-    "page": "index.html",
-    "links": 54,
-    "external": 1,
-    "tables": 0,
-    "rows": 0,
-    "rows_with_http": 0,
+    "page": "hub/x3/origination.html",
+    "links": 104,
+    "external": 60,
+    "tables": 5,
+    "rows": 77,
+    "rows_with_http": 58,
     "rows_flag_only": 0,
+    "rows_without": 19
+   },
+   {
+    "page": "hub/x3/pricing.html",
+    "links": 76,
+    "external": 32,
+    "tables": 4,
+    "rows": 25,
+    "rows_with_http": 17,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "hub/x3/replacement.html",
+    "links": 100,
+    "external": 56,
+    "tables": 3,
+    "rows": 68,
+    "rows_with_http": 55,
+    "rows_flag_only": 2,
+    "rows_without": 11
+   },
+   {
+    "page": "hub/x3/results.html",
+    "links": 597,
+    "external": 552,
+    "tables": 3,
+    "rows": 282,
+    "rows_with_http": 278,
+    "rows_flag_only": 1,
+    "rows_without": 3
+   },
+   {
+    "page": "hub/x3/signal.html",
+    "links": 45,
+    "external": 1,
+    "tables": 5,
+    "rows": 23,
+    "rows_with_http": 0,
+    "rows_flag_only": 2,
+    "rows_without": 21
+   },
+   {
+    "page": "index.html",
+    "links": 121,
+    "external": 29,
+    "tables": 3,
+    "rows": 49,
+    "rows_with_http": 22,
+    "rows_flag_only": 27,
     "rows_without": 0
    },
    {
@@ -1795,6 +1935,246 @@
     "rows_without": 6
    },
    {
+    "page": "round2/audit.html",
+    "links": 34,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/flagged.html",
+    "links": 18,
+    "external": 8,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 7,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/index.html",
+    "links": 17,
+    "external": 1,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/readiness.html",
+    "links": 142,
+    "external": 67,
+    "tables": 1,
+    "rows": 66,
+    "rows_with_http": 66,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/sources.html",
+    "links": 16,
+    "external": 7,
+    "tables": 1,
+    "rows": 6,
+    "rows_with_http": 6,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/suggestions.html",
+    "links": 20,
+    "external": 11,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 10,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/verification.html",
+    "links": 61,
+    "external": 50,
+    "tables": 6,
+    "rows": 135,
+    "rows_with_http": 47,
+    "rows_flag_only": 0,
+    "rows_without": 88
+   },
+   {
+    "page": "signals/correlations.html",
+    "links": 44,
+    "external": 16,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 15,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/depth.html",
+    "links": 642,
+    "external": 613,
+    "tables": 2,
+    "rows": 306,
+    "rows_with_http": 306,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/executive-summary.html",
+    "links": 47,
+    "external": 15,
+    "tables": 2,
+    "rows": 14,
+    "rows_with_http": 14,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/flagged.html",
+    "links": 42,
+    "external": 14,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/gates.html",
+    "links": 55,
+    "external": 27,
+    "tables": 3,
+    "rows": 26,
+    "rows_with_http": 26,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/index.html",
+    "links": 44,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/leaderboard.html",
+    "links": 58,
+    "external": 28,
+    "tables": 3,
+    "rows": 27,
+    "rows_with_http": 27,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/lines.html",
+    "links": 164,
+    "external": 135,
+    "tables": 3,
+    "rows": 136,
+    "rows_with_http": 134,
+    "rows_flag_only": 0,
+    "rows_without": 2
+   },
+   {
+    "page": "signals/prices.html",
+    "links": 1019,
+    "external": 990,
+    "tables": 2,
+    "rows": 989,
+    "rows_with_http": 989,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/questions.html",
+    "links": 56,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/repo-review.html",
+    "links": 48,
+    "external": 17,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/requirements.html",
+    "links": 45,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/results.html",
+    "links": 192,
+    "external": 164,
+    "tables": 1,
+    "rows": 163,
+    "rows_with_http": 163,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/sources.html",
+    "links": 37,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/strategies.html",
+    "links": 45,
+    "external": 16,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 15,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/suggestions.html",
+    "links": 45,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/verification.html",
+    "links": 37,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
     "page": "site/index.html",
     "links": 13,
     "external": 0,
@@ -2177,7 +2557,7 @@
    "path": "hub/questions.html",
    "page": "hub/questions.html",
    "kind": "html",
-   "rows": 27
+   "rows": 28
   },
   {
    "family": "requirements",
@@ -2225,7 +2605,7 @@
    "path": "hub/flagged.html",
    "page": "hub/flagged.html",
    "kind": "html",
-   "rows": 32
+   "rows": 34
   },
   {
    "family": "strategies",
@@ -2280,7 +2660,7 @@
  "reconciliation": {
   "families": {
    "flags": {
-    "count": 123,
+    "count": 125,
     "modules": {
      "data (0c38f465)": 16,
      "dashboard (7e632805)": 12,
@@ -2290,7 +2670,7 @@
      "root page (3dbc4678)": 14,
      "pages (1a771fcd)": 9,
      "desk (3bf7cc8b)": 10,
-     "hub (e9b492ab)": 32
+     "hub (e9b492ab)": 34
     },
     "id_groups": {
      "F01": {
@@ -2458,7 +2838,7 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "F-02",
-        "title": "No game log. The only final score confirmed for the 2026 season is Commanders 24, Giants 21 (Week 10 TNF) on the schedule page.",
+        "title": "The canonical 2026 feed contains 137 final scores reconciled to all 32 clubs' official standings; it is not a multi-season backtest corpus, and historical seasons remain absent.",
         "status": "HIGH",
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
@@ -3476,7 +3856,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://www.nfl.com/games/chargers-at-ravens-2026-reg-10 and https://www.nfl.com/odds/ Malformed source reference; flagged for repair."
        }
       ],
       "identity": "same",
@@ -3500,7 +3880,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/hub/lines.html vs hub/markets.html Malformed source reference; flagged for repair."
        }
       ],
       "identity": "same",
@@ -3620,7 +4000,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/verification_log.json - field-level reconciliation Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3654,7 +4034,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/price_snapshots_2026.csv - OPEN rows absent by policy; 2021 pilot committed Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3688,7 +4068,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/raw/club_depth_charts_2026_wk10/ - verbatim transcriptions with fetch dates Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3722,7 +4102,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/hub/strategies.html - prop rows blank by policy Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3753,6 +4133,54 @@
         "raw_id": "F-28",
         "title": "Correlation values computed at game level use official scores plus PFF closing lines (MARKET-3P). Every value publishes n. Team-level coefficients from the prior session (n=32) are kept and labelled.",
         "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F29": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-29",
+        "title": "As of 2026-11-15 UTC, the canonical G-2 gate sets a minimum of 300 settled bets across at least 3 seasons. Open PR #58 proposes 2,272 bets instead; GitHub reports that pull request is unmerged and has a dirty merge state. Neither number is an NFL-published fact, and the final project threshold is unresolved.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F31": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-31",
+        "title": "The canonical 163-row results feed has venue populated for only 7 fixtures; 156 venue cells are blank. Do not infer venue from the home-team field or assume a neutral site. Official NFL Game Center capture is still required for each fixture.",
+        "status": "HIGH",
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
@@ -3986,7 +4414,7 @@
     }
    },
    "questions": {
-    "count": 133,
+    "count": 134,
     "modules": {
      "data (0c38f465)": 12,
      "dashboard (7e632805)": 20,
@@ -3994,7 +4422,7 @@
      "x3lab (e1c332ce)": 20,
      "lab (972ad7a5)": 14,
      "desk (3bf7cc8b)": 25,
-     "hub (e9b492ab)": 27
+     "hub (e9b492ab)": 28
     },
     "id_groups": {
      "Q01": {
@@ -5676,6 +6104,30 @@
       ],
       "status_conflict": false
      },
+     "Q25": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-25",
+        "title": "Whether venue-dependent modelling can proceed",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "BLOCKED"
+      ],
+      "status_conflict": false
+     },
      "QA01": {
       "modules": [
        "x3lab (e1c332ce)"
@@ -7298,19 +7750,19 @@
         "module": "hub (e9b492ab)",
         "raw_id": "R-23",
         "title": "Game results by week and venue for model calibration",
-        "status": "BLOCKED",
-        "status_norm": "BLOCKED",
+        "status": "PARTIAL",
+        "status_norm": "PARTIAL",
         "page": "hub/requirements.html",
         "register": "hub/requirements.html",
-        "source": "No ingested game log; only 1 final score known (F-02)"
+        "source": "137 final 2026 games are present and aggregate to official standings; only 7 of 163 feed rows have a venue value, leaving 156 blank; multi-season history is absent (see Q-19/Q-25)"
        }
       ],
       "identity": "different",
       "min_score": 0.0,
       "same_content": false,
       "statuses": [
-       "BLOCKED",
-       "DONE"
+       "DONE",
+       "PARTIAL"
       ],
       "status_conflict": false
      },
@@ -12088,7 +12540,7 @@
    "cmd": "python3 tools/check_links.py",
    "exit": 0,
    "tail": [
-    "OK \u2014 13 pages, 372 links checked, no broken internal links."
+    "OK \u2014 13 pages, 431 links checked, no broken internal links."
    ]
   },
   {
@@ -12287,7 +12739,7 @@
    "id": "X-14",
    "severity": "Medium",
    "area": "Rows without source or flag",
-   "finding": "1205 table rows across 98 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: ops/snapshots.html (79), origin/snapshots.html (78), hub/leaderboard.html (41), hub/requirements.html (35), hub/index.html (34), hub/suggestions.html (32), ops/gates.html (25), hub/verification.html (24).",
+   "finding": "1450 table rows across 111 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: round2/verification.html (88), ops/snapshots.html (79), origin/snapshots.html (78), hub/index.html (45), hub/leaderboard.html (41), hub/leaderboard-live.html (38), hub/requirements.html (35), hub/suggestions.html (32).",
    "evidence": [
     "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json"
    ],

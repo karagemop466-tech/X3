@@ -1,0 +1,26 @@
+name: X3 round2 module (fresh-day verification + readiness)
+
+on:
+  push:
+    branches: [ main, arena/4c2f61cd-x3 ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  round2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and gate the round2 module
+        run: |
+          python3 scripts/build_round2.py
+          python3 scripts/verify_round2.py
+
+      - name: Repo-wide audit includes round2/
+        run: python3 scripts/audit_all.py

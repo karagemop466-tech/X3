@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Round 2 landing - X3 round 2</title>
+<meta name="description" content="Fresh-day re-verification round and decision-readiness matrix">
+<style>
+:root{--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--brand:#0b3b5c;--acc:#0e7490;--ok:#047857;--warn:#b45309;--bad:#b91c1c}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f8fafc}
+header.top{background:var(--brand);color:#fff;padding:14px 20px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+header.top .brand{font-weight:700;font-size:17px}
+header.top nav a{color:#dbeafe;margin-right:12px;text-decoration:none;font-size:13.5px}
+header.top nav a:hover{text-decoration:underline}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+h1{font-size:24px;margin:6px 0 4px}
+h2{font-size:19px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{font-size:16px;margin:18px 0 6px}
+p.lede{color:var(--mut);margin-top:0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:#334155}
+tr:nth-child(even) td{background:#fcfdfe}
+a.src{color:var(--acc);text-decoration:none;border-bottom:1px dotted var(--acc)}
+a.inl{color:var(--brand);text-decoration:none;border-bottom:1px dotted var(--brand)}
+.st{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.st-done{background:#d1fae5;color:var(--ok)}
+.st-partial{background:#fef3c7;color:var(--warn)}
+.st-missing{background:#fee2e2;color:var(--bad)}
+.st-blocked{background:#e2e8f0;color:#334155}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--mut);font-size:12.5px}
+.note{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:12px;color:var(--mut);font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="brand">X3 &middot; round 2 (2026-11-15)</div>
+<nav>
+<a href="index.html">Round 2</a>
+<a href="verification.html">Verification</a>
+<a href="readiness.html">Decision readiness</a>
+<a href="audit.html">Repo audit</a>
+<a href="flagged.html">Flagged for review</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="sources.html">Sources</a>
+<a href="../index.html">Site root</a>
+</nav></header>
+
+<main>
+
+<h1>Round 2: fresh-day verification &amp; decision readiness</h1>
+<p class="lede">Session <code>arena/4c2f61cd-x3</code>, 2026-11-15 (NFL Week&nbsp;10 game day).
+This round re-verified the repository against official NFL sources on a fresh day, captured the
+Week&nbsp;10 state as it happened, proved the official Game&nbsp;Book capture route, and built the
+decision-readiness matrix the brief asks for: <em>one row per requirement, with the gate that
+blocks it and the number that would clear it</em>.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>66</b><span>requirement lines mapped in the readiness matrix</span></div>
+  <div class="kpi"><b>32</b><span>done &middot; 20 partial &middot; 13 not covered &middot; 1 blocked</span></div>
+  <div class="kpi"><b>30 / 32</b><span>official standings rows matched the repo exactly; the 2 diffs are exactly today's Munich final</span></div>
+  <div class="kpi"><b>44 + 12</b><span>official Game Book starters + Not Active transcribed (NE@DET)</span></div>
+  <div class="kpi"><b>12 / 12</b><span>repo-wide gates PASS (221 pages, 7,686 source rows)</span></div>
+  <div class="kpi"><b>7</b><span>new flags for review (2 new evidence irregularities)</span></div>
+</div>
+
+<h2>What this round did</h2>
+<ul>
+  <li><b>Fresh-day reconciliation.</b> All 32 official league standings rows were compared to the repo snapshot: 30 identical; the only two differences (DET, NE) are <em>exactly</em> the Munich final played this morning (DET 35, NE&nbsp;10) - the repo's 137-final feed is consistent with the official record. <a class="inl" href="verification.html">Verification log</a></li>
+  <li><b>Week&nbsp;10 captured live.</b> The official Week&nbsp;10 slate was captured at fetch time: two finals (WAS 24 @ NYG 21; NE 10 @ DET 35), seven early games live 0-0 in Q1, three late games, SNF and MNF pending, byes CHI/DEN/PHI/TB. <a class="inl" href="verification.html">Details</a></li>
+  <li><b>Official Game Book route proven.</b> The Game Center links an official NFL Game Book PDF; this round transcribed its lineups (44 starters), Not Active lists (12 players), venue, game-day weather, roof/surface, officials and attendance - the evidence class the brief demands for starters and inactives. <a class="inl" href="verification.html">Game Book capture</a></li>
+  <li><b>Decision-readiness matrix built.</b> 66 requirement lines from the brief, each with its implementing page, blocking gate, and the number that would clear it. <a class="inl" href="readiness.html">Open the matrix</a></li>
+  <li><b>Repo-wide audit re-run.</b> Every published gate passed on 2026-11-15. <a class="inl" href="audit.html">Gate results</a></li>
+  <li><b>Gaps published for review.</b> 13 brief lines have no first-class coverage; 7 flags and 10 suggestions are queued for the reviewer. <a class="inl" href="flagged.html">Flags</a> &middot; <a class="inl" href="suggestions.html">Suggestions</a></li>
+</ul>
+
+<h2>Round-2 data files</h2>
+<p>All captures live under <code>round2/data/</code>: standings, Week&nbsp;10 slate, results delta,
+Game Book facts/starters/inactives, the full requirements matrix, audit results, flags, suggestions
+and the sources register. Every row carries its official source link.</p>
+
+<footer>
+Session <code>arena/4c2f61cd-x3</code> &middot; 2026-11-15 &middot; built by
+<code>scripts/build_round2.py</code> from <code>round2/data/*.csv</code> &middot;
+<a href="../COORDINATION.md">coordination log</a> &middot;
+<a href="https://www.nfl.com/">nfl.com</a> is the primary data authority; every value is linked or flagged.
+</footer>
+</main>
+</body>
+</html>
