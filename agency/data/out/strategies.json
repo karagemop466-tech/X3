@@ -1,0 +1,51 @@
+{
+ "S3_side": {
+  "id": "S3",
+  "label": "Side: model's own favourite vs its fair line",
+  "n": 74,
+  "hits": 45,
+  "rate": 0.6081,
+  "p_vs_constant": 0.08050685743008451,
+  "ci95": [
+   0.4942,
+   0.7114
+  ],
+  "bh_threshold": 0.1,
+  "bh_significant": true
+ },
+ "S4_total": {
+  "id": "S4",
+  "label": "Total: model's own fair total (over when fair > 45)",
+  "n": 74,
+  "hits": 27,
+  "rate": 0.3649,
+  "p_vs_constant": 0.026516832550685623,
+  "ci95": [
+   0.2644,
+   0.4787
+  ],
+  "bh_threshold": 0.05,
+  "bh_significant": true
+ },
+ "S1_side_proper": {
+  "id": "S1",
+  "label": "Side as a probability (Brier skill vs constant 0.5)",
+  "n": 74,
+  "brier_model": 0.23034,
+  "brier_baseline": 0.24662,
+  "brier_skill_score": 0.06603,
+  "cluster_ci95_brier": [
+   0.21483,
+   0.24616
+  ],
+  "logloss_model": 0.65852
+ },
+ "S2_side_pythag": {
+  "id": "S2",
+  "label": "Side as a probability, Pythagorean estimator",
+  "n": 74,
+  "brier_model": 0.23097,
+  "brier_baseline": 0.24662,
+  "brier_skill_score": 0.06348
+ }
+}

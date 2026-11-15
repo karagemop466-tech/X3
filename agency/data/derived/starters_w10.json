@@ -1,0 +1,882 @@
+[
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "A.Williams",
+  "number": 14,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "J.Bates",
+  "number": 87,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "LT",
+  "player": "B.Coleman",
+  "number": 74,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "LG",
+  "player": "C.Paul",
+  "number": 75,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "C",
+  "player": "N.Allegretti",
+  "number": 67,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "RG",
+  "player": "S.Cosmi",
+  "number": 76,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "RT",
+  "player": "J.Conerly",
+  "number": 72,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "B.Sinnott",
+  "number": 82,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "T.Burks",
+  "number": 13,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "QB",
+  "player": "J.Daniels",
+  "number": 5,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Offense",
+  "position": "RB",
+  "player": "R.White",
+  "number": 1,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "O.Oweh",
+  "number": 98,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "DT",
+  "player": "T.Settle",
+  "number": 97,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "DT",
+  "player": "S.Tuttle",
+  "number": 96,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "K.Chaisson",
+  "number": 45,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "S.Styles",
+  "number": 52,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "F.Luvu",
+  "number": 4,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "T.Amos",
+  "number": 23,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "A.Robertson",
+  "number": 2,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "S",
+  "player": "J.Reaves",
+  "number": 39,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "S",
+  "player": "N.Cross",
+  "number": 25,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "WAS",
+  "unit": "Defense",
+  "position": "S",
+  "player": "Q.Martin",
+  "number": 20,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "D.Mooney",
+  "number": 17,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "T.Johnson",
+  "number": 84,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "LT",
+  "player": "A.Thomas",
+  "number": 78,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "LG",
+  "player": "J.Runyan",
+  "number": 76,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "C",
+  "player": "B.Hudson",
+  "number": 60,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "RG",
+  "player": "F.Mauigoa",
+  "number": 65,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "RT",
+  "player": "J.Eluemunor",
+  "number": 72,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "M.Nabers",
+  "number": 1,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "I.Likely",
+  "number": 9,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "QB",
+  "player": "J.McCarthy",
+  "number": 18,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Offense",
+  "position": "RB",
+  "player": "C.Skattebo",
+  "number": 44,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "K.Thibodeaux",
+  "number": 5,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "DL",
+  "player": "S.Harris",
+  "number": 93,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "DL",
+  "player": "B.Jamison-Travis",
+  "number": 97,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "DL",
+  "player": "D.Reader",
+  "number": 98,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "A.Carter",
+  "number": 3,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "M.McFadden",
+  "number": 41,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "A.Reese",
+  "number": 52,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "G.Newsome",
+  "number": 20,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "D.Banks",
+  "number": 2,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "S",
+  "player": "J.Holland",
+  "number": 8,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "WAS@NYG",
+  "team": "NYG",
+  "unit": "Defense",
+  "position": "S",
+  "player": "A.Washington",
+  "number": 24,
+  "source": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "LT",
+  "player": "W.Campbell",
+  "number": 66,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "LG",
+  "player": "G.Van Roten",
+  "number": 70,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "C",
+  "player": "J.Wilson",
+  "number": 55,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "RG",
+  "player": "M.Pryor",
+  "number": 65,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "RT",
+  "player": "M.Moses",
+  "number": 76,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "H.Henry",
+  "number": 85,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "E.Raridon",
+  "number": 82,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "QB",
+  "player": "D.Maye",
+  "number": 10,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "RB",
+  "player": "R.Stevenson",
+  "number": 38,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "A.Brown",
+  "number": 1,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "M.Hollins",
+  "number": 13,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "Dr.Jones",
+  "number": 5,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "DT",
+  "player": "M.Williams",
+  "number": 97,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "DT",
+  "player": "C.Durden",
+  "number": 94,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "E.Ponder",
+  "number": 91,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "R.Spillane",
+  "number": 14,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "C.Elliss",
+  "number": 53,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "C.Gonzalez",
+  "number": 0,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "M.Jones",
+  "number": 25,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "C.Woods",
+  "number": 22,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "S",
+  "player": "C.Woodson",
+  "number": 4,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "S",
+  "player": "K.Byard",
+  "number": 31,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "I.TeSlaa",
+  "number": 18,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "S.LaPorta",
+  "number": 87,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "LT",
+  "player": "P.Sewell",
+  "number": 58,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "LG",
+  "player": "C.Mahogany",
+  "number": 73,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "C",
+  "player": "J.Scruggs",
+  "number": 70,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "RG",
+  "player": "T.Ratledge",
+  "number": 69,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "RT",
+  "player": "B.Miller",
+  "number": 76,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "J.Williams",
+  "number": 1,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "A.St. Brown",
+  "number": 14,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "QB",
+  "player": "J.Goff",
+  "number": 16,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Offense",
+  "position": "RB",
+  "player": "J.Gibbs",
+  "number": 0,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "DE",
+  "player": "A.Hutchinson",
+  "number": 97,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "DL",
+  "player": "A.McNeill",
+  "number": 54,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "DL",
+  "player": "T.Williams",
+  "number": 91,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "DL",
+  "player": "T.Lacy",
+  "number": 93,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "T.Nowaske",
+  "number": 53,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "M.Rodriguez",
+  "number": 44,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "D.Barnes",
+  "number": 55,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "DB",
+  "player": "B.Branch",
+  "number": 32,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "R.Ya-Sin",
+  "number": 23,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "R.McCreary",
+  "number": 21,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@DET",
+  "team": "DET",
+  "unit": "Defense",
+  "position": "S",
+  "player": "C.Clark",
+  "number": 36,
+  "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ }
+]

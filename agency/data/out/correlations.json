@@ -1,0 +1,46 @@
+[
+ {
+  "pair": "home margin vs game total (same game)",
+  "r": -0.1595,
+  "n": 138,
+  "ci95": [
+   -0.3181,
+   0.0078
+  ],
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-{1-11}",
+  "inputs": "final scores from official week schedule pages"
+ },
+ {
+  "pair": "home points vs away points (same game)",
+  "r": 0.0629,
+  "n": 138,
+  "ci95": [
+   -0.1053,
+   0.2276
+  ],
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-{1-11}",
+  "inputs": "final scores from official week schedule pages"
+ },
+ {
+  "pair": "team points scored vs allowed (team-game)",
+  "r": 0.062,
+  "n": 276,
+  "ci95": [
+   -0.0565,
+   0.1788
+  ],
+  "source": "https://www.nfl.com/standings/league/2026/REG",
+  "inputs": "final scores from official week schedule pages"
+ },
+ {
+  "pair": "margin in week w vs margin in week w+1 (same club)",
+  "r": 0.103,
+  "n": 230,
+  "ci95": [
+   -0.0267,
+   0.2293
+  ],
+  "source": "https://www.nfl.com/schedules/2026/by-week/week-{1-11}",
+  "inputs": "final scores from official week schedule pages"
+ }
+]
