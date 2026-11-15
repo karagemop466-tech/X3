@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Readiness module - overview - X3 readiness</title>
+<link rel="stylesheet" href="../hub/assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>readiness module</span></a></div>
+  <div class="asof">session <b>arena/6259c7b0-x3</b> - built from verified official captures</div>
+</header>
+<nav class="nav"><a href="index.html" class=on>Overview</a><a href="decision-readiness.html">Decision readiness</a><a href="change-our-mind.html">What would change our mind</a><a href="control-baselines.html">Control baselines</a><a href="two-totals.html">Two totals</a><a href="ablations.html">Ablations</a><a href="what-changed.html">What changed</a><a href="announced-starters.html">Announced starters</a><a href="matchup-matrix.html">Matchup matrix</a><a href="drift-alarms.html">Drift alarms</a><a href="snapshots.html">Snapshot capture</a><a href="../index.html">X3 landing</a><a href="../signals/index.html">signals/</a></nav>
+<main>
+<h1>Readiness module - overview</h1>
+<p class="lede">The ten brief requirements this session implements, and where each lives.</p>
+<p>This module was added by session <code>arena/6259c7b0-x3</code> to close the requirements from the brief that no earlier session had implemented. Each page below states what was built, what it is computed from, and what stays blank. Verification: <code>scripts/verify_readiness.py</code> (rows sourced-or-flagged, links resolve, controls and diffs reproduce deterministically).</p><div class="tblwrap"><input class="filt" placeholder="filter rows..." oninput="x3filter(this)"><table><caption>What this module answers</caption><thead><tr><th>Task</th><th>Requirement</th><th>Page</th><th>Shape</th></tr></thead><tbody><tr><td>RD-01</td><td>Decision-readiness table on the landing page</td><td><a href="decision-readiness.html">decision-readiness.html</a> + the same table on the root landing</td><td>74 requirement rows: gate that blocks, number that clears</td></tr><tr><td>RD-02</td><td>Two-sided change-our-mind field on every strategy entry</td><td><a href="change-our-mind.html">change-our-mind.html</a></td><td>42 entries across signals/desk/ops/hub, both directions</td></tr><tr><td>RD-03</td><td>Drift alarm on every parser</td><td><a href="drift-alarms.html">drift-alarms.html</a></td><td>14 pinned datasets; CI fails loudly on drift</td></tr><tr><td>RD-04</td><td>Control baseline (random; favourites) on every leaderboard run</td><td><a href="control-baselines.html">control-baselines.html</a></td><td>coin flip + favourites on the identical graded set and metric</td></tr><tr><td>RD-05</td><td>Weekly what-changed diff instead of a static snapshot</td><td><a href="what-changed.html">what-changed.html</a></td><td>rank / rating / availability change per club-week, snapshots stored weekly</td></tr><tr><td>RD-06</td><td>Scheduled immutable availability snapshots with hashes</td><td><a href="snapshots.html">snapshots.html</a></td><td>Wed/Thu/Fri/Sun cron + SHA-256 retention + freshness alert</td></tr><tr><td>RD-07</td><td>Injury/personnel ablation with uncertainty</td><td><a href="ablations.html">ablations.html</a></td><td>with vs without availability features, paired CI, honest verdict</td></tr><tr><td>RD-08</td><td>Announced-starter evidence field</td><td><a href="announced-starters.html">announced-starters.html</a></td><td>5 dated official announcements verified for week 10</td></tr><tr><td>RD-09</td><td>Offense-vs-defence matchup deficiency matrix (1st-4th)</td><td><a href="matchup-matrix.html">matchup-matrix.html</a></td><td>starter absences joined to replacement depth, per fixture</td></tr><tr><td>RD-10</td><td>Publish every model total twice until one wins</td><td><a href="two-totals.html">two-totals.html</a></td><td>estimator A vs registered B, gap column, collapse deferred by rule</td></tr></tbody></table></div>
+</main>
+<footer>Every table row links an official source, a provenance link, or an explicit UNVERIFIED /
+BLOCKED marker. Nothing is inferred or filled in. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>
+- session <code>arena/6259c7b0-x3</code>, tasks RD-01 to RD-10.</footer>
+<script>
+function x3filter(inp){
+  var t=inp.parentElement.querySelector('table');
+  var rows=[].slice.call(t.querySelectorAll('tbody tr'));
+  var q=inp.value.toLowerCase().trim();
+  rows.forEach(function(r){ r.style.display = !q || r.textContent.toLowerCase().indexOf(q)>=0 ?'':'none'; });
+}
+</script>
+</body>
+</html>

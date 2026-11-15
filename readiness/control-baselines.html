@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control baselines - X3 readiness</title>
+<link rel="stylesheet" href="../hub/assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>readiness module</span></a></div>
+  <div class="asof">session <b>arena/6259c7b0-x3</b> - built from verified official captures</div>
+</header>
+<nav class="nav"><a href="index.html">Overview</a><a href="decision-readiness.html">Decision readiness</a><a href="change-our-mind.html">What would change our mind</a><a href="control-baselines.html" class=on>Control baselines</a><a href="two-totals.html">Two totals</a><a href="ablations.html">Ablations</a><a href="what-changed.html">What changed</a><a href="announced-starters.html">Announced starters</a><a href="matchup-matrix.html">Matchup matrix</a><a href="drift-alarms.html">Drift alarms</a><a href="snapshots.html">Snapshot capture</a><a href="../index.html">X3 landing</a><a href="../signals/index.html">signals/</a></nav>
+<main>
+<h1>Control baselines</h1>
+<p class="lede">Random picks and favourites-only, computed with the engine's own pipeline and grading rule on the identical graded set - the luck lines every leaderboard run must be read against.</p>
+<div class="tblwrap"><input class="filt" placeholder="filter rows..." oninput="x3filter(this)"><table><caption>Controls and the model side on the identical graded set (n=105, weeks 3, 4, 5, 6, 7, 8, 9, 10)</caption><thead><tr><th>Control / model</th><th>Straight-up</th><th>n</th><th>95% CI</th><th>exact p</th><th>Brier</th><th>Contest win rate vs baseline</th><th>n</th><th>95% CI</th><th>exact p</th><th>Source</th></tr></thead><tbody><tr><td><b>Coin flip (random picks)</b><br><span class='mut'>Seeded 50/50 side draw (random.Random, seed 20261115). Margin number = 0 every game: a coin flip expresses no margin information. Never ranked; published beside the leaderboard as </span></td><td>0.5619</td><td>105</td><td>0.4665 - 0.653</td><td>0.2414</td><td>0.25</td><td>0.5769</td><td>104</td><td>0.4809 - 0.6675</td><td>0.141</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N">nfl.com</a></td></tr><tr><td><b>Favourites only</b><br><span class='mut'>Pick the club with the higher verified win pct entering the week (results feed only; equal pct -&gt; home). Margin number = +/-1: direction without magnitude. Brier probability = p</span></td><td>0.6286</td><td>105</td><td>0.5331 - 0.7149</td><td>0.0108</td><td>0.2456</td><td>0.619</td><td>105</td><td>0.5235 - 0.7062</td><td>0.0187</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N">nfl.com</a></td></tr><tr><td><b>Model side (published signals engine)</b><br><span class='mut'>scripts/x3_signals.py S1 - contest vs the same no-knowledge baseline.</span></td><td></td><td></td><td> - </td><td></td><td></td><td>0.6381</td><td>105</td><td>0.5428 - 0.7236</td><td>0.006</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N">nfl.com</a></td></tr></tbody></table></div><p class='note'>The contest metric is the signals engine's own rule: the number is closer to the actual margin than the no-knowledge baseline (mean home margin fitted on the same training weeks). The controls' numbers are the registered coin-flip 0 and the favourite's nominal +/-1.</p><p><b>What this changes in reading the leaderboard:</b> the published side signal (0.6381) must be compared against the coin-flip line (0.5769) and the favourites line (0.619), not against 0.5. The model's contest edge over a naive favourites rule is 0.0191 contest wins in expectation - real but small, and the staking side stays blocked on prices (F-01).</p><p class='note'>Coordination request logged in COORDINATION.md: the signals owner is asked to join these control rows into signals/leaderboard.html on its next rebuild so the controls appear on that page's own runs.</p>
+</main>
+<footer>Every table row links an official source, a provenance link, or an explicit UNVERIFIED /
+BLOCKED marker. Nothing is inferred or filled in. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>
+- session <code>arena/6259c7b0-x3</code>, tasks RD-01 to RD-10.</footer>
+<script>
+function x3filter(inp){
+  var t=inp.parentElement.querySelector('table');
+  var rows=[].slice.call(t.querySelectorAll('tbody tr'));
+  var q=inp.value.toLowerCase().trim();
+  rows.forEach(function(r){ r.style.display = !q || r.textContent.toLowerCase().indexOf(q)>=0 ?'':'none'; });
+}
+</script>
+</body>
+</html>

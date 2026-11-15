@@ -1,0 +1,273 @@
+{
+ "as_of": "2026-11-15",
+ "generated_by": "scripts/drift_alarm.py",
+ "policy": "Every parser output is pinned to expected row counts and required fields. Any drift fails the build loudly instead of publishing a blank. Pins change only by a reviewed, deliberate commit.",
+ "datasets": 14,
+ "passed": 14,
+ "failed": 0,
+ "results": [
+  {
+   "id": "DESK-GAMES",
+   "dataset": "data/desk/games.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 163,
+    "required_fields": [
+     "week",
+     "away",
+     "home",
+     "away_name",
+     "home_name",
+     "status",
+     "date_iso",
+     "source"
+    ],
+    "value_pins": {
+     "season": 2026
+    }
+   }
+  },
+  {
+   "id": "DESK-STANDINGS",
+   "dataset": "data/desk/standings.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/standings/league/2026/reg",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 32,
+    "required_fields": [
+     "abbr",
+     "name",
+     "w",
+     "l",
+     "t",
+     "pf",
+     "pa",
+     "source"
+    ]
+   }
+  },
+  {
+   "id": "DESK-INJURIES",
+   "dataset": "data/desk/injuries.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 1027,
+    "required_fields": [
+     "team",
+     "player",
+     "pos",
+     "week",
+     "source"
+    ],
+    "value_pins": {
+     "season": 2026
+    },
+    "allowed_status_vocab": [
+     "Out",
+     "Doubtful",
+     "Questionable",
+     ""
+    ]
+   }
+  },
+  {
+   "id": "DESK-INJURY-WEEKS",
+   "dataset": "data/desk/injuries.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 3,
+    "required_fields": [
+     "week",
+     "rows",
+     "teams",
+     "out",
+     "doubtful",
+     "questionable",
+     "url"
+    ],
+    "value_pins": {
+     "weeks.0.week": 8,
+     "weeks.1.week": 9,
+     "weeks.2.week": 10
+    }
+   }
+  },
+  {
+   "id": "DESK-DEPTH",
+   "dataset": "data/desk/depth.json",
+   "kind": "json",
+   "source": "https://www.packers.com/team/depth-chart",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 32,
+    "required_fields": [
+     "abbr",
+     "url",
+     "units"
+    ]
+   }
+  },
+  {
+   "id": "DESK-DEFICIENCIES",
+   "dataset": "data/desk/deficiencies.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/injuries/league/2026/reg10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 210,
+    "required_fields": [
+     "team",
+     "week",
+     "player",
+     "pos",
+     "status"
+    ]
+   }
+  },
+  {
+   "id": "DESK-MODEL-RATINGS",
+   "dataset": "data/desk/model.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/standings/league/2026/reg",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "min_rows": 32
+   }
+  },
+  {
+   "id": "SIGNALS-RESULTS",
+   "dataset": "signals/data/results.csv",
+   "kind": "csv",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 163,
+    "required_fields": [
+     "game_id",
+     "week",
+     "home",
+     "away",
+     "status",
+     "source"
+    ]
+   }
+  },
+  {
+   "id": "SIGNALS-PRICES",
+   "dataset": "signals/data/price_snapshots.csv",
+   "kind": "csv",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 978,
+    "required_fields": [
+     "market_id",
+     "market",
+     "snapshot",
+     "status",
+     "source"
+    ]
+   }
+  },
+  {
+   "id": "SIGNALS-STRATEGIES",
+   "dataset": "signals/data/strategies.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 15,
+    "required_fields": [
+     "id",
+     "family",
+     "market",
+     "name",
+     "rule"
+    ]
+   }
+  },
+  {
+   "id": "SIGNALS-LEADERBOARD",
+   "dataset": "signals/data/leaderboard.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 15,
+    "required_fields": [
+     "rank",
+     "strategy",
+     "name",
+     "family",
+     "source"
+    ]
+   }
+  },
+  {
+   "id": "SIGNALS-GATES",
+   "dataset": "signals/data/gates.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 12,
+    "required_fields": [
+     "id",
+     "gate",
+     "rule",
+     "blocking"
+    ]
+   }
+  },
+  {
+   "id": "SIGNALS-CORRELATIONS",
+   "dataset": "signals/data/correlations.json",
+   "kind": "json",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "exact_rows": 15,
+    "required_fields": [
+     "pair",
+     "family",
+     "n",
+     "ci95_low",
+     "ci95_high",
+     "source"
+    ]
+   }
+  },
+  {
+   "id": "CAPTURE-MANIFEST",
+   "dataset": "capture/manifest.txt",
+   "kind": "text",
+   "source": "https://www.nfl.com/injuries/",
+   "status": "PASS",
+   "alarms": [],
+   "pins": {
+    "min_rows": 49
+   }
+  }
+ ],
+ "source": "https://www.nfl.com/injuries/league/2026/reg10"
+}
