@@ -388,3 +388,26 @@ python3 scripts/verify_signals.py # rows, links, gates, determinism
 nor carries an UNVERIFIED marker, on any broken internal link, on a missing snapshot (G11) and on a
 leaderboard ranked by anything other than a signal column (G12).
 
+
+---
+
+## Round 2: fresh-day verification & decision readiness (branch arena/4c2f61cd-x3, 2026-11-15)
+
+Session `arena/4c2f61cd-x3` re-verified the whole repository against official NFL sources on Week-10
+game day (2026-11-15) and added the `round2/` module (additive; no other module's files edited):
+
+- `round2/readiness.html` — the decision-readiness matrix: one row per requirement line of the brief,
+  with the implementing page, the gate that blocks it and the number that would clear it
+  (32 done / 20 partial / 13 not covered / 1 blocked).
+- `round2/verification.html` — fresh-day line-by-line verification: official standings reconciled
+  against the repo (30/32 identical; the 2 diffs are exactly the 2026-11-15 Munich final DET 35, NE 10),
+  the Week-10 slate captured live, and the official NFL Game Book transcribed (starters, Not Active,
+  venue, weather, roof/surface, officials, attendance).
+- `round2/audit.html` — every repo gate re-run on 2026-11-15, all passing.
+- `round2/flagged.html`, `round2/suggestions.html` — 7 new flags (incl. the Kerby Joseph Game-Book
+  discrepancy and the Munich venue naming difference) and 10 suggestions awaiting reviewer decision.
+
+Rebuild and gate: `python3 scripts/build_round2.py && python3 scripts/verify_round2.py`.
+Data: `round2/data/*.csv` (standings, slate, results delta, game-book facts/starters/inactives,
+requirements matrix, audit results, flags, suggestions, sources). The module is gated in CI by
+`.github/workflows/round2.yml` and covered by the repo-wide `scripts/audit_all.py`.
