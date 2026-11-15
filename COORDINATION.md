@@ -2546,3 +2546,87 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+---
+
+## Session arena/b6e217e2-x3 (point-in-time availability series + decision layer) — CLAIM
+
+Branch `arena/b6e217e2-x3`, branched from `8a889d7`. All work happens on this branch.
+`session-<id>/<task>` branch naming from the brief is not used: the platform fixes this
+session's branch. Claimed 2026-11-15T18:29Z, pushed before any other work.
+
+### Live-session check performed before claiming
+
+`gh pr list --state open` at 18:28Z returned three open PRs, two of them minutes old:
+
+| PR | Session branch | Created | Updated | Files that matter to me |
+|----|----------------|---------|---------|------------------------|
+| #72 | `arena/4d6bc1b6-x3` | 2026-11-15T18:26:13Z | 18:28:10Z | `index.html`, `tools/build_hub.py`, `COORDINATION.md`, `council/**` |
+| #69 | `arena/79dfd5ce-x3` | 2026-11-15T18:23:14Z | 18:27:43Z | `COORDINATION.md`, `council/**`, `verification-hub/audit-report.json` |
+| #58 | `arena/aab4718a-x3` | 2026-11-14T20:03:54Z | 20:08:22Z (stale >60 min) | `data/snapshots/**`, `.github/workflows/pages.yml`, `data/decisions/**` |
+
+### Scope of this session — claimed, non-overlapping
+
+**Writes:** `decision/**` (new module), `data/snapshots/**` (new store; filenames chosen to
+avoid #58's `snapshots_2026_wk10.csv` / `store_meta.json`), `scripts/x3_snapshots.py`,
+`scripts/x3_snapshots_verify.py`, `scripts/build_decision.py`, `scripts/verify_decision.py`,
+`.github/workflows/decision-verify.yml` (new file), `COORDINATION.md` and `README.md`
+(append-only).
+
+**Will NOT touch while #72 is open:** `index.html`, `tools/build_hub.py`, `hub/**`,
+`council/**`, `verification-hub/**`, `signals/**`, `origin/**`, `ops/**`, `desk/**`,
+`data/desk/**`, `data/council/**`, `data/decisions/**`, every other session's
+`scripts/**` and `tools/**`.
+
+**Deferred by agreement, not by omission:** the brief asks for the decision-readiness table
+*on the landing page*. `index.html` is being edited by `arena/4d6bc1b6-x3` as I write this.
+This session therefore (a) builds the register at `decision/readiness.html`, (b) emits a
+paste-ready block at `decision/landing-block.html`, and (c) logs the request below. If #72
+merges before this session's PR is raised, this session adds the one nav row itself and
+re-verifies; it will not edit `tools/build_hub.py`.
+
+### Coordination requests (logged here; files NOT edited)
+
+- **To `arena/4d6bc1b6-x3` (#72):** please add one nav row to the root `index.html`
+  pointing at `decision/index.html` ("Decision desk — readiness register, suggestion queue,
+  point-in-time delta"), or copy the generated block in `decision/landing-block.html`
+  (4-column register: requirement / gate that blocks it / number that would clear it /
+  status) into the landing page. Both are self-contained; no build step is needed.
+- **To `arena/aab4718a-x3` (#58, stale 22 h):** your PR adds a *second* snapshot store at
+  `data/snapshots/` (`snapshots_2026_wk10.csv`, `store_meta.json`). This session sealed
+  `data/snapshots/ledger.json` + `delta.json` + `wk10/capture-*.csv` with per-read sha256
+  and clock times, and a gate at `scripts/x3_snapshots_verify.py`. No filename collides.
+  Two stores of one concept is the C-05/S13 problem again — the merge author should collapse
+  them; the ledger format is the one with a verifier attached.
+- **To the `pages.yml` owner:** `python3 scripts/x3_snapshots.py && python3 scripts/x3_snapshots_verify.py
+  && python3 scripts/build_decision.py && python3 scripts/verify_decision.py` are offline,
+  together run in a few seconds, and gate every row of the new trees. A separate
+  `decision-verify.yml` runs them on every push and PR already, so this is belt-and-braces.
+- **To the `data/desk` owner:** the canonical Week 10 store says 345 rows / 137 finals as of
+  2026-11-14. The official page read at 2026-11-15T18:16Z carries **347 rows** (Ravens DT
+  Calais Campbell and T Ronnie Stanley appear with DNP and no game designation; both absent
+  from the two 11-14 reads), and **Patriots 10, Lions 35 is now FINAL**, so
+  `games.json` NE@DET `SCHEDULED`/null scores are stale as of this writing. Not edited here;
+  the delta and the settlement are published read-only at `decision/snapshots.html` and
+  `decision/pricing.html`.
+
+### Tasks (this session)
+
+| ID | Task | Status | Files | Evidence / verification |
+|----|------|--------|-------|-------------------------|
+| B1 | Claim scope, check live sessions | done | `COORDINATION.md` | `gh pr list` above |
+| B2 | Second sealed read of the official Week 10 availability report | done | `data/snapshots/wk10/capture-2026-11-15T1816Z-*.csv` | all 28 club tables re-read from https://www.nfl.com/injuries/league/2026/reg10 chunks 0-6 at 18:16Z; 347 rows |
+| B3 | Immutable snapshot ledger: hash + clock time per read | done | `scripts/x3_snapshots.py`, `data/snapshots/ledger.json` | sha256 of stored bytes; 2 reads indexed |
+| B4 | Publish the delta, not the level | done | `data/snapshots/delta.json` | 13 designation changes + 3 practice-only + 2 added rows, each with a corroboration verdict against the two independent 11-14 reads |
+| B5 | Drift alarm on the store itself | done | `scripts/x3_snapshots_verify.py` | PASS: provenance, immutability, counts recompute, duplicate-served-page caught, alias map asserted, builder deterministic |
+| B6 | Decide the price-data policy (options, consequences, what each unblocks) | needs review | `decision/pricing.html` | repo-verified: 0 of 13 priced markets carry a market line; first settlement of an originated line recorded (n=1) |
+| B7 | Decision-readiness register: one row per requirement, gate + clearing number | done | `decision/readiness.html` | ~60 rows; every row carries a basis label (VERIFIED-THIS-SESSION / READ-REPO / PRIOR-AUDIT-CITED / UNCHECKED) |
+| B8 | Suggestion queue — review before implementing | done | `decision/suggestions.html` | nothing implemented from it; decision column left blank for the reviewer |
+| B9 | Questions / what we have / what we lack / answers | done | `decision/questions.html` | includes two unblocks verified today (historical report archive reachable; gameday designation drift) |
+| B10 | Executive summary | done | `decision/executive-summary.html` | numbers interpolated from the data files at build time |
+| B11 | Flagged for review: irregularities found this session | done | `decision/flagged.html` | incl. the frozen model applying fixed injury penalties the brief forbids |
+| B12 | Tree-overlap matrix + consolidation path | done | `decision/trees.html` | counted from the tree itself, not from prior notes |
+| B13 | Sources + verification log | done | `decision/sources.html`, `decision/verification.html` | retrieval timestamps for every official page read |
+| B14 | CI for the new module | done | `.github/workflows/decision-verify.yml` | new file, no overlap with `pages.yml` |
+| B15 | PR → merge → Pages deploy → record | in progress | `COORDINATION.md` | see integration log |
+| B16 | Re-capture after games finish; settle remaining Week 10 lines | needs review | `decision/pricing.html` | 8 games were in progress at capture time; MNF not played; settling a partial slate would misreport |
