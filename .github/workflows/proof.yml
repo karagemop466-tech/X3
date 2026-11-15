@@ -1,0 +1,97 @@
+name: Proof layer (data freeze + backtest gate)
+
+# Owner: session arena/963ed45f-x3. New file; no existing workflow is edited.
+#
+# Two jobs, both of which must pass before proof/ can be trusted:
+#
+#   capture  - downloads the versioned source files (results, closing prices,
+#              official injury reports, snap counts) that proof/ reads, records a
+#              sha256 for every one in proof/hashes.json and commits them. This
+#              is the only step that needs the network. Once a file is recorded it
+#              is never rewritten: the capture is immutable by construction.
+#
+#   gate     - runs entirely offline against the committed files: rebuilds every
+#              number the site publishes and proves the committed site is the
+#              output of the committed engine, every table row carries a source
+#              link, and no value was invented.
+
+on:
+  push:
+    branches: [ arena/963ed45f-x3, main ]
+    paths:
+      - 'proof/**'
+      - '.github/workflows/proof.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: proof-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Freeze the versioned source files
+        run: |
+          python3 proof/fetch.py
+          python3 proof/fetch.py --verify
+
+      - name: Capture the live official pages as dated, hashed snapshots
+        run: python3 proof/capture_live.py
+
+      - name: Record the inventory
+        run: |
+          python3 - <<'PY'
+          import json, os
+          h = json.load(open('proof/hashes.json'))
+          f = h['files']
+          print(f"{len(f)} frozen source files, {sum(v['bytes'] for v in f.values())/1e6:.1f} MB")
+          n = len([x for x in os.listdir('proof/snapshots') if x.endswith('.json')])
+          print(f"{n} live-page snapshots")
+          PY
+
+      - name: Commit the capture
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name  "x3-proof"
+          git config user.email "x3-proof@users.noreply.github.com"
+          git add proof/raw proof/hashes.json proof/snapshots
+          if git diff --cached --quiet; then
+            echo "capture unchanged"
+            exit 0
+          fi
+          git commit -m "proof: capture source files + live pages ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git pull --rebase origin "$(git rev-parse --abbrev-ref HEAD)" || true
+          git push
+
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify the frozen files against their recorded hashes
+        run: python3 proof/fetch.py --verify
+
+      - name: Rebuild every published number from the frozen inputs
+        run: |
+          python3 proof/engine.py
+          python3 proof/leaderboard.py
+          python3 proof/build_site.py
+
+      - name: The committed site must be exactly what the engine produces
+        run: |
+          git diff --exit-code -- proof/site proof/out || {
+            echo "::error::proof/site or proof/out is not the current build - run proof/engine.py, proof/leaderboard.py and proof/build_site.py and commit the result."
+            exit 1; }
+
+      - name: Line-by-line verification gate
+        run: python3 proof/verify.py

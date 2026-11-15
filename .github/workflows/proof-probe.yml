@@ -1,9 +1,0 @@
-name: Proof probe
-on:
-  push:
-    branches: [ arena/963ed45f-x3, main ]
-jobs:
-  probe:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "probe ok"
