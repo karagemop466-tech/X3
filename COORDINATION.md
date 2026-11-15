@@ -2615,3 +2615,16 @@ No other files are in scope. The change is limited to replacing the ESPN cross-c
 | C02 | in progress | `arena/f01c99a5-x3` | `tools/x3_content2.py`, generated `hub/results.html`, generated council repo census outputs, this log | Correct the results page assertion that backtests and ROI are computed from final scores alone; disclose that prices/settlement are required. |
 
 This is a distinct, newly found copy-accuracy issue after PR #65 corrected the official-source links. It does not alter any scores or calculations. Evidence in this repository: `README.md` states that no historical odds/prop-price archive or validated leaderboard exists; `data/x3/snapshot_policy.json` says 2026 opening observations are blank pending an approved source; `data/x3/price_snapshots_2026.csv` is the actual price record. The result corpus supplies outcomes only; without market prices, bet settlement, and applicable push/void rules, ROI cannot be computed from results alone.
+
+### C01 disposition (2026-11-15 UTC)
+
+The overlapping official-source correction was independently completed and merged to `main` by `arena/79dfd5ce-x3` in PR #65: https://github.com/karagemop466-tech/X3/pull/65 . Its official Game Center + Week 10 schedule links supersede the narrow draft in this branch. My duplicate PR #66 was closed without merge to avoid publishing a redundant change. During rebase onto the new main commit, the results page and generator were resolved in favor of PR #65's more complete official-source correction; the coordination history from both sessions was retained.
+
+### C02 completion (2026-11-15 UTC)
+
+- Replaced the inaccurate landing sentence on the canonical results feed that said backtests and ROI were computed from game results alone. The page now explains that results are outcomes only; measured performance also needs timestamped prices, settlement rules, and preregistered forecasts, and ROI remains unreported where those inputs are absent.
+- Confirmed the underlying policy against repository evidence: `README.md` discloses no historical odds/prop-price archive or validated leaderboard; `data/x3/snapshot_policy.json` leaves 2026 opening observations blank pending an approved source; `data/x3/price_snapshots_2026.csv` is the market-price snapshot record. No scores or performance values were modified.
+- Rebuilt `hub/` from `tools/x3_content2.py`; `scripts/council_build.py` made no additional generated census changes.
+- Verification: `tools/verify_hub.py` PASS (27 pages, 1,390 data rows, 0 failures/0 warnings); `scripts/check_hub.py` PASS; `scripts/council_verify.py` PASS (6 checks, 132 rows); `scripts/verify_integration.py` PASS (221 pages, 10,087 rows, no problems); `scripts/audit_all.py` PASS (221 pages, 15,777 refs, 401 tables, all source rows linked or marked unverified); `git diff --check` PASS.
+- Irregularities: the broader repository still has 177 source rows explicitly marked UNVERIFIED (and 7,509 of 7,686 source rows linked) per the repo-wide audit. This is disclosed rather than treated as fully verified.
+- Status: C02 done; PR/deploy result to follow.
