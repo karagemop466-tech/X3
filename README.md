@@ -411,3 +411,11 @@ Rebuild and gate: `python3 scripts/build_round2.py && python3 scripts/verify_rou
 Data: `round2/data/*.csv` (standings, slate, results delta, game-book facts/starters/inactives,
 requirements matrix, audit results, flags, suggestions, sources). The module is gated in CI by
 `.github/workflows/round2.yml` and covered by the repo-wide `scripts/audit_all.py`.
+## 2026 desk (`x3/`)
+
+A 2026 in-season desk built from official NFL sources only: 28 static pages, 18 data files, and an
+18-check gate (`python3 tools/x3_desk_verify.py`) that fails the build on a broken link, an
+unsourced table row, a stale cross-reference, or a fabricated figure.
+
+Start at [`x3/index.html`](x3/index.html). Every number on it is labelled **in-sample**; nothing on
+it is live, and the market columns are empty because no official price source exists.

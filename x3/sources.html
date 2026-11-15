@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html" class="on">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Sources</h1><p class="sub">The official pages behind every number on this site</p></div>
+
+<section class="callout "><h2>Official pages only</h2>
+<p>Every fact on this site traces to a page on an official host — nfl.com, a club's own site, or the
+league's rulebook — or to a file in this repository that an earlier session captured from one. No
+aggregator, no odds site, no secondary source is used for a number.</p></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>What</th><th>URL</th><th>Scope</th><th>Read</th><th>Verified by</th></tr></thead><tbody>
+<tr><td><b>S-01</b></td><td>Official NFL injury report (current week)</td><td><a class="ext" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">open</a></td><td>Week 10 of 2026</td><td>read live 2026-11-15</td><td>rows transcribed by the committed parser; counts re-derived here</td></tr>
+<tr><td><b>S-02</b></td><td>Official NFL injury report (Week 10 archive URL)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">open</a></td><td>Week 10 of 2026</td><td>read live 2026-11-15</td><td>same page as S-01 at this time</td></tr>
+<tr><td><b>S-03</b></td><td>Official NFL injury report (Week 11 archive URL)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">open</a></td><td>redirects to Week 10</td><td>read live 2026-11-15</td><td>Week-11 designations do not exist yet — flag F-02</td></tr>
+<tr><td><b>S-04</b></td><td>Official NFL week-10 schedule</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">open</a></td><td>14 games + 4 byes</td><td>read live 2026-11-15</td><td>finals and byes transcribed</td></tr>
+<tr><td><b>S-05</b></td><td>Official NFL week-11 schedule</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">open</a></td><td>13 games + 6 byes</td><td>read live 2026-11-15</td><td>priced as a forward slate</td></tr>
+<tr><td><b>S-06</b></td><td>Official NFL league standings</td><td><a class="ext" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">open</a></td><td>32 clubs</td><td>read live 2026-11-15</td><td>30 agree with the committed file; 2 do not (F-04)</td></tr>
+<tr><td><b>S-07</b></td><td>Game Book, WAS at NYG, 2026-11-12</td><td><a class="ext" href="https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">open</a></td><td>starters, inactives, inactives, snap counts, venue, weather</td><td>read live 2026-11-15</td><td>the official signed game summary PDF linked from the game centre</td></tr>
+<tr><td><b>S-08</b></td><td>Game Center, NE at DET, 2026-11-15</td><td><a class="ext" href="https://www.nfl.com/games/patriots-at-lions-2026-reg-10" target="_blank" rel="noopener">open</a></td><td>score, venue, stadium</td><td>read live 2026-11-15</td><td>body of its Game Book not read (F-10)</td></tr>
+<tr><td><b>S-09</b></td><td>Game Center, WAS at NYG, 2026-11-12</td><td><a class="ext" href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10" target="_blank" rel="noopener">open</a></td><td>score, venue, stadium</td><td>read live 2026-11-15</td><td>link to S-07</td></tr>
+<tr><td><b>S-10</b></td><td>Game Center, KC at ATL (in progress)</td><td><a class="ext" href="https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10" target="_blank" rel="noopener">open</a></td><td>live score, venue, stadium</td><td>read live 2026-11-15</td><td>excluded from results (F-14)</td></tr>
+<tr><td><b>S-11</b></td><td>Seattle Seahawks depth chart</td><td><a class="ext" href="https://www.seahawks.com/team/depth-chart/" target="_blank" rel="noopener">open</a></td><td>Offense / Defense / Special teams</td><td>read live 2026-11-15</td><td>two players in one rank-1 cell (F-08)</td></tr>
+<tr><td><b>S-12</b></td><td>Baltimore Ravens depth chart</td><td><a class="ext" href="https://www.baltimoreravens.com/team/depth-chart" target="_blank" rel="noopener">open</a></td><td>Offense / Defense / Special teams</td><td>read live 2026-11-15</td><td>QB order differs from the committed capture</td></tr>
+<tr><td><b>S-13</b></td><td>Club depth charts, all 32 (committed capture 2026-11-14)</td><td><a class="ext" href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json" target="_blank" rel="noopener">open</a></td><td>31 parsable, 1 image-only (HOU)</td><td>captured by session arena/3bf7cc8b-x3</td><td>self-labelled unofficial by 15 clubs (F-07)</td></tr>
+<tr><td><b>S-14</b></td><td>Official NFL injury reports, weeks 8-11 (committed capture)</td><td><a class="ext" href="https://github.com/karagemop466-tech/X3/blob/main/data/desk/injuries.json" target="_blank" rel="noopener">open</a></td><td>1,027 rows</td><td>captured by session arena/3bf7cc8b-x3</td><td>week 11 rows are a duplicate of week 10 (F-02)</td></tr>
+<tr><td><b>S-16</b></td><td>The league&#x27;s dated 2026 schedule announcement</td><td><a class="ext" href="https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced" target="_blank" rel="noopener">open</a></td><td>18 weeks, 272 games, international slate, kickoff</td><td>read live 2026-11-15</td><td>the dated release the brief asks to publish beside the live schedule</td></tr>
+<tr><td><b>S-15</b></td><td>NFL Football Operations — 2026 rulebook</td><td><a class="ext" href="https://operations.nfl.com/the-rules/2026-nfl-rulebook/" target="_blank" rel="noopener">open</a></td><td>rule text</td><td>referenced, not read in this pass</td><td>used only to name the 2026 kickoff/onside regime</td></tr>
+</tbody></table></div>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

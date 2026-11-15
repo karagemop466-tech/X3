@@ -1,0 +1,14 @@
+game_id,week,date,away,home,side_fair,total_fair,ml_home_fair,market_side,diff_side,market_total,diff_total,market_ml_home,diff_ml_home,sigma_margin,lam_margin,lam_total,n_train,source
+2026-W11-IND@HOU,11,2026-11-19,IND,HOU,-5.6753,46.8393,0.6550,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-MIA@BUF,11,2026-11-22,MIA,BUF,-10.0641,45.0668,0.7695,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-BAL@CAR,11,2026-11-22,BAL,CAR,-2.0716,48.6041,0.5482,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-NO@CHI,11,2026-11-22,NO,CHI,-6.7999,41.4521,0.6864,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-TEN@DAL,11,2026-11-22,TEN,DAL,-5.0243,45.4151,0.6364,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-TB@DET,11,2026-11-22,TB,DET,-0.9622,41.5859,0.5142,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-ARI@KC,11,2026-11-22,ARI,KC,-8.5529,46.6682,0.7326,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-PIT@PHI,11,2026-11-22,PIT,PHI,8.2888,48.3142,0.2491,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-NYJ@LAC,11,2026-11-22,NYJ,LAC,4.3758,47.8051,0.3535,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-JAX@NYG,11,2026-11-22,JAX,NYG,9.7643,48.1358,0.2144,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-LV@DEN,11,2026-11-22,LV,DEN,-4.0387,45.3827,0.6075,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-MIN@SF,11,2026-11-22,MIN,SF,-2.4142,46.7681,0.5587,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
+2026-W11-CIN@WAS,11,2026-11-23,CIN,WAS,8.2717,47.2993,0.2495,,,,,,,12.9734,4.0000,16.0000,138,https://www.nfl.com/schedules/2026/by-week/week-11
