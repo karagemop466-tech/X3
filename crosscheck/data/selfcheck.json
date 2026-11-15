@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-14T19:00:46+00:00",
+ "generated_at": "2026-11-15T18:30:56+00:00",
  "pages": [
   {
    "page": "executive-summary.html",
@@ -9,37 +9,37 @@
   },
   {
    "page": "flagged.html",
-   "rows": 182,
+   "rows": 197,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
   {
    "page": "index.html",
-   "rows": 19,
+   "rows": 23,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
   {
    "page": "questions.html",
-   "rows": 78,
+   "rows": 87,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
   {
    "page": "requirements.html",
-   "rows": 45,
+   "rows": 53,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
   {
    "page": "suggestions.html",
-   "rows": 29,
+   "rows": 39,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
   {
    "page": "verification.html",
-   "rows": 165,
+   "rows": 220,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   }

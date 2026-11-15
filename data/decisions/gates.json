@@ -1,0 +1,163 @@
+{
+ "as_of": "2026-11-14",
+ "breakeven_at_minus110": 0.52381,
+ "gates": [
+  {
+   "id": "G-1",
+   "name": "Official-source data integrity",
+   "protects_against": "a signal that is really a transcription error",
+   "threshold": "100% of score and record fields recompute from the official schedule pages and match the official standings page; no cell inferred",
+   "status": "PASS",
+   "evidence": "192/192 club fields agree across 32 clubs and 137 finals (W, L, T, PF, PA, games). Aliases applied: ARI->AZ, LAR->LA, LAC->LAC, LV->LV, WAS->WAS.",
+   "source": "https://www.nfl.com/standings/league/2026/REG + https://www.nfl.com/schedules/2026/by-week/week-N",
+   "how_to_pass": "already passing; re-run tools/verified_feed.py after any new capture"
+  },
+  {
+   "id": "G-2",
+   "name": "Verified results feed exists",
+   "protects_against": "backtests and ROI computed on memory, screenshots or nothing",
+   "threshold": "every settled game has a final score traceable to an official page",
+   "status": "PASS",
+   "evidence": "137 finals in data/verified/results_2026.csv, each carrying its official week-page URL; 26 scheduled games deliberately carry no score.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+   "how_to_pass": "already passing for weeks 1-10; extend by re-running the capture"
+  },
+  {
+   "id": "G-3",
+   "name": "Minimum sample (corrected)",
+   "protects_against": "ranking noise",
+   "threshold": "at least 2272 settled bets at -110 before a 55% true edge is detectable at 80% power (exact binomial, one-sided); 498 for a 58% edge",
+   "status": "FAIL",
+   "evidence": "0 settled bets exist. The published threshold of 300 bets is shown by exact power to be far too small: at 300 bets an 80%-power test only detects a true edge of 59.6% or better, which is far larger than any edge a model of this kind should be assumed to have. At 55% the requirement is 2272 bets.",
+   "source": "tools/selftest_stats.py verified against exact binomial enumeration",
+   "how_to_pass": "ingest settled results with prices, then accumulate; no shortcut exists"
+  },
+  {
+   "id": "G-4",
+   "name": "Out-of-sample signal beats a naive baseline",
+   "protects_against": "a model that only looks clever",
+   "threshold": "walk-forward MAE below predict-zero and sign test p < 0.05",
+   "status": "PASS",
+   "evidence": "MAE 9.29 vs 10.21 points on 89 unseen games; 56/88 correct sides, exact p=0.01375.",
+   "source": "data/verified/backtest.json",
+   "how_to_pass": "passing against predict-zero; the market comparison is G-5 and is blocked"
+  },
+  {
+   "id": "G-5",
+   "name": "Edge over the market (CLV)",
+   "protects_against": "celebrating a signal the market already priced",
+   "threshold": "positive closing-line value on a pre-registered sample",
+   "status": "BLOCKED",
+   "evidence": "0 of 39 market cells carry an official price. No official NFL price publication exists and no licensed feed is configured.",
+   "source": "data/snapshots/store_meta.json",
+   "how_to_pass": "obtain a licensed price feed and record open and close per market"
+  },
+  {
+   "id": "G-6",
+   "name": "Uncertainty reported with every number",
+   "protects_against": "a point estimate pretending to be a fact",
+   "threshold": "every published coefficient, rate and ROI carries n and a 95% interval",
+   "status": "PARTIAL",
+   "evidence": "9 coefficients carry n, Fisher-z and a permutation p-value; bet-level ROI intervals are impossible while G-5 is blocked.",
+   "source": "data/verified/correlation.json",
+   "how_to_pass": "complete when settled prices exist"
+  },
+  {
+   "id": "G-7",
+   "name": "Multiple-testing control",
+   "protects_against": "the best of many variants being reported as the finding",
+   "threshold": "Benjamini-Hochberg at 10% across every strategy evaluated in the window, with the number of variants disclosed",
+   "status": "NOT RUN",
+   "evidence": "12 strategies registered, 0 evaluated on priced outcomes, 0 variants to correct.",
+   "source": "hub/data/prereg.json",
+   "how_to_pass": "run when at least one strategy has a priced sample"
+  },
+  {
+   "id": "G-8",
+   "name": "Correlation from official numbers only, with n",
+   "protects_against": "multiplying parlay legs as if independent",
+   "threshold": "every joint-outcome coefficient printed with n and an interval, from officially sourced observations",
+   "status": "PARTIAL",
+   "evidence": "game total vs |margin| r=-0.0157 (n=137, CI -0.1829 to 0.1524, permutation p=0.85281) - the interval includes zero, so on this sample the two legs cannot be shown dependent. Prop-level joints remain blank.",
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+   "how_to_pass": "prop joints need an official prop archive, which does not exist"
+  },
+  {
+   "id": "G-9",
+   "name": "Capacity and cost",
+   "protects_against": "an edge that disappears at the price you can actually get",
+   "threshold": "net of vig and limits, edge remains positive at the intended stake",
+   "status": "BLOCKED",
+   "evidence": "no vig, limit or line-movement data exists in the repository.",
+   "source": "n/a",
+   "how_to_pass": "requires the price feed from G-5"
+  },
+  {
+   "id": "G-10",
+   "name": "Demotion gate (live -> paper)",
+   "protects_against": "a dead strategy kept alive by an early lucky run",
+   "threshold": "ANY of the triggers below sends the strategy back to paper on the next re-rating; no discretion, no vote",
+   "status": "NOT RUN",
+   "evidence": "0 live strategies exist, so nothing can be demoted yet. The triggers are defined now so the rule cannot be written after a losing run starts.",
+   "source": "data/decisions/gates.json",
+   "how_to_pass": "n/a - this is a control, not a milestone"
+  }
+ ],
+ "demotion_triggers": [
+  {
+   "id": "D-1",
+   "trigger": "30+ settled bets with negative cumulative flat-stake profit",
+   "why": "A 12-bet losing run is normal, so the trigger is on cumulative profit over the run rather than on consecutive losses. Thirty bets is short enough to act on and long enough that a real edge rarely sits under water for all of it.",
+   "arithmetic": "At a true 55% win rate, 30 losing bets in a row has probability 0.45^30 = 3.95e-11; at breakeven it is 2.15e-10. The trigger is therefore not a 50/50 call: it fires on a run that a genuine edge almost never produces.",
+   "source": "computed here from the exact binomial; kernel verified by tools/selftest_stats.py"
+  },
+  {
+   "id": "D-2",
+   "trigger": "trailing 400-bet ROI below -3% while the pre-registered expectation was positive",
+   "why": "A sharp registered edge almost never digs a 3%-below-turnover hole over 400 bets; a strategy with no edge digs it regularly. The trigger therefore separates a decayed edge from a genuine one without needing to know which it is in advance.",
+   "arithmetic": "P(ROI < -3% over 400 flat bets) = 0.0002 at a true 55% and 0.0061 at breakeven. Because the 55% figure is far below any conventional significance level, the trigger cannot be dismissed as an unlucky streak by a strategy that is merely breaking even.",
+   "source": "computed here from the exact binomial"
+  },
+  {
+   "id": "D-3",
+   "trigger": "rolling 200-bet CLV negative for 3 consecutive re-ratings",
+   "why": "CLV is the least noisy skill measure available and is not sensitive to variance in the outcome. Three consecutive negative windows is the standard process-quality failure signal.",
+   "arithmetic": "requires G-5 to be unblocked; cannot fire until prices exist.",
+   "source": "n/a - blocked with G-5"
+  },
+  {
+   "id": "D-4",
+   "trigger": "documented input defect: any strategy input found to be wrong, unverifiable, or from a source that was later retracted",
+   "why": "A correct result from wrong inputs is not a result. This is the trigger that applies to this repository's own history (a standings transcription had to be corrected once already).",
+   "arithmetic": "n/a - a defect is a defect regardless of sample size",
+   "source": "COORDINATION.md (FLG-22 retraction)"
+  },
+  {
+   "id": "D-5",
+   "trigger": "the strategy's own stated dependence term cannot be re-estimated from current data",
+   "why": "For combos and parlays, if the correlation that justified the joint price cannot be recomputed, the price is a guess and the strategy may not stay live.",
+   "arithmetic": "n/a",
+   "source": "data/verified/correlation.json"
+  },
+  {
+   "id": "D-6",
+   "trigger": "reward payout would exceed the notional cap before G-3 is met",
+   "why": "Stops a promotion being paid out of a sample too small to justify it.",
+   "arithmetic": "n/a",
+   "source": "data/decisions/suggestions.json"
+  }
+ ],
+ "demotion_policy": [
+  "Demotion is automatic: any single trigger fires it. No human vote, no override on the same sample.",
+  "A demoted strategy returns to paper and may only be re-promoted on a NEW sample that post-dates the demotion, never on the sample that demoted it.",
+  "The demotion, its trigger, and the sample are published on the leaderboard page.",
+  "Losing a strategy is a normal cost of running many; hiding it is not permitted."
+ ],
+ "summary": {
+  "pass": 3,
+  "partial": 2,
+  "fail": 1,
+  "blocked": 2,
+  "not_run": 2
+ }
+}

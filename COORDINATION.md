@@ -2583,3 +2583,69 @@ the reviewer, not something this session will do unilaterally.
 ### Claim log
 - `arena/fed85bfd-x3` claims the integration remit and the one open PR (#58) as the merge target. No other
   session has an open branch or claim at claim time (`git branch -r` → `origin/main` only).
+
+### Merge of PR #58 (arena/aab4718a-x3) — method and result
+
+**Why a manual 3-way union, not a plain merge.** Current `main` is a **single squashed commit**
+(`8a889d7`, 1 commit), while PR #58's branch carries the full pre-squash history (283 commits) and merged
+`main` @ `5f907246` (PR #56). `git merge-base main pr58` is **empty** — the histories are disjoint — so a
+blind `git merge pr58` would have reverted the newer main work (`signals/`, `data/x3/verified/`,
+`scripts/build_signals.py`, etc., all landed by PRs #57–#62 after PR #58's base). The merge was therefore
+done as a **3-way union using the PR's true base `5f907246`** (which is present in the object store):
+`base = 5f907246`, `ours = main (8a889d7)`, `theirs = pr58 (4bd0142)`.
+
+- **New (A) files** taken verbatim from `pr58` (no collision): `data/decisions/*`, `data/verified/*`,
+  `data/picks/*`, `data/snapshots/*`, `data/review/*`, the 10 cross-check `hub/*.html` pages, `hub/x3/*`,
+  and the new `tools/{build_desk,decisions,depth_map,gates,picks,price_store,repo_review,selftest_stats,
+  signal_vs_staking,verified_feed,verify_desk,x3stats}.py`.
+- **`tools/build_hub.py`** 3-way union-merged (5 conflicts, all resolved as a union): kept PR #58's
+  subdirectory `nav_href()`/`up` support and `@../council` NAV entry **and** main's `__council__`-sentinel
+  filter, signals outbound link, and richer landing "Start here" paragraph; adopted PR #58's collision
+  resolution (X2 pages emitted to `hub/x3/`); removed the duplicate `__council__` sentinel append.
+- **`.github/workflows/pages.yml`** unioned cleanly (added `selftest_stats.py` + `verify_desk.py` steps).
+- **`tools/verify_hub.py`**: PR #58 did not change it (base == theirs); main's version kept.
+- **`council/repo-review.html` + `data/council/council.json`**: PR #58 had hand-edited the **generated**
+  files instead of the source `council_content.py`. Rather than keep drift, both were **regenerated from
+  `scripts/council_build.py`** (the deterministic builder) — this also cleared a mislabeled-row defect
+  (a linked row labelled UNVERIFIED) and restored build determinism.
+- **Generated hub pages + root `index.html`** regenerated from the merged generators
+  (`x3_engine.py` → `build_hub.py` → `build_desk.py`). No generated HTML was hand-edited.
+
+**Result.** Hub grows 27 → 41 pages (main desk + 10 cross-check pages + `hub/x3/` subtree). All content
+PR #58 intended is present; nothing from main's newer work was discarded.
+
+### Verification performed (line by line, this session)
+
+- **All 23 repo gates pass** (exit 0): `check_site` (353 rows, 0 unsourced) · `check_links` (384 links) ·
+  `audit_all` (235 pages, 16,954 link refs, 449 tables, 8,115 source rows: 7,931 linked + 184
+  unverified-marked) · `verify_site` (48 tables) · `verify_data` (2,134 checks) · `check_hub` ·
+  `verify_integration` (hub 41 pages / 2,525 rows, all internal links resolve) · `desk_verify` ·
+  `ops_run` · `x3_engine` · `build_hub` · `build_desk` · `verify_hub` (36 pages, 1,509 data rows, 0
+  failures) · `verify_desk` (1,734 checks, 10 pages) · `selftest_stats` · `council_build` ·
+  `council_verify` (deterministic, 132 rows) · `verify_ledger` · `crosscheck --verify` · `origin_verify`
+  · `check_dashboard` · `node check_data` · `node check_render`.
+- **Official-source spot-checks (fetched live 2026-11-15):**
+  - Standings `https://www.nfl.com/standings/league/2026/REG` — BUF 7-1 (256-187), SF 7-1 (235-156),
+    CHI 7-2 (241-184), NYG 5-3-1 (203-196), WAS 3-5-1 (196-223): all match `data/verified/standings_2026_official.csv`.
+  - Week-10 schedule `https://www.nfl.com/schedules/2026/by-week/week-10` — **Commanders 24, Giants 21
+    FINAL** (Thu Nov 12) matches the results feed; the Munich **Patriots 10, Lions 35 FINAL** (Sun Nov 15)
+    is now final but is **not** in the feed, consistent with the feed's `AS_OF = 2026-11-14` snapshot
+    boundary (the Nov-15 slate had not been played at capture).
+- **Reconciliation integrity:** `data/verified/reconciliation.json` re-sums all 137 finals per club and
+  compares to the official standings: 192/192 fields agree, 0 mismatches, aliases ARI→AZ / LAR→LA applied.
+- **No value inferred or filled.** Market prices, CLV, ROI, settled bets, prop prices remain blank and
+  flagged (no official price source exists — consistent with every prior session's finding).
+
+### Irregularities / flags (non-blocking, published on the site)
+
+- **I-F01 (data freshness):** the verified results feed and standings are a `2026-11-14` snapshot. The
+  Nov-15 Sunday slate (incl. NE@DET 35-10, now final) is not reflected. The site labels the as-of date;
+  the next capture cycle will pick these up. Not a hallucination — a correctly-labeled snapshot boundary.
+- **I-F02 (history):** `main` is a single squashed commit; PR #58's branch is the full pre-squash history.
+  Merged via 3-way union on base `5f907246`; PR #58 will be closed as superseded (its content lands via
+  this session's integration PR).
+- **I-F03 (drift, corrected):** PR #58 hand-edited generated `council/repo-review.html`/`council.json`
+  instead of `council_content.py`. Regenerated from the builder; the drift and a mislabeled-row defect are
+  cleared. Lesson (consistent with prior sessions): never hand-edit a generated file.
+- **I-F04 (standing):** no official market-price source exists anywhere in the repo — every price/CLV/ROI
+  cell stays blank and flagged. Unchanged from prior sessions.

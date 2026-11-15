@@ -1,0 +1,24 @@
+{
+ "method": "Mean home margin over non-neutral finals. The 95% interval is the normal approximation mean +/- 1.96*SE, which is valid for a mean of ~135 observations. Neutral-site games are excluded and counted.",
+ "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "schedule_source_pattern": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "n_games_total": 137,
+ "n_neutral_excluded": 7,
+ "n_non_neutral": 130,
+ "hfa_points": 0.469,
+ "se": 1.164,
+ "ci95": [
+  -1.812,
+  2.751
+ ],
+ "note": "HFA in points of margin, not of team score. A neutral-site game gets 0.",
+ "neutral_games": [
+  "SF@LA 2026-09-10 (East Melbourne)",
+  "BAL@DAL 2026-09-27 (Rio de Janeiro)",
+  "IND@WAS 2026-10-04 (London)",
+  "PHI@JAX 2026-10-11 (London)",
+  "HOU@JAX 2026-10-18 (London)",
+  "PIT@NO 2026-10-25 ()",
+  "CIN@ATL 2026-11-08 (Madrid)"
+ ]
+}

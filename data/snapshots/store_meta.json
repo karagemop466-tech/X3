@@ -1,0 +1,37 @@
+{
+ "purpose": "Timestamped opening and closing prices for every market originated, so a later backtest can score the decision that was available at the time rather than the number that hindsight prefers.",
+ "as_of": "2026-11-14T00:00:00Z",
+ "order_of_origination": [
+  "SIDE",
+  "TOTAL",
+  "MONEYLINE"
+ ],
+ "moneyline_method": {
+  "formula": "p_home = Phi(fair_spread_home / sigma); American odds inverted from p",
+  "sigma_source": "residual SD of the walk-forward backtest in data/verified/backtest.json",
+  "sigma_used": 12.307,
+  "residual_mean": -1.1812,
+  "n_residuals": 89,
+  "note": "Using a measured residual SD rather than the 13.5-point convention in the hub params. Ties (an exact push on the spread) are not a moneyline outcome; pushes have zero probability in the continuous normal, so the ML is not adjusted for them."
+ },
+ "rows": 39,
+ "games": 13,
+ "markets_per_game": 3,
+ "official_market_prices_available": false,
+ "third_party_reference": {
+  "file": "x3lab/data/lines_week10.json",
+  "source": "commercial odds page cited in that file",
+  "status": "NOT OFFICIAL / NOT INGESTED",
+  "reason": "not an official NFL source; single undated snapshot with no open/close pair; excluded from all calculations by the project's official-sources-only rule"
+ },
+ "policy": [
+  "Every market cell that has no official source is blank and marked UNVERIFIED.",
+  "Third-party prices are carried for transparency in their own columns and are excluded from every calculation, because the project uses officially sourced numbers only.",
+  "Our own line is an official record of our own output; it is not a market price and is never called one.",
+  "The close is defined as the last number recorded at or before kickoff. With no feed it stays blank, and a row with a blank close cannot contribute to a closing-line-value calculation."
+ ],
+ "checks": {
+  "problems": [],
+  "status": "PASS"
+ }
+}

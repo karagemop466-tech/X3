@@ -1,0 +1,187 @@
+{
+ "method": "Signal is measured out of sample from data/verified/backtest.json and involves no money. Staking and masking are binomial samplings with a fixed seed, so every number is reproducible by re-running the script. No market price exists in the repository.",
+ "sources": [
+  "https://www.nfl.com/schedules/2026/by-week/week-N"
+ ],
+ "signal": {
+  "n_games_scored": 89,
+  "decided_games": 88,
+  "pushes_excluded": 1,
+  "sign_correct": 56,
+  "sign_accuracy": 0.6364,
+  "binom_two_sided_p_vs_coin": 0.01375,
+  "mae_points": 9.29,
+  "mae_naive_predict_zero": 10.21,
+  "improvement_points": 0.92,
+  "corr_pred_vs_actual": 0.3082,
+  "what_this_proves": "On 89 games the model never saw, it beats predicting a zero margin on MAE (9.29 vs 10.21 points) and gets the winner's side of the final score 56 of 88 times (p=0.0138). The pipeline carries real information about the score.",
+  "what_this_does_not_prove": "It is NOT an edge over a market. A closing line is far better than predict-zero, and this repository has no prices, so the only comparison that would matter has not been made. Sign accuracy against the final score is not a win rate at a price, and no bankroll, ROI or reward may be derived from it."
+ },
+ "staking": {
+  "breakeven_52_38pct": {
+   "true_win_rate": 0.5238,
+   "price": "-110",
+   "n_bets": 200,
+   "rules": {
+    "flat_1_unit": {
+     "p05": 77.55,
+     "p50": 100.45,
+     "p95": 121.45,
+     "share_below_start": 0.4778,
+     "share_ruined": 0.0
+    },
+    "flat_5_units": {
+     "p05": 0.0,
+     "p50": 102.27,
+     "p95": 207.27,
+     "share_below_start": 0.482,
+     "share_ruined": 0.1268
+    },
+    "fixed_pct_2": {
+     "p05": 61.51,
+     "p50": 97.31,
+     "p95": 148.16,
+     "share_below_start": 0.5308,
+     "share_ruined": 0.0
+    },
+    "fixed_pct_10": {
+     "p05": 4.15,
+     "p50": 41.77,
+     "p95": 346.61,
+     "share_below_start": 0.7452,
+     "share_ruined": 0.0
+    },
+    "fixed_pct_25": {
+     "p05": 0.0,
+     "p50": 0.29,
+     "p95": 66.42,
+     "share_below_start": 0.9547,
+     "share_ruined": 0.0
+    },
+    "all_in": {
+     "p05": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "share_below_start": 1.0,
+     "share_ruined": 1.0
+    }
+   }
+  },
+  "modest_edge_55pct": {
+   "true_win_rate": 0.55,
+   "price": "-110",
+   "n_bets": 200,
+   "rules": {
+    "flat_1_unit": {
+     "p05": 87.09,
+     "p50": 110.0,
+     "p95": 131.0,
+     "share_below_start": 0.212,
+     "share_ruined": 0.0
+    },
+    "flat_5_units": {
+     "p05": 35.45,
+     "p50": 150.0,
+     "p95": 255.0,
+     "share_below_start": 0.2165,
+     "share_ruined": 0.041
+    },
+    "fixed_pct_2": {
+     "p05": 74.46,
+     "p50": 117.8,
+     "p95": 179.36,
+     "share_below_start": 0.2542,
+     "share_ruined": 0.0
+    },
+    "fixed_pct_10": {
+     "p05": 10.86,
+     "p50": 109.29,
+     "p95": 906.93,
+     "share_below_start": 0.4718,
+     "share_ruined": 0.0
+    },
+    "fixed_pct_25": {
+     "p05": 0.01,
+     "p50": 3.46,
+     "p95": 779.31,
+     "share_below_start": 0.8257,
+     "share_ruined": 0.0
+    },
+    "all_in": {
+     "p05": 0.0,
+     "p50": 0.0,
+     "p95": 0.0,
+     "share_below_start": 1.0,
+     "share_ruined": 1.0
+    }
+   }
+  }
+ },
+ "masking": {
+  "price": "-110",
+  "breakeven_win_rate": 0.52381,
+  "a_share_finishing_above_start_flat_1u": {
+   "bad_45pct": {
+    "20": 0.2497,
+    "50": 0.1221,
+    "100": 0.066,
+    "200": 0.0191,
+    "500": 0.0006,
+    "1000": 0.0001,
+    "2000": 0.0
+   },
+   "coin_50pct": {
+    "20": 0.4164,
+    "50": 0.3304,
+    "100": 0.3083,
+    "200": 0.2628,
+    "500": 0.1519,
+    "1000": 0.0738,
+    "2000": 0.0163
+   },
+   "breakeven_52_38pct": {
+    "20": 0.4998,
+    "50": 0.4562,
+    "100": 0.4913,
+    "200": 0.5198,
+    "500": 0.5134,
+    "1000": 0.514,
+    "2000": 0.5035
+   }
+  },
+  "a_reading": "A strategy whose TRUE win rate is 45% - far below the 52.4% breakeven - still finishes above its starting bankroll 6.6% of the time after 100 bets. A bankroll column is therefore not evidence of skill and cannot be a ranking key.",
+  "b_share_worse_47_outranks_better_55": {
+   "20": 0.2534,
+   "50": 0.1885,
+   "100": 0.1134,
+   "200": 0.0502,
+   "500": 0.0043,
+   "1000": 0.0001,
+   "2000": 0.0
+  },
+  "b_reading": "With only 20 bets, a strategy whose true rate is 47% finishes ahead of one whose true rate is 55% 25.3% of the time. At 200 bets that falls to 5.0%. A leaderboard read at a short sample is mostly noise.",
+  "c_bets_needed_for_80pct_power": {
+   "55%_vs_breakeven": {
+    "n_needed_80pct_power": 2272,
+    "power_at_that_n": 0.8017
+   },
+   "56%_vs_breakeven": {
+    "n_needed_80pct_power": 1182,
+    "power_at_that_n": 0.801
+   },
+   "58%_vs_breakeven": {
+    "n_needed_80pct_power": 498,
+    "power_at_that_n": 0.802
+   }
+  },
+  "c_reading": "At -110, a true 55% bettor needs about 2272 settled bets before a one-sided exact binomial test rejects breakeven 80% of the time. That is the arithmetic behind the minimum-sample gate, not a preference.",
+  "trials": 20000,
+  "seed": 20261114
+ },
+ "limits": [
+  "One season. The signal itself has a wide interval; 137 games cannot establish a durable edge.",
+  "Independent identically distributed bets are assumed, which understates real slate variance where same-week bets are correlated.",
+  "No commission, limit, line movement or push handling is modelled.",
+  "The staking block illustrates variance; it is not a performance record and must never be quoted as an ROI."
+ ]
+}

@@ -104,6 +104,27 @@ NAV = [
     ("repo-review", "Repo review", "Prior work audited line by line"),
     ("flagged", "Flagged for review", "Unverified items and irregularities"),
     ("archive", "Prior trees", f"The {len(ARCHIVE_ROWS)} older site trees"),
+    # ---- pages added by session arena/aab4718a-x3 (tools/build_desk.py).
+    # Labeled as a cross-check so that no label duplicates another unit's page.
+    # After the merge with PR #55/#56 there were nine duplicate labels on the
+    # landing, which is a usability defect: two rows called "Results feed" with
+    # different content is worse than one. Each of these is an independent
+    # recomputation of the same question from official pages, so it says so.
+    ("summary", "Cross-check: executive brief", "Independent one-page brief, every number interpolated"),
+    ("results", "Cross-check: results feed", "Same 137 finals, reconciled field by field"),
+    ("picks", "Cross-check: board side/total/ML", "Originated in order, with key-number checks"),
+    ("snapshots", "Cross-check: price snapshots", "Open/close store; exactly which cells are real"),
+    ("correlation-live", "Cross-check: correlation", "Every coefficient with n and permutation p"),
+    ("leaderboard-live", "Cross-check: demotion rule", "Signal separated from staking, 6 triggers"),
+    ("depth-tiers", "Cross-check: replacement depth", "Which string actually steps in"),
+    ("decisions", "Cross-check: review queue", "Questions, answers and suggestions"),
+    ("repo-review-live", "Cross-check: repo audit", "14 prior claims rechecked line by line"),
+    ("flagged-live", "Cross-check: review flags", "Everything that needs a human decision"),
+    # Registered here rather than hand-edited into the generated landing. On main the
+    # council row lived only in the committed index.html, so every rebuild deleted it
+    # and the deploy gate failed with "hub is not the current build". A page that the
+    # generator does not know about cannot survive a rebuild.
+    ("@../council/index.html", "Decision council", "The eight requirements as pass/fail tests"),
 ]
 
 
@@ -174,26 +195,49 @@ def table(heads, rows, tid=None, cap=None, note=None, kind="data"):
     return "\n".join(out)
 
 
+def nav_href(slug, depth=0):
+    """Resolve a NAV entry to an href.
+
+    Convention: a slug prefixed with "@../" is rooted at the repository root
+    (the council tree lives there, not inside hub/). Every other slug is a page
+    inside hub/.
+
+    depth is how many directories below hub/ the linking page sits: 0 for
+    hub/x.html, 1 for hub/x3/x.html. Getting this wrong is what made every nav
+    target 404 on the subdirectory pages, so it is computed once here.
+    """
+    up = "../" * depth
+    if slug.startswith("@../"):
+        return up + "../" + slug[4:]          # repo root, from inside hub/
+    return up + slug + ".html"
+
+
 def page(fname, title, intro, body, active="index", extra_head=""):
+    # Pages emitted into a subdirectory need their relative links prefixed, or they
+    # resolve against the wrong directory and every nav target 404s. `up` is the
+    # number of path segments between the page and hub/.
+    up = "../" * max(0, fname.count("/"))
+
     nav = "".join(  # __council__ sentinel is root-landing-only (PR #55 merge repair)
-        f'<a href="{slug}.html"{" class=on" if slug == active else ""}">{esc(lbl)}</a>'
+        f'<a href="{nav_href(slug, fname.count("/"))}"'
+        f'{" class=on" if slug == active else ""}>{esc(lbl)}</a>'
         for slug, lbl, _d in NAV if slug != "__council__")
     # integration session arena/09f8c786-x3: one outbound link to the signals module.
     # It lives outside hub/, so it is appended rather than added to NAV (which is
-    # rendered with two different relative prefixes).
-    nav += '<a href="../signals/index.html">Signals &amp; leaderboard</a>'
+    # rendered with two different relative prefixes). `up` keeps it correct from subdirs.
+    nav += f'<a href="{up}../signals/index.html">Signals &amp; leaderboard</a>'
     html = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} - X3 NFL decision desk</title>
-<link rel="stylesheet" href="assets/hub.css">
+<link rel="stylesheet" href="{up}assets/hub.css">
 {extra_head}
 </head>
 <body>
 <header class="top">
-  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="brand"><a href="{up}index.html">X3 <span>NFL decision desk</span></a></div>
   <div class="asof">data as of <b>{AS_OF}</b> - season 2026, week {meta['week']}</div>
 </header>
 <nav class="nav">{nav}</nav>
@@ -207,11 +251,13 @@ def page(fname, title, intro, body, active="index", extra_head=""):
   <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on {AS_OF};
   values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
   calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
-  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <p><a href="{up}../index.html">Site root</a> - <a href="{up}../COORDINATION.md">Coordination log</a> -
   <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
 </footer>
 </body></html>"""
-    with open(os.path.join(HUB, fname), "w", encoding="utf-8") as f:
+    out = os.path.join(HUB, fname)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w", encoding="utf-8") as f:
         f.write(html)
 
 
@@ -249,7 +295,8 @@ def p_index():
     for slug, lbl, desc in NAV:
         if slug == "__council__":  # sentinel is root-landing-only (PR #55 merge repair)
             continue
-        rows.append([f'<a href="{slug}.html"><b>{esc(lbl)}</b></a>', esc(desc)])
+        href = nav_href(slug, 0)
+        rows.append([f'<a href="{href}"><b>{esc(lbl)}</b></a>', esc(desc)])
     nav_tbl = table(["Section", "Contains"], rows)
     status = table(
         ["Capability", "State", "Evidence"],
@@ -1370,17 +1417,23 @@ def main():
     C.FLAGS.extend(X2.NEW_FLAGS)
     C.Q.extend(X2.NEW_QUESTIONS)
     C.SUG.extend(X2.NEW_SUGGESTIONS)
-    NAV.append(("__council__", "", ""))
     NAV.extend(X2.NAV_EXTRA)
     # extra pages that need the helpers defined above
     build_prereg()
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
     p_injuries(); p_depth(); p_leader(); p_req(); p_questions(); p_suggestions()
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
-    _P["p_markets"](); _P["p_store"](); _P["p_results"](); _P["p_replacements"]()
+    # COLLISION RESOLUTION (session arena/aab4718a-x3).
+    # Another session's generator (tools/x3_content2.py) writes results.html,
+    # pricing.html, origination.html, signal.html and replacement.html at the hub
+    # root. This session publishes results.html, snapshots.html, picks.html,
+    # leaderboard-live.html and depth-tiers.html. Writing both sets to the same
+    # names would make one unit silently overwrite the other, so the x3/ set is
+    # emitted under hub/x3/ instead. Nothing is deleted and no name is stolen:
+    # both units keep every page, each under its own namespace.
     for fn in X2.PAGES:  # results / pricing / origination / signal / replacement
         fname, title, intro, body = fn()
-        page(fname + ".html", title, intro, body, fname)
+        page(os.path.join("x3", fname + ".html"), title, intro, body, fname)
     with open(os.path.join(HUB, "assets", "hub.css"), "w", encoding="utf-8") as f:
         f.write(CSS)
     with open(os.path.join(HUB, "assets", "hub.js"), "w", encoding="utf-8") as f:
@@ -1424,12 +1477,18 @@ def landing():
     _MK = JX("markets.json")
     _ST = JX("strategies.json")
 
-    def nav_item(slug, lbl, desc):
-        if slug == "__council__":
-            return ('<a href="council/index.html"><b>Decision council</b><span>The eight '
-                    'requirements as pass/fail tests, plus the suggestion queue</span></a>')
-        return f'<a href="hub/{slug}.html"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
-    nav = "".join(nav_item(slug, lbl, desc) for slug, lbl, desc in NAV)
+    # root landing links everything under hub/, except "@" literals which are
+    # already relative to the repository root (the council tree lives there).
+    def _root_href(slug):
+        # The landing sits at the repository root, so it reaches hub/ pages with a
+        # "hub/" prefix and "@../" literals by dropping the marker.
+        if slug.startswith("@../"):
+            return slug[4:]
+        return slug[1:] if slug.startswith("@") else "hub/" + slug + ".html"
+
+    nav = "".join(
+        f'<a href="{_root_href(slug)}"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
+        for slug, lbl, desc in NAV)
     # integration session arena/09f8c786-x3: the signals module is a separate tree
     nav += ('<a href="signals/index.html"><b>Signals &amp; leaderboard</b>'
             '<span>Originated lines, price snapshots, signal vs staking</span></a>')

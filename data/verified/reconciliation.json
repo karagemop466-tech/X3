@@ -1,0 +1,1366 @@
+{
+ "method": "Every final in data/desk/games.json is re-summed per club (W/L/T from the score, PF, PA, games) and compared field by field with data/verified/standings_2026_official.csv, which was transcribed this session from the official standings page.",
+ "official_source": "https://www.nfl.com/standings/league/2026/REG",
+ "schedule_source_pattern": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "finals_used": 137,
+ "clubs_official": 32,
+ "clubs_recomputed": 32,
+ "fields_compared": 192,
+ "fields_agree": 192,
+ "fields_disagree": 0,
+ "clubs_in_log_not_in_standings": [],
+ "aliases_applied": {
+  "ARI": "AZ",
+  "LAR": "LA",
+  "LAC": "LAC",
+  "LV": "LV",
+  "WAS": "WAS"
+ },
+ "checks": [
+  {
+   "team": "ATL",
+   "field": "w",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "ATL",
+   "field": "l",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "ATL",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "ATL",
+   "field": "pf",
+   "official": 188,
+   "recomputed": 188,
+   "ok": true
+  },
+  {
+   "team": "ATL",
+   "field": "pa",
+   "official": 223,
+   "recomputed": 223,
+   "ok": true
+  },
+  {
+   "team": "ATL",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "AZ",
+   "field": "w",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "AZ",
+   "field": "l",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "AZ",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "AZ",
+   "field": "pf",
+   "official": 178,
+   "recomputed": 178,
+   "ok": true
+  },
+  {
+   "team": "AZ",
+   "field": "pa",
+   "official": 255,
+   "recomputed": 255,
+   "ok": true
+  },
+  {
+   "team": "AZ",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "BAL",
+   "field": "w",
+   "official": 4,
+   "recomputed": 4,
+   "ok": true
+  },
+  {
+   "team": "BAL",
+   "field": "l",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "BAL",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "BAL",
+   "field": "pf",
+   "official": 189,
+   "recomputed": 189,
+   "ok": true
+  },
+  {
+   "team": "BAL",
+   "field": "pa",
+   "official": 236,
+   "recomputed": 236,
+   "ok": true
+  },
+  {
+   "team": "BAL",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "BUF",
+   "field": "w",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "BUF",
+   "field": "l",
+   "official": 1,
+   "recomputed": 1,
+   "ok": true
+  },
+  {
+   "team": "BUF",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "BUF",
+   "field": "pf",
+   "official": 256,
+   "recomputed": 256,
+   "ok": true
+  },
+  {
+   "team": "BUF",
+   "field": "pa",
+   "official": 187,
+   "recomputed": 187,
+   "ok": true
+  },
+  {
+   "team": "BUF",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "CAR",
+   "field": "w",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "CAR",
+   "field": "l",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "CAR",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "CAR",
+   "field": "pf",
+   "official": 199,
+   "recomputed": 199,
+   "ok": true
+  },
+  {
+   "team": "CAR",
+   "field": "pa",
+   "official": 219,
+   "recomputed": 219,
+   "ok": true
+  },
+  {
+   "team": "CAR",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "CHI",
+   "field": "w",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "CHI",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "CHI",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "CHI",
+   "field": "pf",
+   "official": 241,
+   "recomputed": 241,
+   "ok": true
+  },
+  {
+   "team": "CHI",
+   "field": "pa",
+   "official": 184,
+   "recomputed": 184,
+   "ok": true
+  },
+  {
+   "team": "CHI",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "CIN",
+   "field": "w",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "CIN",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "CIN",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "CIN",
+   "field": "pf",
+   "official": 240,
+   "recomputed": 240,
+   "ok": true
+  },
+  {
+   "team": "CIN",
+   "field": "pa",
+   "official": 175,
+   "recomputed": 175,
+   "ok": true
+  },
+  {
+   "team": "CIN",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "CLE",
+   "field": "w",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "CLE",
+   "field": "l",
+   "official": 4,
+   "recomputed": 4,
+   "ok": true
+  },
+  {
+   "team": "CLE",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "CLE",
+   "field": "pf",
+   "official": 161,
+   "recomputed": 161,
+   "ok": true
+  },
+  {
+   "team": "CLE",
+   "field": "pa",
+   "official": 196,
+   "recomputed": 196,
+   "ok": true
+  },
+  {
+   "team": "CLE",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "DAL",
+   "field": "w",
+   "official": 4,
+   "recomputed": 4,
+   "ok": true
+  },
+  {
+   "team": "DAL",
+   "field": "l",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "DAL",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "DAL",
+   "field": "pf",
+   "official": 246,
+   "recomputed": 246,
+   "ok": true
+  },
+  {
+   "team": "DAL",
+   "field": "pa",
+   "official": 236,
+   "recomputed": 236,
+   "ok": true
+  },
+  {
+   "team": "DAL",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "DEN",
+   "field": "w",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "DEN",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "DEN",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "DEN",
+   "field": "pf",
+   "official": 198,
+   "recomputed": 198,
+   "ok": true
+  },
+  {
+   "team": "DEN",
+   "field": "pa",
+   "official": 186,
+   "recomputed": 186,
+   "ok": true
+  },
+  {
+   "team": "DEN",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "DET",
+   "field": "w",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "DET",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "DET",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "DET",
+   "field": "pf",
+   "official": 222,
+   "recomputed": 222,
+   "ok": true
+  },
+  {
+   "team": "DET",
+   "field": "pa",
+   "official": 189,
+   "recomputed": 189,
+   "ok": true
+  },
+  {
+   "team": "DET",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "GB",
+   "field": "w",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "GB",
+   "field": "l",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "GB",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "GB",
+   "field": "pf",
+   "official": 216,
+   "recomputed": 216,
+   "ok": true
+  },
+  {
+   "team": "GB",
+   "field": "pa",
+   "official": 191,
+   "recomputed": 191,
+   "ok": true
+  },
+  {
+   "team": "GB",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "HOU",
+   "field": "w",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "HOU",
+   "field": "l",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "HOU",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "HOU",
+   "field": "pf",
+   "official": 209,
+   "recomputed": 209,
+   "ok": true
+  },
+  {
+   "team": "HOU",
+   "field": "pa",
+   "official": 192,
+   "recomputed": 192,
+   "ok": true
+  },
+  {
+   "team": "HOU",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "IND",
+   "field": "w",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "IND",
+   "field": "l",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "IND",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "IND",
+   "field": "pf",
+   "official": 184,
+   "recomputed": 184,
+   "ok": true
+  },
+  {
+   "team": "IND",
+   "field": "pa",
+   "official": 249,
+   "recomputed": 249,
+   "ok": true
+  },
+  {
+   "team": "IND",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "JAX",
+   "field": "w",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "JAX",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "JAX",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "JAX",
+   "field": "pf",
+   "official": 229,
+   "recomputed": 229,
+   "ok": true
+  },
+  {
+   "team": "JAX",
+   "field": "pa",
+   "official": 121,
+   "recomputed": 121,
+   "ok": true
+  },
+  {
+   "team": "JAX",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "KC",
+   "field": "w",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "KC",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "KC",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "KC",
+   "field": "pf",
+   "official": 202,
+   "recomputed": 202,
+   "ok": true
+  },
+  {
+   "team": "KC",
+   "field": "pa",
+   "official": 143,
+   "recomputed": 143,
+   "ok": true
+  },
+  {
+   "team": "KC",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "LA",
+   "field": "w",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "LA",
+   "field": "l",
+   "official": 4,
+   "recomputed": 4,
+   "ok": true
+  },
+  {
+   "team": "LA",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "LA",
+   "field": "pf",
+   "official": 214,
+   "recomputed": 214,
+   "ok": true
+  },
+  {
+   "team": "LA",
+   "field": "pa",
+   "official": 181,
+   "recomputed": 181,
+   "ok": true
+  },
+  {
+   "team": "LA",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "LAC",
+   "field": "w",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "LAC",
+   "field": "l",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "LAC",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "LAC",
+   "field": "pf",
+   "official": 121,
+   "recomputed": 121,
+   "ok": true
+  },
+  {
+   "team": "LAC",
+   "field": "pa",
+   "official": 219,
+   "recomputed": 219,
+   "ok": true
+  },
+  {
+   "team": "LAC",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "LV",
+   "field": "w",
+   "official": 4,
+   "recomputed": 4,
+   "ok": true
+  },
+  {
+   "team": "LV",
+   "field": "l",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "LV",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "LV",
+   "field": "pf",
+   "official": 238,
+   "recomputed": 238,
+   "ok": true
+  },
+  {
+   "team": "LV",
+   "field": "pa",
+   "official": 268,
+   "recomputed": 268,
+   "ok": true
+  },
+  {
+   "team": "LV",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "MIA",
+   "field": "w",
+   "official": 1,
+   "recomputed": 1,
+   "ok": true
+  },
+  {
+   "team": "MIA",
+   "field": "l",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "MIA",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "MIA",
+   "field": "pf",
+   "official": 126,
+   "recomputed": 126,
+   "ok": true
+  },
+  {
+   "team": "MIA",
+   "field": "pa",
+   "official": 200,
+   "recomputed": 200,
+   "ok": true
+  },
+  {
+   "team": "MIA",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "MIN",
+   "field": "w",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "MIN",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "MIN",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "MIN",
+   "field": "pf",
+   "official": 146,
+   "recomputed": 146,
+   "ok": true
+  },
+  {
+   "team": "MIN",
+   "field": "pa",
+   "official": 116,
+   "recomputed": 116,
+   "ok": true
+  },
+  {
+   "team": "MIN",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "NE",
+   "field": "w",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "NE",
+   "field": "l",
+   "official": 4,
+   "recomputed": 4,
+   "ok": true
+  },
+  {
+   "team": "NE",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "NE",
+   "field": "pf",
+   "official": 211,
+   "recomputed": 211,
+   "ok": true
+  },
+  {
+   "team": "NE",
+   "field": "pa",
+   "official": 207,
+   "recomputed": 207,
+   "ok": true
+  },
+  {
+   "team": "NE",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "NO",
+   "field": "w",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "NO",
+   "field": "l",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "NO",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "NO",
+   "field": "pf",
+   "official": 185,
+   "recomputed": 185,
+   "ok": true
+  },
+  {
+   "team": "NO",
+   "field": "pa",
+   "official": 216,
+   "recomputed": 216,
+   "ok": true
+  },
+  {
+   "team": "NO",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "NYG",
+   "field": "w",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "NYG",
+   "field": "l",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "NYG",
+   "field": "t",
+   "official": 1,
+   "recomputed": 1,
+   "ok": true
+  },
+  {
+   "team": "NYG",
+   "field": "pf",
+   "official": 203,
+   "recomputed": 203,
+   "ok": true
+  },
+  {
+   "team": "NYG",
+   "field": "pa",
+   "official": 196,
+   "recomputed": 196,
+   "ok": true
+  },
+  {
+   "team": "NYG",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "NYJ",
+   "field": "w",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "NYJ",
+   "field": "l",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "NYJ",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "NYJ",
+   "field": "pf",
+   "official": 182,
+   "recomputed": 182,
+   "ok": true
+  },
+  {
+   "team": "NYJ",
+   "field": "pa",
+   "official": 223,
+   "recomputed": 223,
+   "ok": true
+  },
+  {
+   "team": "NYJ",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "PHI",
+   "field": "w",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "PHI",
+   "field": "l",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "PHI",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "PHI",
+   "field": "pf",
+   "official": 148,
+   "recomputed": 148,
+   "ok": true
+  },
+  {
+   "team": "PHI",
+   "field": "pa",
+   "official": 221,
+   "recomputed": 221,
+   "ok": true
+  },
+  {
+   "team": "PHI",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "PIT",
+   "field": "w",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "PIT",
+   "field": "l",
+   "official": 2,
+   "recomputed": 2,
+   "ok": true
+  },
+  {
+   "team": "PIT",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "PIT",
+   "field": "pf",
+   "official": 180,
+   "recomputed": 180,
+   "ok": true
+  },
+  {
+   "team": "PIT",
+   "field": "pa",
+   "official": 144,
+   "recomputed": 144,
+   "ok": true
+  },
+  {
+   "team": "PIT",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "SEA",
+   "field": "w",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "SEA",
+   "field": "l",
+   "official": 4,
+   "recomputed": 4,
+   "ok": true
+  },
+  {
+   "team": "SEA",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "SEA",
+   "field": "pf",
+   "official": 202,
+   "recomputed": 202,
+   "ok": true
+  },
+  {
+   "team": "SEA",
+   "field": "pa",
+   "official": 162,
+   "recomputed": 162,
+   "ok": true
+  },
+  {
+   "team": "SEA",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "SF",
+   "field": "w",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "SF",
+   "field": "l",
+   "official": 1,
+   "recomputed": 1,
+   "ok": true
+  },
+  {
+   "team": "SF",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "SF",
+   "field": "pf",
+   "official": 235,
+   "recomputed": 235,
+   "ok": true
+  },
+  {
+   "team": "SF",
+   "field": "pa",
+   "official": 156,
+   "recomputed": 156,
+   "ok": true
+  },
+  {
+   "team": "SF",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "TB",
+   "field": "w",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "TB",
+   "field": "l",
+   "official": 6,
+   "recomputed": 6,
+   "ok": true
+  },
+  {
+   "team": "TB",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "TB",
+   "field": "pf",
+   "official": 202,
+   "recomputed": 202,
+   "ok": true
+  },
+  {
+   "team": "TB",
+   "field": "pa",
+   "official": 178,
+   "recomputed": 178,
+   "ok": true
+  },
+  {
+   "team": "TB",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  },
+  {
+   "team": "TEN",
+   "field": "w",
+   "official": 1,
+   "recomputed": 1,
+   "ok": true
+  },
+  {
+   "team": "TEN",
+   "field": "l",
+   "official": 7,
+   "recomputed": 7,
+   "ok": true
+  },
+  {
+   "team": "TEN",
+   "field": "t",
+   "official": 0,
+   "recomputed": 0,
+   "ok": true
+  },
+  {
+   "team": "TEN",
+   "field": "pf",
+   "official": 144,
+   "recomputed": 144,
+   "ok": true
+  },
+  {
+   "team": "TEN",
+   "field": "pa",
+   "official": 199,
+   "recomputed": 199,
+   "ok": true
+  },
+  {
+   "team": "TEN",
+   "field": "games",
+   "official": 8,
+   "recomputed": 8,
+   "ok": true
+  },
+  {
+   "team": "WAS",
+   "field": "w",
+   "official": 3,
+   "recomputed": 3,
+   "ok": true
+  },
+  {
+   "team": "WAS",
+   "field": "l",
+   "official": 5,
+   "recomputed": 5,
+   "ok": true
+  },
+  {
+   "team": "WAS",
+   "field": "t",
+   "official": 1,
+   "recomputed": 1,
+   "ok": true
+  },
+  {
+   "team": "WAS",
+   "field": "pf",
+   "official": 196,
+   "recomputed": 196,
+   "ok": true
+  },
+  {
+   "team": "WAS",
+   "field": "pa",
+   "official": 223,
+   "recomputed": 223,
+   "ok": true
+  },
+  {
+   "team": "WAS",
+   "field": "games",
+   "official": 9,
+   "recomputed": 9,
+   "ok": true
+  }
+ ],
+ "status": "PASS"
+}

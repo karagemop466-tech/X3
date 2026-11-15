@@ -1,0 +1,837 @@
+{
+ "method": "Walk-forward, no look-ahead. Weeks are scored only using games from strictly earlier weeks. Rating = (points for - points against per game) shrunk toward 0 by n/(n+4) pseudo-games. Margin prediction = (home rating - away rating) + measured HFA, HFA set to 0 at neutral sites. Total prediction = twice the league average team score from the same earlier weeks. Parameters were fixed before the run and are printed here; nothing was tuned on the scored games.",
+ "sources": [
+  "https://www.nfl.com/schedules/2026/by-week/week-N"
+ ],
+ "params": {
+  "shrinkage_games": 4.0,
+  "hfa_points_used": 0.469,
+  "hfa_source": "data/verified/hfa.json (measured from the same finals)"
+ },
+ "n_games_scored": 89,
+ "weeks_scored": [
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "spread": {
+  "mae_model": 9.29,
+  "mae_predict_zero": 10.21,
+  "beats_predict_zero": true,
+  "improvement_points": 0.92,
+  "corr_pred_vs_actual": 0.3082
+ },
+ "total": {
+  "mae_league_average": 10.96,
+  "mae_fixed_45_5": 10.96,
+  "note": "A total is only worth pricing if it beats the league average; the fixed-45.5 column is the naive reference a real market line has to beat."
+ },
+ "rows": [
+  {
+   "week": 4,
+   "game": "PIT@CLE",
+   "actual_margin": 3,
+   "pred_margin": -0.96,
+   "actual_total": 51,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "IND@WAS",
+   "actual_margin": -17,
+   "pred_margin": 0.29,
+   "actual_total": 43,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "TEN@BAL",
+   "actual_margin": 6,
+   "pred_margin": 5.61,
+   "actual_total": 42,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "NE@BUF",
+   "actual_margin": -3,
+   "pred_margin": 5.9,
+   "actual_total": 55,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "NYJ@CHI",
+   "actual_margin": 11,
+   "pred_margin": 5.18,
+   "actual_total": 35,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "JAX@CIN",
+   "actual_margin": -5,
+   "pred_margin": -3.67,
+   "actual_total": 39,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "DAL@HOU",
+   "actual_margin": -4,
+   "pred_margin": -3.39,
+   "actual_total": 64,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "AZ@NYG",
+   "actual_margin": 12,
+   "pred_margin": 1.75,
+   "actual_total": 60,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "LA@PHI",
+   "actual_margin": -4,
+   "pred_margin": -1.25,
+   "actual_total": 44,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "GB@TB",
+   "actual_margin": -3,
+   "pred_margin": 3.04,
+   "actual_total": 31,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "MIA@MIN",
+   "actual_margin": 5,
+   "pred_margin": 11.9,
+   "actual_total": 25,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "KC@LV",
+   "actual_margin": -3,
+   "pred_margin": -0.1,
+   "actual_total": 57,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "LAC@SEA",
+   "actual_margin": 7,
+   "pred_margin": 8.61,
+   "actual_total": 53,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "DEN@SF",
+   "actual_margin": 10,
+   "pred_margin": 8.75,
+   "actual_total": 38,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "DET@CAR",
+   "actual_margin": 6,
+   "pred_margin": 1.61,
+   "actual_total": 58,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 4,
+   "game": "ATL@NO",
+   "actual_margin": -21,
+   "pred_margin": 2.61,
+   "actual_total": 69,
+   "pred_total": 45.71,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-4"
+  },
+  {
+   "week": 5,
+   "game": "TB@DAL",
+   "actual_margin": -8,
+   "pred_margin": 4.22,
+   "actual_total": 40,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "PHI@JAX",
+   "actual_margin": 2,
+   "pred_margin": 8.62,
+   "actual_total": 36,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "CIN@MIA",
+   "actual_margin": -7,
+   "pred_margin": -7.91,
+   "actual_total": 55,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "LV@NE",
+   "actual_margin": 28,
+   "pred_margin": -4.91,
+   "actual_total": 62,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "MIN@NO",
+   "actual_margin": -10,
+   "pred_margin": -6.78,
+   "actual_total": 36,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "CLE@NYJ",
+   "actual_margin": 5,
+   "pred_margin": 1.22,
+   "actual_total": 29,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "IND@PIT",
+   "actual_margin": 12,
+   "pred_margin": -0.53,
+   "actual_total": 56,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "HOU@TEN",
+   "actual_margin": -23,
+   "pred_margin": 0.09,
+   "actual_total": 29,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "NYG@WAS",
+   "actual_margin": 0,
+   "pred_margin": -4.16,
+   "actual_total": 54,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "CHI@GB",
+   "actual_margin": 24,
+   "pred_margin": -9.41,
+   "actual_total": 38,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "DEN@LAC",
+   "actual_margin": -6,
+   "pred_margin": -1.91,
+   "actual_total": 40,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "DET@AZ",
+   "actual_margin": -24,
+   "pred_margin": -2.28,
+   "actual_total": 66,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "SF@SEA",
+   "actual_margin": -3,
+   "pred_margin": -2.78,
+   "actual_total": 61,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "BAL@ATL",
+   "actual_margin": -7,
+   "pred_margin": -1.53,
+   "actual_total": 53,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 5,
+   "game": "BUF@LA",
+   "actual_margin": -3,
+   "pred_margin": -1.78,
+   "actual_total": 71,
+   "pred_total": 46.22,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-5"
+  },
+  {
+   "week": 6,
+   "game": "SEA@DEN",
+   "actual_margin": 3,
+   "pred_margin": -4.31,
+   "actual_total": 31,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "HOU@JAX",
+   "actual_margin": -3,
+   "pred_margin": 6.11,
+   "actual_total": 65,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "CHI@ATL",
+   "actual_margin": -8,
+   "pred_margin": -2.42,
+   "actual_total": 54,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "BAL@CLE",
+   "actual_margin": 3,
+   "pred_margin": -4.64,
+   "actual_total": 23,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "TEN@IND",
+   "actual_margin": -6,
+   "pred_margin": 4.58,
+   "actual_total": 46,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "NYJ@NE",
+   "actual_margin": 7,
+   "pred_margin": 2.58,
+   "actual_total": 45,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "NO@NYG",
+   "actual_margin": -7,
+   "pred_margin": 4.47,
+   "actual_total": 61,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "CAR@PHI",
+   "actual_margin": -11,
+   "pred_margin": -3.25,
+   "actual_total": 39,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "PIT@TB",
+   "actual_margin": -7,
+   "pred_margin": -1.09,
+   "actual_total": 45,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "AZ@LA",
+   "actual_margin": -2,
+   "pred_margin": 6.36,
+   "actual_total": 34,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "LAC@KC",
+   "actual_margin": 16,
+   "pred_margin": 10.59,
+   "actual_total": 28,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "BUF@LV",
+   "actual_margin": -3,
+   "pred_margin": -1.75,
+   "actual_total": 63,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "DAL@GB",
+   "actual_margin": 10,
+   "pred_margin": -0.64,
+   "actual_total": 36,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 6,
+   "game": "WAS@SF",
+   "actual_margin": 6,
+   "pred_margin": 11.02,
+   "actual_total": 40,
+   "pred_total": 46.63,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-6"
+  },
+  {
+   "week": 7,
+   "game": "NE@CHI",
+   "actual_margin": 6,
+   "pred_margin": 1.27,
+   "actual_total": 54,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "PIT@NO",
+   "actual_margin": -6,
+   "pred_margin": -3.5,
+   "actual_total": 26,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "SF@ATL",
+   "actual_margin": 9,
+   "pred_margin": -7.33,
+   "actual_total": 49,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "CIN@BAL",
+   "actual_margin": -22,
+   "pred_margin": 0.76,
+   "actual_total": 48,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "TB@CAR",
+   "actual_margin": -30,
+   "pred_margin": 4.92,
+   "actual_total": 56,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "NYG@HOU",
+   "actual_margin": -6,
+   "pred_margin": 0.97,
+   "actual_total": 48,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "IND@MIN",
+   "actual_margin": 6,
+   "pred_margin": 7.47,
+   "actual_total": 26,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "MIA@NYJ",
+   "actual_margin": -3,
+   "pred_margin": 6.36,
+   "actual_total": 53,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "CLE@TEN",
+   "actual_margin": -3,
+   "pred_margin": -2.43,
+   "actual_total": 51,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "DEN@AZ",
+   "actual_margin": -14,
+   "pred_margin": -3.63,
+   "actual_total": 46,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "GB@DET",
+   "actual_margin": 3,
+   "pred_margin": 2.05,
+   "actual_total": 37,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "LA@LV",
+   "actual_margin": -14,
+   "pred_margin": 0.77,
+   "actual_total": 56,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "KC@SEA",
+   "actual_margin": 17,
+   "pred_margin": -3.26,
+   "actual_total": 23,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 7,
+   "game": "DAL@PHI",
+   "actual_margin": -17,
+   "pred_margin": -1.83,
+   "actual_total": 59,
+   "pred_total": 46.17,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-7"
+  },
+  {
+   "week": 8,
+   "game": "CAR@GB",
+   "actual_margin": 8,
+   "pred_margin": 1.08,
+   "actual_total": 46,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "BAL@BUF",
+   "actual_margin": 26,
+   "pred_margin": 2.89,
+   "actual_total": 46,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "TEN@CIN",
+   "actual_margin": 7,
+   "pred_margin": 8.93,
+   "actual_total": 79,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "AZ@DAL",
+   "actual_margin": -3,
+   "pred_margin": 7.29,
+   "actual_total": 63,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "MIN@DET",
+   "actual_margin": 4,
+   "pred_margin": -2.73,
+   "actual_total": 34,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "IND@JAX",
+   "actual_margin": 35,
+   "pred_margin": 7.83,
+   "actual_total": 49,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "LV@NYJ",
+   "actual_margin": -5,
+   "pred_margin": 0.56,
+   "actual_total": 71,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "CLE@PIT",
+   "actual_margin": 21,
+   "pred_margin": 3.01,
+   "actual_total": 33,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "ATL@TB",
+   "actual_margin": 16,
+   "pred_margin": 1.65,
+   "actual_total": 16,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "LAC@LA",
+   "actual_margin": 15,
+   "pred_margin": 7.57,
+   "actual_total": 33,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "KC@DEN",
+   "actual_margin": 4,
+   "pred_margin": -3.26,
+   "actual_total": 52,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "NE@MIA",
+   "actual_margin": -5,
+   "pred_margin": -6.98,
+   "actual_total": 43,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "PHI@WAS",
+   "actual_margin": 17,
+   "pred_margin": 0.83,
+   "actual_total": 37,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 8,
+   "game": "CHI@SEA",
+   "actual_margin": -17,
+   "pred_margin": 1.01,
+   "actual_total": 51,
+   "pred_total": 46.04,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-8"
+  },
+  {
+   "week": 9,
+   "game": "JAX@BAL",
+   "actual_margin": -23,
+   "pred_margin": -9.26,
+   "actual_total": 43,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "CIN@ATL",
+   "actual_margin": -17,
+   "pred_margin": -5.86,
+   "actual_total": 51,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "DEN@CAR",
+   "actual_margin": -5,
+   "pred_margin": -1.48,
+   "actual_total": 47,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "DAL@IND",
+   "actual_margin": -4,
+   "pred_margin": -5.11,
+   "actual_total": 50,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "NYJ@KC",
+   "actual_margin": 23,
+   "pred_margin": 5.24,
+   "actual_total": 47,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "DET@MIA",
+   "actual_margin": -10,
+   "pred_margin": -7.44,
+   "actual_total": 28,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "CLE@NO",
+   "actual_margin": 1,
+   "pred_margin": 0.39,
+   "actual_total": 45,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "NYG@PHI",
+   "actual_margin": -8,
+   "pred_margin": -5.13,
+   "actual_total": 30,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "LA@WAS",
+   "actual_margin": -7,
+   "pred_margin": -3.79,
+   "actual_total": 33,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "HOU@LAC",
+   "actual_margin": -22,
+   "pred_margin": -5.99,
+   "actual_total": 66,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "LV@SF",
+   "actual_margin": 21,
+   "pred_margin": 6.49,
+   "actual_total": 55,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "GB@NE",
+   "actual_margin": -18,
+   "pred_margin": 1.72,
+   "actual_total": 72,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "AZ@SEA",
+   "actual_margin": 14,
+   "pred_margin": 7.89,
+   "actual_total": 20,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "TB@CHI",
+   "actual_margin": 3,
+   "pred_margin": 2.72,
+   "actual_total": 51,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 9,
+   "game": "BUF@MIN",
+   "actual_margin": -17,
+   "pred_margin": 0.01,
+   "actual_total": 29,
+   "pred_total": 46.11,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-9"
+  },
+  {
+   "week": 10,
+   "game": "WAS@NYG",
+   "actual_margin": -3,
+   "pred_margin": 3.8,
+   "actual_total": 45,
+   "pred_total": 45.93,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  }
+ ],
+ "claim_limit": "This measures predictive accuracy against the score, not against a market price. With no price feed in the repo, it cannot show an edge or an ROI, and it must not be read as one. n is small and one season."
+}

@@ -120,6 +120,12 @@ jobs:
             echo '::error::hub/*.html is not the current build of data/hub/*.csv - run `python3 tools/x3_engine.py && python3 tools/build_hub.py` and commit the result.'
             exit 1; }
 
+      - name: Verify the statistics kernel against exact values
+        run: python3 tools/selftest_stats.py
+
+      - name: Verify the verified-data layer and its eight pages
+        run: python3 tools/verify_desk.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

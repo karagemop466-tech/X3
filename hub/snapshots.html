@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price-snapshot store - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="summary.html">Executive summary</a><a href="results.html">Results feed</a><a href="picks.html">Board: side/total/ML</a><a href="snapshots.html" class='on'>Price snapshots</a><a href="correlation-live.html">Correlation</a><a href="leaderboard-live.html">Leaderboard &amp; demotion</a><a href="depth-tiers.html">Replacement depth</a><a href="decisions.html">Review queue</a><a href="repo-review-live.html">Repo review</a><a href="flagged-live.html">Flagged for review</a><a href="index.html">Canonical hub</a></nav>
+<main>
+<h1>Price-snapshot store</h1>
+<p class="lede">Opening and closing numbers for every market we originate, with the honest statement that only one half of that pair exists.</p>
+
+<section class="callout"><h2>What a snapshot store is for</h2>
+<p>A backtest needs the price that existed when a decision was made. Without a timestamped open
+and close, a result measures hindsight rather than a decision. The store therefore records
+<b>our</b> number with a timestamp, and it records <b>the market</b> only when a real market source
+exists - which today it does not.</p></section>
+
+<h2>Store status</h2>
+<div class="tblwrap"><table class="k-meta">
+<caption>data/snapshots/store_meta.json</caption>
+<thead><tr><th>Field</th><th>State</th><th>Detail</th></tr></thead><tbody>
+<tr><td>Games priced</td><td>13</td><td>Week 10, 2026</td></tr>
+<tr><td>Markets per game</td><td>3</td><td>side, total, moneyline</td></tr>
+<tr><td>Rows written</td><td>39</td><td>one row per game-market</td></tr>
+<tr><td>Our opening line</td><td><span class="badge v">VERIFIED</span></td><td>recorded with a timestamp; it is our own output and is never called a market price</td></tr>
+<tr><td>Market opening line</td><td><span class="badge u">UNVERIFIED</span></td><td>blank in every row</td></tr>
+<tr><td>Market closing line</td><td><span class="badge u">UNVERIFIED</span></td><td>blank in every row</td></tr>
+<tr><td>Difference column</td><td><span class="badge u">UNVERIFIED</span></td><td>cannot exist against a blank market</td></tr>
+<tr><td>Invariant checks</td><td><span class="badge v">PASS</span></td><td>no duplicate market ids, no market value without a source, no close without an open, no difference without a market, every game carries all three markets</td></tr>
+</tbody></table>
+</div>
+
+<h2>Moneyline derivation, and the sign error that was caught</h2>
+<p>The moneyline is derived from the model spread through a normal win probability using a
+residual SD of <b>12.307</b> points measured on the
+89 out-of-sample games.
+The sign convention in the canonical data file is that a <i>positive</i> home spread means the home
+club is receiving points. The first version of this module had that backwards, which would have
+priced every favourite at plus money. It was caught by checking each row against the spread and is
+documented here rather than quietly fixed.</p>
+
+<h2>Side prices, week 10</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>Our number is real; the market columns are blank on purpose</caption>
+<thead><tr><th>Game</th><th>Our line</th><th>Market line</th><th>Difference</th><th>Market status</th><th>Third-party reference</th></tr></thead><tbody>
+<tr><td><b>NE@DET</b></td><td>-3.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>BUF@NYJ</b></td><td>-9.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>CAR@NO</b></td><td>-1.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>HOU@CLE</b></td><td>-0.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>JAX@TEN</b></td><td>-14.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>KC@ATL</b></td><td>6.0</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>MIA@IND</b></td><td>-0.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>MIN@GB</b></td><td>-2.0</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>LAR@AZ</b></td><td>9.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td></td></tr>
+<tr><td><b>SEA@LV</b></td><td>-1.0</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>SF@DAL</b></td><td>8.0</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>PIT@CIN</b></td><td>0.0</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+<tr><td><b>LAC@BAL</b></td><td>-4.5</td><td><span class="blank"></span></td><td><span class="blank"></span></td><td><span class="badge u">UNVERIFIED</span></td><td><code>third_party_ref</code> recorded, not linked <span class="mut">(non-official host)</span></td></tr>
+</tbody></table>
+</div>
+
+<h2>Moneyline, priced fairly and checked</h2>
+<p>The model has no margin, so the two-way price must imply exactly 1.000 across the two sides.
+Each side is priced from its own probability (<code>-100p/(1-p)</code> and
+<code>+100(1-p)/p</code>), which is symmetric: a 0.612 home probability prices at -158 / +158.
+Deriving the away price by negating the home price instead would give -158 / +63, an implied sum
+of 1.226 - a 22% margin the model does not have. That defect existed in the first build of this
+module and is now a permanent gate.</p>
+<div class="tblwrap"><table class="k-data">
+<caption>Every pair must imply 1.000</caption>
+<thead><tr><th>Game</th><th>Home ML</th><th>Away ML</th><th>Implied sum</th><th>Verdict</th></tr></thead><tbody>
+<tr><td><b>NE@DET</b></td><td>-158</td><td>+158</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>BUF@NYJ</b></td><td>-354</td><td>+354</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>CAR@NO</b></td><td>-121</td><td>+121</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>HOU@CLE</b></td><td>-107</td><td>+107</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>JAX@TEN</b></td><td>-738</td><td>+738</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>KC@ATL</b></td><td>+220</td><td>-220</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>MIA@IND</b></td><td>-107</td><td>+107</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>MIN@GB</b></td><td>-130</td><td>+130</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>LAR@AZ</b></td><td>+354</td><td>-354</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>SEA@LV</b></td><td>-114</td><td>+114</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>SF@DAL</b></td><td>+288</td><td>-288</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>PIT@CIN</b></td><td>+100</td><td>+100</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+<tr><td><b>LAC@BAL</b></td><td>-180</td><td>+180</td><td>1.0000</td><td><span class="badge v">PASS</span></td></tr>
+</tbody></table>
+</div>
+
+<h2>Third-party prices: present, and deliberately unused</h2>
+<p>A separate tree in this repository (<code>x3lab</code>) carries Week-10 prices from a commercial
+odds page. They are surfaced here for transparency and are excluded from every calculation, because
+the project rule is that official claims use officially sourced numbers only. A single undated
+snapshot with no open/close pair could not support a closing-line-value calculation even if it were
+official.</p>
+<div class="tblwrap"><table class="k-meta">
+<caption>Why the tempting data is not used</caption>
+<thead><tr><th>Property</th><th>Value</th></tr></thead><tbody>
+<tr><td>Source file</td><td><code>x3lab/data/lines_week10.json</code></td></tr>
+<tr><td>Status</td><td><span class="badge u">UNVERIFIED</span> NOT OFFICIAL / NOT INGESTED</td></tr>
+<tr><td>Reason excluded</td><td>not an official NFL source; single undated snapshot with no open/close pair; excluded from all calculations by the project's official-sources-only rule</td></tr>
+</tbody></table>
+</div>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_desk.py</code> from files in <code>data/verified/</code>,
+  <code>data/decisions/</code>, <code>data/picks/</code> and <code>data/snapshots/</code>.
+  Source rows are read from official NFL.com pages on 2026-11-14; values with no official source
+  are left blank and flagged. Model output is DERIVED and is arithmetic, not a prediction of
+  results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="index.html">Canonical hub</a> -
+  <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

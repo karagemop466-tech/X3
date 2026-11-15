@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo review - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="summary.html">Executive summary</a><a href="results.html">Results feed</a><a href="picks.html">Board: side/total/ML</a><a href="snapshots.html">Price snapshots</a><a href="correlation-live.html">Correlation</a><a href="leaderboard-live.html">Leaderboard &amp; demotion</a><a href="depth-tiers.html">Replacement depth</a><a href="decisions.html">Review queue</a><a href="repo-review-live.html" class='on'>Repo review</a><a href="flagged-live.html">Flagged for review</a><a href="index.html">Canonical hub</a></nav>
+<main>
+<h1>Repo review</h1>
+<p class="lede">14 claims from earlier trees, each rechecked against official data with the result published whether it passed or not.</p>
+
+<section class="callout"><h2>What this page is</h2>
+<p>Every claim an earlier tree published was put back through a check, and the result is
+recorded whether it passed or not. A claim that reproduces is worth more once someone has
+verified it; a claim that does not is worth knowing before it reaches a decision.</p>
+<p>14 findings: <b>6</b> confirmed, <b>4</b> corrected,
+<b>4</b> flagged for review. Nothing here blocks anything - a flag is a request for a
+decision, not a verdict.</p></section>
+
+<h2>Findings</h2>
+<div class="tblwrap"><table class="k-data">
+<caption>14 claims rechecked against official data or their own inputs</caption>
+<thead><tr><th>ID</th><th>Area</th><th>Claim as published</th><th>Where</th><th>What was checked</th><th>Result</th><th>Detail</th><th>Source</th></tr></thead><tbody>
+<tr><td>R-01</td><td>Standings transcription</td><td>The 32-club standings table transcribed by the canonical hub is correct through Week 10.</td><td><code>data/hub/standings_2026_thru_wk9.csv and hub/data/teams.json</code></td><td>all 32 clubs compared field by field (W, L, T, PF, PA) against the official standings page, re-read this session</td><td><span class="badge v">CONFIRMED</span></td><td>0 mismatches in 32 clubs x 5 fields.</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-02</td><td>Results feed</td><td>No verified results feed existed, so backtests were impossible.</td><td><code>README.md, hub/index.html (F-02), hub/leaderboard.html</code></td><td>recompute every club's W/L/T/PF/PA/games from the game log and compare with the official standings</td><td><span class="badge p">CORRECTED</span></td><td>The claim was true when written and is now false: the feed exists and 192/192 fields agree. The flags that said otherwise are superseded here, not deleted.</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG + https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-03</td><td>Luck decomposition</td><td>Pythagorean wins, luck residuals and the most fortunate / most unlucky tables are computed from official PF and PA.</td><td><code>hub/data/luck.json, hub/luck.html</code></td><td>recompute g*PF^2.37/(PF^2.37+PA^2.37) for all 10 clubs named in the two tables from the official standings</td><td><span class="badge v">CONFIRMED</span></td><td>Largest disagreement 0.005 wins, which is rounding. Sample size 10 of 10 clubs correct.</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-04</td><td>Correlation labels</td><td>r(game total, |margin|) = -0.161, read as 'same-game total and blowout size move together'.</td><td><code>data/desk/correlations.json, desk/correlation.html</code></td><td>recompute both r(total, |margin|) and r(total, signed margin) on the 137 finals</td><td><span class="badge p">CORRECTED</span></td><td>r(total, |margin|) = -0.0157 and r(total, signed margin) = -0.1607. The published figure is the signed version under a mislabelled column, so the label and the reading attached to it were both wrong. The pipeline was fine. Both versions are now published side by side.</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-05</td><td>Correlation values</td><td>Eight club-level coefficients computed from the official standings.</td><td><code>hub/data/correlations.json</code></td><td>recompute each coefficient independently from the official PF/PA table</td><td><span class="badge v">CONFIRMED</span></td><td>All coefficients reproduce to within 0.002, which is the precision of the published rounding. Example: net points per game vs win pct is published as 0.8781 and recomputes to 0.8794.</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-06</td><td>Depth capture</td><td>31 club depth charts captured, 26 undated, Houston publishes an image only.</td><td><code>hub/data/depth.json, hub/depth.html</code></td><td>count the charts in each of the two captures this repository holds</td><td><span class="badge u">FLAG</span></td><td>The hub's numbers come from tools/nfl_data.py: 31 charts, 26 undated, Houston absent. The desk capture in data/desk/depth.json tells a different story: 31 charts with parseable slots (30 undated), and Houston PRESENT but with zero parseable rows. Both files are internally correct and they are different captures, so neither page is wrong - but a reader comparing them will see two different counts for the same week. Label the capture source on both pages, or consolidate to one capture, before either count is quoted in a decision.</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10 and each club's own depth-chart page" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-07</td><td>Minimum sample gate</td><td>G-2 requires &gt;= 300 settled bets and &gt;= 3 seasons per strategy.</td><td><code>hub/data/prereg.json, hub/gates.html, tools/hub_content.py</code></td><td>exact binomial power calculation against the -110 breakeven, verified against enumeration by tools/selftest_stats.py</td><td><span class="badge p">CORRECTED</span></td><td>300 bets only reaches 80% power for a true edge of about 59.6%. At the 55% edge the gate is written for, the requirement is about 2,272 settled bets. The published threshold would have admitted strategies that are statistically indistinguishable from luck.</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-08</td><td>Model parameters</td><td>Injury status weights and positional cost figures drive the originated lines.</td><td><code>hub/data/meta.json (params, pos_cost), hub/data/lines.json</code></td><td>searched the repository for any derivation, regression or citation for these numbers</td><td><span class="badge u">FLAG</span></td><td>No derivation exists. The positional costs and status weights are priors with no measured basis, and they move lines by up to 6.5 points on the Week-10 slate. They are correctly labelled as parameters on the site, but a reader may not realise the largest single adjustment to the board is an opinion. Published as Q-08 and Q-14.</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-09</td><td>Home-field advantage</td><td>The model applies zero home-field advantage, contrary to the usual 2.5-3 points.</td><td><code>hub/data/meta.json (hfa_points_used = 0.0), hub/lines.html</code></td><td>measure mean home margin over the non-neutral finals and attach an interval</td><td><span class="badge v">CONFIRMED</span></td><td>Measured 0.469 points on n=130, 95% interval -1.812 to 2.751. The interval includes zero, so using zero is defensible on this sample. It is a genuinely surprising result and deserves the flag it already carries.</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-10</td><td>Market data</td><td>No licensed price feed exists; market columns are blank.</td><td><code>hub/data/lines.json (market_spread/market_total blank), flagged F-01</code></td><td>every market cell in the hub board and every cell in the new snapshot store inspected programmatically</td><td><span class="badge v">CONFIRMED</span></td><td>Every market cell in both places is blank. No page asserts a price. The third-party prices in x3lab are present and correctly excluded from official claims.</td><td><span class='mut'>n/a - absence verified structurally</span> <span class="badge d">DERIVED</span></td></tr>
+<tr><td>R-11</td><td>Backtest claim</td><td>The desk model reports walk-forward MAE 10.52 with r 0.20 on 121 games.</td><td><code>data/desk/model.json, written to hub/lines.html</code></td><td>run an independent walk-forward with the rules stated in tools/verified_feed.py and compare</td><td><span class="badge u">FLAG</span></td><td>This session's walk-forward, with the parameters fixed and printed, gives MAE 9.29 and r 0.3082 on 89 games - better than the published figure on a smaller sample, using a different rating definition. Both can be right. The discrepancy is a difference in method, not an error, but two published MAE values for the same model on the same season is exactly the kind of drift this review exists to surface. One definition should be adopted before either is quoted.</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-12</td><td>Site integrity</td><td>The deployed site builds from its data and has no broken internal links.</td><td><code>.github/workflows/pages.yml, hub/*.html</code></td><td>rebuild the canonical hub from data with no edits and diff the result; then parse every page and resolve every reference</td><td><span class="badge v">CONFIRMED</span></td><td>tools/x3_engine.py and tools/build_hub.py reproduce the committed pages byte for byte. 26 pages parse here with every internal reference resolving, and the repository's existing link auditors all pass.</td><td><span class='mut'>n/a - build reproducibility</span> <span class="badge d">DERIVED</span></td></tr>
+<tr><td>R-14</td><td>Venue name</td><td>The Week-10 Munich game is played at 'Alemun &amp; Munchen / Munich (NFL International Game)'.</td><td><code>hub/data/lines.json (neutral_site field, NE@DET), surfaced on hub/lines.html</code></td><td>read the official game page for Patriots at Lions and the Week-10 schedule page for the location and stadium</td><td><span class="badge u">FLAG</span></td><td>The official game page prints LOCATION: MUNICH and STADIUM: FC BAYERN MUNICH STADIUM. The Week-10 schedule page prints only 'International Game / Munich'. No official page contains the string 'Alemun &amp; Munchen', which reads like an unverified placeholder that was carried forward. The venue does not affect any number on this site, and this session's own pages record only the structural neutral-site flag, but the string is printed on the canonical lines page and should be corrected there by its owner. Independently raised by another session as C-11.</td><td><a class="src" href="https://www.nfl.com/games/patriots-at-lions-2026-reg-10" target="_blank" rel="noopener">official</a> </td></tr>
+<tr><td>R-13</td><td>Moneyline derivation</td><td>A moneyline can be derived from the model spread and is published on the board.</td><td><code>data/snapshots/snapshots_2026_wk10.csv (new this session)</code></td><td>convert each price back to an implied probability and require the two sides to sum to 1.000, since the model carries no margin</td><td><span class="badge p">CORRECTED</span></td><td>The first build of this module priced the away side by negating the home price, producing -158/+63 and an implied sum of 1.226 - a 22% margin the model does not have. Each side is now priced from its own probability, which gives the fair -158/+158. A permanent gate in tools/verify_desk.py asserts the implied sum on every row and a negative control confirms the gate fires.</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-N" target="_blank" rel="noopener">official</a> </td></tr>
+</tbody></table>
+</div>
+
+<h2>The three that matter most</h2>
+<ol>
+<li><b>R-07, the minimum sample gate.</b> The published 300-bet minimum would admit strategies
+indistinguishable from luck. It is corrected to about 2,272 bets for a 55% edge, derived from exact
+power rather than opinion.</li>
+<li><b>R-08, the model's largest adjustment is unmeasured.</b> The injury and positional costs
+move lines by up to 6.5 points with no derivation anywhere in the repository. They are honestly
+labelled as parameters, but the label understates how much of the board they decide.</li>
+<li><b>R-06, two depth captures disagree.</b> Two files, both internally correct, giving different
+counts for the same week. Neither page is wrong and a reader comparing them will be confused, so
+the capture source needs labelling or consolidating.</li>
+</ol>
+
+</main>
+<footer>
+  <p>Generated by <code>tools/build_desk.py</code> from files in <code>data/verified/</code>,
+  <code>data/decisions/</code>, <code>data/picks/</code> and <code>data/snapshots/</code>.
+  Source rows are read from official NFL.com pages on 2026-11-14; values with no official source
+  are left blank and flagged. Model output is DERIVED and is arithmetic, not a prediction of
+  results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="index.html">Canonical hub</a> -
+  <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>
