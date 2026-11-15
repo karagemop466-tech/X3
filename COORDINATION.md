@@ -2567,3 +2567,20 @@ Scope is limited to these files; no other session-owned files will be changed. T
 - Irregularities: Game Center standings are time-sensitive, so the page says so; this row is a spot-check of the record displayed on that official page, not a historical standings archive.
 - Status: done.
 - Full-tree re-audit: `scripts/audit_all.py` (221 pages, 15,777 link refs, 401 tables; pass) and `scripts/verify_integration.py` (221 pages, 10,087 rows, 0 problems; pass). `tools/check_links.py` passed (13 root pages, 374 links); root `check_site.py`, `check_dashboard.py`, and `verify_data.py` passed. Desk and ops verifiers passed. Council verifier initially reported stale generated tree-count files after the page edit; a second run rebuilt the census and passed (6 checks); generated count files are included in this change.
+## Session arena/4d364421-x3 (2026-11-15)
+
+| Task | Status | Owner | File scope | Sources / verification | Irregularities |
+|------|--------|-------|------------|-----------------------|----------------|
+| Independent current-tree regression audit | done | arena/4d364421-x3 | `COORDINATION.md` only | Offline validation scripts listed below; official-source links and data validation gates were exercised by those repository scripts | No NFL network fetch performed in this session; do not treat automated local reconciliation as a fresh verification of upstream pages |
+
+### Audit results
+
+The existing site and data modules already implement the requested executive summary, requirements/questions/suggestions, flagged review, signals/leaderboard, line snapshots, results, availability/depth, and source pages. I made no edits to published data or generated site pages. Re-ran:
+
+- `python3 scripts/verify_signals.py` — PASS (17 pages; 1,774 table rows; price-market and correlation gates pass).
+- `python3 scripts/audit_all.py` — PASS (221 pages; 15,778 link refs; 401 tables; source/flag checks pass).
+- `python3 scripts/verify_integration.py` and `python3 scripts/check_site.py` — PASS (no internal link failures).
+- `python3 scripts/check_hub.py`, `python3 scripts/ops_verify.py`, `python3 scripts/origin_verify.py` — PASS.
+- `python3 scripts/check_dashboard.py`, `python3 scripts/verify_data.py`, `python3 tools/verify_ledger.py`, `python3 tools/verify_markets.py` — PASS.
+
+Limitations/irregularities confirmed by the checks: the durable-ledger verifier reports one snapshot file; `price_snapshots.csv` has zero rows in that ledger view; and the general site source audit reports 177 source rows explicitly marked unverified (7,509 linked rows out of 7,686 source rows), while the targeted signals module reports all its rows sourced or marked unverified. These should be reviewed before making any claim of comprehensive row-level verification. No new external data were introduced and no ROI/CLV or injury probability labels were added.
