@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price-data policy, and the one settled line - X3 decision desk</title>
+<meta name="description" content="The decision that gates ROI, closing-line value and rewards - plus the single originated line this project has been able to grade.">
+<link rel="stylesheet" href="../hub/assets/hub.css">
+<link rel="stylesheet" href="assets/decision.css">
+</head>
+<body>
+<header class="top">
+ <div class="brand"><a href="../index.html">X3</a> &middot; <a href="index.html">decision desk</a></div>
+ <div class="asof">evidence as of <b>2026-11-15T18:16Z</b> &middot; season 2026, week 10</div>
+</header>
+<main>
+<h1>Price-data policy, and the one settled line</h1>
+<p class="lede">The decision that gates ROI, closing-line value and rewards - plus the single originated line this project has been able to grade.</p>
+
+<nav class="nav"><a href="index.html"><b>Decision desk</b><span>what is ready, what is blocked</span></a><a href="readiness.html"><b>Readiness register</b><span>one row per requirement: gate + clearing number</span></a><a href="suggestions.html"><b>Suggestion queue</b><span>review and choose a path before implementing</span></a><a href="questions.html"><b>Questions &amp; answers</b><span>what we have, what we lack, how to close it</span></a><a href="snapshots.html"><b>Point-in-time series</b><span>sealed reads, hashes, the delta</span></a><a href="pricing.html" class="active"><b>Price-data policy</b><span>the decision plus the first settled line</span></a><a href="trees.html"><b>Tree overlap</b><span>which artefact answers which requirement</span></a><a href="executive-summary.html"><b>Executive summary</b><span>the one-page brief</span></a><a href="flagged.html"><b>Flagged for review</b><span>irregularities, none of them hidden</span></a><a href="sources.html"><b>Sources</b><span>official pages, timestamps, what each confirmed</span></a><a href="verification.html"><b>Verification log</b><span>how each line was checked, and how to re-check</span></a></nav>
+<section class="callout"><h2>The decision the brief puts before every backtest</h2><p>"Decide the price-data policy before any backtest is published." Three trees publish walk-forward numbers today, and the repository holds 0 market lines across 13 priced games. The fair line therefore exists for every market, the market line for none, and the residual cannot be computed from anything here. This page states the choice; it does not make it.</p><table class="agg"><thead><tr><th>option</th><th>what it buys</th><th>what it costs</th><th>what this session would say on the page</th></tr></thead><tbody>
+<tr><td><b>A. No prices, by policy</b></td><td>every page becomes defensible today; nothing monetised is ever implied</td><td>no leaderboard can ever pay out; the staking half stays empty forever</td><td>this is the honest default if no feed is licensed, and it is one word change on three trees</td></tr>
+<tr><td><b>B. Licensed feed</b></td><td>P-01, P-05, P-08, L-01 staking, L-09 - all of them, at once</td><td>procurement and storage policy first; a week of shadow capture before anything cites it</td><td>the only path where the residual panel means something on day one</td></tr>
+<tr><td><b>C. Self-recorded book</b></td><td>CLV and a residual without a contract</td><td>legal review; a single book is one book, and vig cannot be separated from it</td><td>cheapest path that still produces a real residual; it inherits F-D04&#x27;s exposure unless S-D8 lands</td></tr>
+</tbody></table></section>
+<section class="callout"><h2>The first and only settled originated line</h2><p>Priced before kickoff by another session, settled today from the official final. Published in full because one observation is a data point, and hidden nowhere because one observation is not evidence. The side was covered; the total landed under; the margin error was 21.4 points, which is the under-spreading flagged as Q-D6 in the open questions.</p><table class="data"><thead><tr><th>field</th><th>value</th><th>check</th><th>result</th><th>source</th></tr></thead><tbody>
+<tr><td>game</td><td>NE @ DET (Munich)</td><td>final</td><td>Patriots 10, Lions 35</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>originated</td><td>spread DET -3.5 / total 46.5</td><td>priced from</td><td>hub/data/lines.json, for 2026-11-15 - before kickoff</td><td class="src"><a class="cite" href="../hub/data/lines.json">hub/data/lines.json</a></td></tr>
+<tr><td>side</td><td>model -3.5 vs actual +25</td><td>result</td><td><b>HIT</b> on the side as originated</td><td class="src"><a class="cite" href="../hub/data/lines.json">hub/data/lines.json</a></td></tr>
+<tr><td>total</td><td>model 46.5 vs actual 45</td><td>result</td><td><b>UNDER</b> by 1.5</td><td class="src"><a class="cite" href="../hub/data/lines.json">hub/data/lines.json</a></td></tr>
+<tr><td>margin error</td><td>predicted 3.64 / actual 25</td><td>abs error</td><td>21.36 points</td><td class="src"><a class="cite" href="../hub/data/lines.json">hub/data/lines.json</a></td></tr>
+<tr><td>probability</td><td>P(home) = 0.606 from Phi(adj_margin/13.5)</td><td>Brier</td><td>0.155 vs 0.250 for a constant - on <b>one</b> game, which is nothing</td><td class="src"><a class="cite" href="../hub/data/lines.json">hub/data/lines.json</a></td></tr>
+</tbody></table></section>
+<section class="callout"><h2>The rest of the slate, at capture time</h2><p>Settling a partial slate would misreport the model, so the other games are listed as unresolved. At 2026-11-15T18:16Z the official page showed two finals (Thursday, and Munich), seven 1:00 PM games in progress, and four games not yet started including Monday night.</p><table class="data"><thead><tr><th>game</th><th>originated spread / total</th><th>status</th><th>source</th></tr></thead><tbody>
+<tr><td>NE@DET</td><td>-3.5 / 46.5</td><td>FINAL 10-35 (settled above)</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>BUF@NYJ</td><td>-9.5 / 50.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>CAR@NO</td><td>-1.5 / 49.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>HOU@CLE</td><td>-0.5 / 43.5</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>JAX@TEN</td><td>-14.5 / 44.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>KC@ATL</td><td>6.0 / 44.5</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>MIA@IND</td><td>-0.5 / 42.5</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>MIN@GB</td><td>-2.0 / 32.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>LAR@AZ</td><td>9.5 / 44.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>SEA@LV</td><td>-1.0 / 43.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>SF@DAL</td><td>8.0 / 51.5</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>PIT@CIN</td><td>0.0 / 46.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>LAC@BAL</td><td>-4.5 / 45.0</td><td>unplayed or in progress at capture time</td><td class="src"><a href="https://www.nfl.com/schedules/2026/by-week/week-10" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+</tbody></table></section>
+<section class="callout"><h2>What "the residual" would look like</h2><p>Three columns, published from the first day, two of them empty on purpose: fair line, market line, and the difference, each row carrying the timestamp of the read that produced it. An empty column is the mechanism that keeps a future number comparable rather than retrofitted - S-D12 in the queue. Until then, "our line versus the market" is arithmetically undefined here, and every page in this repository says so instead of estimating one.</p></section>
+</main>
+<footer class="foot">built by <code>scripts/build_decision.py</code> from repository artefacts; it reads other trees and never writes them.
+Every table row links to an official page or to the repo file that states it. Re-run:
+<code>python3 scripts/build_decision.py &amp;&amp; python3 scripts/verify_decision.py</code></footer>
+</body></html>

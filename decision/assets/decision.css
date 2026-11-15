@@ -1,0 +1,23 @@
+/* X3 decision layer - sits on top of the hub stylesheet, adds only what that one lacks. */
+.badge.b-ok{background:#0d5c2e;color:#d9f6e4}
+.badge.b-warn{background:#6b4c05;color:#fdf0cf}
+.badge.b-bad{background:#7a1414;color:#ffe0e0}
+.badge.b-dim{background:#2c3138;color:#c9d1d9}
+.badge.b-info{background:#123a63;color:#d6e9ff}
+.decision{display:inline-block;padding:2px 8px;border:1px dashed #7a828c;border-radius:4px;color:#9aa4ae;font-size:.8rem}
+.opt{margin:0 0 6px;font-size:.86rem}
+.sm{font-size:.82rem;color:#b6bec6}
+.muted{color:#8b949e}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.84rem}
+table.data td{vertical-align:top}
+table.data.narrow{max-width:420px}
+.src{white-space:nowrap}
+.src a,.src .cite{color:#79b8ff;font-size:.78rem;text-decoration:underline dotted;word-break:break-all;white-space:normal;display:block}
+.foot{margin:34px 0 10px;color:#8b949e;font-size:.8rem;border-top:1px solid #21262d;padding-top:14px}
+.card.t a{display:block;text-decoration:none;color:inherit}
+.card.t a span{display:block;color:#9aa4ae;font-size:.82rem;margin-top:6px}
+.card.t{transition:border-color .15s ease}
+.card.t:hover{border-color:#388bfd}
+main h2{margin-top:26px}
+section.callout{margin-top:22px}
+a.active{border-color:#388bfd;background:#132a45}

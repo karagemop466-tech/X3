@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Injuries - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html" class="on">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Injuries</h1><p class="sub">The official report as published: practice status is the signal, game status is rare</p></div>
+
+<section class="callout "><h2>What the official report actually contains</h2>
+<p>1027 rows across four weekly reads. The single most important number is the last column:
+<b>most rows carry no game status at all</b>. The report lists practice participation, and the
+practice participation is the bulk of the information. A game designation (Out / Doubtful /
+Questionable) appears only for players the club has actually ruled on.</p>
+<p><b>Week 11 is not a report yet.</b> <code>nfl.com/injuries/league/2026/reg11</code> returns the
+Week-10 page byte for byte — the committed capture's sizes are identical, and the live page's own
+title says "Week 10". Nothing from reg11 is used here. Week-11 designations appear on Wednesday
+(F-02).</p></section><div class="tw"><table class="">
+<thead><tr><th>Week</th><th>Rows</th><th>Clubs</th><th>Out</th><th>Doubtful</th><th>Questionable</th><th>No status</th><th>Share with no status</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>Week 8</b></td><td>320</td><td>28</td><td>50</td><td>3</td><td>79</td><td>188</td><td>58.8%</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg8" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>Week 9</b></td><td>362</td><td>30</td><td>75</td><td>6</td><td>73</td><td>208</td><td>57.5%</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg9" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>Week 10</b></td><td>345</td><td>28</td><td>66</td><td>10</td><td>84</td><td>185</td><td>53.6%</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div><section class="callout "><h2>Verified this session, row for row</h2>
+<p>Three Detroit players were reported on the Flagged page as having a blank game-status cell. All
+three are published as <b>Out</b> on the live page today, and the desk records them as verified:</p></section><div class="tw"><table class="">
+<thead><tr><th>Player</th><th>Pos</th><th>Injury</th><th>Practice</th><th>Game status</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>Kerby Joseph</b></td><td>S</td><td>Knee</td><td>Did Not Participate In Practice</td><td><span class="st pass">Out</span></td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>Cade Mays</b></td><td>C</td><td>Ankle</td><td>Did Not Participate In Practice</td><td><span class="st pass">Out</span></td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>D.J. Reed</b></td><td>CB</td><td>Hip</td><td>Did Not Participate In Practice</td><td><span class="st pass">Out</span></td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

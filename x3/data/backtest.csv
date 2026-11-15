@@ -1,0 +1,139 @@
+game_id,week,graded,pred_margin,actual_margin,lambda_chosen,n_train,pred_total,actual_total,source
+2026-W01-NE@SEA,1,no (training window too small),,3,,,,23,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-SF@LA,1,no (training window too small),,-20,,,,34,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-ARI@LAC,1,no (training window too small),,-12,,,,40,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-ATL@PIT,1,no (training window too small),,7,,,,33,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-BAL@IND,1,no (training window too small),,-18,,,,64,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-BUF@HOU,1,no (training window too small),,-5,,,,67,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-CHI@CAR,1,no (training window too small),,-22,,,,96,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-CLE@JAX,1,no (training window too small),,24,,,,44,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-DAL@NYG,1,no (training window too small),,8,,,,48,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-GB@MIN,1,no (training window too small),,17,,,,61,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-MIA@LV,1,no (training window too small),,14,,,,40,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-NO@DET,1,no (training window too small),,1,,,,61,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-NYJ@TEN,1,no (training window too small),,-13,,,,33,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-TB@CIN,1,no (training window too small),,6,,,,60,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-WAS@PHI,1,no (training window too small),,2,,,,46,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W01-DEN@KC,1,no (training window too small),,21,,,,41,https://www.nfl.com/schedules/2026/by-week/week-1
+2026-W02-DET@BUF,2,no (training window too small),,10,,,,72,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-CAR@ATL,2,no (training window too small),,-31,,,,37,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-CIN@HOU,2,no (training window too small),,-14,,,,26,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-CLE@TB,2,no (training window too small),,-4,,,,42,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-GB@NYJ,2,no (training window too small),,-3,,,,37,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-IND@KC,2,no (training window too small),,3,,,,63,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-JAX@DEN,2,no (training window too small),,7,,,,33,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-LV@LAC,2,no (training window too small),,-12,,,,40,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-MIA@SF,2,no (training window too small),,22,,,,48,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-MIN@CHI,2,no (training window too small),,-6,,,,12,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-NO@BAL,2,no (training window too small),,-7,,,,41,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-PHI@TEN,2,no (training window too small),,-4,,,,44,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-PIT@NE,2,no (training window too small),,17,,,,23,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-SEA@ARI,2,no (training window too small),,-24,,,,38,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-WAS@DAL,2,no (training window too small),,17,,,,57,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W02-NYG@LA,2,no (training window too small),,22,,,,34,https://www.nfl.com/schedules/2026/by-week/week-2
+2026-W03-ATL@GB,3,yes,11.7157,-21,1.0000,32,53.3888,49,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-ARI@SF,3,yes,15.2838,6,1.0000,32,43.5054,66,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-BAL@DAL,3,yes,-4.9239,-3,1.0000,32,35.3337,65,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-CAR@CLE,3,yes,-10.2896,3,1.0000,32,62.6935,39,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-CIN@PIT,3,yes,-11.1272,3,1.0000,32,63.7595,57,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-HOU@IND,3,yes,-1.4677,2,1.0000,32,48.5278,36,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-KC@MIA,3,yes,-14.7522,-14,1.0000,32,49.8807,34,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-LA@DEN,3,yes,-7.0728,4,1.0000,32,40.3490,56,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-LAC@BUF,3,yes,9.6347,8,1.0000,32,41.0902,40,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-LV@NO,3,yes,-2.9669,-8,1.0000,32,32.5286,62,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-MIN@TB,3,yes,-15.8044,-7,1.0000,32,53.4476,39,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-NE@JAX,3,yes,-4.4426,29,1.0000,32,48.7851,41,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-NYJ@DET,3,yes,-3.0415,7,1.0000,32,37.4948,55,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-SEA@WAS,3,yes,-19.0470,2,1.0000,32,33.2781,64,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-TEN@NYG,3,yes,1.1821,5,1.0000,32,43.7316,19,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W03-PHI@CHI,3,yes,10.7601,20,1.0000,32,22.6335,34,https://www.nfl.com/schedules/2026/by-week/week-3
+2026-W04-PIT@CLE,4,yes,0.3502,3,8.0000,48,47.0707,51,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-ARI@NYG,4,yes,0.9395,12,8.0000,48,43.9366,60,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-DAL@HOU,4,yes,-1.5172,-4,8.0000,48,47.7776,64,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-DEN@SF,4,yes,4.9243,10,8.0000,48,47.5333,38,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-DET@CAR,4,yes,1.4602,6,8.0000,48,48.9262,58,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-GB@TB,4,yes,2.4015,-3,8.0000,48,44.6683,31,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-IND@WAS,4,yes,0.9260,-17,8.0000,48,45.6794,43,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-JAX@CIN,4,yes,-1.9422,-5,8.0000,48,47.3822,39,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-KC@LV,4,yes,0.4324,-3,8.0000,48,46.1476,57,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-LA@PHI,4,yes,-0.4906,-4,8.0000,48,44.6034,44,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-LAC@SEA,4,yes,5.4440,7,8.0000,48,43.5996,53,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-MIA@MIN,4,yes,7.0480,5,8.0000,48,48.0972,25,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-NE@BUF,4,yes,3.1525,-3,8.0000,48,45.9996,55,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-NYJ@CHI,4,yes,4.2713,11,8.0000,48,40.8416,35,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-TEN@BAL,4,yes,4.2503,6,8.0000,48,44.2496,42,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W04-ATL@NO,4,yes,2.7128,-21,8.0000,48,46.2081,69,https://www.nfl.com/schedules/2026/by-week/week-4
+2026-W05-TB@DAL,5,yes,3.0135,-8,4.0000,64,44.1632,40,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-BAL@ATL,5,yes,-2.0334,-7,4.0000,64,41.8759,53,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-CHI@GB,5,yes,-10.2206,24,4.0000,64,38.9863,38,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-CIN@MIA,5,yes,-6.1564,-7,4.0000,64,49.4715,55,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-CLE@NYJ,5,yes,-0.2091,5,4.0000,64,47.1576,29,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-DEN@LAC,5,yes,-4.2271,-6,4.0000,64,45.8484,40,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-DET@ARI,5,yes,-2.2452,-24,4.0000,64,42.7480,66,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-HOU@TEN,5,yes,-1.1165,-23,4.0000,64,49.9532,29,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-IND@PIT,5,yes,-1.0437,12,4.0000,64,47.3327,56,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-LV@NE,5,yes,-3.4784,28,4.0000,64,46.0220,62,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-MIN@NO,5,yes,-6.2187,-10,4.0000,64,50.5448,36,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-NYG@WAS,5,yes,-3.9054,0,4.0000,64,46.2294,54,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-PHI@JAX,5,yes,8.6949,2,4.0000,64,47.9141,36,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-SF@SEA,5,yes,-3.9022,-3,4.0000,64,45.6612,61,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W05-BUF@LA,5,yes,-0.8084,-3,4.0000,64,44.5658,71,https://www.nfl.com/schedules/2026/by-week/week-5
+2026-W06-SEA@DEN,6,yes,-2.1212,3,8.0000,79,46.9011,31,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-ARI@LA,6,yes,4.2968,-2,8.0000,79,45.4800,34,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-BAL@CLE,6,yes,-2.4109,3,8.0000,79,45.3334,23,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-BUF@LV,6,yes,-1.5704,-3,8.0000,79,44.9566,63,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-CAR@PHI,6,yes,-2.4736,-11,8.0000,79,51.1923,39,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-CHI@ATL,6,yes,-1.8521,-8,8.0000,79,41.6650,54,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-DAL@GB,6,yes,-0.0040,10,8.0000,79,46.7220,36,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-HOU@JAX,6,yes,4.6195,-3,8.0000,79,49.0844,65,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-LAC@KC,6,yes,6.7471,16,8.0000,79,46.3004,28,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-NO@NYG,6,yes,1.7750,-7,8.0000,79,46.9835,61,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-NYJ@NE,6,yes,2.4867,7,8.0000,79,46.5163,45,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-PIT@TB,6,yes,-0.6979,-7,8.0000,79,46.4592,45,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-TEN@IND,6,yes,3.3440,-6,8.0000,79,45.9310,46,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W06-WAS@SF,6,yes,7.1604,6,8.0000,79,47.6862,40,https://www.nfl.com/schedules/2026/by-week/week-6
+2026-W07-NE@CHI,7,yes,0.2723,6,8.0000,93,42.0543,54,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-CIN@BAL,7,yes,-0.2846,-22,8.0000,93,45.3346,48,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-CLE@TEN,7,yes,-2.7218,-3,8.0000,93,46.1578,51,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-DEN@ARI,7,yes,-3.4135,-14,8.0000,93,46.0198,46,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-GB@DET,7,yes,0.7676,3,8.0000,93,44.1687,37,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-IND@MIN,7,yes,4.6983,6,8.0000,93,47.4463,26,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-KC@SEA,7,yes,-2.0609,17,8.0000,93,46.2065,23,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-LA@LV,7,yes,0.2007,-14,8.0000,93,45.1076,56,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-MIA@NYJ,7,yes,3.2715,-3,8.0000,93,46.6444,53,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-NYG@HOU,7,yes,1.3793,-6,8.0000,93,47.7863,48,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-PIT@NO,7,yes,-2.1948,-6,8.0000,93,47.4874,26,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-SF@ATL,7,yes,-4.5380,9,8.0000,93,46.0808,49,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-TB@CAR,7,yes,2.8937,-30,8.0000,93,48.5368,56,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W07-DAL@PHI,7,yes,-1.2745,-17,8.0000,93,47.4885,59,https://www.nfl.com/schedules/2026/by-week/week-7
+2026-W08-CAR@GB,8,yes,0.1970,8,8.0000,107,49.9240,46,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-ARI@DAL,8,yes,3.8025,-3,8.0000,107,45.8319,63,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-ATL@TB,8,yes,0.3569,16,8.0000,107,44.2488,16,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-BAL@BUF,8,yes,1.2935,26,8.0000,107,43.2470,46,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-CLE@PIT,8,yes,1.3103,21,8.0000,107,47.9303,33,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-IND@JAX,8,yes,4.8822,35,8.0000,107,47.5977,49,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-KC@DEN,8,yes,-2.4999,4,8.0000,107,46.9547,52,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-LAC@LA,8,yes,4.1417,15,8.0000,107,44.6930,33,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-LV@NYJ,8,yes,-0.5841,-5,8.0000,107,45.8972,71,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-MIN@DET,8,yes,-3.0907,4,8.0000,107,45.0613,34,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-NE@MIA,8,yes,-5.9481,-5,8.0000,107,46.8455,43,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-PHI@WAS,8,yes,-0.2797,17,8.0000,107,48.2210,37,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-TEN@CIN,8,yes,6.0407,7,8.0000,107,46.6647,79,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W08-CHI@SEA,8,yes,-0.5249,-17,8.0000,107,41.2440,51,https://www.nfl.com/schedules/2026/by-week/week-8
+2026-W09-JAX@BAL,9,yes,-7.0793,-23,8.0000,121,46.4058,43,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-ARI@SEA,9,yes,5.5635,14,8.0000,121,44.4963,20,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-CIN@ATL,9,yes,-3.7211,-17,8.0000,121,48.8386,51,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-CLE@NO,9,yes,0.0933,1,8.0000,121,45.9320,45,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-DAL@IND,9,yes,-3.1369,-4,8.0000,121,47.1667,50,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-DEN@CAR,9,yes,-1.6038,-5,8.0000,121,50.3649,47,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-DET@MIA,9,yes,-4.7946,-10,8.0000,121,44.6113,28,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-GB@NE,9,yes,1.3431,-18,8.0000,121,46.4215,72,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-HOU@LAC,9,yes,-4.4837,-22,8.0000,121,47.8421,66,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-LA@WAS,9,yes,-3.0692,-7,8.0000,121,44.9421,33,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-LV@SF,9,yes,4.3739,21,8.0000,121,45.3855,55,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-NYG@PHI,9,yes,-3.2385,-8,8.0000,121,47.9403,30,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-NYJ@KC,9,yes,3.2464,23,8.0000,121,47.3974,47,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-TB@CHI,9,yes,1.5807,3,8.0000,121,39.5049,51,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W09-BUF@MIN,9,yes,-0.0365,-17,8.0000,121,45.7897,29,https://www.nfl.com/schedules/2026/by-week/week-9
+2026-W10-WAS@NYG,10,yes,1.8134,-3,4.0000,136,46.7679,45,https://www.nfl.com/schedules/2026/by-week/week-10
+2026-W10-NE@DET,10,yes,0.3173,25,4.0000,136,45.6480,45,https://www.nfl.com/games/patriots-at-lions-2026-reg-10

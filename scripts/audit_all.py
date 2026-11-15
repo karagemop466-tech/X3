@@ -196,7 +196,10 @@ def main() -> int:
             target = href.split("#", 1)[0].split("?", 1)[0]
             if not target:
                 continue
-            if not (page.parent / target).exists():
+            # paste-ready fragments (*-block.html) are written with root-relative
+            # links by their generator (build_decision.py: "lives at the repository root")
+            base = ROOT if page.name.endswith("-block.html") else page.parent
+            if not (base / target).exists():
                 problems.append(f"L1 {rel}: broken internal link -> {href}")
 
         # ---- L2: source cells in source-column tables ---------------

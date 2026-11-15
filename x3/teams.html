@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Per-team view - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html" class="on">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Per-team view</h1><p class="sub">Who is officially out, and who the club lists behind him</p></div>
+
+<section class="callout "><h2>Starters out, replacements named, net count</h2>
+<p>Requirement R-40. For every club: how many players the official report marks <b>Out</b>, how many
+<b>Questionable</b>, and the name of the club's own second-string player at the same position.</p>
+<p class="key">The replacement column is a <b>chart</b> name, not a confirmed starter. Nobody is
+"announced" as a replacement until a Game Book lists him in the Lineups block, and that exists for
+one game. Where the club lists no second-string row, this says so rather than guessing.</p></section><div class="tw"><table class="">
+<thead><tr><th>Club</th><th>Out</th><th>Questionable</th><th>Rows on report</th><th>Next man up (chart)</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>ARI</b></td><td>3</td><td>6</td><td>15</td><td>Zachary Carter (DT) -&gt; Darius Robinson (2nd)<br>Hjalte Froholdt (C) -&gt; Kingsley Eguakun (2nd)<br>Jon Gaines II (G) -&gt; no 2nd-string row</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>ATL</b></td><td>1</td><td>3</td><td>11</td><td>Zachariah Branch (WR) -&gt; Beaux Collins (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>BAL</b></td><td>0</td><td>0</td><td>8</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>BUF</b></td><td>0</td><td>4</td><td>14</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>CAR</b></td><td>1</td><td>4</td><td>12</td><td>Bobby Okereke (LB) -&gt; Jackson Kuwatch (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>CHI</b></td><td>0</td><td>0</td><td>0</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a><span class="flag">not on week-10 report</span></td></tr>
+<tr><td><b>CIN</b></td><td>1</td><td>0</td><td>9</td><td>Kyle Dugger (S) -&gt; Kyle Dugger (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>CLE</b></td><td>2</td><td>1</td><td>12</td><td>Michael Burton (FB) -&gt; no 2nd-string row<br>Ronnie Hickman Jr. (S) -&gt; no 2nd-string row</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>DAL</b></td><td>5</td><td>5</td><td>19</td><td>Donovan Ezeiruaku (LB) -&gt; Dee Winters (2nd)<br>Jake Ferguson (TE) -&gt; no 2nd-string row<br>Tyler Goodson (RB) -&gt; Tyler Goodson (2nd)<br>P.J. Locke (S) -&gt; Alijah Clark (2nd)<br>Jonathan Mingo (WR) -&gt; Camden Brown (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>DEN</b></td><td>0</td><td>0</td><td>0</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a><span class="flag">not on week-10 report</span></td></tr>
+<tr><td><b>DET</b></td><td>3</td><td>2</td><td>9</td><td>Kerby Joseph (S) -&gt; Christian Izien (2nd)<br>Cade Mays (C) -&gt; Juice Scruggs (2nd)<br>D.J. Reed (CB) -&gt; Ennis Rakestraw Jr. (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>GB</b></td><td>4</td><td>7</td><td>17</td><td>Josh Jacobs (RB) -&gt; MarShawn Lloyd (2nd)<br>Micah Parsons (LB) -&gt; Nick Niemann (2nd)<br>Sean Rhyan (C) -&gt; Jager Burton (2nd)<br>Josh Whyle (TE) -&gt; Jonnu Smith (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>HOU</b></td><td>5</td><td>6</td><td>16</td><td>Azeez Al-Shaair (LB) -&gt; no 2nd-string row<br>Marvin Harrison Jr. (WR) -&gt; no 2nd-string row<br>Danielle Hunter (DE) -&gt; no 2nd-string row<br>Brevin Jordan (TE) -&gt; no 2nd-string row<br>Keylan Rutledge (G) -&gt; no 2nd-string row</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>IND</b></td><td>6</td><td>2</td><td>14</td><td>Mo Alie-Cox (TE) -&gt; no 2nd-string row<br>Jaylon Carlies (LB) -&gt; no 2nd-string row<br>Akeem Davis-Gaither (LB) -&gt; no 2nd-string row<br>Luke Rhodes (LS) -&gt; no 2nd-string row<br>Jerry Tillery (DT) -&gt; Kevin Givens (2nd)<br>Jalen Travis (T) -&gt; no 2nd-string row</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>JAX</b></td><td>3</td><td>1</td><td>11</td><td>Jessie Bates (S) -&gt; Jalen Huskey (2nd)<br>Jordan Davis (DT) -&gt; Ruke Orhorhoro (2nd)<br>BJ Green II (DE) -&gt; Bryan Thomas Jr. (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>KC</b></td><td>3</td><td>3</td><td>13</td><td>Jaylon Moore (T) -&gt; no 2nd-string row<br>Omarr Norman-Lott (DT) -&gt; Bryson Eason (2nd)<br>Peter Woods (DT) -&gt; Bryson Eason (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>LA</b></td><td>2</td><td>5</td><td>14</td><td>Steve Avila (G) -&gt; no 2nd-string row<br>Terrance Ferguson (TE) -&gt; Max Klare (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>LAC</b></td><td>0</td><td>0</td><td>19</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>LV</b></td><td>0</td><td>2</td><td>5</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>MIA</b></td><td>2</td><td>1</td><td>11</td><td>Aaron Brewer (C) -&gt; Andrew Meyer (2nd)<br>Jared Wayne (WR) -&gt; Jalen Tolbert (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>MIN</b></td><td>5</td><td>3</td><td>13</td><td>Blake Cashman (LB) -&gt; Ivan Pace Jr. (2nd)<br>T.J. Hockenson (TE) -&gt; Gavin Bartholomew (2nd)<br>Tyrion Ingram-Dawkins (DT) -&gt; no 2nd-string row<br>Jauan Jennings (WR) -&gt; Myles Price (2nd)<br>Kyler Murray (QB) -&gt; Carson Wentz (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>NE</b></td><td>3</td><td>9</td><td>15</td><td>Ben Brown (C) -&gt; Ben Brown (2nd)<br>Carlton Davis III (CB) -&gt; Channing Canada (2nd)<br>TreVeyon Henderson (RB) -&gt; TreVeyon Henderson (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>NO</b></td><td>4</td><td>2</td><td>12</td><td>CJ Donaldson (RB) -&gt; Audric Estimé (2nd)<br>Taliese Fuaga (T) -&gt; no 2nd-string row<br>Erik McCoy (C) -&gt; William Sherman (2nd)<br>Christen Miller (DT) -&gt; no 2nd-string row</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>NYG</b></td><td>0</td><td>1</td><td>11</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>NYJ</b></td><td>1</td><td>8</td><td>9</td><td>Trevin Wallace (LB) -&gt; Jaden Keller (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>PHI</b></td><td>0</td><td>0</td><td>0</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a><span class="flag">not on week-10 report</span></td></tr>
+<tr><td><b>PIT</b></td><td>0</td><td>1</td><td>8</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>SEA</b></td><td>4</td><td>0</td><td>15</td><td>Charles Cross (T) -&gt; no 2nd-string row<br>Sam Darnold (QB) -&gt; Drew Lock (2nd)<br>Quenton Nelson (G) -&gt; no 2nd-string row<br>Leonard Williams (DT) -&gt; Rylie Mills (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>SF</b></td><td>1</td><td>7</td><td>12</td><td>Mike Evans (WR) -&gt; Demarcus Robinson (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>TB</b></td><td>0</td><td>0</td><td>0</td><td>—</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a><span class="flag">not on week-10 report</span></td></tr>
+<tr><td><b>TEN</b></td><td>5</td><td>1</td><td>12</td><td>Cody Barton (LB) -&gt; Dorian Mausi (2nd)<br>Anthony Hill Jr. (LB) -&gt; Dorian Mausi (2nd)<br>Peter Skoronski (G) -&gt; no 2nd-string row<br>Carnell Tate (WR) -&gt; Chimere Dike (2nd)<br>Tommy Townsend (P) -&gt; Joey Slye (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>WAS</b></td><td>2</td><td>0</td><td>9</td><td>Lucas Patrick (C) -&gt; Matt Gulbin (2nd)<br>Colson Yankoff (TE) -&gt; Ben Sinnott (2nd)</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div>
+<p class="tn">Join risk: the injury report gives a full name and the depth chart a full name, so this join is by exact position string, not fuzzy surname matching (F-15).</p>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

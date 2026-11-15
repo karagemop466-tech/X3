@@ -1,0 +1,107 @@
+{
+ "captures": [
+  {
+   "bytes": 310897,
+   "capture_id": "SNAP-2026W10-2026-11-14T0000Z",
+   "chunks_read": "not recorded by the capturing sessions",
+   "clock_precision": "day only - flagged: a read without an hour cannot anchor a pre-kickoff delta",
+   "counts": {
+    "blank_game_status": 185,
+    "designation_counts": {
+     "Doubtful": 10,
+     "Out": 66,
+     "Questionable": 84
+    },
+    "practice_counts": {
+     "DNP": 94,
+     "FP": 175,
+     "LP": 76
+    },
+    "rows": 345,
+    "rows_with_designation": 160,
+    "teams": 28
+   },
+   "fetched_at_utc": "2026-11-14 (no clock time recorded)",
+   "file": "data/desk/injuries.json (week=10 rows) + audit/official_injury_wk10_2026.csv",
+   "files": [
+    "data/desk/injuries.json",
+    "audit/official_injury_wk10_2026.csv"
+   ],
+   "note": "Reconstructed from bytes already in the repository. The desk store is the canonical series; the audit CSV is a second, independent transcription of the same page on the same day. Both are read here read-only; neither is modified by this script.",
+   "parser_version": "pre-store (no parser version recorded)",
+   "retrieved_via": "prior sessions (desk pipeline, audit transcription)",
+   "rows": 345,
+   "sealed": false,
+   "season": 2026,
+   "sha256": "388c709074d026aa1aecae2c8d182a946afa0f92b2e82de04fa4e3c106bb3705",
+   "source_url": "https://www.nfl.com/injuries/league/2026/reg10",
+   "week": 10
+  },
+  {
+   "bytes": 11753,
+   "capture_id": "SNAP-2026W10-2026-11-15T1816Z",
+   "chunks_read": "0-6 of 8 (the 8th chunk carries only the news module; the last club table closes before its heading)",
+   "clock_precision": "minute",
+   "counts": {
+    "blank_game_status": 176,
+    "designation_counts": {
+     "Doubtful": 11,
+     "Out": 70,
+     "Questionable": 90
+    },
+    "practice_counts": {
+     "DNP": 94,
+     "FP": 180,
+     "LP": 73
+    },
+    "rows": 347,
+    "rows_with_designation": 171,
+    "teams": 28
+   },
+   "fetched_at_utc": "2026-11-15T18:16:00Z",
+   "file": "data/snapshots/wk10/capture-2026-11-15T1816Z-nfl-com-injuries-reg10.csv",
+   "files": [
+    "data/snapshots/wk10/capture-2026-11-15T1816Z-nfl-com-injuries-reg10.csv"
+   ],
+   "parser_version": "x3-snap-v1",
+   "retrieved_via": "fetch_page (rendered markdown of the official page); shell HTTP clients are blocked in this sandbox",
+   "rows": 347,
+   "sealed": true,
+   "season": 2026,
+   "sha256": "5ceb9b31cb0e99ac4a7c9f094bda3e76ad12f28a5ab990205c241c5204a5d8c6",
+   "source_url": "https://www.nfl.com/injuries/league/2026/reg10",
+   "team_codes_printed": [
+    "AZ"
+   ],
+   "week": 10
+  }
+ ],
+ "independent_prior_reads": [
+  {
+   "read": "data/desk/injuries.json (week 10 rows)",
+   "rows_week10": 345,
+   "sha256_of_source": "388c709074d026aa1aecae2c8d182a946afa0f92b2e82de04fa4e3c106bb3705"
+  },
+  {
+   "read": "audit/official_injury_wk10_2026.csv",
+   "rows_week10": 345,
+   "sha256_of_source": "2f1445c903c4d49033b213f14cfcc88be1cdb826a8051255d8a5e61435fe7999"
+  }
+ ],
+ "policy": {
+  "delta_is_the_product": "levels are stored; deltas are published",
+  "hash_target": "sha256 of the stored capture bytes",
+  "immutable": "capture files are append-only; this script never rewrites a capture, it re-derives the index",
+  "required_per_capture": [
+   "source_url",
+   "fetched_at_utc",
+   "sha256",
+   "bytes",
+   "rows",
+   "parser_version"
+  ],
+  "reserve_list_limit": "the weekly report does not carry the IR/reserve list, so an absent row is 'not in this read', never 'available'. Flagged, not resolved.",
+  "unit_of_observation": "one dated read of one official page, not one week"
+ },
+ "store_version": "x3-snapshot-store-v1"
+}

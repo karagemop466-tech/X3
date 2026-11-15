@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Venues - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html" class="on">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Venues</h1><p class="sub">Every fixture with its venue, and the strength of the evidence for it</p></div>
+
+<section class="callout "><h2>Three kinds of venue evidence, never merged</h2>
+<p>Requirement R-23: the venue of every fixture, transcribed, with the <b>kind</b> of evidence on
+every row so the reader can weigh it.</p>
+<p class="key"><b>3 of 27</b> rows come from a game centre's Game Info block or
+from a Game Book's own header — the strongest evidence. The other 24 come from
+the stadium named in the official week page's own ticket and hotel deep-links for that fixture,
+which is published by the league but is not a venue statement. The badge says which.</p>
+<p>One row flags a naming problem rather than resolving it: the live week page's link still names
+<b>FedExField</b> for the Washington fixture while the club's own stadium is currently Washington's
+home under a different name. Neither name is corrected here — both are recorded (see the flagged
+page).</p></section><div class="tw"><table class="">
+<thead><tr><th>Week</th><th>Fixture</th><th>Stadium</th><th>City</th><th>Evidence kind</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>W10</b></td><td>WAS @ NYG</td><td>MetLife Stadium</td><td>East Rutherford, NJ</td><td><span class="st pass">game book page 1</span></td><td><a class="ext" href="https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>NE @ DET</td><td>FC Bayern Munich Stadium</td><td>Munich</td><td><span class="st pass">game centre Game Info</span></td><td><a class="ext" href="https://www.nfl.com/games/patriots-at-lions-2026-reg-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>KC @ ATL</td><td>Mercedes-Benz Stadium</td><td>Atlanta, GA</td><td><span class="st pass">game centre Game Info</span></td><td><a class="ext" href="https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>MIA @ IND</td><td>Lucas Oil Stadium</td><td>Indianapolis, IN</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>CAR @ NO</td><td>Caesars Superdome</td><td>New Orleans, LA</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>BUF @ NYJ</td><td>MetLife Stadium</td><td>East Rutherford, NJ</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>JAX @ TEN</td><td>Nissan Stadium</td><td>Nashville, TN</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>HOU @ CLE</td><td>Huntington Bank Field</td><td>Cleveland, OH</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>MIN @ GB</td><td>Lambeau Field</td><td>Green Bay, WI</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>LA @ AZ</td><td>State Farm Stadium</td><td>Glendale, AZ</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>SEA @ LV</td><td>Allegiant Stadium</td><td>Las Vegas, NV</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>SF @ DAL</td><td>AT&amp;T Stadium</td><td>Arlington, TX</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>PIT @ CIN</td><td>Paycor Stadium</td><td>Cincinnati, OH</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W10</b></td><td>LAC @ BAL</td><td>M&amp;T Bank Stadium</td><td>Baltimore, MD</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>IND @ HOU</td><td>NRG Stadium</td><td>Houston, TX</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>MIA @ BUF</td><td>Highmark Stadium</td><td>Orchard Park, NY</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>BAL @ CAR</td><td>Bank of America Stadium</td><td>Charlotte, NC</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>NO @ CHI</td><td>Soldier Field</td><td>Chicago, IL</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>TEN @ DAL</td><td>AT&amp;T Stadium</td><td>Arlington, TX</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>TB @ DET</td><td>Ford Field</td><td>Detroit, MI</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>AZ @ KC</td><td>GEHA Field at Arrowhead Stadium</td><td>Kansas City, MO</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>PIT @ PHI</td><td>Lincoln Financial Field</td><td>Philadelphia, PA</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>NYJ @ LAC</td><td>SoFi Stadium</td><td>Inglewood, CA</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>JAX @ NYG</td><td>MetLife Stadium</td><td>East Rutherford, NJ</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>LV @ DEN</td><td>Empower Field at Mile High</td><td>Denver, CO</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>MIN @ SF</td><td>Levi&#x27;s Stadium</td><td>Santa Clara, CA</td><td><span class="st warn">week page link</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>W11</b></td><td>CIN @ WAS</td><td>Northwest Stadium</td><td>Landover, MD</td><td><span class="st warn">week page link (FedExField)</span></td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>
