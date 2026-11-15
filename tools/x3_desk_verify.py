@@ -287,6 +287,18 @@ def main():
           len(do) >= 10 and meta["depth_order"]["n"] == len(do),
           f"{len(do)} club-position slots compared against official snap counts")
 
+    # ---- C-17 every x3/data path named in the prose exists ----
+    import re as _re, glob as _g
+    named, missing = set(), []
+    for f in sorted(_g.glob(os.path.join(ROOT, "x3", "*.html"))):
+        for m in _re.findall(r"x3/data/([A-Za-z0-9_.\-]+)", open(f, encoding="utf-8").read()):
+            named.add(m)
+            if not os.path.exists(os.path.join(DATA, m)):
+                missing.append(f"{os.path.basename(f)} -> x3/data/{m}")
+    check("C-17 every x3/data file named in the prose exists",
+          not missing, f"{len(named)} distinct data files referenced, {len(missing)} missing"
+                       + (f": {'; '.join(missing[:3])}" if missing else ""))
+
     # ---- C-14 referenced flags exist ----
     known = {r["id"] for r in csv.DictReader(open(os.path.join(DATA, "flags.csv"), encoding="utf-8"))}
     known |= {f[0] for f in __import__("x3_desk_content").SITE_FLAGS}

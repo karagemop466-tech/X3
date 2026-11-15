@@ -804,8 +804,8 @@ def build_gates(L, luck_stats):
                      f"{L['n']} games they are graded on"),
         "result": "FAIL",
         "action": "Every number on this desk is labelled IN-SAMPLE (retrospective). None of it can be "
-                  "promoted until a post-registration window exists. The registration record is "
-                  "x3/data/preregistration.csv.",
+                  "promoted until a post-registration window exists. The registration record is on "
+                  "the pre-registration page.",
         "source": "gates.html"})
     rows.append({
         "id": "G-2", "gate": "Sample size", "kind": "entry",

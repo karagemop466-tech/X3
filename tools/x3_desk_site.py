@@ -670,9 +670,10 @@ def page_corr():
 <p>Requirement R-07 forbids a correlation without a published sample size, and forbids computing
 one from a number that is not officially sourced. Each row below names the two quantities, the
 official page they came from, n, a 95% interval via Fisher's z, and a two-sided p.</p>
-<p>An <b>undefined</b> coefficient is not printed as zero. C-05 has no variance in its first
-column — every rank-1 starter with a listed backup played every snap — so no coefficient can be
-estimated from it, and saying "r = 0" would be a fabricated number.</p>''')
+<p>An <b>undefined</b> coefficient is never printed as zero. C-05 currently covers only 9
+club-position pairs from a single game, so its interval is very wide and it is published to show the
+shape of the question, not to answer it. A row that cannot be estimated at all shows "undefined"
+rather than 0, because 0 is a number and a missing estimate is not.</p>''')
     body += table(["ID", "Quantity A", "Quantity B", "r", "n", "95% low", "95% high", "p", "Method", "Source"],
                   rows, note="Notes for each coefficient (including the pair list behind C-05) are in "
                              "x3/data/correlations.csv and reproduced on each row's tooltip in the CSV.")

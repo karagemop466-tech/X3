@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 306,
-      "flagged_rows": 227,
-      "refs": 376,
+      "rows": 358,
+      "flagged_rows": 276,
+      "refs": 430,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -13,7 +13,7 @@
         "flagged.html: Live or historical betting lines / odds \u2014 No line archive or provider is present. NFL is not the source of bookmaker quo",
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
-        "injuries.html:  Date  Team  Player  Pos  Injury  Practice Status  Game Status  Source "
+        "index.html: Dataset Official source Status Notes"
       ]
     },
     "agency": {
@@ -141,9 +141,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1843,
-      "flagged_rows": 1445,
-      "refs": 2790,
+      "rows": 1918,
+      "flagged_rows": 1518,
+      "refs": 2861,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -289,19 +289,19 @@
       ]
     },
     "x3": {
-      "pages": 26,
-      "rows": 793,
-      "flagged_rows": 629,
-      "refs": 1643,
+      "pages": 28,
+      "rows": 862,
+      "flagged_rows": 694,
+      "refs": 1828,
       "unsourced_examples": [
         "x3/ablations.html: ID Ablation Feature beta n train n test MAE without MAE with Delta MAE SE 95% interval Verdict Source",
         "x3/availability.html: Club Unit Pos Expected starter (chart) Actual starter (Game Book) No. Match Source",
+        "x3/availability.html: Club Pos Chart says first Game Book says started Verdict Source",
         "x3/backtest.html: Game Week Predicted margin Actual margin Predicted total Actual total Ridge penalty n train Source",
         "x3/correlations.html: ID Quantity A Quantity B r n 95% low 95% high p Method Source",
         "x3/correlations.html: ID Note Source",
         "x3/depth.html: Club Unit Pos Chart first His snaps Most snaps His snaps Agreement Snap sheet",
-        "x3/depth.html: Club Rows Rows with official snaps As-of date Chart source",
-        "x3/features.html: Fixture Kickoff date Away rest days Home rest days Site Kickoff ET Network Source"
+        "x3/depth.html: Club Rows Rows with official snaps As-of date Chart source"
       ]
     },
     "x3lab": {
@@ -312,10 +312,10 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 273,
-  "rows_total": 11804,
-  "rows_flagged_or_sourced": 9836,
-  "internal_refs": 6838,
+  "pages_total": 275,
+  "rows_total": 12000,
+  "rows_flagged_or_sourced": 10023,
+  "internal_refs": 7039,
   "problems": [
     "agency/site/flagged.html: broken internal ref nfl.com does not publish market prices"
   ]
