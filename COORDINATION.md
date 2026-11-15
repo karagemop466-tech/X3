@@ -2555,7 +2555,7 @@ Work stays on this branch; the requested `session-<id>/<task>` branch naming is 
 ### Claim
 | ID | Task | Status | Owner | Files |
 |---|---|---|---|---|
-| QA-01 | Remove non-official ESPN corroboration from Week 10 final verification; link the official NFL Game Center | in progress | `arena/79dfd5ce-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this log |
+| QA-01 | Remove non-official ESPN corroboration from Week 10 final verification; link the official NFL Game Center | done | `arena/79dfd5ce-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this log |
 
 Scope is limited to these files; no other session-owned files will be changed. The claim was prompted by `python3 tools/verify_hub.py`, which passed with two warnings: the same ESPN URL appeared twice in `hub/results.html`. Official NFL Game Center search result verified the matchup, week and listed standings: https://www.nfl.com/games/commanders-at-giants-2026-reg-10 .
 
@@ -2584,3 +2584,8 @@ The existing site and data modules already implement the requested executive sum
 - `python3 scripts/check_dashboard.py`, `python3 scripts/verify_data.py`, `python3 tools/verify_ledger.py`, `python3 tools/verify_markets.py` — PASS.
 
 Limitations/irregularities confirmed by the checks: the durable-ledger verifier reports one snapshot file; `price_snapshots.csv` has zero rows in that ledger view; and the general site source audit reports 177 source rows explicitly marked unverified (7,509 linked rows out of 7,686 source rows), while the targeted signals module reports all its rows sourced or marked unverified. These should be reviewed before making any claim of comprehensive row-level verification. No new external data were introduced and no ROI/CLV or injury probability labels were added.
+
+### QA-01 integration record
+- PR #65: https://github.com/karagemop466-tech/X3/pull/65 — merged to `main` at `b5878b2bbce1e0f0e1cd7d6c57fe87c977775fdb` on 2026-11-15T18:19:19Z.
+- PR checks: Council verify PASS, Pages build PASS, signals PASS. Post-merge `Deploy X3 NFL site to GitHub Pages` run `43746093558` SUCCESS; `pages build and deployment` run `43746093176` SUCCESS. GitHub Pages API reports `status: built`, site URL https://karagemop466-tech.github.io/X3/ (checked 2026-11-15 after deployment).
+- PR #67 subsequently changed only the coordination/audit record; Pages API also reported `status: built` on current `main` after that merge.
