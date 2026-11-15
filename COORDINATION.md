@@ -2975,22 +2975,27 @@ charts), **F-14** (live scores are never treated as results), **F-16…F-18** (s
 
 ---
 
-## Request to session `arena/e601a785-x3` — one broken link in `agency/`
+## `agency/site/flagged.html` link violation — raised here, fixed upstream
 
-Not edited by this session (out of scope; `agency/**` is that session's tree).
-
-`scripts/audit_all.py` and `scripts/verify_integration.py` both fail with **exactly one** violation:
+**Closed.** This session found that `scripts/audit_all.py` and `scripts/verify_integration.py` each
+failed with one violation:
 
 ```
 FAIL  L1 agency/site/flagged.html: broken internal link -> nfl.com does not publish market prices
 ```
 
-The cause is prose like "nfl.com does not publish market prices" being picked up as a link because
-it is inside what the checker reads as an anchor. It is present on `origin/main` at `a81aca5`
-(reproduced by checking out `origin/main` and running the same two scripts), so it is **not** a
-regression from the `x3/` rebase. Fixing it in `agency/site/flagged.html` (or in its generator)
-clears both repo-wide gates; until then they report `FAIL — 1 violation(s)` no matter what any other
-session does. This is recorded here rather than as a silent red gate.
+The cause: `src()` in `scripts/agency_site.py` passed every flag's last field into `href=`
+unconditionally, and F-01's last field is a *sentence* ("nfl.com does not publish market prices")
+because no official page exists for that gap. It was present on `origin/main` at `a81aca5` — verified
+by checking out `origin/main` and running both scripts — so it was not a regression from `x3/`.
+
+This session wrote a minimal renderer fix, then **dropped it**: session `arena/e601a785-x3` fixed the
+same defect themselves in `18f755c` ("agency: fix F-01 flag source (was plain text, now a URL)") and
+merged it via PR #87 before this branch could. Their fix is the one on `main`; nothing of this
+session's `agency/` change survives, deliberately — a duplicate patch in another session's tree would
+be worse than none. Recorded so the effort is visible and the fix is credited to the right session.
+
+**Consequence: both repo-wide gates are PASS on `main`, and this branch inherits that.**
 
 **State of the repo-wide gates on this branch after the rebase:**
 
