@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correlations - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html" class="on">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Correlations</h1><p class="sub">Five coefficients from official numbers, each with n, an interval and a p</p></div>
+
+<section class="callout "><h2>Official numbers only, and every value carries its n</h2>
+<p>Requirement R-07 forbids a correlation without a published sample size, and forbids computing
+one from a number that is not officially sourced. Each row below names the two quantities, the
+official page they came from, n, a 95% interval via Fisher's z, and a two-sided p.</p>
+<p>An <b>undefined</b> coefficient is never printed as zero. C-05 currently covers only 9
+club-position pairs from a single game, so its interval is very wide and it is published to show the
+shape of the question, not to answer it. A row that cannot be estimated at all shows "undefined"
+rather than 0, because 0 is a number and a missing estimate is not.</p></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>Quantity A</th><th>Quantity B</th><th>r</th><th>n</th><th>95% low</th><th>95% high</th><th>p</th><th>Method</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>C-01</b></td><td>Home club points scored (same game)</td><td>Away club points scored (same game)</td><td>0.0629</td><td><b>138</b></td><td>-0.1053</td><td>0.2276</td><td>0.4645</td><td>Pearson</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-02</b></td><td>Model predicted margin</td><td>Actual margin</td><td>0.1903</td><td><b>106</b></td><td>-0.0004</td><td>0.3677</td><td>0.0505</td><td>Pearson</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-03</b></td><td>Model predicted total</td><td>Actual total</td><td>-0.0840</td><td><b>106</b></td><td>-0.2705</td><td>0.1085</td><td>0.3926</td><td>Pearson</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-04</b></td><td>Club points for (season to date)</td><td>Club points against (season to date)</td><td>-0.0869</td><td><b>32</b></td><td>-0.4228</td><td>0.2700</td><td>0.6389</td><td>Pearson, 32 clubs</td><td><a class="ext" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-05</b></td><td>Official offensive snaps, rank-1 player</td><td>Official offensive snaps, rank-2 player</td><td>-0.7276</td><td><b>9</b></td><td>-0.9383</td><td>-0.1229</td><td>0.0237</td><td>Pearson, club-position pairs from one official Game Book</td><td><a class="ext" href="https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div>
+<p class="tn">Notes for each coefficient (including the pair list behind C-05) are in x3/data/correlations.csv and reproduced on each row's tooltip in the CSV.</p><section class="callout "><h2>Notes</h2><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>Note</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>C-01</b></td><td>Two clubs in one game share pace and weather; this is the floor that any &#x27;independent games&#x27; assumption has to beat.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-02</b></td><td>Walk-forward only: each prediction uses games before its own week.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-03</b></td><td>Same walk-forward rule as C-02.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-04</b></td><td>Opponent-shared: a club&#x27;s PF and PA are computed against the same opponents.</td><td><a class="ext" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>C-05</b></td><td>Pairs: NYG LG: Jon Runyan Jr. 65 vs Aaron Stinnie 1; NYG QB: J.J. McCarthy 62 vs Jameis Winston 3; NYG RB: Cam Skattebo 58 vs Devin Singletary 5; NYG RG: Francis &quot;Sisi&quot; Mauigoa 65 vs Aaron Stinnie 1; NYG RT: Jermaine Eluemunor 64 vs Marcus Mbow 1; NYG TE: Isaiah Likely 57 vs Theo Johnson 18; NYG WR: Malik Nabers 52 vs Malachi Fields 58; WAS TE: Chig Okonkwo 41 vs Ben Sinnott 24; WAS WR: Stefon Diggs 44 vs Treylon Burks 42</td><td><a class="ext" href="https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div></section>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html" class="on">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Questions</h1><p class="sub">Fifteen open questions, each with what is known and what would clear it</p></div>
+
+<section class="callout "><h2>The information we have, the information we lack, and what would close it</h2>
+<p>Every question below has four parts: what is <b>known</b> from a source, what is <b>missing</b>,
+what that blocks, and <b>what would clear it</b>. A question without a clearing action is not a
+question, it is a complaint.</p></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>Question</th><th>Known</th><th>Missing</th><th>Blocks</th><th>What clears it</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>Q-01</b></td><td>Where can an official market price come from?</td><td>Nothing. No NFL source publishes prices.</td><td>A licensed feed or a written rights decision for a commercial odds source, captured pre-kickoff with a hash.</td><td>Blocks R-04, R-05 staking, R-18, R-58, R-59 and every ROI figure.</td><td>Ask the operator; publish PDP-2 when answered.</td><td><a class="ext" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-02</b></td><td>Does the NFL publish a Week-11 injury report yet?</td><td>No. The reg11 URL returns the Week-10 page byte for byte.</td><td>The Wednesday practice report, which the league publishes during the week.</td><td>Blocks any Week-11 injury feature for the games priced here.</td><td>Re-run the capture on Wednesday and diff.</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-03</b></td><td>Are the committed Week-10 scores still current?</td><td>No. 2 of 14 had gone final, 7 were in progress, 5 had not kicked off.</td><td>A second read after Monday night.</td><td>The results feed is complete only through the games that have finished.</td><td>Re-run `x3_capture.py` after the Monday game.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-04</b></td><td>Can a depth chart be dated?</td><td>Only Las Vegas prints an as-of date (November 10, 2026).</td><td>Either a club that dates its chart, or the transactions log to bound it.</td><td>Blocks using depth as a pre-kickoff feature (F-06) and therefore R-12, R-44, R-51.</td><td>Capture all 32 charts daily and use the capture time as a lower bound on the as-of date.</td><td><a class="ext" href="https://www.raiders.com/team/depth-chart" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-05</b></td><td>Is the Texans depth chart recoverable?</td><td>No. It is published as an image and the committed capture has 0 rows.</td><td>An authorised structured source, or a written decision to accept a transcription.</td><td>HOU is blank in every depth and deficiency table.</td><td>Ask the club or the league for a data feed.</td><td><a class="ext" href="https://www.houstontexans.com/team/depth-chart" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-06</b></td><td>Does the club depth order predict who plays?</td><td>Partly: 16 of 20 slots agree with the official snap sheet, 4 do not.</td><td>More Game Books, so the rate can be estimated per position instead of pooled.</td><td>Blocks R-11 from becoming a coefficient and R-44 from claiming a playing-time edge.</td><td>Read 20 more Game Books and re-run `build_depth_order_test`.</td><td><a class="ext" href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-07</b></td><td>What does &#x27;Questionable&#x27; mean empirically?</td><td>Nothing measured here: no inactive list exists for more than one game.</td><td>Designations joined to official inactive lists over several seasons.</td><td>Blocks R-43, R-52 and any injury-severity feature.</td><td>Capture inactive lists weekly and accumulate two seasons.</td><td><a class="ext" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-08</b></td><td>Is 138 finals enough to beat chance?</td><td>For the side, the 95% interval excludes 0.5. For a season-long claim, no.</td><td>200 graded games per division (gate G-2).</td><td>Blocks promotion of S-01.</td><td>Wait for the games, or grade props to raise n.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-09</b></td><td>Is the model under-spread?</td><td>Yes: predicted margin SD 4.3 against actual 12.7.</td><td>A calibration curve once n is larger.</td><td>A probability that is too timid is not usable for staking even if its ordering is right.</td><td>Recalibrate, then re-grade walk-forward.</td><td><a href="luck.html">page</a></td></tr>
+<tr><td><b>Q-10</b></td><td>Can the two total estimators be separated?</td><td>Not yet: the gap column has no winner.</td><td>A walk-forward comparison with a paired test.</td><td>Blocks R-61.</td><td>Re-run after week 12.</td><td><a href="lines.html">page</a></td></tr>
+<tr><td><b>Q-11</b></td><td>Is there a reserve/IR list in the repository?</td><td>No.</td><td>An official roster and reserve capture per club.</td><td>Blocks R-13 and R-63, and makes &#x27;not listed&#x27; ambiguous.</td><td>Capture the 32 roster pages weekly.</td><td><a class="ext" href="https://www.nfl.com/teams/" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-12</b></td><td>Does the repository agree with itself on the Week-10 injury count?</td><td>No: 254 rows / 279 rows / 345 rows appear in different trees.</td><td>A single canonical capture with a hash.</td><td>Blocks cross-tree reconciliation and any claim about designation rates.</td><td>Re-capture once and publish one file.</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-13</b></td><td>Are the venues of all 14 Week-10 games official?</td><td>2 confirmed by Game Center, 12 by the stadium link on the week page.</td><td>A per-game read.</td><td>Blocks R-57 (roof and weather), which needs the venue first.</td><td>Read the 12 remaining game centres.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-14</b></td><td>Which earlier tree should the reviewer trust?</td><td>None end-to-end; each is strong on a different axis.</td><td>A decision from the reviewer.</td><td>Blocks consolidation (R-68, S-01) and wastes effort when duplicated.</td><td>Read repo-review.html and pick a canonical tree.</td><td><a class="ext" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>Q-15</b></td><td>Can the 2026 kickoff/onside regime be used as a prior?</td><td>The rulebook page is referenced but was not read this session.</td><td>A read of the 2026 rulebook article.</td><td>Blocks R-57-adjacent priors on totals and comebacks.</td><td>Read the rule text and cite the article.</td><td><a class="ext" href="https://operations.nfl.com/the-rules/" target="_blank" rel="noopener">page</a></td></tr>
+</tbody></table></div>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>
