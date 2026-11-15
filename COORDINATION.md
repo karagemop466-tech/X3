@@ -3262,3 +3262,20 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+## Session `arena/c0176769-x3` — brief round: readiness register, live Week-10 re-read, capture automation (CLAIM, 2026-11-15)
+
+- **Session ID / branch:** `arena/c0176769-x3` (platform-assigned; the `session-<id>/<task>` naming is not used). Base: `main` @ `de5f3b6` (== `origin/main`).
+- **Status:** no other session holds an open claim on `main` at claim time (last sections `arena/11cd1644-x3` and `arena/f01c99a5-x3` are closed and merged).
+- **Role:** final integration for this round. Work is done only on this branch; PR to `main` and merge at the end, after the CI gates pass.
+
+### Claimed tasks (ID | task | status | file scope)
+
+| ID | Task | Status | File scope |
+|----|------|--------|------------|
+| R1 | Live re-read of the official Week-10 injury report (all 8 chunks of nfl.com/injuries/league/2026/reg10), row/section counts, Lions designations, SEA/CIN blocks, reconciled against `audit/official_injury_wk10_2026.csv` | in progress | `audit/official_injury_wk10_2026.live.csv` (new), `audit/live_reconcile.json` (new), `audit/README.md` |
+| R2 | Decision-readiness register: one row per brief requirement, status, blocking gate, number that clears it, evidence link; rendered on the root landing page | in progress | `data/hub/readiness.csv` (new), `tools/build_hub.py`, `tools/hub_content.py`, generated `index.html` and `hub/readiness.html` |
+| R3 | Two-sided "what would change our mind" field on every strategy entry | in progress | `data/hub/strategies*.csv`, generated `hub/strategies.html` |
+| R4 | Scheduled, hashed, timestamped capture of the official injury report (manifest committed; raw HTML kept as a workflow artifact, not in the Pages tree) | in progress | `.github/workflows/injury-snapshot.yml` (new), `scripts/injury_snapshot.py` (new), `snapshots/manifest.csv` (new) |
+| R5 | Flagged-for-review additions for everything found in R1-R4 | in progress | `data/hub/flags*.csv` (or the existing flags file), generated flagged page |
+
+Files deliberately not touched: `desk/`, `ops/`, `origin/`, `signals/`, `council/`, `ledger/`, `verification-hub/`, `x3lab/`, `dashboard/`, `archive/`, `audit/index.html` (other sessions' trees; any needed change is logged as a request below).
