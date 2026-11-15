@@ -2546,3 +2546,15 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+## Session `arena/79dfd5ce-x3` — official-source audit correction (2026-11-15)
+
+Platform-assigned branch: `arena/79dfd5ce-x3` (base `8a889d7190ec230f5c9940d2e95e533358e84c65`).
+Work stays on this branch; the requested `session-<id>/<task>` branch naming is not used because the platform assigns the branch.
+
+### Claim
+| ID | Task | Status | Owner | Files |
+|---|---|---|---|---|
+| QA-01 | Remove non-official ESPN corroboration from Week 10 final verification; link the official NFL Game Center | in progress | `arena/79dfd5ce-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this log |
+
+Scope is limited to these files; no other session-owned files will be changed. The claim was prompted by `python3 tools/verify_hub.py`, which passed with two warnings: the same ESPN URL appeared twice in `hub/results.html`. Official NFL Game Center search result verified the matchup, week and listed standings: https://www.nfl.com/games/commanders-at-giants-2026-reg-10 .
