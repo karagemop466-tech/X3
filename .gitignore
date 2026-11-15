@@ -6,3 +6,4 @@ venv/
 *.swp
 data/desk/../../capture/
 capture/
+snapshots/raw/

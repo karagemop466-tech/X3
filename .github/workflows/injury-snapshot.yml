@@ -1,0 +1,56 @@
+name: Injury report snapshot (official nfl.com)
+
+# Session arena/c0176769-x3. Captures one timestamped read of the official NFL injury
+# report every 6 hours. Raw HTML is uploaded as a 90-day workflow artifact and is never
+# committed; the hashed manifest (snapshots/manifest.csv) is the committed ledger.
+# A parse failure, a schema change or a fetch failure fails this run loudly.
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: injury-snapshot
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Capture and hash the official injury report
+        run: python3 scripts/injury_snapshot.py --url https://www.nfl.com/injuries/league/2026/reg10 --out snapshots
+
+      - name: Keep the raw capture as an artifact (90 days, not in git, not on Pages)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: injury-raw-${{ github.run_id }}
+          path: snapshots/raw/
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Commit the manifest row
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add snapshots/manifest.csv
+          if git diff --cached --quiet; then
+            echo "no manifest change"; exit 0
+          fi
+          git commit -m "Injury snapshot $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase -q origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
