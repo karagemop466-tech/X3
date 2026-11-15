@@ -1,0 +1,28 @@
+{
+ "captured_utc": "2026-11-15T19:45Z",
+ "inputs": {
+  "data/desk/games.json": "1cf4f0f954f03b292b6031097dee403f5b779d0fee8273d9964a42836616db48",
+  "data/desk/standings.json": "ec9f17a2ef7cfbe75214cb00964816e0e10ad76064e89fea3761620efb710afc",
+  "data/desk/depth.json": "d3a7adb68e24e48ea70c686a9b54329743ffeea0168d390f1886ae1daa626bea",
+  "agency/data/derived/week10_final_games.csv": "82fbe47c3db1a1415e9ad5ca1ab492a66e93dfa071fe5df5c5972e0fe46eafb5",
+  "agency/data/derived/inactives_w10.csv": "cd37479eb1f8712ce8e540f4823c3b022854711697a3e97dbcd39a163d1ee89e",
+  "agency/data/derived/injury_designations_w10_2026.csv": "32ba56a53fdfe11d92d1b592eabde1c660f907126c86b3c532926245522fc2f5",
+  "agency/data/derived/week11_fixtures.csv": "19e8a7135cde935659cf4f537818094dd1b0dd87868d6d0216b48dfcd95ce90d"
+ },
+ "model": {
+  "type": "ridge margin (opponent-aware) + pythagorean alt + ridge total",
+  "lambda_grid": [
+   1.0,
+   3.0,
+   10.0,
+   30.0,
+   100.0
+  ],
+  "lambda_fixed_for_w11": 10.0,
+  "fit_weeks": "1-10",
+  "n_games": 138,
+  "hfa_points": 0.41,
+  "sigma_margin": 11.34,
+  "sigma_total": 12.14
+ }
+}
