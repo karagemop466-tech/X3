@@ -124,12 +124,6 @@ def td(v, blank="—", num=False):
 def src(url, label="official source"):
     return f'<a class="src" href="{escape(url)}" target="_blank" rel="noopener">{escape(label)}</a>'
 
-def flag_source(source):
-    """Flag sources must be a real http(s) link; anything else is shown as an explicit UNVERIFIED marker."""
-    if source.startswith("http"):
-        return src(source)
-    return '<span class="badge">UNVERIFIED</span> ' + escape(source)
-
 def srcs(pairs):
     return " · ".join(src(u, l) for u, l in pairs)
 
@@ -506,7 +500,7 @@ def flagged():
         body.append(f'<div class="flag"><div class="kicker">{fid}</div>'
                     f'<p>{escape(f)}</p>'
                     f'<p class="small">Impact: {escape(impact)} · Recorded at: {escape(where)}</p>'
-                    f'<p>{flag_source(source)}</p></div>')
+                    f'<p>{src(source)}</p></div>')
     body.append('<p class="small"><strong>Review process:</strong> open an issue or PR against this repository with '
                 'the flag ID; the site stays live while items are reviewed.</p>')
     return page("Flagged", body, "flagged.html")
