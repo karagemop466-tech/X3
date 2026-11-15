@@ -2546,3 +2546,34 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+---
+
+## Session `arena/4c2f61cd-x3` — fresh-day re-verification round + decision-readiness matrix (CLAIM posted 2026-11-15)
+
+Branch: `arena/4c2f61cd-x3` (platform-assigned; branched from `main` @ `8a889d7`).
+Status legend: unclaimed | in progress | done | needs review | blocked
+
+### Claimed tasks (this round)
+
+| ID | Task | Status | File scope (NEW unless noted) |
+|----|------|--------|-------------------------------|
+| R2-01 | Fresh-day official-source re-verification (2026-11-15): standings thru Week 10, Week 11 schedule, Week 11 injury report, club depth-chart spot checks | in progress | `round2/data/**`, `round2/verification.html` |
+| R2-02 | Decision-readiness matrix: one row per requirement line of the brief, with implementing page, blocking gate, and the number that would clear it | in progress | `round2/readiness.html`, `round2/index.html`, `round2/data/requirements_full.csv` |
+| R2-03 | Round-2 repo audit: run every repo gate, record pass/fail, spot-verify published rows against official pages, flag irregularities | in progress | `round2/audit.html`, `round2/data/flags_round2.csv` |
+| R2-04 | Gap register: brief items with no first-class coverage anywhere in the repo (onside-kick priors, NWS overlay, escrow stage, weekly diff, past-seasons archive, reserve-list capture) published as flagged items + suggestions | in progress | `round2/flagged.html`, `round2/suggestions.html` |
+| R2-05 | Build + verify scripts and CI workflow (new files only) | in progress | `scripts/build_round2.py`, `scripts/verify_round2.py`, `.github/workflows/round2.yml` |
+| R2-06 | Integration for this round: append-only updates to `COORDINATION.md`/`README.md`, one nav entry on the generated root landing, PR → merge → Pages deploy check → record | pending | `COORDINATION.md` (append), `README.md` (append), `tools/build_hub.py` (one nav-link append, logged per coordination rule), root `index.html` (regenerated) |
+
+### Scope discipline
+
+This session **creates** `round2/**`, `scripts/build_round2.py`, `scripts/verify_round2.py`,
+`.github/workflows/round2.yml`. It reads but never edits other modules' data or pages
+(`hub/**`, `signals/**`, `docs/**`, `dashboard/**`, `desk/**`, `council/**`, `crosscheck/**`,
+`ops/**`, `origin/**`, `ledger/**`, `lab/**`, `x3lab/**`, `audit/**`, `data/x3/**`, `tools/**` outputs).
+`COORDINATION.md` and `README.md` are append-only. The root landing nav gets one added entry
+through the established integration pattern (logged above).
+
+### Log
+
+- 2026-11-15: claim posted; pushed.
