@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 387,
-      "flagged_rows": 306,
-      "refs": 529,
+      "rows": 433,
+      "flagged_rows": 350,
+      "refs": 579,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -14,6 +14,22 @@
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
         "index.html: Dataset Official source Status Notes"
+      ]
+    },
+    "agency": {
+      "pages": 19,
+      "rows": 674,
+      "flagged_rows": 266,
+      "refs": 626,
+      "unsourced_examples": [
+        "agency/site/correlations.html: Pair r n 95% CI Source",
+        "agency/site/depth.html: Game Team Unit Position Player Club chart rank Source",
+        "agency/site/depth.html: Team Player Number Note Source",
+        "agency/site/fixtures.html: Week Game Team Side Rest days Neutral Venue Venue status",
+        "agency/site/fixtures.html: 1 NE@SEA SEA home None no Lumen Field OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 NE@SEA NE away None no None OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 SF@LA LA home None yes SoFi Stadium OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 SF@LA SF away None yes None OFFICIAL_GAME_BOOK"
       ]
     },
     "archive": {
@@ -125,9 +141,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1840,
-      "flagged_rows": 1441,
-      "refs": 2788,
+      "rows": 1918,
+      "flagged_rows": 1518,
+      "refs": 2834,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -233,6 +249,22 @@
         "readiness/index.html: RD-01 Decision-readiness table on the landing page decision-readiness.html + the same table on the root landing 74 requi"
       ]
     },
+    "round2": {
+      "pages": 7,
+      "rows": 247,
+      "flagged_rows": 150,
+      "refs": 308,
+      "unsourced_examples": [
+        "round2/audit.html: gate script result key_numbers source",
+        "round2/readiness.html: id requirement status where blocking_gate clear source",
+        "round2/sources.html: source url fetched what status",
+        "round2/suggestions.html: id suggestion addresses first_step decision source",
+        "round2/verification.html: check repo_value official_value_2026-11-15 verdict detail source_url",
+        "round2/verification.html: game_id date window away home status_at_capture score_at_capture network source_url",
+        "round2/verification.html: item value verbatim_context source_url",
+        "round2/verification.html: team unit slot player notes"
+      ]
+    },
     "signals": {
       "pages": 17,
       "rows": 1802,
@@ -280,9 +312,11 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 232,
-  "rows_total": 10467,
-  "rows_flagged_or_sourced": 9144,
-  "internal_refs": 5697,
-  "problems": []
+  "pages_total": 258,
+  "rows_total": 11512,
+  "rows_flagged_or_sourced": 9681,
+  "internal_refs": 6266,
+  "problems": [
+    "agency/site/flagged.html: broken internal ref nfl.com does not publish market prices"
+  ]
 }

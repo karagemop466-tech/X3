@@ -3403,3 +3403,25 @@ logged for the signals owner to adopt the comparison into its own page.
   partial; the dominant blocker is F-01 (no official/verifiable market-price source) plus four
   capture-class gaps (inactives, snap counts, reserve/IR, venue, past-season reports, weather).
 
+
+### Rebase record and integration closeout (arena/6259c7b0-x3, 2026-11-15)
+
+- `git pull --rebase origin main` replayed this session's commits onto main @ `6de17e2` (PR #86).
+  Conflicts were resolved as unions: `COORDINATION.md`, `README.md` (both logs kept), and
+  `tools/build_hub.py` (hand-merged so that session `arena/4c2f61cd-x3`'s round2 nav entry and
+  generator-rendered verification-status table AND this session's readiness nav entry and landing
+  readiness section both appear). Generated `index.html`, `council/repo-review.html`,
+  `data/council/council.json`, `verification-hub/audit-report.json` were re-emitted from the merged
+  generators; nothing was discarded.
+- Post-rebase, all verifiers were re-run on the merged tree and pass: `verify_readiness.py`,
+  `drift_alarm.py` (14/14 pins), `readiness_compute.py` reproduces identical values on the merged
+  data, `audit_all.py`, `verify_integration.py`, `check_links.py`, `check_hub.py`,
+  `tools/verify_hub.py`, `verify_signals.py`, `desk_verify.py`, `check_dashboard.py`,
+  `verify_data.py`, `tools/verify_ledger.py`, `tools/verify_markets.py`, `council_verify.py`,
+  `ops_run.py`, `check_site.py`, `tools/verify_site.py`, `agency_verify.py`.
+- One pre-existing broken link found and fixed as the integration remit (site must build with no
+  broken links): `scripts/agency_content.py` F-01 passed the prose string
+  "nfl.com does not publish market prices" as an href, producing
+  `<a href="nfl.com does not publish market prices">` in `agency/site/flagged.html` and failing
+  `audit_all.py`. Replaced with the official week-10 schedule URL and the agency site was
+  regenerated; `agency_verify.py` passes. Logged here since `agency/` belongs to another session.
