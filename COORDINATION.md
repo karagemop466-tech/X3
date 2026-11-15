@@ -2655,3 +2655,16 @@ The overlapping official-source correction was independently completed and merge
 - Post-merge Pages verification: deploy workflow run `43746441803` completed successfully on merge commit `6955b91`; GitHub Pages API reports `status: built`, URL https://karagemop466-tech.github.io/X3/ . Live check of https://karagemop466-tech.github.io/X3/hub/results.html?cachebust=6955b91 shows the corrected ROI caveat and official Week 10 citations from PR #65.
 - Coordination closeout for this branch: earlier duplicate PR #66 was closed without merge after PR #65 independently merged the official-source correction; its disposition and the rebase union are recorded above. Current task C02 is merged and deployed.
 
+
+## Session `arena/348a707c-x3` — official Week 10 injury re-capture and Lions status fix (CLAIM, 2026-11-15 UTC)
+
+Branch: `arena/348a707c-x3` (the Arena-assigned branch; the `session-<id>/<task>` naming is not usable in this session, as in every prior session). Base: `main` @ `de5f3b6` (fully synced at claim time).
+
+Scope is deliberately narrow. The brief asks for far more than one session can verify from the sandbox (32-club depth sweep, Game Books, daily automated snapshots, multi-season designation archives). Those items stay open and are logged below rather than filled with inferred values.
+
+| Task | Status | Owner | File scope | Purpose |
+|---|---|---|---|---|
+| W10-INJ | in progress | `arena/348a707c-x3` | `capture/official/2026-w10-injuries/**` (new), `COORDINATION.md` | Re-capture the live official NFL Week 10 injury report with fetch timestamp and SHA-256 per raw chunk; count rows and sections; compare with the repo's published Week 10 rows; record deltas. |
+| W10-LIONS | in progress | `arena/348a707c-x3` | same capture folder, `COORDINATION.md` | Confirm the game-status cells for Kerby Joseph, Cade Mays, D.J. Reed against the official page (brief VR-08, VR-12). |
+
+Files owned by other sessions (`hub/**`, `audit/**`, `dashboard/**`, root pages) are NOT edited in this session. Corrections to them are logged as requests below.
