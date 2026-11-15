@@ -61,7 +61,7 @@ def source_cell(src):
         return f'<td class="src"><a href="{e(path)}" rel="noopener">{e(path.replace("https://","").replace("www.",""))}</a></td>'
     target = os.path.join(ROOT, path)
     if os.path.isdir(target):
-        return f'<td class="src"><span class="cite">repo: {e(path)}</span></td>'
+        return f'<td class="src"><a class="cite" href="https://github.com/karagemop466-tech/X3/tree/main/{e(path)}" rel="noopener">repo: {e(path)}</a></td>'
     if path.startswith("decision/"):
         # an artefact of this very build, so it cannot pre-exist; the verifier
         # resolves every such link once the whole tree has been written
@@ -668,7 +668,7 @@ def source_link(src):
     if kind == "url":
         return f'<a href="{e(path)}" rel="noopener">official page</a>'
     if os.path.isdir(os.path.join(ROOT, path)):
-        return f'<span class="cite">repo: {e(path)}</span>'
+        return f'<a class="cite" href="https://github.com/karagemop466-tech/X3/tree/main/{e(path)}" rel="noopener">repo: {e(path)}</a>'
     if path.startswith("decision/"):
         return f'<a class="cite" href="{e(path)}">{e(path)}</a>'
     return f'<a class="cite" href="{e(path)}">{e(path)}</a>'
