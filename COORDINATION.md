@@ -2770,3 +2770,13 @@ The brief asks for much more than one session can verify. These remain open and 
   slate, 8-row reconciliation, 25 game-book facts, 44 starters, 12 Not Active, 66-row readiness
   matrix, 12 audit rows, 7 flags, 10 suggestions, 6 sources); repo-wide audit after merge:
   228+ pages, every source-table row linked or flagged; module gate deterministic.
+
+### Merge record — arena/348a707c-x3 onto origin/main (2026-11-15)
+
+- PR #79 (`arena/348a707c-x3` → `main`) reported CONFLICTING after `main` advanced (PRs #72–#81 merged). Merged `origin/main` into this branch (commit `59b8851`); no commits were discarded from either side.
+- Conflicts and resolution:
+  - `COORDINATION.md`: append-only log, both sides kept (union), no content removed.
+  - `council/repo-review.html`, `data/council/council.json`, `verification-hub/audit-report.json`: generated outputs. Taken from `main`, then regenerated from the merged tree with `scripts/council_build.py` and `scripts/verify_integration.py`.
+  - `signals/data/repo_review.{csv,json}`, `crosscheck/data/selfcheck.json`: generated census and crosscheck outputs refreshed on the merged tree (timestamp and census changes only).
+- Re-verified the merged tree with every gate in `.github/workflows/pages.yml`, `council-verify.yml`, `signals.yml` and `round2.yml`: `build_round2.py` + `verify_round2.py` PASS; `check_site`, `check_links`, `audit_all`, `verify_site`, `verify_data`, `check_hub`, `verify_integration`, `desk_verify`, `ops_run`, `check_dashboard`, `council_verify`, `verify_signals` (+ `--determinism`), `verify_ledger`, `crosscheck --verify`, `origin_verify`, `results_feed`, `markets_engine`, `correlation_engine`, `depth_engine`, `strategies_engine`, `verify_markets`, `x3_engine`, `build_hub`, `verify_hub` all PASS. The rebuild-and-diff gates on `data/x3/verified` and `hub`/`index.html`/`data/hub` show no differences.
+- Re-ran the Week 10 comparison against the merged `hub/injuries.html`: unchanged (329 match, 16 differ, 2 official-only). The flagged text remains accurate.
