@@ -181,9 +181,11 @@ def p_results():
                        "captures; scores never inferred.", note="Market columns for these games live on the "
                        "<a href='pricing.html'>price-snapshot page</a> and are labelled MARKET-3P."))
     return ("results", "Verified results feed",
-            "One row per 2026 regular-season game. Every final score is cross-checked field-by-field "
-            "against a second independent capture, and the reconciliation itself is published. "
-            f"Backtests and ROI are computed from this feed and nothing else.", "".join(out))
+            "One row per 2026 regular-season game. Final scores are cross-checked field-by-field "
+            "against a second capture, and the reconciliation is published below. This is an outcome "
+            "feed, not a standalone ROI input: valid performance evaluation also requires timestamped "
+            "prices, applicable settlement rules, and preregistered forecasts. ROI is not reported "
+            "where those inputs are absent.", "".join(out))
 
 def p_pricing():
     t, b, l, tbl = H["esc"], H["badge"], H["link"], H["table"]
