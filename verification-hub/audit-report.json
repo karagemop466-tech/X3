@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 312,
-      "flagged_rows": 232,
-      "refs": 379,
+      "rows": 321,
+      "flagged_rows": 240,
+      "refs": 415,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -265,8 +265,8 @@
     }
   },
   "pages_total": 221,
-  "rows_total": 10093,
-  "rows_flagged_or_sourced": 8792,
-  "internal_refs": 5361,
+  "rows_total": 10102,
+  "rows_flagged_or_sourced": 8800,
+  "internal_refs": 5384,
   "problems": []
 }
