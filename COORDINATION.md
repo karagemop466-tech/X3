@@ -2886,6 +2886,7 @@ Scope is limited to the root landing generator/output and this append-only claim
 - Live-site check: fetched the deployed root page after deployment and confirmed both the upstream official-source verification panel and the new decision-readiness table render, including all eight core rows and their sources/gates.
 - Final status: DR-01 done and deployed. The data/strategy blockers listed on the page remain open; this change makes them explicit and reviewable and does not fabricate odds, starter status, snap counts, correlations or strategy eligibility.
 
+
 ## Session `arena/5ffc331b-x3` — decision-readiness audit (2026-11-15)
 
 - **Status:** done on Arena-assigned branch `arena/5ffc331b-x3`; initially branched from `8a889d7190ec230f5c9940d2e95e533358e84c65`, then rebased onto current `main` after the official-source/results-feed updates in PRs #65 and #68. The platform branch is used; no branch switch or rename.
@@ -3089,3 +3090,157 @@ this session will not hand-edit it. Integration request logged below instead of 
   Please add one unit row so the new module is reachable from the root. I did not edit the generator or
   its data, per the scope rule.
 ```
+## Session `arena/ad3903b1-x3` — FINAL INTEGRATION (2026-11-15)
+
+Branch: `arena/ad3903b1-x3`, branched from `main` @ `8a889d7`. Platform rule: all work happens on
+this assigned branch; the brief's `session-<id>/<task>` naming yields to the platform rule.
+Status legend: unclaimed | in progress | done | needs review | blocked
+
+### Claim (written and pushed first, per the brief)
+
+| ID | Task | Status | Owner | File scope (NEW, non-overlapping) |
+|----|------|--------|-------|----------------------------------|
+| Y00 | Read the board; verify the repo and the live site; confirm the gate baseline | done | arena/ad3903b1-x3 | this section of `COORDINATION.md` |
+| Y01 | Official Week-11 2026 injury report, re-read live (2 designated rows in the committed reg10 file) | in progress | arena/ad3903b1-x3 | `x3/data/injury_2026_w11.csv`, `x3/data/*` |
+| Y02 | Star-game log (137 finals) — per-club home/road split + opponent — so ratings are opponent-aware | in progress | arena/ad3903b1-x3 | `x3/data/games.csv`, `x3/data/ratings.csv` |
+| Y03 | Origination: side -> total -> moneyline, fair/market/difference as three columns, residual vs closing | in progress | arena/ad3903b1-x3 | `x3/data/origination*.csv` |
+| Y04 | Price-snapshot store with opening + closing per market, hashed, plus the price-data policy | in progress | arena/ad3903b1-x3 | `x3/data/price_snapshots*.csv` |
+| Y05 | Verified results feed + pre-registered backtest corpus (137 finals) | in progress | arena/ad3903b1-x3 | `x3/data/results*.csv`, `x3/data/backtest*.csv` |
+| Y06 | Signal vs staking leaderboard divisions, proper-score ranking, controls, luck panel | in progress | arena/ad3903b1-x3 | `x3/data/leaderboard*.csv`, `x3/data/luck*` |
+| Y07 | Demotion gate, pre-registration register, "what would change our mind", ablation instead of penalties | in progress | arena/ad3903b1-x3 | `x3/data/gates*.csv`, `x3/data/ablations*.csv` |
+| Y08 | Replacement depth (2nd/3rd/4th) with snap-count proxy + availability graph; flag stale depth rows | in progress | arena/ad3903b1-x3 | `x3/data/depth*.csv`, `x3/data/availability*.csv` |
+| Y09 | Correlations from official numbers only, with n per value | in progress | arena/ad3903b1-x3 | `x3/data/correlations.csv` |
+| Y10 | Suggestions section + line-by-line question/answer list (information we have / lack) | in progress | arena/ad3903b1-x3 | `x3/data/suggestions.csv`, `x3/data/questions.csv` |
+| Y11 | Decision-readiness table (one row per requirement: gate that blocks it, number that would clear it) | in progress | arena/ad3903b1-x3 | `x3/data/readiness.csv` |
+| Y12 | Repo review line by line + source register; executive summary | in progress | arena/ad3903b1-x3 | `x3/data/repo_review.csv`, `x3/data/sources.csv` |
+| Y13 | Site: 2026 desk (`x3/`) with a clean dashboard UI, every row sourced or flagged | in progress | arena/ad3903b1-x3 | `x3/**`, `tools/x3_desk_*.py` |
+| Y14 | One-line registration of `x3/` in the generated root landing (additive, determinism preserved) | in progress | arena/ad3903b1-x3 | `tools/build_hub.py`, `index.html` (generated) |
+| Y15 | CI gate for the new module | in progress | arena/ad3903b1-x3 | `.github/workflows/x3-desk.yml` (NEW) |
+| Y16 | PR -> merge -> Pages deploy -> deployed-content check; task-by-task reconciliation of the brief | in progress | arena/ad3903b1-x3 | `COORDINATION.md`, `README.md` (append-only) |
+
+**Reads, never writes:** `hub/**`, `docs/**`, `dashboard/**`, `x3lab/**`, `desk/**`, `signals/**`,
+`ops/**`, `council/**`, `origin/**`, `crosscheck/**`, `audit/**`, `pages/**`, `site/**`, `lab/**`,
+`legacy/**`, `archive/**`, `data/**` (all earlier sessions' data), `scripts/**`, `tools/**` other than
+`tools/x3_desk_*.py` and the one-registration edit in `tools/build_hub.py`.
+`COORDINATION.md` and `README.md` are append-only.
+
+### Baseline measured before any change (all exit 0 on `8a889d7`)
+
+`audit_all` · `verify_integration` · `check_links` (13 pages, 374 links) · `check_site` (353 rows) ·
+`verify_site` · `verify_data` · `check_hub` · `verify_hub` · `desk_verify` (18 pages) ·
+`origin_verify` · `council_verify` (132 rows) · `verify_signals` · `ops_verify` (10 checks).
+Live site: https://karagemop466-tech.github.io/X3/ (Pages `status: built`, `main /`, legacy build).
+
+### Findings from the baseline read (before writing anything)
+
+1. **The repository carries multiple parallel, partly contradictory answer sets** for the same brief
+   (12+ site trees). The brief requires a per-requirement comparison, so `x3/` publishes the
+   *canonical answer* and a reconciliation table to each earlier tree rather than a 13th unconnected
+   dashboard. Nothing is deleted.
+2. **No market price exists anywhere in the repository** — every earlier tree says so in its own
+   words. So fair-vs-market, ROI, CLV and staking are structurally blank until a price source is
+   decided; the brief asks for that policy *before* any backtest is published (task Y04), and this
+   session publishes the policy, not an estimate.
+3. **The committed Week-10 injury file has 345 rows but only 2 game designations in the `signals/`
+   read** (66 Out / 10 Doubtful / 84 Questionable in `data/desk/injuries.json`, versus the claim that
+   only 6 of 254 rows carry a designation). This session re-reads the live page and publishes the
+   count it can verify (Y01).
+
+
+---
+
+## Y16 — module delivered, 2026-11-15
+
+**Branch** `arena/ad3903b1-x3` · **commits** `ce208a8` (claim), `38403bd` (module),
+`9d26618` + the commit after it (schedule/venues/starter check, stale-reference fixes).
+
+**Built:** `tools/x3_desk_{inputs,engine,content,site,verify}.py` → `x3/` **28 HTML pages**,
+`x3/assets/x3.css`, and 18 data files in `x3/data/`. Nothing outside `x3/`, `tools/x3_desk_*.py`,
+one additive nav entry in `tools/build_hub.py`, and append-only `COORDINATION.md`/`README.md`.
+
+**Gate:** `python3 tools/x3_desk_verify.py` → **18 passed, 0 failed** (exit 0).
+**Repo-wide:** `scripts/audit_all.py` → PASS (all internal links resolve; every source cell links an
+official source or is explicitly flagged). Every other pre-existing gate that exists in `scripts/`
+still exits 0. (`check_links.py`, `verify_site.py`, `verify_hub.py` are named in the brief's baseline
+but **do not exist** in `scripts/` at this commit — the baseline list was inherited and is wrong; the
+gates that do exist were run. Recorded as an irregularity, not silently dropped.)
+
+### What was verified against an official source
+
+| Item | Result | Source |
+|---|---|---|
+| Week-10 finals | 2 final at read; WAS 24–21 NYG, NE 10–35 DET | nfl.com schedule + game centres |
+| Week-11 designations | do not exist yet — reg11 **redirects** to the Week-10 report | nfl.com/injuries |
+| Game Book WAS@NYG | full PDF read: lineups, inactives, snap percentages | static.www.nfl.com PDF |
+| Depth chart vs snaps | 19 of 23 slots agree (**83%**) | 2 Game Books |
+| Chart-first vs actual starter | 17 of 22 agree; **5 differ** | 2 Game Books |
+| 2026 schedule release | dated May 14, 2026, 10 facts transcribed | media.nfl.com |
+| Fixture venues | 27 fixtures, each labelled by evidence kind | game centres / week pages |
+| Standings | 32 rows; NYG and WAS reconciled to Week-10 results in C-07b | nfl.com/standings |
+| Market prices | **zero** exist anywhere | (searched all 13 trees) |
+
+### Three bugs found by this session's own gates (all fixed, all recorded)
+
+1. `esc()` crashed on integer table cells — every renderer path goes through it.
+2. Links resolved site-root-relative instead of page-relative → 113 false 404s, and `COORDINATION.md`
+   must be a GitHub blob URL.
+3. **The serious one:** a filter compared an integer depth rank to the string `"1"`, so every lookup
+   was empty and the check published *"22 of 22 starters differ from the chart"* — a fabricated
+   finding that would have been the headline. The function now **raises** rather than publish a
+   result from an empty lookup, and gate C-15 asserts `same > 0`. This is why the desk publishes
+   the 17/5 split and not a dramatic one.
+
+### Headline numbers (all in-sample)
+
+- Model under-spread: predicted-margin SD **5.24** vs actual **12.91** → ratio **0.406** (factor **2.5**).
+- Side: 60/90, Brier 0.2253 vs 0.25, skill **+0.099**, n=90 → **fails** the n≥200 entry gate.
+- Total: 50/106, skill **−0.096**, MAE 11.91 vs benchmark 11.17 → **paper only**.
+- G-1 pre-registration: **FAIL** — every number is graded on games that predate the commit. All
+  results are labelled **IN-SAMPLE / RETROSPECTIVE** on every page that shows one.
+
+### Blocked, and why
+
+- **A-2 personnel ablation** — 31 of 32 club depth charts carry no as-of date (F-06). Not approximated.
+- **Market columns** — no official price source; policy PDP-1 published first, columns left blank.
+- **Week-11 designations** — the league has not published them.
+- **Screenshots** — Playwright's Chromium CDN is unreachable from this sandbox; rendering was
+  verified structurally instead (HTMLParser + a CSS-class-usage diff), not visually.
+
+### Flagged for review (not blocking)
+
+F-01…F-18 are on `x3/flags.html` with a source link on every row. The load-bearing ones:
+**F-04** (standings file stale mid-slate — the feed was *not* "fixed" to match), **F-06** (undated
+charts), **F-14** (live scores are never treated as results), **F-16…F-18** (site-level).
+
+---
+
+## `agency/site/flagged.html` link violation — raised here, fixed upstream
+
+**Closed.** This session found that `scripts/audit_all.py` and `scripts/verify_integration.py` each
+failed with one violation:
+
+```
+FAIL  L1 agency/site/flagged.html: broken internal link -> nfl.com does not publish market prices
+```
+
+The cause: `src()` in `scripts/agency_site.py` passed every flag's last field into `href=`
+unconditionally, and F-01's last field is a *sentence* ("nfl.com does not publish market prices")
+because no official page exists for that gap. It was present on `origin/main` at `a81aca5` — verified
+by checking out `origin/main` and running both scripts — so it was not a regression from `x3/`.
+
+This session wrote a minimal renderer fix, then **dropped it**: session `arena/e601a785-x3` fixed the
+same defect themselves in `18f755c` ("agency: fix F-01 flag source (was plain text, now a URL)") and
+merged it via PR #87 before this branch could. Their fix is the one on `main`; nothing of this
+session's `agency/` change survives, deliberately — a duplicate patch in another session's tree would
+be worse than none. Recorded so the effort is visible and the fix is credited to the right session.
+
+**Consequence: both repo-wide gates are PASS on `main`, and this branch inherits that.**
+
+**State of the repo-wide gates on this branch after the rebase:**
+
+| Gate | Result |
+|---|---|
+| `tools/x3_desk_verify.py` | **18 / 18 pass** |
+| `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
+| `scripts/verify_integration.py` | FAIL — same single violation |
+| `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |

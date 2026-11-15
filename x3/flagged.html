@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for review - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html" class="on">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Flagged for review</h1><p class="sub">Every unverified cell and every irregularity, with its source</p></div>
+
+<section class="callout "><h2>Nothing is hidden, including this desk&#x27;s own limits</h2>
+<p>15 flags. Every one is a cell this desk could not fill from an official source, or a
+defect found in an earlier tree. Flagged items do not block publication; they are the reason a
+column is blank.</p></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>What</th><th>Severity</th><th>Evidence</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>F-01</b></td><td>No market price exists in the repository</td><td><span class="st fail">BLOCKING for staking</span></td><td>No official NFL source publishes spreads/totals/moneylines; see the price-data policy PDP-1.</td><td><a class="ext" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-02</b></td><td>Week-11 injury report is a redirect to Week 10</td><td><span class="st warn">informational</span></td><td>https://www.nfl.com/injuries/league/2026/reg11 returns the Week-10 page byte for byte (identical size in the committed capture, and the live page&#x27;s own title says &#x27;Week 10&#x27;): Week-11 designations do not exist yet. Nothing from reg11 is used.</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-03</b></td><td>Committed Week-10 scores are stale</td><td><span class="st warn">corrected here</span></td><td>data/desk/games.json marks all 14 Week-10 games SCHEDULED, but by 2026-11-15 two had gone final (WAS 24 NYG 21; NE 10 DET 35). This desk re-reads both from the official game centres and keeps the 12 unfinalised games out of the results feed.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-04</b></td><td>Two clubs&#x27; committed standings are stale</td><td><span class="st warn">corrected here</span></td><td>DET (6-2, 222-189) and NE (5-4, 211-207) in data/desk/standings.json disagree with the official league page (7-2, 257-199 and 5-5, 221-242). The other 30 clubs agree.</td><td><a class="ext" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-05</b></td><td>Houston depth chart is published as an image</td><td><span class="st fail">blocking for HOU only</span></td><td>The committed capture has 0 parsable rows for HOU. No structured official source was authorised for this session, so HOU depth is blank, not transcribed by eye.</td><td><a class="ext" href="https://www.houstontexans.com/team/depth-chart" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-06</b></td><td>Depth charts carry no club as-of date (31 of 32)</td><td><span class="st warn">limits backtests</span></td><td>Only Las Vegas prints one (&#x27;November 10, 2026&#x27;). Without a date a depth row cannot be placed before a kickoff, so depth is never used as a pre-kickoff feature.</td><td><a class="ext" href="https://www.raiders.com/team/depth-chart" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-07</b></td><td>15 of 32 clubs label their own depth chart unofficial</td><td><span class="st warn">limits trust</span></td><td>Counted from the committed capture&#x27;s labels_unofficial field. Recorded, not resolved.</td><td><a class="ext" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-08</b></td><td>Shared depth slots are lost in the committed parse</td><td><span class="st warn">limits the depth feature</span></td><td>Seattle lists two players in one rank-1 cell live; the committed parser splits them into rank 1 and rank 2, which would fabricate a starter the club did not name.</td><td><a class="ext" href="https://www.seahawks.com/team/depth-chart/" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-09</b></td><td>Officially sourced snap counts exist, but only for games that have finished</td><td><span class="st warn">processing</span></td><td>The Game Book&#x27;s Playtime Percentage section is the official snap count. It was read for WAS@NYG only in this pass.</td><td><a class="ext" href="https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-10</b></td><td>Game Book body not read for NE@DET</td><td><span class="st warn">processing</span></td><td>Only the Game Center Game Info block was read for the Munich game; its snap counts and starters are not published here.</td><td><a class="ext" href="https://www.nfl.com/games/patriots-at-lions-2026-reg-10" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-11</b></td><td>NFL.com fetches are not possible from the CI runner&#x27;s server for every page</td><td><span class="st warn">operational</span></td><td>The authoring sandbox cannot open nfl.com sockets; pages were read through the research fetcher. The workflow therefore verifies committed data, and capture is a manual dispatch.</td><td><a class="ext" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-12</b></td><td>The repository contains 13 prior site trees answering the same brief</td><td><span class="st warn">coordination</span></td><td>None was deleted. This desk publishes a reconciliation row per requirement so the reviewer can see which tree claims what.</td><td><a class="ext" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-13</b></td><td>Starter/backup status is unconfirmed for 12 of the 14 Week-10 games</td><td><span class="st fail">blocking for those games</span></td><td>A Game Book exists only after a game is final, so no starter for an unplayed game can be confirmed. The desk does not infer one.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-14</b></td><td>A &#x27;live&#x27; score is not a result</td><td><span class="st warn">policy</span></td><td>At the time of reading, 7 Week-10 games were in progress with 0-0 or partial scores. Live scores are excluded from the results feed, the backtest and the ratings.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-15</b></td><td>Player-name matching between sources is a join, not a fact</td><td><span class="st warn">limits the availability graph</span></td><td>Injury rows use full names and Game Books use &#x27;F.Lastname&#x27;. A join on surname+initial can collide; every joined row is published with both spellings so a human can check it.</td><td><a class="ext" href="https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">link</a></td></tr>
+</tbody></table></div><section class="callout "><h2>Defects found in earlier trees</h2></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>What</th><th>Severity</th><th>Evidence</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>F-16</b></td><td>Three previous trees publish the same injury file with three different row counts</td><td><span class="st warn">needs review</span></td><td>254 / 279 / 345 rows appear in different trees; only 345 reproduces the live page</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-17</b></td><td>A previous tree&#x27;s model spreads carry the wrong sign</td><td><span class="st warn">needs review</span></td><td>dashboard/data/model_lines.json publishes model_home_spread with the sign of the expected margin instead of its negation, in 14 of 14 rows</td><td><a class="ext" href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">link</a></td></tr>
+<tr><td><b>F-18</b></td><td>Two official pages disagree about a player&#x27;s designation</td><td><span class="st warn">needs review</span></td><td>the injury page and a news article disagree on Freiermuth and on Lamar Jackson&#x27;s window; this desk publishes the injury page and records the disagreement</td><td><a class="ext" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">link</a></td></tr>
+</tbody></table></div>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

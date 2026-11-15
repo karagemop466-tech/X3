@@ -188,6 +188,8 @@ def page(fname, title, intro, body, active="index", extra_head=""):
     # It lives outside hub/, so it is appended rather than added to NAV (which is
     # rendered with two different relative prefixes).
     nav += '<a href="../signals/index.html">Signals &amp; leaderboard</a>'
+    nav += ('<a href="../x3/index.html"><b>2026 desk (x3/)</b>'
+            '</a>')
     # integration session arena/4c2f61cd-x3: one outbound link to the round2 module.
     nav += '<a href="../round2/index.html">Round 2 readiness</a>'
     html = f"""<!doctype html>
@@ -1640,7 +1642,9 @@ The <a href="council/index.html"><b>decision council</b></a> restates the eight 
 brief as pass/fail acceptance tests, and holds the suggestion queue where a path is chosen before
 anything is implemented. <a href="signals/index.html"><b>signals/</b></a> originates its own side,
 total and moneyline in that order, stores an opening and a closing number for every market, and ranks
-strategies on signal with staking reported separately.</p>
+strategies on signal with staking reported separately. <a href="x3/index.html"><b>x3/</b></a> is the
+2026 desk: 28 pages built from official NFL sources only, gated by a check script that fails the
+build on a broken link, an unsourced row, or a fabricated figure.</p>
 <p class="note">Earlier sessions published {len(ARCHIVE_ROWS)} overlapping site trees; they are preserved and indexed at
 <a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
 is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is

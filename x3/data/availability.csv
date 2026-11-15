@@ -1,0 +1,58 @@
+club,unit,pos,expected_starter,expected_source,actual_starter,actual_jersey,actual_source,match,state
+WAS,Offense,WR,Terry McLaurin,https://www.commanders.com/team/depth-chart,A.Williams,14,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+WAS,Offense,TE,Chig Okonkwo,https://www.commanders.com/team/depth-chart,J.Bates,87,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+WAS,Offense,LT,Brandon Coleman,https://www.commanders.com/team/depth-chart,B.Coleman,74,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+WAS,Offense,LG,Chris Paul,https://www.commanders.com/team/depth-chart,C.Paul,75,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+WAS,Offense,C,Nick Allegretti,https://www.commanders.com/team/depth-chart,N.Allegretti,67,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+WAS,Offense,RG,Sam Cosmi,https://www.commanders.com/team/depth-chart,S.Cosmi,76,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+WAS,Offense,RT,Josh Conerly Jr.,https://www.commanders.com/team/depth-chart,J.Conerly,72,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+WAS,Offense,TE,Chig Okonkwo,https://www.commanders.com/team/depth-chart,B.Sinnott,82,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+WAS,Offense,WR,Terry McLaurin,https://www.commanders.com/team/depth-chart,T.Burks,13,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+WAS,Offense,QB,Jayden Daniels,https://www.commanders.com/team/depth-chart,J.Daniels,5,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+WAS,Offense,RB,Jacory Croskey-Merritt,https://www.commanders.com/team/depth-chart,R.White,1,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+WAS,Defense,OLB,,,O.Oweh,98,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,DT,,,T.Settle,97,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,DT,,,S.Tuttle,96,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,OLB,,,K.Chaisson,45,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,LB,,,S.Styles,52,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,LB,,,F.Luvu,4,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,CB,,,T.Amos,23,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,CB,,,A.Robertson,2,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,S,,,J.Reaves,39,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,S,,,N.Cross,25,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Defense,S,,,Q.Martin,20,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Offense,WR,Malik Nabers,https://www.giants.com/team/depth-chart,D.Mooney,17,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+NYG,Offense,TE,Isaiah Likely,https://www.giants.com/team/depth-chart,T.Johnson,84,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+NYG,Offense,LT,Andrew Thomas,https://www.giants.com/team/depth-chart,A.Thomas,78,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Offense,LG,Jon Runyan Jr.,https://www.giants.com/team/depth-chart,J.Runyan,76,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,differs,VERIFIED
+NYG,Offense,C,Bryan Hudson,https://www.giants.com/team/depth-chart,B.Hudson,60,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Offense,RG,"Francis ""Sisi"" Mauigoa",https://www.giants.com/team/depth-chart,F.Mauigoa,65,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Offense,RT,Jermaine Eluemunor,https://www.giants.com/team/depth-chart,J.Eluemunor,72,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Offense,WR,Malik Nabers,https://www.giants.com/team/depth-chart,M.Nabers,1,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Offense,TE,Isaiah Likely,https://www.giants.com/team/depth-chart,I.Likely,9,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Offense,QB,J.J. McCarthy,https://www.giants.com/team/depth-chart,J.McCarthy,18,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Offense,RB,Cam Skattebo,https://www.giants.com/team/depth-chart,C.Skattebo,44,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,same-person,VERIFIED
+NYG,Defense,OLB,,,K.Thibodeaux,5,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,DL,,,S.Harris,93,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,DL,,,B.Jamison-Travis,97,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,DL,,,D.Reader,98,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,OLB,,,A.Carter,3,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,LB,,,M.McFadden,41,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,LB,,,A.Reese,52,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,CB,,,G.Newsome,20,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,CB,,,D.Banks,2,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,S,,,J.Holland,8,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+NYG,Defense,S,,,A.Washington,24,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,no-chart-row,PARTIAL
+WAS,Inactive,3QB,,,A.Kaliakmanis,16,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+WAS,Inactive,CB,,,I.Yiadom,37,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+WAS,Inactive,DT,,,R.Barber,50,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+WAS,Inactive,G,,,T.Togiai,62,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+WAS,Inactive,G,,,L.Patrick,63,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,injury-report Out (surname+initial),VERIFIED
+WAS,Inactive,TE,,,C.Yankoff,80,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,injury-report Out (surname+initial),VERIFIED
+NYG,Inactive,CB,,,P.Adebo,21,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+NYG,Inactive,CB,,,N.Reed,35,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+NYG,Inactive,LB,,,M.Harrison,54,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,injury-report Questionable (surname+initial),VERIFIED
+NYG,Inactive,OL,,,J.Sills,67,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+NYG,Inactive,OL,,,J.Davis,74,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+NYG,Inactive,TE,,,T.Fidone,86,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED
+NYG,Inactive,DL,,,B.Okoye,99,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,not on week-10 report (none),UNMATCHED

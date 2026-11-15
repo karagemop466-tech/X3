@@ -429,3 +429,11 @@ requirements matrix, audit results, flags, suggestions, sources). The module is 
 
 - Rules: a capture never changes; the filename encodes its clock time; two reads that hash equal
   are one read; an unmapped official club code fails the build; a row with no source fails the build.
+## 2026 desk (`x3/`)
+
+A 2026 in-season desk built from official NFL sources only: 28 static pages, 18 data files, and an
+18-check gate (`python3 tools/x3_desk_verify.py`) that fails the build on a broken link, an
+unsourced table row, a stale cross-reference, or a fabricated figure.
+
+Start at [`x3/index.html`](x3/index.html). Every number on it is labelled **in-sample**; nothing on
+it is live, and the market columns are empty because no official price source exists.

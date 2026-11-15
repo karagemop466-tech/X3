@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verification - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="schedule.html">Schedule &amp; announcement</a><a href="fixtures.html">Venues</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html" class="on">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Verification</h1><p class="sub">How every row was checked, including the two bugs the checking found</p></div>
+
+<section class="callout warn"><h2>Two bugs were found while verifying, and both inverted a published finding</h2>
+<ul class="findings">
+<li><b>The total metric was trivially true.</b> The first version scored the total by asking whether
+the predicted total and the actual total had the same sign. Every total is positive, so the metric
+returned 106/106 — a perfect score from a broken test. Caught by reading the number, not the code:
+a 100% hit rate on NFL totals is not a finding, it is a bug. The metric was replaced with an
+error against a pre-registered constant benchmark.</li>
+<li><b>A correlation joined on the wrong key.</b> The snap-count correlation matched club and
+position strings that never coincided upstream, producing n = 0 — which was reported as an empty
+row rather than as a failure. Caught by asking why a correlation had no rows. The join now runs on
+the roster position family and reports its pairs.</li>
+</ul>
+<p class="key">Both are recorded because a verification log that only lists successes is not a
+verification log.</p></section><div class="tw"><table class="">
+<thead><tr><th>Check</th><th>How</th><th>Result</th><th>Reproduce</th></tr></thead><tbody>
+<tr><td>Every data row carries a source link or an explicit marker</td><td>gate: tools/x3_desk_verify.py check C-02</td><td>PASS</td><td><a href="verification.html">run</a></td></tr>
+<tr><td>Every internal link resolves</td><td>gate: check C-01, 26 pages crawled</td><td>PASS</td><td><a href="verification.html">run</a></td></tr>
+<tr><td>No unfilled token or rendered None</td><td>gate: check C-03</td><td>PASS</td><td><a href="verification.html">run</a></td></tr>
+<tr><td>A second build is byte-identical</td><td>gate: check C-04, rebuild and diff</td><td>PASS</td><td><a href="verification.html">run</a></td></tr>
+<tr><td>Snapshots carry a hash that recomputes</td><td>gate: check C-11</td><td>PASS</td><td><a href="prices.html">data</a></td></tr>
+<tr><td>Leaderboard is not ordered by a return</td><td>gate: check C-09</td><td>PASS</td><td><a href="leaderboard.html">data</a></td></tr>
+<tr><td>Demotion gate fires when provoked</td><td>gate: check C-10, injected window</td><td>PASS</td><td><a href="gates.html">rule</a></td></tr>
+<tr><td>No live score is in the results feed</td><td>gate: check C-06</td><td>PASS</td><td><a href="results.html">data</a></td></tr>
+<tr><td>Standings agree with the results feed</td><td>gate: checks C-07 and C-07b</td><td>PASS</td><td><a href="results.html">data</a></td></tr>
+<tr><td>Every correlation carries n</td><td>gate: check C-08</td><td>PASS</td><td><a href="correlations.html">data</a></td></tr>
+<tr><td>Price policy predates the published numbers</td><td>gate: check C-05</td><td>PASS</td><td><a href="policy.html">policy</a></td></tr>
+<tr><td>Coverage: games with an official Game Book read</td><td>1 of 138 finals</td><td>LIMIT</td><td><a href="availability.html">data</a></td></tr>
+<tr><td>Coverage: clubs with a dated depth chart</td><td>1 of 32</td><td>LIMIT</td><td><a href="depth.html">data</a></td></tr>
+<tr><td>Coverage: markets with an official price</td><td>0 of 39</td><td>BLOCKED</td><td><a href="policy.html">why</a></td></tr>
+</tbody></table></div>
+<p class="tn">Reproduce with: python3 tools/x3_desk_engine.py && python3 tools/x3_desk_site.py && python3 tools/x3_desk_verify.py</p>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>
