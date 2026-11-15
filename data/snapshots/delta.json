@@ -1,0 +1,341 @@
+{
+ "deltas": [
+  {
+   "added_detail": [
+    {
+     "corroboration_before": {
+      "prior_reads": {},
+      "verdict": "ABSENT FROM PRIOR READS"
+     },
+     "in_prior_desk_store": false,
+     "player": "Calais Campbell",
+     "pos": "DT",
+     "practice_after": "DNP",
+     "status_after": "(none)",
+     "team": "BAL"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {},
+      "verdict": "ABSENT FROM PRIOR READS"
+     },
+     "in_prior_desk_store": false,
+     "player": "Ronnie Stanley",
+     "pos": "T",
+     "practice_after": "DNP",
+     "status_after": "(none)",
+     "team": "BAL"
+    }
+   ],
+   "added_rows_count": 2,
+   "counts_after": {
+    "blank_game_status": 176,
+    "designation_counts": {
+     "Doubtful": 11,
+     "Out": 70,
+     "Questionable": 90
+    },
+    "practice_counts": {
+     "DNP": 94,
+     "FP": 180,
+     "LP": 73
+    },
+    "rows": 347,
+    "rows_with_designation": 171,
+    "teams": 28
+   },
+   "counts_before": {
+    "blank_game_status": 185,
+    "designation_counts": {
+     "Doubtful": 10,
+     "Out": 66,
+     "Questionable": 84
+    },
+    "practice_counts": {
+     "DNP": 94,
+     "FP": 175,
+     "LP": 76
+    },
+    "rows": 345,
+    "rows_with_designation": 160,
+    "teams": 28
+   },
+   "designation_changes": [
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "Questionable",
+       "baseline 2026-11-14": "Questionable"
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Arden Key",
+     "pos": "DE",
+     "practice_after": "FP",
+     "practice_before": "FP",
+     "status_after": "(none)",
+     "status_before": "Questionable",
+     "team": "IND"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Kayode Awosika",
+     "pos": "G",
+     "practice_after": "FP",
+     "practice_before": "LP",
+     "status_after": "Questionable",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Justin Eboigbe",
+     "pos": "DE",
+     "practice_after": "LP",
+     "practice_before": "LP",
+     "status_after": "Questionable",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Ladd McConkey",
+     "pos": "WR",
+     "practice_after": "DNP",
+     "practice_before": "DNP",
+     "status_after": "Questionable",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "David Njoku",
+     "pos": "TE",
+     "practice_after": "FP",
+     "practice_before": "LP",
+     "status_after": "Questionable",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Denzel Perryman",
+     "pos": "LB",
+     "practice_after": "FP",
+     "practice_before": "FP",
+     "status_after": "Questionable",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Trey Pipkins",
+     "pos": "T",
+     "practice_after": "LP",
+     "practice_before": "DNP",
+     "status_after": "Questionable",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Branson Taylor",
+     "pos": "G",
+     "practice_after": "DNP",
+     "practice_before": "DNP",
+     "status_after": "Out",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Brenen Thompson",
+     "pos": "WR",
+     "practice_after": "DNP",
+     "practice_before": "DNP",
+     "status_after": "Doubtful",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Isas Waxter",
+     "pos": "CB",
+     "practice_after": "DNP",
+     "practice_before": "DNP",
+     "status_after": "Out",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Kendall Williamson",
+     "pos": "S",
+     "practice_after": "DNP",
+     "practice_before": "DNP",
+     "status_after": "Out",
+     "status_before": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Jaylinn Hawkins",
+     "pos": "S",
+     "practice_after": "LP",
+     "practice_before": "LP",
+     "status_after": "Out",
+     "status_before": "(none)",
+     "team": "BAL"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "",
+       "baseline 2026-11-14": ""
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Adam Randall",
+     "pos": "RB",
+     "practice_after": "FP",
+     "practice_before": "FP",
+     "status_after": "Questionable",
+     "status_before": "(none)",
+     "team": "BAL"
+    }
+   ],
+   "designation_changes_count": 13,
+   "dropped": [],
+   "dropped_rows_count": 0,
+   "from_read": "baseline 2026-11-14",
+   "practice_changes": [
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "Did Not Participate In Practice",
+       "baseline 2026-11-14": "Did Not Participate In Practice"
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Bud Dupree",
+     "pos": "DE",
+     "practice_after": "FP",
+     "practice_before": "DNP",
+     "status_both": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "Limited Participation in Practice",
+       "baseline 2026-11-14": "Limited Participation in Practice"
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Keaton Mitchell",
+     "pos": "RB",
+     "practice_after": "FP",
+     "practice_before": "LP",
+     "status_both": "(none)",
+     "team": "LAC"
+    },
+    {
+     "corroboration_before": {
+      "prior_reads": {
+       "audit/official_injury_wk10_2026.csv": "Limited Participation in Practice",
+       "baseline 2026-11-14": "Limited Participation in Practice"
+      },
+      "verdict": "CORROBORATED"
+     },
+     "player": "Rodney Shelley",
+     "pos": "CB",
+     "practice_after": "FP",
+     "practice_before": "LP",
+     "status_both": "(none)",
+     "team": "LAC"
+    }
+   ],
+   "practice_changes_count": 3,
+   "rows_after": 347,
+   "rows_before": 345,
+   "season": 2026,
+   "source_url": "https://www.nfl.com/injuries/league/2026/reg10",
+   "surprise_panel": {
+    "adverse": 5,
+    "changed_anything": true,
+    "definition": "injury signal as movement, not level: rows that gained an adverse designation (none/LP/FP -> Out or Doubtful) between two reads",
+    "favourable": 1
+   },
+   "to_read": "SNAP-2026W10-2026-11-15T1816Z",
+   "week": 10,
+   "window_note": "gap between the two reads is a day and part of the following day; the earlier read carries no clock time, so the gap cannot be stated in hours"
+  }
+ ],
+ "store_version": "x3-snapshot-delta-v1"
+}
