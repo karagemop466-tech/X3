@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 306,
-      "flagged_rows": 227,
-      "refs": 374,
+      "rows": 312,
+      "flagged_rows": 232,
+      "refs": 379,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -13,7 +13,7 @@
         "flagged.html: Live or historical betting lines / odds \u2014 No line archive or provider is present. NFL is not the source of bookmaker quo",
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
-        "injuries.html:  Date  Team  Player  Pos  Injury  Practice Status  Game Status  Source "
+        "index.html: Dataset Official source Status Notes"
       ]
     },
     "archive": {
@@ -240,6 +240,19 @@
       "refs": 13,
       "unsourced_examples": []
     },
+    "snapshots": {
+      "pages": 1,
+      "rows": 385,
+      "flagged_rows": 380,
+      "refs": 405,
+      "unsourced_examples": [
+        "snapshots/2026-w10-injuries/index.html: Item Value Source",
+        "snapshots/2026-w10-injuries/index.html: Result Team Player Official game Hub game Field differences Source",
+        "snapshots/2026-w10-injuries/index.html: Game Kickoff / TV (as printed) Team Record Player Pos Injury Practice status Game status Source",
+        "snapshots/2026-w10-injuries/index.html: Game status Rows Source",
+        "snapshots/2026-w10-injuries/index.html: Practice status Rows Source"
+      ]
+    },
     "verification-hub": {
       "pages": 1,
       "rows": 38,
@@ -264,9 +277,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 221,
-  "rows_total": 10087,
-  "rows_flagged_or_sourced": 8787,
-  "internal_refs": 5359,
+  "pages_total": 222,
+  "rows_total": 10478,
+  "rows_flagged_or_sourced": 9172,
+  "internal_refs": 5383,
   "problems": []
 }

@@ -2668,3 +2668,53 @@ Scope is deliberately narrow. The brief asks for far more than one session can v
 | W10-LIONS | in progress | `arena/348a707c-x3` | same capture folder, `COORDINATION.md` | Confirm the game-status cells for Kerby Joseph, Cade Mays, D.J. Reed against the official page (brief VR-08, VR-12). |
 
 Files owned by other sessions (`hub/**`, `audit/**`, `dashboard/**`, root pages) are NOT edited in this session. Corrections to them are logged as requests below.
+
+### Claim amendment (arena/348a707c-x3)
+
+`capture/` is listed in `.gitignore`, so the capture was stored at `snapshots/2026-w10-injuries/` instead. The task IDs, owner and scope are otherwise unchanged. No other session's files were edited, apart from the generated census outputs listed below.
+
+### W10-INJ and W10-LIONS — completion record (2026-11-15, sandbox clock)
+
+| Task | Status | Owner | Files | Sources | Irregularities |
+|---|---|---|---|---|---|
+| W10-INJ: re-capture the live Week 10 injury report with hashes and deltas | done | arena/348a707c-x3 | `snapshots/2026-w10-injuries/**` (new) | https://www.nfl.com/injuries/ (8 chunks, all read); https://www.nfl.com/schedules/2026/by-week/week-10 | See flags below |
+| W10-LIONS: confirm Joseph, Mays, Reed game status | done | arena/348a707c-x3 | same folder | https://www.nfl.com/injuries/ | Blank cell not reproduced; all copies show Out |
+
+**What was done**
+- Read all 8 chunks of the live official injury page and transcribed every row to `official_transcription.psv`: **347 rows, 14 games, 28 clubs**. Validation passed (8 fields per row, no duplicate team/player keys, no blank practice cells).
+- SHA-256 of the transcription is recorded in `snapshots/2026-w10-injuries/summary.json`. The raw fetched bytes were not retained, so raw HTML hashes are not claimed.
+- Cross-check: this transcription agrees with the independent 2026-11-14 transcription in `audit/official_injury_wk10_2026.csv` on every overlapping field, except the Chargers/Ravens statuses and Arden Key listed below. This supports the transcription's accuracy but does not replace a raw-HTML check.
+- Field-by-field comparison with `hub/injuries.html`: 329 rows match on every field; 16 rows differ; 2 official rows are missing from the hub. Full detail in `compare_hub.csv` and on the published page.
+- Published page: `snapshots/2026-w10-injuries/index.html` (every table row carries an nfl.com link; the full 347-row table is included).
+
+**Verification performed**
+- `scripts/audit_all.py` PASS (222 pages, 16,172 refs, 407 tables).
+- `scripts/verify_integration.py` PASS.
+- `tools/check_links.py` PASS (13 pages, 379 links).
+- `scripts/check_hub.py` PASS. `scripts/check_site.py` PASS.
+- `scripts/council_build.py` then `scripts/council_verify.py` PASS. The gate failed before the rebuild because the repo census was stale after the new folder was added. The rebuild also refreshed `signals/data/repo_review.{csv,json}` and `verification-hub/audit-report.json`.
+- `scripts/verify_signals.py` PASS.
+
+**Flags (published on the page under "Flagged for review")**
+1. **Lions game status (brief VR-08).** Kerby Joseph, Cade Mays and D.J. Reed are Out on the official page. They are also Out in `hub/injuries.html`, the root `injuries.html`, `dashboard/data/injuries.json` and `audit/official_injury_wk10_2026.csv`. The blank cell in the brief is not present in any current copy. No change made.
+2. **Row count (brief VR-04/05).** The brief cites 279 live rows and 2 no-injury sections. The live page read here has 347 rows, 14 games, and no empty club sections. The hub says 345 rows. The brief's figures were not reproduced; the difference is recorded, not resolved.
+3. **Chargers and Ravens (LAC/BAL) changed after the 2026-11-14 captures.** 15 rows differ in designation or practice status (for example Njoku, Perryman, Pipkins, Randall, Hawkins). Calais Campbell and Ronnie Stanley are on the live page but not in the hub. This page records the delta only; it does not say which version was right at any earlier time.
+4. **Arden Key (IND).** The hub and the 2026-11-14 audit show Hamstring / Questionable. The live page shows no designation.
+5. **Not captured.** Injured reserve, inactive lists, snap counts and depth charts are outside this capture. Official news items on the same page report IR moves for Malik Willis, TreVeyon Henderson and Lamar Jackson. Those moves are not in the report and are not inferred.
+6. **Hub text out of date.** The hub header says 345 rows. Its Week 10 counts and some practice values are from the earlier capture.
+
+**Requests to other sessions (logged, files NOT edited)**
+- Owner of `hub/injuries.html`: update the LAC @ BAL block and the IND Arden Key row to the official values in `compare_hub.csv`; add Calais Campbell (BAL DT) and Ronnie Stanley (BAL T); state the capture date and row count.
+- Integration owner: link `snapshots/2026-w10-injuries/index.html` from `flagged.html` and the root index as the Week 10 re-capture entry.
+
+**Open items from the brief — NOT done in this session (honest scope)**
+The brief asks for much more than one session can verify. These remain open and must not be marked done until each has a verified official source and a gate.
+- Depth charts for all 32 clubs, the depth-group model (ties at rank 1), shared and empty slots, and the depth-order source decision. The route (a) per-club official pages were not captured this session.
+- Official inactive lists, snap counts and Game Books (the official Game Book was not located in this session).
+- Roster and transaction log reconciliation (the IR and trade events mentioned in the brief, e.g. Lamar Jackson, Malik Willis).
+- Multi-season designation archive and reliability scoring; daily scheduled snapshots; immutable storage outside the static site; alerts.
+- Price-data policy, the price-snapshot store, the results feed, correlations with n, the leaderboard, and the demotion gate. These already exist in part under other sessions' trees and were not re-audited here.
+- Per-team view, the "what changed" weekly diff, the matchup deficiency matrix, and the decision-readiness table. Not built.
+- Pre-registration commits for new strategies (none defined this session).
+
+**Status:** W10-INJ done; W10-LIONS done; the remaining brief items are open and unclaimed in this session.

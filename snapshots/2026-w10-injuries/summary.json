@@ -1,0 +1,60 @@
+{
+  "official_source": "https://www.nfl.com/injuries/",
+  "official_title": "Official Latest NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com",
+  "transcription_file": "official_transcription.psv",
+  "transcription_sha256": "ab52ca8d4a1edbb4f107b3f3cb953679bfe9c608b1314ec2924c8c276bf09d71",
+  "transcription_bytes": 26396,
+  "official_rows": 347,
+  "official_games": 14,
+  "official_clubs": 28,
+  "official_rows_per_team": {
+    "ATL": 11,
+    "AZ": 15,
+    "BAL": 10,
+    "BUF": 14,
+    "CAR": 12,
+    "CIN": 9,
+    "CLE": 12,
+    "DAL": 19,
+    "DET": 9,
+    "GB": 17,
+    "HOU": 16,
+    "IND": 14,
+    "JAX": 11,
+    "KC": 13,
+    "LAC": 19,
+    "LAR": 14,
+    "LV": 5,
+    "MIA": 11,
+    "MIN": 13,
+    "NE": 15,
+    "NO": 12,
+    "NYG": 11,
+    "NYJ": 9,
+    "PIT": 8,
+    "SEA": 15,
+    "SF": 12,
+    "TEN": 12,
+    "WAS": 9
+  },
+  "official_status_counts": {
+    "(blank)": 176,
+    "Out": 70,
+    "Questionable": 90,
+    "Doubtful": 11
+  },
+  "official_practice_counts": {
+    "Full Participation in Practice": 180,
+    "Did Not Participate In Practice": 94,
+    "Limited Participation in Practice": 73
+  },
+  "official_duplicate_team_player": [],
+  "validation_problems": [],
+  "hub_rows_parsed": 345,
+  "hub_duplicate_team_player": [],
+  "compare_counts": {
+    "MATCH": 329,
+    "DIFF": 16,
+    "OFFICIAL_ONLY": 2
+  }
+}
