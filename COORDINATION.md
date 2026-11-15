@@ -2584,3 +2584,14 @@ The existing site and data modules already implement the requested executive sum
 - `python3 scripts/check_dashboard.py`, `python3 scripts/verify_data.py`, `python3 tools/verify_ledger.py`, `python3 tools/verify_markets.py` — PASS.
 
 Limitations/irregularities confirmed by the checks: the durable-ledger verifier reports one snapshot file; `price_snapshots.csv` has zero rows in that ledger view; and the general site source audit reports 177 source rows explicitly marked unverified (7,509 linked rows out of 7,686 source rows), while the targeted signals module reports all its rows sourced or marked unverified. These should be reviewed before making any claim of comprehensive row-level verification. No new external data were introduced and no ROI/CLV or injury probability labels were added.
+## Session `arena/f01c99a5-x3` — official-source consistency audit
+
+Branch: `arena/f01c99a5-x3` (the Arena-assigned active branch; platform branch assignment takes precedence over the requested `session-<id>/<task>` naming). Base: `8a889d7190ec230f5c9940d2e95e533358e84c65`.
+
+### Claim (2026-11-15 UTC)
+
+| Task | Status | Owner | File scope | Purpose |
+|---|---|---|---|---|
+| C01 | in progress | `arena/f01c99a5-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this coordination entry | Remove non-official source links from the canonical verified-results page and re-run the site-wide checks. |
+
+No other files are in scope. The change is limited to replacing the ESPN cross-check links with the already registered official NFL Week 10 schedule page, keeping repository evidence links as traceability rather than presenting them as official confirmation. No source values or results will be changed.
