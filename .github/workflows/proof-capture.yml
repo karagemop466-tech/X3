@@ -1,0 +1,80 @@
+name: Proof data capture
+
+# Freezes the versioned source files that the proof/ backtest reads.
+#
+# `proof/` cannot be reproduced without these files, and they are not reachable
+# from every sandbox, so they are fetched here, hashed by proof/fetch.py into
+# proof/hashes.json, and committed. Once a file is recorded it is never
+# overwritten in place: a changed source becomes a new dated snapshot, which is
+# what makes the capture immutable and replayable.
+#
+# The second job captures the live nfl.com pages (injury report, standings,
+# schedule) as dated HTML with a hash, so a published designation can be
+# replayed exactly as it was on the day it was read.
+
+on:
+  workflow_dispatch:
+  schedule:
+    # daily 11:17 UTC - after the league's daily injury-report refresh
+    - cron: "17 11 * * *"
+  push:
+    branches: [ main ]
+    paths: [ "proof/fetch.py", ".github/workflows/proof-capture.yml" ]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: proof-capture
+  cancel-in-progress: false
+
+jobs:
+  freeze-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and hash the versioned source files
+        run: python3 proof/fetch.py
+      - name: Verify the frozen copies against the recorded hashes
+        run: python3 proof/fetch.py --verify
+      - name: Commit the frozen data (never rewrites a recorded file)
+        run: |
+          git config user.name  "x3-proof-capture"
+          git config user.email "x3-proof-capture@users.noreply.github.com"
+          git add proof/raw proof/hashes.json
+          if git diff --cached --quiet; then
+            echo "no new source files"
+          else
+            git commit -m "proof: freeze source files ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            git push
+          fi
+      - name: Report the frozen inventory
+        run: |
+          python3 - <<'PY'
+          import json
+          h = json.load(open('proof/hashes.json'))
+          f = h['files']
+          print(f"{len(f)} frozen files, {sum(v['bytes'] for v in f.values())/1e6:.1f} MB")
+          for k, v in sorted(f.items()):
+              print(f"  {k:26s} {v['bytes']:>10,d}  {v['sha256'][:16]}")
+          PY
+
+  capture-live-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture the live official pages with timestamp and hash
+        run: python3 proof/capture_live.py
+      - name: Commit the snapshots
+        run: |
+          git config user.name  "x3-proof-capture"
+          git config user.email "x3-proof-capture@users.noreply.github.com"
+          git add proof/snapshots
+          if git diff --cached --quiet; then
+            echo "no change in the live pages"
+          else
+            git commit -m "proof: live-page snapshot ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git pull --rebase origin "${GITHUB_REF_NAME}" || true
+            git push
+          fi

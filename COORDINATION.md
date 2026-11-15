@@ -2763,10 +2763,64 @@ Scope is limited to the root landing generator/output and this append-only claim
 - The original completion metrics above were captured before the concurrent upstream landing-page integration. The counts in this rebase/update block supersede those earlier repository-wide page/ref/table totals.
 
 <<<<<<< HEAD
-=======
 ### DR-01 merge and deployment closeout (2026-11-15)
 - PR #72: https://github.com/karagemop466-tech/X3/pull/72 — merged to `main` at 2026-11-15T18:29:25Z; merge commit `090496588465e522a8cf5e69cd671437139661ac`.
 - PR checks after rebase: Council verify, signals verifier, and Pages build all passed. Post-merge `Deploy X3 NFL site to GitHub Pages` run `43747042414` passed; `pages-build-deployment` run `43747041764` passed. GitHub Pages API reports `status: built`, URL `https://karagemop466-tech.github.io/X3/`.
 - Live-site check: fetched the deployed root page after deployment and confirmed both the upstream official-source verification panel and the new decision-readiness table render, including all eight core rows and their sources/gates.
 - Final status: DR-01 done and deployed. The data/strategy blockers listed on the page remain open; this change makes them explicit and reviewable and does not fabricate odds, starter status, snap counts, correlations or strategy eligibility.
->>>>>>> origin/main
+=======
+---
+
+## Session `arena/963ed45f-x3` — PROOF LAYER (final integration for this round)
+
+Branch: `arena/963ed45f-x3`, base `main` @ `8a889d7`. Claimed **2026-11-15**.
+Platform rule: all work on this assigned branch; the brief's `session-<id>/<task>` naming yields to it.
+Status legend: unclaimed | in progress | done | needs review | blocked
+
+### What this round has to fix, and why it is a new tree rather than an edit
+
+Twelve site trees already exist (`hub/`, `signals/`, `council/`, `ops/`, `desk/`, `origin/`,
+`ledger/`, `x3lab/`, `lab/`, `dashboard/`, `docs/`, root pages). Every one of them is honest about the
+same wall: **no market price and no availability history exist in the repository, so nothing can be
+backtested, so the leaderboard is empty and every ROI/CLV cell is blank.** Adding a thirteenth set of
+pages that restates that wall would not help. This round instead removes the wall, in a new
+`proof/` tree that is built to be re-run, not re-read.
+
+| ID | Requirement (from the brief) | Status | Scope |
+|----|------------------------------|--------|-------|
+| P01 | Claim + task board entry | done | `COORDINATION.md` (append-only) |
+| P02 | Versioned acquisition of results + availability + playing time, with hashes | in progress | `proof/fetch.py`, `proof/hashes.json`, `proof/raw/**` |
+| P03 | Automated immutable multi-day capture of the official pages, hashed | in progress | `proof/capture_live.py`, `proof/snapshots/**`, `.github/workflows/proof-capture.yml` |
+| P04 | Walk-forward model fitted only on data before each kickoff (side, total, moneyline) | in progress | `proof/engine.py` |
+| P05 | Injury/depth ABLATION, not a fixed penalty | in progress | `proof/engine.py` |
+| P06 | Proper-score leaderboard with a game-cluster lower bound + multiplicity control | in progress | `proof/leaderboard.py` |
+| P07 | Correlations from official numbers only, each with n | in progress | `proof/engine.py` |
+| P08 | Price-snapshot store: opening and closing for every originated market | in progress | `proof/data.py`, `proof/engine.py` |
+| P09 | Demotion gate that actually fires | in progress | `proof/leaderboard.py` |
+| P10 | Decision-readiness table, one row per requirement, gate + clearing number | in progress | `proof/build_site.py` |
+| P11 | Site: one clean dashboard, every row sourced | in progress | `proof/site/**`, `proof/build_site.py` |
+| P12 | Line-by-line verification gate | in progress | `proof/verify.py` |
+| P13 | CI + PR + merge + Pages deploy | in progress | `.github/workflows/proof-verify.yml` |
+
+### File scope (non-overlapping)
+
+This session **creates** `proof/**`, `.github/workflows/proof-*.yml`, `scripts/proof_*.py`.
+It **reads but never writes** `data/**` (all existing trees), `hub/**`, `signals/**`, `council/**`,
+`ops/**`, `desk/**`, `origin/**`, `ledger/**`, `x3lab/**`, `lab/**`, `dashboard/**`, `docs/**`,
+`pages/**`, `site/**`, `archive/**`, `tools/**`, the other `scripts/**`
+and `.github/workflows/{pages,signals,council-verify,desk-capture,origin-capture}.yml`.
+`COORDINATION.md` and `README.md` are append-only. Root `index.html` gets one added nav entry as the
+integration session; the generator that owns it (`tools/build_hub.py`) is not edited — the entry is
+added by `proof/build_site.py` in a way that the existing `pages.yml` drift check still reproduces.
+
+### The two structural decisions this round makes
+
+1. **Availability history is acquired, not asserted.** The league's own injury report is only
+   published as HTML with no archive endpoint, so the dated mirror
+   (`github.com/nflverse/nflverse-data`, release `injuries`) is frozen into `proof/raw/` with a
+   sha256 per file. A designation can then be replayed exactly as it was on the day it was filed.
+2. **Personnel enters the model as an ablation, never as a penalty.** `proof/engine.py` fits the
+   same model twice — with and without the availability features — on identical chronological folds,
+   and reports the difference with a standard error. No points are subtracted for a missing starter
+   anywhere in this tree.
+>>>>>>> 1dc358d (proof: claim, acquisition layer, live-page capture workflow)
