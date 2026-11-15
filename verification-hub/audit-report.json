@@ -315,8 +315,6 @@
   "pages_total": 258,
   "rows_total": 11512,
   "rows_flagged_or_sourced": 9681,
-  "internal_refs": 6266,
-  "problems": [
-    "agency/site/flagged.html: broken internal ref nfl.com does not publish market prices"
-  ]
+  "internal_refs": 6265,
+  "problems": []
 }
