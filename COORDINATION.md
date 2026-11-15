@@ -2907,3 +2907,68 @@ Live site: https://karagemop466-tech.github.io/X3/ (Pages `status: built`, `main
    only 6 of 254 rows carry a designation). This session re-reads the live page and publishes the
    count it can verify (Y01).
 
+
+---
+
+## Y16 — module delivered, 2026-11-15
+
+**Branch** `arena/ad3903b1-x3` · **commits** `ce208a8` (claim), `38403bd` (module),
+`9d26618` + the commit after it (schedule/venues/starter check, stale-reference fixes).
+
+**Built:** `tools/x3_desk_{inputs,engine,content,site,verify}.py` → `x3/` **28 HTML pages**,
+`x3/assets/x3.css`, and 18 data files in `x3/data/`. Nothing outside `x3/`, `tools/x3_desk_*.py`,
+one additive nav entry in `tools/build_hub.py`, and append-only `COORDINATION.md`/`README.md`.
+
+**Gate:** `python3 tools/x3_desk_verify.py` → **18 passed, 0 failed** (exit 0).
+**Repo-wide:** `scripts/audit_all.py` → PASS (all internal links resolve; every source cell links an
+official source or is explicitly flagged). Every other pre-existing gate that exists in `scripts/`
+still exits 0. (`check_links.py`, `verify_site.py`, `verify_hub.py` are named in the brief's baseline
+but **do not exist** in `scripts/` at this commit — the baseline list was inherited and is wrong; the
+gates that do exist were run. Recorded as an irregularity, not silently dropped.)
+
+### What was verified against an official source
+
+| Item | Result | Source |
+|---|---|---|
+| Week-10 finals | 2 final at read; WAS 24–21 NYG, NE 10–35 DET | nfl.com schedule + game centres |
+| Week-11 designations | do not exist yet — reg11 **redirects** to the Week-10 report | nfl.com/injuries |
+| Game Book WAS@NYG | full PDF read: lineups, inactives, snap percentages | static.www.nfl.com PDF |
+| Depth chart vs snaps | 19 of 23 slots agree (**83%**) | 2 Game Books |
+| Chart-first vs actual starter | 17 of 22 agree; **5 differ** | 2 Game Books |
+| 2026 schedule release | dated May 14, 2026, 10 facts transcribed | media.nfl.com |
+| Fixture venues | 27 fixtures, each labelled by evidence kind | game centres / week pages |
+| Standings | 32 rows; NYG and WAS reconciled to Week-10 results in C-07b | nfl.com/standings |
+| Market prices | **zero** exist anywhere | (searched all 13 trees) |
+
+### Three bugs found by this session's own gates (all fixed, all recorded)
+
+1. `esc()` crashed on integer table cells — every renderer path goes through it.
+2. Links resolved site-root-relative instead of page-relative → 113 false 404s, and `COORDINATION.md`
+   must be a GitHub blob URL.
+3. **The serious one:** a filter compared an integer depth rank to the string `"1"`, so every lookup
+   was empty and the check published *"22 of 22 starters differ from the chart"* — a fabricated
+   finding that would have been the headline. The function now **raises** rather than publish a
+   result from an empty lookup, and gate C-15 asserts `same > 0`. This is why the desk publishes
+   the 17/5 split and not a dramatic one.
+
+### Headline numbers (all in-sample)
+
+- Model under-spread: predicted-margin SD **5.24** vs actual **12.91** → ratio **0.406** (factor **2.5**).
+- Side: 60/90, Brier 0.2253 vs 0.25, skill **+0.099**, n=90 → **fails** the n≥200 entry gate.
+- Total: 50/106, skill **−0.096**, MAE 11.91 vs benchmark 11.17 → **paper only**.
+- G-1 pre-registration: **FAIL** — every number is graded on games that predate the commit. All
+  results are labelled **IN-SAMPLE / RETROSPECTIVE** on every page that shows one.
+
+### Blocked, and why
+
+- **A-2 personnel ablation** — 31 of 32 club depth charts carry no as-of date (F-06). Not approximated.
+- **Market columns** — no official price source; policy PDP-1 published first, columns left blank.
+- **Week-11 designations** — the league has not published them.
+- **Screenshots** — Playwright's Chromium CDN is unreachable from this sandbox; rendering was
+  verified structurally instead (HTMLParser + a CSS-class-usage diff), not visually.
+
+### Flagged for review (not blocking)
+
+F-01…F-18 are on `x3/flags.html` with a source link on every row. The load-bearing ones:
+**F-04** (standings file stale mid-slate — the feed was *not* "fixed" to match), **F-06** (undated
+charts), **F-14** (live scores are never treated as results), **F-16…F-18** (site-level).
