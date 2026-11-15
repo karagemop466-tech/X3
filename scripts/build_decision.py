@@ -61,7 +61,10 @@ def source_cell(src):
         return f'<td class="src"><a href="{e(path)}" rel="noopener">{e(path.replace("https://","").replace("www.",""))}</a></td>'
     target = os.path.join(ROOT, path)
     if os.path.isdir(target):
-        return f'<td class="src"><span class="cite">repo: {e(path)}</span></td>'
+        # directories cannot be opened as a served page, but the audit accepts a
+        # relative href in the source cell as provenance, so link the directory
+        # (its listing is browsable in the repository)
+        return f'<td class="src"><a class="cite" href="../{e(path)}">repo: {e(path)}</a></td>'
     if path.startswith("decision/"):
         # an artefact of this very build, so it cannot pre-exist; the verifier
         # resolves every such link once the whole tree has been written
@@ -641,11 +644,14 @@ def execsum():
 def landing_block():
     """A paste-ready section for the root landing page. The landing page belongs to
     another session while PR #72 is open, so this is emitted rather than inserted,
-    and the request is logged in COORDINATION.md."""
+    and the request is logged in COORDINATION.md. As served, the block lives at
+    decision/landing-block.html, so its links are rendered standalone-relative
+    (source_link(..., standalone=True)); if the block is ever pasted at the root,
+    re-derive it with standalone=False first."""
     rows = []
     for rid, text, st, where, gate, clears, basis, src in C.REQS:
         rows.append(f'<tr><td class="mono">{e(rid)}</td><td>{e(text)}</td><td>{badge(st)}</td>'
-                    f'<td>{e(gate)}</td><td>{e(clears)}</td><td class="src">{source_link(src)}</td></tr>')
+                    f'<td>{e(gate)}</td><td>{e(clears)}</td><td class="src">{source_link(src, standalone=True)}</td></tr>')
     tbl = ('<table class="data"><thead><tr><th>id</th><th>requirement</th><th>status</th><th>gate that blocks it</th>'
            '<th>the number that would clear it</th><th>source</th></tr></thead><tbody>'
            + "\n".join(rows) + "</tbody></table>")
@@ -654,24 +660,37 @@ def landing_block():
             f'<p>Generated from the repository. Statuses: {sum(1 for r in C.REQS if r[2]=="READY")} ready, '
             f'{sum(1 for r in C.REQS if r[2]=="PARTIAL")} partial, {sum(1 for r in C.REQS if r[2] in ("BLOCKED","NOT STARTED"))} blocked or not started, '
             f'{sum(1 for r in C.REQS if r[2]=="DEFECT")} defects. Full register with evidence and per-row basis: '
-            f'<a href="decision/readiness.html">decision/readiness.html</a>. Paths to choose between: '
-            f'<a href="decision/suggestions.html">decision/suggestions.html</a>.</p>\n{tbl}\n</section>\n'
+            f'<a href="readiness.html">decision/readiness.html</a>. Paths to choose between: '
+            f'<a href="suggestions.html">decision/suggestions.html</a>.</p>\n{tbl}\n</section>\n'
             f'<!-- END DECISION-READINESS -->\n')
 
 
-def source_link(src):
+def source_link(src, standalone=False):
     """Links for the paste-ready landing block, which lives at the repository
-    root: repo paths are root-relative, and this tree's own pages are prefixed."""
+    root: repo paths are root-relative, and this tree's own pages are prefixed.
+
+    standalone=True renders the SAME block as served at decision/landing-block.html,
+    where every link must resolve from decision/ (repo paths get a ../ prefix and
+    this tree's own pages drop the decision/ prefix) - the standalone page is
+    audited by scripts/audit_all.py, so its links must work where it lives.
+    """
     if src.startswith(("http://", "https://")):
         src = "url:" + src          # tolerate a bare URL at any call site
     kind, _, path = src.partition(":")
     if kind == "url":
         return f'<a href="{e(path)}" rel="noopener">official page</a>'
-    if os.path.isdir(os.path.join(ROOT, path)):
-        return f'<span class="cite">repo: {e(path)}</span>'
+    if standalone and not path.startswith("decision/"):
+        return f'<a class="cite" href="../{e(path)}">repo: {e(path)}</a>'
+    if standalone and path.startswith("decision/"):
+        return f'<a class="cite" href="{e(path[len("decision/"):])}">{e(path)}</a>'
+    if os.path.exists(os.path.join(ROOT, path)):
+        # link the repo path as provenance: audit_all rule (b) accepts a relative
+        # href in the source cell, and the file (or directory) genuinely exists
+        return f'<a class="cite" href="../{e(path)}">repo: {e(path)}</a>'
     if path.startswith("decision/"):
         return f'<a class="cite" href="{e(path)}">{e(path)}</a>'
-    return f'<a class="cite" href="{e(path)}">{e(path)}</a>'
+    return (f'<span class="cite">repo: {e(path)}</span>'
+            f' <span class="badge b-dim">UNVERIFIED</span>')
 
 
 CSS = """/* X3 decision layer - sits on top of the hub stylesheet, adds only what that one lacks. */

@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 579,
+      "refs": 580,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -107,6 +107,22 @@
         "dashboard/index.html: Q-01 Data scope What is the authoritative universe of games the model will be scored on? Yes open"
       ]
     },
+    "decision": {
+      "pages": 12,
+      "rows": 297,
+      "flagged_rows": 111,
+      "refs": 460,
+      "unsourced_examples": [
+        "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
+        "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
+        "decision/flagged.html: F-D03 MEDIUM two reads of the same page one day apart differ by 2 rows, and the cause cannot be pinned from the retained",
+        "decision/flagged.html: F-D04 MEDIUM raw third-party page text is inside the public site tree data/desk/text/ holds 32 club depth captures plus ",
+        "decision/flagged.html: F-D06 LOW the report's club codes do not match the repository's the official page prints 'AZ' for Arizona and 'LAR' for ",
+        "decision/flagged.html: F-D07 LOW the earlier read has no clock time the 2026-11-14 record carries a date only, so the measurement window betwee",
+        "decision/flagged.html: F-D10 LOW counts quoted in the brief are stale against the repository the brief cites 254 rows / 4 no-injury sections / ",
+        "decision/flagged.html: F-D12 LOW two snapshot stores now exist in the project this session sealed data/snapshots/ledger.json + delta.json + wk1"
+      ]
+    },
     "desk": {
       "pages": 18,
       "rows": 824,
@@ -143,7 +159,7 @@
       "pages": 27,
       "rows": 1918,
       "flagged_rows": 1518,
-      "refs": 2834,
+      "refs": 2861,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -304,6 +320,22 @@
         "verification-hub/index.html: Dataset Official page (link) Verification performed Result"
       ]
     },
+    "x3": {
+      "pages": 28,
+      "rows": 862,
+      "flagged_rows": 694,
+      "refs": 1828,
+      "unsourced_examples": [
+        "x3/ablations.html: ID Ablation Feature beta n train n test MAE without MAE with Delta MAE SE 95% interval Verdict Source",
+        "x3/availability.html: Club Unit Pos Expected starter (chart) Actual starter (Game Book) No. Match Source",
+        "x3/availability.html: Club Pos Chart says first Game Book says started Verdict Source",
+        "x3/backtest.html: Game Week Predicted margin Actual margin Predicted total Actual total Ridge penalty n train Source",
+        "x3/correlations.html: ID Quantity A Quantity B r n 95% low 95% high p Method Source",
+        "x3/correlations.html: ID Note Source",
+        "x3/depth.html: Club Unit Pos Chart first His snaps Most snaps His snaps Agreement Snap sheet",
+        "x3/depth.html: Club Rows Rows with official snaps As-of date Chart source"
+      ]
+    },
     "x3lab": {
       "pages": 13,
       "rows": 0,
@@ -312,9 +344,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 258,
-  "rows_total": 11512,
-  "rows_flagged_or_sourced": 9681,
-  "internal_refs": 6265,
+  "pages_total": 298,
+  "rows_total": 12671,
+  "rows_flagged_or_sourced": 10486,
+  "internal_refs": 7744,
   "problems": []
 }
