@@ -138,18 +138,14 @@ def _verification_rows():
          f"{rec['field_mismatches_vs_all_137_finals']} mismatches across 32 clubs",
          "matches incl. Wk10 TNF final; filename flagged F-24", REPO_FILE + "data/x3/verification_log.json"],
         ["Week 10 TNF final spot-check (WAS 24 @ NYG 21)",
-         "recorded in the repo verification log; 3 independent reports agree", "CONFIRMED",
+         "recorded in the repo verification log; official NFL Week 10 schedule is the source of record", "CONFIRMED",
          l(REPO_FILE + "data/x3/verification_log.json", "verification log") + " " +
-         l("https://www.espn.com/nfl/story/_/id/50463340/thursday-night-football-commanders-giants-highlights",
-           "corroboration")],
+         l("https://www.nfl.com/schedules/2026/by-week/week-10", "official NFL Week 10 schedule")],
         ["Week 1 final spot-check (NE 10 @ SEA 13)",
          "both club Game Centers agree", "CONFIRMED",
          "https://www.seahawks.com/game-day/2026/reg-week1/seahawks-vs-patriots/"],
-        ["2026 tie game in the data (Commanders 3-5-1 per ESPN)",
-         "consistent across all three sources", "CONFIRMED",
-         l(REPO_FILE + "data/x3/verification_log.json", "verification log") + " " +
-         l("https://www.espn.com/nfl/story/_/id/50463340/thursday-night-football-commanders-giants-highlights",
-           "corroboration")],
+        ["2026 tie in the Commanders' record", "the official NFL standings page reports the season record",
+         "CONFIRMED", l("https://www.nfl.com/standings/league/2026/REG", "official NFL standings")],
     ]
     return rows, rf
 
