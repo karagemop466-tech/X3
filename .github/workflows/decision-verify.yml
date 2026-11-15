@@ -1,0 +1,49 @@
+name: X3 decision layer
+
+# Offline gate for the point-in-time snapshot store and the decision layer.
+# Both are generated from repository artefacts, so CI can rebuild them and
+# refuse the run if the published tree disagrees with its sources: a sealed
+# capture whose bytes moved, a requirement row without a source, a delta that
+# no longer reconciles, or a builder that is not deterministic.
+
+on:
+  push:
+    branches: [main, "arena/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Re-derive the snapshot ledger and delta
+        run: python3 scripts/x3_snapshots.py
+
+      - name: Gate the snapshot store (hashes, provenance, drift alarm)
+        run: python3 scripts/x3_snapshots_verify.py
+
+      - name: Build the decision layer
+        run: python3 scripts/build_decision.py
+
+      - name: Gate the decision layer (every row sourced, links resolve, deterministic)
+        run: python3 scripts/verify_decision.py
+
+      - name: Fail if a build left the tree dirty
+        run: |
+          git config --local user.email "ci@example.invalid"
+          git config --local user.name "ci"
+          git add -A data/snapshots decision
+          git diff --cached --quiet || {
+            echo "::error::data/snapshots/ or decision/ changed on rebuild; commit the regenerated tree"
+            git --no-pager diff --cached --stat
+            exit 1
+          }
