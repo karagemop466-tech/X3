@@ -2546,3 +2546,49 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+---
+
+## Session arena/7f0b6d40-x3 (Week-10 game-day evidence + 32-club depth register)
+
+Branch: `arena/7f0b6d40-x3`. Base: `main` @ `8a889d7190ec230f5c9940d2e95e533358e84c65`. Claimed 2026-11-15.
+Status legend: unclaimed | in progress | done | needs review | blocked
+
+### Why this session exists (the unlock)
+
+Every previous session recorded, as a hard blocker, that **nfl.com is not fetchable from the sandbox** and
+therefore that injury/depth/inactive rows could not be verified line by line (see the notes in the
+`arena/1a771fcd-x3` section above, and flags F-01 / VR-04..VR-07 / VQ-05..08). That premise is **false**:
+this session fetched `https://www.nfl.com/injuries/` and a live game centre successfully through the
+retrieval tool. The repo therefore has a working official-source path that no earlier session used, and
+this session's whole scope is spent exercising it on the perishable evidence: today's game-day record.
+
+### Task board (arena/7f0b6d40-x3)
+
+| ID | Task | Status | Files / scope |
+|----|------|--------|---------------|
+| E01 | Repo review, line by line, with links and irregularities | in progress | `evidence/**` (read-only on all other trees) |
+| E02 | Re-capture the official Week 10 injury report in full (279-row target) | in progress | `evidence/data/injuries_wk10.csv`, `evidence/injuries.html` |
+| E03 | Populate the 3 missing Lions game-status cells from the official report | in progress | `evidence/data/injuries_wk10.csv` (VR-08/VR-12) |
+| E04 | Capture official game-day inactive lists for the Week 10 slate | in progress | `evidence/data/inactives_wk10.csv`, `evidence/inactives.html` |
+| E05 | Capture snap counts (playing time) as the depth measure | in progress | `evidence/data/snap_counts.csv`, `evidence/snaps.html` |
+| E06 | 32-club depth-chart register: route verified club by club | in progress | `evidence/data/depth_register.csv`, `evidence/depth.html` |
+| E07 | Fix the two depth-parsing failures (Packers jersey prefix, Texans image) | in progress | `evidence/depth.html`, `evidence/flagged.html` |
+| E08 | Venue transcription for every Week 10 fixture from the official game centre | in progress | `evidence/data/venues_wk10.csv`, `evidence/venues.html` |
+| E09 | Price-data policy decision + first rows of the snapshot store | in progress | `evidence/prices.html`, `evidence/data/price_policy.csv` |
+| E10 | Pre-registered backtest corpus (game log) with train/val/holdout split | in progress | `evidence/backtest.html` |
+| E11 | Strategies, gates, demotion, signal-vs-staking leaderboard | in progress | `evidence/strategies.html`, `evidence/leaderboard.html` |
+| E12 | Decision-readiness table: one row per requirement, gate + clearing number | in progress | `evidence/readiness.html`, `evidence/index.html` |
+| E13 | Questions, suggestions, flagged-for-review, sources, verification log, exec summary | in progress | `evidence/*.html` |
+| E14 | Builders + verification gate + CI workflow | in progress | `scripts/x3_evidence.py`, `scripts/build_evidence.py`, `scripts/verify_evidence.py`, `.github/workflows/evidence.yml` |
+| E15 | Integration: PR to main, merge, Pages deploy, record | unclaimed | `index.html` nav (integration remit), `COORDINATION.md` |
+
+### File-scope declaration
+
+This session **creates** `evidence/**`, `scripts/x3_evidence.py`, `scripts/build_evidence.py`,
+`scripts/verify_evidence.py`, `.github/workflows/evidence.yml`. It **never writes** `hub/**`,
+`signals/**`, `ops/**`, `origin/**`, `council/**`, `lab/**`, `x3lab/**`, `dashboard/**`, `desk/**`,
+`data/**`, `docs/**`, `crosscheck/**`, `audit/**`, `ledger/**`, `capture/**`, `pages/**`, `site/**`,
+`archive/**`, `analysis/**`, `research/**`, `tools/**`, `assets/**`, root HTML, or any other session's
+`scripts/**`. `COORDINATION.md` and `README.md` are append-only. As the final integration session this
+round, it appends one navigation entry to the root `index.html` and nothing else there.
