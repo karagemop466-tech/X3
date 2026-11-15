@@ -50,6 +50,9 @@ def main() -> int:
         print("FAIL: run scripts/build_decision.py first")
         return 1
     pages = sorted(f for f in os.listdir(OUT) if f.endswith(".html"))
+    frag = os.path.join(OUT, "fragments", "landing-block.inc")
+    if not os.path.exists(frag):
+        fail.append("fragments/landing-block.inc was not emitted - the landing block is part of this deliverable")
     if not pages:
         fail.append("no pages produced")
         print("FAIL: no pages in decision/")
@@ -75,7 +78,7 @@ def main() -> int:
             target = href.split("#")[0]
             if not target:
                 continue
-            if target.endswith(".html"):
+            if target.endswith((".html", ".inc")):
                 if not os.path.exists(os.path.join(base, target)):
                     fail.append(f"{p}: broken internal link -> {target}")
             else:
@@ -93,8 +96,7 @@ def main() -> int:
 
     # 2 / 3 row-level source discipline
     for p, d in docs.items():
-        if p == "landing-block.html":
-            continue
+        # (no .html landing fragment any more: it is emitted as fragments/landing-block.inc)
         for tbl in re.finditer(r'<table class="(data|agg)[^"]*">(.*?)</table>', d, re.S):
             cls, body = tbl.group(1), tbl.group(2)
             for row in re.finditer(r"<tr>(.*?)</tr>", body, re.S):
