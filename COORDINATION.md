@@ -2546,3 +2546,25 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+---
+
+## Session `arena/11cd1644-x3` (this session — active)
+
+- **Session ID:** `arena/11cd1644-x3`. **Branch:** `arena/11cd1644-x3` (platform-fixed; the `session-<id>/<task>` naming is not usable here, same as every prior session). **Base:** `main` @ `8a889d71` (== `origin/main`; fully synced).
+- **Role:** final integration + line-by-line official-source verification for this round. The repo already carries 25 prior session sections (PRs #1-#62+) and a canonical `hub/` site tree; my job is to (a) re-verify the published official data against live official pages myself, (b) make the root landing page a clean, simple dashboard with category subpages, (c) keep executive summary / suggestions / questions / flagged-for-review accurate, (d) flag every value that cannot be confirmed from an official source, (e) commit, open a PR from this branch to `main`, merge it, and confirm GitHub Pages deploys.
+- **File scope:** root `index.html`, root `executive-summary.html`, root `suggestions.html`, root `questions.html`, root `flagged.html`, root `verification.html`, root `requirements.html`, plus the shared `hub/` tree where it needs correction. I do not edit `ops/`, `council/`, `signals/`, `data/desk/`, `tools/*` owned by other sessions, or any data JSON/CSV except to correct a value I re-verified against an official page.
+- **Verification method:** `nfl.com` IS reachable via `fetch_page` in this sandbox (verified: Week-10 injury report loads in full). Every table cell I restate is re-read from the live official page; anything that cannot be confirmed stays blank and is flagged `UNVERIFIED` with a source link.
+
+### Task board (arena/11cd1644-x3)
+
+| ID | Task | Status | Files | Result |
+|----|------|--------|-------|--------|
+| A1 | Coordination claim + task board | done | `COORDINATION.md` (this section) | claimed |
+| A2 | Line-by-line re-verification of official data (injuries, standings, schedule) | in progress | `data/`, `hub/data/`, root pages | pending |
+| A3 | Clean root landing page + category subpage navigation | unclaimed | `index.html`, `hub/*.html` | pending |
+| A4 | Executive summary accuracy pass | unclaimed | `executive-summary.html`, `hub/executive-summary.html` | pending |
+| A5 | Suggestions / questions / flagged pages current | unclaimed | `suggestions.html`, `questions.html`, `flagged.html` (+ hub copies) | pending |
+| A6 | Broken-link / source-row check on the combined tree | unclaimed | existing `scripts/*`, `tools/*` checkers | pending |
+| A7 | Commit → PR → merge → Pages deploy confirmation | unclaimed | `COORDINATION.md` | pending |
+
