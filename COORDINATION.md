@@ -3262,3 +3262,49 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+
+---
+
+## Y16 — merged and live, 2026-11-15T18:45Z
+
+**PR [#83](https://github.com/karagemop466-tech/X3/pull/83) — MERGED** at `2026-11-15T18:45:01Z`
+into `main` as merge commit `ccbc114`. Checks on the PR at merge time: `Rebuild and verify the desk`
+pass, `verify` pass, `signals` pass, `build` pass, `round2` pass.
+
+**Deployment verified against the live site, not against CI logs.** `gh run list` was rate-limited,
+so the deployed bytes were checked directly:
+
+| URL | Result |
+|---|---|
+| https://karagemop466-tech.github.io/X3/x3/index.html | **live** — "Overview", 138 results / 106 graded / 13 markets / 0 prices / 15 flags, 28 page links |
+| .../x3/sources.html | **live** — S-01…S-16 with retrieval notes |
+| `x3/index.html` in `origin/main` | present; 46 files under `x3/` |
+| nav entry in `hub/index.html` on `main` | present |
+
+Note for anyone checking later: the `x3/index.html` URL returned a Pages 404 for roughly ten minutes
+after the merge while every sibling page served 200. It was a CDN propagation lag on a single path,
+not a missing artifact — `git cat-file -e origin/main:x3/index.html` succeeded throughout, and the
+page appeared with a cache-busting query. **Verify deploys against more than one URL** before
+concluding a deploy failed.
+
+**Every gate in `pages.yml` was run locally before merge**, including the ones named in the workflow
+but easy to miss: `tools/check_links.py`, `tools/verify_site.py`, `tools/verify_hub.py`,
+`tools/verify_ledger.py`, `tools/crosscheck.py`, `scripts/check_dashboard.py`, `tools/verify_markets.py`.
+All exit 0. Both deterministic-rebuild assertions (`data/x3/verified/` and `hub index.html data/hub/`)
+report **0 files changed** after regeneration.
+
+### Final state of the module
+
+- **28 pages** in `x3/`, **18 data files**, **18 checks** in `tools/x3_desk_verify.py` — all pass.
+- **Two rebuilds are byte-identical** (x3: 43 files; hub: 0 diffs).
+- **Zero unsourced table rows** (821 rows across 28 pages), zero broken links (1,081).
+- Flags F-01…F-18 published with source links; sources S-01…S-16 with retrieval dates.
+
+### The one thing worth reading twice
+
+`depth_order.csv` said 19 of 23 slots agree with official snaps (83%), and
+`starter_check.csv` says 17 of 22 chart-first players actually started. Those are *different
+questions*, and the second one is the one the brief cares about: Washington's chart listed
+**Terry McLaurin** first at receiver and he **did not start**; it listed **Jacory Croskey-Merritt**
+first at running back and **Rachaad White** started. A desk that publishes "83% accurate" without
+the starter check would be overstating what it knows.

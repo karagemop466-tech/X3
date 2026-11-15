@@ -77,9 +77,9 @@
     },
     "crosscheck": {
       "pages": 7,
-      "rows": 662,
-      "flagged_rows": 643,
-      "refs": 1910,
+      "rows": 741,
+      "flagged_rows": 722,
+      "refs": 2068,
       "unsourced_examples": [
         "crosscheck/executive-summary.html: Fact Value Official source  Where verified",
         "crosscheck/executive-summary.html: Missing Why State Source",
@@ -313,8 +313,8 @@
     }
   },
   "pages_total": 275,
-  "rows_total": 12000,
-  "rows_flagged_or_sourced": 10023,
-  "internal_refs": 7038,
+  "rows_total": 12079,
+  "rows_flagged_or_sourced": 10102,
+  "internal_refs": 7117,
   "problems": []
 }

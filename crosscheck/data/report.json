@@ -1,19 +1,209 @@
 {
- "generated_at": "2026-11-14T20:08:58+00:00",
+ "generated_at": "2026-11-15T18:46:21+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
-   "pages": 197,
-   "links": 11219,
-   "external": 7349,
-   "tables": 355,
-   "rows": 7268,
-   "rows_with_http": 5809,
-   "rows_flag_only": 254,
-   "rows_without": 1205
+   "pages": 268,
+   "links": 16758,
+   "external": 10657,
+   "tables": 456,
+   "rows": 10882,
+   "rows_with_http": 8702,
+   "rows_flag_only": 347,
+   "rows_without": 1833
   },
   "broken_internal": [],
   "per_page": [
+   {
+    "page": "agency/site/correlations.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/depth.html",
+    "links": 190,
+    "external": 171,
+    "tables": 2,
+    "rows": 171,
+    "rows_with_http": 171,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/executive-summary.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/fixtures.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 200,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 200
+   },
+   {
+    "page": "agency/site/flagged.html",
+    "links": 31,
+    "external": 12,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/gates.html",
+    "links": 19,
+    "external": 0,
+    "tables": 2,
+    "rows": 15,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 15
+   },
+   {
+    "page": "agency/site/index.html",
+    "links": 21,
+    "external": 0,
+    "tables": 2,
+    "rows": 76,
+    "rows_with_http": 0,
+    "rows_flag_only": 3,
+    "rows_without": 73
+   },
+   {
+    "page": "agency/site/injuries.html",
+    "links": 24,
+    "external": 5,
+    "tables": 2,
+    "rows": 6,
+    "rows_with_http": 5,
+    "rows_flag_only": 0,
+    "rows_without": 1
+   },
+   {
+    "page": "agency/site/leaderboard.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/lines.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 13
+   },
+   {
+    "page": "agency/site/luck.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/methodology.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/policy.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/provenance.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/questions.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 0,
+    "rows_flag_only": 1,
+    "rows_without": 9
+   },
+   {
+    "page": "agency/site/readiness.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 70,
+    "rows_with_http": 0,
+    "rows_flag_only": 3,
+    "rows_without": 67
+   },
+   {
+    "page": "agency/site/registry.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 9,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 9
+   },
+   {
+    "page": "agency/site/results.html",
+    "links": 94,
+    "external": 74,
+    "tables": 1,
+    "rows": 74,
+    "rows_with_http": 74,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/suggestions.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 12
+   },
    {
     "page": "archive/hub-621bf404/archive.html",
     "links": 21,
@@ -916,7 +1106,7 @@
    },
    {
     "page": "hub/archive.html",
-    "links": 45,
+    "links": 48,
     "external": 1,
     "tables": 1,
     "rows": 12,
@@ -926,7 +1116,7 @@
    },
    {
     "page": "hub/correlation.html",
-    "links": 53,
+    "links": 56,
     "external": 21,
     "tables": 4,
     "rows": 25,
@@ -936,7 +1126,7 @@
    },
    {
     "page": "hub/depth.html",
-    "links": 76,
+    "links": 79,
     "external": 44,
     "tables": 2,
     "rows": 43,
@@ -946,27 +1136,27 @@
    },
    {
     "page": "hub/executive-summary.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 2,
-    "rows": 24,
+    "rows": 25,
     "rows_with_http": 0,
     "rows_flag_only": 4,
-    "rows_without": 20
+    "rows_without": 21
    },
    {
     "page": "hub/flagged.html",
-    "links": 65,
-    "external": 33,
+    "links": 64,
+    "external": 29,
     "tables": 1,
-    "rows": 32,
-    "rows_with_http": 32,
-    "rows_flag_only": 0,
+    "rows": 34,
+    "rows_with_http": 28,
+    "rows_flag_only": 6,
     "rows_without": 0
    },
    {
     "page": "hub/gates.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 1,
     "rows": 10,
@@ -976,17 +1166,17 @@
    },
    {
     "page": "hub/index.html",
-    "links": 66,
-    "external": 4,
-    "tables": 2,
-    "rows": 38,
-    "rows_with_http": 2,
-    "rows_flag_only": 2,
+    "links": 81,
+    "external": 15,
+    "tables": 3,
+    "rows": 74,
+    "rows_with_http": 13,
+    "rows_flag_only": 27,
     "rows_without": 34
    },
    {
     "page": "hub/injuries.html",
-    "links": 378,
+    "links": 381,
     "external": 346,
     "tables": 2,
     "rows": 354,
@@ -996,7 +1186,7 @@
    },
    {
     "page": "hub/leaderboard.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 8,
     "rows": 44,
@@ -1006,7 +1196,7 @@
    },
    {
     "page": "hub/lines.html",
-    "links": 107,
+    "links": 110,
     "external": 75,
     "tables": 4,
     "rows": 54,
@@ -1016,7 +1206,7 @@
    },
    {
     "page": "hub/luck.html",
-    "links": 65,
+    "links": 68,
     "external": 33,
     "tables": 2,
     "rows": 37,
@@ -1026,7 +1216,7 @@
    },
    {
     "page": "hub/markets.html",
-    "links": 189,
+    "links": 192,
     "external": 157,
     "tables": 4,
     "rows": 92,
@@ -1036,7 +1226,7 @@
    },
    {
     "page": "hub/origination.html",
-    "links": 92,
+    "links": 95,
     "external": 60,
     "tables": 5,
     "rows": 77,
@@ -1046,7 +1236,7 @@
    },
    {
     "page": "hub/price-store.html",
-    "links": 45,
+    "links": 48,
     "external": 13,
     "tables": 3,
     "rows": 23,
@@ -1056,7 +1246,7 @@
    },
    {
     "page": "hub/pricing.html",
-    "links": 64,
+    "links": 67,
     "external": 32,
     "tables": 4,
     "rows": 25,
@@ -1066,17 +1256,17 @@
    },
    {
     "page": "hub/questions.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 1,
-    "rows": 27,
+    "rows": 28,
     "rows_with_http": 0,
     "rows_flag_only": 4,
-    "rows_without": 23
+    "rows_without": 24
    },
    {
     "page": "hub/replacement.html",
-    "links": 88,
+    "links": 91,
     "external": 56,
     "tables": 3,
     "rows": 68,
@@ -1086,7 +1276,7 @@
    },
    {
     "page": "hub/replacements.html",
-    "links": 231,
+    "links": 234,
     "external": 199,
     "tables": 3,
     "rows": 113,
@@ -1096,7 +1286,7 @@
    },
    {
     "page": "hub/repo-review.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 3,
     "rows": 24,
@@ -1106,18 +1296,18 @@
    },
    {
     "page": "hub/requirements.html",
-    "links": 33,
-    "external": 1,
-    "tables": 2,
-    "rows": 40,
-    "rows_with_http": 0,
-    "rows_flag_only": 5,
+    "links": 48,
+    "external": 13,
+    "tables": 3,
+    "rows": 76,
+    "rows_with_http": 11,
+    "rows_flag_only": 30,
     "rows_without": 35
    },
    {
     "page": "hub/results.html",
-    "links": 586,
-    "external": 553,
+    "links": 588,
+    "external": 552,
     "tables": 3,
     "rows": 282,
     "rows_with_http": 278,
@@ -1126,7 +1316,7 @@
    },
    {
     "page": "hub/signal.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 5,
     "rows": 23,
@@ -1136,7 +1326,7 @@
    },
    {
     "page": "hub/sources.html",
-    "links": 47,
+    "links": 50,
     "external": 15,
     "tables": 1,
     "rows": 14,
@@ -1146,7 +1336,7 @@
    },
    {
     "page": "hub/strategies.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 3,
     "rows": 20,
@@ -1156,7 +1346,7 @@
    },
    {
     "page": "hub/suggestions.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 2,
     "rows": 34,
@@ -1166,7 +1356,7 @@
    },
    {
     "page": "hub/verification.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 4,
     "rows": 26,
@@ -1176,22 +1366,22 @@
    },
    {
     "page": "hub/verified-results.html",
-    "links": 235,
-    "external": 202,
+    "links": 237,
+    "external": 201,
     "tables": 4,
     "rows": 201,
-    "rows_with_http": 201,
-    "rows_flag_only": 0,
+    "rows_with_http": 200,
+    "rows_flag_only": 1,
     "rows_without": 0
    },
    {
     "page": "index.html",
-    "links": 54,
-    "external": 1,
-    "tables": 0,
-    "rows": 0,
-    "rows_with_http": 0,
-    "rows_flag_only": 0,
+    "links": 112,
+    "external": 29,
+    "tables": 3,
+    "rows": 49,
+    "rows_with_http": 22,
+    "rows_flag_only": 27,
     "rows_without": 0
    },
    {
@@ -1795,6 +1985,246 @@
     "rows_without": 6
    },
    {
+    "page": "round2/audit.html",
+    "links": 34,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/flagged.html",
+    "links": 18,
+    "external": 8,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 7,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/index.html",
+    "links": 17,
+    "external": 1,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/readiness.html",
+    "links": 142,
+    "external": 67,
+    "tables": 1,
+    "rows": 66,
+    "rows_with_http": 66,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/sources.html",
+    "links": 16,
+    "external": 7,
+    "tables": 1,
+    "rows": 6,
+    "rows_with_http": 6,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/suggestions.html",
+    "links": 20,
+    "external": 11,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 10,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/verification.html",
+    "links": 61,
+    "external": 50,
+    "tables": 6,
+    "rows": 135,
+    "rows_with_http": 47,
+    "rows_flag_only": 0,
+    "rows_without": 88
+   },
+   {
+    "page": "signals/correlations.html",
+    "links": 44,
+    "external": 16,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 15,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/depth.html",
+    "links": 642,
+    "external": 613,
+    "tables": 2,
+    "rows": 306,
+    "rows_with_http": 306,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/executive-summary.html",
+    "links": 47,
+    "external": 15,
+    "tables": 2,
+    "rows": 14,
+    "rows_with_http": 14,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/flagged.html",
+    "links": 42,
+    "external": 14,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/gates.html",
+    "links": 55,
+    "external": 27,
+    "tables": 3,
+    "rows": 26,
+    "rows_with_http": 26,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/index.html",
+    "links": 44,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/leaderboard.html",
+    "links": 58,
+    "external": 28,
+    "tables": 3,
+    "rows": 27,
+    "rows_with_http": 27,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/lines.html",
+    "links": 164,
+    "external": 135,
+    "tables": 3,
+    "rows": 136,
+    "rows_with_http": 134,
+    "rows_flag_only": 0,
+    "rows_without": 2
+   },
+   {
+    "page": "signals/prices.html",
+    "links": 1019,
+    "external": 990,
+    "tables": 2,
+    "rows": 989,
+    "rows_with_http": 989,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/questions.html",
+    "links": 56,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/repo-review.html",
+    "links": 48,
+    "external": 17,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/requirements.html",
+    "links": 45,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/results.html",
+    "links": 192,
+    "external": 164,
+    "tables": 1,
+    "rows": 163,
+    "rows_with_http": 163,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/sources.html",
+    "links": 37,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/strategies.html",
+    "links": 45,
+    "external": 16,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 15,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/suggestions.html",
+    "links": 45,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/verification.html",
+    "links": 37,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
     "page": "site/index.html",
     "links": 13,
     "external": 0,
@@ -1853,6 +2283,286 @@
     "rows_with_http": 4,
     "rows_flag_only": 4,
     "rows_without": 3
+   },
+   {
+    "page": "x3/ablations.html",
+    "links": 35,
+    "external": 2,
+    "tables": 1,
+    "rows": 2,
+    "rows_with_http": 2,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/availability.html",
+    "links": 112,
+    "external": 79,
+    "tables": 2,
+    "rows": 79,
+    "rows_with_http": 79,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/backtest.html",
+    "links": 140,
+    "external": 106,
+    "tables": 1,
+    "rows": 106,
+    "rows_with_http": 106,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/correlations.html",
+    "links": 43,
+    "external": 10,
+    "tables": 2,
+    "rows": 10,
+    "rows_with_http": 10,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/depth.html",
+    "links": 88,
+    "external": 55,
+    "tables": 2,
+    "rows": 55,
+    "rows_with_http": 55,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/executive-summary.html",
+    "links": 33,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/features.html",
+    "links": 46,
+    "external": 13,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/fixtures.html",
+    "links": 60,
+    "external": 27,
+    "tables": 1,
+    "rows": 27,
+    "rows_with_http": 27,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/flagged.html",
+    "links": 51,
+    "external": 18,
+    "tables": 2,
+    "rows": 18,
+    "rows_with_http": 18,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/gates.html",
+    "links": 42,
+    "external": 1,
+    "tables": 1,
+    "rows": 9,
+    "rows_with_http": 1,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "x3/index.html",
+    "links": 64,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/injuries.html",
+    "links": 39,
+    "external": 6,
+    "tables": 2,
+    "rows": 6,
+    "rows_with_http": 6,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/leaderboard.html",
+    "links": 33,
+    "external": 0,
+    "tables": 1,
+    "rows": 6,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "x3/lines.html",
+    "links": 47,
+    "external": 13,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/luck.html",
+    "links": 68,
+    "external": 35,
+    "tables": 2,
+    "rows": 35,
+    "rows_with_http": 35,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/matrix.html",
+    "links": 164,
+    "external": 130,
+    "tables": 1,
+    "rows": 65,
+    "rows_with_http": 65,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/policy.html",
+    "links": 33,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/preregistration.html",
+    "links": 40,
+    "external": 0,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 7
+   },
+   {
+    "page": "x3/prices.html",
+    "links": 73,
+    "external": 39,
+    "tables": 1,
+    "rows": 39,
+    "rows_with_http": 39,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/questions.html",
+    "links": 48,
+    "external": 13,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 2
+   },
+   {
+    "page": "x3/readiness.html",
+    "links": 112,
+    "external": 2,
+    "tables": 1,
+    "rows": 79,
+    "rows_with_http": 2,
+    "rows_flag_only": 2,
+    "rows_without": 75
+   },
+   {
+    "page": "x3/repo-review.html",
+    "links": 47,
+    "external": 0,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 16
+   },
+   {
+    "page": "x3/results.html",
+    "links": 171,
+    "external": 138,
+    "tables": 10,
+    "rows": 138,
+    "rows_with_http": 138,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/schedule.html",
+    "links": 45,
+    "external": 12,
+    "tables": 2,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/sources.html",
+    "links": 49,
+    "external": 16,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/suggestions.html",
+    "links": 33,
+    "external": 0,
+    "tables": 1,
+    "rows": 9,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 9
+   },
+   {
+    "page": "x3/teams.html",
+    "links": 65,
+    "external": 32,
+    "tables": 1,
+    "rows": 32,
+    "rows_with_http": 32,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/verification.html",
+    "links": 47,
+    "external": 0,
+    "tables": 1,
+    "rows": 14,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 14
    },
    {
     "page": "x3lab/depth.html",
@@ -2177,7 +2887,7 @@
    "path": "hub/questions.html",
    "page": "hub/questions.html",
    "kind": "html",
-   "rows": 27
+   "rows": 28
   },
   {
    "family": "requirements",
@@ -2225,7 +2935,7 @@
    "path": "hub/flagged.html",
    "page": "hub/flagged.html",
    "kind": "html",
-   "rows": 32
+   "rows": 34
   },
   {
    "family": "strategies",
@@ -2280,7 +2990,7 @@
  "reconciliation": {
   "families": {
    "flags": {
-    "count": 123,
+    "count": 125,
     "modules": {
      "data (0c38f465)": 16,
      "dashboard (7e632805)": 12,
@@ -2290,7 +3000,7 @@
      "root page (3dbc4678)": 14,
      "pages (1a771fcd)": 9,
      "desk (3bf7cc8b)": 10,
-     "hub (e9b492ab)": 32
+     "hub (e9b492ab)": 34
     },
     "id_groups": {
      "F01": {
@@ -2458,7 +3168,7 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "F-02",
-        "title": "No game log. The only final score confirmed for the 2026 season is Commanders 24, Giants 21 (Week 10 TNF) on the schedule page.",
+        "title": "The canonical 2026 feed contains 137 final scores reconciled to all 32 clubs' official standings; it is not a multi-season backtest corpus, and historical seasons remain absent.",
         "status": "HIGH",
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
@@ -3476,7 +4186,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://www.nfl.com/games/chargers-at-ravens-2026-reg-10 and https://www.nfl.com/odds/ Malformed source reference; flagged for repair."
        }
       ],
       "identity": "same",
@@ -3500,7 +4210,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/hub/lines.html vs hub/markets.html Malformed source reference; flagged for repair."
        }
       ],
       "identity": "same",
@@ -3620,7 +4330,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/verification_log.json - field-level reconciliation Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3654,7 +4364,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/price_snapshots_2026.csv - OPEN rows absent by policy; 2021 pilot committed Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3688,7 +4398,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/raw/club_depth_charts_2026_wk10/ - verbatim transcriptions with fetch dates Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3722,7 +4432,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/hub/strategies.html - prop rows blank by policy Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3753,6 +4463,54 @@
         "raw_id": "F-28",
         "title": "Correlation values computed at game level use official scores plus PFF closing lines (MARKET-3P). Every value publishes n. Team-level coefficients from the prior session (n=32) are kept and labelled.",
         "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F29": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-29",
+        "title": "As of 2026-11-15 UTC, the canonical G-2 gate sets a minimum of 300 settled bets across at least 3 seasons. Open PR #58 proposes 2,272 bets instead; GitHub reports that pull request is unmerged and has a dirty merge state. Neither number is an NFL-published fact, and the final project threshold is unresolved.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F31": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-31",
+        "title": "The canonical 163-row results feed has venue populated for only 7 fixtures; 156 venue cells are blank. Do not infer venue from the home-team field or assume a neutral site. Official NFL Game Center capture is still required for each fixture.",
+        "status": "HIGH",
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
@@ -3986,7 +4744,7 @@
     }
    },
    "questions": {
-    "count": 133,
+    "count": 134,
     "modules": {
      "data (0c38f465)": 12,
      "dashboard (7e632805)": 20,
@@ -3994,7 +4752,7 @@
      "x3lab (e1c332ce)": 20,
      "lab (972ad7a5)": 14,
      "desk (3bf7cc8b)": 25,
-     "hub (e9b492ab)": 27
+     "hub (e9b492ab)": 28
     },
     "id_groups": {
      "Q01": {
@@ -5676,6 +6434,30 @@
       ],
       "status_conflict": false
      },
+     "Q25": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-25",
+        "title": "Whether venue-dependent modelling can proceed",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "BLOCKED"
+      ],
+      "status_conflict": false
+     },
      "QA01": {
       "modules": [
        "x3lab (e1c332ce)"
@@ -7298,19 +8080,19 @@
         "module": "hub (e9b492ab)",
         "raw_id": "R-23",
         "title": "Game results by week and venue for model calibration",
-        "status": "BLOCKED",
-        "status_norm": "BLOCKED",
+        "status": "PARTIAL",
+        "status_norm": "PARTIAL",
         "page": "hub/requirements.html",
         "register": "hub/requirements.html",
-        "source": "No ingested game log; only 1 final score known (F-02)"
+        "source": "137 final 2026 games are present and aggregate to official standings; only 7 of 163 feed rows have a venue value, leaving 156 blank; multi-season history is absent (see Q-19/Q-25)"
        }
       ],
       "identity": "different",
       "min_score": 0.0,
       "same_content": false,
       "statuses": [
-       "BLOCKED",
-       "DONE"
+       "DONE",
+       "PARTIAL"
       ],
       "status_conflict": false
      },
@@ -12088,7 +12870,7 @@
    "cmd": "python3 tools/check_links.py",
    "exit": 0,
    "tail": [
-    "OK \u2014 13 pages, 372 links checked, no broken internal links."
+    "OK \u2014 13 pages, 422 links checked, no broken internal links."
    ]
   },
   {
@@ -12287,7 +13069,7 @@
    "id": "X-14",
    "severity": "Medium",
    "area": "Rows without source or flag",
-   "finding": "1205 table rows across 98 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: ops/snapshots.html (79), origin/snapshots.html (78), hub/leaderboard.html (41), hub/requirements.html (35), hub/index.html (34), hub/suggestions.html (32), ops/gates.html (25), hub/verification.html (24).",
+   "finding": "1833 table rows across 117 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: agency/site/fixtures.html (200), round2/verification.html (88), ops/snapshots.html (79), origin/snapshots.html (78), x3/readiness.html (75), agency/site/index.html (73), agency/site/readiness.html (67), hub/leaderboard.html (41).",
    "evidence": [
     "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json"
    ],
