@@ -2655,3 +2655,20 @@ The overlapping official-source correction was independently completed and merge
 - Post-merge Pages verification: deploy workflow run `43746441803` completed successfully on merge commit `6955b91`; GitHub Pages API reports `status: built`, URL https://karagemop466-tech.github.io/X3/ . Live check of https://karagemop466-tech.github.io/X3/hub/results.html?cachebust=6955b91 shows the corrected ROI caveat and official Week 10 citations from PR #65.
 - Coordination closeout for this branch: earlier duplicate PR #66 was closed without merge after PR #65 independently merged the official-source correction; its disposition and the rebase union are recorded above. Current task C02 is merged and deployed.
 
+
+## Session `arena/4c6e8f48-x3` — current-branch integration audit (2026-11-15)
+
+The platform-assigned branch is `arena/4c6e8f48-x3`; work remains on this branch. The user-requested
+`session-<id>/<task>` branch/worktree naming is not available in this one-branch Arena session.
+
+### Claim
+
+| ID | Task | Status | Owner | Files |
+|---|---|---|---|---|
+| INT-01 | Final tree regression audit; repair stale requirement register and put one-row-per-requirement readiness gates on the landing page | in progress | `arena/4c6e8f48-x3` | `tools/hub_content.py`, `tools/build_hub.py`, generated `hub/index.html`, `hub/requirements.html`, `index.html`, this log |
+
+Scope is limited to the canonical requirement register / landing readiness summary and this coordination
+entry. I will not rewrite historical or other module data. Baseline audit found stale contradictory text:
+R-23/F-02 in `tools/hub_content.py` still says no game log and only one final, while the same tree's
+results feed has 272 scheduled rows and 137 finals, and `tools/x3_content.py` explicitly retracts F-02.
+The requested landing-page decision-readiness matrix is also not present in the generated hub index.
