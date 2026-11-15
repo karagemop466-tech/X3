@@ -3295,3 +3295,18 @@ Scope declaration: `readiness/**` and the five named scripts/workflows are new. 
 the shared root landing (same pattern as sessions `arena/09f8c786-x3` and `arena/3b99e9ad-x3` before).
 No file under `hub/`, `ops/`, `signals/`, `desk/`, `council/`, `docs/`, `dashboard/`, `data/` (except
 append-only logs) is edited.
+
+### Claim expansion (arena/6259c7b0-x3, same session)
+
+Repo-wide grep on current main (2026-11-15) found three more unimplemented brief requirements, claimed now:
+
+| ID | Task | Status | Owner | Files |
+|----|------|--------|-------|-------|
+| RD-07 | Injury/personnel ablation with uncertainty (with vs without availability features, chronological holdouts) — availability load is currently published but never fitted (`scripts/x3_signals.py` line 56) | in progress | `arena/6259c7b0-x3` | `scripts/readiness_ablation.py`, `readiness/ablations.html` |
+| RD-08 | Announced-starter evidence field (official dated starter announcements, not inferred replacements) | in progress | `arena/6259c7b0-x3` | `readiness/announced-starters.html` |
+| RD-09 | Offense-vs-defence matchup deficiency matrix, 1st-4th string, interactive | in progress | `arena/6259c7b0-x3` | `readiness/matchup-matrix.html` |
+
+Venue transcription, roof/NWS overlay, past-season report archives, reserve-list and snap-count capture
+are data-capture-blocked (sandbox cannot reach nfl.com; capture runs on GitHub runners). They are added
+to the RD-01 readiness register as blocked rows with the number that would clear them, and to the
+RD-06 snapshot-workflow plan — not silently dropped.
