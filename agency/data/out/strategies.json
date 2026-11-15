@@ -10,8 +10,8 @@
    0.4942,
    0.7114
   ],
-  "bh_threshold": 0.1,
-  "bh_significant": true
+  "bh_threshold": 0.06667,
+  "bh_significant": false
  },
  "S4_total": {
   "id": "S4",
@@ -24,8 +24,22 @@
    0.2644,
    0.4787
   ],
-  "bh_threshold": 0.05,
+  "bh_threshold": 0.03333,
   "bh_significant": true
+ },
+ "S5_total_naive": {
+  "id": "S5",
+  "label": "Total: naive club-mean baseline (over when mean > 45)",
+  "n": 74,
+  "hits": 32,
+  "rate": 0.4324,
+  "p_vs_constant": 0.2954132806556784,
+  "ci95": [
+   0.3257,
+   0.5459
+  ],
+  "bh_threshold": 0.1,
+  "bh_significant": false
  },
  "S1_side_proper": {
   "id": "S1",

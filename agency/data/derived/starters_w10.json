@@ -878,5 +878,445 @@
   "number": 36,
   "source": "https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
   "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "LT",
+  "player": "W.Campbell",
+  "number": 66,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "LG",
+  "player": "A.Vera-Tucker",
+  "number": 75,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "C",
+  "player": "J.Wilson",
+  "number": 55,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "RG",
+  "player": "M.Onwenu",
+  "number": 71,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "RT",
+  "player": "M.Moses",
+  "number": 76,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "H.Henry",
+  "number": 85,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "QB",
+  "player": "D.Maye",
+  "number": 10,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "RB",
+  "player": "R.Stevenson",
+  "number": 38,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "FB",
+  "player": "R.Gilliam",
+  "number": 44,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "A.Brown",
+  "number": 1,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "M.Hollins",
+  "number": 13,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "D.Jones",
+  "number": 5,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "DT",
+  "player": "C.Durden",
+  "number": 94,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "DT",
+  "player": "M.Williams",
+  "number": 97,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "OLB",
+  "player": "E.Ponder",
+  "number": 91,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "R.Spillane",
+  "number": 14,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "C.Elliss",
+  "number": 53,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "C.Gonzalez",
+  "number": 0,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "C.Davis",
+  "number": 7,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "S",
+  "player": "C.Woodson",
+  "number": 4,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "S",
+  "player": "K.Byard",
+  "number": 31,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "NE",
+  "unit": "Defense",
+  "position": "S",
+  "player": "D.Pettus",
+  "number": 24,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "TE",
+  "player": "A.Barner",
+  "number": 88,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "LT",
+  "player": "C.Cross",
+  "number": 67,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "LG",
+  "player": "G.Zabel",
+  "number": 76,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "C",
+  "player": "J.Sundell",
+  "number": 61,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "RG",
+  "player": "A.Bradford",
+  "number": 75,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "RT",
+  "player": "A.Lucas",
+  "number": 72,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "J.Smith-Njigba",
+  "number": 11,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "WR",
+  "player": "C.Kupp",
+  "number": 10,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "QB",
+  "player": "S.Darnold",
+  "number": 14,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "FB",
+  "player": "B.Russell",
+  "number": 38,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Offense",
+  "position": "RB",
+  "player": "J.Price",
+  "number": 8,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "DT",
+  "player": "L.Williams",
+  "number": 99,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "DE",
+  "player": "B.Murphy",
+  "number": 91,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "DE",
+  "player": "J.Reed",
+  "number": 90,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "D.Lawrence",
+  "number": 0,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "E.Jones",
+  "number": 13,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "D.Thomas",
+  "number": 32,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "LB",
+  "player": "T.Knight",
+  "number": 48,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "D.Witherspoon",
+  "number": 21,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "CB",
+  "player": "J.Jobe",
+  "number": 29,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "S",
+  "player": "J.Love",
+  "number": 20,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
+ },
+ {
+  "game": "NE@SEA",
+  "team": "SEA",
+  "unit": "Defense",
+  "position": "S",
+  "player": "R.Thomas",
+  "number": 24,
+  "source": "https://static.www.nfl.com/image/upload/v1789038923/gamecenter/a8fb0d78-4feb-11f1-abca-2c54536568a9.pdf",
+  "evidence": "Game Book 'Lineups' block (official NFL game summary)"
  }
 ]

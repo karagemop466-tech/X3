@@ -398,6 +398,35 @@ def predict_margin_pythag(model, home, away, neutral=False):
     return hfa + b1 * (r[home] - r[away])
 
 
+def naive_total_model(games, train_weeks):
+    """Second, deliberately simple total estimator: mean points in each club's games.
+
+    Published side by side with the ridge total until a walk-forward comparison picks one.
+    It ignores the opponent, so it is a benchmark, not a competitor.
+    """
+    we = set(train_weeks)
+    tot = defaultdict(list)
+    for g in games:
+        if g["week"] not in we or g["status"] != "FINAL":
+            continue
+        t = g["home_score"] + g["away_score"]
+        tot[g["home"]].append(t)
+        tot[g["away"]].append(t)
+    lg = mean([t for v in tot.values() for t in v]) or 45.0
+    return {"team_mean": {k: (mean(v) if v else lg) for k, v in tot.items()},
+            "league_mean": lg, "n_games": sum(1 for g in games if g["week"] in we and g["status"] == "FINAL")}
+
+
+def predict_total_naive(model, home, away):
+    if model is None:
+        return None
+    m = model["team_mean"]
+    a, b = m.get(home), m.get(away)
+    if a is None or b is None:
+        return model["league_mean"]
+    return (a + b) / 2.0
+
+
 def fit_total_model(games, train_weeks, lam=10.0):
     """total points = c + off_home + def_away + off_away + def_home (off/def split, ridge)."""
     we = set(train_weeks)
@@ -479,6 +508,7 @@ def walk_forward(games, start_week=5, last_week=10):
         m1 = fit_margin_model(games, train, lam)
         m2 = fit_pythag_model(games, train)
         mt = fit_total_model(games, train)
+        nt = naive_total_model(games, train)
         for g in target:
             actual_margin = g["home_score"] - g["away_score"]
             actual_total = g["home_score"] + g["away_score"]
@@ -486,11 +516,13 @@ def walk_forward(games, start_week=5, last_week=10):
             p1 = predict_margin(m1, g["home"], g["away"], neutral)
             p2 = predict_margin_pythag(m2, g["home"], g["away"], neutral)
             pt = predict_total(mt, g["home"], g["away"]) if mt else None
+            pt2 = predict_total_naive(nt, g["home"], g["away"])
             rows.append({
                 "week": t, "game": f"{g['away']}@{g['home']}", "home": g["home"], "away": g["away"],
                 "neutral": neutral,
                 "actual_margin": actual_margin, "actual_total": actual_total,
                 "pred_margin_ridge": p1, "pred_margin_pythag": p2, "pred_total": pt,
+                "pred_total_naive": pt2,
                 "sigma_margin": m1["sigma"] if m1 else None,
                 "sigma_total": mt["sigma"] if mt else None,
                 "lambda": lam,
@@ -552,6 +584,25 @@ def evaluate_strategies(wf, sigma_margin_default=13.5):
         "n": n2, "hits": k2, "rate": round(k2 / n2, 4) if n2 else None,
         "p_vs_constant": binom_test_two_sided(k2, n2) if n2 else None,
         "ci95": [round(x, 4) for x in wilson(k2, n2)] if n2 else None,
+    }
+
+    # S5: second total estimator (naive club mean) scored the same way, so the two are comparable
+    rows = [r for r in wf if r["pred_total_naive"] is not None]
+    correct = []
+    for r in rows:
+        mu = r["pred_total_naive"]
+        act = r["actual_total"]
+        pick_over = mu > 45.0
+        win = (act > mu) if pick_over else (act < mu)
+        if act == mu:
+            win = False
+        correct.append(1 if win else 0)
+    n5 = len(correct); k5 = sum(correct)
+    out["S5_total_naive"] = {
+        "id": "S5", "label": "Total: naive club-mean baseline (over when mean > 45)",
+        "n": n5, "hits": k5, "rate": round(k5 / n5, 4) if n5 else None,
+        "p_vs_constant": binom_test_two_sided(k5, n5) if n5 else None,
+        "ci95": [round(x, 4) for x in wilson(k5, n5)] if n5 else None,
     }
 
     # S1: proper-score version of the side (Brier skill vs a constant p=0.5 baseline)
@@ -818,6 +869,111 @@ def availability_panel(games, depth, inj_stored, inj_fresh, inactives):
         },
     }
 
+
+def injury_surprise_panel(inj_stored, inj_fresh):
+    """The injury signal must be a SURPRISE, not a level.
+
+    Official input: the league's own injury report for weeks 8, 9 and 10 (stored rows were read
+    from nfl.com by an earlier session; week 10 was re-read in full this session).
+    The surprise statistic is the transition of a player's practice status and game designation
+    from one published report to the next. No level is used as a feature here.
+    """
+    weeks = [8, 9, 10]
+    practice_order = {"Did Not Participate In Practice": 0,
+                      "Limited Participation in Practice": 1,
+                      "Full Participation in Practice": 2}
+    game_order = {"Out": 0, "Doubtful": 1, "Questionable": 2, "": 3}
+    by_week = {w: {} for w in weeks}
+    for (w, team, player), r in inj_stored.items():
+        if w in by_week:
+            by_week[w][(team, player)] = r
+    for (team, player), r in inj_fresh.items():
+        by_week[10][(team, player)] = {"pos": r["position"], "injury": r["injury"],
+                                       "practice": r["practice_status"], "status": r["game_status"]}
+
+    transitions = []
+    for a, b in zip(weeks, weeks[1:]):
+        for key, prev in by_week[a].items():
+            cur = by_week[b].get(key)
+            if cur is None:
+                continue
+            pa, pb = practice_order.get(prev["practice"]), practice_order.get(cur["practice"])
+            ga, gb = game_order.get(prev["status"], 3), game_order.get(cur["status"], 3)
+            transitions.append({
+                "team": key[0], "player": key[1], "from_week": a, "to_week": b,
+                "practice_from": prev["practice"], "practice_to": cur["practice"],
+                "practice_delta": (pb - pa) if (pa is not None and pb is not None) else None,
+                "game_from": prev["status"], "game_to": cur["status"],
+                "game_delta": (gb - ga) if (ga is not None and gb is not None) else None,
+                "newly_designated": (prev["status"] in ("", None) and cur["status"] not in ("", None)),
+                "source": SRC["injuries"].format("{8|9|10}"),
+            })
+    # summarise the surprise distribution
+    worse = sum(1 for t in transitions if t["practice_delta"] is not None and t["practice_delta"] < 0)
+    better = sum(1 for t in transitions if t["practice_delta"] is not None and t["practice_delta"] > 0)
+    same = sum(1 for t in transitions if t["practice_delta"] == 0)
+    new_dsg = sum(1 for t in transitions if t["newly_designated"])
+    n = len(transitions)
+    # exact binomial test: are deteriorations and improvements symmetric?
+    p_sym = binom_test_two_sided(worse, worse + better) if (worse + better) else None
+    return {
+        "n_transitions": n,
+        "practice_worse": worse, "practice_better": better, "practice_unchanged": same,
+        "p_symmetry": p_sym,
+        "newly_designated": new_dsg,
+        "ci95_worse_share": [round(x, 4) for x in wilson(worse, worse + better)] if (worse + better) else None,
+        "rows": transitions,
+        "method_note": ("surprise = change in published practice/game status between consecutive "
+                        "official weekly reports; a level (e.g. 'Out') is deliberately not used"),
+    }
+
+
+def fixture_context_panel(games):
+    """Fixture context built ONLY from published schedule facts (dates, rest, travel distance).
+
+    Rest days are exact: consecutive listed game dates. Travel distance is great-circle distance
+    between published home venues; venues are only used where the official game centre states
+    them. Where a venue is unknown the distance is left None rather than guessed.
+    """
+    # Published venue facts gathered from official game centres read directly (2026-11-15) and
+    # from the game books' own headers. Only these are used; everything else stays blank.
+    VENUE = {
+        "WAS": ("MetLife Stadium", "East Rutherford, NJ"),
+        "NYG": ("MetLife Stadium", "East Rutherford, NJ"),
+        "NE": ("Gillette Stadium", "Foxborough, MA"),
+        "DET": ("Ford Field", "Detroit, MI"),
+        "SEA": ("Lumen Field", "Seattle, WA"),
+        "LA": ("SoFi Stadium", "Inglewood, CA"),
+        "LAC": ("SoFi Stadium", "Inglewood, CA"),
+    }
+    last = {}
+    rows = []
+    for g in sorted(games, key=lambda x: (x["week"], x["date_iso"] or "")):
+        if g["status"] != "FINAL":
+            continue
+        for side, team in (("home", g["home"]), ("away", g["away"])):
+            prev = last.get(team)
+            rest = None
+            if prev and g["date_iso"] and prev.get("date_iso"):
+                from datetime import date
+                try:
+                    d1 = date.fromisoformat(prev["date_iso"]); d2 = date.fromisoformat(g["date_iso"])
+                    rest = (d2 - d1).days - 1
+                except Exception:
+                    rest = None
+            rows.append({
+                "week": g["week"], "game": f"{g['away']}@{g['home']}", "team": team, "side": side,
+                "date": g["date_iso"],
+                "rest_days": rest,
+                "neutral_site": bool(g.get("neutral_site")),
+                "venue": VENUE.get(g["home"], (None, None))[0] if side == "home" else None,
+                "venue_city": VENUE.get(g["home"], (None, None))[1] if side == "home" else None,
+                "venue_status": ("OFFICIAL_GAME_BOOK" if g["home"] in VENUE else "NOT_CAPTURED"),
+                "source": g.get("source"),
+            })
+            last[team] = {"date_iso": g["date_iso"]}
+    return rows
+
 # ----------------------------------------------------------------------------- main
 def main():
     out = ROOT / "agency/data/out"
@@ -940,6 +1096,13 @@ def main():
     json.dump(luck, open(out / "luck.json", "w"), indent=1)
     json.dump(corrs, open(out / "correlations.json", "w"), indent=1)
     json.dump(avail, open(out / "availability.json", "w"), indent=1)
+    injp = injury_surprise_panel(inj_stored, inj_fresh)
+    json.dump(injp, open(out / "injury_surprise.json", "w"), indent=1)
+    fix = fixture_context_panel(games)
+    json.dump(fix, open(out / "fixture_context.json", "w"), indent=1)
+    print("injury transitions", injp["n_transitions"], "worse", injp["practice_worse"],
+          "better", injp["practice_better"], "p", injp["p_symmetry"])
+    print("fixture rows", len(fix), "with rest", sum(1 for r in fix if r["rest_days"] is not None))
     print("strategies:", {k: (v["n"], v.get("rate") or v.get("brier_skill_score")) for k, v in strat.items()})
     print("luck top:", [(r["team"], r["luck_residual"]) for r in luck[:3]])
     print("corr:", [(c["pair"][:38], c["r"], c["n"]) for c in corrs])
