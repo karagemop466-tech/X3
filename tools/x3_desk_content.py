@@ -87,7 +87,7 @@ REQUIREMENTS = [
      "DONE", "x3/readiness.html", "one row per requirement, the blocking gate and the numeric threshold",
      "none"),
     ("R-23", "Transcribe the venue of every fixture from the official game centre and publish it",
-     "PARTIAL", "features.html", "2 venues verified from game centres plus 12 from the week page's stadium links",
+     "PARTIAL", "fixtures.html", "2 venues verified from game centres, 3 from the dated league release, 12 from the week page's stadium links",
      "the other 124 past games were not re-read for venue this session"),
     ("R-24", "Publish the league's dated schedule announcement beside the live schedule page",
      "BLOCKED", "questions.html", "the live week-10 and week-11 pages were read",

@@ -1255,7 +1255,7 @@ NYG,Offense,WR,1,Darnell Mooney,46,71%,,,18,69%,GAMEBOOK_SNAP,,,https://www.gian
 NYG,Offense,WR,2,Charlie Jones,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
 NYG,Offense,LT,1,Andrew Thomas,65,100%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,LT,2,J.C. Davis,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
-NYG,Offense,LG,1,Jon Runyan Jr.,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
+NYG,Offense,LG,1,Jon Runyan Jr.,65,100%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,LG,2,Aaron Stinnie,1,2%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,LG,3,Josh Sills,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
 NYG,Offense,C,1,Bryan Hudson,65,100%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
@@ -1268,7 +1268,7 @@ NYG,Offense,TE,1,Isaiah Likely,57,88%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giant
 NYG,Offense,TE,2,Theo Johnson,18,28%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,TE,3,Chris Manhertz,14,22%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,TE,4,Thomas Fidone II,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
-NYG,Offense,QB,1,J.J. McCarthy,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
+NYG,Offense,QB,1,J.J. McCarthy,62,95%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,QB,2,Jameis Winston,3,5%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,FB,1,Patrick Ricard,13,20%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Offense,RB,1,Cam Skattebo,58,89%,,,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
@@ -1296,7 +1296,7 @@ NYG,Defense,SS,2,Jason Pinnock,,,15,22%,18,69%,GAMEBOOK_SNAP,,,https://www.giant
 NYG,Defense,FS,1,Jevón Holland,,,69,100%,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Defense,FS,2,Ar'Darius Washington,,,54,78%,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Defense,FS,3,Elijah Campbell,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
-NYG,Defense,CB,1,Greg Newsome II,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
+NYG,Defense,CB,1,Greg Newsome II,,,69,100%,18,69%,GAMEBOOK_SNAP,,,https://www.giants.com/team/depth-chart
 NYG,Defense,CB,2,Colton Hood,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
 NYG,Defense,NB,1,Dru Phillips,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
 NYG,Defense,NB,2,Nic Jones,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.giants.com/team/depth-chart
@@ -1714,7 +1714,7 @@ WAS,Offense,C,1,Nick Allegretti,69,100%,,,18,69%,GAMEBOOK_SNAP,,,https://www.com
 WAS,Offense,C,2,Matt Gulbin,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.commanders.com/team/depth-chart
 WAS,Offense,RG,1,Sam Cosmi,69,100%,,,18,69%,GAMEBOOK_SNAP,,,https://www.commanders.com/team/depth-chart
 WAS,Offense,RG,2,Tanoa Togiai,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.commanders.com/team/depth-chart
-WAS,Offense,RT,1,Josh Conerly Jr.,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.commanders.com/team/depth-chart
+WAS,Offense,RT,1,Josh Conerly Jr.,69,100%,,,18,69%,GAMEBOOK_SNAP,,,https://www.commanders.com/team/depth-chart
 WAS,Offense,RT,2,Andrew Wylie,,,,,,,CLUB_CHART_ONLY,,F-06,https://www.commanders.com/team/depth-chart
 WAS,Offense,TE,1,Chig Okonkwo,41,59%,,,18,69%,GAMEBOOK_SNAP,,,https://www.commanders.com/team/depth-chart
 WAS,Offense,TE,2,Ben Sinnott,24,35%,,,18,69%,GAMEBOOK_SNAP,,,https://www.commanders.com/team/depth-chart

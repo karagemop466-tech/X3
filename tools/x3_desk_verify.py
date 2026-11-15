@@ -271,6 +271,22 @@ def main():
           bool(groups) and recorded,
           f"{len(groups)} shared group(s) recorded live; documented on the depth page = {recorded}")
 
+    # ---- C-15 the starter check has a real, non-empty comparison ----
+    sc = list(csv.DictReader(open(os.path.join(DATA, "starter_check.csv"), encoding="utf-8")))
+    emptyrows = [r for r in sc if not r["chart_first"].strip()]
+    meta = json.load(open(os.path.join(DATA, "meta.json"), encoding="utf-8"))
+    S = meta["starter_check"]
+    check("C-15 the chart-vs-Game-Book starter check compares real rows",
+          sc and not emptyrows and S["same"] + S["differ"] == S["n"] and S["same"] > 0,
+          f"{len(sc)} starters compared; {S['same']} matched, {S['differ']} differed, "
+          f"{S['unparsed']} unparsable; {len(emptyrows)} rows with an empty chart lookup")
+
+    # ---- C-16 the depth-order test rests on more than one slot ----
+    do = list(csv.DictReader(open(os.path.join(DATA, "depth_order.csv"), encoding="utf-8")))
+    check("C-16 the depth-order test is large enough to be a measurement",
+          len(do) >= 10 and meta["depth_order"]["n"] == len(do),
+          f"{len(do)} club-position slots compared against official snap counts")
+
     # ---- C-14 referenced flags exist ----
     known = {r["id"] for r in csv.DictReader(open(os.path.join(DATA, "flags.csv"), encoding="utf-8"))}
     known |= {f[0] for f in __import__("x3_desk_content").SITE_FLAGS}

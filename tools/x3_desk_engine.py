@@ -410,13 +410,23 @@ def norm_name(s):
     return " ".join(s.split()).lower()
 
 
+SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
+
+
 def surname_initial(s):
-    """'D.Mooney' -> ('mooney', 'd'); 'Mooney' -> ('mooney', '')."""
-    s = s.strip()
-    if "." in s:
+    """'D.Mooney' -> ('mooney', 'd'); 'Josh Conerly Jr.' -> ('conerly', 'j')."""
+    s = (s or "").strip()
+    # "J.J. McCarthy", "D.J. Reed", "T.J. Hockenson": initials separated by dots
+    if s.count(".") >= 2 and not s.startswith("."):
+        parts = s.split()
+        if len(parts) >= 2:
+            tail = [p for p in norm_name(" ".join(parts[1:])).split() if p not in SUFFIXES]
+            return (" ".join(tail), norm_name(parts[0])[:1]) if tail else ("", "")
+    if "." in s and s.split(".")[0].isalpha() and len(s.split(".")[0]) <= 3:
         ini, _, rest = s.partition(".")
-        return norm_name(rest), norm_name(ini)[:1]
-    parts = norm_name(s).split()
+        parts = [p for p in norm_name(rest).split() if p not in SUFFIXES]
+        return (" ".join(parts), norm_name(ini)[:1]) if parts else ("", "")
+    parts = [p for p in norm_name(s).split() if p not in SUFFIXES]
     return (parts[-1], parts[0][:1]) if parts else ("", "")
 
 
@@ -1215,6 +1225,14 @@ def main():
     write("depth_order.csv", order, COLS["depth_order.csv"])
     ostats = summarise_order_test(order)
 
+    starter = build_starter_check(depth_rows, I.GAMEBOOK_WSH_NYG)
+    write("starter_check.csv", starter, COLS["starter_check.csv"])
+    sstats = {"n": len(starter),
+              "same": sum(1 for r in starter if r["verdict"] == "same person"),
+              "differ": sum(1 for r in starter if r["verdict"].startswith("DIFFERS")),
+              "unparsed": sum(1 for r in starter if "unparsable" in r["verdict"]
+                              or "could not be parsed" in r["verdict"])}
+
     corr = build_correlations(finals, graded_m, depth_rows, I.GAMEBOOK_WSH_NYG)
     write("correlations.csv", corr, COLS["correlations.csv"])
 
@@ -1233,6 +1251,7 @@ def main():
         "n_corr": len(corr), "n_flags": len(I.FLAGS),
         "leaderboard": {k: v for k, v in lstats.items()},
         "ablations": astats, "luck_sd": luck_sd, "bump": bump, "depth_order": ostats,
+        "starter_check": sstats,
         "model_sd": sd([p for (g, p, a, l, n) in graded_m]),
         "actual_sd": sd([a for (g, p, a, l, n) in graded_m]),
         "sigma_mean": mean([s for (g, p, a, s) in sigma_walk_forward(graded_m) if s]),
@@ -1307,6 +1326,81 @@ def summarise_order_test(rows):
 COLS["depth_order.csv"] = ["club", "unit", "pos", "chart_first", "chart_first_string",
                            "chart_first_snaps", "most_snaps_player", "most_snaps",
                            "order_agrees_with_playing_time", "note", "snap_sheet"]
+
+
+
+
+# --------------------------------------------------------------------------- #
+# 13b. Chart-first vs Game-Book starter, by position label
+# --------------------------------------------------------------------------- #
+def _s(v):
+    """normalise a string-ish field that may be an int (string depth rank)."""
+    return "" if v is None else str(v)
+
+
+def build_starter_check(depth_rows, gamebook):
+    """For each club in the Game Book, is the man who actually started the player the
+    club lists first at that position?
+
+    Matching is on (surname, initial) of the Game Book's "<Initial>.<Surname>" form
+    against the chart's full name. A chart name whose surname cannot be parsed
+    (e.g. 'Josh Conerly Jr.' -> '') is reported as PARSE-ISSUE, never as a miss.
+    """
+    rows = []
+    for club in sorted({t for t, u, p, j, n in gamebook["starters"]}):
+        chart = {}
+        for r in depth_rows:
+            if r["club"] != club or r["unit"] != "Offense" or _s(r["string"]) != "1":
+                continue
+            sur, ini = surname_initial(r["player"])
+            chart.setdefault(r["pos"], []).append((r["player"], sur, ini))
+        starters = [(p, n) for t, u, p, j, n in gamebook["starters"]
+                    if t == club and u == "Offense"]
+        # A club can list two players at one label (two WR rows, two TE rows). The
+        # Game Book lists every man who started, so EACH starter may match ANY of the
+        # players the club lists first at that label. Without this, the second starter
+        # at a duplicated label is wrongly reported as a miss.
+        for pos, name in starters:
+            sur, ini = surname_initial(expand_gamebook_name(name))
+            cands = chart.get(pos, [])
+            if not cands:
+                cands = [c for k, v in chart.items() if k.startswith(pos[:1]) for c in v]
+            hit = None
+            parse_issue = False
+            for nm, s2, i2 in cands:
+                if not s2:
+                    parse_issue = True
+                    continue
+                if s2 == sur and (not i2 or not ini or i2 == ini):
+                    hit = nm
+                    break
+            if hit:
+                verdict, badge = "same person", "pass"
+            elif any(s2 == sur and (not i2 or not ini or i2 == ini)
+                     for k, v in chart.items() if k.startswith(pos[:1]) for _, s2, i2 in
+                     [x for x in v]):
+                verdict, badge = "same person (matched under a sibling position label)", "pass"
+            elif parse_issue and not cands:
+                verdict, badge = "chart name unparsable", "warn"
+            elif parse_issue:
+                verdict, badge = "no match (a chart name at this position could not be parsed)", "warn"
+            else:
+                verdict, badge = "DIFFERS — the starter is not the chart's first name", "fail"
+            if not cands:
+                # a lookup that finds nothing is a BUG in this check, not a fact about
+                # the club. Refuse to publish it as a finding.
+                raise SystemExit(
+                    f"starter check: no chart row for {club} {pos}; refusing to publish "
+                    f"'differs' from an empty lookup")
+            rows.append({
+                "club": club, "pos": pos, "chart_first": cands[0][0] if cands else "",
+                "actual_starter": name, "verdict": verdict, "badge": badge,
+                "source": gamebook["url"],
+            })
+    return rows
+
+
+COLS["starter_check.csv"] = ["club", "pos", "chart_first", "actual_starter", "verdict", "source"]
 
 
 if __name__ == "__main__":

@@ -52,6 +52,8 @@ PAGES = [
     ("teams.html", "Per-team view", "Starters out, next man up"),
     ("availability.html", "Availability graph", "Expected starter, actual starter"),
     ("ablations.html", "Ablations", "With and without the feature"),
+    ("schedule.html", "Schedule & announcement", "The dated release beside the live page"),
+    ("fixtures.html", "Venues", "Transcribed per fixture, with the kind of evidence"),
     ("features.html", "Fixture context", "Only published schedule facts"),
     ("preregistration.html", "Pre-registration", "Frozen before the data"),
     ("questions.html", "Questions", "Known, missing, and what would clear it"),
@@ -68,7 +70,7 @@ NAV_GROUPS = [
     ("Markets", ["lines.html", "prices.html", "results.html", "backtest.html"]),
     ("Evidence", ["injury stubs"]),
     ("Method", ["leaderboard.html", "luck.html", "gates.html", "correlations.html", "ablations.html",
-                "features.html", "preregistration.html"]),
+                "schedule.html", "fixtures.html", "features.html", "preregistration.html"]),
     ("Roster", ["injuries.html", "depth.html", "matrix.html", "teams.html", "availability.html"]),
     ("Review", ["questions.html", "suggestions.html", "repo-check"]),
     ("Reference", ["sources.html", "verification.html", "flagged.html", "policy.html"]),
@@ -867,6 +869,24 @@ game out of {META['n_results']} finals: the method is proven, the coverage is th
                   note="'Match' compares the chart name with the Game Book surname. 'no-chart-row' means "
                        "the club lists no player at that position, which is itself a finding — a defense "
                        "lists 11 starters but not always 11 position labels.")
+    sc = load("starter_check.csv")
+    S = META["starter_check"]
+    srows = [[f"<b>{esc(r['club'])}</b>", esc(r["pos"]), esc(r["chart_first"]), esc(r["actual_starter"]),
+              f'<span class="st {"pass" if r["verdict"].startswith("same") else "fail"}">'
+              f'{esc(r["verdict"])}</span>', src(r["source"], "game book")]
+             for r in sc]
+    body += callout("Does the man the club lists first actually start?", f"""
+<p>For every offensive starter in the Game Book, the club's own first-listed player at that
+position label. <b>{S['same']} of {S['n']}</b> match. <b>{S['differ']}</b> do not.</p>
+<p class="key">The misses are the point. Washington's chart lists Terry McLaurin first at receiver,
+and <b>McLaurin did not start</b> — Antonio Williams and Treylon Burks did. The chart lists Jacory
+Croskey-Merritt first at running back and <b>Rachaad White started</b>. New York's second tight end
+row is a chart label, not a starter. This is why the desk takes the starter from the Game Book and
+never from the chart.</p>""", "warn")
+    body += table(["Club", "Pos", "Chart says first", "Game Book says started", "Verdict", "Source"], srows,
+                  note="Two TE and two WR rows are expected: clubs list multiple players at those labels, "
+                       "and the Game Book lists the men who actually started. A match is on surname plus "
+                       "initial; 'J.J. McCarthy' style names are parsed as initials, not as a surname.")
     return shell("availability.html", "Availability graph", body,
                  "Who was expected to start, who actually did, and the evidence for each")
 
@@ -955,6 +975,56 @@ repository, so those columns are not offered (see the readiness table, R-57).</p
                        "kickoff date, both taken from official pages.")
     return shell("features.html", "Fixture context", body,
                  "Rest, site, kickoff and network — published facts only")
+
+
+def page_fixtures():
+    rows = []
+    for w, away, home, stadium, city, ev, srcurl in I.VENUES:
+        badge = {"game book page 1": "pass", "game centre Game Info": "pass",
+                 "week page link": "warn"}.get(ev, "warn")
+        rows.append([f"<b>W{w}</b>", f"{esc(away)} @ {esc(home)}", esc(stadium), esc(city),
+                     f'<span class="st {badge}">{esc(ev)}</span>', src(srcurl, "nfl.com")])
+    direct = sum(1 for v in I.VENUES if v[5].startswith(("game book", "game centre")))
+    body = callout("Three kinds of venue evidence, never merged", f"""
+<p>Requirement R-23: the venue of every fixture, transcribed, with the <b>kind</b> of evidence on
+every row so the reader can weigh it.</p>
+<p class="key"><b>{direct} of {len(I.VENUES)}</b> rows come from a game centre's Game Info block or
+from a Game Book's own header — the strongest evidence. The other {len(I.VENUES)-direct} come from
+the stadium named in the official week page's own ticket and hotel deep-links for that fixture,
+which is published by the league but is not a venue statement. The badge says which.</p>
+<p>One row flags a naming problem rather than resolving it: the live week page's link still names
+<b>FedExField</b> for the Washington fixture while the club's own stadium is currently Washington's
+home under a different name. Neither name is corrected here — both are recorded (see the flagged
+page).</p>""")
+    body += table(["Week", "Fixture", "Stadium", "City", "Evidence kind", "Source"], rows)
+    return shell("fixtures.html", "Venues", body,
+                 "Every fixture with its venue, and the strength of the evidence for it")
+
+
+def page_schedule():
+    A = I.SCHEDULE_ANNOUNCEMENT
+    rows = [[f"<b>{esc(k)}</b>", esc(v), esc(d), src(A["url"], "media.nfl.com")]
+            for k, v, d in A["facts"]]
+    games = I.load_games()
+    live = []
+    for w in (10, 11):
+        wk = [g for g in games if g["week"] == w]
+        fin = sum(1 for g in wk if g["status"] == "FINAL")
+        live.append([f"<b>Week {w}</b>", esc(len(wk)), esc(fin), esc(len(wk) - fin),
+                     src(I.U["sched_w10"] if w == 10 else I.U["sched_w11"], "nfl.com")])
+    body = callout("The dated release, published beside the live page", f"""
+<p>Requirement R-24: publish the league's <b>dated schedule announcement</b> next to the live
+schedule page, so a reader can see what was fixed in May and what has moved since. The release is
+dated <b>{esc(A['dated'])}</b> and is attributed to {esc(A['byline'])}; the live week pages are
+re-read on every build.</p>""")
+    body += table(["Fact", "As published in the announcement", "Release date", "Source"], rows)
+    body += callout("The live schedule, for comparison", """
+<p>Week 10 is <b>mid-slate</b> at the time of this build: two of its 14 games are final and twelve
+are not. Week 11 has not started. That gap is why the results feed has 138 finals rather than the
+163 games scheduled through Week 11, and why no live score is treated as a result (F-14).</p>""")
+    body += table(["Week", "Games scheduled", "Final", "Not final", "Source"], live)
+    return shell("schedule.html", "Schedule & announcement", body,
+                 "What the league fixed in May, and what the live pages say now")
 
 
 def page_prereg():
@@ -1173,6 +1243,8 @@ PAGES_FN = {
     "teams.html": page_teams,
     "availability.html": page_availability,
     "ablations.html": page_ablations,
+    "fixtures.html": page_fixtures,
+    "schedule.html": page_schedule,
     "features.html": page_features,
     "preregistration.html": page_prereg,
     "questions.html": page_questions,

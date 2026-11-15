@@ -48,6 +48,8 @@ U = {
     "depth_ravens": "https://www.baltimoreravens.com/team/depth-chart",
     "rules_2026": "https://operations.nfl.com/the-rules/nfl-rulebook/",
     "onside_2026": "https://operations.nfl.com/the-rules/2026-nfl-rulebook/",
+    "sched_announce": ("https://media.nfl.com/football-information/2026/news/"
+                       "2026-nfl-schedule-announced"),
 }
 
 # --------------------------------------------------------------------------- #
@@ -436,6 +438,73 @@ FLAGS = {
              U["gb_wsh_nyg"]),
 }
 
+# --------------------------------------------------------------------------- #
+# 4b. Venues. Three kinds of evidence, kept apart per row.
+#     (a) read from the game centre's "Game Info" block this session
+#     (b) read from the Game Book's page-1 header this session
+#     (c) named in the league's dated schedule release
+#     (d) the stadium named in the week page's own hotel/ticket deep-links
+# --------------------------------------------------------------------------- #
+VENUES = [
+    # week, away, home, stadium, city, evidence, source
+    (10, "WAS", "NYG", "MetLife Stadium", "East Rutherford, NJ", "game book page 1", U["gb_wsh_nyg"]),
+    (10, "NE", "DET", "FC Bayern Munich Stadium", "Munich", "game centre Game Info", U["game_ne_det"]),
+    (10, "KC", "ATL", "Mercedes-Benz Stadium", "Atlanta, GA", "game centre Game Info", U["game_kc_atl"]),
+    (10, "MIA", "IND", "Lucas Oil Stadium", "Indianapolis, IN", "week page link", U["sched_w10"]),
+    (10, "CAR", "NO", "Caesars Superdome", "New Orleans, LA", "week page link", U["sched_w10"]),
+    (10, "BUF", "NYJ", "MetLife Stadium", "East Rutherford, NJ", "week page link", U["sched_w10"]),
+    (10, "JAX", "TEN", "Nissan Stadium", "Nashville, TN", "week page link", U["sched_w10"]),
+    (10, "HOU", "CLE", "Huntington Bank Field", "Cleveland, OH", "week page link", U["sched_w10"]),
+    (10, "MIN", "GB", "Lambeau Field", "Green Bay, WI", "week page link", U["sched_w10"]),
+    (10, "LA", "AZ", "State Farm Stadium", "Glendale, AZ", "week page link", U["sched_w10"]),
+    (10, "SEA", "LV", "Allegiant Stadium", "Las Vegas, NV", "week page link", U["sched_w10"]),
+    (10, "SF", "DAL", "AT&T Stadium", "Arlington, TX", "week page link", U["sched_w10"]),
+    (10, "PIT", "CIN", "Paycor Stadium", "Cincinnati, OH", "week page link", U["sched_w10"]),
+    (10, "LAC", "BAL", "M&T Bank Stadium", "Baltimore, MD", "week page link", U["sched_w10"]),
+    (11, "IND", "HOU", "NRG Stadium", "Houston, TX", "week page link", U["sched_w11"]),
+    (11, "MIA", "BUF", "Highmark Stadium", "Orchard Park, NY", "week page link", U["sched_w11"]),
+    (11, "BAL", "CAR", "Bank of America Stadium", "Charlotte, NC", "week page link", U["sched_w11"]),
+    (11, "NO", "CHI", "Soldier Field", "Chicago, IL", "week page link", U["sched_w11"]),
+    (11, "TEN", "DAL", "AT&T Stadium", "Arlington, TX", "week page link", U["sched_w11"]),
+    (11, "TB", "DET", "Ford Field", "Detroit, MI", "week page link", U["sched_w11"]),
+    (11, "AZ", "KC", "GEHA Field at Arrowhead Stadium", "Kansas City, MO", "week page link", U["sched_w11"]),
+    (11, "PIT", "PHI", "Lincoln Financial Field", "Philadelphia, PA", "week page link", U["sched_w11"]),
+    (11, "NYJ", "LAC", "SoFi Stadium", "Inglewood, CA", "week page link", U["sched_w11"]),
+    (11, "JAX", "NYG", "MetLife Stadium", "East Rutherford, NJ", "week page link", U["sched_w11"]),
+    (11, "LV", "DEN", "Empower Field at Mile High", "Denver, CO", "week page link", U["sched_w11"]),
+    (11, "MIN", "SF", "Levi's Stadium", "Santa Clara, CA", "week page link", U["sched_w11"]),
+    (11, "CIN", "WAS", "Northwest Stadium", "Landover, MD", "week page link (FedExField)",
+     U["sched_w11"]),
+]
+
+# --------------------------------------------------------------------------- #
+# 5b. The league's DATED schedule announcement, read live 2026-11-15.
+#     Requirement R-24: publish it beside the live schedule page.
+# --------------------------------------------------------------------------- #
+SCHEDULE_ANNOUNCEMENT = {
+    "url": U["sched_announce"],
+    "title": "2026 NFL Schedule Announced",
+    "byline": "Football Communications",
+    "dated": "May 14, 2026",
+    "facts": [
+        ("announced", "18-week, 272-game regular-season schedule for 2026", "May 14, 2026"),
+        ("kickoff", "Wednesday night, September 9, in Seattle: Seattle Seahawks host the "
+                    "New England Patriots at Lumen Field (8:20 p.m. ET, NBC)", "May 14, 2026"),
+        ("season", "The NFL's 107th season", "May 14, 2026"),
+        ("games_per_club", "each team plays 17 regular-season games and three preseason games", "May 14, 2026"),
+        ("international_count", "nine international games, the most ever in a season", "May 14, 2026"),
+        ("week_4_london", "Indianapolis and Washington at Tottenham Hotspur Stadium, 9:30 a.m. ET, NFL Network",
+         "May 14, 2026"),
+        ("week_10_munich", "New England meets Detroit at the FC Bayern Munich Stadium, 9:30 a.m. ET, FOX",
+         "May 14, 2026"),
+        ("week_11_mexico", "the first game in Mexico City since 2022, San Francisco take part "
+                           "(opponent not read in this chunk)", "May 14, 2026"),
+        ("week_18", "16 division games: three on Saturday January 9, 13 on Sunday January 10", "May 14, 2026"),
+        ("tbd_games", "Week 16, 17 and 18 kickoff times are announced later (Week 16 no later than "
+                      "after Week 14, Week 17 after Week 15, Week 18 after Week 17)", "May 14, 2026"),
+    ],
+}
+
 SOURCES = [
     ("S-01", "Official NFL injury report (current week)", U["injuries_live"],
      "Week 10 of 2026", "read live 2026-11-15", "rows transcribed by the committed parser; counts re-derived here"),
@@ -468,6 +537,9 @@ SOURCES = [
     ("S-14", "Official NFL injury reports, weeks 8-11 (committed capture)",
      "https://github.com/karagemop466-tech/X3/blob/main/data/desk/injuries.json", "1,027 rows", "captured by session arena/3bf7cc8b-x3",
      "week 11 rows are a duplicate of week 10 (F-02)"),
+    ("S-16", "The league's dated 2026 schedule announcement", U["sched_announce"],
+     "18 weeks, 272 games, international slate, kickoff", "read live 2026-11-15",
+     "the dated release the brief asks to publish beside the live schedule"),
     ("S-15", "NFL Football Operations — 2026 rulebook", U["onside_2026"],
      "rule text", "referenced, not read in this pass", "used only to name the 2026 kickoff/onside regime"),
 ]

@@ -206,10 +206,10 @@
   ]
  ],
  "depth_order": {
-  "agree": 16,
+  "agree": 19,
   "disagree": 4,
-  "n": 20,
-  "rate": 0.8
+  "n": 23,
+  "rate": 0.8260869565217391
  },
  "lam_margin": 4.0,
  "lam_total": 16.0,
@@ -251,5 +251,11 @@
   "capture_id": "SNAP-2026-11-15-001",
   "captured_at": "2026-11-15T00:00:00Z",
   "hash": "7cc77a77340a3f35155477972dffd5d773687daf6717381a980274aacf626a9d"
+ },
+ "starter_check": {
+  "differ": 5,
+  "n": 22,
+  "same": 17,
+  "unparsed": 0
  }
 }
