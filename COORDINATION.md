@@ -2762,13 +2762,11 @@ Scope is limited to the root landing generator/output and this append-only claim
 - Updated final post-rebase checks: `tools/verify_hub.py`, `scripts/check_hub.py`, `scripts/audit_all.py` (221 pages, 15,818 refs, 403 tables, 0 problems), `scripts/verify_integration.py`, `scripts/council_verify.py`, `scripts/verify_signals.py`, `scripts/origin_verify.py`, and `tools/verify_markets.py` all pass. `scripts/council_build.py` refreshed only generated repo-census counts. `git diff --check` passes. Root landing has both “Verification status” and “Decision readiness” sections after the hub rebuild.
 - The original completion metrics above were captured before the concurrent upstream landing-page integration. The counts in this rebase/update block supersede those earlier repository-wide page/ref/table totals.
 
-<<<<<<< HEAD
 ### DR-01 merge and deployment closeout (2026-11-15)
 - PR #72: https://github.com/karagemop466-tech/X3/pull/72 — merged to `main` at 2026-11-15T18:29:25Z; merge commit `090496588465e522a8cf5e69cd671437139661ac`.
 - PR checks after rebase: Council verify, signals verifier, and Pages build all passed. Post-merge `Deploy X3 NFL site to GitHub Pages` run `43747042414` passed; `pages-build-deployment` run `43747041764` passed. GitHub Pages API reports `status: built`, URL `https://karagemop466-tech.github.io/X3/`.
 - Live-site check: fetched the deployed root page after deployment and confirmed both the upstream official-source verification panel and the new decision-readiness table render, including all eight core rows and their sources/gates.
 - Final status: DR-01 done and deployed. The data/strategy blockers listed on the page remain open; this change makes them explicit and reviewable and does not fabricate odds, starter status, snap counts, correlations or strategy eligibility.
-=======
 ---
 
 ## Session `arena/963ed45f-x3` — PROOF LAYER (final integration for this round)
@@ -2823,4 +2821,3 @@ added by `proof/build_site.py` in a way that the existing `pages.yml` drift chec
    same model twice — with and without the availability features — on identical chronological folds,
    and reports the difference with a standard error. No points are subtracted for a missing starter
    anywhere in this tree.
->>>>>>> 1dc358d (proof: claim, acquisition layer, live-page capture workflow)

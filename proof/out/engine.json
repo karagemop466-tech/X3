@@ -1,0 +1,26 @@
+{
+ "n_games_completed": 2265,
+ "seasons_availability": [],
+ "seasons_snaps": [],
+ "injury_rows_by_season": {},
+ "side": {
+  "plain": {
+   "n": 2057,
+   "mae": 10.66,
+   "rmse": 13.65
+  },
+  "avail": {
+   "n": 0
+  }
+ },
+ "total": {
+  "plain": {
+   "n": 2057,
+   "mae": 11.031,
+   "rmse": 13.775
+  },
+  "avail": {
+   "n": 0
+  }
+ }
+}
