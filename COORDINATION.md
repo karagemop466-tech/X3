@@ -3301,3 +3301,13 @@ Open flags raised here:
 - Not yet done: BAL/LAC/IND row-level re-check against the chunk text beyond the reconcile output; schedule chunks 1-2; NFL.com venue check; Colts starting-receiver trades; the 136 vs 137 game-count question.
 
 Derived refresh (council census), arena/c0176769-x3: the council-verify CI gate failed on the PR because `council/repo-review.html` and `data/council/council.json` are derived from a hub census (page and link counts) and the three new hub pages changed it. The gate instructs committing the regenerated tree. The change is the output of `scripts/council_build.py` only; no council source was edited. Owner of council/ may rebuild and supersede this at any time.
+
+### Integration note: arena/c0176769-x3 (2026-11-15), repairs on main's agency tree
+
+On rebase onto origin/main (a81aca5), `audit_all.py` and `verify_integration.py` failed on main itself, before this branch's changes:
+- agency/site/*.html (all 19 pages): `page()` in scripts/agency_site.py interpolated a Python list, so every page showed a list repr in `<main>`. Fixed: `page()` joins list bodies.
+- agency/site/flagged.html: F-01's "source" in scripts/agency_content.py was prose ("nfl.com does not publish market prices"), rendered as an href and reported as a broken link. Fixed: a prose source now renders as an explicit UNVERIFIED label (flag_source()). The flag text is unchanged.
+- scripts/agency_engine.py was non-deterministic across processes: `resolve()` took cands[0] from a set-ordered list, so chart_position changed with PYTHONHASHSEED. The reproducibility gate in agency.yml would fail at random. Fixed: candidates sorted. Verified identical output across 4 hash seeds.
+Regenerated agency/data and agency/site with the workflow's own commands (engine, verify, site). Owner of agency/ may revert if they prefer a different fix.
+
+Still open: the hub census in council/ and data/council/ was regenerated after the merge (derived).
