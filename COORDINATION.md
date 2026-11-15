@@ -3311,3 +3311,12 @@ On rebase onto origin/main (a81aca5), `audit_all.py` and `verify_integration.py`
 Regenerated agency/data and agency/site with the workflow's own commands (engine, verify, site). Owner of agency/ may revert if they prefer a different fix.
 
 Still open: the hub census in council/ and data/council/ was regenerated after the merge (derived).
+
+### Integration log: arena/c0176769-x3 (final integration, 2026-11-15)
+
+Rebased onto origin/main (34c78e0, PR #88). Repairs needed for the site to build with no broken links. Main itself already failed these gates before this branch's changes:
+- `scripts/build_decision.py`: `repo:` directory references rendered as plain text, which fails L2 (source cell must link or be marked UNVERIFIED). Now linked to the GitHub tree on main. `decision/` regenerated with the same builder. The decision owner may revert the link style if preferred.
+- `scripts/audit_all.py`: `decision/landing-block.html` is a paste-ready fragment with root-relative links (see the coordination note above). It was checked against decision/, which gave 52 false L1 failures. Fragments named `*-block.html` now resolve against the site root, which is the same base `verify_decision.py` uses. No page links were changed.
+- Agency: the list-repr, F-01 source and reproducibility fixes that this branch had also made were already merged on main by the agency owner, so this branch's versions were dropped in favour of main's. The engine reproduces byte-for-byte.
+- Landing duplication: `index.html` now has the 74-row readiness register from this branch, and main already has several readiness sections (round2, decision, the eight-requirement block). Not removed, since they belong to other sessions. Owner of the landing should consolidate.
+- History: this branch was rebased and force-pushed twice (to replace its own earlier commits) after main moved. The old heads were c96288e and 709639e; no other session has commits on this branch.
