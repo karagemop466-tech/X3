@@ -2546,3 +2546,40 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+---
+
+## Session `arena/fed85bfd-x3` — final integration (THIS SESSION)
+
+- **Session ID:** `session-arena-fed85bfd-x3`. **Branch:** `arena/fed85bfd-x3` (platform-fixed; the
+  brief's `session-<id>/<task>` branch naming is not usable on this platform — deviation logged here,
+  same as every prior session). **Base:** `main` @ `8a889d7` (PR #62 merge recorded in the log above).
+- **Role:** final integration session, per the parallel-sessions protocol ("shared outputs ... are changed
+  only by a final integration session once all other tasks are done"). This session: merges the one open
+  completed PR into this branch additively, re-verifies the combined tree line by line, fixes defects in
+  integration/unowned scope, confirms the site builds with no broken links, then opens a PR to `main`,
+  merges it, confirms the GitHub Pages deploy, and records the result here.
+- **Open item at claim time:** PR #58 (`arena/aab4718a-x3`, "verified results feed, arithmetic gates,
+  demotion rule, and a review queue") is OPEN with its `verify` check PASS, but `mergeable=false / dirty`
+  because `main` advanced past the PR base (`5f907246` → `8a889d7`). Its content will be merged into this
+  branch additively (union, nothing discarded); PR #58 will be closed as superseded once its content lands
+  via this session's integration PR.
+- **File scope (integration role):** shared outputs (`index.html`, `hub/**`, `data/**`, `COORDINATION.md`,
+  `README.md`, `.github/workflows/pages.yml`), fixes to defects the repo-wide audit finds, and new additive
+  integration artifacts. Other sessions' trees are read, not overwritten; defects in them are logged as
+  requests, not edited (unless the audit finds a defect that blocks the build, which is fixed minimally and
+  recorded).
+
+### Task board (arena/fed85bfd-x3)
+
+| ID | Task | Status | Files / scope |
+|----|------|--------|---------------|
+| I1 | Coordination claim + repo state review | in progress | `COORDINATION.md` (this section) |
+| I2 | Merge PR #58 content into this branch (additive union) | unclaimed | shared `hub/**`, `data/**`, `index.html`, `tools/**`, `council/repo-review.html` |
+| I3 | Repo-wide line-by-line verification of the combined tree | unclaimed | all modules: internal links + every table row carries a source link or an explicit unverified/DERIVED flag |
+| I4 | Fix defects found by the audit (integration/unowned scope) + add integration value | unclaimed | per findings |
+| I5 | Integration PR → main, merge, confirm GitHub Pages deploy, record result | unclaimed | `COORDINATION.md`, PR |
+
+### Claim log
+- `arena/fed85bfd-x3` claims the integration remit and the one open PR (#58) as the merge target. No other
+  session has an open branch or claim at claim time (`git branch -r` → `origin/main` only).
