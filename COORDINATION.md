@@ -2655,3 +2655,24 @@ The overlapping official-source correction was independently completed and merge
 - Post-merge Pages verification: deploy workflow run `43746441803` completed successfully on merge commit `6955b91`; GitHub Pages API reports `status: built`, URL https://karagemop466-tech.github.io/X3/ . Live check of https://karagemop466-tech.github.io/X3/hub/results.html?cachebust=6955b91 shows the corrected ROI caveat and official Week 10 citations from PR #65.
 - Coordination closeout for this branch: earlier duplicate PR #66 was closed without merge after PR #65 independently merged the official-source correction; its disposition and the rebase union are recorded above. Current task C02 is merged and deployed.
 
+
+## Session `arena/01b89691-x3` — canonical landing/accessibility and navigation audit (CLAIM, 2026-11-15)
+
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| UI-01 | Audit and repair the maintained hub landing/navigation markup; add a regression gate and re-run repository verification | in progress | `arena/01b89691-x3` | `tools/build_hub.py`, `tools/verify_hub.py`, generated `index.html` and `hub/*.html`, `hub/assets/hub.css`, append-only `COORDINATION.md` |
+
+No other session has an active claim in this scope. The repository's existing market/data modules are read-only for this task. The assigned Arena branch `arena/01b89691-x3` is used; no session-specific branch is created, in accordance with the platform branch constraint.
+
+### Initial finding
+
+- `tools/build_hub.py` emits malformed navigation anchor attributes: the active link is rendered as `class=on\"` and inactive links have an extra quote after the `href` value. The current row/link checks do not validate the generated markup, so this defect can pass CI.
+- Planned work: correct the generator, add a focused validity assertion to the hub verifier, rebuild only its owned generated pages, and run the repository verification gates. No source observations or model values are changed.
+
+### Claim log
+
+- 2026-11-15 — task UI-01 claimed; repository work on this branch is limited to the scope above.
+
+### Rebase conflict record (2026-11-15)
+
+- While publishing the claim, `origin/main` advanced from `8a889d7` to `de5f3b6` (PR #70). `git pull --rebase origin main` conflicted on append-only `COORDINATION.md` because both branches appended session logs. Resolved by preserving the entire incoming main log and re-appending UI-01 verbatim. No main-side lines were discarded; the working UI diff was stashed during claim publication and will be reapplied after the rebase.
