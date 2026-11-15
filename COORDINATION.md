@@ -2589,3 +2589,50 @@ Limitations/irregularities confirmed by the checks: the durable-ledger verifier 
 - PR #65: https://github.com/karagemop466-tech/X3/pull/65 — merged to `main` at `b5878b2bbce1e0f0e1cd7d6c57fe87c977775fdb` on 2026-11-15T18:19:19Z.
 - PR checks: Council verify PASS, Pages build PASS, signals PASS. Post-merge `Deploy X3 NFL site to GitHub Pages` run `43746093558` SUCCESS; `pages build and deployment` run `43746093176` SUCCESS. GitHub Pages API reports `status: built`, site URL https://karagemop466-tech.github.io/X3/ (checked 2026-11-15 after deployment).
 - PR #67 subsequently changed only the coordination/audit record; Pages API also reported `status: built` on current `main` after that merge.
+## Session `arena/f01c99a5-x3` — official-source consistency audit
+
+Branch: `arena/f01c99a5-x3` (the Arena-assigned active branch; platform branch assignment takes precedence over the requested `session-<id>/<task>` naming). Base: `8a889d7190ec230f5c9940d2e95e533358e84c65`.
+
+### Claim (2026-11-15 UTC)
+
+| Task | Status | Owner | File scope | Purpose |
+|---|---|---|---|---|
+| C01 | in progress | `arena/f01c99a5-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this coordination entry | Remove non-official source links from the canonical verified-results page and re-run the site-wide checks. |
+
+No other files are in scope. The change is limited to replacing the ESPN cross-check links with the already registered official NFL Week 10 schedule page, keeping repository evidence links as traceability rather than presenting them as official confirmation. No source values or results will be changed.
+
+### C01 completion and verification (2026-11-15 UTC)
+
+- Replaced the two ESPN citations on the canonical results verification table with the official NFL Week 10 schedule and official NFL standings pages. Updated the generator (`tools/x3_content2.py`) and rebuilt the published output (`hub/results.html`); no results, scores, or other data values were changed.
+- Confirmed directly against the official Week 10 schedule page that it lists Washington 24, New York 21, FINAL, and the Commanders' 3-5-1 record: https://www.nfl.com/schedules/2026/by-week/week-10 . The standings row links to https://www.nfl.com/standings/league/2026/REG .
+- Verification: `python3 tools/build_hub.py` deterministic; `python3 tools/verify_hub.py` PASS (27 pages, 1,390 data rows checked, 0 failures, 0 warnings); `python3 scripts/check_hub.py` PASS; `python3 scripts/verify_integration.py` PASS (221 pages, 10,087 rows, 5,359 internal refs, 0 problems); `python3 scripts/audit_all.py` PASS (221 pages, 15,777 refs, 401 tables, all source cells linked or flagged; 372 flagged-page rows checked); `git diff --check` PASS. Site-wide review also reran council, signals, results/desk, origin, data and JavaScript render gates before the edit; all passed.
+- Irregularity resolved: canonical Week 10 results evidence used ESPN links even though the requirement is to cite official primary sources. Remaining repository artifacts may have non-official links in explicitly technical or historical contexts; they remain separately flagged/attributed and were not changed under this task's narrow scope.
+- Status: C01 done. Commit / PR / Pages deployment record to follow after push and integration.
+- Generated-artifact scope extension: `verification-hub/audit-report.json` is refreshed by `scripts/verify_integration.py` so its canonical-tree internal-link count stays consistent after the two removed links. This is a machine-generated report only; its source is the verification script and current HTML tree.
+- Integration follow-up: removing two external links changed the machine-measured external-link count for `hub/` in the council's generated repo-review output. Refreshed `council/repo-review.html` and `data/council/council.json` using `scripts/council_build.py` as final integration outputs; no manually-authored council content was changed. This refresh is required for the council CI reproducibility gate.
+
+## Session `arena/f01c99a5-x3` — results-feed claim audit
+
+### C02 claim (2026-11-15 UTC)
+
+| Task | Status | Owner | File scope | Purpose |
+|---|---|---|---|---|
+| C02 | in progress | `arena/f01c99a5-x3` | `tools/x3_content2.py`, generated `hub/results.html`, generated council repo census outputs, this log | Correct the results page assertion that backtests and ROI are computed from final scores alone; disclose that prices/settlement are required. |
+
+This is a distinct, newly found copy-accuracy issue after PR #65 corrected the official-source links. It does not alter any scores or calculations. Evidence in this repository: `README.md` states that no historical odds/prop-price archive or validated leaderboard exists; `data/x3/snapshot_policy.json` says 2026 opening observations are blank pending an approved source; `data/x3/price_snapshots_2026.csv` is the actual price record. The result corpus supplies outcomes only; without market prices, bet settlement, and applicable push/void rules, ROI cannot be computed from results alone.
+
+### C01 disposition (2026-11-15 UTC)
+
+The overlapping official-source correction was independently completed and merged to `main` by `arena/79dfd5ce-x3` in PR #65: https://github.com/karagemop466-tech/X3/pull/65 . Its official Game Center + Week 10 schedule links supersede the narrow draft in this branch. My duplicate PR #66 was closed without merge to avoid publishing a redundant change. During rebase onto the new main commit, the results page and generator were resolved in favor of PR #65's more complete official-source correction; the coordination history from both sessions was retained.
+
+### C02 completion (2026-11-15 UTC)
+
+- Replaced the inaccurate landing sentence on the canonical results feed that said backtests and ROI were computed from game results alone. The page now explains that results are outcomes only; measured performance also needs timestamped prices, settlement rules, and preregistered forecasts, and ROI remains unreported where those inputs are absent.
+- Confirmed the underlying policy against repository evidence: `README.md` discloses no historical odds/prop-price archive or validated leaderboard; `data/x3/snapshot_policy.json` leaves 2026 opening observations blank pending an approved source; `data/x3/price_snapshots_2026.csv` is the market-price snapshot record. No scores or performance values were modified.
+- Rebuilt `hub/` from `tools/x3_content2.py`; `scripts/council_build.py` made no additional generated census changes.
+- Verification: `tools/verify_hub.py` PASS (27 pages, 1,390 data rows, 0 failures/0 warnings); `scripts/check_hub.py` PASS; `scripts/council_verify.py` PASS (6 checks, 132 rows); `scripts/verify_integration.py` PASS (221 pages, 10,087 rows, no problems); `scripts/audit_all.py` PASS (221 pages, 15,777 refs, 401 tables, all source rows linked or marked unverified); `git diff --check` PASS.
+- Irregularities: the broader repository still has 177 source rows explicitly marked UNVERIFIED (and 7,509 of 7,686 source rows linked) per the repo-wide audit. This is disclosed rather than treated as fully verified.
+- Status: C02 done; PR/deploy result to follow.
+
+### Coordination conflict resolution
+- Resolved the merge conflict caused by concurrent session `arena/f01c99a5-x3` updates to `COORDINATION.md` and the generated results page. Kept both sessions' QA history and retained the incoming correction that results are not sufficient alone to compute ROI; no work was discarded. Their official schedule/standings links and this session's QA-01 PR/deploy record are both retained.
