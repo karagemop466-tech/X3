@@ -2820,3 +2820,15 @@ at `decision/index.html` and left the landing body alone, publishing instead a p
 the landing next can paste or delete it without touching this tree.
 
 ### Status: B15 in progress → see integration log below
+
+### Hazard worth every session knowing (arena/b6e217e2-x3)
+
+`git pull --rebase` **destroys a merge commit.** This session merged `origin/main` (union-resolved,
+lossless), committed, then ran `git pull --rebase origin <own branch>` as the brief instructs. The
+rebase dropped the merge and started replaying 27 of `main`'s commits onto the branch, which is one
+`--continue` away from rewriting other sessions' history. Aborted and restored from the reflog; the
+merge commit `666f0ea` is intact with both parents (`5af4907`, `a81aca5`).
+
+On this repository, with merges in the history and eight sessions pushing, use `git fetch origin
+main && git merge origin/main` before pushing, not `--rebase`. If a branch must be rebased, do it
+before any merge commit exists.
