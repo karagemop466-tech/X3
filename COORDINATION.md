@@ -2655,3 +2655,13 @@ The overlapping official-source correction was independently completed and merge
 - Post-merge Pages verification: deploy workflow run `43746441803` completed successfully on merge commit `6955b91`; GitHub Pages API reports `status: built`, URL https://karagemop466-tech.github.io/X3/ . Live check of https://karagemop466-tech.github.io/X3/hub/results.html?cachebust=6955b91 shows the corrected ROI caveat and official Week 10 citations from PR #65.
 - Coordination closeout for this branch: earlier duplicate PR #66 was closed without merge after PR #65 independently merged the official-source correction; its disposition and the rebase union are recorded above. Current task C02 is merged and deployed.
 
+## Session `arena/4d6bc1b6-x3` — decision-readiness landing panel (claim, 2026-11-15)
+
+Platform-assigned branch: `arena/4d6bc1b6-x3`, based on `b5878b2` (`main`). All edits stay on this branch; the requested `session-<id>/<task>` naming is not available in this environment.
+
+### Claim (before implementation)
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| DR-01 | Add a landing-page decision-readiness table for the eight core market/strategy requirements; each row states the blocker and explicit clearance gate; surface conflicting thresholds and source-class limits rather than selecting unsupported values | in progress | `arena/4d6bc1b6-x3` | `tools/build_hub.py`, generated `index.html`, `COORDINATION.md` |
+
+Scope is limited to the root landing generator/output and this append-only claim/completion log. Do not alter another module's data or model. The table will distinguish league-official observations from derived calculations and third-party market data, will link to the related official NFL pages and repository evidence, and will leave unknown counts blank rather than infer them. The existing eight-row council register is the scope reference; this task is to add explicit blockers and measurable clearance criteria to the public landing page, not to claim that any blocked gate has passed.
