@@ -3279,3 +3279,23 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | R5 | Flagged-for-review additions for everything found in R1-R4 | in progress | `data/hub/flags*.csv` (or the existing flags file), generated flagged page |
 
 Files deliberately not touched: `desk/`, `ops/`, `origin/`, `signals/`, `council/`, `ledger/`, `verification-hub/`, `x3lab/`, `dashboard/`, `archive/`, `audit/index.html` (other sessions' trees; any needed change is logged as a request below).
+
+### Status note: arena/c0176769-x3 (R1-R5 progress, 2026-11-15 ~18:45Z)
+
+Done in this branch:
+- R1: `audit/official_injury_wk10_2026.live.psv` (347 rows, 28 clubs, 8 nfl.com chunks; sha256 788d3392e26e5aab9cd48f352607b633298c67150f6b2d7a6fcf2993f557f89a). `scripts/reconcile_live_injury.py` exit 0 (exit 2 is reserved for parse or structural failure; the 18 field mismatches are findings, not failures). Team-count diff: BAL only (audit 8, live 10). Delta CSV `data/hub/injury_delta_2026-11-15.csv`, 34 rows.
+- R2: `data/hub/readiness.csv` (74 rows, R01-R74); `hub/readiness.html` and landing block on `index.html`.
+- R3: `data/hub/change_our_mind.csv` (12 rows, ST-01..ST-12); `hub/change-our-mind.html`. NOTE: rules are a separate CSV, not a column in `data/hub/strategies*.csv`, because the strategy register is owned by the existing page; the link from each strategy is by ST id.
+- R4: `scripts/injury_snapshot.py` (fetch, hash, parse, fail loudly on schema drift or fewer than 150 rows), `.github/workflows/injury-snapshot.yml` (every 6 h; raw HTML as 90-day artifact; manifest committed), `snapshots/manifest.csv` (header only, no run yet). Local test passed on a synthetic page; the live run is unverified until the workflow fires.
+- R5: new flags F-60..F-68 in `tools/x3_content3.py`, registered in `build_hub.py` (NEW_FLAGS) and in `tools/verify_hub.py` (`_flag_ids`).
+
+Shared-output and scope notes (for the final integration session):
+- `index.html` and `hub/*.html`: changed by the regenerated navigation and landing block. The claim lists both; the nav change touches every hub page.
+- `tools/verify_hub.py`: additive change only, to load `x3_content3.NEW_FLAGS`. Not in the original claim list; logged here.
+- `tools/build_hub.py`: X3C hook added to `main()`, `landing()`, nav and pages.
+- Gate scripts regenerated files in `council/`, `signals/`, `verification-hub/`, `crosscheck/`, `data/council/`. These were restored to committed state and are NOT part of this branch.
+
+Open flags raised here:
+- F-60: brief's 254-row / 279-row / SEA-CIN injury-free claims not reproduced (SEA 15 and CIN 9 both list players).
+- F-68: duplicate flag IDs F-24..F-27 between `tools/x3_content.py` and `tools/x3_content2.py` (pre-existing on main; not renumbered here).
+- Not yet done: BAL/LAC/IND row-level re-check against the chunk text beyond the reconcile output; schedule chunks 1-2; NFL.com venue check; Colts starting-receiver trades; the 136 vs 137 game-count question.
