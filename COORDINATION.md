@@ -2595,3 +2595,11 @@ Branch: `arena/f01c99a5-x3` (the Arena-assigned active branch; platform branch a
 | C01 | in progress | `arena/f01c99a5-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this coordination entry | Remove non-official source links from the canonical verified-results page and re-run the site-wide checks. |
 
 No other files are in scope. The change is limited to replacing the ESPN cross-check links with the already registered official NFL Week 10 schedule page, keeping repository evidence links as traceability rather than presenting them as official confirmation. No source values or results will be changed.
+
+### C01 completion and verification (2026-11-15 UTC)
+
+- Replaced the two ESPN citations on the canonical results verification table with the official NFL Week 10 schedule and official NFL standings pages. Updated the generator (`tools/x3_content2.py`) and rebuilt the published output (`hub/results.html`); no results, scores, or other data values were changed.
+- Confirmed directly against the official Week 10 schedule page that it lists Washington 24, New York 21, FINAL, and the Commanders' 3-5-1 record: https://www.nfl.com/schedules/2026/by-week/week-10 . The standings row links to https://www.nfl.com/standings/league/2026/REG .
+- Verification: `python3 tools/build_hub.py` deterministic; `python3 tools/verify_hub.py` PASS (27 pages, 1,390 data rows checked, 0 failures, 0 warnings); `python3 scripts/check_hub.py` PASS; `python3 scripts/verify_integration.py` PASS (221 pages, 10,087 rows, 5,359 internal refs, 0 problems); `python3 scripts/audit_all.py` PASS (221 pages, 15,777 refs, 401 tables, all source cells linked or flagged; 372 flagged-page rows checked); `git diff --check` PASS. Site-wide review also reran council, signals, results/desk, origin, data and JavaScript render gates before the edit; all passed.
+- Irregularity resolved: canonical Week 10 results evidence used ESPN links even though the requirement is to cite official primary sources. Remaining repository artifacts may have non-official links in explicitly technical or historical contexts; they remain separately flagged/attributed and were not changed under this task's narrow scope.
+- Status: C01 done. Commit / PR / Pages deployment record to follow after push and integration.
