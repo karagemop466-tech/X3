@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 306,
-      "flagged_rows": 227,
-      "refs": 374,
+      "rows": 321,
+      "flagged_rows": 240,
+      "refs": 415,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -13,7 +13,7 @@
         "flagged.html: Live or historical betting lines / odds \u2014 No line archive or provider is present. NFL is not the source of bookmaker quo",
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
-        "injuries.html:  Date  Team  Player  Pos  Injury  Practice Status  Game Status  Source "
+        "index.html: Dataset Official source Status Notes"
       ]
     },
     "archive": {
@@ -265,8 +265,8 @@
     }
   },
   "pages_total": 221,
-  "rows_total": 10087,
-  "rows_flagged_or_sourced": 8787,
-  "internal_refs": 5359,
+  "rows_total": 10102,
+  "rows_flagged_or_sourced": 8800,
+  "internal_refs": 5384,
   "problems": []
 }
