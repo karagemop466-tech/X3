@@ -1471,7 +1471,7 @@ def landing():
          "31 of 32 club charts were readable in the recorded audit, but charts are club-published and undated; actual game-day starter/inactive evidence is not a complete point-in-time dataset.",
          "Depth rank is not a confirmed actual starter or snap share; no jersey-order, experience, or salary inference is allowed.",
          "For 100% of games/players used: official Game Book starter and game-day status evidence; a verified playing-time source for actual snaps; dated raw-source hash and conflict record. Otherwise the feature remains out of the model.",
-         link(official_gamebooks, "NFL Game Books guidance") + " · " + link(official_injuries, "NFL injury report") + " · " + local_link("hub/replacements.html", "replacement evidence")],
+         link(official_gamebooks, "NFL Game Books guidance") + " · " + link(official_injuries, "NFL injury report") + " · " + link("https://www.azcardinals.com/team/depth-chart", "example club chart (club-published)") + " · " + local_link("hub/replacements.html", "replacement evidence")],
         ["<b>R7 · Correlations</b><br><a href='council/requirements.html'>acceptance test</a>",
          "Correlation tables publish n. Some separate analyses explicitly include PFF closing-line inputs (third-party); those are not official-only correlations.",
          "Provenance must be checked per coefficient; no third-party price-derived pair may be presented as official-only.",
@@ -1491,6 +1491,20 @@ def landing():
     readiness_table = table(
         ["Core requirement", "What the current record says", "Blocking gate / unresolved decision", "What clears it", "Sources / audit trail"],
         readiness, tid="decision-readiness", cap="Decision-readiness snapshot · evidence captured 2026-11-14 · not a claim of live betting readiness", kind="data")
+    verification_table = """<section class="callout" style="border:1px solid var(--line);background:#111827">
+<h2 style="margin-top:0">Verification status (official sources)</h2>
+<table style="width:100%;font-size:13px;margin-top:8px">
+<thead><tr><th style="text-align:left">Dataset</th><th style="text-align:left">Official source</th><th style="text-align:left">Status</th><th style="text-align:left">Notes</th></tr></thead>
+<tbody>
+<tr><td>Week-10 injury report (345 rows)</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td><td><b>VERIFIED</b></td><td>Capture dated 2026-11-14; 66 Out / 10 Doubtful / 84 Questionable / 185 blank, matching the recorded total; see the linked report and verification log.</td></tr>
+<tr><td>2026 league standings (32 clubs)</td><td><a href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td><b>VERIFIED</b></td><td>Captured values checked against the official standings; older-module discrepancies remain flagged in the repository.</td></tr>
+<tr><td>Week-10 schedule / orientation</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td><td><b>VERIFIED</b></td><td>14 games and four byes in the recorded slate; fixture facts are not used to assert market prices.</td></tr>
+<tr><td>Originated lines / fair vs market / difference</td><td><span class="badge u">UNVERIFIED</span></td><td><b>BLOCKED</b></td><td>No NFL-official odds rows identified (the odds probe returns no price feed); market and difference fields stay blank. See F-18.</td></tr>
+<tr><td>Strategy leaderboard / ROI / CLV</td><td><span class="badge u">UNVERIFIED</span></td><td><b>BLOCKED</b></td><td>No price-settled wager series; ROI, CLV and staking cannot be computed from game outcomes alone. See the readiness table and Flagged for review.</td></tr>
+</tbody>
+</table>
+<p class="note" style="margin-top:8px">Every value is traced to an official source or left blank and flagged. Nothing is inferred. Full detail: <a href="hub/flagged.html">Flagged for review</a> · <a href="hub/verification.html">Verification log</a>.</p>
+</section>"""
     # integration session arena/09f8c786-x3: the signals module is a separate tree
     nav += ('<a href="signals/index.html"><b>Signals &amp; leaderboard</b>'
             '<span>Originated lines, price snapshots, signal vs staking</span></a>')
@@ -1530,6 +1544,7 @@ data does not exist here yet.</p>
 <div class="card"><div class="num">0 / {len(_ST['strategies'])}</div><div class="lbl">strategies leaderboard-eligible</div>
 <div class="sub">{_ST['counts']['signal_untested']} untested, {_ST['counts']['signal_inconclusive']} inconclusive, staking blocked on prices</div></div>
 </div>
+{verification_table}
 <nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
 {nav}
 </nav>
