@@ -2546,3 +2546,60 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+---
+
+## Session `arena/e601a785-x3` — verified data agency (`agency/`), claimed 2026-11-15T18:20Z
+
+Branch: `arena/e601a785-x3`, base `8a889d7` (= `main` after PR #62). Platform rule followed: all work
+on this assigned branch; the brief's `session-<id>/<task>` naming is superseded by the platform rule.
+
+**Environment fact that changes previous sessions' conclusions:** `www.nfl.com` **is** directly readable
+this session through the page-fetch tool, even though every earlier session recorded it as blocked
+(shell `curl` to nfl.com still fails: TLS closed). Week 10 of 2026, the live injury report, standings and
+schedule pages were all read successfully. So data that earlier sessions left blank as "unfetchable" can
+now be verified; that is this session's main job.
+
+### Status legend
+unclaimed | in progress | done | needs review | blocked
+
+### Task board
+
+| ID | Task (from the brief) | Status | Scope (new files only) |
+|----|----------------------|--------|------------------------|
+| A01 | Repo review, line by line, links + irregularities | in progress | `agency/repo-review.html` |
+| A02 | Official source capture with hashes/timestamps (immutable snapshots) | in progress | `agency/data/raw/**`, `agency/data/captures.csv` |
+| A03 | Price-data policy decided before any backtest is published | in progress | `agency/policy.html` |
+| A04 | Originate side → total → moneyline; fair / market / difference columns | in progress | `agency/lines.html` |
+| A05 | Verified results feed (backtests & ROI computable) | in progress | `agency/results.html` |
+| A06 | Pre-registered strategy register; backtest numbers never on the leaderboard | in progress | `agency/registry.html` |
+| A07 | Proper-score leaderboard, signal separated from staking | in progress | `agency/leaderboard.html` |
+| A08 | Removal-of-luck panel; control baselines | in progress | `agency/luck.html` |
+| A09 | Correlations from official numbers only, publish n | in progress | `agency/correlations.html` |
+| A10 | Demotion gate live → paper + two-sided "what would change our mind" | in progress | `agency/gates.html` |
+| A11 | Availability graph, depth of replacement, playing-time not jersey order | in progress | `agency/depth.html` |
+| A12 | Injury surprise not level; designation reliability with CIs | in progress | `agency/injuries.html` |
+| A13 | Fixture-context features from published schedule facts; venues | in progress | `agency/fixtures.html` |
+| A14 | Decision-readiness table (requirement × blocking gate × number that clears it) | in progress | `agency/readiness.html` |
+| A15 | Questions / information / answers + missing-information discovery | in progress | `agency/questions.html` |
+| A16 | Suggestions section (review → choose → then implement) | in progress | `agency/suggestions.html` |
+| A17 | Executive summary | in progress | `agency/executive-summary.html` |
+| A18 | Flagged for Review | in progress | `agency/flagged.html` |
+| A19 | Line-by-line verification gate | in progress | `scripts/agency_verify.py` |
+| A20 | PR → merge → Pages deploy → record | in progress | `COORDINATION.md`, `README.md` (append) |
+
+### File scope
+
+This session **creates** `agency/**` (pages, `agency/data/**`, build + verify scripts under
+`scripts/agency_*`) and `.github/workflows/agency.yml`. It **reads but never writes** `hub/**`,
+`data/hub/**`, `signals/**`, `ledger/**`, `docs/**`, `dashboard/**`, `desk/**`, `ops/**`, `origin/**`,
+`x3lab/**`, `lab/**`, `pages/**`, `site/**`, `archive/**`, `council/**`, `crosscheck/**`, `audit/**`,
+`tools/**`, and other sessions' `scripts/**`. `COORDINATION.md` and `README.md` are append-only.
+Root `index.html` is **generated** by `tools/build_hub.py` and gated by CI (`git diff --exit-code`);
+this session will not hand-edit it. Integration request logged below instead of an edit.
+
+### Integration requests (logged; files NOT edited)
+
+- **To the `tools/build_hub.py` / `data/hub` owner:** the root landing page has no link to `agency/`.
+  Please add one unit row so the new module is reachable from the root. I did not edit the generator or
+  its data, per the scope rule.
