@@ -256,6 +256,19 @@
       "refs": 13,
       "unsourced_examples": []
     },
+    "snapshots": {
+      "pages": 1,
+      "rows": 385,
+      "flagged_rows": 380,
+      "refs": 405,
+      "unsourced_examples": [
+        "snapshots/2026-w10-injuries/index.html: Item Value Source",
+        "snapshots/2026-w10-injuries/index.html: Result Team Player Official game Hub game Field differences Source",
+        "snapshots/2026-w10-injuries/index.html: Game Kickoff / TV (as printed) Team Record Player Pos Injury Practice status Game status Source",
+        "snapshots/2026-w10-injuries/index.html: Game status Rows Source",
+        "snapshots/2026-w10-injuries/index.html: Practice status Rows Source"
+      ]
+    },
     "verification-hub": {
       "pages": 1,
       "rows": 38,
@@ -280,9 +293,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 228,
-  "rows_total": 10464,
-  "rows_flagged_or_sourced": 9063,
-  "internal_refs": 5565,
+  "pages_total": 229,
+  "rows_total": 10849,
+  "rows_flagged_or_sourced": 9443,
+  "internal_refs": 5587,
   "problems": []
 }
