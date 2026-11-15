@@ -2906,6 +2906,7 @@ Scope is limited to the root landing generator/output and this append-only claim
 - **Integration request (logged; file NOT edited):** to the `tools/build_hub.py` / `data/hub` owner — the root landing page has no link to `agency/`; please add one unit row so the new module is reachable from the root.
 - **Pages deploy:** GitHub Pages serves `https://karagemop466-tech.github.io/X3/`; the agency dashboard lives at `https://karagemop466-tech.github.io/X3/agency/site/index.html`. Deploy confirmed via successful `pages build and deployment` and `Deploy X3 NFL site to GitHub Pages` runs on the `main` push.
 
+
 ## Session `arena/5ffc331b-x3` — decision-readiness audit (2026-11-15)
 
 - **Status:** done on Arena-assigned branch `arena/5ffc331b-x3`; initially branched from `8a889d7190ec230f5c9940d2e95e533358e84c65`, then rebased onto current `main` after the official-source/results-feed updates in PRs #65 and #68. The platform branch is used; no branch switch or rename.
@@ -3263,3 +3264,34 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+
+
+
+
+## Session `arena/6259c7b0-x3` — decision-readiness, change-our-mind, drift alarms, control baselines, weekly diff (CLAIM, 2026-11-15)
+
+Branch: `arena/6259c7b0-x3` (fast-forwarded to `main` @ `71ca127` before starting; 8a889d7 verified
+ancestor of origin/main after `git fetch --unshallow` — a first rebase attempt hit add/add conflicts
+because the sandbox clone was shallow, so it was aborted and re-synced with `--ff-only`; nothing lost).
+
+Six requirements from the brief are still unimplemented on current `main` (verified by repo-wide grep
+2026-11-15). This session claims them. All new files live in `readiness/`, `scripts/build_readiness.py`,
+`scripts/verify_readiness.py`, `scripts/drift_alarm.py`, `scripts/control_baselines.py`,
+`.github/workflows/readiness.yml`, `.github/workflows/availability-snapshots.yml` — non-overlapping with
+every existing session's scope. `tools/build_hub.py` gets ONE integration-remit edit (root-landing
+decision-readiness table + one nav entry), logged below like prior integration sessions did.
+
+| ID | Task | Status | Owner | Files |
+|----|------|--------|-------|-------|
+| RD-01 | Decision-readiness table on the landing page (one row per requirement: gate that blocks it, number that would clear it) | in progress | `arena/6259c7b0-x3` | `tools/build_hub.py` (landing section), `readiness/data/readiness.json` |
+| RD-02 | Two-sided "what would change our mind" field on every strategy entry (upgrade evidence / abandon evidence) | in progress | `arena/6259c7b0-x3` | `readiness/change-our-mind.html`, `readiness/data/change_mind.json` |
+| RD-03 | Drift alarm on every parser: pin expected row counts + required fields, fail the build loudly | in progress | `arena/6259c7b0-x3` | `scripts/drift_alarm.py`, `.github/workflows/readiness.yml`, `readiness/drift-alarms.html` |
+| RD-04 | Control baseline (random picks; favourites only) added to every leaderboard run | in progress | `arena/6259c7b0-x3` | `scripts/control_baselines.py`, `readiness/control-baselines.html` |
+| RD-05 | Weekly "what changed" diff instead of a static snapshot (rank / rating / availability change) | in progress | `arena/6259c7b0-x3` | `scripts/build_readiness.py`, `readiness/what-changed.html`, `readiness/data/history/` |
+| RD-06 | Scheduled immutable availability snapshots (cron Wed/Thu/Fri) with retained hashes + freshness alert | in progress | `arena/6259c7b0-x3` | `.github/workflows/availability-snapshots.yml`, `readiness/snapshots.html` |
+
+Scope declaration: `readiness/**` and the five named scripts/workflows are new. `COORDINATION.md` and
+`README.md` are append-only. The single edit to `tools/build_hub.py` is the integration-session remit for
+the shared root landing (same pattern as sessions `arena/09f8c786-x3` and `arena/3b99e9ad-x3` before).
+No file under `hub/`, `ops/`, `signals/`, `desk/`, `council/`, `docs/`, `dashboard/`, `data/` (except
+append-only logs) is edited.
