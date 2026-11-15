@@ -2546,3 +2546,15 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+## Session `arena/f01c99a5-x3` — official-source consistency audit
+
+Branch: `arena/f01c99a5-x3` (the Arena-assigned active branch; platform branch assignment takes precedence over the requested `session-<id>/<task>` naming). Base: `8a889d7190ec230f5c9940d2e95e533358e84c65`.
+
+### Claim (2026-11-15 UTC)
+
+| Task | Status | Owner | File scope | Purpose |
+|---|---|---|---|---|
+| C01 | in progress | `arena/f01c99a5-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this coordination entry | Remove non-official source links from the canonical verified-results page and re-run the site-wide checks. |
+
+No other files are in scope. The change is limited to replacing the ESPN cross-check links with the already registered official NFL Week 10 schedule page, keeping repository evidence links as traceability rather than presenting them as official confirmation. No source values or results will be changed.
