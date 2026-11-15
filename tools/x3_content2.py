@@ -138,18 +138,17 @@ def _verification_rows():
          f"{rec['field_mismatches_vs_all_137_finals']} mismatches across 32 clubs",
          "matches incl. Wk10 TNF final; filename flagged F-24", REPO_FILE + "data/x3/verification_log.json"],
         ["Week 10 TNF final spot-check (WAS 24 @ NYG 21)",
-         "recorded in the repo verification log; 3 independent reports agree", "CONFIRMED",
-         l(REPO_FILE + "data/x3/verification_log.json", "verification log") + " " +
-         l("https://www.espn.com/nfl/story/_/id/50463340/thursday-night-football-commanders-giants-highlights",
-           "corroboration")],
+         "NFL Week 10 schedule lists Commanders 24, Giants 21, FINAL; repository reconciliation retained",
+         "OFFICIAL NFL SCHEDULE CHECKED",
+         l("https://www.nfl.com/schedules/2026/by-week/week-10", "official NFL Week 10 schedule") + " " +
+         l(REPO_FILE + "data/x3/verification_log.json", "repository reconciliation")],
         ["Week 1 final spot-check (NE 10 @ SEA 13)",
          "both club Game Centers agree", "CONFIRMED",
          "https://www.seahawks.com/game-day/2026/reg-week1/seahawks-vs-patriots/"],
-        ["2026 tie game in the data (Commanders 3-5-1 per ESPN)",
-         "consistent across all three sources", "CONFIRMED",
-         l(REPO_FILE + "data/x3/verification_log.json", "verification log") + " " +
-         l("https://www.espn.com/nfl/story/_/id/50463340/thursday-night-football-commanders-giants-highlights",
-           "corroboration")],
+        ["Washington record displayed by the Week 10 Game Center (3-5-1)",
+         "NFL Game Center standings panel lists Washington at 3-5-1; source page is time-sensitive",
+         "OFFICIAL NFL GAME CENTER CHECKED",
+         l("https://www.nfl.com/games/commanders-at-giants-2026-reg-10", "official NFL Game Center")],
     ]
     return rows, rf
 

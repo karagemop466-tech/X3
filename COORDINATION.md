@@ -2546,3 +2546,24 @@ the reviewer, not something this session will do unilaterally.
    discarded. Both are fixed; both are recorded above under the progress log.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
+
+## Session `arena/79dfd5ce-x3` — official-source audit correction (2026-11-15)
+
+Platform-assigned branch: `arena/79dfd5ce-x3` (base `8a889d7190ec230f5c9940d2e95e533358e84c65`).
+Work stays on this branch; the requested `session-<id>/<task>` branch naming is not used because the platform assigns the branch.
+
+### Claim
+| ID | Task | Status | Owner | Files |
+|---|---|---|---|---|
+| QA-01 | Remove non-official ESPN corroboration from Week 10 final verification; link the official NFL Game Center | in progress | `arena/79dfd5ce-x3` | `tools/x3_content2.py`, generated `hub/results.html`, this log |
+
+Scope is limited to these files; no other session-owned files will be changed. The claim was prompted by `python3 tools/verify_hub.py`, which passed with two warnings: the same ESPN URL appeared twice in `hub/results.html`. Official NFL Game Center search result verified the matchup, week and listed standings: https://www.nfl.com/games/commanders-at-giants-2026-reg-10 .
+
+### QA-01 completion (2026-11-15)
+- Replaced the two ESPN references on the Week 10 results verification table with the official NFL Week 10 schedule and official NFL Game Center URLs. Reworded the score row to match the official schedule's displayed final; changed the record row to state the Game Center's listed standings and warn that it is time-sensitive. Removed unsupported claim of three independent reports.
+- Source verification: official NFL Week 10 schedule, https://www.nfl.com/schedules/2026/by-week/week-10 (search result states Commanders 24, Giants 21, FINAL); official NFL Game Center, https://www.nfl.com/games/commanders-at-giants-2026-reg-10 (search result states matchup, game week, and Washington 3-5-1).
+- Rebuilt with `python3 tools/build_hub.py`; generated `hub/results.html` from `tools/x3_content2.py`.
+- Verification: `python3 tools/verify_hub.py` — PASS, 27 pages, 1,390 table rows checked, 0 failures, 0 warnings (previously 2 non-approved ESPN warnings).
+- Irregularities: Game Center standings are time-sensitive, so the page says so; this row is a spot-check of the record displayed on that official page, not a historical standings archive.
+- Status: done.
+- Full-tree re-audit: `scripts/audit_all.py` (221 pages, 15,777 link refs, 401 tables; pass) and `scripts/verify_integration.py` (221 pages, 10,087 rows, 0 problems; pass). `tools/check_links.py` passed (13 root pages, 374 links); root `check_site.py`, `check_dashboard.py`, and `verify_data.py` passed. Desk and ops verifiers passed. Council verifier initially reported stale generated tree-count files after the page edit; a second run rebuilt the census and passed (6 checks); generated count files are included in this change.
