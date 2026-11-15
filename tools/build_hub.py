@@ -1469,6 +1469,20 @@ data does not exist here yet.</p>
 <div class="card"><div class="num">0 / {len(_ST['strategies'])}</div><div class="lbl">strategies leaderboard-eligible</div>
 <div class="sub">{_ST['counts']['signal_untested']} untested, {_ST['counts']['signal_inconclusive']} inconclusive, staking blocked on prices</div></div>
 </div>
+<section class="callout" style="border:1px solid var(--line);background:#111827">
+<h2 style="margin-top:0">Verification status (official sources)</h2>
+<table style="width:100%;font-size:13px;margin-top:8px">
+<thead><tr><th style="text-align:left">Dataset</th><th style="text-align:left">Official source</th><th style="text-align:left">Status</th><th style="text-align:left">Notes</th></tr></thead>
+<tbody>
+<tr><td>Week-10 injury report (345 rows)</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td><td><b>VERIFIED</b></td><td>All 8 chunks read 2026-11-14; 66 Out / 10 Doubtful / 84 Questionable / 185 blank; corroborated by two independent transcriptions.</td></tr>
+<tr><td>2026 league standings (32 clubs)</td><td><a href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td><b>VERIFIED</b></td><td>Tampa Bay division 2-0-0 (pct 1.000) confirmed; matches canonical data (older module used 1-2-0 — flagged F-11).</td></tr>
+<tr><td>Week-10 schedule / orientation</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td><td><b>PARTIAL / UNVERIFIED</b></td><td>Official page identifies New England at Detroit as the Munich International Game. Game count, bye count, kickoff time and broadcast channel are not confirmed here and are left blank.</td></tr>
+<tr><td>Originated lines / fair vs market / difference</td><td>—</td><td><b>BLOCKED</b></td><td>NFL.com publishes no odds (nfl.com/odds/ returns 404; game centres carry no spread/total/moneyline). Market columns intentionally blank; flagged F-01/F-18.</td></tr>
+<tr><td>Strategy leaderboard / ROI / CLV</td><td>—</td><td><b>BLOCKED</b></td><td>0 settled bets; no market price, so ROI/CLV/staking cannot be computed. Leaderboard stays a signal board (flagged F-01/F-06).</td></tr>
+</tbody>
+</table>
+<p class="note" style="margin-top:8px">Every value on this site is traced to an official source or left blank and flagged. Nothing is inferred. Full detail: <a href="hub/flagged.html">Flagged for review</a> &middot; <a href="hub/verification.html">Verification log</a>.</p>
+</section>
 <nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
 {nav}
 </nav>
