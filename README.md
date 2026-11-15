@@ -411,3 +411,21 @@ Rebuild and gate: `python3 scripts/build_round2.py && python3 scripts/verify_rou
 Data: `round2/data/*.csv` (standings, slate, results delta, game-book facts/starters/inactives,
 requirements matrix, audit results, flags, suggestions, sources). The module is gated in CI by
 `.github/workflows/round2.yml` and covered by the repo-wide `scripts/audit_all.py`.
+
+## Decision layer and point-in-time availability series (2026-11-15)
+
+- `decision/index.html` - readiness register (69 requirements, each with the gate that blocks it,
+  the number that clears it and how the status was established), the suggestion queue, the open
+  questions, the tree-overlap matrix, sources, verification log and flagged irregularities.
+- `data/snapshots/` - sealed, clock-stamped reads of the official availability report. Two reads of
+  Week 10 2026 exist, one day apart; `delta.json` publishes what moved between them, with a
+  corroboration verdict per row against the independent prior reads retained in the repository.
+- Rebuild and gate (offline, deterministic):
+
+  ```bash
+  python3 scripts/x3_snapshots.py && python3 scripts/x3_snapshots_verify.py
+  python3 scripts/build_decision.py && python3 scripts/verify_decision.py
+  ```
+
+- Rules: a capture never changes; the filename encodes its clock time; two reads that hash equal
+  are one read; an unmapped official club code fails the build; a row with no source fails the build.
