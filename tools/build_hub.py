@@ -1430,6 +1430,10 @@ def main():
     C.SUG.extend(X2.NEW_SUGGESTIONS)
     NAV.append(("__council__", "", ""))
     NAV.extend(X2.NAV_EXTRA)
+    # session arena/c0176769-x3: readiness register, injury snapshot delta, change-our-mind rules
+    import x3_content3 as X3C
+    NAV.extend(X3C.NAV_EXTRA)
+    C.FLAGS.extend(X3C.NEW_FLAGS)
     # extra pages that need the helpers defined above
     build_prereg()
     p_index(); p_exec(); p_lines(); p_strategies(); p_gates(); p_corr(); p_luck()
@@ -1437,6 +1441,9 @@ def main():
     p_sources(); p_verification(); p_repo(); p_flagged(); p_archive()
     _P["p_markets"](); _P["p_store"](); _P["p_results"](); _P["p_replacements"]()
     for fn in X2.PAGES:  # results / pricing / origination / signal / replacement
+        fname, title, intro, body = fn()
+        page(fname + ".html", title, intro, body, fname)
+    for fn in X3C.PAGES:  # readiness / snapshots / change-our-mind (session arena/c0176769-x3)
         fname, title, intro, body = fn()
         page(fname + ".html", title, intro, body, fname)
     with open(os.path.join(HUB, "assets", "hub.css"), "w", encoding="utf-8") as f:
@@ -1478,6 +1485,7 @@ def _sha(path):
 
 
 def landing():
+    import x3_content3 as X3C  # session arena/c0176769-x3
     _RES = JX("results.json")
     _MK = JX("markets.json")
     _ST = JX("strategies.json")
@@ -1629,6 +1637,7 @@ data does not exist here yet.</p>
 <nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
 {nav}
 </nav>
+{X3C.landing_block()}
 <section class="callout"><h2>Start here</h2>
 <p><a href="hub/executive-summary.html"><b>Executive summary</b></a> for the decisions,
 <a href="hub/markets.html"><b>Originated markets</b></a> for the three-market board,

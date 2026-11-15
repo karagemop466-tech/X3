@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What would change our mind - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html"">Price snapshot store</a><a href="verified-results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html"">Replacement depth</a><a href="readiness.html"">Decision readiness</a><a href="snapshots.html"">Injury snapshots</a><a href="change-our-mind.html" class=on">Change our mind</a><a href="../signals/index.html">Signals &amp; leaderboard</a></nav>
+<main>
+<h1>What would change our mind</h1>
+<p class="lede">Every registered strategy carries two sides: what would make us keep or promote it, and what would send it back to paper. These are pre-registered decision rules, not results. None of them has been met or failed because no strategy has settled bets.</p>
+<div class="tblwrap"><table class="k-data" id="change">
+<thead><tr><th>ID</th><th>Strategy</th><th>Keep or promote if</th><th>Demote to paper if</th><th>Gate references</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>ST-01</b></td><td>Injury-shock fade</td><td>Beats the closing-line benchmark out of sample with a bootstrap lower bound above zero after 300 settled bets over 3 seasons; official designation changes precede the line move</td><td>Designation changes do not precede line moves in the test seasons; or the lower bound stays below zero at 300 bets</td><td>G-1; G-2; G-4; G-6</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-02</b></td><td>Pythagorean regression</td><td>Fade side beats the closing line after controlling for the market move with multiplicity-adjusted p below 0.10</td><td>Actual-minus-Pythagorean gap has no predictive sign in the holdout season</td><td>G-3; G-5</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-03</b></td><td>Backup-QB total under</td><td>Under result beats the closing total where an official report lists the starter Out; effect survives the inactive-list join</td><td>Effect disappears once the official designation is joined with the inactive list</td><td>G-1; G-4</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-04</b></td><td>Offensive-line collapse</td><td>Same sign in at least 2 holdout seasons with at least 100 games per season</td><td>Opposite sign in a holdout season; or the feature is found to use the game result (leakage)</td><td>G-2; G-3</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-05</b></td><td>Goal-to-go rush stack</td><td>Stack beats a random-pick control over at least 300 settled legs and a directly validated joint probability exists</td><td>No directly validated joint probability; the stack is priced as a product of marginals</td><td>G-2; G-8</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-06</b></td><td>Correlated game-script parlay</td><td>Directly validated joint probability exceeds the operator-implied probability with documented void and push rules</td><td>Joint probability is only a product of marginals; dependence unmodelled (never ranked)</td><td>G-8</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-07</b></td><td>Same-slate fade basket</td><td>Exposure cap across correlated games holds and CLV stays positive after the cap</td><td>Simultaneous exposure exceeds the cap in any week</td><td>G-8; G-9</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-08</b></td><td>Rest-day asymmetry</td><td>Rest-day effect from published schedule facts only predicts the margin residual out of sample</td><td>No holdout effect; or the rest variable uses anything other than published schedule facts</td><td>G-1; G-3</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-09</b></td><td>Line-move vs news check</td><td>Lines move before official news time-stamps more often than after; measured on timestamped prices</td><td>Price timestamps missing or from a non-official source (price policy Q-01 unresolved)</td><td>G-1; G-4</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-10</b></td><td>Cross-fitted model benchmark</td><td>Cross-fitted Brier skill against the naive baseline is above zero with a lower bound above zero</td><td>Skill below zero in any holdout season</td><td>G-4; G-6</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-11</b></td><td>Alternate-market arbitrage of own line</td><td>Net-of-vig edge survives the cost model at the proposed stake</td><td>Edge disappears at stake sizes above the breakeven in the cost model</td><td>G-9</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/hub/gates.html" target="_blank" rel="noopener">gate page</a></td></tr>
+<tr><td><b>ST-12</b></td><td>Fractional Kelly with model-error haircut</td><td>Growth stays positive under the haircut in every holdout season</td><td>Any holdout drawdown beyond the pre-registered limit in the demotion rule</td><td>G-7; demotion rule</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/gates.json" target="_blank" rel="noopener">gate page</a></td></tr>
+</tbody></table>
+</div>
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

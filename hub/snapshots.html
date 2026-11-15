@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Injury snapshots and delta - X3 NFL decision desk</title>
+<link rel="stylesheet" href="assets/hub.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
+  <div class="asof">data as of <b>2026-11-14</b> - season 2026, week 10</div>
+</header>
+<nav class="nav"><a href="index.html"">Overview</a><a href="executive-summary.html"">Executive summary</a><a href="lines.html"">Originated lines</a><a href="markets.html"">Originated markets</a><a href="price-store.html"">Price snapshot store</a><a href="verified-results.html"">Verified results feed</a><a href="replacements.html"">Depth of the replacement</a><a href="strategies.html"">Strategies &amp; signals</a><a href="gates.html"">Validation gates</a><a href="correlation.html"">Correlation</a><a href="luck.html"">Luck decomposition</a><a href="injuries.html"">Injury tracker</a><a href="depth.html"">Depth &amp; deficiencies</a><a href="leaderboard.html"">Leaderboard</a><a href="requirements.html"">Requirements</a><a href="questions.html"">Open questions</a><a href="suggestions.html"">Suggestions</a><a href="sources.html"">Sources</a><a href="verification.html"">Verification log</a><a href="repo-review.html"">Repo review</a><a href="flagged.html"">Flagged for review</a><a href="archive.html"">Prior trees</a><a href="results.html"">Results feed</a><a href="pricing.html"">Price snapshots</a><a href="origination.html"">Origination v2</a><a href="signal.html"">Signal vs staking</a><a href="replacement.html"">Replacement depth</a><a href="readiness.html"">Decision readiness</a><a href="snapshots.html" class=on">Injury snapshots</a><a href="change-our-mind.html"">Change our mind</a><a href="../signals/index.html">Signals &amp; leaderboard</a></nav>
+<main>
+<h1>Injury snapshots and delta</h1>
+<p class="lede">Every injury-report read is kept with its clock time and source, and the difference between reads is published, never the level alone. Two reads exist so far; the scheduled workflow adds one every 6 hours. The live read was transcribed row by row from all eight pages of the official report.</p>
+<h2>Reads</h2>
+<div class="tblwrap"><table class="k-data" id="snap-ledger">
+<thead><tr><th>Snapshot</th><th>Read (UTC)</th><th>Source</th><th>Method</th><th>Rows</th><th>Clubs</th><th>Out</th><th>Doubtful</th><th>Questionable</th><th>Blank</th><th>Table SHA-256 (first 16)</th></tr></thead><tbody>
+<tr><td>SNAP-2026-11-14</td><td>2026-11-14 (clock time not recorded in repo)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com injury report</a></td><td>Prior session transcription (audit/official_injury_wk10_2026.csv); feeds the canonical hub tables</td><td>345</td><td>28</td><td>66</td><td>10</td><td>84</td><td>185</td><td><code>2f1445c903c4d490</code></td></tr>
+<tr><td>SNAP-2026-11-15-LIVE</td><td>2026-11-15 before 18:32:44Z (sandbox clock when the transcription was hashed)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com injury report</a></td><td>Full 8-chunk read this session; row-by-row transcription in audit/official_injury_wk10_2026.live.psv</td><td>347</td><td>28</td><td>70</td><td>11</td><td>90</td><td>176</td><td><code>788d3392e26e5aab</code></td></tr>
+</tbody></table>
+</div>
+<h2>Headline delta</h2>
+<div class="tblwrap"><table class="k-data" id="snap-head">
+<thead><tr><th>Measure</th><th>Value</th><th>Source</th></tr></thead><tbody>
+<tr><td>Rows in the 2026-11-14 table</td><td>345</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>Rows in the 2026-11-15 read</td><td>347</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>Changed rows (field-level)</td><td>32</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/hub/injury_delta_2026-11-15.csv" target="_blank" rel="noopener">delta (CSV)</a></td></tr>
+<tr><td>Rows added / removed</td><td>2 added / 0 removed</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/hub/injury_delta_2026-11-15.csv" target="_blank" rel="noopener">delta (CSV)</a></td></tr>
+<tr><td>Teams with any change</td><td>3</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/hub/injury_delta_2026-11-15.csv" target="_blank" rel="noopener">delta (CSV)</a></td></tr>
+</tbody></table>
+</div>
+<h2>Brief claims checked against the official page</h2>
+<div class="tblwrap"><table class="k-data" id="snap-brief">
+<thead><tr><th>Claim in the brief</th><th>What the official page shows</th><th>Status here</th><th>Source</th></tr></thead><tbody>
+<tr><td>Published table of 254 rows</td><td>347 rows on the 2026-11-15 read; 345 in the 2026-11-14 table</td><td>NOT REPRODUCED (flag F-60)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>Live page has 279 rows and 2 no-injury sections</td><td>All 28 clubs list at least one player</td><td>NOT REPRODUCED (flag F-60)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>Seattle shown injury-free while listing 15</td><td>Seattle lists 15 players on both reads</td><td>Count confirmed; display not re-checked</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>Cincinnati listing 4 players</td><td>Cincinnati lists 9 players on both reads</td><td>NOT REPRODUCED (flag F-60)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>Lions Joseph, Mays and Reed have blank game status</td><td>All three are Out on both reads</td><td>CONFIRMED on both reads</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>Ravens: 8 rows listed</td><td>10 rows on the live read (Campbell and Stanley added)</td><td>Corrected in the delta (flag F-63)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table>
+</div>
+<h2>Row-level delta, 2026-11-14 to 2026-11-15</h2>
+<div class="tblwrap"><table class="k-data" id="snap-delta">
+<thead><tr><th>Team</th><th>Player</th><th>Change</th><th>Field</th><th>2026-11-14 table</th><th>2026-11-15 read</th><th>Source</th></tr></thead><tbody>
+<tr><td>BAL</td><td>Adam Randall</td><td>changed</td><td>injury</td><td></td><td>Neck, Hamstring</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>BAL</td><td>Adam Randall</td><td>changed</td><td>game_status</td><td></td><td>Questionable</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>BAL</td><td>Calais Campbell</td><td>added</td><td>row</td><td>(not in 2026-11-14 table)</td><td>row present</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>BAL</td><td>Jaylinn Hawkins</td><td>changed</td><td>injury</td><td></td><td>Knee</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>BAL</td><td>Jaylinn Hawkins</td><td>changed</td><td>game_status</td><td></td><td>Out</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>BAL</td><td>Ronnie Stanley</td><td>added</td><td>row</td><td>(not in 2026-11-14 table)</td><td>row present</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>IND</td><td>Arden Key</td><td>changed</td><td>injury</td><td>Hamstring</td><td></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>IND</td><td>Arden Key</td><td>changed</td><td>game_status</td><td>Questionable</td><td></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Branson Taylor</td><td>changed</td><td>injury</td><td></td><td>Ankle</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Branson Taylor</td><td>changed</td><td>game_status</td><td></td><td>Out</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Brenen Thompson</td><td>changed</td><td>injury</td><td></td><td>Hamstring</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Brenen Thompson</td><td>changed</td><td>game_status</td><td></td><td>Doubtful</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Bud Dupree</td><td>changed</td><td>practice</td><td>DNP</td><td>Full</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>David Njoku</td><td>changed</td><td>injury</td><td></td><td>Fibula</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>David Njoku</td><td>changed</td><td>practice</td><td>Limited</td><td>Full</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>David Njoku</td><td>changed</td><td>game_status</td><td></td><td>Questionable</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Denzel Perryman</td><td>changed</td><td>injury</td><td></td><td>Pectoral</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Denzel Perryman</td><td>changed</td><td>game_status</td><td></td><td>Questionable</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Isas Waxter</td><td>changed</td><td>injury</td><td></td><td>Ankle</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Isas Waxter</td><td>changed</td><td>game_status</td><td></td><td>Out</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Justin Eboigbe</td><td>changed</td><td>injury</td><td></td><td>Ankle</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Justin Eboigbe</td><td>changed</td><td>game_status</td><td></td><td>Questionable</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Kayode Awosika</td><td>changed</td><td>injury</td><td></td><td>Fibula</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Kayode Awosika</td><td>changed</td><td>practice</td><td>Limited</td><td>Full</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Kayode Awosika</td><td>changed</td><td>game_status</td><td></td><td>Questionable</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Keaton Mitchell</td><td>changed</td><td>practice</td><td>Limited</td><td>Full</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Kendall Williamson</td><td>changed</td><td>injury</td><td></td><td>Calf</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Kendall Williamson</td><td>changed</td><td>game_status</td><td></td><td>Out</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Ladd McConkey</td><td>changed</td><td>injury</td><td></td><td>Back</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Ladd McConkey</td><td>changed</td><td>game_status</td><td></td><td>Questionable</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Rodney Shelley</td><td>changed</td><td>practice</td><td>Limited</td><td>Full</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Trey Pipkins</td><td>changed</td><td>injury</td><td></td><td>Not injury related - personal matter, Knee</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Trey Pipkins</td><td>changed</td><td>practice</td><td>DNP</td><td>Limited</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td>LAC</td><td>Trey Pipkins</td><td>changed</td><td>game_status</td><td></td><td>Questionable</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table>
+</div>
+</main>
+<footer>
+  <p>Generated by <code>tools/build_hub.py</code> from <code>hub/data/*.json</code> and
+  <code>data/hub/*.csv</code>. Rows are read from official NFL.com and NFL club pages on 2026-11-14;
+  values with no official source are left blank and flagged. Model output is labelled DERIVED and is a
+  calculation, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../COORDINATION.md">Coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">Repository</a></p>
+</footer>
+<script src="assets/hub.js" defer></script>
+</body></html>

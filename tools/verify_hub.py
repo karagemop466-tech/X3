@@ -141,6 +141,13 @@ def _flag_ids():
     m3 = importlib.util.module_from_spec(spec3)
     spec3.loader.exec_module(m3)
     ids |= {f[0] for f in m3.FLAGS2}
+    # session arena/c0176769-x3 extension (tools/x3_content3.py): F-60 .. F-67
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    spec4 = importlib.util.spec_from_file_location("x3_content3", os.path.join(ROOT, "tools",
+                                                                               "x3_content3.py"))
+    m4 = importlib.util.module_from_spec(spec4)
+    spec4.loader.exec_module(m4)
+    ids |= {f[0] for f in m4.NEW_FLAGS}
     return ids
 
 
