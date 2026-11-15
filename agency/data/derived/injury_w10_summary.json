@@ -1,0 +1,12 @@
+{
+ "source": "https://www.nfl.com/injuries/league/2026/reg10",
+ "captured_utc": "2026-11-15T19:05Z",
+ "rows": 347,
+ "clubs": 28,
+ "designations": {
+  "": 176,
+  "Out": 70,
+  "Questionable": 90,
+  "Doubtful": 11
+ }
+}

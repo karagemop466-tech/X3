@@ -1,0 +1,92 @@
+name: Agency build, verify and deploy gate
+
+on:
+  push:
+    branches: [ arena/e601a785-x3, main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "agency-pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Regenerate every agency output (engine)
+        run: python3 scripts/agency_engine.py
+
+      - name: Verify outputs (row counts, sources, hashes, drift alarm)
+        run: python3 scripts/agency_verify.py
+
+      - name: Build the static agency dashboard
+        run: python3 scripts/agency_site.py
+
+      - name: Reproducibility gate — committed outputs must match a fresh build
+        run: |
+          git diff --exit-code -- agency/data/out agency/data/derived agency/site || {
+            echo '::error::agency outputs are not reproducible from a fresh build - run the engine, verifier and site builder locally and commit the result.'
+            exit 1; }
+
+      - name: Check internal links in agency site
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          pages = sorted(Path('agency/site').glob('*.html'))
+          assert pages, 'No agency HTML pages found'
+          class Links(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.hrefs = []
+              def handle_starttag(self, tag, attrs):
+                  if tag == 'a':
+                      href = dict(attrs).get('href', '')
+                      if href: self.hrefs.append(href)
+          failures = []
+          for page in pages:
+              parser = Links(); parser.feed(page.read_text())
+              for href in parser.hrefs:
+                  if href.startswith(('http://', 'https://', '#', 'mailto:')): continue
+                  target = href.split('#', 1)[0]
+                  if not target: continue
+                  if not (page.parent / target).exists() and not any(list(p.rglob(target)) for p in [Path('agency/site')] if p.exists()):
+                      failures.append(f'{page}: {href}')
+          if failures:
+              raise SystemExit('Broken internal links:\n' + '\n'.join(failures))
+          print(f'Validated {len(pages)} agency HTML pages and their local links.')
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: agency/site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
