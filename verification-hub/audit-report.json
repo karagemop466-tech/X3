@@ -16,6 +16,22 @@
         "index.html: Dataset Official source Status Notes"
       ]
     },
+    "agency": {
+      "pages": 19,
+      "rows": 674,
+      "flagged_rows": 266,
+      "refs": 625,
+      "unsourced_examples": [
+        "agency/site/correlations.html: Pair r n 95% CI Source",
+        "agency/site/depth.html: Game Team Unit Position Player Club chart rank Source",
+        "agency/site/depth.html: Team Player Number Note Source",
+        "agency/site/fixtures.html: Week Game Team Side Rest days Neutral Venue Venue status",
+        "agency/site/fixtures.html: 1 NE@SEA SEA home None no Lumen Field OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 NE@SEA NE away None no None OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 SF@LA LA home None yes SoFi Stadium OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 SF@LA SF away None yes None OFFICIAL_GAME_BOOK"
+      ]
+    },
     "archive": {
       "pages": 17,
       "rows": 802,
@@ -258,9 +274,9 @@
     },
     "snapshots": {
       "pages": 1,
-      "rows": 385,
-      "flagged_rows": 380,
-      "refs": 405,
+      "rows": 386,
+      "flagged_rows": 381,
+      "refs": 406,
       "unsourced_examples": [
         "snapshots/2026-w10-injuries/index.html: Item Value Source",
         "snapshots/2026-w10-injuries/index.html: Result Team Player Official game Hub game Field differences Source",
@@ -293,9 +309,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 229,
-  "rows_total": 10849,
-  "rows_flagged_or_sourced": 9443,
-  "internal_refs": 5587,
+  "pages_total": 248,
+  "rows_total": 11524,
+  "rows_flagged_or_sourced": 9710,
+  "internal_refs": 5951,
   "problems": []
 }
