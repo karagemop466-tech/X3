@@ -95,6 +95,7 @@ Blank cells mean the official page shows no value; they are not filled in.</p>
 <tr><th>Transcription file</th><td><a href="official_transcription.psv">official_transcription.psv</a> ({summary['transcription_bytes']} bytes)</td><td>{SRC_LINK}</td></tr>
 <tr><th>SHA-256 of transcription</th><td class="mono">{summary['transcription_sha256']}</td><td>{SRC_LINK}</td></tr>
 <tr><th>Raw HTML / raw fetch bytes</th><td>Not retained. Only the transcription is hashed. Raw hashes of the fetched text are not available in this session.</td><td>{SRC_LINK}</td></tr>
+<tr><th>Independent cross-check</th><td>agency/data/derived/injury_designations_w10_2026.csv (merged to main via PR #82, captured 2026-11-15 19:05 UTC per that file): 347 of 347 player keys match; all fields match except one capitalisation difference in one practice label ("in" vs "In"). Source text: "Did Not Participate In Practice".</td><td>{SRC_LINK}</td></tr>
 <tr><th>Validation</th><td>{len(summary['validation_problems'])} parse problems; {len(summary['official_duplicate_team_player'])} duplicate team/player keys; 8 fields per row checked.</td><td>{SRC_LINK}</td></tr>
 </tbody></table>
 
