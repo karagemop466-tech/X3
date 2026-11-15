@@ -2679,3 +2679,19 @@ Scope is limited to the root landing generator/output and this append-only claim
 - The upstream integration added a five-row official-source verification panel directly to the generated root `index.html`; a clean `tools/build_hub.py` run would otherwise remove it. Preserved that panel by moving its verified content into the root generator, corrected its Week-10 schedule link to the official schedule page, and kept the new decision-readiness panel alongside it. This is required so the Pages workflow can rebuild `index.html` deterministically without losing either session's landing-page content.
 - Updated final post-rebase checks: `tools/verify_hub.py`, `scripts/check_hub.py`, `scripts/audit_all.py` (221 pages, 15,818 refs, 403 tables, 0 problems), `scripts/verify_integration.py`, `scripts/council_verify.py`, `scripts/verify_signals.py`, `scripts/origin_verify.py`, and `tools/verify_markets.py` all pass. `scripts/council_build.py` refreshed only generated repo-census counts. `git diff --check` passes. Root landing has both “Verification status” and “Decision readiness” sections after the hub rebuild.
 - The original completion metrics above were captured before the concurrent upstream landing-page integration. The counts in this rebase/update block supersede those earlier repository-wide page/ref/table totals.
+
+## Session `arena/96da68dd-x3` — availability snapshot pipeline (claimed 2026-11-15 UTC)
+
+Branch: `arena/96da68dd-x3` (Arena-assigned active branch; base `de5f3b64a52849db0f682aae2ad105754d3a6c04`).
+
+### Coordination check
+
+Read this board before starting. Open PR #72 (`arena/4d6bc1b6-x3`) owns root `index.html`, `tools/build_hub.py`, the council census outputs, and its coordination entry; PR #69 owns its QA/deploy closeout; PR #58 is an older results/gates proposal. This task does not edit any of those paths. No open claim names the new availability snapshot files below. The platform-assigned branch is used instead of creating a `session-<id>/<task>` branch.
+
+### Claim
+
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| AV-01 | Build a fail-closed, privacy-aware point-in-time availability capture contract: fetch timestamps and raw hashes for official injury/depth/inactive evidence; never publish raw rows or claim capture is active without an authorized private destination and verified source coverage. | in progress | `arena/96da68dd-x3` | New files only: `scripts/availability_snapshot.py`, `.github/workflows/availability-snapshot.yml`, `availability/**`, and this appended coordination log. |
+
+No pre-existing capture scripts, site pages, workflow files, data files, or another session's scope will be changed. Official endpoints, capture timing, privacy/retention limits, and the unavailable private-store credential/configuration will be checked and recorded before any status is marked complete.
