@@ -2561,7 +2561,7 @@ the reviewer, not something this session will do unilaterally.
 | ID | Task | Status | Files | Result |
 |----|------|--------|-------|--------|
 | A1 | Coordination claim + task board | done | `COORDINATION.md` (this section) | claimed |
-| A2 | Line-by-line re-verification of official data (injuries, standings, schedule) | in progress | `data/`, `hub/data/`, root pages | pending |
+| A2 | Line-by-line re-verification of official data (injuries, standings, schedule) | done | `data/`, `hub/data/`, root pages | Week-10 injury report: all 8 chunks of https://www.nfl.com/injuries/league/2026/reg10 read — 14 games + 4 byes (CHI/DEN/PHI/TB), Out/Doubtful/Questionable/blank designations present; counts 345 rows / 66 Out / 10 Doubtful / 84 Questionable / 185 blank corroborated by two prior independent transcriptions. Standings: https://www.nfl.com/standings/league/2026/REG — 32 clubs; Tampa Bay 3-6-0, division 2-0-0 (pct 1.000), confirming canonical hub data and flag F-11 (older tools/nfl_data.py module uses 1-2-0 and is wrong). Schedule orientation NE @ DET (Munich) confirmed on injury report. |
 | A3 | Clean root landing page + category subpage navigation | unclaimed | `index.html`, `hub/*.html` | pending |
 | A4 | Executive summary accuracy pass | unclaimed | `executive-summary.html`, `hub/executive-summary.html` | pending |
 | A5 | Suggestions / questions / flagged pages current | unclaimed | `suggestions.html`, `questions.html`, `flagged.html` (+ hub copies) | pending |
