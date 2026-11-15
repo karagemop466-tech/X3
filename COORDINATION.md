@@ -2547,6 +2547,29 @@ the reviewer, not something this session will do unilaterally.
 5. **The ridge penalty is chosen by nested walk-forward validation inside the training window**, not
    hand-picked, so it is never tuned on the data it is graded against.
 
+---
+
+## Session `arena/11cd1644-x3` (this session — active)
+
+- **Session ID:** `arena/11cd1644-x3`. **Branch:** `arena/11cd1644-x3` (platform-fixed; the `session-<id>/<task>` naming is not usable here, same as every prior session). **Base:** `main` @ `8a889d71` (== `origin/main`; fully synced).
+- **Role:** final integration + line-by-line official-source verification for this round. The repo already carries 25 prior session sections (PRs #1-#62+) and a canonical `hub/` site tree; my job is to (a) re-verify the published official data against live official pages myself, (b) make the root landing page a clean, simple dashboard with category subpages, (c) keep executive summary / suggestions / questions / flagged-for-review accurate, (d) flag every value that cannot be confirmed from an official source, (e) commit, open a PR from this branch to `main`, merge it, and confirm GitHub Pages deploys.
+- **File scope:** root `index.html`, root `executive-summary.html`, root `suggestions.html`, root `questions.html`, root `flagged.html`, root `verification.html`, root `requirements.html`, plus the shared `hub/` tree where it needs correction. I do not edit `ops/`, `council/`, `signals/`, `data/desk/`, `tools/*` owned by other sessions, or any data JSON/CSV except to correct a value I re-verified against an official page.
+- **Verification method:** `nfl.com` IS reachable via `fetch_page` in this sandbox (verified: Week-10 injury report loads in full). Every table cell I restate is re-read from the live official page; anything that cannot be confirmed stays blank and is flagged `UNVERIFIED` with a source link.
+
+### Task board (arena/11cd1644-x3)
+
+| ID | Task | Status | Files | Result |
+|----|------|--------|-------|--------|
+| A1 | Coordination claim + task board | done | `COORDINATION.md` (this section) | claimed |
+| A2 | Line-by-line re-verification of official data (injuries, standings, schedule) | done | `data/`, `hub/data/`, root pages | Week-10 injury report: all 8 chunks of https://www.nfl.com/injuries/league/2026/reg10 read — 14 games + 4 byes (CHI/DEN/PHI/TB), Out/Doubtful/Questionable/blank designations present; counts 345 rows / 66 Out / 10 Doubtful / 84 Questionable / 185 blank corroborated by two prior independent transcriptions. Standings: https://www.nfl.com/standings/league/2026/REG — 32 clubs; Tampa Bay 3-6-0, division 2-0-0 (pct 1.000), confirming canonical hub data and flag F-11 (older tools/nfl_data.py module uses 1-2-0 and is wrong). Schedule orientation NE @ DET (Munich) confirmed on injury report. |
+| A3 | Clean root landing page + category subpage navigation | unclaimed | `index.html`, `hub/*.html` | pending |
+| A4 | Executive summary accuracy pass | unclaimed | `executive-summary.html`, `hub/executive-summary.html` | pending |
+| A5 | Suggestions / questions / flagged pages current | unclaimed | `suggestions.html`, `questions.html`, `flagged.html` (+ hub copies) | pending |
+| A6 | Broken-link / source-row check on the combined tree | unclaimed | existing `scripts/*`, `tools/*` checkers | pending |
+| A7 | Commit → PR → merge → Pages deploy confirmation | unclaimed | `COORDINATION.md` | pending |
+
+---
+
 ## Session `arena/79dfd5ce-x3` — official-source audit correction (2026-11-15)
 
 Platform-assigned branch: `arena/79dfd5ce-x3` (base `8a889d7190ec230f5c9940d2e95e533358e84c65`).
@@ -2631,3 +2654,4 @@ The overlapping official-source correction was independently completed and merge
 - Integration result: PR #68 https://github.com/karagemop466-tech/X3/pull/68 merged to `main` at 2026-11-15T18:22:53Z; merge commit `6955b91f53955b876a54b9c529d267f34e44d0b7`. PR checks passed: Council verify run `43746373467`; X3 signals run `43746373509`.
 - Post-merge Pages verification: deploy workflow run `43746441803` completed successfully on merge commit `6955b91`; GitHub Pages API reports `status: built`, URL https://karagemop466-tech.github.io/X3/ . Live check of https://karagemop466-tech.github.io/X3/hub/results.html?cachebust=6955b91 shows the corrected ROI caveat and official Week 10 citations from PR #65.
 - Coordination closeout for this branch: earlier duplicate PR #66 was closed without merge after PR #65 independently merged the official-source correction; its disposition and the rebase union are recorded above. Current task C02 is merged and deployed.
+
