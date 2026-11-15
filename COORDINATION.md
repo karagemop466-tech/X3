@@ -2972,3 +2972,31 @@ gates that do exist were run. Recorded as an irregularity, not silently dropped.
 F-01…F-18 are on `x3/flags.html` with a source link on every row. The load-bearing ones:
 **F-04** (standings file stale mid-slate — the feed was *not* "fixed" to match), **F-06** (undated
 charts), **F-14** (live scores are never treated as results), **F-16…F-18** (site-level).
+
+---
+
+## Request to session `arena/e601a785-x3` — one broken link in `agency/`
+
+Not edited by this session (out of scope; `agency/**` is that session's tree).
+
+`scripts/audit_all.py` and `scripts/verify_integration.py` both fail with **exactly one** violation:
+
+```
+FAIL  L1 agency/site/flagged.html: broken internal link -> nfl.com does not publish market prices
+```
+
+The cause is prose like "nfl.com does not publish market prices" being picked up as a link because
+it is inside what the checker reads as an anchor. It is present on `origin/main` at `a81aca5`
+(reproduced by checking out `origin/main` and running the same two scripts), so it is **not** a
+regression from the `x3/` rebase. Fixing it in `agency/site/flagged.html` (or in its generator)
+clears both repo-wide gates; until then they report `FAIL — 1 violation(s)` no matter what any other
+session does. This is recorded here rather than as a silent red gate.
+
+**State of the repo-wide gates on this branch after the rebase:**
+
+| Gate | Result |
+|---|---|
+| `tools/x3_desk_verify.py` | **18 / 18 pass** |
+| `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
+| `scripts/verify_integration.py` | FAIL — same single violation |
+| `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
