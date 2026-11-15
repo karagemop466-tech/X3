@@ -1,0 +1,44 @@
+name: Readiness register gate
+
+on:
+  push:
+    branches: [ arena/129e76b5-x3, main ]
+    paths:
+      - 'data/readiness/**'
+      - 'readiness/**'
+      - 'tools/build_readiness.py'
+      - 'tools/verify_readiness.py'
+      - 'tools/build_hub.py'
+      - 'index.html'
+      - '.github/workflows/readiness.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Rebuild the readiness register from data/readiness and repo files
+        run: python3 tools/build_readiness.py
+
+      - name: Verify every row, link and count (offline)
+        run: python3 tools/verify_readiness.py
+
+      - name: The root landing must be the current build of its readiness table
+        run: |
+          python3 tools/build_hub.py
+          git diff --exit-code -- index.html readiness || {
+            echo '::error::index.html or readiness/ is not the current build - run python3 tools/build_readiness.py && python3 tools/build_hub.py and commit.'
+            exit 1; }

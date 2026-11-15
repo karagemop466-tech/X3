@@ -1568,6 +1568,11 @@ def landing():
     # integration session arena/09f8c786-x3: the signals module is a separate tree
     nav += ('<a href="signals/index.html"><b>Signals &amp; leaderboard</b>'
             '<span>Originated lines, price snapshots, signal vs staking</span></a>')
+    # readiness register (arena/129e76b5-x3): one nav card and one compact table on the landing page
+    nav += ('<a href="readiness/index.html"><b>Decision readiness</b><span>One row per requirement: '
+            'status, the gate that blocks it, the number that clears it</span></a>')
+    _ready = os.path.join(ROOT, "readiness", "fragments", "landing-table.inc")
+    readiness_block = open(_ready, encoding="utf-8").read() if os.path.exists(_ready) else ""
     # integration session arena/4c2f61cd-x3: the round2 module (fresh-day verification
     # + the decision-readiness matrix the brief asks for on the landing page).
     nav += ('<a href="round2/index.html"><b>Round 2 readiness</b>'
@@ -1629,6 +1634,7 @@ data does not exist here yet.</p>
 <nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
 {nav}
 </nav>
+{readiness_block}
 <section class="callout"><h2>Start here</h2>
 <p><a href="hub/executive-summary.html"><b>Executive summary</b></a> for the decisions,
 <a href="hub/markets.html"><b>Originated markets</b></a> for the three-market board,

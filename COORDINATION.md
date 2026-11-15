@@ -3244,3 +3244,47 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+
+## Session `arena/129e76b5-x3` — decision-readiness register, questions, suggestions, flagged review (CLAIM, 2026-11-15)
+
+Session ID: `arena/129e76b5-x3`. Platform-assigned branch (base `b5878b2`); the `session-<id>/<task>` naming in the brief is not used, because the platform requires this branch. No other branch is created or pushed.
+
+### Scope claimed (non-overlapping with other sessions' trees)
+| Path | Purpose |
+|------|---------|
+| `readiness/**` | NEW category pages: decision-readiness table, questions & answers, suggestions (nothing implemented), executive summary, Flagged for Review |
+| `data/readiness/requirements.csv` | NEW: one row per requirement in the 2026-11-15 brief, with status, evidence path, blocking gate, clearing number, source |
+| `tools/build_readiness.py`, `tools/verify_readiness.py` | NEW deterministic builder and row-level gate. Numbers in the table are recomputed from repo data files, not typed |
+| `.github/workflows/readiness.yml` | NEW file (no edit to `pages.yml`) |
+| `tools/build_hub.py` (landing function only), `index.html` (regenerated) | One root-landing card and one callout for the readiness register, as requested in the brief. Logged here because the file is shared |
+| `COORDINATION.md` | Claim, task log, verification record (append-only) |
+
+### Explicitly NOT touched
+`hub/**` (apart from the regeneration of nothing), `signals/**`, `ledger/**`, `ops/**`, `desk/**`, `council/**`, `x3lab/**`, `dashboard/**`, `docs/**`, `pages/**`, `site/**`, `archive/**`, `data/desk/**`, `data/hub/**`, `.github/workflows/pages.yml`, `.github/workflows/signals.yml`.
+
+### Constraints found at claim time (verified)
+- Bash cannot reach nfl.com (TLS handshake fails at the sandbox egress; `curl` exit 35). Official pages can only be read via the fetch tool, so this session does not script any nfl.com capture. Nothing is presented as captured by script.
+- The VR-xx / VQ-xx identifiers in the brief do not occur anywhere in this repository (grep, 2026-11-15). They cannot be traced to a source register and are flagged as such.
+
+### Scope amendment (2026-11-15, same session)
+The claim above named only `data/readiness/requirements.csv`. The four other register CSVs in `data/readiness/` back the Questions, Suggestions, Flagged for review and Sources pages, so they are added to scope now: `data/readiness/questions.csv`, `data/readiness/suggestions.csv`, `data/readiness/flags.csv`, `data/readiness/sources.csv`. No other path is added.
+
+### Work and verification log (arena/129e76b5-x3)
+- Builder: `tools/build_readiness.py` computes every number from repo data files (no typed counts). Metric keys are checked against `metrics()`; an unknown key fails the build. Pages written: `readiness/index.html`, `executive-summary.html`, `questions.html`, `suggestions.html`, `flagged.html`, `sources.html`. Landing table fragment: `readiness/fragments/landing-table.inc` (`.inc`, so the page audit does not treat it as a standalone page).
+- Gate: `tools/verify_readiness.py` checks vocabulary, official-link presence or explicit UNVERIFIED reason on every row, host allow-list, evidence paths, cited IDs, metric keys, rebuild byte-equality, landing wiring, and internal links. A deliberate bad link was tested and fails (D6), and a stale page fails (B1).
+- Gate runs: all gate scripts in `pages.yml` were run locally. `scripts/audit_all.py` failed once (the fragment was scanned as a page); fixed by the `.inc` rename. Gate runs rewrote four generated files owned by other tracks (`crosscheck/data/selfcheck.json`, `signals/data/repo_review.csv`, `signals/data/repo_review.json`, `verification-hub/audit-report.json`). They were reverted with `git checkout` and are NOT in this change.
+- Official sources read this session (fetch tool; bash cannot reach nfl.com): `https://www.nfl.com/injuries/league/2026/reg10` chunk 0 of 8 (Joseph, Mays, Reed Out; repo rows match); `https://www.nfl.com/schedules/2026/by-week/week-10` chunk 0 (Commanders 24, Giants 21, FINAL); `https://www.nfl.com/standings/league/2026/REG` chunk 0 (loads; 32-club reconciliation not re-run); `https://www.nfl.com/transactions/` (Colts trades of Allen and Downs on 11/10; Brissett 11/06; no release or IR entry found).
+- Checked against repo files only: Lions designations (5 published pages show Out); Cincinnati 9 rows in hub, 7 in legacy file (brief's 4 not reproduced); 149 tied rank-1 slots not reproduced (5 groups in `data/ledger/replacement_depth.csv`); Packers jersey prefix not present in parsed `signals/data/depth.csv` (13 GB rows); Seattle shared slot appears as Tory Horton replacing two SEA players in week 8 (matched-name-only, not on an official chart); Washington empty slot appears as the week 10 Lucas Patrick row with no chart slot; `capture/` holds only `manifest.txt`.
+
+### Left UNVERIFIED (flagged, not blocking)
+- Week 10 injury row count against the live report (brief: 279 and 254; repo: 345 hub and 205 legacy). The live report has 8 chunks; counting them by hand was not reliable, so no live count is published. See flag F-05 and question Q-05.
+- Colts Week 10 release, Malik Willis on IR, Baltimore QB depth vs IR: no matching entry in the transactions log read this session. See flag F-14.
+- Houston depth: image only, labelled Unofficial; not transcribed and not used (flag F-07; requirement R31).
+- Snap counts (flag F-11), stadium and weather (no venue or weather source in the repo; requirement R23), and any official price source (question Q-01, decision D-01): no official source identified.
+- Standings and schedule URLs load; no row-level reconciliation this session.
+
+### Council regeneration (2026-11-15, same branch)
+`Council verify` (CI) failed on the first push: `scripts/council_build.py` measures the root tree, and the landing table added to `index.html` raises the root row count from 306 to 385 and external links from 196 to 227. The CI rule is that the committed tree must equal the rebuild. The only changes are the two generated files the build writes (`council/repo-review.html`, `data/council/council.json`), regenerated by running `python3 scripts/council_build.py` with no hand edits. `scripts/council_verify.py` passes on the regenerated output. This is the sole change under `council/` and is logged here because that tree belongs to another track.
+
+### Log-integrity irregularity found at merge time (2026-11-15)
+`origin/main` commit `3ec321c` (coordination: record PR #73 merge) left `COORDINATION.md` at 52 lines; the previous version had 2,787 lines. About 2,735 lines of other sessions' log were removed. `b78330d` also contained unresolved conflict markers around the DR-01 closeout block. This branch restores the full log, resolves those markers by keeping both sides, and keeps the 30-line PR #73 merge record from `3ec321c` in place. No other line was changed. The file is append-only; please do not truncate it again. Flagged, not blocking.

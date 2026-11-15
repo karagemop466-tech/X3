@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary - X3 readiness</title>
+<style>
+:root{--bg:#f5f7fa;--card:#fff;--ink:#132033;--mut:#56657a;--line:#dfe5ec;--nav:#10273b;
+--ok:#1e7a4c;--warn:#a86b00;--bad:#b3261e;--info:#2456a6;--grey:#5b6573}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+background:var(--bg);color:var(--ink)}
+header{background:var(--nav);color:#fff;padding:14px 22px}header a{color:#fff;text-decoration:none;font-weight:600}
+nav.sub{display:flex;flex-wrap:wrap;gap:6px;padding:10px 22px;background:#fff;border-bottom:1px solid var(--line)}
+nav.sub a{padding:6px 10px;border-radius:6px;color:#2c4057;text-decoration:none;font-size:13px}
+nav.sub a:hover,nav.sub a.on{background:#e8eef5}
+main{max-width:1280px;margin:0 auto;padding:18px 22px 60px}
+h1{font-size:24px;margin:8px 0 6px}h2{font-size:18px;margin:26px 0 8px}
+p.lede{color:var(--mut);max-width:880px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.card .n{font-size:24px;font-weight:700}.card .l{color:var(--mut);font-size:12px}
+.tbl{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f0f4f8;position:sticky;top:0;font-weight:600;white-space:nowrap}
+td.id{white-space:nowrap;font-weight:600}
+code{font-size:12px;background:#f0f3f7;padding:1px 4px;border-radius:4px;word-break:break-all}
+a{color:#1f5fa8;word-break:break-all}
+.chip{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+.chip.ok{background:var(--ok)}.chip.warn{background:var(--warn)}.chip.bad{background:var(--bad)}
+.chip.info{background:var(--info)}.chip.grey{background:var(--grey)}
+.unv{background:#fde8e6;color:var(--bad);font-weight:700;padding:0 5px;border-radius:4px;font-size:12px}
+.note{background:#fff8e6;border:1px solid #f0dca8;border-radius:8px;padding:10px 12px;max-width:980px}
+ul.plain li{margin:4px 0}
+footer{color:var(--mut);font-size:12px;margin-top:30px}
+.mut{color:var(--mut);font-size:12px}
+</style>
+</head>
+<body>
+<header><a href="../index.html">X3 NFL decision desk</a> &middot; Decision readiness register &middot; data as of 2026-11-15</header>
+<nav class="sub"><a href="index.html">Decision readiness</a><a href="executive-summary.html" class=on>Executive summary</a><a href="questions.html">Questions and answers</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a><a href="../index.html">Back to landing</a></nav>
+<main>
+<h1>Executive summary</h1>
+<p class="lede">The short version: what exists, what is verified, what blocks each decision, and what the owner must decide.</p>
+
+<h2>What this is</h2>
+<p>A register that answers the brief's question for each requirement: is it built, what blocks it, and what number would clear it.
+It is not a model result, a strategy result, or a betting recommendation. No value on this site is inferred.</p>
+<h2>Where things stand</h2>
+<ul class="plain">
+<li><b>78</b> requirements: 6 done, 33 partial, 12 blocked, 24 not started, 1 decision, 2 policy.</li>
+<li>Official market values held in the price store: <b>0</b> (of 978 rows hold a market value). The store therefore cannot yet support an opening or closing line, a market residual, or any ROI.</li>
+<li><b>137</b> FINAL games are in the results feed, from 1 season.</li>
+<li><b>15</b> strategies are in the signals registry and <b>12</b> in the hub prereg. The two must be reconciled (flag F-04).</li>
+<li><b>0</b> strategies pass every gate in the leaderboard. Four rows are marked rankable=yes while failing gates (flag F-03).</li>
+<li><b>0</b> scheduled workflows exist, so no capture runs on a schedule. The sandbox cannot open nfl.com from bash, so captures cannot be scripted here.</li>
+<li><b>111</b> of 210 injury rows name a replacement. The Houston chart is an image on a page labelled Unofficial.</li>
+</ul>
+<h2>Verified in this session</h2>
+<ul class="plain">
+<li>The official Week 10 report shows Out for Kerby Joseph, Cade Mays and D.J. Reed (<a href="https://www.nfl.com/injuries/league/2026/reg10">nfl.com/injuries/league/2026/reg10</a>). The repo rows match.</li>
+<li>The official transactions log shows the Colts trades of Keenan Allen and Josh Downs on 11/10, and Jacoby Brissett's trade on 11/06 (<a href="https://www.nfl.com/transactions/">nfl.com/transactions</a>).</li>
+<li>The official policy defines Questionable, Doubtful and Out with no percentages (<a href="https://www.nfl.com/news/competition-committee-approves-revisions-to-injury-report-0ap3000000688693">NFL.com injury-report policy</a>).</li>
+<li>The official game centre shows MetLife Stadium as the venue of Commanders at Giants, and links a Game Book PDF (<a href="https://www.nfl.com/games/commanders-at-giants-2026-reg-10">game centre</a>).</li>
+<li>The Houston depth chart page is labelled Unofficial and shows the chart as an image (<a href="https://www.houstontexans.com/team/depth-chart">houstontexans.com/team/depth-chart</a>).</li>
+</ul>
+<h2>What is blocked, and by what</h2>
+<ul class="plain">
+<li>Prices: no official price source is identified. Owner decision D-01.</li>
+<li>Snap counts and depth order: no official snap-count source is identified. Owner decision D-03.</li>
+<li>Calibration of designations and past-season models: no archive exists in the repo, although the 2025 Week 10 report is reachable on nfl.com.</li>
+<li>Scheduled capture: no schedule exists and nfl.com cannot be reached from bash.</li>
+</ul>
+<h2>Decisions needed</h2>
+<ul class="plain"><li><b>D-01</b> Price-data policy: which price source, if any, may be stored and used, and what it may be used for</li><li><b>D-02</b> Canonical strategy registry and canonical site tree</li><li><b>D-03</b> Depth-order route for the backup-deficiency feature</li><li><b>D-04</b> Train, validation and holdout seasons (frozen before any evaluation)</li><li><b>D-05</b> Public and private data split, after the source terms are read</li></ul>
+<h2>Most important irregularities (full list on Flagged for review)</h2>
+<ul class="plain"><li><b>F-01</b> Price-store open and close columns are model cut-offs, not market prices. Market values are blank in every row.</li><li><b>F-02</b> Third-party closing lines are stored beside the model rows.</li><li><b>F-03</b> Four leaderboard rows are marked rankable=yes while failing gates G2, G5, G6 and G7 and blocked on the missing price.</li><li><b>F-05</b> Week 10 injury row counts disagree across the repo and the brief.</li><li><b>F-06</b> Cincinnati row count disagrees with the brief.</li><li><b>F-07</b> Houston depth chart is an image on an Unofficial Depth Chart page.</li><li><b>F-09</b> Raw captures are not retained and have no hashes.</li><li><b>F-10</b> There are no scheduled workflows.</li><li><b>F-11</b> No official snap-count source identified.</li></ul>
+<h2>Limits</h2>
+<ul class="plain">
+<li>The brief's VR and VQ identifiers do not appear in the repo, so they cannot be traced (flag F-13).</li>
+<li>The fetch tool read nfl.com page by page. Only the pages in <a href="sources.html">Sources</a> were read this session; the rest are prior-session or unread.</li>
+<li>The Week 10 counts (345 in the repo, 254 and 279 in the brief) were not recounted live (flag F-05).</li>
+</ul>
+<h2>Recommended order</h2>
+<ul class="plain">
+<li>1. Owner decisions D-01 to D-05 (see <a href="suggestions.html">Suggestions</a>).</li>
+<li>2. Reconcile the registry, the leaderboard flag and the injury counts (S-02, S-03, S-04).</li>
+<li>3. Open one Game Book and record its fields (S-05); archive past reports by hand (S-09).</li>
+<li>4. Test a scheduled runner against nfl.com (Q-16) before building any capture (S-08).</li>
+</ul>
+
+<footer>Generated by tools/build_readiness.py from data/readiness/*.csv and repo data files. Verified by tools/verify_readiness.py. Every number is counted from a repo file; every row without an official link says UNVERIFIED.</footer>
+</main>
+</body>
+</html>
