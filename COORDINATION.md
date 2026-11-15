@@ -2628,3 +2628,57 @@ The overlapping official-source correction was independently completed and merge
 - Verification: `tools/verify_hub.py` PASS (27 pages, 1,390 data rows, 0 failures/0 warnings); `scripts/check_hub.py` PASS; `scripts/council_verify.py` PASS (6 checks, 132 rows); `scripts/verify_integration.py` PASS (221 pages, 10,087 rows, no problems); `scripts/audit_all.py` PASS (221 pages, 15,777 refs, 401 tables, all source rows linked or marked unverified); `git diff --check` PASS.
 - Irregularities: the broader repository still has 177 source rows explicitly marked UNVERIFIED (and 7,509 of 7,686 source rows linked) per the repo-wide audit. This is disclosed rather than treated as fully verified.
 - Status: C02 done; PR/deploy result to follow.
+
+---
+
+## Session `arena/c299e6a6-x3` — decision-readiness layer + perishable official captures (CLAIM, posted 2026-11-15T18:25Z)
+
+Branch: `arena/c299e6a6-x3`, reset onto `origin/main` tip `6955b91` before claiming (the session
+snapshot commit `8a889d7` was main-minus-PRs-#65..#68, so the reset loses nothing and inherits the
+newer fixes). All work happens on this branch.
+
+### Task board (arena/c299e6a6-x3)
+
+| ID | Task | Status | Files / scope |
+|----|------|--------|---------------|
+| CR-01 | Perishable official capture, clock-stamped: Week 10 injury report re-read + Week 10 results/records as played | in progress | `data/readiness/capture/**`, `data/readiness/*.csv` |
+| CR-02 | Injury delta (surprise, never level) + capture manifest with hashes | in progress | `data/readiness/injury_delta_*.csv`, `data/readiness/capture_manifest.csv` |
+| CR-03 | Decision-readiness table: one row per requirement of the brief, with the gate that blocks it and the number that clears it | in progress | `data/readiness/decision_readiness.csv`, `readiness/decision-readiness.html` |
+| CR-04 | Availability graph as a first-class dataset (expected-to-start vs actual) | in progress | `data/readiness/availability_graph.csv`, `readiness/availability.html` |
+| CR-05 | Fixture-context feature set built only from published schedule facts | in progress | `data/readiness/fixture_context.csv`, `readiness/fixture-context.html` |
+| CR-06 | 32-team roster/IR sweep status (who was swept, from where, what is still unlisted) | in progress | `data/readiness/ir_sweep.csv`, `readiness/ir-sweep.html` |
+| CR-07 | Removal-of-luck panel recomputed from the verified corpus + control baselines (random, favorites-only) | in progress | `readiness/luck.html`, `scripts/readiness_luck.py` |
+| CR-08 | Backtest corpus ledger: pre-registration, frozen hash, price-data policy decision | in progress | `readiness/backtest.html`, `data/readiness/prereg.csv` |
+| CR-09 | Drift alarm for every source (expected row counts + required fields, loud failure) | in progress | `scripts/readiness_drift.py`, `.github/workflows/readiness.yml` |
+| CR-10 | Durable snapshot store + freshness alert on a scheduled runner | in progress | `scripts/readiness_capture.py`, `.github/workflows/readiness.yml` |
+| CR-11 | Questions / information gaps / suggestions-to-discover and the suggestions queue | in progress | `readiness/questions.html`, `readiness/suggestions.html` |
+| CR-12 | Flagged for review + verification log for this module | in progress | `readiness/flagged.html`, `readiness/verification.html` |
+| CR-13 | Integration: nav entry, links, PR, merge, Pages confirm | unclaimed (self) | `tools/build_hub.py`, generated `index.html`/`hub/*.html`, `README.md` |
+
+### File-scope declaration
+
+This session **creates** `readiness/**`, `data/readiness/**`, `scripts/readiness_build.py`,
+`scripts/readiness_verify.py`, `scripts/readiness_drift.py`, `scripts/readiness_capture.py`,
+`scripts/readiness_luck.py`, `.github/workflows/readiness.yml`.
+It **appends only** to `COORDINATION.md` and `README.md`.
+As integration session (CR-13) it edits `tools/build_hub.py`'s navigation list and regenerates
+`index.html` + `hub/index.html` with `python3 tools/x3_engine.py && python3 tools/build_hub.py`;
+it adds one CI step to `.github/workflows/pages.yml`. It also appends one row to
+`scripts/audit_all.py`'s module list if that audit requires it.
+It **never writes** `hub/data/**`, `data/hub/**`, `data/x3/**`, `data/desk/**`, `data/ops/**`,
+`signals/**`, `ops/**`, `origin/**`, `council/**`, `hub/*.html` (other than the regenerated landing
+files above), `dashboard/**`, `x3lab/**`, `desk/**`, `crosscheck/**`, `audit/**`, `ledger/**`,
+`archive/**`, `docs/**`, `pages/**`, `site/**`, `lab/**`, `legacy/**`, `research/**`, `analysis/**`,
+`verification-hub/**`, and the other sessions' `scripts/**` / `tools/**` / workflows.
+
+### Policy notes for this session
+
+- Prices: `data/x3/source/games.csv` carries third-party (PFF via nflverse) market lines while
+  `data/x3/verified/price_store.csv` publishes them blank under F-01 "no market price exists".
+  This session does not resolve that contradiction by editing either tree; it publishes the decision,
+  both bodies of evidence, and the gate each option clears (CR-08), and leaves the choice blank.
+- Raw-HTML archiving cannot happen in this sandbox (nfl.com is not routable from bash; fetch_page
+  returns markdown). Captures here are therefore stored as markdown transcriptions with URL, UTC
+  clock time, page hash and totalChunks, and the runner-side raw capture is left to the CI job.
+- No value is typed from memory into a published table: every published number is read from a file
+  under `data/readiness/` at build time; anything not confirmed from an official page is blank + flagged.
