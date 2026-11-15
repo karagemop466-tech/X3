@@ -804,8 +804,8 @@ def availability_panel(games, depth, inj_stored, inj_fresh, inactives):
             return None, None
         initial, surname = m.group(1).lower(), norm(m.group(2))
         # stored tuple is (normalised full name, chart position, tier, first initial)
-        cands = [(nm, pos, tier) for (nm, pos, tier, ini) in idx[club]
-                 if ini == initial and nm.endswith(surname)]
+        cands = sorted((nm, pos, tier) for (nm, pos, tier, ini) in idx[club]
+                 if ini == initial and nm.endswith(surname))
         if len(cands) == 1:
             nm, pos, tier = cands[0]
             return tier, pos
@@ -816,7 +816,7 @@ def availability_panel(games, depth, inj_stored, inj_fresh, inactives):
             return "AMBIGUOUS", cands[0][1]
         return None, None
 
-    idx = defaultdict(set)
+    idx = defaultdict(list)
     for a in audit:
         for c in depth:
             if c["abbr"] == a["club"]:
@@ -825,7 +825,9 @@ def availability_panel(games, depth, inj_stored, inj_fresh, inactives):
                         for tier_i, tier in enumerate(s["tiers"]):
                             for nm in tier:
                                 first = norm(nm)[:1]
-                                idx[a["club"]].add((norm(nm), s["pos"], tier_i + 1, first))
+                                idx[a["club"]].append((norm(nm), s["pos"], tier_i + 1, first))
+    for club in idx:
+        idx[club].sort()
 
     rep = []
     for s in starters:
