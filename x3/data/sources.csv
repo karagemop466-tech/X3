@@ -1,0 +1,16 @@
+id,what,url,scope,read,verified_by
+S-01,Official NFL injury report (current week),https://www.nfl.com/injuries/,Week 10 of 2026,read live 2026-11-15,rows transcribed by the committed parser; counts re-derived here
+S-02,Official NFL injury report (Week 10 archive URL),https://www.nfl.com/injuries/league/2026/reg10,Week 10 of 2026,read live 2026-11-15,same page as S-01 at this time
+S-03,Official NFL injury report (Week 11 archive URL),https://www.nfl.com/injuries/league/2026/reg11,redirects to Week 10,read live 2026-11-15,Week-11 designations do not exist yet — flag F-02
+S-04,Official NFL week-10 schedule,https://www.nfl.com/schedules/2026/by-week/week-10,14 games + 4 byes,read live 2026-11-15,finals and byes transcribed
+S-05,Official NFL week-11 schedule,https://www.nfl.com/schedules/2026/by-week/week-11,13 games + 6 byes,read live 2026-11-15,priced as a forward slate
+S-06,Official NFL league standings,https://www.nfl.com/standings/league/2026/reg,32 clubs,read live 2026-11-15,30 agree with the committed file; 2 do not (F-04)
+S-07,"Game Book, WAS at NYG, 2026-11-12",https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf,"starters, inactives, inactives, snap counts, venue, weather",read live 2026-11-15,the official signed game summary PDF linked from the game centre
+S-08,"Game Center, NE at DET, 2026-11-15",https://www.nfl.com/games/patriots-at-lions-2026-reg-10,"score, venue, stadium",read live 2026-11-15,body of its Game Book not read (F-10)
+S-09,"Game Center, WAS at NYG, 2026-11-12",https://www.nfl.com/games/commanders-at-giants-2026-reg-10,"score, venue, stadium",read live 2026-11-15,link to S-07
+S-10,"Game Center, KC at ATL (in progress)",https://www.nfl.com/games/chiefs-at-falcons-2026-reg-10,"live score, venue, stadium",read live 2026-11-15,excluded from results (F-14)
+S-11,Seattle Seahawks depth chart,https://www.seahawks.com/team/depth-chart/,Offense / Defense / Special teams,read live 2026-11-15,two players in one rank-1 cell (F-08)
+S-12,Baltimore Ravens depth chart,https://www.baltimoreravens.com/team/depth-chart,Offense / Defense / Special teams,read live 2026-11-15,QB order differs from the committed capture
+S-13,"Club depth charts, all 32 (committed capture 2026-11-14)",https://github.com/karagemop466-tech/X3/blob/main/data/desk/depth.json,"31 parsable, 1 image-only (HOU)",captured by session arena/3bf7cc8b-x3,self-labelled unofficial by 15 clubs (F-07)
+S-14,"Official NFL injury reports, weeks 8-11 (committed capture)",https://github.com/karagemop466-tech/X3/blob/main/data/desk/injuries.json,"1,027 rows",captured by session arena/3bf7cc8b-x3,week 11 rows are a duplicate of week 10 (F-02)
+S-15,NFL Football Operations — 2026 rulebook,https://operations.nfl.com/the-rules/2026-nfl-rulebook/,rule text,"referenced, not read in this pass",used only to name the 2026 kickoff/onside regime

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html" class="on">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Leaderboard</h1><p class="sub">Ranked on a proper score; staking reported separately and never used to rank</p></div>
+
+<section class="callout "><h2>Signal and staking are different columns, and only one can rank</h2>
+<p>Requirement R-05 and R-37: <b>staking cannot promote a strategy</b>. The rank key is the
+signal column, and the gate script asserts that no ordering reads a return. Every staking cell is
+blank because no price exists (F-01), so a lucky staking run cannot exist here at all — which is
+the strongest possible version of the requirement.</p>
+<p><b>Controls come first.</b> Three baselines are published before any strategy: the home club
+always (68/138), the better record
+(107/138, descriptive only because it uses post-game standings), and a coin flip.
+A strategy that cannot beat these is not a signal.</p></section><div class="tw"><table class="">
+<thead><tr><th>Rank</th><th>ID</th><th>Strategy</th><th>Division</th><th>Signal metric</th><th>Value</th><th>n</th><th>Proper score</th><th>Brier skill</th><th>p</th><th>ROI</th><th>CLV</th><th>State</th></tr></thead><tbody>
+<tr><td>1</td><td><b>C-01</b></td><td>CONTROL: better record wins (favourites only)</td><td><span class="div">singles-control</span></td><td>win rate</td><td>0.775</td><td>138</td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td>0.0000</td><td><span class="blank">no price</span></td><td><span class="blank">no price</span></td><td><span class="st control">CONTROL</span></td></tr>
+<tr><td>2</td><td><b>C-02</b></td><td>CONTROL: coin flip</td><td><span class="div">singles-control</span></td><td>win rate</td><td>0.500</td><td>138</td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td><span class="blank">no price</span></td><td><span class="blank">no price</span></td><td><span class="st control">CONTROL</span></td></tr>
+<tr><td>3</td><td><b>C-00</b></td><td>CONTROL: home club wins every game</td><td><span class="div">singles-control</span></td><td>win rate</td><td>0.493</td><td>138</td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td>0.9322</td><td><span class="blank">no price</span></td><td><span class="blank">no price</span></td><td><span class="st control">CONTROL</span></td></tr>
+<tr><td>4</td><td><b>S-03</b></td><td>Combo: side AND total both correct (2-leg)</td><td><span class="div">parlay</span></td><td>2-leg hit rate</td><td>0.300</td><td>90</td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td><span class="blank">no price</span></td><td><span class="blank">no price</span></td><td><span class="st gated">GATED-JOINT-EVIDENCE</span></td></tr>
+<tr><td>5</td><td><b>S-01</b></td><td>Side: ridge club strength -&gt; home spread</td><td><span class="div">singles</span></td><td>Brier skill vs coin flip</td><td>+0.099</td><td>90</td><td>0.2253</td><td><b>+0.099</b></td><td>0.0021</td><td><span class="blank">no price</span></td><td><span class="blank">no price</span></td><td><span class="st paper">PAPER-SIGNAL</span></td></tr>
+<tr><td>6</td><td><b>S-02</b></td><td>Total: ridge club pace -&gt; game total</td><td><span class="div">singles</span></td><td>Brier skill vs the constant total benchmark</td><td>-0.096</td><td>106</td><td>0.2692</td><td><b>-0.096</b></td><td>0.6274</td><td><span class="blank">no price</span></td><td><span class="blank">no price</span></td><td><span class="st paper">PAPER-ONLY</span></td></tr>
+</tbody></table></div>
+<p class="tn">Brier skill is 1 - Brier/Brier(benchmark). Positive is better than the benchmark. p is an exact binomial two-sided test against 0.5 on the direction.</p><section class="callout "><h2>What would change our mind — both directions</h2>
+<ul class="findings">
+<li><b>S-01 (side)</b> — would strengthen if a post-registration window reproduces a hit rate
+above 0.55 with n >= 200. Would collapse if that window returns to 0.50; the interval here
+already touches 0.50 at its lower edge, so this is not a remote possibility.</li>
+<li><b>S-02 (total)</b> — would strengthen if the model beat the benchmark MAE on a second
+window. Would be archived by D-2 if a second window is also adverse. Right now it loses on both
+Brier skill and MAE.</li>
+<li><b>S-03 (combo)</b> — would become rankable only with a validated joint probability and the
+operator's void/push rules. No amount of marginal evidence substitutes, because the legs are
+dependent — the observed joint rate is well below the product of the marginals.</li>
+<li><b>The whole board</b> — would change character entirely with a licensed price. Every
+ROI cell would fill, and the demotion gate D-1 would become triggerable.</li>
+</ul></section>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

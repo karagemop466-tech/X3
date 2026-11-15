@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fixture context - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="features.html" class="on">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Fixture context</h1><p class="sub">Rest, site, kickoff and network — published facts only</p></div>
+
+<section class="callout "><h2>Only published schedule facts</h2>
+<p>Requirement R-14 asks for a fixture-context feature set built <b>only</b> from published
+schedule facts. Rest days are computed from the official kickoff dates; the neutral-site flag and
+the venue name come from the week page; kickoff time and network are as published. Nothing here is
+a forecast, a weather model or an inferred travel burden.</p>
+<p class="key">Deliberately <b>absent</b>: roof, surface and weather. The Game Book prints them for
+a finished game, but no stadium-level roof/surface table or NWS forecast grid exists in this
+repository, so those columns are not offered (see the readiness table, R-57).</p></section><div class="tw"><table class="">
+<thead><tr><th>Fixture</th><th>Kickoff date</th><th>Away rest days</th><th>Home rest days</th><th>Site</th><th>Kickoff ET</th><th>Network</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>IND @ HOU</b></td><td>2026-11-19</td><td>11</td><td>11</td><td></td><td>8:15 PM</td><td>PRIME</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>MIA @ BUF</b></td><td>2026-11-22</td><td>14</td><td>13</td><td></td><td>1:00 PM</td><td>CBS</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>BAL @ CAR</b></td><td>2026-11-22</td><td>17</td><td>14</td><td></td><td>1:00 PM</td><td>FOX</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>NO @ CHI</b></td><td>2026-11-22</td><td>14</td><td>14</td><td></td><td>1:00 PM</td><td>FOX</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>TEN @ DAL</b></td><td>2026-11-22</td><td>21</td><td>14</td><td></td><td>1:00 PM</td><td>FOX</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>TB @ DET</b></td><td>2026-11-22</td><td>14</td><td>14</td><td></td><td>1:00 PM</td><td>FOX</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>ARI @ KC</b></td><td>2026-11-22</td><td>14</td><td>14</td><td></td><td>1:00 PM</td><td>CBS</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>PIT @ PHI</b></td><td>2026-11-22</td><td>21</td><td>14</td><td></td><td>1:00 PM</td><td>CBS</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>NYJ @ LAC</b></td><td>2026-11-22</td><td>14</td><td>14</td><td></td><td>4:05 PM</td><td>FOX</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>JAX @ NYG</b></td><td>2026-11-22</td><td>17</td><td>10</td><td></td><td>4:25 PM</td><td>CBS</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>LV @ DEN</b></td><td>2026-11-22</td><td>14</td><td>14</td><td></td><td>4:25 PM</td><td>CBS</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>MIN @ SF</b></td><td>2026-11-22</td><td>13</td><td>14</td><td></td><td>8:20 PM</td><td>NBC</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>CIN @ WAS</b></td><td>2026-11-23</td><td>15</td><td>11</td><td></td><td>8:15 PM</td><td>ESPN</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div>
+<p class="tn">Rest days are calendar days between the club's previous game date and this kickoff date, both taken from official pages.</p>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

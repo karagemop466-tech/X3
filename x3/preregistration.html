@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-registration - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="features.html">Fixture context</a><a href="preregistration.html" class="on">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Pre-registration</h1><p class="sub">Seven registrations: what was frozen, when, and which ones fail their own gate</p></div>
+
+<section class="callout warn"><h2>A registration is a date, a text and a window</h2>
+<p>Requirement R-09, R-66 and R-19. The brief's version of pre-registration is a commit hash that
+predates the evaluation window. This desk publishes the register with its date and window, and then
+says plainly which rows fail: <b>every model row fails G-1</b>, because the model entered the
+repository on the same day it was graded. Marking that honestly is worth more than a register that
+pretends otherwise.</p>
+<p class="key">What the register buys is the future: the corpus is frozen now, so every game from
+Week 11 onward is out-of-sample for this model. Suggestion S-09 proposes registering the next model
+before Week 12 so that the same thing is true for it from its first game.</p></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>What is registered</th><th>Registered</th><th>Strategy</th><th>Window</th><th>Metric</th><th>Gates declared</th><th>State</th><th>Where</th><th>Note</th></tr></thead><tbody>
+<tr><td><b>PR-01</b></td><td>Side: ridge club strength -&gt; home spread</td><td>2026-11-15</td><td>S-01</td><td>weeks 3-10 of 2026 (106 graded games)</td><td>Brier skill vs a coin flip; direction hit rate; 95% Wilson CI</td><td>G-1 FAIL (registered after the window), G-2 FAIL (n &lt; 200)</td><td><span class="st warn">IN-SAMPLE</span></td><td><a href="leaderboard.html">page</a></td><td>the registration is a date and a text, not a commit hash, because the model entered the repository with this commit</td></tr>
+<tr><td><b>PR-02</b></td><td>Total: ridge club pace -&gt; game total</td><td>2026-11-15</td><td>S-02</td><td>weeks 3-10 of 2026 (106 graded games)</td><td>Brier skill vs a pre-registered constant total of 44.0; MAE</td><td>G-1 FAIL, G-2 FAIL; the benchmark is a prior, not a published average (S-06)</td><td><span class="st warn">IN-SAMPLE</span></td><td><a href="leaderboard.html">page</a></td><td>the benchmark must be replaced by a published league average before this is re-registered</td></tr>
+<tr><td><b>PR-03</b></td><td>Combo: side AND total</td><td>2026-11-15</td><td>S-03</td><td>same games as PR-01 and PR-02</td><td>observed joint hit rate vs the product of marginals</td><td>G-6 BLOCKED: no validated joint probability</td><td><span class="st warn">IN-SAMPLE, NOT RANKED</span></td><td><a href="leaderboard.html">page</a></td><td>published to size the dependence, not to compete</td></tr>
+<tr><td><b>PR-04</b></td><td>Availability ablation A-1</td><td>2026-11-15</td><td>A-1</td><td>fit on week 9, test on week 10 (2 games)</td><td>paired difference in absolute error, 95% CI</td><td>n_test = 2: no verdict possible</td><td><span class="st warn">UNDERPOWERED</span></td><td><a href="ablations.html">page</a></td><td>the design is registered; the sample is not there yet</td></tr>
+<tr><td><b>PR-05</b></td><td>Depth-order validity test</td><td>2026-11-15</td><td>depth_order</td><td>1 game, 20 slots</td><td>share of slots where the club&#x27;s first name took the most snaps</td><td>n = 20 slots, 2 clubs: a measurement, not an estimate</td><td><span class="st warn">MEASURED</span></td><td><a href="depth.html">page</a></td><td>extend to all finals before quoting a rate (S-03)</td></tr>
+<tr><td><b>PR-06</b></td><td>Correlations C-01..C-05</td><td>2026-11-15</td><td>correlations</td><td>as stated per row</td><td>Pearson r with n, 95% Fisher-z CI, two-sided p</td><td>C-05 is undefined (no variance in the first column); n is published for all</td><td><span class="st warn">MEASURED</span></td><td><a href="correlations.html">page</a></td><td>no correlation is used as a model input yet</td></tr>
+<tr><td><b>PR-07</b></td><td>Demotion rule D-1</td><td>2026-11-15</td><td>gates</td><td>applies to any live strategy; none is live</td><td>four triggers, any one fires</td><td>NOT TRIGGERABLE today; dry-run proven</td><td><span class="st warn">REGISTERED</span></td><td><a href="gates.html">page</a></td><td>the rule is fixed before anything is live, which is the point of registering it</td></tr>
+</tbody></table></div>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

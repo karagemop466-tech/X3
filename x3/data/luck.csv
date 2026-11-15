@@ -1,0 +1,4 @@
+item,value,n,ci_low,ci_high,reading,source
+Games decided by one score (<=8 pts),0.5652,138,0.4819,0.6451,A large share of results is decided by one possession; a season-long record therefore carries a lot of variance that no model can remove.,https://www.nfl.com/schedules/2026/by-week/week-10
+Pythagorean expected wins vs actual (32 clubs),-0.6676,32,,,"No league-wide bias (-0.67 wins), but the club-level spread is SD 1.08 wins. That spread is the luck a season-long win-rate leaderboard would reward.",https://www.nfl.com/standings/league/2026/reg
+Model margin SD vs actual margin SD,0.4062,106,,,"Predicted SD 5.24 against actual SD 12.91. A ratio below 1 means the model is under-spread and its probabilities are too timid; that is a calibration defect, not a skill claim.",https://www.nfl.com/schedules/2026/by-week/week-10

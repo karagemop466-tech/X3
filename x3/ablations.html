@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ablations - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html" class="on">Ablations</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Ablations</h1><p class="sub">With and without the feature, paired by game, with an interval</p></div>
+
+<section class="callout warn"><h2>An ablation, not a penalty</h2>
+<p>The brief forbids subtracting a fixed number of points for a missing starter. So the same model
+is fitted twice — once with a verified availability feature and once without — and the
+<b>difference</b> is published with its uncertainty.</p>
+<p class="key">Result: delta MAE +0.461 (SE 0.461) on
+n = 2 test games. The interval straddles zero, so <b>the data cannot separate the two
+models</b>. That is a legitimate result and is published as one; it is not evidence for the
+feature, and it is not evidence against it.</p>
+<p>n_test = 2 is far too small to settle anything. The design is what matters here: a paired
+comparison on a chronological split, with the coefficient fitted on the earlier week only.</p></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>Ablation</th><th>Feature</th><th>beta</th><th>n train</th><th>n test</th><th>MAE without</th><th>MAE with</th><th>Delta MAE</th><th>SE</th><th>95% interval</th><th>Verdict</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>A-1</b></td><td>Availability: officially OUT players per club</td><td>beta * (outs_home - outs_away); beta fitted on week 9 only</td><td>-0.461</td><td>15</td><td>2</td><td>14.994</td><td>15.455</td><td>+0.461</td><td>0.461</td><td>-0.443 to +1.366</td><td>no measurable difference</td><td><a class="ext" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com</a></td></tr>
+<tr><td><b>A-2</b></td><td>Personnel: depth-chart string of the replacement</td><td>NOT RUN</td><td><span class="blank">blank</span></td><td></td><td></td><td>14.994</td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td><span class="blank">blank</span></td><td>BLOCKED — no as-of date on 31 of 32 club charts (F-06)</td><td><a class="ext" href="https://www.seahawks.com/team/depth-chart/" target="_blank" rel="noopener">nfl.com</a></td></tr>
+</tbody></table></div>
+<p class="tn">Negative delta means the feature reduced error. A-2 is blocked rather than approximated, because a depth string cannot be dated (F-06).</p>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

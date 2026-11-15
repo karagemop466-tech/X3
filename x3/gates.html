@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gates &amp; demotion - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html" class="on">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Gates &amp; demotion</h1><p class="sub">Entry gates, integrity gates and the demotion rule that sends a strategy back to paper</p></div>
+
+<section class="callout "><h2>The demotion gate, stated before anything is live</h2>
+<p>Requirement R-08 asks for a rule that sends a <b>live strategy back to paper</b>. D-1 has four
+triggers and <b>any one</b> fires it: a rolling 40-game hit rate at or below 0.50, a negative
+Brier skill over 40 graded games, four live weeks with no graded game, or a data-source schema
+failure. Nothing on this desk is live, so the gate cannot fire for real; the verification script
+therefore <b>injects</b> an adverse 40-game window and asserts that the rule fires. A rule that has
+never been executed is a wish, not a gate.</p></section><div class="tw"><table class="">
+<thead><tr><th>ID</th><th>Gate</th><th>Kind</th><th>Rule</th><th>Threshold</th><th>Measured</th><th>Result</th><th>Action</th><th>Source</th></tr></thead><tbody>
+<tr><td><b>G-1</b></td><td>Pre-registration</td><td><span class="div">entry</span></td><td>A strategy&#x27;s text, sample window and exit gates are committed before its first graded game. The commit hash is the registration.</td><td>a commit that predates the graded window</td><td>the model and the metrics in this desk were committed on 2026-11-15, AFTER the 138 games they are graded on</td><td><span class="st fail">FAIL</span></td><td>Every number on this desk is labelled IN-SAMPLE (retrospective). None of it can be promoted until a post-registration window exists. The registration record is x3/data/preregistration.csv.</td><td><a href="gates.html">page</a></td></tr>
+<tr><td><b>G-2</b></td><td>Sample size</td><td><span class="div">entry</span></td><td>At least 200 graded games per division before a strategy is ranked publicly.</td><td>n &gt;= 200</td><td>side n=90, total n=106</td><td><span class="st fail">FAIL</span></td><td>Both strategies stay on the paper board. At the current rate (about 14 games a week) the 200-game mark lands around week 23, i.e. after this regular season.</td><td><a class="ext" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">page</a></td></tr>
+<tr><td><b>G-3</b></td><td>Walk-forward only</td><td><span class="div">integrity</span></td><td>Every graded game is predicted from games that finished before it. The ridge penalty is chosen by an inner walk-forward inside the training window, never on the graded week.</td><td>0 games predicted using their own result</td><td>0 violations; the fit for week W uses only weeks &lt; W</td><td><span class="st pass">PASS</span></td><td></td><td><a href="verification.html">page</a></td></tr>
+<tr><td><b>G-4</b></td><td>Multiplicity</td><td><span class="div">integrity</span></td><td>Benjamini-Hochberg at q=0.10 across every hypothesis in this desk, with the count of hypotheses published.</td><td>BH-adjusted p &lt; 0.10</td><td>3 hypotheses carry a p-value (side, total, combo)</td><td><span class="st pass">PASS (reported)</span></td><td>The BH step and the hypothesis count are on the requirements page. With 3 hypotheses a single discovery is weak evidence and is treated as such.</td><td><a href="leaderboard.html">page</a></td></tr>
+<tr><td><b>G-5</b></td><td>Staking independence</td><td><span class="div">integrity</span></td><td>Promotion reads the signal column only. A strategy may not be ranked, promoted or demoted on ROI, because no price exists.</td><td>0 leaderboard rows ordered by a return</td><td>0 — the sort key is the signal column and the gate asserts it</td><td><span class="st pass">PASS</span></td><td></td><td><a href="leaderboard.html">page</a></td></tr>
+<tr><td><b>G-6</b></td><td>Joint evidence for combos</td><td><span class="div">entry</span></td><td>A parlay or same-game combo may be ranked only when a directly validated joint probability exists AND the operator&#x27;s void/push rules are stored.</td><td>both present</td><td>0 of 2 present</td><td><span class="st warn">BLOCKED</span></td><td>S-03 is published as a gap measurement (observed joint vs the product of marginals), never as a ranked strategy.</td><td><a href="leaderboard.html">page</a></td></tr>
+<tr><td><b>G-7</b></td><td>Official-source-only correlations</td><td><span class="div">integrity</span></td><td>Every correlation is computed from numbers that came from an official page, and each value carries its n.</td><td>n published for every row; 0 rows with a made-up n</td><td>5 of 5 rows carry n; 1 of 5 is UNDEFINED and says so</td><td><span class="st pass">PASS</span></td><td></td><td><a href="correlations.html">page</a></td></tr>
+<tr><td><b>D-1</b></td><td>DEMOTION: live -&gt; paper</td><td><span class="div">demotion</span></td><td>A live strategy returns to paper the moment ANY of: (a) its rolling 40-game hit rate is at or below 0.50, (b) its Brier skill against its own benchmark is negative over 40 graded games, (c) it has been live four weeks with no graded game, (d) its data source fails a schema check.</td><td>any one trigger</td><td>nothing is live on this desk, so no trigger can fire; the rule is dry-run instead</td><td><span class="st warn">NOT TRIGGERABLE (nothing live)</span></td><td>The gate script injects a 40-game window at 0.45 and a negative-Brier history and asserts that D-1 fires on both. See x3/gates.html for the dry-run output.</td><td><a href="gates.html">page</a></td></tr>
+<tr><td><b>D-2</b></td><td>DEMOTION: paper -&gt; archived</td><td><span class="div">demotion</span></td><td>A paper strategy is archived when its 95% interval for the signal excludes the benchmark on the adverse side in two consecutive windows.</td><td>2 consecutive windows</td><td>1 window available (the season to date); no second window exists</td><td><span class="st warn">NOT YET TESTABLE</span></td><td>Nothing is archived on one window. The rule is published so the next window can fire it.</td><td><a href="leaderboard.html">page</a></td></tr>
+</tbody></table></div>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

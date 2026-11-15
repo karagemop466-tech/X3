@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html" class="on">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Overview</h1><p class="sub">An NFL line-origination and signal desk built from official sources</p></div>
+
+<div class="stats"><div class="stat"><b>138</b><span>verified results</span><i>finals only; live scores excluded</i></div><div class="stat"><b>106</b><span>graded walk-forward</span><i>each predicted from earlier weeks</i></div><div class="stat"><b>13</b><span>markets priced</span><i>Week 11, side then total then moneyline</i></div><div class="stat"><b>0</b><span>prices</span><i>no official market source exists</i></div><div class="stat"><b>15</b><span>flags published</span><i>none of them hidden</i></div></div>
+<section class="callout "><h2>What this desk is</h2>
+<p>It originates its own NFL numbers from verified data, grades them against a verified
+results feed, and ranks strategies on a proper score with <b>signal and staking in
+separate columns</b>. Where a number does not exist it is blank and flagged, never
+estimated.</p>
+<p class="key">Read <a href="executive-summary.html">the executive summary</a> first, then
+<a href="readiness.html">decision readiness</a> for the one row per requirement.</p></section>
+<section class="callout "><h2>The four things that are actually measured</h2>
+<ul class="findings">
+<li><b>The side carries a signal, in-sample.</b> 60 of 90 graded games went the
+model's way, Brier 0.2253 against 0.25 for a coin flip (Brier skill
++0.099). It is <em>in-sample</em>: the model was written after these games, so
+gate G-1 fails and it cannot be promoted.</li>
+<li><b>The total does not.</b> 50 of 106 on direction, Brier skill
+-0.096 against a pre-registered constant benchmark of 44 points. Model MAE
+11.91 against benchmark MAE 11.17.</li>
+<li><b>The model is under-spread by a factor of 2.5.</b>
+The predicted margin has SD 5.24 where the actual margin's SD is
+12.91. Since the moneyline is derived from the margin and a residual sigma of
+12.97, the probabilities it produces hug 0.5: a too-timid probability is unusable
+for staking even when its ordering is right.</li>
+<li><b>Club depth order is an 80%-accurate guide to who plays.</b>
+In the one official Game Book read, the club's first-listed player took the most snaps in
+16 of 20 slots; 4
+slots went to a backup instead. That is the measured basis for using official playing time rather
+than chart order.</li>
+</ul></section>
+<section class="callout warn"><h2>What is blocked, and by what</h2>
+<p>Nothing can be staked, and no ROI or closing-line value can be computed, because
+<b>no official market price exists</b> in this repository — see the
+<a href="policy.html">price-data policy PDP-1</a>. The market column on every market row is
+blank on purpose. The <a href="readiness.html">readiness table</a> gives the exact number
+that would clear each block.</p></section>
+<section><h2>Every page</h2>
+<div class="cards"><a class="card" href="executive-summary.html"><b>Executive summary</b><span>The one page to read first</span></a><a class="card" href="readiness.html"><b>Decision readiness</b><span>One row per requirement: what blocks it, what clears it</span></a><a class="card" href="lines.html"><b>Originated lines</b><span>Side, then total, then moneyline</span></a><a class="card" href="prices.html"><b>Price snapshots</b><span>Opening and closing for every market</span></a><a class="card" href="results.html"><b>Results feed</b><span>Finals only, live scores excluded</span></a><a class="card" href="backtest.html"><b>Backtest corpus</b><span>Walk-forward predictions</span></a><a class="card" href="leaderboard.html"><b>Leaderboard</b><span>Signal and staking, separate columns</span></a><a class="card" href="luck.html"><b>Removal of luck</b><span>How much of a record is not skill</span></a><a class="card" href="gates.html"><b>Gates &amp; demotion</b><span>What must pass, what sends it back</span></a><a class="card" href="correlations.html"><b>Correlations</b><span>Official numbers only, n published</span></a><a class="card" href="injuries.html"><b>Injuries</b><span>The official report, re-read and diffed</span></a><a class="card" href="depth.html"><b>Depth &amp; replacements</b><span>String order versus official playing time</span></a><a class="card" href="matrix.html"><b>Matchup matrix</b><span>Per-fixture deficiency view</span></a><a class="card" href="teams.html"><b>Per-team view</b><span>Starters out, next man up</span></a><a class="card" href="availability.html"><b>Availability graph</b><span>Expected starter, actual starter</span></a><a class="card" href="ablations.html"><b>Ablations</b><span>With and without the feature</span></a><a class="card" href="features.html"><b>Fixture context</b><span>Only published schedule facts</span></a><a class="card" href="preregistration.html"><b>Pre-registration</b><span>Frozen before the data</span></a><a class="card" href="questions.html"><b>Questions</b><span>Known, missing, and what would clear it</span></a><a class="card" href="suggestions.html"><b>Suggestions</b><span>Review before implementing</span></a><a class="card" href="repo-review.html"><b>Repo review</b><span>The prior trees, audited</span></a><a class="card" href="policy.html"><b>Data policy</b><span>Price data, public/private split</span></a><a class="card" href="verification.html"><b>Verification</b><span>How every row was checked</span></a><a class="card" href="flagged.html"><b>Flagged for review</b><span>Every unverified item</span></a><a class="card" href="sources.html"><b>Sources</b><span>Official pages and what each was used for</span></a></div></section>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

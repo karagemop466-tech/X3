@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repo review - X3 NFL desk</title>
+<meta name="description" content="X3 NFL desk: originated lines, a verified results feed, official availability evidence and a gated leaderboard. Every row links an official source or is flagged unverified.">
+<link rel="stylesheet" href="assets/x3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html">X3<span>NFL desk</span></a>
+  <div class="meta">season 2026 &middot; data as of <b>2026-11-15</b> &middot; week 10 in progress</div>
+</header>
+<nav class="nav"><div class="ng"><span>Start</span><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="readiness.html">Decision readiness</a></div><div class="ng"><span>Markets</span><a href="lines.html">Originated lines</a><a href="prices.html">Price snapshots</a><a href="results.html">Results feed</a><a href="backtest.html">Backtest corpus</a></div><div class="ng"><span>Evidence</span><a href="injuries.html">Injuries</a><a href="depth.html">Depth &amp; replacements</a></div><div class="ng"><span>Method</span><a href="leaderboard.html">Leaderboard</a><a href="luck.html">Removal of luck</a><a href="gates.html">Gates &amp; demotion</a><a href="correlations.html">Correlations</a><a href="ablations.html">Ablations</a><a href="features.html">Fixture context</a><a href="preregistration.html">Pre-registration</a></div><div class="ng"><span>Roster</span><a href="matrix.html">Matchup matrix</a><a href="teams.html">Per-team view</a><a href="availability.html">Availability graph</a></div><div class="ng"><span>Review</span><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="repo-review.html" class="on">Repo review</a></div><div class="ng"><span>Reference</span><a href="sources.html">Sources</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged for review</a><a href="policy.html">Data policy</a></div></nav>
+<main>
+<div class="ph"><h1>Repo review</h1><p class="sub">What each earlier tree is good for, and what is wrong with it</p></div>
+
+<section class="callout "><h2>Sixteen trees, one brief</h2>
+<p>The repository accumulated 16 parallel answer sets to the same brief across earlier
+sessions. None is deleted. This audit says what each is good for and what is wrong with it, so the
+reviewer can choose a canonical tree instead of reading sixteen.</p>
+<p class="key">The pattern that matters: the <b>data</b> is largely consistent where two sessions
+read the same official page twice, and the <b>numbers computed on that data</b> are not, because
+each tree wrote its own model. Three concrete data defects are published on the
+<a href="flagged.html">flagged page</a>.</p></section><div class="tw"><table class="">
+<thead><tr><th>Tree</th><th>Session</th><th>What it is</th><th>Assessment</th><th>Open</th></tr></thead><tbody>
+<tr><td><b>docs/</b></td><td>arena/0c38f465-x3</td><td>205-row injury snapshot</td><td>row count disagrees with the live page (345)</td><td><a href="../docs/index.html">open</a></td></tr>
+<tr><td><b>docs/pages/</b></td><td>arena/4856379c-x3</td><td>research tree, method notes</td><td>strong method, data matches this session</td><td><span class="unv">no index page</span></td></tr>
+<tr><td><b>pages/</b></td><td>arena/1a771fcd-x3</td><td>blank by design</td><td>produced when nfl.com could not be fetched</td><td><span class="unv">no index page</span></td></tr>
+<tr><td><b>site/</b></td><td>arena/1a771fcd-x3</td><td>single page</td><td>dead end in navigation</td><td><a href="../site/index.html">open</a></td></tr>
+<tr><td><b>lab/</b></td><td>arena/972ad7a5-x3</td><td>framework only</td><td>no data values</td><td><a href="../lab/index.html">open</a></td></tr>
+<tr><td><b>dashboard/</b></td><td>arena/7e632805-x3</td><td>18 pages, 345 injury rows</td><td>model spreads carry the wrong sign (F-17)</td><td><a href="../dashboard/index.html">open</a></td></tr>
+<tr><td><b>hub/</b></td><td>arena/f2df8317-x3</td><td>canonical hub, 21 flags</td><td>strongest cross-tree audit; some numbers stale</td><td><a href="../hub/index.html">open</a></td></tr>
+<tr><td><b>desk/</b></td><td>arena/3bf7cc8b-x3</td><td>18 pages, capture pipeline</td><td>pipeline is the best asset in the repo</td><td><a href="../desk/index.html">open</a></td></tr>
+<tr><td><b>signals/</b></td><td>arena/09f8c786-x3</td><td>17 pages, 1,774 rows</td><td>own model; side 67/105 with two bugs since fixed</td><td><a href="../signals/index.html">open</a></td></tr>
+<tr><td><b>ops/</b></td><td>arena/3b99e9ad-x3</td><td>18 pages, 78 markets</td><td>dependency-ordered pipeline, 10-check gate</td><td><a href="../ops/index.html">open</a></td></tr>
+<tr><td><b>council/</b></td><td>arena/3b99e9ad-x3</td><td>6 checks, 132 rows</td><td>pass/fail restatement of eight requirements</td><td><a href="../council/index.html">open</a></td></tr>
+<tr><td><b>crosscheck/</b></td><td>arena/35b167ca-x3</td><td>cross-check surface</td><td>duplicates hub/</td><td><a href="../crosscheck/index.html">open</a></td></tr>
+<tr><td><b>audit/</b></td><td>arena/64164906-x3</td><td>source fetcher</td><td>overlaps scripts/desk_capture.py</td><td><a href="../audit/index.html">open</a></td></tr>
+<tr><td><b>origin/</b></td><td>arena/aab4718a-x3</td><td>origin module</td><td>PR #58 still open on main</td><td><a href="../origin/index.html">open</a></td></tr>
+<tr><td><b>x3lab/</b></td><td>arena/e1c332ce-x3</td><td>lab, 9 gates</td><td>model v0.1, deterministic</td><td><a href="../x3lab/index.html">open</a></td></tr>
+<tr><td><b>archive/</b></td><td>several</td><td>preserved captures</td><td>kept unchanged</td><td><span class="unv">no index page</span></td></tr>
+</tbody></table></div><section class="callout warn"><h2>Line-by-line checks performed on the prior work</h2>
+<ul class="findings">
+<li><b>Injury row counts.</b> Three different counts (254, 279, 345) appear for Week 10. Only 345
+reproduces the live page row for row; the other two are stale captures, not different readings.</li>
+<li><b>Standings.</b> Two clubs (DET, NE) were stale in the committed file against the live page;
+corrected here and flagged (F-04).</li>
+<li><b>Model spreads.</b> One tree publishes the home spread with the sign of the expected margin
+instead of its negation, in 14 of 14 rows — the wrong side of the bet (F-17).</li>
+<li><b>Week-11 injury page.</b> One tree's capture lists reg11 as a separate 200 response at
+413,311 bytes, identical to reg10. It is a redirect, not a report (F-02).</li>
+<li><b>Live scores.</b> One tree's results feed marks all 14 Week-10 games SCHEDULED; by 2026-11-15
+two were final. Fixed here (F-03).</li>
+</ul></section>
+</main>
+<footer>
+<p>X3 NFL desk &middot; static site, no tracking, no client-side data collection.
+Every table row carries a link to the official page it came from, or an explicit
+<span class="unv">UNVERIFIED</span> badge. Benchmarks are labelled as benchmarks and
+in-sample numbers are labelled in-sample.</p>
+<p><a href="verification.html">How this was verified</a> &middot;
+<a href="flagged.html">Flagged for review</a> &middot;
+<a href="sources.html">Sources</a></p>
+</footer>
+</body>
+</html>

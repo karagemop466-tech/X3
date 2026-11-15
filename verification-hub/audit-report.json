@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 358,
-      "flagged_rows": 276,
-      "refs": 429,
+      "rows": 306,
+      "flagged_rows": 227,
+      "refs": 376,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -13,7 +13,23 @@
         "flagged.html: Live or historical betting lines / odds \u2014 No line archive or provider is present. NFL is not the source of bookmaker quo",
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
-        "index.html: Dataset Official source Status Notes"
+        "injuries.html:  Date  Team  Player  Pos  Injury  Practice Status  Game Status  Source "
+      ]
+    },
+    "agency": {
+      "pages": 19,
+      "rows": 674,
+      "flagged_rows": 266,
+      "refs": 626,
+      "unsourced_examples": [
+        "agency/site/correlations.html: Pair r n 95% CI Source",
+        "agency/site/depth.html: Game Team Unit Position Player Club chart rank Source",
+        "agency/site/depth.html: Team Player Number Note Source",
+        "agency/site/fixtures.html: Week Game Team Side Rest days Neutral Venue Venue status",
+        "agency/site/fixtures.html: 1 NE@SEA SEA home None no Lumen Field OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 NE@SEA NE away None no None OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 SF@LA LA home None yes SoFi Stadium OFFICIAL_GAME_BOOK",
+        "agency/site/fixtures.html: 1 SF@LA SF away None yes None OFFICIAL_GAME_BOOK"
       ]
     },
     "archive": {
@@ -125,9 +141,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1918,
-      "flagged_rows": 1518,
-      "refs": 2834,
+      "rows": 1843,
+      "flagged_rows": 1445,
+      "refs": 2790,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -272,6 +288,22 @@
         "verification-hub/index.html: Dataset Official page (link) Verification performed Result"
       ]
     },
+    "x3": {
+      "pages": 26,
+      "rows": 793,
+      "flagged_rows": 629,
+      "refs": 1643,
+      "unsourced_examples": [
+        "x3/ablations.html: ID Ablation Feature beta n train n test MAE without MAE with Delta MAE SE 95% interval Verdict Source",
+        "x3/availability.html: Club Unit Pos Expected starter (chart) Actual starter (Game Book) No. Match Source",
+        "x3/backtest.html: Game Week Predicted margin Actual margin Predicted total Actual total Ridge penalty n train Source",
+        "x3/correlations.html: ID Quantity A Quantity B r n 95% low 95% high p Method Source",
+        "x3/correlations.html: ID Note Source",
+        "x3/depth.html: Club Unit Pos Chart first His snaps Most snaps His snaps Agreement Snap sheet",
+        "x3/depth.html: Club Rows Rows with official snaps As-of date Chart source",
+        "x3/features.html: Fixture Kickoff date Away rest days Home rest days Site Kickoff ET Network Source"
+      ]
+    },
     "x3lab": {
       "pages": 13,
       "rows": 0,
@@ -280,9 +312,11 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 228,
-  "rows_total": 10464,
-  "rows_flagged_or_sourced": 9063,
-  "internal_refs": 5565,
-  "problems": []
+  "pages_total": 273,
+  "rows_total": 11804,
+  "rows_flagged_or_sourced": 9836,
+  "internal_refs": 6838,
+  "problems": [
+    "agency/site/flagged.html: broken internal ref nfl.com does not publish market prices"
+  ]
 }

@@ -1,0 +1,62 @@
+name: X3 2026 desk
+
+# Gate for the x3/ desk. Offline, deterministic, ~4 seconds.
+# Fails on: an unsourced table row, a broken internal link, a rendered None,
+# a non-deterministic build, a live score in the results feed, a leaderboard
+# ordered by a return, a demotion gate that does not fire, or a snapshot hash
+# that does not recompute.
+
+on:
+  push:
+    paths:
+      - "x3/**"
+      - "tools/x3_desk_*.py"
+      - "data/desk/**"
+      - ".github/workflows/x3-desk.yml"
+  pull_request:
+    paths:
+      - "x3/**"
+      - "tools/x3_desk_*.py"
+      - "data/desk/**"
+      - ".github/workflows/x3-desk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: x3-desk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: Rebuild and verify the desk
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild data from the committed verified inputs
+        run: python3 tools/x3_desk_engine.py
+
+      - name: Rebuild the site
+        run: python3 tools/x3_desk_site.py
+
+      - name: The rebuild must not change any committed file
+        run: |
+          if [ -n "$(git status --porcelain x3/)" ]; then
+            echo "::error::the committed x3/ tree does not reproduce from its inputs"
+            git --no-pager diff --stat x3/
+            exit 1
+          fi
+          echo "x3/ reproduces exactly from tools/x3_desk_*.py"
+
+      - name: Desk gate (15 checks)
+        run: python3 tools/x3_desk_verify.py
+
+      - name: Repo-wide link and source audit
+        run: python3 scripts/audit_all.py
