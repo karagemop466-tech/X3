@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions - X3 round 2</title>
+<meta name="description" content="Round-2 suggestions awaiting reviewer decision">
+<style>
+:root{--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--brand:#0b3b5c;--acc:#0e7490;--ok:#047857;--warn:#b45309;--bad:#b91c1c}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f8fafc}
+header.top{background:var(--brand);color:#fff;padding:14px 20px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+header.top .brand{font-weight:700;font-size:17px}
+header.top nav a{color:#dbeafe;margin-right:12px;text-decoration:none;font-size:13.5px}
+header.top nav a:hover{text-decoration:underline}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+h1{font-size:24px;margin:6px 0 4px}
+h2{font-size:19px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{font-size:16px;margin:18px 0 6px}
+p.lede{color:var(--mut);margin-top:0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:#334155}
+tr:nth-child(even) td{background:#fcfdfe}
+a.src{color:var(--acc);text-decoration:none;border-bottom:1px dotted var(--acc)}
+a.inl{color:var(--brand);text-decoration:none;border-bottom:1px dotted var(--brand)}
+.st{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.st-done{background:#d1fae5;color:var(--ok)}
+.st-partial{background:#fef3c7;color:var(--warn)}
+.st-missing{background:#fee2e2;color:var(--bad)}
+.st-blocked{background:#e2e8f0;color:#334155}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--mut);font-size:12.5px}
+.note{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:12px;color:var(--mut);font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="brand">X3 &middot; round 2 (2026-11-15)</div>
+<nav>
+<a href="index.html">Round 2</a>
+<a href="verification.html">Verification</a>
+<a href="readiness.html">Decision readiness</a>
+<a href="audit.html">Repo audit</a>
+<a href="flagged.html">Flagged for review</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="sources.html">Sources</a>
+<a href="../index.html">Site root</a>
+</nav></header>
+
+<main>
+
+<h1>Suggestions awaiting a decision - round 2</h1>
+<p class="lede">Nothing below is implemented. Per the brief, suggestions are reviewed here, a path is
+chosen, and only then does implementation start. Each suggestion names the readiness-matrix rows it
+addresses and the first concrete step.</p>
+<table><thead><tr><th>id</th><th>suggestion</th><th>addresses</th><th>first_step</th><th>decision</th><th>source</th></tr></thead><tbody><tr><td><b>R2-S1</b></td><td>Ingest official NFL Game Books per game (starters, Not Active, venue, weather, roof/surface, officials) into a dated register</td><td>Q30, Q34, Q40, Q61, Q63</td><td>Automate: fetch each 2026 game centre, extract the Game Book link, store PDF + extracted rows with sha256</td><td>Pick the parser owner and storage location (public repo vs private store)</td><td><a class="src" href="https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S2</b></td><td>Add the two-sided what-would-change-our-mind field to the strategy schema</td><td>Q25</td><td>Extend signals/data/strategies.csv with falsifies + resurrects columns; backfill all 15 rows with pre-registered falsifiers</td><td>Approve the wording so it stays pre-registered, not result-chasing</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/signals/data/strategies.csv" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S3</b></td><td>Run injury/personnel ablations instead of fixed penalties</td><td>Q26, Q27</td><td>Re-run the signals engine with and without status_weight/string_weight features on the chronological window; publish deltas with uncertainty</td><td>Approve the ablation matrix (which features toggle) before any run</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S4</b></td><td>Build the weekly what-changed diff (rank, rating, availability change) for every module</td><td>Q65</td><td>Store weekly snapshots and render a diff column on hub and signals pages</td><td>Choose cadence (post-MNF) and which modules get diffs first</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S5</b></td><td>Capture club reserve lists weekly (IR/reserve/PUP) so not-listed never means available</td><td>Q37, Q38</td><td>Add the reserve page per club to the desk-capture job with retained hashes</td><td>Approve capture schedule + hash retention policy</td><td><a class="src" href="https://www.nfl.com/teams/" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S6</b></td><td>Calibrate designation reliability: join designations to inactives/played across seasons</td><td>Q44, Q45</td><td>Archive past seasons weekly reports first (Q43), then measure play rate per designation with CIs</td><td>Approve seasons and the n threshold before the feature is allowed into the model</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S7</b></td><td>Encode 2026 kickoff/onside-kick regime priors as a totals filter</td><td>Q64</td><td>Pull 2026 kickoff-touchback/onside official stats and rulebook text; encode priors; test on the backtest corpus</td><td>Approve the prior values before any totals re-origination</td><td><a class="src" href="https://operations.nfl.com/" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S8</b></td><td>Add the NWS hourly wind/precipitation overlay joined to official roof/surface</td><td>Q63</td><td>Join NWS hourly forecast grids to game-book roof/surface per game; test totals context</td><td>Approve weather-source policy (NWS is a government source; record it in the register)</td><td><a class="src" href="https://www.weather.gov/" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S9</b></td><td>Decide the public/private data-layer split</td><td>Q59</td><td>Inventory row-level raw data; choose a private store; keep the public site to derived analysis</td><td>Owner decision: which datasets move private, who hosts</td><td><a class="src" href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">source</a></td></tr><tr><td><b>R2-S10</b></td><td>Make the injury signal a surprise (delta), not a level</td><td>Q39</td><td>Define starter-cost delta vs prior-week expectation; grade it on the backtest corpus before it touches live outputs</td><td>Approve the delta definition; keep the level features for audit only</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">source</a></td></tr></tbody></table>
+
+<footer>
+Session <code>arena/4c2f61cd-x3</code> &middot; 2026-11-15 &middot; built by
+<code>scripts/build_round2.py</code> from <code>round2/data/*.csv</code> &middot;
+<a href="../COORDINATION.md">coordination log</a> &middot;
+<a href="https://www.nfl.com/">nfl.com</a> is the primary data authority; every value is linked or flagged.
+</footer>
+</main>
+</body>
+</html>

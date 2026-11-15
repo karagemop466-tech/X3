@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources - X3 round 2</title>
+<meta name="description" content="Round-2 sources register with fetch timestamps">
+<style>
+:root{--ink:#0f172a;--mut:#64748b;--line:#e2e8f0;--brand:#0b3b5c;--acc:#0e7490;--ok:#047857;--warn:#b45309;--bad:#b91c1c}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f8fafc}
+header.top{background:var(--brand);color:#fff;padding:14px 20px;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+header.top .brand{font-weight:700;font-size:17px}
+header.top nav a{color:#dbeafe;margin-right:12px;text-decoration:none;font-size:13.5px}
+header.top nav a:hover{text-decoration:underline}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+h1{font-size:24px;margin:6px 0 4px}
+h2{font-size:19px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h3{font-size:16px;margin:18px 0 6px}
+p.lede{color:var(--mut);margin-top:0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:#334155}
+tr:nth-child(even) td{background:#fcfdfe}
+a.src{color:var(--acc);text-decoration:none;border-bottom:1px dotted var(--acc)}
+a.inl{color:var(--brand);text-decoration:none;border-bottom:1px dotted var(--brand)}
+.st{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.st-done{background:#d1fae5;color:var(--ok)}
+.st-partial{background:#fef3c7;color:var(--warn)}
+.st-missing{background:#fee2e2;color:var(--bad)}
+.st-blocked{background:#e2e8f0;color:#334155}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px}
+.kpi b{display:block;font-size:22px}
+.kpi span{color:var(--mut);font-size:12.5px}
+.note{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13.5px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:12px;color:var(--mut);font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="brand">X3 &middot; round 2 (2026-11-15)</div>
+<nav>
+<a href="index.html">Round 2</a>
+<a href="verification.html">Verification</a>
+<a href="readiness.html">Decision readiness</a>
+<a href="audit.html">Repo audit</a>
+<a href="flagged.html">Flagged for review</a>
+<a href="suggestions.html">Suggestions</a>
+<a href="sources.html">Sources</a>
+<a href="../index.html">Site root</a>
+</nav></header>
+
+<main>
+
+<h1>Sources register - round 2</h1>
+<p class="lede">Every page this session fetched or referenced on 2026-11-15, with what was taken from
+it. Official NFL properties only; third-party mirrors are cited as corroboration in the audit page, never as
+the primary source of a value.</p>
+<table><thead><tr><th>source</th><th>url</th><th>fetched</th><th>what</th><th>status</th></tr></thead><tbody><tr><td>NFL league standings 2026</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">https://www.nfl.com/standings/league/2026/REG</a></td><td>2026-11-15 (game day, mid-afternoon UTC)</td><td>Full 32-team league table (16 columns each) for the standings reconciliation</td><td>HTTP 200 via page fetch</td></tr><tr><td>NFL Week 10 schedule page</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">https://www.nfl.com/schedules/2026/by-week/week-10</a></td><td>2026-11-15 (early window live)</td><td>14 games with status/score at capture + 4 byes with records</td><td>HTTP 200 via page fetch</td></tr><tr><td>NFL Game Center NE@DET (Munich)</td><td><a class="src" href="https://www.nfl.com/games/patriots-at-lions-2026-reg-10" target="_blank" rel="noopener">https://www.nfl.com/games/patriots-at-lions-2026-reg-10</a></td><td>2026-11-15 after final</td><td>Final score, quarter scores, venue (Game Center wording), Game Book link</td><td>HTTP 200 via page fetch</td></tr><tr><td>Official NFL Game Book PDF (NE@DET)</td><td><a class="src" href="https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf</a></td><td>2026-11-15</td><td>Lineups (44 starters), Not Active (12), officials, weather, roof/surface, attendance, scoring</td><td>HTTP 200 via PDF fetch (7 text chunks)</td></tr><tr><td>NFL injuries league page (referenced, not re-captured)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">https://www.nfl.com/injuries/league/2026/reg10</a></td><td>referenced 2026-11-15</td><td>Cross-checks for the Lions designation rows; full re-capture deferred to the capture job</td><td>referenced</td></tr><tr><td>media.nfl.com dated schedule announcement (referenced)</td><td><a class="src" href="https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced" target="_blank" rel="noopener">https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced</a></td><td>referenced (first verified by session arena/0c38f465-x3, 2026-11-14)</td><td>League dated schedule announcement paired with the live schedule page in docs/schedule.html</td><td>referenced</td></tr></tbody></table>
+
+<footer>
+Session <code>arena/4c2f61cd-x3</code> &middot; 2026-11-15 &middot; built by
+<code>scripts/build_round2.py</code> from <code>round2/data/*.csv</code> &middot;
+<a href="../COORDINATION.md">coordination log</a> &middot;
+<a href="https://www.nfl.com/">nfl.com</a> is the primary data authority; every value is linked or flagged.
+</footer>
+</main>
+</body>
+</html>
