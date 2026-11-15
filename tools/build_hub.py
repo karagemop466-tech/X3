@@ -1570,6 +1570,19 @@ def landing():
     # + the decision-readiness matrix the brief asks for on the landing page).
     nav += ('<a href="round2/index.html"><b>Round 2 readiness</b>'
             '<span>66 requirements mapped: gate that blocks, number that clears</span></a>')
+    verification_table = table(
+        ['Dataset', 'Official source', 'Status', 'Notes'],
+        [["Week-10 injury report (345 rows)", link(C.S["injuries"], "nfl.com/injuries/league/2026/reg10"),
+          badge("VERIFIED"), "Snapshot reviewed 2026-11-14; it is a dated capture, not a live feed."],
+         ["2026 league standings (32 clubs)", link(C.S["standings"], "nfl.com/standings/league/2026/REG"),
+          badge("VERIFIED"), "Official standings used for the canonical team aggregate reconciliation."],
+         ["Week-10 schedule / fixture orientation", link(C.S["sched10"], "nfl.com/schedules/2026/by-week/week-10"),
+          badge("VERIFIED"), "Official schedule is the fixture reference; each venue still needs Game Center transcription."],
+         ["Market comparison / CLV", '<span class="badge u">UNVERIFIED</span>',
+          badge("BLOCKED"), "No market-price source is available in this repository; market cells stay blank."],
+         ["Strategy ROI / staking", '<span class="badge u">UNVERIFIED</span>',
+          badge("BLOCKED"), "Prices and settlement evidence are incomplete; ROI/CLV and reward amounts are not published."]],
+        tid="verification-status")
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1606,7 +1619,11 @@ data does not exist here yet.</p>
 <div class="card"><div class="num">0 / {len(_ST['strategies'])}</div><div class="lbl">strategies leaderboard-eligible</div>
 <div class="sub">{_ST['counts']['signal_untested']} untested, {_ST['counts']['signal_inconclusive']} inconclusive, staking blocked on prices</div></div>
 </div>
+<section class="callout" style="border:1px solid var(--line);background:#111827">
+<h2 style="margin-top:0">Verification status (official sources)</h2>
 {verification_table}
+<p class="note" style="margin-top:8px">Every value on this site is traced to an official source or left blank and flagged. Nothing is inferred. Full detail: <a href="hub/flagged.html">Flagged for review</a> &middot; <a href="hub/verification.html">Verification log</a>.</p>
+</section>
 <nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
 {nav}
 </nav>
