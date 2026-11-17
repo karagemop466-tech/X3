@@ -299,7 +299,7 @@ MODEL = {
 # --------------------------------------------------------------------------
 REQUIREMENTS = [
     ("R-01", "Price-snapshot store: opening and closing numbers for every market we originate", "BLOCKED", "G-PRICE", "One price source class approved; then >=1 stored open and >=1 stored close per market row"),
-    ("R-02", "Verified results feed so backtests and ROI can be computed", "PARTIAL", "G-RESULTS", ">=1 full season of finals reconciled to the official standings with 0 mismatches (150 of 170 games today)"),
+    ("R-02", "Verified results feed so backtests and ROI can be computed", "PARTIAL", "G-RESULTS", ">=1 full season of finals reconciled to the official standings with 0 mismatches (14 of the 150 games now in the standings transcribed here)"),
     ("R-03", "Originate the side first, then the total, then the moneyline", "DONE", "G-PREREG", "Model committed before kickoff; chain published side -> total -> moneyline"),
     ("R-04", "Publish fair line, market line and the difference as separate columns", "BLOCKED", "G-PRICE", "Market column populated for >=1 market from an approved source (nfl.com/odds is a 404)"),
     ("R-05", "Separate signal from staking in the leaderboard", "DONE", "G-LEADER", "Two published columns per strategy; 0 strategies ranked on staking alone"),
@@ -316,7 +316,7 @@ REQUIREMENTS = [
     ("R-16", "Publish the removal-of-luck panel on the dashboard", "DONE", "G-LUCK", "Residual SD and r-squared published with n"),
     ("R-17", "Two-sided what-would-change-our-mind field on every strategy", "DONE", "G-PREREG", "Both an upgrade and a downgrade trigger recorded before results"),
     ("R-18", "Price a line ourselves and publish the residual, on a schedule", "BLOCKED", "G-PRICE", "Market price exists for the same market at the same timestamp"),
-    ("R-19", "Turn the season game log into the pre-registered backtest corpus", "PARTIAL", "G-RESULTS", "150 of 170 games; earlier rounds of the season not yet captured here"),
+    ("R-19", "Turn the season game log into the pre-registered backtest corpus", "PARTIAL", "G-RESULTS", "14 of the 150 games now in the standings transcribed here; weeks 1 to 9 not yet re-read"),
     ("R-20", "Price-data policy decided before any backtest is published", "DONE", "G-PRICE", "Policy text committed; no backtest published before it"),
     ("R-21", "Store every injury-hub read with its clock time; publish the delta", "PARTIAL", "G-AVAIL", ">=2 captures per week with a recorded fetch timestamp (1 today)"),
     ("R-22", "Decision-readiness table on the landing page", "DONE", "G-COORD", "One row per requirement with its blocker and its clearing number"),

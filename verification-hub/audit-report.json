@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 920,
+      "rows": 921,
       "flagged_rows": 684,
-      "refs": 1334,
+      "refs": 1335,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -361,8 +361,8 @@
     }
   },
   "pages_total": 321,
-  "rows_total": 13599,
+  "rows_total": 13600,
   "rows_flagged_or_sourced": 11189,
-  "internal_refs": 8362,
+  "internal_refs": 8363,
   "problems": []
 }
