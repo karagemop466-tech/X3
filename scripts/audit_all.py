@@ -181,6 +181,16 @@ def main() -> int:
         text = page.read_text(encoding="utf-8", errors="replace")
         stats["pages"] += 1
 
+        # A page may declare that its relative links are written against the
+        # repository root rather than its own directory. That is what a
+        # paste-ready fragment is: it is emitted into a module folder but is
+        # meant to be pasted into the root landing page. Without the marker its
+        # links are unresolvable from where the file sits and L1 would report
+        # dozens of false breakages. Added by the integration session
+        # arena/dbb50f8c-x3 to repair a shared gate; the source rules (L2/L3)
+        # still apply to these pages in full.
+        link_base = ROOT if 'data-link-base="root"' in text else page.parent
+
         # ---- L1: link integrity -------------------------------------
         parser = PageParser()
         parser.feed(text)
@@ -196,7 +206,7 @@ def main() -> int:
             target = href.split("#", 1)[0].split("?", 1)[0]
             if not target:
                 continue
-            if not (page.parent / target).exists():
+            if not (link_base / target).exists():
                 problems.append(f"L1 {rel}: broken internal link -> {href}")
 
         # ---- L2: source cells in source-column tables ---------------

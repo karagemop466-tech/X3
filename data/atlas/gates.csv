@@ -1,0 +1,23 @@
+id,gate,rule,blocks,current_reading
+G-PRICE,Market price exists,"No fair-vs-market, CLV, ROI or staking figure is published until an approved price source class is recorded.","R-01, R-04, R-18, R-38, R-39",FAIL - nfl.com/odds is a 404 (verified 2026-11-17); no price anywhere in the repo
+G-PREREG,Pre-registration,"Rule text, sample window and gates committed before the evaluation window opens; the commit hash is the registration.","R-03, R-09, R-17, R-33, R-46",PASS for Week 11 - model ATL-M1 committed before the Nov 19 kickoff
+G-RESULTS,Verified results,A result is published only when it is transcribed from an official box score or standings page.,"R-02, R-19, R-26",PARTIAL - 150 games implied by the standings; 14 Week 10 finals transcribed this session
+G-AVAIL,Two dated captures,A designation delta is published only when two captures of the same report exist with fetch times.,"R-10, R-12, R-21, R-28, R-54, R-55, R-60, R-61",FAIL - one capture; Week 11 designations do not exist yet
+G-DEPTH,Depth from playing time,No depth rank is published unless it comes from a dated official depth chart or an official snap count.,"R-06, R-11, R-25, R-29, R-30, R-31, R-50, R-51, R-52, R-56, R-57, R-62, R-63, R-64",FAIL - no depth rank published anywhere on this module
+G-CORR,Correlation provenance,Every coefficient names its source page and its n.,R-07,PASS - see the correlation page
+G-LEADER,Proper-score ranking,Rank on benchmark-relative Brier skill with a cluster lower bound; two control baselines always shown.,"R-05, R-35, R-36, R-38, R-44, R-49",PASS as a design; no strategy is eligible yet
+G-DEMOTE,Demotion rule,A live strategy returns to paper on any of four clauses.,R-08,PASS - rule committed
+G-ABLATE,Ablation not penalty,"Personnel effects are reported as a with/without comparison with uncertainty, never as a settled points penalty.","R-27, R-41",PASS - base and personnel variants published together
+G-SWEEP,32-club sweep,Availability and depth evidence is versioned against the last official roster event for all 32 clubs.,"R-13, R-32, R-43, R-58",FAIL - ad-hoc items for 16 clubs today
+G-FIXTURE,Published schedule facts,Fixture features come only from dated official pages.,"R-14, R-23, R-24",PASS for Week 11 venues and kickoff times
+G-MODEL,Probability plus inputs,Every output row lists the inputs and the rule that produced it.,"R-15, R-41",PASS
+G-LUCK,Luck panel,Residual SD and r-squared published with n.,R-16,PASS - n=32
+G-JOINT,Joint evidence for combos,A combo is ranked only with a validated joint probability and the operator's void/push rules.,R-34,FAIL - no joint probability validated; no combos ranked
+G-DIFF,Weekly diff,A what-changed column requires two consecutive snapshots.,R-40,FAIL - one snapshot
+G-DRIFT,Drift alarm,Each parser pins expected row counts and required fields; a missing field fails the build.,R-42,FAIL - not implemented for this module
+G-HISTORY,Prior seasons,Anything that needs a multi-season sample waits for that archive.,"R-45, R-47, R-53, R-65",FAIL - 2026 only
+G-OPS,Durable storage,Captures live outside the static site with a freshness monitor.,R-66,FAIL
+G-LEGAL,Terms read,Raw row-level data stays private until the source terms are read.,R-67,FAIL - terms not read this session
+G-RULES,Rulebook verified,Regime changes are verified against the official rulebook page.,R-48,FAIL - not fetched this session
+G-WEATHER,Weather overlay,Roof designation joined to an NWS grid.,R-37,FAIL - not fetched this session
+G-COORD,Coordination board,"Every task has an owner, a status and a file scope.","R-22, R-68",PASS - COORDINATION.md

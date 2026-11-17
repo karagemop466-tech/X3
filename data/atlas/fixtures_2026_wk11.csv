@@ -1,0 +1,14 @@
+game,date,time_et,network,away,home,location,stadium_game_centre,stadium_schedule_page,venue_flag,source_gc,source_sched
+IND@HOU,2026-11-19,8:15 PM,PRIME,IND,HOU,"HOUSTON, TX",RELIANT STADIUM,NRG Stadium,CONFLICT,https://www.nfl.com/games/colts-at-texans-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+MIA@BUF,2026-11-22,1:00 PM,CBS,MIA,BUF,"ORCHARD PARK, NY",HIGHMARK STADIUM,Highmark Stadium,,https://www.nfl.com/games/dolphins-at-bills-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+BAL@CAR,2026-11-22,1:00 PM,FOX,BAL,CAR,"CHARLOTTE, NC",BANK OF AMERICA STADIUM,Bank of America Stadium,,https://www.nfl.com/games/ravens-at-panthers-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+NO@CHI,2026-11-22,1:00 PM,FOX,NO,CHI,"CHICAGO, IL",SOLDIER FIELD,Soldier Field,,https://www.nfl.com/games/saints-at-bears-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+TEN@DAL,2026-11-22,1:00 PM,FOX,TEN,DAL,"ARLINGTON, TX",AT&T STADIUM,AT&T Stadium,,https://www.nfl.com/games/titans-at-cowboys-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+TB@DET,2026-11-22,1:00 PM,FOX,TB,DET,"DETROIT, MI",FORD FIELD,Ford Field,,https://www.nfl.com/games/buccaneers-at-lions-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+AZ@KC,2026-11-22,1:00 PM,CBS,AZ,KC,"KANSAS CITY, MO",ARROWHEAD STADIUM,GEHA Field at Arrowhead Stadium,,https://www.nfl.com/games/cardinals-at-chiefs-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+PIT@PHI,2026-11-22,1:00 PM,CBS,PIT,PHI,"PHILADELPHIA, PA",LINCOLN FINANCIAL FIELD,Lincoln Financial Field,,https://www.nfl.com/games/steelers-at-eagles-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+NYJ@LAC,2026-11-22,4:05 PM,FOX,NYJ,LAC,"INGLEWOOD, CA",SOFI STADIUM,SoFi Stadium,,https://www.nfl.com/games/jets-at-chargers-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+JAX@NYG,2026-11-22,4:25 PM,CBS,JAX,NYG,"EAST RUTHERFORD, NJ",METLIFE STADIUM,MetLife Stadium,,https://www.nfl.com/games/jaguars-at-giants-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+LV@DEN,2026-11-22,4:25 PM,CBS,LV,DEN,"DENVER, CO",EMPOWER FIELD AT MILE HIGH,Empower Field at Mile High,,https://www.nfl.com/games/raiders-at-broncos-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+MIN@SF,2026-11-22,8:20 PM,NBC,MIN,SF,MEXICO CITY,ESTADIO BANORTE,(no hotel link published),CONFLICT,https://www.nfl.com/games/vikings-at-49ers-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11
+CIN@WAS,2026-11-23,8:15 PM,ESPN,CIN,WAS,"LANDOVER, MD",NORTHWEST STADIUM,FedEx Field,CONFLICT,https://www.nfl.com/games/bengals-at-commanders-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11

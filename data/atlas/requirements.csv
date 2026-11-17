@@ -1,0 +1,69 @@
+id,requirement,status,blocking_gate,number_that_clears_it
+R-01,Price-snapshot store: opening and closing numbers for every market we originate,BLOCKED,G-PRICE,One price source class approved; then >=1 stored open and >=1 stored close per market row
+R-02,Verified results feed so backtests and ROI can be computed,PARTIAL,G-RESULTS,>=1 full season of finals reconciled to the official standings with 0 mismatches (150 of 170 games today)
+R-03,"Originate the side first, then the total, then the moneyline",DONE,G-PREREG,Model committed before kickoff; chain published side -> total -> moneyline
+R-04,"Publish fair line, market line and the difference as separate columns",BLOCKED,G-PRICE,Market column populated for >=1 market from an approved source (nfl.com/odds is a 404)
+R-05,Separate signal from staking in the leaderboard,DONE,G-LEADER,Two published columns per strategy; 0 strategies ranked on staking alone
+R-06,"Track the depth of the replacement, not just the fact",PARTIAL,G-DEPTH,Depth rank published for every unavailable starter (0 of 0 today - Week 11 report not published)
+R-07,"Correlations only from officially sourced numbers, publish n",DONE,G-CORR,Every coefficient carries its n and its source page
+R-08,Demotion gate that sends a live strategy back to paper,DONE,G-DEMOTE,Rule text committed; fires on any of four clauses
+R-09,Pre-register every strategy; backtest numbers never on the leaderboard,DONE,G-PREREG,Commit hash recorded before the evaluation window opens
+R-10,Availability graph as a first-class dataset,PARTIAL,G-AVAIL,Expected starter and actual starter captured per club per week (0 weeks today)
+R-11,"Model depth from playing time, never jersey order",NOT STARTED,G-DEPTH,Snap-share source approved for all 32 clubs
+R-12,"Injury signal as a surprise, never a level",DONE,G-SURPRISE,Two or more dated captures so a delta can be computed
+R-13,32-club roster/IR sweep before any team-level model is trusted,PARTIAL,G-SWEEP,32 of 32 clubs swept in one capture cycle (today: ad-hoc items only)
+R-14,Fixture-context features from published schedule facts only,DONE,G-FIXTURE,Every feature traced to a dated official page
+R-15,Store every model output as a probability plus its inputs,DONE,G-MODEL,Every output row lists its inputs and the rule that produced it
+R-16,Publish the removal-of-luck panel on the dashboard,DONE,G-LUCK,Residual SD and r-squared published with n
+R-17,Two-sided what-would-change-our-mind field on every strategy,DONE,G-PREREG,Both an upgrade and a downgrade trigger recorded before results
+R-18,"Price a line ourselves and publish the residual, on a schedule",BLOCKED,G-PRICE,Market price exists for the same market at the same timestamp
+R-19,Turn the season game log into the pre-registered backtest corpus,PARTIAL,G-RESULTS,150 of 170 games; earlier rounds of the season not yet captured here
+R-20,Price-data policy decided before any backtest is published,DONE,G-PRICE,Policy text committed; no backtest published before it
+R-21,Store every injury-hub read with its clock time; publish the delta,PARTIAL,G-AVAIL,>=2 captures per week with a recorded fetch timestamp (1 today)
+R-22,Decision-readiness table on the landing page,DONE,G-COORD,One row per requirement with its blocker and its clearing number
+R-23,Transcribe the venue of every fixture from the official game centre,DONE,G-FIXTURE,13 of 13 Week 11 venues transcribed (this session)
+R-24,Publish the league's dated schedule announcement beside the live schedule,NOT STARTED,G-FIXTURE,"Announcement page fetched, dated and stored"
+R-25,Official NFL Game Books for actual starters and game-day status,NOT STARTED,G-DEPTH,Game Book captured per club per week; no inferred snap rank
+R-26,Ingest game-level results to make ratings opponent-aware,PARTIAL,G-RESULTS,Opponent-adjusted rating computed on a full season of finals
+R-27,"Injury and personnel ablations, not fixed penalties",DONE,G-ABLATE,Same model run with and without the feature on chronological holdouts
+R-28,Automate immutable multi-day availability snapshots,NOT STARTED,G-AVAIL,Scheduled job with retained hashes and a successful logged run
+R-29,Capture official inactive lists and snap counts,NOT STARTED,G-DEPTH,Inactives and snap share captured for >=1 round
+R-30,Fix the two depth-parsing failures before widening coverage,NOT STARTED,G-DEPTH,Texans image and Packers jersey-number cases both resolved
+R-31,"Model depth slots as groups, not a single starter",NOT STARTED,G-DEPTH,Shared and empty slots represented in the schema
+R-32,Treat roster turnover as a first-class data event,PARTIAL,G-SWEEP,Every availability row versioned against the last official roster event
+R-33,"Singles-only shadow baseline, pre-registered",DONE,G-PREREG,Baseline frozen and forecasts recorded before kickoff
+R-34,Parlays and prop combos behind a joint-evidence gate,DONE,G-JOINT,Validated joint probability plus the operator's void/push rules
+R-35,Proper-score leaderboard divisions,DONE,G-LEADER,"Singles, game parlays, SGPs and prop combos ranked separately"
+R-36,"Rank with proper scores and uncertainty, not win rate",DONE,G-LEADER,Brier skill with a cluster lower bound and a multiplicity adjustment
+R-37,Stadium roof/surface and hourly wind/precipitation overlay,NOT STARTED,G-WEATHER,NWS grid joined to the official 90-minute roof designation
+R-38,Two-stage leaderboard: proper-score qualification then CLV/ROI escrow,BLOCKED,G-PRICE,Prospective multi-week CLV sample with prices
+R-39,Vig-free market consensus vs originated fair-line decomposition,BLOCKED,G-PRICE,Consensus price retrievable per market
+R-40,Weekly what-changed diff instead of a static snapshot,PARTIAL,G-DIFF,Two consecutive weekly snapshots stored (1 today)
+R-41,Publish every model total twice until one wins,DONE,G-MODEL,Both estimators visible with the gap column (base and personnel variants)
+R-42,Drift alarm on every scraper,NOT STARTED,G-DRIFT,Expected row counts and required fields pinned; build fails loudly
+R-43,Capture the reserve list so 'not listed' never means 'available',PARTIAL,G-SWEEP,IR and reserve status captured for all 32 clubs
+R-44,Reject ranking strategies by season-long ROI,DONE,G-LEADER,Leaderboard shows no ROI column at all
+R-45,Archive weekly injury reports for past seasons,NOT STARTED,G-HISTORY,>=2 prior seasons of weekly reports archived
+R-46,Freeze a rule before it sees data (pre-registration),DONE,G-PREREG,"Rule text, sample window and gates committed; the hash is the registration"
+R-47,"Split data into train, validation and final holdout seasons",NOT STARTED,G-HISTORY,Three labelled seasons with fixed boundaries
+R-48,Kickoff and onside-kick regime priors for 2026,NOT STARTED,G-RULES,Rule change verified against the official rulebook page
+R-49,"Add a control baseline (random picks, favourites only) to every leaderboard run",DONE,G-LEADER,Two control rows published beside every eligible strategy
+R-50,"Per-team view: starters out, replacements named, net injury count",PARTIAL,G-DEPTH,Replacement named for every out starter (0 named today)
+R-51,"Announced-starter evidence field, not an inferred replacement",PARTIAL,G-DEPTH,Dated starter announcements captured per club
+R-52,Official depth-chart register with date and source per row,NOT STARTED,G-DEPTH,32 of 32 club charts with an as-of date
+R-53,Calibrate what 'Questionable' means empirically,NOT STARTED,G-HISTORY,Designations joined to inactives with a play rate per designation and CIs
+R-54,Snapshot the injury report Wed/Thu/Fri and keep dated history,NOT STARTED,G-AVAIL,Three dated captures in one week with a logged job
+R-55,"Treat the injury report as a timestamped series, not a snapshot",PARTIAL,G-AVAIL,Fetch timestamp recorded on every capture
+R-56,Use snap counts as the starter proxy when no depth chart exists,NOT STARTED,G-DEPTH,Official snap-count source approved
+R-57,Interactive offence vs defence matchup deficiency matrix,BLOCKED,G-DEPTH,Depth rank and slot for both sides of every matchup
+R-58,Flag stale depth rows against the official transactions log,PARTIAL,G-SWEEP,Every depth row dated and diffed against the transactions page
+R-59,"Point-in-time snapshot ledger for injuries, depth charts and inactives",NOT STARTED,G-AVAIL,Immutable store with hashes outside the static site
+R-60,Populate every missing game-status designation from the official article,PARTIAL,G-AVAIL,0 blank game-status cells that the official article fills
+R-61,Re-capture and republish the weekly injury tables,DONE,G-AVAIL,Live row count published and reconciled to the committed capture
+R-62,"Reject deriving depth order from jersey number, experience or salary",DONE,G-DEPTH,No depth row derived from a roster attribute
+R-63,Represent shared and empty depth slots faithfully,NOT STARTED,G-DEPTH,Shared-slot and empty-slot cases both represented
+R-64,Resolve the depth-order source before building deficiency features,NOT STARTED,G-DEPTH,One route verified for all 32 clubs
+R-65,Score injury-designation reliability before using it as a feature,NOT STARTED,G-HISTORY,Play rate per designation with confidence intervals
+R-66,Durable snapshot storage and freshness alerts,NOT STARTED,G-OPS,Captures stored outside the static site with a freshness monitor
+R-67,Split the site into a public analysis layer and a private data layer,NOT STARTED,G-LEGAL,Terms of use read and a storage decision recorded
+R-68,Suggestions section with review before implementation,DONE,G-COORD,Every proposal listed as a proposal; none implemented unreviewed
