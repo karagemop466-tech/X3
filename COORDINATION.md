@@ -3278,10 +3278,11 @@ Branch `arena/3e44287d-x3` (base `b7d4142`, = `origin/main`). Single-session wor
 
 ### Other open PRs (not merged here; overlap logged)
 
-| PR | Branch | Overlap |
-|----|--------|---------|
-| #85, #79 | `arena/…` | same `decision/*` files as #89 — superseded by #89's regeneration |
-| #80 | `arena/65820815-x3` | landing decision table — also in #89 (RD-01) |
-| #77, #58 | `arena/fed85bfd-x3`, `arena/aab4718a-x3` | `hub/*` results/rules work |
-| #76 | `arena/129e76b5-x3` | `index.html` only |
-| #…  | `arena/c0176769-x3` (R1–R5) | readiness register + injury capture — overlaps #89 |
+| PR | Branch | Title (abridged) | Overlap with #89 / this session |
+|----|--------|------------------|------------------------------|
+| #85 | `arena/c0176769-x3` | R1–R5: readiness register, live Week-10 injury read, change-our-mind rules, scheduled injury capture | same `decision/*` regeneration and readiness register as #89 |
+| #80 | `arena/65820815-x3` | decision-readiness table on landing page, executive-summary accuracy pass | landing table = #89 RD-01 |
+| #79 | `arena/348a707c-x3` | Week 10 official injury re-capture + hub comparison | injury re-capture not in #89; needs its own review |
+| #77 | `arena/fed85bfd-x3` | final integration: verified results feed, arithmetic gates, demotion rule | overlaps `hub/*` and results feed; not merged here |
+| #76 | `arena/129e76b5-x3` | decision-readiness register: requirements, questions, suggestions, flagged review | overlaps #89 `readiness/` |
+| #58 | `arena/aab4718a-x3` | verified results feed, arithmetic gates, demotion rule, review queue | overlaps #77 |
