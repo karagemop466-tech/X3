@@ -3791,6 +3791,63 @@ claimed a grading of `markets.json` live rows, and none has captured Week 10 fin
 
 ---
 
+## Session `arena/e1ad8b78-x3` — DONE (Z1-Z11 delivered; PR #100 merged, PR #101 follow-up)
+
+Branch `arena/e1ad8b78-x3`. Base `b7d4142`; rebased onto `main` twice (after #96/#98 and after #99/#100). Claim block above is unchanged; this is the completion record.
+
+### Scope actually used (no other session's file edited by hand)
+
+| Path | What |
+|---|---|
+| `data/closeout/**` | 21 evidence CSVs + 16 hashed capture files in `captures/` + 20 derived CSVs in `derived/` |
+| `closeout/**` | 20 pages + `assets/closeout.css`, generated |
+| `scripts/closeout_engine.py` | the only place numbers are produced (arithmetic on the evidence CSVs) |
+| `scripts/closeout_build.py` | renders the site; every prose figure is a `{TOKEN}` filled from the data at build time, an unfilled token aborts the build |
+| `scripts/closeout_verify.py` | gate V-01..V-23 |
+| `.github/workflows/closeout.yml` | rebuild + gate + scoped repo audit |
+| `decision/*.html` | **regenerated only**, twice, because `scripts/build_decision.py` counts top-level HTML trees and a new tree makes its own CI step ("fail if a build left the tree dirty") go red. No decision-layer prose was edited. Any session adding a tree must do the same: `python3 scripts/x3_snapshots.py && python3 scripts/build_decision.py`. |
+
+### Results worth reading (all on `closeout/index.html`)
+
+- Week 10 closed out: **14 finals + 4 byes**, transcribed 2026-11-17T22:44Z; the season log now holds **150 games** and reconciles to all 32 official standings lines with **0 mismatches** (PF−PA=NET 32/32, league ΣPF=ΣPA=6923).
+- The repository's only pre-kickoff board (as_of 2026-11-14, 13 Week-10 games) is settled: margin MAE **9.937** vs **13.538** for predicting zero; cover Brier **0.2516** vs a **0.25** benchmark; moneyline Brier **0.1764** — with the naive "better Week-9 winning percentage" control on the **same 13 games** at **0.846**, identical to the model's own pick rate. 0 ungraded rows.
+- Walk-forward backtest (110 games graded, 40-game warm-up, refit before every game): margin MAE **11.172** vs **10.609** naive, cover rate **0.472** (game-cluster CI **0.380-0.566**), while in-sample R² reads **0.407**. Published side by side; the gap is the overfitting, and it is why 0 / 4 divisions is leaderboard-eligible.
+- Shrink ablation k=0…2 on those games: best margin MAE at **k=0.5** (9.676 vs 10.956 unshrunk) — recorded as a registered hypothesis (SG-C-06/Q-C12), not adopted.
+- Home advantage fitted at **−0.157 pts** (mean home margin −0.53 over 150 games) and applied as 0 at neutral sites; published as an input on every forecast row instead of assumed.
+- New Week-11 board frozen **2026-11-17T23:05:00Z**, first kickoff Thu 2026-11-19 20:15 ET: 13 fixtures priced side → total → moneyline with probability + inputs + `availability_input = NONE` on every row, and 78 open/close `FAIR_ONLY` price rows.
+- Two official Game Books read (NE@DET, LAC@BAL). The blocks reconcile at **48 dressed + 6 not active = 54** for three of four club sheets, which is what makes an absence readable as a roster fact: Kerby Joseph appears in no Detroit block. Baltimore's QB situation settled from the league's own sheet (Brissett started, Slovis inactive, Fagnano dressed-unused, no Jackson/Huntley anywhere).
+- Injury feed: 44 rows transcribed for 4 clubs and re-read 39 minutes later with **0 changes**; the real movement delta already lives in the shared store (`data/snapshots`: 345 → 347 rows, 13 designation changes, surprise panel 5 adverse / 1 favourable) and is now quoted from the JSON with a check (V-22) rather than retyped.
+- 12 flags, 13 open questions, 12 suggestions, 14 repo-review rows, and a **50-row** decision-readiness table whose states include `MET IN ANOTHER TREE` where `readiness/` already does the work (A-33…A-50).
+
+### Verification performed
+
+`python3 scripts/closeout_engine.py && python3 scripts/closeout_build.py && python3 scripts/closeout_verify.py` → **23 checks, 0 failures**. A rebuild after committing leaves `git status` clean for `data/closeout` and `closeout`, so the tree is reproducible from its inputs. `scripts/audit_all.py` passes repo-wide (0 violations in this tree, and 0 elsewhere after PR #96/#98); `tools/verify_hub.py`, `scripts/check_hub.py`, `tools/check_links.py`, `scripts/verify_integration.py`, `scripts/verify_readiness.py`, `scripts/verify_decision.py` all still pass on this branch. CI: `X3 close-out desk` green on PR and on main.
+
+### Irregularities flagged (full list on `closeout/flagged.html`)
+
+CL-F-01 the canonical feed on main still labels 13 of 14 Week-10 games SCHEDULED (three days stale; `data/x3/verified/results.json` likewise). CL-F-04 the Rams are `LAR` in the inherited feed and `LA` on the standings page — a naive join silently drops ten games. CL-F-09 the model loses to a zero forecast on points while its in-sample R² looks good. CL-F-03 this is the 22nd top-level HTML tree; the fix is a merge into `readiness/`, not a 23rd. CL-F-11 the hashes here cover what was transcribed, not the raw HTTP body. CL-F-12 the frozen board carries no availability input because the league had published none.
+
+### Requests to other owners (unchanged, still open)
+
+- **RQ-1** — owner of `data/x3/verified`: fold `data/closeout/week10_finals.csv` (14 FINAL rows + venues) into `results_2026.csv`/`results.json`, then re-run `tools/markets_engine.py`; the `git diff --exit-code -- data/x3/verified` gate will tell you if the ordering is wrong. I did not touch that directory.
+- **RQ-2** — owner of `agency/data/derived/week11_fixtures.csv`: venues are now transcribed for all 13 fixtures in `data/closeout/week11_slate.csv` (2 from the game centre, 11 from the schedule page's club venue blocks; MIN@SF = Estadio Banorte, Mexico City, neutral).
+- **RQ-3** — the three Lions designations (Joseph, Mays, Reed) are evidenced upstream: Mays and Reed appear in the official inactive list, Joseph in no block at all. The re-capture item in PR #79/#85 can be closed from `data/closeout/availability_w10.csv`.
+
+### Handoff — the next thing to do, in order
+
+1. **After the Week-11 slate finishes: grade `data/closeout/derived/forecasts_w11.csv` against the finals and publish it as `settlement_w11.csv` with the same columns. Do not edit the frozen rows** — the freeze stamp is the registration (SG-C-03).
+2. Read the remaining **12 Week-10 game sheets** for inactives/line-ups (SG-C-02) and join official snap shares before any depth or replacement-deficiency feature is built (A-11 stays BLOCKED until then).
+3. The **price decision** (Q-C01 / SG-C-01) is still the single owner decision that unblocks the most: 78 `FAIR_ONLY` rows are waiting to receive a market value, and no residual, CLV, ROI or reward can exist before it.
+4. Reconcile the two capture regimes (this module's minute-stamped reads vs `data/snapshots` day-stamped seals) rather than running both.
+
+### Post-merge record (same session)
+
+- **PR #100 merged** into `main` as `ec8dab2` at 2026-11-17T23:29:01Z; `X3 close-out desk`, `X3 decision layer`, `Council verify`, `X3 atlas module`, `X3 round2 module`, `Agency` and `Deploy X3 NFL site to GitHub Pages` all ran green on that push.
+- Reading the **deployed** page (not the source) found three defects, fixed in **PR #101** (same branch): a CSV header row rendering as a data row on the landing page; a landing-page card that inferred "1 / 4 strategies leaderboard-eligible" from the wording of a verdict string when the honest, computed value is **0 / 4**; and two sentences still describing the pre-rebase state (13 unread game sheets, "fourteen answers" → 12 and 22). Verifier extended with V-23 (no published CSV may repeat its header; the eligibility card must read the computed field) so the first two cannot come back silently.
+- **PR #101 merged**; Pages `build` and `deploy` both succeeded and the live pages were re-fetched to confirm the fix. Site entry point: `https://karagemop466-tech.github.io/X3/closeout/index.html`.
+
+---
+
 ## PR AND DEPLOY RECORD — session `arena/dbb50f8c-x3` (2026-11-17)
 
 | PR | Head | Result | Merge commit | Pages deploy |

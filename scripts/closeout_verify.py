@@ -381,6 +381,29 @@ if os.path.exists(up_path):
 else:
     ok("V-22", "shared-store figures are quoted, not re-invented", "store absent in this checkout - nothing quoted")
 
+# V-23 no published table repeats its own header as a data row, and the eligibility count is a field
+bad = []
+for fn in sorted(os.listdir(D)):
+    if not fn.endswith(".csv"):
+        continue
+    with open(os.path.join(D, fn), newline="", encoding="utf-8") as fh:
+        rr = list(csv.reader(fh))
+    if len(rr) > 1 and rr[0] == rr[1]:
+        bad.append(f"{fn}: header row duplicated as the first data row")
+for fn in sorted(os.listdir(DD)):
+    if not fn.endswith(".csv"):
+        continue
+    with open(os.path.join(DD, fn), newline="", encoding="utf-8") as fh:
+        rr = list(csv.reader(fh))
+    if len(rr) > 1 and rr[0] == rr[1]:
+        bad.append(f"derived/{fn}: header row duplicated as the first data row")
+cards = open(os.path.join(SITE, "index.html"), encoding="utf-8").read()
+elig = sum(1 for x in rows(os.path.join(DD, "scorecard.csv")) if x.get("leaderboard_eligible") == "yes")
+if f"{elig} / {len(rows(os.path.join(DD, 'scorecard.csv')))}" not in cards:
+    bad.append(f"index card does not show the computed eligibility count ({elig})")
+(ok, fail)[bool(bad)]("V-23", "no duplicated headers; the eligibility card is computed",
+     "all CSVs and the landing-page count recompute from their fields" if not bad else str(bad))
+
 print(f"checks run: {len(CHECKS)}  failures: {len(FAILS)}")
 if not QUIET:
     for cid, desc, st, detail in CHECKS:
