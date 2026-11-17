@@ -541,7 +541,7 @@ SUGGESTIONS = [
 FLAGS = [
     ("F-01", "No market price of any kind exists in this repository, and none was found this session.",
      "Every ROI, CLV, vig and residual cell is empty by rule.",
-     "policy.html", "https://www.nfl.com/"),
+     "policy.html", "https://www.nfl.com/schedules/2026/by-week/week-10"),
     ("F-02", "Earlier sessions recorded nfl.com as unreachable; it was fully readable this session.",
      "Several earlier modules mark official data UNVERIFIED for a reason that no longer holds.",
      "verification.html", "https://www.nfl.com/injuries/league/2026/reg10"),

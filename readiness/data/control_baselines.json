@@ -1,0 +1,98 @@
+{
+ "as_of": "2026-11-14",
+ "seed": 20261115,
+ "graded_n": 105,
+ "graded_weeks": [
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10
+ ],
+ "metric": "contest win rate = share of graded games where the control's number is closer to the actual margin than the no-knowledge baseline (mean home margin fitted on the same training weeks) - identical rule, identical set as signals strategy S1",
+ "controls": [
+  {
+   "id": "C1",
+   "name": "Coin flip (random picks)",
+   "rule": "Seeded 50/50 side draw (random.Random, seed 20261115). Margin number = 0 every game: a coin flip expresses no margin information. Never ranked; published beside the leaderboard as the luck control.",
+   "graded_n": 105,
+   "su_wins": 59,
+   "su_n": 105,
+   "su_rate": 0.5619,
+   "su_ci95": [
+    0.4665,
+    0.653
+   ],
+   "su_p_exact": 0.2414,
+   "brier": 0.25,
+   "contest": {
+    "n_decisive": 104,
+    "wins": 60,
+    "losses": 44,
+    "win_rate": 0.5769,
+    "ci95_low": 0.4809,
+    "ci95_high": 0.6675,
+    "p_exact_binomial": 0.141,
+    "mae_model": 10.01,
+    "mae_baseline": 10.1
+   }
+  },
+  {
+   "id": "C2",
+   "name": "Favourites only",
+   "rule": "Pick the club with the higher verified win pct entering the week (results feed only; equal pct -> home). Margin number = +/-1: direction without magnitude. Brier probability = pct_home / (pct_home + pct_away). Never ranked; published beside the leaderboard as the control.",
+   "graded_n": 105,
+   "su_wins": 66,
+   "su_n": 105,
+   "su_rate": 0.6286,
+   "su_ci95": [
+    0.5331,
+    0.7149
+   ],
+   "su_p_exact": 0.0108,
+   "brier": 0.2456,
+   "contest": {
+    "n_decisive": 105,
+    "wins": 65,
+    "losses": 40,
+    "win_rate": 0.619,
+    "ci95_low": 0.5235,
+    "ci95_high": 0.7062,
+    "p_exact_binomial": 0.0187,
+    "mae_model": 9.771,
+    "mae_baseline": 10.1
+   }
+  }
+ ],
+ "model_side_published": {
+  "id": "S1 (signals)",
+  "name": "Model side (published signals engine)",
+  "rule": "scripts/x3_signals.py S1 - contest vs the same no-knowledge baseline.",
+  "graded_n": 105,
+  "contest": {
+   "n_decisive": 105,
+   "wins": 67,
+   "losses": 38,
+   "win_rate": 0.6381,
+   "ci95_low": 0.5428,
+   "ci95_high": 0.7236,
+   "p_exact_binomial": 0.006,
+   "mae_model": 9.308,
+   "mae_baseline": 10.1
+  },
+  "su_wins": "",
+  "su_n": "",
+  "su_rate": "",
+  "su_ci95": [
+   "",
+   ""
+  ],
+  "su_p_exact": "",
+  "brier": ""
+ },
+ "source": "https://www.nfl.com/schedules/2026/by-week/week-N",
+ "note": "Controls are never ranked. Coordination request logged to the signals owner to join these rows into signals/leaderboard.html on its next rebuild."
+}

@@ -67,7 +67,10 @@ def main() -> int:
         if n not in docs:
             fail.append(f"nav target missing from the tree: {n}")
     for p, d in docs.items():
-        base = ROOT if p == "landing-block.html" else OUT
+        # every emitted page - including landing-block.html - is audited where it
+        # lives (decision/), matching scripts/audit_all.py; the root-paste variant
+        # must be re-derived with source_link(..., standalone=False) before pasting
+        base = OUT
         for m in re.finditer(r'href="([^"]+)"', d):
             href = m.group(1)
             if href.startswith(("http://", "https://", "mailto:")):

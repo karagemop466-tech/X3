@@ -1,0 +1,44 @@
+# Scheduled immutable availability snapshots (RD-06, session arena/6259c7b0-x3).
+# Captures the official NFL league injury report and schedule pages on a schedule,
+# retains raw HTML + SHA-256 in an append-only manifest, flags schema changes, and
+# raises a freshness alert when captures go stale. Only the capture step needs
+# network; the authoring sandbox never fetches - a GitHub-hosted runner does
+# (the same pattern .github/workflows/desk-capture.yml established).
+name: Availability snapshots
+
+on:
+  schedule:
+    # Wed, Thu, Fri 21:00 UTC (after the league report publishes each report day)
+    - cron: '0 21 * * 3,4,5'
+    # Sun 17:00 UTC (pre-kickoff game-day window)
+    - cron: '0 17 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: availability-snapshots
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Capture official pages (raw + sha256 + manifest)
+        run: python3 scripts/availability_snapshot.py
+
+      - name: Commit snapshots (only when something new was stored)
+        run: |
+          if [ -n "$(git status --porcelain readiness/data/history)" ]; then
+            git config user.name "x3-snapshot-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add readiness/data/history
+            git commit -m "snapshots: scheduled availability capture $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+          else
+            echo "no new snapshot content; nothing to commit"
+          fi

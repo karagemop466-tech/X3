@@ -1585,6 +1585,47 @@ def landing():
          ["Strategy ROI / staking", '<span class="badge u">UNVERIFIED</span>',
           badge("BLOCKED"), "Prices and settlement evidence are incomplete; ROI/CLV and reward amounts are not published."]],
         tid="verification-status")
+    # integration session arena/6259c7b0-x3 (RD-01): readiness module entry
+    nav += ('<a href="readiness/index.html"><b>Readiness &amp; gates</b>'
+            '<span>Decision readiness, control baselines, drift alarms, what changed</span></a>')
+
+    # RD-01 (arena/6259c7b0-x3): decision-readiness table, one row per requirement,
+    # with the gate that blocks it and the number that would clear it.
+    with open(os.path.join(ROOT, "readiness", "data", "readiness.json"), encoding="utf-8") as _f:
+        _rd = json.load(_f)
+    _RD_BADGE = {"done": "v", "partial": "p", "blocked": "b", "registered": "u", "rejected": "d"}
+    _rd_rows = []
+    for _r in _rd["rows"]:
+        _src = _r["source"]
+        _src_html = (f'<a class="src" href="{esc(_src)}">official</a>'
+                     if str(_src).startswith("http")
+                     else f'<a class="src" href="{esc(_src)}">provenance</a>')
+        _rd_rows.append(
+            f'<tr><td><b>{esc(_r["id"])}</b></td>'
+            f'<td>{esc(_r["requirement"])}</td>'
+            f'<td><span class="badge {_RD_BADGE.get(_r["status"], "u")}">{esc(_r["status"]).upper()}</span></td>'
+            f'<td><a href="{esc(_r["where"])}">{esc(_r["where"])}</a></td>'
+            f'<td class="mut">{esc(_r["gate"])}</td>'
+            f'<td>{esc(_r["clears"])}</td>'
+            f'<td>{_src_html}</td></tr>')
+    _rd_counts = {}
+    for _r in _rd["rows"]:
+        _rd_counts[_r["status"]] = _rd_counts.get(_r["status"], 0) + 1
+    _rd_summary = " | ".join(f"<b>{v}</b> {k}" for k, v in sorted(_rd_counts.items()))
+    readiness_section = (
+        '<section class="callout" style="margin-top:22px">'
+        '<h2>Decision readiness - one row per requirement</h2>'
+        '<p>Every requirement in the project brief, with <b>the gate that blocks it</b> and '
+        '<b>the number that would clear it</b>. Maintained by the readiness module '
+        '(<a href="readiness/index.html">readiness/</a>); rendered from '
+        '<code>readiness/data/readiness.json</code>.</p>'
+        f'<p class="note">{_rd_summary}</p>'
+        '<div class="tblwrap"><table><caption>Decision readiness register - '
+        f'{len(_rd["rows"])} requirement rows</caption>'
+        '<thead><tr><th>ID</th><th>Requirement</th><th>Status</th><th>Where it lives</th>'
+        '<th>Gate that blocks it</th><th>Number that would clear it</th><th>Source</th></tr></thead>'
+        f'<tbody>{"".join(_rd_rows)}</tbody></table></div></section>')
+
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1689,6 +1730,7 @@ signal-vs-staking leaderboard whose demotion gate is dry-run to prove it fires.<
 this repository, so fair-versus-market, ROI and closing-line value are published as blocked rather than
 estimated.</p>
 </section>
+{readiness_section}
 </main>
 </body></html>"""
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:

@@ -1,0 +1,59 @@
+{
+ "as_of": "2026-11-14",
+ "registered_rule": "Same model form (home constant + 32 club margin effects, ridge lambda 2.0), identical training windows. Arm A = published ratings only; Arm B = identical ratings plus the two official availability-load features (0-4 scale, derived from the official injury report joined to club depth charts). MAE delta > 0 means the availability arm is closer to the truth. Paired bootstrap, 10000 resamples, seed 20261115.",
+ "weeks_with_availability": [
+  8,
+  9,
+  10
+ ],
+ "arms": [
+  {
+   "test_week": 9,
+   "train_weeks": [
+    8
+   ],
+   "train_n": 14,
+   "test_n": 15,
+   "mae_A": 17.381,
+   "mae_B": 17.989,
+   "mae_delta": -0.608,
+   "delta_ci95": [
+    -5.906,
+    4.122
+   ],
+   "contest_B_wins": 9,
+   "contest_rate": 0.6,
+   "lambda": 2.0
+  },
+  {
+   "test_week": 10,
+   "train_weeks": [
+    8,
+    9
+   ],
+   "train_n": 29,
+   "test_n": 1,
+   "mae_A": 4.07,
+   "mae_B": 3.742,
+   "mae_delta": 0.328,
+   "delta_ci95": [
+    0.328,
+    0.328
+   ],
+   "contest_B_wins": 1,
+   "contest_rate": 1.0,
+   "lambda": 2.0
+  }
+ ],
+ "pooled": {
+  "test_n": 16,
+  "mae_delta_mean": -0.549,
+  "delta_ci95": [
+   -5.567,
+   3.979
+  ],
+  "verdict": "inconclusive at this sample size"
+ },
+ "caveat": "Availability snapshots exist only for weeks 8-10, so the ablation trains on very few weeks and its confidence intervals are wide. The interval - not a point estimate - is the published result; the panel becomes decisive only when the snapshot history spans more weeks (RD-06).",
+ "source": "https://www.nfl.com/injuries/league/2026/reg10"
+}

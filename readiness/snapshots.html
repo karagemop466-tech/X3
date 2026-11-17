@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snapshot capture - X3 readiness</title>
+<link rel="stylesheet" href="../hub/assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>readiness module</span></a></div>
+  <div class="asof">session <b>arena/6259c7b0-x3</b> - built from verified official captures</div>
+</header>
+<nav class="nav"><a href="index.html">Overview</a><a href="decision-readiness.html">Decision readiness</a><a href="change-our-mind.html">What would change our mind</a><a href="control-baselines.html">Control baselines</a><a href="two-totals.html">Two totals</a><a href="ablations.html">Ablations</a><a href="what-changed.html">What changed</a><a href="announced-starters.html">Announced starters</a><a href="matchup-matrix.html">Matchup matrix</a><a href="drift-alarms.html">Drift alarms</a><a href="snapshots.html" class=on>Snapshot capture</a><a href="../index.html">X3 landing</a><a href="../signals/index.html">signals/</a></nav>
+<main>
+<h1>Snapshot capture</h1>
+<p class="lede">Scheduled, hashed, immutable availability snapshots - the design, its status, and the phases blocked on official sources.</p>
+<p>Requirement: immutable multi-day availability snapshots captured on a schedule with retained hashes, so practice designations can be replayed as they were known. The workflow <code>.github/workflows/availability-snapshots.yml</code> is committed and runs on the schedule above once merged to the default branch. Until its first scheduled runs execute, the repository holds one static capture plus the stored weeks 8-10 report reads - published honestly as pending, not claimed as running.</p><div class="tblwrap"><input class="filt" placeholder="filter rows..." oninput="x3filter(this)"><table><caption>Scheduled capture design (scripts/availability_snapshot.py)</caption><thead><tr><th>Item</th><th>Design</th><th>Status</th><th>Source</th></tr></thead><tbody><tr><td>Schedule</td><td>Cron <code>17:00 UTC Wed/Thu/Fri</code> (injury report days) and <code>16:00 UTC Sun</code> (game-day inactivity window)</td><td><span class="badge d">COMMITTED</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">report page</a></td></tr><tr><td>Captures</td><td>Official league injury report (regN) + week schedule pages, raw HTML stored under <code>readiness/data/history/&lt;date&gt;/</code></td><td><span class="badge u">FIRST RUN PENDING</span></td><td><a class="src" href="https://www.nfl.com/injuries/">report index</a></td></tr><tr><td>Integrity</td><td>SHA-256 per capture + append-only manifest (<code>manifest.csv</code>: date, url, bytes, sha256, http status)</td><td><span class="badge d">COMMITTED</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">report page</a></td></tr><tr><td>Conflict flags</td><td>Row-count delta > 20% vs previous capture prints a SCHEMA CHANGE alert; parser pins (RD-03) fail the build</td><td><span class="badge d">COMMITTED</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">report page</a></td></tr><tr><td>Freshness alert</td><td>If the newest capture is older than 4 days at run time the step exits 1 with a FRESHNESS ALERT</td><td><span class="badge d">COMMITTED</span></td><td><a class="src" href="https://www.nfl.com/injuries/">report index</a></td></tr><tr><td>Replay</td><td>Any designation state can be replayed as known at a past clock time from the retained raw captures</td><td><span class="badge u">NEEDS &gt;= 2 RUNS</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">report page</a></td></tr><tr><td>Extendable phases (blocked on sources)</td><td>Inactive lists, snap counts, reserve/IR lists, venue per fixture, stadium roof + NWS wind/precip, past-season report archives - each is a documented phase with the same hash/manifest discipline once an official route is verified</td><td><span class="badge b">BLOCKED</span></td><td><a class="src" href="https://www.nfl.com/injuries/">report index</a></td></tr></tbody></table></div>
+</main>
+<footer>Every table row links an official source, a provenance link, or an explicit UNVERIFIED /
+BLOCKED marker. Nothing is inferred or filled in. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>
+- session <code>arena/6259c7b0-x3</code>, tasks RD-01 to RD-10.</footer>
+<script>
+function x3filter(inp){
+  var t=inp.parentElement.querySelector('table');
+  var rows=[].slice.call(t.querySelectorAll('tbody tr'));
+  var q=inp.value.toLowerCase().trim();
+  rows.forEach(function(r){ r.style.display = !q || r.textContent.toLowerCase().indexOf(q)>=0 ?'':'none'; });
+}
+</script>
+</body>
+</html>
