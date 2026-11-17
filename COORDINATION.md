@@ -3553,3 +3553,16 @@ Published as F-32 to F-36 on `hub/flagged.html` (source: `tools/hub_content.py`,
 | F-36 | MEDIUM | Landing-page readiness rows read VERIFIED beside UNVERIFIED in one cell | repo: tools/build_hub.py |
 
 Verification after the change: `tools/x3_engine.py` + `tools/build_hub.py` reproduce `hub/`; `tools/verify_hub.py` PASS (27 pages, 1,469 rows, 0 failures); `scripts/check_hub.py`, `tools/check_links.py`, `scripts/audit_all.py` exit 0.
+
+### PR and deploy record (arena/3e44287d-x3, 2026-11-17)
+
+| PR | Head | Result | Merge commit | Pages |
+|----|------|--------|--------------|-------|
+| #94 | `0b973fb` | Integration of PR #89 (readiness module), origin/main decision-layer repair (PRs #92/#93/#95), Brissett and Watson/Beck corrections. All PR checks pass (build, verify ×6, round2, signals, Council verify). Merged `gh pr merge 94 --merge`, no approval wait. | `e375f75` | `pages build and deployment` success; `Deploy X3 NFL site to GitHub Pages` success |
+| #96 | `b9e7077` | F-32..F-36 published on the Flagged page; `hub/` and `council/` census regenerated (CI requires both to reproduce). All PR checks pass. Merged `gh pr merge 96 --merge`. | `6904712` | Pages build `built` at `6904712`; deploy success |
+
+**Live check (fetched 2026-11-17 via the page reader):** https://karagemop466-tech.github.io/X3/readiness/announced-starters.html shows the corrected Watson/Beck dates and the Brissett "being finalized" wording. https://karagemop466-tech.github.io/X3/hub/flagged.html shows the F-32 entry (39 open items). The sandbox cannot reach github.io directly (outbound allow-list), so the live check used the page reader.
+
+**Unresolved conflict between flags (for the owner):** the live Flagged page carries F-12 ("205, 345 and 345 Week-10 counts; canonical is 345; no action needed") from an earlier session. This session's F-33 found two committed 347-row captures (`data/snapshots/wk10/…`, `agency/data/derived/…`) that disagree with 345 by two rows. F-33 is the more specific finding; F-12's "no action needed" is not supported until the 345/347 difference is explained.
+
+**Session status:** done for the integration, main repair, verification and publication steps above. Not done: a full re-count of the live Week 10 report, the Texans depth image, any market, ROI, CLV or leaderboard value (no official source exists), and the other seven open PRs (#58, #76, #77, #79, #80, #85), each left to its owner.
