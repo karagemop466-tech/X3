@@ -3539,3 +3539,17 @@ Not claimed here (already done or blocked by data, not by code): the Week-11 inj
 - `tools/build_hub.py` regenerates `index.html`. Its only change is the decision-desk card that main's `build_hub` fix added. CI requires this file to match the builder, so it is committed as regenerated.
 - **Two decision registers are now published, with different counts:** `decision/` (69 requirements) and `readiness/` (74 rows). Not reconciled in this session. Flagged.
 - Gate run on the merged tree, before the merge commit: 43 pipeline gates + 6 node checks, all exit 0 (see the table in the PR body).
+
+### Post-merge: irregularities published on the Flagged page (arena/3e44287d-x3, 2026-11-17)
+
+Published as F-32 to F-36 on `hub/flagged.html` (source: `tools/hub_content.py`, rebuilt by `tools/build_hub.py`), each with its link:
+
+| ID | Severity | Item | Link |
+|----|----------|------|------|
+| F-32 | HIGH | Brissett "traded" overstated; article says trade being finalized; date unverified | https://www.nfl.com/news/jacoby-brissett-trade-ravens-cardinals |
+| F-33 | HIGH | Week 10 row counts disagree: 205 designated vs 345 vs 347; live official page not re-counted | https://www.nfl.com/injuries/league/2026/reg10 |
+| F-34 | MEDIUM | Week 11 report not yet published; reg11 redirects to reg10 | https://www.nfl.com/injuries/league/2026/reg11 |
+| F-35 | MEDIUM | Register counts disagree: landing shows 66 / 69 / 74 in different cards; `decision/` 69 vs `readiness/` 74 | repo: scripts/build_decision.py |
+| F-36 | MEDIUM | Landing-page readiness rows read VERIFIED beside UNVERIFIED in one cell | repo: tools/build_hub.py |
+
+Verification after the change: `tools/x3_engine.py` + `tools/build_hub.py` reproduce `hub/`; `tools/verify_hub.py` PASS (27 pages, 1,469 rows, 0 failures); `scripts/check_hub.py`, `tools/check_links.py`, `scripts/audit_all.py` exit 0.
