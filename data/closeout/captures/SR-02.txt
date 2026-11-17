@@ -1,0 +1,13 @@
+VERBATIM KEY LINES - nfl.com/schedules/2026/by-week/week-11, read 2026-11-17T22:47Z (rendered markdown)
+"Thursday Night Football, November 19th" - "Colts at Texans, Thursday, November 19th, 8:15 PM, PRIME"
+"Sunday, November 22nd" - "Dolphins at Bills, ... 1:00 PM, CBS"; "Ravens at Panthers, ... 1:00 PM, FOX";
+"Saints at Bears, ... 1:00 PM, FOX"; "Titans at Cowboys, ... 1:00 PM, FOX"; "Buccaneers at Lions, ... 1:00 PM, FOX";
+"Cardinals at Chiefs, ... 1:00 PM, CBS"; "Steelers at Eagles, ... 1:00 PM, CBS"; "Jets at Chargers, ... 4:05 PM, FOX";
+"Jaguars at Giants, ... 4:25 PM, CBS"; "Raiders at Broncos, ... 4:25 PM, CBS"
+"Sunday Night Football, November 22nd" + "Mexico City" - "Vikings at 49ers, Sunday, November 22nd, 8:20 PM, NBC"
+"Monday Night Football, November 23rd" - "Bengals at Commanders, Monday, November 23rd, 8:15 PM, ESPN"
+Teams on Bye: ATL 3-7, CLE 6-4, GB 6-4, LA 6-4, NE 5-5, SEA 6-4
+Club venue blocks on the same page (Marriott destinationAddress.location per club): NRG+Stadium (HOU),
+Highmark+Stadium (BUF), Bank+of+America+Stadium (CAR), Soldier+Field (CHI), AT+T+Stadium (DAL), Ford+Field (DET),
+GEHA+Field+at+Arrowhead+Stadium (KC), Lincoln+Financial+Field (PHI), SoFi+Stadium (LAC), MetLife+Stadium (NYG),
+Empower+Field+at+Mile+High (DEN), FedEx+Field (WAS). No venue block on the Mexico City fixture row.

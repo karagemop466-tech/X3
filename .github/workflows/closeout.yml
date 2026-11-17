@@ -1,0 +1,78 @@
+name: X3 close-out desk
+
+# Gate for the closeout/ tree (session arena/e1ad8b78-x3). Offline, deterministic, ~30 seconds.
+# Fails on: a Week-10 game missing from the close-out, a standings mismatch, a forecast frozen after its own
+# kickoff, an invented market price, an unsourced table row on this module's pages, a capture hash that does not
+# recompute, or a build that does not reproduce from its committed inputs.
+#
+# The repo-wide scripts/audit_all.py is run in *scoped* form: this module's own pages must be clean, and the
+# pre-existing failures in other sessions' trees are reported without failing this gate (they belong to the
+# decision-layer owners and are tracked as flag CL-F-10).
+
+on:
+  push:
+    paths:
+      - "closeout/**"
+      - "data/closeout/**"
+      - "scripts/closeout_engine.py"
+      - "scripts/closeout_build.py"
+      - "scripts/closeout_verify.py"
+      - ".github/workflows/closeout.yml"
+  pull_request:
+    paths:
+      - "closeout/**"
+      - "data/closeout/**"
+      - "scripts/closeout_engine.py"
+      - "scripts/closeout_build.py"
+      - "scripts/closeout_verify.py"
+      - ".github/workflows/closeout.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: closeout-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: Rebuild and verify the close-out desk
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild the derived data from the committed captures
+        run: python3 scripts/closeout_engine.py
+
+      - name: Rebuild the site
+        run: python3 scripts/closeout_build.py
+
+      - name: The rebuild must not change any committed file
+        run: |
+          if [ -n "$(git status --porcelain data/closeout closeout)" ]; then
+            echo "::error::the committed closeout tree does not reproduce from its inputs"
+            git --no-pager diff --stat data/closeout closeout
+            exit 1
+          fi
+          echo "closeout/ reproduces exactly from scripts/closeout_engine.py + scripts/closeout_build.py"
+
+      - name: Close-out gate (18 checks, V-01..V-18)
+        run: python3 scripts/closeout_verify.py
+
+      - name: Repo-wide audit, scoped to this module
+        run: |
+          python3 scripts/audit_all.py > /tmp/audit.txt 2>&1 || true
+          echo "--- violations in closeout/ (must be zero) ---"
+          if grep -qE "L[0-9] +[A-Za-z0-9_./-]*closeout/" /tmp/audit.txt; then
+            grep -E "L[0-9] +[A-Za-z0-9_./-]*closeout/" /tmp/audit.txt
+            echo "::error::closeout pages violate the repo-wide source/link rules"
+            exit 1
+          fi
+          echo "closeout/ clean; total repo violations (other trees, tracked as CL-F-10):"
+          tail -1 /tmp/audit.txt

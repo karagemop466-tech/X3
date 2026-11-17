@@ -1,0 +1,7 @@
+VERBATIM KEY LINES - nfl.com/standings/league/2026/REG, read 2026-11-17T22:49Z (rendered markdown)
+Column order printed by the page: W | L | T | PCT | PF | PA | NET | HOME | ROAD | DIV | DIV PCT | CONF | CONF PCT | ... | STRK | LAST 10
+"| Buffalo Bills | 8 | 1 | 0 | 0.889 | 287 | 199 | 88 | 3 - 1 - 0 | 5 - 0 - 0 | ..."
+"| San Francisco 49ers | 8 | 1 | 0 | 0.889 | 281 | 196 | 85 | 5 - 0 - 0 | 3 - 1 - 0 | ..."
+"| Tennessee Titans | 1 | 8 | 0 | 0.111 | 167 | 239 | -72 | 0 - 5 - 0 | 1 - 3 - 0 | ..."
+Check applied in scripts/closeout_engine.py: PF - PA must equal NET for every club (32/32) and sum(PF) must
+equal sum(PA) across the league; both are arithmetic on the transcribed rows, not an NFL-published figure.

@@ -1,0 +1,13 @@
+VERBATIM KEY LINES - nfl.com/injuries/league/2026/reg10 (chunk 1 of 8), read 2026-11-17T22:45Z
+Title: "Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com"
+THURSDAY, NOVEMBER 12TH 8:15 PM EST - Commanders / Giants
+"| Lucas Patrick | C | Concussion | Did Not Participate In Practice | Out |"
+"| Malik Harrison | LB | Groin | Limited Participation in Practice | Questionable |"
+SUNDAY, NOVEMBER 15TH 9:30 AM EST (Munich) - Patriots / Lions
+"| Kerby Joseph | S | Knee | Did Not Participate In Practice | Out |"
+"| Cade Mays | C | Ankle | Did Not Participate In Practice | Out |"
+"| D.J. Reed | CB | Hip | Did Not Participate In Practice | Out |"
+"| Amon-Ra St. Brown | WR | Rib | Limited Participation in Practice | Questionable |"
+"| A.J. Brown | WR | Ankle, Knee | Limited Participation in Practice | Questionable |"
+Practice-status vocabulary observed: Full Participation in Practice | Limited Participation in Practice |
+Did Not Participate In Practice. Game-status vocabulary observed: Out | Questionable | (blank).

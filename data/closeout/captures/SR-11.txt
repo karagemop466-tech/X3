@@ -1,0 +1,5 @@
+REPOSITORY READ - data/x3/verified/results_2026.csv at commit b7d4142889b90675cd53868e377bb277d415efb5, 2026-11-17T22:51Z
+header: game_id,week,date_iso,away,home,neutral_site,venue,status,away_score,home_score,margin_home,total,source
+rows: 163; finals 137; scheduled 26; clubs 32; weeks with finals 1..10
+week-10 rows: 1 FINAL (WAS@NYG 24-21) + 13 SCHEDULED
+the 136 finals dated before 2026-11-12 are inherited; they are reconciled to the official standings in aggregate, not re-read row by row this session

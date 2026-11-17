@@ -1,0 +1,12 @@
+VERBATIM KEY LINES - nfl.com/injuries/league/2026/reg10 RE-READ at 2026-11-17T23:24Z (second dated capture of the same page)
+Title: "Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com"; week selector: WEEK 1..WEEK 10.
+Four club tables in this chunk, row counts: Commanders 9, Giants 11, Patriots 15, Lions 9 = 44 rows.
+Rows re-transcribed field by field and compared with the capture at 2026-11-17T22:45Z:
+  0 rows added, 0 rows removed, 0 injuries changed, 0 practice statuses changed, 0 game statuses changed.
+Lions block still reads: "Kerby Joseph | S | Knee | Did Not Participate In Practice | Out",
+"Cade Mays | C | Ankle | Did Not Participate In Practice | Out", "D.J. Reed | CB | Hip | Did Not Participate In
+Practice | Out" - the same three designations that produced the roster question in CL-F-07.
+Also visible in this chunk (not previously transcribed): Chiefs "Mansoor Delane | CB | Shoulder | Full Participation
+in Practice | Questionable", and "Justin Fields | QB | Full Participation in Practice" with no designation.
+CONCLUSION PUBLISHED: on this page, a 39-minute window produced no delta; the report changes on the league's
+revision schedule, so a same-evening second read is a stability check, not a surprise signal.

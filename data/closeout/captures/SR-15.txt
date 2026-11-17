@@ -1,0 +1,5 @@
+REQUEST: re-read of the Week-11 injury report at 2026-11-17T23:12Z (third attempt in this window)
+URL: https://www.nfl.com/injuries/league/2026/reg11  -> resolves to the Week-10 page, title
+"Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com"; week selector still stops at WEEK 10.
+Combined with SR-05 (22:45Z) and SR-06/SR-07 (22:47Z / 22:53Z): three separate official reads inside one evening
+say the same thing. The Week-11 report is not late in this capture set; it has not been published.
