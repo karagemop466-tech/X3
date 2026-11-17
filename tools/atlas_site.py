@@ -213,6 +213,21 @@ def write(name, title, body):
 # --------------------------------------------------------------------------
 def build():
     rates, outs, orig, pyth, corr, S = E.build()
+
+    # Live census of the other sessions' site trees. Computed once, at the top of
+    # the build, so the count quoted on the repo-review, suggestions and flagged
+    # pages is always the same number and can never drift out of step with the
+    # table it describes.
+    trees = []
+    for d in sorted(p for p in ROOT.iterdir() if p.is_dir() and not p.name.startswith(("."))):
+        pages = sorted(d.rglob("*.html"))
+        if not pages:
+            continue
+        idx = d / "index.html"
+        link = f"../{d.name}/index.html" if idx.exists() else f"../{d.name}/{pages[0].relative_to(d)}"
+        trees.append((d.name, len(pages), link))
+    trees.sort(key=lambda t: -t[1])
+    n_trees = len(trees)
     (SITE / "assets").mkdir(parents=True, exist_ok=True)
     (SITE / "assets" / "atlas.css").write_text(CSS, encoding="utf-8")
 
@@ -1145,7 +1160,7 @@ decision this desk will not make on its own.</li>
          "NWS grid joined to the official 90-minute roof designation",
          "Unblocks R-37; affects totals and passing props",
          "Two more feeds to keep fresh", "LOW"),
-        ("SG-09", "Consolidate the thirteen overlapping site trees",
+        ("SG-09", f"Consolidate the {n_trees} overlapping site trees",
          "Pick one maintained tree, label the rest archive, and stop adding more",
          "Removes contradictory numbers for the same fact across the site",
          "Needs an owner decision; this desk will not delete other sessions' work", "MEDIUM"),
@@ -1195,15 +1210,6 @@ are read.</li>
     write("suggestions.html", "Suggestions", body)
 
     # ================================================== repo review
-    trees = []
-    for d in sorted(p for p in ROOT.iterdir() if p.is_dir() and not p.name.startswith(("."))):
-        pages = sorted(d.rglob("*.html"))
-        if not pages:
-            continue
-        idx = d / "index.html"
-        link = f"../{d.name}/index.html" if idx.exists() else f"../{d.name}/{pages[0].relative_to(d)}"
-        trees.append((d.name, len(pages), link))
-    trees.sort(key=lambda t: -t[1])
     rows = "".join(
         f'<tr><td><b>{esc(t[0])}/</b></td><td class="num">{t[1]}</td>'
         f'<td><a href="{esc(t[2])}">open module</a></td>'
@@ -1218,7 +1224,7 @@ module is maintained and which is history.</p>
 It is the one page here that changes when another session adds a tree, and it is excluded from the
 module's reproducible-build check for exactly that reason: the count below is a fact about the
 repository at build time, not a claim this module can freeze.</p>
-<div class="warnbox"><p><b>The main finding.</b> Thirteen overlapping trees publish different numbers
+<div class="warnbox"><p><b>The main finding.</b> {n_trees} separate trees publish different numbers
 for the same fact. That is not a bug in any one of them; it is what happens when many sessions answer
 the same brief independently. Until one tree is chosen as canonical and the rest are labelled
 archive, any number quoted "from the site" is ambiguous. Suggestion SG-09 proposes how to resolve it;
@@ -1326,9 +1332,9 @@ is published as unverified.</li>
          "Measured on this branch at the base commit before any change.",
          "This session repairs the minimum needed to make the shared gate green.",
          "https://github.com/karagemop466-tech/X3"),
-        ("F-10", "Thirteen overlapping site trees",
+        ("F-10", f"{n_trees} overlapping site trees",
          "Different numbers for the same fact across modules; any quote from the site is ambiguous.",
-         "Directory listing of the repository; 13 trees with HTML pages.",
+         f"Directory listing of the repository; {n_trees} trees with HTML pages at build time.",
          "Choose a canonical tree and label the rest archive (SG-09).",
          "https://github.com/karagemop466-tech/X3"),
         ("F-11", "Terms of use not read",
