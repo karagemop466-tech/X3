@@ -1,0 +1,14 @@
+week,date,kickoff_ET,away,home,venue_as_game_center,city_as_game_center,status,official_game_center,official_schedule,venue_conflict_note,captured_at_utc
+11,2026-11-19,20:15,IND,HOU,Reliant Stadium,"Houston, TX",SCHEDULED,https://www.nfl.com/games/colts-at-texans-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,FLAG: game center labels venue Reliant Stadium; official schedule hotel destination says NRG Stadium. Preserve source text; reconcile name before using.,2026-11-17T23:01:20Z
+11,2026-11-22,13:00,MIA,BUF,Highmark Stadium,"Orchard Park, NY",SCHEDULED,https://www.nfl.com/games/dolphins-at-bills-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,13:00,BAL,CAR,Bank of America Stadium,"Charlotte, NC",SCHEDULED,https://www.nfl.com/games/ravens-at-panthers-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,13:00,NO,CHI,Soldier Field,"Chicago, IL",SCHEDULED,https://www.nfl.com/games/saints-at-bears-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,13:00,TEN,DAL,AT&T Stadium,"Arlington, TX",SCHEDULED,https://www.nfl.com/games/titans-at-cowboys-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,13:00,TB,DET,Ford Field,"Detroit, MI",SCHEDULED,https://www.nfl.com/games/buccaneers-at-lions-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,13:00,AZ,KC,Arrowhead Stadium,"Kansas City, MO",SCHEDULED,https://www.nfl.com/games/cardinals-at-chiefs-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,13:00,PIT,PHI,Lincoln Financial Field,"Philadelphia, PA",SCHEDULED,https://www.nfl.com/games/steelers-at-eagles-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,16:05,NYJ,LAC,SoFi Stadium,"Inglewood, CA",SCHEDULED,https://www.nfl.com/games/jets-at-chargers-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,16:25,JAX,NYG,MetLife Stadium,"East Rutherford, NJ",SCHEDULED,https://www.nfl.com/games/jaguars-at-giants-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,16:25,LV,DEN,Empower Field at Mile High,"Denver, CO",SCHEDULED,https://www.nfl.com/games/raiders-at-broncos-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-22,20:20,MIN,SF,Estadio Banorte,Mexico City,SCHEDULED,https://www.nfl.com/games/vikings-at-49ers-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z
+11,2026-11-23,20:15,CIN,WAS,Northwest Stadium,"Landover, MD",SCHEDULED,https://www.nfl.com/games/bengals-at-commanders-2026-reg-11,https://www.nfl.com/schedules/2026/by-week/week-11,,2026-11-17T23:01:20Z

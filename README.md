@@ -437,3 +437,16 @@ unsourced table row, a stale cross-reference, or a fabricated figure.
 
 Start at [`x3/index.html`](x3/index.html). Every number on it is labelled **in-sample**; nothing on
 it is live, and the market columns are empty because no official price source exists.
+
+## Verification verdict desk — Week 11 2026 (`arena/557302a9-x3`)
+
+**Live Pages path:** https://karagemop466-tech.github.io/X3/verdict/ — a read-only dashboard with
+official Week-11 Game Center venue strings, Week-10 final-score reconciliation, the saved X3-v2
+Week-11 fair forecasts (market quotes/residuals remain blank), a small designation/Game Book pilot,
+the 69-row requirements register, open questions, suggestions, protocol and a clearly labeled
+Flagged for Review page. Rebuild the static subsite with `python3 verdict/build_site.py`; run
+`python3 verdict/verify.py`. The scheduled workflow checks local invariants and upstream source
+reachability only; it does not overwrite captures or store raw pages.
+
+**Deployment note:** the `/verdict/` URL becomes available on GitHub Pages only after this branch’s
+integration PR is merged and the Pages deployment succeeds.

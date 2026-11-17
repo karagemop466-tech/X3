@@ -1,0 +1,32 @@
+name: X3 verdict desk freshness checks
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'verdict/**'
+      - '.github/workflows/verdict.yml'
+  schedule:
+    - cron: '17 23 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild static desk
+        run: python3 verdict/build_site.py
+      - name: Verify rows, order, blank-value policy and local links
+        run: python3 verdict/verify.py
+      - name: Ensure generated output is deterministic
+        run: git diff --exit-code -- verdict
+      - name: Check official NFL source reachability and schema markers (read-only)
+        run: python3 verdict/check_live_sources.py

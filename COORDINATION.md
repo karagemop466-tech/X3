@@ -3359,3 +3359,70 @@ Not claimed here (already done or blocked by data, not by code): the Week-11 inj
 ### Merge note — `origin/main` update integrated into `arena/557302a9-x3`
 
 The rebase-equivalent sync used `git fetch origin main && git merge origin/main` because this repository records merge commits and the board warns against `git pull --rebase`. `COORDINATION.md` conflicted at the two appended session sections. Resolution retained both complete append-only blocks (`arena/557302a9-x3` and `arena/7375a4eb-x3`) without dropping either session’s work. The main update contains the audit/deploy-gate changes owned by `arena/7375a4eb-x3`; this session will not modify their `scripts/**`, `decision/**`, or `tools/build_hub.py` scope. Re-verify the combined state after the merge.
+
+## Session `arena/557302a9-x3` — progress, evidence and scope reconciliation (2026-11-17 UTC)
+
+### Correction to the initial Z00 gate note
+
+The 64 `audit_all.py` violations on pristine `b7d4142` were **not all in `decision/readiness.html`**. Exact baseline from a clean `git archive b7d4142`:
+
+| Rule / page | Count |
+|---|---:|
+| L1 broken links in `decision/landing-block.html` (root-level paste fragment audited as a page) | 52 |
+| L2 source-cell failures in `decision/landing-block.html` | 5 |
+| L2 source-cell failures in `decision/readiness.html` | 5 |
+| L2 + L3 failures in `decision/flagged.html` | 2 |
+| **Total** | **64** |
+
+The first claim block’s “all in readiness” wording was inaccurate. Upstream session `arena/7375a4eb-x3` fixed the audit/build chain in PR #93; on the current combined tree the repo-wide audit passes. This correction supersedes the earlier baseline summary. The separate `scripts/verify_decision.py` determinism failure still reproduces (six generated HTML files change); it remains outside this session’s write scope and is recorded as R-06.
+
+### Synchronized work and conflict resolution
+
+Fetched `origin/main` at `ed4cb1a` and merged it as `2f1433c`; the `COORDINATION.md` append conflict was resolved by retaining both sessions’ complete append-only blocks. PR #93 also fixed the root hub rebuild by registering its decision card in `tools/build_hub.py`. This session did **not** edit `tools/build_hub.py`, `index.html`, `scripts/**` or `decision/**`. An earlier diagnostic run of the decision builder changed generated pages locally; those changes were restored, and no out-of-scope diff remains. The original Z10 fix request to `tools/x3_content.py` is superseded: Z10 is **done upstream** by the owning integration session’s generator fix.
+
+### Captures and data decisions
+
+- **Week 11 fixtures / venues (Z01): done.** `verdict/data/week11_fixtures.csv` contains 13 fixtures, each sourced to its official NFL Game Center and week schedule, with venue strings copied verbatim from the Game Center and capture time `2026-11-17T23:01:20Z`. HOU@IND is explicitly flagged: the Game Center displays “Reliant Stadium,” while the weekly schedule hotel destination names “NRG Stadium”; no silent normalization was made.
+- **Week 10 official final reconciliation (Z03, scoped):** `verdict/data/week10_reconciliation.csv` has all 14 finals and direct official Game Center links. `x3/data/results.csv` has two Week-10 finals and omits the other 12. `data/x3/verified/results_2026.csv` has only WAS@NYG as final; NE@DET plus the other 12 remain scheduled (13 stale scheduled entries). These feeds are not interchangeable.
+- **Stale freshness gate (R-08):** a clean market-pipeline run emits 137 finals and 26 scheduled. Its R2 “0 mismatches” compares with `data/hub/standings_2026_thru_wk9.csv`; that does not establish current Week-10 freshness because the official Week-10 NFL page now lists all 14 games final. No result feed or `tools/results_feed.py` change was made here.
+- **Week-11 fair forecasts (Z06):** 39 rows in `verdict/data/origination_w11.csv` are copied from the saved `data/x3/verified/markets.json` X3-v2 artifact (`as_of=2026-11-14`), in side → total → moneyline order, with fair lines, model probabilities, model inputs, official game-centre links and SHA-256 of the model artifact. The external market quote, market source and residual columns remain blank. The artifact does not cite an X3-v2 preregistration hash; every row says this is unverified. This is a derived forecast, not a claim of a validated edge or live staking eligibility.
+- **Price-store distinction (R-03):** `data/x3/verified/price_store.csv` contains 786 derived fair-price rows (524 with open-line values, 420 with close-line values); all 786 `market_open`, `market_close` and `market_source` cells are blank. This is an own-line history, not an external market-price store.
+- **Designation pilot (Z02: needs review):** the official Week-10 NE@DET injury report and NFL Game Book were joined for Questionable rows only. Of 11 Questionable report rows, 8 are Game Book-confirmed participants, 2 are explicitly Not Active, and 1 is unresolved. Resolved-sample rate = 8/10 = 80%, Wilson 95% interval 49.0%–94.3%. This is one game, not a calibration; no player-level/raw capture was published and no feature was enabled. NFL’s Week-11 report page still served the Week-10 report as of this capture; a multi-day/multi-season calibration remains open.
+- **Requirements and questions (Z04–Z05):** `requirements_register.csv` copies the existing 69-row register read-only. User-brief requirements without official-fact sources are marked UNVERIFIED and linked to internal evidence rather than presented as NFL facts. Five decision-critical questions and a suggested discovery path are on the desk.
+
+### Deliverables in the owned `verdict/` scope
+
+- Static, responsive site: `verdict/index.html` plus nine category pages (fixtures, results, availability pilot, origination, requirements, questions, protocol, Flagged for Review, Suggestions); source CSVs in `verdict/data/`.
+- `verdict/build_site.py` deterministically renders the pages. `verdict/verify.py` checks the 13-game fixture slate, 14 Week-10 results, feed omissions, designation sample counts, model-artifact hash, three-market ordering, blank external-market fields, all CSV source/flag fields and local links.
+- `.github/workflows/verdict.yml` runs on push/dispatch and daily; `verdict/check_live_sources.py` is read-only and checks the official schedule, injury report and all 13 Game Center pages for reachability/schema markers. It does not capture, archive or overwrite raw source material; durable private capture storage remains an open requirement.
+- Appended a README entry pointing to `/X3/verdict/`. **Request logged, not applied:** the shared root landing/nav is owned by integration; add a discoverable `verdict/` card in the owning generator if approved. No `index.html` or `tools/build_hub.py` edits were made.
+
+### Current task status (replaces the earlier “in progress” statuses where stated)
+
+| ID | Status | Evidence / boundary |
+|---|---|---|
+| Z00 | done | Clean-archive gate reproduction, corrected count above, main sync recorded |
+| Z01 | done | 13 official Game Center fixture/venue rows |
+| Z02 | needs review | One-game N=10 resolved pilot only; no Week-11 report or multi-season calibration |
+| Z03 | needs review | Official Week-10 results, results-feed and own-vs-market price-store audit done; not an exhaustive audit of every legacy tree’s historical number |
+| Z04 | done (register scope) | 69 rows, internal citations distinguished from official sources |
+| Z05 | done | Five open questions with evidence gaps and clearance gates |
+| Z06 | done (derived lines only) | 39 model outputs shown; market quotes/residual and preregistration hash remain blank/UNVERIFIED |
+| Z07 | done (proposal) | paper-first, preregistered, proper-score/uncertainty protocol; not a performance validation |
+| Z08 | done | 10 static pages, 7 CSV datasets, dedicated Flagged for Review and Suggestions sections |
+| Z09 | done (read-only monitor) | daily source heartbeat; immutable/private raw capture is not implemented here |
+| Z10 | done upstream | PR #93 fixed the hub generator; this session made no competing generator change |
+| Z11 | in progress | branch PR and Pages deployment remain to be completed |
+
+### Verification performed after sync
+
+- `python3 verdict/build_site.py` then `python3 verdict/verify.py`: **PASS** (13 fixtures, 14 finals, one limited designation pilot, 39 ordered fair outputs, 69 requirements; source/hash/local-link checks pass).
+- `python3 scripts/audit_all.py --quiet`: **PASS** on the current combined checkout (297 HTML pages, 8,946 source rows; 260 explicitly unverified; 411 flagged-page rows checked).
+- `python3 scripts/verify_round2.py`: **PASS** (7 pages, 11 data files).
+- In a clean archive of the synced tree, the Pages workflow’s site, link, audit, data, ledger, integration, desk, ops, dashboard, market-engine, market-verification, hub-build and hub-verification steps all exited 0. The same run reproduced the freshness issue described in R-08. Current local audit and verdict verification were rerun after adding the availability page and still pass.
+- `scripts/verify_decision.py` remains a separate known failure on the synced main base: non-deterministic output in six decision HTML files. No edit was made because another session owns that tree.
+- The scheduled live-source heartbeat was not run from this sandbox because direct shell egress to NFL hosts is restricted; the official pages were fetched and checked manually through the page-fetch tool. The workflow will execute its network check on GitHub Actions after push.
+
+**Small count clarification:** the current `verdict/data/` directory contains **8** CSV datasets (including the designation pilot), not 7 as the first progress note stated. The Pages link appended above is a target URL and is not claimed live until this branch is merged and the deploy is confirmed.
+
+**Question-register update:** the `/reg11` injury endpoint was fetched directly at `2026-11-17T23:01Z`; it redirects to `/reg10` and the returned title says Week 10. Added R-09 and Q-06 to make the not-yet-published Week-11 report a sourced flag and an explicit clearance gate. The open-question CSV now has **6** rows (not 5 as stated in the preceding summary). The daily heartbeat warns before the expected Wednesday report window and fails if the endpoint is still on Week 10 from 2026-11-18 UTC onward; no raw page is persisted.
