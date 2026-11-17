@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Injury / personnel ablation - X3 readiness</title>
+<link rel="stylesheet" href="../hub/assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>readiness module</span></a></div>
+  <div class="asof">session <b>arena/6259c7b0-x3</b> - built from verified official captures</div>
+</header>
+<nav class="nav"><a href="index.html">Overview</a><a href="decision-readiness.html">Decision readiness</a><a href="change-our-mind.html">What would change our mind</a><a href="control-baselines.html">Control baselines</a><a href="two-totals.html">Two totals</a><a href="ablations.html" class=on>Ablations</a><a href="what-changed.html">What changed</a><a href="announced-starters.html">Announced starters</a><a href="matchup-matrix.html">Matchup matrix</a><a href="drift-alarms.html">Drift alarms</a><a href="snapshots.html">Snapshot capture</a><a href="../index.html">X3 landing</a><a href="../signals/index.html">signals/</a></nav>
+<main>
+<h1>Injury / personnel ablation</h1>
+<p class="lede">The same model with and without the availability features, chronological holdouts, the difference reported with uncertainty - replacing fixed injury penalties.</p>
+<p>Same model form (home constant + 32 club margin effects, ridge lambda 2.0), identical training windows. Arm A = published ratings only; Arm B = identical ratings plus the two official availability-load features (0-4 scale, derived from the official injury report joined to club depth charts). MAE delta &gt; 0 means the availability arm is closer to the truth. Paired bootstrap, 10000 resamples, seed 20261115.</p><div class="tblwrap"><input class="filt" placeholder="filter rows..." oninput="x3filter(this)"><table><caption>Availability-feature ablation, chronological holdouts</caption><thead><tr><th>Test week</th><th>Train weeks</th><th>n train</th><th>n test</th><th>MAE A (ratings only)</th><th>MAE B (+ availability)</th><th>MAE delta (A-B)</th><th>Delta 95% CI</th><th>B wins contest</th><th>Source</th></tr></thead><tbody><tr><td>9</td><td>8</td><td>14</td><td>15</td><td>17.381</td><td>17.989</td><td>-0.608</td><td>-5.906 to 4.122</td><td>9</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">reg10 report</a></td></tr><tr><td>10</td><td>8, 9</td><td>29</td><td>1</td><td>4.07</td><td>3.742</td><td>+0.328</td><td>0.328 to 0.328</td><td>1</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">reg10 report</a></td></tr></tbody></table></div><p><b>Pooled over 16 test games:</b> MAE delta -0.549 points, 95% CI -5.567 to 3.979 - <b>inconclusive at this sample size</b>.</p><p class='note'>Availability snapshots exist only for weeks 8-10, so the ablation trains on very few weeks and its confidence intervals are wide. The interval - not a point estimate - is the published result; the panel becomes decisive only when the snapshot history spans more weeks (RD-06).</p><p class='note'>Design consequence: no fixed injury penalty is subtracted anywhere; the availability feature either earns its place through this ablation or it is not fitted.</p>
+</main>
+<footer>Every table row links an official source, a provenance link, or an explicit UNVERIFIED /
+BLOCKED marker. Nothing is inferred or filled in. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>
+- session <code>arena/6259c7b0-x3</code>, tasks RD-01 to RD-10.</footer>
+<script>
+function x3filter(inp){
+  var t=inp.parentElement.querySelector('table');
+  var rows=[].slice.call(t.querySelectorAll('tbody tr'));
+  var q=inp.value.toLowerCase().trim();
+  rows.forEach(function(r){ r.style.display = !q || r.textContent.toLowerCase().indexOf(q)>=0 ?'':'none'; });
+}
+</script>
+</body>
+</html>

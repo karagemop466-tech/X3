@@ -1,0 +1,36 @@
+# Readiness module CI (session arena/6259c7b0-x3).
+# Fails the build loudly on parser drift (RD-03) and gates the readiness pages.
+name: Readiness module
+
+on:
+  push:
+    branches: [main, "arena/**"]
+    paths:
+      - 'readiness/**'
+      - 'scripts/readiness_compute.py'
+      - 'scripts/build_readiness.py'
+      - 'scripts/verify_readiness.py'
+      - 'scripts/drift_alarm.py'
+      - 'scripts/availability_snapshot.py'
+      - 'data/desk/**'
+      - 'signals/data/**'
+      - '.github/workflows/readiness.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Drift alarm (fail loudly on missing fields or count drift)
+        run: python3 scripts/drift_alarm.py
+
+      - name: Readiness gate (links, sourcing, determinism, controls)
+        run: python3 scripts/verify_readiness.py
