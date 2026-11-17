@@ -189,7 +189,14 @@ def main() -> int:
         # dozens of false breakages. Added by the integration session
         # arena/dbb50f8c-x3 to repair a shared gate; the source rules (L2/L3)
         # still apply to these pages in full.
-        link_base = ROOT if 'data-link-base="root"' in text else page.parent
+        # Two independent ways for a page to say "my relative links are written
+        # against the repository root": an explicit marker, or being the known
+        # paste-ready fragment. The marker was added by arena/dbb50f8c-x3; the
+        # filename rule by an earlier session. Both are honoured, so a fragment
+        # works whether or not its generator emits the marker.
+        link_base = ROOT if (
+            'data-link-base="root"' in text or page.name == "landing-block.html"
+        ) else page.parent
 
         # ---- L1: link integrity -------------------------------------
         parser = PageParser()

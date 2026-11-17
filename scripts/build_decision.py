@@ -61,10 +61,12 @@ def source_cell(src):
         return f'<td class="src"><a href="{e(path)}" rel="noopener">{e(path.replace("https://","").replace("www.",""))}</a></td>'
     target = os.path.join(ROOT, path)
     if os.path.isdir(target):
-        # a directory is still resolvable as a link target, and the repo-wide
-        # audit requires a source cell to link its provenance rather than name
-        # it in plain text. Fixed by the integration session arena/dbb50f8c-x3.
-        return f'<td class="src"><a class="cite" href="../{e(path)}">repo: {e(path)}</a></td>'
+        # A directory is cited by a link to its tree on GitHub, so the row carries
+        # a resolvable source rather than unlinked text. (Same fix reached
+        # independently by arena/dbb50f8c-x3 and by the session that landed on
+        # main; the GitHub-URL form is kept.)
+        url = "https://github.com/karagemop466-tech/X3/tree/main/" + path.rstrip("/")
+        return f'<td class="src"><a class="cite" href="{e(url)}" rel="noopener">repo: {e(path)}</a></td>'
     if path.startswith("decision/"):
         # an artefact of this very build, so it cannot pre-exist; the verifier
         # resolves every such link once the whole tree has been written
@@ -673,7 +675,10 @@ def source_link(src):
     if kind == "url":
         return f'<a href="{e(path)}" rel="noopener">official page</a>'
     if os.path.isdir(os.path.join(ROOT, path)):
-        return f'<a class="cite" href="{e(path)}">repo: {e(path)}</a>'
+        # A repo directory is cited by a link to its tree on GitHub, so the row carries a
+        # resolvable source rather than unlinked text.
+        url = "https://github.com/karagemop466-tech/X3/tree/main/" + path.rstrip("/")
+        return f'<a class="cite" href="{e(url)}" rel="noopener">repo: {e(path)}</a>'
     if path.startswith("decision/"):
         return f'<a class="cite" href="{e(path)}">{e(path)}</a>'
     return f'<a class="cite" href="{e(path)}">{e(path)}</a>'

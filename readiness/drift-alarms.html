@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drift alarms - X3 readiness</title>
+<link rel="stylesheet" href="../hub/assets/hub.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>readiness module</span></a></div>
+  <div class="asof">session <b>arena/6259c7b0-x3</b> - built from verified official captures</div>
+</header>
+<nav class="nav"><a href="index.html">Overview</a><a href="decision-readiness.html">Decision readiness</a><a href="change-our-mind.html">What would change our mind</a><a href="control-baselines.html">Control baselines</a><a href="two-totals.html">Two totals</a><a href="ablations.html">Ablations</a><a href="what-changed.html">What changed</a><a href="announced-starters.html">Announced starters</a><a href="matchup-matrix.html">Matchup matrix</a><a href="drift-alarms.html" class=on>Drift alarms</a><a href="snapshots.html">Snapshot capture</a><a href="../index.html">X3 landing</a><a href="../signals/index.html">signals/</a></nav>
+<main>
+<h1>Drift alarms</h1>
+<p class="lede">Every parser output pinned to expected row counts and required fields; drift fails the build loudly.</p>
+<p><b>14 of 14</b> pinned datasets pass. Every parser output is pinned to expected row counts and required fields. Any drift fails the build loudly instead of publishing a blank. Pins change only by a reviewed, deliberate commit.</p><div class="tblwrap"><input class="filt" placeholder="filter rows..." oninput="x3filter(this)"><table><caption>Parser drift pins (scripts/drift_alarm.py)</caption><thead><tr><th>Pin</th><th>Dataset</th><th>Pins</th><th>Status</th><th>Source</th></tr></thead><tbody><tr><td><b>DESK-GAMES</b></td><td>data/desk/games.json</td><td>rows == 163; fields: week, away, home, away_name, home_name...; values: season=2026</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10">official</a></td></tr><tr><td><b>DESK-STANDINGS</b></td><td>data/desk/standings.json</td><td>rows == 32; fields: abbr, name, w, l, t...</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/reg">official</a></td></tr><tr><td><b>DESK-INJURIES</b></td><td>data/desk/injuries.json</td><td>rows == 1027; fields: team, player, pos, week, source; values: season=2026; status vocab pinned</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">official</a></td></tr><tr><td><b>DESK-INJURY-WEEKS</b></td><td>data/desk/injuries.json</td><td>rows == 3; fields: week, rows, teams, out, doubtful...; values: weeks.0.week=8, weeks.1.week=9, weeks.2.week=10</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">official</a></td></tr><tr><td><b>DESK-DEPTH</b></td><td>data/desk/depth.json</td><td>rows == 32; fields: abbr, url, units</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.packers.com/team/depth-chart">official</a></td></tr><tr><td><b>DESK-DEFICIENCIES</b></td><td>data/desk/deficiencies.json</td><td>rows == 210; fields: team, week, player, pos, status</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">official</a></td></tr><tr><td><b>DESK-MODEL-RATINGS</b></td><td>data/desk/model.json</td><td>rows &gt;= 32</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/reg">official</a></td></tr><tr><td><b>SIGNALS-RESULTS</b></td><td>signals/data/results.csv</td><td>rows == 163; fields: game_id, week, home, away, status...</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10">official</a></td></tr><tr><td><b>SIGNALS-PRICES</b></td><td>signals/data/price_snapshots.csv</td><td>rows == 978; fields: market_id, market, snapshot, status, source</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10">official</a></td></tr><tr><td><b>SIGNALS-STRATEGIES</b></td><td>signals/data/strategies.json</td><td>rows == 15; fields: id, family, market, name, rule</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10">official</a></td></tr><tr><td><b>SIGNALS-LEADERBOARD</b></td><td>signals/data/leaderboard.json</td><td>rows == 15; fields: rank, strategy, name, family, source</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10">official</a></td></tr><tr><td><b>SIGNALS-GATES</b></td><td>signals/data/gates.json</td><td>rows == 12; fields: id, gate, rule, blocking</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10">official</a></td></tr><tr><td><b>SIGNALS-CORRELATIONS</b></td><td>signals/data/correlations.json</td><td>rows == 15; fields: pair, family, n, ci95_low, ci95_high...</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10">official</a></td></tr><tr><td><b>CAPTURE-MANIFEST</b></td><td>capture/manifest.txt</td><td>rows &gt;= 49</td><td><span class="badge v">PASS</span></td><td><a class="src" href="https://www.nfl.com/injuries/">official</a></td></tr></tbody></table></div><p class='note'>The gate runs in CI (<code>.github/workflows/readiness.yml</code>) and exits 1 with a loud per-field report when a pin breaks - a blank page cannot be published silently. Pins change only by a reviewed, deliberate commit.</p>
+</main>
+<footer>Every table row links an official source, a provenance link, or an explicit UNVERIFIED /
+BLOCKED marker. Nothing is inferred or filled in. Task board: <a href="../COORDINATION.md">COORDINATION.md</a>
+- session <code>arena/6259c7b0-x3</code>, tasks RD-01 to RD-10.</footer>
+<script>
+function x3filter(inp){
+  var t=inp.parentElement.querySelector('table');
+  var rows=[].slice.call(t.querySelectorAll('tbody tr'));
+  var q=inp.value.toLowerCase().trim();
+  rows.forEach(function(r){ r.style.display = !q || r.textContent.toLowerCase().indexOf(q)>=0 ?'':'none'; });
+}
+</script>
+</body>
+</html>

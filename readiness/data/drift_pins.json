@@ -1,0 +1,260 @@
+{
+ "as_of": "2026-11-15",
+ "register_source": "https://www.nfl.com/injuries/league/2026/reg10",
+ "pins": [
+  {
+   "id": "DESK-GAMES",
+   "path": "data/desk/games.json",
+   "kind": "json",
+   "rows_key": "games",
+   "exact_rows": 163,
+   "required_fields": [
+    "week",
+    "away",
+    "home",
+    "away_name",
+    "home_name",
+    "status",
+    "date_iso",
+    "source"
+   ],
+   "value_pins": {
+    "season": 2026
+   },
+   "official_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "note": "captured via GitHub runner from official week schedule pages"
+  },
+  {
+   "id": "DESK-STANDINGS",
+   "path": "data/desk/standings.json",
+   "kind": "json",
+   "rows_key": "rows",
+   "exact_rows": 32,
+   "required_fields": [
+    "abbr",
+    "name",
+    "w",
+    "l",
+    "t",
+    "pf",
+    "pa",
+    "source"
+   ],
+   "official_source": "https://www.nfl.com/standings/league/2026/reg"
+  },
+  {
+   "id": "DESK-INJURIES",
+   "path": "data/desk/injuries.json",
+   "kind": "json",
+   "rows_key": "rows",
+   "exact_rows": 1027,
+   "required_fields": [
+    "team",
+    "player",
+    "pos",
+    "week",
+    "source"
+   ],
+   "value_pins": {
+    "season": 2026
+   },
+   "allowed_status_vocab": [
+    "Out",
+    "Doubtful",
+    "Questionable",
+    ""
+   ],
+   "official_source": "https://www.nfl.com/injuries/league/2026/reg10"
+  },
+  {
+   "id": "DESK-INJURY-WEEKS",
+   "path": "data/desk/injuries.json",
+   "kind": "json",
+   "rows_key": null,
+   "exact_rows": 3,
+   "required_fields": [
+    "week",
+    "rows",
+    "teams",
+    "out",
+    "doubtful",
+    "questionable",
+    "url"
+   ],
+   "value_pins": {
+    "weeks.0.week": 8,
+    "weeks.1.week": 9,
+    "weeks.2.week": 10
+   },
+   "official_source": "https://www.nfl.com/injuries/league/2026/reg10"
+  },
+  {
+   "id": "DESK-DEPTH",
+   "path": "data/desk/depth.json",
+   "kind": "json",
+   "rows_key": "clubs",
+   "exact_rows": 32,
+   "required_fields": [
+    "abbr",
+    "url",
+    "units"
+   ],
+   "official_source": "https://www.packers.com/team/depth-chart",
+   "note": "club-published charts; most self-labelled unofficial; Houston image-only"
+  },
+  {
+   "id": "DESK-DEFICIENCIES",
+   "path": "data/desk/deficiencies.json",
+   "kind": "json",
+   "rows_key": "rows",
+   "exact_rows": 210,
+   "required_fields": [
+    "team",
+    "week",
+    "player",
+    "pos",
+    "status"
+   ],
+   "official_source": "https://www.nfl.com/injuries/league/2026/reg10"
+  },
+  {
+   "id": "DESK-MODEL-RATINGS",
+   "path": "data/desk/model.json",
+   "kind": "json",
+   "rows_key": "ratings",
+   "min_rows": 32,
+   "official_source": "https://www.nfl.com/standings/league/2026/reg",
+   "note": "ratings dict one entry per club"
+  },
+  {
+   "id": "SIGNALS-RESULTS",
+   "path": "signals/data/results.csv",
+   "kind": "csv",
+   "exact_rows": 163,
+   "required_fields": [
+    "game_id",
+    "week",
+    "home",
+    "away",
+    "status",
+    "source"
+   ],
+   "all_source_hosts": [
+    "https://www.nfl.com/"
+   ],
+   "official_source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  },
+  {
+   "id": "SIGNALS-PRICES",
+   "path": "signals/data/price_snapshots.csv",
+   "kind": "csv",
+   "exact_rows": 978,
+   "required_fields": [
+    "market_id",
+    "market",
+    "snapshot",
+    "status",
+    "source"
+   ],
+   "all_source_hosts": [
+    "https://www.nfl.com/"
+   ],
+   "official_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "conditional_required": [
+    {
+     "when": {
+      "status": "originated"
+     },
+     "fields": [
+      "fair_value",
+      "snapshot_at",
+      "pred_margin",
+      "baseline_margin",
+      "inputs_hash"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "SIGNALS-STRATEGIES",
+   "path": "signals/data/strategies.json",
+   "kind": "json",
+   "rows_key": null,
+   "exact_rows": 15,
+   "required_fields": [
+    "id",
+    "family",
+    "market",
+    "name",
+    "rule"
+   ],
+   "official_source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  },
+  {
+   "id": "SIGNALS-LEADERBOARD",
+   "path": "signals/data/leaderboard.json",
+   "kind": "json",
+   "rows_key": null,
+   "exact_rows": 15,
+   "required_fields": [
+    "rank",
+    "strategy",
+    "name",
+    "family",
+    "source"
+   ],
+   "official_source": "https://www.nfl.com/schedules/2026/by-week/week-10",
+   "conditional_required": [
+    {
+     "when": {
+      "rank_is_number": "true"
+     },
+     "fields": [
+      "signal_metric",
+      "signal_value"
+     ]
+    }
+   ],
+   "policy_note2": "ranked rows (numeric rank) must carry their signal metric and value; unranked rows (blocked strategies) may be blank"
+  },
+  {
+   "id": "SIGNALS-GATES",
+   "path": "signals/data/gates.json",
+   "kind": "json",
+   "rows_key": null,
+   "exact_rows": 12,
+   "required_fields": [
+    "id",
+    "gate",
+    "rule",
+    "blocking"
+   ],
+   "official_source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  },
+  {
+   "id": "SIGNALS-CORRELATIONS",
+   "path": "signals/data/correlations.json",
+   "kind": "json",
+   "rows_key": null,
+   "exact_rows": 15,
+   "required_fields": [
+    "pair",
+    "family",
+    "n",
+    "ci95_low",
+    "ci95_high",
+    "source"
+   ],
+   "official_source": "https://www.nfl.com/schedules/2026/by-week/week-10"
+  },
+  {
+   "id": "CAPTURE-MANIFEST",
+   "path": "capture/manifest.txt",
+   "kind": "text",
+   "min_rows": 49,
+   "official_source": "https://www.nfl.com/injuries/",
+   "note": "every line must be a 200-status capture from the GitHub-runner fetch"
+  }
+ ],
+ "policy_note": "fair_value required only for originated rows (market rows are intentionally blank: no official price source exists, flag F-01). signal_metric required only for strategies with n_graded > 0."
+}
