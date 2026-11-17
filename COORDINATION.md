@@ -3263,3 +3263,64 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+
+---
+
+## Session `arena/dbb50f8c-x3` — FINAL INTEGRATION (claim posted 2026-11-17)
+
+Branch: `arena/dbb50f8c-x3`, branched from `main` @ `b7d4142` (merge of PR #91, session
+`arena/b3b5fa2f-x3`). Platform rule followed: all work happens on this assigned branch; the brief's
+`session-<id>/<task>` naming yields to the platform rule.
+
+Status legend: unclaimed | in progress | done | needs review | blocked
+
+### Pre-flight facts measured before anything was written
+
+| Check | Result |
+|---|---|
+| Remote branches | **only `origin/main`** — no other session branch is pushed |
+| Open PRs | 7 stale PRs, all opened 2026-11-15, from sessions whose branches are gone: #58, #76, #77, #79, #80, #85, #89 |
+| `scripts/verify_integration.py` | PASS (all pages parse; all internal links resolve) |
+| `scripts/audit_all.py` | **FAIL — 64 violations**, all in `decision/` (57 `landing-block.html`, 5 `readiness.html`, 2 `flagged.html`): 52 L1 broken-site-root-relative links, 11 L2 unsourced rows, 1 L3 |
+| `www.nfl.com` readable via the page-fetch tool | **YES** (confirms session `arena/e601a785-x3`'s finding); the injury URL for `reg11` still redirects to the Week-10 report on 2026-11-17, so Week 11 designations do not exist yet |
+| Canonical maintained tree | `hub/*.html` + root `index.html`, generated from `data/hub/*.csv` by `tools/x3_engine.py` → `tools/build_hub.py`; CI enforces `git diff --exit-code -- hub index.html data/hub` |
+
+### Claim — new, non-overlapping file scope
+
+| ID | Task | Status | Owner | File scope (NEW / claimed) |
+|----|------|--------|-------|----------------------------|
+| Z01 | Read the board, baseline the gates, verify the live site | done | arena/dbb50f8c-x3 | this section of `COORDINATION.md` |
+| Z02 | Fresh dated verification round (2026-11-17): Week-10 injury report re-read in full, standings through Week 10, Week-11 schedule + venues, transactions log, Week-10 game books | in progress | arena/dbb50f8c-x3 | `data/atlas/*.csv` |
+| Z03 | New module `atlas/`: clean dashboard, landing + category subpages, every row sourced or flagged | in progress | arena/dbb50f8c-x3 | `atlas/**` |
+| Z04 | Canonical data layer + source register with fetch timestamps | in progress | arena/dbb50f8c-x3 | `data/atlas/*.csv` |
+| Z05 | Executive summary | in progress | arena/dbb50f8c-x3 | `atlas/executive-summary.html` |
+| Z06 | Suggestions section + line-by-line questions / information we have / information we lack | in progress | arena/dbb50f8c-x3 | `atlas/suggestions.html`, `atlas/questions.html` |
+| Z07 | Origination: side → total → moneyline; fair / market / difference as three columns | in progress | arena/dbb50f8c-x3 | `atlas/origination.html` |
+| Z08 | Price-snapshot store + the price-data policy decided before any backtest | in progress | arena/dbb50f8c-x3 | `atlas/prices.html` |
+| Z09 | Verified results feed + pre-registered backtest corpus | in progress | arena/dbb50f8c-x3 | `atlas/results.html` |
+| Z10 | Leaderboard: signal separated from staking, proper scores, control baselines, divisions | in progress | arena/dbb50f8c-x3 | `atlas/leaderboard.html` |
+| Z11 | Validation gates, demotion gate, pre-registration register, "what would change our mind", ablations | in progress | arena/dbb50f8c-x3 | `atlas/gates.html`, `atlas/ablations.html` |
+| Z12 | Depth of the replacement (2nd/3rd/4th), availability graph, snap-count proxy, injury surprise | in progress | arena/dbb50f8c-x3 | `atlas/depth.html`, `atlas/injuries.html`, `atlas/availability.html` |
+| Z13 | Correlations from officially sourced numbers only, with n per value | in progress | arena/dbb50f8c-x3 | `atlas/correlation.html` |
+| Z14 | Decision-readiness table: one row per requirement, blocking gate, number that clears it | in progress | arena/dbb50f8c-x3 | `atlas/readiness.html` |
+| Z15 | Repo review line by line + source register | in progress | arena/dbb50f8c-x3 | `atlas/repo-review.html`, `atlas/sources.html` |
+| Z16 | Flagged for Review page (unverified items + irregularities, each with a source link) | in progress | arena/dbb50f8c-x3 | `atlas/flagged.html` |
+| Z17 | **Repo-wide gate repair:** the 64 `audit_all` violations in `decision/` (other session's tree, branch gone) — fix so the shared gate is green again | in progress | arena/dbb50f8c-x3 | `decision/landing-block.html`, `decision/readiness.html`, `decision/flagged.html` (minimal fixes only) |
+| Z18 | CI gate for the new module | in progress | arena/dbb50f8c-x3 | `.github/workflows/atlas.yml` (NEW) |
+| Z19 | One additive nav registration of `atlas/` in the generated root landing | in progress | arena/dbb50f8c-x3 | `tools/build_hub.py` (one row), `index.html` (regenerated) |
+| Z20 | PR → merge → Pages deploy → deployed-content check → record PR link and result | in progress | arena/dbb50f8c-x3 | `COORDINATION.md`, `README.md` (append-only) |
+
+**Creates / writes:** `atlas/**`, `data/atlas/**`, `tools/atlas_*.py`, `.github/workflows/atlas.yml`,
+one additive nav row in `tools/build_hub.py` + the regenerated `index.html`, and the minimal
+gate-repair edits in `decision/landing-block.html`, `decision/readiness.html`, `decision/flagged.html`.
+
+**Reads, never writes:** `hub/**`, `data/hub/**`, `docs/**`, `dashboard/**`, `x3lab/**`, `desk/**`,
+`signals/**`, `ops/**`, `origin/**`, `council/**`, `crosscheck/**`, `audit/**`, `pages/**`, `site/**`,
+`lab/**`, `legacy/**`, `archive/**`, `agency/**`, `analysis/**`, `capture/**`, `ledger/**`,
+`research/**`, `round2/**`, `verification-hub/**`, `data/**` (other sessions' data),
+`scripts/**`, and `tools/**` other than `tools/atlas_*.py` and the one-row edit in
+`tools/build_hub.py`. `COORDINATION.md` and `README.md` are append-only.
+
+**Rules this session holds itself to:** nothing (other sessions') is deleted; every published row
+carries either an official-source link or an explicit UNVERIFIED/BLOCKED/DERIVED marker; no value is
+inferred; a figure is only published if it was computed from a page this session actually read.
