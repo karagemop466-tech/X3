@@ -1,0 +1,19 @@
+VERBATIM - official NFL Game Book PDF for LAC at BAL, read 2026-11-17T23:11Z (chunk 1 of 8)
+"Date: Monday, 11/16/2026 Los Angeles Chargers at Baltimore Ravens at M&T Bank Stadium, Baltimore, MD"
+"Start Time: 8:16 PM EST"  "Game Weather: Clear | Temp: 49 F (9.4 C) Humidity: 58%, Wind: NW 2 mph"
+"Open Stadium on Natural Grass"
+"Referee: Hill, Adrian (29)  Umpire: Ellison, Roy (81)  Down Judge: Holt, Patrick (106)"
+"Line Judge: Eaton, Thomas (87)  Field Judge: Dimpfel VI, Frederick (43)  Side Judge: Parham, Keith (41)"
+"Back Judge: Monroe, Jonah (120)  Replay Official: Anderson, Gavin (0)"
+BAL line-ups (offense): "WR 4 Z.Flowers / TE 85 J.Cuevas / LT 79 R.Stanley / LG 74 J.Simpson / C 64 C.Jurgens /
+RG 71 O.Ioane / RT 70 R.Rosengarten / WR 6 J.Lane / WR 7 R.Bateman / QB 11 J.Brissett / RB 22 D.Henry"
+LAC line-ups (offense): "WR 1 Q.Johnston / WR 9 T.Harris / TE 88 C.Kolar / LT 76 J.Alt / LG 65 L.Taylor /
+C 66 J.Slaughter / RG 69 C.Strange / RT 77 T.Burke / QB 10 J.Herbert / FB 44 S.Matlock / RB 8 O.Hampton"
+Did Not Play LAC: "QB 7 D.Uiagalelei, C 60 J.Spomer, G 73 A.Harkey"
+Did Not Play BAL: "QB 12 J.Fagnano, OL 58 R.Neuzil"
+Not Active LAC: "WR 15 L.McConkey, S 32 K.Williamson, CB 37 I.Waxter, OLB 48 B.Dupree, WR 89 B.Thompson, DL 92 J.Eboigbe"
+Not Active BAL: "WR 13 E.Sarratt, 3QB 18 K.Slovis, S 21 J.Hawkins, CB 29 C.Rivers, G/T 51 E.Jones, DL 90 A.Peebles"
+"Paid Attendance: 69,679   Time: 3:07"
+BAL passing line: "J.Brissett 49 33 340 2/9 0 31 1 78.6" - the only Ravens quarterback in the passing statistics.
+LAC substitutions block: 23 names (LB 6 D.Perryman ... DL 99 J.Caldwell). The BAL substitutions block was not
+visible in this extraction read, so the Ravens sheet is NOT reconciled and no claim is made from it.

@@ -409,6 +409,32 @@ for s in slate:
 write("forecasts_w11.csv", forecasts)
 write("drift_vs_prior.csv", drift)
 
+
+# ---------------------------------------------------------------- 4b. game-day sheet reconciliation
+# "not listed" is only meaningful when the sheet is closed, so the blocks are counted rather than read.
+sheets = []
+for gb_file, game in (("gamebook_ne_det.csv", "NE@DET"), ("gamebook_lac_bal.csv", "LAC@BAL")):
+    for club in sorted({r["club"] for r in [{**x, "club": x["team"]} for x in read(gb_file)]}):
+        rs = [x for x in read(gb_file) if x["team"] == club]
+        k = lambda kind: len({x["player"] for x in rs if x["kind"] == kind and x["player"].strip()})
+        st, su, dn, ia = k("starter"), k("substitution"), k("did not play"), k("inactive")
+        dressed = st + su + dn
+        total = dressed + ia
+        complete = dressed == 48 and ia == 6
+        sheets.append({
+            "game": game, "club": club, "starters": st, "substitutions": su, "did_not_play": dn,
+            "not_active": ia, "dressed": dressed, "players_accounted": total,
+            "closed_at_54": "yes" if complete else "NO",
+            "reading": ("the sheet is closed at 48 dressed plus 6 not active, so a player named nowhere in it is "
+                        "off the game-day roster entirely - absence is evidence, not a gap in this transcription"
+                        if complete else
+                        "one or more blocks were not visible in the extraction read, so no claim is made about any "
+                        "player absent from this sheet"),
+            "source": sorted({x["source_url"] for x in rs if x["source_url"].startswith("http")})[0],
+        })
+write("game_sheets.csv", sheets)
+closed = sum(1 for s in sheets if s["closed_at_54"] == "yes")
+
 # ---------------------------------------------------------------- 5. settlement of the pre-kickoff board
 mk = json.load(open(os.path.join(ROOT, "data", "x3", "verified", "markets.json")))
 live = [x for x in mk["live"] if x["week"] == 10]

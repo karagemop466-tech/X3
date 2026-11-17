@@ -174,7 +174,7 @@ for r2 in ledger:
         bad.append(f"{r2['id']}: capture hash mismatch")
     if not re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z$", r2["captured_utc"]):
         bad.append(f"{r2['id']}: clock time not to the minute")
-(ok, fail)[bool(bad) or len(ledger) != 12]("V-11", "capture ledger integrity",
+(ok, fail)[bool(bad) or len(ledger) < 12]("V-11", "capture ledger integrity",
      f"{len(ledger)} reads, all hashed and time-stamped" if not bad else str(bad[:4]))
 
 # V-12 availability rows: a VERIFIED claim must cite both a report and a game book
@@ -314,6 +314,27 @@ for root_, _, files in os.walk(SITE):
         if re.search(r"\bNaN\b|>\s*nan\s*<|\bnan\b", txt):
             bad.append(f"{fn}: a NaN leaked into a cell")
 (ok, fail)[bool(bad)]("V-18", "no unfilled tokens or placeholders", "clean" if not bad else str(bad[:5]))
+
+# V-19 game-day sheets: 48 dressed + 6 not active, or the row says it is unreconciled
+sheets = rows(os.path.join(DD, "game_sheets.csv"))
+bad = []
+for sh in sheets:
+    if sh["closed_at_54"] == "yes":
+        if int(sh["dressed"]) != 48 or int(sh["not_active"]) != 6:
+            bad.append(f'{sh["game"]} {sh["club"]}: claims closed at {sh["dressed"]}+{sh["not_active"]}')
+    else:
+        if "not reconciled" not in sh["reading"] and "NOT" not in sh["reading"].upper():
+            bad.append(f'{sh["game"]} {sh["club"]}: incomplete sheet without a warning')
+(ok, fail)[bool(bad) or len(sheets) != 4]("V-19", "game-day sheets reconcile or say they cannot",
+     f"{len([x for x in sheets if x['closed_at_54'] == 'yes'])}/{len(sheets)} club sheets close at 48 dressed + 6 "
+     "not active; the rest state that no claim may be made" if not bad else str(bad))
+
+# V-20 roster-turnover rows either cite a game document or are explicitly not swept
+rt = rows(os.path.join(D, "roster_turnover.csv"))
+bad = [r["id"] for r in rt if "NOT SWEPT" not in r["status"] and "http" not in r["source"]]
+(ok, fail)[bool(bad)]("V-20", "roster turnover cites a document or admits the gap",
+     f"{len(rt)} rows; {len([r for r in rt if 'NOT SWEPT' in r['status']])} row(s) say the other clubs are unswept"
+     if not bad else str(bad))
 
 print(f"checks run: {len(CHECKS)}  failures: {len(FAILS)}")
 if not QUIET:

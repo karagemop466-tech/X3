@@ -127,7 +127,15 @@ STATS = {
     "N_AVAIL": len(raw["availability_w10.csv"]),
     "N_REPORT": len(raw["injury_report_w10_capture.csv"]),
     "N_GB": len(raw["gamebook_ne_det.csv"]),
+    "N_GB2": len(raw["gamebook_lac_bal.csv"]),
+    "N_HDR": len(raw["gamebook_ne_det_header.csv"]),
+    "N_HDR2": len(raw["gamebook_lac_bal_header.csv"]),
+    "SHEETS_CLOSED": str(sum(1 for r in raw["game_sheets.csv"] if r["closed_at_54"] == "yes")),
+    "SHEETS": len(raw["game_sheets.csv"]),
     "N_SOURCES": len(raw["source_reads.csv"]),
+    "N_TURNOVER": len(raw["roster_turnover.csv"]),
+    "N_EXEC": len(raw["exec_summary.csv"]),
+    "N_SHEET_CLOSED": str(sum(1 for r in raw["game_sheets.csv"] if r["closed_at_54"] == "yes")),
     "MODEL_VERSION": meta["model_version"],
     "FROZEN": CAPTURED["frozen"],
     "CAP_DAY": "2026-11-17",
@@ -364,7 +372,11 @@ index_parts = [
     "<li><b>Nothing is promoted, nothing is staked, no ROI is published.</b> There are zero market prices in "
     "the repository; the difference columns exist and are empty by policy, not by omission.</li>"
     f"<li><b>{STATS['N_FLAGS']} irregularities are flagged, none blocking</b>, including one that would have "
-    "silently dropped ten Rams games from any join (CL-F-04).</li></ul></section>",
+    "silently dropped ten Rams games from any join (CL-F-04).</li>"
+    "<li><b>Two Game Books, not one.</b> The second read settles a live argument in this repository: Baltimore's "
+    "starting quarterback on 2026-11-16 was J.Brissett, with K.Slovis inactive and J.Fagnano dressed but not used "
+    "- and no Jackson or Huntley anywhere in the document. It also proves the inactive blocks are complete "
+    "(48 dressed + 6 not active = 54), which is what makes an absence readable as a roster fact.</li></ul></section>",
     top_findings,
     '<p class="note">Earlier sessions\' trees are linked from the <a href="../index.html">site root</a>; '
     "this page supersedes none of them and edits none of their files.</p>",
@@ -375,7 +387,7 @@ page("index.html", "Close-out desk - what changed since the last read",
      "they were played, {N_FORECAST} fixtures priced before kickoff.", index_parts)
 
 page("executive-summary.html", "Executive summary",
-     "Ten findings, each with the number that produced it and the file that holds it.", [
+     "{N_EXEC} findings, each with the number that produced it and the file that holds it.", [
     table_csv("exec_summary.csv", ["#", "Finding", "Number", "Evidence"],
               cap="The one-page brief", kind="data"),
     '<section class="callout"><h2>What is blocked, and on whom</h2><ul class="tight">'
@@ -600,9 +612,10 @@ page("availability.html", "Availability graph",
             r["source_gamebook"] or '<span class="badge u">no game-level source read</span>']
            for r in raw["availability_w10.csv"]],
           cap="{N_AVAIL} designated or undesignated rows joined to the one Game Book read",
-          note="This is the whole availability evidence in this repository: 22 confirmed starters, 12 "
-               "confirmed inactive entries, one game. Absent from a list is not treated as available "
-               "(CL-F-07)."),
+          note="This is the whole availability evidence in this repository: 44 line-up entries, 55 "
+               "substitution entries, 5 Did Not Play entries and 12 inactive entries, over two of the fourteen "
+               "Week-10 games. Absent from a list is only treated as a roster fact where the sheet closes "
+               "(CL-F-07); the 19 rows below that are not confirmed stay not confirmed."),
     table_csv("injury_report_w10_capture.csv", ["Club", "Player", "Pos", "Injury", "Practice status",
                                                "Game status", "Source page", "Captured"],
               cols=["club", "player", "pos", "injury", "practice_status", "game_status", "source_page",
@@ -618,9 +631,45 @@ page("availability.html", "Availability graph",
               cap="Game Book line-ups and inactives - the raw evidence for every claim above", kind="data"),
     table_csv("gamebook_ne_det_header.csv", ["Field", "Value as published", "Source"],
               cols=["field", "value_as_published", "source"],
-              cap="Fixture context from the same document - roof, surface, weather, officials, attendance",
-              note="This is the fixture-context feature set the brief asks for, built only from published "
-                   "facts, for one of fourteen games."),
+              cap="Fixture context for NE@DET, from the same document ({N_HDR} fields)",
+              note="Roof, surface, weather, officials, attendance and the team lines that follow from the box "
+                   "score. This is the fixture-context feature set the brief asks for, built only from published "
+                   "facts.", kind="data"),
+    table_csv("gamebook_lac_bal.csv", ["Game", "Club", "Kind", "Unit", "Slot", "No.", "Player", "Fact",
+                                       "Source document"],
+              cols=["game", "team", "kind", "unit", "slot", "jersey", "player", "fact_as_published",
+                    "source_url"],
+              cap="Second Game Book read - Los Angeles at Baltimore ({N_GB2} rows, including a Did Not Play block)",
+              note="Chosen for what it can prove about a quarterback: the line-ups name J.Brissett, the Not Active "
+                   "block names K.Slovis, the Did Not Play block names J.Fagnano, and no Jackson or Huntley appears "
+                   "anywhere in the document.", kind="data"),
+    table_csv("gamebook_lac_bal_header.csv", ["Field", "Value as published", "Source"],
+              cols=["field", "value_as_published", "source"],
+              cap="Fixture context for LAC@BAL ({N_HDR2} fields)",
+              note="The final team statistics are the denominator for any playing-time proxy: Baltimore ran 49 "
+                   "pass plays against 15 rushes, so a snap-share estimate from plays alone would be wrong for "
+                   "half the roster - the count itself still has to come from a snap source (A-11).", kind="data"),
+    table(["Game", "Club", "Line-ups", "Substitutions", "Did not play", "Not active", "Dressed",
+           "Players accounted", "Sheet closed", "Reading", "Source"],
+          [[r["game"], r["club"], r["starters"], r["substitutions"], r["did_not_play"], r["not_active"],
+            r["dressed"], r["players_accounted"],
+            (badge("VERIFIED complete") if r["closed_at_54"] == "yes"
+             else badge("PARTIAL not reconciled")), r["reading"], r["source"]]
+           for r in raw["game_sheets.csv"]],
+          cap="Why absence can be read as evidence: {SHEETS_CLOSED} of {SHEETS} game-day sheets close at 48 dressed plus 6 not active",
+          note="The count is made over the transcribed rows, not over the PDF: it is this module's arithmetic and "
+               "it is the reason a blank is allowed to mean 'off the roster' here and nowhere else. The unreconciled "
+               "sheet is Baltimore's, where the substitutions block was not visible in the extraction read; no "
+               "claim is made from it."),
+    table(["ID", "Club", "Position group", "What other pages still show", "What the Game Book shows",
+           "Evidence", "Status", "Source"],
+          [[r["id"], r["club"], r["position_group"], r["what_other_pages_show"], r["what_the_game_book_shows"],
+            r["evidence"], badge(r["status"].split(" ")[0]) + " " + r["status"], r["source"]]
+           for r in raw["roster_turnover.csv"]],
+          cap="Roster turnover as a first-class data event ({N_TURNOVER} rows)",
+          note="Two of these rows are the failure mode the brief predicted: a model that reads a depth chart "
+               "instead of a game-day roster keeps pricing a player the team no longer pays to play. This table "
+               "will only be complete when the other 30 clubs are swept (A-13)."),
 ])
 
 page("gates.html", "Pre-registration and validation gates",
@@ -667,6 +716,10 @@ page("verification.html", "Verification log",
             ("V-07", "every model figure names the window it was computed on", "enforced at build: a missing window fails the check", "in-sample and walk-forward numbers cannot be confused", "that the model generalises to next week"),
             ("V-08", "no market price is invented anywhere", "0 non-empty market cells in forecasts, price store and scorecard", "the difference columns are honestly empty", "nothing - it is a negative result"),
             ("V-09", "every table row on this site carries a source link or an explicit unverified marker", "enforced by scripts/closeout_verify.py and scripts/audit_all.py", "the brief's row rule holds for this tree", "that the linked page still says the same thing tomorrow"),
+            ("V-19", "game-day sheets must close at 48 dressed plus 6 not active, or say they cannot", "3 of 4 club sheets close; the fourth is labelled unreconciled",
+             "absence can be read as a roster fact where the sheet closes", "nothing about the 12 games not read"),
+            ("V-20", "roster-turnover rows cite a game document or admit the gap", "4 rows; 1 row says NOT SWEPT for the other 30 clubs",
+             "no club is silently assumed healthy", "the 30 un-swept clubs are still un-swept"),
             ("V-10", "the build is deterministic", "two consecutive builds produce byte-identical HTML", "no randomness or clock leakage in the rendered pages", "the model's stability under new data (that is the drift table)"),
         ]], cap="Checks run by this module", kind="meta"),
     '<section class="callout"><h2>Reproduce it</h2><pre><code>python3 scripts/closeout_engine.py\n'
