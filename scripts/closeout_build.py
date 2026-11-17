@@ -137,6 +137,15 @@ STATS = {
                    for r in raw["injury_delta.csv"]),
     "N_GB": len(raw["gamebook_ne_det.csv"]),
     "N_GB2": len(raw["gamebook_lac_bal.csv"]),
+    "N_STARTERS": str(sum(1 for r in list(raw["gamebook_ne_det.csv"]) + list(raw["gamebook_lac_bal.csv"])
+                          if r["kind"] == "starter")),
+    "N_SUBS": str(sum(1 for r in list(raw["gamebook_ne_det.csv"]) + list(raw["gamebook_lac_bal.csv"])
+                      if r["kind"] == "substitution" and r["player"].strip())),
+    "N_DNP": str(sum(1 for r in list(raw["gamebook_ne_det.csv"]) + list(raw["gamebook_lac_bal.csv"])
+                     if r["kind"] == "did not play")),
+    "N_INACT": str(sum(1 for r in list(raw["gamebook_ne_det.csv"]) + list(raw["gamebook_lac_bal.csv"])
+                       if r["kind"] == "inactive")),
+    "N_GBROWS": str(len(raw["gamebook_ne_det.csv"]) + len(raw["gamebook_lac_bal.csv"])),
     "N_HDR": len(raw["gamebook_ne_det_header.csv"]),
     "N_HDR2": len(raw["gamebook_lac_bal_header.csv"]),
     "SHEETS_CLOSED": str(sum(1 for r in raw["game_sheets.csv"] if r["closed_at_54"] == "yes")),
