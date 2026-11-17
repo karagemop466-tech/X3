@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scorecard and controls - X3 close-out desk</title>
+<link rel="stylesheet" href="assets/closeout.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>Week-10 close-out &amp; Week-11 pre-registration</span></a></div>
+  <div class="asof">official pages read <b>2026-11-17T22:44Z</b> to <b>2026-11-17T22:49Z</b> - board frozen
+    <b>2026-11-17T23:05:00Z</b> - session <b>arena/e1ad8b78-x3</b></div>
+</header>
+<nav class="nav"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="week10.html">Week 10 close-out</a><a href="results.html">Verified results feed</a><a href="board.html">Week 11 board</a><a href="lines.html">Originated lines</a><a href="price-store.html">Price snapshot store</a><a href="settlement.html">Settlement</a><a href="scorecard.html" class=on>Scorecard and controls</a><a href="luck.html">Removal of luck</a><a href="correlations.html">Correlations</a><a href="availability.html">Availability graph</a><a href="gates.html">Pre-registration and gates</a><a href="sources.html">Sources and capture ledger</a><a href="verification.html">Verification log</a><a href="questions.html">Open questions</a><a href="suggestions.html">Suggestions</a><a href="readiness.html">Decision readiness</a><a href="flagged.html">Flagged for review</a><a href="repo-review.html">Repo review</a></nav>
+<main>
+<h1>Scorecard and controls</h1>
+<p class="lede">A number means nothing without the interval around it and the naive rule that would have produced the same number. Every row here carries both.</p>
+<div class="tblwrap"><table class="k-data">
+<caption>Who would have done as well on the same games</caption>
+<thead><tr><th>Picker</th><th>n</th><th>Hits</th><th>Hit rate</th><th>Wilson 95%</th><th>Bootstrap 95%</th><th>Outcome used</th><th>Note</th><th>Source</th></tr></thead><tbody>
+<tr><td>the prior board's side pick (favourite at its own fair line)</td><td>12</td><td>8</td><td>0.6667</td><td>0.3906-0.8619</td><td>0.4167-0.9167</td><td>the model's favoured side covers the model's own line</td><td>with a fair line this is a calibration test, not an edge test: a perfectly unbiased model sits at 0.500</td><td><a href="../data/closeout/derived/settlement.csv">data/closeout/derived/settlement.csv</a></td></tr>
+<tr><td>model's moneyline pick (probability above 0.5)</td><td>13</td><td>11</td><td>0.8462</td><td>0.5776-0.9567</td><td>0.6154-1.0</td><td>the picked club won the game</td><td>the same outcome is then given to three control pickers on the same games</td><td><a href="../data/closeout/derived/settlement.csv">data/closeout/derived/settlement.csv</a></td></tr>
+<tr><td>control - always home</td><td>13</td><td>4</td><td>0.3077</td><td>0.1268-0.5763</td><td>n/a</td><td>home team won the game</td><td>the fitted home advantage is -0.16 points, which is why 'always home' is not a free lunch</td><td><a href="../data/closeout/derived/settlement.csv">data/closeout/derived/settlement.csv</a></td></tr>
+<tr><td>control - better winning percentage in the Week-9 standings</td><td>13</td><td>11</td><td>0.8462</td><td>0.5776-0.9567</td><td>n/a</td><td>the picked club won the game</td><td>uses only the standings as they stood before Week 10 kicked off - no lookahead</td><td><a href="https://github.com/karagemop466-tech/X3/blob/b7d4142/data/hub/standings_2026_thru_wk9.csv" target="_blank" rel="noopener">data/hub/standings_2026_thru_wk9.csv</a></td></tr>
+<tr><td>control - seeded random coin flip per game</td><td>13</td><td>4</td><td>0.3077</td><td>0.1268-0.5763</td><td>n/a</td><td>the picked club won the game</td><td>seed 20261117, fixed, so the number is reproducible and not re-rolled between reviews</td><td><a href="../data/closeout/derived/settlement.csv">data/closeout/derived/settlement.csv</a></td></tr>
+</tbody></table>
+<p class="note">The Week-9-favourite control uses only standings that existed before these games were played, so it is not lookahead. The random control is a fixed seed, printed in the verifier, so a reviewer can reproduce it exactly.</p>
+</div>
+<div class="tblwrap"><table class="k-data">
+<caption>Proper scores against naive benchmarks</caption>
+<thead><tr><th>Division</th><th>Frozen when</th><th>Graded</th><th>Pushes</th><th>Brier</th><th>Benchmark Brier</th><th>Skill</th><th>MAE</th><th>Benchmark MAE</th><th>Stakes</th><th>Verdict</th><th>Source</th></tr></thead><tbody>
+<tr><td>singles - side</td><td>2026-11-14 by the prior session (before the Nov 15/16 kickoffs)</td><td>13</td><td>0</td><td>0.2516</td><td>0.25</td><td>-0.0064</td><td>9.937</td><td>13.538</td><td>none - no price to settle against, so no ROI, CLV or reward exists on this row</td><td>NOT LEADERBOARD-ELIGIBLE: n=13 graded, Brier 0.2516 against a 0.25 benchmark, so the cover probability is worth nothing on this sample; margin MAE does beat the always-zero benchmark (9.937 vs 13.538)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/markets.json" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/markets.json</a></td></tr>
+<tr><td>singles - total</td><td>2026-11-14 by the prior session (before the Nov 15/16 kickoffs)</td><td>13</td><td>0</td><td>0.25161</td><td>0.25</td><td>-0.0064</td><td>11.038</td><td>8.764</td><td>none - no price to settle against</td><td>NOT LEADERBOARD-ELIGIBLE: n=13; the total line is the model's own, so a 'win' is agreement with itself, and its total MAE (11.038) is worse than the running-league-mean benchmark (8.764)</td><td><a href="https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/markets.json" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/markets.json</a></td></tr>
+<tr><td>singles - moneyline</td><td>2026-11-14 by the prior session (before the Nov 15/16 kickoffs)</td><td>13</td><td>0</td><td>0.17636</td><td>0.25</td><td>0.2946</td><td></td><td></td><td>none - no price to settle against</td><td>NOT LEADERBOARD-ELIGIBLE: n=13. The home-win probability does beat the 0.25 benchmark (Brier 0.17636 vs 0.25), but the pick rate is 0.846 and the Week-9-winning-percentage control on the same games is 0.846 - identical, so none of the gain is attributable to the model</td><td><a href="https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/markets.json" target="_blank" rel="noopener">https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/markets.json</a></td></tr>
+<tr><td>singles - side and total, walk-forward</td><td>rule frozen 2026-11-17; the corpus (150 games) predates it, so this is a retrospective exercise, labelled as such on every page</td><td>108</td><td>2</td><td>0.22549</td><td>0.25</td><td>0.0980</td><td>11.172</td><td>10.609</td><td>none - no price to settle against; a hit here is calibration against the model's own line</td><td>the walk-forward margin forecast LOSES to the zero benchmark by 0.563 points per game; home-cover rate 0.472 (CI 0.3806-0.5657) sits inside the luck band, and the binary win probability does beat the 0.25 benchmark</td><td><a href="../data/closeout/derived/walkforward.csv">data/closeout/derived/walkforward.csv</a></td></tr>
+</tbody></table>
+</div>
+</main>
+<footer>
+  <p>Built by <code>scripts/closeout_build.py</code> from <code>data/closeout/*.csv</code> and
+  <code>data/closeout/derived/*.csv</code>; regenerate with
+  <code>python3 scripts/closeout_engine.py &amp;&amp; python3 scripts/closeout_build.py</code>. Values with no
+  official source are left blank and flagged; model output is labelled DERIVED and is arithmetic on official
+  scores, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../hub/index.html">hub desk</a> -
+  <a href="../x3/index.html">x3 desk</a> -
+  <a href="https://github.com/karagemop466-tech/X3/blob/b7d4142/COORDINATION.md">coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">repository</a></p>
+</footer>
+</body></html>

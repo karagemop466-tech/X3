@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-registration and validation gates - X3 close-out desk</title>
+<link rel="stylesheet" href="assets/closeout.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>Week-10 close-out &amp; Week-11 pre-registration</span></a></div>
+  <div class="asof">official pages read <b>2026-11-17T22:44Z</b> to <b>2026-11-17T22:49Z</b> - board frozen
+    <b>2026-11-17T23:05:00Z</b> - session <b>arena/e1ad8b78-x3</b></div>
+</header>
+<nav class="nav"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="week10.html">Week 10 close-out</a><a href="results.html">Verified results feed</a><a href="board.html">Week 11 board</a><a href="lines.html">Originated lines</a><a href="price-store.html">Price snapshot store</a><a href="settlement.html">Settlement</a><a href="scorecard.html">Scorecard and controls</a><a href="luck.html">Removal of luck</a><a href="correlations.html">Correlations</a><a href="availability.html">Availability graph</a><a href="gates.html" class=on>Pre-registration and gates</a><a href="sources.html">Sources and capture ledger</a><a href="verification.html">Verification log</a><a href="questions.html">Open questions</a><a href="suggestions.html">Suggestions</a><a href="readiness.html">Decision readiness</a><a href="flagged.html">Flagged for review</a><a href="repo-review.html">Repo review</a></nav>
+<main>
+<h1>Pre-registration and validation gates</h1>
+<p class="lede">Each gate is a rule, a measured value, and a pass or fail. Nothing here is asserted as passed because it is easy.</p>
+<div class="tblwrap"><table class="k-data">
+<caption>G-1 to G-8</caption>
+<thead><tr><th>ID</th><th>Gate</th><th>Rule text</th><th>Measured now</th><th>Threshold</th><th>Status</th><th>Source</th></tr></thead><tbody>
+<tr><td>G-1</td><td>pre-registration before results</td><td>model version X3-CO-1.0; inputs = the 150 verified games through Week 10; parameters printed on every forecast row; the frozen file is committed before the first Week-11 kickoff</td><td>forecast rows 13; frozen 2026-11-17T23:05:00Z; first kickoff 2026-11-19T23:15:00Z</td><td>every forecast row stamped strictly before the kickoff of its own game</td><td><span class="badge v">PASS for the Week-11 board (2 days 0 hours of margin) / FAIL for the Week-10 settlement, which is graded on games already played</span></td><td><a href="../data/closeout/derived/forecasts_w11.csv">data/closeout/derived/forecasts_w11.csv</a></td></tr>
+<tr><td>G-2</td><td>sample size before a leaderboard row</td><td>no strategy is ranked on fewer than 200 graded decisions, and none on fewer than 40 games</td><td>graded decisions 39 across three markets on 13 games</td><td>200 graded decisions / 40 games</td><td><span class="badge b">FAIL - every score on this board is provisional</span></td><td><a href="../data/closeout/derived/scorecard.csv">data/closeout/derived/scorecard.csv</a></td></tr>
+<tr><td>G-3</td><td>skill must beat its own controls</td><td>hit rate must exceed the always-home, Week-9-favourite and seeded-random controls on the same games, and the Brier must beat 0.25 for the same fixture set</td><td>model moneyline pick 0.846 vs always-home 0.308 / Week-9 favourite 0.846 / seeded coin 0.308 on the same games; side Brier skill -0.0064</td><td>lower bound of the game-cluster interval must exceed the best control</td><td><span class="badge b">FAIL - intervals overlap</span></td><td><a href="../data/closeout/derived/scorecard.csv">data/closeout/derived/scorecard.csv</a></td></tr>
+<tr><td>G-4</td><td>proper score before profit</td><td>a division is scored on Brier/log-loss against a benchmark first; ROI is reported only when a price exists to settle against</td><td>Brier published for all three markets; ROI columns absent by policy</td><td>no ROI cell may exist without a market_price cell</td><td><span class="badge v">PASS</span></td><td><a href="../data/closeout/derived/price_policy.csv">data/closeout/derived/price_policy.csv</a></td></tr>
+<tr><td>G-5</td><td>joint evidence before any parlay or prop combo</td><td>a multi-leg structure is ranked only when the joint outcome probability has been validated directly and the operator's void/push rules are known</td><td>side/over joint correlation n=13; no void rules exist in the repository</td><td>validated joint model + published void rules; both absent</td><td><span class="badge b">BLOCKED - parlays and prop combos are not originated at all</span></td><td><a href="../data/closeout/derived/correlations.csv">data/closeout/derived/correlations.csv</a></td></tr>
+<tr><td>G-6</td><td>demotion (live to paper)</td><td>a promoted strategy returns to paper when its rolling 10-game game-cluster Brier lower bound falls below the benchmark, or when two consecutive freezes miss a required source capture</td><td>not applicable: nothing is promoted (G-2 fails); the trigger is recorded so it is armed before use</td><td>first promotion is a precondition</td><td><span class="badge u">ARMED, NOT FIRED</span></td><td><a href="../data/closeout/derived/scorecard.csv">data/closeout/derived/scorecard.csv</a></td></tr>
+<tr><td>G-7</td><td>signal separated from staking</td><td>the board ranks probabilities only; staking, Kelly and ROI are reported on a separate page and can never move a strategy up the board</td><td>scorecard.csv carries no return column; price_store.csv carries the prices</td><td>0 rows where a return figure changed a rank</td><td><span class="badge v">PASS by construction</span></td><td><a href="../data/closeout/derived/scorecard.csv">data/closeout/derived/scorecard.csv</a></td></tr>
+<tr><td>G-8</td><td>surprise, not level, for availability</td><td>the injury feed enters as the change between two dated captures; a level is never a feature</td><td>two dated captures exist for this window: the Week-10 report at 2026-11-17T22:45Z and the prior session's read of the same URL on 2026-11-15; the Week-11 report does not exist yet</td><td>&gt;= 3 dated captures of the same week before any designation feature is fitted</td><td><span class="badge b">FAIL - delta published as an observation, not as a model input</span></td><td><a href="../data/closeout/source_reads.csv">data/closeout/source_reads.csv</a></td></tr>
+</tbody></table>
+<p class="note">G-1 is the one that matters today: the Week-11 forecast rows are stamped 2026-11-17T23:05:00Z and the first kickoff is Thu 2026-11-19 8:15 PM ET. The commit that carries these files is the registration; the hash is printed on this page's build note once the PR merges.</p>
+</div>
+</main>
+<footer>
+  <p>Built by <code>scripts/closeout_build.py</code> from <code>data/closeout/*.csv</code> and
+  <code>data/closeout/derived/*.csv</code>; regenerate with
+  <code>python3 scripts/closeout_engine.py &amp;&amp; python3 scripts/closeout_build.py</code>. Values with no
+  official source are left blank and flagged; model output is labelled DERIVED and is arithmetic on official
+  scores, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../hub/index.html">hub desk</a> -
+  <a href="../x3/index.html">x3 desk</a> -
+  <a href="https://github.com/karagemop466-tech/X3/blob/b7d4142/COORDINATION.md">coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">repository</a></p>
+</footer>
+</body></html>

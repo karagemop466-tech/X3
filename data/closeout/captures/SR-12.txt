@@ -1,0 +1,3 @@
+REPOSITORY READ - x3/data/origination.csv at commit b7d4142889b90675cd53868e377bb277d415efb5, 2026-11-17T22:51Z (prior-session Week-11 board, frozen 2026-11-15)
+example: 2026-W11-IND@HOU,11,2026-11-19,IND,HOU,-5.6753,46.8393,0.6550,,,(market columns empty),12.9734,4.0000,16.0000,138
+13 rows; market_side / market_total / market_ml_home blank; n_train 138; sigma_margin 12.9734

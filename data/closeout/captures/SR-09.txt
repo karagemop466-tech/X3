@@ -1,0 +1,21 @@
+VERBATIM - official NFL Game Book PDF for NE at DET, read 2026-11-17T22:46Z (page 1 + final individual statistics)
+"Date: Sunday, 11/15/2026 New England Patriots at Detroit Lions at Allianz Arena, Munich, Germany"
+"Start Time: 3:33 PM CET"
+"Game Weather: Cloudy | Temp: 52° F (11.1° C) Humidity: 51%, Wind: SE 3 mph"
+"Open Stadium on Natural Grass"
+"Referee: Martin, Clay (19)  Umpire: Woods, Steven (54)  Down Judge: Phillips, Jerod (6)"
+"Line Judge: Perry, Brian (97)  Field Judge: Ramsey III, Alonzo (80)  Side Judge: Hall, Eugene (103)"
+"Back Judge: Wilson, Greg (119)  Replay Official: Thompson, Bryant (0)"
+Line-ups: NE offense "LT 66 W.Campbell / LG 70 G.Van Roten / C 55 J.Wilson / RG 65 M.Pryor / RT 76 M.Moses /
+TE 85 H.Henry / TE 82 E.Raridon / QB 10 D.Maye / RB 38 R.Stevenson / WR 1 A.Brown / WR 13 M.Hollins";
+NE defense "OLB 5 Dr.Jones / DT 97 M.Williams / DT 94 C.Durden / OLB 91 E.Ponder / LB 14 R.Spillane /
+LB 53 C.Elliss / CB 0 C.Gonzalez / CB 25 M.Jones / CB 22 C.Woods / S 4 C.Woodson / S 31 K.Byard";
+DET offense "WR 18 I.TeSlaa / TE 87 S.LaPorta / LT 58 P.Sewell / LG 73 C.Mahogany / C 70 J.Scruggs /
+RG 69 T.Ratledge / RT 76 B.Miller / WR 1 J.Williams / QB 16 J.Goff / RB 0 J.Gibbs / WR 14 A.St. Brown";
+DET defense "DE 97 A.Hutchinson / DL 54 A.McNeill / DL 91 T.Williams / DL 93 T.Lacy / LB 53 T.Nowaske /
+LB 44 M.Rodriguez / LB 55 D.Barnes / DB 32 B.Branch / CB 23 R.Ya-Sin / CB 21 R.McCreary / S 36 C.Clark".
+Did Not Play: (printed empty for both clubs in this extraction - see flag CL-F-07)
+Not Active NE: "CB 7 C.Davis, 3QB 15 B.Morton, S 41 B.Schooler, T 68 D.Crownover, OL 72 W.Rouse, C 77 B.Brown"
+Not Active DET: "CB 4 D.Reed, CB 6 K.Abney, LB 57 A.Ogbongbemiga, C 64 C.Mays, DL 94 M.Wingo, DE 99 A.Hassanein"
+"Paid Attendance: 70,225   Time: 3:04"
+Team totals: NE rushing 22-61 (2.8), passing 15-28-129-1INT; DET rushing 34-191 (5.6), passing 21-32-310-2INT.

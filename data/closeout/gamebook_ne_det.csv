@@ -1,0 +1,57 @@
+game,team,kind,unit,slot,jersey,player,fact_as_published,source_url
+NE@DET,NE,starter,offense,LT,66,W.Campbell,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,LG,70,G.Van Roten,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,C,55,J.Wilson,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,RG,65,M.Pryor,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,RT,76,M.Moses,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,TE,85,H.Henry,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,TE,82,E.Raridon,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,QB,10,D.Maye,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,RB,38,R.Stevenson,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,WR,1,A.Brown,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,offense,WR,13,M.Hollins,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,OLB,5,Dr.Jones,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,DT,97,M.Williams,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,DT,94,C.Durden,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,OLB,91,E.Ponder,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,LB,14,R.Spillane,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,LB,53,C.Elliss,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,CB,0,C.Gonzalez,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,CB,25,M.Jones,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,CB,22,C.Woods,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,S,4,C.Woodson,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,starter,defense,S,31,K.Byard,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,inactive,,,7,C.Davis,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,inactive,,,15,B.Morton,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,inactive,,,41,B.Schooler,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,inactive,,,68,D.Crownover,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,inactive,,,72,W.Rouse,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,inactive,,,77,B.Brown,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,WR,18,I.TeSlaa,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,TE,87,S.LaPorta,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,LT,58,P.Sewell,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,LG,73,C.Mahogany,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,C,70,J.Scruggs,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,RG,69,T.Ratledge,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,RT,76,B.Miller,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,WR,1,J.Williams,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,QB,16,J.Goff,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,RB,0,J.Gibbs,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,offense,WR,14,A.St. Brown,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,DE,97,A.Hutchinson,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,DL,54,A.McNeill,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,DL,91,T.Williams,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,DL,93,T.Lacy,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,LB,53,T.Nowaske,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,LB,44,M.Rodriguez,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,LB,55,D.Barnes,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,DB,32,B.Branch,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,CB,23,R.Ya-Sin,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,CB,21,R.McCreary,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,starter,defense,S,36,C.Clark,Game Book line-ups,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,inactive,,,4,D.Reed,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,inactive,,,6,K.Abney,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,inactive,,,57,A.Ogbongbemiga,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,inactive,,,64,C.Mays,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,inactive,,,94,M.Wingo,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,inactive,,,99,A.Hassanein,Game Book Not Active,https://static.www.nfl.com/image/upload/v1794764592/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
