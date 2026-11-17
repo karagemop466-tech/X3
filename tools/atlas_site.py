@@ -314,6 +314,9 @@ the four decisions that gate everything else.</p>
 <tr><td>Week 11 designations published</td><td>{badge("NONE", "u")}</td>
 <td>Every Week 11 game centre reads "Injury Report is not available at this time"</td>
 <td>{cell_html(src_wk11)}</td></tr>
+<tr><td>Week 10 games the standings page credits</td><td class="num">13 of 14</td>
+<td>26 clubs moved, 4 on bye, and 2 - Washington and the Giants - did not move at all</td>
+<td>{cell_html(src_std)}</td></tr>
 <tr><td>Market prices published by the league</td><td>{badge("NONE", "b")}</td>
 <td>nfl.com/odds returns 404 - Flag on the Play</td><td>{cell_html(src_odds)}</td></tr>
 </tbody></table></div>
@@ -355,6 +358,36 @@ games played.</p>
                   ["Team", "Club", "W", "L", "T", "PCT", "PF", "PA", "Net", "Home", "Road",
                    "Div", "Conf", "Non-conf", "Streak", "Last 5", "G", "PPG", "PAPG", "Win %", "Source"],
                   numeric={2, 3, 4, 5, 6, 7, 8, 16, 17, 18, 19})
+    body += f"""
+<h2>The standings page is missing one Week 10 game</h2>
+<div class="warnbox"><p><b>Verified on {D.AS_OF}.</b> The official league standings page has folded
+in {S["clubs_credited_wk10"]} of the 28 clubs that played in Week 10. Four clubs
+({esc(", ".join(D.WEEK10_BYES))}) were on bye and correctly show no change. The remaining two,
+<b>Washington</b> and the <b>New York Giants</b>, played each other on Thursday 12 November - Washington
+won 24-21 - and neither club's row has moved: Washington still reads 3-5-1 with 196 points for, and
+the Giants still read 5-3-1 with 203 points for, exactly as they did in the capture taken three days
+earlier on 2026-11-14. Their streak and last-5 columns also read 1W and 1L respectively in both
+captures.</p>
+<p>Two consequences follow, and both matter. First, the standings imply
+{S["games_implied"]} games played, while the official schedule page lists 14 Week 10 finals on top of
+the 137 the earlier capture implies - 151, not {S["games_implied"]}. Any check that reconciles a
+results feed to the standings on games played will fail by one game until the league corrects this.
+Second, every per-game rate for Washington and the Giants on this module is computed over nine games,
+not ten, because the published points-for and points-against are one game short. Those two clubs play
+in Week 11 (Cincinnati at Washington, Jacksonville at the Giants), so this affects the originated
+lines on the next page and is flagged there too.</p>
+<p>This is stated as an observation about two official pages. The cause is not published, so it is not
+asserted here.</p></div>
+<h3>Club-by-club: what moved between the two captures</h3>
+<p class="note">Left half from the capture taken 2026-11-14; right half read live on {D.AS_OF}. Both
+come from the same official page.</p>
+"""
+    body += table("standings_reconciliation_2026.csv",
+                  ["team", "name", "record_2026_11_14", "record_2026_11_17", "pf_before", "pf_after",
+                   "pa_before", "pa_after", "week_10_game_credited", "source_live"],
+                  ["Team", "Club", "Record on 11-14", "Record on 11-17", "PF before", "PF after",
+                   "PA before", "PA after", "Week 10 game credited?", "Source"],
+                  numeric={4, 5, 6, 7})
     write("standings.html", "Standings through Week 10", body)
 
     # ================================================== results
@@ -366,7 +399,11 @@ the most recent completed round and the only round this module has transcribed e
 {S["wk10_games"]} of them ({S["wk10_games"] * 100 // S["games_implied"]}%). Weeks 1 to 9 have not been
 re-read from an official page by this session, so they are not published here. A results feed is only
 as good as its weakest row, and a feed that publishes 14 rows while implying 150 is not a backtest
-corpus yet.</p></div>
+corpus yet.</p>
+<p>One caution for anyone extending this feed: the standings count of {S["games_implied"]} is itself
+one short of the schedule page, because the league has not credited the Thursday 12 November
+Washington-New York Giants game to either club (F-16). Reconciling on games played will therefore not
+balance until the league corrects it, and the shortfall is the league's, not the feed's.</p></div>
 """
     body += table("results_2026_wk10.csv",
                   ["game", "date", "away", "home", "away_pts", "home_pts", "home_margin",
@@ -580,6 +617,14 @@ against a number that does not exist, so the difference columns are empty too - 
                    "Difference", "Inputs"],
                   numeric={5, 6, 7, 8, 9, 10, 11})
     body += """
+<h3>Two model inputs are one game short</h3>
+<div class="warnbox"><p>Washington and the Giants each play in Week 11, and each has only nine games
+in the official standings because the league has not credited their Thursday 12 November game to
+either club. Their points-per-game and points-allowed-per-game on this page are therefore computed
+over nine games rather than ten, so the Cincinnati-at-Washington and Jacksonville-at-Giants rows
+below carry a slightly noisier rate than the other eleven. The value is still the published value;
+it is not adjusted, because adjusting it would mean inventing the league's own correction. Flagged as
+F-16 and shown club by club on the <a href="standings.html">standings</a> page.</p></div>
 <h3>Why the market and difference columns stay blank</h3>
 <p>Every market cell on this page renders as <span class="unverif">UNVERIFIED - no official
 source</span>. That is a deliberate state, not a formatting artefact. Publishing a market number
@@ -1031,7 +1076,10 @@ read and filtered without scrolling past the headline numbers.</p>
          "Not captured.",
          "Join an NWS grid to the official 90-minute roof designation (R-37).",
          "https://www.weather.gov/"),
-        ("Q-18", "Fixture", "When was the 2026 schedule announced?",
+        ("Q-18", "Standings", "Why is the Thursday Week 10 game missing from the standings?",
+         "Unknown. The league publishes no explanation; both official pages were read today and they disagree by exactly that one game.",
+         "Re-read the standings before each capture and record whether the game has been credited; do not reconcile on games played until it has.", src_std),
+        ("Q-19", "Fixture", "When was the 2026 schedule announced?",
          "Not verified this session - the announcement page was not read.",
          "Fetch the dated announcement and publish it beside the live schedule page (R-24).",
          "https://www.nfl.com/schedules/"),
@@ -1298,6 +1346,10 @@ is published as unverified.</li>
          "Every read on this site was taken by hand by an agent session, which is durable only because it is committed.",
          "No scheduled job exists in this repository for the injury report.",
          "Implement the scheduled capture with hashes (SG-02, SG-06).", src_inj),
+        ("F-16", "The official standings page is missing the Thursday Week 10 game",
+         "Washington beat the Giants 24-21 on Thursday 12 November. Three days later the league's own standings page still shows both clubs at their pre-game records, with unchanged points for, points against, streak and last-5. Every other Week 10 game is credited.",
+         "The live page on 2026-11-17 matches the capture of 2026-11-14 row for row for these two clubs, while all 26 other clubs that played moved.",
+         "Do not reconcile a results feed to the standings on games played until the league corrects it; re-read before each capture.", src_std),
     ]
     rows = "".join(
         f'<tr><td><b>{esc(f[0])}</b></td><td>{esc(f[1])}</td><td>{esc(f[2])}</td>'

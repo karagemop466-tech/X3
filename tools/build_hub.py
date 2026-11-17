@@ -1572,6 +1572,18 @@ def landing():
     # + the decision-readiness matrix the brief asks for on the landing page).
     nav += ('<a href="round2/index.html"><b>Round 2 readiness</b>'
             '<span>66 requirements mapped: gate that blocks, number that clears</span></a>')
+    # A hand-pasted entry for decision/ had drifted into the committed root
+    # index.html without ever being emitted here, so every rebuild silently
+    # dropped it and the Pages workflow's `git diff --exit-code -- index.html`
+    # check could not pass. Re-homed in the generator so the paste survives a
+    # rebuild, and the atlas module is added alongside it. Integration session
+    # arena/dbb50f8c-x3; both entries are additive outbound links only.
+    nav += ('<a href="decision/index.html"><b>Decision desk &amp; time series</b>'
+            '<span>69-row register with per-row basis, the suggestion queue, and '
+            'the first hashed day-over-day availability delta</span></a>')
+    nav += ('<a href="atlas/index.html"><b>atlas decision desk</b>'
+            '<span>Week 11 fixtures, venues and originated lines re-read from '
+            'official pages on 2026-11-17</span></a>')
     verification_table = table(
         ['Dataset', 'Official source', 'Status', 'Notes'],
         [["Week-10 injury report (345 rows)", link(C.S["injuries"], "nfl.com/injuries/league/2026/reg10"),

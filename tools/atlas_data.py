@@ -33,6 +33,15 @@ SOURCES = {
         "kind": "official",
         "note": "14 finals; 4 clubs on bye (CHI, DEN, PHI, TB).",
     },
+    "wk9capture": {
+        "label": "data/hub/standings_2026_thru_wk9.csv - through-Week-9 standings captured 2026-11-14",
+        "url": "../data/hub/standings_2026_thru_wk9.csv",
+        "read": "2026-11-17",
+        "kind": "repo capture of an official page",
+        "note": "32 rows captured by an earlier session from nfl.com/standings/league/2026/REG "
+                "on 2026-11-14. Used here only as a dated prior capture to diff against the "
+                "live page - not as a statement about the present.",
+    },
     "wk11": {
         "label": "nfl.com - 2026 Week 11 schedule",
         "url": "https://www.nfl.com/schedules/2026/by-week/week-11",
@@ -357,6 +366,48 @@ REQUIREMENTS = [
     ("R-66", "Durable snapshot storage and freshness alerts", "NOT STARTED", "G-OPS", "Captures stored outside the static site with a freshness monitor"),
     ("R-67", "Split the site into a public analysis layer and a private data layer", "NOT STARTED", "G-LEGAL", "Terms of use read and a storage decision recorded"),
     ("R-68", "Suggestions section with review before implementation", "DONE", "G-COORD", "Every proposal listed as a proposal; none implemented unreviewed"),
+]
+
+# --------------------------------------------------------------------------
+# Standings reconciliation. Diffing the live standings against the earlier
+# through-Week-9 capture shows which Week 10 games the league has folded in.
+# 13 of the 14 were folded in; the Thursday game was not. This is an observed
+# fact about two official pages, not an explanation of why.
+#   club, wk9_record, live_record, wk9_pf, live_pf, wk9_pa, live_pa, included
+# --------------------------------------------------------------------------
+STANDINGS_RECON = [
+    ("ATL", "3-6-0", "3-7-0", 188, 201, 223, 258, "yes"),
+    ("AZ", "3-6-0", "3-7-0", 178, 184, 255, 289, "yes"),
+    ("BAL", "4-5-0", "4-6-0", 189, 209, 236, 259, "yes"),
+    ("BUF", "7-1-0", "8-1-0", 256, 287, 187, 199, "yes"),
+    ("CAR", "3-5-0", "4-5-0", 199, 219, 219, 236, "yes"),
+    ("CHI", "7-2-0", "7-2-0", 241, 241, 184, 184, "n/a - on bye in Week 10"),
+    ("CIN", "6-2-0", "7-2-0", 240, 278, 175, 193, "yes"),
+    ("CLE", "5-4-0", "6-4-0", 161, 188, 196, 220, "yes"),
+    ("DAL", "4-5-0", "4-6-0", 246, 286, 236, 282, "yes"),
+    ("DEN", "7-2-0", "7-2-0", 198, 198, 186, 186, "n/a - on bye in Week 10"),
+    ("DET", "6-2-0", "7-2-0", 222, 257, 189, 199, "yes"),
+    ("GB", "6-3-0", "6-4-0", 216, 226, 191, 221, "yes"),
+    ("HOU", "3-5-0", "3-6-0", 209, 233, 192, 219, "yes"),
+    ("IND", "2-7-0", "3-7-0", 184, 208, 249, 271, "yes"),
+    ("JAX", "6-2-0", "7-2-0", 229, 269, 121, 144, "yes"),
+    ("KC", "6-2-0", "7-2-0", 202, 237, 143, 156, "yes"),
+    ("LAC", "0-8-0", "1-8-0", 121, 144, 219, 239, "yes"),
+    ("LAR", "5-4-0", "6-4-0", 214, 248, 181, 187, "yes"),
+    ("LV", "4-5-0", "4-6-0", 238, 251, 268, 289, "yes"),
+    ("MIA", "1-7-0", "1-8-0", 126, 148, 200, 224, "yes"),
+    ("MIN", "6-2-0", "7-2-0", 146, 176, 116, 126, "yes"),
+    ("NE", "5-4-0", "5-5-0", 211, 221, 207, 242, "yes"),
+    ("NO", "3-5-0", "3-6-0", 185, 202, 216, 236, "yes"),
+    ("NYG", "5-3-1", "5-3-1", 203, 203, 196, 196, "NO - the Thu Nov 12 game is absent"),
+    ("NYJ", "2-7-0", "2-8-0", 182, 194, 223, 254, "yes"),
+    ("PHI", "2-7-0", "2-7-0", 148, 148, 221, 221, "n/a - on bye in Week 10"),
+    ("PIT", "6-2-0", "6-3-0", 180, 198, 144, 182, "yes"),
+    ("SEA", "5-4-0", "6-4-0", 202, 223, 162, 175, "yes"),
+    ("SF", "7-1-0", "8-1-0", 235, 281, 156, 196, "yes"),
+    ("TB", "3-6-0", "3-6-0", 202, 202, 178, 178, "n/a - on bye in Week 10"),
+    ("TEN", "1-7-0", "1-8-0", 144, 167, 199, 239, "yes"),
+    ("WAS", "3-5-1", "3-5-1", 196, 196, 223, 223, "NO - the Thu Nov 12 game is absent"),
 ]
 
 # --------------------------------------------------------------------------

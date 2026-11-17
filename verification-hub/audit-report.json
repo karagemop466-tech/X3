@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 358,
       "flagged_rows": 276,
-      "refs": 431,
+      "refs": 432,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -46,6 +46,22 @@
         "archive/hub-621bf404/deficiency.html:  Claim  Supportable from official data?  Treatment here  Evidence ",
         "archive/hub-621bf404/deficiency.html: Whether a backup's presence changes a prop market no - needs prop prices and usage data not attempted FLG-07 \u00b7 Q-12",
         "archive/hub-621bf404/deficiency.html:  Club  Absent starter  Pos  Official status  Slot  Starter's string  Named replacement  Repl. string  Join result  Chart"
+      ]
+    },
+    "atlas": {
+      "pages": 23,
+      "rows": 920,
+      "flagged_rows": 684,
+      "refs": 1334,
+      "unsourced_examples": [
+        "atlas/availability.html: Date Club Kind Player What the official page says Source",
+        "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
+        "atlas/depth.html: Step Route Test that must pass Status Source to check",
+        "atlas/depth.html: Personnel question Answer available now Basis Source",
+        "atlas/executive-summary.html: Finding Number Basis Source",
+        "atlas/executive-summary.html: Decision Why it blocks If it is not taken",
+        "atlas/executive-summary.html: Approve a price source class Without any market price, fair-vs-market, CLV, ROI and\nevery staking score are structurally",
+        "atlas/executive-summary.html: Approve an automated capture schedule Designations are a series, and one capture\ncannot produce a delta, so the injury s"
       ]
     },
     "audit": {
@@ -109,9 +125,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 297,
+      "rows": 299,
       "flagged_rows": 111,
-      "refs": 460,
+      "refs": 479,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -328,9 +344,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 287,
-  "rows_total": 12297,
-  "rows_flagged_or_sourced": 10134,
-  "internal_refs": 7409,
+  "pages_total": 310,
+  "rows_total": 13219,
+  "rows_flagged_or_sourced": 10818,
+  "internal_refs": 8039,
   "problems": []
 }

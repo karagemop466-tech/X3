@@ -266,6 +266,14 @@ def build():
                 fmt(p["residual_wins"], 2), D.SOURCES["standings"]["url"]]
                for p in pyth])
 
+    # 8b. standings reconciliation: which Week 10 games the league has folded in
+    write_csv("standings_reconciliation_2026.csv",
+              ["team", "name", "record_2026_11_14", "record_2026_11_17", "pf_before", "pf_after",
+               "pa_before", "pa_after", "week_10_game_credited", "source_live", "source_prior"],
+              [[t, rates[t]["name"], r1, r2, pf1, pf2, pa1, pa2, note,
+                D.SOURCES["standings"]["url"], D.SOURCES["wk9capture"]["url"]]
+               for (t, r1, r2, pf1, pf2, pa1, pa2, note) in D.STANDINGS_RECON])
+
     # 9. correlations
     stats = {t: s for (t, *s) in [(r[0], r[1], r[2], r[3], r[4], r[5], r[6]) for r in D.TEAM_STATS]}
     teams26 = [t for (t, *_rest) in D.TEAM_STATS]
@@ -363,6 +371,9 @@ def build():
         "injury_team_mismatches": sum(1 for r in inj if r[6] != "match"),
         "origination_rows": len(orig),
         "roster_events": len(D.ROSTER_EVENTS),
+        "clubs_credited_wk10": sum(1 for r in D.STANDINGS_RECON if r[7] == "yes"),
+        "clubs_bye_wk10": sum(1 for r in D.STANDINGS_RECON if r[7].startswith("n/a")),
+        "clubs_not_credited": [r[0] for r in D.STANDINGS_RECON if r[7].startswith("NO")],
     }
     return rates, outs, orig, pyth, corr, summary
 

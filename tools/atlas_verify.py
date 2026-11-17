@@ -176,6 +176,25 @@ def main():
             fails.append(f"A5 correlation without source: {r['quantity_a']}")
     checks += 1
 
+    # A5b. the standings lag is asserted, not merely described. If the league
+    # credits the missing Thursday game, this check fails and the module must be
+    # re-read rather than left quietly wrong.
+    recon = read_csv("standings_reconciliation_2026.csv")
+    if len(recon) != 32:
+        fails.append(f"A5b standings reconciliation has {len(recon)} rows, expected 32")
+    not_credited = [r["team"] for r in recon if r["week_10_game_credited"].startswith("NO")]
+    if not_credited != ["NYG", "WAS"]:
+        fails.append(f"A5b standings lag changed: clubs not credited are now {not_credited}; "
+                     "re-read the official standings and update the transcription")
+    for r in recon:
+        if r["week_10_game_credited"] == "yes":
+            if (r["record_2026_11_14"], r["pf_before"]) == (r["record_2026_11_17"], r["pf_after"]):
+                fails.append(f"A5b {r['team']} marked credited but its row did not move")
+        elif r["week_10_game_credited"].startswith("n/a"):
+            if r["record_2026_11_14"] != r["record_2026_11_17"]:
+                fails.append(f"A5b {r['team']} was on bye but its record changed")
+    checks += 3
+
     inj = read_csv("injury_counts_2026_wk10.csv")
     if len(inj) != 28:
         fails.append(f"A5 injury club counts has {len(inj)} rows, expected 28")

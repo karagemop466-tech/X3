@@ -1,0 +1,51 @@
+name: X3 atlas module
+
+# Offline gate for the atlas/ decision desk (session arena/dbb50f8c-x3).
+# The whole module is generated from tools/atlas_data.py - a file of values
+# transcribed from official NFL pages - so CI can rebuild it from scratch and
+# refuse the run if the published tree disagrees with its inputs.
+
+on:
+  push:
+    branches: [main, "arena/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild the atlas datasets from the verified inputs
+        run: python3 tools/atlas_engine.py
+
+      - name: Rebuild the atlas pages
+        run: python3 tools/atlas_site.py
+
+      - name: Gate the atlas module
+        run: python3 tools/atlas_verify.py
+
+      - name: Repo-wide link and provenance gate
+        run: python3 scripts/audit_all.py
+
+      - name: Integration gate
+        run: python3 scripts/verify_integration.py
+
+      - name: Fail if a build left the tree dirty
+        run: |
+          git config --local user.email "ci@example.invalid"
+          git config --local user.name "ci"
+          git add -A atlas data/atlas index.html
+          git diff --cached --quiet || {
+            echo "::error::atlas/ or data/atlas/ changed on rebuild; run the engine and site builders and commit the result"
+            git --no-pager diff --cached --stat
+            exit 1
+          }
