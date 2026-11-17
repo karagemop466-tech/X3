@@ -2906,6 +2906,7 @@ Scope is limited to the root landing generator/output and this append-only claim
 - **Integration request (logged; file NOT edited):** to the `tools/build_hub.py` / `data/hub` owner — the root landing page has no link to `agency/`; please add one unit row so the new module is reachable from the root.
 - **Pages deploy:** GitHub Pages serves `https://karagemop466-tech.github.io/X3/`; the agency dashboard lives at `https://karagemop466-tech.github.io/X3/agency/site/index.html`. Deploy confirmed via successful `pages build and deployment` and `Deploy X3 NFL site to GitHub Pages` runs on the `main` push.
 
+
 ## Session `arena/5ffc331b-x3` — decision-readiness audit (2026-11-15)
 
 - **Status:** done on Arena-assigned branch `arena/5ffc331b-x3`; initially branched from `8a889d7190ec230f5c9940d2e95e533358e84c65`, then rebased onto current `main` after the official-source/results-feed updates in PRs #65 and #68. The platform branch is used; no branch switch or rename.
@@ -3317,6 +3318,220 @@ here would overwrite their published content without a review. Logged as a reque
 **Environment fact (contradicts several earlier board notes):** `nfl.com` **and**
 `static.www.nfl.com` Game Book PDFs are readable this session through the page-fetch tool. Every
 value published by this session is read from those pages at the timestamp printed on the page.
+## Session `arena/3e44287d-x3` — integration, main repair, verification (CLAIM, 2026-11-17)
+
+Branch `arena/3e44287d-x3` (base `b7d4142`, = `origin/main`). Single-session work on this branch only; the brief's `session-<id>/<task>` branch names are not used (platform rule, same as earlier sessions).
+
+### Why this session starts with integration, not a new module
+
+- **`main` is red.** The `X3 decision layer` workflow and `Deploy X3 NFL site` failed on `main` from `34c78e0` onward (last green `8ac031b`). Local reproduction on `b7d4142`: `scripts/build_decision.py` rewrites six committed `decision/*.html` files (the x3 desk added an 18th tree; the committed decision pages still say 17), and `scripts/audit_all.py` reports 64 violations, 52 of them broken `decision/landing-block.html` links.
+- **The fix already exists in an open, clean PR:** PR #89 (`arena/6259c7b0-x3`, head `c1647ec`, MERGEABLE/CLEAN, all 9 checks pass). It regenerates `decision/`, fixes `scripts/build_decision.py`, and adds the `readiness/` module that implements most of this brief's remaining items (RD-01…RD-10: readiness register, change-our-mind, drift alarms, control baselines, weekly what-changed, availability snapshots, announced starters, matchup matrix, two totals, availability ablation).
+- Building a ninth parallel module would repeat the pattern the board already flags (17 overlapping trees). This session therefore **integrates PR #89 into its own branch**, repairs what remains red, verifies, and merges through its own PR to `main`.
+
+### Other open PRs (not merged here; overlap logged)
+
+| PR | Branch | Title (abridged) | Overlap with #89 / this session |
+|----|--------|------------------|------------------------------|
+| #85 | `arena/c0176769-x3` | R1–R5: readiness register, live Week-10 injury read, change-our-mind rules, scheduled injury capture | same `decision/*` regeneration and readiness register as #89 |
+| #80 | `arena/65820815-x3` | decision-readiness table on landing page, executive-summary accuracy pass | landing table = #89 RD-01 |
+| #79 | `arena/348a707c-x3` | Week 10 official injury re-capture + hub comparison | injury re-capture not in #89; needs its own review |
+| #77 | `arena/fed85bfd-x3` | final integration: verified results feed, arithmetic gates, demotion rule | overlaps `hub/*` and results feed; not merged here |
+| #76 | `arena/129e76b5-x3` | decision-readiness register: requirements, questions, suggestions, flagged review | overlaps #89 `readiness/` |
+| #58 | `arena/aab4718a-x3` | verified results feed, arithmetic gates, demotion rule, review queue | overlaps #77 |
+
+
+
+## Session `arena/6259c7b0-x3` — decision-readiness, change-our-mind, drift alarms, control baselines, weekly diff (CLAIM, 2026-11-15)
+
+Branch: `arena/6259c7b0-x3` (fast-forwarded to `main` @ `71ca127` before starting; 8a889d7 verified
+ancestor of origin/main after `git fetch --unshallow` — a first rebase attempt hit add/add conflicts
+because the sandbox clone was shallow, so it was aborted and re-synced with `--ff-only`; nothing lost).
+
+Six requirements from the brief are still unimplemented on current `main` (verified by repo-wide grep
+2026-11-15). This session claims them. All new files live in `readiness/`, `scripts/build_readiness.py`,
+`scripts/verify_readiness.py`, `scripts/drift_alarm.py`, `scripts/control_baselines.py`,
+`.github/workflows/readiness.yml`, `.github/workflows/availability-snapshots.yml` — non-overlapping with
+every existing session's scope. `tools/build_hub.py` gets ONE integration-remit edit (root-landing
+decision-readiness table + one nav entry), logged below like prior integration sessions did.
+
+| ID | Task | Status | Owner | Files |
+|----|------|--------|-------|-------|
+| RD-01 | Decision-readiness table on the landing page (one row per requirement: gate that blocks it, number that would clear it) | in progress | `arena/6259c7b0-x3` | `tools/build_hub.py` (landing section), `readiness/data/readiness.json` |
+| RD-02 | Two-sided "what would change our mind" field on every strategy entry (upgrade evidence / abandon evidence) | in progress | `arena/6259c7b0-x3` | `readiness/change-our-mind.html`, `readiness/data/change_mind.json` |
+| RD-03 | Drift alarm on every parser: pin expected row counts + required fields, fail the build loudly | in progress | `arena/6259c7b0-x3` | `scripts/drift_alarm.py`, `.github/workflows/readiness.yml`, `readiness/drift-alarms.html` |
+| RD-04 | Control baseline (random picks; favourites only) added to every leaderboard run | in progress | `arena/6259c7b0-x3` | `scripts/control_baselines.py`, `readiness/control-baselines.html` |
+| RD-05 | Weekly "what changed" diff instead of a static snapshot (rank / rating / availability change) | in progress | `arena/6259c7b0-x3` | `scripts/build_readiness.py`, `readiness/what-changed.html`, `readiness/data/history/` |
+| RD-06 | Scheduled immutable availability snapshots (cron Wed/Thu/Fri) with retained hashes + freshness alert | in progress | `arena/6259c7b0-x3` | `.github/workflows/availability-snapshots.yml`, `readiness/snapshots.html` |
+
+Scope declaration: `readiness/**` and the five named scripts/workflows are new. `COORDINATION.md` and
+`README.md` are append-only. The single edit to `tools/build_hub.py` is the integration-session remit for
+the shared root landing (same pattern as sessions `arena/09f8c786-x3` and `arena/3b99e9ad-x3` before).
+No file under `hub/`, `ops/`, `signals/`, `desk/`, `council/`, `docs/`, `dashboard/`, `data/` (except
+append-only logs) is edited.
+
+### Claim expansion (arena/6259c7b0-x3, same session)
+
+Repo-wide grep on current main (2026-11-15) found three more unimplemented brief requirements, claimed now:
+
+| ID | Task | Status | Owner | Files |
+|----|------|--------|-------|-------|
+| RD-07 | Injury/personnel ablation with uncertainty (with vs without availability features, chronological holdouts) — availability load is currently published but never fitted (`scripts/x3_signals.py` line 56) | in progress | `arena/6259c7b0-x3` | `scripts/readiness_ablation.py`, `readiness/ablations.html` |
+| RD-08 | Announced-starter evidence field (official dated starter announcements, not inferred replacements) | in progress | `arena/6259c7b0-x3` | `readiness/announced-starters.html` |
+| RD-09 | Offense-vs-defence matchup deficiency matrix, 1st-4th string, interactive | in progress | `arena/6259c7b0-x3` | `readiness/matchup-matrix.html` |
+
+Venue transcription, roof/NWS overlay, past-season report archives, reserve-list and snap-count capture
+are data-capture-blocked (sandbox cannot reach nfl.com; capture runs on GitHub runners). They are added
+to the RD-01 readiness register as blocked rows with the number that would clear them, and to the
+RD-06 snapshot-workflow plan — not silently dropped.
+
+### Claim expansion 2 (arena/6259c7b0-x3)
+
+Repo-wide grep confirms "Publish every model total twice until one wins" (two visible total
+estimators + gap column + collapse only after a walk-forward comparison) is unimplemented.
+Claimed as RD-10; computed offline from the verified results feed as an independent panel
+(registered alternative estimator vs the published engine total), with a coordination request
+logged for the signals owner to adopt the comparison into its own page.
+
+| ID | Task | Status | Owner | Files |
+|----|------|--------|-------|-------|
+| RD-10 | Publish every model total twice (estimator A vs registered estimator B, gap column, walk-forward comparison) | in progress | `arena/6259c7b0-x3` | `scripts/readiness_compute.py`, `readiness/two-totals.html` |
+
+### Progress log (arena/6259c7b0-x3)
+
+- 2026-11-15 — RD-01..RD-10 built. New module `readiness/` (11 pages), `scripts/readiness_compute.py`,
+  `scripts/build_readiness.py`, `scripts/verify_readiness.py`, `scripts/drift_alarm.py`,
+  `scripts/availability_snapshot.py`, workflows `readiness.yml` + `availability-snapshots.yml`.
+- RD-01: decision-readiness register (74 requirement rows: status, gate that blocks, number that
+  clears, source per row) rendered on the root landing page (via `tools/build_hub.py`) and at
+  `readiness/decision-readiness.html`. Counts: 44 done | 13 partial | 13 blocked | 2 registered | 2 rejected.
+- RD-02: `readiness/data/change_mind.json` + page — 42 strategy entries (signals 15, desk 10, ops 5,
+  hub prereg 12), each with both sides of the field (toward-belief evidence / abandon evidence).
+- RD-03: 14 datasets pinned (exact/min row counts, required fields, status vocabulary, value pins,
+  conditional requirements); `scripts/drift_alarm.py` exits 1 with a loud per-field report; runs in CI
+  (readiness.yml). While calibrating the pins it correctly caught real schema facts (price rows blank
+  only where status != originated; leaderboard signal cells blank only for unranked strategies) — pins
+  freeze those rules.
+- RD-04: control baselines computed with the engine's own pipeline and contest rule on the identical
+  graded set (n=105, weeks 1-10): coin flip SU 0.5619 / contest 0.5769; favourites SU 0.6286 /
+  contest 0.6190; published model side contest 0.6381. The controls give the leaderboard its luck
+  lines: the side's edge over a naive favourites rule is 0.019 contest wins. Coordination request
+  logged below to join them into signals/leaderboard.html.
+- RD-05: weekly what-changed diff (rank via win-pct rule, rating via engine margin refit through each
+  week, availability change from stored report snapshots) + per-week snapshot CSVs stored under
+  `readiness/data/history/2026/week-XX/`. Availability change computable only for weeks 8-10 (stored
+  snapshots); earlier weeks blank and flagged, never inferred.
+- RD-06: `scripts/availability_snapshot.py` + scheduled workflow (cron Wed/Thu/Fri 21:00 UTC, Sun
+  17:00 UTC): raw HTML + SHA-256 + append-only manifest, >20% row-count delta prints SCHEMA CHANGE
+  alert, >4-day staleness exits 1 with FRESHNESS ALERT. Status published as "first run pending" until
+  the scheduled workflow executes on the default branch.
+- RD-07: availability-feature ablation (same ridge form, lambda 2.0 both arms, chronological holdouts,
+  paired bootstrap 10k, seed 20261115): pooled n=16 test games, MAE delta -0.549 pts, 95% CI
+  [-5.567, +3.979] -> inconclusive at this sample size; verdict published with the CI, and the panel
+  states what would make it decisive (>= 6 weeks of availability snapshots).
+- RD-08: announced-starter evidence register — 8 dated rows / 5 distinct announcements verified on
+  official nfl.com pages (Drew Lock x2, Jacoby Brissett x2, Kyle McCord x2, Deshaun Watson, Carson
+  Beck). Only official nfl.com/news and nfl.com/videos links published; verifier V4 enforces this.
+- RD-09: matchup deficiency matrix (week-10 fixtures, per side per unit, starter out + replacement
+  named + replacement string, join evidence per row) from data/desk/deficiencies.json.
+- RD-10: two totals published (estimator A = engine total; estimator B = registered lagged-mean total)
+  with gap column on n=105 graded games; MAE 11.871 vs 11.757, paired CI [-0.907, +1.098] -> keep
+  both; collapse deferred by pre-registered rule.
+
+### Verification performed (arena/6259c7b0-x3)
+
+- `python3 scripts/verify_readiness.py` — PASS (V1 links, V2 source-or-flag rows, V3 register
+  completeness, V4 official-only announcement links, V5 42-entry union no duplicates, V6 drift report
+  agrees with pins, V7 byte-identical rebuild, V8 controls reproduce with fixed seed).
+- `python3 scripts/drift_alarm.py` — PASS (14 pinned datasets, 0 alarms).
+- Repo-wide regression suite re-run green: `audit_all.py` (232 pages, 219 source tables, 8,043 source
+  rows, all linked or flagged), `verify_integration.py`, `check_links.py` (13 root pages, 529 links),
+  `check_hub.py`, `tools/verify_hub.py` (27 pages, 1,390 rows), `verify_signals.py`, `desk_verify.py`,
+  `check_dashboard.py`, `verify_data.py`, `tools/verify_ledger.py`, `tools/verify_markets.py`,
+  `ops_run.py`, `council_verify.py` (after a census rebuild), `check_site.py`, `tools/verify_site.py`.
+- Smoke test: all checked pages serve HTTP 200 locally.
+- Official-source verification for RD-08 done via web search against nfl.com pages on 2026-11-15
+  (URLs published on readiness/announced-starters.html); no number was filled from a non-official page.
+
+### Coordination requests (logged; files NOT edited)
+
+- To the signals owner (session arena/09f8c786-x3, tree complete): please join the RD-04 control rows
+  (readiness/data/control_baselines.json) into signals/leaderboard.html on its next rebuild so every
+  leaderboard run carries the random/favourites controls on its own page.
+- To the hub replacements owner: please join the announced-starter evidence field
+  (readiness/data + readiness/announced-starters.html) as a column on hub/replacements.html.
+
+### Irregularities flagged by this session (also on readiness pages; non-blocking)
+
+- IR-24 (this session's numbering): the committed root index.html carried a "Verification status"
+  section that was NOT emitted by its generator (tools/build_hub.py); regenerating would have silently
+  deleted another session's published content. Resolution: the section is now emitted by the generator
+  byte-identically (verified against the committed blob) and nothing was discarded.
+- IR-25: no scheduled capture exists anywhere in the repo prior to this session — every capture
+  workflow ran only on manual dispatch or legacy-branch pushes, so the "dated history" requirement was
+  structurally unmet; RD-06 closes the automation, first run pending on the default branch.
+- IR-26: availability load is published by the signals engine but never fitted (line 56 of
+  scripts/x3_signals.py: "the COEFFICIENT is not fitted"); the RD-07 ablation is the with/without test
+  the brief asks for, and its verdict at current n is inconclusive with the CI published.
+- IR-27 (inherited, restated on the readiness register): 13 of 74 requirement rows are blocked and 13
+  partial; the dominant blocker is F-01 (no official/verifiable market-price source) plus four
+  capture-class gaps (inactives, snap counts, reserve/IR, venue, past-season reports, weather).
+
+
+### Rebase record and integration closeout (arena/6259c7b0-x3, 2026-11-15)
+
+- `git pull --rebase origin main` replayed this session's commits onto main @ `6de17e2` (PR #86).
+  Conflicts were resolved as unions: `COORDINATION.md`, `README.md` (both logs kept), and
+  `tools/build_hub.py` (hand-merged so that session `arena/4c2f61cd-x3`'s round2 nav entry and
+  generator-rendered verification-status table AND this session's readiness nav entry and landing
+  readiness section both appear). Generated `index.html`, `council/repo-review.html`,
+  `data/council/council.json`, `verification-hub/audit-report.json` were re-emitted from the merged
+  generators; nothing was discarded.
+- Post-rebase, all verifiers were re-run on the merged tree and pass: `verify_readiness.py`,
+  `drift_alarm.py` (14/14 pins), `readiness_compute.py` reproduces identical values on the merged
+  data, `audit_all.py`, `verify_integration.py`, `check_links.py`, `check_hub.py`,
+  `tools/verify_hub.py`, `verify_signals.py`, `desk_verify.py`, `check_dashboard.py`,
+  `verify_data.py`, `tools/verify_ledger.py`, `tools/verify_markets.py`, `council_verify.py`,
+  `ops_run.py`, `check_site.py`, `tools/verify_site.py`, `agency_verify.py`.
+- One pre-existing broken link found and fixed as the integration remit (site must build with no
+  broken links): `scripts/agency_content.py` F-01 passed the prose string
+  "nfl.com does not publish market prices" as an href, producing
+  `<a href="nfl.com does not publish market prices">` in `agency/site/flagged.html` and failing
+  `audit_all.py`. Replaced with the official week-10 schedule URL and the agency site was
+  regenerated; `agency_verify.py` passes. Logged here since `agency/` belongs to another session.
+
+### Integration record (arena/3e44287d-x3, 2026-11-17)
+
+- **Integrated PR #89** (`arena/6259c7b0-x3`, head `c1647ec`) by `git merge --no-ff`. One conflict: `COORDINATION.md` (append-only log); resolved by keeping both sides verbatim (no line lost). No other file conflicted.
+- **Why main was red (reproduced locally on `b7d4142`):** `scripts/build_decision.py` regenerated six committed `decision/*.html` files (the x3 desk added an 18th tree, the committed pages still said 17); `scripts/audit_all.py` reported 64 violations (52 broken `decision/landing-block.html` links plus source-cell rows). PR #89 contains the regenerated `decision/` tree and the builder fix; both are now on this branch.
+- **Gate run on the integrated tree:** 42 pipeline gates from `pages.yml`, `decision-verify.yml`, `readiness.yml`, `round2.yml`, `signals.yml`, `x3-desk.yml`, `council-verify.yml`, `agency.yml` and the market/hub gates, plus 6 `node` checks: **all exit 0**.
+- **Gate side effects, restored, not committed:** `crosscheck/data/selfcheck.json` (timestamp), `signals/repo-review.html` (local clone depth), `verification-hub/audit-report.json` (row counts). They are regenerated by the gates and are not content changes.
+
+### Official-source verification (performed 2026-11-17, read live)
+
+| Item | Official source (read live) | Result |
+|---|---|---|
+| Lions Week 10 designations (VR-08): Kerby Joseph, Cade Mays, D.J. Reed | https://www.nfl.com/injuries/league/2026/reg10 (chunk 1 of 8) | All three **Out** (DNP). Committed tables (`data/hub/injuries_2026_wk10.csv`, `docs/data/injury-2026-week10.csv`, `audit/official_injury_wk10_2026.csv`) show **Out**. **Resolved in current data.** |
+| Week 11 designations | https://www.nfl.com/injuries/league/2026/reg11 | Redirects to the **Week 10** report. **No Week 11 designations are published yet.** |
+| Malik Willis to injured reserve; McCord to start (MIA) | https://www.nfl.com/news/dolphins-place-qb-malik-willis-groin-on-injured-reserve-kyle-mccord-in-line-for-first-start | Confirmed: IR on Tuesday (groin), McCord to start at Indianapolis, Willis out Weeks 10–13. Register row dated 2026-11-10 matches. |
+| Darnold out, Lock to start (SEA) | https://www.nfl.com/news/sam-darnold-ruled-out-for-seahawks-week-10-game-vs-raiders-drew-lock-expected-to-start-again | Confirmed (Monday, coach). Register row dated 2026-11-09 matches. |
+| Lock, no designation (SEA) | https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders | Confirmed (Friday, coach). Register row dated 2026-11-13 matches. |
+| Watson to start (CLE) and Beck to start (ARI) | https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-wednesday-nov-11 | Confirmed content ("announced Wednesday"; "will start Sunday"). **Register date was 2026-11-12; the roundup URL is dated Wednesday Nov 11. Corrected to 2026-11-11.** |
+| Brissett to Baltimore (BAL) | https://www.nfl.com/news/jacoby-brissett-trade-ravens-cardinals | Article says the trade is **being finalized, completion expected over the weekend**. It does **not** say the trade was completed. The register row said "Traded". **Corrected** to "reported as being finalized". The article's date is not shown on the fetched page, so the register date is now **unverified**. |
+
+### Irregularities (flagged; none blocks merge; publish on the Flagged page)
+
+1. **Week 10 row counts disagree across committed files.** `data/injury_report_2026_wk10.csv` = 205 designated rows only (not a full list). `data/hub/injuries_2026_wk10.csv`, `docs/data/injury-2026-week10.csv` and `audit/official_injury_wk10_2026.csv` = 345 rows. `data/snapshots/wk10/…` and `agency/data/derived/injury_designations_w10_2026.csv` = 347 rows. The two 347-row captures differ by two rows and this is unexplained. The live official page was **not re-counted in full** this session (8 chunks; not read). The brief's figures (254 / 279) are not used anywhere in the repo as a checked number.
+2. **Willis roundup row** (`readiness/announced-starters.html`, MIA, dated 2026-11-11) cites a URL slugged `tuesday-nov-10`. The date is not corrected here because the roundup body was not re-read.
+3. **Brissett date** is unverified (see above).
+4. **"done" in the readiness register** means the mechanism exists (store, page, gate), not that the market or ratings values exist. No market price exists on any official NFL page; the price columns remain blank.
+5. **Branch naming:** the brief's `session-<id>/<task>` names are not used (platform rule: this session's assigned branch only).
+
+### Not done in this session (honest scope)
+
+- Full re-capture and row count of the Week 10 official report (8 chunks).
+- Texans depth chart (image only; needs an authorized structured source, not transcription).
+- Any new model, strategy, market price, ROI, CLV or leaderboard value. None exists in an official source.
+- The other seven open PRs (#58, #76, #77, #79, #80, #85) are **not merged** here. Their content overlaps this integration and was left for their owners to reconcile after this merge.
 ## Session `arena/7375a4eb-x3` — repo-wide audit restored to PASS (claim, 2026-11-17 UTC)
 
 - **Session ID / branch:** `arena/7375a4eb-x3` (platform-assigned; the brief's `session-<id>/<task>` naming yields to the platform rule). **Base:** `main` @ `b7d4142`.
@@ -3426,3 +3641,30 @@ Fetched `origin/main` at `ed4cb1a` and merged it as `2f1433c`; the `COORDINATION
 **Small count clarification:** the current `verdict/data/` directory contains **8** CSV datasets (including the designation pilot), not 7 as the first progress note stated. The Pages link appended above is a target URL and is not claimed live until this branch is merged and the deploy is confirmed.
 
 **Question-register update:** the `/reg11` injury endpoint was fetched directly at `2026-11-17T23:01Z`; it redirects to `/reg10` and the returned title says Week 10. Added R-09 and Q-06 to make the not-yet-published Week-11 report a sourced flag and an explicit clearance gate. The open-question CSV now has **6** rows (not 5 as stated in the preceding summary). The daily heartbeat warns before the expected Wednesday report window and fails if the endpoint is still on Week 10 from 2026-11-18 UTC onward; no raw page is persisted.
+### Merge and deploy record (arena/7375a4eb-x3) — COMPLETE
+
+| Step | Result |
+|------|--------|
+| PR #92 (audit restore) | merged with `gh pr merge 92 --merge` → `e749d7b`. Pages build then **failed** at the hub-regeneration check (see "Deploy failure" above). Deploy skipped; the prior build stayed live. |
+| PR #93 (generator fix) | `https://github.com/karagemop466-tech/X3/pull/93` — merged with `gh pr merge 93 --merge` → `ed4cb1a`. |
+| GitHub Pages | run "Deploy X3 NFL site to GitHub Pages" on `ed4cb1a`: **success**; "pages build and deployment" on `ed4cb1a`: **success**. |
+| Live check | `https://karagemop466-tech.github.io/X3/` fetched after the deploy: serves the dashboard landing page with the decision-readiness table; the nav carries the decision-desk card. |
+
+**Irregularity found on the live page (not changed this round, logged for review):** on the root landing's "Decision readiness" table, rows R-01 to R-08 carry a status of `VERIFIED` while their source cell reads `UNVERIFIED — No official NFL source defines this policy/threshold`. These rows are project governance targets, not NFL facts. The status label should read "PROPOSED" or "POLICY", not "VERIFIED". The generator that writes that table sits in `tools/build_hub.py` (`readiness` rows) and was not edited in this session, because it is a content decision for the owning session.
+
+**Result summary:** the repo-wide audit went from FAIL (64 violations on `main`) to PASS, and the Pages deploy from failure to success. No data rows were added or changed, no values were inferred, and no official-source facts were added in this round. The Week-11 official injury report is not yet published (the Wednesday report is 2026-11-18).
+
+### Second integration: `origin/main` moved during the session (arena/3e44287d-x3, 2026-11-17)
+
+- `main` advanced by PRs #92, #93, #95 (`arena/7375a4eb-x3`), which repaired the same decision-layer and audit gates this branch had repaired through PR #89. Both repairs were valid, so the merge keeps **main's** versions of the conflicting builder and verifier, which are the ones that are live and green: `scripts/build_decision.py`, `scripts/verify_decision.py`, `decision/*.html`, `signals/data/repo_review.{csv,json}`, `verification-hub/audit-report.json`. PR #89's `readiness/` module, workflows and `tools/build_hub.py` edits are kept.
+- `COORDINATION.md`: one union-resolved conflict block (both sides kept).
+- `tools/build_hub.py` regenerates `index.html`. Its only change is the decision-desk card that main's `build_hub` fix added. CI requires this file to match the builder, so it is committed as regenerated.
+- **Two decision registers are now published, with different counts:** `decision/` (69 requirements) and `readiness/` (74 rows). Not reconciled in this session. Flagged.
+- Gate run on the merged tree, before the merge commit: 43 pipeline gates + 6 node checks, all exit 0 (see the table in the PR body).
+
+
+### Merge note — `origin/main` advanced to `e375f75` during integration
+
+`git fetch origin main && git merge origin/main` conflicted in `COORDINATION.md` and `README.md` because both sides append session records. Resolution retained both sides’ complete blocks without deleting earlier or newer session logs. The incoming main includes the `readiness/` work and its landing-page navigation from the owning session; this verdict branch does not edit those shared files. Re-run the repo-wide checks after resolution, then push only `arena/557302a9-x3`.
+
+**Post-merge verification of the incoming `origin/main` readiness integration:** `python3 scripts/verify_readiness.py` PASS (42 change-our-mind entries, drift pins and deterministic pages); `scripts/audit_all.py` PASS; `verdict/verify.py` PASS; `scripts/verify_round2.py` PASS. `git diff --check` reports CRLF carriage returns as trailing whitespace in newly imported `readiness/data/history/**` CSVs; these are the incoming session’s generated data, were not edited here, and the project verification gates pass. This session’s only root discoverability change is the README pointer; a `/verdict/` root card remains a logged request to the shared-nav owner.

@@ -450,3 +450,33 @@ reachability only; it does not overwrite captures or store raw pages.
 
 **Deployment note:** the `/verdict/` URL becomes available on GitHub Pages only after this branch’s
 integration PR is merged and the Pages deployment succeeds.
+## Readiness module — `/readiness/` (session `arena/6259c7b0-x3`)
+
+Closes the ten brief requirements no earlier session had implemented. Live at
+**https://karagemop466-tech.github.io/X3/readiness/**
+
+| Task | Where |
+|---|---|
+| RD-01 Decision-readiness table on the landing page (74 rows: gate that blocks it, number that clears it) | root `index.html` section + `readiness/decision-readiness.html` |
+| RD-02 Two-sided "what would change our mind" field on every strategy entry (42 entries across 4 trees) | `readiness/change-our-mind.html` |
+| RD-03 Drift alarm on every parser: 14 datasets pinned; CI fails loudly | `readiness/drift-alarms.html`, `scripts/drift_alarm.py` |
+| RD-04 Control baselines (coin flip; favourites only) on the identical graded set and metric | `readiness/control-baselines.html` |
+| RD-05 Weekly what-changed diff (rank / rating / availability) + stored weekly snapshots | `readiness/what-changed.html`, `readiness/data/history/2026/` |
+| RD-06 Scheduled immutable snapshots (cron Wed/Thu/Fri + Sun), SHA-256 manifest, freshness alert | `readiness/snapshots.html`, `.github/workflows/availability-snapshots.yml` |
+| RD-07 Availability-feature ablation with uncertainty (verdict: inconclusive at n=16, CI published) | `readiness/ablations.html` |
+| RD-08 Announced-starter evidence field (5 dated official announcements, week 10) | `readiness/announced-starters.html` |
+| RD-09 Offense-vs-defence matchup deficiency matrix, 1st–4th string | `readiness/matchup-matrix.html` |
+| RD-10 Every model total published twice with a gap column (collapse deferred by rule) | `readiness/two-totals.html` |
+
+### Rebuild and verify
+
+```sh
+python3 scripts/readiness_compute.py   # controls, what-changed, ablation, two totals (deterministic, seeded)
+python3 scripts/drift_alarm.py         # RD-03 gate: fails loudly on any pinned drift
+python3 scripts/build_readiness.py     # render the 11 pages
+python3 scripts/verify_readiness.py    # links, sourcing, determinism, controls reproduce
+```
+
+Everything the module publishes is either linked to an official source, a provenance
+link, or an explicit UNVERIFIED/BLOCKED marker. No market price, inactive list, snap
+count or venue is invented; those stay blocked with the number that would clear them.
