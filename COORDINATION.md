@@ -3839,3 +3839,9 @@ CL-F-01 the canonical feed on main still labels 13 of 14 Week-10 games SCHEDULED
 2. Read the remaining **12 Week-10 game sheets** for inactives/line-ups (SG-C-02) and join official snap shares before any depth or replacement-deficiency feature is built (A-11 stays BLOCKED until then).
 3. The **price decision** (Q-C01 / SG-C-01) is still the single owner decision that unblocks the most: 78 `FAIR_ONLY` rows are waiting to receive a market value, and no residual, CLV, ROI or reward can exist before it.
 4. Reconcile the two capture regimes (this module's minute-stamped reads vs `data/snapshots` day-stamped seals) rather than running both.
+
+### Post-merge record (same session)
+
+- **PR #100 merged** into `main` as `ec8dab2` at 2026-11-17T23:29:01Z; `X3 close-out desk`, `X3 decision layer`, `Council verify`, `X3 atlas module`, `X3 round2 module`, `Agency` and `Deploy X3 NFL site to GitHub Pages` all ran green on that push.
+- Reading the **deployed** page (not the source) found three defects, fixed in **PR #101** (same branch): a CSV header row rendering as a data row on the landing page; a landing-page card that inferred "1 / 4 strategies leaderboard-eligible" from the wording of a verdict string when the honest, computed value is **0 / 4**; and two sentences still describing the pre-rebase state (13 unread game sheets, "fourteen answers" → 12 and 22). Verifier extended with V-23 (no published CSV may repeat its header; the eligibility card must read the computed field) so the first two cannot come back silently.
+- **PR #101 merged**; Pages `build` and `deploy` both succeeded and the live pages were re-fetched to confirm the fix. Site entry point: `https://karagemop466-tech.github.io/X3/closeout/index.html`.
