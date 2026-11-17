@@ -3846,3 +3846,12 @@ CL-F-01 the canonical feed on main still labels 13 of 14 Week-10 games SCHEDULED
 - Reading the **deployed** page (not the source) found three defects, fixed in **PR #101** (same branch): a CSV header row rendering as a data row on the landing page; a landing-page card that inferred "1 / 4 strategies leaderboard-eligible" from the wording of a verdict string when the honest, computed value is **0 / 4**; and two sentences still describing the pre-rebase state (13 unread game sheets, "fourteen answers" → 12 and 22). Verifier extended with V-23 (no published CSV may repeat its header; the eligibility card must read the computed field) so the first two cannot come back silently.
 - **PR #101 merged**; Pages `build` and `deploy` both succeeded and the live pages were re-fetched to confirm the fix. Site entry point: `https://karagemop466-tech.github.io/X3/closeout/index.html`.
 - **PR #105** (follow-up, same branch): re-reading the *deployed* text caught a stale hand-typed number — the executive summary still quoted one game's roster counts after a second game sheet had been read. Those counts are now computed at build time (`{N_STARTERS}` / `{N_SUBS}` / `{N_DNP}` / `{N_INACT}` / `{N_GBROWS}` = 88 / 76 / 5 / 24 across 193 roster rows for 2 games) and **V-24** asserts the structure behind them: every complete club sheet lists exactly 22 starters and 6 inactives, no named row is blank, and the one intentionally blank row must say why. Gate now 24 checks. Sessions adding a game sheet: nothing in the prose needs editing.
+
+### Final state of this session (all work merged to `main`)
+
+`#100` (the module) → `#101` (three defects found on the deployed page) → `#103` (this record) → `#105`
+(`7836bdc`, roster counts made computed + check V-24). Working tree clean; `python3 scripts/closeout_verify.py`
+reports **24 checks, 0 failures** on the merged `main`; `scripts/audit_all.py` passes repo-wide.
+Live: `https://karagemop466-tech.github.io/X3/closeout/index.html`. Nothing in this session is left half-applied,
+and no other session's file was hand-edited — the only writes outside my scope were regenerations of
+`decision/*.html` by that tree's own builder, which its CI requires after a new tree exists.
