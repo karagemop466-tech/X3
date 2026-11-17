@@ -336,6 +336,25 @@ bad = [r["id"] for r in rt if "NOT SWEPT" not in r["status"] and "http" not in r
      f"{len(rt)} rows; {len([r for r in rt if 'NOT SWEPT' in r['status']])} row(s) say the other clubs are unswept"
      if not bad else str(bad))
 
+# V-21 the injury delta is computed from two dated files, and the published claim matches the recomputation
+d1 = rows(os.path.join(D, "injury_report_w10_capture.csv"))
+d2 = rows(os.path.join(D, "injury_report_w10_reread.csv"))
+k1 = {(x["club"], x["player"]): (x["injury"], x["practice_status"], x["game_status"]) for x in d1}
+k2 = {(x["club"], x["player"]): (x["injury"], x["practice_status"], x["game_status"]) for x in d2}
+real_changed = len([k for k in set(k1) & set(k2) if k1[k] != k2[k]]) + len(set(k2) - set(k1)) + len(set(k1) - set(k2))
+pub = rows(os.path.join(DD, "injury_delta.csv"))
+pub_changed = sum(int(x["designation_or_injury_changed"]) + int(x["added"]) + int(x["removed"]) for x in pub)
+bad = []
+if real_changed != pub_changed:
+    bad.append(f"published {pub_changed}, recomputed {real_changed}")
+if not (d1[0]["captured_utc"] < d2[0]["captured_utc"]):
+    bad.append("the two captures are not strictly time-ordered")
+if {x["source_page"] for x in d1} != {x["source_page"] for x in d2}:
+    bad.append("the two reads are not of the same URL")
+(ok, fail)[bool(bad)]("V-21", "injury delta recomputes from two dated captures",
+     f"{len(d1)} rows at {d1[0]['captured_utc']} vs {len(d2)} at {d2[0]['captured_utc']}; "
+     f"{real_changed} changed - published as a stability check, not a signal" if not bad else str(bad))
+
 print(f"checks run: {len(CHECKS)}  failures: {len(FAILS)}")
 if not QUIET:
     for cid, desc, st, detail in CHECKS:

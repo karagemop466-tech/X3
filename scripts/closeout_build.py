@@ -126,6 +126,9 @@ STATS = {
     "N_READY": len(raw["readiness.csv"]),
     "N_AVAIL": len(raw["availability_w10.csv"]),
     "N_REPORT": len(raw["injury_report_w10_capture.csv"]),
+    "N_REREAD": len(raw["injury_report_w10_reread.csv"]),
+    "N_DELTA": sum(int(r["designation_or_injury_changed"]) + int(r["added"]) + int(r["removed"])
+                   for r in raw["injury_delta.csv"]),
     "N_GB": len(raw["gamebook_ne_det.csv"]),
     "N_GB2": len(raw["gamebook_lac_bal.csv"]),
     "N_HDR": len(raw["gamebook_ne_det_header.csv"]),
@@ -378,8 +381,14 @@ index_parts = [
     "- and no Jackson or Huntley anywhere in the document. It also proves the inactive blocks are complete "
     "(48 dressed + 6 not active = 54), which is what makes an absence readable as a roster fact.</li></ul></section>",
     top_findings,
-    '<p class="note">Earlier sessions\' trees are linked from the <a href="../index.html">site root</a>; '
-    "this page supersedes none of them and edits none of their files.</p>",
+    '<section class="callout"><h2>Where this sits among the other trees</h2><p>This is the 22nd top-level HTML '
+    "tree in the repository, and that is a defect rather than a feature (CL-F-03). One neighbour in particular "
+    "overlaps this module's bookkeeping: <code>readiness/</code>, merged on 2026-11-17, publishes a 74-row "
+    "decision-readiness register, a drift alarm over 14 pinned datasets, a two-totals comparison (n=105, MAE "
+    "11.871 against 11.757, gap CI spanning zero) and seeded control baselines. This site does not claim those "
+    "items as its own work: rows A-33 to A-38 of the readiness table say MET IN ANOTHER TREE and link there, and "
+    "the recommendation is to merge this module's tables into that register instead of maintaining a third one "
+    "(SG-C-08).</p></section>",
 ]
 page("index.html", "Close-out desk - what changed since the last read",
      "Everything on this site is arithmetic on rows transcribed from official NFL pages on {CAP_DAY}, or is "
@@ -611,11 +620,21 @@ page("availability.html", "Availability graph",
             r["evidence"], r["replacement_or_starter_at_slot"], badge(r["claim_status"]), r["source_report"],
             r["source_gamebook"] or '<span class="badge u">no game-level source read</span>']
            for r in raw["availability_w10.csv"]],
-          cap="{N_AVAIL} designated or undesignated rows joined to the one Game Book read",
+          cap="{N_AVAIL} report rows joined to the game sheet of the one club pair whose report was read",
           note="This is the whole availability evidence in this repository: 44 line-up entries, 55 "
                "substitution entries, 5 Did Not Play entries and 12 inactive entries, over two of the fourteen "
                "Week-10 games. Absent from a list is only treated as a roster fact where the sheet closes "
                "(CL-F-07); the 19 rows below that are not confirmed stay not confirmed."),
+    table(["Club", "Rows at T1", "Rows at T2", "Added", "Removed", "Designation or injury changed", "Which",
+           "T1", "T2", "Reading", "Source"],
+          [[r["club"], r["rows_at_T1"], r["rows_at_T2"], r["added"], r["removed"],
+            r["designation_or_injury_changed"], r["changed_players"], r["T1"], r["T2"], r["reading"], r["source"]]
+           for r in raw["injury_delta.csv"]],
+          cap="The delta the brief asks for, published instead of a level - two dated reads of the same page",
+          note="A 39-minute window produced no change, and saying so is the point: the injury feed is a time "
+               "series and the signal is the difference between two captures. Until a third capture lands on the "
+               "league's own revision day there is no surprise to price, which is why gate G-8 fails on purpose.",
+          kind="data"),
     table_csv("injury_report_w10_capture.csv", ["Club", "Player", "Pos", "Injury", "Practice status",
                                                "Game status", "Source page", "Captured"],
               cols=["club", "player", "pos", "injury", "practice_status", "game_status", "source_page",
@@ -764,7 +783,12 @@ page("readiness.html", "Decision readiness",
     table(["ID", "Requirement", "State", "Blocking gate", "Number or condition that clears it", "Evidence"],
           [[r["id"], r["requirement"], badge(r["state"]), r["blocking_gate"],
             r["number_or_condition_that_clears_it"], r["evidence"]] for r in raw["readiness.csv"]],
-          cap="{N_READY} requirements", kind="data"),
+          cap="{N_READY} requirements - one row per item in the standing brief",
+          note="States used here: DONE (built and checked in this tree), PARTIAL, STARTED, OPEN, BLOCKED "
+               "(waiting on a decision or an official source that does not exist), NOT ATTEMPTED (deliberately "
+               "out of scope for a close-out), and MET IN ANOTHER TREE (someone else built it; this module links "
+               "it instead of duplicating the claim). No row is marked done because a page exists - only because a "
+               "number or a check backs it.", kind="data"),
 ])
 
 page("flagged.html", "Flagged for review",

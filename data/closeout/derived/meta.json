@@ -1,15 +1,28 @@
 {
  "forecasts": 13,
+ "game_sheets": {
+  "closed_at_54": 3,
+  "players_accounted_total": 192,
+  "sheets": 4
+ },
  "games_in_log": 150,
  "games_week10_captured": 14,
  "generated_utc": "2026-11-17T23:05:00Z",
  "home_advantage": -0.157288,
  "in_sample_r2_margin": 0.407,
+ "injury_delta": {
+  "T1": "2026-11-17T22:45Z",
+  "T2": "2026-11-17T23:24Z",
+  "changed": 0,
+  "clubs": 4,
+  "rows_T1": 44,
+  "rows_T2": 44
+ },
  "inputs_hash": {
   "availability_w10.csv": "5a475da4d9d8e58778f6f1515d5f62be80d6b30cc5664230088fc18601e41cd6",
   "gamebook_ne_det.csv": "b190adc98f2d1c54f8a994e3b1e950569c6bcf74ec6d9dcf0d210fad66aac5af",
   "official_standings_2026_wk10.csv": "d8cb19f0c76ff3e31fa3076047124ec869ef5a60ad80eaf4f4cb2d0468a4f09b",
-  "source_reads.csv": "c3e7576a1036e39d04ef9c928592afa6ee7199aa5eddc8b901bc5a6fa26b5e8e",
+  "source_reads.csv": "96f627f8ea0864dd4e4840ae1078fc2ac97a8fd8ce2a087bd4f55709e8570b91",
   "week10_finals.csv": "8c4a355a3d540f9b9c532c9eef966479e21f85902f43ccfc9590fe81bd552e41",
   "week11_slate.csv": "c667e59982ecfe93b4ac0d8f1d395d89e8311a77c4af740f130c2cc5e4643f45"
  },

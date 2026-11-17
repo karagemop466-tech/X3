@@ -926,6 +926,28 @@ for fr in forecasts:
         })
 write("price_store.csv", price_store)
 
+# ---------------------------------------------------------------- 4c. injury-report delta between two dated reads
+t1 = {(x["club"], x["player"]): x for x in read("injury_report_w10_capture.csv")}
+t2 = {(x["club"], x["player"]): x for x in read("injury_report_w10_reread.csv")}
+F1 = list(read("injury_report_w10_capture.csv"))[0]["captured_utc"]
+F2 = list(read("injury_report_w10_reread.csv"))[0]["captured_utc"]
+delta = []
+for club in sorted({c for c, _ in t1} | {c for c, _ in t2}):
+    a = {k for k in t1 if k[0] == club}
+    b = {k for k in t2 if k[0] == club}
+    ch = [k for k in a & b if (t1[k]["injury"], t1[k]["practice_status"], t1[k]["game_status"])
+          != (t2[k]["injury"], t2[k]["practice_status"], t2[k]["game_status"])]
+    delta.append({"club": club, "rows_at_T1": len(a), "rows_at_T2": len(b), "added": len(b - a),
+                  "removed": len(a - b), "designation_or_injury_changed": len(ch),
+                  "changed_players": "; ".join(f"{x[1]}" for x in sorted(ch)) or "none",
+                  "T1": F1, "T2": F2,
+                  "reading": ("no delta in a 39-minute window - the report is revised on the league's schedule, "
+                              "so a same-evening re-read proves stability and cannot produce a surprise signal"
+                              if not ch and not (b - a) and not (a - b) else "the page moved between the two reads"),
+                  "source": "https://www.nfl.com/injuries/league/2026/reg10"})
+write("injury_delta.csv", delta)
+n_delta_changed = sum(int(x["designation_or_injury_changed"]) + int(x["added"]) + int(x["removed"]) for x in delta)
+
 prereg = [
     {"id": "G-1", "gate": "pre-registration before results",
      "rule_text": f"model version {MODEL_VERSION}; inputs = the 150 verified games through Week 10; "
@@ -978,9 +1000,11 @@ prereg = [
      "source": "data/closeout/derived/scorecard.csv"},
     {"id": "G-8", "gate": "surprise, not level, for availability",
      "rule_text": "the injury feed enters as the change between two dated captures; a level is never a feature",
-     "measured_now": "two dated captures exist for this window: the Week-10 report at 2026-11-17T22:45Z and the "
-                     "prior session's read of the same URL on 2026-11-15; the Week-11 report does not exist yet",
-     "threshold": ">= 3 dated captures of the same week before any designation feature is fitted",
+     "measured_now": f"2 dated captures of the same Week-10 page inside this session ({F1} and {F2}): "
+                     f"{len(t1)} rows each, {n_delta_changed} rows changed; the prior session's read of the same "
+                     "URL is dated 2026-11-15, and the Week-11 report does not exist yet (3 reads of its absence "
+                     "at 22:45Z, 22:47Z and 23:12Z)",
+     "threshold": ">= 3 dated captures of the same revision day before any designation feature is fitted",
      "status": "FAIL - delta published as an observation, not as a model input",
      "source": "data/closeout/source_reads.csv"},
 ]
@@ -1028,6 +1052,12 @@ meta = {
                 "prior_board": "https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/markets.json",
                 "inherited_log": "https://github.com/karagemop466-tech/X3/blob/b7d4142/data/x3/verified/results_2026.csv"},
 }
+meta.update({
+    "injury_delta": {"rows_T1": len(t1), "rows_T2": len(t2), "changed": n_delta_changed,
+                      "T1": F1, "T2": F2, "clubs": len(delta)},
+    "game_sheets": {"sheets": len(sheets), "closed_at_54": sum(1 for s in sheets if s["closed_at_54"] == "yes"),
+                    "players_accounted_total": sum(int(s["players_accounted"]) for s in sheets)},
+})
 with open(os.path.join(D_OUT, "meta.json"), "w") as fh:
     json.dump(meta, fh, indent=1, sort_keys=True)
 
