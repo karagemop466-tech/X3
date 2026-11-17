@@ -1214,6 +1214,10 @@ are read.</li>
 <p class="lede">The repository carries {len(trees)} separate site trees built by earlier sessions for
 the same brief. Nothing was deleted. This page records what each contains so a reader can tell which
 module is maintained and which is history.</p>
+<p class="note">This table is a live scan of the repository, taken when the module was last built.
+It is the one page here that changes when another session adds a tree, and it is excluded from the
+module's reproducible-build check for exactly that reason: the count below is a fact about the
+repository at build time, not a claim this module can freeze.</p>
 <div class="warnbox"><p><b>The main finding.</b> Thirteen overlapping trees publish different numbers
 for the same fact. That is not a bug in any one of them; it is what happens when many sessions answer
 the same brief independently. Until one tree is chosen as canonical and the rest are labelled

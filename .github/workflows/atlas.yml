@@ -39,13 +39,27 @@ jobs:
       - name: Integration gate
         run: python3 scripts/verify_integration.py
 
+      # data/atlas/ and every atlas page except repo-review.html must reproduce
+      # byte for byte: they are derived only from tools/atlas_data.py.
+      # repo-review.html is the one exception - it is a live scan of the other
+      # sessions' trees, so it legitimately changes whenever another session
+      # lands a module. It is diffed and reported, not enforced.
       - name: Fail if a build left the tree dirty
         run: |
           git config --local user.email "ci@example.invalid"
           git config --local user.name "ci"
           git add -A atlas data/atlas index.html
-          git diff --cached --quiet || {
-            echo "::error::atlas/ or data/atlas/ changed on rebuild; run the engine and site builders and commit the result"
+          git diff --cached --quiet -- atlas/index.html data/atlas || {
+            echo "::error::data/atlas/ or atlas/index.html changed on rebuild; run the engine and site builders and commit the result"
             git --no-pager diff --cached --stat
             exit 1
           }
+          git diff --cached --quiet -- 'atlas/*.html' ':(exclude)atlas/repo-review.html' || {
+            echo "::error::an atlas page changed on rebuild; run the engine and site builders and commit the result"
+            git --no-pager diff --cached --stat
+            exit 1
+          }
+          if ! git diff --cached --quiet -- atlas/repo-review.html; then
+            echo "::notice::atlas/repo-review.html changed: another session has added or removed a site tree. Rebuild this module to refresh the census."
+            git --no-pager diff --cached --stat -- atlas/repo-review.html
+          fi
