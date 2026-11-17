@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 358,
       "flagged_rows": 276,
-      "refs": 430,
+      "refs": 431,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -105,6 +105,22 @@
         "dashboard/index.html: Away Home Model home spread Model total Network Kickoff (ET) Source",
         "dashboard/index.html: ID Area Question Blocking Detail",
         "dashboard/index.html: Q-01 Data scope What is the authoritative universe of games the model will be scored on? Yes open"
+      ]
+    },
+    "decision": {
+      "pages": 12,
+      "rows": 298,
+      "flagged_rows": 125,
+      "refs": 477,
+      "unsourced_examples": [
+        "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
+        "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
+        "decision/flagged.html: F-D03 MEDIUM two reads of the same page one day apart differ by 2 rows, and the cause cannot be pinned from the retained",
+        "decision/flagged.html: F-D06 LOW the report's club codes do not match the repository's the official page prints 'AZ' for Arizona and 'LAR' for ",
+        "decision/flagged.html: F-D07 LOW the earlier read has no clock time the 2026-11-14 record carries a date only, so the measurement window betwee",
+        "decision/flagged.html: F-D10 LOW counts quoted in the brief are stale against the repository the brief cites 254 rows / 4 no-injury sections / ",
+        "decision/flagged.html: F-D12 LOW two snapshot stores now exist in the project this session sealed data/snapshots/ledger.json + delta.json + wk1",
+        "decision/landing-block.html: id requirement status gate that blocks it the number that would clear it source"
       ]
     },
     "desk": {
@@ -312,9 +328,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 275,
-  "rows_total": 12000,
-  "rows_flagged_or_sourced": 10023,
-  "internal_refs": 7038,
+  "pages_total": 287,
+  "rows_total": 12298,
+  "rows_flagged_or_sourced": 10148,
+  "internal_refs": 7411,
   "problems": []
 }
