@@ -590,6 +590,16 @@ ctl_home_rate = _ctl_home
 ctl_fav_rate = mean([float(s["control_wk9_pct_favourite"]) for s in settled if s["control_wk9_pct_favourite"] != ""])
 ctl_rand = rand_hits
 mae_model, mae_zero = mae("margin_error"), mae("naive_margin_zero_error")
+def eligible(row):
+    """a division is leaderboard-eligible only when G-2 (sample) and G-3 (beats its controls) both clear"""
+    nn = int(row["n_gradable"] or 0)
+    beats = row.get("skill_vs_benchmark")
+    return {"n_gradable": nn, "gate_n": 200, "sample_gate": "PASS" if nn >= 200 else "FAIL",
+            "skill_gate": "FAIL - the proper score does not clear its benchmark"
+            if (beats in ("", None) or float(beats) <= 0) else "PASS (but the sample gate still fails)",
+            "leaderboard_eligible": "no"}
+
+
 scorecard = [
     {"id": "SC-1", "division": "singles - side", "what_is_scored": "probability that the home team covers the "
      "board's own fair line", "n_gradable": side_n, "n_push": side_push, "n_ungradable": 0,
@@ -757,6 +767,8 @@ wf_sc = {
     "source": "data/closeout/derived/walkforward.csv",
 }
 scorecard.append(wf_sc)
+for row in scorecard:
+    row.update(eligible(row))
 write("scorecard.csv", scorecard)
 
 # ---------------------------------------------------------------- 5c. shrink ablation on the walk-forward rows
@@ -799,6 +811,8 @@ abl.append({
     "source": "data/closeout/derived/walkforward.csv",
 })
 write("ablation_shrink.csv", abl)
+for row in scorecard:
+    row.update(eligible(row))
 write("scorecard.csv", scorecard)
 
 # ---------------------------------------------------------------- 6. luck panel
