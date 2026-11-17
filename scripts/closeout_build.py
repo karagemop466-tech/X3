@@ -151,7 +151,8 @@ STATS = {
     "N_CORR": len(raw["correlations.csv"]),
     "N_WF": meta["walkforward"]["graded_games"],
     "N_SCORE": len(raw["scorecard.csv"]),
-    "N_ELIGIBLE": sum(1 for r in raw["scorecard.csv"] if not r["verdict"].upper().startswith("NOT")),
+    "N_ELIGIBLE": sum(1 for r in raw["scorecard.csv"] if r.get("leaderboard_eligible") == "yes"),
+    "N_SCORE_ROWS": len(raw["scorecard.csv"]),
     "N_INHERITED": meta["games_in_log"] - meta["games_week10_captured"],
     "UNGRADED": (str(len([r for r in raw["ungraded.csv"] if r["game_id"].strip()])) + " ungraded row(s); "
                  "every priced game has a captured final"),
@@ -353,7 +354,7 @@ cards = f"""<div class="grid">
 <div class="sub">as_of 2026-11-14 board, Nov 15/16 kickoffs - the repository's only out-of-sample set</div></div>
 <div class="card"><div class="num">{STATS['N_FORECAST']}</div><div class="lbl">Week-11 fixtures priced and frozen</div>
 <div class="sub">2 days 0 hours before the first snap; {STATS['N_PRICE_ROWS']} open/close price rows</div></div>
-<div class="card"><div class="num">{STATS['N_ELIGIBLE']} / {STATS['N_SCORE']}</div><div class="lbl">strategies leaderboard-eligible</div>
+<div class="card"><div class="num">{STATS['N_ELIGIBLE']} / {STATS['N_SCORE_ROWS']}</div><div class="lbl">strategies leaderboard-eligible</div>
 <div class="sub">every score carries its n, its benchmark and its luck band</div></div>
 <div class="card"><div class="num">{STATS['N_AVAIL']}</div><div class="lbl">availability rows checked against a Game Book</div>
 <div class="sub">of {STATS['N_REPORT']} injury-report rows read from the live page</div></div>
@@ -410,11 +411,11 @@ page("executive-summary.html", "Executive summary",
     "honestly until one source is admitted; {N_PRICE_ROWS} rows exist to receive them.</li>"
     "<li><b>Availability</b> - blocked by the league's own calendar: the Week-11 injury report did not exist "
     "at freeze time, and that absence is recorded rather than smoothed over.</li>"
-    "<li><b>Sample size</b> - blocked by time: {N_SETTLE} games settled, {N_WF} graded walk-forward, against a "
-    "smallest registered gate of 200 decisions.</li></ul>"
-    '<p class="note">The decisions that change the most, in order: SG-C-01 (price source), SG-C-02 (13 more '
-    "Game Books), SG-C-03 (grade the frozen board and never touch it), SG-C-08 (stop publishing fourteen "
-    "answers).</p></section>"])
+    "<li><b>Sample size</b> - blocked by time: {N_SETTLE} games settled against a published line and {N_WF} "
+    "forecast walk-forward, against a smallest registered gate of 200 graded decisions.</li></ul>"
+    '<p class="note">The decisions that change the most, in order: SG-C-01 (price source), SG-C-02 (the '
+    "remaining 12 Week-10 game sheets), SG-C-03 (grade the frozen board and never touch it), and SG-C-08 "
+    "(stop publishing twenty-two answers when one register would do).</p></section>",])
 
 page("week10.html", "Week 10 close-out",
      "The fourteen games that finished after the last capture, transcribed from the league's own week page. "
