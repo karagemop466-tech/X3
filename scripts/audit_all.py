@@ -196,7 +196,11 @@ def main() -> int:
             target = href.split("#", 1)[0].split("?", 1)[0]
             if not target:
                 continue
-            if not (page.parent / target).exists():
+            # A root-level paste fragment (decision/landing-block.html) is written
+            # with root-relative links because it is pasted into index.html; resolve
+            # it from the repo root, as scripts/verify_decision.py does.
+            base = ROOT if page.name == "landing-block.html" else page.parent
+            if not (base / target).exists():
                 problems.append(f"L1 {rel}: broken internal link -> {href}")
 
         # ---- L2: source cells in source-column tables ---------------
