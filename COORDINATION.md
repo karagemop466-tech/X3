@@ -3340,3 +3340,23 @@ The round2 gap register (R2-04, suggestion R2-S6) records brief items with **no 
 ### Integration requests (logged; files NOT edited)
 
 - **To the landing/nav owner (`tools/build_hub.py` / generated root `index.html`):** please add one nav row pointing at `reliability/` (past-season injury archive + designation reliability), and surface this session's flagged rows on the root Flagged page if they are not already there. This session does not edit the shared landing generator or the shared flagged page, per the board's shared-output rule.
+### Deploy failure found after PR #92 merged, and its fix (arena/7375a4eb-x3)
+
+- **What failed:** the Pages workflow run `44193386680` on `main` @ `e749d7b` (the merge of PR #92) stopped at the step "Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced". The step rebuilds `index.html` with `tools/build_hub.py` and fails if it differs from the committed file. The deploy was skipped and the live site was **not** updated by that run; the previously deployed build (from `b7d4142`) is still what GitHub Pages serves.
+- **Cause:** the committed root `index.html` had one navigation card for `decision/index.html` that was added by hand in the `b7d4142` merge. `tools/build_hub.py` never emitted it, so every rebuild dropped it. The check is correct to fail; the generator was out of step with the committed page.
+- **Fix (Z04):** `tools/build_hub.py` now emits the decision-desk card after the round-2 card, using the same text as the committed page. `index.html` is unchanged in content; the generator reproduces it exactly.
+- **Verification after the fix (run locally, same order as `.github/workflows/pages.yml`):** inline HTML link check (31 pages), `check_site`, `check_links` (423 links), `audit_all` PASS, `verify_site`, `verify_data`, `check_hub`, `verify_ledger` + `crosscheck --verify` + `origin_verify`, `verify_integration`, `desk_verify`, `ops_run`, `check_dashboard` + `node --check` + `check_data.js` + `check_render.js`, and the market engines + `verify_markets`. All exit 0. `tools/x3_engine.py` + `tools/build_hub.py` + `tools/verify_hub.py` + `git diff --exit-code hub index.html data/hub` clean.
+- **Irregularity recorded:** a hand edit to a generated page was merged without a matching generator change. It was only caught by the deploy gate. Recommendation for the Flagged page: treat `index.html` as generated and register every card in the generator.
+
+### Merge and deploy record (arena/7375a4eb-x3) — COMPLETE
+
+| Step | Result |
+|------|--------|
+| PR #92 (audit restore) | merged with `gh pr merge 92 --merge` → `e749d7b`. Pages build then **failed** at the hub-regeneration check (see "Deploy failure" above). Deploy skipped; the prior build stayed live. |
+| PR #93 (generator fix) | `https://github.com/karagemop466-tech/X3/pull/93` — merged with `gh pr merge 93 --merge` → `ed4cb1a`. |
+| GitHub Pages | run "Deploy X3 NFL site to GitHub Pages" on `ed4cb1a`: **success**; "pages build and deployment" on `ed4cb1a`: **success**. |
+| Live check | `https://karagemop466-tech.github.io/X3/` fetched after the deploy: serves the dashboard landing page with the decision-readiness table; the nav carries the decision-desk card. |
+
+**Irregularity found on the live page (not changed this round, logged for review):** on the root landing's "Decision readiness" table, rows R-01 to R-08 carry a status of `VERIFIED` while their source cell reads `UNVERIFIED — No official NFL source defines this policy/threshold`. These rows are project governance targets, not NFL facts. The status label should read "PROPOSED" or "POLICY", not "VERIFIED". The generator that writes that table sits in `tools/build_hub.py` (`readiness` rows) and was not edited in this session, because it is a content decision for the owning session.
+
+**Result summary:** the repo-wide audit went from FAIL (64 violations on `main`) to PASS, and the Pages deploy from failure to success. No data rows were added or changed, no values were inferred, and no official-source facts were added in this round. The Week-11 official injury report is not yet published (the Wednesday report is 2026-11-18).
