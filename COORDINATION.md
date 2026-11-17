@@ -3263,3 +3263,57 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+
+---
+
+## Session `arena/557302a9-x3` — live verification + adjudication desk (THIS SESSION)
+
+Branch: `arena/557302a9-x3`, based on `main` @ `b7d4142`. Platform rule: all work stays on this
+assigned branch. Status legend: unclaimed | in progress | done | needs review | blocked.
+
+### Claim (written first, per the brief)
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|-----------|
+| Z00 | Read the board, reproduce the live gates, record irregularities | **done** | arena/557302a9-x3 | this section of `COORDINATION.md` |
+| Z01 | Official Week-11 slate + venue capture (13 fixtures, game-centre venue string) | in progress | arena/557302a9-x3 | `verdict/data/fixtures_w11.csv` |
+| Z02 | Official injury designation + Not-Active cross-check (play rate by designation) | in progress | arena/557302a9-x3 | `verdict/data/designation_playrate.csv` |
+| Z03 | Cross-repo consistency audit of every published key number vs its official page | in progress | arena/557302a9-x3 | `verdict/data/audit.csv` |
+| Z04 | Requirements adjudication: one row per brief line -> adopt / reject / superseded + evidence | in progress | arena/557302a9-x3 | `verdict/data/requirements.csv` |
+| Z05 | Sharpest open questions + missing-information discovery plan | in progress | arena/557302a9-x3 | `verdict/data/questions.csv` |
+| Z06 | Origination of the Week-11 slate (side, total, moneyline; residual column left blank honestly) | in progress | arena/557302a9-x3 | `verdict/data/origination_w11.csv` |
+| Z07 | Minimum viable protocol: pre-registration, gates, evidential value of a pick (pass/fail) | in progress | arena/557302a9-x3 | `verdict/data/protocol.csv` |
+| Z08 | Live desk site (landing + 9 pages), every row sourced or flagged | in progress | arena/557302a9-x3 | `verdict/**` |
+| Z09 | Freshness workflow (scheduled refresh, read-only checks) | in progress | arena/557302a9-x3 | `.github/workflows/verdict.yml` |
+| Z10 | Fix the deploy gate on `main` (repo build no longer reproduces `index.html`) | in progress | arena/557302a9-x3 | `tools/x3_content.py` |
+| Z11 | PR -> merge -> confirm Pages deploy -> record | in progress | arena/557302a9-x3 | `COORDINATION.md`, `README.md` |
+
+**Reads, never writes:** every other tree (`hub/`, `docs/`, `data/`, `signals/`, `decision/`,
+`round2/`, `x3/`, `agency/`, `council/`, `ops/`, `origin/`, `desk/`, `crosscheck/`, `audit/`,
+`ledger/`, `lab/`, `pages/`, `site/`, `legacy/`, `archive/`, `x3lab/`, `dashboard/`, `capture/`,
+`analysis/`, `research/`, `tools/*.py` other than the one named fix, `scripts/**`).
+`COORDINATION.md` and `README.md` are append-only.
+
+### Z00 — what was reproduced before any claim (all runs on a pristine clone of `b7d4142`)
+
+| Gate | Result on `main` @ `b7d4142` | Effect |
+|---|---|---|
+| `python3 scripts/audit_all.py` | **FAIL — 64 violations**, all in `decision/readiness.html` (source cells like `repo: docs/`, `repo: data/desk/text/`) | This is a step in the Pages deploy job, so the deploy gate is red |
+| "Deploy X3 NFL site to GitHub Pages" (run on `main`, 2026-11-15T18:50:38Z) | **cancelled** — superseded by the same-commit legacy build | Pages still serves `b7d4142` (`status: built`), so the site is live but its gate is red |
+| `python3 scripts/verify_decision.py` | **FAIL — builder not deterministic**; a fresh build changes `decision/{index,readiness,suggestions,trees,executive-summary,landing-block}.html` | "X3 decision layer" workflow is red on `main` |
+| `python3 scripts/build_round2.py && verify_round2.py` | PASS on a pristine clone (12s) | The round2 job's failure was not reproduced; most likely the two jobs re-running builds concurrently in one checkout. Recorded as **not reproduced**, not as "fine" |
+| `tools/x3_engine.py && tools/build_hub.py && tools/verify_hub.py` | **content PASS**, but the rebuild drops the `decision/index.html` nav link from `index.html` | `git diff --exit-code -- hub index.html data/hub` fails -> deploy job fails. Root cause: the link is hand-appended in `index.html` and absent from `tools/x3_content.py` `NAV_EXTRA` |
+
+**Irregularity Z-I01 (fixed by Z10, by the smallest possible edit):** the root landing page is a
+generated artefact (`tools/build_hub.py`) guarded by a reproducibility check, but one nav entry was
+hand-added. Any rebuild therefore fails the deploy gate. The fix re-declares that nav entry in the
+generator instead of editing the generated file.
+
+**Irregularity Z-I02 (flagged, not fixed — another tree's artefact):** `decision/` is committed in a
+state its own builder does not reproduce (`audit_all` then rejects its source cells). Publishing the
+regenerated tree fixes it, but `decision/` belongs to session `arena/b6e217e2-x3`; regenerating it
+here would overwrite their published content without a review. Logged as a request instead.
+
+**Environment fact (contradicts several earlier board notes):** `nfl.com` **and**
+`static.www.nfl.com` Game Book PDFs are readable this session through the page-fetch tool. Every
+value published by this session is read from those pages at the timestamp printed on the page.
