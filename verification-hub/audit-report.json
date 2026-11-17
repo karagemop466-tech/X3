@@ -79,7 +79,7 @@
       "pages": 20,
       "rows": 984,
       "flagged_rows": 913,
-      "refs": 1627,
+      "refs": 1629,
       "unsourced_examples": [
         "closeout/availability.html: Club Player Pos Designation Practice Game Book disposition Evidence Who held the slot Claim status Report source Game Bo",
         "closeout/availability.html: Club Rows at T1 Rows at T2 Added Removed Designation or injury changed Which T1 T2 Reading Source",
@@ -379,6 +379,6 @@
   "pages_total": 341,
   "rows_total": 14586,
   "rows_flagged_or_sourced": 12102,
-  "internal_refs": 9023,
+  "internal_refs": 9027,
   "problems": []
 }
