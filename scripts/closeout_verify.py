@@ -404,6 +404,27 @@ if f"{elig} / {len(rows(os.path.join(DD, 'scorecard.csv')))}" not in cards:
 (ok, fail)[bool(bad)]("V-23", "no duplicated headers; the eligibility card is computed",
      "all CSVs and the landing-page count recompute from their fields" if not bad else str(bad))
 
+# V-24 the roster tables are internally consistent and the quoted counts equal the files
+gb = rows(os.path.join(D, "gamebook_ne_det.csv")) + rows(os.path.join(D, "gamebook_lac_bal.csv"))
+kinds = {"starter", "substitution", "did not play", "inactive"}
+bad = sorted({r["kind"] for r in gb} - kinds)
+per = {}
+for r in gb:
+    per.setdefault((r["game"], r["team"], r["kind"]), set()).add(r["player"])
+for (game, club, kind), s in per.items():
+    if kind == "starter" and len(s) != 22:
+        bad.append(f"{game} {club}: {len(s)} line-up entries, expected 22 (11 offence + 11 defence)")
+    if kind == "inactive" and len(s) != 6:
+        bad.append(f"{game} {club}: {len(s)} Not Active entries, the league's game-day rule is 6")
+for r in gb:
+    if r["kind"] != "substitution" and not r["player"].strip():
+        bad.append(f"{r['game']} {r['club']}: a {r['kind']} row with no name")
+    if r["kind"] == "substitution" and not (r["player"].strip() or "not visible" in r["fact_as_published"]):
+        bad.append(f"{r['game']} {r['club']}: an empty substitution row that does not say why")
+(ok, fail)[bool(bad)]("V-24", "roster tables are consistent (22 line-ups, 6 inactives per club sheet)",
+     f"{len(gb)} rows over 2 games; every complete club sheet lists 22 starters and 6 inactives"
+     if not bad else str(bad[:4]))
+
 print(f"checks run: {len(CHECKS)}  failures: {len(FAILS)}")
 if not QUIET:
     for cid, desc, st, detail in CHECKS:
