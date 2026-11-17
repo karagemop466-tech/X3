@@ -1,0 +1,8 @@
+key,label,url,read_on,kind,note
+standings,nfl.com - 2026 league standings,https://www.nfl.com/standings/league/2026/REG,2026-11-17,official,"32 rows; W/L/T, PCT, PF, PA, NET, home, road, div, conf, non-conf, streak, last-5."
+wk10,nfl.com - 2026 Week 10 schedule (final scores),https://www.nfl.com/schedules/2026/by-week/week-10,2026-11-17,official,"14 finals; 4 clubs on bye (CHI, DEN, PHI, TB)."
+wk9capture,data/hub/standings_2026_thru_wk9.csv - through-Week-9 standings captured 2026-11-14,../data/hub/standings_2026_thru_wk9.csv,2026-11-17,repo capture of an official page,32 rows captured by an earlier session from nfl.com/standings/league/2026/REG on 2026-11-14. Used here only as a dated prior capture to diff against the live page - not as a statement about the present.
+wk11,nfl.com - 2026 Week 11 schedule,https://www.nfl.com/schedules/2026/by-week/week-11,2026-11-17,official,"13 fixtures and 6 clubs on bye (ATL, CLE, GB, LAR, NE, SEA)."
+injuries,"nfl.com - official injury report, Week 10 2026",https://www.nfl.com/injuries/league/2026/reg10,2026-11-17,official,28 club sections (bye clubs absent). reg11 still redirects here: Week 11 designations do not exist yet.
+news1117,"nfl.com - news roundup, Tuesday Nov. 17",https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-tuesday-nov-17,2026-11-17,official,"Club-by-club signings, IR placements, cuts and practice designations."
+odds404,nfl.com/odds returns HTTP 404,https://www.nfl.com/odds/,2026-11-17,official,"Page title: '404 - Flag on the Play.' The league publishes no odds, so every market-price cell on this site is blank and flagged."

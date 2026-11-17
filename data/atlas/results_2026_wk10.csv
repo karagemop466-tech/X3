@@ -1,0 +1,15 @@
+game,date,away,home,away_pts,home_pts,home_name,away_name,home_margin,winner,abs_margin,slot,source
+WAS@NYG,2026-11-12,WAS,NYG,24,21,New York Giants,Washington Commanders,-3,WAS,3,Thursday,https://www.nfl.com/schedules/2026/by-week/week-10
+NE@DET,2026-11-15,NE,DET,10,35,Detroit Lions,New England Patriots,25,DET,25,Munich game,https://www.nfl.com/schedules/2026/by-week/week-10
+KC@ATL,2026-11-15,KC,ATL,35,13,Atlanta Falcons,Kansas City Chiefs,-22,KC,22,Sunday 1:00pm,https://www.nfl.com/schedules/2026/by-week/week-10
+HOU@CLE,2026-11-15,HOU,CLE,24,27,Cleveland Browns,Houston Texans,3,CLE,3,Sunday 1:00pm,https://www.nfl.com/schedules/2026/by-week/week-10
+MIN@GB,2026-11-15,MIN,GB,30,10,Green Bay Packers,Minnesota Vikings,-20,MIN,20,Sunday 1:00pm,https://www.nfl.com/schedules/2026/by-week/week-10
+MIA@IND,2026-11-15,MIA,IND,22,24,Indianapolis Colts,Miami Dolphins,2,IND,2,Sunday 1:00pm,https://www.nfl.com/schedules/2026/by-week/week-10
+CAR@NO,2026-11-15,CAR,NO,20,17,New Orleans Saints,Carolina Panthers,-3,CAR,3,Sunday 1:00pm,https://www.nfl.com/schedules/2026/by-week/week-10
+BUF@NYJ,2026-11-15,BUF,NYJ,31,12,New York Jets,Buffalo Bills,-19,BUF,19,Sunday 1:00pm,https://www.nfl.com/schedules/2026/by-week/week-10
+JAX@TEN,2026-11-15,JAX,TEN,40,23,Tennessee Titans,Jacksonville Jaguars,-17,JAX,17,Sunday 1:00pm,https://www.nfl.com/schedules/2026/by-week/week-10
+LAR@AZ,2026-11-15,LAR,AZ,34,6,Arizona Cardinals,Los Angeles Rams,-28,LAR,28,Sunday 4:05pm,https://www.nfl.com/schedules/2026/by-week/week-10
+SEA@LV,2026-11-15,SEA,LV,21,13,Las Vegas Raiders,Seattle Seahawks,-8,SEA,8,Sunday 4:05pm,https://www.nfl.com/schedules/2026/by-week/week-10
+SF@DAL,2026-11-15,SF,DAL,46,40,Dallas Cowboys,San Francisco 49ers,-6,SF,6,Sunday 4:25pm,https://www.nfl.com/schedules/2026/by-week/week-10
+PIT@CIN,2026-11-15,PIT,CIN,18,38,Cincinnati Bengals,Pittsburgh Steelers,20,CIN,20,Sunday night,https://www.nfl.com/schedules/2026/by-week/week-10
+LAC@BAL,2026-11-16,LAC,BAL,23,20,Baltimore Ravens,Los Angeles Chargers,-3,LAC,3,Monday night,https://www.nfl.com/schedules/2026/by-week/week-10

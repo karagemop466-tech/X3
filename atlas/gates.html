@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validation gates - X3 atlas</title>
+<link rel="stylesheet" href="assets/atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>atlas</span></a> - NFL decision desk</div>
+  <div class="asof">verified data as of <b>2026-11-17</b> - 2026 season, week 10 complete, week 11 ahead</div>
+</header>
+<div class="wrap">
+<nav class="side"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="standings.html" class="">Standings</a><a href="results.html" class="">Results feed</a><a href="fixtures.html" class="">Week 11 fixtures</a><a href="team-stats.html" class="">Team stats</a><a href="injuries.html" class="">Injury report</a><a href="injury-rows.html" class="">Injury rows</a><a href="availability.html" class="">Availability events</a><a href="origination.html" class="">Originated lines</a><a href="prices.html" class="">Price store</a><a href="strategy.html" class="">Strategies</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="on">Validation gates</a><a href="correlation.html" class="">Correlation</a><a href="luck.html" class="">Luck removed</a><a href="depth.html" class="">Depth &amp; deficiency</a><a href="readiness.html" class="">Readiness</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="repo-review.html" class="">Repo review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for review</a></nav>
+<main>
+<h1>Validation gates</h1>
+
+<p class="lede">The gates that decide whether a number may be published at all. A gate is a rule
+about inputs, not about results: if the input does not exist, the number does not get printed,
+however convenient it would be.</p>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Gate</th><th>Name</th><th>Rule</th><th>Blocks</th><th>Current reading</th></tr></thead>
+<tbody><tr><td><b>G-PRICE</b></td><td>Market price exists</td><td>No fair-vs-market, CLV, ROI or staking figure is published until an approved price source class is recorded.</td><td><code>R-01, R-04, R-18, R-38, R-39</code></td><td>FAIL - nfl.com/odds is a 404 (verified 2026-11-17); no price anywhere in the repo</td></tr><tr><td><b>G-PREREG</b></td><td>Pre-registration</td><td>Rule text, sample window and gates committed before the evaluation window opens; the commit hash is the registration.</td><td><code>R-03, R-09, R-17, R-33, R-46</code></td><td>PASS for Week 11 - model ATL-M1 committed before the Nov 19 kickoff</td></tr><tr><td><b>G-RESULTS</b></td><td>Verified results</td><td>A result is published only when it is transcribed from an official box score or standings page.</td><td><code>R-02, R-19, R-26</code></td><td>PARTIAL - 150 games implied by the standings; 14 Week 10 finals transcribed this session</td></tr><tr><td><b>G-AVAIL</b></td><td>Two dated captures</td><td>A designation delta is published only when two captures of the same report exist with fetch times.</td><td><code>R-10, R-12, R-21, R-28, R-54, R-55, R-60, R-61</code></td><td>FAIL - one capture; Week 11 designations do not exist yet</td></tr><tr><td><b>G-DEPTH</b></td><td>Depth from playing time</td><td>No depth rank is published unless it comes from a dated official depth chart or an official snap count.</td><td><code>R-06, R-11, R-25, R-29, R-30, R-31, R-50, R-51, R-52, R-56, R-57, R-62, R-63, R-64</code></td><td>FAIL - no depth rank published anywhere on this module</td></tr><tr><td><b>G-CORR</b></td><td>Correlation provenance</td><td>Every coefficient names its source page and its n.</td><td><code>R-07</code></td><td>PASS - see the correlation page</td></tr><tr><td><b>G-LEADER</b></td><td>Proper-score ranking</td><td>Rank on benchmark-relative Brier skill with a cluster lower bound; two control baselines always shown.</td><td><code>R-05, R-35, R-36, R-38, R-44, R-49</code></td><td>PASS as a design; no strategy is eligible yet</td></tr><tr><td><b>G-DEMOTE</b></td><td>Demotion rule</td><td>A live strategy returns to paper on any of four clauses.</td><td><code>R-08</code></td><td>PASS - rule committed</td></tr><tr><td><b>G-ABLATE</b></td><td>Ablation not penalty</td><td>Personnel effects are reported as a with/without comparison with uncertainty, never as a settled points penalty.</td><td><code>R-27, R-41</code></td><td>PASS - base and personnel variants published together</td></tr><tr><td><b>G-SWEEP</b></td><td>32-club sweep</td><td>Availability and depth evidence is versioned against the last official roster event for all 32 clubs.</td><td><code>R-13, R-32, R-43, R-58</code></td><td>FAIL - ad-hoc items for 16 clubs today</td></tr><tr><td><b>G-FIXTURE</b></td><td>Published schedule facts</td><td>Fixture features come only from dated official pages.</td><td><code>R-14, R-23, R-24</code></td><td>PASS for Week 11 venues and kickoff times</td></tr><tr><td><b>G-MODEL</b></td><td>Probability plus inputs</td><td>Every output row lists the inputs and the rule that produced it.</td><td><code>R-15, R-41</code></td><td>PASS</td></tr><tr><td><b>G-LUCK</b></td><td>Luck panel</td><td>Residual SD and r-squared published with n.</td><td><code>R-16</code></td><td>PASS - n=32</td></tr><tr><td><b>G-JOINT</b></td><td>Joint evidence for combos</td><td>A combo is ranked only with a validated joint probability and the operator&#x27;s void/push rules.</td><td><code>R-34</code></td><td>FAIL - no joint probability validated; no combos ranked</td></tr><tr><td><b>G-DIFF</b></td><td>Weekly diff</td><td>A what-changed column requires two consecutive snapshots.</td><td><code>R-40</code></td><td>FAIL - one snapshot</td></tr><tr><td><b>G-DRIFT</b></td><td>Drift alarm</td><td>Each parser pins expected row counts and required fields; a missing field fails the build.</td><td><code>R-42</code></td><td>FAIL - not implemented for this module</td></tr><tr><td><b>G-HISTORY</b></td><td>Prior seasons</td><td>Anything that needs a multi-season sample waits for that archive.</td><td><code>R-45, R-47, R-53, R-65</code></td><td>FAIL - 2026 only</td></tr><tr><td><b>G-OPS</b></td><td>Durable storage</td><td>Captures live outside the static site with a freshness monitor.</td><td><code>R-66</code></td><td>FAIL</td></tr><tr><td><b>G-LEGAL</b></td><td>Terms read</td><td>Raw row-level data stays private until the source terms are read.</td><td><code>R-67</code></td><td>FAIL - terms not read this session</td></tr><tr><td><b>G-RULES</b></td><td>Rulebook verified</td><td>Regime changes are verified against the official rulebook page.</td><td><code>R-48</code></td><td>FAIL - not fetched this session</td></tr><tr><td><b>G-WEATHER</b></td><td>Weather overlay</td><td>Roof designation joined to an NWS grid.</td><td><code>R-37</code></td><td>FAIL - not fetched this session</td></tr><tr><td><b>G-COORD</b></td><td>Coordination board</td><td>Every task has an owner, a status and a file scope.</td><td><code>R-22, R-68</code></td><td>PASS - COORDINATION.md</td></tr></tbody></table></div>
+<h2>The demotion gate</h2>
+<p>A live strategy returns to paper if any one of four clauses fires. Clause D-4 fires today for
+every strategy, which is why the leaderboard is empty and why it should be.</p>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Clause</th><th>Name</th><th>Fires when</th><th>State</th><th>Registration</th></tr></thead>
+<tbody><tr><td><b>D-1</b></td><td>Signal decay</td><td>Skill score lower bound falls below zero over the trailing window</td><td><span class="badge v">COMMITTED</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>D-2</b></td><td>Calibration break</td><td>Calibration slope leaves 0.75-1.25</td><td><span class="badge v">COMMITTED</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>D-3</b></td><td>Data break</td><td>An input the strategy depends on stops being published or drifts</td><td><span class="badge v">COMMITTED</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>D-4</b></td><td>Staking without prices</td><td>The strategy is live while its staking input is missing</td><td><span class="badge v">COMMITTED</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr></tbody></table></div>
+<h2>Ablation, not penalty</h2>
+<p>The brief rejects subtracting a fixed number of points for a missing starter. The correct test is
+to run the identical model with and without the verified availability feature on chronological
+holdouts and report the difference with an interval. That is what the base and personnel variants on
+the <a href="origination.html">origination</a> page exist to do once Week 11 results are published.
+Until then the difference column is a declared specification, not a finding.</p>
+<h2>Train, validation, holdout</h2>
+<p>Not started. One season of 2026 cannot satisfy a three-season gate, and splitting a single season
+into three pieces is not the same thing as out-of-sample across seasons. Requirement R-47 stays open
+until prior seasons are archived (R-45).</p>
+
+</main>
+</div>
+<footer>
+X3 atlas - module of <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>.
+Built by session <code>arena/dbb50f8c-x3</code>. Every row on every page either links the official
+page it was transcribed from, or is marked UNVERIFIED / BLOCKED / DERIVED. Nothing is inferred.
+Shared task board: <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a>.
+</footer>
+</body>
+</html>

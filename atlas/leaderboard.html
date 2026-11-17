@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard - X3 atlas</title>
+<link rel="stylesheet" href="assets/atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>atlas</span></a> - NFL decision desk</div>
+  <div class="asof">verified data as of <b>2026-11-17</b> - 2026 season, week 10 complete, week 11 ahead</div>
+</header>
+<div class="wrap">
+<nav class="side"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="standings.html" class="">Standings</a><a href="results.html" class="">Results feed</a><a href="fixtures.html" class="">Week 11 fixtures</a><a href="team-stats.html" class="">Team stats</a><a href="injuries.html" class="">Injury report</a><a href="injury-rows.html" class="">Injury rows</a><a href="availability.html" class="">Availability events</a><a href="origination.html" class="">Originated lines</a><a href="prices.html" class="">Price store</a><a href="strategy.html" class="">Strategies</a><a href="leaderboard.html" class="on">Leaderboard</a><a href="gates.html" class="">Validation gates</a><a href="correlation.html" class="">Correlation</a><a href="luck.html" class="">Luck removed</a><a href="depth.html" class="">Depth &amp; deficiency</a><a href="readiness.html" class="">Readiness</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="repo-review.html" class="">Repo review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for review</a></nav>
+<main>
+<h1>Leaderboard</h1>
+
+<p class="lede">The leaderboard is empty, and that is the honest state. It publishes a scoring design
+that luck cannot flatter, and it will populate only when strategies clear the gates on prospective
+results.</p>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Division</th><th>Strategies</th><th>Eligible</th><th>Scoring rule</th>
+<th>Control requirement</th><th>State</th></tr></thead>
+<tbody><tr><td><b>Singles</b></td><td>S-01 to S-05</td><td class="num">0</td><td>Benchmark-relative Brier skill, game-cluster lower bound, multiplicity adjustment</td><td>2 controls required: random picks and favourites only</td><td><span class="badge d">EMPTY BY DESIGN</span></td></tr><tr><td><b>Game parlays</b></td><td>S-06</td><td class="num">0</td><td>Same proper score, plus the joint-evidence gate</td><td>Never ranked on win rate or short-run ROI</td><td><span class="badge d">EMPTY BY DESIGN</span></td></tr><tr><td><b>Same-game parlays</b></td><td>S-07</td><td class="num">0</td><td>Same proper score, plus the joint-evidence gate</td><td>Dependence must be measured, not assumed</td><td><span class="badge d">EMPTY BY DESIGN</span></td></tr><tr><td><b>Prop combos</b></td><td>S-08</td><td class="num">0</td><td>Same proper score, plus the joint-evidence gate</td><td>Operator void and push rules must be recorded</td><td><span class="badge d">EMPTY BY DESIGN</span></td></tr></tbody></table></div>
+<h2>Signal and staking are two columns, never one</h2>
+<p>A good signal with reckless staking produces a big number for a while, and a bad signal with a
+lucky staking run produces the same thing. The leaderboard therefore scores them separately: the
+signal column is a proper score on the probability itself, and the staking column is reported beside
+it and never mixed in. A strategy with a negative signal score is not eligible however much money its
+staking plan made.</p>
+<h2>Proper scores with uncertainty</h2>
+<ul>
+<li><b>Brier skill, benchmark-relative.</b> Skill is measured against a stated benchmark, not against
+zero, so a strategy is not credited for rediscovering that home teams exist.</li>
+<li><b>Game-cluster lower bound.</b> Bets inside one game are not independent. The interval is
+clustered by game, which widens it correctly.</li>
+<li><b>Multiplicity adjustment.</b> Eight strategies were tried, so the bar for the best of eight is
+higher than the bar for one pre-registered strategy.</li>
+<li><b>Two control baselines on every run.</b> Random picks and favourites-only are published beside
+every eligible strategy. If a strategy cannot beat a coin, it is not skill.</li>
+<li><b>No ROI column at all.</b> Ranking by season-long ROI is explicitly rejected: it cannot
+separate skill from variance at these sample sizes, and it rewards the largest stake.</li>
+</ul>
+<h2>The two-stage qualification</h2>
+<ol>
+<li><b>Stage 1 - proper-score qualification.</b> A strategy must show a positive skill score whose
+lower bound clears zero after clustering and multiplicity.</li>
+<li><b>Stage 2 - prospective CLV and ROI escrow.</b> Only then does it enter a prospective sample
+where CLV and ROI are measured forward in time. Stage 2 is blocked today: it needs prices.</li>
+</ol>
+<h2>Rewards</h2>
+<p>No reward amount is published. A funded leaderboard is a contest and in some jurisdictions a
+regulated one, and nothing in this repository establishes a prize. Reward amounts stay notional until
+that question is answered on the <a href="suggestions.html">suggestions</a> page.</p>
+
+</main>
+</div>
+<footer>
+X3 atlas - module of <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>.
+Built by session <code>arena/dbb50f8c-x3</code>. Every row on every page either links the official
+page it was transcribed from, or is marked UNVERIFIED / BLOCKED / DERIVED. Nothing is inferred.
+Shared task board: <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a>.
+</footer>
+</body>
+</html>

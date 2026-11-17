@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Originated lines - Week 11 - X3 atlas</title>
+<link rel="stylesheet" href="assets/atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>atlas</span></a> - NFL decision desk</div>
+  <div class="asof">verified data as of <b>2026-11-17</b> - 2026 season, week 10 complete, week 11 ahead</div>
+</header>
+<div class="wrap">
+<nav class="side"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="standings.html" class="">Standings</a><a href="results.html" class="">Results feed</a><a href="fixtures.html" class="">Week 11 fixtures</a><a href="team-stats.html" class="">Team stats</a><a href="injuries.html" class="">Injury report</a><a href="injury-rows.html" class="">Injury rows</a><a href="availability.html" class="">Availability events</a><a href="origination.html" class="on">Originated lines</a><a href="prices.html" class="">Price store</a><a href="strategy.html" class="">Strategies</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Validation gates</a><a href="correlation.html" class="">Correlation</a><a href="luck.html" class="">Luck removed</a><a href="depth.html" class="">Depth &amp; deficiency</a><a href="readiness.html" class="">Readiness</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="repo-review.html" class="">Repo review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for review</a></nav>
+<main>
+<h1>Originated lines - Week 11</h1>
+
+<p class="lede">Our own line for every Week 11 game: the side first, then the total, then the
+moneyline - in that order, because the moneyline is derived from the side model and must never be
+priced on its own.</p>
+<div class="warnbox"><p><b>PRE-REGISTERED, UNGRADED.</b> Model <code>ATL-M1</code> was
+committed on 2026-11-17, before the first Week 11 kickoff. The constants are declared, not
+fitted to Week 11, because no Week 11 result exists. Every number on this page is DERIVED from
+official standings and official injury rows; none of it is a result.</p></div>
+<h2>The model, printed in the open</h2>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Part</th><th>Rule or constant</th><th>Value</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Inputs</td><td>Official PF and PA per club game through Week 10 (n=32, nfl.com/standings) and Out counts from the official Week 10 injury report.</td><td><span class="badge v">VERIFIED</span></td>
+<td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>Home-field constant</td><td>Points added to the home side</td>
+<td class="num">2.00</td>
+<td>Declared before kickoff, not fitted. The league publishes no points-based home-field figure.</td></tr>
+<tr><td>Margin SD</td><td>Sigma used to turn a margin into a win probability</td>
+<td class="num">13.00</td>
+<td>Declared before kickoff. For comparison, the 14 Week 10 finals had an absolute-margin SD of
+9.59 (n=14, one week).</td></tr>
+<tr><td>1. Side</td><td><code>home_margin = HFA + ((home_PPG + away_PAPG) - (away_PPG + home_PAPG)) / 2</code></td><td><span class="badge d">DERIVED</span></td>
+<td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>2. Total (estimator A)</td><td><code>total = (home_PPG + away_PPG + home_PAPG + away_PAPG) / 2</code></td>
+<td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>2. Total (estimator B)</td><td>League combined average plus half the combined net-points
+differential - a shrunk alternative, published beside A until one wins</td>
+<td><span class="badge d">DERIVED</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>3. Moneyline</td><td><code>P(home win) = Phi(home_margin / sigma); American price from that probability with no margin applied</code></td>
+<td><span class="badge d">DERIVED</span></td><td>Derived from the side model only</td></tr>
+<tr><td>Personnel variant</td><td>-0.10 points of spread per
+player listed Out in the last official report</td><td><span class="badge d">DECLARED</span></td>
+<td>A declared constant, not a fitted penalty - see the ablation note below</td></tr>
+</tbody></table></div>
+<h2>Fair line, market line, difference</h2>
+<p class="note">Three separate columns as required. The market columns are empty because the league
+publishes no odds: nfl.com/odds returns a 404, verified 2026-11-17. A difference cannot be computed
+against a number that does not exist, so the difference columns are empty too - they are not zero.</p>
+<div class="tblwrap"><table class="k-data"><thead><tr><th>Game</th><th>Date</th><th>Time (ET)</th><th>Home</th><th>Away</th><th class="num">Fair side (base)</th><th class="num">Fair side (personnel)</th><th class="num">Personnel delta</th><th class="num">Total A</th><th class="num">Total B</th><th class="num">Total gap</th><th class="num">P(home win)</th><th>Fair price home</th><th>Fair price away</th><th>Market side</th><th>Difference</th><th>Inputs</th></tr></thead><tbody><tr><td>IND@HOU</td><td>2026-11-19</td><td>8:15 PM</td><td>HOU</td><td>IND</td><td class="num">5.93</td><td class="num">6.03</td><td class="num">0.10</td><td class="num">49.06</td><td class="num">43.78</td><td class="num">5.28</td><td class="num">0.6786</td><td>-211</td><td>+211</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>MIA@BUF</td><td>2026-11-22</td><td>1:00 PM</td><td>BUF</td><td>MIA</td><td class="num">11.11</td><td class="num">11.31</td><td class="num">0.20</td><td class="num">47.67</td><td class="num">46.82</td><td class="num">0.85</td><td class="num">0.8079</td><td>-420</td><td>+420</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>BAL@CAR</td><td>2026-11-22</td><td>1:00 PM</td><td>CAR</td><td>BAL</td><td class="num">3.56</td><td class="num">3.46</td><td class="num">-0.10</td><td class="num">48.68</td><td class="num">42.71</td><td class="num">5.97</td><td class="num">0.6048</td><td>-153</td><td>+153</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>NO@CHI</td><td>2026-11-22</td><td>1:00 PM</td><td>CHI</td><td>NO</td><td class="num">7.06</td><td class="num">7.46</td><td class="num">0.40</td><td class="num">47.94</td><td class="num">47.43</td><td class="num">0.51</td><td class="num">0.7168</td><td>-253</td><td>+253</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>TEN@DAL</td><td>2026-11-22</td><td>1:00 PM</td><td>DAL</td><td>TEN</td><td class="num">6.20</td><td class="num">6.20</td><td class="num">-0.00</td><td class="num">50.96</td><td class="num">42.35</td><td class="num">8.60</td><td class="num">0.6833</td><td>-216</td><td>+216</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>TB@DET</td><td>2026-11-22</td><td>1:00 PM</td><td>DET</td><td>TB</td><td class="num">3.89</td><td class="num">3.59</td><td class="num">-0.30</td><td class="num">46.44</td><td class="num">50.71</td><td class="num">-4.26</td><td class="num">0.6088</td><td>-156</td><td>+156</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>AZ@KC</td><td>2026-11-22</td><td>1:00 PM</td><td>KC</td><td>AZ</td><td class="num">11.75</td><td class="num">11.75</td><td class="num">-0.00</td><td class="num">45.48</td><td class="num">45.40</td><td class="num">0.08</td><td class="num">0.8170</td><td>-446</td><td>+446</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>PIT@PHI</td><td>2026-11-22</td><td>1:00 PM</td><td>PHI</td><td>PIT</td><td class="num">-2.94</td><td class="num">-2.94</td><td class="num">-0.00</td><td class="num">41.61</td><td class="num">42.99</td><td class="num">-1.38</td><td class="num">0.4104</td><td>+144</td><td>-144</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>NYJ@LAC</td><td>2026-11-22</td><td>4:05 PM</td><td>LAC</td><td>NYJ</td><td class="num">-0.28</td><td class="num">-0.18</td><td class="num">0.10</td><td class="num">43.68</td><td class="num">37.88</td><td class="num">5.80</td><td class="num">0.4945</td><td>+102</td><td>-102</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>JAX@NYG</td><td>2026-11-22</td><td>4:25 PM</td><td>NYG</td><td>JAX</td><td class="num">-4.56</td><td class="num">-4.26</td><td class="num">0.30</td><td class="num">45.11</td><td class="num">53.49</td><td class="num">-8.38</td><td class="num">0.3717</td><td>+169</td><td>-169</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>LV@DEN</td><td>2026-11-22</td><td>4:25 PM</td><td>DEN</td><td>LV</td><td class="num">4.57</td><td class="num">4.57</td><td class="num">-0.00</td><td class="num">48.33</td><td class="num">44.92</td><td class="num">3.41</td><td class="num">0.6373</td><td>-176</td><td>+176</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>MIN@SF</td><td>2026-11-22</td><td>8:20 PM</td><td>SF</td><td>MIN</td><td class="num">3.94</td><td class="num">4.34</td><td class="num">0.40</td><td class="num">43.28</td><td class="num">53.65</td><td class="num">-10.38</td><td class="num">0.6309</td><td>-171</td><td>+171</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>CIN@WAS</td><td>2026-11-23</td><td>8:15 PM</td><td>WAS</td><td>CIN</td><td class="num">-4.22</td><td class="num">-4.32</td><td class="num">-0.10</td><td class="num">49.44</td><td class="num">49.38</td><td class="num">0.07</td><td class="num">0.3698</td><td>+170</td><td>-170</td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><span class="unverif">UNVERIFIED - no official source</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr></tbody></table></div>
+<h3>Two model inputs are one game short</h3>
+<div class="warnbox"><p>Washington and the Giants each play in Week 11, and each has only nine games
+in the official standings because the league has not credited their Thursday 12 November game to
+either club. Their points-per-game and points-allowed-per-game on this page are therefore computed
+over nine games rather than ten, so the Cincinnati-at-Washington and Jacksonville-at-Giants rows
+below carry a slightly noisier rate than the other eleven. The value is still the published value;
+it is not adjusted, because adjusting it would mean inventing the league's own correction. Flagged as
+F-16 and shown club by club on the <a href="standings.html">standings</a> page.</p></div>
+<h3>Why the market and difference columns stay blank</h3>
+<p>Every market cell on this page renders as <span class="unverif">UNVERIFIED - no official
+source</span>. That is a deliberate state, not a formatting artefact. Publishing a market number
+taken from a bookmaker while the rest of the site is sourced only from the league would break the one
+rule that makes this desk useful: you can always tell which numbers are official.</p>
+<h3>The personnel ablation, not a penalty</h3>
+<p>The personnel variant applies a declared constant per Out designation. It is not a fitted penalty
+and it is not presented as a truth. It exists so that, once Week 11 results are in, the same model can
+be run with and without the personnel feature on a chronological holdout and the difference reported
+with an interval. The feature is drawn from the Week 10 report because no Week 11 designations have
+been published, which makes it stale by construction - that is precisely why the deliverable is the
+comparison, not the level.</p>
+
+</main>
+</div>
+<footer>
+X3 atlas - module of <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>.
+Built by session <code>arena/dbb50f8c-x3</code>. Every row on every page either links the official
+page it was transcribed from, or is marked UNVERIFIED / BLOCKED / DERIVED. Nothing is inferred.
+Shared task board: <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a>.
+</footer>
+</body>
+</html>
