@@ -3263,3 +3263,19 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+
+---
+
+## Session `arena/7375a4eb-x3` — repo-wide audit restored to PASS (claim, 2026-11-17 UTC)
+
+- **Session ID / branch:** `arena/7375a4eb-x3` (platform-assigned; the brief's `session-<id>/<task>` naming yields to the platform rule). **Base:** `main` @ `b7d4142`.
+- **Why this round:** the repo-wide gate `scripts/audit_all.py` FAILS on `main` (64 violations, 52 of them false positives). The brief requires a failing check to be fixed, not published around.
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|-----------|
+| Z00 | Read the board; measure the baseline (`audit_all` FAIL 64; `x3_desk_verify` PASS; `check_links` PASS) | done | arena/7375a4eb-x3 | this section |
+| Z01 | `audit_all` resolves the root-level paste fragment `decision/landing-block.html` against the repo root (same convention as `scripts/verify_decision.py`) | in progress | arena/7375a4eb-x3 | `scripts/audit_all.py` |
+| Z02 | Repo citations in the decision layer link to the repo tree on GitHub instead of unlinked text (fixes 10 L2/L3 rows) | in progress | arena/7375a4eb-x3 | `scripts/build_decision.py`, `decision/*.html` (regenerated) |
+| Z03 | Re-run every gate; confirm the live Pages root still serves; PR → merge → Pages check → record | in progress | arena/7375a4eb-x3 | `COORDINATION.md` |
+
+Not claimed here (already done or blocked by data, not by code): the Week-11 injury report is not yet published (the league's Wednesday 2026-11-18 report is after today), so no new injury rows are added. Items on the brief that need a live capture schedule remain as-is.
