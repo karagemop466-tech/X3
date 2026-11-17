@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correlations - X3 close-out desk</title>
+<link rel="stylesheet" href="assets/closeout.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>Week-10 close-out &amp; Week-11 pre-registration</span></a></div>
+  <div class="asof">official pages read <b>2026-11-17T22:44Z</b> to <b>2026-11-17T22:49Z</b> - board frozen
+    <b>2026-11-17T23:05:00Z</b> - session <b>arena/e1ad8b78-x3</b></div>
+</header>
+<nav class="nav"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="week10.html">Week 10 close-out</a><a href="results.html">Verified results feed</a><a href="board.html">Week 11 board</a><a href="lines.html">Originated lines</a><a href="price-store.html">Price snapshot store</a><a href="settlement.html">Settlement</a><a href="scorecard.html">Scorecard and controls</a><a href="luck.html">Removal of luck</a><a href="correlations.html" class=on>Correlations</a><a href="availability.html">Availability graph</a><a href="gates.html">Pre-registration and gates</a><a href="sources.html">Sources and capture ledger</a><a href="verification.html">Verification log</a><a href="questions.html">Open questions</a><a href="suggestions.html">Suggestions</a><a href="readiness.html">Decision readiness</a><a href="flagged.html">Flagged for review</a><a href="repo-review.html">Repo review</a></nav>
+<main>
+<h1>Correlations</h1>
+<p class="lede">Computed only from officially published numbers, each with its n and an interval. No correlation here is offered as a causal claim.</p>
+<div class="tblwrap"><table class="k-data">
+<caption>6 values, all from the 2026 official scores</caption>
+<thead><tr><th>ID</th><th>Quantity</th><th>n</th><th>r</th><th>95% CI</th><th>Unit</th><th>Inputs</th><th>Reading</th><th>Source</th></tr></thead><tbody>
+<tr><td>K-01</td><td>home points vs away points (a total is the sum of the two sides)</td><td>150</td><td>0.049</td><td>-0.113 to 0.207</td><td>game</td><td>official box scores / official published lines only</td><td>if this is near zero, treating a total as one bet and the sides as another carries little dependence - the number that the parlay gate needs, measured on official scores</td><td><a href="../data/closeout/derived/season_log.csv">data/closeout/derived/season_log.csv</a></td></tr>
+<tr><td>K-02</td><td>|margin| vs total</td><td>150</td><td>-0.019</td><td>-0.178 to 0.142</td><td>game</td><td>official box scores / official published lines only</td><td>interval computed from n; a CI spanning 0 means no usable dependence signal</td><td><a href="../data/closeout/derived/season_log.csv">data/closeout/derived/season_log.csv</a></td></tr>
+<tr><td>K-03</td><td>model margin vs actual margin (pre-kickoff board)</td><td>13</td><td>0.579</td><td>0.04 to 0.857</td><td>game</td><td>official box scores / official published lines only</td><td>n=13: this is the number the whole board turns on, and it is small</td><td><a href="../data/closeout/derived/settlement.csv">data/closeout/derived/settlement.csv</a></td></tr>
+<tr><td>K-04</td><td>side-cover outcome vs over outcome on the same games (joint, not marginal)</td><td>13</td><td>0.415</td><td>-0.177 to 0.786</td><td>game</td><td>official box scores / official published lines only</td><td>a parlay of the two legs needs exactly this joint value; multiplying the marginals is not the same thing</td><td><a href="../data/closeout/derived/settlement.csv">data/closeout/derived/settlement.csv</a></td></tr>
+<tr><td>K-05</td><td>pre-game net points per game difference vs that game's margin (walk-forward, no lookahead)</td><td>134</td><td>0.064</td><td>-0.107 to 0.231</td><td>game</td><td>official box scores / official published lines only</td><td>this is the honest strength of the feature the model is built on, measured one game at a time</td><td><a href="../data/closeout/derived/season_log.csv">data/closeout/derived/season_log.csv</a></td></tr>
+<tr><td>K-06</td><td>expected total vs actual total on the pre-kickoff board</td><td>13</td><td>0.208</td><td>-0.387 to 0.681</td><td>game</td><td>official box scores / official published lines only</td><td>spread and total dependence is what a same-game parlay would have to survive</td><td><a href="../data/closeout/derived/settlement.csv">data/closeout/derived/settlement.csv</a></td></tr>
+</tbody></table>
+<p class="note">Intervals are Fisher-z on n independent games; a CI that spans 0 is reported as no usable signal, not as a small one. Five of six do.</p>
+</div>
+</main>
+<footer>
+  <p>Built by <code>scripts/closeout_build.py</code> from <code>data/closeout/*.csv</code> and
+  <code>data/closeout/derived/*.csv</code>; regenerate with
+  <code>python3 scripts/closeout_engine.py &amp;&amp; python3 scripts/closeout_build.py</code>. Values with no
+  official source are left blank and flagged; model output is labelled DERIVED and is arithmetic on official
+  scores, not a prediction of results. This site places no bets and pays no rewards.</p>
+  <p><a href="../index.html">Site root</a> - <a href="../hub/index.html">hub desk</a> -
+  <a href="../x3/index.html">x3 desk</a> -
+  <a href="https://github.com/karagemop466-tech/X3/blob/b7d4142/COORDINATION.md">coordination log</a> -
+  <a href="https://github.com/karagemop466-tech/X3">repository</a></p>
+</footer>
+</body></html>

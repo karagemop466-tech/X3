@@ -1,0 +1,7 @@
+VERBATIM - nfl.com/games/chargers-at-ravens-2026-reg-10, read 2026-11-17T23:10Z (rendered markdown)
+"LAC 23 / BAL 20 / Final / WEEK 10 / Nov 16"
+## Game Info  ->  "LocationLOCATIONBALTIMORE, MD"  "StadiumSTADIUMM&T BANK STADIUM"
+Quarter scores: LAC 10-7-3-3 = 23; BAL 0-10-3-7 = 20
+"[Download Game Book (PDF)](https://static.www.nfl.com/image/upload/v1794916121/gamecenter/ab78ad5a-4feb-11f1-abca-2c54536568a9.pdf)"
+Standings block on the same page: "DEN 7-2, KC 7-2, LV 4-6, LAC 1-8" (AFC West) - matches the standings page.
+Cross-check: the score agrees with the Week-10 schedule page row "Chargers 23, Ravens 20".

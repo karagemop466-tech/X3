@@ -1,0 +1,6 @@
+picker,n,hits,ties_or_half,hit_rate,wilson_lo,wilson_hi,boot_lo,boot_hi,outcome_used,note,source
+the prior board's side pick (favourite at its own fair line),12,8,0,0.6667,0.3906,0.8619,0.4167,0.9167,the model's favoured side covers the model's own line,"with a fair line this is a calibration test, not an edge test: a perfectly unbiased model sits at 0.500",data/closeout/derived/settlement.csv
+model's moneyline pick (probability above 0.5),13,11,0,0.8462,0.5776,0.9567,0.6154,1.0,the picked club won the game,the same outcome is then given to three control pickers on the same games,data/closeout/derived/settlement.csv
+control - always home,13,4,0,0.3077,0.1268,0.5763,,,home team won the game,"the fitted home advantage is -0.16 points, which is why 'always home' is not a free lunch",data/closeout/derived/settlement.csv
+control - better winning percentage in the Week-9 standings,13,11,0,0.8462,0.5776,0.9567,,,the picked club won the game,uses only the standings as they stood before Week 10 kicked off - no lookahead,data/hub/standings_2026_thru_wk9.csv
+control - seeded random coin flip per game,13,4,0,0.3077,0.1268,0.5763,,,the picked club won the game,"seed 20261117, fixed, so the number is reproducible and not re-rolled between reviews",data/closeout/derived/settlement.csv
