@@ -76,6 +76,25 @@
   "week11_slate": "https://www.nfl.com/schedules/2026/by-week/week-11"
  },
  "standings_net_arithmetic_ok": true,
+ "upstream_store": {
+  "captures": [
+   "SNAP-2026W10-2026-11-14T0000Z",
+   "SNAP-2026W10-2026-11-15T1816Z"
+  ],
+  "delta": {
+   "added_rows": 2,
+   "adverse": 5,
+   "designation_changes": 13,
+   "favourable": 1,
+   "from": "baseline 2026-11-14",
+   "practice_changes": 3,
+   "rows_after": 347,
+   "rows_before": 345,
+   "to": "SNAP-2026W10-2026-11-15T1816Z",
+   "week": 10
+  },
+  "present": true
+ },
  "walkforward": {
   "boot": [
    0.3796,

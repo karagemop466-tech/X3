@@ -435,6 +435,47 @@ for gb_file, game in (("gamebook_ne_det.csv", "NE@DET"), ("gamebook_lac_bal.csv"
 write("game_sheets.csv", sheets)
 closed = sum(1 for s in sheets if s["closed_at_54"] == "yes")
 
+# ---------------------------------------------------------------- 4d. the shared snapshot store, read not written
+# The decision layer keeps the sealed injury captures. This module quotes them instead of
+# pretending the only availability history is its own two reads; nothing here edits that store.
+upstream = {"present": False, "captures": [], "delta": {}, "store": "data/snapshots (owned by the decision layer)"}
+led_p = os.path.join(ROOT, "data", "snapshots", "ledger.json")
+del_p = os.path.join(ROOT, "data", "snapshots", "delta.json")
+if os.path.exists(led_p) and os.path.exists(del_p):
+    led = json.load(open(led_p))
+    dl = json.load(open(del_p))["deltas"][0]
+    up_rows = []
+    for c in led["captures"]:
+        up_rows.append({"kind": "sealed capture", "id": c["capture_id"], "when": c.get("fetched_at_utc", ""),
+                        "rows": c["counts"]["rows"], "teams": c["counts"]["teams"],
+                        "with_designation": c["counts"]["rows_with_designation"],
+                        "out": c["counts"]["designation_counts"].get("Out", ""),
+                        "questionable": c["counts"]["designation_counts"].get("Questionable", ""),
+                        "doubtful": c["counts"]["designation_counts"].get("Doubtful", ""),
+                        "blank_game_status": c["counts"]["blank_game_status"],
+                        "clock_precision": c.get("clock_precision", ""),
+                        "source": "https://github.com/karagemop466-tech/X3/blob/main/data/snapshots/ledger.json"})
+    up_rows.append({"kind": "delta published by the store",
+                    "id": f'{dl["from_read"]} -> {dl["to_read"]}',
+                    "when": "one day apart; the earlier read carries no clock time",
+                    "rows": f'{dl["rows_before"]} -> {dl["rows_after"]}', "teams": dl["counts_after"]["teams"],
+                    "with_designation": f'{dl["counts_before"]["rows_with_designation"]} -> {dl["counts_after"]["rows_with_designation"]}',
+                    "out": f'{dl["counts_before"]["designation_counts"]["Out"]} -> {dl["counts_after"]["designation_counts"]["Out"]}',
+                    "questionable": f'{dl["counts_before"]["designation_counts"]["Questionable"]} -> {dl["counts_after"]["designation_counts"]["Questionable"]}',
+                    "doubtful": f'{dl["counts_before"]["designation_counts"]["Doubtful"]} -> {dl["counts_after"]["designation_counts"]["Doubtful"]}',
+                    "blank_game_status": f'{dl["counts_before"]["blank_game_status"]} -> {dl["counts_after"]["blank_game_status"]}',
+                    "clock_precision": "day only - stated as such by the store itself",
+                    "source": "https://github.com/karagemop466-tech/X3/blob/main/data/snapshots/delta.json"})
+    write("upstream_snapshot_store.csv", up_rows)
+    upstream = {"present": True, "captures": [c["capture_id"] for c in led["captures"]],
+                "delta": {"rows_before": dl["rows_before"], "rows_after": dl["rows_after"],
+                          "designation_changes": dl["designation_changes_count"],
+                          "added_rows": dl["added_rows_count"],
+                          "practice_changes": dl["practice_changes_count"],
+                          "adverse": dl["surprise_panel"]["adverse"],
+                          "favourable": dl["surprise_panel"]["favourable"],
+                          "week": dl["week"], "from": dl["from_read"], "to": dl["to_read"]}}
+
 # ---------------------------------------------------------------- 5. settlement of the pre-kickoff board
 mk = json.load(open(os.path.join(ROOT, "data", "x3", "verified", "markets.json")))
 live = [x for x in mk["live"] if x["week"] == 10]
@@ -948,6 +989,19 @@ for club in sorted({c for c, _ in t1} | {c for c, _ in t2}):
 write("injury_delta.csv", delta)
 n_delta_changed = sum(int(x["designation_or_injury_changed"]) + int(x["added"]) + int(x["removed"]) for x in delta)
 
+UD = upstream["delta"]
+if upstream["present"]:
+    G8_MEASURED = ("the shared store holds 2 sealed Week-10 captures with a real movement delta - "
+                   f'{UD["rows_before"]} -> {UD["rows_after"]} rows, {UD["designation_changes"]} designation '
+                   f'changes, {UD["added_rows"]} rows added, {UD["practice_changes"]} practice-status changes, '
+                   f'{UD["adverse"]} adverse and {UD["favourable"]} favourable moves in its surprise panel; this '
+                   f"module adds 2 dated reads of the same page ({F1} and {F2}) with {n_delta_changed} rows changed"
+                   " - a stability check inside one evening - and 3 dated reads confirming the Week-11 report does "
+                   "not exist yet")
+else:
+    G8_MEASURED = (f"the shared snapshot store is not readable in this checkout, so the only captures are this "
+                   f"module's own 2 dated reads ({F1} and {F2}, {n_delta_changed} rows changed)")
+
 prereg = [
     {"id": "G-1", "gate": "pre-registration before results",
      "rule_text": f"model version {MODEL_VERSION}; inputs = the 150 verified games through Week 10; "
@@ -1000,12 +1054,13 @@ prereg = [
      "source": "data/closeout/derived/scorecard.csv"},
     {"id": "G-8", "gate": "surprise, not level, for availability",
      "rule_text": "the injury feed enters as the change between two dated captures; a level is never a feature",
-     "measured_now": f"2 dated captures of the same Week-10 page inside this session ({F1} and {F2}): "
-                     f"{len(t1)} rows each, {n_delta_changed} rows changed; the prior session's read of the same "
-                     "URL is dated 2026-11-15, and the Week-11 report does not exist yet (3 reads of its absence "
-                     "at 22:45Z, 22:47Z and 23:12Z)",
-     "threshold": ">= 3 dated captures of the same revision day before any designation feature is fitted",
-     "status": "FAIL - delta published as an observation, not as a model input",
+     "measured_now": G8_MEASURED,
+     "threshold": "a pre-kickoff capture pair for the week being priced, not merely a historical pair",
+     "status": ("FAIL for prospective use - the store's delta spans the two Week-10 reads of 2026-11-14 and "
+                "2026-11-15, both after Week 10 kicked off and before any Week-11 report existed, so nothing can "
+                "be joined to the frozen board; the movement-versus-level requirement is met upstream and cited "
+                "here rather than claimed by this module" if upstream["present"] else
+                "FAIL - no delta source readable in this checkout"),
      "source": "data/closeout/source_reads.csv"},
 ]
 write("prereg_gates.csv", prereg)
@@ -1055,6 +1110,7 @@ meta = {
 meta.update({
     "injury_delta": {"rows_T1": len(t1), "rows_T2": len(t2), "changed": n_delta_changed,
                       "T1": F1, "T2": F2, "clubs": len(delta)},
+    "upstream_store": upstream,
     "game_sheets": {"sheets": len(sheets), "closed_at_54": sum(1 for s in sheets if s["closed_at_54"] == "yes"),
                     "players_accounted_total": sum(int(s["players_accounted"]) for s in sheets)},
 })

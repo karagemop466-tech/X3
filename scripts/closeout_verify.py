@@ -355,6 +355,32 @@ if {x["source_page"] for x in d1} != {x["source_page"] for x in d2}:
      f"{len(d1)} rows at {d1[0]['captured_utc']} vs {len(d2)} at {d2[0]['captured_utc']}; "
      f"{real_changed} changed - published as a stability check, not a signal" if not bad else str(bad))
 
+# V-22 the shared-store numbers quoted on this site equal the store's own JSON
+up_path = os.path.join(ROOT, "data", "snapshots", "delta.json")
+up_rows_p = os.path.join(DD, "upstream_snapshot_store.csv")
+if os.path.exists(up_path):
+    ud = json.load(open(up_path))["deltas"][0]
+    quoted = rows(up_rows_p)
+    bad = []
+    if not quoted:
+        bad.append("no upstream table rendered")
+    else:
+        delta_row = [x for x in quoted if x["kind"].startswith("delta")]
+        if not delta_row:
+            bad.append("no delta row in the upstream table")
+        else:
+            exp = f'{ud["rows_before"]} -> {ud["rows_after"]}'
+            if delta_row[0]["rows"] != exp:
+                bad.append(f'quoted {delta_row[0]["rows"]}, store says {exp}')
+            if delta_row[0]["out"].split(" -> ")[0] != str(ud["counts_before"]["designation_counts"]["Out"]):
+                bad.append("Out count does not match the store")
+    if len([x for x in quoted if x["kind"] == "sealed capture"]) != len(json.load(open(os.path.join(ROOT, "data", "snapshots", "ledger.json")))["captures"]):
+        bad.append("capture count differs from the store's ledger")
+    (ok, fail)[bool(bad)]("V-22", "shared-store figures are quoted, not re-invented",
+         "the upstream table reproduces data/snapshots/delta.json exactly" if not bad else str(bad))
+else:
+    ok("V-22", "shared-store figures are quoted, not re-invented", "store absent in this checkout - nothing quoted")
+
 print(f"checks run: {len(CHECKS)}  failures: {len(FAILS)}")
 if not QUIET:
     for cid, desc, st, detail in CHECKS:

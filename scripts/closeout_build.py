@@ -127,6 +127,12 @@ STATS = {
     "N_AVAIL": len(raw["availability_w10.csv"]),
     "N_REPORT": len(raw["injury_report_w10_capture.csv"]),
     "N_REREAD": len(raw["injury_report_w10_reread.csv"]),
+    "UPSTREAM": "present" if meta["upstream_store"]["present"] else "absent",
+    "UP_ROWS": f'{meta["upstream_store"]["delta"]["rows_before"]} -> {meta["upstream_store"]["delta"]["rows_after"]}'
+               if meta["upstream_store"]["present"] else "unavailable",
+    "UP_DESIG": meta["upstream_store"]["delta"]["designation_changes"] if meta["upstream_store"]["present"] else 0,
+    "UP_ADV": meta["upstream_store"]["delta"]["adverse"] if meta["upstream_store"]["present"] else 0,
+    "UP_FAV": meta["upstream_store"]["delta"]["favourable"] if meta["upstream_store"]["present"] else 0,
     "N_DELTA": sum(int(r["designation_or_injury_changed"]) + int(r["added"]) + int(r["removed"])
                    for r in raw["injury_delta.csv"]),
     "N_GB": len(raw["gamebook_ne_det.csv"]),
@@ -625,12 +631,24 @@ page("availability.html", "Availability graph",
                "substitution entries, 5 Did Not Play entries and 12 inactive entries, over two of the fourteen "
                "Week-10 games. Absent from a list is only treated as a roster fact where the sheet closes "
                "(CL-F-07); the 19 rows below that are not confirmed stay not confirmed."),
+    table_csv("upstream_snapshot_store.csv", ["Kind", "Id", "When", "Rows", "Teams", "Rows with a designation",
+                                             "Out", "Questionable", "Doubtful", "Blank game status",
+                                             "Clock precision", "Source"],
+              cols=["kind", "id", "when", "rows", "teams", "with_designation", "out", "questionable", "doubtful",
+                    "blank_game_status", "clock_precision", "source"],
+              cap="The shared snapshot store, read here and not written - it already holds a real movement delta",
+              note="Two sealed Week-10 captures of the same page ({UP_ROWS} rows) with {UP_DESIG} designation "
+                   "changes, {UP_ADV} adverse and {UP_FAV} favourable moves in its surprise panel. This module adds "
+                   "a third and fourth dated read with a zero delta and does not duplicate the store; the "
+                   "coordination board is the place where the two capture regimes get reconciled (SG-C-09).",
+              kind="data"),
     table(["Club", "Rows at T1", "Rows at T2", "Added", "Removed", "Designation or injury changed", "Which",
            "T1", "T2", "Reading", "Source"],
           [[r["club"], r["rows_at_T1"], r["rows_at_T2"], r["added"], r["removed"],
             r["designation_or_injury_changed"], r["changed_players"], r["T1"], r["T2"], r["reading"], r["source"]]
            for r in raw["injury_delta.csv"]],
-          cap="The delta the brief asks for, published instead of a level - two dated reads of the same page",
+          cap="The delta the brief asks for, published instead of a level - two dated reads of the same page "
+              "by this module",
           note="A 39-minute window produced no change, and saying so is the point: the injury feed is a time "
                "series and the signal is the difference between two captures. Until a third capture lands on the "
                "league's own revision day there is no surprise to price, which is why gate G-8 fails on purpose.",
