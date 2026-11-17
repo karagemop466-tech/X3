@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 921,
+      "rows": 922,
       "flagged_rows": 684,
-      "refs": 1335,
+      "refs": 1336,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -73,6 +73,22 @@
         "audit/index.html: ID Issue Repo value Official value Proposed action Sources",
         "audit/index.html: Game (away @ home) Day Time Network (schedule) Note Injury page kickoff Injury page TV Sources",
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
+      ]
+    },
+    "closeout": {
+      "pages": 20,
+      "rows": 984,
+      "flagged_rows": 913,
+      "refs": 1627,
+      "unsourced_examples": [
+        "closeout/availability.html: Club Player Pos Designation Practice Game Book disposition Evidence Who held the slot Claim status Report source Game Bo",
+        "closeout/availability.html: Club Rows at T1 Rows at T2 Added Removed Designation or injury changed Which T1 T2 Reading Source",
+        "closeout/availability.html: Club Player Pos Injury Practice status Game status Source page Captured",
+        "closeout/availability.html: Game Club Kind Unit Slot No. Player Fact Source document",
+        "closeout/availability.html: Field Value as published Source",
+        "closeout/availability.html: Game Club Kind Unit Slot No. Player Fact Source document",
+        "closeout/availability.html: Field Value as published Source",
+        "closeout/availability.html: Game Club Line-ups Substitutions Did not play Not active Dressed Players accounted Sheet closed Reading Source"
       ]
     },
     "council": {
@@ -125,9 +141,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 300,
+      "rows": 301,
       "flagged_rows": 125,
-      "refs": 481,
+      "refs": 483,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -360,9 +376,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 321,
-  "rows_total": 13600,
-  "rows_flagged_or_sourced": 11189,
-  "internal_refs": 8363,
+  "pages_total": 341,
+  "rows_total": 14586,
+  "rows_flagged_or_sourced": 12102,
+  "internal_refs": 9023,
   "problems": []
 }
