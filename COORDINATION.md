@@ -3263,3 +3263,25 @@ be worse than none. Recorded so the effort is visible and the fix is credited to
 | `scripts/audit_all.py` | FAIL — 1 violation, `agency/site/flagged.html` (pre-existing, other session) |
 | `scripts/verify_integration.py` | FAIL — same single violation |
 | `check_site` · `verify_data` · `check_hub` · `desk_verify` · `origin_verify` · `council_verify` · `verify_signals` · `ops_verify` | all exit 0 |
+
+---
+
+## Session `arena/3e44287d-x3` — integration, main repair, verification (CLAIM, 2026-11-17)
+
+Branch `arena/3e44287d-x3` (base `b7d4142`, = `origin/main`). Single-session work on this branch only; the brief's `session-<id>/<task>` branch names are not used (platform rule, same as earlier sessions).
+
+### Why this session starts with integration, not a new module
+
+- **`main` is red.** The `X3 decision layer` workflow and `Deploy X3 NFL site` failed on `main` from `34c78e0` onward (last green `8ac031b`). Local reproduction on `b7d4142`: `scripts/build_decision.py` rewrites six committed `decision/*.html` files (the x3 desk added an 18th tree; the committed decision pages still say 17), and `scripts/audit_all.py` reports 64 violations, 52 of them broken `decision/landing-block.html` links.
+- **The fix already exists in an open, clean PR:** PR #89 (`arena/6259c7b0-x3`, head `c1647ec`, MERGEABLE/CLEAN, all 9 checks pass). It regenerates `decision/`, fixes `scripts/build_decision.py`, and adds the `readiness/` module that implements most of this brief's remaining items (RD-01…RD-10: readiness register, change-our-mind, drift alarms, control baselines, weekly what-changed, availability snapshots, announced starters, matchup matrix, two totals, availability ablation).
+- Building a ninth parallel module would repeat the pattern the board already flags (17 overlapping trees). This session therefore **integrates PR #89 into its own branch**, repairs what remains red, verifies, and merges through its own PR to `main`.
+
+### Other open PRs (not merged here; overlap logged)
+
+| PR | Branch | Overlap |
+|----|--------|---------|
+| #85, #79 | `arena/…` | same `decision/*` files as #89 — superseded by #89's regeneration |
+| #80 | `arena/65820815-x3` | landing decision table — also in #89 (RD-01) |
+| #77, #58 | `arena/fed85bfd-x3`, `arena/aab4718a-x3` | `hub/*` results/rules work |
+| #76 | `arena/129e76b5-x3` | `index.html` only |
+| #…  | `arena/c0176769-x3` (R1–R5) | readiness register + injury capture — overlaps #89 |
