@@ -3788,3 +3788,35 @@ exactly two things that can only be done now:
 
 `grep`d `COORDINATION.md` for the Week-10 close-out / settlement of the pre-kickoff board: no session has
 claimed a grading of `markets.json` live rows, and none has captured Week 10 finals after 2026-11-16.
+
+---
+
+## PR AND DEPLOY RECORD — session `arena/dbb50f8c-x3` (2026-11-17)
+
+| PR | Head | Result | Merge commit | Pages deploy |
+|----|------|--------|--------------|--------------|
+| [#99](https://github.com/karagemop466-tech/X3/pull/99) | `0398b93` | atlas/ module (23 pages), repo-wide gate repair 64 → 0, index.html drift fix, merge of `origin/main` (readiness/). All 8 PR checks pass. Merged `gh pr merge 99 --merge`, no approval wait. | `bfbdba9` | `Deploy X3 NFL site to GitHub Pages` success; `pages build and deployment` success |
+| [#102](https://github.com/karagemop466-tech/X3/pull/102) | `c8ee3b1` | Two published figures corrected (R-02/R-19 "170 games" → 150 in the standings, 14 transcribed; site-tree census hardcoded at 13 in three places vs 24 live → computed once and shared). All 8 PR checks pass. Merged `gh pr merge 102 --merge`. | `5157bb6` | `Deploy X3 NFL site to GitHub Pages` success |
+
+**Live check (fetched 2026-11-17 via the page reader — the sandbox cannot reach github.io directly):**
+
+- https://karagemop466-tech.github.io/X3/atlas/index.html — renders; 68-row readiness register,
+  150 games / 14 finals / 13 fixtures / 345 injury rows / 0 market prices.
+- https://karagemop466-tech.github.io/X3/atlas/flagged.html — renders; F-01…F-16 with sources.
+- https://karagemop466-tech.github.io/X3/atlas/readiness.html — renders; R-02 and R-19 now read
+  "14 of the 150 games now in the standings transcribed here".
+- GitHub Pages API: `status: built`, `html_url: https://karagemop466-tech.github.io/X3/`.
+
+**Repo-wide gate on `main` after both merges:** `scripts/audit_all.py` exit 0 (was exit 1 with 64
+violations at the start of this session).
+
+**Session status: complete.** All 20 claimed tasks delivered; PRs merged; Pages confirmed live;
+corrected content re-verified on the live URLs.
+
+**Left for the owner, not blocked on:**
+1. Re-read the standings before the next capture — if the league credits the Thursday game,
+   `tools/atlas_verify.py` check A5b fails on purpose. That failure means re-transcribe, not relax.
+2. SG-01 (price source class) is the one suggestion that unblocks CLV, ROI, difference columns and
+   every staking score. Nothing else can route around it.
+3. SG-09 (consolidate the trees) is proposed, not implemented. No other session's pages were
+   deleted or edited by this session.
