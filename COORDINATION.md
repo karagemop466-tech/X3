@@ -4226,3 +4226,47 @@ W06 **in progress** — PR created, awaiting merge and Pages confirmation.
 
 - Shell HTTP to nfl.com is blocked in this sandbox; the page-reader tool is the only route. Every capture stores the tool clock time + URL; raw markdown captures + sha256 go under `data/week11/captures/`.
 - `https://www.nfl.com/injuries/league/2026/reg11` returned the Week-10 report (redirect) at 2026-11-18T03:0xZ and again at 03:4xZ. The league's Wednesday report publishes later today ET. If it publishes inside this session it is captured and transcribed; if not, the dated probe series itself is the deliverable and the Week-11 capture is logged as pending — never inferred.
+
+---
+
+## Session `arena/40cd3b17-x3` — DONE (M1-M3 delivered; PR #116 merged, Pages deployed and live-checked)
+
+### Completion record
+
+| ID | Task | Status | Result |
+|----|------|--------|--------|
+| M1 | Landing integration of the newest modules | done | nav rows for `closeout/` and `week11/` added at the generator source; the `reliability/` row already added by E1 (PR #113) kept in its placement; their build-time carry of reliability flagged rows onto `hub/flagged.html` kept unchanged with my module-flag cross-link table (closeout, atlas) below it. Regeneration-only; hub gate green (`verify_hub` 0 failures, no broken links). |
+| M2 | Week-11 Wednesday watch + capture (B50 series) | done (capture pending publication) | new `week11/` tree (6 pages) + `data/week11/` + `scripts/week11_{audit,build,verify}.py` + `.github/workflows/week11.yml`. **Freshness audit: 912 field-level comparisons, 0 mismatches** — all 32 standings rows vs both committed registers (twice-read), 14/14 Week-10 finals, 13/13 Week-11 fixtures + byes, ΣPF=ΣPA=6923, PF-PA=NET 32/32. **Four dated reg11 probes** (03:06Z, 03:16Z, 03:31Z, 03:45Z): the league had not yet published the Week-11 report on 2026-11-18; the probe series is the Wednesday entry of the capture series and nothing was inferred. |
+| M3 | PR → merge → Pages check → record | done | see below |
+
+### PR and deploy record
+
+| Item | Record |
+|---|---|
+| PR #116 | https://github.com/karagemop466-tech/X3/pull/116 — `arena/40cd3b17-x3` → `main`, **MERGED** via `gh pr merge 116 --merge` (2026-11-18, no approval wait). All 9 PR checks pass (build ×2, board, round2, signals, verify ×5). |
+| Merge commit | `7974710` on `main` |
+| Pages deploy | `Deploy X3 NFL site to GitHub Pages` run 44231874817 **success** (1m9s); `pages build and deployment` run 44231873689 **success** |
+| Live checks (page reader, post-deploy) | https://karagemop466-tech.github.io/X3/week11/index.html renders with 912 comparisons / 4 probes; https://karagemop466-tech.github.io/X3/ renders healthy. Pages API: `status: built`. |
+| Module gate | `scripts/week11_verify.py`: 7 checks PASS (audit clean, summary agreement, deterministic rebuild, sha256 manifest, probe hygiene, pages current) |
+
+### Sources and verification performed
+
+- Official pages re-read 2026-11-18 (page-reader tool; shell HTTP blocked): `nfl.com/standings/league/2026/REG`, `nfl.com/schedules/2026/by-week/week-10`, `nfl.com/schedules/2026/by-week/week-11`, `nfl.com/injuries/league/2026/reg11` (probe). Capture notes + sha256 in `data/week11/captures/`.
+- Full local CI suite green before every push: `audit_all` (351 pages, ~11.9k source rows), `verify_hub`, `atlas_verify`, `verify_decision`, `council_verify`, `verify_signals` + determinism, `verify_readiness`, `agency_verify`, `verify_round2`, `closeout_verify`, `reliability_verify`, `desk_verify`, `ops_run`, `verify_ledger`, `crosscheck --verify`, `origin_verify`, `verify_integration`, `check_hub`, `check_site`, `check_links`, `verify_site`, `verify_data`, node checks, markets + hub rebuild diff gates.
+
+### Irregularities and disclosures (published on `week11/flagged.html`)
+
+- **W1** Week-11 report not yet published; reg11 serves reg10 on four dated probes. Capture continues when the page serves Week 11.
+- **W2** First-read transcription artifact on the CIN non-conf cell, caught by the twice-read rule; disclosed in `captures/README.md`; committed value is the twice-read value.
+- **W3** KC venue naming split between official pages (standing flag F-03) — recorded as VARIANT, never reconciled by inference.
+- **W4** MIN@SF venue evidence-depth split (week-page event label vs game-centre stadium name) — VARIANT.
+- **W5** Append-only discipline: the third probe was appended into the sealed capture file while uncommitted; the sha256 gate flagged it and the manifest was re-sealed over the appended content. New probes now go into new sealed files.
+- **Incident log** During the first claim push, a `git pull --rebase` hit a COORDINATION.md conflict (main had moved with PR #110) and a chained `git push` published the mid-rebase state. Fixed immediately by completing the union rebase and force-pushing with lease; no other session's work was touched. Two further concurrent merges (#113, #115) were rebased onto with line-level union resolutions — no other session's COORDINATION block or builder prose lost.
+
+### Handoffs for the next session
+
+1. **Week-11 report capture**: probe `nfl.com/injuries/league/2026/reg11` again (it will serve Week 11 once published); transcribe into `data/week11/` with per-row source links, re-seal a NEW capture file (never re-open a sealed one), rebuild. `week11_verify` enforces the manifest.
+2. The B50 scheduled-capture path remains `readiness/data/history` (workflow `availability-snapshots.yml`, Wed/Thu/Fri 21:00 UTC) — it had no recorded runs as of 2026-11-18; the week11 module's dated probe log is the page-reader evidence complement.
+3. `arena/b05a7eea-x3` (PR #115) owns the reserve-list capture in `board/`; my module deliberately does not duplicate it.
+
+M1, M2, M3 **done**. Working tree clean on `main` @ `7974710`.
