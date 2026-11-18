@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL decision board: every figure traced to an official NFL source, or left blank and flagged.">
+<title>Strategies and leaderboard - X3 NFL decision board</title>
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3</a> <span>NFL decision board</span></div>
+  <div class="asof">official pages read <b>2026-11-18T03:20Z</b> &middot; season 2026, week 11</div>
+</header>
+<nav class="main"><a href="index.html">Executive summary</a><a href="verification.html">Live verification</a><a href="reserve.html">Reserve list</a><a href="results.html">Results &amp; luck</a><a href="lines.html">Lines &amp; value</a><a href="strategies.html" class="on">Strategies</a><a href="injuries.html">Injuries &amp; depth</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="requirements.html">Requirements</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a></nav>
+<main>
+
+<h1>Strategies, gates and the leaderboard that stays empty</h1>
+<p class="lede">The brief asks for a leaderboard competition with rewards for top strategies, each
+strategy passing validation gates, correlations computed, and luck removed. This page states what
+can be built today, what cannot, and the rule that decides which is which.</p>
+
+<div class="callout">
+<h2 style="margin-top:0">The rule that governs every row below</h2>
+<p style="margin:0">A strategy enters the leaderboard only when it has (1) a registration frozen in
+git before results were seen, (2) a proper score against a naive benchmark with an interval, and
+(3) prices for the bets it would have made. <b>At 2026-11-18T03:20Z no strategy clears (3), because the
+repository holds zero market prices.</b> Therefore the leaderboard is empty by rule, not by
+oversight &mdash; an empty board is the correct output, and a filled one would be a fabrication.</p>
+</div>
+
+<h2>1. The divisions, and why they cannot be merged</h2>
+<table>
+<thead><tr><th>Division</th><th>What can be scored today</th><th>What blocks the rest</th><th>Gate</th></tr></thead>
+<tbody>
+<tr><td><b>Singles</b> (spread, total, moneyline)</td>
+<td>Signal: yes, against a no-line benchmark. Staking: no.</td>
+<td>Prices. Also sample size: 102 graded games from one season.
+<a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11">week-11 schedule</a></td>
+<td>Needs an admitted price source and a walk-forward score with an interval.</td></tr>
+<tr><td><b>Game parlays</b> (2+ legs, different games)</td>
+<td>Nothing.</td>
+<td>Joint probability. Multiplying leg probabilities assumes independence that is not shown.
+<a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11">week-11 schedule</a></td>
+<td>Needs a directly validated joint estimate and the operator's void/push rules.</td></tr>
+<tr><td><b>Same-game parlays</b></td>
+<td>Nothing.</td>
+<td>Legs are strongly dependent by construction; the product of marginals is invalid, not merely
+biased. <a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11">week-11 schedule</a></td>
+<td>Needs a joint model of the same-game outcomes, validated out of sample.</td></tr>
+<tr><td><b>Player prop combos</b></td>
+<td>Nothing.</td>
+<td>No official player-prop lines exist in this repository; snap counts and target shares are not
+captured. <a class="src" href="https://www.nfl.com/injuries/league/2026/reg10">week-10 report</a></td>
+<td>Needs official prop lines plus snap-count-to-usage evidence.</td></tr>
+</tbody></table>
+
+<h2>2. Signal and staking, kept apart</h2>
+<p>The brief's requirement is that a lucky staking run must not mask a bad signal. The repository's
+own scoring contract already says the right thing: signal and staking are scored in separate
+columns from different data and are never combined into one number; a good staking run cannot
+promote a strategy whose signal is inconclusive, and a good signal cannot be published with a
+staking number that does not exist. But it also says a strategy is leaderboard-eligible only when
+<i>both</i> exist &mdash; and staking cannot exist without prices. So the honest state is:</p>
+<table>
+<thead><tr><th>Column</th><th>Exists?</th><th>Reason</th></tr></thead>
+<tbody>
+<tr><td>Signal score (proper score vs naive benchmark, with interval)</td>
+<td><span class="b ok">YES - 1 benchmark</span></td><td>The walk-forward rating model on 102 games, with a game-cluster interval.
+<a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/closeout/derived/season_log.csv">season_log.csv</a></td></tr>
+<tr><td>Staking score (CLV, ROI at the price actually available)</td>
+<td><span class="b bad">NO</span></td><td>No price source is admitted. Computing it needs the number you could have bet at.
+<a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11">nfl.com/schedules/2026/by-week/week-11</a></td></tr>
+<tr><td>Demotion gate (live strategy returns to paper)</td>
+<td><span class="b warn">DEFINED, NEVER FIRED</span></td><td>Four clauses are defined. None has been evaluated because nothing has been live.
+<a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/x3/verified/leaderboard.json">data/x3/verified/leaderboard.json</a></td></tr>
+<tr><td>Control baselines (coin flip, favourites only)</td>
+<td><span class="b warn">DEFINED, PARTLY RUN</span></td><td>Controls exist for the settled Week-10 board; favourites-only needs prices to be meaningful.
+<a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/closeout/derived/controls.csv">controls.csv</a></td></tr>
+</tbody></table>
+
+<h2>3. The gates a strategy must pass, in order</h2>
+<ol class="tight">
+<li><b>Registration.</b> The rule text, the sample window and the gates are committed before the
+evaluation window opens. The commit hash is the registration. Result-chasing is not a risk to be
+managed later; it is prevented here or not at all.</li>
+<li><b>Data provenance.</b> Every input traces to an official page, or to a documented dataset with
+a link and a clock time.</li>
+<li><b>Out-of-sample scoring.</b> Train, validation and a final holdout that is never touched
+during development. The repository holds one season, so the holdout does not yet exist.</li>
+<li><b>Proper score with uncertainty.</b> Brier or log score against a naive benchmark, with a
+game-cluster interval, never a win rate.</li>
+<li><b>Multiplicity.</b> The number of strategies tried is recorded and the interval adjusted for
+it, otherwise the best of fifty coin flips looks skilled.</li>
+<li><b>Price and staking.</b> Only then, and only against an admitted price.</li>
+</ol>
+
+<h2>4. Correlations</h2>
+<p>Every correlation the brief asks for &mdash; same-game leg dependence, prop-to-result dependence
+&mdash; needs paired outcomes from the same games. The repository holds no game-level scoring table,
+so <b>zero correlation values are computed</b>. The register stores the pair, the method and a blank
+value with an UNVERIFIED marker, which is the only defensible state. Publishing an n without the
+paired data behind it would be the fabrication this board exists to avoid.</p>
+
+<h2>5. Rewards</h2>
+<p>The brief asks for rewards for top strategies. No reward can be computed honestly until returns
+can be, and returns need prices. Beyond that, a reward paid on realised return is a reward for luck,
+as the <a href="results.html">luck panel</a> shows directly. A defensible design pays on
+out-of-sample proper-score skill with a multiplicity penalty, and does not pay on ROI. That is a
+proposal on <a href="suggestions.html">Suggestions</a>, not an implemented rule.</p>
+
+</main>
+<footer>
+<p><b>How to read this board.</b> Every number is either (a) transcribed from an official NFL
+page whose link is on the row, (b) arithmetic on those numbers with the formula printed beside
+it, or (c) marked BLOCKED / UNVERIFIED with the missing input named. Nothing is estimated,
+interpolated or inferred. Where two official pages disagree, both are linked and the row is
+flagged on <a href="flagged.html">Flagged for review</a>.</p>
+<p>Research workspace. No betting advice, no market-price feed, no wagering of any kind.
+Built from <code>board/data/*.csv</code> by <code>scripts/board_build.py</code>;
+gated by <code>scripts/board_verify.py</code>.</p>
+</footer>
+</body>
+</html>

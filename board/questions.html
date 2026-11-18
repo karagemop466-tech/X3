@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL decision board: every figure traced to an official NFL source, or left blank and flagged.">
+<title>Open questions - X3 NFL decision board</title>
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3</a> <span>NFL decision board</span></div>
+  <div class="asof">official pages read <b>2026-11-18T03:20Z</b> &middot; season 2026, week 11</div>
+</header>
+<nav class="main"><a href="index.html">Executive summary</a><a href="verification.html">Live verification</a><a href="reserve.html">Reserve list</a><a href="results.html">Results &amp; luck</a><a href="lines.html">Lines &amp; value</a><a href="strategies.html">Strategies</a><a href="injuries.html">Injuries &amp; depth</a><a href="questions.html" class="on">Questions</a><a href="suggestions.html">Suggestions</a><a href="requirements.html">Requirements</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a></nav>
+<main>
+
+<h1>Questions that must be answered before a bet decision</h1>
+<p class="lede">Ten questions, each with what is known, what is missing and who decides. They are
+ordered by how much they unblock: the first three gate almost everything else on the board.</p>
+<div class="callout">
+<p style="margin:0"><b>How to use this.</b> Each row is answerable today by a named owner. None is
+answerable by more data collection alone: they are rights, source and policy questions, not
+transcription questions. Nothing downstream is trustworthy until Q1&ndash;Q3 are settled.</p>
+</div>
+<div class="tblwrap"><table><thead><tr><th>#</th><th>Category</th><th>Question</th><th>Why it matters</th><th>What we have</th><th>What we lack</th><th>Where to verify</th><th>Owner</th></tr></thead><tbody><tr><td><b>Q1</b></td><td>Data rights</td><td><b>May this project store and publish official NFL page content, or only derived analysis with links to the original?</b></td><td>It decides whether the private data layer may hold row-level captures at all.</td><td>Official pages are publicly readable and already captured here.</td><td>The league&#x27;s terms. Nothing in the repository records a terms read.</td><td><a class="src" href="https://www.nfl.com/terms-and-conditions/" target="_blank" rel="noopener">nfl.com/terms-and-conditions/</a></td><td>Owner + provider</td></tr><tr><td><b>Q2</b></td><td>Prices</td><td><b>Which market-price source is admitted, and on what terms?</b></td><td>Without it no residual, CLV, ROI, staking score or reward can exist.</td><td>Nothing. The repository holds zero prices by design.</td><td>A licensed or officially published price feed, with a dated terms read.</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td><td>Owner</td></tr><tr><td><b>Q3</b></td><td>Reserve list</td><td><b>Does an official current-status roster exist, as opposed to the transaction log?</b></td><td>It decides whether &#x27;not listed&#x27; can ever mean &#x27;available&#x27;.</td><td>A partial transaction log (133 rows). Seven players on it carry a play-permitting designation.</td><td>A roster-status endpoint, or daily capture that resolves each move to a later activation.</td><td><a class="src" href="https://www.nfl.com/transactions/league/reserve-list/2026/11" target="_blank" rel="noopener">nfl.com/transactions/league/reserve-list/2026/11</a></td><td>Data lead</td></tr><tr><td><b>Q4</b></td><td>Snap counts</td><td><b>Is there an official snap-count source for the 2026 season?</b></td><td>It is the only defensible starter proxy once depth pages fail.</td><td>Game Book playtime percentages for the games already read.</td><td>A league-wide table. Not captured; not confirmed to exist in usable form.</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td><td>Data lead</td></tr><tr><td><b>Q5</b></td><td>Venue</td><td><b>Which official surface wins when the schedule page and the Game Centre name different stadiums?</b></td><td>Venue feeds roof and weather features; two names for one stadium would double-count it.</td><td>Both names, both linked (Reliant vs NRG, same fixture).</td><td>A precedence rule decided by the owner, recorded once.</td><td><a class="src" href="https://www.nfl.com/games/colts-at-texans-2026-reg-11" target="_blank" rel="noopener">nfl.com/games/colts-at-texans-2026-reg-11</a></td><td>Owner</td></tr><tr><td><b>Q6</b></td><td>Holdout</td><td><b>What is the final holdout season, given that only 2026 is stored?</b></td><td>Train/validation/holdout cannot be split out of one season without re-using it.</td><td>One season, 150 games.</td><td>At least one earlier season of complete results, designations and prices.</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td>Model owner</td></tr><tr><td><b>Q7</b></td><td>Multiplicity</td><td><b>How many strategies will be tried before the first leaderboard is published?</b></td><td>The interval must be widened for the number of trials, or the winner is the luckiest.</td><td>No registry count is fixed.</td><td>A pre-registered cap, committed before evaluation opens.</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td>Model owner</td></tr><tr><td><b>Q8</b></td><td>Rewards</td><td><b>What is paid, on what metric, and from what pool?</b></td><td>A reward on ROI pays for luck; a reward on proper score pays for skill.</td><td>No reward is defined or funded.</td><td>A metric, a sample threshold and a funding decision.</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td>Owner</td></tr><tr><td><b>Q9</b></td><td>Injury timing</td><td><b>What clock do designations carry?</b></td><td>Without a clock, &#x27;reserve date after report&#x27; cannot be evaluated and no delta can be built.</td><td>Designations, no timestamp. The report page publishes none.</td><td>A capture series with our own clock at each read.</td><td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries/</a></td><td>Data lead</td></tr><tr><td><b>Q10</b></td><td>Scope</td><td><b>Is this a research workspace or a betting system?</b></td><td>It determines what the site may say, and what the legal exposure is.</td><td>The site states research-only throughout.</td><td>An explicit owner decision, recorded.</td><td><a class="src" href="https://www.nfl.com/terms-and-conditions/" target="_blank" rel="noopener">nfl.com/terms-and-conditions/</a></td><td>Owner</td></tr></tbody></table></div>
+
+<h2>The dependency order</h2>
+<ol class="tight">
+<li><b>Q2 (prices)</b> blocks every return, staking score, residual and reward.</li>
+<li><b>Q1 (rights)</b> blocks the private data layer and therefore every capture that is not
+derived analysis.</li>
+<li><b>Q3 (roster status)</b> blocks any availability feature that is not a guess.</li>
+<li><b>Q9 (designation clock)</b> blocks the surprise signal, which is the only injury feature the
+brief actually wants.</li>
+<li><b>Q6 + Q7 (holdout, multiplicity)</b> block the first published leaderboard, because without
+them the ranking is a coin flip with a confidence interval drawn too narrow.</li>
+</ol>
+
+<h2>Questions that are already answered</h2>
+<p>Kept here so they are not re-litigated. Each was settled by reading an official page, and the
+answer is on the page that uses it.</p>
+<table><thead><tr><th>Question</th><th>Answer</th><th>Where it is used</th></tr></thead><tbody>
+<tr><td>Has the Week-11 injury report been published?</td><td>No, not at the clock time of this read.</td>
+<td><a href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg11</a></td></tr>
+<tr><td>How many clubs are on bye in Week 11?</td><td>Six: Atlanta, Cleveland, Green Bay, Los Angeles Rams, New England, Seattle.</td>
+<td><a href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr>
+<tr><td>Did the Colts trade away starting receivers?</td><td>Yes, two on 11/10: Keenan Allen and Josh Downs.</td>
+<td><a href="https://www.nfl.com/transactions/league/trades/2026/11" target="_blank" rel="noopener">trades/2026/11</a></td></tr>
+<tr><td>Is Malik Willis on injured reserve?</td><td>Yes, Miami placed him there on 11/10.</td>
+<td><a href="https://www.nfl.com/transactions/league/reserve-list/2026/11" target="_blank" rel="noopener">reserve-list/2026/11</a></td></tr>
+<tr><td>Do the 150 stored games match the official standings?</td><td>Yes, 32 of 32 clubs, exactly.</td>
+<td><a href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+</tbody></table>
+
+</main>
+<footer>
+<p><b>How to read this board.</b> Every number is either (a) transcribed from an official NFL
+page whose link is on the row, (b) arithmetic on those numbers with the formula printed beside
+it, or (c) marked BLOCKED / UNVERIFIED with the missing input named. Nothing is estimated,
+interpolated or inferred. Where two official pages disagree, both are linked and the row is
+flagged on <a href="flagged.html">Flagged for review</a>.</p>
+<p>Research workspace. No betting advice, no market-price feed, no wagering of any kind.
+Built from <code>board/data/*.csv</code> by <code>scripts/board_build.py</code>;
+gated by <code>scripts/board_verify.py</code>.</p>
+</footer>
+</body>
+</html>

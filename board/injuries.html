@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL decision board: every figure traced to an official NFL source, or left blank and flagged.">
+<title>Injuries and depth - X3 NFL decision board</title>
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3</a> <span>NFL decision board</span></div>
+  <div class="asof">official pages read <b>2026-11-18T03:20Z</b> &middot; season 2026, week 11</div>
+</header>
+<nav class="main"><a href="index.html">Executive summary</a><a href="verification.html">Live verification</a><a href="reserve.html">Reserve list</a><a href="results.html">Results &amp; luck</a><a href="lines.html">Lines &amp; value</a><a href="strategies.html">Strategies</a><a href="injuries.html" class="on">Injuries &amp; depth</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="requirements.html">Requirements</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a></nav>
+<main>
+
+<h1>Injuries and depth: what is measured, and the one thing that is not</h1>
+<p class="lede">The brief wants the injury signal to be a <i>surprise</i>, never a level, and wants
+depth modelled from playing time rather than a jersey order. This page reports what the repository
+holds, checks it against the official report, and names the inputs that are still missing.</p>
+
+<h2>1. The Week-10 report, verified</h2>
+<div class="cards">
+  <div class="card"><div class="num">345</div><div class="lbl">player rows</div>
+  <div class="sub">28 clubs with at least one row</div></div>
+  <div class="card"><div class="num">66</div><div class="lbl">Out</div><div class="sub">designated unavailable</div></div>
+  <div class="card"><div class="num">84</div><div class="lbl">Questionable</div><div class="sub">no published probability</div></div>
+  <div class="card"><div class="num">10</div><div class="lbl">Doubtful</div><div class="sub">no published probability</div></div>
+  <div class="card"><div class="num">185</div><div class="lbl">no game designation</div><div class="sub">on the report but not ruled in or out</div></div>
+</div>
+<p>These counts were recomputed from the stored CSV and the four clubs re-read today matched the
+official page row for row: Washington 9 rows, New York Giants 11, New England 15, Detroit 9.
+<a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></p>
+
+<h2>2. The signal is a level, and that is the bug</h2>
+<div class="callout warn">
+<p style="margin:0"><b>Why "Out" is not a surprise.</b> An "Out" designation is already public, and
+the market has priced it. A signal built on the designation itself re-states information everyone
+holds. The brief's requirement is to measure the <i>surprise</i> &mdash; the gap between what was
+expected before the report and what the report then said. That requires two dated reads per game
+week so the expectation and the realisation can be differenced. <b>The repository holds one read of
+Week 10.</b> With one read there is no delta, and with no delta there is no surprise, and with no
+surprise the feature is a level. The requirement is therefore genuinely blocked, not skipped.</p>
+</div>
+<p>What would clear it: a dated capture series on the report's own publication days (Wednesday,
+Thursday, Friday, then the inactive list 90 minutes before kickoff), retained with hashes. The
+repository already has a scheduled workflow capable of this; what it has not yet accumulated is
+the history.</p>
+
+<h2>3. Depth of the replacement</h2>
+<p>The brief asks to track the <i>depth</i> of a replacement, not merely that a replacement
+happened, and forbids modelling depth from jersey order. The repository's replacement table holds
+76 rows across the Week-10 designations. Their states:</p>
+<table><thead><tr><th>State</th><th class="n">Rows</th><th>Meaning</th><th>Source</th></tr></thead><tbody>
+<tr><td>UNVERIFIED</td><td class="n">40</td><td>the player is not on his club depth chart, so no replacement can be named - left blank</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td>VERIFIED</td><td class="n">36</td><td>state recorded by the generating module</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr>
+</tbody></table>
+<p class="note">The blank replacement cells are correct behaviour, not missing work: a club chart
+that does not list the injured player cannot say who replaces him. The honest output is a blank plus
+a reason.</p>
+
+<h3>The route that is verified, and the one that is not</h3>
+<ul class="tight">
+<li><b>Verified:</b> official Game Books give actual starters and the inactive list for a game,
+with the league's own sheet as the source. That is a fact about a game that happened, not an
+inference about a depth chart.</li>
+<li><b>Not verified:</b> a league-wide snap-count source. Snap counts are the only defensible
+starter proxy if clubs publish nothing usable, and no official snap-count table is captured here,
+so the "model depth from playing time" requirement stays open.</li>
+<li><b>Not verified:</b> whether clubs update their depth pages after roster moves. Baltimore's
+quarterback depth after the Brissett trade is the live example; the chart could not be confirmed
+against the transaction on this pass.</li>
+</ul>
+
+<h2>4. Calibrating what "Questionable" means</h2>
+<p>Official text gives no percentage. The repository's past-season pilot joins designations to
+inactive lists and reports, with Wilson intervals: Questionable played 54 of 79 (68%, 95% CI
+57&ndash;78); Out played 4 of 53 (7.5%, CI 3.0&ndash;17.9); Doubtful 1 of 10 (10%, CI 1.8&ndash;40.4).
+Those are descriptive rates on a pilot sample, not a feature, and the four "Out" players who played
+are published as flagged discrepancies rather than smoothed away. The n is too small to set a
+threshold, which is why the requirement is still open on
+<a href="requirements.html">Requirements</a>.</p>
+
+</main>
+<footer>
+<p><b>How to read this board.</b> Every number is either (a) transcribed from an official NFL
+page whose link is on the row, (b) arithmetic on those numbers with the formula printed beside
+it, or (c) marked BLOCKED / UNVERIFIED with the missing input named. Nothing is estimated,
+interpolated or inferred. Where two official pages disagree, both are linked and the row is
+flagged on <a href="flagged.html">Flagged for review</a>.</p>
+<p>Research workspace. No betting advice, no market-price feed, no wagering of any kind.
+Built from <code>board/data/*.csv</code> by <code>scripts/board_build.py</code>;
+gated by <code>scripts/board_verify.py</code>.</p>
+</footer>
+</body>
+</html>

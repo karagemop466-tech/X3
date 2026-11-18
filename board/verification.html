@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL decision board: every figure traced to an official NFL source, or left blank and flagged.">
+<title>Live verification - X3 NFL decision board</title>
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3</a> <span>NFL decision board</span></div>
+  <div class="asof">official pages read <b>2026-11-18T03:20Z</b> &middot; season 2026, week 11</div>
+</header>
+<nav class="main"><a href="index.html">Executive summary</a><a href="verification.html" class="on">Live verification</a><a href="reserve.html">Reserve list</a><a href="results.html">Results &amp; luck</a><a href="lines.html">Lines &amp; value</a><a href="strategies.html">Strategies</a><a href="injuries.html">Injuries &amp; depth</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="requirements.html">Requirements</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a></nav>
+<main>
+
+<h1>Live verification, 2026-11-18T03:20Z</h1>
+<p class="lede">Twelve claims this repository already makes, each re-read against the official NFL
+page it cites. A verdict of CONFIRMED means the official page agrees today. STALE, DISCREPANCY,
+INCONSISTENT and DOES NOT HOLD are published, not repaired inside another module's files.</p>
+
+<div class="callout">
+<p style="margin:0"><b>Method.</b> Shell HTTP to <code>nfl.com</code> is blocked in this
+environment; each page was retrieved with the page-reader tool and the tool's clock is recorded on
+every row. The page text was compared field by field against the stored value. Where a page could
+not be reached or had not been published, the row says so rather than being dropped.</p>
+</div>
+
+<div class="tblwrap"><table><thead><tr><th>ID</th><th>Area</th><th>Claim in the repository</th><th>What the official page says</th><th>Verdict</th><th>Official source</th><th>Note</th></tr></thead><tbody><tr><td><b>V-01</b></td><td>Results feed</td><td><b>data/x3/verified/results_2026.csv carries 137 FINAL rows and marks 13 of the 14 Week-10 games SCHEDULED</b><br><small>repo: 137 finals; 13 Week-10 rows status=SCHEDULED</small></td><td><small>official: all 14 Week-10 fixtures are FINAL (WAS 24-21 NYG, NE 10-35 DET, KC 35-13 ATL, HOU 24-27 CLE, MIN 30-10 GB, MIA 22-24 IND, CAR 20-17 NO, BUF 31-12 NYJ, JAX 40-23 TEN, LAR 34-6 AZ, SEA 21-13 LV, SF 46-40 DAL, PIT 18-38 CIN, LAC 23-20 BAL)</small></td><td><span class="b bad">STALE</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td><td>The front page (index.html) presents this file as the verified results feed. The same repository already holds the correct scores.</td></tr><tr><td><b>V-02</b></td><td>Results feed</td><td><b>data/closeout/derived/season_log.csv holds 150 played games reconciled to the official standings</b><br><small>repo: 150 games, 32 clubs, league PF 6923 = PA 6923</small></td><td><small>official: 32/32 clubs match on W-L-T and PF-PA recomputed from the 150-row log; every club has 9 or 10 games</small></td><td><span class="b ok">CONFIRMED</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td>Recomputed here independently: sum of W/L/T and PF/PA from the log equals the official line for all 32 clubs.</td></tr><tr><td><b>V-03</b></td><td>Results feed</td><td><b>two results stores in one repository</b><br><small>repo: results_2026.csv = 137 finals; season_log.csv = 150 games</small></td><td><small>official: 150 games have been played (137 + 14 Week-10 fixtures - 1 double count)</small></td><td><span class="b bad">INCONSISTENT</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/data/closeout/derived/season_log.csv" target="_blank" rel="noopener">repo:data/closeout/derived/season_log.csv</a></td><td>One repository, two answers to &#x27;how many games are in the feed&#x27;. Neither file is wrong about what it contains; the landing page publishes the smaller one as canonical.</td></tr><tr><td><b>V-04</b></td><td>Injury report</td><td><b>Week-10 report, 345 rows, 66 Out / 84 Questionable / 10 Doubtful / 185 blank</b><br><small>repo: 345 rows; 28 clubs listed</small></td><td><small>official: the four clubs re-read today (WAS 9, NYG 11, NE 15, DET 9 = 44 rows) match row for row on player, position, injury, practice and game status</small></td><td><span class="b ok">CONFIRMED (4 OF 28 CLUBS RE-READ)</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td><td>Spot re-read, not a full 32-club pass: only the clubs whose game centre was also read were checked.</td></tr><tr><td><b>V-05</b></td><td>Injury report</td><td><b>the Week-11 report exists</b><br><small>repo: no Week-11 injury row is stored anywhere in the repository</small></td><td><small>official: https://www.nfl.com/injuries/league/2026/reg11 serves the WEEK 10 report; the Week-11 report has not been published at 03:20Z on Wed 2026-11-18</small></td><td><span class="b warn">NOT YET PUBLISHED</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg11</a></td><td>Nothing may be transcribed. The first Week-11 report day is expected today; the capture must be repeated after publication.</td></tr><tr><td><b>V-06</b></td><td>Schedule</td><td><b>Week-11 board frozen 2026-11-17T23:05Z with 13 fixtures</b><br><small>repo: 13 fixtures, venues taken from the schedule page venue block</small></td><td><small>official: the Week-11 schedule page lists 13 fixtures and 6 clubs on bye (ATL, CLE, GB, LA, NE, SEA)</small></td><td><span class="b ok">CONFIRMED</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td><td>Bye clubs re-read today: ATL, CLE, GB, LA, NE, SEA - six, not four.</td></tr><tr><td><b>V-07</b></td><td>Venue</td><td><b>venue for IND@HOU recorded as NRG Stadium from the schedule page venue block</b><br><small>repo: NRG Stadium</small></td><td><small>official: Game Centre &#x27;Game Info&#x27; reads LOCATION HOUSTON, TX / STADIUM RELIANT STADIUM</small></td><td><span class="b bad">DISCREPANCY</span></td><td><a class="src" href="https://www.nfl.com/games/colts-at-texans-2026-reg-11" target="_blank" rel="noopener">nfl.com/games/colts-at-texans-2026-reg-11</a></td><td>Two official surfaces give two different stadium names for the same fixture. Houston&#x27;s home venue has been called both names historically; the repository must not silently pick one. The schedule page and the Game Centre are both linked so the reader can see both.</td></tr><tr><td><b>V-08</b></td><td>Reserve list</td><td><b>round2 register marks &#x27;capture the reserve list so not-listed never means available&#x27; as not covered</b><br><small>repo: no reserve-list row existed in any CSV, JSON or capture file</small></td><td><small>official: 133 reserve-list rows captured for March-November 2026 (board/data/reserve_list_2026.csv)</small></td><td><span class="b ok">NOW CAPTURED (PARTIAL)</span></td><td><a class="src" href="https://www.nfl.com/transactions/league/reserve-list/2026/11" target="_blank" rel="noopener">nfl.com/transactions/league/reserve-list/2026/11</a></td><td>Partial: each month view renders about 25 rows and the page exposes no documented pagination control to this capture tool.</td></tr><tr><td><b>V-09</b></td><td>Reserve list</td><td><b>Malik Willis is absent from the weekly report because he is on injured reserve (brief)</b><br><small>repo: Willis does not appear in the 345-row Week-10 report (checked)</small></td><td><small>official: Miami placed Malik Willis on Reserve/Injured on 11/10</small></td><td><span class="b ok">CONFIRMED</span></td><td><a class="src" href="https://www.nfl.com/transactions/league/reserve-list/2026/11" target="_blank" rel="noopener">nfl.com/transactions/league/reserve-list/2026/11</a></td><td>First of the two claims this session could close from the official feed.</td></tr><tr><td><b>V-10</b></td><td>Reserve list</td><td><b>the reserve list is a roster status, so a listed player is unavailable</b><br><small>repo: n/a - no prior position</small></td><td><small>official: Greg Van Roten (NE) is listed Reserve/Injured 09/29 and is Questionable in the Week-10 report; Jacob Hummel (HOU) 09/26 likewise Questionable; Andrew Wingard (AZ) listed 11/17 is Questionable in Week 10</small></td><td><span class="b bad">DOES NOT HOLD</span></td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td><td>Three counter-examples. The feed is a transaction log, not a current-status roster. Treating &#x27;listed&#x27; as &#x27;out&#x27; would have removed three active players.</td></tr><tr><td><b>V-11</b></td><td>Roster turnover</td><td><b>the Colts&#x27; Week 10 release documents two starting-receiver trades (brief)</b><br><small>repo: no roster-event capture linked to a depth snapshot</small></td><td><small>official: 11/10: Keenan Allen IND-&gt;SF; Josh Downs IND-&gt;KC. Both appear on the official trades feed.</small></td><td><span class="b ok">CONFIRMED</span></td><td><a class="src" href="https://www.nfl.com/transactions/league/trades/2026/11" target="_blank" rel="noopener">nfl.com/transactions/league/trades/2026/11</a></td><td>The Colts traded away two receivers on the same day the depth chart was read.</td></tr><tr><td><b>V-12</b></td><td>Roster turnover</td><td><b>Baltimore still publishes Lamar Jackson and Tyler Huntley at QB after both went on injured reserve (brief)</b><br><small>repo: no Baltimore QB reserve event in any captured file</small></td><td><small>official: no 2026 reserve-list entry for Lamar Jackson or Tyler Huntley in the captured months; the captured rows for BAL are Tavius Robinson (10/24) only; Jacoby Brissett AZ-&gt;BAL 11/06</small></td><td><span class="b warn">NOT CONFIRMED BY THE CAPTURE</span></td><td><a class="src" href="https://www.nfl.com/transactions/league/reserve-list/2026/10" target="_blank" rel="noopener">nfl.com/transactions/league/reserve-list/2026/10</a></td><td>Absence here is not evidence of health - that is exactly the point of V-10. The capture is partial and this specific claim needs a Baltimore roster page read before it can be published either way.</td></tr></tbody></table></div>
+
+<h2>What the verdicts mean together</h2>
+<h3>The data that exists is good</h3>
+<p>The 150-game season log reconciles to the official standings on all 32 clubs (V-02), and the
+Week-10 injury rows match the official report on every club re-read (V-04). That is the strongest
+result on this board: the transcription work in this repository holds up.</p>
+<h3>The problem is which copy is published</h3>
+<p>V-01 and V-03 are the same failure twice. One tree stores the correct 150-game log; another
+stores a 137-game file with 13 Week-10 games still marked SCHEDULED; and the front page presents
+the second one as the verified feed. Nothing needs re-transcribing &mdash; one file needs retiring.
+That is suggestion <a href="suggestions.html">SG-01</a>.</p>
+<h3>Two official surfaces can disagree</h3>
+<p>V-07: for the Week-11 Thursday game the schedule page's venue block says NRG Stadium and the
+Game Centre's Game Info block says Reliant Stadium, for the same fixture. Both are official. The
+board publishes both and picks neither, which is the only honest option.</p>
+<h3>Absence is not health</h3>
+<p>V-09 confirms the brief's Malik Willis example directly: he is not in the injury report because
+Miami placed him on Reserve/Injured on 11/10. V-12 shows the limit of that reasoning: the
+reserve capture holds no 2026 entry for Lamar Jackson or Tyler Huntley, and that absence proves
+nothing &mdash; because the capture is partial (V-08) and because V-10 shows listed players
+playing. The Baltimore claim stays unconfirmed until the club roster page is read.</p>
+
+</main>
+<footer>
+<p><b>How to read this board.</b> Every number is either (a) transcribed from an official NFL
+page whose link is on the row, (b) arithmetic on those numbers with the formula printed beside
+it, or (c) marked BLOCKED / UNVERIFIED with the missing input named. Nothing is estimated,
+interpolated or inferred. Where two official pages disagree, both are linked and the row is
+flagged on <a href="flagged.html">Flagged for review</a>.</p>
+<p>Research workspace. No betting advice, no market-price feed, no wagering of any kind.
+Built from <code>board/data/*.csv</code> by <code>scripts/board_build.py</code>;
+gated by <code>scripts/board_verify.py</code>.</p>
+</footer>
+</body>
+</html>
