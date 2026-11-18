@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 585,
+      "refs": 586,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 924,
+      "rows": 925,
       "flagged_rows": 684,
-      "refs": 1338,
+      "refs": 1339,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -73,6 +73,22 @@
         "audit/index.html: ID Issue Repo value Official value Proposed action Sources",
         "audit/index.html: Game (away @ home) Day Time Network (schedule) Note Injury page kickoff Injury page TV Sources",
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
+      ]
+    },
+    "board": {
+      "pages": 12,
+      "rows": 399,
+      "flagged_rows": 364,
+      "refs": 688,
+      "unsourced_examples": [
+        "board/flagged.html: # Severity Area What is wrong Official page that shows it Proposed action",
+        "board/flagged.html: Observation Why it is correct",
+        "board/index.html: Requirement State today What it needs Source",
+        "board/injuries.html: Kind Club Player Pos Before After  Injury Practice before \u2192 after Source",
+        "board/injuries.html: File Module Rows Clock as recorded  Scope Rams coded Practice vocabulary Source page",
+        "board/injuries.html: State Rows Meaning Source",
+        "board/lines.html: Fixture Venue Side (home handicap) Total Moneyline (H / A) P(home) Market line &amp; difference Source",
+        "board/lines.html: Variant Games graded Margin MAE  Side hit rate Brier Reading Provenance"
       ]
     },
     "closeout": {
@@ -141,9 +157,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 303,
+      "rows": 304,
       "flagged_rows": 125,
-      "refs": 487,
+      "refs": 489,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -370,9 +386,9 @@
     },
     "week11": {
       "pages": 6,
-      "rows": 1001,
-      "flagged_rows": 989,
-      "refs": 1035,
+      "rows": 1005,
+      "flagged_rows": 992,
+      "refs": 1038,
       "unsourced_examples": [
         "week11/flagged.html: ID Status Area Finding Evidence Action",
         "week11/freshness-detail.html: Dataset Key Field Committed Read today Verdict Committed register Source",
@@ -408,9 +424,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 354,
-  "rows_total": 15903,
-  "rows_flagged_or_sourced": 13384,
-  "internal_refs": 9194,
+  "pages_total": 366,
+  "rows_total": 16308,
+  "rows_flagged_or_sourced": 13751,
+  "internal_refs": 9405,
   "problems": []
 }
