@@ -895,6 +895,16 @@ moves belong to the two clubs whose Week-10 game was still ahead when the second
 at a club that had already played, Arden Key's Questionable clearing to blank at Indianapolis, points
 the other way. A delta that only moves for clubs with a game pending is a calendar effect, not
 information. {src("https://www.nfl.com/schedules/2026/by-week/week-10")}</p>
+<p class="note"><b>Cross-checked against the tool that already does this.</b>
+<code>scripts/x3_snapshots.py</code> is the repository&#39;s own snapshot differ and it reports the same
+pair as rows 345&rarr;347, designation changes 13, added 2, dropped 0 &mdash; identical to this page.
+Its practice figure is 3 where this page publishes 6, and the difference is definitional, not factual:
+the script counts a practice move only for a row whose designation did <i>not</i> also move (its
+<code>elif</code> at the row-comparison step), so its 3 are my 6 minus the 3 rows where both columns
+moved. Two correct tools, two different definitions, published side by side &mdash; which is the reason
+this board states the definition next to the number rather than trusting the reader to share one.
+<a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/scripts/x3_snapshots.py">scripts/x3_snapshots.py</a></p>
+
 <p><b>What this does not buy us.</b> Two reads 42 hours apart, for one week, with no third read
 closer to kickoff, is a delta of one step. The requirement is a <i>series</i>: Wednesday, Thursday,
 Friday, then the inactive list 90 minutes before kickoff, for every week, retained with hashes.

@@ -79,7 +79,7 @@
       "pages": 12,
       "rows": 399,
       "flagged_rows": 364,
-      "refs": 687,
+      "refs": 688,
       "unsourced_examples": [
         "board/flagged.html: # Severity Area What is wrong Official page that shows it Proposed action",
         "board/flagged.html: Observation Why it is correct",
@@ -157,9 +157,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 302,
+      "rows": 303,
       "flagged_rows": 125,
-      "refs": 485,
+      "refs": 487,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -409,8 +409,8 @@
     }
   },
   "pages_total": 360,
-  "rows_total": 15253,
+  "rows_total": 15254,
   "rows_flagged_or_sourced": 12713,
-  "internal_refs": 9312,
+  "internal_refs": 9314,
   "problems": []
 }
