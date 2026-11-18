@@ -182,7 +182,11 @@ def table(heads, rows, tid=None, cap=None, note=None, kind="data"):
 
 def page(fname, title, intro, body, active="index", extra_head=""):
     nav = "".join(  # __council__ sentinel is root-landing-only (PR #55 merge repair)
-        f'<a href="{slug}.html"{" class=on" if slug == active else ""}">{esc(lbl)}</a>'
+        # 2026-11-18 (arena/ea04a0c7-x3): the old f-string emitted `class=on"` (missing
+        # closing quote) on the active link and `href="X""` (doubled quote) on every other
+        # link. Sessions kept hand-patching single pages (arena/65820815-x3, PR #80); the
+        # fix belongs here, in the generator, for all pages at once.
+        ('<a href="%s.html"%s>%s</a>' % (slug, ' class="on"' if slug == active else '', esc(lbl)))
         for slug, lbl, _d in NAV if slug != "__council__")
     # integration session arena/09f8c786-x3: one outbound link to the signals module.
     # It lives outside hub/, so it is appended rather than added to NAV (which is
