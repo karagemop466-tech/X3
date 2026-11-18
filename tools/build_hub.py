@@ -1601,6 +1601,12 @@ def landing():
     nav += ('<a href="readiness/index.html"><b>Readiness &amp; gates</b>'
             '<span>Decision readiness, control baselines, drift alarms, what changed</span></a>')
 
+    # session arena/b05a7eea-x3: consolidated decision board. One nav entry only; nothing
+    # else in this generator or this page's prose is touched by that session.
+    nav += ('<a href="board/index.html"><b>Decision board (today)</b>'
+            '<span>Live verification of every published claim against the official pages, '
+            'plus the reserve list captured for the first time</span></a>')
+
     # RD-01 (arena/6259c7b0-x3): decision-readiness table, one row per requirement,
     # with the gate that blocks it and the number that would clear it.
     with open(os.path.join(ROOT, "readiness", "data", "readiness.json"), encoding="utf-8") as _f:

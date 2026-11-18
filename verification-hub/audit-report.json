@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 582,
+      "refs": 583,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 922,
+      "rows": 924,
       "flagged_rows": 684,
-      "refs": 1336,
+      "refs": 1338,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -73,6 +73,22 @@
         "audit/index.html: ID Issue Repo value Official value Proposed action Sources",
         "audit/index.html: Game (away @ home) Day Time Network (schedule) Note Injury page kickoff Injury page TV Sources",
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
+      ]
+    },
+    "board": {
+      "pages": 12,
+      "rows": 368,
+      "flagged_rows": 335,
+      "refs": 656,
+      "unsourced_examples": [
+        "board/flagged.html: # Severity Area What is wrong Official page that shows it Proposed action",
+        "board/flagged.html: Observation Why it is correct",
+        "board/index.html: Requirement State today What it needs Source",
+        "board/injuries.html: State Rows Meaning Source",
+        "board/lines.html: Fixture Venue Side (home handicap) Total Moneyline (H / A) P(home) Market line &amp; difference Source",
+        "board/lines.html: Variant Games graded Margin MAE  Side hit rate Brier Reading Provenance",
+        "board/questions.html: # Category Question Why it matters What we have What we lack Where to verify Owner",
+        "board/questions.html: Question Answer Where it is used"
       ]
     },
     "closeout": {
@@ -392,9 +408,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 348,
-  "rows_total": 14852,
-  "rows_flagged_or_sourced": 12349,
-  "internal_refs": 9102,
+  "pages_total": 360,
+  "rows_total": 15222,
+  "rows_flagged_or_sourced": 12684,
+  "internal_refs": 9311,
   "problems": []
 }
