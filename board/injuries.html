@@ -72,11 +72,13 @@ the parser to the expected codes and fields, and fail the build when they change
 publishing a delta that is really a format change.</p>
 </div>
 <h3>Four reads of one page, in four modules, reconciled by nobody</h3>
-<p>Searching the repository for reads of this week's report found 6 stored files
-claiming the same page: 4 full-page reads and 2
-four-club reads, taken on three dates by four different modules. They agree on the substance and
-disagree on everything else. Two of them are hashed and dated by a ledger; the other four carry no
-clock at all, or a clock in a column the others do not have.</p>
+<p>Searching the repository for reads of this week's report found six stored files
+claiming the same page: four full-page reads and
+two four-club reads, spread over three dates and
+five modules (agency, audit, closeout, hub, snapshot). They agree on the substance and
+disagree on everything else. Two of them are dated and hashed by the
+snapshot ledger, three carry a <code>captured_utc</code> column of their own, and
+one has no date in the file at all, so it can only be placed by matching its row count to a dated read.</p>
 <table><thead><tr><th>File</th><th>Module</th><th class="n">Rows</th><th>Clock as recorded</th>
 <th>Scope</th><th>Rams coded</th><th>Practice vocabulary</th><th>Source page</th></tr></thead>
 <tbody><tr><td><code>data/hub/injuries_2026_wk10.csv</code></td><td>hub (canonical desk)</td><td class="n">345</td><td>ledger SNAP-2026W10-2026-11-14T0000Z</td><td>full page</td><td><span class="b mut">AS LAR</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>data/snapshots/wk10/capture-2026-11-15T1816Z-nfl-com-injuries-reg10.csv</code></td><td>snapshot store</td><td class="n">347</td><td>ledger 2026-11-15T18:16Z</td><td>full page</td><td><span class="b warn">AS LA</span></td><td>abbreviations (FP/DNP/LP)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>agency/data/derived/injury_designations_w10_2026.csv</code></td><td>agency (derived)</td><td class="n">347</td><td>captured_utc 2026-11-15T19:05Z</td><td>full page</td><td><span class="b mut">AS LAR</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>audit/official_injury_wk10_2026.csv</code></td><td>audit</td><td class="n">345</td><td>no clock recorded</td><td>full page</td><td><span class="b mut">AS LAR</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>data/closeout/injury_report_w10_capture.csv</code></td><td>closeout</td><td class="n">44</td><td>captured_utc 2026-11-17T22:45Z</td><td>4 clubs, partial by design</td><td><span class="mut">n/a</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>data/closeout/injury_report_w10_reread.csv</code></td><td>closeout</td><td class="n">44</td><td>captured_utc 2026-11-17T23:24Z</td><td>4 clubs, re-read of the same evening</td><td><span class="mut">n/a</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr></tbody></table>

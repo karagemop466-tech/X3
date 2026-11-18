@@ -17,6 +17,7 @@ import csv
 import html
 import json
 import pathlib
+import re
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DATA = ROOT / "board" / "data"
@@ -138,6 +139,15 @@ def table(headers: list[str], rows: list[list[str]], numeric: set[int] | None = 
     return "".join(out)
 
 
+_WORDS = "zero one two three four five six seven eight nine ten eleven twelve".split()
+
+
+def numword(n) -> str:
+    """Spell small counts: '2 modules' at the start of a sentence reads like a typo."""
+    n = int(n)
+    return _WORDS[n] if 0 <= n < len(_WORDS) else str(n)
+
+
 def src(url: str, label: str | None = None) -> str:
     if not url:
         return badge("UNVERIFIED - no source", "warn")
@@ -237,7 +247,7 @@ lines are published as numbers with a printed formula; the difference columns ar
 <li><b>The results feed on the front page is stale by a week.</b> 13 of 14 Week-10 games still read
 SCHEDULED while the official schedule page has every score. The correct scores already exist in
 this repository, in a different tree. See <a href="results.html">Results &amp; luck</a>.</li>
-<li><b>Six stored reads of one injury report, reconciled by nobody.</b> Four modules keep private
+<li><b>Six stored reads of one injury report, reconciled by nobody.</b> Five modules keep private
 copies of the same Week-10 page. They agree on every designation where the keys line up, and
 disagree on club codes and vocabulary, which is enough for a naive diff to invent 28 availability
 events out of nothing. Any number quoted from "the injury report" must say which copy it came from.
@@ -264,7 +274,7 @@ See <a href="injuries.html">Injuries &amp; depth</a>.</li>
 <td>Staking scores need prices. Signal scores exist for one benchmark only.</td>
 <td>{src("https://www.nfl.com/injuries/league/2026/reg10")}</td></tr>
 <tr><td>Injury &amp; depth ablations, not fixed penalties</td><td>{badge("NOT DONE", "bad")}</td>
-<td>Wed/Thu/Fri plus the 90-minute inactive list, every week. Week 10 has two reads; weeks 1&ndash;9 have one each.</td>
+<td>Wed/Thu/Fri plus the 90-minute inactive list, every week, in one reconciled series. Week 10 has six stored reads in five modules; weeks 8 and 9 have one each; weeks 1&ndash;7 have none.</td>
 <td>{src("https://www.nfl.com/injuries/")}</td></tr>
 <tr><td>Correlation from officially sourced numbers</td><td>{badge("0 VALUES COMPUTED", "bad")}</td>
 <td>Scoring results by game. No game-level scoring table is stored.</td>
@@ -790,6 +800,12 @@ def build_injuries() -> None:
                   + src("https://www.nfl.com/injuries/league/2026/reg10") + "</td></tr>")
     delta_rows_html = "".join(_d)
     inv = load("injury_read_inventory.csv")
+    inv_owners = sorted({r["owner_module"].split(" ")[0] for r in inv})
+    inv_owner_names = ", ".join(inv_owners)
+    inv_dates = len({d for r in inv for d in re.findall(r"\d{4}-\d{2}-\d{2}", r["clock"])})
+    inv_undated = sum(1 for r in inv if not re.search(r"\d{4}-\d{2}-\d{2}", r["clock"]))
+    n_ledger = sum(1 for r in inv if r["clock"].startswith("ledger"))
+    n_own_col = sum(1 for r in inv if r["clock"].startswith("captured_utc"))
     _i = []
     for r in inv:
         _i.append("<tr><td><code>" + esc(r["file"]) + "</code></td><td>" + esc(r["owner_module"])
@@ -857,11 +873,13 @@ the parser to the expected codes and fields, and fail the build when they change
 publishing a delta that is really a format change.</p>
 </div>
 <h3>Four reads of one page, in four modules, reconciled by nobody</h3>
-<p>Searching the repository for reads of this week's report found {meta["reads_found"]} stored files
-claiming the same page: {meta["full_page_reads"]} full-page reads and {meta["partial_club_reads"]}
-four-club reads, taken on three dates by four different modules. They agree on the substance and
-disagree on everything else. Two of them are hashed and dated by a ledger; the other four carry no
-clock at all, or a clock in a column the others do not have.</p>
+<p>Searching the repository for reads of this week's report found {numword(meta["reads_found"])} stored files
+claiming the same page: {numword(meta["full_page_reads"])} full-page reads and
+{numword(meta["partial_club_reads"])} four-club reads, spread over {numword(inv_dates)} dates and
+{numword(len(inv_owners))} modules ({esc(inv_owner_names)}). They agree on the substance and
+disagree on everything else. {numword(n_ledger).capitalize()} of them are dated and hashed by the
+snapshot ledger, {numword(n_own_col)} carry a <code>captured_utc</code> column of their own, and
+{numword(inv_undated)} has no date in the file at all, so it can only be placed by matching its row count to a dated read.</p>
 <table><thead><tr><th>File</th><th>Module</th><th class="n">Rows</th><th>Clock as recorded</th>
 <th>Scope</th><th>Rams coded</th><th>Practice vocabulary</th><th>Source page</th></tr></thead>
 <tbody>{inv_rows_html}</tbody></table>
@@ -1258,7 +1276,7 @@ def build_flagged() -> None:
          "The repository holds zero market prices, so no residual, CLV, ROI or staking score can be computed.",
          "https://www.nfl.com/schedules/2026/by-week/week-11", "Every such column is blank and marked BLOCKED. This blocks the leaderboard by rule."),
         ("F-06", "Medium", "Injury report",
-         "The Week-11 report had not been published at the read clock; reg11 serves the Week-10 page. Corroborated by an earlier session's own capture, data/desk/text/injuries-w11.txt, which is the Week-10 page under that filename and offers WEEK 1 to WEEK 10 in the selector.",
+         "The Week-11 report had not been published at the read clock; reg11 serves the Week-10 page. Corroborated by an earlier session's capture (data/desk/text/injuries-w11.txt, the Week-10 page under a Week-11 filename) and by four dated probes run today by another session (03:06Z, 03:16Z, 03:31Z, 03:45Z in data/week11/reg11_probes.csv), which bracket this read at 03:20Z.",
          "https://www.nfl.com/injuries/league/2026/reg11", "No Week-11 injury row is transcribed. The capture must be repeated after publication."),
         ("F-07", "Medium", "Reserve list",
          "The brief states Lamar Jackson and Tyler Huntley are on injured reserve; the capture holds no 2026 entry for either.",
