@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-18T03:13:08+00:00",
+ "generated_at": "2026-11-18T03:42:59+00:00",
  "pages": [
   {
    "page": "executive-summary.html",
@@ -9,19 +9,19 @@
   },
   {
    "page": "flagged.html",
-   "rows": 197,
+   "rows": 205,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
   {
    "page": "index.html",
-   "rows": 23,
+   "rows": 34,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
   {
    "page": "questions.html",
-   "rows": 87,
+   "rows": 89,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
@@ -39,7 +39,7 @@
   },
   {
    "page": "verification.html",
-   "rows": 220,
+   "rows": 382,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   }

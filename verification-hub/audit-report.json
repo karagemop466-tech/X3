@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 586,
+      "refs": 588,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -125,9 +125,9 @@
     },
     "crosscheck": {
       "pages": 7,
-      "rows": 662,
-      "flagged_rows": 643,
-      "refs": 1910,
+      "rows": 845,
+      "flagged_rows": 826,
+      "refs": 2275,
       "unsourced_examples": [
         "crosscheck/executive-summary.html: Fact Value Official source  Where verified",
         "crosscheck/executive-summary.html: Missing Why State Source",
@@ -425,8 +425,8 @@
     }
   },
   "pages_total": 366,
-  "rows_total": 16308,
-  "rows_flagged_or_sourced": 13751,
-  "internal_refs": 9405,
+  "rows_total": 16491,
+  "rows_flagged_or_sourced": 13934,
+  "internal_refs": 9589,
   "problems": []
 }
