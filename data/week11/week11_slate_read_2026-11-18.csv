@@ -1,0 +1,14 @@
+game_id,date_iso,kickoff_et,network,away,home,venue,venue_evidence
+IND@HOU,2026-11-19,8:15 PM,PRIME,IND,HOU,NRG Stadium,official week-11 schedule page hotel-link block
+MIA@BUF,2026-11-22,1:00 PM,CBS,MIA,BUF,Highmark Stadium,official week-11 schedule page hotel-link block
+BAL@CAR,2026-11-22,1:00 PM,FOX,BAL,CAR,Bank of America Stadium,official week-11 schedule page hotel-link block
+NO@CHI,2026-11-22,1:00 PM,FOX,NO,CHI,Soldier Field,official week-11 schedule page hotel-link block
+TEN@DAL,2026-11-22,1:00 PM,FOX,TEN,DAL,AT&T Stadium,official week-11 schedule page hotel-link block
+TB@DET,2026-11-22,1:00 PM,FOX,TB,DET,Ford Field,official week-11 schedule page hotel-link block
+AZ@KC,2026-11-22,1:00 PM,CBS,AZ,KC,GEHA Field at Arrowhead Stadium,official week-11 schedule page hotel-link block
+PIT@PHI,2026-11-22,1:00 PM,CBS,PIT,PHI,Lincoln Financial Field,official week-11 schedule page hotel-link block
+NYJ@LAC,2026-11-22,4:05 PM,FOX,NYJ,LAC,SoFi Stadium,official week-11 schedule page hotel-link block
+JAX@NYG,2026-11-22,4:25 PM,CBS,JAX,NYG,MetLife Stadium,official week-11 schedule page hotel-link block
+LV@DEN,2026-11-22,4:25 PM,CBS,LV,DEN,Empower Field at Mile High,official week-11 schedule page hotel-link block
+MIN@SF,2026-11-22,8:20 PM,NBC,MIN,SF,Mexico City (International Series),official week-11 schedule page Mexico City event block
+CIN@WAS,2026-11-23,8:15 PM,ESPN,CIN,WAS,FedEx Field,official week-11 schedule page hotel-link block
