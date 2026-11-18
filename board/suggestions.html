@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL decision board: every figure traced to an official NFL source, or left blank and flagged.">
+<title>Suggestions - X3 NFL decision board</title>
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3</a> <span>NFL decision board</span></div>
+  <div class="asof">official pages read <b>2026-11-18T03:20Z</b> &middot; season 2026, week 11</div>
+</header>
+<nav class="main"><a href="index.html">Executive summary</a><a href="verification.html">Live verification</a><a href="reserve.html">Reserve list</a><a href="results.html">Results &amp; luck</a><a href="lines.html">Lines &amp; value</a><a href="strategies.html">Strategies</a><a href="injuries.html">Injuries &amp; depth</a><a href="questions.html">Questions</a><a href="suggestions.html" class="on">Suggestions</a><a href="requirements.html">Requirements</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a></nav>
+<main>
+
+<h1>Suggestions for review before any change is made</h1>
+<p class="lede">Twelve proposals, ordered by what they unblock. Each says what to do, why it
+matters, what it requires, and who decides. <b>Nothing here is implemented on this page.</b> It is a
+review queue: pick a path, then implement it.</p>
+
+<div class="callout">
+<p style="margin:0"><b>How to choose.</b> SG-01 costs nothing and fixes a live defect. SG-02 is the
+one decision that unblocks the most, and it is not a technical one. SG-04 through SG-09 are
+sequenced: each makes the next cheaper. SG-10 through SG-12 are hygiene.</p>
+</div>
+<div class="tblwrap"><table><thead><tr><th>#</th><th>Suggestion</th><th>Priority</th><th>What to do</th><th>Why</th><th>What it needs</th><th>Decides</th><th>Provenance</th></tr></thead><tbody><tr><td><b>SG-01</b></td><td><b>Retire the stale results feed</b></td><td><span class="b bad">High</span></td><td>Point every published results surface at the 150-game reconciled log and delete or freeze the 137-game file.</td><td>Three published surfaces disagree about how many games exist; the prominent one is a week stale.</td><td>No new data needed - the correct file is already in the repository.</td><td>Owner of the results tree</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-02</b></td><td><b>Admit a price source or stop publishing lines as if they had one</b></td><td><span class="b bad">High</span></td><td>Either admit a dated, terms-read price feed, or label the origination module an opinion board with no score.</td><td>Every residual, CLV and ROI column is blank; the board still reads like a betting product.</td><td>A licensing conversation. Nothing technical.</td><td>Owner</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-03</b></td><td><b>Treat the reserve list as an event log</b></td><td><span class="b bad">High</span></td><td>Resolve each reserve entry against a later activation before deriving availability; never treat &#x27;listed&#x27; as &#x27;out&#x27;.</td><td>Five counter-examples in one week&#x27;s join.</td><td>Daily capture to see activations, or a roster-status source.</td><td>Data lead</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-04</b></td><td><b>Capture the report on its own publication cadence</b></td><td><span class="b bad">High</span></td><td>Wednesday, Thursday, Friday and pre-kickoff inactive reads, hashed, retained.</td><td>Weeks 1-9 have one read each, so the delta cannot be backfilled; only forward capture creates the series.</td><td>The scheduler exists and the Week-10 pair already differs (13 designation moves).</td><td>Data lead</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-05</b></td><td><b>Fix venue precedence once</b></td><td><span class="b warn">Medium</span></td><td>Record a single precedence rule for schedule page vs Game Centre, and store both names.</td><td>Two official names for one stadium on one fixture.</td><td>An owner decision, one line.</td><td>Owner</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-06</b></td><td><b>Do not hard-code home-field advantage</b></td><td><span class="b warn">Medium</span></td><td>Fit it from the season each week and publish the fitted value on every row.</td><td>The conventional +2.5 constant made every score worse on 102 graded games.</td><td>Already done in the close-out model; make it policy.</td><td>Model owner</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-07</b></td><td><b>Pre-register the multiplicity budget</b></td><td><span class="b warn">Medium</span></td><td>Commit the maximum number of strategies before the first leaderboard, and widen intervals accordingly.</td><td>An unbounded search makes the winner the luckiest, not the best.</td><td>A number and a commit.</td><td>Model owner</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-08</b></td><td><b>Build the correlation register only from paired game data</b></td><td><span class="b warn">Medium</span></td><td>Capture game-level scoring and per-leg outcomes first, then compute correlations with n.</td><td>Zero correlation values exist and the register is a template.</td><td>A game-level scoring table.</td><td>Data lead</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-09</b></td><td><b>Consolidate the site trees before adding more</b></td><td><span class="b warn">Medium</span></td><td>Pick one canonical surface, freeze the rest with pointers, and stop publishing the same fact twice.</td><td>The same season is stored twice with different answers.</td><td>A decision about which tree wins.</td><td>Owner</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-10</b></td><td><b>Pay on skill, never on ROI</b></td><td><span class="b mut">Low</span></td><td>Define any reward on out-of-sample proper score with a multiplicity penalty.</td><td>An ROI reward is a reward for the luck panel.</td><td>A funded pool and a metric choice.</td><td>Owner</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-11</b></td><td><b>Resolve the Baltimore quarterback claim or drop it</b></td><td><span class="b mut">Low</span></td><td>Read the club roster page and either confirm Jackson and Huntley on reserve or remove the claim.</td><td>The brief asserts it; the reserve capture does not show it.</td><td>One page read.</td><td>Data lead</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr><tr><td><b>SG-12</b></td><td><b>Publish the reserve-list pagination limit as a data-quality flag</b></td><td><span class="b mut">Low</span></td><td>Record on every reserve-derived row that the capture is partial.</td><td>A partial capture read as complete is how &#x27;not listed&#x27; becomes &#x27;available&#x27;.</td><td>Already published; keep it attached.</td><td>Data lead</td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/board/index.html">board/index.html (proposal)</a></td></tr></tbody></table></div>
+
+<h2>If you only do three things</h2>
+<ol class="tight">
+<li><b>SG-01.</b> Repoint the results feed. It takes an afternoon, needs no new data, and removes the
+single most misleading number on the site.</li>
+<li><b>SG-02.</b> Decide the price question. Until it is answered, every strategy metric on this board
+is decorative, and no amount of modelling changes that.</li>
+<li><b>SG-04.</b> Turn on the capture cadence. Every week that passes without a dated injury read is
+a week that cannot be backtested later, and it is the one thing that cannot be recovered
+retroactively.</li>
+</ol>
+<p class="note">The reasoning behind SG-06 (do not hard-code home advantage) is worked out on
+<a href="lines.html">Lines &amp; value</a>; it is the only suggestion here backed by a measurement
+made for this page rather than by a defect observed.</p>
+
+</main>
+<footer>
+<p><b>How to read this board.</b> Every number is either (a) transcribed from an official NFL
+page whose link is on the row, (b) arithmetic on those numbers with the formula printed beside
+it, or (c) marked BLOCKED / UNVERIFIED with the missing input named. Nothing is estimated,
+interpolated or inferred. Where two official pages disagree, both are linked and the row is
+flagged on <a href="flagged.html">Flagged for review</a>.</p>
+<p>Research workspace. No betting advice, no market-price feed, no wagering of any kind.
+Built from <code>board/data/*.csv</code> by <code>scripts/board_build.py</code>;
+gated by <code>scripts/board_verify.py</code>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+name: X3 decision board (board/)
+
+on:
+  push:
+    branches: [ main, arena/b05a7eea-x3 ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  board:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # scripts/board_verify.py rebuilds the board itself as its first check (B1), so a
+      # stale committed page cannot pass: either the rebuild reproduces it byte for byte
+      # or the gate fails.
+      - name: Gate the board (determinism, sourcing, domains, arithmetic, no invented returns)
+        run: python3 scripts/board_verify.py
+
+      - name: Repo-wide link and provenance gate includes board/
+        run: python3 scripts/audit_all.py
+
+      - name: Integration gate
+        run: python3 scripts/verify_integration.py

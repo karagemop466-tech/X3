@@ -1,0 +1,41 @@
+{
+ "before_file": "data/hub/injuries_2026_wk10.csv",
+ "after_file": "data/snapshots/wk10/capture-2026-11-15T1816Z-nfl-com-injuries-reg10.csv",
+ "before_rows": 345,
+ "after_rows": 347,
+ "before_captured": "2026-11-14T00:00Z",
+ "after_captured": "2026-11-15T18:16Z",
+ "alias_normalisation": "LA -> LAR",
+ "before_practice_style": "full words",
+ "after_practice_style": "abbreviations (FP/DNP/LP)",
+ "naive_diff_additions": 16,
+ "naive_diff_removals": 14,
+ "source_url": "https://www.nfl.com/injuries/league/2026/reg10",
+ "shared_rows": 345,
+ "practice_string_differs": 345,
+ "practice_fact_differs_after_expanding": 6,
+ "transitions_by_club": {
+  "LAC": 10,
+  "BAL": 2,
+  "IND": 1
+ },
+ "additions_by_club": {
+  "BAL": 2
+ },
+ "rows_coded_LAR_in_before": 14,
+ "rows_coded_LA_in_after": 14,
+ "phantom_rows_in_naive_diff": 28,
+ "practice_fact_changes": 6,
+ "practice_string_differs_on_all_shared": 345,
+ "reads_found": 6,
+ "full_page_reads": 4,
+ "partial_club_reads": 2,
+ "shared_between_1115_reads": 333,
+ "designation_mismatches_between_1115_reads": 0,
+ "practice_string_differs_between_1115_reads": 333,
+ "delta_minutes_between_1115_reads": 49,
+ "encoders": [
+  "LAR + full words",
+  "LA + abbreviations"
+ ]
+}

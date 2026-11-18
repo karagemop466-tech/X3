@@ -1,0 +1,10 @@
+month,page_url,rows_captured,rows_possible,complete,captured_utc,note
+03,https://www.nfl.com/transactions/league/reserve-list/2026/03,5,at least 5,NO,2026-11-18T03:20Z,single render chunk; month view truncated at 25 rows
+04,https://www.nfl.com/transactions/league/reserve-list/2026/04,2,at least 2,NO,2026-11-18T03:20Z,single render chunk; month view truncated at 25 rows
+05,https://www.nfl.com/transactions/league/reserve-list/2026/05,9,at least 9,NO,2026-11-18T03:20Z,single render chunk; month view truncated at 25 rows
+06,https://www.nfl.com/transactions/league/reserve-list/2026/06,8,at least 8,NO,2026-11-18T03:20Z,single render chunk; month view truncated at 25 rows
+07,https://www.nfl.com/transactions/league/reserve-list/2026/07,9,at least 9,NO,2026-11-18T03:20Z,single render chunk; month view truncated at 25 rows
+08,https://www.nfl.com/transactions/league/reserve-list/2026/08,25,at least 25,NO,2026-11-18T03:20Z,2 render chunks read; month view still truncated at 25 rows
+09,https://www.nfl.com/transactions/league/reserve-list/2026/09,25,at least 25,NO,2026-11-18T03:20Z,2 render chunks read; adding ?limit=100 did not extend the table
+10,https://www.nfl.com/transactions/league/reserve-list/2026/10,25,at least 25,NO,2026-11-18T03:20Z,2 render chunks read; month view truncated at 25 rows
+11,https://www.nfl.com/transactions/league/reserve-list/2026/11,25,at least 25,NO,2026-11-18T03:20Z,2 render chunks read; month view truncated at 25 rows

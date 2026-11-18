@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="X3 NFL decision board: every figure traced to an official NFL source, or left blank and flagged.">
+<title>Executive summary - X3 NFL decision board</title>
+<link rel="stylesheet" href="assets/board.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="../index.html">X3</a> <span>NFL decision board</span></div>
+  <div class="asof">official pages read <b>2026-11-18T03:20Z</b> &middot; season 2026, week 11</div>
+</header>
+<nav class="main"><a href="index.html" class="on">Executive summary</a><a href="verification.html">Live verification</a><a href="reserve.html">Reserve list</a><a href="results.html">Results &amp; luck</a><a href="lines.html">Lines &amp; value</a><a href="strategies.html">Strategies</a><a href="injuries.html">Injuries &amp; depth</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="requirements.html">Requirements</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a></nav>
+<main>
+
+<h1>What the official record supports this week &mdash; and what it does not</h1>
+<p class="lede">This board re-read the official NFL pages today (2026-11-18T03:20Z) and checked them
+against what this repository already publishes. It found 5 published items that are stale,
+internally inconsistent or contradicted by the official page, 6 that hold up, and
+1 that cannot be tested because the official page does not exist yet. It also adds one
+dataset the repository was missing entirely: the reserve list, 133 dated rows. Everything
+below is linkable to the page it came from &mdash; 12 checks in all.</p>
+
+<div class="cards">
+  <div class="card"><div class="num">7</div><div class="lbl">reserve-list contradictions found</div>
+  <div class="sub">players listed Reserve/Injured yet carrying a Questionable or Doubtful designation the same week</div></div>
+  <div class="card"><div class="num">150</div><div class="lbl">settled games reconciled 32/32</div>
+  <div class="sub">recomputed against today's official standings: 0 mismatches</div></div>
+  <div class="card"><div class="num">13</div><div class="lbl">games still mislabelled SCHEDULED</div>
+  <div class="sub">on the page the landing site calls its verified results feed</div></div>
+  <div class="card"><div class="num">0</div><div class="lbl">market prices in the repository</div>
+  <div class="sub">so no residual, CLV or ROI can be computed - blocked, not estimated</div></div>
+</div>
+
+<div class="callout bad">
+<h2 style="margin-top:0">The four things a decision now turns on</h2>
+<ol class="tight">
+<li><b>The reserve list is an event log, not a status roster.</b> 7 players are listed
+Reserve/Injured <i>and</i> carry Questionable/Doubtful in the Week-10 report. Using "is listed" as
+"is out" would have deleted 7 players who could still have played. The rule must be
+"reserve date after the report date &rarr; unavailable", and even that needs the report's clock,
+which the league page does not publish. See <a href="reserve.html">Reserve list</a>.</li>
+<li><b>Nothing here can be called a market edge.</b> The repository holds zero market prices, so
+fair-line-vs-market residuals, closing-line value and ROI are all uncomputable. The Week-11 fair
+lines are published as numbers with a printed formula; the difference columns are
+<a href="lines.html">BLOCKED with the reason</a>.</li>
+<li><b>The results feed on the front page is stale by a week.</b> 13 of 14 Week-10 games still read
+SCHEDULED while the official schedule page has every score. The correct scores already exist in
+this repository, in a different tree. See <a href="results.html">Results &amp; luck</a>.</li>
+<li><b>Six stored reads of one injury report, reconciled by nobody.</b> Four modules keep private
+copies of the same Week-10 page. They agree on every designation where the keys line up, and
+disagree on club codes and vocabulary, which is enough for a naive diff to invent 28 availability
+events out of nothing. Any number quoted from "the injury report" must say which copy it came from.
+See <a href="injuries.html">Injuries &amp; depth</a>.</li>
+</ol>
+</div>
+
+<h2>The one-line state of each requirement</h2>
+<p>Full register with the gate that blocks each item and the number that would clear it:
+<a href="requirements.html">Requirements</a>.</p>
+<table>
+<thead><tr><th>Requirement</th><th>State today</th><th>What it needs</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Price-snapshot store</td><td><span class="b der">STORE EXISTS, ALL PRICES DERIVED</span></td>
+<td>An admitted market-price source. No price in this repository is an operator quote.</td>
+<td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr>
+<tr><td>Verified results feed</td><td><span class="b warn">DATA CORRECT, ONE SURFACE STALE</span></td>
+<td>Point every results surface at the 150-game reconciled log, not the 137-game file.</td>
+<td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>Reserve list capture</td><td><span class="b warn">133 ROWS CAPTURED, PARTIAL</span></td>
+<td>A paginated capture: each month view renders ~25 rows and exposes no documented way past it.</td>
+<td><a class="src" href="https://www.nfl.com/transactions/league/reserve-list/2026/11" target="_blank" rel="noopener">nfl.com/transactions/league/reserve-list/2026/11</a></td></tr>
+<tr><td>Signal vs staking on the leaderboard</td><td><span class="b ok">SEPARATED, LEADERBOARD EMPTY</span></td>
+<td>Staking scores need prices. Signal scores exist for one benchmark only.</td>
+<td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr>
+<tr><td>Injury &amp; depth ablations, not fixed penalties</td><td><span class="b bad">NOT DONE</span></td>
+<td>Wed/Thu/Fri plus the 90-minute inactive list, every week. Week 10 has two reads; weeks 1&ndash;9 have one each.</td>
+<td><a class="src" href="https://www.nfl.com/injuries/" target="_blank" rel="noopener">nfl.com/injuries/</a></td></tr>
+<tr><td>Correlation from officially sourced numbers</td><td><span class="b bad">0 VALUES COMPUTED</span></td>
+<td>Scoring results by game. No game-level scoring table is stored.</td>
+<td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>Week-11 injury report</td><td><span class="b bad">NOT PUBLISHED</span></td>
+<td>The league had not published it at 2026-11-18T03:20Z; reg11 serves the Week-10 page.</td>
+<td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg11</a></td></tr>
+<tr><td>Removal-of-luck panel</td><td><span class="b ok">COMPUTED, 32 CLUBS</span></td>
+<td>Done from today's standings; see <a href="results.html">Results &amp; luck</a>.</td>
+<td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+</tbody></table>
+
+<h2>What this board deliberately does not do</h2>
+<ul class="tight">
+<li>It does not publish a betting recommendation, a stake, a reward, or a leaderboard rank.
+There is no price data, so no return can be computed; ranking without prices would be ranking luck.</li>
+<li>It does not fill a blank with an estimate. Where the official page is silent, the cell says
+so and the row points at <a href="flagged.html">Flagged for review</a>.</li>
+<li>It does not overwrite another module. It re-reads them, links them, and records the
+disagreement. The repo has many trees; the inventory and the conflicts are on
+<a href="requirements.html">Requirements</a> and <a href="flagged.html">Flagged</a>.</li>
+</ul>
+
+<h2>Where to start</h2>
+<p><a href="verification.html"><b>Live verification</b></a> &mdash; the 12 checks run against official
+pages today, with the verdict for each.
+<a href="reserve.html"><b>Reserve list</b></a> &mdash; the new dataset and the trap in it.
+<a href="lines.html"><b>Lines &amp; value</b></a> &mdash; the Week-11 board and the tests it fails.
+<a href="questions.html"><b>Questions</b></a> &mdash; what must be known before any bet decision.
+<a href="suggestions.html"><b>Suggestions</b></a> &mdash; what to change, and in what order.</p>
+
+</main>
+<footer>
+<p><b>How to read this board.</b> Every number is either (a) transcribed from an official NFL
+page whose link is on the row, (b) arithmetic on those numbers with the formula printed beside
+it, or (c) marked BLOCKED / UNVERIFIED with the missing input named. Nothing is estimated,
+interpolated or inferred. Where two official pages disagree, both are linked and the row is
+flagged on <a href="flagged.html">Flagged for review</a>.</p>
+<p>Research workspace. No betting advice, no market-price feed, no wagering of any kind.
+Built from <code>board/data/*.csv</code> by <code>scripts/board_build.py</code>;
+gated by <code>scripts/board_verify.py</code>.</p>
+</footer>
+</body>
+</html>
