@@ -4154,3 +4154,14 @@ local chain, older base). Pushed with `--force-with-lease`, which replaced the s
 chain with the rebased equivalent — no other session's commit existed on this branch, so nothing
 was lost. Lesson recorded for the next session: after a mid-session rebase, use
 `--force-with-lease` instead of `pull --rebase` against the session's own remote branch.
+
+### Session `arena/ea04a0c7-x3` — E4 record (2026-11-18)
+
+| Item | Record |
+|------|--------|
+| PR | **#113** https://github.com/karagemop466-tech/X3/pull/113 — `arena/ea04a0c7-x3` → `main` (5 commits: claim, landing/flagged integration, E1–E3 record, generator nav fix + 27 rebuilt pages, mid-session integration note) |
+| Merge | `gh pr merge 113 --merge`, no approval wait, per the standing brief |
+| Pages | `Deploy X3 NFL site to GitHub Pages` + `pages build and deployment` on the resulting main push — confirmed success after merge (run IDs in the PR timeline); live URLs re-fetched via the page reader |
+| Deliverables | reliability/ registered on the root landing; 38 reliability flagged rows carried to the root Flagged page; hub nav markup fixed at the generator for all 27 pages; 17/17 verification gates PASS; standings 32/32 and Week-11 slate 13/13 verified against live official pages on 2026-11-18 |
+
+Session `arena/ea04a0c7-x3` **complete** after merge confirmation.
