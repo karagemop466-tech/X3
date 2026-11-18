@@ -189,9 +189,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1927,
-      "flagged_rows": 1527,
-      "refs": 2866,
+      "rows": 1970,
+      "flagged_rows": 1569,
+      "refs": 2943,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -370,9 +370,9 @@
     },
     "week11": {
       "pages": 6,
-      "rows": 998,
-      "flagged_rows": 986,
-      "refs": 1032,
+      "rows": 1001,
+      "flagged_rows": 989,
+      "refs": 1035,
       "unsourced_examples": [
         "week11/flagged.html: ID Status Area Finding Evidence Action",
         "week11/freshness-detail.html: Dataset Key Field Committed Read today Verdict Committed register Source",
@@ -381,7 +381,7 @@
         "week11/report.html: Probe (UTC) Endpoint Week served Effective URL Finding",
         "week11/sources.html: Source Official page What was read Read window (UTC) Capture",
         "week11/sources.html: File SHA-256",
-        "week11/sources.html: README.md 8695bf598804fabbc66512145b1488a3f130bc39193df6c8bed6d8c35773d61e"
+        "week11/sources.html: README.md f28c86d4c7559caf959b8108cdee04a3e142b811aff2f7b24a4df849fbda07a7"
       ]
     },
     "x3": {
@@ -409,8 +409,8 @@
     }
   },
   "pages_total": 354,
-  "rows_total": 15857,
-  "rows_flagged_or_sourced": 13339,
-  "internal_refs": 9155,
+  "rows_total": 15903,
+  "rows_flagged_or_sourced": 13384,
+  "internal_refs": 9194,
   "problems": []
 }
