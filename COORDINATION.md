@@ -4126,3 +4126,31 @@ Sources for this session's verification: the two live pages above (fetched 2026-
 #### E4 — PR and merge (in progress; result recorded immediately below)
 
 PR from this branch to `main`, merged without waiting for approval per the standing brief; Pages deploy checked after merge.
+
+### Session `arena/ea04a0c7-x3` — mid-session integration note (2026-11-18, before the PR)
+
+**Rebase onto updated main.** While this session was working, PRs #110 (W06 record), #80
+(`arena/65820815-x3`: hub nav markup hand-fix + executive-summary accuracy pass) and #111
+(COORDINATION.md conflict resolution) merged to `main`. This branch was rebased onto the new main:
+
+- `COORDINATION.md` conflicted (both sessions appended at the end) — resolved as a line-level union;
+  **no session's record was dropped** (verified by reading the full conflict region before removing
+  only the three marker lines).
+- PR #80's markup fix was **not discarded — it was completed at the source**: the hub `page()` nav
+  emitter still generated `class=on"` (missing closing quote) and `href="X""` (doubled quote) on
+  every page; PR #80 hand-patched one spot per page. The generator fix in `tools/build_hub.py`
+  (this session's claimed scope) makes `class="on"` correct on all 27 pages and impossible to
+  regress on rebuild. PR #80's separate executive-summary corrections are untouched (they live in
+  hand-written pages this session's generator does not emit).
+- Gates re-run after the rebase + rebuild: all 17 PASS (`audit_all` 348 pages / 23,356 link refs /
+  590 tables / 520 flagged rows; counts unchanged from the E1 record).
+
+**Git incident, logged per the conflict rule.** After the rebase rewrote this branch's four
+unpushed-rebase commits, `git pull --rebase origin arena/ea04a0c7-x3` mis-detected the fork point
+and tried to replay main's entire history onto the remote branch (244 picks). Aborted with
+`git rebase --abort`; before any destructive action, verified that the remote branch tip
+(`82ddcf6`→`70b8fc8`) contained **only this session's own commits** (same patches as the rebased
+local chain, older base). Pushed with `--force-with-lease`, which replaced the stale pre-rebase
+chain with the rebased equivalent — no other session's commit existed on this branch, so nothing
+was lost. Lesson recorded for the next session: after a mid-session rebase, use
+`--force-with-lease` instead of `pull --rebase` against the session's own remote branch.
