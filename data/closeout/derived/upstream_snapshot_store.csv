@@ -1,0 +1,4 @@
+kind,id,when,rows,teams,with_designation,out,questionable,doubtful,blank_game_status,clock_precision,source
+sealed capture,SNAP-2026W10-2026-11-14T0000Z,2026-11-14 (no clock time recorded),345,28,160,66,84,10,185,day only - flagged: a read without an hour cannot anchor a pre-kickoff delta,https://github.com/karagemop466-tech/X3/blob/main/data/snapshots/ledger.json
+sealed capture,SNAP-2026W10-2026-11-15T1816Z,2026-11-15T18:16:00Z,347,28,171,70,90,11,176,minute,https://github.com/karagemop466-tech/X3/blob/main/data/snapshots/ledger.json
+delta published by the store,baseline 2026-11-14 -> SNAP-2026W10-2026-11-15T1816Z,one day apart; the earlier read carries no clock time,345 -> 347,28,160 -> 171,66 -> 70,84 -> 90,10 -> 11,185 -> 176,day only - stated as such by the store itself,https://github.com/karagemop466-tech/X3/blob/main/data/snapshots/delta.json

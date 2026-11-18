@@ -1,0 +1,14 @@
+game,date_et,time_et,network,away,home,venue,fair_side_home,fair_side_personnel,personnel_delta,fair_total_points_model,fair_total_league_anchored,total_gap,p_home_win,fair_price_home,fair_price_away,market_side,market_total,market_ml,diff_side,diff_total,diff_ml,source_inputs
+IND@HOU,2026-11-19,8:15 PM,PRIME,IND,HOU,RELIANT STADIUM,5.93,6.03,0.10,49.06,43.78,5.28,0.6786,-211,+211,,,,,,,https://www.nfl.com/standings/league/2026/REG
+MIA@BUF,2026-11-22,1:00 PM,CBS,MIA,BUF,HIGHMARK STADIUM,11.11,11.31,0.20,47.67,46.82,0.85,0.8079,-420,+420,,,,,,,https://www.nfl.com/standings/league/2026/REG
+BAL@CAR,2026-11-22,1:00 PM,FOX,BAL,CAR,BANK OF AMERICA STADIUM,3.56,3.46,-0.10,48.68,42.71,5.97,0.6048,-153,+153,,,,,,,https://www.nfl.com/standings/league/2026/REG
+NO@CHI,2026-11-22,1:00 PM,FOX,NO,CHI,SOLDIER FIELD,7.06,7.46,0.40,47.94,47.43,0.51,0.7168,-253,+253,,,,,,,https://www.nfl.com/standings/league/2026/REG
+TEN@DAL,2026-11-22,1:00 PM,FOX,TEN,DAL,AT&T STADIUM,6.20,6.20,-0.00,50.96,42.35,8.60,0.6833,-216,+216,,,,,,,https://www.nfl.com/standings/league/2026/REG
+TB@DET,2026-11-22,1:00 PM,FOX,TB,DET,FORD FIELD,3.89,3.59,-0.30,46.44,50.71,-4.26,0.6088,-156,+156,,,,,,,https://www.nfl.com/standings/league/2026/REG
+AZ@KC,2026-11-22,1:00 PM,CBS,AZ,KC,ARROWHEAD STADIUM,11.75,11.75,-0.00,45.48,45.40,0.08,0.8170,-446,+446,,,,,,,https://www.nfl.com/standings/league/2026/REG
+PIT@PHI,2026-11-22,1:00 PM,CBS,PIT,PHI,LINCOLN FINANCIAL FIELD,-2.94,-2.94,-0.00,41.61,42.99,-1.38,0.4104,+144,-144,,,,,,,https://www.nfl.com/standings/league/2026/REG
+NYJ@LAC,2026-11-22,4:05 PM,FOX,NYJ,LAC,SOFI STADIUM,-0.28,-0.18,0.10,43.68,37.88,5.80,0.4945,+102,-102,,,,,,,https://www.nfl.com/standings/league/2026/REG
+JAX@NYG,2026-11-22,4:25 PM,CBS,JAX,NYG,METLIFE STADIUM,-4.56,-4.26,0.30,45.11,53.49,-8.38,0.3717,+169,-169,,,,,,,https://www.nfl.com/standings/league/2026/REG
+LV@DEN,2026-11-22,4:25 PM,CBS,LV,DEN,EMPOWER FIELD AT MILE HIGH,4.57,4.57,-0.00,48.33,44.92,3.41,0.6373,-176,+176,,,,,,,https://www.nfl.com/standings/league/2026/REG
+MIN@SF,2026-11-22,8:20 PM,NBC,MIN,SF,ESTADIO BANORTE,3.94,4.34,0.40,43.28,53.65,-10.38,0.6309,-171,+171,,,,,,,https://www.nfl.com/standings/league/2026/REG
+CIN@WAS,2026-11-23,8:15 PM,ESPN,CIN,WAS,NORTHWEST STADIUM,-4.22,-4.32,-0.10,49.44,49.38,0.07,0.3698,+170,-170,,,,,,,https://www.nfl.com/standings/league/2026/REG

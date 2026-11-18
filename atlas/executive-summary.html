@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary - X3 atlas</title>
+<link rel="stylesheet" href="assets/atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>atlas</span></a> - NFL decision desk</div>
+  <div class="asof">verified data as of <b>2026-11-17</b> - 2026 season, week 10 complete, week 11 ahead</div>
+</header>
+<div class="wrap">
+<nav class="side"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="on">Executive summary</a><a href="standings.html" class="">Standings</a><a href="results.html" class="">Results feed</a><a href="fixtures.html" class="">Week 11 fixtures</a><a href="team-stats.html" class="">Team stats</a><a href="injuries.html" class="">Injury report</a><a href="injury-rows.html" class="">Injury rows</a><a href="availability.html" class="">Availability events</a><a href="origination.html" class="">Originated lines</a><a href="prices.html" class="">Price store</a><a href="strategy.html" class="">Strategies</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Validation gates</a><a href="correlation.html" class="">Correlation</a><a href="luck.html" class="">Luck removed</a><a href="depth.html" class="">Depth &amp; deficiency</a><a href="readiness.html" class="">Readiness</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="repo-review.html" class="">Repo review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for review</a></nav>
+<main>
+<h1>Executive summary</h1>
+
+<p class="lede">One page: what the official data says today, what the model says about Week 11, and
+the four decisions that gate everything else.</p>
+<div class="cards"><div class="card"><div class="num">150</div><div class="lbl">games played in 2026</div><div class="sub">implied by the official standings (300 club-games)</div></div><div class="card"><div class="num">23.08</div><div class="lbl">points per club-game</div><div class="sub">league average, official standings</div></div><div class="card"><div class="num">1.14</div><div class="lbl">wins of luck (1 SD)</div><div class="sub">Pythagorean residual across 32 clubs</div></div><div class="card"><div class="num">0</div><div class="lbl">market prices available</div><div class="sub">nfl.com/odds returns 404</div></div></div>
+<h2>What the official data says</h2>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Finding</th><th>Number</th><th>Basis</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Season games played through Week 10</td><td class="num">150</td>
+<td>300 club-games in the standings / 2</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>League points per club-game</td><td class="num">23.08</td>
+<td>6,923 total points / 300 club-games</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>Week 10 finals transcribed</td><td class="num">14</td>
+<td>Thursday through Monday night; 4 clubs on bye</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>Week 10 absolute margin, SD</td><td class="num">9.59</td>
+<td>n=14 finals - one week, so a thin basis</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td></tr>
+<tr><td>Luck spread in the standings</td><td class="num">1.14 wins</td>
+<td>SD of (actual wins - Pythagorean expected wins), n=32</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>Pythagorean fit to actual win %</td><td class="num">r = 0.882 (r&#178; = 0.779)</td>
+<td>exponent 2.37, n=32</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>Week 10 injury rows in the committed capture</td><td class="num">345</td>
+<td>28 club sections; 160 carry a game designation</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr>
+<tr><td>Week 10 injury rows counted live today</td><td class="num">347</td>
+<td>27 of 28 club counts match the capture; Ravens differ</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr>
+<tr><td>Week 11 designations published</td><td><span class="badge u">NONE</span></td>
+<td>Every Week 11 game centre reads "Injury Report is not available at this time"</td>
+<td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr>
+<tr><td>Week 10 games the standings page credits</td><td class="num">13 of 14</td>
+<td>26 clubs moved, 4 on bye, and 2 - Washington and the Giants - did not move at all</td>
+<td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr>
+<tr><td>Market prices published by the league</td><td><span class="badge b">NONE</span></td>
+<td>nfl.com/odds returns 404 - Flag on the Play</td><td><a class="src" href="https://www.nfl.com/odds/" target="_blank" rel="noopener">nfl.com/odds/</a></td></tr>
+</tbody></table></div>
+<h2>What the model says about Week 11</h2>
+<div class="warnbox"><p><b>Pre-registered, not graded.</b> Model
+<code>ATL-M1</code> and its constants were committed on 2026-11-17, before the
+first Week 11 kickoff (2026-11-19T20:15:00-05:00). No Week 11 result exists yet, so every forecast
+on this site is ungraded. It will be scored against the official Week 11 box scores after they are
+published, and the score will be posted next to the forecast, not in place of it.</p></div>
+<h2>The four decisions that gate everything else</h2>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Decision</th><th>Why it blocks</th><th>If it is not taken</th></tr></thead>
+<tbody>
+<tr><td>Approve a price source class</td><td>Without any market price, fair-vs-market, CLV, ROI and
+every staking score are structurally impossible, not merely missing</td>
+<td>The board stays a signal board; no staking column can ever be filled</td></tr>
+<tr><td>Approve an automated capture schedule</td><td>Designations are a series, and one capture
+cannot produce a delta, so the injury signal can never be a surprise rather than a level</td>
+<td>Injury stays a stale level and the availability graph stays empty</td></tr>
+<tr><td>Approve a depth-order source (chart or snap counts)</td><td>"Second-string cornerback facing
+a number one receiver" cannot be computed without a verified depth rank for all 32 clubs</td>
+<td>The deficiency matrix stays blocked; it is not approximated</td></tr>
+<tr><td>Rule on rewards and on storing raw rows</td><td>A funded leaderboard is a regulated contest in
+some jurisdictions, and league terms govern republication of row-level data</td>
+<td>Rewards stay notional and raw rows stay private</td></tr>
+</tbody></table></div>
+
+</main>
+</div>
+<footer>
+X3 atlas - module of <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>.
+Built by session <code>arena/dbb50f8c-x3</code>. Every row on every page either links the official
+page it was transcribed from, or is marked UNVERIFIED / BLOCKED / DERIVED. Nothing is inferred.
+Shared task board: <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a>.
+</footer>
+</body>
+</html>

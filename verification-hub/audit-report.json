@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 358,
-      "flagged_rows": 276,
-      "refs": 431,
+      "rows": 433,
+      "flagged_rows": 350,
+      "refs": 582,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -48,6 +48,22 @@
         "archive/hub-621bf404/deficiency.html:  Club  Absent starter  Pos  Official status  Slot  Starter's string  Named replacement  Repl. string  Join result  Chart"
       ]
     },
+    "atlas": {
+      "pages": 23,
+      "rows": 922,
+      "flagged_rows": 684,
+      "refs": 1336,
+      "unsourced_examples": [
+        "atlas/availability.html: Date Club Kind Player What the official page says Source",
+        "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
+        "atlas/depth.html: Step Route Test that must pass Status Source to check",
+        "atlas/depth.html: Personnel question Answer available now Basis Source",
+        "atlas/executive-summary.html: Finding Number Basis Source",
+        "atlas/executive-summary.html: Decision Why it blocks If it is not taken",
+        "atlas/executive-summary.html: Approve a price source class Without any market price, fair-vs-market, CLV, ROI and\nevery staking score are structurally",
+        "atlas/executive-summary.html: Approve an automated capture schedule Designations are a series, and one capture\ncannot produce a delta, so the injury s"
+      ]
+    },
     "audit": {
       "pages": 1,
       "rows": 368,
@@ -57,6 +73,22 @@
         "audit/index.html: ID Issue Repo value Official value Proposed action Sources",
         "audit/index.html: Game (away @ home) Day Time Network (schedule) Note Injury page kickoff Injury page TV Sources",
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
+      ]
+    },
+    "closeout": {
+      "pages": 20,
+      "rows": 984,
+      "flagged_rows": 913,
+      "refs": 1629,
+      "unsourced_examples": [
+        "closeout/availability.html: Club Player Pos Designation Practice Game Book disposition Evidence Who held the slot Claim status Report source Game Bo",
+        "closeout/availability.html: Club Rows at T1 Rows at T2 Added Removed Designation or injury changed Which T1 T2 Reading Source",
+        "closeout/availability.html: Club Player Pos Injury Practice status Game status Source page Captured",
+        "closeout/availability.html: Game Club Kind Unit Slot No. Player Fact Source document",
+        "closeout/availability.html: Field Value as published Source",
+        "closeout/availability.html: Game Club Kind Unit Slot No. Player Fact Source document",
+        "closeout/availability.html: Field Value as published Source",
+        "closeout/availability.html: Game Club Line-ups Substitutions Did not play Not active Dressed Players accounted Sheet closed Reading Source"
       ]
     },
     "council": {
@@ -109,9 +141,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 298,
+      "rows": 301,
       "flagged_rows": 125,
-      "refs": 477,
+      "refs": 483,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -157,9 +189,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1918,
-      "flagged_rows": 1518,
-      "refs": 2861,
+      "rows": 1923,
+      "flagged_rows": 1523,
+      "refs": 2866,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -249,20 +281,20 @@
         "pages/sources.html:  SRC-03  No official NFL betting-lines source identified  Not found  Originating game lines / odds  No "
       ]
     },
-    "reliability": {
-      "pages": 7,
-      "rows": 265,
-      "flagged_rows": 247,
-      "refs": 464,
+    "readiness": {
+      "pages": 11,
+      "rows": 299,
+      "flagged_rows": 278,
+      "refs": 538,
       "unsourced_examples": [
-        "reliability/archive.html: File Kind Source Fetched (UTC) sha256",
-        "reliability/archive.html: Season Week Official page Chunks stored Designated rows found",
-        "reliability/flagged.html: # Kind Item Detail Source",
-        "reliability/index.html: Designation Played n Play rate Wilson 95% CI Inactive n Inactive rate Wilson 95% CI Row sources",
-        "reliability/index.html: Question What we know (this sample) What is still missing",
-        "reliability/index.html: What does Questionable mean?  Play rate 54 /\n79 = 68%\n(Wilson 95% CI 57\u201378%);\ninactive rate 17 /\n56.  Enough n to collap",
-        "reliability/index.html: Is Doubtful different from Out?  Pilot: 1 / 10\nplayed \u2014 directionally similar to Out, n far too small to separate them. ",
-        "reliability/index.html: Can these rates feed a model yet?  No. This module is descriptive and pre-registered as measurement only.  Owner-approve"
+        "readiness/ablations.html: Test week Train weeks n train n test MAE A (ratings only) MAE B (+ availability) MAE delta (A-B) Delta 95% CI B wins con",
+        "readiness/announced-starters.html: Club Announced starter Replaces Announcement date (published) What the announcement says Source",
+        "readiness/change-our-mind.html: Tree ID Strategy Family Current evidence What would move us TOWARD belief What would make us ABANDON it Source",
+        "readiness/control-baselines.html: Control / model Straight-up n 95% CI exact p Brier Contest win rate vs baseline n 95% CI exact p Source",
+        "readiness/decision-readiness.html: ID Requirement Status Where it lives Gate that blocks it Number that would clear it Source",
+        "readiness/drift-alarms.html: Pin Dataset Pins Status Source",
+        "readiness/index.html: Task Requirement Page Shape",
+        "readiness/index.html: RD-01 Decision-readiness table on the landing page decision-readiness.html + the same table on the root landing 74 requi"
       ]
     },
     "round2": {
@@ -344,9 +376,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 294,
-  "rows_total": 12563,
-  "rows_flagged_or_sourced": 10395,
-  "internal_refs": 7484,
+  "pages_total": 341,
+  "rows_total": 14586,
+  "rows_flagged_or_sourced": 12102,
+  "internal_refs": 9027,
   "problems": []
 }

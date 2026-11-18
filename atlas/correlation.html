@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correlation - X3 atlas</title>
+<link rel="stylesheet" href="assets/atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>atlas</span></a> - NFL decision desk</div>
+  <div class="asof">verified data as of <b>2026-11-17</b> - 2026 season, week 10 complete, week 11 ahead</div>
+</header>
+<div class="wrap">
+<nav class="side"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="standings.html" class="">Standings</a><a href="results.html" class="">Results feed</a><a href="fixtures.html" class="">Week 11 fixtures</a><a href="team-stats.html" class="">Team stats</a><a href="injuries.html" class="">Injury report</a><a href="injury-rows.html" class="">Injury rows</a><a href="availability.html" class="">Availability events</a><a href="origination.html" class="">Originated lines</a><a href="prices.html" class="">Price store</a><a href="strategy.html" class="">Strategies</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Validation gates</a><a href="correlation.html" class="on">Correlation</a><a href="luck.html" class="">Luck removed</a><a href="depth.html" class="">Depth &amp; deficiency</a><a href="readiness.html" class="">Readiness</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="repo-review.html" class="">Repo review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for review</a></nav>
+<main>
+<h1>Correlation</h1>
+
+<p class="lede">Ten coefficients, each computed only from numbers published on an official page, each
+printed with its n and its 95% interval. Nothing here is estimated from a model output, and no
+correlation is computed between a modelled quantity and an observed one.</p>
+<div class="callout"><p>n is 32 for anything derived from the standings (every club) and 26 for
+anything derived from the game-centre team stats (only the clubs playing in Week 11). An interval
+that contains zero means the data cannot distinguish the relationship from noise at this sample
+size - it does not mean there is no relationship.</p></div>
+<div class="tblwrap"><table class="k-data"><thead><tr><th>Quantity A</th><th>Quantity B</th><th class="num">n</th><th class="num">Pearson r</th><th class="num">95% low</th><th class="num">95% high</th><th>Source</th></tr></thead><tbody><tr><td>Net points per game</td><td>Win percentage</td><td class="num">32</td><td class="num">0.8825</td><td class="num">0.7711</td><td class="num">0.9415</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>Points scored per game</td><td>Win percentage</td><td class="num">32</td><td class="num">0.7153</td><td class="num">0.4884</td><td class="num">0.8516</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>Points allowed per game</td><td>Win percentage</td><td class="num">32</td><td class="num">-0.7043</td><td class="num">-0.8454</td><td class="num">-0.4713</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>Pythagorean expected win %</td><td>Actual win %</td><td class="num">32</td><td class="num">0.8824</td><td class="num">0.7709</td><td class="num">0.9414</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>Home win %</td><td>Road win %</td><td class="num">32</td><td class="num">0.3657</td><td class="num">0.0195</td><td class="num">0.6336</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td></tr><tr><td>Turnover differential</td><td>Win percentage</td><td class="num">26</td><td class="num">0.4328</td><td class="num">0.0546</td><td class="num">0.7024</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr><tr><td>Yards per game</td><td>Points per game</td><td class="num">26</td><td class="num">0.8882</td><td class="num">0.7636</td><td class="num">0.9491</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr><tr><td>Defensive sacks</td><td>Points allowed per game</td><td class="num">26</td><td class="num">-0.2655</td><td class="num">-0.5920</td><td class="num">0.1358</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr><tr><td>Defensive interceptions</td><td>Turnover differential</td><td class="num">26</td><td class="num">0.5724</td><td class="num">0.2378</td><td class="num">0.7856</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr><tr><td>Defensive sacks</td><td>Win percentage</td><td class="num">26</td><td class="num">0.3205</td><td class="num">-0.0764</td><td class="num">0.6297</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr></tbody></table></div>
+<h2>How to read these</h2>
+<ul>
+<li>Net points per game against win percentage is the strongest relationship here, which is close to
+circular: wins are made of points. It is published because it sets the ceiling every other
+correlation should be judged against.</li>
+<li>The home-versus-road win percentage correlation is the portability check. If form were portable,
+a club's home record would predict its road record; the interval shows how weak that link is.</li>
+<li>Turnover differential is the classic "lucky" quantity: it correlates with winning but is far less
+stable year to year than net points. This desk will not use it as a feature until its stability is
+measured across seasons (R-65, not started).</li>
+</ul>
+<h2>What is deliberately not correlated</h2>
+<p>No coefficient on this page mixes an official number with a modelled one, and no coefficient is
+computed on fewer than 26 observations. Relationships that need injury, depth or price data are left
+uncomputed until those datasets exist as dated captures rather than single reads.</p>
+
+</main>
+</div>
+<footer>
+X3 atlas - module of <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>.
+Built by session <code>arena/dbb50f8c-x3</code>. Every row on every page either links the official
+page it was transcribed from, or is marked UNVERIFIED / BLOCKED / DERIVED. Nothing is inferred.
+Shared task board: <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a>.
+</footer>
+</body>
+</html>

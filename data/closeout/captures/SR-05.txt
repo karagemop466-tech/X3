@@ -1,0 +1,7 @@
+REQUEST: https://www.nfl.com/injuries/league/2026/reg11
+RESOLVED URL (reported by the fetch tool): https://www.nfl.com/injuries/league/2026/reg10
+PAGE TITLE: "Official NFL Injury Report for Players - Week 10 of the 2026 Season | NFL.com"
+WEEK SELECTOR AS PRINTED: WEEK 1 ... WEEK 9 WEEK 10   (no WEEK 11 entry)
+CONCLUSION PUBLISHED: at 2026-11-17T22:45Z the league had published no Week-11 injury report; a Week-11
+report cannot therefore be an input to the board frozen on 2026-11-17. Absence is stated as an observation,
+not as a forecast of when it will appear.

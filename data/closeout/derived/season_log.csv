@@ -1,0 +1,151 @@
+game_id,week,date_iso,away,home,away_score,home_score,neutral,venue,provenance,source,margin_home,total
+1:NE@SEA,1,2026-09-09,NE,SEA,10,13,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,3,23
+1:SF@LAR,1,2026-09-10,SF,LA,27,7,True,East Melbourne,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,-20,34
+1:ATL@PIT,1,2026-09-13,ATL,PIT,13,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,7,33
+1:AZ@LAC,1,2026-09-13,AZ,LAC,26,14,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,-12,40
+1:BAL@IND,1,2026-09-13,BAL,IND,41,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,-18,64
+1:BUF@HOU,1,2026-09-13,BUF,HOU,36,31,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,-5,67
+1:CHI@CAR,1,2026-09-13,CHI,CAR,59,37,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,-22,96
+1:CLE@JAX,1,2026-09-13,CLE,JAX,10,34,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,24,44
+1:DAL@NYG,1,2026-09-13,DAL,NYG,20,28,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,8,48
+1:GB@MIN,1,2026-09-13,GB,MIN,22,39,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,17,61
+1:MIA@LV,1,2026-09-13,MIA,LV,13,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,14,40
+1:NO@DET,1,2026-09-13,NO,DET,30,31,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,1,61
+1:NYJ@TEN,1,2026-09-13,NYJ,TEN,23,10,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,-13,33
+1:TB@CIN,1,2026-09-13,TB,CIN,27,33,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,6,60
+1:WAS@PHI,1,2026-09-13,WAS,PHI,22,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,2,46
+1:DEN@KC,1,2026-09-14,DEN,KC,10,31,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-1,21,41
+2:DET@BUF,2,2026-09-17,DET,BUF,31,41,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,10,72
+2:CAR@ATL,2,2026-09-20,CAR,ATL,34,3,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-31,37
+2:CIN@HOU,2,2026-09-20,CIN,HOU,20,6,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-14,26
+2:CLE@TB,2,2026-09-20,CLE,TB,23,19,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-4,42
+2:GB@NYJ,2,2026-09-20,GB,NYJ,20,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-3,37
+2:IND@KC,2,2026-09-20,IND,KC,30,33,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,3,63
+2:JAX@DEN,2,2026-09-20,JAX,DEN,13,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,7,33
+2:LV@LAC,2,2026-09-20,LV,LAC,26,14,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-12,40
+2:MIA@SF,2,2026-09-20,MIA,SF,13,35,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,22,48
+2:MIN@CHI,2,2026-09-20,MIN,CHI,9,3,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-6,12
+2:NO@BAL,2,2026-09-20,NO,BAL,24,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-7,41
+2:PHI@TEN,2,2026-09-20,PHI,TEN,24,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-4,44
+2:PIT@NE,2,2026-09-20,PIT,NE,3,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,17,23
+2:SEA@AZ,2,2026-09-20,SEA,AZ,31,7,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,-24,38
+2:WAS@DAL,2,2026-09-20,WAS,DAL,20,37,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,17,57
+2:NYG@LAR,2,2026-09-21,NYG,LA,6,28,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-2,22,34
+3:ATL@GB,3,2026-09-24,ATL,GB,35,14,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,-21,49
+3:AZ@SF,3,2026-09-27,AZ,SF,30,36,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,6,66
+3:BAL@DAL,3,2026-09-27,BAL,DAL,34,31,True,Rio de Janeiro,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,-3,65
+3:CAR@CLE,3,2026-09-27,CAR,CLE,18,21,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,3,39
+3:CIN@PIT,3,2026-09-27,CIN,PIT,27,30,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,3,57
+3:HOU@IND,3,2026-09-27,HOU,IND,17,19,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,2,36
+3:KC@MIA,3,2026-09-27,KC,MIA,24,10,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,-14,34
+3:LAC@BUF,3,2026-09-27,LAC,BUF,16,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,8,40
+3:LAR@DEN,3,2026-09-27,LA,DEN,26,30,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,4,56
+3:LV@NO,3,2026-09-27,LV,NO,35,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,-8,62
+3:MIN@TB,3,2026-09-27,MIN,TB,23,16,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,-7,39
+3:NE@JAX,3,2026-09-27,NE,JAX,6,35,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,29,41
+3:NYJ@DET,3,2026-09-27,NYJ,DET,24,31,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,7,55
+3:SEA@WAS,3,2026-09-27,SEA,WAS,31,33,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,2,64
+3:TEN@NYG,3,2026-09-27,TEN,NYG,7,12,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,5,19
+3:PHI@CHI,3,2026-09-28,PHI,CHI,7,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-3,20,34
+4:PIT@CLE,4,2026-10-01,PIT,CLE,24,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,3,51
+4:AZ@NYG,4,2026-10-04,AZ,NYG,24,36,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,12,60
+4:DAL@HOU,4,2026-10-04,DAL,HOU,34,30,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-4,64
+4:DEN@SF,4,2026-10-04,DEN,SF,14,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,10,38
+4:DET@CAR,4,2026-10-04,DET,CAR,26,32,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,6,58
+4:GB@TB,4,2026-10-04,GB,TB,17,14,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-3,31
+4:IND@WAS,4,2026-10-04,IND,WAS,30,13,True,London,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-17,43
+4:JAX@CIN,4,2026-10-04,JAX,CIN,22,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-5,39
+4:KC@LV,4,2026-10-04,KC,LV,30,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-3,57
+4:LAC@SEA,4,2026-10-04,LAC,SEA,23,30,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,7,53
+4:LAR@PHI,4,2026-10-04,LA,PHI,24,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-4,44
+4:MIA@MIN,4,2026-10-04,MIA,MIN,10,15,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,5,25
+4:NE@BUF,4,2026-10-04,NE,BUF,29,26,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-3,55
+4:NYJ@CHI,4,2026-10-04,NYJ,CHI,12,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,11,35
+4:TEN@BAL,4,2026-10-04,TEN,BAL,18,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,6,42
+4:ATL@NO,4,2026-10-05,ATL,NO,45,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-4,-21,69
+5:TB@DAL,5,2026-10-08,TB,DAL,24,16,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-8,40
+5:BAL@ATL,5,2026-10-11,BAL,ATL,30,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-7,53
+5:CHI@GB,5,2026-10-11,CHI,GB,7,31,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,24,38
+5:CIN@MIA,5,2026-10-11,CIN,MIA,31,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-7,55
+5:CLE@NYJ,5,2026-10-11,CLE,NYJ,12,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,5,29
+5:DEN@LAC,5,2026-10-11,DEN,LAC,23,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-6,40
+5:DET@AZ,5,2026-10-11,DET,AZ,45,21,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-24,66
+5:HOU@TEN,5,2026-10-11,HOU,TEN,26,3,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-23,29
+5:IND@PIT,5,2026-10-11,IND,PIT,22,34,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,12,56
+5:LV@NE,5,2026-10-11,LV,NE,17,45,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,28,62
+5:MIN@NO,5,2026-10-11,MIN,NO,23,13,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-10,36
+5:NYG@WAS,5,2026-10-11,NYG,WAS,27,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,0,54
+5:PHI@JAX,5,2026-10-11,PHI,JAX,17,19,True,London,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,2,36
+5:SF@SEA,5,2026-10-11,SF,SEA,32,29,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-3,61
+5:BUF@LAR,5,2026-10-12,BUF,LA,37,34,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-5,-3,71
+6:SEA@DEN,6,2026-10-15,SEA,DEN,14,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,3,31
+6:AZ@LAR,6,2026-10-18,AZ,LA,18,16,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-2,34
+6:BAL@CLE,6,2026-10-18,BAL,CLE,10,13,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,3,23
+6:BUF@LV,6,2026-10-18,BUF,LV,33,30,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-3,63
+6:CAR@PHI,6,2026-10-18,CAR,PHI,25,14,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-11,39
+6:CHI@ATL,6,2026-10-18,CHI,ATL,31,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-8,54
+6:DAL@GB,6,2026-10-18,DAL,GB,13,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,10,36
+6:HOU@JAX,6,2026-10-18,HOU,JAX,34,31,True,London,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-3,65
+6:LAC@KC,6,2026-10-18,LAC,KC,6,22,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,16,28
+6:NO@NYG,6,2026-10-18,NO,NYG,34,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-7,61
+6:NYJ@NE,6,2026-10-18,NYJ,NE,19,26,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,7,45
+6:PIT@TB,6,2026-10-18,PIT,TB,26,19,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-7,45
+6:TEN@IND,6,2026-10-18,TEN,IND,26,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,-6,46
+6:WAS@SF,6,2026-10-19,WAS,SF,17,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-6,6,40
+7:NE@CHI,7,2026-10-22,NE,CHI,24,30,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,6,54
+7:CIN@BAL,7,2026-10-25,CIN,BAL,35,13,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-22,48
+7:CLE@TEN,7,2026-10-25,CLE,TEN,27,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-3,51
+7:DEN@AZ,7,2026-10-25,DEN,AZ,30,16,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-14,46
+7:GB@DET,7,2026-10-25,GB,DET,17,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,3,37
+7:IND@MIN,7,2026-10-25,IND,MIN,10,16,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,6,26
+7:KC@SEA,7,2026-10-25,KC,SEA,3,20,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,17,23
+7:LAR@LV,7,2026-10-25,LA,LV,35,21,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-14,56
+7:MIA@NYJ,7,2026-10-25,MIA,NYJ,28,25,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-3,53
+7:NYG@HOU,7,2026-10-25,NYG,HOU,27,21,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-6,48
+7:PIT@NO,7,2026-10-25,PIT,NO,16,10,True,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-6,26
+7:SF@ATL,7,2026-10-25,SF,ATL,20,29,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,9,49
+7:TB@CAR,7,2026-10-25,TB,CAR,43,13,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-30,56
+7:DAL@PHI,7,2026-10-26,DAL,PHI,38,21,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-7,-17,59
+8:CAR@GB,8,2026-10-29,CAR,GB,19,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,8,46
+8:ATL@TB,8,2026-11-01,ATL,TB,0,16,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,16,16
+8:AZ@DAL,8,2026-11-01,AZ,DAL,33,30,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,-3,63
+8:BAL@BUF,8,2026-11-01,BAL,BUF,10,36,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,26,46
+8:CLE@PIT,8,2026-11-01,CLE,PIT,6,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,21,33
+8:IND@JAX,8,2026-11-01,IND,JAX,7,42,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,35,49
+8:KC@DEN,8,2026-11-01,KC,DEN,24,28,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,4,52
+8:LAC@LAR,8,2026-11-01,LAC,LA,9,24,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,15,33
+8:LV@NYJ,8,2026-11-01,LV,NYJ,38,33,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,-5,71
+8:MIN@DET,8,2026-11-01,MIN,DET,15,19,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,4,34
+8:NE@MIA,8,2026-11-01,NE,MIA,24,19,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,-5,43
+8:PHI@WAS,8,2026-11-01,PHI,WAS,10,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,17,37
+8:TEN@CIN,8,2026-11-01,TEN,CIN,36,43,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,7,79
+8:CHI@SEA,8,2026-11-02,CHI,SEA,34,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-8,-17,51
+9:JAX@BAL,9,2026-11-05,JAX,BAL,33,10,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-23,43
+9:AZ@SEA,9,2026-11-08,AZ,SEA,3,17,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,14,20
+9:CIN@ATL,9,2026-11-08,CIN,ATL,34,17,True,Madrid,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-17,51
+9:CLE@NO,9,2026-11-08,CLE,NO,22,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,1,45
+9:DAL@IND,9,2026-11-08,DAL,IND,27,23,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-4,50
+9:DEN@CAR,9,2026-11-08,DEN,CAR,26,21,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-5,47
+9:DET@MIA,9,2026-11-08,DET,MIA,19,9,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-10,28
+9:GB@NE,9,2026-11-08,GB,NE,45,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-18,72
+9:HOU@LAC,9,2026-11-08,HOU,LAC,44,22,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-22,66
+9:LAR@WAS,9,2026-11-08,LA,WAS,20,13,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-7,33
+9:LV@SF,9,2026-11-08,LV,SF,17,38,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,21,55
+9:NYG@PHI,9,2026-11-08,NYG,PHI,19,11,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-8,30
+9:NYJ@KC,9,2026-11-08,NYJ,KC,12,35,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,23,47
+9:TB@CHI,9,2026-11-08,TB,CHI,24,27,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,3,51
+9:BUF@MIN,9,2026-11-09,BUF,MIN,23,6,False,,"inherited (prior session, as_of 2026-11-14)",https://www.nfl.com/schedules/2026/by-week/week-9,-17,29
+10:WAS@NYG,10,2026-11-12,WAS,NYG,24,21,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-3,45
+10:BUF@NYJ,10,2026-11-15,BUF,NYJ,31,12,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-19,43
+10:CAR@NO,10,2026-11-15,CAR,NO,20,17,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-3,37
+10:HOU@CLE,10,2026-11-15,HOU,CLE,24,27,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,3,51
+10:JAX@TEN,10,2026-11-15,JAX,TEN,40,23,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-17,63
+10:KC@ATL,10,2026-11-15,KC,ATL,35,13,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-22,48
+10:LA@AZ,10,2026-11-15,LA,AZ,34,6,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-28,40
+10:MIA@IND,10,2026-11-15,MIA,IND,22,24,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,2,46
+10:MIN@GB,10,2026-11-15,MIN,GB,30,10,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-20,40
+10:NE@DET,10,2026-11-15,NE,DET,10,35,yes,Allianz Arena (Munich),captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,25,45
+10:PIT@CIN,10,2026-11-15,PIT,CIN,18,38,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,20,56
+10:SEA@LV,10,2026-11-15,SEA,LV,21,13,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-8,34
+10:SF@DAL,10,2026-11-15,SF,DAL,46,40,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-6,86
+10:LAC@BAL,10,2026-11-16,LAC,BAL,23,20,no,,captured 2026-11-17T22:44Z (this session),https://www.nfl.com/schedules/2026/by-week/week-10,-3,43

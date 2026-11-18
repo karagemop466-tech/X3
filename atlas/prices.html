@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price snapshot store and price policy - X3 atlas</title>
+<link rel="stylesheet" href="assets/atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>atlas</span></a> - NFL decision desk</div>
+  <div class="asof">verified data as of <b>2026-11-17</b> - 2026 season, week 10 complete, week 11 ahead</div>
+</header>
+<div class="wrap">
+<nav class="side"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="standings.html" class="">Standings</a><a href="results.html" class="">Results feed</a><a href="fixtures.html" class="">Week 11 fixtures</a><a href="team-stats.html" class="">Team stats</a><a href="injuries.html" class="">Injury report</a><a href="injury-rows.html" class="">Injury rows</a><a href="availability.html" class="">Availability events</a><a href="origination.html" class="">Originated lines</a><a href="prices.html" class="on">Price store</a><a href="strategy.html" class="">Strategies</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Validation gates</a><a href="correlation.html" class="">Correlation</a><a href="luck.html" class="">Luck removed</a><a href="depth.html" class="">Depth &amp; deficiency</a><a href="readiness.html" class="">Readiness</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="repo-review.html" class="">Repo review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for review</a></nav>
+<main>
+<h1>Price snapshot store and price policy</h1>
+
+<p class="lede">The price-snapshot store is defined and empty. The brief requires the price-data
+policy to be decided before any backtest is published, so the policy is published here first and the
+store opens only when a source class is approved.</p>
+<div class="warnbox"><p><b>Policy PDP-1, committed 2026-11-17.</b> No backtest, no ROI figure, no CLV
+figure and no staking score may be published on this site until a price source class has been
+approved in writing on the suggestions page. Until then the leaderboard is a signal board and every
+market column renders as <span class="unverif">UNVERIFIED - no official source</span>.</p></div>
+<h2>Why the store is empty, verified rather than asserted</h2>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Check</th><th>Result</th><th>Evidence</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Does the league publish odds?</td><td><span class="badge b">NO</span></td>
+<td>nfl.com/odds returns "404 - Flag on the Play."</td><td><a class="src" href="https://www.nfl.com/odds/" target="_blank" rel="noopener">nfl.com/odds/</a></td></tr>
+<tr><td>Does a Week 11 game centre carry a price?</td><td><span class="badge b">NO</span></td>
+<td>Game info panels publish location, stadium and network only; no price field exists</td>
+<td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td></tr>
+<tr><td>Does this repository hold any price anywhere?</td><td><span class="badge b">NO</span></td>
+<td>Searched across every module in the repository; price columns are blank or flagged</td>
+<td><a class="src" href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">github.com/karagemop466-tech/X3</a></td></tr>
+</tbody></table></div>
+<h2>Store schema, defined and ready</h2>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>Field</th><th>Meaning</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>market_id</td><td>Season, week, game, market type (side / total / moneyline)</td>
+<td><span class="badge d">DEFINED</span></td></tr>
+<tr><td>open_price, open_captured_at</td><td>The first number recorded for that market, with the
+clock time of the read</td><td><span class="badge b">0 rows</span></td></tr>
+<tr><td>close_price, close_captured_at</td><td>The last number before kickoff, appended - never
+overwritten</td><td><span class="badge b">0 rows</span></td></tr>
+<tr><td>raw_hash</td><td>Hash of the raw capture so a later dispute can be settled from the bytes</td>
+<td><span class="badge b">0 rows</span></td></tr>
+<tr><td>source_class</td><td>Licensed feed, operator snapshot, or manual record - recorded per row</td>
+<td><span class="badge u">AWAITING DECISION</span></td></tr>
+<tr><td>fair_price, residual</td><td>Our number and fair minus market, computed only when both exist</td>
+<td><span class="badge b">BLOCKED</span></td></tr>
+</tbody></table></div>
+<h2>The ruling that matters</h2>
+<p>Opening and closing numbers are defined <i>before</i> they are measured: the open is the first
+reading taken after the market appears; the close is the last reading before kickoff. Both are
+appended with their timestamps. If that definition is not fixed in advance, closing-line value can be
+computed retroactively to favour whatever a strategy happens to have done, which is the exact failure
+the leaderboard design exists to prevent.</p>
+
+</main>
+</div>
+<footer>
+X3 atlas - module of <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>.
+Built by session <code>arena/dbb50f8c-x3</code>. Every row on every page either links the official
+page it was transcribed from, or is marked UNVERIFIED / BLOCKED / DERIVED. Nothing is inferred.
+Shared task board: <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a>.
+</footer>
+</body>
+</html>

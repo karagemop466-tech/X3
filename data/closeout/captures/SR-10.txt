@@ -1,0 +1,6 @@
+REPOSITORY READ - data/x3/verified/markets.json at commit b7d4142889b90675cd53868e377bb277d415efb5, 2026-11-17T22:51Z
+"as_of": "2026-11-14", "week": 10, "generated_by": "tools/markets_engine.py"
+"model": {"name": "X3-v2", "hfa_points": 0.082, "league_avg_team_score": 22.975, "n_games": 137}
+"sigma_margin": 13.027
+live rows: 26 = 13 Week-10 games (priced before their kickoffs) + 13 Week-11 games
+example row: {"game_id": "10:BUF@NYJ", "side_fair_line": 11.5, "side_cover_prob_home": 0.5058, "total_fair_line": 54.0, "total_over_prob": 0.4982, "ml_home_prob": 0.1926, "market_side": "", "diff_side_points": ""}

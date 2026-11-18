@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategies and signals - X3 atlas</title>
+<link rel="stylesheet" href="assets/atlas.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">X3 <span>atlas</span></a> - NFL decision desk</div>
+  <div class="asof">verified data as of <b>2026-11-17</b> - 2026 season, week 10 complete, week 11 ahead</div>
+</header>
+<div class="wrap">
+<nav class="side"><a href="index.html" class="">Overview</a><a href="executive-summary.html" class="">Executive summary</a><a href="standings.html" class="">Standings</a><a href="results.html" class="">Results feed</a><a href="fixtures.html" class="">Week 11 fixtures</a><a href="team-stats.html" class="">Team stats</a><a href="injuries.html" class="">Injury report</a><a href="injury-rows.html" class="">Injury rows</a><a href="availability.html" class="">Availability events</a><a href="origination.html" class="">Originated lines</a><a href="prices.html" class="">Price store</a><a href="strategy.html" class="on">Strategies</a><a href="leaderboard.html" class="">Leaderboard</a><a href="gates.html" class="">Validation gates</a><a href="correlation.html" class="">Correlation</a><a href="luck.html" class="">Luck removed</a><a href="depth.html" class="">Depth &amp; deficiency</a><a href="readiness.html" class="">Readiness</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="repo-review.html" class="">Repo review</a><a href="sources.html" class="">Sources</a><a href="flagged.html" class="">Flagged for review</a></nav>
+<main>
+<h1>Strategies and signals</h1>
+
+<p class="lede">Eight strategies are registered and frozen. None has been scored, because scoring
+requires settled bets and prices, and neither exists. Registration is the deliverable here: a
+strategy's definition is committed before it sees the data it will be graded on, which is the only
+way a later result means anything.</p>
+<div class="tblwrap"><table class="k-data">
+<thead><tr><th>ID</th><th>Division</th><th>Name</th><th>Definition</th>
+<th>What would promote it (frozen now)</th><th>What would demote it (frozen now)</th>
+<th>State</th><th>Result</th><th>Registration</th></tr></thead>
+<tbody><tr><td><b>S-01</b></td><td>Singles</td><td>Official-points rating, side only</td><td>Base rating model, home margin vs a zero benchmark</td><td>n &gt;= 200 graded bets and a Brier skill lower bound above zero after multiplicity</td><td>Brier skill turns negative for two consecutive rounds, or the sample never reaches 200</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>S-02</b></td><td>Singles</td><td>Official-points rating, total only</td><td>Total estimator A against a constant league total</td><td>MAE below the constant benchmark on a chronological holdout with n &gt;= 200</td><td>MAE worse than the constant for two consecutive rounds</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>S-03</b></td><td>Singles</td><td>Moneyline from the side model</td><td>Win probability from the margin distribution, no independent pricing</td><td>Calibration slope within 0.85-1.15 on n &gt;= 200 with a reliability diagram published</td><td>Calibration slope outside 0.75-1.25 at any checkpoint</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>S-04</b></td><td>Singles</td><td>Turnover-differential overlay</td><td>Rating plus official turnover differential</td><td>Beats S-01 on the same games by a margin whose 95% interval excludes zero</td><td>Fails to beat S-01 on two consecutive rounds</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>S-05</b></td><td>Singles</td><td>Personnel (Out count) overlay</td><td>Rating plus the declared per-Out constant</td><td>Beats S-01 on a chronological holdout with an interval that excludes zero</td><td>Fails to beat S-01, or the feature is stale for two consecutive rounds</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>S-06</b></td><td>Game parlays</td><td>Two-leg correlated side + total</td><td>Joint probability from a validated copula, not a product of marginals</td><td>Joint probability validated on n &gt;= 300 games and operator void rules recorded</td><td>No validated joint probability, or the operator&#x27;s void rules are unavailable</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>S-07</b></td><td>Same-game parlays</td><td>Same-game side + player prop</td><td>Joint probability from within-game dependence measured on official play data</td><td>Dependence estimated on n &gt;= 300 games with a published interval</td><td>Dependence cannot be estimated from an official source</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr><tr><td><b>S-08</b></td><td>Prop combos</td><td>Multi-player prop combination</td><td>Joint probability from a validated model of player-correlation</td><td>Joint probability validated out of sample, n &gt;= 300</td><td>No official player-prop settlement data available</td><td><span class="badge d">PAPER</span></td><td><span class="badge u">not computed - no settled bets</span></td><td><a class="src" href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md" target="_blank" rel="noopener">github.com/karagemop466-tech/X3/blob/main/C...</a></td></tr></tbody></table></div>
+<h2>The two-sided field, and why it is frozen first</h2>
+<p>Every strategy carries both an upgrade trigger and a downgrade trigger, written before any result
+is known. A one-sided rule - "we will promote it if it wins" - can never be falsified, and a
+leaderboard that cannot be falsified is a marketing page. The numbers in the promotion column are
+project thresholds set by this desk, not figures published by the NFL.</p>
+<h2>Pre-registration: what counts</h2>
+<ol>
+<li>The rule text, the sample window and the gates are committed to git before the evaluation window
+opens. The commit hash is the registration.</li>
+<li>A number graded on games that predate the commit is retrospective and must be labelled
+IN-SAMPLE. It cannot promote a strategy.</li>
+<li>Backtest numbers never appear on the leaderboard. The leaderboard shows prospective results only,
+so a strategy that was curve-fitted to history cannot buy its way to the top.</li>
+</ol>
+<h2>Combos and parlays: the joint-evidence gate</h2>
+<div class="warnbox"><p>Multiplying marginal probabilities is invalid under dependence, and two legs
+in the same game are dependent by construction. A combo may be ranked only when a <b>directly
+validated joint probability</b> exists and the operator's void and push rules are recorded. Neither
+exists today, so no combo is ranked, and none will be until both do.</p></div>
+
+</main>
+</div>
+<footer>
+X3 atlas - module of <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a>.
+Built by session <code>arena/dbb50f8c-x3</code>. Every row on every page either links the official
+page it was transcribed from, or is marked UNVERIFIED / BLOCKED / DERIVED. Nothing is inferred.
+Shared task board: <a href="https://github.com/karagemop466-tech/X3/blob/main/COORDINATION.md">COORDINATION.md</a>.
+</footer>
+</body>
+</html>

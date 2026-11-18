@@ -557,6 +557,29 @@ FLAGS = [
     ("F-31", "HIGH", "Fixture venue data", "The canonical 163-row results feed has venue populated for only 7 fixtures; 156 venue cells are blank. Do not infer venue from the home-team field or assume a neutral site. Official NFL Game Center capture is still required for each fixture.",
      "https://www.nfl.com/games/",
      "Capture official Game Center evidence per fixture; publish venue only when verified. Keep venue-dependent model features blocked until coverage is complete."),
+    ("F-32", "HIGH", "Announced starters (BAL)", "The register's Brissett row said 'Traded to Baltimore'. The cited nfl.com article "
+     "(read 2026-11-17) says the trade is being finalized with completion expected over the weekend, and does not give the article date "
+     "on the fetched page. The row is corrected to 'reported as being finalized' and its date is marked unverified.",
+     "https://www.nfl.com/news/jacoby-brissett-trade-ravens-cardinals",
+     "Confirm the completed transaction on nfl.com/transactions and the article date before any replacement is treated as a confirmed trade."),
+    ("F-33", "HIGH", "Week 10 injury rows", "Committed Week 10 files disagree on row count. data/injury_report_2026_wk10.csv holds 205 designated rows only; "
+     "data/hub, docs/data and audit hold 345 rows; data/snapshots and agency hold 347 rows. The two 347-row captures differ by two rows, "
+     "unexplained. The live official page was not re-counted in full this session.",
+     "https://www.nfl.com/injuries/league/2026/reg10",
+     "Re-count the live Week 10 report (all eight chunks), reconcile the 345/347 captures row by row, and publish one count with its definition."),
+    ("F-34", "MEDIUM", "Week 11 injury report", "The Week 11 report is not published yet. The reg11 URL redirects to the Week 10 report "
+     "(read 2026-11-17). No Week 11 designation is in the repository and none may be inferred from Week 10.",
+     "https://www.nfl.com/injuries/league/2026/reg11",
+     "Capture the Week 11 report once nfl.com publishes it; record the fetch time and hash with it."),
+    ("F-35", "MEDIUM", "Decision registers", "Two readiness registers are published with different counts: decision/ lists 69 requirements, "
+     "readiness/ lists 74 rows. The root landing page shows 66 requirements mapped, a 69-row register and 74 requirement rows in different cards. None of these has been reconciled.",
+     "https://github.com/karagemop466-tech/X3/blob/main/scripts/build_decision.py",
+     "Choose one register as canonical and point the other at it, with a row-by-row mapping."),
+    ("F-36", "MEDIUM", "Readiness labels", "On the landing-page decision-readiness table, several rows show status VERIFIED beside a source cell reading "
+     "UNVERIFIED. The status describes the requirement's register entry; the source cell describes the clearing threshold. Read together they "
+     "look contradictory.",
+     "https://github.com/karagemop466-tech/X3/blob/main/tools/build_hub.py",
+     "Split the column into 'register entry' and 'threshold source' so that no row carries both VERIFIED and UNVERIFIED."),
 ]
 
 # Decision-readiness register. These are project gates, not NFL-issued thresholds.

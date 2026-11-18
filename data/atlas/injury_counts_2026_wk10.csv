@@ -1,0 +1,29 @@
+team,name,rows_live_2026_11_17,rows_committed_2026_11_14,designated_live,designated_committed,flag,source
+WAS,Washington Commanders,9,9,2,2,match,https://www.nfl.com/injuries/league/2026/reg10
+NYG,New York Giants,11,11,1,1,match,https://www.nfl.com/injuries/league/2026/reg10
+NE,New England Patriots,15,15,12,12,match,https://www.nfl.com/injuries/league/2026/reg10
+DET,Detroit Lions,9,9,5,5,match,https://www.nfl.com/injuries/league/2026/reg10
+KC,Kansas City Chiefs,13,13,6,6,match,https://www.nfl.com/injuries/league/2026/reg10
+ATL,Atlanta Falcons,11,11,5,5,match,https://www.nfl.com/injuries/league/2026/reg10
+MIN,Minnesota Vikings,13,13,8,8,match,https://www.nfl.com/injuries/league/2026/reg10
+GB,Green Bay Packers,17,17,12,12,match,https://www.nfl.com/injuries/league/2026/reg10
+JAX,Jacksonville Jaguars,11,11,4,4,match,https://www.nfl.com/injuries/league/2026/reg10
+TEN,Tennessee Titans,12,12,6,6,match,https://www.nfl.com/injuries/league/2026/reg10
+BUF,Buffalo Bills,14,14,5,5,match,https://www.nfl.com/injuries/league/2026/reg10
+NYJ,New York Jets,9,9,8,8,match,https://www.nfl.com/injuries/league/2026/reg10
+MIA,Miami Dolphins,11,11,4,4,match,https://www.nfl.com/injuries/league/2026/reg10
+IND,Indianapolis Colts,14,14,7,7,match,https://www.nfl.com/injuries/league/2026/reg10
+CAR,Carolina Panthers,12,12,7,7,match,https://www.nfl.com/injuries/league/2026/reg10
+NO,New Orleans Saints,12,12,6,6,match,https://www.nfl.com/injuries/league/2026/reg10
+HOU,Houston Texans,16,16,11,11,match,https://www.nfl.com/injuries/league/2026/reg10
+CLE,Cleveland Browns,12,12,3,3,match,https://www.nfl.com/injuries/league/2026/reg10
+LAR,Los Angeles Rams,14,14,7,7,match,https://www.nfl.com/injuries/league/2026/reg10
+AZ,Arizona Cardinals,15,15,9,9,match,https://www.nfl.com/injuries/league/2026/reg10
+SEA,Seattle Seahawks,15,15,4,4,match,https://www.nfl.com/injuries/league/2026/reg10
+LV,Las Vegas Raiders,5,5,2,2,match,https://www.nfl.com/injuries/league/2026/reg10
+SF,San Francisco 49ers,12,12,8,8,match,https://www.nfl.com/injuries/league/2026/reg10
+DAL,Dallas Cowboys,19,19,11,11,match,https://www.nfl.com/injuries/league/2026/reg10
+PIT,Pittsburgh Steelers,8,8,1,1,match,https://www.nfl.com/injuries/league/2026/reg10
+CIN,Cincinnati Bengals,9,9,4,4,match,https://www.nfl.com/injuries/league/2026/reg10
+LAC,Los Angeles Chargers,19,19,10,10,match,https://www.nfl.com/injuries/league/2026/reg10
+BAL,Baltimore Ravens,10,8,2,0,MISMATCH,https://www.nfl.com/injuries/league/2026/reg10
