@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 582,
+      "refs": 583,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 922,
+      "rows": 923,
       "flagged_rows": 684,
-      "refs": 1336,
+      "refs": 1337,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -189,9 +189,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1923,
-      "flagged_rows": 1523,
-      "refs": 2866,
+      "rows": 1962,
+      "flagged_rows": 1561,
+      "refs": 2943,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -393,8 +393,8 @@
     }
   },
   "pages_total": 348,
-  "rows_total": 14852,
-  "rows_flagged_or_sourced": 12349,
-  "internal_refs": 9102,
+  "rows_total": 14892,
+  "rows_flagged_or_sourced": 12387,
+  "internal_refs": 9143,
   "problems": []
 }
