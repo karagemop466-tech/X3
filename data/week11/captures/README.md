@@ -20,3 +20,8 @@ discipline, the same rule the atlas gate uses) and the second read shows
 `2-0-0`, matching both committed registers and the arithmetic. The committed
 transcription uses the twice-read value; the first read's error is disclosed
 here rather than hidden.
+
+Append-only discipline note (2026-11-18): the third reg11 probe was appended into the
+sealed probe file while uncommitted; the week11_verify sha256 gate flagged the change
+(marked file), and the manifest was re-sealed over the appended content
+(328c69b...). From here on new probes go into a new sealed file, never a re-opened one.
