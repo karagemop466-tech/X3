@@ -4019,3 +4019,29 @@ File scope: `COORDINATION.md` (this session record only). No other session's fil
 | GitHub Pages | PENDING — confirm `Deploy X3 NFL site to GitHub Pages` success on `main`; live URL https://karagemop466-tech.github.io/X3/ |
 
 W06 **in progress** — PR created, awaiting merge and Pages confirmation.
+
+---
+
+---
+
+## Session `arena/2f135335-x3` — current-evidence landing integration (claim, 2026-11-18T03:08Z)
+
+Branch: `arena/2f135335-x3` (the platform-assigned branch; work stays here). Base: `f6660e44b25fd8cf1f80813e3127d699b5bcd99b`.
+
+### Claim and scope
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| F01 | Audit the root/canonical landing against newer post-Week-10 and injury-reliability evidence; state the as-of boundary and link users to the newer reviewable modules without merging incompatible datasets | in progress | `tools/build_hub.py`, generated `index.html`, generated `hub/*.html` |
+| F02 | Add a concise, source-linked current-evidence / stale-feed notice and prominent routes to the Week-10 close-out, Week-11 pre-registration, injury reliability, suggestions, and flagged items | in progress | `tools/build_hub.py`, generated `index.html`, generated `hub/*.html` |
+| F03 | Rebuild and verify determinism, row provenance, internal links, and repo-wide checks; record results and irregularities here | in progress | `COORDINATION.md`, verification commands only |
+
+### Baseline review before edits
+
+- `index.html` and the maintained `hub/` tree identify their underlying data as-of 2026-11-14 and do not link to `closeout/` or `reliability/`.
+- `closeout/` contains a separate Week-10 close-out read captured 2026-11-17, a frozen 13-fixture Week-11 board, and its own verification gate. It explicitly flags that the older `data/x3/verified/results_2026.csv` still has 13 of 14 Week-10 games marked SCHEDULED. The two result stores must not be silently combined.
+- `reliability/` contains a small 2023–2025 injury-designation pilot with timestamped official report/Game Book evidence; it is descriptive and does not authorize an injury multiplier.
+- Baseline checks run before edits: `scripts/audit_all.py` PASS (348 pages, 23,278 link references); `tools/verify_hub.py` PASS (27 pages, 1,469 data rows); `scripts/check_hub.py` PASS; `tools/check_links.py` PASS; `scripts/closeout_verify.py` PASS (24 checks); `scripts/reliability_verify.py` PASS; `scripts/verify_integration.py` PASS (348 pages, 0 problems); `scripts/verify_decision.py`, `scripts/verify_readiness.py`, `scripts/verify_round2.py`, `scripts/verify_signals.py`, and `scripts/agency_verify.py` PASS. `tools/x3_desk_verify.py` PASS (18 checks). `scripts/x3_desk_verify.py` does not exist; that mistaken command was not a repository failure.
+- `scripts/audit_all.py` rewrote `verification-hub/audit-report.json` during the baseline run to update its self-reported counts. The working tree was clean before the run; that generated audit report was restored to its pre-run bytes and is out of scope.
+
+No official source claim is made by this claim block. Data-source citations will be added only for the observations actually shown on the landing.
