@@ -38,8 +38,9 @@ official page row for row: Washington 9 rows, New York Giants 11, New England 15
 priced it. A signal built on the designation itself re-states information everyone holds. The
 brief's requirement is the <i>surprise</i> &mdash; the gap between what was expected before the
 report and what the report then said &mdash; which needs two dated reads, not one.</p>
-<p>This repository has two dated reads of the Week-10 report, and this board computed the delta
-between them instead of asserting one. The ledger at
+<p>The snapshot ledger dates two full-page reads of the Week-10 report, 42 hours apart, and this board
+computed the delta between them instead of asserting one. (More copies of the same page exist in the
+repository; they are inventoried below, because they change what a "read" even means.) The ledger at
 <code>data/snapshots/ledger.json</code> records
 <code>2026-11-14T00:00Z</code> (345 rows, hash
 <code>388c7090&hellip;</code>) and <code>2026-11-15T18:16Z</code>
@@ -66,12 +67,12 @@ spelling between the captures (full words against
 abbreviations (FP/DNP/LP)), which makes it differ on all 345 shared rows
 while the participation fact behind it changes on only 6 of them. 28 of those 30 rows are the alias artifact: the same 14 Rams players appear on
 both sides with nothing changed but the code. Only the 2 Baltimore rows are real. A delta
-built without normalising the keys and the vocabulary would have published 30 fabricated
-availability events two days before kickoff. This is the case for the drift alarm in the brief: pin
+built without normalising the keys and the vocabulary would have published 28 fabricated
+availability events two days before kickoff, with the 2 real ones buried inside the noise. This is the case for the drift alarm in the brief: pin
 the parser to the expected codes and fields, and fail the build when they change, rather than
 publishing a delta that is really a format change.</p>
 </div>
-<h3>Four reads of one page, in four modules, reconciled by nobody</h3>
+<h3>six reads of one page, in five modules, reconciled by nobody</h3>
 <p>Searching the repository for reads of this week's report found six stored files
 claiming the same page: four full-page reads and
 two four-club reads, spread over three dates and
