@@ -3936,3 +3936,41 @@ corrected content re-verified on the live URLs.
    every staking score. Nothing else can route around it.
 3. SG-09 (consolidate the trees) is proposed, not implemented. No other session's pages were
    deleted or edited by this session.
+
+### W01-W04 completion log (arena/73e6752d-x3, 2026-11-18T00:2xZ)
+
+| ID | Status | Notes |
+|----|--------|-------|
+| W00 | done | baseline gates measured on `e749d7b`; official-source probes recorded in the claim |
+| W01 | done | 6 report chunk captures (2023/2024/2025 reg10) + 12 Game Book evidence files, sha256-sealed in `reliability/manifest.csv` (18 files) |
+| W02 | done | `reliability/data/designations.csv` (144 rows) · `join.csv` (144 rows) · `rates.csv` (6 rate rows, Wilson 95% CI, per-season n) · `games.csv` · `row_flags.csv` |
+| W03 | done | 7 pages under `reliability/` (overview + suggestions + Q&A, archive, reliability, player join, Flagged for Review, sources, methods); every join/rate row links its official report page and Game Book |
+| W04 | done | `scripts/reliability_build.py` (deterministic) + `scripts/reliability_verify.py` (6 checks: determinism, completeness, evidence tokens, rate arithmetic, manifest hashes, page consistency) |
+
+**Gate results at completion (all exit 0):** `reliability_verify` · `audit_all` (294 pages,
+9,056 source rows) · `verify_integration` (reliability: 7 pages / 265 rows / 247 sourced-or-flagged)
+· `verify_decision` (deterministic after its builder re-counted trees to 22) · `verify_round2` ·
+`agency_verify` · `verify_signals` · `x3_desk_verify`.
+
+**Pilot results (sample descriptive; denominators exclude unresolved rows):**
+
+| Designation | Played (Wilson 95% CI) | Inactive, rule-A games (Wilson 95% CI) |
+|---|---|---|
+| Out | 4 / 53 = 7.5% [3.0-17.9] | 29 / 33 = 87.9% [72.7-95.2] |
+| Questionable | 54 / 79 = 68.4% [57.4-77.6] | 17 / 56 = 30.4% [19.9-43.3] |
+| Doubtful | 1 / 10 = 10.0% [1.8-40.4] | 8 / 9 = 88.9% [56.5-98.0] |
+
+**Sources (official only):** report pages `https://www.nfl.com/injuries/league/<season>/reg10`
+(seasons 2023-2025); per-game centre pages and Game Book PDFs on `static.www.nfl.com` — all 24 URLs
+listed in `reliability/sources.html` and `reliability/manifest.csv`.
+
+**Irregularities recorded (published on `reliability/flagged.html`, none reconciled by inference):**
+- 4 measured **Out→played** discrepancies (Kyle Hamilton 42 snaps; DJ Johnson 17; Miles Sanders 6 + 2 carries; Ian Thomas 13) — each with its Game Book link; report page exposes no last-updated timestamp (existing Q-04), so timing vs kickoff is unknown.
+- 3 Game Books drop the Did Not Play / Not Active labels (IND@NE 2023, DEN@KC 2024, ATL@IND 2025) → those games are excluded from the inactive rate (rule B), play rate only.
+- BUF@MIA render files the Dolphins' substitutions under a "Did Not Play" label (proved by playtime + box score); dropped names inside Not Active lists (SF@JAX, IND@NE, DEN@KC, ATL@IND); a missing playtime band at a tool chunk boundary (NYG@CAR → A.Thielen unresolved); garbled Blackwell rows (CAR@CHI → unresolved); ambiguous "LB 44 C.Robinson" (→ excluded from inactive rate); duplicate J. Jones keys resolved by row count and flagged.
+- 11 rows remain `unresolved` in total (6 inactive-unknown Out rows, 2 play-unknown, 1 ambiguous, …); every one carries its reason in `join.csv`.
+
+**Handoffs / integration requests (unchanged from the claim):**
+- Landing/nav owner: add one row for `reliability/` to `tools/build_hub.py` and surface this module's flagged rows on the root Flagged page. This session did not edit shared landing files.
+- `round2`/`decision` owners: R2-S6 (suggestion) can move from "pilot numbers exist" to "threshold decision" — the n-per-row table is on `reliability/reliability.html`; the owner still owes the n threshold before any model use (pre-registered in R2-S6).
+- Next increments (suggestions on `reliability/index.html`): full-week archive chunks; 2026 reg10 join after PR #97/#79 land; Friday+Saturday double-capture to bracket designation timing; full playtime capture for a no-designation baseline.
