@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week-11 report watch - X3 week11</title><link rel="stylesheet" href="assets/week11.css"></head>
+<body><header><h1>Week-11 report watch</h1><p>The Wed/Thu/Fri capture series for the official Week-11 injury report (requirement B50), with clock times.</p></header>
+<nav class="bar"><a href="index.html">Overview</a><a href="freshness.html">Freshness audit</a><a href="freshness-detail.html">Freshness detail</a><a href="report.html">Week-11 report watch</a><a href="sources.html">Sources</a><a href="flagged.html">Flagged for review</a></nav><main>
+
+<p class="lede">Requirement B50 wants the official report captured every Wednesday, Thursday and Friday
+with its fetch time, so designations can be replayed as they were known. This page holds the capture
+series for Week 11. The first snap is Thursday, November 19th, 8:15 PM ET per the
+<a href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">official Week-11 schedule page</a>.</p>
+<div class="callout"><b>Status as of 2026-11-18T03:45Z UTC:</b> the league has not yet published the Week-11 report. The endpoint serves the Week-10 report. The probe series below is the dated evidence; no Week-11 row is transcribed from anywhere else, and none is inferred.</div>
+<div class="tblwrap"><table id="probe"><caption>Dated probe log - the Wednesday entry of the B50 capture series</caption><thead><tr><th>Probe (UTC)</th><th>Endpoint</th><th>Week served</th><th>Effective URL</th><th>Finding</th></tr></thead><tbody><tr><td>2026-11-18T03:06Z</td><td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg11</a></span></td><td>10</td><td><span class="mut">https://www.nfl.com/injuries/league/2026/reg10</span></td><td>Week-11 report not yet published; page renders the Week-10 report</td></tr><tr><td>2026-11-18T03:16Z</td><td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg11</a></span></td><td>10</td><td><span class="mut">https://www.nfl.com/injuries/league/2026/reg10</span></td><td>Week-11 report not yet published; page renders the Week-10 report</td></tr><tr><td>2026-11-18T03:31Z</td><td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg11</a></span></td><td>10</td><td><span class="mut">https://www.nfl.com/injuries/league/2026/reg10</span></td><td>Week-11 report not yet published; page renders the Week-10 report</td></tr><tr><td>2026-11-18T03:45Z</td><td><span class="src"><a href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg11</a></span></td><td>10</td><td><span class="mut">https://www.nfl.com/injuries/league/2026/reg10</span></td><td>Week-11 report not yet published; page renders the Week-10 report</td></tr></tbody></table></div>
+<h2>Why the probe log is the deliverable before publication</h2>
+<p>The report page carries no last-updated timestamp (standing question Q-04), so the only way to bracket
+designation timing is to store dated reads. Before the league publishes, the honest capture is the probe
+itself: it proves the endpoint state at a recorded clock time. Once a probe observes a Week-11 report,
+the capture (raw evidence + sha256 in <code>data/week11/captures/</code>) and the per-club designation
+table are added here and never back-filled.</p>
+
+</main><footer>week11 module - session arena/40cd3b17-x3 - built by <code>scripts/week11_build.py</code> from <code>data/week11/</code>. Every value traces to an official source or is left blank and flagged. Shell HTTP is blocked in the authoring sandbox: official pages are read with the page-reader tool, and each read records the tool clock time.</footer>
+</body></html>

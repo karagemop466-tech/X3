@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 584,
+      "refs": 586,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 924,
+      "rows": 925,
       "flagged_rows": 684,
-      "refs": 1338,
+      "refs": 1339,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -157,9 +157,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 303,
+      "rows": 304,
       "flagged_rows": 125,
-      "refs": 487,
+      "refs": 489,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -205,8 +205,8 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1962,
-      "flagged_rows": 1561,
+      "rows": 1970,
+      "flagged_rows": 1569,
       "refs": 2943,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
@@ -384,6 +384,22 @@
         "verification-hub/index.html: Dataset Official page (link) Verification performed Result"
       ]
     },
+    "week11": {
+      "pages": 6,
+      "rows": 1005,
+      "flagged_rows": 992,
+      "refs": 1038,
+      "unsourced_examples": [
+        "week11/flagged.html: ID Status Area Finding Evidence Action",
+        "week11/freshness-detail.html: Dataset Key Field Committed Read today Verdict Committed register Source",
+        "week11/freshness.html: Dataset Key Fields compared Verdict Committed register Source",
+        "week11/index.html: Dataset Official page read Rows read Compared against Verdict",
+        "week11/report.html: Probe (UTC) Endpoint Week served Effective URL Finding",
+        "week11/sources.html: Source Official page What was read Read window (UTC) Capture",
+        "week11/sources.html: File SHA-256",
+        "week11/sources.html: README.md f28c86d4c7559caf959b8108cdee04a3e142b811aff2f7b24a4df849fbda07a7"
+      ]
+    },
     "x3": {
       "pages": 28,
       "rows": 862,
@@ -408,9 +424,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 360,
-  "rows_total": 15293,
-  "rows_flagged_or_sourced": 12751,
-  "internal_refs": 9354,
+  "pages_total": 366,
+  "rows_total": 16308,
+  "rows_flagged_or_sourced": 13751,
+  "internal_refs": 9405,
   "problems": []
 }
