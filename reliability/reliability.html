@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reliability — X3 designation reliability</title>
+<style>
+ body{font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#15202b;background:#f6f8fa}
+ header{background:#0d2137;color:#fff;padding:14px 22px}
+ header h1{margin:0;font-size:19px;font-weight:650}
+ header .sub{opacity:.75;font-size:12.5px;margin-top:3px}
+ nav{background:#132f4c;padding:7px 22px;font-size:13.5px}
+ nav a{color:#cfe3f7;text-decoration:none;margin-right:14px}
+ nav a.on{color:#fff;font-weight:700;text-decoration:underline}
+ main{max-width:1080px;margin:16px auto;padding:0 18px}
+ h2{font-size:17px;margin:26px 0 8px} h3{font-size:14.5px;margin:20px 0 6px}
+ table{border-collapse:collapse;width:100%;background:#fff;font-size:13.5px}
+ th,td{border:1px solid #d7dee6;padding:5px 8px;text-align:left;vertical-align:top}
+ th{background:#e8eef4;position:sticky;top:0}
+ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+ .ok{color:#0a6b33;font-weight:600} .bad{color:#a4262c;font-weight:600}
+ .mut{color:#5b6b7c} .flag{background:#fff6e5}
+ a{color:#0b57a4} code{background:#eef2f6;padding:0 4px;border-radius:3px;font-size:12.5px}
+ .card{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:12px 16px;margin:10px 0}
+ .kpi{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+ .kpi div{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:10px 16px;min-width:150px}
+ .kpi b{display:block;font-size:22px}
+ .kpi span{font-size:12px;color:#5b6b7c}
+ footer{max-width:1080px;margin:26px auto 40px;padding:0 18px;font-size:12.5px;color:#5b6b7c}
+</style></head><body>
+<header><h1>Past-season injury archive &amp; designation reliability</h1>
+<div class="sub">Official NFL sources only · Week 10, seasons 2023–2025 · session arena/73e6752d-x3 · captures 2026-11-17</div></header>
+<nav><a href="index.html">Overview</a> · <a href="archive.html">Archive</a> · <a href="reliability.html" class=on>Reliability</a> · <a href="join.html">Player join</a> · <a href="flagged.html">Flagged for Review</a> · <a href="sources.html">Sources</a> · <a href="methods.html">Methods</a></nav>
+<main>
+
+<h2>Q44/Q45 — play rate and inactive rate per designation</h2>
+<div class="card"><p><b>Play rate</b> = share of designated players with an official playtime row
+(&gt;0 snaps) in that game's Game Book. <b>Inactive rate</b> = share found in the game's Not Active
+section, computed only for games whose Game Book render carries an explicit Not Active section
+(rule A); games whose render drops those labels are excluded from this metric (rule B) rather than
+guessing. Intervals are Wilson score 95%.</p></div>
+<table><thead><tr><th>Designation</th><th>Metric</th><th class="num">Events / n</th><th class="num">Rate</th><th class="num">Wilson 95% CI</th><th class="num">Unresolved excluded</th><th class="num">Rule-B excluded</th><th>Per-season n</th></tr></thead><tbody><tr><td>Out</td><td>play_rate</td><td class="num">4 / 53</td><td class="num">7.5%</td><td class="num">3.0–17.9%</td><td class="num">1</td><td class="num">0</td><td>2023:22; 2024:14; 2025:17</td></tr><tr><td>Out</td><td>inactive_rate</td><td class="num">29 / 33</td><td class="num">87.9%</td><td class="num">72.7–95.2%</td><td class="num">6</td><td class="num">15</td><td>2023:14; 2024:11; 2025:8</td></tr><tr><td>Doubtful</td><td>play_rate</td><td class="num">1 / 10</td><td class="num">10.0%</td><td class="num">1.8–40.4%</td><td class="num">0</td><td class="num">0</td><td>2023:3; 2024:5; 2025:2</td></tr><tr><td>Doubtful</td><td>inactive_rate</td><td class="num">8 / 9</td><td class="num">88.9%</td><td class="num">56.5–98.0%</td><td class="num">1</td><td class="num">0</td><td>2023:3; 2024:5; 2025:1</td></tr><tr><td>Questionable</td><td>play_rate</td><td class="num">54 / 79</td><td class="num">68.3%</td><td class="num">57.5–77.5%</td><td class="num">1</td><td class="num">0</td><td>2023:36; 2024:22; 2025:21</td></tr><tr><td>Questionable</td><td>inactive_rate</td><td class="num">17 / 56</td><td class="num">30.4%</td><td class="num">19.9–43.3%</td><td class="num">6</td><td class="num">18</td><td>2023:20; 2024:19; 2025:17</td></tr></tbody></table>
+<h3>How to read this</h3>
+<div class="card"><ul>
+<li>Denominators count only resolved rows; unresolved rows and rule-B exclusions are shown as columns,
+never folded into the rate.</li>
+<li>UNRESOLVED happens when a name cannot be matched with confidence (position families, duplicate keys,
+missing render bands) — those rows sit on the <a href="join.html">Player join</a> page with reasons.</li>
+<li>This is a descriptive pilot: three seasons, twelve games, convenience sample. It is pre-registered as
+measurement only — no model consumes it in this pass.</li>
+</ul></div>
+<h2>The twelve sampled games</h2>
+<table><thead><tr><th>Season</th><th>Game</th><th>Venue (official)</th><th>Not Active rule</th><th>Game Book</th></tr></thead><tbody><tr><td class="num">2023</td><td>panthers-at-bears</td><td>CHICAGO, IL — Stadium: SOLDIER FIELD</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1704923034/gamecenter/cbac56ac-f053-11ed-b4a7-bab79e4492fa.pdf">Game Book</a></td></tr><tr><td class="num">2023</td><td>colts-at-patriots</td><td>FRANKFURT, HESSE — Stadium: FRANKFURT STADIUM</td><td><span class=bad>B — labels dropped, inactive rate excluded</span></td><td><a href="https://static.www.nfl.com/image/upload/v1699894876/gamecenter/cbac6844-f053-11ed-b4a7-bab79e4492fa.pdf">Game Book</a></td></tr><tr><td class="num">2023</td><td>49ers-at-jaguars</td><td>JACKSONVILLE, FL — Stadium: EVERBANK STADIUM</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1704923037/gamecenter/cbac8368-f053-11ed-b4a7-bab79e4492fa.pdf">Game Book</a></td></tr><tr><td class="num">2023</td><td>titans-at-buccaneers</td><td>TAMPA, FL — Stadium: RAYMOND JAMES STADIUM</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1704923039/gamecenter/cbac9b0b-f053-11ed-b4a7-bab79e4492fa.pdf">Game Book</a></td></tr><tr><td class="num">2024</td><td>bengals-at-ravens</td><td>BALTIMORE, MD — Stadium: M&amp;T BANK STADIUM</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1731065430/gamecenter/ae9d1561-1312-11ef-afd1-646009f18b2e.pdf">Game Book</a></td></tr><tr><td class="num">2024</td><td>giants-at-panthers</td><td>MUNICH — Stadium: FC BAYERN MUNICH STADIUM</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf">Game Book</a></td></tr><tr><td class="num">2024</td><td>bills-at-colts</td><td>INDIANAPOLIS, IN — Stadium: LUCAS OIL STADIUM</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1731324634/gamecenter/ae9d22f8-1312-11ef-afd1-646009f18b2e.pdf">Game Book</a></td></tr><tr><td class="num">2024</td><td>broncos-at-chiefs</td><td>KANSAS CITY, MO — Stadium: ARROWHEAD STADIUM</td><td><span class=bad>B — labels dropped, inactive rate excluded</span></td><td><a href="https://static.www.nfl.com/image/upload/v1731324633/gamecenter/ae9d2ac6-1312-11ef-afd1-646009f18b2e.pdf">Game Book</a></td></tr><tr><td class="num">2025</td><td>raiders-at-broncos</td><td>DENVER, CO — Stadium: EMPOWER FIELD AT MILE HIGH</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1762513482/gamecenter/f7b51f32-311e-11f0-b670-ae1250fadad1.pdf">Game Book</a></td></tr><tr><td class="num">2025</td><td>falcons-at-colts</td><td>BERLIN — Stadium: OLYMPIC STADIUM</td><td><span class=bad>B — labels dropped, inactive rate excluded</span></td><td><a href="https://static.www.nfl.com/image/upload/v1762772747/gamecenter/f7b52372-311e-11f0-b670-ae1250fadad1.pdf">Game Book</a></td></tr><tr><td class="num">2025</td><td>saints-at-panthers</td><td>CHARLOTTE, NC — Stadium: BANK OF AMERICA STADIUM</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1762772747/gamecenter/f7b52798-311e-11f0-b670-ae1250fadad1.pdf">Game Book</a></td></tr><tr><td class="num">2025</td><td>bills-at-dolphins</td><td>OPA LOCKA, FL — Stadium: HARD ROCK STADIUM</td><td>A — labelled section</td><td><a href="https://static.www.nfl.com/image/upload/v1762772748/gamecenter/f7d4b0eb-311e-11f0-b670-ae1250fadad1.pdf">Game Book</a></td></tr></tbody></table>
+
+</main>
+<footer>Every table row on this module links to its official source or is explicitly flagged.
+Rates are descriptive measurements of the sample described on the Methods page — not a model input, not advice.</footer>
+</body></html>

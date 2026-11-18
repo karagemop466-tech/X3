@@ -1,0 +1,7 @@
+designation,metric,n,events,rate,ci95_low,ci95_high,unresolved_excluded,excluded_rule_b,per_season_n
+Out,play_rate,53,4,0.0755,0.0297,0.1786,1,0,2023:22; 2024:14; 2025:17
+Out,inactive_rate,33,29,0.8788,0.7267,0.9518,6,15,2023:14; 2024:11; 2025:8
+Doubtful,play_rate,10,1,0.1000,0.0179,0.4042,0,0,2023:3; 2024:5; 2025:2
+Doubtful,inactive_rate,9,8,0.8889,0.5650,0.9801,1,0,2023:3; 2024:5; 2025:1
+Questionable,play_rate,79,54,0.6835,0.5745,0.7755,1,0,2023:36; 2024:22; 2025:21
+Questionable,inactive_rate,56,17,0.3036,0.1990,0.4334,6,18,2023:20; 2024:19; 2025:17

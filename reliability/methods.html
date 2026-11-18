@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methods — X3 designation reliability</title>
+<style>
+ body{font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#15202b;background:#f6f8fa}
+ header{background:#0d2137;color:#fff;padding:14px 22px}
+ header h1{margin:0;font-size:19px;font-weight:650}
+ header .sub{opacity:.75;font-size:12.5px;margin-top:3px}
+ nav{background:#132f4c;padding:7px 22px;font-size:13.5px}
+ nav a{color:#cfe3f7;text-decoration:none;margin-right:14px}
+ nav a.on{color:#fff;font-weight:700;text-decoration:underline}
+ main{max-width:1080px;margin:16px auto;padding:0 18px}
+ h2{font-size:17px;margin:26px 0 8px} h3{font-size:14.5px;margin:20px 0 6px}
+ table{border-collapse:collapse;width:100%;background:#fff;font-size:13.5px}
+ th,td{border:1px solid #d7dee6;padding:5px 8px;text-align:left;vertical-align:top}
+ th{background:#e8eef4;position:sticky;top:0}
+ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+ .ok{color:#0a6b33;font-weight:600} .bad{color:#a4262c;font-weight:600}
+ .mut{color:#5b6b7c} .flag{background:#fff6e5}
+ a{color:#0b57a4} code{background:#eef2f6;padding:0 4px;border-radius:3px;font-size:12.5px}
+ .card{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:12px 16px;margin:10px 0}
+ .kpi{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+ .kpi div{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:10px 16px;min-width:150px}
+ .kpi b{display:block;font-size:22px}
+ .kpi span{font-size:12px;color:#5b6b7c}
+ footer{max-width:1080px;margin:26px auto 40px;padding:0 18px;font-size:12.5px;color:#5b6b7c}
+</style></head><body>
+<header><h1>Past-season injury archive &amp; designation reliability</h1>
+<div class="sub">Official NFL sources only · Week 10, seasons 2023–2025 · session arena/73e6752d-x3 · captures 2026-11-17</div></header>
+<nav><a href="index.html">Overview</a> · <a href="archive.html">Archive</a> · <a href="reliability.html">Reliability</a> · <a href="join.html">Player join</a> · <a href="flagged.html">Flagged for Review</a> · <a href="sources.html">Sources</a> · <a href="methods.html" class=on>Methods</a></nav>
+<main>
+
+<h2>Methods (pre-registered before capture)</h2>
+<div class="card"><ol>
+<li><b>Sample.</b> Week 10 of 2023, 2024, 2025. The first four games as listed on each official report
+page. Convenience sample — disclosed on every page. 2026 Week 10 excluded (other session's claim + game
+not final at capture time).</li>
+<li><b>Archive (Q43).</b> Report chunks 0–1 stored verbatim with source URL and fetch time; sha256 of
+every stored file in <code>reliability/manifest.csv</code>.</li>
+<li><b>Designations.</b> Rows whose Game Status is Out, Doubtful or Questionable. Blank-status rows are
+not part of this join (a no-designation baseline needs full playtime capture — next increment).</li>
+<li><b>Outcome — played.</b> A row in the game's official Playtime Percentage section with ≥1 snap,
+matched by first-initial + surname + position family, game-scoped. Duplicate keys resolve by row count;
+fewer playtime rows than report rows is UNRESOLVED. Missing render bands make absence UNRESOLVED.</li>
+<li><b>Outcome — inactive.</b> Presence in the game's parsed Not Active set, only when the Game Book
+render carries an explicit Not Active section (rule A). Games whose render drops the labels (rule B:
+IND@NE 2023, DEN@KC 2024, ATL@IND 2025) are excluded from the inactive rate entirely.</li>
+<li><b>Conflicts.</b> Listed Not Active yet has a playtime row → CONFLICT, excluded from both rates,
+published on the join and flagged pages.</li>
+<li><b>Rates.</b> Wilson score 95% intervals. Denominators exclude unresolved/excluded rows; the excluded
+counts are columns on the Reliability page. Per-season n published on every row.</li>
+<li><b>Reproducibility.</b> <code>python3 scripts/reliability_build.py</code> regenerates every CSV and
+page deterministically; <code>python3 scripts/reliability_verify.py</code> re-parses the raw captures,
+re-checks completeness, evidence tokens and rate arithmetic.</li>
+</ol></div>
+<h2>What this module deliberately does not do</h2>
+<div class="card"><ul>
+<li>No inference: unresolved stays unresolved; no value is filled from expectation.</li>
+<li>No model input: these are descriptive measurements; no strategy consumes them in this pass.</li>
+<li>No non-official source: every table row links to nfl.com or static.www.nfl.com.</li>
+<li>No shared-file edits: landing navigation registration for <code>reliability/</code> is logged as an
+integration request in COORDINATION.md, not done here.</li>
+</ul></div>
+
+</main>
+<footer>Every table row on this module links to its official source or is explicitly flagged.
+Rates are descriptive measurements of the sample described on the Methods page — not a model input, not advice.</footer>
+</body></html>

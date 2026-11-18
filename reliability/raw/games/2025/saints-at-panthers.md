@@ -34,6 +34,7 @@ CAR: H.Renfrow, C.Zavala, J.Harrison-Hunte, J.Mitchell, B.Tremayne, C.Jackson (6
 Section header present in chunk 5 end: "**Playtime Percentage**"; two columns NO | CAR. Chunk 5 covers the top of the table (100% rows through A.Estime); chunk 6 continues from W.Sherman / Ja.Horn to the end. Full table captured.
 Rows (verbatim):
 | A.Kamara | RB | 43 63% |  |  |  |
+| B.Bresee | DT |  | 39 74% | 2 | 11% |
 | B.Wesley — NOT PRESENT in either captured band (no playtime row; not in Not Active list → UNRESOLVED) |
 | J.Williams | DE |  | 15 28% | 10 | 53% |
 | T.McMillan | WR | 48 91% |  |  |  |
