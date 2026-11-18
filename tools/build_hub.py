@@ -1647,6 +1647,16 @@ def landing():
             '<span>14 finals settled, the pre-kickoff board graded, and the Week-11 board pre-registered before the Nov 19 kickoff</span></a>')
     nav += ('<a href="week11/index.html"><b>Week-11 Wednesday watch</b>'
             '<span>Fresh-day verification of 2026-11-18 and the first dated entry of the Week-11 report capture series</span></a>')
+    # Landing integration (session arena/a13ae6bd-x3, rebased): of the four modules
+    # this session set out to surface, closeout/ and reliability/ were landed in
+    # parallel by arena/40cd3b17-x3 (M1) and arena/ea04a0c7-x3 (E1) — their rows
+    # above stand. agency/ and origin/ remained unlinked from the root landing page
+    # (agency/ carried an explicit integration request from arena/e601a785-x3),
+    # so they are registered here. Additive outbound links only.
+    nav += ('<a href="agency/site/index.html"><b>Agency data desk</b>'
+            '<span>Verified agency dashboard: readiness register, fixtures, availability, correlations</span></a>')
+    nav += ('<a href="origin/index.html"><b>Origination module</b>'
+            '<span>The eight origination requirements as pages: snapshots, markets, depth, gates, leaderboard</span></a>')
     verification_table = table(
         ['Dataset', 'Official source', 'Status', 'Notes'],
         [["Week-10 injury report (345 rows)", link(C.S["injuries"], "nfl.com/injuries/league/2026/reg10"),
