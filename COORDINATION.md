@@ -4014,8 +4014,8 @@ File scope: `COORDINATION.md` (this session record only). No other session's fil
 ### PR and deploy (filled after merge)
 | Item | Record |
 |---|---|
-| PR | (number + URL) — `arena/1d615f6f-x3` → `main` |
-| Merge | PENDING |
-| GitHub Pages | PENDING — confirm `Deploy X3 NFL site to GitHub Pages` success on `main`; live URL https://karagemop466-tech.github.io/X3/ |
+| PR | #110 https://github.com/karagemop466-tech/X3/pull/110 — `arena/1d615f6f-x3` → `main` |
+| Merge | MERGED via `gh pr merge --merge`, merge commit `dd9f494e48168df1904aeb508dc5b6636f5e9719` |
+| GitHub Pages | DEPLOYED — `Deploy X3 NFL site to GitHub Pages` (run 44228521853) success; `pages build and deployment` (run 44228521349) success; live URL https://karagemop466-tech.github.io/X3/ (source: `main` root `/`, built) |
 
-W06 **in progress** — PR created, awaiting merge and Pages confirmation.
+W06 **done** — PR #110 merged to `main`, GitHub Pages deployed successfully. All verification gates passed; flagged irregularities remain published (non-blocking) for review.
