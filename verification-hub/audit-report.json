@@ -77,18 +77,18 @@
     },
     "board": {
       "pages": 12,
-      "rows": 368,
-      "flagged_rows": 335,
-      "refs": 656,
+      "rows": 399,
+      "flagged_rows": 364,
+      "refs": 687,
       "unsourced_examples": [
         "board/flagged.html: # Severity Area What is wrong Official page that shows it Proposed action",
         "board/flagged.html: Observation Why it is correct",
         "board/index.html: Requirement State today What it needs Source",
+        "board/injuries.html: Kind Club Player Pos Before After  Injury Practice before \u2192 after Source",
+        "board/injuries.html: File Module Rows Clock as recorded  Scope Rams coded Practice vocabulary Source page",
         "board/injuries.html: State Rows Meaning Source",
         "board/lines.html: Fixture Venue Side (home handicap) Total Moneyline (H / A) P(home) Market line &amp; difference Source",
-        "board/lines.html: Variant Games graded Margin MAE  Side hit rate Brier Reading Provenance",
-        "board/questions.html: # Category Question Why it matters What we have What we lack Where to verify Owner",
-        "board/questions.html: Question Answer Where it is used"
+        "board/lines.html: Variant Games graded Margin MAE  Side hit rate Brier Reading Provenance"
       ]
     },
     "closeout": {
@@ -409,8 +409,8 @@
     }
   },
   "pages_total": 360,
-  "rows_total": 15222,
-  "rows_flagged_or_sourced": 12684,
-  "internal_refs": 9311,
+  "rows_total": 15253,
+  "rows_flagged_or_sourced": 12713,
+  "internal_refs": 9312,
   "problems": []
 }
