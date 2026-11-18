@@ -1,14 +1,14 @@
 {
- "generated_at": "2026-11-18T03:41:26+00:00",
+ "generated_at": "2026-11-18T03:41:44+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
    "pages": 359,
-   "links": 23183,
-   "external": 14705,
+   "links": 23184,
+   "external": 14706,
    "tables": 603,
-   "rows": 15043,
-   "rows_with_http": 12236,
+   "rows": 15044,
+   "rows_with_http": 12237,
    "rows_flag_only": 390,
    "rows_without": 2417
   },
@@ -1185,11 +1185,11 @@
    },
    {
     "page": "council/repo-review.html",
-    "links": 37,
-    "external": 17,
+    "links": 38,
+    "external": 18,
     "tables": 1,
-    "rows": 16,
-    "rows_with_http": 16,
+    "rows": 17,
+    "rows_with_http": 17,
     "rows_flag_only": 0,
     "rows_without": 0
    },
