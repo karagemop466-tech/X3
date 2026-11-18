@@ -4201,3 +4201,64 @@ Session `arena/ea04a0c7-x3` **complete** after merge confirmation.
 - Today is 2026-11-18 (Wednesday). Probing `https://www.nfl.com/injuries/league/2026/reg11` returns the
   **Week 10** report (the league has not published the Week-11 report yet), so no Week-11 injury row can be
   invented or transcribed. That is recorded as a dated finding, not worked around.
+
+---
+
+## Session `arena/b05a7eea-x3` — V1 live re-verification, V2 reserve-list capture, V3 decision board, V4 gates, V5 publish (2026-11-18)
+
+**Status: done.** Branch `arena/b05a7eea-x3`. Claim block above (commit `2b9ee72`); this block
+records the result. Scope touched: `board/**`, `scripts/board_build.py`, `scripts/board_verify.py`,
+`.github/workflows/board.yml`, and **one** nav entry in `tools/build_hub.py` (shared surface,
+through its generator, as required).
+
+### Files added
+
+| file | what it is |
+|---|---|
+| `board/data/reserve_list_2026.csv` | 133 dated reserve-list rows, months 03–11 |
+| `board/data/reserve_capture_manifest.csv` | 9 rows, one per month; **every month `complete=NO`** |
+| `board/data/join_reserve_wk10.csv` | 21 reserve-listed names that also appear in the Week-10 report |
+| `board/data/verify_live_2026-11-18.csv` | 12 verdicts `V-01`…`V-12`, each with the official URL read |
+| `board/data/luck_panel_2026-11-18.csv` | 32 clubs, Pythagorean 2.37, luck delta, league PF = PA = 6,923 |
+| `board/data/injury_delta_wk10.csv` | 21 rows: 2 additions, 13 designation moves, 6 practice moves between the two dated Week-10 reads |
+| `board/data/injury_read_inventory.csv` | every stored read of the Week-10 report in the repo: file, module, rows, sha256 prefix, clock, scope, club code, practice vocabulary |
+| `board/*.html` (12) + `board/assets/board.css` | the published board |
+| `scripts/board_build.py`, `scripts/board_verify.py`, `.github/workflows/board.yml` | generator, gate, CI |
+
+### Official sources read (all 2026-11-18, ~03:00–03:20Z)
+
+- <https://www.nfl.com/standings/league/2026/REG> — 32-club W-L-T, PF/PA (reconciliation + luck panel)
+- <https://www.nfl.com/schedules/2026/by-week/week-10> — all 14 games FINAL; used to date the MNF fixture the delta claim rests on
+- <https://www.nfl.com/schedules/2026/by-week/week-11> — 13 fixtures, 6 byes, Mexico City SNF
+- <https://www.nfl.com/games/colts-at-texans-2026-reg-11> — venue + records; source of the stadium discrepancy
+- <https://www.nfl.com/injuries/>, <https://www.nfl.com/injuries/league/2026/reg10>, <https://www.nfl.com/injuries/league/2026/reg11> — reg11 **serves reg10**
+- <https://www.nfl.com/transactions/league/reserve-list/2026/03 … 11> — the 133 rows; `?limit=100` tried, does not extend the table
+- <https://www.nfl.com/transactions/league/trades/2026/11>, `…/signings/2026/11`, `…/other/2026/11` — roster context
+- <https://www.nfl.com/terms-and-conditions/> — cited as the blocker for the private data layer, **not read in full** (owner decision Q1)
+
+### Verification performed
+
+- **Every published claim re-read at the source, not copied from the repo.** 12 verdicts: 6 hold up, 5 stale / inconsistent / contradicted, 1 untestable (Week-11 report does not exist yet). Corroborated independently by `arena/8754a28a-x3`, whose record above reports the same `reg11 → reg10` behaviour.
+- **150-game log reconciled 32/32 clubs exactly** against today's standings, recomputed here from `data/closeout/derived/season_log.csv` (W, L, T, PF, PA per club). First attempt scored 30/32 because ties were counted as losses — NYG and WAS each sit at 3 ties. The verifier now handles ties explicitly and the negative case is in `scripts/board_verify.py`.
+- **The injury delta was measured, not asserted.** Two dated reads (42 h apart) give 2 additions, 0 drops, 13 designation moves, 6 practice moves. Cross-checked against the repo's own `scripts/x3_snapshots.py`, which reports the same pair as 345→347, 13 designation changes, 2 added, 0 dropped; its practice figure is 3 because it counts a practice move only where the designation did not also move (3 + 3 = 6). Both definitions published.
+- **A naive diff of those two files is wrong**: 16 additions / 14 removals, of which 28 are the Rams coded `LAR` in one read and `LA` in the other, plus a practice vocabulary switch (`FP` vs `Full Participation in Practice`). Two 347-row reads taken 49 min apart by different modules agree on all 333 shared designations and differ in text on all 333.
+- **Reserve list cross-checked against the Week-10 report**: 21 join rows; **7** carry a designation that permits play (Questionable/Doubtful), 12 are Out, 2 undesignated. The brief's premise "listed = out" **does not hold**; the reverse reading "not listed = available" is unsafe because no month captured completely.
+- Gates: `board_verify` (6 checks; B3 requires a link or an explicit marker on **every** table row — 375 rows), `audit_all` (360 pages, 11,078 source rows, 500 flagged rows), `verify_integration` (problems=0), `atlas_verify`, `verify_hub`, `check_hub`, `x3_snapshots_verify`, `verify_decision`, `council_verify`, `check_links`, `check_site`, `ops_run`, `desk_verify`, all module builders re-run clean.
+- New identities were proven to bite by **negative tests**: fabricating a designation move, deleting a practice row, and falsifying an inventory row count each fail the gate.
+
+### Irregularities flagged (published on `board/flagged.html`, F-01…F-15)
+
+High: results feed marks 13 settled games `SCHEDULED` (F-01); 7 reserve-listed players carry a play-permitting designation (F-02); no reserve month captures completely (F-03); **NRG Stadium vs Reliant Stadium for IND@HOU** (F-04); zero market prices so no residual/CLV/ROI/reward is computable (F-05); capture drift — encoding differences that masquerade as 28 availability events (F-14); **six reads of one report in five modules, two hashed, none reconciled** (F-15). Medium: Week-11 report unpublished (F-06); the brief's Ravens QB stale-chart claim **not confirmable** from any captured transaction row (F-07); the report page prints no update timestamp (F-08); 76 depth rows with correct blanks (F-09); correlation register holds 0 values (F-10). Low: no snap-count table (F-11); two trees publish the 2026 season with different game counts, 137 vs 150 (F-12); no terms read recorded (F-13).
+
+### Requests to other sessions (not edited here — outside this scope)
+
+1. **To whoever owns `data/x3/verified/results_2026.csv`:** 13 of the 14 Week-10 rows still read `SCHEDULED` while the official page shows every score, and the file holds 137 finals against `data/closeout/derived/season_log.csv`'s 150. `index.html` and `hub/verified-results.html` present the 137-row file as the verified feed. Request: repoint those surfaces at the 150-game log, or label the 137-row file as partial. (F-01, F-12.)
+2. **To the hub/verification-hub owners:** the board is now in the nav; no other change was made to shared markup.
+3. **Owner decision needed, unchanged:** PDP-3 (which price source class is admitted) blocks every residual, staking score and reward; Q1 (terms) blocks the private data layer. Both are on `board/questions.html` and in the suggestions queue.
+
+### PR and merge
+
+- **PR #115** — <https://github.com/karagemop466-tech/X3/pull/115> — opened from this branch, all CI checks green (9 pass, 2 deploy steps correctly skipping on a non-main push), **merged without waiting for approval** per the brief as merge commit `e48e03b30fcdaca55f263de577f6ea41234fdc11`.
+- Conflict resolution: main had moved (`f6660e4 → 8b8fdd0`, PRs #113/#110/#80 work). Three files conflicted — `COORDINATION.md` (kept both sides: main's 176 lines then this session's 35), `index.html` (both sides added a nav entry via the generator; regenerated from the merged generator instead of hand-merging markup), `verification-hub/audit-report.json` (regenerated). Nothing of `arena/8754a28a-x3` or `arena/ea04a0c7-x3` was discarded. Because adding a tree moves other modules' censuses, `atlas/`, `decision/` and `council/` were regenerated in the same commits their byte-equality gates require.
+- **Pages deploy confirmed:** workflow run `44231486700` on `main` — `build` success, `deploy` success; `pages build and deployment` `44231485753` success. Verified live by HTTP fetch, not by CI colour: `https://karagemop466-tech.github.io/X3/board/index.html` serves the board, and the landing page nav carries the entry.
+- **Follow-up PR from this branch** carries the post-merge corrections found while reading the *live* page: the index register row still claimed "weeks 1–9 have one read each" (true statement is: Week 10 six reads in five modules, weeks 8–9 one each, weeks 1–7 none), and three counts in the injuries section were hardcoded instead of derived. Opened and merged without approval wait per the brief. A guard was added with it: small counts in this board's prose are now spelled by a `numword()` helper and derived from the inventory CSV, so the sentence cannot disagree with the file it describes.
