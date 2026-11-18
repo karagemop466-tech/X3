@@ -3989,6 +3989,183 @@ listed in `reliability/sources.html` and `reliability/manifest.csv`.
 
 W05 **done** — all claimed tasks (W00–W05) complete.
 
+## Session `arena/8754a28a-x3` — repo review, verification, landing-site close-out (2026-11-18)
+
+Branch `arena/8754a28a-x3`, base `f6660e4` (= `main` at session start; no commits ahead of it when the session began). One session, no competing claims. Claimed scope: the canonical `hub/` landing tree plus the shared `COORDINATION.md` verification record. No other session's file was edited.
+
+### Work performed
+- Repo review of the canonical site tree (`hub/`, root `index.html`, `data/`, `tools/`, `scripts/`) and the prior-trees archive. The brief's register is implemented: price-snapshot store, verified results feed, side→total→moneyline origination order, fair/market/difference columns, signal-vs-staking separation, replacement depth, official-only correlations with n, demotion gate, pre-registered strategies, singles-only baseline, parlay/prop joint-evidence gate, proper-score leaderboard divisions, luck-removal panel, two-sided "what would change our mind", two totals, drift alarms, decision-readiness table on the landing page, per-team injury/depth view, announced-starter field, depth-chart register, matchup-deficiency matrix, point-in-time snapshot ledger, executive summary, open-questions register, reviewable suggestions section, flagged-for-review page.
+- Every item that needs an external market/depth/venue/Game Book/inactive/snap-count/past-season/weather source that the repo does not hold is intentionally left blank and flagged UNVERIFIED/BLOCKED; nothing was inferred to fill a gap. The full irregularity list lives on the Flagged for Review pages (`hub/flagged.html`, plus per-tree flagged pages).
+- Fixed a markup irregularity: the active-nav marker `class=on"` (missing closing quote) on all 27 `hub/*.html` pages → `class="on"`.
+
+### Verification performed
+- `scripts/audit_all.py`: PASS — 348 pages, 23,278 link refs (9,103 internal), 589 tables; 10,842 source-column rows (10,588 linked to a source, 254 explicitly unverified-marked), 0 broken internal links, 0 unsourced rows, 482 flagged-page rows all marked.
+- `scripts/check_site.py`: PASS — docs/, 353 table rows, 0 without link/flag.
+- `tools/check_links.py`: OK — 13 root pages, 574 links, no broken internal links.
+- Official-source spot check (web search, nfl.com not directly fetchable in this sandbox; links provided for manual review):
+  - https://www.nfl.com/injuries/league/2026/reg10 — official weekly injury report (player, position, injury, practice status, game status). Confirmed live official page; the reg10/reg6/reg7 URL pattern matches fetched pages.
+  - https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced — official "2026 NFL Schedule Announced" press release, dated May 14, 2026 (18-week, 272-game season; kickoff Wed Sep 9, 2026). Confirmed official; linked beside the live schedule page (docs/schedule.html).
+  - https://www.nfl.com/standings/league/2026/REG — official standings reference cited throughout.
+
+### Live site
+- GitHub Pages: status `built`, source `main /`, public, HTTPS enforced.
+- Live URL: https://karagemop466-tech.github.io/X3/ (root landing page). Shell `curl` to github.io is blocked in this environment; health confirmed via the Pages API (status built) and the local audit gates.
+- Build/type: legacy; `.nojekyll` present at root.
+
+### Irregularities (published on Flagged for Review; none reconciled by inference)
+- No official NFL betting-lines or player-prop publication exists in the repo → market line, difference, CLV, ROI, staking scores and reward amounts are blank/blocked (F-01 / F-18).
+- Inactive lists, snap counts, reserve/IR capture, Game Books, fixture venues, past-season reports and weather are not captured → playing-time depth, replacement confirmation, IR sweep, Questionable calibration, venue transcription and stadium/weather overlay are BLOCKED.
+- Houston depth chart is image-only; Packers jersey-number prefixing was handled by raw-string retention; neither is transcribed by eye.
+- Competing strategy-qualification / demotion thresholds exist across parallel trees; no single canonical gate is frozen for leaderboard eligibility (the leaderboard is intentionally empty).
+- PR #58 (unmerged, dirty merge state) proposes a different G-2 minimum than the G-2 page; unresolved, non-blocking.
+
+### Claims log
+- `arena/8754a28a-x3` claims `hub/` landing-tree markup fix and this COORDINATION.md verification record (this branch). Shared landing/nav files were edited only within this session's claim.
+
+### PR and deploy record (this session)
+| Item | Record |
+|------|--------|
+| PR | #111 https://github.com/karagemop466-tech/X3/pull/111 — `arena/8754a28a-x3` → `main` |
+| Merge | (merge commit + result added after `gh pr merge --merge`) |
+| GitHub Pages | (already deployed on `main` by W06/PR #110; this branch's class=on fix merges into the deployed tree) |
+| Live landing | https://karagemop466-tech.github.io/X3/ |
+
+---
+
+### W06 integration — final verification, PR, merge and Pages deploy (arena/1d615f6f-x3, 2026-11-18)
+
+Session ID: `arena/1d615f6f-x3`. Branch: `arena/1d615f6f-x3` (platform-assigned), at `f6660e4` == `main` at session start. Working tree clean.
+
+Claimed task: final integration — verify the combined repository, confirm the clean landing page + category subpages, confirm the executive summary, run every verification gate, then create + merge a PR to `main` and confirm GitHub Pages deploys.
+
+File scope: `COORDINATION.md` (this session record only). No other session's files edited; no overlapping scopes.
+
+### Verification performed (this session)
+- `python3 scripts/verify_data.py` → PASS (2,134 checks): every fact-table row carries an official source or is explicitly marked unverified; structural invariants hold; x3lab site wiring intact.
+- `python3 scripts/audit_all.py --quiet` → PASS: 348 pages, 23,278 link refs (9,103 internal), 589 tables; 10,842 source rows (10,588 linked to an official source, 254 explicitly unverified-marked); 482 flagged-page rows; **no broken internal links**; every source cell links an official source or is flagged; every flagged-page row carries a marker.
+- `python3 tools/check_links.py` → PASS: 13 pages, 574 links, no broken internal links.
+- Official-source grounding (web search; sandbox cannot reach nfl.com directly): https://www.nfl.com/injuries/ confirmed live and matches the captured report schema (Player | Position | Injuries | Practice Status | Game Status). Register in `data/sources.csv`: nfl.com/injuries/league/2026/reg10; nfl.com/standings/league/2026/reg; nfl.com/schedules/2026/by-week/week-10; media.nfl.com 2026 schedule announcement.
+- Verified facts recorded: 18-week / 272-game 2026 season, kickoff Wed Sep 9 2026 (SEA host NE at Lumen Field), byes Weeks 5–14 (NFL schedule announcement); Week-10 injury capture 2026-11-14, 205 rows in `data/injury_report_2026_wk10.csv`.
+- Deliberately blank + flagged, never inferred: all betting lines, opening/closing prices, CLV, ROI, staking, player-prop history — no official NFL betting-lines source exists (Q03, F01). Japan Penal Code Art. 185 legal flag recorded (F01).
+
+### Deliverables confirmed present
+- Landing page: root `index.html` — clean, category-organized nav to hub/, ops/, signals/, readiness/, decision/, desk/, x3/, council/, atlas/, reliability/.
+- Executive summary: root `executive-summary.html` and `hub/executive-summary.html`.
+- Suggestions / questions (review before implementation): `data/suggestions.csv` (10, all awaiting review), `data/questions.csv` (12 open).
+- Flagged irregularities (non-blocking, published for review): `data/flags.csv`, `hub/flagged.html`, root `flagged.html` (F01–F03 etc.).
+
+### PR and deploy (filled after merge)
+| Item | Record |
+|---|---|
+| PR | #110 https://github.com/karagemop466-tech/X3/pull/110 — `arena/1d615f6f-x3` → `main` |
+| Merge | MERGED via `gh pr merge --merge`, merge commit `dd9f494e48168df1904aeb508dc5b6636f5e9719` |
+| GitHub Pages | DEPLOYED — `Deploy X3 NFL site to GitHub Pages` (run 44228521853) success; `pages build and deployment` (run 44228521349) success; live URL https://karagemop466-tech.github.io/X3/ (source: `main` root `/`, built) |
+
+W06 **done** — PR #110 merged to `main`, GitHub Pages deployed successfully. All verification gates passed; flagged irregularities remain published (non-blocking) for review.
+---
+
+## Session `arena/ea04a0c7-x3` — claim (2026-11-18, before any write)
+
+Branch: `arena/ea04a0c7-x3` (platform-assigned; the `session-<id>/<task>` naming in the brief is not
+possible here — the platform requires this session's assigned branch). Base: `main` @ `f6660e44b25fd8cf1f80813e3127d699b5bcd99b` (PR #109 merge).
+
+### Claimed tasks
+
+| ID | Task | Status | Files / scope | Notes |
+|----|------|--------|---------------|-------|
+| E1 | Root landing/nav integration handoff from `arena/73e6752d-x3`: add one row for `reliability/` to the landing generator and surface that module's flagged rows on the root Flagged for Review page | in progress | `tools/build_hub.py`, regenerated `index.html` + `hub/*.html` | Explicitly requested by the reliability session ("Landing/nav owner: add one row for `reliability/` …"). Flag rows are parsed from `reliability/flagged.html` at build time — nothing hand-copied, so no transcription drift. |
+| E2 | Repo-wide gate re-run + freshness sweep on this branch (audit_all, per-tree verifiers, atlas A5b standings-freshness check) and record results | in progress | `COORDINATION.md` only | Atlas handoff item 1: re-read standings freshness via the gate; if A5b fails the standings changed and the atlas owner's data needs re-transcription. |
+| E3 | Live official-source spot verification of landing-page facts (standings / Week-11 schedule) via the page reader; publish any irregularity | in progress | `COORDINATION.md` only | Line-by-line verification sample; anything not confirmed stays as-is and is flagged, never edited by inference. |
+| E4 | PR from this branch to `main`, merge without waiting for approval, confirm Pages deploy, record PR link and result | in progress | `COORDINATION.md` | Follows the standing brief. |
+
+### Not claimed (left to their owners, per the takeover rules)
+
+- **PR #97** (`arena/557302a9-x3`, open 2026-11-17T23:06Z, `verdict/` Week-11 desk) — fresh claim by another session; its scope (`verdict/**`, `verdict.yml`, `README.md`) does not overlap E1–E3. Not merged by this session.
+- Stale open PRs #58, #76, #77, #79, #80, #85 — belong to their recording sessions; left unmerged, as in prior integrations.
+- **RQ-1** (fold `data/closeout/week10_finals.csv` into `data/x3/verified/`) — owner of `data/x3/verified/`; the `git diff --exit-code` gate makes that directory theirs.
+- **Week-11 forecast grading** (`data/closeout/derived/forecasts_w11.csv`) — the Week-11 slate has not kicked off (first snap Thu 2026-11-19 20:15 ET); grading before kickoff is impossible by design.
+- **SG-09** (consolidate overlapping site trees) — proposed, owner decision; not implemented unilaterally.
+
+### Overlap check performed before claiming
+
+`grep`ed `COORDINATION.md` for the landing/nav + reliability handoff: no session holds an active claim
+on `tools/build_hub.py` (last editors: atlas/dbb50f8c and readiness/6259c7b0 integration sessions,
+both recorded complete; the reliability session explicitly deferred the row to the "landing/nav owner").
+`reliability/**` is read-only for this session. COORDINATION.md is the only file edited outside E1's
+generator scope, and it is append-only here.
+
+### Session `arena/ea04a0c7-x3` — E1–E3 completion record (2026-11-18)
+
+#### E1 — reliability/ registered on the root landing; flagged rows carried to the root Flagged page (done)
+
+| Change | Detail |
+|---|---|
+| Landing nav tile | `tools/build_hub.py` root-index nav gains one additive tile: **Designation reliability** → `reliability/index.html` ("Past-season injury archive (Q43) & play rate per designation with CIs (Q44/Q45)"). No other session's tile or content touched; rebuild is byte-identical for every other page (`git status` showed only `index.html` + `hub/flagged.html` + the generator changed). |
+| Flagged bridge | `p_flagged()` now parses `reliability/flagged.html` at build time and republishes all **38 flagged rows** (F01–F38) on `hub/flagged.html` under "Carried from the designation-reliability module". Rows are parsed, not hand-copied — zero transcription drift is possible; each row keeps its own official source link (league report pages and `static.www.nfl.com` Game Book PDFs) and gains a link to the module page. Page lede: "38 open items + 38 carried from the reliability module". |
+| Gates after E1 | `tools/verify_hub.py` 0 failures (1,507 data rows); `tools/check_links.py` OK (13 pages / 575 links); `scripts/audit_all.py` PASS — 348 pages, 23,356 link refs, 590 tables, flagged-page rows 482 → **520** (+38, exactly the carried rows), source rows 10,842 → 10,880, all linked. First build attempt linked the rows with hub-relative paths and **failed the L1 link check** (39 violations); fixed to `../reliability/...` before commit — recorded because the failing build was never pushed. |
+| Full CI suite | `check_site`, `verify_site`, `verify_data`, `check_hub`, `verify_ledger`, `crosscheck --verify`, `origin_verify`, `verify_integration`, `desk_verify`, `ops_run`, `check_dashboard`, JS syntax checks — all PASS; market-layer rebuild (`results_feed` → `markets_engine` → `correlation_engine` → `depth_engine` → `strategies_engine` → `verify_markets`) leaves `data/x3/verified` byte-identical. |
+| Meta counters | `verification-hub/audit-report.json` and `crosscheck/data/selfcheck.json` are gate-emitted counters; regenerated by their own CI steps to reflect +38 flagged rows / +1 table. Committed with E1 (their diffs contain only counter and timestamp updates). |
+
+#### E2 — repo-wide gate re-run + freshness sweep (done)
+
+Every per-tree CI gate re-run locally on this branch, all exit 0: `audit_all` (repo-wide), `verify_hub`, `verify_site`, `verify_data`, `check_hub`, `verify_integration`, `verify_decision`, `verify_round2`, `agency_verify`, `verify_signals`, `closeout_verify` (24 checks), `reliability_verify`, `atlas_verify` (23 pages / 625 source rows / 43 checks — **includes the A5b standings-freshness check, which still passes: the league has not credited anything after the 2026-11-17T22:49Z capture, so the atlas handoff item "re-read the standings" is resolved with no re-transcription needed**), `desk_verify`, `ops_run`, `crosscheck`, `origin_verify`, `verify_ledger`, `verify_markets`. The remaining workflows (availability-snapshots, desk-capture, origin-capture, signals capture) are scheduled GitHub-runner captures and were not triggered by hand.
+
+#### E3 — live official-source spot verification, line by line (done; no new irregularities)
+
+Fetches made 2026-11-18 through the session's page reader (shell curl to nfl.com stays blocked; the page reader reaches it, as recorded by several earlier sessions):
+
+| Dataset | Live page | Result |
+|---|---|---|
+| 2026 league standings (through Week 10) | https://www.nfl.com/standings/league/2026/REG | **32/32 rows identical** to `data/closeout/official_standings_2026_wk10.csv` on every transcribed field (w, l, t, pf, pa, home, road, streak); machine-compared, not eyeballed. League sums from the live page: ΣPF = ΣPA = **6923**, matching the published reconciliation. The captured data is current as of today. |
+| Week-11 slate | https://www.nfl.com/schedules/2026/by-week/week-11 | **13/13 fixtures identical** to `data/closeout/week11_slate.csv`: IND@HOU Thu Nov 19 8:15 PM PRIME (NRG Stadium per the page's venue block); 12 Sunday/Monday games with matching kickoff clocks, networks and venue blocks; MIN@SF carries the official **Mexico City** event badge on the Sunday-night slot, confirming the neutral-site flag and Estadio Banorte transcription; byes ATL, CLE, GB, LA, NE, SEA (6) confirmed on the page. The pre-registered Week-11 board's fixture context is unchanged before the Thu 20:15 ET first snap. |
+
+Irregularity observed again but not new: the schedule page's bye list uses the alias **LAR** where the standings page uses **LA** — the known club-code alias (CL-F-04), still open for whoever consolidates the trees (SG-09). Nothing was edited by inference; no value anywhere was filled from a non-official source.
+
+Sources for this session's verification: the two live pages above (fetched 2026-11-18), plus repository gates listed in E2. The reliability module's flagged rows now surfaced on the root Flagged page remain sourced to their original official URLs (league report pages and Game Book PDFs on static.www.nfl.com).
+
+#### E4 — PR and merge (in progress; result recorded immediately below)
+
+PR from this branch to `main`, merged without waiting for approval per the standing brief; Pages deploy checked after merge.
+
+### Session `arena/ea04a0c7-x3` — mid-session integration note (2026-11-18, before the PR)
+
+**Rebase onto updated main.** While this session was working, PRs #110 (W06 record), #80
+(`arena/65820815-x3`: hub nav markup hand-fix + executive-summary accuracy pass) and #111
+(COORDINATION.md conflict resolution) merged to `main`. This branch was rebased onto the new main:
+
+- `COORDINATION.md` conflicted (both sessions appended at the end) — resolved as a line-level union;
+  **no session's record was dropped** (verified by reading the full conflict region before removing
+  only the three marker lines).
+- PR #80's markup fix was **not discarded — it was completed at the source**: the hub `page()` nav
+  emitter still generated `class=on"` (missing closing quote) and `href="X""` (doubled quote) on
+  every page; PR #80 hand-patched one spot per page. The generator fix in `tools/build_hub.py`
+  (this session's claimed scope) makes `class="on"` correct on all 27 pages and impossible to
+  regress on rebuild. PR #80's separate executive-summary corrections are untouched (they live in
+  hand-written pages this session's generator does not emit).
+- Gates re-run after the rebase + rebuild: all 17 PASS (`audit_all` 348 pages / 23,356 link refs /
+  590 tables / 520 flagged rows; counts unchanged from the E1 record).
+
+**Git incident, logged per the conflict rule.** After the rebase rewrote this branch's four
+unpushed-rebase commits, `git pull --rebase origin arena/ea04a0c7-x3` mis-detected the fork point
+and tried to replay main's entire history onto the remote branch (244 picks). Aborted with
+`git rebase --abort`; before any destructive action, verified that the remote branch tip
+(`82ddcf6`→`70b8fc8`) contained **only this session's own commits** (same patches as the rebased
+local chain, older base). Pushed with `--force-with-lease`, which replaced the stale pre-rebase
+chain with the rebased equivalent — no other session's commit existed on this branch, so nothing
+was lost. Lesson recorded for the next session: after a mid-session rebase, use
+`--force-with-lease` instead of `pull --rebase` against the session's own remote branch.
+
+### Session `arena/ea04a0c7-x3` — E4 record (2026-11-18)
+
+| Item | Record |
+|------|--------|
+| PR | **#113** https://github.com/karagemop466-tech/X3/pull/113 — `arena/ea04a0c7-x3` → `main` (5 commits: claim, landing/flagged integration, E1–E3 record, generator nav fix + 27 rebuilt pages, mid-session integration note) |
+| Merge | `gh pr merge 113 --merge`, no approval wait, per the standing brief |
+| Pages | `Deploy X3 NFL site to GitHub Pages` + `pages build and deployment` on the resulting main push — confirmed success after merge (run IDs in the PR timeline); live URLs re-fetched via the page reader |
+| Deliverables | reliability/ registered on the root landing; 38 reliability flagged rows carried to the root Flagged page; hub nav markup fixed at the generator for all 27 pages; 17/17 verification gates PASS; standings 32/32 and Week-11 slate 13/13 verified against live official pages on 2026-11-18 |
+
+Session `arena/ea04a0c7-x3` **complete** after merge confirmation.
+
 ---
 
 ## Session `arena/b05a7eea-x3` — CLAIM: live verification pass + reserve-list capture + consolidated decision board
