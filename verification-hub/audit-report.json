@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 584,
+      "refs": 585,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -73,22 +73,6 @@
         "audit/index.html: ID Issue Repo value Official value Proposed action Sources",
         "audit/index.html: Game (away @ home) Day Time Network (schedule) Note Injury page kickoff Injury page TV Sources",
         "audit/index.html: Game Kickoff (ET) TV Team Record Player Pos Injury Practice (official) Game status Repo check Source"
-      ]
-    },
-    "board": {
-      "pages": 12,
-      "rows": 399,
-      "flagged_rows": 364,
-      "refs": 688,
-      "unsourced_examples": [
-        "board/flagged.html: # Severity Area What is wrong Official page that shows it Proposed action",
-        "board/flagged.html: Observation Why it is correct",
-        "board/index.html: Requirement State today What it needs Source",
-        "board/injuries.html: Kind Club Player Pos Before After  Injury Practice before \u2192 after Source",
-        "board/injuries.html: File Module Rows Clock as recorded  Scope Rams coded Practice vocabulary Source page",
-        "board/injuries.html: State Rows Meaning Source",
-        "board/lines.html: Fixture Venue Side (home handicap) Total Moneyline (H / A) P(home) Market line &amp; difference Source",
-        "board/lines.html: Variant Games graded Margin MAE  Side hit rate Brier Reading Provenance"
       ]
     },
     "closeout": {
@@ -205,9 +189,9 @@
     },
     "hub": {
       "pages": 27,
-      "rows": 1962,
-      "flagged_rows": 1561,
-      "refs": 2943,
+      "rows": 1927,
+      "flagged_rows": 1527,
+      "refs": 2866,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -384,6 +368,22 @@
         "verification-hub/index.html: Dataset Official page (link) Verification performed Result"
       ]
     },
+    "week11": {
+      "pages": 6,
+      "rows": 998,
+      "flagged_rows": 986,
+      "refs": 1032,
+      "unsourced_examples": [
+        "week11/flagged.html: ID Status Area Finding Evidence Action",
+        "week11/freshness-detail.html: Dataset Key Field Committed Read today Verdict Committed register Source",
+        "week11/freshness.html: Dataset Key Fields compared Verdict Committed register Source",
+        "week11/index.html: Dataset Official page read Rows read Compared against Verdict",
+        "week11/report.html: Probe (UTC) Endpoint Week served Effective URL Finding",
+        "week11/sources.html: Source Official page What was read Read window (UTC) Capture",
+        "week11/sources.html: File SHA-256",
+        "week11/sources.html: README.md 8695bf598804fabbc66512145b1488a3f130bc39193df6c8bed6d8c35773d61e"
+      ]
+    },
     "x3": {
       "pages": 28,
       "rows": 862,
@@ -408,9 +408,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 360,
-  "rows_total": 15293,
-  "rows_flagged_or_sourced": 12751,
-  "internal_refs": 9354,
+  "pages_total": 354,
+  "rows_total": 15857,
+  "rows_flagged_or_sourced": 13339,
+  "internal_refs": 9155,
   "problems": []
 }

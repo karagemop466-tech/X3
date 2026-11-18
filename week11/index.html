@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week-11 Wednesday watch - X3 week11</title><link rel="stylesheet" href="assets/week11.css"></head>
+<body><header><h1>Week-11 Wednesday watch</h1><p>Fresh-day verification of 2026-11-18 and the first dated entry of the Week-11 report capture series.</p></header>
+<nav class="bar"><a href="index.html">Overview</a><a href="freshness.html">Freshness audit</a><a href="freshness-detail.html">Freshness detail</a><a href="report.html">Week-11 report watch</a><a href="sources.html">Sources</a><a href="flagged.html">Flagged for review</a></nav><main>
+
+<p class="lede">This module is the Wednesday 2026-11-18 entry of two standing requirements: it re-reads
+today's official pages and diffs them against the committed canonical numbers (a freshness audit, not a
+new feed), and it opens the B50 Wed/Thu/Fri capture series for the Week-11 report, whose first snap is
+Thursday 2026-11-19 8:15 PM ET per the official schedule page.</p>
+<div class="kpis"><div class="kpi"><b>910</b><span>field-level comparisons, all MATCH</span></div><div class="kpi"><b>0</b><span>mismatches against committed canonical numbers</span></div><div class="kpi"><b>32</b><span>standings rows re-read (32 clubs)</span></div><div class="kpi"><b>14</b><span>Week-10 finals re-read, all FINAL</span></div><div class="kpi"><b>13</b><span>Week-11 fixtures re-read + 6 byes</span></div><div class="kpi"><b>2</b><span>dated reg11 probes (B50 series)</span></div></div>
+<div class="callout"><b>Week-11 report status:</b> the league has not yet published the Week-11 report (latest probe 2026-11-18T03:16Z UTC). Every probe is logged with its clock
+time on <a href="report.html">Week-11 report watch</a>; nothing is transcribed until the page itself
+serves a Week-11 report.</div>
+<h2>What was re-read</h2>
+<div class="tblwrap"><table id="idx"><caption>Fresh-day reads of 2026-11-18 vs the committed canonical numbers</caption><thead><tr><th>Dataset</th><th>Official page read</th><th>Rows read</th><th>Compared against</th><th>Verdict</th></tr></thead><tbody><tr><td>2026 league standings (32 clubs)</td><td><a href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td>32</td><td>data/atlas + data/closeout registers</td><td><span class="badge b-ok">MATCH</span></td></tr><tr><td>Week-10 finals (14 games)</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td><td>14</td><td>data/closeout/week10_finals.csv</td><td><span class="badge b-ok">MATCH</span></td></tr><tr><td>Week-11 slate (13 games + byes)</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-11" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-11</a></td><td>13</td><td>data/closeout/week11_slate.csv + week11_byes.csv</td><td><span class="badge b-ok">MATCH</span></td></tr><tr><td>League arithmetic</td><td>computed from the standings read</td><td>sum PF = sum PA = 6923</td><td>data/closeout/derived/reconciliation.csv</td><td><span class="badge b-ok">MATCH</span></td></tr></tbody></table></div>
+<h2>Why a freshness audit instead of a new dataset</h2>
+<p>Three prior sessions already publish canonical registers for these datasets (atlas and closeout), each
+guarded by its own CI gate. Re-publishing them would create a fourth competing copy; instead this module
+re-reads the official pages and diffs them field by field against what is committed, so drift would fail
+loudly here and in <code>scripts/week11_verify.py</code> - the same fail-loudly rule the drift-alarm
+requirement (B62) pins on every scraper. Full field-level detail:
+<a href="freshness.html">freshness audit</a>.</p>
+
+</main><footer>week11 module - session arena/40cd3b17-x3 - built by <code>scripts/week11_build.py</code> from <code>data/week11/</code>. Every value traces to an official source or is left blank and flagged. Shell HTTP is blocked in the authoring sandbox: official pages are read with the page-reader tool, and each read records the tool clock time.</footer>
+</body></html>
