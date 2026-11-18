@@ -4435,3 +4435,33 @@ their series as corroboration rather than resting on a single read. Their probe 
 concrete answer to `F-08` (the report page prints no timestamp): a dated probe series is how an undated
 page gets clocked, so the flag now names that method and points at the file instead of only complaining
 about the missing timestamp. No file of theirs was edited.
+
+### Deploy confirmation, and the correction that reading the live page produced
+
+**PR #117** — <https://github.com/karagemop466-tech/X3/pull/117> — merged without approval wait per
+the brief as `18c741facda469d2bfe340fa73f50680b16f24b0` at 03:50:23Z. Deploy: Pages workflow run
+`44233196261` on `main`, `build` success + `deploy` success, and the `pages build and deployment` run
+success; every module gate on that merge commit is green (agency, round2, decision layer, board,
+atlas, council). Confirmed by HTTP fetch of the live page, not by CI colour.
+
+Three merge rounds were needed, all of them on the same file: `COORDINATION.md`'s tail, because every
+session appends there. Each resolution kept main's lines first and this session's record after, with
+no line dropped; each time, every derived tree whose workflow enforces byte equality was re-run
+against the merged tree (hub, atlas, decision, council, snapshot ledger, integration census - last
+measured 366 pages, problems=0) so no other session inherits a red determinism gate from this merge.
+
+Reading the **live** page after #117 deployed found three further mismatches between prose and data,
+all corrected in the follow-up PR from this branch:
+
+1. The injuries heading said "Four reads of one page, in four modules" while the table under it lists
+   six reads in five modules. The heading is now computed from the inventory, like the body.
+2. "This repository has two dated reads of the Week-10 report" was loose: the ledger dates two, and
+   the repository holds six copies. The sentence now says which is which, because the difference is
+   the finding rather than a detail.
+3. "would have published 30 fabricated availability events" over-counted its own analysis: 28 of the
+   30 rows in the naive diff are alias artifacts and 2 are real additions, which is the worse failure -
+   the real signal buried in noise rather than pure noise.
+
+No number on the site changed. All three are sentences that disagreed with the CSV they describe, and
+the board's gate recomputes aggregates from those CSVs, which is why the inventory rows, hashes and
+delta contents are now all derived rather than typed - a heading is as capable of lying as a cell.

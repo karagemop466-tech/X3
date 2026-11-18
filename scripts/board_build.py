@@ -839,8 +839,9 @@ official page row for row: Washington 9 rows, New York Giants 11, New England 15
 priced it. A signal built on the designation itself re-states information everyone holds. The
 brief's requirement is the <i>surprise</i> &mdash; the gap between what was expected before the
 report and what the report then said &mdash; which needs two dated reads, not one.</p>
-<p>This repository has two dated reads of the Week-10 report, and this board computed the delta
-between them instead of asserting one. The ledger at
+<p>The snapshot ledger dates two full-page reads of the Week-10 report, 42 hours apart, and this board
+computed the delta between them instead of asserting one. (More copies of the same page exist in the
+repository; they are inventoried below, because they change what a "read" even means.) The ledger at
 <code>data/snapshots/ledger.json</code> records
 <code>{esc(meta["before_captured"])}</code> ({meta["before_rows"]} rows, hash
 <code>388c7090&hellip;</code>) and <code>{esc(meta["after_captured"])}</code>
@@ -867,12 +868,12 @@ spelling between the captures ({esc(meta["before_practice_style"])} against
 {esc(meta["after_practice_style"])}), which makes it differ on all {meta["shared_rows"]} shared rows
 while the participation fact behind it changes on only {d_prac} of them. 28 of those 30 rows are the alias artifact: the same 14 Rams players appear on
 both sides with nothing changed but the code. Only the 2 Baltimore rows are real. A delta
-built without normalising the keys and the vocabulary would have published 30 fabricated
-availability events two days before kickoff. This is the case for the drift alarm in the brief: pin
+built without normalising the keys and the vocabulary would have published 28 fabricated
+availability events two days before kickoff, with the 2 real ones buried inside the noise. This is the case for the drift alarm in the brief: pin
 the parser to the expected codes and fields, and fail the build when they change, rather than
 publishing a delta that is really a format change.</p>
 </div>
-<h3>Four reads of one page, in four modules, reconciled by nobody</h3>
+<h3>{numword(meta["reads_found"])} reads of one page, in {numword(len(inv_owners))} modules, reconciled by nobody</h3>
 <p>Searching the repository for reads of this week's report found {numword(meta["reads_found"])} stored files
 claiming the same page: {numword(meta["full_page_reads"])} full-page reads and
 {numword(meta["partial_club_reads"])} four-club reads, spread over {numword(inv_dates)} dates and
