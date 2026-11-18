@@ -1276,7 +1276,7 @@ def build_flagged() -> None:
          "The repository holds zero market prices, so no residual, CLV, ROI or staking score can be computed.",
          "https://www.nfl.com/schedules/2026/by-week/week-11", "Every such column is blank and marked BLOCKED. This blocks the leaderboard by rule."),
         ("F-06", "Medium", "Injury report",
-         "The Week-11 report had not been published at the read clock; reg11 serves the Week-10 page. Corroborated by an earlier session's own capture, data/desk/text/injuries-w11.txt, which is the Week-10 page under that filename and offers WEEK 1 to WEEK 10 in the selector.",
+         "The Week-11 report had not been published at the read clock; reg11 serves the Week-10 page. Corroborated by an earlier session's capture (data/desk/text/injuries-w11.txt, the Week-10 page under a Week-11 filename) and by four dated probes run today by another session (03:06Z, 03:16Z, 03:31Z, 03:45Z in data/week11/reg11_probes.csv), which bracket this read at 03:20Z.",
          "https://www.nfl.com/injuries/league/2026/reg11", "No Week-11 injury row is transcribed. The capture must be repeated after publication."),
         ("F-07", "Medium", "Reserve list",
          "The brief states Lamar Jackson and Tyler Huntley are on injured reserve; the capture holds no 2026 entry for either.",

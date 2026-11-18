@@ -1,0 +1,21 @@
+{
+  "as_of": "2026-11-18",
+  "read_window_utc": "2026-11-18T03:05Z-03:25Z",
+  "reg11_published": false,
+  "standings_rows": 32,
+  "standings_league_pf": 6923,
+  "standings_league_pa": 6923,
+  "wk10_finals_rows": 14,
+  "wk11_slate_rows": 13,
+  "wk11_byes": [
+    "ATL",
+    "CLE",
+    "GB",
+    "LA",
+    "NE",
+    "SEA"
+  ],
+  "audit_rows": 912,
+  "mismatches": [],
+  "probes": 4
+}

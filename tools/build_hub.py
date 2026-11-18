@@ -1345,6 +1345,28 @@ def p_flagged():
         rel_rows.append([f'<a href="../reliability/flagged.html"><b>{esc(rid)}</b></a>',
                          esc(re.sub(r"<[^>]+>", "", kind)), item, detail, src])
     rel_tbl = table(['ID', 'Kind', 'Item', 'Detail', 'Source'], rel_rows, tid='relflg')
+    # arena/40cd3b17-x3 (M1): cross-links to the other modules' own flag pages
+    # (reliability's rows are carried above, parsed at build time).
+    module_flags = table(
+        ['Module', 'Flagged page', 'What it holds'],
+        [["Week-10 close-out (closeout/)", link("../closeout/flagged.html", "closeout/flagged.html"),
+          "settlement, capture and reconciliation flags from the Week-10 close-out and the Week-11 pre-registration"],
+         ["atlas decision desk (atlas/)", link("../atlas/flagged.html", "atlas/flagged.html"),
+          "F-01..F-16: the standing price-source block, source conflicts and capture gaps"]],
+        tid="flg-modules")
+    # arena/40cd3b17-x3 (M1): the W05 handoff also asked for the newer modules'
+    # flagged rows to be reachable from this page. Additive cross-links only -
+    # every module keeps its own flagged page and its own verification gate.
+    module_flags = table(
+        ['Module', 'Flagged page', 'What it holds'],
+        [["Designation reliability (reliability/)", link("../reliability/flagged.html", "reliability/flagged.html"),
+          "measured Out-to-played discrepancies with Game Book evidence, Game Books that drop the "
+          "Did Not Play / Not Active labels, and every unresolved join row"],
+         ["Week-10 close-out (closeout/)", link("../closeout/flagged.html", "closeout/flagged.html"),
+          "settlement, capture and reconciliation flags from the Week-10 close-out and the Week-11 pre-registration"],
+         ["atlas decision desk (atlas/)", link("../atlas/flagged.html", "atlas/flagged.html"),
+          "F-01..F-16: the standing price-source block, source conflicts and capture gaps"]],
+        tid="flg-modules")
     body = f"""
 <p class="lede">Everything the site could not confirm from an official source, plus every irregularity
 found while reviewing this repository. None of these block the site; all of them block a <em>claim</em>.
@@ -1357,6 +1379,10 @@ hand-copied, so the two pages cannot drift. IDs keep the module's numbering; the
 <a href="../reliability/flagged.html">module page</a> holds the full context (methods, join, sources).
 The Out→played rows are measured discrepancies published as found, never reconciled by inference.</p>
 {rel_tbl}
+<h2>Flag pages kept by the individual modules</h2>
+{module_flags}
+<h2>Flag pages kept by the individual modules</h2>
+{module_flags}
 """
     page("flagged.html", "Flagged for review",
          f"{len(FL)} open items + {len(rel_rows)} carried from the reliability module: missing "
@@ -1612,6 +1638,15 @@ def landing():
             '<span>69-row register with per-row basis, the suggestion queue, and the first hashed day-over-day availability delta</span></a>')
     nav += ('<a href="atlas/index.html"><b>atlas decision desk</b>'
             '<span>Week 11 fixtures, venues and originated lines re-read from official pages on 2026-11-17</span></a>')
+    # arena/40cd3b17-x3 (M1): register the two remaining newest modules in the
+    # landing navigation. The reliability row was already added at the generator
+    # source by session arena/ea04a0c7-x3 (E1) and is kept in its placement below.
+    # Additive entries only; each module keeps its own builders and gates, and its
+    # own Flagged page (cross-linked from hub/flagged.html below).
+    nav += ('<a href="closeout/index.html"><b>Week-10 close-out</b>'
+            '<span>14 finals settled, the pre-kickoff board graded, and the Week-11 board pre-registered before the Nov 19 kickoff</span></a>')
+    nav += ('<a href="week11/index.html"><b>Week-11 Wednesday watch</b>'
+            '<span>Fresh-day verification of 2026-11-18 and the first dated entry of the Week-11 report capture series</span></a>')
     verification_table = table(
         ['Dataset', 'Official source', 'Status', 'Notes'],
         [["Week-10 injury report (345 rows)", link(C.S["injuries"], "nfl.com/injuries/league/2026/reg10"),
