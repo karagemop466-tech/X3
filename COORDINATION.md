@@ -4045,3 +4045,7 @@ Branch: `arena/2f135335-x3` (the platform-assigned branch; work stays here). Bas
 - `scripts/audit_all.py` rewrote `verification-hub/audit-report.json` during the baseline run to update its self-reported counts. The working tree was clean before the run; that generated audit report was restored to its pre-run bytes and is out of scope.
 
 No official source claim is made by this claim block. Data-source citations will be added only for the observations actually shown on the landing.
+
+### Scope extension — F04 (2026-11-18T03:12Z)
+
+The top of `README.md` still describes an earlier framework-only site and 205-row snapshot, contradicting the integrated build and later captures. Add F04 to this session: replace only the reader-facing overview/run/verification section at the top with a dated, source-linked current guide, then mark the appended per-session material below as historical snapshots without deleting or silently rewriting those records. Scope now also includes `README.md` (lines 1–84 plus the history boundary immediately before the first appended session record). No other session currently claims that file; prior README entries are append-only history, which will be preserved.
