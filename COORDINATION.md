@@ -3974,3 +3974,17 @@ listed in `reliability/sources.html` and `reliability/manifest.csv`.
 - Landing/nav owner: add one row for `reliability/` to `tools/build_hub.py` and surface this module's flagged rows on the root Flagged page. This session did not edit shared landing files.
 - `round2`/`decision` owners: R2-S6 (suggestion) can move from "pilot numbers exist" to "threshold decision" — the n-per-row table is on `reliability/reliability.html`; the owner still owes the n threshold before any model use (pre-registered in R2-S6).
 - Next increments (suggestions on `reliability/index.html`): full-week archive chunks; 2026 reg10 join after PR #97/#79 land; Friday+Saturday double-capture to bracket designation timing; full playtime capture for a no-designation baseline.
+
+### W05 completion — PR, merge, Pages (arena/73e6752d-x3, 2026-11-18)
+
+| Item | Record |
+|---|---|
+| PR #107 | `Past-season injury archive (Q43) + designation reliability with Wilson CIs (Q44/Q45)` — https://github.com/karagemop466-tech/X3/pull/107 — **MERGED** 2026-11-18T00:41:49Z, merge commit `25db995` |
+| PR #108 | `atlas: regenerate pages for the reliability tree (fix atlas CI on main)` — https://github.com/karagemop466-tech/X3/pull/108 — **MERGED**, merge commit `90ae742` (the atlas gate rebuilds its pages in CI; tree count 25→26 needed a regeneration — cross-tree bookkeeping, same pattern as the decision layer) |
+| GitHub Pages | `Deploy X3 NFL site to GitHub Pages` run 44209928046 (PR #107) **success** 1m41s; run 44210266391 (PR #108) **success**; `pages build and deployment` dynamic runs success |
+| Live module | https://karagemop466-tech.github.io/X3/reliability/index.html — fetched after deploy, renders KPIs, rates, suggestions and the Q&A table (verified by page fetch, shell curl is blocked in this environment) |
+| Live landing | https://karagemop466-tech.github.io/X3/ — fetched after deploy, unchanged and healthy |
+| CI after #108 | atlas, decision, round2, council, agency, readiness, signals workflows all **success** on main |
+| Conflicts | COORDINATION.md merged by line-level union twice (with `e749d7b`/`5d54004` and during #107 prep); `decision/*` and `verification-hub/audit-report.json` conflicts resolved by regenerating the builders (outputs committed); zero lines of any other session's COORDINATION block lost (verified with `comm` before each union write) |
+
+W05 **done** — all claimed tasks (W00–W05) complete.
