@@ -1788,7 +1788,7 @@ is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> an
 <a href="COORDINATION.md">COORDINATION.md</a>.</p></section>
 <section class="callout"><h2>Decision readiness - every requirement, its blocker, and what clears it</h2>
 <p class="lede">One row per registered requirement. Clearance criteria are project targets, not NFL-published facts. Official references support observed inputs only; unavailable evidence and policy thresholds are marked UNVERIFIED.</p>
-<p class="callout"><b>Flagged gate conflict:</b> the current G-2 page says 300 settled bets across 3 seasons, while <a href="https://github.com/karagemop466-tech/X3/pull/58">unmerged PR #58</a> proposes 2,272 (checked 2026-11-15 UTC). GitHub reports PR #58 has a dirty merge state. These are competing project proposals; the final minimum has not been verified or resolved, and no strategy is eligible under either today.</p>
+<p class="callout"><b>Gate-conflict update (2026-11-18):</b> the current G-2 page says 300 settled bets across 3 seasons, while <a href="https://github.com/karagemop466-tech/X3/pull/58">PR #58</a> proposed 2,272. PR #58 was <b>closed unmerged</b> on 2026-11-18 by integration session <code>arena/a13ae6bd-x3</code> (conflicting, superseded by later merged work — see COORDINATION.md), so the 300-bet rule in <code>origin/data/gates.json</code> stands as the only registered threshold. These are competing project proposals that were never reconciled by a decision; no strategy is eligible under either today.</p>
 {_READINESS}
 <p>See <a href="hub/requirements.html">the full requirements register</a> for acceptance criteria, provenance and status details.</p></section>
 <section class="callout" style="margin-top:22px">
