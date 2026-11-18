@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
  "generated_at": "2026-11-18T03:13:08+00:00",
+=======
+ "generated_at": "2026-11-18T03:20:08+00:00",
+>>>>>>> ced11cc (rebuild self-audit artifacts after landing change (census sizes + timestamps; deterministic outputs of their own builders))
  "pages": [
   {
    "page": "executive-summary.html",

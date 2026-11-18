@@ -1,19 +1,418 @@
 {
- "generated_at": "2026-11-14T20:08:58+00:00",
+ "generated_at": "2026-11-18T03:41:26+00:00",
  "session": "arena/37c71381-x3",
  "audit": {
   "totals": {
-   "pages": 197,
-   "links": 11219,
-   "external": 7349,
-   "tables": 355,
-   "rows": 7268,
-   "rows_with_http": 5809,
-   "rows_flag_only": 254,
-   "rows_without": 1205
+   "pages": 359,
+   "links": 23183,
+   "external": 14705,
+   "tables": 603,
+   "rows": 15043,
+   "rows_with_http": 12236,
+   "rows_flag_only": 390,
+   "rows_without": 2417
   },
-  "broken_internal": [],
+  "broken_internal": [
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/readiness.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/suggestions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "origin/data/snapshots.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "origin/data/markets.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/data/lines.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/data/lines.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/pricing.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/data/lines.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/data/lines.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "signals/leaderboard.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/data/prereg.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "signals/index.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "signals/leaderboard.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/luck.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "signals/gates.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/correlations.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/luck.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/suggestions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "signals/gates.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "origin/data/depth.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/deficiencies.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/questions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/parse_report.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/snapshots/ledger.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/snapshots/README.md"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/text/depth-HOU.txt"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/readiness.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/parse_report.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/questions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/snapshots/ledger.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/questions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/text/depth-BAL.txt"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "origin/data/depth.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/readiness.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/data/prereg.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "scripts/x3_snapshots_verify.py"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "scripts/x3_snapshots_verify.py"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/depth.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "origin/data/markets.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/model.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/questions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/games.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "hub/data/prereg.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "data/desk/games.json"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/landing-block.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/suggestions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/questions.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/executive-summary.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "COORDINATION.md"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "signals/leaderboard.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "decision/trees.html"
+   },
+   {
+    "page": "decision/landing-block.html",
+    "href": "scripts/verify_decision.py"
+   }
+  ],
   "per_page": [
+   {
+    "page": "agency/site/correlations.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/depth.html",
+    "links": 190,
+    "external": 171,
+    "tables": 2,
+    "rows": 171,
+    "rows_with_http": 171,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/executive-summary.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/fixtures.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 200,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 200
+   },
+   {
+    "page": "agency/site/flagged.html",
+    "links": 31,
+    "external": 12,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/gates.html",
+    "links": 19,
+    "external": 0,
+    "tables": 2,
+    "rows": 15,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 15
+   },
+   {
+    "page": "agency/site/index.html",
+    "links": 21,
+    "external": 0,
+    "tables": 2,
+    "rows": 76,
+    "rows_with_http": 0,
+    "rows_flag_only": 3,
+    "rows_without": 73
+   },
+   {
+    "page": "agency/site/injuries.html",
+    "links": 24,
+    "external": 5,
+    "tables": 2,
+    "rows": 6,
+    "rows_with_http": 5,
+    "rows_flag_only": 0,
+    "rows_without": 1
+   },
+   {
+    "page": "agency/site/leaderboard.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/lines.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 13
+   },
+   {
+    "page": "agency/site/luck.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/methodology.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/policy.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/provenance.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/questions.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 0,
+    "rows_flag_only": 1,
+    "rows_without": 9
+   },
+   {
+    "page": "agency/site/readiness.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 70,
+    "rows_with_http": 0,
+    "rows_flag_only": 3,
+    "rows_without": 67
+   },
+   {
+    "page": "agency/site/registry.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 9,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 9
+   },
+   {
+    "page": "agency/site/results.html",
+    "links": 94,
+    "external": 74,
+    "tables": 1,
+    "rows": 74,
+    "rows_with_http": 74,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "agency/site/suggestions.html",
+    "links": 19,
+    "external": 0,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 12
+   },
    {
     "page": "archive/hub-621bf404/archive.html",
     "links": 21,
@@ -185,12 +584,562 @@
     "rows_without": 0
    },
    {
+    "page": "atlas/availability.html",
+    "links": 56,
+    "external": 31,
+    "tables": 1,
+    "rows": 29,
+    "rows_with_http": 29,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/correlation.html",
+    "links": 37,
+    "external": 12,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 10,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/depth.html",
+    "links": 38,
+    "external": 13,
+    "tables": 2,
+    "rows": 11,
+    "rows_with_http": 11,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/executive-summary.html",
+    "links": 38,
+    "external": 13,
+    "tables": 2,
+    "rows": 15,
+    "rows_with_http": 11,
+    "rows_flag_only": 0,
+    "rows_without": 4
+   },
+   {
+    "page": "atlas/fixtures.html",
+    "links": 42,
+    "external": 17,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/flagged.html",
+    "links": 43,
+    "external": 18,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/gates.html",
+    "links": 32,
+    "external": 6,
+    "tables": 2,
+    "rows": 26,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 22
+   },
+   {
+    "page": "atlas/index.html",
+    "links": 33,
+    "external": 2,
+    "tables": 1,
+    "rows": 68,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 68
+   },
+   {
+    "page": "atlas/injuries.html",
+    "links": 62,
+    "external": 36,
+    "tables": 2,
+    "rows": 32,
+    "rows_with_http": 32,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/injury-rows.html",
+    "links": 374,
+    "external": 347,
+    "tables": 1,
+    "rows": 345,
+    "rows_with_http": 345,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/leaderboard.html",
+    "links": 28,
+    "external": 2,
+    "tables": 1,
+    "rows": 4,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 4
+   },
+   {
+    "page": "atlas/luck.html",
+    "links": 59,
+    "external": 34,
+    "tables": 1,
+    "rows": 32,
+    "rows_with_http": 32,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/origination.html",
+    "links": 45,
+    "external": 19,
+    "tables": 2,
+    "rows": 21,
+    "rows_with_http": 17,
+    "rows_flag_only": 0,
+    "rows_without": 4
+   },
+   {
+    "page": "atlas/prices.html",
+    "links": 30,
+    "external": 5,
+    "tables": 2,
+    "rows": 9,
+    "rows_with_http": 3,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "atlas/questions.html",
+    "links": 46,
+    "external": 21,
+    "tables": 1,
+    "rows": 19,
+    "rows_with_http": 19,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/readiness.html",
+    "links": 27,
+    "external": 2,
+    "tables": 1,
+    "rows": 68,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 68
+   },
+   {
+    "page": "atlas/repo-review.html",
+    "links": 55,
+    "external": 2,
+    "tables": 2,
+    "rows": 31,
+    "rows_with_http": 0,
+    "rows_flag_only": 1,
+    "rows_without": 30
+   },
+   {
+    "page": "atlas/results.html",
+    "links": 42,
+    "external": 17,
+    "tables": 1,
+    "rows": 14,
+    "rows_with_http": 14,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/sources.html",
+    "links": 46,
+    "external": 21,
+    "tables": 2,
+    "rows": 20,
+    "rows_with_http": 19,
+    "rows_flag_only": 0,
+    "rows_without": 1
+   },
+   {
+    "page": "atlas/standings.html",
+    "links": 91,
+    "external": 66,
+    "tables": 2,
+    "rows": 64,
+    "rows_with_http": 64,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/strategy.html",
+    "links": 35,
+    "external": 10,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "atlas/suggestions.html",
+    "links": 27,
+    "external": 2,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 12
+   },
+   {
+    "page": "atlas/team-stats.html",
+    "links": 53,
+    "external": 28,
+    "tables": 1,
+    "rows": 26,
+    "rows_with_http": 26,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
     "page": "audit/index.html",
     "links": 390,
     "external": 386,
     "tables": 3,
     "rows": 365,
     "rows_with_http": 365,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/flagged.html",
+    "links": 35,
+    "external": 20,
+    "tables": 2,
+    "rows": 20,
+    "rows_with_http": 20,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/index.html",
+    "links": 37,
+    "external": 8,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/injuries.html",
+    "links": 48,
+    "external": 32,
+    "tables": 3,
+    "rows": 29,
+    "rows_with_http": 29,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/lines.html",
+    "links": 31,
+    "external": 16,
+    "tables": 2,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/questions.html",
+    "links": 30,
+    "external": 15,
+    "tables": 2,
+    "rows": 15,
+    "rows_with_http": 15,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/requirements.html",
+    "links": 27,
+    "external": 4,
+    "tables": 2,
+    "rows": 39,
+    "rows_with_http": 4,
+    "rows_flag_only": 27,
+    "rows_without": 8
+   },
+   {
+    "page": "board/reserve.html",
+    "links": 304,
+    "external": 288,
+    "tables": 4,
+    "rows": 153,
+    "rows_with_http": 153,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/results.html",
+    "links": 53,
+    "external": 37,
+    "tables": 2,
+    "rows": 37,
+    "rows_with_http": 37,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/sources.html",
+    "links": 42,
+    "external": 21,
+    "tables": 2,
+    "rows": 26,
+    "rows_with_http": 21,
+    "rows_flag_only": 0,
+    "rows_without": 5
+   },
+   {
+    "page": "board/strategies.html",
+    "links": 25,
+    "external": 8,
+    "tables": 2,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/suggestions.html",
+    "links": 28,
+    "external": 12,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "board/verification.html",
+    "links": 28,
+    "external": 12,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "closeout/availability.html",
+    "links": 467,
+    "external": 442,
+    "tables": 10,
+    "rows": 334,
+    "rows_with_http": 334,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "closeout/board.html",
+    "links": 61,
+    "external": 34,
+    "tables": 2,
+    "rows": 19,
+    "rows_with_http": 19,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "closeout/correlations.html",
+    "links": 33,
+    "external": 2,
+    "tables": 1,
+    "rows": 6,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "closeout/executive-summary.html",
+    "links": 40,
+    "external": 6,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 9
+   },
+   {
+    "page": "closeout/flagged.html",
+    "links": 44,
+    "external": 17,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 10,
+    "rows_flag_only": 0,
+    "rows_without": 2
+   },
+   {
+    "page": "closeout/gates.html",
+    "links": 35,
+    "external": 2,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "closeout/index.html",
+    "links": 40,
+    "external": 6,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 9
+   },
+   {
+    "page": "closeout/lines.html",
+    "links": 72,
+    "external": 15,
+    "tables": 2,
+    "rows": 45,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 32
+   },
+   {
+    "page": "closeout/luck.html",
+    "links": 83,
+    "external": 40,
+    "tables": 3,
+    "rows": 55,
+    "rows_with_http": 38,
+    "rows_flag_only": 0,
+    "rows_without": 17
+   },
+   {
+    "page": "closeout/price-store.html",
+    "links": 109,
+    "external": 81,
+    "tables": 2,
+    "rows": 82,
+    "rows_with_http": 79,
+    "rows_flag_only": 0,
+    "rows_without": 3
+   },
+   {
+    "page": "closeout/questions.html",
+    "links": 40,
+    "external": 9,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 7,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "closeout/readiness.html",
+    "links": 77,
+    "external": 16,
+    "tables": 1,
+    "rows": 50,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 37
+   },
+   {
+    "page": "closeout/repo-review.html",
+    "links": 55,
+    "external": 28,
+    "tables": 1,
+    "rows": 14,
+    "rows_with_http": 14,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "closeout/results.html",
+    "links": 209,
+    "external": 184,
+    "tables": 2,
+    "rows": 182,
+    "rows_with_http": 182,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "closeout/scorecard.html",
+    "links": 36,
+    "external": 6,
+    "tables": 2,
+    "rows": 9,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 5
+   },
+   {
+    "page": "closeout/settlement.html",
+    "links": 44,
+    "external": 18,
+    "tables": 2,
+    "rows": 17,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 1
+   },
+   {
+    "page": "closeout/sources.html",
+    "links": 71,
+    "external": 30,
+    "tables": 2,
+    "rows": 31,
+    "rows_with_http": 28,
+    "rows_flag_only": 0,
+    "rows_without": 3
+   },
+   {
+    "page": "closeout/suggestions.html",
+    "links": 39,
+    "external": 8,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 6,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "closeout/verification.html",
+    "links": 29,
+    "external": 4,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 1,
+    "rows_flag_only": 0,
+    "rows_without": 11
+   },
+   {
+    "page": "closeout/week10.html",
+    "links": 45,
+    "external": 20,
+    "tables": 2,
+    "rows": 18,
+    "rows_with_http": 18,
     "rows_flag_only": 0,
     "rows_without": 0
    },
@@ -473,6 +1422,126 @@
     "rows_with_http": 4,
     "rows_flag_only": 2,
     "rows_without": 0
+   },
+   {
+    "page": "decision/executive-summary.html",
+    "links": 15,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "decision/flagged.html",
+    "links": 27,
+    "external": 6,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 6,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "decision/index.html",
+    "links": 19,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "decision/landing-block.html",
+    "links": 71,
+    "external": 19,
+    "tables": 1,
+    "rows": 69,
+    "rows_with_http": 19,
+    "rows_flag_only": 4,
+    "rows_without": 46
+   },
+   {
+    "page": "decision/pricing.html",
+    "links": 34,
+    "external": 14,
+    "tables": 3,
+    "rows": 22,
+    "rows_with_http": 14,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "decision/questions.html",
+    "links": 45,
+    "external": 5,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 5,
+    "rows_flag_only": 0,
+    "rows_without": 10
+   },
+   {
+    "page": "decision/readiness.html",
+    "links": 84,
+    "external": 19,
+    "tables": 5,
+    "rows": 69,
+    "rows_with_http": 19,
+    "rows_flag_only": 4,
+    "rows_without": 46
+   },
+   {
+    "page": "decision/snapshots.html",
+    "links": 35,
+    "external": 20,
+    "tables": 5,
+    "rows": 23,
+    "rows_with_http": 20,
+    "rows_flag_only": 0,
+    "rows_without": 3
+   },
+   {
+    "page": "decision/sources.html",
+    "links": 36,
+    "external": 13,
+    "tables": 2,
+    "rows": 21,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "decision/suggestions.html",
+    "links": 33,
+    "external": 4,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 12
+   },
+   {
+    "page": "decision/trees.html",
+    "links": 63,
+    "external": 0,
+    "tables": 1,
+    "rows": 24,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 24
+   },
+   {
+    "page": "decision/verification.html",
+    "links": 27,
+    "external": 5,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 5,
+    "rows_flag_only": 0,
+    "rows_without": 7
    },
    {
     "page": "desk/archive.html",
@@ -916,7 +1985,7 @@
    },
    {
     "page": "hub/archive.html",
-    "links": 45,
+    "links": 48,
     "external": 1,
     "tables": 1,
     "rows": 12,
@@ -926,7 +1995,7 @@
    },
    {
     "page": "hub/correlation.html",
-    "links": 53,
+    "links": 56,
     "external": 21,
     "tables": 4,
     "rows": 25,
@@ -936,7 +2005,7 @@
    },
    {
     "page": "hub/depth.html",
-    "links": 76,
+    "links": 79,
     "external": 44,
     "tables": 2,
     "rows": 43,
@@ -946,27 +2015,27 @@
    },
    {
     "page": "hub/executive-summary.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 2,
-    "rows": 24,
+    "rows": 25,
     "rows_with_http": 0,
     "rows_flag_only": 4,
-    "rows_without": 20
+    "rows_without": 21
    },
    {
     "page": "hub/flagged.html",
-    "links": 65,
-    "external": 33,
-    "tables": 1,
-    "rows": 32,
-    "rows_with_http": 32,
-    "rows_flag_only": 0,
+    "links": 146,
+    "external": 72,
+    "tables": 4,
+    "rows": 83,
+    "rows_with_http": 71,
+    "rows_flag_only": 12,
     "rows_without": 0
    },
    {
     "page": "hub/gates.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 1,
     "rows": 10,
@@ -976,17 +2045,17 @@
    },
    {
     "page": "hub/index.html",
-    "links": 66,
-    "external": 4,
-    "tables": 2,
-    "rows": 38,
-    "rows_with_http": 2,
-    "rows_flag_only": 2,
+    "links": 81,
+    "external": 15,
+    "tables": 3,
+    "rows": 74,
+    "rows_with_http": 13,
+    "rows_flag_only": 27,
     "rows_without": 34
    },
    {
     "page": "hub/injuries.html",
-    "links": 378,
+    "links": 381,
     "external": 346,
     "tables": 2,
     "rows": 354,
@@ -996,7 +2065,7 @@
    },
    {
     "page": "hub/leaderboard.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 8,
     "rows": 44,
@@ -1006,7 +2075,7 @@
    },
    {
     "page": "hub/lines.html",
-    "links": 107,
+    "links": 110,
     "external": 75,
     "tables": 4,
     "rows": 54,
@@ -1016,7 +2085,7 @@
    },
    {
     "page": "hub/luck.html",
-    "links": 65,
+    "links": 68,
     "external": 33,
     "tables": 2,
     "rows": 37,
@@ -1026,7 +2095,7 @@
    },
    {
     "page": "hub/markets.html",
-    "links": 189,
+    "links": 192,
     "external": 157,
     "tables": 4,
     "rows": 92,
@@ -1036,7 +2105,7 @@
    },
    {
     "page": "hub/origination.html",
-    "links": 92,
+    "links": 95,
     "external": 60,
     "tables": 5,
     "rows": 77,
@@ -1046,7 +2115,7 @@
    },
    {
     "page": "hub/price-store.html",
-    "links": 45,
+    "links": 48,
     "external": 13,
     "tables": 3,
     "rows": 23,
@@ -1056,7 +2125,7 @@
    },
    {
     "page": "hub/pricing.html",
-    "links": 64,
+    "links": 67,
     "external": 32,
     "tables": 4,
     "rows": 25,
@@ -1066,17 +2135,17 @@
    },
    {
     "page": "hub/questions.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 1,
-    "rows": 27,
+    "rows": 28,
     "rows_with_http": 0,
     "rows_flag_only": 4,
-    "rows_without": 23
+    "rows_without": 24
    },
    {
     "page": "hub/replacement.html",
-    "links": 88,
+    "links": 91,
     "external": 56,
     "tables": 3,
     "rows": 68,
@@ -1086,7 +2155,7 @@
    },
    {
     "page": "hub/replacements.html",
-    "links": 231,
+    "links": 234,
     "external": 199,
     "tables": 3,
     "rows": 113,
@@ -1096,7 +2165,7 @@
    },
    {
     "page": "hub/repo-review.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 3,
     "rows": 24,
@@ -1106,18 +2175,18 @@
    },
    {
     "page": "hub/requirements.html",
-    "links": 33,
-    "external": 1,
-    "tables": 2,
-    "rows": 40,
-    "rows_with_http": 0,
-    "rows_flag_only": 5,
+    "links": 48,
+    "external": 13,
+    "tables": 3,
+    "rows": 76,
+    "rows_with_http": 11,
+    "rows_flag_only": 30,
     "rows_without": 35
    },
    {
     "page": "hub/results.html",
-    "links": 586,
-    "external": 553,
+    "links": 588,
+    "external": 552,
     "tables": 3,
     "rows": 282,
     "rows_with_http": 278,
@@ -1126,7 +2195,7 @@
    },
    {
     "page": "hub/signal.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 5,
     "rows": 23,
@@ -1136,7 +2205,7 @@
    },
    {
     "page": "hub/sources.html",
-    "links": 47,
+    "links": 50,
     "external": 15,
     "tables": 1,
     "rows": 14,
@@ -1146,7 +2215,7 @@
    },
    {
     "page": "hub/strategies.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 3,
     "rows": 20,
@@ -1156,7 +2225,7 @@
    },
    {
     "page": "hub/suggestions.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 2,
     "rows": 34,
@@ -1166,7 +2235,7 @@
    },
    {
     "page": "hub/verification.html",
-    "links": 33,
+    "links": 36,
     "external": 1,
     "tables": 4,
     "rows": 26,
@@ -1176,22 +2245,22 @@
    },
    {
     "page": "hub/verified-results.html",
-    "links": 235,
-    "external": 202,
+    "links": 237,
+    "external": 201,
     "tables": 4,
     "rows": 201,
-    "rows_with_http": 201,
-    "rows_flag_only": 0,
+    "rows_with_http": 200,
+    "rows_flag_only": 1,
     "rows_without": 0
    },
    {
     "page": "index.html",
-    "links": 54,
-    "external": 1,
-    "tables": 0,
-    "rows": 0,
-    "rows_with_http": 0,
-    "rows_flag_only": 0,
+    "links": 270,
+    "external": 103,
+    "tables": 4,
+    "rows": 123,
+    "rows_with_http": 96,
+    "rows_flag_only": 27,
     "rows_without": 0
    },
    {
@@ -1775,6 +2844,186 @@
     "rows_without": 10
    },
    {
+    "page": "readiness/ablations.html",
+    "links": 18,
+    "external": 2,
+    "tables": 1,
+    "rows": 2,
+    "rows_with_http": 2,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/announced-starters.html",
+    "links": 24,
+    "external": 8,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/change-our-mind.html",
+    "links": 58,
+    "external": 42,
+    "tables": 1,
+    "rows": 42,
+    "rows_with_http": 42,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/control-baselines.html",
+    "links": 19,
+    "external": 3,
+    "tables": 1,
+    "rows": 3,
+    "rows_with_http": 3,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/decision-readiness.html",
+    "links": 164,
+    "external": 74,
+    "tables": 1,
+    "rows": 74,
+    "rows_with_http": 74,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/drift-alarms.html",
+    "links": 30,
+    "external": 14,
+    "tables": 1,
+    "rows": 14,
+    "rows_with_http": 14,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/index.html",
+    "links": 26,
+    "external": 0,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 10
+   },
+   {
+    "page": "readiness/matchup-matrix.html",
+    "links": 92,
+    "external": 76,
+    "tables": 1,
+    "rows": 76,
+    "rows_with_http": 76,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/snapshots.html",
+    "links": 23,
+    "external": 7,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 7,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/two-totals.html",
+    "links": 36,
+    "external": 20,
+    "tables": 1,
+    "rows": 20,
+    "rows_with_http": 20,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "readiness/what-changed.html",
+    "links": 48,
+    "external": 32,
+    "tables": 1,
+    "rows": 32,
+    "rows_with_http": 32,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "reliability/archive.html",
+    "links": 28,
+    "external": 21,
+    "tables": 2,
+    "rows": 21,
+    "rows_with_http": 21,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "reliability/flagged.html",
+    "links": 45,
+    "external": 38,
+    "tables": 1,
+    "rows": 38,
+    "rows_with_http": 38,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "reliability/index.html",
+    "links": 21,
+    "external": 3,
+    "tables": 2,
+    "rows": 8,
+    "rows_with_http": 3,
+    "rows_flag_only": 1,
+    "rows_without": 4
+   },
+   {
+    "page": "reliability/join.html",
+    "links": 295,
+    "external": 288,
+    "tables": 1,
+    "rows": 144,
+    "rows_with_http": 144,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "reliability/methods.html",
+    "links": 7,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "reliability/reliability.html",
+    "links": 32,
+    "external": 12,
+    "tables": 2,
+    "rows": 18,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "reliability/sources.html",
+    "links": 36,
+    "external": 29,
+    "tables": 1,
+    "rows": 27,
+    "rows_with_http": 27,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
     "page": "requirements.html",
     "links": 10,
     "external": 0,
@@ -1793,6 +3042,246 @@
     "rows_with_http": 0,
     "rows_flag_only": 0,
     "rows_without": 6
+   },
+   {
+    "page": "round2/audit.html",
+    "links": 34,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/flagged.html",
+    "links": 18,
+    "external": 8,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 7,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/index.html",
+    "links": 17,
+    "external": 1,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/readiness.html",
+    "links": 142,
+    "external": 67,
+    "tables": 1,
+    "rows": 66,
+    "rows_with_http": 66,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/sources.html",
+    "links": 16,
+    "external": 7,
+    "tables": 1,
+    "rows": 6,
+    "rows_with_http": 6,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/suggestions.html",
+    "links": 20,
+    "external": 11,
+    "tables": 1,
+    "rows": 10,
+    "rows_with_http": 10,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "round2/verification.html",
+    "links": 61,
+    "external": 50,
+    "tables": 6,
+    "rows": 135,
+    "rows_with_http": 47,
+    "rows_flag_only": 0,
+    "rows_without": 88
+   },
+   {
+    "page": "signals/correlations.html",
+    "links": 44,
+    "external": 16,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 15,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/depth.html",
+    "links": 642,
+    "external": 613,
+    "tables": 2,
+    "rows": 306,
+    "rows_with_http": 306,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/executive-summary.html",
+    "links": 47,
+    "external": 15,
+    "tables": 2,
+    "rows": 14,
+    "rows_with_http": 14,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/flagged.html",
+    "links": 42,
+    "external": 14,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/gates.html",
+    "links": 55,
+    "external": 27,
+    "tables": 3,
+    "rows": 26,
+    "rows_with_http": 26,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/index.html",
+    "links": 44,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/leaderboard.html",
+    "links": 58,
+    "external": 28,
+    "tables": 3,
+    "rows": 27,
+    "rows_with_http": 27,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/lines.html",
+    "links": 164,
+    "external": 135,
+    "tables": 3,
+    "rows": 136,
+    "rows_with_http": 134,
+    "rows_flag_only": 0,
+    "rows_without": 2
+   },
+   {
+    "page": "signals/prices.html",
+    "links": 1019,
+    "external": 990,
+    "tables": 2,
+    "rows": 989,
+    "rows_with_http": 989,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/questions.html",
+    "links": 56,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/repo-review.html",
+    "links": 48,
+    "external": 17,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/requirements.html",
+    "links": 45,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/results.html",
+    "links": 192,
+    "external": 164,
+    "tables": 1,
+    "rows": 163,
+    "rows_with_http": 163,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/sources.html",
+    "links": 37,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/strategies.html",
+    "links": 45,
+    "external": 16,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 15,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/suggestions.html",
+    "links": 45,
+    "external": 13,
+    "tables": 1,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "signals/verification.html",
+    "links": 37,
+    "external": 9,
+    "tables": 1,
+    "rows": 8,
+    "rows_with_http": 8,
+    "rows_flag_only": 0,
+    "rows_without": 0
    },
    {
     "page": "site/index.html",
@@ -1853,6 +3342,346 @@
     "rows_with_http": 4,
     "rows_flag_only": 4,
     "rows_without": 3
+   },
+   {
+    "page": "week11/flagged.html",
+    "links": 11,
+    "external": 4,
+    "tables": 1,
+    "rows": 4,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "week11/freshness-detail.html",
+    "links": 920,
+    "external": 912,
+    "tables": 1,
+    "rows": 912,
+    "rows_with_http": 912,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "week11/freshness.html",
+    "links": 72,
+    "external": 64,
+    "tables": 1,
+    "rows": 64,
+    "rows_with_http": 64,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "week11/index.html",
+    "links": 12,
+    "external": 3,
+    "tables": 1,
+    "rows": 4,
+    "rows_with_http": 3,
+    "rows_flag_only": 0,
+    "rows_without": 1
+   },
+   {
+    "page": "week11/report.html",
+    "links": 12,
+    "external": 5,
+    "tables": 1,
+    "rows": 4,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "week11/sources.html",
+    "links": 11,
+    "external": 4,
+    "tables": 2,
+    "rows": 10,
+    "rows_with_http": 4,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "x3/ablations.html",
+    "links": 35,
+    "external": 2,
+    "tables": 1,
+    "rows": 2,
+    "rows_with_http": 2,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/availability.html",
+    "links": 112,
+    "external": 79,
+    "tables": 2,
+    "rows": 79,
+    "rows_with_http": 79,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/backtest.html",
+    "links": 140,
+    "external": 106,
+    "tables": 1,
+    "rows": 106,
+    "rows_with_http": 106,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/correlations.html",
+    "links": 43,
+    "external": 10,
+    "tables": 2,
+    "rows": 10,
+    "rows_with_http": 10,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/depth.html",
+    "links": 88,
+    "external": 55,
+    "tables": 2,
+    "rows": 55,
+    "rows_with_http": 55,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/executive-summary.html",
+    "links": 33,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/features.html",
+    "links": 46,
+    "external": 13,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/fixtures.html",
+    "links": 60,
+    "external": 27,
+    "tables": 1,
+    "rows": 27,
+    "rows_with_http": 27,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/flagged.html",
+    "links": 51,
+    "external": 18,
+    "tables": 2,
+    "rows": 18,
+    "rows_with_http": 18,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/gates.html",
+    "links": 42,
+    "external": 1,
+    "tables": 1,
+    "rows": 9,
+    "rows_with_http": 1,
+    "rows_flag_only": 0,
+    "rows_without": 8
+   },
+   {
+    "page": "x3/index.html",
+    "links": 64,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/injuries.html",
+    "links": 39,
+    "external": 6,
+    "tables": 2,
+    "rows": 6,
+    "rows_with_http": 6,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/leaderboard.html",
+    "links": 33,
+    "external": 0,
+    "tables": 1,
+    "rows": 6,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 6
+   },
+   {
+    "page": "x3/lines.html",
+    "links": 47,
+    "external": 13,
+    "tables": 1,
+    "rows": 13,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/luck.html",
+    "links": 68,
+    "external": 35,
+    "tables": 2,
+    "rows": 35,
+    "rows_with_http": 35,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/matrix.html",
+    "links": 164,
+    "external": 130,
+    "tables": 1,
+    "rows": 65,
+    "rows_with_http": 65,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/policy.html",
+    "links": 33,
+    "external": 0,
+    "tables": 0,
+    "rows": 0,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/preregistration.html",
+    "links": 40,
+    "external": 0,
+    "tables": 1,
+    "rows": 7,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 7
+   },
+   {
+    "page": "x3/prices.html",
+    "links": 73,
+    "external": 39,
+    "tables": 1,
+    "rows": 39,
+    "rows_with_http": 39,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/questions.html",
+    "links": 48,
+    "external": 13,
+    "tables": 1,
+    "rows": 15,
+    "rows_with_http": 13,
+    "rows_flag_only": 0,
+    "rows_without": 2
+   },
+   {
+    "page": "x3/readiness.html",
+    "links": 112,
+    "external": 2,
+    "tables": 1,
+    "rows": 79,
+    "rows_with_http": 2,
+    "rows_flag_only": 2,
+    "rows_without": 75
+   },
+   {
+    "page": "x3/repo-review.html",
+    "links": 47,
+    "external": 0,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 16
+   },
+   {
+    "page": "x3/results.html",
+    "links": 171,
+    "external": 138,
+    "tables": 10,
+    "rows": 138,
+    "rows_with_http": 138,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/schedule.html",
+    "links": 45,
+    "external": 12,
+    "tables": 2,
+    "rows": 12,
+    "rows_with_http": 12,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/sources.html",
+    "links": 49,
+    "external": 16,
+    "tables": 1,
+    "rows": 16,
+    "rows_with_http": 16,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/suggestions.html",
+    "links": 33,
+    "external": 0,
+    "tables": 1,
+    "rows": 9,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 9
+   },
+   {
+    "page": "x3/teams.html",
+    "links": 65,
+    "external": 32,
+    "tables": 1,
+    "rows": 32,
+    "rows_with_http": 32,
+    "rows_flag_only": 0,
+    "rows_without": 0
+   },
+   {
+    "page": "x3/verification.html",
+    "links": 47,
+    "external": 0,
+    "tables": 1,
+    "rows": 14,
+    "rows_with_http": 0,
+    "rows_flag_only": 0,
+    "rows_without": 14
    },
    {
     "page": "x3lab/depth.html",
@@ -2177,7 +4006,7 @@
    "path": "hub/questions.html",
    "page": "hub/questions.html",
    "kind": "html",
-   "rows": 27
+   "rows": 28
   },
   {
    "family": "requirements",
@@ -2225,7 +4054,7 @@
    "path": "hub/flagged.html",
    "page": "hub/flagged.html",
    "kind": "html",
-   "rows": 32
+   "rows": 39
   },
   {
    "family": "strategies",
@@ -2280,7 +4109,7 @@
  "reconciliation": {
   "families": {
    "flags": {
-    "count": 123,
+    "count": 130,
     "modules": {
      "data (0c38f465)": 16,
      "dashboard (7e632805)": 12,
@@ -2290,7 +4119,7 @@
      "root page (3dbc4678)": 14,
      "pages (1a771fcd)": 9,
      "desk (3bf7cc8b)": 10,
-     "hub (e9b492ab)": 32
+     "hub (e9b492ab)": 39
     },
     "id_groups": {
      "F01": {
@@ -2458,7 +4287,7 @@
        {
         "module": "hub (e9b492ab)",
         "raw_id": "F-02",
-        "title": "No game log. The only final score confirmed for the 2026 season is Commanders 24, Giants 21 (Week 10 TNF) on the schedule page.",
+        "title": "The canonical 2026 feed contains 137 final scores reconciled to all 32 clubs' official standings; it is not a multi-season backtest corpus, and historical seasons remain absent.",
         "status": "HIGH",
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
@@ -3476,7 +5305,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://www.nfl.com/games/chargers-at-ravens-2026-reg-10 and https://www.nfl.com/odds/ Malformed source reference; flagged for repair."
        }
       ],
       "identity": "same",
@@ -3500,7 +5329,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/hub/lines.html vs hub/markets.html Malformed source reference; flagged for repair."
        }
       ],
       "identity": "same",
@@ -3620,7 +5449,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/verification_log.json - field-level reconciliation Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3654,7 +5483,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/price_snapshots_2026.csv - OPEN rows absent by policy; 2021 pilot committed Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3688,7 +5517,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/data/x3/raw/club_depth_charts_2026_wk10/ - verbatim transcriptions with fetch dates Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3722,7 +5551,7 @@
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
-        "source": "check source"
+        "source": "UNVERIFIED source URL https://github.com/karagemop466-tech/X3/blob/main/hub/strategies.html - prop rows blank by policy Malformed source reference; flagged for repair."
        },
        {
         "module": "hub (e9b492ab)",
@@ -3753,6 +5582,174 @@
         "raw_id": "F-28",
         "title": "Correlation values computed at game level use official scores plus PFF closing lines (MARKET-3P). Every value publishes n. Team-level coefficients from the prior session (n=32) are kept and labelled.",
         "status": "LOW",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F29": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-29",
+        "title": "As of 2026-11-15 UTC, the canonical G-2 gate sets a minimum of 300 settled bets across at least 3 seasons. Open PR #58 proposes 2,272 bets instead; GitHub reports that pull request is unmerged and has a dirty merge state. Neither number is an NFL-published fact, and the final project threshold is unresolved.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F31": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-31",
+        "title": "The canonical 163-row results feed has venue populated for only 7 fixtures; 156 venue cells are blank. Do not infer venue from the home-team field or assume a neutral site. Official NFL Game Center capture is still required for each fixture.",
+        "status": "HIGH",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F32": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-32",
+        "title": "The register's Brissett row said 'Traded to Baltimore'. The cited nfl.com article (read 2026-11-17) says the trade is being finalized with completion expected over the weekend, and does not give the article date on the fetched page. The row is corrected to 'reported as being finalized' and its date is marked unverified.",
+        "status": "HIGH",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F33": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-33",
+        "title": "Committed Week 10 files disagree on row count. data/injury_report_2026_wk10.csv holds 205 designated rows only; data/hub, docs/data and audit hold 345 rows; data/snapshots and agency hold 347 rows. The two 347-row captures differ by two rows, unexplained. The live official page was not re-counted in full this session.",
+        "status": "HIGH",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F34": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-34",
+        "title": "The Week 11 report is not published yet. The reg11 URL redirects to the Week 10 report (read 2026-11-17). No Week 11 designation is in the repository and none may be inferred from Week 10.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F35": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-35",
+        "title": "Two readiness registers are published with different counts: decision/ lists 69 requirements, readiness/ lists 74 rows. The root landing page shows 66 requirements mapped, a 69-row register and 74 requirement rows in different cards. None of these has been reconciled.",
+        "status": "MEDIUM",
+        "status_norm": "OTHER",
+        "page": "hub/flagged.html",
+        "register": "hub/flagged.html",
+        "source": "check source"
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "OTHER"
+      ],
+      "status_conflict": false
+     },
+     "F36": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "F-36",
+        "title": "On the landing-page decision-readiness table, several rows show status VERIFIED beside a source cell reading UNVERIFIED. The status describes the requirement's register entry; the source cell describes the clearing threshold. Read together they look contradictory.",
+        "status": "MEDIUM",
         "status_norm": "OTHER",
         "page": "hub/flagged.html",
         "register": "hub/flagged.html",
@@ -3986,7 +5983,7 @@
     }
    },
    "questions": {
-    "count": 133,
+    "count": 134,
     "modules": {
      "data (0c38f465)": 12,
      "dashboard (7e632805)": 20,
@@ -3994,7 +5991,7 @@
      "x3lab (e1c332ce)": 20,
      "lab (972ad7a5)": 14,
      "desk (3bf7cc8b)": 25,
-     "hub (e9b492ab)": 27
+     "hub (e9b492ab)": 28
     },
     "id_groups": {
      "Q01": {
@@ -5676,6 +7673,30 @@
       ],
       "status_conflict": false
      },
+     "Q25": {
+      "modules": [
+       "hub (e9b492ab)"
+      ],
+      "variants": [
+       {
+        "module": "hub (e9b492ab)",
+        "raw_id": "Q-25",
+        "title": "Whether venue-dependent modelling can proceed",
+        "status": "YES",
+        "status_norm": "BLOCKED",
+        "page": "hub/questions.html",
+        "register": "hub/questions.html",
+        "source": ""
+       }
+      ],
+      "identity": "same",
+      "min_score": null,
+      "same_content": true,
+      "statuses": [
+       "BLOCKED"
+      ],
+      "status_conflict": false
+     },
      "QA01": {
       "modules": [
        "x3lab (e1c332ce)"
@@ -7298,19 +9319,19 @@
         "module": "hub (e9b492ab)",
         "raw_id": "R-23",
         "title": "Game results by week and venue for model calibration",
-        "status": "BLOCKED",
-        "status_norm": "BLOCKED",
+        "status": "PARTIAL",
+        "status_norm": "PARTIAL",
         "page": "hub/requirements.html",
         "register": "hub/requirements.html",
-        "source": "No ingested game log; only 1 final score known (F-02)"
+        "source": "137 final 2026 games are present and aggregate to official standings; only 7 of 163 feed rows have a venue value, leaving 156 blank; multi-season history is absent (see Q-19/Q-25)"
        }
       ],
       "identity": "different",
       "min_score": 0.0,
       "same_content": false,
       "statuses": [
-       "BLOCKED",
-       "DONE"
+       "DONE",
+       "PARTIAL"
       ],
       "status_conflict": false
      },
@@ -12088,7 +14109,7 @@
    "cmd": "python3 tools/check_links.py",
    "exit": 0,
    "tail": [
-    "OK \u2014 13 pages, 372 links checked, no broken internal links."
+    "OK \u2014 13 pages, 580 links checked, no broken internal links."
    ]
   },
   {
@@ -12287,11 +14308,21 @@
    "id": "X-14",
    "severity": "Medium",
    "area": "Rows without source or flag",
-   "finding": "1205 table rows across 98 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: ops/snapshots.html (79), origin/snapshots.html (78), hub/leaderboard.html (41), hub/requirements.html (35), hub/index.html (34), hub/suggestions.html (32), ops/gates.html (25), hub/verification.html (24).",
+   "finding": "2417 table rows across 159 existing pages carry neither an external source link nor an UNVERIFIED/flag marker \u2014 worst: agency/site/fixtures.html (200), round2/verification.html (88), ops/snapshots.html (79), origin/snapshots.html (78), x3/readiness.html (75), agency/site/index.html (73), atlas/index.html (68), atlas/readiness.html (68).",
    "evidence": [
     "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json"
    ],
    "action": "Owners of the listed pages add per-row source links or explicit flags."
+  },
+  {
+   "id": "X-15",
+   "severity": "High",
+   "area": "Broken internal links",
+   "finding": "52 broken internal links found.",
+   "evidence": [
+    "https://github.com/karagemop466-tech/X3/blob/main/crosscheck/data/report.json"
+   ],
+   "action": "Fix the listed hrefs."
   }
  ]
 }
