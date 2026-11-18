@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview — X3 designation reliability</title>
+<style>
+ body{font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#15202b;background:#f6f8fa}
+ header{background:#0d2137;color:#fff;padding:14px 22px}
+ header h1{margin:0;font-size:19px;font-weight:650}
+ header .sub{opacity:.75;font-size:12.5px;margin-top:3px}
+ nav{background:#132f4c;padding:7px 22px;font-size:13.5px}
+ nav a{color:#cfe3f7;text-decoration:none;margin-right:14px}
+ nav a.on{color:#fff;font-weight:700;text-decoration:underline}
+ main{max-width:1080px;margin:16px auto;padding:0 18px}
+ h2{font-size:17px;margin:26px 0 8px} h3{font-size:14.5px;margin:20px 0 6px}
+ table{border-collapse:collapse;width:100%;background:#fff;font-size:13.5px}
+ th,td{border:1px solid #d7dee6;padding:5px 8px;text-align:left;vertical-align:top}
+ th{background:#e8eef4;position:sticky;top:0}
+ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+ .ok{color:#0a6b33;font-weight:600} .bad{color:#a4262c;font-weight:600}
+ .mut{color:#5b6b7c} .flag{background:#fff6e5}
+ a{color:#0b57a4} code{background:#eef2f6;padding:0 4px;border-radius:3px;font-size:12.5px}
+ .card{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:12px 16px;margin:10px 0}
+ .kpi{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+ .kpi div{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:10px 16px;min-width:150px}
+ .kpi b{display:block;font-size:22px}
+ .kpi span{font-size:12px;color:#5b6b7c}
+ footer{max-width:1080px;margin:26px auto 40px;padding:0 18px;font-size:12.5px;color:#5b6b7c}
+</style></head><body>
+<header><h1>Past-season injury archive &amp; designation reliability</h1>
+<div class="sub">Official NFL sources only · Week 10, seasons 2023–2025 · session arena/73e6752d-x3 · captures 2026-11-17</div></header>
+<nav><a href="index.html" class=on>Overview</a> · <a href="archive.html">Archive</a> · <a href="reliability.html">Reliability</a> · <a href="join.html">Player join</a> · <a href="flagged.html">Flagged for Review</a> · <a href="sources.html">Sources</a> · <a href="methods.html">Methods</a></nav>
+<main>
+
+<h2>What this module is</h2>
+<div class="card"><p>Two brief items had no coverage anywhere in the repository: <b>Q43</b> — archive weekly
+injury reports for past seasons, and <b>Q44/Q45</b> — score injury-designation reliability by joining
+designations to the official inactive lists and measuring the play rate per designation with confidence
+intervals. This module does both, from official nfl.com sources only:</p>
+<ul>
+<li><b><a href="archive.html">Archive</a></b> — dated captures of the official Week-10 injury reports for
+2023, 2024 and 2025 with sha256 seals (<code>reliability/manifest.csv</code>).</li>
+<li><b><a href="reliability.html">Reliability</a></b> — play rate and inactive rate per designation with
+Wilson 95% intervals and n per row.</li>
+<li><b><a href="join.html">Player join</a></b> — every designated player in the sample, the Game Book
+evidence for the outcome, and the unresolved rows.</li>
+<li><b><a href="flagged.html">Flagged for Review</a></b> — render irregularities, ambiguous matches and
+the Out→played discrepancies. Nothing here blocks publication; nothing here is reconciled by guesswork.</li>
+</ul></div>
+<div class="kpi">
+ <div><b>12</b><span>games joined (3 seasons × first 4 games)</span></div>
+ <div><b>144</b><span>designated players (Out 54 · Q 80 · D 10)</span></div>
+ <div><b>4</b><span>Out→played discrepancies (measured, flagged)</span></div>
+ <div><b>2</b><span>rows left UNRESOLVED (never guessed)</span></div>
+</div>
+<h2>Headline rates (sample descriptive, Wilson 95% CI)</h2>
+<table><thead><tr><th>Designation</th><th class="num">Played n</th><th class="num">Play rate</th><th class="num">Wilson 95% CI</th><th class="num">Inactive n</th><th class="num">Inactive rate</th><th class="num">Wilson 95% CI</th><th>Row sources</th></tr></thead><tbody><tr><td><b>Out</b></td><td class="num">53</td><td class="num">7.5%</td><td class="num">3.0–17.9%</td><td class="num">33</td><td class="num">87.9%</td><td class="num">72.7–95.2%</td><td><a href="join.html">player rows</a> · <a href="methods.html">method</a> · <a href="https://www.nfl.com/injuries/">official reports</a></td></tr><tr><td><b>Questionable</b></td><td class="num">79</td><td class="num">68.3%</td><td class="num">57.5–77.5%</td><td class="num">56</td><td class="num">30.4%</td><td class="num">19.9–43.3%</td><td><a href="join.html">player rows</a> · <a href="methods.html">method</a> · <a href="https://www.nfl.com/injuries/">official reports</a></td></tr><tr><td><b>Doubtful</b></td><td class="num">10</td><td class="num">10.0%</td><td class="num">1.8–40.4%</td><td class="num">9</td><td class="num">88.9%</td><td class="num">56.5–98.0%</td><td><a href="join.html">player rows</a> · <a href="methods.html">method</a> · <a href="https://www.nfl.com/injuries/">official reports</a></td></tr></tbody></table>
+<p class="mut">Read the intervals, not just the point estimates — n per row is small by design (this is a
+pilot join, not a season-long study). Denominators exclude UNRESOLVED rows; the excluded counts are on
+the <a href="reliability.html">Reliability</a> page.</p>
+<h2>What it means for the desk</h2>
+<div class="card"><ul>
+<li><b>Out</b> is close to a reliable "will not play" statement in this sample, but not perfect: 4
+Out-listed players have official playtime rows. Those rows are published as discrepancies, not reconciled —
+the report page exposes no last-updated timestamp, so designation-vs-kickoff timing is unknown (Q-04).</li>
+<li><b>Questionable</b> is a wide band: the sample play rate is high but the interval spans a range that
+cannot be collapsed to a single multiplier yet. Q45's calibration needs more weeks before any model use.</li>
+<li><b>Doubtful</b> behaves like a mild Out in this sample, with n too small to treat as more than a pilot
+number.</li>
+</ul></div>
+<h2>Scope decisions (disclosed before capture)</h2>
+<div class="card"><ul>
+<li>Week 10 of each season 2023–2025; the <b>first four games as listed on the official report page</b>
+(Thursday + early-Sunday window) — a convenience sample, not random. Three of the twelve games are
+international-series games (Frankfurt 2023, Munich 2024, Berlin 2025) because those kick off early.</li>
+<li>2026 Week 10 is <b>not</b> joined here: its report re-capture is claimed by another session (PR #79),
+and its Monday game was not final at capture time.</li>
+<li>The archive stores report chunks 0–1 of each week (the sampled games' rows are complete within them),
+not the full 7–9 chunks — full-week archive is the next increment.</li>
+</ul></div>
+<h2>Suggestions (review → choose → implement — owner decides)</h2>
+<div class="card"><ol>
+<li><b>Expand the archive to full weeks</b> (chunks 2–9 of each report) so Q43 covers every game, not
+just the sampled window. First step: capture the remaining chunks for 2023–2025 reg10. Cost: storage
+only; no analysis blocked today.</li>
+<li><b>Join 2026 Week 10</b> once its re-capture (PR #79) lands, using the same pre-registered rules.
+First step: re-run this builder with one more season added to <code>GAMES</code>.</li>
+<li><b>Set the n threshold before any model use</b> (R2-S6 already asks for this): the pilot intervals
+are wide; the owner should pick minimum n per designation before a Questionable multiplier is allowed
+anywhere near a signal.</li>
+<li><b>Bracket designation timing</b>: capture the report page twice (Friday and Saturday) so
+Out→played rows can be separated into "designation held" vs "status changed after the page we read".
+First step: schedule two captures next sample week.</li>
+<li><b>Store full playtime sections</b> for sampled games so a no-designation baseline can be computed
+(needed to show the designations actually carry information).</li>
+</ol></div>
+<h2>Questions, information, answers</h2>
+<div class="card"><table>
+<tr><th>Question</th><th>What we know (this sample)</th><th>What is still missing</th></tr>
+<tr><td>What does <b>Questionable</b> mean?</td>
+<td>Play rate 54 /
+79 = 68%
+(Wilson 95% CI 57–78%);
+inactive rate 17 /
+56.</td>
+<td>Enough n to collapse the interval; other weeks/seasons; position-level splits.</td></tr>
+<tr><td>Is <b>Out</b> reliable?</td>
+<td>Play rate 4 / 53
+— and every played row is published as a flagged discrepancy with its Game Book link.</td>
+<td>Whether those were post-report status changes (report page has no last-updated timestamp, Q-04).</td></tr>
+<tr><td>Is <b>Doubtful</b> different from Out?</td>
+<td>Pilot: 1 / 10
+played — directionally similar to Out, n far too small to separate them.</td>
+<td>More Doubtful rows (they are rare); pooled multi-season n.</td></tr>
+<tr><td>Can these rates feed a model yet?</td>
+<td>No. This module is descriptive and pre-registered as measurement only.</td>
+<td>Owner-approved n threshold (suggestion 3 above) and the baseline comparison (suggestion 5).</td></tr>
+<tr><td>Is the archive complete?</td>
+<td>Report chunks 0–1 for three seasons, sealed with sha256; sampled-game Game Books stored.</td>
+<td>Full-week chunks; 2026 Week 10; any week other than Week 10.</td></tr>
+</table></div>
+
+</main>
+<footer>Every table row on this module links to its official source or is explicitly flagged.
+Rates are descriptive measurements of the sample described on the Methods page — not a model input, not advice.</footer>
+</body></html>

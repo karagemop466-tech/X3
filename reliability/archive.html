@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive — X3 designation reliability</title>
+<style>
+ body{font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#15202b;background:#f6f8fa}
+ header{background:#0d2137;color:#fff;padding:14px 22px}
+ header h1{margin:0;font-size:19px;font-weight:650}
+ header .sub{opacity:.75;font-size:12.5px;margin-top:3px}
+ nav{background:#132f4c;padding:7px 22px;font-size:13.5px}
+ nav a{color:#cfe3f7;text-decoration:none;margin-right:14px}
+ nav a.on{color:#fff;font-weight:700;text-decoration:underline}
+ main{max-width:1080px;margin:16px auto;padding:0 18px}
+ h2{font-size:17px;margin:26px 0 8px} h3{font-size:14.5px;margin:20px 0 6px}
+ table{border-collapse:collapse;width:100%;background:#fff;font-size:13.5px}
+ th,td{border:1px solid #d7dee6;padding:5px 8px;text-align:left;vertical-align:top}
+ th{background:#e8eef4;position:sticky;top:0}
+ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+ .ok{color:#0a6b33;font-weight:600} .bad{color:#a4262c;font-weight:600}
+ .mut{color:#5b6b7c} .flag{background:#fff6e5}
+ a{color:#0b57a4} code{background:#eef2f6;padding:0 4px;border-radius:3px;font-size:12.5px}
+ .card{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:12px 16px;margin:10px 0}
+ .kpi{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+ .kpi div{background:#fff;border:1px solid #d7dee6;border-radius:8px;padding:10px 16px;min-width:150px}
+ .kpi b{display:block;font-size:22px}
+ .kpi span{font-size:12px;color:#5b6b7c}
+ footer{max-width:1080px;margin:26px auto 40px;padding:0 18px;font-size:12.5px;color:#5b6b7c}
+</style></head><body>
+<header><h1>Past-season injury archive &amp; designation reliability</h1>
+<div class="sub">Official NFL sources only · Week 10, seasons 2023–2025 · session arena/73e6752d-x3 · captures 2026-11-17</div></header>
+<nav><a href="index.html">Overview</a> · <a href="archive.html" class=on>Archive</a> · <a href="reliability.html">Reliability</a> · <a href="join.html">Player join</a> · <a href="flagged.html">Flagged for Review</a> · <a href="sources.html">Sources</a> · <a href="methods.html">Methods</a></nav>
+<main>
+
+<h2>Q43 — past-season injury report archive</h2>
+<div class="card">Every capture below was taken on 2026-11-17 through the session's page-fetch tool and
+sealed with sha256 in <code>reliability/manifest.csv</code>. Report chunks are stored verbatim; game
+evidence files store the official centre facts, the Not Active / Did Not Play sections verbatim and the
+playtime rows needed for the join, each with its source URL.</div>
+<table><thead><tr><th>File</th><th>Kind</th><th>Source</th><th>Fetched (UTC)</th><th>sha256</th></tr></thead>
+<tbody><tr><td><code>reliability/raw/games/2023/49ers-at-jaguars.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1704923037/gamecenter/cbac8368-f053-11ed-b4a7-bab79e4492fa.pdf">official source</a></td><td>2026-11-17T23:06Z</td><td><code>ffebb8845cfeddc9…</code></td></tr><tr><td><code>reliability/raw/games/2023/colts-at-patriots.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1699894876/gamecenter/cbac6844-f053-11ed-b4a7-bab79e4492fa.pdf">official source</a></td><td>2026-11-17T23:05Z</td><td><code>5b837f08d38d6485…</code></td></tr><tr><td><code>reliability/raw/games/2023/panthers-at-bears.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1704923034/gamecenter/cbac56ac-f053-11ed-b4a7-bab79e4492fa.pdf">official source</a></td><td>2026-11-17T23:05Z</td><td><code>947e6e465dfcf8ac…</code></td></tr><tr><td><code>reliability/raw/games/2023/titans-at-buccaneers.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1704923039/gamecenter/cbac9b0b-f053-11ed-b4a7-bab79e4492fa.pdf">official source</a></td><td>2026-11-17T23:05Z</td><td><code>d190d45c72ebf55e…</code></td></tr><tr><td><code>reliability/raw/games/2024/bengals-at-ravens.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1731065430/gamecenter/ae9d1561-1312-11ef-afd1-646009f18b2e.pdf">official source</a></td><td>2026-11-17T23:07Z</td><td><code>269c005ca6b47aa1…</code></td></tr><tr><td><code>reliability/raw/games/2024/bills-at-colts.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1731324634/gamecenter/ae9d22f8-1312-11ef-afd1-646009f18b2e.pdf">official source</a></td><td>2026-11-17T23:07Z</td><td><code>70e398fff9f37228…</code></td></tr><tr><td><code>reliability/raw/games/2024/broncos-at-chiefs.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1731324633/gamecenter/ae9d2ac6-1312-11ef-afd1-646009f18b2e.pdf">official source</a></td><td>2026-11-17T23:07Z</td><td><code>06156ed24bef31fe…</code></td></tr><tr><td><code>reliability/raw/games/2024/giants-at-panthers.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf">official source</a></td><td>2026-11-17T23:07Z</td><td><code>f7321486dc362698…</code></td></tr><tr><td><code>reliability/raw/games/2025/bills-at-dolphins.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1762772748/gamecenter/f7d4b0eb-311e-11f0-b670-ae1250fadad1.pdf">official source</a></td><td>2026-11-17T23:08Z</td><td><code>566d084641b5854c…</code></td></tr><tr><td><code>reliability/raw/games/2025/falcons-at-colts.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1762772747/gamecenter/f7b52372-311e-11f0-b670-ae1250fadad1.pdf">official source</a></td><td>2026-11-17T23:08Z</td><td><code>88ee2ddfd849a9ff…</code></td></tr><tr><td><code>reliability/raw/games/2025/raiders-at-broncos.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1762513482/gamecenter/f7b51f32-311e-11f0-b670-ae1250fadad1.pdf">official source</a></td><td>2026-11-17T23:01Z</td><td><code>badce7d8816c08f0…</code></td></tr><tr><td><code>reliability/raw/games/2025/saints-at-panthers.md</code></td><td>game-evidence</td><td><a href="https://static.www.nfl.com/image/upload/v1762772747/gamecenter/f7b52798-311e-11f0-b670-ae1250fadad1.pdf">official source</a></td><td>2026-11-17T23:08Z</td><td><code>19f652a1dccb3d89…</code></td></tr><tr><td><code>reliability/raw/injuries/2023/reg10_chunk0.md</code></td><td>report-chunk</td><td><a href="https://www.nfl.com/injuries/league/2023/reg10">official source</a></td><td>2026-11-17T23:02Z</td><td><code>3f2c0e567abd74fc…</code></td></tr><tr><td><code>reliability/raw/injuries/2023/reg10_chunk1.md</code></td><td>report-chunk</td><td><a href="https://www.nfl.com/injuries/league/2023/reg10">official source</a></td><td>2026-11-17T23:02Z</td><td><code>7d11a5f9309b93dc…</code></td></tr><tr><td><code>reliability/raw/injuries/2024/reg10_chunk0.md</code></td><td>report-chunk</td><td><a href="https://www.nfl.com/injuries/league/2024/reg10">official source</a></td><td>2026-11-17T23:03Z</td><td><code>c86624a036f3098f…</code></td></tr><tr><td><code>reliability/raw/injuries/2024/reg10_chunk1.md</code></td><td>report-chunk</td><td><a href="https://www.nfl.com/injuries/league/2024/reg10">official source</a></td><td>2026-11-17T23:03Z</td><td><code>9c3e1c51b047a9ac…</code></td></tr><tr><td><code>reliability/raw/injuries/2025/reg10_chunk0.md</code></td><td>report-chunk</td><td><a href="https://www.nfl.com/injuries/league/2025/reg10">official source</a></td><td>2026-11-17T23:02Z</td><td><code>e1832f9f209b1036…</code></td></tr><tr><td><code>reliability/raw/injuries/2025/reg10_chunk1.md</code></td><td>report-chunk</td><td><a href="https://www.nfl.com/injuries/league/2025/reg10">official source</a></td><td>2026-11-17T23:02Z</td><td><code>4774fb1fd40c6dca…</code></td></tr></tbody></table>
+<h2>Report pages archived</h2>
+<table><thead><tr><th>Season</th><th>Week</th><th>Official page</th><th>Chunks stored</th><th>Designated rows found</th></tr></thead><tbody>
+<tr><td>2023</td><td>10</td><td><a href="https://www.nfl.com/injuries/league/2023/reg10">nfl.com injury report</a></td><td>0–1 (of 7)</td><td class="num">62</td></tr><tr><td>2024</td><td>10</td><td><a href="https://www.nfl.com/injuries/league/2024/reg10">nfl.com injury report</a></td><td>0–1 (of 9)</td><td class="num">42</td></tr><tr><td>2025</td><td>10</td><td><a href="https://www.nfl.com/injuries/league/2025/reg10">nfl.com injury report</a></td><td>0–1 (of 8)</td><td class="num">40</td></tr></tbody></table>
+<p class="mut">Uncovered increment (flagged, not blocking): full-week chunks for each season, and 2026
+Week 10 once its re-capture lands.</p>
+
+</main>
+<footer>Every table row on this module links to its official source or is explicitly flagged.
+Rates are descriptive measurements of the sample described on the Methods page — not a model input, not advice.</footer>
+</body></html>

@@ -468,3 +468,37 @@ python3 scripts/verify_readiness.py    # links, sourcing, determinism, controls 
 Everything the module publishes is either linked to an official source, a provenance
 link, or an explicit UNVERIFIED/BLOCKED marker. No market price, inactive list, snap
 count or venue is invented; those stay blocked with the number that would clear them.
+
+## Past-season injury archive and designation reliability (`reliability/`, 2026-11-17)
+
+Session `arena/73e6752d-x3` closed two gap-register rows that had no coverage anywhere in the
+repository: **Q43** (archive weekly injury reports for past seasons) and **Q44/Q45** (score
+injury-designation reliability — join designations to the official inactive lists and measure the
+play rate per designation with confidence intervals).
+
+- `reliability/raw/injuries/<season>/reg10_chunk*.md` - verbatim captures of the official Week-10
+  report for 2023, 2024 and 2025 (chunks 0-1, the sampled games' rows complete), sealed with sha256
+  in `reliability/manifest.csv` with source URL and fetch clock.
+- `reliability/raw/games/<season>/*.md` - per-game evidence from the official Game Book: centre
+  facts, the Not Active / Did Not Play sections verbatim, and the Playtime Percentage rows used by
+  the join, each with its source URL.
+- `reliability/data/*.csv` - `designations.csv` (144 designated rows), `join.csv` (per-player
+  outcome with evidence and reasons for every unresolved row), `rates.csv` (play and inactive rate
+  per designation with Wilson 95% intervals and n), `games.csv`, `row_flags.csv`.
+- Pages: `reliability/index.html` (overview, suggestions, questions/answers), `archive.html`,
+  `reliability.html`, `join.html`, `flagged.html`, `sources.html`, `methods.html`.
+
+Pilot headline (sample descriptive, Wilson 95% CI): Questionable played 54/79 = 68% [57-78];
+Out played 4/53 = 7.5% [3.0-17.9] with every played row published as a flagged discrepancy;
+Doubtful played 1/10 = 10% [1.8-40.4]. Rows that the captured evidence cannot settle are
+`unresolved` and excluded from rates - never guessed.
+
+Rebuild and gate (offline, deterministic):
+
+```bash
+python3 scripts/reliability_build.py && python3 scripts/reliability_verify.py
+```
+
+Rules: captures never change once sealed; a name match needs initial + surname + position family;
+games whose Game Book render drops the Not Active labels are excluded from the inactive rate
+rather than parsed by guess; every join row carries links to its official report page and Game Book.

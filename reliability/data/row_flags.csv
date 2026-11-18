@@ -1,0 +1,26 @@
+id,kind,title,detail,source
+R001,row,"2023 panthers-at-bears: Josh Blackwell (Bears, Questionable)",near-miss playtime rows; UNRESOLVED,https://static.www.nfl.com/image/upload/v1704923034/gamecenter/cbac56ac-f053-11ed-b4a7-bab79e4492fa.pdf
+R002,row,"2023 colts-at-patriots: Jack Jones (Patriots, Questionable)","duplicate key resolved by row count: 2 report rows, 3 playtime rows",https://static.www.nfl.com/image/upload/v1699894876/gamecenter/cbac6844-f053-11ed-b4a7-bab79e4492fa.pdf
+R003,row,"2023 colts-at-patriots: Jonathan Jones (Patriots, Questionable)","duplicate key resolved by row count: 2 report rows, 3 playtime rows",https://static.www.nfl.com/image/upload/v1699894876/gamecenter/cbac6844-f053-11ed-b4a7-bab79e4492fa.pdf
+R004,row,"2023 49ers-at-jaguars: Demetrius Flannigan-Fowles (49ers, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1704923037/gamecenter/cbac8368-f053-11ed-b4a7-bab79e4492fa.pdf
+R005,row,"2023 titans-at-buccaneers: Carlton Davis III (Buccaneers, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1704923039/gamecenter/cbac9b0b-f053-11ed-b4a7-bab79e4492fa.pdf
+R006,row,"2023 titans-at-buccaneers: Ryan Tannehill (Titans, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1704923039/gamecenter/cbac9b0b-f053-11ed-b4a7-bab79e4492fa.pdf
+R007,row,"2024 bengals-at-ravens: Orlando Brown (Bengals, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731065430/gamecenter/ae9d1561-1312-11ef-afd1-646009f18b2e.pdf
+R008,row,"2024 bengals-at-ravens: Kyle Hamilton (Ravens, Out)",OUT->PLAYED discrepancy,https://static.www.nfl.com/image/upload/v1731065430/gamecenter/ae9d1561-1312-11ef-afd1-646009f18b2e.pdf
+R009,row,"2024 bengals-at-ravens: Rasheen Ali (Ravens, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731065430/gamecenter/ae9d1561-1312-11ef-afd1-646009f18b2e.pdf
+R010,row,"2024 giants-at-panthers: Darius Muasau (Giants, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf
+R011,row,"2024 giants-at-panthers: Jason Pinnock (Giants, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf
+R012,row,"2024 giants-at-panthers: DJ Johnson (Panthers, Out)",OUT->PLAYED discrepancy,https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf
+R013,row,"2024 giants-at-panthers: Ian Thomas (Panthers, Out)",OUT->PLAYED discrepancy,https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf
+R014,row,"2024 giants-at-panthers: Jonathon Brooks (Panthers, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf
+R015,row,"2024 giants-at-panthers: Miles Sanders (Panthers, Out)",OUT->PLAYED discrepancy,https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf
+R016,row,"2024 giants-at-panthers: Tommy Tremble (Panthers, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731324632/gamecenter/ae9d1ae1-1312-11ef-afd1-646009f18b2e.pdf
+R017,row,"2024 bills-at-colts: Amari Cooper (Bills, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731324634/gamecenter/ae9d22f8-1312-11ef-afd1-646009f18b2e.pdf
+R018,row,"2024 bills-at-colts: Reggie Gilliam (Bills, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1731324634/gamecenter/ae9d22f8-1312-11ef-afd1-646009f18b2e.pdf
+R019,row,"2025 saints-at-panthers: Brycen Tremayne (Panthers, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1762772747/gamecenter/f7b52798-311e-11f0-b670-ae1250fadad1.pdf
+R020,row,"2025 saints-at-panthers: Jack Stoll (Saints, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1762772747/gamecenter/f7b52798-311e-11f0-b670-ae1250fadad1.pdf
+R021,row,"2025 bills-at-dolphins: Christian Benford (Bills, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1762772748/gamecenter/f7d4b0eb-311e-11f0-b670-ae1250fadad1.pdf
+R022,row,"2025 bills-at-dolphins: Josh Palmer (Bills, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1762772748/gamecenter/f7d4b0eb-311e-11f0-b670-ae1250fadad1.pdf
+R023,row,"2025 bills-at-dolphins: Ashtyn Davis (Dolphins, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1762772748/gamecenter/f7d4b0eb-311e-11f0-b670-ae1250fadad1.pdf
+R024,row,"2025 bills-at-dolphins: Chop Robinson (Dolphins, Doubtful)",ambiguous Not Active match flagged for human review,https://static.www.nfl.com/image/upload/v1762772748/gamecenter/f7d4b0eb-311e-11f0-b670-ae1250fadad1.pdf
+R025,row,"2025 bills-at-dolphins: Julian Hill (Dolphins, Questionable)",Questionable player inactive,https://static.www.nfl.com/image/upload/v1762772748/gamecenter/f7d4b0eb-311e-11f0-b670-ae1250fadad1.pdf

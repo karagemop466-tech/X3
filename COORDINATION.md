@@ -3511,6 +3511,50 @@ Not claimed here (already done or blocked by data, not by code): the Week-11 inj
 - The root landing `index.html` carries its own readiness table (rows 73–126) rather than the generated paste block `decision/landing-block.html`; the two are not automatically synchronised.
 - Week-11 official injury report: not yet published (the Wednesday 2026-11-18 report is after this session's date, 2026-11-17). No new injury rows were added.
 
+---
+
+## Session `arena/73e6752d-x3` — past-season injury archive + designation reliability (CLAIM, 2026-11-17)
+
+Branch `arena/73e6752d-x3` (platform-assigned; the brief's `session-<id>/<task>` naming yields to the platform rule, same as every prior session). Base: `main` @ `e749d7b` (PR #92 merged). All work stays on this branch.
+
+### Why this session starts here
+
+The round2 gap register (R2-04, suggestion R2-S6) records brief items with **no first-class coverage anywhere** in the repository:
+
+- **Q43** — archive weekly injury reports for past seasons ("only way to test whether designations change outcomes").
+- **Q44 / Q45** — score injury-designation reliability / calibrate "Questionable" empirically: join designations to the official inactive lists and measure the play rate per designation with confidence intervals.
+
+`agency/data/out/availability.json` states the blocker verbatim: *"A designation->play-rate table needs the official inactive list for every game. Two official game books were read this session (4 clubs). That supports 4 clubs, not 32, so no play rate is published."* No other session has claimed `reliability/**` (checked `origin/main` plus the eight most recently pushed branches on 2026-11-17). This session fills exactly that gap, from official nfl.com sources only.
+
+### Feasibility probes performed before claiming (2026-11-17, page-fetch tool)
+
+| Probe | Result |
+|---|---|
+| `https://www.nfl.com/injuries/league/2026/reg10` | loads (8 chunks); Week-10 designations readable |
+| `https://www.nfl.com/injuries/league/2025/reg10` | loads (8 chunks); past-season designations readable |
+| `https://www.nfl.com/games/raiders-at-broncos-2025-reg-10` | loads (1 chunk); contains the official Game Book PDF link |
+| Game Book PDF `…/f7b51f32-311e-11f0-b670-ae1250fadad1.pdf` chunk 0 | official **Not Active** lists present for both clubs |
+| same PDF final chunk | official **Playtime Percentage** table present (snap counts by phase) |
+| shell `curl` to nfl.com / static.www.nfl.com | blocked (000); all captures go through the page-fetch tool |
+
+### Task board (arena/73e6752d-x3)
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|-----------|
+| W00 | Read the board; measure baseline gates (`audit_all` PASS, `verify_decision` PASS on `e749d7b`); probe official-source reachability | done | arena/73e6752d-x3 | this section |
+| W01 | Q43: archive official past-season weekly injury reports (2023/2024/2025 reg10, plus 2026 reg10 spot-check) as dated captures with sha256 | in progress | arena/73e6752d-x3 | `reliability/raw/**`, `reliability/manifest.csv` (NEW) |
+| W02 | Q44/Q45: join designations → official Game Book "Not Active" + "Playtime Percentage"; publish active rate and played rate per designation with Wilson 95% CI and n | in progress | arena/73e6752d-x3 | `reliability/data/*.csv` (NEW) |
+| W03 | Module site pages (landing + archive + reliability + flagged + sources), every table row sourced or flagged | in progress | arena/73e6752d-x3 | `reliability/*.html` (NEW) |
+| W04 | Gate `scripts/reliability_verify.py`; re-run repo-wide gates; log integration request for landing nav | in progress | arena/73e6752d-x3 | `scripts/reliability_verify.py` (NEW), this log |
+| W05 | PR → merge → Pages deploy → record PR link and result | in progress | arena/73e6752d-x3 | `COORDINATION.md`, `README.md` (append-only) |
+
+**Reads, never writes:** every other tree (`hub/`, `x3/`, `agency/`, `decision/`, `readiness/`, `signals/`, `round2/`, `docs/`, `dashboard/`, `tools/*`, root `index.html`, `data/**` other than nothing — this session adds data only under `reliability/`). `COORDINATION.md` and `README.md` are append-only for this session.
+
+**Sampling design, disclosed before capture:** Week 10 of seasons 2023, 2024, 2025, 2026; the **first four games as listed on the official report page** for that week (a convenience sample — Thursday plus the early-Sunday window — explicitly NOT a random sample); each sampled game's designation rows joined to that game's own official Game Book. Pooled rates are published with per-season n. Any game whose Game Book cannot be fetched is dropped and listed on the Flagged page — never guessed, never filled in. The join key is surname + first initial with both spellings published on every joined row (the repo's standing rule, `x3/data/flags.csv` F-15).
+
+### Integration requests (logged; files NOT edited)
+
+- **To the landing/nav owner (`tools/build_hub.py` / generated root `index.html`):** please add one nav row pointing at `reliability/` (past-season injury archive + designation reliability), and surface this session's flagged rows on the root Flagged page if they are not already there. This session does not edit the shared landing generator or the shared flagged page, per the board's shared-output rule.
 ### Deploy failure found after PR #92 merged, and its fix (arena/7375a4eb-x3)
 
 - **What failed:** the Pages workflow run `44193386680` on `main` @ `e749d7b` (the merge of PR #92) stopped at the step "Check hub (canonical decision desk) rebuilds from data/hub and every row is sourced". The step rebuilds `index.html` with `tools/build_hub.py` and fails if it differs from the committed file. The deploy was skipped and the live site was **not** updated by that run; the previously deployed build (from `b7d4142`) is still what GitHub Pages serves.
@@ -3892,3 +3936,41 @@ corrected content re-verified on the live URLs.
    every staking score. Nothing else can route around it.
 3. SG-09 (consolidate the trees) is proposed, not implemented. No other session's pages were
    deleted or edited by this session.
+
+### W01-W04 completion log (arena/73e6752d-x3, 2026-11-18T00:2xZ)
+
+| ID | Status | Notes |
+|----|--------|-------|
+| W00 | done | baseline gates measured on `e749d7b`; official-source probes recorded in the claim |
+| W01 | done | 6 report chunk captures (2023/2024/2025 reg10) + 12 Game Book evidence files, sha256-sealed in `reliability/manifest.csv` (18 files) |
+| W02 | done | `reliability/data/designations.csv` (144 rows) · `join.csv` (144 rows) · `rates.csv` (6 rate rows, Wilson 95% CI, per-season n) · `games.csv` · `row_flags.csv` |
+| W03 | done | 7 pages under `reliability/` (overview + suggestions + Q&A, archive, reliability, player join, Flagged for Review, sources, methods); every join/rate row links its official report page and Game Book |
+| W04 | done | `scripts/reliability_build.py` (deterministic) + `scripts/reliability_verify.py` (6 checks: determinism, completeness, evidence tokens, rate arithmetic, manifest hashes, page consistency) |
+
+**Gate results at completion (all exit 0):** `reliability_verify` · `audit_all` (294 pages,
+9,056 source rows) · `verify_integration` (reliability: 7 pages / 265 rows / 247 sourced-or-flagged)
+· `verify_decision` (deterministic after its builder re-counted trees to 22) · `verify_round2` ·
+`agency_verify` · `verify_signals` · `x3_desk_verify`.
+
+**Pilot results (sample descriptive; denominators exclude unresolved rows):**
+
+| Designation | Played (Wilson 95% CI) | Inactive, rule-A games (Wilson 95% CI) |
+|---|---|---|
+| Out | 4 / 53 = 7.5% [3.0-17.9] | 29 / 33 = 87.9% [72.7-95.2] |
+| Questionable | 54 / 79 = 68.4% [57.4-77.6] | 17 / 56 = 30.4% [19.9-43.3] |
+| Doubtful | 1 / 10 = 10.0% [1.8-40.4] | 8 / 9 = 88.9% [56.5-98.0] |
+
+**Sources (official only):** report pages `https://www.nfl.com/injuries/league/<season>/reg10`
+(seasons 2023-2025); per-game centre pages and Game Book PDFs on `static.www.nfl.com` — all 24 URLs
+listed in `reliability/sources.html` and `reliability/manifest.csv`.
+
+**Irregularities recorded (published on `reliability/flagged.html`, none reconciled by inference):**
+- 4 measured **Out→played** discrepancies (Kyle Hamilton 42 snaps; DJ Johnson 17; Miles Sanders 6 + 2 carries; Ian Thomas 13) — each with its Game Book link; report page exposes no last-updated timestamp (existing Q-04), so timing vs kickoff is unknown.
+- 3 Game Books drop the Did Not Play / Not Active labels (IND@NE 2023, DEN@KC 2024, ATL@IND 2025) → those games are excluded from the inactive rate (rule B), play rate only.
+- BUF@MIA render files the Dolphins' substitutions under a "Did Not Play" label (proved by playtime + box score); dropped names inside Not Active lists (SF@JAX, IND@NE, DEN@KC, ATL@IND); a missing playtime band at a tool chunk boundary (NYG@CAR → A.Thielen unresolved); garbled Blackwell rows (CAR@CHI → unresolved); ambiguous "LB 44 C.Robinson" (→ excluded from inactive rate); duplicate J. Jones keys resolved by row count and flagged.
+- 11 rows remain `unresolved` in total (6 inactive-unknown Out rows, 2 play-unknown, 1 ambiguous, …); every one carries its reason in `join.csv`.
+
+**Handoffs / integration requests (unchanged from the claim):**
+- Landing/nav owner: add one row for `reliability/` to `tools/build_hub.py` and surface this module's flagged rows on the root Flagged page. This session did not edit shared landing files.
+- `round2`/`decision` owners: R2-S6 (suggestion) can move from "pilot numbers exist" to "threshold decision" — the n-per-row table is on `reliability/reliability.html`; the owner still owes the n threshold before any model use (pre-registered in R2-S6).
+- Next increments (suggestions on `reliability/index.html`): full-week archive chunks; 2026 reg10 join after PR #97/#79 land; Friday+Saturday double-capture to bracket designation timing; full playtime capture for a no-designation baseline.

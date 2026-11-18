@@ -141,9 +141,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 301,
+      "rows": 302,
       "flagged_rows": 125,
-      "refs": 483,
+      "refs": 485,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -297,6 +297,22 @@
         "readiness/index.html: RD-01 Decision-readiness table on the landing page decision-readiness.html + the same table on the root landing 74 requi"
       ]
     },
+    "reliability": {
+      "pages": 7,
+      "rows": 265,
+      "flagged_rows": 247,
+      "refs": 464,
+      "unsourced_examples": [
+        "reliability/archive.html: File Kind Source Fetched (UTC) sha256",
+        "reliability/archive.html: Season Week Official page Chunks stored Designated rows found",
+        "reliability/flagged.html: # Kind Item Detail Source",
+        "reliability/index.html: Designation Played n Play rate Wilson 95% CI Inactive n Inactive rate Wilson 95% CI Row sources",
+        "reliability/index.html: Question What we know (this sample) What is still missing",
+        "reliability/index.html: What does Questionable mean?  Play rate 54 /\n79 = 68%\n(Wilson 95% CI 57\u201378%);\ninactive rate 17 /\n56.  Enough n to collap",
+        "reliability/index.html: Is Doubtful different from Out?  Pilot: 1 / 10\nplayed \u2014 directionally similar to Out, n far too small to separate them. ",
+        "reliability/index.html: Can these rates feed a model yet?  No. This module is descriptive and pre-registered as measurement only.  Owner-approve"
+      ]
+    },
     "round2": {
       "pages": 7,
       "rows": 247,
@@ -376,9 +392,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 341,
-  "rows_total": 14586,
-  "rows_flagged_or_sourced": 12102,
-  "internal_refs": 9027,
+  "pages_total": 348,
+  "rows_total": 14852,
+  "rows_flagged_or_sourced": 12349,
+  "internal_refs": 9102,
   "problems": []
 }

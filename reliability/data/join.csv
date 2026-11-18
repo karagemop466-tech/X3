@@ -1,0 +1,145 @@
+season,game_slug,team,report_name,gb_name_matched,position,designation,played,played_evidence,inactive,inactive_evidence,na_rule,flags,evidence_file
+2023,49ers-at-jaguars,49ers,Aaron Banks,,G,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,49ers,Darrell Luter Jr.,,CB,Questionable,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,49ers,Demetrius Flannigan-Fowles,,LB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,49ers,Drake Jackson,,DE,Out,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,49ers,Javon Hargrave,J Hargrave,DT,Questionable,1,playtime row: J Hargrave,no,has playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,49ers,Rob Beal Jr.,,DE,Questionable,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,49ers,Samuel Womack,,CB,Questionable,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,49ers,Trent Williams,T Williams,T,Questionable,1,playtime row: T Williams,no,has playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,Jaguars,Andre Cisco,A Cisco,S,Questionable,1,playtime row: A Cisco,no,has playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,Jaguars,Daniel Thomas,D Thomas,S,Questionable,1,playtime row: D Thomas,no,has playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,Jaguars,Ezra Cleveland,E Cleveland,G,Questionable,1,playtime row: E Cleveland,no,has playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,Jaguars,Gregory Junior,G Junior,CB,Questionable,1,playtime row: G Junior,no,has playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,Jaguars,Tyson Campbell,T Campbell,CB,Questionable,1,playtime row: T Campbell,no,has playtime row,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,49ers-at-jaguars,Jaguars,Zay Jones,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/49ers-at-jaguars.md
+2023,colts-at-patriots,Colts,Alec Pierce,A Pierce,WR,Questionable,1,playtime row: A Pierce,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Colts,Andrew Ogletree,,TE,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Colts,Josh Downs,J Downs,WR,Questionable,1,playtime row: J Downs,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Colts,Julius Brents,,CB,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Colts,Zaire Franklin,Z Franklin,LB,Questionable,1,playtime row: Z Franklin,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Christian Barmore,C Barmore,DT,Questionable,1,playtime row: C Barmore,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,DeMario Douglas,D Douglas,WR,Questionable,1,playtime row: D Douglas,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,DeVante Parker,,WR,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Deatrich Wise,D Wise,DE,Questionable,1,playtime row: D Wise,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,J.C. Jackson,,CB,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Ja'Whaun Bentley,,LB,Questionable,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Jack Jones,J Jones; J Jones; J Jones,CB,Questionable,1,playtime row: J Jones; J Jones; J Jones,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,"duplicate key resolved by row count: 2 report rows, 3 playtime rows",reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Jonathan Jones,J Jones; J Jones; J Jones,CB,Questionable,1,playtime row: J Jones; J Jones; J Jones,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,"duplicate key resolved by row count: 2 report rows, 3 playtime rows",reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Matthew Slater,M Slater,WR,Questionable,1,playtime row: M Slater,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Myles Bryant,M Bryant,CB,Questionable,1,playtime row: M Bryant,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Trent Brown,,T,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,colts-at-patriots,Patriots,Vederian Lowe,V Lowe,T,Questionable,1,playtime row: V Lowe,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2023/colts-at-patriots.md
+2023,panthers-at-bears,Bears,Equanimeous St. Brown,E St. Brown,WR,Questionable,1,playtime row: E St. Brown,no,has playtime row,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Bears,Josh Blackwell,,CB,Questionable,unresolved,playtime rows share this surname+position but none matches the report initial (render garble or different player),unresolved,not in Not Active set and no playtime row,A,near-miss playtime rows; UNRESOLVED,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Bears,Justin Fields,,QB,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Bears,Khalil Herbert,,RB,Questionable,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Bears,Khari Blasingame,,FB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Bears,Nate Davis,,G,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Bears,Terell Smith,,CB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Bears,Tremaine Edmunds,,LB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,Brian Burns,,LB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,C.J. Henderson,,CB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,DJ Chark,,WR,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,Laviska Shenault Jr.,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,Marquis Haynes,M Haynes,LB,Questionable,1,playtime row: M Haynes,no,has playtime row,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,Stephen Sullivan,,TE,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,Vonn Bell,V Bell,S,Questionable,1,playtime row: V Bell,no,has playtime row,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,panthers-at-bears,Panthers,Xavier Woods,X Woods,S,Questionable,1,playtime row: X Woods,no,has playtime row,A,,reliability/raw/games/2023/panthers-at-bears.md
+2023,titans-at-buccaneers,Buccaneers,Calijah Kancey,C Kancey,DE,Questionable,1,playtime row: C Kancey,no,has playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Buccaneers,Carlton Davis III,,CB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Buccaneers,Jamel Dean,J Dean,CB,Questionable,1,playtime row: J Dean,no,has playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Buccaneers,Josh Hayes,,CB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Buccaneers,Logan Hall,L Hall,DE,Questionable,1,playtime row: L Hall,no,has playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Buccaneers,Matt Feiler,,G,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Buccaneers,Trey Palmer,T Palmer,WR,Questionable,1,playtime row: T Palmer,no,has playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Anthony Kendall,A Kendall,CB,Questionable,1,playtime row: A Kendall,no,has playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Daniel Brunskill,,G,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Mike Brown,,S,Out,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Nicholas Petit-Frere,,T,Out,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Roger McCreary,R McCreary,CB,Questionable,1,playtime row: R McCreary,no,has playtime row,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Ryan Tannehill,,QB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Sean Murphy-Bunting,,CB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2023,titans-at-buccaneers,Titans,Treylon Burks,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2023/titans-at-buccaneers.md
+2024,bengals-at-ravens,Bengals,B.J. Hill,B.Hill,DT,Questionable,1,playtime row: B.Hill,no,has playtime row,A,,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Bengals,Charlie Jones,,WR,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Bengals,Orlando Brown,,T,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Bengals,Tee Higgins,,WR,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Ravens,Brent Urban,,DE,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Ravens,Isaiah Likely,,TE,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Ravens,Jalyn Armour-Davis,,CB,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Ravens,Keaton Mitchell,K.Mitchell,RB,Questionable,1,playtime row: K.Mitchell,no,has playtime row,A,,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Ravens,Kyle Hamilton,K.Hamilton,S,Out,1,playtime row: K.Hamilton,no,has playtime row,A,OUT->PLAYED discrepancy,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bengals-at-ravens,Ravens,Rasheen Ali,,RB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/bengals-at-ravens.md
+2024,bills-at-colts,Bills,Amari Cooper,,WR,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/bills-at-colts.md
+2024,bills-at-colts,Bills,Baylon Spector,B.Spector,LB,Questionable,1,playtime row: B.Spector,no,has playtime row,A,,reliability/raw/games/2024/bills-at-colts.md
+2024,bills-at-colts,Bills,Dalton Kincaid,D.Kincaid,TE,Doubtful,1,playtime row: D.Kincaid,no,has playtime row,A,,reliability/raw/games/2024/bills-at-colts.md
+2024,bills-at-colts,Bills,Keon Coleman,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/bills-at-colts.md
+2024,bills-at-colts,Bills,Reggie Gilliam,,FB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/bills-at-colts.md
+2024,bills-at-colts,Bills,Spencer Brown,S.Brown,T,Questionable,1,playtime row: S.Brown,no,has playtime row,A,,reliability/raw/games/2024/bills-at-colts.md
+2024,bills-at-colts,Colts,Bernhard Raimann,B.Raimann,T,Questionable,1,playtime row: B.Raimann,no,has playtime row,A,,reliability/raw/games/2024/bills-at-colts.md
+2024,bills-at-colts,Colts,Michael Pittman,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/bills-at-colts.md
+2024,broncos-at-chiefs,Broncos,Delarrin Turner-Yell,,S,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2024/broncos-at-chiefs.md
+2024,broncos-at-chiefs,Broncos,Drew Sanders,,LB,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2024/broncos-at-chiefs.md
+2024,broncos-at-chiefs,Broncos,Luke Wattenberg,L.Wattenberg,C,Questionable,1,playtime row: L.Wattenberg,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2024/broncos-at-chiefs.md
+2024,broncos-at-chiefs,Chiefs,JuJu Smith-Schuster,,WR,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2024/broncos-at-chiefs.md
+2024,broncos-at-chiefs,Chiefs,Tershawn Wharton,T.Wharton,DT,Questionable,1,playtime row: T.Wharton,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2024/broncos-at-chiefs.md
+2024,broncos-at-chiefs,Chiefs,Wanya Morris,W.Morris,T,Questionable,1,playtime row: W.Morris,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2024/broncos-at-chiefs.md
+2024,giants-at-panthers,Giants,Bryce Ford-Wheaton,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Giants,Darius Muasau,,LB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Giants,Darius Slayton,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Giants,Graham Gano,G.Gano,K,Questionable,1,playtime row: G.Gano,no,has playtime row,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Giants,Jason Pinnock,,S,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Giants,Matthew Adams,M.Adams,LB,Questionable,1,playtime row: M.Adams,no,has playtime row,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Adam Thielen,,WR,Out,unresolved,playtime band missing in captured chunks; absence is not evidence,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,DJ Johnson,D.J.Johnson,LB,Out,1,playtime row: D.J.Johnson,no,has playtime row,A,OUT->PLAYED discrepancy,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,DJ Wonnum,D.Wonnum,LB,Questionable,1,playtime row: D.Wonnum,no,has playtime row,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Ian Thomas,I.Thomas,TE,Out,1,playtime row: I.Thomas,no,has playtime row,A,OUT->PLAYED discrepancy,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Ikem Ekwonu,,T,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Jadeveon Clowney,J.Clowney,LB,Questionable,1,playtime row: J.Clowney,no,has playtime row,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Jammie Robinson,,S,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Jonathon Brooks,,RB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Jordan Fuller,J.Fuller,S,Questionable,1,playtime row: J.Fuller,no,has playtime row,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Lonnie Johnson,L.Johnson,S,Questionable,1,playtime row: L.Johnson,no,has playtime row,A,,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Miles Sanders,M.Sanders,RB,Out,1,playtime row: M.Sanders,no,has playtime row,A,OUT->PLAYED discrepancy,reliability/raw/games/2024/giants-at-panthers.md
+2024,giants-at-panthers,Panthers,Tommy Tremble,,TE,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2024/giants-at-panthers.md
+2025,bills-at-dolphins,Bills,A.J. Epenesa,,DE,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Bills,Christian Benford,,CB,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Bills,DaQuan Jones,D.Jones,DT,Questionable,1,playtime row: D.Jones,no,has playtime row,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Bills,Josh Palmer,,WR,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Bills,Shaq Thompson,,LB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Bills,Taron Johnson,,CB,Questionable,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Dolphins,Ashtyn Davis,,S,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Dolphins,Chop Robinson,,LB,Doubtful,0,no playtime row in captured section,unresolved,Not Active entry cannot be tied to this report row with confidence,A,ambiguous Not Active match flagged for human review,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Dolphins,Dee Eskridge,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Dolphins,Ifeatu Melifonwu,I.Melifonwu,S,Questionable,1,playtime row: I.Melifonwu,no,has playtime row,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Dolphins,Julian Hill,,TE,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Dolphins,Ollie Gordon II,O.Gordon,RB,Questionable,1,playtime row: O.Gordon,no,has playtime row,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,bills-at-dolphins,Dolphins,Rasul Douglas,,CB,Doubtful,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/bills-at-dolphins.md
+2025,falcons-at-colts,Colts,Anthony Gould,,WR,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Colts,DeForest Buckner,,DT,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Colts,Samson Ebukam,,DE,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Colts,Tyquan Lewis,,DE,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Falcons,Chris Lindstrom,C.Lindstrom,G,Questionable,1,playtime row: C.Lindstrom,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Falcons,LaCale London,,DT,Questionable,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Falcons,Leonard Floyd,,LB,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Falcons,Matthew Bergeron,,G,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Falcons,Mike Hughes,,CB,Questionable,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,falcons-at-colts,Falcons,Storm Norton,,T,Out,0,no playtime row in captured section,excluded-rule-b,Game Book render drops the Not Active labels; game excluded from inactive rate,B,,reliability/raw/games/2025/falcons-at-colts.md
+2025,raiders-at-broncos,Broncos,Marvin Mims Jr.,,WR,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,raiders-at-broncos,Broncos,Nate Adkins,,TE,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,raiders-at-broncos,Broncos,P.J. Locke,J.Locke,S,Questionable,1,playtime row: J.Locke,no,has playtime row,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,raiders-at-broncos,Broncos,Pat Surtain II,,CB,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,raiders-at-broncos,Raiders,Adam Butler,A.Butler,DT,Questionable,1,playtime row: A.Butler,no,has playtime row,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,raiders-at-broncos,Raiders,Aidan O'Connell,,QB,Out,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,raiders-at-broncos,Raiders,Isaiah Pola-Mao,I.Pola-Mao,S,Questionable,1,playtime row: I.Pola-Mao,no,has playtime row,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,raiders-at-broncos,Raiders,Lonnie Johnson,L.Johnson,S,Questionable,1,playtime row: L.Johnson,no,has playtime row,A,,reliability/raw/games/2025/raiders-at-broncos.md
+2025,saints-at-panthers,Panthers,Brycen Tremayne,,WR,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Panthers,Chandler Zavala,,G,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Panthers,Tetairoa McMillan,T.McMillan,WR,Questionable,1,playtime row: T.McMillan,no,has playtime row,A,,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Saints,Alvin Kamara,A.Kamara,RB,Questionable,1,playtime row: A.Kamara,no,has playtime row,A,,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Saints,Barry Wesley,,T,Out,0,no playtime row in captured section,unresolved,not in Not Active set and no playtime row,A,,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Saints,Bryan Bresee,B.Bresee,DT,Questionable,1,playtime row: B.Bresee,no,has playtime row,A,,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Saints,Jack Stoll,,TE,Questionable,0,inactive per Not Active section,yes,in parsed Not Active set,A,Questionable player inactive,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Saints,Jonah Williams,J.Williams,DE,Questionable,1,playtime row: J.Williams,no,has playtime row,A,,reliability/raw/games/2025/saints-at-panthers.md
+2025,saints-at-panthers,Saints,Taliese Fuaga,,T,Out,0,inactive per Not Active section,yes,in parsed Not Active set,A,,reliability/raw/games/2025/saints-at-panthers.md
