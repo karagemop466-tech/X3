@@ -249,6 +249,22 @@
         "pages/sources.html:  SRC-03  No official NFL betting-lines source identified  Not found  Originating game lines / odds  No "
       ]
     },
+    "reliability": {
+      "pages": 7,
+      "rows": 265,
+      "flagged_rows": 247,
+      "refs": 464,
+      "unsourced_examples": [
+        "reliability/archive.html: File Kind Source Fetched (UTC) sha256",
+        "reliability/archive.html: Season Week Official page Chunks stored Designated rows found",
+        "reliability/flagged.html: # Kind Item Detail Source",
+        "reliability/index.html: Designation Played n Play rate Wilson 95% CI Inactive n Inactive rate Wilson 95% CI Row sources",
+        "reliability/index.html: Question What we know (this sample) What is still missing",
+        "reliability/index.html: What does Questionable mean?  Play rate 54 /\n79 = 68%\n(Wilson 95% CI 57\u201378%);\ninactive rate 17 /\n56.  Enough n to collap",
+        "reliability/index.html: Is Doubtful different from Out?  Pilot: 1 / 10\nplayed \u2014 directionally similar to Out, n far too small to separate them. ",
+        "reliability/index.html: Can these rates feed a model yet?  No. This module is descriptive and pre-registered as measurement only.  Owner-approve"
+      ]
+    },
     "round2": {
       "pages": 7,
       "rows": 247,
@@ -328,9 +344,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 287,
-  "rows_total": 12298,
-  "rows_flagged_or_sourced": 10148,
-  "internal_refs": 7411,
+  "pages_total": 294,
+  "rows_total": 12563,
+  "rows_flagged_or_sourced": 10395,
+  "internal_refs": 7484,
   "problems": []
 }

@@ -575,12 +575,15 @@ def write_pages(designations, join_rows, rates, games_rows, flagged, manifest_ro
  <div><b>{n_outplayed}</b><span>Out→played discrepancies (measured, flagged)</span></div>
  <div><b>{n_unres}</b><span>rows left UNRESOLVED (never guessed)</span></div>
 </div>"""
-    rate_table = """<table><thead><tr><th>Designation</th><th class="num">Played n</th><th class="num">Play rate</th><th class="num">Wilson 95% CI</th><th class="num">Inactive n</th><th class="num">Inactive rate</th><th class="num">Wilson 95% CI</th></tr></thead><tbody>"""
+    rate_table = """<table><thead><tr><th>Designation</th><th class="num">Played n</th><th class="num">Play rate</th><th class="num">Wilson 95% CI</th><th class="num">Inactive n</th><th class="num">Inactive rate</th><th class="num">Wilson 95% CI</th><th>Row sources</th></tr></thead><tbody>"""
     for des in ("Out", "Questionable", "Doubtful"):
         pr, ir = rates_by[(des, "play_rate")], rates_by[(des, "inactive_rate")]
         rate_table += (f"<tr><td><b>{des}</b></td>"
                        f'<td class="num">{pr["n"]}</td>' + rate_cell(des, "play_rate") +
-                       f'<td class="num">{ir["n"]}</td>' + rate_cell(des, "inactive_rate") + "</tr>")
+                       f'<td class="num">{ir["n"]}</td>' + rate_cell(des, "inactive_rate") +
+                       '<td><a href="join.html">player rows</a> · '
+                       '<a href="methods.html">method</a> · '
+                       '<a href="https://www.nfl.com/injuries/">official reports</a></td></tr>')
     rate_table += "</tbody></table>"
     body = f"""
 <h2>What this module is</h2>
@@ -624,6 +627,47 @@ and its Monday game was not final at capture time.</li>
 <li>The archive stores report chunks 0–1 of each week (the sampled games' rows are complete within them),
 not the full 7–9 chunks — full-week archive is the next increment.</li>
 </ul></div>
+<h2>Suggestions (review → choose → implement — owner decides)</h2>
+<div class="card"><ol>
+<li><b>Expand the archive to full weeks</b> (chunks 2–9 of each report) so Q43 covers every game, not
+just the sampled window. First step: capture the remaining chunks for 2023–2025 reg10. Cost: storage
+only; no analysis blocked today.</li>
+<li><b>Join 2026 Week 10</b> once its re-capture (PR #79) lands, using the same pre-registered rules.
+First step: re-run this builder with one more season added to <code>GAMES</code>.</li>
+<li><b>Set the n threshold before any model use</b> (R2-S6 already asks for this): the pilot intervals
+are wide; the owner should pick minimum n per designation before a Questionable multiplier is allowed
+anywhere near a signal.</li>
+<li><b>Bracket designation timing</b>: capture the report page twice (Friday and Saturday) so
+Out→played rows can be separated into "designation held" vs "status changed after the page we read".
+First step: schedule two captures next sample week.</li>
+<li><b>Store full playtime sections</b> for sampled games so a no-designation baseline can be computed
+(needed to show the designations actually carry information).</li>
+</ol></div>
+<h2>Questions, information, answers</h2>
+<div class="card"><table>
+<tr><th>Question</th><th>What we know (this sample)</th><th>What is still missing</th></tr>
+<tr><td>What does <b>Questionable</b> mean?</td>
+<td>Play rate {rates_by[('Questionable', 'play_rate')]['events']} /
+{rates_by[('Questionable', 'play_rate')]['n']} = {100 * float(rates_by[('Questionable', 'play_rate')]['rate']):.0f}%
+(Wilson 95% CI {100 * float(rates_by[('Questionable', 'play_rate')]['ci95_low']):.0f}–{100 * float(rates_by[('Questionable', 'play_rate')]['ci95_high']):.0f}%);
+inactive rate {rates_by[('Questionable', 'inactive_rate')]['events']} /
+{rates_by[('Questionable', 'inactive_rate')]['n']}.</td>
+<td>Enough n to collapse the interval; other weeks/seasons; position-level splits.</td></tr>
+<tr><td>Is <b>Out</b> reliable?</td>
+<td>Play rate {rates_by[('Out', 'play_rate')]['events']} / {rates_by[('Out', 'play_rate')]['n']}
+— and every played row is published as a flagged discrepancy with its Game Book link.</td>
+<td>Whether those were post-report status changes (report page has no last-updated timestamp, Q-04).</td></tr>
+<tr><td>Is <b>Doubtful</b> different from Out?</td>
+<td>Pilot: {rates_by[('Doubtful', 'play_rate')]['events']} / {rates_by[('Doubtful', 'play_rate')]['n']}
+played — directionally similar to Out, n far too small to separate them.</td>
+<td>More Doubtful rows (they are rare); pooled multi-season n.</td></tr>
+<tr><td>Can these rates feed a model yet?</td>
+<td>No. This module is descriptive and pre-registered as measurement only.</td>
+<td>Owner-approved n threshold (suggestion 3 above) and the baseline comparison (suggestion 5).</td></tr>
+<tr><td>Is the archive complete?</td>
+<td>Report chunks 0–1 for three seasons, sealed with sha256; sampled-game Game Books stored.</td>
+<td>Full-week chunks; 2026 Week 10; any week other than Week 10.</td></tr>
+</table></div>
 """
     (REL / "index.html").write_text(page("Overview", "index.html", body), encoding="utf-8")
 
@@ -653,14 +697,15 @@ Week 10 once its re-capture lands.</p>
     (REL / "archive.html").write_text(page("Archive", "archive.html", body), encoding="utf-8")
 
     # --- reliability -------------------------------------------------------
-    rt = """<table><thead><tr><th>Designation</th><th>Metric</th><th class="num">Events / n</th><th class="num">Rate</th><th class="num">Wilson 95% CI</th><th class="num">Unresolved excluded</th><th class="num">Rule-B excluded</th><th>Per-season n</th></tr></thead><tbody>"""
+    rt = """<table><thead><tr><th>Designation</th><th>Metric</th><th class="num">Events / n</th><th class="num">Rate</th><th class="num">Wilson 95% CI</th><th class="num">Unresolved excluded</th><th class="num">Rule-B excluded</th><th>Per-season n</th><th>Row sources</th></tr></thead><tbody>"""
     for r in rates:
         rate = f'{100 * float(r["rate"]):.1f}%' if r["n"] else "n/a"
         ci = f'{100 * float(r["ci95_low"]):.1f}–{100 * float(r["ci95_high"]):.1f}%' if r["n"] else "n/a"
         rt += (f'<tr><td>{esc(r["designation"])}</td><td>{esc(r["metric"])}</td>'
                f'<td class="num">{r["events"]} / {r["n"]}</td><td class="num">{rate}</td>'
                f'<td class="num">{ci}</td><td class="num">{r["unresolved_excluded"]}</td>'
-               f'<td class="num">{r["excluded_rule_b"]}</td><td>{esc(r["per_season_n"])}</td></tr>')
+               f'<td class="num">{r["excluded_rule_b"]}</td><td>{esc(r["per_season_n"])}</td>'
+               f'<td><a href="join.html">player rows</a> · <a href="sources.html">sources</a></td></tr>')
     rt += "</tbody></table>"
     games_t = "<table><thead><tr><th>Season</th><th>Game</th><th>Venue (official)</th><th>Not Active rule</th><th>Game Book</th></tr></thead><tbody>"
     for g in games_rows:
@@ -691,17 +736,21 @@ measurement only — no model consumes it in this pass.</li>
     (REL / "reliability.html").write_text(page("Reliability", "reliability.html", body), encoding="utf-8")
 
     # --- join --------------------------------------------------------------
-    jt = """<table><thead><tr><th>Season</th><th>Game</th><th>Team</th><th>Report player</th><th>Pos</th><th>Designation</th><th>Played</th><th>Play evidence</th><th>Inactive</th><th>Inactive evidence</th><th>Flags</th></tr></thead><tbody>"""
+    pdf_by_slug = {g["game_slug"]: g["pdf_url"] for g in games_rows}
+    rep_by_season = {s: REPORT_URL[s] for s in (2023, 2024, 2025)}
+    jt = """<table><thead><tr><th>Season</th><th>Game</th><th>Team</th><th>Report player</th><th>Pos</th><th>Designation</th><th>Played</th><th>Play evidence</th><th>Inactive</th><th>Inactive evidence</th><th>Flags</th><th>Row sources</th></tr></thead><tbody>"""
     for r in join_rows:
         pc = "ok" if r["played"] == "1" else ("bad" if r["played"] == "0" else "mut")
-        ic = {"yes": "bad", "no": "ok"}.get(r["played"] and r["inactive"], "mut")
         ic = "bad" if r["inactive"] == "yes" else ("ok" if r["inactive"] == "no" else "mut")
         row_cls = ' class="flag"' if r["flags"] else ""
+        src = (f'<a href="{esc(rep_by_season[r["season"]])}">report</a> · '
+               f'<a href="{esc(pdf_by_slug[r["game_slug"]])}">Game Book</a> · '
+               f'<code>{esc(r["evidence_file"])}</code>')
         jt += (f'<tr{row_cls}><td class="num">{r["season"]}</td><td>{esc(r["game_slug"])}</td>'
                f'<td>{esc(r["team"])}</td><td>{esc(r["report_name"])}</td><td>{esc(r["position"])}</td>'
                f'<td>{esc(r["designation"])}</td><td class="{pc}">{esc(r["played"])}</td>'
                f'<td>{esc(r["played_evidence"])}</td><td class="{ic}">{esc(r["inactive"])}</td>'
-               f'<td>{esc(r["inactive_evidence"])}</td><td>{esc(r["flags"])}</td></tr>')
+               f'<td>{esc(r["inactive_evidence"])}</td><td>{esc(r["flags"])}</td><td>{src}</td></tr>')
     jt += "</tbody></table>"
     body = f"""
 <h2>Player join — every designated row in the sample</h2>
