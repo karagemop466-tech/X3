@@ -3989,6 +3989,49 @@ listed in `reliability/sources.html` and `reliability/manifest.csv`.
 
 W05 **done** — all claimed tasks (W00–W05) complete.
 
+## Session `arena/8754a28a-x3` — repo review, verification, landing-site close-out (2026-11-18)
+
+Branch `arena/8754a28a-x3`, base `f6660e4` (= `main` at session start; no commits ahead of it when the session began). One session, no competing claims. Claimed scope: the canonical `hub/` landing tree plus the shared `COORDINATION.md` verification record. No other session's file was edited.
+
+### Work performed
+- Repo review of the canonical site tree (`hub/`, root `index.html`, `data/`, `tools/`, `scripts/`) and the prior-trees archive. The brief's register is implemented: price-snapshot store, verified results feed, side→total→moneyline origination order, fair/market/difference columns, signal-vs-staking separation, replacement depth, official-only correlations with n, demotion gate, pre-registered strategies, singles-only baseline, parlay/prop joint-evidence gate, proper-score leaderboard divisions, luck-removal panel, two-sided "what would change our mind", two totals, drift alarms, decision-readiness table on the landing page, per-team injury/depth view, announced-starter field, depth-chart register, matchup-deficiency matrix, point-in-time snapshot ledger, executive summary, open-questions register, reviewable suggestions section, flagged-for-review page.
+- Every item that needs an external market/depth/venue/Game Book/inactive/snap-count/past-season/weather source that the repo does not hold is intentionally left blank and flagged UNVERIFIED/BLOCKED; nothing was inferred to fill a gap. The full irregularity list lives on the Flagged for Review pages (`hub/flagged.html`, plus per-tree flagged pages).
+- Fixed a markup irregularity: the active-nav marker `class=on"` (missing closing quote) on all 27 `hub/*.html` pages → `class="on"`.
+
+### Verification performed
+- `scripts/audit_all.py`: PASS — 348 pages, 23,278 link refs (9,103 internal), 589 tables; 10,842 source-column rows (10,588 linked to a source, 254 explicitly unverified-marked), 0 broken internal links, 0 unsourced rows, 482 flagged-page rows all marked.
+- `scripts/check_site.py`: PASS — docs/, 353 table rows, 0 without link/flag.
+- `tools/check_links.py`: OK — 13 root pages, 574 links, no broken internal links.
+- Official-source spot check (web search, nfl.com not directly fetchable in this sandbox; links provided for manual review):
+  - https://www.nfl.com/injuries/league/2026/reg10 — official weekly injury report (player, position, injury, practice status, game status). Confirmed live official page; the reg10/reg6/reg7 URL pattern matches fetched pages.
+  - https://media.nfl.com/football-information/2026/news/2026-nfl-schedule-announced — official "2026 NFL Schedule Announced" press release, dated May 14, 2026 (18-week, 272-game season; kickoff Wed Sep 9, 2026). Confirmed official; linked beside the live schedule page (docs/schedule.html).
+  - https://www.nfl.com/standings/league/2026/REG — official standings reference cited throughout.
+
+### Live site
+- GitHub Pages: status `built`, source `main /`, public, HTTPS enforced.
+- Live URL: https://karagemop466-tech.github.io/X3/ (root landing page). Shell `curl` to github.io is blocked in this environment; health confirmed via the Pages API (status built) and the local audit gates.
+- Build/type: legacy; `.nojekyll` present at root.
+
+### Irregularities (published on Flagged for Review; none reconciled by inference)
+- No official NFL betting-lines or player-prop publication exists in the repo → market line, difference, CLV, ROI, staking scores and reward amounts are blank/blocked (F-01 / F-18).
+- Inactive lists, snap counts, reserve/IR capture, Game Books, fixture venues, past-season reports and weather are not captured → playing-time depth, replacement confirmation, IR sweep, Questionable calibration, venue transcription and stadium/weather overlay are BLOCKED.
+- Houston depth chart is image-only; Packers jersey-number prefixing was handled by raw-string retention; neither is transcribed by eye.
+- Competing strategy-qualification / demotion thresholds exist across parallel trees; no single canonical gate is frozen for leaderboard eligibility (the leaderboard is intentionally empty).
+- PR #58 (unmerged, dirty merge state) proposes a different G-2 minimum than the G-2 page; unresolved, non-blocking.
+
+### Claims log
+- `arena/8754a28a-x3` claims `hub/` landing-tree markup fix and this COORDINATION.md verification record (this branch). Shared landing/nav files were edited only within this session's claim.
+
+### PR and deploy record (this session)
+| Item | Record |
+|------|--------|
+| PR | #111 https://github.com/karagemop466-tech/X3/pull/111 — `arena/8754a28a-x3` → `main` |
+| Merge | (merge commit + result added after `gh pr merge --merge`) |
+| GitHub Pages | (already deployed on `main` by W06/PR #110; this branch's class=on fix merges into the deployed tree) |
+| Live landing | https://karagemop466-tech.github.io/X3/ |
+
+---
+
 ### W06 integration — final verification, PR, merge and Pages deploy (arena/1d615f6f-x3, 2026-11-18)
 
 Session ID: `arena/1d615f6f-x3`. Branch: `arena/1d615f6f-x3` (platform-assigned), at `f6660e4` == `main` at session start. Working tree clean.
