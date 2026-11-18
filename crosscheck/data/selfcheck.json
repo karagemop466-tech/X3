@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-18T03:33:59+00:00",
+ "generated_at": "2026-11-18T03:42:59+00:00",
  "pages": [
   {
    "page": "executive-summary.html",
@@ -15,7 +15,7 @@
   },
   {
    "page": "index.html",
-   "rows": 32,
+   "rows": 34,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   },
@@ -39,7 +39,7 @@
   },
   {
    "page": "verification.html",
-   "rows": 364,
+   "rows": 382,
    "rows_without_source_or_flag": 0,
    "broken_internal": []
   }

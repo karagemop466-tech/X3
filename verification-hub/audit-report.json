@@ -109,9 +109,9 @@
     },
     "council": {
       "pages": 9,
-      "rows": 145,
-      "flagged_rows": 108,
-      "refs": 276,
+      "rows": 144,
+      "flagged_rows": 107,
+      "refs": 275,
       "unsourced_examples": [
         "council/executive-summary.html:  ID  Requirement  Verdict ",
         "council/executive-summary.html: R1 Price-snapshot store that records opening and closing numbers for every market we originate PARTIAL",
@@ -425,8 +425,8 @@
     }
   },
   "pages_total": 366,
-  "rows_total": 16492,
-  "rows_flagged_or_sourced": 13935,
+  "rows_total": 16491,
+  "rows_flagged_or_sourced": 13934,
   "internal_refs": 9589,
   "problems": []
 }
