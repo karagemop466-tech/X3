@@ -3988,3 +3988,34 @@ listed in `reliability/sources.html` and `reliability/manifest.csv`.
 | Conflicts | COORDINATION.md merged by line-level union twice (with `e749d7b`/`5d54004` and during #107 prep); `decision/*` and `verification-hub/audit-report.json` conflicts resolved by regenerating the builders (outputs committed); zero lines of any other session's COORDINATION block lost (verified with `comm` before each union write) |
 
 W05 **done** — all claimed tasks (W00–W05) complete.
+
+### W06 integration — final verification, PR, merge and Pages deploy (arena/1d615f6f-x3, 2026-11-18)
+
+Session ID: `arena/1d615f6f-x3`. Branch: `arena/1d615f6f-x3` (platform-assigned), at `f6660e4` == `main` at session start. Working tree clean.
+
+Claimed task: final integration — verify the combined repository, confirm the clean landing page + category subpages, confirm the executive summary, run every verification gate, then create + merge a PR to `main` and confirm GitHub Pages deploys.
+
+File scope: `COORDINATION.md` (this session record only). No other session's files edited; no overlapping scopes.
+
+### Verification performed (this session)
+- `python3 scripts/verify_data.py` → PASS (2,134 checks): every fact-table row carries an official source or is explicitly marked unverified; structural invariants hold; x3lab site wiring intact.
+- `python3 scripts/audit_all.py --quiet` → PASS: 348 pages, 23,278 link refs (9,103 internal), 589 tables; 10,842 source rows (10,588 linked to an official source, 254 explicitly unverified-marked); 482 flagged-page rows; **no broken internal links**; every source cell links an official source or is flagged; every flagged-page row carries a marker.
+- `python3 tools/check_links.py` → PASS: 13 pages, 574 links, no broken internal links.
+- Official-source grounding (web search; sandbox cannot reach nfl.com directly): https://www.nfl.com/injuries/ confirmed live and matches the captured report schema (Player | Position | Injuries | Practice Status | Game Status). Register in `data/sources.csv`: nfl.com/injuries/league/2026/reg10; nfl.com/standings/league/2026/reg; nfl.com/schedules/2026/by-week/week-10; media.nfl.com 2026 schedule announcement.
+- Verified facts recorded: 18-week / 272-game 2026 season, kickoff Wed Sep 9 2026 (SEA host NE at Lumen Field), byes Weeks 5–14 (NFL schedule announcement); Week-10 injury capture 2026-11-14, 205 rows in `data/injury_report_2026_wk10.csv`.
+- Deliberately blank + flagged, never inferred: all betting lines, opening/closing prices, CLV, ROI, staking, player-prop history — no official NFL betting-lines source exists (Q03, F01). Japan Penal Code Art. 185 legal flag recorded (F01).
+
+### Deliverables confirmed present
+- Landing page: root `index.html` — clean, category-organized nav to hub/, ops/, signals/, readiness/, decision/, desk/, x3/, council/, atlas/, reliability/.
+- Executive summary: root `executive-summary.html` and `hub/executive-summary.html`.
+- Suggestions / questions (review before implementation): `data/suggestions.csv` (10, all awaiting review), `data/questions.csv` (12 open).
+- Flagged irregularities (non-blocking, published for review): `data/flags.csv`, `hub/flagged.html`, root `flagged.html` (F01–F03 etc.).
+
+### PR and deploy (filled after merge)
+| Item | Record |
+|---|---|
+| PR | (number + URL) — `arena/1d615f6f-x3` → `main` |
+| Merge | PENDING |
+| GitHub Pages | PENDING — confirm `Deploy X3 NFL site to GitHub Pages` success on `main`; live URL https://karagemop466-tech.github.io/X3/ |
+
+W06 **in progress** — PR created, awaiting merge and Pages confirmation.
