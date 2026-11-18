@@ -4062,3 +4062,34 @@ File scope: `COORDINATION.md` (this session record only). No other session's fil
 | GitHub Pages | DEPLOYED — `Deploy X3 NFL site to GitHub Pages` (run 44228521853) success; `pages build and deployment` (run 44228521349) success; live URL https://karagemop466-tech.github.io/X3/ (source: `main` root `/`, built) |
 
 W06 **done** — PR #110 merged to `main`, GitHub Pages deployed successfully. All verification gates passed; flagged irregularities remain published (non-blocking) for review.
+---
+
+## Session `arena/ea04a0c7-x3` — claim (2026-11-18, before any write)
+
+Branch: `arena/ea04a0c7-x3` (platform-assigned; the `session-<id>/<task>` naming in the brief is not
+possible here — the platform requires this session's assigned branch). Base: `main` @ `f6660e44b25fd8cf1f80813e3127d699b5bcd99b` (PR #109 merge).
+
+### Claimed tasks
+
+| ID | Task | Status | Files / scope | Notes |
+|----|------|--------|---------------|-------|
+| E1 | Root landing/nav integration handoff from `arena/73e6752d-x3`: add one row for `reliability/` to the landing generator and surface that module's flagged rows on the root Flagged for Review page | in progress | `tools/build_hub.py`, regenerated `index.html` + `hub/*.html` | Explicitly requested by the reliability session ("Landing/nav owner: add one row for `reliability/` …"). Flag rows are parsed from `reliability/flagged.html` at build time — nothing hand-copied, so no transcription drift. |
+| E2 | Repo-wide gate re-run + freshness sweep on this branch (audit_all, per-tree verifiers, atlas A5b standings-freshness check) and record results | in progress | `COORDINATION.md` only | Atlas handoff item 1: re-read standings freshness via the gate; if A5b fails the standings changed and the atlas owner's data needs re-transcription. |
+| E3 | Live official-source spot verification of landing-page facts (standings / Week-11 schedule) via the page reader; publish any irregularity | in progress | `COORDINATION.md` only | Line-by-line verification sample; anything not confirmed stays as-is and is flagged, never edited by inference. |
+| E4 | PR from this branch to `main`, merge without waiting for approval, confirm Pages deploy, record PR link and result | in progress | `COORDINATION.md` | Follows the standing brief. |
+
+### Not claimed (left to their owners, per the takeover rules)
+
+- **PR #97** (`arena/557302a9-x3`, open 2026-11-17T23:06Z, `verdict/` Week-11 desk) — fresh claim by another session; its scope (`verdict/**`, `verdict.yml`, `README.md`) does not overlap E1–E3. Not merged by this session.
+- Stale open PRs #58, #76, #77, #79, #80, #85 — belong to their recording sessions; left unmerged, as in prior integrations.
+- **RQ-1** (fold `data/closeout/week10_finals.csv` into `data/x3/verified/`) — owner of `data/x3/verified/`; the `git diff --exit-code` gate makes that directory theirs.
+- **Week-11 forecast grading** (`data/closeout/derived/forecasts_w11.csv`) — the Week-11 slate has not kicked off (first snap Thu 2026-11-19 20:15 ET); grading before kickoff is impossible by design.
+- **SG-09** (consolidate overlapping site trees) — proposed, owner decision; not implemented unilaterally.
+
+### Overlap check performed before claiming
+
+`grep`ed `COORDINATION.md` for the landing/nav + reliability handoff: no session holds an active claim
+on `tools/build_hub.py` (last editors: atlas/dbb50f8c and readiness/6259c7b0 integration sessions,
+both recorded complete; the reliability session explicitly deferred the row to the "landing/nav owner").
+`reliability/**` is read-only for this session. COORDINATION.md is the only file edited outside E1's
+generator scope, and it is append-only here.
