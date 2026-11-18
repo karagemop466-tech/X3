@@ -4026,8 +4026,8 @@ Branch `arena/8754a28a-x3`, base `f6660e4` (= `main` at session start; no commit
 | Item | Record |
 |------|--------|
 | PR | #111 https://github.com/karagemop466-tech/X3/pull/111 — `arena/8754a28a-x3` → `main` |
-| Merge | (merge commit + result added after `gh pr merge --merge`) |
-| GitHub Pages | (already deployed on `main` by W06/PR #110; this branch's class=on fix merges into the deployed tree) |
+| Merge | MERGED via `gh pr merge --merge`, merge commit `ab552203e455b3357135c860aa96e383014632f3` |
+| GitHub Pages | DEPLOYED — `Deploy X3 NFL site to GitHub Pages` success; `pages build and deployment` success; live URL https://karagemop466-tech.github.io/X3/ (source: `main` root `/`, built) |
 | Live landing | https://karagemop466-tech.github.io/X3/ |
 
 ---
