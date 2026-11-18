@@ -21,6 +21,8 @@ Run: python3 scripts/board_verify.py
 from __future__ import annotations
 
 import csv
+import hashlib
+import json
 import pathlib
 import re
 import subprocess
@@ -172,6 +174,95 @@ mism = [t for t, (ow, ol, opf, opa) in OFFICIAL.items()
         and (w.get(t, 0), l.get(t, 0), ti.get(t, 0), pf.get(t), pa.get(t)) != (ow, ol, ti.get(t, 0), opf, opa)]
 check("B5 150-game log reconciles 32/32", len(log) == 150 and not mism,
       f"{len(log)} games, {32 - len(mism)}/32 clubs exact" + (f", mismatches {mism}" if mism else ""))
+
+# the published Week-10 injury delta is recomputed here from the two source reads, and
+# compared row for row - the board may not publish a delta its own inputs contradict
+_rowsA = list(csv.DictReader((ROOT / "data/hub/injuries_2026_wk10.csv").open()))
+_rowsB = list(csv.DictReader((ROOT / "data/snapshots/wk10/capture-2026-11-15T1816Z-nfl-com-injuries-reg10.csv").open()))
+_ALIAS = {"LA": "LAR"}
+
+
+def _dk(r):
+    t = r["team"].strip().upper()
+    return (_ALIAS.get(t, t), r["player"].strip())
+
+
+_RA = {_dk(r): r for r in _rowsA}
+_RB = {_dk(r): r for r in _rowsB}
+_KA, _KB = set(_RA), set(_RB)
+_FULL = {"FP": "Full Participation in Practice", "DNP": "Did Not Participate In Practice",
+         "LP": "Limited Participation in Practice"}
+_EXP = {v: k for k, v in _FULL.items()}
+
+
+def _canon(v):
+    v = (v or "").strip()
+    return _EXP.get(v, v)
+
+
+_expected = []
+for _key in sorted(_KB - _KA):
+    _expected.append(("ADDED", _key, "", (_RB[_key].get("status") or "").strip()))
+for _key in sorted(_KA - _KB):
+    _expected.append(("REMOVED", _key, (_RA[_key].get("status") or "").strip(), ""))
+_prac = []
+for _key in sorted(_KA & _KB):
+    _x = (_RA[_key].get("status") or "").strip()
+    _y = (_RB[_key].get("status") or "").strip()
+    if _x != _y:
+        _expected.append(("DESIGNATION_CHANGE", _key, _x, _y))
+    _px, _py = _canon(_RA[_key].get("practice")), _canon(_RB[_key].get("practice"))
+    if _px != _py:
+        _prac.append((_key[0], _key[1], _px, _py))
+
+# what a naive diff (raw keys, no vocabulary normalisation) would have published
+_naiveA = {(r["team"].strip().upper(), r["player"].strip()) for r in _rowsA}
+_naiveB = {(r["team"].strip().upper(), r["player"].strip()) for r in _rowsB}
+_naive_add, _naive_rem = len(_naiveB - _naiveA), len(_naiveA - _naiveB)
+_meta = json.loads((DATA / "injury_delta_wk10_meta.json").read_text())
+if (_naive_add, _naive_rem) != (_meta["naive_diff_additions"], _meta["naive_diff_removals"]):
+    problems.append(f"B5 naive-diff counts published as {_meta['naive_diff_additions']}/"
+                    f"{_meta['naive_diff_removals']} but recompute as {_naive_add}/{_naive_rem}")
+
+_PUB = load("injury_delta_wk10.csv")
+_pub_status = [(r["kind"], (r["team"].strip().upper(), r["player"].strip()),
+                r["from_status"] or "blank", r["to_status"] or "blank")
+               for r in _PUB if r["kind"] != "PRACTICE_CHANGE"]
+_exp_status = [(k, kp, a or "blank", b or "blank") for k, kp, a, b in _expected]
+if sorted(_pub_status) != sorted(_exp_status):
+    _only_pub = [r for r in _pub_status if r not in _exp_status]
+    _only_exp = [r for r in _exp_status if r not in _pub_status]
+    problems.append(f"B5 published delta disagrees with the two reads: {len(_only_exp)} rows "
+                    f"unexplained, {len(_only_pub)} rows missing"
+                    + (f" | unexplained {_only_exp[0]}" if _only_exp else "")
+                    + (f" | missing {_only_pub[0]}" if _only_pub else ""))
+_pub_prac = sorted((r["team"].strip().upper(), r["player"].strip()) for r in _PUB if r["kind"] == "PRACTICE_CHANGE")
+if _pub_prac != sorted((t, n) for t, n, _, _ in _prac):
+    problems.append(f"B5 practice-change rows: published {len(_pub_prac)}, recomputed {len(_prac)}")
+if len(_PUB) != 21:
+    problems.append(f"B5 injury delta should hold 21 rows (2 added, 13 designation, 6 practice), got {len(_PUB)}")
+
+check("B5 week-10 injury delta reproduces from the two reads",
+      not any(x.startswith("B5") and ("delta" in x or "practice" in x or "naive" in x) for x in problems),
+      f"{len(_PUB)} published rows vs {len(_exp_status)} + {len(_prac)} recomputed; "
+      f"naive diff would publish {_naive_add}/{_naive_rem}")
+
+# the read inventory must match the files on disk, row count and hash, or the page lies
+_inv = load("injury_read_inventory.csv")
+if len(_inv) != 6:
+    problems.append(f"B5 read inventory should list 6 stored reads, lists {len(_inv)}")
+for _r in _inv:
+    _fp = ROOT / _r["file"]
+    if not _fp.exists():
+        problems.append(f"B5 inventory cites a file that does not exist: {_r['file']}")
+        continue
+    _real_rows = len(list(csv.DictReader(_fp.open())))
+    if str(_real_rows) != _r["rows"]:
+        problems.append(f"B5 inventory rows for {_r['file']}: published {_r['rows']}, actual {_real_rows}")
+    _real_sha = hashlib.sha256(_fp.read_bytes()).hexdigest()[:12]
+    if _real_sha != _r["sha256_12"]:
+        problems.append(f"B5 inventory hash for {_r['file']} is stale: published {_r['sha256_12']}, "
+                        f"actual {_real_sha} (the file changed; re-derive the delta and the inventory)")
 
 # week-11 board: market columns must be blank on every row
 fc = list(csv.DictReader((ROOT / "data/closeout/derived/forecasts_w11.csv").open()))

@@ -33,20 +33,90 @@ holds, checks it against the official report, and names the inputs that are stil
 official page row for row: Washington 9 rows, New York Giants 11, New England 15, Detroit 9.
 <a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></p>
 
-<h2>2. The signal is a level, and that is the bug</h2>
-<div class="callout warn">
-<p style="margin:0"><b>Why "Out" is not a surprise.</b> An "Out" designation is already public, and
-the market has priced it. A signal built on the designation itself re-states information everyone
-holds. The brief's requirement is to measure the <i>surprise</i> &mdash; the gap between what was
-expected before the report and what the report then said. That requires two dated reads per game
-week so the expectation and the realisation can be differenced. <b>The repository holds one read of
-Week 10.</b> With one read there is no delta, and with no delta there is no surprise, and with no
-surprise the feature is a level. The requirement is therefore genuinely blocked, not skipped.</p>
+<h2>2. The signal is a level, and what a real delta costs</h2>
+<p><b>Why "Out" is not a surprise.</b> An "Out" designation is already public, and the market has
+priced it. A signal built on the designation itself re-states information everyone holds. The
+brief's requirement is the <i>surprise</i> &mdash; the gap between what was expected before the
+report and what the report then said &mdash; which needs two dated reads, not one.</p>
+<p>This repository has two dated reads of the Week-10 report, and this board computed the delta
+between them instead of asserting one. The ledger at
+<code>data/snapshots/ledger.json</code> records
+<code>2026-11-14T00:00Z</code> (345 rows, hash
+<code>388c7090&hellip;</code>) and <code>2026-11-15T18:16Z</code>
+(347 rows, hash <code>5ceb9b31&hellip;</code>). Joining the two reads gives:</p>
+<div class="cards">
+  <div class="card"><div class="num">2</div><div class="lbl">players appear in the second read</div>
+  <div class="sub">both Baltimore, both arriving with no game designation</div></div>
+  <div class="card"><div class="num">0</div><div class="lbl">players disappear</div>
+  <div class="sub">nothing was dropped between the two reads</div></div>
+  <div class="card"><div class="num">13</div><div class="lbl">designations moved</div>
+  <div class="sub">LAC 10, BAL 2, IND 1 &mdash; blank to Questionable 7, blank to Out 4, blank to Doubtful 1, Questionable to blank 1</div></div>
+  <div class="card"><div class="num">6</div><div class="lbl">practice trends moved</div>
+  <div class="sub">LAC 6 &mdash; 5 of 6 rose to full participation</div></div>
 </div>
-<p>What would clear it: a dated capture series on the report's own publication days (Wednesday,
-Thursday, Friday, then the inactive list 90 minutes before kickoff), retained with hashes. The
-repository already has a scheduled workflow capable of this; what it has not yet accumulated is
-the history.</p>
+<table><thead><tr><th>Kind</th><th>Club</th><th>Player</th><th>Pos</th><th>Before</th><th>After</th>
+<th>Injury</th><th>Practice before &rarr; after</th><th>Source</th></tr></thead>
+<tbody><tr><td><span class="b der">ADDED</span></td><td><b>BAL</b></td><td>Calais Campbell</td><td>DT</td><td><span class="mut">blank</span></td><td><span class="mut">blank</span></td><td></td><td class="mut">- &rarr; DNP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b der">ADDED</span></td><td><b>BAL</b></td><td>Ronnie Stanley</td><td>T</td><td><span class="mut">blank</span></td><td><span class="mut">blank</span></td><td></td><td class="mut">- &rarr; DNP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>BAL</b></td><td>Adam Randall</td><td>RB</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Neck, Hamstring</td><td class="mut">Full Participation in Practice &rarr; FP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>BAL</b></td><td>Jaylinn Hawkins</td><td>S</td><td><span class="mut">blank</span></td><td>Out</td><td>Knee</td><td class="mut">Limited Participation in Practice &rarr; LP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>IND</b></td><td>Arden Key</td><td>DE</td><td>Questionable</td><td><span class="mut">blank</span></td><td></td><td class="mut">Full Participation in Practice &rarr; FP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Branson Taylor</td><td>G</td><td><span class="mut">blank</span></td><td>Out</td><td>Ankle</td><td class="mut">Did Not Participate In Practice &rarr; DNP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Brenen Thompson</td><td>WR</td><td><span class="mut">blank</span></td><td>Doubtful</td><td>Hamstring</td><td class="mut">Did Not Participate In Practice &rarr; DNP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>David Njoku</td><td>TE</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Fibula</td><td class="mut">Limited Participation in Practice &rarr; FP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Denzel Perryman</td><td>LB</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Pectoral</td><td class="mut">Full Participation in Practice &rarr; FP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Isas Waxter</td><td>CB</td><td><span class="mut">blank</span></td><td>Out</td><td>Ankle</td><td class="mut">Did Not Participate In Practice &rarr; DNP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Justin Eboigbe</td><td>DE</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Ankle</td><td class="mut">Limited Participation in Practice &rarr; LP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Kayode Awosika</td><td>G</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Fibula</td><td class="mut">Limited Participation in Practice &rarr; FP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Kendall Williamson</td><td>S</td><td><span class="mut">blank</span></td><td>Out</td><td>Calf</td><td class="mut">Did Not Participate In Practice &rarr; DNP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Ladd McConkey</td><td>WR</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Back</td><td class="mut">Did Not Participate In Practice &rarr; DNP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b warn">DESIGNATION CHANGE</span></td><td><b>LAC</b></td><td>Trey Pipkins</td><td>T</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Not injury related - personal matter, Knee</td><td class="mut">Did Not Participate In Practice &rarr; LP</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b der">PRACTICE CHANGE</span></td><td><b>LAC</b></td><td>Bud Dupree</td><td>DE</td><td><span class="mut">blank</span></td><td><span class="mut">blank</span></td><td></td><td class="mut">Did Not Participate In Practice &rarr; Full Participation in Practice</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b der">PRACTICE CHANGE</span></td><td><b>LAC</b></td><td>David Njoku</td><td>TE</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Fibula</td><td class="mut">Limited Participation in Practice &rarr; Full Participation in Practice</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b der">PRACTICE CHANGE</span></td><td><b>LAC</b></td><td>Kayode Awosika</td><td>G</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Fibula</td><td class="mut">Limited Participation in Practice &rarr; Full Participation in Practice</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b der">PRACTICE CHANGE</span></td><td><b>LAC</b></td><td>Keaton Mitchell</td><td>RB</td><td><span class="mut">blank</span></td><td><span class="mut">blank</span></td><td></td><td class="mut">Limited Participation in Practice &rarr; Full Participation in Practice</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b der">PRACTICE CHANGE</span></td><td><b>LAC</b></td><td>Rodney Shelley</td><td>CB</td><td><span class="mut">blank</span></td><td><span class="mut">blank</span></td><td></td><td class="mut">Limited Participation in Practice &rarr; Full Participation in Practice</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><span class="b der">PRACTICE CHANGE</span></td><td><b>LAC</b></td><td>Trey Pipkins</td><td>T</td><td><span class="mut">blank</span></td><td>Questionable</td><td>Not injury related - personal matter, Knee</td><td class="mut">Did Not Participate In Practice &rarr; Limited Participation in Practice</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr></tbody></table>
+<div class="callout bad">
+<p style="margin:0"><b>The trap: a naive diff of these two files is wrong, and quietly.</b>
+Joined on raw keys the same two reads differ by <b>16 additions and
+14 removals</b>, because the older file codes the Rams as
+<code>LAR</code> and the newer one as <code>LA</code>, and because the practice field changed
+spelling between the captures (full words against
+abbreviations (FP/DNP/LP)), which makes it differ on all 345 shared rows
+while the participation fact behind it changes on only 6 of them. 28 of those 30 rows are the alias artifact: the same 14 Rams players appear on
+both sides with nothing changed but the code. Only the 2 Baltimore rows are real. A delta
+built without normalising the keys and the vocabulary would have published 30 fabricated
+availability events two days before kickoff. This is the case for the drift alarm in the brief: pin
+the parser to the expected codes and fields, and fail the build when they change, rather than
+publishing a delta that is really a format change.</p>
+</div>
+<h3>Four reads of one page, in four modules, reconciled by nobody</h3>
+<p>Searching the repository for reads of this week's report found 6 stored files
+claiming the same page: 4 full-page reads and 2
+four-club reads, taken on three dates by four different modules. They agree on the substance and
+disagree on everything else. Two of them are hashed and dated by a ledger; the other four carry no
+clock at all, or a clock in a column the others do not have.</p>
+<table><thead><tr><th>File</th><th>Module</th><th class="n">Rows</th><th>Clock as recorded</th>
+<th>Scope</th><th>Rams coded</th><th>Practice vocabulary</th><th>Source page</th></tr></thead>
+<tbody><tr><td><code>data/hub/injuries_2026_wk10.csv</code></td><td>hub (canonical desk)</td><td class="n">345</td><td>ledger SNAP-2026W10-2026-11-14T0000Z</td><td>full page</td><td><span class="b mut">AS LAR</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>data/snapshots/wk10/capture-2026-11-15T1816Z-nfl-com-injuries-reg10.csv</code></td><td>snapshot store</td><td class="n">347</td><td>ledger 2026-11-15T18:16Z</td><td>full page</td><td><span class="b warn">AS LA</span></td><td>abbreviations (FP/DNP/LP)</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>agency/data/derived/injury_designations_w10_2026.csv</code></td><td>agency (derived)</td><td class="n">347</td><td>captured_utc 2026-11-15T19:05Z</td><td>full page</td><td><span class="b mut">AS LAR</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>audit/official_injury_wk10_2026.csv</code></td><td>audit</td><td class="n">345</td><td>no clock recorded</td><td>full page</td><td><span class="b mut">AS LAR</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>data/closeout/injury_report_w10_capture.csv</code></td><td>closeout</td><td class="n">44</td><td>captured_utc 2026-11-17T22:45Z</td><td>4 clubs, partial by design</td><td><span class="mut">n/a</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr><tr><td><code>data/closeout/injury_report_w10_reread.csv</code></td><td>closeout</td><td class="n">44</td><td>captured_utc 2026-11-17T23:24Z</td><td>4 clubs, re-read of the same evening</td><td><span class="mut">n/a</span></td><td>full words</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td></tr></tbody></table>
+<p><b>Where they agree:</b> the two 345-row reads (hub and audit) match on all 345 designations, zero
+mismatches. The two 347-row reads, taken 49 minutes apart by
+different modules, match on all 333 keys they share -
+0 designation mismatches - while
+333 of those rows differ in <i>text</i>, because one
+module writes "Full Participation in Practice" and the other writes "FP". The same page, therefore,
+supports either "nothing changed" or "every row changed", depending only on whether the reader knows
+the two encoders are the same vocabulary.</p>
+<div class="callout warn">
+<p style="margin:0"><b>This is what the drift alarm has to be, exactly.</b> A row-count or field-presence
+check would have stayed silent across all four reads, and a text-comparison check would have fired on
+every one of them. The alarm that works here pins three things: the expected row count for the week,
+the club-code set, and the practice vocabulary. A change in the last two is a parser event, not a
+league event, and must be reported as such rather than becoming a delta or a blank.</p>
+</div>
+
+<h3>The practice trend is the part that matters</h3>
+<p>Of the 6 rows whose practice participation genuinely moved, 5 rose to full
+participation, all of them LAC, and 3 of the 6 also picked up a game
+designation in the same 42 hours: David Njoku (LP to FP, now Questionable), Kayode Awosika (LP to FP, now Questionable), Trey Pipkins (DNP to LP, now Questionable). That is the shape the brief is asking for: the
+practice field moving first and the designation following it. Read as a level, "Questionable" tells us nothing; read as the second
+member of a pair, it says the club moved between the two reads. It is
+one club in one week, so it is a <i>pattern to test</i>, not a feature to use, and no model on this
+board consumes it.</p>
+<p class="note">Where the moves sit, and why that is not yet a signal: 12 of the 13 designation
+moves belong to the two clubs whose Week-10 game was still ahead when the second read was taken
+&mdash; Los Angeles (Chargers) and Baltimore played Monday night, 11/16 &mdash; while the single move
+at a club that had already played, Arden Key's Questionable clearing to blank at Indianapolis, points
+the other way. A delta that only moves for clubs with a game pending is a calendar effect, not
+information. <a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></p>
+<p><b>What this does not buy us.</b> Two reads 42 hours apart, for one week, with no third read
+closer to kickoff, is a delta of one step. The requirement is a <i>series</i>: Wednesday, Thursday,
+Friday, then the inactive list 90 minutes before kickoff, for every week, retained with hashes.
+Weeks 8 and 9 have one stored read each
+(<code>data/desk/injuries.json</code>, 320 and 362 rows) and weeks 1 to 7 have none at all, so the
+surprise feature cannot be backfilled - which is why this row reads PARTIAL on the register rather
+than done, and why no number on this board is presented as a validated personnel signal.</p>
 
 <h2>3. Depth of the replacement</h2>
 <p>The brief asks to track the <i>depth</i> of a replacement, not merely that a replacement

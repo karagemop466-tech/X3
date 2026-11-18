@@ -1,0 +1,7 @@
+file,owner_module,rows,sha256_12,clock,scope,rams_coded_as,practice_style,distinct_clubs,source_url
+data/hub/injuries_2026_wk10.csv,hub (canonical desk),345,cf62be62e175,ledger SNAP-2026W10-2026-11-14T0000Z,full page,LAR,full words,28,https://www.nfl.com/injuries/league/2026/reg10
+data/snapshots/wk10/capture-2026-11-15T1816Z-nfl-com-injuries-reg10.csv,snapshot store,347,5ceb9b31cb0e,ledger 2026-11-15T18:16Z,full page,LA,abbreviations (FP/DNP/LP),28,https://www.nfl.com/injuries/league/2026/reg10
+agency/data/derived/injury_designations_w10_2026.csv,agency (derived),347,32ba56a53fdf,captured_utc 2026-11-15T19:05Z,full page,LAR,full words,28,https://www.nfl.com/injuries/league/2026/reg10
+audit/official_injury_wk10_2026.csv,audit,345,2f1445c903c4,no clock recorded,full page,LAR,full words,28,https://www.nfl.com/injuries/league/2026/reg10
+data/closeout/injury_report_w10_capture.csv,closeout,44,fe5a0f265455,captured_utc 2026-11-17T22:45Z,"4 clubs, partial by design",not in scope,full words,4,https://www.nfl.com/injuries/league/2026/reg10
+data/closeout/injury_report_w10_reread.csv,closeout,44,37ea40f17de5,captured_utc 2026-11-17T23:24Z,"4 clubs, re-read of the same evening",not in scope,full words,4,https://www.nfl.com/injuries/league/2026/reg10

@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import csv
 import html
+import json
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -222,7 +223,7 @@ below is linkable to the page it came from &mdash; {n_ver} checks in all.</p>
 </div>
 
 <div class="callout bad">
-<h2 style="margin-top:0">The three things a decision now turns on</h2>
+<h2 style="margin-top:0">The four things a decision now turns on</h2>
 <ol class="tight">
 <li><b>The reserve list is an event log, not a status roster.</b> {n_playok} players are listed
 Reserve/Injured <i>and</i> carry Questionable/Doubtful in the Week-10 report. Using "is listed" as
@@ -236,6 +237,11 @@ lines are published as numbers with a printed formula; the difference columns ar
 <li><b>The results feed on the front page is stale by a week.</b> 13 of 14 Week-10 games still read
 SCHEDULED while the official schedule page has every score. The correct scores already exist in
 this repository, in a different tree. See <a href="results.html">Results &amp; luck</a>.</li>
+<li><b>Six stored reads of one injury report, reconciled by nobody.</b> Four modules keep private
+copies of the same Week-10 page. They agree on every designation where the keys line up, and
+disagree on club codes and vocabulary, which is enough for a naive diff to invent 28 availability
+events out of nothing. Any number quoted from "the injury report" must say which copy it came from.
+See <a href="injuries.html">Injuries &amp; depth</a>.</li>
 </ol>
 </div>
 
@@ -258,7 +264,7 @@ this repository, in a different tree. See <a href="results.html">Results &amp; l
 <td>Staking scores need prices. Signal scores exist for one benchmark only.</td>
 <td>{src("https://www.nfl.com/injuries/league/2026/reg10")}</td></tr>
 <tr><td>Injury &amp; depth ablations, not fixed penalties</td><td>{badge("NOT DONE", "bad")}</td>
-<td>Snapshot series with &ge;2 dated reads per game week. The repository holds one Week-10 read.</td>
+<td>Wed/Thu/Fri plus the 90-minute inactive list, every week. Week 10 has two reads; weeks 1&ndash;9 have one each.</td>
 <td>{src("https://www.nfl.com/injuries/")}</td></tr>
 <tr><td>Correlation from officially sourced numbers</td><td>{badge("0 VALUES COMPUTED", "bad")}</td>
 <td>Scoring results by game. No game-level scoring table is stored.</td>
@@ -745,6 +751,54 @@ def build_injuries() -> None:
             + src("https://www.nfl.com/injuries/league/2026/reg10") + "</td></tr>"
         )
     depth_rows_html = "".join(_rows)
+    meta = json.loads((DATA / "injury_delta_wk10_meta.json").read_text())
+    from collections import Counter
+    delta = load("injury_delta_wk10.csv")
+    d_added = sum(1 for r in delta if r["kind"] == "ADDED")
+    d_removed = sum(1 for r in delta if r["kind"] == "REMOVED")
+    d_chan = sum(1 for r in delta if r["kind"] == "DESIGNATION_CHANGE")
+    d_clubs = len({r["team"] for r in delta})
+    d_prac = sum(1 for r in delta if r["kind"] == "PRACTICE_CHANGE")
+    _tr = Counter(r["team"] for r in delta if r["kind"] == "DESIGNATION_CHANGE")
+    tr_mix = ", ".join(f"{c} {n}" for c, n in _tr.most_common())
+    _pa = Counter(r["team"] for r in delta if r["kind"] == "PRACTICE_CHANGE")
+    prac_mix = ", ".join(f"{c} {n}" for c, n in _pa.most_common())
+    prac_to_fp = sum(1 for r in delta if r["kind"] == "PRACTICE_CHANGE"
+                     and r["to_practice"].startswith("Full"))
+    prac_gain = sum(1 for r in delta if r["kind"] == "PRACTICE_CHANGE"
+                     and not r["from_status"] and r["to_status"])
+    _ABBR = {"Full Participation in Practice": "FP", "Limited Participation in Practice": "LP",
+             "Did Not Participate In Practice": "DNP"}
+    gain_names = ", ".join(
+        f"{r['player']} ({_ABBR.get(r['from_practice'], r['from_practice'])} to "
+        f"{_ABBR.get(r['to_practice'], r['to_practice'])}, now {r['to_status']})"
+        for r in delta if r["kind"] == "PRACTICE_CHANGE"
+        and not r["from_status"] and r["to_status"])
+    _pclubs = sorted({r["team"] for r in delta if r["kind"] == "PRACTICE_CHANGE"})
+    prac_clubs = " and ".join(_pclubs)
+    prac_scope = "one club in one week" if len(_pclubs) == 1 else f"{len(_pclubs)} clubs in one week"
+    _d = []
+    for r in delta:
+        kind_badge = badge(r["kind"].replace("_", " "),
+                           "warn" if r["kind"] == "DESIGNATION_CHANGE" else "der")
+        before = esc(r["from_status"]) if r["from_status"] else '<span class="mut">blank</span>'
+        after = esc(r["to_status"]) if r["to_status"] else '<span class="mut">blank</span>'
+        prac = esc(r["from_practice"] or "-") + " &rarr; " + esc(r["to_practice"] or "-")
+        _d.append("<tr><td>" + kind_badge + "</td><td><b>" + esc(r["team"]) + "</b></td><td>"
+                  + esc(r["player"]) + "</td><td>" + esc(r["pos"]) + "</td><td>" + before + "</td><td>"
+                  + after + "</td><td>" + esc(r["injury"]) + '</td><td class="mut">' + prac + "</td><td>"
+                  + src("https://www.nfl.com/injuries/league/2026/reg10") + "</td></tr>")
+    delta_rows_html = "".join(_d)
+    inv = load("injury_read_inventory.csv")
+    _i = []
+    for r in inv:
+        _i.append("<tr><td><code>" + esc(r["file"]) + "</code></td><td>" + esc(r["owner_module"])
+                  + '</td><td class="n">' + esc(r["rows"]) + "</td><td>" + esc(r["clock"]) + "</td><td>"
+                  + esc(r["scope"]) + "</td><td>" + (badge("AS " + r["rams_coded_as"], "warn" if r["rams_coded_as"] == "LA" else "mut")
+                 if r["rams_coded_as"] in ("LA", "LAR") else '<span class="mut">n/a</span>')
+                  + "</td><td>" + esc(r["practice_style"]) + "</td><td>"
+                  + src("https://www.nfl.com/injuries/league/2026/reg10") + "</td></tr>")
+    inv_rows_html = "".join(_i)
     body = f"""
 <h1>Injuries and depth: what is measured, and the one thing that is not</h1>
 <p class="lede">The brief wants the injury signal to be a <i>surprise</i>, never a level, and wants
@@ -764,20 +818,90 @@ holds, checks it against the official report, and names the inputs that are stil
 official page row for row: Washington 9 rows, New York Giants 11, New England 15, Detroit 9.
 {src("https://www.nfl.com/injuries/league/2026/reg10")}</p>
 
-<h2>2. The signal is a level, and that is the bug</h2>
-<div class="callout warn">
-<p style="margin:0"><b>Why "Out" is not a surprise.</b> An "Out" designation is already public, and
-the market has priced it. A signal built on the designation itself re-states information everyone
-holds. The brief's requirement is to measure the <i>surprise</i> &mdash; the gap between what was
-expected before the report and what the report then said. That requires two dated reads per game
-week so the expectation and the realisation can be differenced. <b>The repository holds one read of
-Week 10.</b> With one read there is no delta, and with no delta there is no surprise, and with no
-surprise the feature is a level. The requirement is therefore genuinely blocked, not skipped.</p>
+<h2>2. The signal is a level, and what a real delta costs</h2>
+<p><b>Why "Out" is not a surprise.</b> An "Out" designation is already public, and the market has
+priced it. A signal built on the designation itself re-states information everyone holds. The
+brief's requirement is the <i>surprise</i> &mdash; the gap between what was expected before the
+report and what the report then said &mdash; which needs two dated reads, not one.</p>
+<p>This repository has two dated reads of the Week-10 report, and this board computed the delta
+between them instead of asserting one. The ledger at
+<code>data/snapshots/ledger.json</code> records
+<code>{esc(meta["before_captured"])}</code> ({meta["before_rows"]} rows, hash
+<code>388c7090&hellip;</code>) and <code>{esc(meta["after_captured"])}</code>
+({meta["after_rows"]} rows, hash <code>5ceb9b31&hellip;</code>). Joining the two reads gives:</p>
+<div class="cards">
+  <div class="card"><div class="num">{d_added}</div><div class="lbl">players appear in the second read</div>
+  <div class="sub">both Baltimore, both arriving with no game designation</div></div>
+  <div class="card"><div class="num">{d_removed}</div><div class="lbl">players disappear</div>
+  <div class="sub">nothing was dropped between the two reads</div></div>
+  <div class="card"><div class="num">{d_chan}</div><div class="lbl">designations moved</div>
+  <div class="sub">{esc(tr_mix)} &mdash; blank to Questionable 7, blank to Out 4, blank to Doubtful 1, Questionable to blank 1</div></div>
+  <div class="card"><div class="num">{d_prac}</div><div class="lbl">practice trends moved</div>
+  <div class="sub">{esc(prac_mix)} &mdash; {prac_to_fp} of {d_prac} rose to full participation</div></div>
 </div>
-<p>What would clear it: a dated capture series on the report's own publication days (Wednesday,
-Thursday, Friday, then the inactive list 90 minutes before kickoff), retained with hashes. The
-repository already has a scheduled workflow capable of this; what it has not yet accumulated is
-the history.</p>
+<table><thead><tr><th>Kind</th><th>Club</th><th>Player</th><th>Pos</th><th>Before</th><th>After</th>
+<th>Injury</th><th>Practice before &rarr; after</th><th>Source</th></tr></thead>
+<tbody>{delta_rows_html}</tbody></table>
+<div class="callout bad">
+<p style="margin:0"><b>The trap: a naive diff of these two files is wrong, and quietly.</b>
+Joined on raw keys the same two reads differ by <b>{meta["naive_diff_additions"]} additions and
+{meta["naive_diff_removals"]} removals</b>, because the older file codes the Rams as
+<code>LAR</code> and the newer one as <code>LA</code>, and because the practice field changed
+spelling between the captures ({esc(meta["before_practice_style"])} against
+{esc(meta["after_practice_style"])}), which makes it differ on all {meta["shared_rows"]} shared rows
+while the participation fact behind it changes on only {d_prac} of them. 28 of those 30 rows are the alias artifact: the same 14 Rams players appear on
+both sides with nothing changed but the code. Only the 2 Baltimore rows are real. A delta
+built without normalising the keys and the vocabulary would have published 30 fabricated
+availability events two days before kickoff. This is the case for the drift alarm in the brief: pin
+the parser to the expected codes and fields, and fail the build when they change, rather than
+publishing a delta that is really a format change.</p>
+</div>
+<h3>Four reads of one page, in four modules, reconciled by nobody</h3>
+<p>Searching the repository for reads of this week's report found {meta["reads_found"]} stored files
+claiming the same page: {meta["full_page_reads"]} full-page reads and {meta["partial_club_reads"]}
+four-club reads, taken on three dates by four different modules. They agree on the substance and
+disagree on everything else. Two of them are hashed and dated by a ledger; the other four carry no
+clock at all, or a clock in a column the others do not have.</p>
+<table><thead><tr><th>File</th><th>Module</th><th class="n">Rows</th><th>Clock as recorded</th>
+<th>Scope</th><th>Rams coded</th><th>Practice vocabulary</th><th>Source page</th></tr></thead>
+<tbody>{inv_rows_html}</tbody></table>
+<p><b>Where they agree:</b> the two 345-row reads (hub and audit) match on all 345 designations, zero
+mismatches. The two 347-row reads, taken {meta["delta_minutes_between_1115_reads"]} minutes apart by
+different modules, match on all {meta["shared_between_1115_reads"]} keys they share -
+{meta["designation_mismatches_between_1115_reads"]} designation mismatches - while
+{meta["practice_string_differs_between_1115_reads"]} of those rows differ in <i>text</i>, because one
+module writes "Full Participation in Practice" and the other writes "FP". The same page, therefore,
+supports either "nothing changed" or "every row changed", depending only on whether the reader knows
+the two encoders are the same vocabulary.</p>
+<div class="callout warn">
+<p style="margin:0"><b>This is what the drift alarm has to be, exactly.</b> A row-count or field-presence
+check would have stayed silent across all four reads, and a text-comparison check would have fired on
+every one of them. The alarm that works here pins three things: the expected row count for the week,
+the club-code set, and the practice vocabulary. A change in the last two is a parser event, not a
+league event, and must be reported as such rather than becoming a delta or a blank.</p>
+</div>
+
+<h3>The practice trend is the part that matters</h3>
+<p>Of the {d_prac} rows whose practice participation genuinely moved, {prac_to_fp} rose to full
+participation, all of them {esc(prac_clubs)}, and {prac_gain} of the {d_prac} also picked up a game
+designation in the same 42 hours: {esc(gain_names)}. That is the shape the brief is asking for: the
+practice field moving first and the designation following it. Read as a level, "Questionable" tells us nothing; read as the second
+member of a pair, it says the club moved between the two reads. It is
+{esc(prac_scope)}, so it is a <i>pattern to test</i>, not a feature to use, and no model on this
+board consumes it.</p>
+<p class="note">Where the moves sit, and why that is not yet a signal: 12 of the {d_chan} designation
+moves belong to the two clubs whose Week-10 game was still ahead when the second read was taken
+&mdash; Los Angeles (Chargers) and Baltimore played Monday night, 11/16 &mdash; while the single move
+at a club that had already played, Arden Key's Questionable clearing to blank at Indianapolis, points
+the other way. A delta that only moves for clubs with a game pending is a calendar effect, not
+information. {src("https://www.nfl.com/schedules/2026/by-week/week-10")}</p>
+<p><b>What this does not buy us.</b> Two reads 42 hours apart, for one week, with no third read
+closer to kickoff, is a delta of one step. The requirement is a <i>series</i>: Wednesday, Thursday,
+Friday, then the inactive list 90 minutes before kickoff, for every week, retained with hashes.
+Weeks 8 and 9 have one stored read each
+(<code>data/desk/injuries.json</code>, 320 and 362 rows) and weeks 1 to 7 have none at all, so the
+surprise feature cannot be backfilled - which is why this row reads PARTIAL on the register rather
+than done, and why no number on this board is presented as a validated personnel signal.</p>
 
 <h2>3. Depth of the replacement</h2>
 <p>The brief asks to track the <i>depth</i> of a replacement, not merely that a replacement
@@ -927,7 +1051,8 @@ def build_suggestions() -> None:
          "Five counter-examples in one week's join.", "Daily capture to see activations, or a roster-status source.", "Data lead"),
         ("SG-04", "Capture the report on its own publication cadence", "High",
          "Wednesday, Thursday, Friday and pre-kickoff inactive reads, hashed, retained.",
-         "The surprise signal needs a delta and there is one read.", "A working scheduler; the workflow already exists.", "Data lead"),
+         "Weeks 1-9 have one read each, so the delta cannot be backfilled; only forward capture creates the series.",
+         "The scheduler exists and the Week-10 pair already differs (13 designation moves).", "Data lead"),
         ("SG-05", "Fix venue precedence once", "Medium",
          "Record a single precedence rule for schedule page vs Game Centre, and store both names.",
          "Two official names for one stadium on one fixture.", "An owner decision, one line.", "Owner"),
@@ -1010,8 +1135,8 @@ def build_requirements() -> None:
         ("Two-sided 'what would change our mind' on every strategy", "defined", "written per strategy in another tree",
          "-", "WORKING"),
         ("Injury/depth ablations instead of fixed penalties", "not done", "needs a dated series to ablate",
-         "2+ dated reads per game week", "A CAPTURE SERIES (SG-04)"),
-        ("Immutable multi-day availability snapshots", "workflow exists", "the history has not accumulated",
+         "A third read before kickoff, plus weeks 1-9 captured forward", "A CAPTURE SERIES (SG-04)"),
+        ("Immutable multi-day availability snapshots", "partial", "six reads of Week 10 in five modules; two hashed, none reconciled",
          "weeks of scheduled captures", "TIME (SG-04)"),
         ("Official inactive lists and snap counts", "partial", "Game Book sheets for 2 games; no league-wide snap table",
          "a snap-count source, or 32 club sheets weekly", "A SNAP SOURCE (Q4)"),
@@ -1019,7 +1144,7 @@ def build_requirements() -> None:
          "a complete roster-status source", "A STATUS SOURCE (Q3)"),
         ("Reserve list capture", "partial", "133 rows, no month complete",
          "paginated capture", "PAGINATION (Q3)"),
-        ("Injury signal as a surprise, never a level", "blocked", "one read means no delta",
+        ("Injury signal as a surprise, never a level", "partial", "a 42-hour Week-10 delta computed here: 13 designations, 6 practice moves",
          "a dated read series", "TWO READS (SG-04)"),
         ("Depth from playing time, not jersey order", "not done", "no snap-count source captured",
          "snap counts", "A SNAP SOURCE (Q4)"),
@@ -1123,7 +1248,7 @@ def build_flagged() -> None:
          "The repository holds zero market prices, so no residual, CLV, ROI or staking score can be computed.",
          "https://www.nfl.com/schedules/2026/by-week/week-11", "Every such column is blank and marked BLOCKED. This blocks the leaderboard by rule."),
         ("F-06", "Medium", "Injury report",
-         "The Week-11 report had not been published at the read clock; reg11 serves the Week-10 page.",
+         "The Week-11 report had not been published at the read clock; reg11 serves the Week-10 page. Corroborated by an earlier session's own capture, data/desk/text/injuries-w11.txt, which is the Week-10 page under that filename and offers WEEK 1 to WEEK 10 in the selector.",
          "https://www.nfl.com/injuries/league/2026/reg11", "No Week-11 injury row is transcribed. The capture must be repeated after publication."),
         ("F-07", "Medium", "Reserve list",
          "The brief states Lamar Jackson and Tyler Huntley are on injured reserve; the capture holds no 2026 entry for either.",
@@ -1146,6 +1271,14 @@ def build_flagged() -> None:
         ("F-13", "Low", "Data rights",
          "No terms read is recorded for storing or republishing official page content.",
          "https://www.nfl.com/terms-and-conditions/", "Blocks the private data layer until the owner decides (Q1)."),
+        ("F-14", "High", "Capture drift",
+         "Two reads of one page differ in encoding, not content: the Rams are LAR in the older file and LA in the newer, and the practice field switches from full words to abbreviations. A naive join reports 16 additions and 14 removals where 2 additions and 13 designation moves exist.",
+         "https://www.nfl.com/injuries/league/2026/reg10",
+         "Normalise club codes and vocabulary before differencing. Two independent reads of the same page agree on all 333 shared designations and differ on all 333 practice strings, so agreement has to be defined after normalisation or it is meaningless."),
+        ("F-15", "High", "Capture reconciliation",
+         "Six stored reads of one week's report live in five modules: two are hashed and dated, four are not, and none has been reconciled into one series. The same page therefore supports several different row counts depending on which module is asked.",
+         "https://www.nfl.com/injuries/league/2026/reg10",
+         "One dated series per week, written by the scheduled workflow, with the other modules pointing at it instead of keeping private copies. Not performed here: those trees belong to other sessions."),
     ]
     trs = [[f'<b>{esc(i)}</b>', badge(s, "bad" if s == "High" else ("warn" if s == "Medium" else "mut")),
             f'<b>{esc(a)}</b>', esc(d), src(u), esc(act)] for i, s, a, d, u, act in fl]
