@@ -1662,7 +1662,7 @@ def landing():
 <li><a href="https://www.nfl.com/standings/league/2026/REG">NFL 2026 standings</a> — team aggregate reconciliation.</li>
 <li><a href="https://www.nfl.com/schedules/2026/by-week/week-10">NFL Week-10 schedule</a> — fixture and result source.</li>
 </ul>
-<p>Detailed pages: <a href="hub/gates.html">validation gates</a> · <a href="hub/lines.html">model lines</a> · <a href="hub/origination.html">origination</a> · <a href="hub/pricing.html">pricing</a> · <a href="hub/replacement.html">replacement evidence</a> · <a href="hub/requirements.html">requirements register</a> · <a href="hub/results.html">results detail</a> · <a href="hub/signal.html">signal vs staking</a>.</p>
+<p>Detailed pages: <a href="hub/gates.html">validation gates</a> · <a href="hub/lines.html">model lines</a> · <a href="hub/origination.html">origination</a> · <a href="hub/pricing.html">pricing</a> · <a href="hub/replacement.html">replacement evidence</a> · <a href="hub/requirements.html">requirements register</a> · <a href="hub/results.html">results detail</a> · <a href="hub/signal.html">signal vs staking</a> · <a href="hub/repo-review.html">repository review</a> · <a href="hub/verification.html">verification log</a>.</p>
 <p class="note">For the complete repository, task ownership, and verification log see <a href="COORDINATION.md">COORDINATION.md</a>. All project policy thresholds are identified as project criteria, not NFL-published facts; unsupported data remains blank and flagged.</p>
 </section>
 </main>
