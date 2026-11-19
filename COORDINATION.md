@@ -4842,3 +4842,14 @@ Overlap check (before claiming): `grep` of COORDINATION.md shows no active claim
 3. `data/atlas/roster_events_2026.csv` (2026-11-13 BAL, Lamar Jackson, "Reserve") records a designation sentence as a reserve event. Re-classify as a designation unless an official reserve-list entry is found.
 4. The Houston chart needs a structured source before any Houston depth row can be published.
 5. Owner decision: whether club charts labelled "Unofficial" (Packers, Texans) count as official for route (a).
+---
+
+## Session `arena/e0146586-x3` — CLAIM (2026-11-19)
+
+This is the platform-assigned current branch; no session branch/worktree was created or switched to.
+
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| EI-1 | Final integration review: make the root landing page a concise, freshness-honest decision dashboard, remove stale/inconsistent top-level status claims, preserve links to all project categories, and validate the generated site. | in progress | `arena/e0146586-x3` | `tools/build_hub.py`, regenerated `index.html`, `COORDINATION.md` |
+
+Claim basis: the existing page labels itself canonical but reports `data as of 2026-11-14`, retains a 2026-11-14 readiness caption, displays multiple inconsistent results counts, and exposes a very long flat navigation list despite the request for a simple category dashboard. Initial repo-wide audit on 2026-11-19: `scripts/audit_all.py` PASS (382 pages, 26,916 link refs, 660 tables; 13,305 source rows; 270 explicitly unverified; 577 flagged rows checked). `tools/check_links.py` PASS (13 pages, 582 links). `tools/check_site.py` does not exist (not a repo test; invocation error only). `scripts/closeout_verify.py` PASS (24 checks); `tools/verify_markets.py` PASS. Attempting `scripts/availability_snapshot.py --help` instead entered capture mode and failed because this sandbox cannot reach nfl.com (HTTP 000); no source data was changed. This is an environment limitation, not an official-source recheck.
