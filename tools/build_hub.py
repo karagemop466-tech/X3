@@ -1684,6 +1684,12 @@ def landing():
     nav += ('<a href="board/index.html"><b>Decision board (today)</b>'
             '<span>Live verification of every published claim against the official pages, '
             'plus the reserve list captured for the first time</span></a>')
+    # session arena/765ef2cf-x3: fresh-day verification module. One nav entry only;
+    # the module keeps its own builder and gate (scripts/fresh_build.py,
+    # scripts/fresh_verify.py, .github/workflows/fresh.yml). Additive outbound link only.
+    nav += ('<a href="fresh/index.html"><b>Fresh day 2026-11-19</b>'
+            '<span>Week-11 report first capture, slate and standings re-read, '
+            'game-centre venue conflict flagged</span></a>')
 
     # RD-01 (arena/6259c7b0-x3): decision-readiness table, one row per requirement,
     # with the gate that blocks it and the number that would clear it.

@@ -1,0 +1,14 @@
+field,value,source_url,fetched_utc
+fixture,IND@HOU (Week 11),https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+kickoff,Nov 19 8:15 PM,https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+network,Prime Video,https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+location,HOUSTON TX,https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+stadium,RELIANT STADIUM,https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+away_record,IND 3-7,https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+home_record,HOU 3-6,https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+ind_out_players,"Will Mallory TE (Hamstring); Bernhard Raimann T (Concussion); Jerry Tillery DT (Calf); Jalen Travis T (Knee); Charvarius Ward CB (Knee)",https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+hou_out_players,"Marvin Harrison Jr. WR (Hamstring); Danielle Hunter DE (Hamstring); Brevin Jordan TE (Illness); Woody Marks RB (Concussion)",https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+regular_season_at_a_glance,"IND 20.8 PPG (23rd) / 287.6 YPG (27th) / 31:07 TOP (8th) / 22 sacks (14th) / 2 INT (31st) / -12 TO diff (32nd); HOU 25.9 PPG (9th) / 349.1 YPG (11th) / 29:33 TOP (23rd) / 33 sacks (2nd) / 5 INT (23rd) / +4 TO diff (9th)",https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+team_leaders,"IND D. Jones 1830 YDS 59.6%CMP 7TD 12INT; J. Taylor 739 YDS 177ATT 8TD; T. Warren 276 YDS 40REC 2TD; HOU C. Stroud 2462 YDS 62.8%CMP 19TD 3INT; W. Marks 391 YDS 107ATT 2TD; N. Collins 478 YDS 37REC 5TD",https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z
+schedule_hotel_link_venue,NRG Stadium,https://www.nfl.com/schedules/2026/by-week/week-11,2026-11-19T06:47Z
+conflict,"Game centre Game Info block (RELIANT STADIUM) contradicts the schedule page hotel link (NRG Stadium). Published as flagged; both values published with links.",https://www.nfl.com/games/colts-at-texans-2026-reg-11,2026-11-19T07:05Z

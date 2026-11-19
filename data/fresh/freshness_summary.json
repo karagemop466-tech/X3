@@ -1,0 +1,20 @@
+{
+  "as_of": "2026-11-19",
+  "read_window_utc": "2026-11-19T06:47Z-07:05Z",
+  "reg11_published": true,
+  "reg11_capture": "data/fresh/injury_w11_2026.csv",
+  "reg11_rows": 253,
+  "reg11_clubs_with_rows": 24,
+  "reg11_clubs_no_injuries_reported": ["CIN", "WAS"],
+  "reg11_designated_rows": 16,
+  "reg11_out": 9,
+  "reg11_questionable": 7,
+  "standings_rows": 32,
+  "standings_league_pf": 6923,
+  "standings_league_pa": 6923,
+  "wk11_slate_rows": 13,
+  "wk11_byes": ["ATL", "CLE", "GB", "LA", "NE", "SEA"],
+  "game_centre_fetched": ["IND@HOU"],
+  "venue_conflicts": ["IND@HOU: game centre STADIUM RELIANT STADIUM vs schedule hotel link NRG Stadium (flagged, not resolved)"],
+  "probes": 5
+}
