@@ -4842,6 +4842,45 @@ Overlap check (before claiming): `grep` of COORDINATION.md shows no active claim
 3. `data/atlas/roster_events_2026.csv` (2026-11-13 BAL, Lamar Jackson, "Reserve") records a designation sentence as a reserve event. Re-classify as a designation unless an official reserve-list entry is found.
 4. The Houston chart needs a structured source before any Houston depth row can be published.
 5. Owner decision: whether club charts labelled "Unofficial" (Packers, Texans) count as official for route (a).
+---
+
+## Session `arena/e0146586-x3` — CLAIM (2026-11-19)
+
+This is the platform-assigned current branch; no session branch/worktree was created or switched to.
+
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| EI-1 | Final integration review: make the root landing page a concise, freshness-honest decision dashboard, remove stale/inconsistent top-level status claims, preserve links to all project categories, refresh any generated cross-tree counts that a CI gate flags, and validate the generated site. | in progress (latest rebased checks pending; merge/deploy pending) | `arena/e0146586-x3` | `tools/build_hub.py`, regenerated `index.html`, `verification-hub/audit-report.json`, `crosscheck/data/selfcheck.json`, generated `council/repo-review.html` + `data/council/council.json`, `COORDINATION.md` |
+
+Claim basis: the existing page labels itself canonical but reports `data as of 2026-11-14`, retains a 2026-11-14 readiness caption, displays multiple inconsistent results counts, and exposes a very long flat navigation list despite the request for a simple category dashboard. Initial repo-wide audit on 2026-11-19: `scripts/audit_all.py` PASS (382 pages, 26,916 link refs, 660 tables; 13,305 source rows; 270 explicitly unverified; 577 flagged rows checked). `tools/check_links.py` PASS (13 pages, 582 links). `tools/check_site.py` does not exist (not a repo test; invocation error only). `scripts/closeout_verify.py` PASS (24 checks); `tools/verify_markets.py` PASS. Attempting `scripts/availability_snapshot.py --help` instead entered capture mode and failed because this sandbox cannot reach nfl.com (HTTP 000); no source data was changed. This is an environment limitation, not an official-source recheck.
+
+### EI-1 completion (2026-11-19)
+
+The landing page now separates the **2026-11-14 model/input baseline** from the **latest successful hashed capture recorded in the manifest (2026-11-19 02:16:10Z)**, states plainly that the captured read does not refresh or validate every dataset, and groups links into decision areas instead of a long flat list. It retains the 74-row requirements/readiness table, primary-source links, executive summary, questions, suggestion queue, and Flagged for Review. Replaced stale repeated readiness tables and the old static 8-requirement prose block with the single data-backed register. Removed obsolete navigation generation that was not rendered by the revised landing. No NFL values were changed or newly asserted; all status figures are derived from existing committed records.
+
+### Verification
+
+- PR #131: https://github.com/karagemop466-tech/X3/pull/131 (`arena/e0146586-x3` → `main`). Earlier checks on prior heads passed except Council run `44599297468`, which caught a stale generated root census; regenerated Council outputs and reruns passed. Main advanced through PRs #132 and #134 while this branch was in progress; the current root now also links the dated depth register from PR #134. Local integration checks pass at the combined tree. PR checks for the latest rebased head are pending rerun; merge and main deploy still pending.
+- `python3 -m py_compile tools/build_hub.py` — PASS.
+- `python3 tools/build_hub.py` — PASS; 27 hub pages built. Re-running after `tools/x3_engine.py` produced no drift in `hub/` or `data/hub/`; the only expected generated-site difference is the intentionally redesigned `index.html`.
+- `python3 scripts/audit_all.py` — PASS (385 pages, 29,237 link references, 9,808 internal refs, 664 tables; 13,258 sourced-or-explicitly-unverified source rows; 776 flagged-page rows checked).
+- `python3 tools/check_links.py` — PASS (13 root/review pages, 505 links).
+- `python3 scripts/verify_integration.py` — PASS (385 pages, 20,073 rows checked, 17,435 sourced/flagged; 0 problems).
+- `python3 tools/verify_hub.py` — PASS (27 pages, 1,513 data rows checked, 0 failures, 0 warnings).
+- `python3 scripts/depth_verify.py` — PASS (2,027 depth-register rows; 31 captured clubs; 237 live cells; 55 jersey numbers; 13 cross-checks; 3 pages, 0 failures).
+- `python3 scripts/check_site.py` — PASS (353 table rows, 0 unsourced/unflagged).
+- Additional CI-equivalent checks: `tools/verify_site.py`, `scripts/verify_data.py`, `scripts/check_hub.py`, `tools/verify_ledger.py`, `tools/crosscheck.py --verify`, `scripts/origin_verify.py`, `scripts/desk_verify.py`, `scripts/ops_run.py`, `scripts/closeout_verify.py`, and `tools/verify_markets.py` all PASS.
+- `results_feed → markets_engine → correlation_engine → depth_engine → strategies_engine → verify_markets` passes (150 finals / 163 results rows; 32-club standings reconciliation 0 mismatches; 7 correlations with n; 36 named replacements; 0 leaderboard-eligible strategies; staking blocked). `x3_engine → build_hub → verify_hub` passes.
+- HTML parser smoke test — PASS; landing has 16 category cards, including the dated depth register, and the 74-row readiness register.
+
+### Remaining irregularities (unchanged, not hidden)
+
+- The first PR CI run found a stale generated count in the council tree: its root-page census still listed 433 rows / 298 external links, but the redesigned root now measures 381 rows / 273 external links. `scripts/council_build.py` and `scripts/council_verify.py` reproduced the issue locally; both generated council outputs are refreshed and the verifier passes. The failed check is recorded at Actions run `44599297468` and will be retried after the update.
+- Rebase before push picked up main moving from `e5f771d` to `7d18c99` (PRs #128 and #129), then to `682f355` (PR #130), and then `f8f3ea6` (PR #132), then `c09bd39` (PR #134), then `f9620e8` (PRs #135 and #137). PR #135 added an additional readiness verification note; PR #137 completed the depth-module integration record. `COORDINATION.md` had append-at-EOF conflicts with sessions `arena/5a7f85bc-x3` and `arena/55e3547f-x3`; both records and this session's claim were retained. Generated `verification-hub/audit-report.json` conflicted; the current main version was retained and `scripts/audit_all.py` rerun against the combined tree. PR #132 also changed the generated root readiness row, causing a rebase conflict in `index.html`; the redesigned page was retained and rebuilt from the current readiness data, then two required verification/repo-review links were restored when `verify_hub.py` caught their absence. After PR #134 added the dated depth register, its landing link was integrated as a category card and `depth_verify.py` passes. A normal push was rejected after rewritten history; a pull/rebase against the remote feature ref conflicted while replaying upstream coordination records, so it was aborted without edits. The same session branch was then lease-updated. Council CI found a stale root census after the landing redesign (433→381 rows, 298→273 external links); both generated Council outputs were refreshed and `council_verify.py` passes. No other session files were edited or discarded.
+- Core model inputs are dated 2026-11-14, and the latest successful archived capture is dated 2026-11-19 02:16Z; this does not establish live freshness or successful recurring automation.
+- Different historical modules intentionally remain separate: the canonical market results feed reports 150 finals, while older raw/desk ledgers still report 137; the repo flags this data-vintage difference, and this change did not rewrite those modules.
+- Market prices, residual/CLV/ROI, and reward amounts remain blocked; not all roster/IR, depth, active/inactive and snap-count coverage is complete; strategy qualification/demotion policies are not unified. The landing calls out the not-ready state and links to the source-gap/flag pages.
+- Sandbox shell capture of nfl.com failed with HTTP 000. The failed test accidentally appended two failed-fetch records to `readiness/data/history/manifest.csv`; those test-only rows and empty reads were removed. No source capture/data changes remain from that probe. No direct NFL page was newly re-fetched in this integration task; the timestamp shown is read from the committed hash-verified manifest.
 
 ---
 
