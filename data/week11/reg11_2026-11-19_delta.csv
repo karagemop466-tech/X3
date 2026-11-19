@@ -1,0 +1,433 @@
+club_code,player,change,practice_wk10,practice_wk11,status_wk10,status_wk11,pos_wk10,pos_wk11,detail
+ATL,Cameron Thomas,dropped,Full Participation in Practice,,,,DE,,
+ATL,Divine Deablo,dropped,Did Not Participate In Practice,,Doubtful,,LB,,
+ATL,Gervon Dexter Sr.,dropped,Limited Participation in Practice,,Questionable,,DT,,
+ATL,Jake Matthews,dropped,Limited Participation in Practice,,,,T,,
+ATL,James Pearce Jr.,dropped,Limited Participation in Practice,,Questionable,,DE,,
+ATL,Jawaan Taylor,dropped,Limited Participation in Practice,,,,T,,
+ATL,Josh Woods,dropped,Full Participation in Practice,,Questionable,,LB,,
+ATL,Kendal Daniels,dropped,Full Participation in Practice,,,,LB,,
+ATL,Liam McCullough,dropped,Did Not Participate In Practice,,,,LS,,
+ATL,Za'Darius Smith,dropped,Full Participation in Practice,,,,DE,,
+ATL,Zachariah Branch,dropped,Did Not Participate In Practice,,Out,,WR,,
+AZ,Andrew Wingard,dropped,Did Not Participate In Practice,,Questionable,,S,,
+AZ,Bam Knight,dropped,Full Participation in Practice,,,,RB,,
+AZ,Budda Baker,moved,Full Participation in Practice,Did Not Participate In Practice,,,S,S,practice Full Participation in Practice -> Did Not Participate In Practice
+AZ,Dante Stills,dropped,Full Participation in Practice,,,,DT,,
+AZ,Darius Robinson,moved,Limited Participation in Practice,Full Participation in Practice,Questionable,,DT,DT,practice Limited Participation in Practice -> Full Participation in Practice; game-status Questionable -> (none); injury Wrist -> (none)
+AZ,Hjalte Froholdt,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,,C,C,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> (none); injury Concussion -> (none)
+AZ,Hunter Long,dropped,Limited Participation in Practice,,Questionable,,TE,,
+AZ,Isaac Seumalo,moved,Full Participation in Practice,Did Not Participate In Practice,,,G,G,practice Full Participation in Practice -> Did Not Participate In Practice
+AZ,Jayden Williams,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,T,T,game-status Questionable -> (none); injury Knee -> (none)
+AZ,Jon Gaines II,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,,G,G,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> (none); injury Ankle -> (none)
+AZ,Josh Sweat,moved,Full Participation in Practice,Did Not Participate In Practice,,,LB,LB,practice Full Participation in Practice -> Did Not Participate In Practice
+AZ,Mack Wilson,moved,Full Participation in Practice,Did Not Participate In Practice,,,LB,LB,practice Full Participation in Practice -> Did Not Participate In Practice
+AZ,Max Melton,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,CB,CB,"game-status Questionable -> (none); injury Knee, Hand -> (none)"
+AZ,Roy Lopez,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,DT,DT,"game-status Questionable -> (none); injury Toe, Ankle -> (none)"
+AZ,Walter Nolen,added,,Did Not Participate In Practice,,,,DT,
+AZ,Zachary Carter,moved,Limited Participation in Practice,Full Participation in Practice,Out,,DT,DT,practice Limited Participation in Practice -> Full Participation in Practice; game-status Out -> (none); injury Knee -> (none)
+BAL,Kyle Hamilton,dropped,Full Participation in Practice,,,,S,,
+BAL,Mike Green,added,,Full Participation in Practice,,,,LB,
+BAL,Nate Wiggins,dropped,Full Participation in Practice,,,,CB,,
+BAL,Nnamdi Madubuike,added,,Did Not Participate In Practice,,,,DT,
+BAL,Olaivavega Ioane,moved,Full Participation in Practice,Limited Participation in Practice,,,G,G,practice Full Participation in Practice -> Limited Participation in Practice
+BAL,Rasheen Ali,dropped,Full Participation in Practice,,,,RB,,
+BAL,Rashod Bateman,dropped,Full Participation in Practice,,,,WR,,
+BUF,Alec Anderson,dropped,Full Participation in Practice,,,,G,,
+BUF,Amani Hooker,added,,Limited Participation in Practice,,,,S,
+BUF,Ar'maj Reed-Adams,dropped,Full Participation in Practice,,,,G,,
+BUF,Christian Benford,moved,Full Participation in Practice,Did Not Participate In Practice,Questionable,,CB,CB,practice Full Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Wrist -> (none)
+BUF,Cole Bishop,added,,Limited Participation in Practice,,,,S,
+BUF,Dalton Kincaid,moved,Full Participation in Practice,Did Not Participate In Practice,,,TE,TE,practice Full Participation in Practice -> Did Not Participate In Practice
+BUF,Damar Hamlin,added,,Limited Participation in Practice,,,,S,
+BUF,Dee Alford,added,,Did Not Participate In Practice,,,,CB,
+BUF,Dion Dawkins,dropped,Full Participation in Practice,,,,T,,
+BUF,Dorian Williams,added,,Did Not Participate In Practice,,,,LB,
+BUF,Ed Oliver,dropped,Did Not Participate In Practice,,,,DE,,
+BUF,Greg Gaines,dropped,Full Participation in Practice,,,,DT,,
+BUF,Jackson Hawes,added,,Limited Participation in Practice,,,,TE,
+BUF,Jordan Hancock,dropped,Full Participation in Practice,,Questionable,,CB,,
+BUF,Keon Coleman,added,,Full Participation in Practice,,,,WR,
+BUF,O'Cyrus Torrence,added,,Did Not Participate In Practice,,,,G,
+BUF,Ray Davis,added,,Limited Participation in Practice,,,,RB,
+BUF,Sam Franklin Jr.,dropped,Limited Participation in Practice,,Questionable,,S,,
+BUF,Spencer Brown,dropped,Did Not Participate In Practice,,Doubtful,,T,,
+BUF,Terrel Bernard,dropped,Did Not Participate In Practice,,,,LB,,
+BUF,Ty Johnson,added,,Full Participation in Practice,,,,RB,
+BUF,Tyrell Shavers,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,WR,WR,game-status Questionable -> (none); injury Knee -> (none)
+CAR,Bobby Okereke,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,LB,LB,game-status Out -> (none); injury Foot -> (none)
+CAR,Brady Christensen,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,G,G,game-status Questionable -> (none); injury Hamstring -> (none)
+CAR,Bryce Young,added,,Full Participation in Practice,,,,QB,
+CAR,Chuba Hubbard,moved,Full Participation in Practice,Did Not Participate In Practice,,,RB,RB,practice Full Participation in Practice -> Did Not Participate In Practice
+CAR,Damien Lewis,dropped,Full Participation in Practice,,,,G,,
+CAR,Darren Waller,added,,Did Not Participate In Practice,,,,TE,
+CAR,Feleipe Franks,added,,Full Participation in Practice,,,,TE,
+CAR,Isaiah Simmons,added,,Did Not Participate In Practice,,,,S,
+CAR,Jackson Kuwatch,added,,Full Participation in Practice,,,,LB,
+CAR,Jaelan Phillips,dropped,Full Participation in Practice,,Questionable,,LB,,
+CAR,Jonathon Brooks,moved,Limited Participation in Practice,Full Participation in Practice,Doubtful,,RB,RB,practice Limited Participation in Practice -> Full Participation in Practice; game-status Doubtful -> (none); injury Groin -> (none)
+CAR,Lee Hunter,dropped,Full Participation in Practice,,,,DT,,
+CAR,Mike Jackson,moved,Limited Participation in Practice,Full Participation in Practice,Doubtful,,CB,CB,practice Limited Participation in Practice -> Full Participation in Practice; game-status Doubtful -> (none); injury Groin -> (none)
+CAR,Tommy Tremble,added,,Did Not Participate In Practice,,,,TE,
+CAR,Torricelli Simpkins III,dropped,Full Participation in Practice,,,,G,,
+CAR,Trevis Gipson,added,,Limited Participation in Practice,,,,LB,
+CAR,Trevor Etienne,dropped,Full Participation in Practice,,,,RB,,
+CAR,Will Lee III,moved,Limited Participation in Practice,Full Participation in Practice,Questionable,,CB,CB,practice Limited Participation in Practice -> Full Participation in Practice; game-status Questionable -> (none); injury Hamstring -> (none)
+CAR,Xavier Legette,dropped,Full Participation in Practice,,Questionable,,WR,,
+CHI,Jeffery Simmons,added,,Limited Participation in Practice,,,,DT,
+CHI,Kyle Monangai,added,,Full Participation in Practice,,,,RB,
+CHI,Kyler Gordon,added,,Did Not Participate In Practice,,,,CB,
+CHI,Luther Burden III,added,,Full Participation in Practice,,,,WR,
+CHI,Malik Muhammad,added,,Full Participation in Practice,,,,CB,
+CIN,Andrei Iosivas,dropped,Full Participation in Practice,,Doubtful,,WR,,
+CIN,B.J. Hill,dropped,Did Not Participate In Practice,,,,DT,,
+CIN,Brian Parker II,dropped,Full Participation in Practice,,Doubtful,,G,,
+CIN,DJ Turner II,dropped,Full Participation in Practice,,,,CB,,
+CIN,Dexter Lawrence,dropped,Did Not Participate In Practice,,,,DT,,
+CIN,Dylan Fairchild,dropped,Full Participation in Practice,,,,G,,
+CIN,Jalen Davis,dropped,Full Participation in Practice,,Doubtful,,CB,,
+CIN,Jonathan Allen,dropped,Limited Participation in Practice,,,,DT,,
+CIN,Kyle Dugger,dropped,Did Not Participate In Practice,,Out,,S,,
+CLE,Austin Barber,dropped,Full Participation in Practice,,,,T,,
+CLE,Carson Schwesinger,dropped,Full Participation in Practice,,,,LB,,
+CLE,Denzel Boston,dropped,Limited Participation in Practice,,Questionable,,WR,,
+CLE,Denzel Ward,dropped,Limited Participation in Practice,,,,CB,,
+CLE,Donovan McMillon,dropped,Limited Participation in Practice,,,,S,,
+CLE,Elgton Jenkins,dropped,Full Participation in Practice,,,,C,,
+CLE,Harold Fannin Jr.,dropped,Full Participation in Practice,,,,TE,,
+CLE,Maliek Collins,dropped,Full Participation in Practice,,,,DT,,
+CLE,Michael Burton,dropped,Did Not Participate In Practice,,Out,,FB,,
+CLE,Quincy Williams,dropped,Full Participation in Practice,,,,LB,,
+CLE,Ronnie Hickman Jr.,dropped,Did Not Participate In Practice,,Out,,S,,
+CLE,Tytus Howard,dropped,Full Participation in Practice,,,,T,,
+DAL,Alijah Clark,dropped,Did Not Participate In Practice,,Questionable,,S,,
+DAL,Brevyn Spann-Ford,dropped,Full Participation in Practice,,,,TE,,
+DAL,DaRon Bland,moved,Limited Participation in Practice,Did Not Participate In Practice,Questionable,,CB,CB,practice Limited Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Ankle -> (none)
+DAL,DeMarvion Overshown,dropped,Full Participation in Practice,,,,LB,,
+DAL,Devin Moore,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,CB,CB,game-status Questionable -> (none); injury Hip -> (none)
+DAL,Donovan Ezeiruaku,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,LB,LB,game-status Out -> (none); injury Ankle -> (none)
+DAL,George Pickens,dropped,Full Participation in Practice,,,,WR,,
+DAL,Jake Ferguson,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,TE,TE,"game-status Out -> (none); injury Knee, Ankle -> (none)"
+DAL,Jalen Thompson,added,,Limited Participation in Practice,,,,S,
+DAL,James Houston,added,,Full Participation in Practice,,,,LB,
+DAL,Joey Porter Jr.,moved,Limited Participation in Practice,Full Participation in Practice,Questionable,,CB,CB,"practice Limited Participation in Practice -> Full Participation in Practice; game-status Questionable -> (none); injury Ankle, Foot -> (none)"
+DAL,Jonathan Bullard,dropped,Full Participation in Practice,,Questionable,,DT,,
+DAL,Jonathan Mingo,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,WR,WR,game-status Out -> (none); injury Ankle -> (none)
+DAL,Juanyeh Thomas,moved,Did Not Participate In Practice,Limited Participation in Practice,Doubtful,,S,S,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Doubtful -> (none); injury Hamstring -> (none)
+DAL,KaVontae Turpin,dropped,Full Participation in Practice,,,,WR,,
+DAL,Luke Schoonmaker,dropped,Full Participation in Practice,,,,TE,,
+DAL,Malik Hooker,moved,Did Not Participate In Practice,Full Participation in Practice,,,S,S,practice Did Not Participate In Practice -> Full Participation in Practice
+DAL,Marist Liufau,dropped,Full Participation in Practice,,,,LB,,
+DAL,Otito Ogbonnia,added,,Full Participation in Practice,,,,DE,
+DAL,P.J. Locke,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,S,S,game-status Out -> (none); injury Concussion -> (none)
+DAL,Tyler Booker,added,,Did Not Participate In Practice,,,,G,
+DAL,Tyler Goodson,dropped,Did Not Participate In Practice,,Out,,RB,,
+DEN,Adam Prentice,added,,Full Participation in Practice,,,,FB,
+DEN,Brandon Jones,added,,Limited Participation in Practice,,,,S,
+DEN,Caleb Lohner,added,,Full Participation in Practice,,,,TE,
+DEN,Courtland Sutton,added,,Limited Participation in Practice,,,,WR,
+DEN,Jaylen Waddle,added,,Full Participation in Practice,,,,WR,
+DEN,Kris Abrams-Draine,added,,Limited Participation in Practice,,,,CB,
+DEN,Riley Moss,added,,Full Participation in Practice,,,,CB,
+DEN,Talanoa Hufanga,added,,Full Participation in Practice,,,,S,
+DEN,Zach Allen,added,,Limited Participation in Practice,,,,DE,
+DET,Amon-Ra St. Brown,dropped,Limited Participation in Practice,,Questionable,,WR,,
+DET,Brian Branch,dropped,Full Participation in Practice,,,,S,,
+DET,Cade Mays,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,C,C,game-status Out -> (none); injury Ankle -> (none)
+DET,D.J. Reed,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,,CB,CB,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> (none); injury Hip -> (none)
+DET,DJ Wonnum,dropped,Full Participation in Practice,,,,DE,,
+DET,Ennis Rakestraw Jr.,added,,Limited Participation in Practice,,,,CB,
+DET,Jacob Saylors,dropped,Full Participation in Practice,,,,RB,,
+DET,Jared Goff,dropped,Full Participation in Practice,,,,QB,,
+DET,Joe Bachie,added,,Limited Participation in Practice,,,,LB,
+DET,Kerby Joseph,moved,Did Not Participate In Practice,Full Participation in Practice,Out,,S,S,practice Did Not Participate In Practice -> Full Participation in Practice; game-status Out -> (none); injury Knee -> (none)
+DET,Khalil Dorsey,added,,Limited Participation in Practice,,,,CB,
+DET,Sione Vaki,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,RB,RB,game-status Questionable -> (none); injury Ankle -> (none)
+DET,Tyler Lacy,added,,Limited Participation in Practice,,,,DE,
+GB,Aaron Banks,dropped,Limited Participation in Practice,,,,G,,
+GB,Bo Melton,dropped,Full Participation in Practice,,,,WR,,
+GB,Chris Brooks,dropped,Limited Participation in Practice,,Questionable,,RB,,
+GB,Javon Bullard,dropped,Limited Participation in Practice,,Questionable,,S,,
+GB,Josh Jacobs,dropped,Did Not Participate In Practice,,Out,,RB,,
+GB,Josh Whyle,dropped,Did Not Participate In Practice,,Out,,TE,,
+GB,Kevin Zeitler,dropped,Did Not Participate In Practice,,Questionable,,G,,
+GB,Lukas Van Ness,dropped,Limited Participation in Practice,,Questionable,,LB,,
+GB,Micah Parsons,dropped,Limited Participation in Practice,,Out,,LB,,
+GB,Savion Williams,dropped,Limited Participation in Practice,,,,WR,,
+GB,Sean Rhyan,dropped,Did Not Participate In Practice,,Out,,C,,
+GB,Skyy Moore,dropped,Limited Participation in Practice,,Questionable,,WR,,
+GB,Travis Glover,dropped,Limited Participation in Practice,,Questionable,,G,,
+GB,Trey Smack,dropped,Full Participation in Practice,,,,K,,
+GB,Ty'Ron Hopper,dropped,Full Participation in Practice,,,,LB,,
+GB,Xavier McKinney,dropped,Limited Participation in Practice,,Questionable,,S,,
+GB,Zaire Franklin,dropped,Did Not Participate In Practice,,Doubtful,,LB,,
+HOU,Azeez Al-Shaair,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,LB,LB,"game-status Out -> (none); injury Groin, Not injury related - personal matter -> (none)"
+HOU,Brevin Jordan,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,Out,TE,TE,"injury Finger, Foot -> Foot, Illness"
+HOU,David Montgomery,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,RB,RB,game-status Questionable -> (none); injury Groin -> (none)
+HOU,Febechi Nwaiwu,added,,Full Participation in Practice,,,,G,
+HOU,Kamari Lassiter,added,,Full Participation in Practice,,,,CB,
+HOU,Keylan Rutledge,moved,Did Not Participate In Practice,Full Participation in Practice,Out,,G,G,"practice Did Not Participate In Practice -> Full Participation in Practice; game-status Out -> (none); injury Neck, Shoulder -> (none)"
+HOU,Tommy Togiai,dropped,Full Participation in Practice,,,,DT,,
+HOU,Trent Brown,dropped,Did Not Participate In Practice,,Questionable,,T,,
+HOU,Will Anderson Jr.,dropped,Did Not Participate In Practice,,Questionable,,DE,,
+HOU,Woody Marks,moved,Full Participation in Practice,Did Not Participate In Practice,,Out,RB,RB,practice Full Participation in Practice -> Did Not Participate In Practice; game-status (none) -> Out; injury (none) -> Concussion
+HOU,Wyatt Teller,moved,Limited Participation in Practice,Full Participation in Practice,Questionable,Questionable,G,G,"practice Limited Participation in Practice -> Full Participation in Practice; injury Illness, Back -> Back"
+IND,A.J. Haulcy,dropped,Full Participation in Practice,,,,S,,
+IND,Akeem Davis-Gaither,dropped,Did Not Participate In Practice,,Out,,LB,,
+IND,Anthony Gould,added,,Full Participation in Practice,,Questionable,,WR,
+IND,Arden Key,dropped,Full Participation in Practice,,Questionable,,DE,,
+IND,Bernhard Raimann,added,,Did Not Participate In Practice,,Out,,T,
+IND,CJ Allen,dropped,Full Participation in Practice,,,,LB,,
+IND,Charlie Heck,added,,Did Not Participate In Practice,,Questionable,,T,
+IND,Charvarius Ward,moved,Full Participation in Practice,Did Not Participate In Practice,,Out,CB,CB,practice Full Participation in Practice -> Did Not Participate In Practice; game-status (none) -> Out; injury (none) -> Knee
+IND,Dalton Tucker,added,,Full Participation in Practice,,,,G,
+IND,Grover Stewart,dropped,Full Participation in Practice,,,,DT,,
+IND,Jaylon Carlies,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,LB,LB,game-status Out -> (none); injury Neck -> (none)
+IND,Jonathan Taylor,dropped,Full Participation in Practice,,,,RB,,
+IND,Justin Walley,dropped,Full Participation in Practice,,,,CB,,
+IND,Luke Rhodes,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,Questionable,LS,LS,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> Questionable
+IND,Mo Alie-Cox,dropped,Did Not Participate In Practice,,Out,,TE,,
+IND,Sauce Gardner,added,,Did Not Participate In Practice,,Questionable,,CB,
+IND,Will Mallory,moved,Limited Participation in Practice,Did Not Participate In Practice,Questionable,Out,TE,TE,practice Limited Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> Out
+JAX,Arik Armstead,added,,Did Not Participate In Practice,,,,DT,
+JAX,BJ Green II,moved,Full Participation in Practice,Full Participation in Practice,Out,,DE,DE,game-status Out -> (none); injury Forearm -> (none)
+JAX,Branson Combs,dropped,Full Participation in Practice,,,,LB,,
+JAX,Danny Striggow,added,,Limited Participation in Practice,,,,DE,
+JAX,Ezra Cleveland,dropped,Full Participation in Practice,,,,G,,
+JAX,Jalen McLeod,added,,Limited Participation in Practice,,,,LB,
+JAX,Jessie Bates,dropped,Limited Participation in Practice,,Out,,S,,
+JAX,Jonah Monheim,added,,Limited Participation in Practice,,,,C,
+JAX,Jordan Davis,dropped,Limited Participation in Practice,,Out,,DT,,
+JAX,LeQuint Allen Jr.,added,,Limited Participation in Practice,,,,RB,
+JAX,Matt Dickerson,added,,Limited Participation in Practice,,,,DT,
+JAX,Robert Hainsey,moved,Limited Participation in Practice,Did Not Participate In Practice,Questionable,,C,C,practice Limited Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Concussion -> (none)
+KC,Alohi Gilman,added,,Full Participation in Practice,,,,S,
+KC,Jaden Hicks,dropped,Full Participation in Practice,,,,S,,
+KC,Jadon Canady,added,,Full Participation in Practice,,,,CB,
+KC,Jaydn Ott,moved,Limited Participation in Practice,Full Participation in Practice,Questionable,,RB,RB,practice Limited Participation in Practice -> Full Participation in Practice; game-status Questionable -> (none); injury Hamstring -> (none)
+KC,Jaylon Moore,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,T,T,game-status Out -> (none); injury Ankle -> (none)
+KC,Kenneth Walker III,moved,Did Not Participate In Practice,Did Not Participate In Practice,Questionable,,RB,RB,game-status Questionable -> (none); injury Groin -> (none)
+KC,Mansoor Delane,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,CB,CB,game-status Questionable -> (none); injury Shoulder -> (none)
+KC,Nick Bolton,added,,Limited Participation in Practice,,,,LB,
+KC,Omarr Norman-Lott,moved,Limited Participation in Practice,Limited Participation in Practice,Out,,DT,DT,game-status Out -> (none); injury Knee -> (none)
+KC,Peter Woods,moved,Did Not Participate In Practice,Full Participation in Practice,Out,,DT,DT,practice Did Not Participate In Practice -> Full Participation in Practice; game-status Out -> (none); injury Neck -> (none)
+KC,Trey Smith,added,,Did Not Participate In Practice,,,,G,
+KC,Xavier Worthy,dropped,Full Participation in Practice,,,,WR,,
+LAC,Alex Harkey,dropped,Full Participation in Practice,,,,G,,
+LAC,Branson Taylor,dropped,Did Not Participate In Practice,,,,G,,
+LAC,Bud Dupree,dropped,Did Not Participate In Practice,,,,DE,,
+LAC,Cam Hart,dropped,Full Participation in Practice,,,,CB,,
+LAC,Charlie Kolar,added,,Did Not Participate In Practice,,,,TE,
+LAC,Daiyan Henley,moved,Full Participation in Practice,Did Not Participate In Practice,,,LB,LB,practice Full Participation in Practice -> Did Not Participate In Practice
+LAC,David Njoku,dropped,Limited Participation in Practice,,,,TE,,
+LAC,Deane Leonard,dropped,Full Participation in Practice,,,,CB,,
+LAC,Denzel Perryman,dropped,Full Participation in Practice,,,,LB,,
+LAC,Donte Jackson,added,,Limited Participation in Practice,,,,CB,
+LAC,Kayode Awosika,dropped,Limited Participation in Practice,,,,G,,
+LAC,Keaton Mitchell,dropped,Limited Participation in Practice,,,,RB,,
+LAC,Kendall Williamson,moved,Did Not Participate In Practice,Limited Participation in Practice,,,S,S,practice Did Not Participate In Practice -> Limited Participation in Practice
+LAC,Khalil Mack,moved,Full Participation in Practice,Did Not Participate In Practice,,,LB,DE,practice Full Participation in Practice -> Did Not Participate In Practice
+LAC,Ladd McConkey,moved,Did Not Participate In Practice,Limited Participation in Practice,,,WR,WR,practice Did Not Participate In Practice -> Limited Participation in Practice
+LAC,Rodney Shelley,moved,Limited Participation in Practice,Did Not Participate In Practice,,,CB,CB,practice Limited Participation in Practice -> Did Not Participate In Practice
+LAC,Tre Harris,dropped,Full Participation in Practice,,,,WR,,
+LAC,Trey Pipkins,moved,Did Not Participate In Practice,Limited Participation in Practice,,,T,T,practice Did Not Participate In Practice -> Limited Participation in Practice
+LAR,Aaron Donald,dropped,Did Not Participate In Practice,,,,DT,,
+LAR,Braden Fiske,dropped,Did Not Participate In Practice,,,,DT,,
+LAR,Byron Young,dropped,Did Not Participate In Practice,,,,LB,,
+LAR,Colby Parkinson,dropped,Full Participation in Practice,,,,TE,,
+LAR,Davis Allen,dropped,Limited Participation in Practice,,Questionable,,TE,,
+LAR,Joe Cardona,dropped,Limited Participation in Practice,,Questionable,,LS,,
+LAR,Kam Curl,dropped,Limited Participation in Practice,,Questionable,,S,,
+LAR,Matthew Stafford,dropped,Full Participation in Practice,,,,QB,,
+LAR,Myles Garrett,dropped,Did Not Participate In Practice,,Questionable,,LB,,
+LAR,Puka Nacua,dropped,Did Not Participate In Practice,,,,WR,,
+LAR,Steve Avila,dropped,Did Not Participate In Practice,,Out,,G,,
+LAR,Terrance Ferguson,dropped,Did Not Participate In Practice,,Out,,TE,,
+LAR,Trent McDuffie,dropped,Limited Participation in Practice,,Questionable,,CB,,
+LAR,Tyler Higbee,dropped,Limited Participation in Practice,,,,TE,,
+LV,Brock Bowers,added,,Did Not Participate In Practice,,,,TE,
+LV,Dont'e Thornton Jr.,dropped,Did Not Participate In Practice,,Questionable,,WR,,
+LV,Foley Fatukasi,moved,Full Participation in Practice,Limited Participation in Practice,,,DT,DT,practice Full Participation in Practice -> Limited Participation in Practice
+LV,Matt Gay,added,,Limited Participation in Practice,,,,K,
+LV,Thomas Booker,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,DT,DT,game-status Questionable -> (none); injury Ankle -> (none)
+LV,Tonka Hemingway,added,,Did Not Participate In Practice,,,,DT,
+LV,Trey Zuhn III,dropped,Full Participation in Practice,,,,C,,
+MIA,Aaron Brewer,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,C,C,game-status Out -> (none); injury Concussion -> (none)
+MIA,Andrew Meyer,added,,Limited Participation in Practice,,,,C,
+MIA,Bradley Pinion,added,,Did Not Participate In Practice,,,,P,
+MIA,Caleb Douglas,added,,Limited Participation in Practice,,,,WR,
+MIA,Chris Bell,moved,Did Not Participate In Practice,Limited Participation in Practice,Doubtful,,WR,WR,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Doubtful -> (none); injury Knee -> (none)
+MIA,Dante Trader Jr.,moved,Full Participation in Practice,Did Not Participate In Practice,,,S,S,practice Full Participation in Practice -> Did Not Participate In Practice
+MIA,Darrell Baker Jr.,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,CB,CB,game-status Questionable -> (none); injury Knee -> (none)
+MIA,Jared Wayne,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,WR,WR,game-status Out -> (none); injury Quadricep -> (none)
+MIA,Jaylen Wright,dropped,Full Participation in Practice,,,,RB,,
+MIA,Jaylin Simpson,added,,Did Not Participate In Practice,,,,CB,
+MIA,Julius Brents,added,,Limited Participation in Practice,,,,CB,
+MIA,Kaytron Allen,dropped,Full Participation in Practice,,,,RB,,
+MIA,Malik Herring,dropped,Full Participation in Practice,,,,DE,,
+MIA,Michael Taaffe,dropped,Full Participation in Practice,,,,S,,
+MIA,Will Kacmarek,dropped,Full Participation in Practice,,,,TE,,
+MIN,Andrew Van Ginkel,added,,Limited Participation in Practice,,,,LB,
+MIN,Blake Cashman,moved,Limited Participation in Practice,Full Participation in Practice,Out,,LB,LB,practice Limited Participation in Practice -> Full Participation in Practice; game-status Out -> (none); injury Concussion -> (none)
+MIN,Carson Wentz,dropped,Full Participation in Practice,,,,QB,,
+MIN,Christian Darrisaw,dropped,Did Not Participate In Practice,,,,T,,
+MIN,Harrison Smith,dropped,Limited Participation in Practice,,,,S,,
+MIN,Jauan Jennings,moved,Did Not Participate In Practice,Full Participation in Practice,Out,,WR,WR,practice Did Not Participate In Practice -> Full Participation in Practice; game-status Out -> (none); injury Calf -> (none)
+MIN,Jay Ward,moved,Full Participation in Practice,Limited Participation in Practice,,,S,S,practice Full Participation in Practice -> Limited Participation in Practice
+MIN,Jeshaun Jones,added,,Limited Participation in Practice,,,,WR,
+MIN,Jordan Addison,moved,Limited Participation in Practice,Did Not Participate In Practice,Questionable,,WR,WR,practice Limited Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Thumb -> (none)
+MIN,Josh Metellus,dropped,Limited Participation in Practice,,Questionable,,S,,
+MIN,Kyle Van Noy,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,LB,LB,game-status Questionable -> (none); injury Calf -> (none)
+MIN,Kyler Murray,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,QB,QB,game-status Out -> (none); injury Hamstring -> (none)
+MIN,T.J. Hockenson,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,,TE,TE,"practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> (none); injury Wrist, Chest -> (none)"
+MIN,Theo Jackson,dropped,Full Participation in Practice,,,,S,,
+MIN,Tyrion Ingram-Dawkins,moved,Did Not Participate In Practice,Full Participation in Practice,Out,,DT,DT,practice Did Not Participate In Practice -> Full Participation in Practice; game-status Out -> (none); injury Ankle -> (none)
+NE,A.J. Brown,dropped,Limited Participation in Practice,,Questionable,,WR,,
+NE,Ben Brown,dropped,Did Not Participate In Practice,,Out,,C,,
+NE,Brenden Schooler,dropped,Limited Participation in Practice,,Questionable,,S,,
+NE,Cameron Latu,dropped,Limited Participation in Practice,,Questionable,,TE,,
+NE,Carlton Davis III,dropped,Did Not Participate In Practice,,Out,,CB,,
+NE,Charles Woods,dropped,Full Participation in Practice,,Questionable,,CB,,
+NE,Drake Maye,dropped,Full Participation in Practice,,,,QB,,
+NE,Greg Van Roten,dropped,Full Participation in Practice,,Questionable,,G,,
+NE,Hunter Henry,dropped,Limited Participation in Practice,,,,TE,,
+NE,Kevin Byard,dropped,Full Participation in Practice,,Questionable,,S,,
+NE,Morgan Moses,dropped,Full Participation in Practice,,,,T,,
+NE,Reggie Gilliam,dropped,Limited Participation in Practice,,Questionable,,FB,,
+NE,Rhamondre Stevenson,dropped,Limited Participation in Practice,,Questionable,,RB,,
+NE,TreVeyon Henderson,dropped,Did Not Participate In Practice,,Out,,RB,,
+NE,Walter Rouse,dropped,Limited Participation in Practice,,Questionable,,T,,
+NO,Alvin Kamara,moved,Full Participation in Practice,Did Not Participate In Practice,,,RB,RB,practice Full Participation in Practice -> Did Not Participate In Practice
+NO,Asim Richards,moved,Full Participation in Practice,Did Not Participate In Practice,,,T,T,practice Full Participation in Practice -> Did Not Participate In Practice
+NO,CJ Donaldson,moved,Did Not Participate In Practice,Full Participation in Practice,Out,,RB,RB,practice Did Not Participate In Practice -> Full Participation in Practice; game-status Out -> (none); injury Shoulder -> (none)
+NO,Christen Miller,dropped,Did Not Participate In Practice,,Out,,DT,,
+NO,David Edwards,dropped,Full Participation in Practice,,,,G,,
+NO,Decamerion Richardson,added,,Limited Participation in Practice,,,,CB,
+NO,Erik McCoy,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,C,C,game-status Out -> (none); injury Biceps -> (none)
+NO,Jordyn Tyson,added,,Limited Participation in Practice,,,,WR,
+NO,Justin Reid,added,,Did Not Participate In Practice,,,,S,
+NO,Kelvin Banks Jr.,dropped,Full Participation in Practice,,,,T,,
+NO,Martin Emerson,moved,Limited Participation in Practice,Did Not Participate In Practice,Questionable,,CB,CB,practice Limited Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Shin -> (none)
+NO,Noah Fant,dropped,Full Participation in Practice,,,,TE,,
+NO,Pete Werner,added,,Did Not Participate In Practice,,,,LB,
+NO,Quincy Riley,dropped,Full Participation in Practice,,,,CB,,
+NO,Taliese Fuaga,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,T,T,game-status Out -> (none); injury Knee -> (none)
+NO,Travis Etienne,dropped,Full Participation in Practice,,Questionable,,RB,,
+NYG,Abdul Carter,dropped,Full Participation in Practice,,,,LB,,
+NYG,Andrew Thomas,dropped,Full Participation in Practice,,,,T,,
+NYG,Ben Mann,added,,Full Participation in Practice,,,,LS,
+NYG,Charlie Jones,dropped,Full Participation in Practice,,,,WR,,
+NYG,Colton Hood,dropped,Full Participation in Practice,,,,CB,,
+NYG,Darnell Mooney,dropped,Full Participation in Practice,,,,WR,,
+NYG,Deonte Banks,added,,Full Participation in Practice,,,,CB,
+NYG,J.J. McCarthy,dropped,Full Participation in Practice,,,,QB,,
+NYG,Jason Pinnock,added,,Limited Participation in Practice,,,,S,
+NYG,Jermaine Eluemunor,dropped,Full Participation in Practice,,,,T,,
+NYG,Malik Harrison,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,LB,LB,game-status Questionable -> (none); injury Groin -> (none)
+NYG,Malik Nabers,dropped,Full Participation in Practice,,,,WR,,
+NYG,Nic Jones,added,,Did Not Participate In Practice,,,,CB,
+NYG,Theo Johnson,dropped,Full Participation in Practice,,,,TE,,
+NYJ,Adonai Mitchell,dropped,Full Participation in Practice,,Questionable,,WR,,
+NYJ,David Onyemata,added,,Limited Participation in Practice,,,,DT,
+NYJ,Dylan Parham,added,,Limited Participation in Practice,,,,G,
+NYJ,Garrett Wilson,dropped,Full Participation in Practice,,Questionable,,WR,,
+NYJ,Geno Smith,added,,Limited Participation in Practice,,,,QB,
+NYJ,Harrison Phillips,moved,Full Participation in Practice,Did Not Participate In Practice,Questionable,,DT,DT,practice Full Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Ankle -> (none)
+NYJ,Isaiah Williams,added,,Did Not Participate In Practice,,,,WR,
+NYJ,Jarvis Brownlee Jr.,dropped,Limited Participation in Practice,,Questionable,,CB,,
+NYJ,Joseph Ossai,moved,Full Participation in Practice,Limited Participation in Practice,Questionable,,DE,DE,practice Full Participation in Practice -> Limited Participation in Practice; game-status Questionable -> (none); injury Ankle -> (none)
+NYJ,Nahshon Wright,dropped,Full Participation in Practice,,Questionable,,CB,,
+NYJ,Omar Cooper Jr.,moved,Full Participation in Practice,Did Not Participate In Practice,Questionable,,WR,WR,practice Full Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Ankle -> (none)
+NYJ,Trevin Wallace,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,,LB,LB,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> (none); injury Groin -> (none)
+NYJ,VJ Payne,dropped,Full Participation in Practice,,Questionable,,S,,
+PHI,Andrew Mukuba,added,,Full Participation in Practice,,,,S,
+PHI,Britain Covey,added,,Limited Participation in Practice,,,,WR,
+PHI,DeVonta Smith,added,,Limited Participation in Practice,,,,WR,
+PHI,Dontayvion Wicks,added,,Limited Participation in Practice,,,,WR,
+PHI,Jalyx Hunt,added,,Full Participation in Practice,,,,LB,
+PHI,Jihaad Campbell,added,,Full Participation in Practice,,,,LB,
+PHI,Jonathan Greenard,added,,Full Participation in Practice,,,,LB,
+PHI,Jonathan Jones,added,,Limited Participation in Practice,,,,CB,
+PHI,Michael Carter II,added,,Limited Participation in Practice,,,,CB,
+PHI,Nolan Smith,added,,Limited Participation in Practice,,,,LB,
+PHI,Saquon Barkley,added,,Full Participation in Practice,,,,RB,
+PHI,Smael Mondon Jr.,added,,Full Participation in Practice,,,,LB,
+PHI,Tanner McKee,added,,Full Participation in Practice,,,,QB,
+PHI,Will Shipley,added,,Limited Participation in Practice,,,,RB,
+PHI,Zack Baun,added,,Did Not Participate In Practice,,,,LB,
+PIT,Ben Skowronek,dropped,Full Participation in Practice,,,,WR,,
+PIT,Brandin Echols,dropped,Full Participation in Practice,,,,CB,,
+PIT,Cameron Heyward,moved,Full Participation in Practice,Did Not Participate In Practice,,,DT,DT,practice Full Participation in Practice -> Did Not Participate In Practice
+PIT,Darnell Washington,moved,Full Participation in Practice,Did Not Participate In Practice,,,TE,TE,practice Full Participation in Practice -> Did Not Participate In Practice
+PIT,DeShon Elliott,moved,Full Participation in Practice,Limited Participation in Practice,,,S,S,practice Full Participation in Practice -> Limited Participation in Practice
+PIT,Derrick Harmon,dropped,Full Participation in Practice,,Questionable,,DT,,
+PIT,Doneiko Slaughter,dropped,Full Participation in Practice,,,,CB,,
+PIT,Gennings Dunker,added,,Full Participation in Practice,,,,G,
+PIT,Jalen Ramsey,added,,Did Not Participate In Practice,,,,CB,
+PIT,Michael Pittman,added,,Limited Participation in Practice,,,,WR,
+PIT,Nick Herbig,added,,Did Not Participate In Practice,,,,LB,
+PIT,Patrick Queen,added,,Limited Participation in Practice,,,,LB,
+PIT,Roman Wilson,added,,Full Participation in Practice,,,,WR,
+PIT,T.J. Watt,moved,Full Participation in Practice,Did Not Participate In Practice,,,LB,LB,practice Full Participation in Practice -> Did Not Participate In Practice
+SEA,AJ Barner,dropped,Full Participation in Practice,,,,TE,,
+SEA,Anthony Bradford,dropped,Full Participation in Practice,,,,G,,
+SEA,Brandon Pili,dropped,Full Participation in Practice,,,,DT,,
+SEA,Charles Cross,dropped,Did Not Participate In Practice,,Out,,T,,
+SEA,Connor O'Toole,dropped,Full Participation in Practice,,,,LB,,
+SEA,Derick Hall,dropped,Did Not Participate In Practice,,,,LB,,
+SEA,Drew Lock,dropped,Limited Participation in Practice,,,,QB,,
+SEA,Jarran Reed,dropped,Full Participation in Practice,,,,DT,,
+SEA,Jaxon Smith-Njigba,dropped,Full Participation in Practice,,,,WR,,
+SEA,Leonard Williams,dropped,Did Not Participate In Practice,,Out,,DT,,
+SEA,Patrick O'Connell,dropped,Full Participation in Practice,,,,LB,,
+SEA,Quenton Nelson,dropped,Did Not Participate In Practice,,Out,,G,,
+SEA,Rashid Shaheed,dropped,Full Participation in Practice,,,,WR,,
+SEA,Sam Darnold,dropped,Did Not Participate In Practice,,Out,,QB,,
+SEA,Uchenna Nwosu,dropped,Full Participation in Practice,,,,LB,,
+SF,C.J. West,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,DT,DT,game-status Questionable -> (none); injury Knee -> (none)
+SF,Christian McCaffrey,moved,Full Participation in Practice,Did Not Participate In Practice,,,RB,RB,practice Full Participation in Practice -> Did Not Participate In Practice
+SF,Deebo Samuel Sr.,dropped,Full Participation in Practice,,,,WR,,
+SF,Demarcus Robinson,dropped,Full Participation in Practice,,,,WR,,
+SF,Deommodore Lenoir,dropped,Limited Participation in Practice,,Questionable,,CB,,
+SF,Dre Greenlaw,moved,Limited Participation in Practice,Did Not Participate In Practice,Questionable,,LB,LB,practice Limited Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Knee -> (none)
+SF,Ji'Ayir Brown,added,,Limited Participation in Practice,,,,S,
+SF,Jon Weeks,added,,Full Participation in Practice,,,,LS,
+SF,Khalid Kareem,added,,Limited Participation in Practice,,,,DE,
+SF,Luke Gifford,added,,Limited Participation in Practice,,,,LB,
+SF,Mac Jones,added,,Limited Participation in Practice,,,,QB,
+SF,Mike Evans,moved,Did Not Participate In Practice,Did Not Participate In Practice,Out,,WR,WR,game-status Out -> (none); injury Achilles -> (none)
+SF,Mykel Williams,added,,Full Participation in Practice,,,,DE,
+SF,Nate Hobbs,moved,Full Participation in Practice,Full Participation in Practice,Questionable,,CB,CB,game-status Questionable -> (none); injury Groin -> (none)
+SF,Renardo Green,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,CB,CB,game-status Questionable -> (none); injury Back -> (none)
+SF,Siran Neal,moved,Full Participation in Practice,Limited Participation in Practice,,,S,S,practice Full Participation in Practice -> Limited Participation in Practice
+SF,Trent Williams,moved,Did Not Participate In Practice,Did Not Participate In Practice,Questionable,,T,T,game-status Questionable -> (none); injury Shoulder -> (none)
+SF,Upton Stout,moved,Limited Participation in Practice,Limited Participation in Practice,Questionable,,CB,CB,"game-status Questionable -> (none); injury Shoulder, Neck -> (none)"
+TB,Antoine Winfield Jr.,added,,Did Not Participate In Practice,,,,S,
+TB,Baker Mayfield,added,,Did Not Participate In Practice,,,,QB,
+TB,Cade Otton,added,,Full Participation in Practice,,,,TE,
+TB,Josh Hayes,added,,Full Participation in Practice,,,,CB,
+TB,Tristan Wirfs,added,,Full Participation in Practice,,,,T,
+TB,Yaya Diaby,added,,Limited Participation in Practice,,,,LB,
+TEN,Anthony Hill Jr.,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,,LB,LB,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> (none); injury Neck -> (none)
+TEN,Carnell Tate,moved,Did Not Participate In Practice,Limited Participation in Practice,Out,,WR,WR,practice Did Not Participate In Practice -> Limited Participation in Practice; game-status Out -> (none); injury Shoulder -> (none)
+TEN,Cody Barton,moved,Did Not Participate In Practice,Full Participation in Practice,Out,,LB,LB,practice Did Not Participate In Practice -> Full Participation in Practice; game-status Out -> (none); injury Concussion -> (none)
+TEN,Fernando Carmona,added,,Limited Participation in Practice,,,,G,
+TEN,JC Latham,dropped,Full Participation in Practice,,,,T,,
+TEN,Jaylon Jones,dropped,Full Participation in Practice,,,,CB,,
+TEN,John Franklin-Myers,moved,Full Participation in Practice,Limited Participation in Practice,,,DE,DE,practice Full Participation in Practice -> Limited Participation in Practice
+TEN,Kylen Granson,added,,Full Participation in Practice,,,,TE,
+TEN,Marcus Harris,dropped,Full Participation in Practice,,,,CB,,
+TEN,Peter Skoronski,dropped,Did Not Participate In Practice,,Out,,G,,
+TEN,Tommy Townsend,dropped,Did Not Participate In Practice,,Out,,P,,
+TEN,Tony Adams,added,,Did Not Participate In Practice,,,,S,
+TEN,Tony Pollard,dropped,Full Participation in Practice,,,,RB,,
+TEN,Tyjae Spears,moved,Full Participation in Practice,Did Not Participate In Practice,Questionable,,RB,RB,practice Full Participation in Practice -> Did Not Participate In Practice; game-status Questionable -> (none); injury Knee -> (none)
+WAS,Amik Robertson,dropped,Limited Participation in Practice,,,,CB,,
+WAS,Chig Okonkwo,dropped,Full Participation in Practice,,,,TE,,
+WAS,Colson Yankoff,dropped,Did Not Participate In Practice,,Out,,TE,,
+WAS,Jayden Daniels,dropped,Full Participation in Practice,,,,QB,,
+WAS,John Bates,dropped,Full Participation in Practice,,,,TE,,
+WAS,Lucas Patrick,dropped,Did Not Participate In Practice,,Out,,C,,
+WAS,Matt Gulbin,dropped,Full Participation in Practice,,,,C,,
+WAS,Shy Tuttle,dropped,Full Participation in Practice,,,,DT,,
+WAS,Treylon Burks,dropped,Did Not Participate In Practice,,,,WR,,
