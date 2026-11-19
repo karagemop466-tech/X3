@@ -4482,6 +4482,71 @@ No number on the site changed. All three are sentences that disagreed with the C
 the board's gate recomputes aggregates from those CSVs, which is why the inventory rows, hashes and
 delta contents are now all derived rather than typed - a heading is as capable of lying as a cell.
 
+| Task | Status | Owner | File scope |
+|---|---|---|---|
+| Repair immutable capture storage and per-source alerting; verify and publish | in progress | arena/46153df1-x3 | `scripts/availability_snapshot.py`, `scripts/test_availability_snapshot.py`, `.github/workflows/availability-snapshots.yml`, `readiness/data/history/2026-11-19` (raw-file suffix only), this log |
+
+- Verified source endpoints against the live [NFL injury report](https://www.nfl.com/injuries/) and [NFL schedule](https://www.nfl.com/schedules/): both showed 2026 Week 11. This confirms the endpoints, not every published player row or the report's publication time.
+- The two legacy raw files matched their recorded size and SHA-256. Their suffix changed from `.html` to `.bin` without changing a byte: vendor evidence was being audited as site HTML, breaking the integration build on NFL-relative links. New records preserve bytes, clock time and final URL per response and do not overwrite same-day captures. Tests cover same-day retention, hash fidelity, redirects and zero-row alerts. Repo audit passed (366 pages, 9,589 internal references).
+- Needs review: raw evidence is **not private**; a `.bin` suffix is not access control. No permission to redistribute raw NFL data was established. A restricted archive and retention policy, official depth and Game Book joins, and an authorized price feed remain separate blockers. Nothing in this change verifies a replacement, a price, or a strategy edge.
+## Session arena/aaad52f3-x3
+
+| Task | Status | Owner | Scope |
+|---|---|---|---|
+| Reconcile the market-layer results feed with official Week 10 finals (F-01/F-12); preserve historical strategy windows | done | arena/aaad52f3-x3 | `tools/results_feed.py`, generated `data/x3/verified/` and affected integration surfaces if required |
+
+Week 10 score verification: both chunks of the [official schedule](https://www.nfl.com/schedules/2026/by-week/week-10) checked against all 14 captured finals on 2026-11-19. The feed now contains 150 finals and 13 captured fixtures without scores; all 32 clubs reconcile to the [official league standings](https://www.nfl.com/standings/league/2026/REG). Historical model outputs are unchanged. Board/closeout owners: please mark the stale-count findings F-01/F-12 and V-01/V-03 as historical; the hub feed now agrees with the 150-game closeout on finals. This does not verify missing venues, availability, or prices.
+
+Rebase over PR #121: resolved the coordination append conflict by retaining both sessions’ entries. Its raw-file suffix repair cleared the pre-existing link-audit errors. Negative test: a changed Week 10 score fails without writing results. Market determinism and repo-wide integration passed; 366 HTML pages, zero integration problems.
+## Session `arena/765ef2cf-x3` — CLAIM: fresh-day verification 2026-11-19 + decision board (2026-11-19)
+
+**Branch** `arena/765ef2cf-x3` (branched from `6a983d9`, main tip). **Claim posted 2026-11-19, before any write beyond this file.**
+
+### Claim / scope (new files only; no other session's file is hand-edited except one nav entry via its generator)
+
+| ID | Task | Status | File scope |
+|----|------|--------|-----------|
+| F1 | Fresh-day official verification (2026-11-19): standings, Week-11 slate, reg11 probe series, IND@HOU game-centre venue, Week-10 finals spot-check — every row sourced or flagged | in progress | NEW `fresh/**`, `data/fresh/**` |
+| F2 | Decision board: landing + executive summary, decision-readiness table, questions/suggestions refresh, flagged page — all figures derived from F1 data or existing verified registers, nothing inferred | in progress | NEW `fresh/**`, `data/fresh/**` |
+| F3 | Gate + CI + PR → merge → Pages confirmation + completion record | in progress | `scripts/fresh_*.py`, `.github/workflows/fresh.yml`, `tools/build_hub.py` (one additive nav entry only), `COORDINATION.md` (append-only) |
+
+Overlap check: `grep`ed COORDINATION.md — no active claim on `fresh/**`, `data/fresh/**`, or `scripts/fresh_*.py`. The last sessions (b05a7eea, 40cd3b17, a13ae6bd) record `done`. No open PRs. `tools/build_hub.py` is shared; this session adds exactly one nav entry through the generator and regenerates `index.html` + `hub/**`, verifying the diff is additive only.
+
+## Session `arena/765ef2cf-x3` — DONE: fresh-day verification 2026-11-19 (F1–F3) — PR #123 merged, Pages live
+
+**Branch** `arena/765ef2cf-x3`, rebased onto `548718d` (#122 results reconciliation through Week 10) before push.
+**PR** [#123](https://github.com/karagemop466-tech/X3/pull/123) — MERGED 2026-11-19T07:05:32Z, merge commit `994df870b3d11f1c2eb7ad755e650534d4ff0e41`. **Pages deploy: SUCCESS** (build + deploy jobs; confirmed via run 44476950185 and HTTP fetch of the live page). Branch deleted? No — branch kept; only main is deployed.
+
+### What was done (all figures from official pages read 2026-11-19, page-reader tool, clock time recorded)
+
+- **F1 — fresh-day official verification.** New module `fresh/` + `data/fresh/`, gate `scripts/fresh_verify.py` (~180 assertions, all green), deterministic builder `scripts/fresh_build.py`, CI `.github/workflows/fresh.yml`.
+  - [nfl.com/injuries/league/2026/reg11](https://www.nfl.com/injuries/league/2026/reg11) — **reg11 now serves the Week-11 report** ("Week 11 of the 2026 Season"; the four 2026-11-18 probes all served Week 10). 253 rows transcribed across 24 clubs; CIN and WAS report **No Injuries Reported**. Designated rows: **9 Out** (IND: Mallory, Raimann, Tillery, Travis, Ward; HOU: M. Harrison Jr., Hunter, Jordan, Marks), **7 Questionable** (IND: Gardner, Gould, Heck, Rhodes; HOU: Hummel, J. Smith, Teller). 237 rows carry no game designation — blanks published blank.
+  - [nfl.com/standings/league/2026/REG](https://www.nfl.com/standings/league/2026/REG) — 32/32 clubs re-read; every row MATCHES both committed registers (`data/atlas/standings_2026_thru_wk10.csv`, `data/closeout/official_standings_2026_wk10.csv`); league PF = PA = 6923; pct = (W+0.5T)/GP; NYG/WAS one tie each.
+  - [nfl.com/schedules/2026/by-week/week-11](https://www.nfl.com/schedules/2026/by-week/week-11) — 13 fixtures + 6 byes (ATL, CLE, GB, LA, NE, SEA); every record cross-foots to the fresh standings; kickoff/date/network/venue unchanged vs the committed 2026-11-18 read; MIN@SF is the Mexico City International Game; CIN@WAS = Mon 2026-11-23 ESPN; IND@HOU = Thu 2026-11-19 8:15 PM PRIME.
+  - [IND@HOU game centre](https://www.nfl.com/games/colts-at-texans-2026-reg-11) — Game Info: HOUSTON, TX / **RELIANT STADIUM**; IND 3-7 vs HOU 3-6; Out chips corroborate the reg11 transcription.
+- **F2 — decision board.** `fresh/decision-board.html` renders the canonical 74-row readiness register (`readiness/data/readiness.json`, as_of 2026-11-15) read-only, plus gates G0–G9, the questions and suggestions registers — no row upgraded, nothing invented. `fresh/executive-summary.html` (fresh-day brief), `fresh/flagged.html` (FR-01…FR-11), `fresh/sources.html` (every read with clock time).
+- **F3 — gate + CI + PR + Pages.** Gates green locally and in CI: fresh_verify, fresh_build byte-equality, audit_all (PASS; WARNs pre-existing raw HTML under `readiness/data/history/`), check_links, check_site, check_hub, verify_hub, verify_integration (**PASS, 375 pages, 0 problems**), x3_engine/build_hub rebuild byte-identical except the one additive nav entry. CI-mandated rebuilds committed on this branch: `verification-hub/audit-report.json` (census + fresh module), `decision/` (tree inventory 24→25), `atlas/` (28→29 trees).
+
+### Irregularities (all published on `fresh/flagged.html`; none blocking)
+
+- **FR-01 / F-04 (venue conflict):** game centre Game Info says **RELIANT STADIUM**; schedule hotel link says **NRG Stadium**. Both published with links; not resolved.
+- FR-02: no Wednesday (2026-11-18) reg11 capture exists; 2026-11-19 is the first dated entry of the Week-11 series.
+- FR-03: 16/253 designated rows; practice ≠ availability; Week-11 inactives not yet published.
+- FR-05: DET rows (Joseph, Mays, Reed) publish blank game status — shown blank (prior Week-10 "Out per article" flag does not carry forward).
+- FR-06: reg11 links BUF "Dee Alford" to `players/deaundre-ford` — display name kept, mismatch flagged.
+- FR-07: MIN@SF venue = schedule-page evidence only (game centre not fetched; F1 scope was IND@HOU).
+- FR-10/FR-11: F-01 (no official price source) and the 137-vs-150 finals mismatch persist, unchanged, not re-litigated.
+- Note: PR #122 had already repaired the pre-existing `verify_integration` failure (raw captures `.html`→`.bin`); this branch inherits that fix.
+
+### Explicitly NOT done / still blocked (with pointers)
+
+- No market prices, residuals, CLV, ROI, rewards — F-01 persists; leaderboard stays empty by design.
+- Week-11 inactives (~90 min pre-kickoff): tonight's availability "confirmation" does not exist yet; re-transcribe reg11/game-centre after tonight's kickoff.
+- IND@HOU venue: owner decision or league clarification needed; publish both until then.
+- F1 scope fetched only the IND@HOU game centre; transcription of all 13 game centres (venue-of-every-fixture requirement) remains open.
+
+**Status:** F1 done · F2 done · F3 done (PR merged, Pages confirmed live).
+---
 ---
 
 ## Session `arena/dd499930-x3` — claim (2026-11-19, before any write)

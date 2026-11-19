@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary - fresh day 2026-11-19 - X3 fresh 2026-11-19</title><link rel="stylesheet" href="assets/fresh.css"></head>
+<body><header><h1>Executive summary - fresh day 2026-11-19</h1><p>The one-page brief for a decision, verified this morning.</p></header>
+<nav class="bar"><a href="index.html">Overview</a> <a href="slate.html">Slate</a> <a href="standings.html">Standings</a> <a href="injuries.html">Injuries (reg11)</a> <a href="game-centre.html">Game centre</a> <a href="decision-board.html">Decision board</a> <a href="executive-summary.html">Executive summary</a> <a href="flagged.html">Flagged for review</a> <a href="sources.html">Sources</a> <a href="../index.html">Main hub →</a></nav><main>
+<p class="lede">The one-page brief, fresh-day edition. If you read nothing else this morning: the Week-11 report is live and captured; the slate and standings are confirmed against the official pages; one venue conflict is flagged, not resolved; nothing about market prices, inactives or availability is verified yet; the leaderboard stays empty.</p>
+<h2>Verified this morning (2026-11-19)</h2>
+<ul>
+<li><b>Week-11 injury report published.</b> Page title “Week 11 of the 2026 Season”; 253 rows transcribed across 24 clubs; CIN and WAS report No Injuries Reported. Designated rows: 9 Out (Will Mallory (IND), Bernhard Raimann (IND), Jerry Tillery (IND), Jalen Travis (IND), Charvarius Ward (IND), Marvin Harrison Jr. (HOU), Danielle Hunter (HOU), Brevin Jordan (HOU), Woody Marks (HOU)); 7 Questionable (Sauce Gardner (IND), Anthony Gould (IND), Charlie Heck (IND), Luke Rhodes (IND), Jacob Hummel (HOU), Jaylin Smith (HOU), Wyatt Teller (HOU)).</li>
+<li><b>Week-11 slate confirmed.</b> 13 fixtures + 6 byes (ATL, CLE, GB, LA, NE, SEA); every record cross-checks to the fresh standings; MIN@SF is the Mexico City international game (Sun 8:20 PM NBC).</li>
+<li><b>Standings unchanged.</b> 32/32 clubs match the committed atlas and closeout registers; league PF = PA = 6923; NYG/WAS carry a tie.</li>
+<li><b>IND@HOU opens tonight.</b> Game centre: Nov 19, 8:15 PM, Prime Video, HOUSTON, TX - Game Info block says <b>RELIANT STADIUM</b> vs the schedule page’s NRG Stadium. IND 3-7 vs HOU 3-6. Game-centre Out chips match the report.</li>
+</ul>
+<h2>Not verified - do not act on these yet</h2>
+<ul>
+<li><b>Market prices (F-01).</b> No official source publishes betting lines; every market/residual/CLV/ROI column stays blank by policy. Any figure with a price in it from any module is unverifiable.</li>
+<li><b>Inactives and snap counts.</b> Week-11 inactives publish ~90 min before each kickoff; availability “confirmation” for tonight’s game does not exist yet. Practice designations ≠ availability.</li>
+<li><b>Venue for IND@HOU.</b> Two official pages disagree (RELIANT vs NRG). Flagged FR-01; neither is suppressed.</li>
+<li><b>Depth of the replacement.</b> Club depth charts are club-published and mostly unlabelled; the Texans publish as an image. Replacement-depth claims for tonight’s fixture are suspect until inactives + snap counts land.</li>
+</ul>
+<h2>What would change the picture</h2>
+<ul>
+<li>Tonight’s inactive list (official, ~90 min pre-kickoff) settles who actually plays for IND and HOU; re-run <code>scripts/fresh_verify.py</code> against a fresh transcription and expect the designated rows to change.</li>
+<li>Wednesday/Friday reg11 re-reads: designation drift (DNP→LP→FP; Questionable→Out) is only measurable if each read keeps its clock time - this module’s CSV carries <code>captured_utc</code> for exactly that.</li>
+<li>A decision on F-01/Q03 (licensed price source) unlocks the price snapshot store’s market columns, residuals, CLV and the two-stage leaderboard’s escrow stage.</li>
+</ul>
+<h2>Standing constraints (unchanged)</h2>
+<ul>
+<li>Every row carries an official link or is left blank and flagged; nothing is inferred.</li>
+<li>Leaderboard remains deliberately empty: no prices, no settled priced decisions, no eligibility.</li>
+<li>Suggestions and questions are proposals and decisions for the owner - not implemented by this module.</li>
+</ul>
+<p class="lede">Full decision board with the 74-row readiness register: <a href="decision-board.html">decision-board.html</a>. Everything unresolved: <a href="flagged.html">flagged.html</a>.</p>
+</main><footer>fresh module - session arena/765ef2cf-x3 - built by <code>scripts/fresh_build.py</code> from <code>data/fresh/</code> (and the canonical readiness register, read-only). Every value traces to an official source or is left blank and flagged. Shell HTTP is blocked in the authoring sandbox: official pages are read with the page-reader tool, and each read records the tool clock time.</footer>
+</body></html>

@@ -6,15 +6,15 @@
   "name": "Model side vs no-knowledge baseline",
   "rule": "Every originated game. Signal = per-game contest: is our side closer to the actual margin than a constant home-margin baseline fitted on the same training weeks?",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 118,
+  "n_graded": 105,
   "signal_metric": "contest win rate vs baseline",
-  "signal_value": 0.6441,
+  "signal_value": 0.6381,
   "signal_ci95": [
-   0.5544,
-   0.7247
+   0.5428,
+   0.7236
   ],
-  "signal_p": 0.0022,
-  "secondary": "MAE 9.374 pts vs baseline 10.478 pts (delta 1.105)",
+  "signal_p": 0.006,
+  "secondary": "MAE 9.308 pts vs baseline 10.1 pts (delta 0.792)",
   "demo_window_n": 50,
   "passed": [
    "G1",
@@ -32,7 +32,7 @@
   "bh_threshold": 0.0167,
   "bh_pass": "yes",
   "no_skill_value": 0.5,
-  "skill_gap": 0.1441,
+  "skill_gap": 0.1381,
   "direction": "favourable"
  },
  {
@@ -42,15 +42,15 @@
   "name": "Model total vs league-average baseline",
   "rule": "Every originated game. Signal = per-game contest against a constant total fitted on the same training weeks.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 118,
+  "n_graded": 105,
   "signal_metric": "contest win rate vs baseline",
-  "signal_value": 0.4407,
+  "signal_value": 0.4476,
   "signal_ci95": [
-   0.3544,
-   0.5307
+   0.356,
+   0.5429
   ],
-  "signal_p": 0.2313,
-  "secondary": "MAE 11.564 pts vs baseline 10.862 pts (delta -0.702)",
+  "signal_p": 0.3291,
+  "secondary": "MAE 11.871 pts vs baseline 11.122 pts (delta -0.75)",
   "demo_window_n": 50,
   "passed": [
    "G1",
@@ -68,7 +68,7 @@
   "bh_threshold": 0.0667,
   "bh_pass": "no",
   "no_skill_value": 0.5,
-  "skill_gap": -0.0593,
+  "skill_gap": -0.0524,
   "direction": "adverse"
  },
  {
@@ -78,15 +78,15 @@
   "name": "Model moneyline probability (Brier skill)",
   "rule": "Every originated game. Signal = Brier skill score of our home-win probability against a constant training-set home-win rate.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 118,
+  "n_graded": 105,
   "signal_metric": "Brier skill score (1 = perfect, 0 = baseline)",
-  "signal_value": 0.1043,
+  "signal_value": 0.0808,
   "signal_ci95": [
    "",
    ""
   ],
   "signal_p": "",
-  "secondary": "Brier model 0.2276 vs baseline 0.25409 on n=118",
+  "secondary": "Brier model 0.23434 vs baseline 0.25495 on n=105",
   "demo_window_n": 50,
   "passed": [
    "G1",
@@ -104,7 +104,7 @@
   "bh_threshold": "",
   "bh_pass": "not tested (no p-value computable for this metric)",
   "no_skill_value": 0.0,
-  "skill_gap": 0.1043,
+  "skill_gap": 0.0808,
   "direction": "favourable"
  },
  {
@@ -114,15 +114,51 @@
   "name": "Selective side (|fair - baseline| >= 3.0 pts)",
   "rule": "Fire only when our side differs from the baseline by at least 3.0 points. Pre-registered threshold, not tuned on graded data.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 50,
+  "n_graded": 41,
   "signal_metric": "contest win rate vs baseline",
-  "signal_value": 0.7,
+  "signal_value": 0.6829,
   "signal_ci95": [
-   0.5625,
-   0.809
+   0.5302,
+   0.8044
   ],
-  "signal_p": 0.0066,
-  "secondary": "MAE delta 2.182 pts on n=50",
+  "signal_p": 0.0275,
+  "secondary": "MAE delta 1.588 pts on n=41",
+  "demo_window_n": "",
+  "passed": [
+   "G1",
+   "G3",
+   "G9",
+   "G10"
+  ],
+  "failed": [
+   "G2",
+   "G5",
+   "G6",
+   "G7"
+  ],
+  "status": "hypothesis",
+  "bh_threshold": 0.05,
+  "bh_pass": "yes",
+  "no_skill_value": 0.5,
+  "skill_gap": 0.1829,
+  "direction": "favourable"
+ },
+ {
+  "id": "S5",
+  "family": "Single",
+  "market": "Total",
+  "name": "Selective total (|fair - baseline| >= 3.0 pts)",
+  "rule": "Fire only when our total differs from the league-average baseline by at least 3.0 points. Pre-registered threshold.",
+  "inputs": "verified finals only (nfl.com week schedule pages)",
+  "n_graded": 29,
+  "signal_metric": "contest win rate vs baseline",
+  "signal_value": 0.2759,
+  "signal_ci95": [
+   0.147,
+   0.4572
+  ],
+  "signal_p": 0.0241,
+  "secondary": "MAE delta -2.53 pts on n=29",
   "demo_window_n": "",
   "passed": [
    "G1",
@@ -140,43 +176,7 @@
   "bh_threshold": 0.0333,
   "bh_pass": "yes",
   "no_skill_value": 0.5,
-  "skill_gap": 0.2,
-  "direction": "favourable"
- },
- {
-  "id": "S5",
-  "family": "Single",
-  "market": "Total",
-  "name": "Selective total (|fair - baseline| >= 3.0 pts)",
-  "rule": "Fire only when our total differs from the league-average baseline by at least 3.0 points. Pre-registered threshold.",
-  "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 32,
-  "signal_metric": "contest win rate vs baseline",
-  "signal_value": 0.3125,
-  "signal_ci95": [
-   0.1795,
-   0.4857
-  ],
-  "signal_p": 0.0501,
-  "secondary": "MAE delta -2.163 pts on n=32",
-  "demo_window_n": "",
-  "passed": [
-   "G1",
-   "G3",
-   "G9",
-   "G10"
-  ],
-  "failed": [
-   "G2",
-   "G5",
-   "G6",
-   "G7"
-  ],
-  "status": "hypothesis",
-  "bh_threshold": 0.05,
-  "bh_pass": "no",
-  "no_skill_value": 0.5,
-  "skill_gap": -0.1875,
+  "skill_gap": -0.2241,
   "direction": "adverse"
  },
  {
@@ -186,15 +186,15 @@
   "name": "Selective moneyline (|p - 0.5| >= 0.08)",
   "rule": "Fire only when our home-win probability is at least 0.08 away from even. Pre-registered threshold.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 62,
+  "n_graded": 52,
   "signal_metric": "Brier score on the selected subset",
-  "signal_value": 0.21223,
+  "signal_value": 0.22391,
   "signal_ci95": [
    "",
    ""
   ],
   "signal_p": "",
-  "secondary": "n=62 of 118 graded games selected",
+  "secondary": "n=52 of 105 graded games selected",
   "demo_window_n": "",
   "passed": [
    "G1",
@@ -212,7 +212,7 @@
   "bh_threshold": "",
   "bh_pass": "not tested (no p-value computable for this metric)",
   "no_skill_value": 0.0,
-  "skill_gap": 0.2122,
+  "skill_gap": 0.2239,
   "direction": "favourable"
  },
  {
@@ -222,15 +222,15 @@
   "name": "Extreme-fade screen (|fair side| >= 7.0 pts)",
   "rule": "Isolate the biggest favourites. Signal = Brier skill of the implied win probability on that subset only.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 18,
+  "n_graded": 13,
   "signal_metric": "Brier skill score on extreme lines",
-  "signal_value": 0.0989,
+  "signal_value": -0.1881,
   "signal_ci95": [
    "",
    ""
   ],
   "signal_p": "",
-  "secondary": "Brier 0.21549 vs baseline 0.23913 on n=18",
+  "secondary": "Brier 0.28251 vs baseline 0.23778 on n=13",
   "demo_window_n": "",
   "passed": [
    "G1",
@@ -248,8 +248,8 @@
   "bh_threshold": "",
   "bh_pass": "not tested (no p-value computable for this metric)",
   "no_skill_value": 0.0,
-  "skill_gap": 0.0989,
-  "direction": "favourable"
+  "skill_gap": -0.1881,
+  "direction": "adverse"
  },
  {
   "id": "S8",
@@ -258,7 +258,7 @@
   "name": "Measured home-field arbitrage vs an assumed 3.0 pts",
   "rule": "Compare our fitted home-field constant to the conventional 3.0-point assumption and fire only when the gap moves the side across a whole point.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 118,
+  "n_graded": 105,
   "signal_metric": "fitted home-field constant (points)",
   "signal_value": "",
   "signal_ci95": [
@@ -294,15 +294,15 @@
   "name": "Same-game double (side leg x total leg)",
   "rule": "Two legs in one game. Signal = the MEASURED joint of the two leg outcomes against the product of their marginals. Payoff columns stay empty until prices exist.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 118,
+  "n_graded": 105,
   "signal_metric": "joint(obs) / joint(independent)",
-  "signal_value": 1.0749,
+  "signal_value": 1.067,
   "signal_ci95": [
    "",
    ""
   ],
-  "signal_p": 0.3355,
-  "secondary": "phi 0.0894 n=118; joint 0.3051 vs independent 0.2838",
+  "signal_p": 0.4167,
+  "secondary": "phi 0.0801 n=105; joint 0.3048 vs independent 0.2856",
   "demo_window_n": "",
   "passed": [
    "G1",
@@ -320,7 +320,7 @@
   "bh_threshold": 0.0833,
   "bh_pass": "no",
   "no_skill_value": 1.0,
-  "skill_gap": 0.0749,
+  "skill_gap": 0.067,
   "direction": "favourable"
  },
  {
@@ -330,15 +330,15 @@
   "name": "Cross-game double (two side legs in different games)",
   "rule": "Two side legs from different games in the same week, paired in schedule order. Signal = measured joint vs independent product.",
   "inputs": "verified finals only (nfl.com week schedule pages)",
-  "n_graded": 58,
+  "n_graded": 51,
   "signal_metric": "joint(obs) / joint(independent)",
-  "signal_value": 0.9327,
+  "signal_value": 0.966,
   "signal_ci95": [
    "",
    ""
   ],
-  "signal_p": 0.3753,
-  "secondary": "phi -0.1186 on n=58 pairs",
+  "signal_p": 0.6763,
+  "secondary": "phi -0.0599 on n=51 pairs",
   "demo_window_n": "",
   "passed": [
    "G1",
@@ -356,7 +356,7 @@
   "bh_threshold": 0.1,
   "bh_pass": "no",
   "no_skill_value": 1.0,
-  "skill_gap": -0.0673,
+  "skill_gap": -0.034,
   "direction": "adverse"
  },
  {

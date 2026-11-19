@@ -48,6 +48,7 @@ import json
 import math
 import os
 import sys
+from results_feed import norm
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
@@ -83,12 +84,19 @@ def r2(x):
 
 def games_from_feed():
     d = json.load(open(os.path.join(OUT, "results.json"), encoding="utf-8"))
+    # This vintage is a fixed historical experiment, not the settlement feed.
+    # Preserve the actual original capture state (including the early Week 10 final).
+    with open(os.path.join(ROOT, "data", "desk", "games.json"), encoding="utf-8") as f:
+        vintage = {(r["week"], r["date_iso"], norm(r["away"]),
+                    norm(r["home"])): r["status"]
+                   for r in json.load(f)["games"]}
     out = []
     for r in d["rows"]:
+        status = vintage[(r["week"], r["date_iso"], r["away"], r["home"])]
         out.append({"game_id": r["game_id"], "week": r["week"], "date_iso": r["date_iso"],
                     "home": r["home"], "away": r["away"], "neutral_site": r["neutral_site"],
-                    "status": r["status"], "home_score": r["home_score"],
-                    "away_score": r["away_score"], "venue": r["venue"]})
+                    "status": status, "home_score": r["home_score"] if status == "FINAL" else "",
+                    "away_score": r["away_score"] if status == "FINAL" else "", "venue": r["venue"]})
     return out
 
 
@@ -404,7 +412,7 @@ def build():
         "limits": [
             "Every market column is blank: no official NFL price publication exists (verified "
             "2026-11-14 on the LAC@BAL game centre).",
-            "One season of results, so sigma and the ratings are fitted on at most 150 games.",
+            "One season of results, so sigma and the ratings are fitted on at most 137 games.",
             "The moneyline inherits the side model's error by construction.",
         ],
     }

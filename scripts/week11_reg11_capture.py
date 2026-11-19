@@ -4,7 +4,7 @@ Week-11 2026 NFL injury report - structured transcription of the scheduled
 availability capture, plus the Week-10 -> Week-11 delta.
 
 Inputs (read-only):
-  readiness/data/history/2026-11-19/league-injury-report.html
+  readiness/data/history/2026-11-19/league-injury-report.bin
       The official report as captured by .github/workflows/availability-snapshots.yml
       at 2026-11-19T02:16:10Z (URL https://www.nfl.com/injuries/, HTTP 200,
       373,969 bytes). The exact bytes are pinned below; if the capture is
@@ -46,7 +46,7 @@ import sys
 from collections import Counter
 
 ROOT = __file__.rsplit("/", 2)[0]
-CAPTURE_REL = "readiness/data/history/2026-11-19/league-injury-report.html"
+CAPTURE_REL = "readiness/data/history/2026-11-19/league-injury-report.bin"
 CAPTURE_SHA256 = "d00b606b59242871a56455d762e338ad9a3192596a5da1a557e9666247b3448e"
 CAPTURE_URL = "https://www.nfl.com/injuries/"
 CANONICAL_URL = "https://www.nfl.com/injuries/league/2026/reg11"

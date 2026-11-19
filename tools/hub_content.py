@@ -486,7 +486,7 @@ FLAGS = [
      "lines board are intentionally blank.",
      "https://github.com/karagemop466-tech/X3/tree/main/data",
      "Owner: choose a price source class (Q-01)"),
-    ("F-02", "HIGH", "Results data", "The canonical 2026 feed contains 150 final scores reconciled to all 32 clubs' official standings; it is not a multi-season backtest corpus, and historical seasons remain absent.",
+    ("F-02", "HIGH", "Results data", "The canonical 2026 feed contains 150 final scores through Week 10 reconciled to all 32 clubs' official standings; it is not a multi-season backtest corpus, and historical seasons remain absent.",
      S["standings"],
      "Load and reconcile at least 3 chronological seasons before a multi-season strategy backtest (G-2/G-3)."),
     ("F-03", "HIGH", "Prop data", "No player-prop prices or outcomes, so the prop-combo and parlay "
@@ -613,7 +613,7 @@ READINESS = {
     "R-24": ("G-PROP-DATA", "At least 3 seasons of timestamped prices and settled outcomes for every registered prop market; availability is currently unverified", S["stats"]),
     "R-25": ("G-LEGAL", "1 written jurisdiction-specific legal review before any real-money use or funded reward", None),
     "R-26": ("G-PRICE-STORE", "100% of originated markets have an immutable OPEN and CLOSE record; unavailable observations stay blank/PENDING", None),
-    "R-27": ("G-RESULTS", "150/150 current final-game records reconcile to official club aggregates; 0 mismatches", S["standings"]),
+    "R-27": ("G-RESULTS", "150/150 final-game records through Week 10 reconcile to official club aggregates; 0 mismatches", S["standings"]),
     "R-28": ("G-ORDER", "3/3 stages recorded in order for every game: side, total, moneyline", S["sched10"]),
     "R-29": ("G-PRICE", "3 distinct columns per market; 100% of unavailable market observations are blank and flagged", None),
     "R-30": ("G-SIGNAL / G-STAKING", "2 separate scores published; each ranked strategy independently passes its own gates", None),

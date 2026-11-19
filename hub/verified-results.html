@@ -19,17 +19,17 @@
 
 <div class="grid"><div class="card"><div class="num">163</div><div class="lbl">games in the feed</div><div class="sub">every scheduled 2026 game in the capture</div></div><div class="card"><div class="num">150</div><div class="lbl">final games</div><div class="sub">both scores present; nothing imputed</div></div><div class="card"><div class="num">32</div><div class="lbl">clubs reconciled</div><div class="sub">all 32, against the official standings</div></div><div class="card"><div class="num">0</div><div class="lbl">standings mismatches</div><div class="sub">W-L-T-PF-PA-games played, per club</div></div></div>
 <h2>Why this feed can be trusted enough to backtest on</h2>
-<p class="lede">A results feed that is not reconciled is a source of confident nonsense. Three
-independent checks run on every build: completeness (a final without both scores is dropped, never
-filled), reconciliation to the official standings through a different page transcribed by a
-different session, and a score-by-score comparison of a sample against a live read.</p>
+<p class="lede">Results are reconciled through Week 10 only. An incomplete final blocks publication. The Week 1 sample,
+all Week 10 scores, and the 32-club standings are checked separately. Historical model snapshots retain
+their original evidence window; this update does not create new pre-kickoff forecasts.</p>
 <div class="tblwrap"><table class="k-meta">
 <thead><tr><th>Check</th><th>Rule</th><th>Result</th><th>Source</th></tr></thead><tbody>
-<tr><td>R1 completeness</td><td>a FINAL row without both scores is dropped, never imputed</td><td>0 rows dropped</td><td><span class="badge u">UNVERIFIED source URL</span> <code>https://www.nfl.com/schedules/2026/by-week/week-N (N=1..11)</code> <span class="mut">Malformed source reference; flagged for repair.</span></td></tr>
+<tr><td>R1 completeness</td><td>a FINAL row without both scores fails the build; scores are never imputed</td><td>0 rows dropped</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">NFL schedule</a></td></tr>
 <tr><td>R2 standings reconciliation</td><td>final scores aggregated per club must equal the official standings on W, L, T, PF, PA and games played</td><td>32 clubs compared, 0 mismatches</td><td><a class="src" href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">standings</a></td></tr>
 <tr><td>R3 box-score sample</td><td>16 Week-1 finals compared score-by-score with a live read of the official Week-1 page on 2026-11-14</td><td>16/16 agree</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-1" target="_blank" rel="noopener">week 1</a></td></tr>
+<tr><td>R4 Week 10 finals</td><td>All Week 10 fixture identities and scores must match the 2026-11-19 official schedule read</td><td>14 agree</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">week 10</a></td></tr>
 </tbody></table>
-<p class="note">The three checks are run on every build by tools/results_feed.py; a failure exits non-zero and CI blocks the deploy.</p>
+<p class="note">The four checks are run on every build by tools/results_feed.py; a failure exits non-zero and CI blocks the deploy.</p>
 </div>
 <h2>Reconciliation, club by club</h2>
 <input class="filt" data-for="ag" placeholder="filter: club, FAIL...">
@@ -255,7 +255,7 @@ different session, and a score-by-score comparison of a sample against a live re
 pages. Both reconcile to the same official standings with zero mismatches. They are kept side by side
 rather than merged or overwritten, and that duplication is recorded as flag F-27.</p>
 <h2>Limits, stated on the feed itself</h2>
-<ul><li>One season to date. No prior-season results are in this repository, so no strategy can clear a three-season walk-forward yet (gate G-3).</li><li>The capture covers weeks 1-11 of the 2026 schedule only.</li><li>No prices are attached to any row. A result grades a bet; it cannot price one.</li></ul>
+<ul><li>One season to date. No prior-season results are in this repository, so no strategy can clear a three-season walk-forward yet (gate G-3).</li><li>The fixture capture covers weeks 1-11 only; scores are reconciled through Week 10.</li><li>No prices are attached to any row. A result grades a bet; it cannot price one.</li></ul>
 
 </main>
 <footer>

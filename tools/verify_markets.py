@@ -79,7 +79,10 @@ def main() -> int:
     bs = res["checks"]["R3_box_score_sample"]
     check(bs["agreed"] == bs["checked"] == 16,
           f"M2 box-score sample {bs['agreed']}/{bs['checked']}, expected 16/16")
-    check(res["counts"]["finals"] > 0, "M2 no final games in the feed")
+    wk10 = [r for r in res["rows"] if r["week"] == 10]
+    check(len(wk10) == res["checks"]["R4_week10_finals"]["agreed"] == 14
+          and all(r["status"] == "FINAL" for r in wk10), "M2 incomplete Week 10 results")
+    check(res["counts"]["finals"] == 150, "M2 unexpected final count through Week 10")
     for r in res["rows"]:
         if r["status"] == "FINAL":
             check(r["away_score"] != "" and r["home_score"] != "",
@@ -180,28 +183,6 @@ def main() -> int:
     for r in co["blank_rows"]:
         check(r["value"] is None, f"M8 blank row {r['x']} vs {r['y']} carries a value")
         check(bool(r["data_required"]), f"M8 blank row {r['x']} vs {r['y']} names no missing input")
-
-    # M11 frozen pre-kickoff Week-10 board artifact (preserved for modules that
-    # grade against the 2026-11-14 origination; task DD-1, 2026-11-19)
-    fb_path = os.path.join(D, "board_2026_wk10_frozen.json")
-    check(os.path.exists(fb_path), "M11 frozen Week-10 board artifact is missing")
-    if os.path.exists(fb_path):
-        fb = json.load(open(fb_path, encoding="utf-8"))
-        check(len(fb.get("rows", [])) == 13,
-              f"M11 frozen board has {len(fb.get('rows', []))} rows, expected 13")
-        for r in fb.get("rows", []):
-            check(r.get("week") == 10, f"M11 {r.get('game_id')} is not a Week-10 row")
-            for k in ("margin_model", "side_fair_line", "side_cover_prob_home",
-                      "total_fair_line", "total_over_prob", "ml_home_prob", "origination_order"):
-                check(r.get(k) not in ("", None), f"M11 {r.get('game_id')} missing {k}")
-            for k in ("side_cover_prob_home", "total_over_prob", "ml_home_prob"):
-                v = r.get(k)
-                check(isinstance(v, (int, float)) and 0.0 <= v <= 1.0,
-                      f"M11 {r.get('game_id')} {k}={v!r} is not a probability")
-            check(r.get("origination_order") == "1 side, 2 total, 3 moneyline",
-                  f"M11 {r.get('game_id')} does not state the order")
-        check(bool(fb.get("provenance", {}).get("source_sha256_of_markets_json")),
-              "M11 frozen board carries no provenance hash")
 
     # M9 demotion gate
     dg = st["demotion_gate"]

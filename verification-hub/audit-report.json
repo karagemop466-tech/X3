@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 588,
+      "refs": 589,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -203,11 +203,27 @@
         "docs/pages/executive-summary.html: Deliverable Status Evidence"
       ]
     },
+    "fresh": {
+      "pages": 9,
+      "rows": 492,
+      "flagged_rows": 438,
+      "refs": 647,
+      "unsourced_examples": [
+        "fresh/decision-board.html: ID Requirement Status Where it lives Gate that blocks it Number that would clear it Source",
+        "fresh/decision-board.html: Gate Name Definition Status Note",
+        "fresh/decision-board.html: G0 Data provenance Every input is traced to an official source or a documented, reproducible dataset with a link Pass fo",
+        "fresh/decision-board.html: G1 Pre-registration Hypothesis, metric and sample rules written and committed before any test runs Not started Proposed ",
+        "fresh/decision-board.html: G2 Minimum sample Minimum graded bets per strategy Not started Threshold is a PROPOSAL, not sourced; user to set (Questi",
+        "fresh/decision-board.html: G3 Out-of-sample test Walk-forward test on seasons not used to design the strategy Not started Requires historical data",
+        "fresh/decision-board.html: G4 Closing line value Strategy price beats the closing line on average Not started Requires closing-line data, which is ",
+        "fresh/decision-board.html: G5 Multiple-comparison control Adjust for the number of strategies tested (e.g. Bonferroni or FDR) Not started Method to"
+      ]
+    },
     "hub": {
       "pages": 27,
-      "rows": 1970,
-      "flagged_rows": 1569,
-      "refs": 2943,
+      "rows": 1971,
+      "flagged_rows": 1570,
+      "refs": 2945,
       "unsourced_examples": [
         "hub/archive.html: Tree Session Entry point Why it is not canonical",
         "hub/archive.html: docs/ arena/0c38f465-x3 docs/index.html generated from data/*.csv snapshots whose injury row count (205) disagrees with ",
@@ -424,9 +440,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 366,
-  "rows_total": 16491,
-  "rows_flagged_or_sourced": 13934,
-  "internal_refs": 9589,
+  "pages_total": 375,
+  "rows_total": 16984,
+  "rows_flagged_or_sourced": 14373,
+  "internal_refs": 9783,
   "problems": []
 }

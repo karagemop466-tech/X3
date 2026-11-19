@@ -241,7 +241,7 @@ says, which strategies are allowed to compete, and who is missing from each line
 | `desk/questions.html` | 18 questions: known / missing / what each blocks |
 | `desk/suggestions.html` | 12 suggestions to review before implementing anything |
 | `desk/requirements.html` | 24 requirements with acceptance tests |
-| `desk/games.html` | Verified game log (137 finals as of its capture; the canonical feed now carries 150) |
+| `desk/games.html` | Verified game log (137 finals) |
 | `desk/standings.html` | 2026 standings, reconciled against the game log |
 | `desk/sources.html` | Source register and method references |
 | `desk/repo-review.html` | Repository review and irregularities |
@@ -302,7 +302,7 @@ It answers the eight operational requirements directly, and says where it cannot
 | Requirement | Where it is answered |
 |---|---|
 | Price-snapshot store, opening + closing per market | [`ops/snapshots.html`](ops/snapshots.html) — 78 markets, SHA-256 hash chain, market columns null with reason `NO_OFFICIAL_SOURCE` |
-| Verified results feed | [`ops/results.html`](ops/results.html) — finals reconciled to official standings 32/32 clubs (150 in the canonical feed; the desk/ops trees are dated captures) |
+| Verified results feed | [`ops/results.html`](ops/results.html) — 137 finals, reconciled to official standings 32/32 clubs |
 | Side → total → moneyline, in that order | [`ops/order.html`](ops/order.html) — ML = Φ(side/σ), so the markets cannot contradict |
 | Fair / market / difference as separate columns | [`ops/lines.html`](ops/lines.html) — market blank by policy, never estimated |
 | Signal vs staking split on the leaderboard | [`ops/leaderboard.html`](ops/leaderboard.html) — promotion reads signal only |
@@ -346,7 +346,7 @@ Live at **https://karagemop466-tech.github.io/X3/signals/**
 
 | Input | Rows | Official source |
 |-------|------|-----------------|
-| Verified results feed | 163 games / 150 finals (13 Week-10 rows settled 2026-11-19) | https://www.nfl.com/schedules/2026/by-week/week-N |
+| Verified results feed | 163 games / 137 finals | https://www.nfl.com/schedules/2026/by-week/week-N |
 | Standings | 32 clubs | https://www.nfl.com/standings/league/2026/reg |
 | Official injury report | 1,027 rows (weeks 8-10) | https://www.nfl.com/injuries/league/2026/regN |
 | Club depth charts | 32 clubs | https://www.<club>.com/team/depth-chart |

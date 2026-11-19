@@ -92,15 +92,15 @@
  },
  {
   "week": 10,
-  "games": 14,
-  "side_wins": 9,
-  "side_losses": 5,
-  "side_rate": 0.6429,
-  "side_mae_delta": 3.234,
-  "total_wins": 6,
-  "total_losses": 8,
-  "total_rate": 0.4286,
-  "verdict": "side beat the baseline this week",
+  "games": 1,
+  "side_wins": 0,
+  "side_losses": 1,
+  "side_rate": 0.0,
+  "side_mae_delta": -1.973,
+  "total_wins": 1,
+  "total_losses": 0,
+  "total_rate": 1.0,
+  "verdict": "side did not beat the baseline this week",
   "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
  }
 ]

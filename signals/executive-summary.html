@@ -17,12 +17,12 @@
 
 <div class="callout bad"><h2>The headline</h2>
 <p><b>We can originate a side that beats a constant baseline, and we cannot yet originate a total that
-does.</b> Over 118 walk-forward graded games the side was closer to the actual margin
-than a no-knowledge baseline in 76 of 118 (0.644,
-95% CI 0.554&ndash;0.725, exact binomial p = 0.0022).
-The total was closer in 52 of 118 (0.441, p = 0.2313) &mdash;
-and on the games where the total model was most confident it was wrong 22 times out of
-32 (p = 0.0501). That is a significant <i>adverse</i> result.</p>
+does.</b> Over 105 walk-forward graded games the side was closer to the actual margin
+than a no-knowledge baseline in 67 of 105 (0.638,
+95% CI 0.543&ndash;0.724, exact binomial p = 0.0060).
+The total was closer in 47 of 105 (0.448, p = 0.3291) &mdash;
+and on the games where the total model was most confident it was wrong 21 times out of
+29 (p = 0.0241). That is a significant <i>adverse</i> result.</p>
 <p><b>None of this is profit.</b> This repository holds no market price, so no bet can be priced, no ROI
 computed and no staking rule evaluated. Everything below is a measurement of forecast accuracy against a
 constant, not a claim that money would have been made.</p></div>
@@ -30,22 +30,22 @@ constant, not a claim that money would have been made.</p></div>
 <h2>Decisions this supports</h2>
 <div class="tw"><table><thead><tr><th>Question</th><th>Answer the data supports</th><th>Confidence</th><th>Source</th></tr></thead><tbody>
 <tr><td>Should anything be staked?</td><td>No. No strategy has cleared the 12 validation gates;
-  the sample-size gate alone (200 graded decisions) is not met at 118.</td>
+  the sample-size gate alone (200 graded decisions) is not met at 105.</td>
   <td><span class="badge ok">high &mdash; this is a gate, not a judgement</span></td>
   <td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
-<tr><td>Does the side carry skill?</td><td>Yes, measured. Gap to no-skill 0.144,
-  CI 0.054&ndash;0.225; passes Benjamini-Hochberg at q = 0.1
+<tr><td>Does the side carry skill?</td><td>Yes, measured. Gap to no-skill 0.138,
+  CI 0.043&ndash;0.224; passes Benjamini-Hochberg at q = 0.1
   across 6 tested strategies.</td>
-  <td><span class="badge warn">moderate &mdash; n = 118</span></td>
+  <td><span class="badge warn">moderate &mdash; n = 105</span></td>
   <td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
 <tr><td>Does the total carry skill?</td><td>No. Point estimate below no-skill and the confident subset is
   significantly worse than a constant.</td>
   <td><span class="badge ok">high for the negative</span></td>
   <td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
 <tr><td>Can parlays be priced from marginals?</td><td>Not safely. Same-game legs: observed joint
-  0.305 versus 0.284 under independence (ratio 1.075,
-  phi 0.089, n = 118). The dependence is small here, but it is measured, not assumed.</td>
-  <td><span class="badge warn">n = 118, CI includes 0</span></td>
+  0.305 versus 0.286 under independence (ratio 1.067,
+  phi 0.080, n = 105). The dependence is small here, but it is measured, not assumed.</td>
+  <td><span class="badge warn">n = 105, CI includes 0</span></td>
   <td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
 <tr><td>Is the injury-and-depth layer usable?</td><td>Not as a model input. Three weeks of coverage is not
   enough to identify a coefficient, so no published line is adjusted by it. It is published as a report.</td>
@@ -60,19 +60,19 @@ constant, not a claim that money would have been made.</p></div>
 
 <h2>The numbers, in one table</h2>
 <div class="tw"><table><thead><tr><th>Measure</th><th class="n">Value</th><th class="n">n</th><th>Reading</th><th>Source</th></tr></thead><tbody>
-<tr><td>Side: contest win rate vs constant baseline</td><td class="n">0.644</td><td class="n">118</td>
+<tr><td>Side: contest win rate vs constant baseline</td><td class="n">0.638</td><td class="n">105</td>
   <td>CI excludes 0.50 &mdash; favourable</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
-<tr><td>Side: mean absolute error vs baseline</td><td class="n">9.374 vs 10.478 pts</td><td class="n">118</td>
-  <td>1.105 pts better</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
-<tr><td>Selective side: contest win rate</td><td class="n">0.700</td><td class="n">50</td>
+<tr><td>Side: mean absolute error vs baseline</td><td class="n">9.308 vs 10.100 pts</td><td class="n">105</td>
+  <td>0.792 pts better</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
+<tr><td>Selective side: contest win rate</td><td class="n">0.683</td><td class="n">41</td>
   <td>selecting helps the side</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
-<tr><td>Total: contest win rate vs constant baseline</td><td class="n">0.441</td><td class="n">118</td>
+<tr><td>Total: contest win rate vs constant baseline</td><td class="n">0.448</td><td class="n">105</td>
   <td>CI includes 0.50 &mdash; no evidence</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
-<tr><td>Selective total: contest win rate</td><td class="n">0.312</td><td class="n">32</td>
+<tr><td>Selective total: contest win rate</td><td class="n">0.276</td><td class="n">29</td>
   <td>significantly adverse</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
-<tr><td>Moneyline: Brier skill score</td><td class="n">0.104</td><td class="n">118</td>
+<tr><td>Moneyline: Brier skill score</td><td class="n">0.081</td><td class="n">105</td>
   <td>better than a constant base rate, not tested for significance</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
-<tr><td>Calibration: predicted SD / actual SD</td><td class="n">0.365</td><td class="n">118</td>
+<tr><td>Calibration: predicted SD / actual SD</td><td class="n">0.336</td><td class="n">105</td>
   <td>badly under-spread</td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener noreferrer">source</a></td></tr>
 <tr><td>Availability load differential vs home margin</td><td class="n">see correlations</td><td class="n">30</td>
   <td>suggestive, CI includes 0</td><td><a class="src" href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener noreferrer">source</a></td></tr>

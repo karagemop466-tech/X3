@@ -36,7 +36,7 @@ both columns exist - which today means none is.</p></section>
 <tr><td><b>ST-07</b></td><td>Same-slate fade basket</td><td>Parlay - cross game</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
 <tr><td><b>ST-08</b></td><td>Rest-day asymmetry</td><td>Single - side</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
 <tr><td><b>ST-09</b></td><td>Line-move vs news check</td><td>Single - market check</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
-<tr><td><b>ST-10</b></td><td>Cross-fitted model-quality benchmark</td><td>Evaluation</td><td>+0.472</td><td>[-0.689, +1.678]</td><td>118</td><td><span class="badge p">PARTIAL</span> INCONCLUSIVE</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
+<tr><td><b>ST-10</b></td><td>Cross-fitted model-quality benchmark</td><td>Evaluation</td><td>+0.205</td><td>[-1.047, +1.478]</td><td>105</td><td><span class="badge p">PARTIAL</span> INCONCLUSIVE</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
 <tr><td><b>ST-11</b></td><td>Alternate-market arbitrage of our own line</td><td>Single - side</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
 <tr><td><b>ST-12</b></td><td>Fractional-Kelly with model-error haircut</td><td>Staking</td><td></td><td></td><td></td><td><span class="badge u">NOT RUN</span> UNTESTED</td><td><span class='blank'></span></td><td><span class="badge b">BLOCKED</span></td><td>-</td><td>PAPER</td></tr>
 </tbody></table>
@@ -54,20 +54,20 @@ both columns exist - which today means none is.</p></section>
 <h2>What the signal evidence actually says</h2>
 <div class="tblwrap"><table class="k-meta">
 <thead><tr><th>Object</th><th>Value</th><th>n</th><th>Reading</th></tr></thead><tbody>
-<tr><td>Paired improvement in absolute margin error vs the constant -2.5</td><td>+0.472 pts</td><td>118</td><td>95% CI [-0.689, +1.678] - contains zero, so the label is INCONCLUSIVE</td></tr>
-<tr><td>Paired improvement in absolute total error vs the constant 45.0</td><td>-1.470 pts</td><td>118</td><td>95% CI [-2.615, -0.317] - the model is worse than the constant</td></tr>
-<tr><td>Direction hit rate</td><td>65.2%</td><td>118</td><td>always-away baseline 54.2%; advantage +0.110 per game, CI [-0.009, +0.229]</td></tr>
-<tr><td>Brier score, model moneyline</td><td>0.2213</td><td>118</td><td>base-rate Brier 0.2482 - lower is better; the model's probability beats the base rate</td></tr>
-<tr><td>Variants tried (multiple testing)</td><td>12</td><td>118</td><td>corrected threshold on any single test: with 12 registered hypotheses the corrected threshold on any single test is 0.05/12 = 0.0042</td></tr>
+<tr><td>Paired improvement in absolute margin error vs the constant -2.5</td><td>+0.205 pts</td><td>105</td><td>95% CI [-1.047, +1.478] - contains zero, so the label is INCONCLUSIVE</td></tr>
+<tr><td>Paired improvement in absolute total error vs the constant 45.0</td><td>-1.355 pts</td><td>105</td><td>95% CI [-2.600, -0.119] - the model is worse than the constant</td></tr>
+<tr><td>Direction hit rate</td><td>62.9%</td><td>105</td><td>always-away baseline 52.4%; advantage +0.105 per game, CI [-0.029, +0.229]</td></tr>
+<tr><td>Brier score, model moneyline</td><td>0.2267</td><td>105</td><td>base-rate Brier 0.2494 - lower is better; the model's probability beats the base rate</td></tr>
+<tr><td>Variants tried (multiple testing)</td><td>12</td><td>105</td><td>corrected threshold on any single test: with 12 registered hypotheses the corrected threshold on any single test is 0.05/12 = 0.0042</td></tr>
 </tbody></table>
 <p class="note">This is the luck-removal evidence in full. Nothing here is a return claim; it is a statement about whether the forecast carries information.</p>
 </div>
 <h2>The demotion gate: how a live strategy goes back to paper</h2>
 <div class="tblwrap"><table class="k-meta">
 <thead><tr><th>Clause</th><th>Condition</th><th>State now</th><th>Measured value</th></tr></thead><tbody>
-<tr><td><b>D-1</b></td><td>three consecutive scored weeks worse than the naive baseline</td><td>clear</td><td>{"worst_streak_observed": 3, "last_three": [{"week": 8, "beats_naive": true}, {"week": 9, "beats_naive": true}, {"week": 10, "beats_naive": true}]}</td></tr>
-<tr><td><b>D-2</b></td><td>rolling-20-game paired improvement CI entirely below zero</td><td>clear</td><td>{"rolling20_mean_improvement_points": 2.703, "ci95": [0.406, 4.882]}</td></tr>
-<tr><td><b>D-3</b></td><td>direction hit-rate 95% CI entirely below 0.50</td><td>clear</td><td>{"ci95": [0.563, 0.7324]}</td></tr>
+<tr><td><b>D-1</b></td><td>three consecutive scored weeks worse than the naive baseline</td><td>clear</td><td>{"worst_streak_observed": 3, "last_three": [{"week": 8, "beats_naive": true}, {"week": 9, "beats_naive": true}, {"week": 10, "beats_naive": false}]}</td></tr>
+<tr><td><b>D-2</b></td><td>rolling-20-game paired improvement CI entirely below zero</td><td>clear</td><td>{"rolling20_mean_improvement_points": 2.809, "ci95": [0.668, 5.013]}</td></tr>
+<tr><td><b>D-3</b></td><td>direction hit-rate 95% CI entirely below 0.50</td><td>clear</td><td>{"ci95": [0.5331, 0.7149]}</td></tr>
 <tr><td><b>D-4</b></td><td>the staking input disappears while the strategy is live</td><td><span class="badge b">FAIL</span> FIRING</td><td>{"detail": "no market prices exist (F-01), so no strategy can hold a live staking score; anything that was live would be returned to paper by this rule alone"}</td></tr>
 </tbody></table>
 <p class="note">Evaluated on every build by tools/strategies_engine.py against ST-10 model-quality benchmark (the only strategy with a series). Verdict: PAPER. D-4_staking_input_missing_while_live fire.</p>

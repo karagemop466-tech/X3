@@ -257,16 +257,19 @@ this into a real open/close record needs a scheduled capture, which is suggestio
         checks = table(["Check", "Rule", "Result", "Source"],
                        [["R1 completeness", c["R1_completeness"]["rule"],
                          f"{c['R1_completeness']['dropped']} rows dropped",
-                         link(results["sources"]["schedule"], "week pages")],
+                         link(results["sources"]["schedule"], "NFL schedule")],
                         ["R2 standings reconciliation", c["R2_standings_reconciliation"]["rule"],
                          f"{c['R2_standings_reconciliation']['clubs_compared']} clubs compared, "
                          f"{c['R2_standings_reconciliation']['mismatches']} mismatches",
                          link(results["sources"]["standings"], "standings")],
                         ["R3 box-score sample", c["R3_box_score_sample"]["rule"],
                          f"{c['R3_box_score_sample']['agreed']}/{c['R3_box_score_sample']['checked']} "
-                         "agree", link(c["R3_box_score_sample"]["source"], "week 1")]],
+                         "agree", link(c["R3_box_score_sample"]["source"], "week 1")],
+                        ["R4 Week 10 finals", c["R4_week10_finals"]["rule"],
+                         f"{c['R4_week10_finals']['agreed']} agree",
+                         link(c["R4_week10_finals"]["source"], "week 10")]],
                        kind="meta",
-                       note="The three checks are run on every build by tools/results_feed.py; a "
+                       note="The four checks are run on every build by tools/results_feed.py; a "
                             "failure exits non-zero and CI blocks the deploy.")
 
         agg = []
@@ -309,10 +312,9 @@ this into a real open/close record needs a scheduled capture, which is suggestio
         body = f"""
 <div class="grid">{cards}</div>
 <h2>Why this feed can be trusted enough to backtest on</h2>
-<p class="lede">A results feed that is not reconciled is a source of confident nonsense. Three
-independent checks run on every build: completeness (a final without both scores is dropped, never
-filled), reconciliation to the official standings through a different page transcribed by a
-different session, and a score-by-score comparison of a sample against a live read.</p>
+<p class="lede">Results are reconciled through Week 10 only. An incomplete final blocks publication. The Week 1 sample,
+all Week 10 scores, and the 32-club standings are checked separately. Historical model snapshots retain
+their original evidence window; this update does not create new pre-kickoff forecasts.</p>
 {checks}
 <h2>Reconciliation, club by club</h2>
 <input class="filt" data-for="ag" placeholder="filter: club, FAIL...">

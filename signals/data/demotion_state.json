@@ -1,13 +1,13 @@
 [
  {
   "gate": "D1",
-  "measured": "trailing 50 graded games: win rate 0.6441, exact p 0.0022",
+  "measured": "trailing 50 graded games: win rate 0.6381, exact p 0.006",
   "fires_now": "no",
   "note": "Fires only when the rate is at or below no-skill AND the result is not significant."
  },
  {
   "gate": "D2",
-  "measured": "MAE delta vs baseline 1.105 pts (trailing window overlaps the full graded set at this sample size)",
+  "measured": "MAE delta vs baseline 0.792 pts (trailing window overlaps the full graded set at this sample size)",
   "fires_now": "no",
   "note": "Positive delta is the model being closer to the truth than the constant baseline."
  },

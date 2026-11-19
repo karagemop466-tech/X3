@@ -101,7 +101,7 @@ Q2 = [
      "by the rule already published on the gates page.",
      "Owner", "Both stay published and labelled; v1 is not deleted."),
     ("Q-19", "YES", "Whether to buy prior-season results",
-     "One season of finals exists (150 games). Gate G-2 needs three seasons and gate G-3 needs a "
+     "One season of finals exists (137 games). Gate G-2 needs three seasons and gate G-3 needs a "
      "chronological walk-forward across them.",
      "Seven prior seasons of scores, venue and rest days from an official publication.",
      "NFL.com publishes historical schedules and scores by season; a bulk transcription of "

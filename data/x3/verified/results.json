@@ -1,7 +1,6 @@
 {
  "as_of": "2026-11-19",
  "generated_by": "tools/results_feed.py",
- "backfill": "2026-11-19: 13 Week-10 rows advanced SCHEDULED->FINAL with the official final scores (live read of https://www.nfl.com/schedules/2026/by-week/week-10, both chunks, 2026-11-19); cross-checked 14/14 against data/closeout/week10_finals.csv (2026-11-17T22:44Z) and data/week11/week10_finals_read_2026-11-18.csv. The 150-game aggregate reconciles 32/32 clubs to the through-Week-10 official standings (data/atlas/standings_2026_thru_wk10.csv; independent transcriptions in data/closeout/official_standings_2026_wk10.csv agree 320/320 fields).",
  "season": 2026,
  "counts": {
   "games_total": 163,
@@ -23,13 +22,14 @@
   "dropped_for_missing_score": 0
  },
  "sources": {
-  "schedule": "https://www.nfl.com/schedules/2026/by-week/week-N (N=1..11)",
+  "schedule": "https://www.nfl.com/schedules/2026/by-week/week-10",
   "standings": "https://www.nfl.com/standings/league/2026/REG",
+  "week10_finals": "data/closeout/week10_finals.csv (14 scores re-read on the official schedule)",
   "capture_diagnostics": "data/desk/capture_diag.json (212/212 pages HTTP 200)"
  },
  "checks": {
   "R1_completeness": {
-   "rule": "a FINAL row without both scores is dropped, never imputed",
+   "rule": "a FINAL row without both scores fails the build; scores are never imputed",
    "dropped": 0,
    "detail": []
   },
@@ -681,7 +681,12 @@
     }
    ],
    "source": "https://www.nfl.com/standings/league/2026/REG",
-   "note": "independent of the results capture: the standings page, transcribed through Week 10 (data/atlas/standings_2026_thru_wk10.csv) by a different session, with club-code aliasing ARI->AZ and LA->LAR applied once on both sides; re-verified live 320/320 fields on 2026-11-18"
+   "note": "independent of the results capture: a different page, transcribed by a different session, with club-code aliasing ARI->AZ and LA->LAR applied once"
+  },
+  "R4_week10_finals": {
+   "rule": "All Week 10 fixture identities and scores must match the 2026-11-19 official schedule read",
+   "agreed": 14,
+   "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   "R3_box_score_sample": {
    "rule": "16 Week-1 finals compared score-by-score with a live read of the official Week-1 page on 2026-11-14",
@@ -903,7 +908,7 @@
  ],
  "limitations": [
   "One season to date. No prior-season results are in this repository, so no strategy can clear a three-season walk-forward yet (gate G-3).",
-  "The capture covers weeks 1-11 of the 2026 schedule only.",
+  "The fixture capture covers weeks 1-11 only; scores are reconciled through Week 10.",
   "No prices are attached to any row. A result grades a bet; it cannot price one."
  ],
  "rows": [

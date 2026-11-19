@@ -16,11 +16,11 @@
 <nav class="sidenav"><div class="cat"><div class="cat-h">Overview</div><a href="index.html" class="on">Overview</a> <a href="executive-summary.html" class="">Executive summary</a> <a href="requirements.html" class="">Requirements</a></div><div class="cat"><div class="cat-h">Market data</div><a href="results.html" class="">Results feed</a> <a href="prices.html" class="">Price snapshots</a> <a href="lines.html" class="">Originated lines</a></div><div class="cat"><div class="cat-h">Strategies</div><a href="strategies.html" class="">Strategies</a> <a href="leaderboard.html" class="">Leaderboard</a> <a href="gates.html" class="">Gates &amp; demotion</a></div><div class="cat"><div class="cat-h">Evidence</div><a href="correlations.html" class="">Correlations</a> <a href="depth.html" class="">Injuries &amp; depth</a></div><div class="cat"><div class="cat-h">Decisions</div><a href="questions.html" class="">Open questions</a> <a href="suggestions.html" class="">Suggestions</a></div><div class="cat"><div class="cat-h">Governance</div><a href="sources.html" class="">Sources</a> <a href="verification.html" class="">Verification log</a> <a href="repo-review.html" class="">Repo review</a> <a href="flagged.html" class="">Flagged for review</a></div></nav>
 
 <div class="grid">
-  <div class="card"><div class="num">150</div><div class="lbl">verified finals in the results feed</div>
+  <div class="card"><div class="num">137</div><div class="lbl">verified finals in the results feed</div>
     <div class="sub">163 scheduled games, every row linked to its official week page</div></div>
   <div class="card"><div class="num">345 / 393</div><div class="lbl">opening / closing numbers stored</div>
     <div class="sub">978 rows; 240 markets not originated for lack of training data</div></div>
-  <div class="card"><div class="num">118</div><div class="lbl">games graded walk-forward</div>
+  <div class="card"><div class="num">105</div><div class="lbl">games graded walk-forward</div>
     <div class="sub">weeks 3&ndash;10; every number fitted on earlier weeks only</div></div>
   <div class="card"><div class="num">15</div><div class="lbl">correlations, each with its n</div>
     <div class="sub">computed only from officially sourced numbers</div></div>
@@ -48,20 +48,20 @@ analysis; it is the finding that shapes everything on this site.</p>
 <h2>The three numbers that matter</h2>
 <div class="panel">
 <dl class="kv">
-<dt>Side beats a constant baseline</dt><dd><b>0.644</b> of 118 graded games
-  (95% CI 0.554&ndash;0.725, exact binomial p = 0.0022).
+<dt>Side beats a constant baseline</dt><dd><b>0.638</b> of 105 graded games
+  (95% CI 0.543&ndash;0.724, exact binomial p = 0.0060).
   This clears the multiple-testing gate. It is real, and it is the only favourable discovery we have.</dd>
-<dt>Total does not</dt><dd><b>0.441</b> of 118 (p = 0.2313).
-  Worse: when the total model is most confident it is <b>reliably wrong</b> &mdash; 0.312 on
-  32 selective games, p = 0.0501. That is a significant adverse finding, not a null.</dd>
-<dt>The model is under-spread</dt><dd>predicted margin SD <b>4.810</b> against an actual SD of <b>13.166</b>
-  (ratio 0.365). It ranks teams in roughly the right order but pulls every number toward the league mean.</dd>
+<dt>Total does not</dt><dd><b>0.448</b> of 105 (p = 0.3291).
+  Worse: when the total model is most confident it is <b>reliably wrong</b> &mdash; 0.276 on
+  29 selective games, p = 0.0241. That is a significant adverse finding, not a null.</dd>
+<dt>The model is under-spread</dt><dd>predicted margin SD <b>4.283</b> against an actual SD of <b>12.736</b>
+  (ratio 0.336). It ranks teams in roughly the right order but pulls every number toward the league mean.</dd>
 </dl>
 </div>
 
 <h2>What is verified and what is not</h2>
 <div class="tw"><table><thead><tr><th>Layer</th><th class="n">Rows</th><th>Status</th><th>Source</th></tr></thead><tbody>
-<tr><td>Results feed (final scores)</td><td class="n">150</td>
+<tr><td>Results feed (final scores)</td><td class="n">137</td>
   <td><span class="badge ok">verified</span></td><td><a class="src" href="https://www.nfl.com/schedules/2026/by-week/week-1" target="_blank" rel="noopener noreferrer">source</a></td></tr>
 <tr><td>Club standings</td><td class="n">32</td>
   <td><span class="badge ok">verified</span></td><td><a class="src" href="https://www.nfl.com/standings/league/2026/reg" target="_blank" rel="noopener noreferrer">source</a></td></tr>
