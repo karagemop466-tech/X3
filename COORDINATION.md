@@ -4638,3 +4638,42 @@ Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap chec
 - `scripts/audit_all.py`: **PASS** (`375` pages, `12,876` source rows).
 - **Flagged irregularities**: `LF-01` no official NFL market-price feed (market/diff/CLV/ROI/leaderboard kept blank/empty); `LF-02` `Azeez Al-Shaair` (HOU) & `Jaylon Carlies` (IND) placed on `11/17` Reserve/Injured yet still listed on `reg11`; `LF-03` `Daiyan Henley` listed in `11/10` LAC→DEN trade yet started `11/16` for LAC in `LAC@BAL` Game Book; `LF-04` 3 Week-11 Game Center stadium names differ from schedule page (`RELIANT STADIUM` vs `NRG Stadium`, `ARROWHEAD STADIUM` vs `GEHA Field`, `NORTHWEST STADIUM` vs `FedEx Field`); `LF-05` `MIN@SF` Mexico City outside NWS domain; `LF-06` Game Book name variants (`T.Though`/`T.Shough`, `J.Smith-Nijgba`, 2025 `Zach Bako-Bewele`); `LF-07` `CIN@WAS` MNF zero-injuries notice pending Thursday report; `LF-08` pre-existing `readiness/data/history/2026-11-19/*.html` tracked by `arena/46153df1-x3`.
 
+PR #125 record (completes session arena/213236fb-x3, task L6):
+- PR https://github.com/karagemop466-tech/X3/pull/125 — `arena/213236fb-x3` → `main`, "Live 2026-11-19 operations desk" (`live/` module: 7 pages, 14/14 Week-10 Game Books, live Week-11 reg11 injuries + W10→W11 delta, NWS kickoff weather, November transactions, Rule 6 kickoff priors).
+- Merged 2026-11-19T07:22:47Z as merge commit `e5f771d37a458115d07f9c5f679f9a2fcb77e45c` (this branch's base commit).
+- Pages deploy: workflow run 44479152438 = success; Pages API status `built` (source `main /`, build_type legacy, HTTPS enforced) at https://karagemop466-tech.github.io/X3/.
+- Live confirmation 2026-11-19: root landing page, `hub/executive-summary.html`, `hub/suggestions.html`, `hub/questions.html` and `hub/flagged.html` all render; every table row carries an official-source link or an explicit UNVERIFIED/BLOCKED marker; nothing is inferred.
+L6 status: DONE (merge + deploy confirmed).
+
+## Session `arena/55e3547f-x3` — final verification sweep and coordination record (2026-11-19)
+
+Branch: `arena/55e3547f-x3` (platform-assigned; status active), base `main` @ `e5f771d`. No other session branch is open on `origin` (`git branch -r` → `origin/main` only).
+
+### Claim (file scope: `COORDINATION.md` only)
+Complete the PR #125 record left pending in the `arena/213236fb-x3` section, run the repo-wide verification sweep, confirm the live GitHub Pages site serves the landing page and the user-requested category pages (executive summary, suggestions, questions/information gaps, flagged for review), then open and merge this record PR to `main` and confirm the Pages deploy. No other file is touched; no data value is inferred or filled in.
+
+### Task board
+
+| ID | Task | Status | Result |
+|----|------|--------|--------|
+| V1 | Complete the arena/213236fb-x3 (PR #125) record: PR link, merge result, Pages deploy, live confirmation | done | PR #125 merged at `e5f771d` 2026-11-19T07:22:47Z; Pages run 44479152438 success; live pages render |
+| V2 | Repo-wide verification sweep (`scripts/audit_all.py`) | done | `audit_all` PASS — 382 pages, 26,916 link refs (9,853 internal), 660 tables; 13,305 source rows (13,035 linked to an official source, 270 explicitly unverified-marked); 577 flagged-page rows all marked; 0 broken internal links |
+| V3 | Live-site spot checks of user-requested pages | done | `https://karagemop466-tech.github.io/X3/` root landing; `hub/executive-summary.html`; `hub/suggestions.html`; `hub/questions.html` — all render; decision-readiness table (one row per requirement with blocking gate + clearing number) present on the landing page; suggestions table carries PROPOSED/ADOPTED review statuses; questions table carries blocking flags, discovery paths and owners |
+| V4 | PR from `arena/55e3547f-x3` to `main`, merge without waiting, confirm Pages deploy, record PR link and result here | in progress | see PR & deploy record below |
+
+### Verification notes
+- `nfl.com` is not reachable from the authoring sandbox shell (outbound allow-list: github.com / api.github.com / codeload.github.com / registry.npmjs.org / pypi.org / files.pythonhosted.org only). NFL facts in this repository were transcribed by earlier sessions from fetched official pages and carry per-row source links or explicit UNVERIFIED/BLOCKED markers; this session re-checked the rendered live pages via the page reader and changed no data value.
+- Remaining project-wide blocks, all published with links and not resolved by inference: no official NFL market-price source (`nfl.com/odds` returns 404) → market line, difference, CLV, ROI and staking columns blank (flag F-01/F-18); reserve/IR and snap-count capture not implemented (B30/B55/B63 blocked); per-fixture venue transcription incomplete (7/163 feed rows populated, 156 blank per Q-25); funded rewards and legal jurisdiction unresolved (Q-13 compliance item).
+- Overlapping site trees (older trees plus maintained `hub/`) remain preserved and indexed at `hub/archive.html`; consolidation (SG-09) is proposed, not implemented.
+
+### PR & deploy record (this session)
+
+| Item | Record |
+|------|--------|
+| PR | `arena/55e3547f-x3` → `main`, "Final verification sweep and coordination record" |
+| Merge | PENDING |
+| GitHub Pages | PENDING — confirm `Deploy X3 NFL site to GitHub Pages` success on `main` |
+| Live URL | https://karagemop466-tech.github.io/X3/ |
+
+Session `arena/55e3547f-x3` status: verification sweep complete; PR/merge/deploy in progress.
+
