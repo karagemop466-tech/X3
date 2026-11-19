@@ -26,7 +26,7 @@ NAV = [
         ("requirements.html", "Requirements", "The eight requirements and their evidence"),
     ]),
     ("Market data", [
-        ("results.html", "Results feed", "163 games, 137 verified finals"),
+        ("results.html", "Results feed", "163 games, 150 verified finals"),
         ("prices.html", "Price snapshots", "Opening and closing numbers for every originated market"),
         ("lines.html", "Originated lines", "Fair line, market line, difference"),
     ]),
@@ -898,7 +898,7 @@ printed anyway and labelled: a null result with an n is information, a null resu
 
 <h2>How to read this</h2>
 <ul class="tight">
-<li><b>n is the sample, not the season.</b> Game-level pairs use the 137 verified finals; model pairs use
+<li><b>n is the sample, not the season.</b> Game-level pairs use the 150 verified finals; model pairs use
   only the {max(c['n'] for c in corr if c['family'] == 'model')} walk-forward graded games; club pairs use 32 clubs;
   availability pairs use 30 games because the official injury capture began at week 8.</li>
 <li><b>A club-level n of 32 is small.</b> The Pythagorean and point-differential correlations clear their
@@ -1209,7 +1209,7 @@ but the duplication is itself a decision-making problem and it is logged as
 statuses, which is the strongest evidence in the repository that the injury layer is right. The
 disagreement on one practice status is logged rather than adjudicated.</li>
 <li><b>A previously published correlation was wrong.</b> An earlier session published
-r(game total, |margin|) = &minus;0.161; recomputing from the same 137 finals gives &minus;0.016, and
+r(game total, |margin|) = &minus;0.161; recomputing from the same 150 finals gives &minus;0.016, and
 &minus;0.161 is in fact r(total, signed home margin). The pipeline was fine; the label was wrong. This
 module recomputes both and prints them separately.</li>
 <li><b>Depth charts are the weakest link.</b> No as-of date, and most are labelled unofficial by the club

@@ -1,6 +1,6 @@
 gate,measured,fires_now,note
-D1,"trailing 50 graded games: win rate 0.6381, exact p 0.006",no,Fires only when the rate is at or below no-skill AND the result is not significant.
-D2,MAE delta vs baseline 0.792 pts (trailing window overlaps the full graded set at this sample size),no,Positive delta is the model being closer to the truth than the constant baseline.
+D1,"trailing 50 graded games: win rate 0.6441, exact p 0.0022",no,Fires only when the rate is at or below no-skill AND the result is not significant.
+D2,MAE delta vs baseline 1.105 pts (trailing window overlaps the full graded set at this sample size),no,Positive delta is the model being closer to the truth than the constant baseline.
 D3,not evaluable — no settled payoff series exists,UNEVALUABLE,"Recorded, not waived. It becomes live the day a price series lands."
 D4,every row in this module links an official source or carries a flag,PASS,Checked by scripts/verify_signals.py on every build and in CI.
 D5,"no strategy has ever been promoted, so the count since promotion is 0","YES (by definition, while nothing is live)","Promotion requires the sample-size gate, so this is a safety net, not the binding constraint."

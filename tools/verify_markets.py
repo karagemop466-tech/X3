@@ -181,6 +181,28 @@ def main() -> int:
         check(r["value"] is None, f"M8 blank row {r['x']} vs {r['y']} carries a value")
         check(bool(r["data_required"]), f"M8 blank row {r['x']} vs {r['y']} names no missing input")
 
+    # M11 frozen pre-kickoff Week-10 board artifact (preserved for modules that
+    # grade against the 2026-11-14 origination; task DD-1, 2026-11-19)
+    fb_path = os.path.join(D, "board_2026_wk10_frozen.json")
+    check(os.path.exists(fb_path), "M11 frozen Week-10 board artifact is missing")
+    if os.path.exists(fb_path):
+        fb = json.load(open(fb_path, encoding="utf-8"))
+        check(len(fb.get("rows", [])) == 13,
+              f"M11 frozen board has {len(fb.get('rows', []))} rows, expected 13")
+        for r in fb.get("rows", []):
+            check(r.get("week") == 10, f"M11 {r.get('game_id')} is not a Week-10 row")
+            for k in ("margin_model", "side_fair_line", "side_cover_prob_home",
+                      "total_fair_line", "total_over_prob", "ml_home_prob", "origination_order"):
+                check(r.get(k) not in ("", None), f"M11 {r.get('game_id')} missing {k}")
+            for k in ("side_cover_prob_home", "total_over_prob", "ml_home_prob"):
+                v = r.get(k)
+                check(isinstance(v, (int, float)) and 0.0 <= v <= 1.0,
+                      f"M11 {r.get('game_id')} {k}={v!r} is not a probability")
+            check(r.get("origination_order") == "1 side, 2 total, 3 moneyline",
+                  f"M11 {r.get('game_id')} does not state the order")
+        check(bool(fb.get("provenance", {}).get("source_sha256_of_markets_json")),
+              "M11 frozen board carries no provenance hash")
+
     # M9 demotion gate
     dg = st["demotion_gate"]
     check(len(dg["clauses"]) == 4, f"M9 demotion gate has {len(dg['clauses'])} clauses, expected 4")

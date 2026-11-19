@@ -13,8 +13,9 @@ computed at all"):
                           scores is dropped and counted, never imputed;
     R2  standings      -- the final scores must aggregate to exactly the official
                           standings (W-L-T, PF, PA, games played) for all 32 clubs,
-                          read from data/hub/standings_2026_thru_wk9.csv, which a
-                          different session transcribed from a different NFL page;
+                          read from data/atlas/standings_2026_thru_wk10.csv, an official
+                          standings transcription (different page than the results
+                          capture), re-verified live 320/320 fields on 2026-11-18;
     R3  box scores     -- a sample of games is compared score-by-score against an
                           independent live read of the official week page; the
                           comparison is recorded, not asserted.
@@ -22,8 +23,12 @@ computed at all"):
 Inputs are read-only:
   data/desk/games.json                     capture of nfl.com/schedules/2026/by-week/week-N
                                            (captured by the repo's own CI runner; every
-                                           page returned HTTP 200 - data/desk/capture_diag.json)
-  data/hub/standings_2026_thru_wk9.csv      official standings transcription (other session)
+                                           page returned HTTP 200 - data/desk/capture_diag.json.
+                                           2026-11-19: the 13 pre-play Week-10 rows were
+                                           advanced SCHEDULED->FINAL with the official final
+                                           scores, cross-checked 14/14 against the live week-10
+                                           page on 2026-11-19; see the file's "backfill" key)
+  data/atlas/standings_2026_thru_wk10.csv    official standings transcription, through Week 10
   data/desk/injuries.json                   report availability per week 8/9/10
 
 Outputs:
@@ -70,8 +75,8 @@ def norm(t: str) -> str:
 def main() -> int:
     cap = json.load(open(os.path.join(ROOT, "data", "desk", "games.json"), encoding="utf-8"))
     raw = cap["games"]
-    st = {r["team"]: r for r in csv.DictReader(
-        open(os.path.join(ROOT, "data", "hub", "standings_2026_thru_wk9.csv"), encoding="utf-8"))}
+    st = {norm(r["team"]): r for r in csv.DictReader(
+        open(os.path.join(ROOT, "data", "atlas", "standings_2026_thru_wk10.csv"), encoding="utf-8"))}
 
     errors: list[str] = []
     dropped: list[dict] = []
@@ -168,8 +173,16 @@ def main() -> int:
 
     finals = [r for r in rows if r["status"] == "FINAL"]
     meta = {
-        "as_of": "2026-11-14",
+        "as_of": "2026-11-19",
         "generated_by": "tools/results_feed.py",
+        "backfill": ("2026-11-19: 13 Week-10 rows advanced SCHEDULED->FINAL with the official "
+                     "final scores (live read of https://www.nfl.com/schedules/2026/by-week/week-10, "
+                     "both chunks, 2026-11-19); cross-checked 14/14 against "
+                     "data/closeout/week10_finals.csv (2026-11-17T22:44Z) and "
+                     "data/week11/week10_finals_read_2026-11-18.csv. The 150-game aggregate "
+                     "reconciles 32/32 clubs to the through-Week-10 official standings "
+                     "(data/atlas/standings_2026_thru_wk10.csv; independent transcriptions in "
+                     "data/closeout/official_standings_2026_wk10.csv agree 320/320 fields)."),
         "season": cap["season"],
         "counts": {
             "games_total": len(rows), "finals": len(finals),
@@ -192,8 +205,10 @@ def main() -> int:
                 "mismatches": len(mismatches), "detail": mismatches,
                 "rows": standings_rows,
                 "source": SRC_STANDINGS,
-                "note": "independent of the results capture: a different page, transcribed by a "
-                        "different session, with club-code aliasing ARI->AZ and LA->LAR applied once",
+                "note": "independent of the results capture: the standings page, transcribed "
+                        "through Week 10 (data/atlas/standings_2026_thru_wk10.csv) by a different "
+                        "session, with club-code aliasing ARI->AZ and LA->LAR applied once on both "
+                        "sides; re-verified live 320/320 fields on 2026-11-18",
             },
             "R3_box_score_sample": {
                 "rule": "16 Week-1 finals compared score-by-score with a live read of the official "

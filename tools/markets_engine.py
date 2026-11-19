@@ -404,7 +404,7 @@ def build():
         "limits": [
             "Every market column is blank: no official NFL price publication exists (verified "
             "2026-11-14 on the LAC@BAL game centre).",
-            "One season of results, so sigma and the ratings are fitted on at most 137 games.",
+            "One season of results, so sigma and the ratings are fitted on at most 150 games.",
             "The moneyline inherits the side model's error by construction.",
         ],
     }

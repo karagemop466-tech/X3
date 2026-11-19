@@ -567,7 +567,7 @@ def p_strategies():
     _prop_tbl = table(["Family", "Can we originate it from an official source?", "What exists",
                        "What is missing", "State"],
                       [["Game side (single)", "Yes",
-                        "final scores and venues for 137 games, reconciled to the standings",
+                        "final scores and venues for 150 games, reconciled to the standings",
                         "a market price to compare against", badge("DERIVED")],
                        ["Game total (single)", "Yes, but it loses to a constant",
                         "the same finals, plus a measured side-to-total correlation with its n",
@@ -999,7 +999,7 @@ def p_sources():
     SRC = C.SOURCES + [
         ("Official weekly schedules with final scores, weeks 1-11, 2026",
          "https://www.nfl.com/schedules/2026/by-week/week-N", "NFL.com (official)",
-         "the verified results feed: 163 games, 137 finals",
+         "the verified results feed: 163 games, 150 finals",
          "captured by this repository's own CI runner (212/212 pages HTTP 200) and read through the "
          "fetch tool for week 1", AS_OF, "VERIFIED"),
         ("Official game centre, LAC at BAL week 10", X.S["game_lac_bal"], "NFL.com (official)",
@@ -1562,7 +1562,7 @@ def landing():
          "100% of originated market IDs have both timestamped, source-attributed OPEN and CLOSE observations; unknown source/coverage stays blank.",
          link(official_odds_probe, "NFL odds-source check") + " · " + local_link("hub/flagged.html", "price-source flags")],
         ["<b>R2 · Verified results</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "137 finals among 163 scheduled 2026 rows in the captured feed; no settled-wager series or published settlement contract.",
+         "150 finals among 163 scheduled 2026 rows in the captured feed (the 13 Week-10 rows were settled 2026-11-19 from the official week-10 page); no settled-wager series or published settlement contract.",
          "Market prices and explicit push/tie/void settlement rules are required before ROI can be computed.",
          "100% of graded games reconcile to official finals; 100% of wager rows have a predeclared settlement rule and source-linked result.",
          link(official_schedule, "NFL weekly schedule") + " · " + local_link("hub/verified-results.html", "feed and checks")],

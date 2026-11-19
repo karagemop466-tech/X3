@@ -1,11 +1,12 @@
 {
- "as_of": "2026-11-14",
+ "as_of": "2026-11-19",
  "generated_by": "tools/results_feed.py",
+ "backfill": "2026-11-19: 13 Week-10 rows advanced SCHEDULED->FINAL with the official final scores (live read of https://www.nfl.com/schedules/2026/by-week/week-10, both chunks, 2026-11-19); cross-checked 14/14 against data/closeout/week10_finals.csv (2026-11-17T22:44Z) and data/week11/week10_finals_read_2026-11-18.csv. The 150-game aggregate reconciles 32/32 clubs to the through-Week-10 official standings (data/atlas/standings_2026_thru_wk10.csv; independent transcriptions in data/closeout/official_standings_2026_wk10.csv agree 320/320 fields).",
  "season": 2026,
  "counts": {
   "games_total": 163,
-  "finals": 137,
-  "scheduled": 26,
+  "finals": 150,
+  "scheduled": 13,
   "clubs": 32,
   "weeks_with_finals": [
    1,
@@ -42,19 +43,19 @@
      "team": "ATL",
      "feed": {
       "w": 3,
-      "l": 6,
+      "l": 7,
       "t": 0,
-      "pf": 188,
-      "pa": 223,
-      "g": 9
+      "pf": 201,
+      "pa": 258,
+      "g": 10
      },
      "standings": {
       "w": 3,
-      "l": 6,
+      "l": 7,
       "t": 0,
-      "pf": 188,
-      "pa": 223,
-      "g": 9
+      "pf": 201,
+      "pa": 258,
+      "g": 10
      },
      "agree": true
     },
@@ -62,19 +63,19 @@
      "team": "AZ",
      "feed": {
       "w": 3,
-      "l": 6,
+      "l": 7,
       "t": 0,
-      "pf": 178,
-      "pa": 255,
-      "g": 9
+      "pf": 184,
+      "pa": 289,
+      "g": 10
      },
      "standings": {
       "w": 3,
-      "l": 6,
+      "l": 7,
       "t": 0,
-      "pf": 178,
-      "pa": 255,
-      "g": 9
+      "pf": 184,
+      "pa": 289,
+      "g": 10
      },
      "agree": true
     },
@@ -82,9 +83,49 @@
      "team": "BAL",
      "feed": {
       "w": 4,
+      "l": 6,
+      "t": 0,
+      "pf": 209,
+      "pa": 259,
+      "g": 10
+     },
+     "standings": {
+      "w": 4,
+      "l": 6,
+      "t": 0,
+      "pf": 209,
+      "pa": 259,
+      "g": 10
+     },
+     "agree": true
+    },
+    {
+     "team": "BUF",
+     "feed": {
+      "w": 8,
+      "l": 1,
+      "t": 0,
+      "pf": 287,
+      "pa": 199,
+      "g": 9
+     },
+     "standings": {
+      "w": 8,
+      "l": 1,
+      "t": 0,
+      "pf": 287,
+      "pa": 199,
+      "g": 9
+     },
+     "agree": true
+    },
+    {
+     "team": "CAR",
+     "feed": {
+      "w": 4,
       "l": 5,
       "t": 0,
-      "pf": 189,
+      "pf": 219,
       "pa": 236,
       "g": 9
      },
@@ -92,49 +133,9 @@
       "w": 4,
       "l": 5,
       "t": 0,
-      "pf": 189,
+      "pf": 219,
       "pa": 236,
       "g": 9
-     },
-     "agree": true
-    },
-    {
-     "team": "BUF",
-     "feed": {
-      "w": 7,
-      "l": 1,
-      "t": 0,
-      "pf": 256,
-      "pa": 187,
-      "g": 8
-     },
-     "standings": {
-      "w": 7,
-      "l": 1,
-      "t": 0,
-      "pf": 256,
-      "pa": 187,
-      "g": 8
-     },
-     "agree": true
-    },
-    {
-     "team": "CAR",
-     "feed": {
-      "w": 3,
-      "l": 5,
-      "t": 0,
-      "pf": 199,
-      "pa": 219,
-      "g": 8
-     },
-     "standings": {
-      "w": 3,
-      "l": 5,
-      "t": 0,
-      "pf": 199,
-      "pa": 219,
-      "g": 8
      },
      "agree": true
     },
@@ -161,40 +162,40 @@
     {
      "team": "CIN",
      "feed": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 240,
-      "pa": 175,
-      "g": 8
+      "pf": 278,
+      "pa": 193,
+      "g": 9
      },
      "standings": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 240,
-      "pa": 175,
-      "g": 8
+      "pf": 278,
+      "pa": 193,
+      "g": 9
      },
      "agree": true
     },
     {
      "team": "CLE",
      "feed": {
-      "w": 5,
+      "w": 6,
       "l": 4,
       "t": 0,
-      "pf": 161,
-      "pa": 196,
-      "g": 9
+      "pf": 188,
+      "pa": 220,
+      "g": 10
      },
      "standings": {
-      "w": 5,
+      "w": 6,
       "l": 4,
       "t": 0,
-      "pf": 161,
-      "pa": 196,
-      "g": 9
+      "pf": 188,
+      "pa": 220,
+      "g": 10
      },
      "agree": true
     },
@@ -202,19 +203,19 @@
      "team": "DAL",
      "feed": {
       "w": 4,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 246,
-      "pa": 236,
-      "g": 9
+      "pf": 286,
+      "pa": 282,
+      "g": 10
      },
      "standings": {
       "w": 4,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 246,
-      "pa": 236,
-      "g": 9
+      "pf": 286,
+      "pa": 282,
+      "g": 10
      },
      "agree": true
     },
@@ -241,20 +242,20 @@
     {
      "team": "DET",
      "feed": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 222,
-      "pa": 189,
-      "g": 8
+      "pf": 257,
+      "pa": 199,
+      "g": 9
      },
      "standings": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 222,
-      "pa": 189,
-      "g": 8
+      "pf": 257,
+      "pa": 199,
+      "g": 9
      },
      "agree": true
     },
@@ -262,19 +263,19 @@
      "team": "GB",
      "feed": {
       "w": 6,
-      "l": 3,
+      "l": 4,
       "t": 0,
-      "pf": 216,
-      "pa": 191,
-      "g": 9
+      "pf": 226,
+      "pa": 221,
+      "g": 10
      },
      "standings": {
       "w": 6,
-      "l": 3,
+      "l": 4,
       "t": 0,
-      "pf": 216,
-      "pa": 191,
-      "g": 9
+      "pf": 226,
+      "pa": 221,
+      "g": 10
      },
      "agree": true
     },
@@ -282,119 +283,119 @@
      "team": "HOU",
      "feed": {
       "w": 3,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 209,
-      "pa": 192,
-      "g": 8
+      "pf": 233,
+      "pa": 219,
+      "g": 9
      },
      "standings": {
       "w": 3,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 209,
-      "pa": 192,
-      "g": 8
+      "pf": 233,
+      "pa": 219,
+      "g": 9
      },
      "agree": true
     },
     {
      "team": "IND",
      "feed": {
-      "w": 2,
+      "w": 3,
       "l": 7,
       "t": 0,
-      "pf": 184,
-      "pa": 249,
-      "g": 9
+      "pf": 208,
+      "pa": 271,
+      "g": 10
      },
      "standings": {
-      "w": 2,
+      "w": 3,
       "l": 7,
       "t": 0,
-      "pf": 184,
-      "pa": 249,
-      "g": 9
+      "pf": 208,
+      "pa": 271,
+      "g": 10
      },
      "agree": true
     },
     {
      "team": "JAX",
      "feed": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 229,
-      "pa": 121,
-      "g": 8
+      "pf": 269,
+      "pa": 144,
+      "g": 9
      },
      "standings": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 229,
-      "pa": 121,
-      "g": 8
+      "pf": 269,
+      "pa": 144,
+      "g": 9
      },
      "agree": true
     },
     {
      "team": "KC",
      "feed": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 202,
-      "pa": 143,
-      "g": 8
+      "pf": 237,
+      "pa": 156,
+      "g": 9
      },
      "standings": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 202,
-      "pa": 143,
-      "g": 8
+      "pf": 237,
+      "pa": 156,
+      "g": 9
      },
      "agree": true
     },
     {
      "team": "LAC",
      "feed": {
-      "w": 0,
+      "w": 1,
       "l": 8,
       "t": 0,
-      "pf": 121,
-      "pa": 219,
-      "g": 8
+      "pf": 144,
+      "pa": 239,
+      "g": 9
      },
      "standings": {
-      "w": 0,
+      "w": 1,
       "l": 8,
       "t": 0,
-      "pf": 121,
-      "pa": 219,
-      "g": 8
+      "pf": 144,
+      "pa": 239,
+      "g": 9
      },
      "agree": true
     },
     {
      "team": "LAR",
      "feed": {
-      "w": 5,
+      "w": 6,
       "l": 4,
       "t": 0,
-      "pf": 214,
-      "pa": 181,
-      "g": 9
+      "pf": 248,
+      "pa": 187,
+      "g": 10
      },
      "standings": {
-      "w": 5,
+      "w": 6,
       "l": 4,
       "t": 0,
-      "pf": 214,
-      "pa": 181,
-      "g": 9
+      "pf": 248,
+      "pa": 187,
+      "g": 10
      },
      "agree": true
     },
@@ -402,19 +403,19 @@
      "team": "LV",
      "feed": {
       "w": 4,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 238,
-      "pa": 268,
-      "g": 9
+      "pf": 251,
+      "pa": 289,
+      "g": 10
      },
      "standings": {
       "w": 4,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 238,
-      "pa": 268,
-      "g": 9
+      "pf": 251,
+      "pa": 289,
+      "g": 10
      },
      "agree": true
     },
@@ -422,39 +423,39 @@
      "team": "MIA",
      "feed": {
       "w": 1,
-      "l": 7,
+      "l": 8,
       "t": 0,
-      "pf": 126,
-      "pa": 200,
-      "g": 8
+      "pf": 148,
+      "pa": 224,
+      "g": 9
      },
      "standings": {
       "w": 1,
-      "l": 7,
+      "l": 8,
       "t": 0,
-      "pf": 126,
-      "pa": 200,
-      "g": 8
+      "pf": 148,
+      "pa": 224,
+      "g": 9
      },
      "agree": true
     },
     {
      "team": "MIN",
      "feed": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 146,
-      "pa": 116,
-      "g": 8
+      "pf": 176,
+      "pa": 126,
+      "g": 9
      },
      "standings": {
-      "w": 6,
+      "w": 7,
       "l": 2,
       "t": 0,
-      "pf": 146,
-      "pa": 116,
-      "g": 8
+      "pf": 176,
+      "pa": 126,
+      "g": 9
      },
      "agree": true
     },
@@ -462,19 +463,19 @@
      "team": "NE",
      "feed": {
       "w": 5,
-      "l": 4,
+      "l": 5,
       "t": 0,
-      "pf": 211,
-      "pa": 207,
-      "g": 9
+      "pf": 221,
+      "pa": 242,
+      "g": 10
      },
      "standings": {
       "w": 5,
-      "l": 4,
+      "l": 5,
       "t": 0,
-      "pf": 211,
-      "pa": 207,
-      "g": 9
+      "pf": 221,
+      "pa": 242,
+      "g": 10
      },
      "agree": true
     },
@@ -482,19 +483,19 @@
      "team": "NO",
      "feed": {
       "w": 3,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 185,
-      "pa": 216,
-      "g": 8
+      "pf": 202,
+      "pa": 236,
+      "g": 9
      },
      "standings": {
       "w": 3,
-      "l": 5,
+      "l": 6,
       "t": 0,
-      "pf": 185,
-      "pa": 216,
-      "g": 8
+      "pf": 202,
+      "pa": 236,
+      "g": 9
      },
      "agree": true
     },
@@ -522,19 +523,19 @@
      "team": "NYJ",
      "feed": {
       "w": 2,
-      "l": 7,
+      "l": 8,
       "t": 0,
-      "pf": 182,
-      "pa": 223,
-      "g": 9
+      "pf": 194,
+      "pa": 254,
+      "g": 10
      },
      "standings": {
       "w": 2,
-      "l": 7,
+      "l": 8,
       "t": 0,
-      "pf": 182,
-      "pa": 223,
-      "g": 9
+      "pf": 194,
+      "pa": 254,
+      "g": 10
      },
      "agree": true
     },
@@ -562,59 +563,59 @@
      "team": "PIT",
      "feed": {
       "w": 6,
-      "l": 2,
+      "l": 3,
       "t": 0,
-      "pf": 180,
-      "pa": 144,
-      "g": 8
+      "pf": 198,
+      "pa": 182,
+      "g": 9
      },
      "standings": {
       "w": 6,
-      "l": 2,
+      "l": 3,
       "t": 0,
-      "pf": 180,
-      "pa": 144,
-      "g": 8
+      "pf": 198,
+      "pa": 182,
+      "g": 9
      },
      "agree": true
     },
     {
      "team": "SEA",
      "feed": {
-      "w": 5,
+      "w": 6,
       "l": 4,
       "t": 0,
-      "pf": 202,
-      "pa": 162,
-      "g": 9
+      "pf": 223,
+      "pa": 175,
+      "g": 10
      },
      "standings": {
-      "w": 5,
+      "w": 6,
       "l": 4,
       "t": 0,
-      "pf": 202,
-      "pa": 162,
-      "g": 9
+      "pf": 223,
+      "pa": 175,
+      "g": 10
      },
      "agree": true
     },
     {
      "team": "SF",
      "feed": {
-      "w": 7,
+      "w": 8,
       "l": 1,
       "t": 0,
-      "pf": 235,
-      "pa": 156,
-      "g": 8
+      "pf": 281,
+      "pa": 196,
+      "g": 9
      },
      "standings": {
-      "w": 7,
+      "w": 8,
       "l": 1,
       "t": 0,
-      "pf": 235,
-      "pa": 156,
-      "g": 8
+      "pf": 281,
+      "pa": 196,
+      "g": 9
      },
      "agree": true
     },
@@ -642,19 +643,19 @@
      "team": "TEN",
      "feed": {
       "w": 1,
-      "l": 7,
+      "l": 8,
       "t": 0,
-      "pf": 144,
-      "pa": 199,
-      "g": 8
+      "pf": 167,
+      "pa": 239,
+      "g": 9
      },
      "standings": {
       "w": 1,
-      "l": 7,
+      "l": 8,
       "t": 0,
-      "pf": 144,
-      "pa": 199,
-      "g": 8
+      "pf": 167,
+      "pa": 239,
+      "g": 9
      },
      "agree": true
     },
@@ -680,7 +681,7 @@
     }
    ],
    "source": "https://www.nfl.com/standings/league/2026/REG",
-   "note": "independent of the results capture: a different page, transcribed by a different session, with club-code aliasing ARI->AZ and LA->LAR applied once"
+   "note": "independent of the results capture: the standings page, transcribed through Week 10 (data/atlas/standings_2026_thru_wk10.csv) by a different session, with club-code aliasing ARI->AZ and LA->LAR applied once on both sides; re-verified live 320/320 fields on 2026-11-18"
   },
   "R3_box_score_sample": {
    "rule": "16 Week-1 finals compared score-by-score with a live read of the official Week-1 page on 2026-11-14",
@@ -3245,11 +3246,11 @@
    "home_name": "Jets",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 31,
+   "home_score": 12,
+   "margin_home": -19,
+   "total": 43,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3262,11 +3263,11 @@
    "home_name": "Saints",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 20,
+   "home_score": 17,
+   "margin_home": -3,
+   "total": 37,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3279,11 +3280,11 @@
    "home_name": "Browns",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 24,
+   "home_score": 27,
+   "margin_home": 3,
+   "total": 51,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3296,11 +3297,11 @@
    "home_name": "Titans",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 40,
+   "home_score": 23,
+   "margin_home": -17,
+   "total": 63,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3313,11 +3314,11 @@
    "home_name": "Falcons",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 35,
+   "home_score": 13,
+   "margin_home": -22,
+   "total": 48,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3330,11 +3331,11 @@
    "home_name": "Cardinals",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 34,
+   "home_score": 6,
+   "margin_home": -28,
+   "total": 40,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3347,11 +3348,11 @@
    "home_name": "Colts",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 22,
+   "home_score": 24,
+   "margin_home": 2,
+   "total": 46,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3364,11 +3365,11 @@
    "home_name": "Packers",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 30,
+   "home_score": 10,
+   "margin_home": -20,
+   "total": 40,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3381,11 +3382,11 @@
    "home_name": "Lions",
    "neutral_site": true,
    "venue": "Munich",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 10,
+   "home_score": 35,
+   "margin_home": 25,
+   "total": 45,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3398,11 +3399,11 @@
    "home_name": "Bengals",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 18,
+   "home_score": 38,
+   "margin_home": 20,
+   "total": 56,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3415,11 +3416,11 @@
    "home_name": "Raiders",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 21,
+   "home_score": 13,
+   "margin_home": -8,
+   "total": 34,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3432,11 +3433,11 @@
    "home_name": "Cowboys",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 46,
+   "home_score": 40,
+   "margin_home": -6,
+   "total": 86,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {
@@ -3449,11 +3450,11 @@
    "home_name": "Ravens",
    "neutral_site": false,
    "venue": "",
-   "status": "SCHEDULED",
-   "away_score": "",
-   "home_score": "",
-   "margin_home": "",
-   "total": "",
+   "status": "FINAL",
+   "away_score": 23,
+   "home_score": 20,
+   "margin_home": -3,
+   "total": 43,
    "source": "https://www.nfl.com/schedules/2026/by-week/week-10"
   },
   {

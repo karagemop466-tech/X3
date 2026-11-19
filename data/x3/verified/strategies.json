@@ -8,51 +8,51 @@
   "Every number carries n. A row without n is not ranked."
  ],
  "signal_evidence": {
-  "n_games": 105,
+  "n_games": 118,
   "margin": {
    "metric": "paired improvement in absolute error vs the naive -2.5 baseline, in points",
-   "mean_improvement": 0.205,
+   "mean_improvement": 0.472,
    "ci95": [
-    -1.047,
-    1.478
+    -0.689,
+    1.678
    ],
-   "model_mae": 9.74,
-   "naive_mae": 9.95,
+   "model_mae": 9.77,
+   "naive_mae": 10.24,
    "interpretation": "the interval contains zero, so the side model's edge over a constant -2.5 is not yet established at this sample size"
   },
   "total": {
    "metric": "paired improvement in absolute error vs the naive 45.0 baseline, in points",
-   "mean_improvement": -1.355,
+   "mean_improvement": -1.47,
    "ci95": [
-    -2.6,
-    -0.119
+    -2.615,
+    -0.317
    ],
-   "model_mae": 12.5,
-   "naive_mae": 11.14,
+   "model_mae": 12.34,
+   "naive_mae": 10.87,
    "interpretation": "the model's total is WORSE than a constant 45 on this sample; published as-is rather than tuned until it looks better"
   },
   "direction": {
-   "hits": 66,
-   "n": 105,
-   "rate": 0.6286,
+   "hits": 77,
+   "n": 118,
+   "rate": 0.6525,
    "ci95_wilson": [
-    0.5331,
-    0.7149
+    0.563,
+    0.7324
    ],
-   "baseline_always_away": 0.5238,
-   "baseline_always_home": 0.4762,
-   "advantage_over_always_away": 0.1048,
+   "baseline_always_away": 0.5424,
+   "baseline_always_home": 0.4576,
+   "advantage_over_always_away": 0.1102,
    "advantage_ci95": [
-    -0.0286,
-    0.2286
+    -0.0085,
+    0.2288
    ],
-   "reading": "the direction rate beats the always-away baseline by +0.105 per game, 95% CI [-0.029, +0.229]"
+   "reading": "the direction rate beats the always-away baseline by +0.110 per game, 95% CI [-0.008, +0.229]"
   },
   "moneyline_calibration": {
-   "brier": 0.2267,
-   "brier_base_rate": 0.2494,
-   "base_rate_home_win": 0.4762,
-   "n": 105,
+   "brier": 0.2213,
+   "brier_base_rate": 0.2482,
+   "base_rate_home_win": 0.4576,
+   "n": 118,
    "reading": "lower is better; the model's probability beats the base rate"
   },
   "multiple_testing": {
@@ -100,23 +100,23 @@
      },
      {
       "week": 10,
-      "beats_naive": false
+      "beats_naive": true
      }
     ]
    },
    "D-2_rolling20_improvement_ci_below_zero": {
     "fires": false,
-    "rolling20_mean_improvement_points": 2.809,
+    "rolling20_mean_improvement_points": 2.703,
     "ci95": [
-     0.668,
-     5.013
+     0.406,
+     4.882
     ]
    },
    "D-3_direction_hit_rate_ci_below_0.50": {
     "fires": false,
     "ci95": [
-     0.5331,
-     0.7149
+     0.563,
+     0.7324
     ]
    },
    "D-4_staking_input_missing_while_live": {
@@ -188,11 +188,11 @@
   },
   {
    "week": 10,
-   "n": 1,
-   "mae_margin": 5.72,
-   "mae_naive": 0.5,
-   "beats_naive": false,
-   "direction_rate": 0.0
+   "n": 14,
+   "mae_margin": 9.65,
+   "mae_naive": 11.71,
+   "beats_naive": true,
+   "direction_rate": 0.786
   }
  ],
  "counts": {
@@ -414,11 +414,11 @@
    "data_required": "Game log + outcomes",
    "signal_source": "This site's model",
    "gate_state_at_registration": "BLOCKED - no results",
-   "signal_score": 0.205,
-   "signal_n": 105,
+   "signal_score": 0.472,
+   "signal_n": 118,
    "signal_ci": [
-    -1.047,
-    1.478
+    -0.689,
+    1.678
    ],
    "signal_metric": "paired improvement in absolute margin error over the naive home -2.5 baseline, bootstrap 95% CI",
    "signal_status": "INCONCLUSIVE",
