@@ -1,0 +1,793 @@
+snapshot_date,club,unit,position,n_rows,n_rank1_filled_rows,multi_rank1,n_shared_cells,n_gap_cells,unlabeled_row,distinct_names,note
+2026-11-14,ARI,Offense,WR,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ARI,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ARI,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ARI,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ARI,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ARI,Offense,RT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,ARI,Offense,TE,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ARI,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,ARI,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,ARI,Defense,DT,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ARI,Defense,NT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ARI,Defense,OLB,2,2,YES,1,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ARI,Defense,ILB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ARI,Defense,CB,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ARI,Defense,S,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ARI,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ARI,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ARI,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ARI,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ARI,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,ARI,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ATL,Offense,WR,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ATL,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ATL,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ATL,Offense,C,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ATL,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ATL,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ATL,Offense,TE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ATL,Offense,RB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ATL,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,ATL,Defense,DE,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ATL,Defense,DL,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ATL,Defense,ILB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ATL,Defense,CB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ATL,Defense,S,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,ATL,Defense,NB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,ATL,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ATL,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ATL,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,ATL,Special Teams,PR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,ATL,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BAL,Offense,WR,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BAL,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Offense,TE,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BAL,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BAL,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BAL,Defense,DT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Defense,NT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Defense,DE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Defense,RUSH,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Defense,MLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Defense,WLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Defense,SAM,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BAL,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BAL,Defense,DB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BAL,Defense,SS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Defense,FS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BAL,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,BAL,Special Teams,K,1,0,NO,0,0,NO,0,no rank-1 name listed
+2026-11-14,BAL,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,BAL,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,BAL,Special Teams,KOR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BAL,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BUF,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BUF,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BUF,Defense,DL,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BUF,Defense,OLB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BUF,Defense,ILB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BUF,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BUF,Defense,NCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,BUF,Defense,S,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,BUF,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,BUF,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,BUF,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,BUF,Special Teams,PR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BUF,Special Teams,KOR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,BUF,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CAR,Offense,WR,3,3,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CAR,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CAR,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CAR,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CAR,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CAR,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CAR,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CAR,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CAR,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CAR,Defense,DL,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CAR,Defense,OLB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CAR,Defense,LB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CAR,Defense,CB,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CAR,Defense,S,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CAR,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CAR,Special Teams,PR,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CAR,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CAR,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CAR,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CAR,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CHI,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CHI,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Offense,TE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CHI,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CHI,Defense,DL,4,4,YES,0,0,NO,11,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CHI,Defense,LB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CHI,Defense,S,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CHI,Defense,DB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CHI,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CHI,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CHI,Special Teams,KO,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CHI,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CHI,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CHI,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CHI,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CIN,Offense,LOT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Offense,ROT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Offense,TE,1,1,NO,1,0,NO,3,one rank-1 row
+2026-11-14,CIN,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Offense,HB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CIN,Defense,LDE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CIN,Defense,NT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Defense,DT,1,1,NO,1,0,NO,3,one rank-1 row
+2026-11-14,CIN,Defense,RDE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Defense,LB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CIN,Defense,NCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Defense,CB,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CIN,Defense,S,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CIN,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CIN,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CIN,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CIN,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CIN,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CIN,Special Teams,KOR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CLE,Offense,WR,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CLE,Offense,LT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CLE,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Offense,C,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CLE,Offense,RG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CLE,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CLE,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CLE,Offense,TE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Defense,LDE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Defense,LDT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CLE,Defense,RDT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Defense,RDE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Defense,WILL,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CLE,Defense,MIKE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Defense,SAM,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Defense,CB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,CLE,Defense,SS,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,CLE,Defense,FS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CLE,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CLE,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,CLE,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,CLE,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DAL,Offense,WR,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DAL,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,TE,1,1,NO,1,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,RB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DAL,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DAL,Defense,DT,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DAL,Defense,OLB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DAL,Defense,LB,2,2,YES,1,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DAL,Defense,CB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DAL,Defense,DB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DAL,Defense,S,2,2,YES,1,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DAL,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DAL,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DAL,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DAL,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DAL,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,DAL,Special Teams,PR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,DEN,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DEN,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,DEN,Offense,RB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DEN,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,DEN,Defense,DE,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DEN,Defense,NT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Defense,SLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Defense,WLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Defense,ILB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DEN,Defense,LCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Defense,RCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Defense,NCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DEN,Defense,S,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DEN,Special Teams,PK,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DEN,Special Teams,KO,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DEN,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DEN,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DEN,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DEN,Special Teams,KR,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DEN,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DET,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DET,Offense,LT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DET,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DET,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DET,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DET,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DET,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,DET,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,DET,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,DET,Defense,EDGE,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DET,Defense,DL,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DET,Defense,LB,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DET,Defense,CB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DET,Defense,S,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,DET,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DET,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DET,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DET,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DET,Special Teams,PR,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,DET,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Offense,WR,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,GB,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Offense,LG,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,GB,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,GB,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,GB,Defense,DT,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,GB,Defense,EDGE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,GB,Defense,LB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,GB,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,GB,Defense,S,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,GB,Defense,NB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,GB,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,GB,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,GB,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,GB,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,IND,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,IND,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Offense,RG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,IND,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,IND,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,IND,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,IND,Defense,DE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,IND,Defense,DT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Defense,NT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,IND,Defense,WLB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,IND,Defense,MLB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,IND,Defense,CB,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,IND,Defense,FS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Defense,SS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Defense,N,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,IND,Special Teams,PK,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,IND,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,IND,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,IND,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,IND,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,JAX,Offense,WR,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,JAX,Offense,RT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,JAX,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,JAX,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,JAX,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,JAX,Offense,LT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,JAX,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,JAX,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,JAX,Offense,RB,1,1,NO,1,0,NO,3,one rank-1 row
+2026-11-14,JAX,Defense,NT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,JAX,Defense,DT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,JAX,Defense,DE,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,JAX,Defense,LB,3,3,YES,1,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,JAX,Defense,CB,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,JAX,Defense,S,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,JAX,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,JAX,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,JAX,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,JAX,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,JAX,Special Teams,PR,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,JAX,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,KC,Offense,WR,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,KC,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,KC,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,KC,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,KC,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,KC,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,KC,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,KC,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,KC,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,KC,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,KC,Defense,DE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,KC,Defense,DT,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,KC,Defense,LB,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,KC,Defense,CB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,KC,Defense,S,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,KC,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,KC,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,KC,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,KC,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,KC,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,KC,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Offense,WR,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LA,Offense,TE,2,2,YES,1,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LA,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LA,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LA,Defense,OLB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LA,Defense,DE,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LA,Defense,NT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Defense,ILB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LA,Defense,CB,2,2,YES,1,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LA,Defense,S,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LA,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LA,Special Teams,K,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LA,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LA,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LA,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,WR,2,2,YES,1,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LAC,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,TE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,FB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LAC,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LAC,Defense,EDGE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LAC,Defense,DL,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LAC,Defense,LB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LAC,Defense,CB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LAC,Defense,S,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LAC,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LAC,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LAC,Special Teams,KO,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LAC,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LAC,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LAC,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LAC,Special Teams,PR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LV,Offense,WR,2,2,YES,1,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LV,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Offense,C,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LV,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LV,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LV,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LV,Defense,DE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Defense,DT,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LV,Defense,EDGE,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LV,Defense,LB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LV,Defense,CB,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,LV,Defense,FS,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,LV,Defense,SS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LV,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LV,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LV,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,LV,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,LV,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIA,Offense,WR,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIA,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIA,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIA,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIA,Offense,RG,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,MIA,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIA,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,MIA,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIA,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,MIA,Offense,QB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIA,Defense,DT,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIA,Defense,EDGE,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIA,Defense,ILB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIA,Defense,NB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIA,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIA,Defense,S,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIA,Special Teams,K,1,0,NO,0,0,NO,0,no rank-1 name listed
+2026-11-14,MIA,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIA,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIA,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIA,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIA,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIN,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,MIN,Offense,RB,1,1,NO,1,0,NO,3,one rank-1 row
+2026-11-14,MIN,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIN,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIN,Offense,TE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIN,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIN,Offense,LG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIN,Offense,C,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,MIN,Offense,RG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIN,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,MIN,Defense,OLB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIN,Defense,DL,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIN,Defense,LB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIN,Defense,CB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIN,Defense,S,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,MIN,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIN,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIN,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIN,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,MIN,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,MIN,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NE,Offense,WR,3,3,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NE,Offense,LT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NE,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NE,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NE,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NE,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NE,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NE,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NE,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NE,Defense,OLB,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NE,Defense,DT,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NE,Defense,LB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NE,Defense,CB,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NE,Defense,S,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NE,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NE,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NE,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NE,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NE,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NE,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NO,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NO,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NO,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NO,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NO,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NO,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NO,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NO,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NO,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NO,Defense,EDGE,2,2,YES,1,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NO,Defense,DL,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NO,Defense,LB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NO,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NO,Defense,S,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NO,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NO,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NO,Special Teams,KO,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NO,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NO,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NO,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NO,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Offense,WR,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYG,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Offense,LG,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NYG,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NYG,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYG,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NYG,Defense,DT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NYG,Defense,NT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Defense,DE,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYG,Defense,RUSH,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Defense,MLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Defense,WLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Defense,SAM,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Defense,CB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYG,Defense,SS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Defense,FS,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NYG,Defense,NB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYG,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYG,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYG,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYG,Special Teams,KOR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYG,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Offense,WR,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYJ,Offense,TE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYJ,Offense,LT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYJ,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYJ,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NYJ,Defense,EDGE,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYJ,Defense,DL,3,2,YES,0,1,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYJ,Defense,LB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYJ,Defense,NB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYJ,Defense,S,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,NYJ,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYJ,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYJ,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,NYJ,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,NYJ,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,NYJ,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Offense,WR,3,3,YES,0,0,NO,7,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PHI,Offense,LT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Offense,LG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PHI,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PHI,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PHI,Offense,TE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PHI,Offense,RB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,PHI,Defense,EDGE,2,2,YES,2,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PHI,Defense,DT,3,2,YES,0,1,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PHI,Defense,LB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PHI,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PHI,Defense,NCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PHI,Defense,S,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PHI,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PHI,Special Teams,PR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,PHI,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PIT,Offense,LT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Offense,LG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Offense,TE,1,1,NO,1,0,NO,2,one rank-1 row
+2026-11-14,PIT,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,PIT,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,PIT,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Defense,DE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,PIT,Defense,NT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Defense,DT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Defense,LOLB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Defense,LILB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Defense,RILB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Defense,ROLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Defense,OLB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Defense,CB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,PIT,Defense,NCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,PIT,Defense,S,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,PIT,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,PIT,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,PIT,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Offense,WR,2,2,YES,1,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,SEA,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Offense,RG,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SEA,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Defense,DT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Defense,NT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Defense,DE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Defense,RUSH,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Defense,MLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Defense,WLB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Defense,SLB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,SEA,Defense,S,3,3,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,SEA,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SEA,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SEA,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SEA,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SEA,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SEA,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Offense,WR,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,SF,Offense,LT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SF,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Offense,RG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Offense,RT,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SF,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SF,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SF,Defense,LDE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SF,Defense,LDT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SF,Defense,RDT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Defense,RDE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Defense,SAM,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Defense,MIKE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Defense,WILL,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Defense,LCB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Defense,RCB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Defense,NB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Defense,FS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Defense,SS,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,SF,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,SF,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Special Teams,KOR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,SF,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,TB,Offense,WR,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TB,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TB,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TB,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TB,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TB,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TB,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,TB,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TB,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,TB,Defense,DL,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TB,Defense,NT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,TB,Defense,OLB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TB,Defense,ILB,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TB,Defense,CB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TB,Defense,S,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TB,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,TB,Special Teams,PK,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,TB,Special Teams,KO,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,TB,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,TB,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,TB,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TB,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TEN,Offense,TE,1,1,NO,1,0,NO,3,one rank-1 row
+2026-11-14,TEN,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Offense,LG,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,TEN,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Offense,RB,1,1,NO,2,0,NO,3,one rank-1 row
+2026-11-14,TEN,Defense,DE,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TEN,Defense,DT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,TEN,Defense,DL,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,TEN,Defense,LB,3,3,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TEN,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TEN,Defense,NCB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,TEN,Defense,S,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,TEN,Special Teams,K,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Special Teams,KO,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Special Teams,P,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Special Teams,H,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,TEN,Special Teams,KOR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,TEN,Special Teams,LS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,WAS,Offense,WR,3,3,YES,0,0,NO,7,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,WAS,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,WAS,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,WAS,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,WAS,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,WAS,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,WAS,Offense,TE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,WAS,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,WAS,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,WAS,Defense,DL,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,WAS,Defense,OLB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,WAS,Defense,LB,2,2,YES,0,1,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,WAS,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-14,WAS,Defense,SS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-14,WAS,Defense,FS,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,WAS,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,WAS,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,WAS,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,WAS,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-14,WAS,Special Teams,KR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-14,WAS,Special Teams,PR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,BAL,Offense,WR,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,BAL,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Offense,RG,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,BAL,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Offense,TE,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,BAL,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,BAL,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,BAL,Defense,DT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Defense,NT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Defense,DE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Defense,RUSH,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Defense,MLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Defense,WLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Defense,SAM,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,BAL,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,BAL,Defense,DB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,BAL,Defense,SS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Defense,FS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,BAL,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,BAL,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,BAL,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,BAL,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,BAL,Special Teams,KOR,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,BAL,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,GB,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,GB,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,GB,Offense,LG,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,GB,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,GB,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,GB,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,GB,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,GB,Offense,QB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,GB,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,GB,Offense,(blank),1,0,NO,0,0,YES,1,no rank-1 name listed
+2026-11-19,GB,Defense,DT,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,GB,Defense,EDGE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,GB,Defense,LB,2,2,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,GB,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,GB,Defense,S,2,2,YES,0,0,NO,3,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,GB,Defense,NB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,GB,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,GB,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,GB,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,GB,Special Teams,PR,1,0,NO,0,1,NO,1,no rank-1 name listed
+2026-11-19,GB,Special Teams,KR,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,GB,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,SEA,Offense,WR,2,2,YES,1,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,SEA,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Offense,RG,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,SEA,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Offense,TE,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,SEA,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,SEA,Offense,FB,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,SEA,Offense,RB,1,1,NO,0,0,NO,4,one rank-1 row
+2026-11-19,SEA,Defense,DT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Defense,NT,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,SEA,Defense,DE,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Defense,RUSH,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Defense,MLB,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Defense,WLB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,SEA,Defense,SLB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,SEA,Defense,CB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,SEA,Defense,S,3,3,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,SEA,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,SEA,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,SEA,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,SEA,Special Teams,PR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,SEA,Special Teams,KR,1,1,NO,0,0,NO,5,one rank-1 row
+2026-11-19,SEA,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,WAS,Offense,WR,3,3,YES,0,0,NO,5,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,WAS,Offense,LT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,WAS,Offense,LG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,WAS,Offense,C,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,WAS,Offense,RG,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,WAS,Offense,RT,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,WAS,Offense,TE,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,WAS,Offense,QB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,WAS,Offense,RB,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,WAS,Defense,DL,3,3,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,WAS,Defense,OLB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,WAS,Defense,LB,2,2,YES,0,0,NO,4,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,WAS,Defense,CB,2,2,YES,0,0,NO,6,two or more rows show a rank-1 name; the chart does not say which one starts
+2026-11-19,WAS,Defense,SS,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,WAS,Defense,FS,1,1,NO,0,0,NO,3,one rank-1 row
+2026-11-19,WAS,Special Teams,P,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,WAS,Special Teams,K,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,WAS,Special Teams,H,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,WAS,Special Teams,LS,1,1,NO,0,0,NO,1,one rank-1 row
+2026-11-19,WAS,Special Teams,KR,1,1,NO,0,0,NO,2,one rank-1 row
+2026-11-19,WAS,Special Teams,PR,1,1,NO,0,0,NO,3,one rank-1 row
