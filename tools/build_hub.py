@@ -1533,176 +1533,7 @@ def _sha(path):
 
 def landing():
     _RES = JX("results.json")
-    _MK = JX("markets.json")
     _ST = JX("strategies.json")
-    _REQUIREMENTS = C.REQ + X.REQ2
-    _READINESS = decision_readiness_table(_REQUIREMENTS)
-
-    def local_link(path, label):
-        return f'<a class="src" href="{esc(path)}">{esc(label)}</a>'
-
-    def nav_item(slug, lbl, desc):
-        if slug == "__council__":
-            return ('<a href="council/index.html"><b>Decision council</b><span>The eight '
-                    'requirements as pass/fail tests, plus the suggestion queue</span></a>')
-        return f'<a href="hub/{slug}.html"><b>{esc(lbl)}</b><span>{esc(desc)}</span></a>'
-    nav = "".join(nav_item(slug, lbl, desc) for slug, lbl, desc in NAV)
-    # Decision-readiness is deliberately a gate register, not a claim that every
-    # feature is ready. Counts are tied to the 2026-11-14 captured tree below;
-    # clearance thresholds are explicit and conflicts between registered gates
-    # are surfaced rather than silently resolved.
-    official_schedule = "https://www.nfl.com/schedules/2026/by-week/week-10"
-    official_injuries = "https://www.nfl.com/injuries/league/2026/reg10"
-    official_gamebooks = "https://support.nfl.com/hc/en-us/articles/35869678028180-Game-Books"
-    official_odds_probe = "https://www.nfl.com/odds/"
-    readiness = [
-        ["<b>R1 · Price snapshots</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "No NFL-official market-price observations identified. Model fair-line snapshots are not market prices; other stored third-party quotes are labelled separately.",
-         "Market-data policy/provider is unresolved; opening/closing market values cannot be treated as verified NFL facts.",
-         "100% of originated market IDs have both timestamped, source-attributed OPEN and CLOSE observations; unknown source/coverage stays blank.",
-         link(official_odds_probe, "NFL odds-source check") + " · " + local_link("hub/flagged.html", "price-source flags")],
-        ["<b>R2 · Verified results</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "150 finals among 163 captured 2026 fixtures in the captured feed; no settled-wager series or published settlement contract.",
-         "Market prices and explicit push/tie/void settlement rules are required before ROI can be computed.",
-         "100% of graded games reconcile to official finals; 100% of wager rows have a predeclared settlement rule and source-linked result.",
-         link(official_schedule, "NFL weekly schedule") + " · " + local_link("hub/verified-results.html", "feed and checks")],
-        ["<b>R3 · Origination order</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "Week-10 test: 13 games × three markets; 0 order violations recorded (side → total → moneyline).",
-         "No blocker for the ordering rule; continued builds must retain the zero-violation check.",
-         "0 order violations across 100% of originated games; moneyline remains derived from the registered side model.",
-         link(official_schedule, "NFL schedule facts") + " · " + local_link("hub/origination.html", "order evidence")],
-        ["<b>R4 · Fair / market / difference</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "Separate columns exist; market and difference values are blank where no source-backed market quote exists.",
-         "R1 market-data source policy blocks population of the market and residual columns.",
-         "100% of originated market rows show fair line, sourced market line, and difference (= fair − market), each with units and provenance; otherwise leave market/difference blank.",
-         link(official_odds_probe, "NFL odds-source check") + " · " + local_link("hub/markets.html", "market board")],
-        ["<b>R5 · Skill vs staking</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "Separate signal and staking fields are present, but no price-settled staking record exists. Registered gates conflict: signals G2 uses ≥200 graded decisions; origin G-2 specifies ≥300 settled bets and ≥3 seasons.",
-         "A single canonical, preregistered leaderboard qualification rule is not selected; neither short-run ROI nor raw win rate can clear it.",
-         "Resolve and freeze one gate before evaluation; then meet its sample threshold on chronological holdout, pass benchmark-relative proper-score uncertainty and multiplicity controls. Until then: no eligible/rewarded strategy.",
-         link(official_schedule, "official outcomes") + " · " + local_link("hub/leaderboard.html", "current board") + " · " + local_link("hub/gates.html", "market gate") + " · " + local_link("signals/gates.html", "signals gate") + " · " + link("https://github.com/karagemop466-tech/X3/blob/main/origin/data/gates.json", "origin gate")],
-        ["<b>R6 · Replacement depth</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "31 of 32 club charts were readable in the recorded audit, but charts are club-published and undated; actual game-day starter/inactive evidence is not a complete point-in-time dataset.",
-         "Depth rank is not a confirmed actual starter or snap share; no jersey-order, experience, or salary inference is allowed.",
-         "For 100% of games/players used: official Game Book starter and game-day status evidence; a verified playing-time source for actual snaps; dated raw-source hash and conflict record. Otherwise the feature remains out of the model.",
-         link(official_gamebooks, "NFL Game Books guidance") + " · " + link(official_injuries, "NFL injury report") + " · " + link("https://www.azcardinals.com/team/depth-chart", "example club chart (club-published)") + " · " + local_link("hub/replacements.html", "replacement evidence")],
-        ["<b>R7 · Correlations</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "Correlation tables publish n. Some separate analyses explicitly include PFF closing-line inputs (third-party); those are not official-only correlations.",
-         "Provenance must be checked per coefficient; no third-party price-derived pair may be presented as official-only.",
-         "100% of published coefficients use officially sourced underlying values and include n, uncertainty interval, time window, and source; third-party inputs remain separately labelled.",
-         link(official_schedule, "NFL results") + " · " + local_link("hub/correlation.html", "correlation register") + " · " + local_link("hub/flagged.html", "source-class flags")],
-        ["<b>R8 · Demotion to paper</b><br><a href='council/requirements.html'>acceptance test</a>",
-         "Demotion rules exist, but multiple modules contain different thresholds/windows; no strategy is live in the current published design.",
-         "Choose one canonical, versioned rule and ensure the live-state evaluator is actually run; a written gate alone is not operational enforcement.",
-         "1 canonical rule; 100% of live strategies evaluated per cycle; deterministic test proves every registered trigger moves LIVE → PAPER and logs the reason.",
-         link(official_schedule, "official results context") + " · " + local_link("hub/gates.html", "gate register") + " · " + link("https://github.com/karagemop466-tech/X3/blob/main/origin/data/gates.json", "origin rules") + " · " + link("https://github.com/karagemop466-tech/X3/blob/main/data/x3/gates.json", "X3 rules")],
-    ]
-    expected_readiness_ids = [f"<b>R{i} ·" for i in range(1, 9)]
-    if len(readiness) != 8 or any(not any(marker in row[0] for row in readiness) for marker in expected_readiness_ids):
-        raise SystemExit("decision-readiness table must have exactly one row for each core requirement R1-R8")
-    if any("<a " not in row[-1] for row in readiness):
-        raise SystemExit("every decision-readiness row must carry a source/audit link")
-    readiness_table = table(
-        ["Core requirement", "What the current record says", "Blocking gate / unresolved decision", "What clears it", "Sources / audit trail"],
-        readiness, tid="decision-readiness", cap="Decision-readiness snapshot · evidence captured 2026-11-14 · not a claim of live betting readiness", kind="data")
-    verification_table = """<section class="callout" style="border:1px solid var(--line);background:#111827">
-<h2 style="margin-top:0">Verification status (official sources)</h2>
-<table style="width:100%;font-size:13px;margin-top:8px">
-<thead><tr><th style="text-align:left">Dataset</th><th style="text-align:left">Official source</th><th style="text-align:left">Status</th><th style="text-align:left">Notes</th></tr></thead>
-<tbody>
-<tr><td>Week-10 injury report (345 rows)</td><td><a href="https://www.nfl.com/injuries/league/2026/reg10" target="_blank" rel="noopener">nfl.com/injuries/league/2026/reg10</a></td><td><b>VERIFIED</b></td><td>Capture dated 2026-11-14; 66 Out / 10 Doubtful / 84 Questionable / 185 blank, matching the recorded total; see the linked report and verification log.</td></tr>
-<tr><td>2026 league standings (32 clubs)</td><td><a href="https://www.nfl.com/standings/league/2026/REG" target="_blank" rel="noopener">nfl.com/standings/league/2026/REG</a></td><td><b>VERIFIED</b></td><td>Captured values checked against the official standings; older-module discrepancies remain flagged in the repository.</td></tr>
-<tr><td>Week-10 schedule / orientation</td><td><a href="https://www.nfl.com/schedules/2026/by-week/week-10" target="_blank" rel="noopener">nfl.com/schedules/2026/by-week/week-10</a></td><td><b>VERIFIED</b></td><td>14 games and four byes in the recorded slate; fixture facts are not used to assert market prices.</td></tr>
-<tr><td>Originated lines / fair vs market / difference</td><td><span class="badge u">UNVERIFIED</span></td><td><b>BLOCKED</b></td><td>No NFL-official odds rows identified (the odds probe returns no price feed); market and difference fields stay blank. See F-18.</td></tr>
-<tr><td>Strategy leaderboard / ROI / CLV</td><td><span class="badge u">UNVERIFIED</span></td><td><b>BLOCKED</b></td><td>No price-settled wager series; ROI, CLV and staking cannot be computed from game outcomes alone. See the readiness table and Flagged for review.</td></tr>
-</tbody>
-</table>
-<p class="note" style="margin-top:8px">Every value is traced to an official source or left blank and flagged. Nothing is inferred. Full detail: <a href="hub/flagged.html">Flagged for review</a> · <a href="hub/verification.html">Verification log</a>.</p>
-</section>"""
-    # integration session arena/09f8c786-x3: the signals module is a separate tree
-    nav += ('<a href="signals/index.html"><b>Signals &amp; leaderboard</b>'
-            '<span>Originated lines, price snapshots, signal vs staking</span></a>')
-    # integration session arena/4c2f61cd-x3: the round2 module (fresh-day verification
-    # + the decision-readiness matrix the brief asks for on the landing page).
-    nav += ('<a href="round2/index.html"><b>Round 2 readiness</b>'
-            '<span>66 requirements mapped: gate that blocks, number that clears</span></a>')
-    # A hand-pasted entry for decision/ had drifted into the committed root
-    # index.html without ever being emitted here, so every rebuild silently
-    # dropped it and the Pages workflow's `git diff --exit-code -- index.html`
-    # check could not pass. Two sessions (the one that landed on main, and the
-    # integration session arena/dbb50f8c-x3) hit this independently; it is
-    # re-homed in the generator so the paste survives a rebuild. The atlas
-    # module is registered alongside it. Both entries are additive outbound
-    # links only.
-    nav += ('<a href="decision/index.html"><b>Decision desk &amp; time series</b>'
-            '<span>69-row register with per-row basis, the suggestion queue, and the first hashed day-over-day availability delta</span></a>')
-    nav += ('<a href="atlas/index.html"><b>atlas decision desk</b>'
-            '<span>Week 11 fixtures, venues and originated lines re-read from official pages on 2026-11-17</span></a>')
-    # arena/40cd3b17-x3 (M1): register the two remaining newest modules in the
-    # landing navigation. The reliability row was already added at the generator
-    # source by session arena/ea04a0c7-x3 (E1) and is kept in its placement below.
-    # Additive entries only; each module keeps its own builders and gates, and its
-    # own Flagged page (cross-linked from hub/flagged.html below).
-    nav += ('<a href="closeout/index.html"><b>Week-10 close-out</b>'
-            '<span>14 finals settled, the pre-kickoff board graded, and the Week-11 board pre-registered before the Nov 19 kickoff</span></a>')
-    nav += ('<a href="week11/index.html"><b>Week-11 Wednesday watch</b>'
-            '<span>Fresh-day verification of 2026-11-18 and the first dated entry of the Week-11 report capture series</span></a>')
-    # Landing integration (session arena/a13ae6bd-x3, rebased): of the four modules
-    # this session set out to surface, closeout/ and reliability/ were landed in
-    # parallel by arena/40cd3b17-x3 (M1) and arena/ea04a0c7-x3 (E1) — their rows
-    # above stand. agency/ and origin/ remained unlinked from the root landing page
-    # (agency/ carried an explicit integration request from arena/e601a785-x3),
-    # so they are registered here. Additive outbound links only.
-    nav += ('<a href="agency/site/index.html"><b>Agency data desk</b>'
-            '<span>Verified agency dashboard: readiness register, fixtures, availability, correlations</span></a>')
-    nav += ('<a href="origin/index.html"><b>Origination module</b>'
-            '<span>The eight origination requirements as pages: snapshots, markets, depth, gates, leaderboard</span></a>')
-    verification_table = table(
-        ['Dataset', 'Official source', 'Status', 'Notes'],
-        [["Week-10 injury report (345 rows)", link(C.S["injuries"], "nfl.com/injuries/league/2026/reg10"),
-          badge("VERIFIED"), "Snapshot reviewed 2026-11-14; it is a dated capture, not a live feed."],
-         ["2026 league standings (32 clubs)", link(C.S["standings"], "nfl.com/standings/league/2026/REG"),
-          badge("VERIFIED"), "Official standings used for the canonical team aggregate reconciliation."],
-         ["Week-10 schedule / fixture orientation", link(C.S["sched10"], "nfl.com/schedules/2026/by-week/week-10"),
-          badge("VERIFIED"), "Official schedule is the fixture reference; each venue still needs Game Center transcription."],
-         ["Market comparison / CLV", '<span class="badge u">UNVERIFIED</span>',
-          badge("BLOCKED"), "No market-price source is available in this repository; market cells stay blank."],
-         ["Strategy ROI / staking", '<span class="badge u">UNVERIFIED</span>',
-          badge("BLOCKED"), "Prices and settlement evidence are incomplete; ROI/CLV and reward amounts are not published."]],
-        tid="verification-status")
-    # integration session arena/6259c7b0-x3 (RD-01): readiness module entry
-    nav += ('<a href="readiness/index.html"><b>Readiness &amp; gates</b>'
-            '<span>Decision readiness, control baselines, drift alarms, what changed</span></a>')
-    # Handoff from arena/73e6752d-x3 (reliability module, PR #107/#108): the landing/nav
-    # owner registers the module on the landing page and surfaces its flagged rows on the
-    # root Flagged for Review page (see p_flagged()). Additive outbound link only.
-    nav += ('<a href="reliability/index.html"><b>Designation reliability</b>'
-            '<span>Past-season injury archive (Q43) &amp; play rate per designation with CIs (Q44/Q45)</span></a>')
-
-    # session arena/b05a7eea-x3: consolidated decision board. One nav entry only; nothing
-    # else in this generator or this page's prose is touched by that session.
-    nav += ('<a href="board/index.html"><b>Decision board (today)</b>'
-            '<span>Live verification of every published claim against the official pages, '
-            'plus the reserve list captured for the first time</span></a>')
-    # session arena/765ef2cf-x3: fresh-day verification module. One nav entry only;
-    # the module keeps its own builder and gate (scripts/fresh_build.py,
-    # scripts/fresh_verify.py, .github/workflows/fresh.yml). Additive outbound link only.
-    nav += ('<a href="fresh/index.html"><b>Fresh day 2026-11-19</b>'
-            '<span>Week-11 report first capture, slate and standings re-read, '
-            'game-centre venue conflict flagged</span></a>')
-
-    # session arena/213236fb-x3 (L1-L6): live 2026-11-19 operations desk. One additive nav entry only.
-    nav += ('<a href="live/index.html"><b>Live 2026-11-19 operations desk</b>'
-            '<span>14/14 Week-10 Game Books, live Week-11 reg11 injuries &amp; W10-&gt;W11 delta, '
-            'NWS hourly weather, Nov transactions, Rule 6 kickoff priors &amp; 2025/2026 calibration</span></a>')
-
-    # session arena/784043ed-x3: depth-chart register (dated per row, official club pages, conflicts
-    # between the 2026-11-14 captures and the 2026-11-19 live re-read). One additive nav entry only;
-    # the module keeps its own builder and gate (scripts/depth_build.py, scripts/depth_verify.py).
-    nav += ('<a href="depth/index.html"><b>Depth-chart register (dated)</b>'
-            '<span>Every club chart row with its read date and official page; 2026-11-14 captures '
-            'vs 2026-11-19 live re-read; conflicts and flags published</span></a>')
-
     # RD-01 (arena/6259c7b0-x3): decision-readiness table, one row per requirement,
     # with the gate that blocks it and the number that would clear it.
     with open(os.path.join(ROOT, "readiness", "data", "readiness.json"), encoding="utf-8") as _f:
@@ -1740,111 +1571,100 @@ def landing():
         '<th>Gate that blocks it</th><th>Number that would clear it</th><th>Source</th></tr></thead>'
         f'<tbody>{"".join(_rd_rows)}</tbody></table></div></section>')
 
+    # Show the age of the analytical baseline separately from later archived captures.
+    # A later fetch does not silently refresh or validate the older model inputs.
+    import csv
+    capture_manifest = os.path.join(ROOT, "readiness", "data", "history", "manifest.csv")
+    successful_captures = []
+    if os.path.exists(capture_manifest):
+        with open(capture_manifest, newline="", encoding="utf-8") as _mf:
+            for _capture in csv.DictReader(_mf):
+                if (_capture.get("http_status") == "200" and len(_capture.get("sha256", "")) == 64
+                        and _capture.get("captured_at_utc")):
+                    successful_captures.append(_capture)
+    latest_capture = max(successful_captures, key=lambda row: row["captured_at_utc"], default=None)
+    if latest_capture:
+        latest_capture_label = esc(latest_capture["captured_at_utc"].replace("T", " ").replace("+00:00", " UTC"))
+        latest_capture_name = esc(latest_capture["slug"])
+        latest_capture_status = (
+            f'<b>{latest_capture_label}</b> · {latest_capture_name}; '
+            f'<a href="readiness/snapshots.html">hash and snapshot ledger</a>')
+    else:
+        latest_capture_status = '<b>No successful hashed capture recorded.</b> See <a href="hub/flagged.html">Flagged for review</a>.'
+
     html = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="X3 NFL decision desk: originated lines, verified injury and depth data,
-validation gates, correlation and a luck-adjusted leaderboard design - every row tied to an official source.">
+<meta name="description" content="X3 NFL decision desk: evidence, model lines, validation gates, open decisions and flagged data gaps.">
 <title>X3 NFL decision desk</title>
 <link rel="stylesheet" href="hub/assets/hub.css">
+<style>
+.entry{{display:block;color:inherit;text-decoration:none;transition:border-color .15s,transform .15s}}
+.entry:hover,.entry:focus{{border-color:#8aa4bf;transform:translateY(-1px)}}
+.entry strong{{display:block;color:#12202e;font-size:15px}}
+.entry span{{display:block;color:#5d6b7a;font-size:12.5px;margin-top:4px}}
+.status-box{{border-left-color:#b3261e}}
+.kicker{{text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:700;color:#5d6b7a}}
+</style>
 </head>
 <body>
 <header class="top">
   <div class="brand"><a href="index.html">X3 <span>NFL decision desk</span></a></div>
-  <div class="asof">data as of <b>{AS_OF}</b> - season 2026, week {meta['week']}</div>
+  <div class="asof">Model/data baseline: <b>{AS_OF}</b> · 2026 season, Week {meta['week']}</div>
 </header>
 <main>
-<h1>Originating NFL lines from verified data - and being honest about what cannot be verified</h1>
-<p class="lede">This is the canonical dashboard for the X3 project. Injury designations, standings and depth
-charts are transcribed row by row from official NFL.com and club pages. The lines below are arithmetic on
-those inputs with every parameter printed in the open. Anything that would require a betting market -
-prices, closing-line value, settled bets, ROI, a populated leaderboard - is blank and flagged, because that
-data does not exist here yet.</p>
-<div class="grid">
-<div class="card"><div class="num">{meta['rows']['injuries']}</div><div class="lbl">official injury rows verified</div>
-<div class="sub">Week 10, 2026 - re-read field for field from the league report</div></div>
-<div class="card"><div class="num">{len(lines['rows'])}</div><div class="lbl">games priced by our own model</div>
-<div class="sub">spreads and totals for the unplayed Week-10 slate</div></div>
-<div class="card"><div class="num">{n_positions_out()}</div><div class="lbl">1st-string vacancies</div>
-<div class="sub">across {n_clubs_out()} clubs - backups starting this week</div></div>
-<div class="card"><div class="num">{len(_RES['rows'])}</div><div class="lbl">games in the verified results feed</div>
-<div class="sub">{_RES['counts']['finals']} finals, {_RES['counts']['clubs']} clubs, {_RES['checks']['R2_standings_reconciliation']['mismatches']} standings mismatches</div></div>
-<div class="card"><div class="num">{len(_MK['live'])}</div><div class="lbl">games with all three markets originated</div>
-<div class="sub">side, then total, then moneyline - fair line, market line and difference kept apart</div></div>
-<div class="card"><div class="num">0 / {len(_ST['strategies'])}</div><div class="lbl">strategies leaderboard-eligible</div>
-<div class="sub">{_ST['counts']['signal_untested']} untested, {_ST['counts']['signal_inconclusive']} inconclusive, staking blocked on prices</div></div>
+<p class="kicker">Decision dashboard</p>
+<h1>Evidence first. Lines second. No leaderboard claims without validation.</h1>
+<p class="lede">Use this page to see what is supported, what is blocked, and where a decision needs to be made. Model inputs are point-in-time records, not a live feed. Verified football outcomes do not by themselves establish betting skill or ROI.</p>
+<div class="grid" aria-label="Current project status">
+  <div class="card"><div class="num">{AS_OF}</div><div class="lbl">model baseline</div><div class="sub">Week {meta['week']} data; the latest capture below does not refresh this baseline.</div></div>
+  <div class="card"><div class="num">{meta['rows']['injuries']}</div><div class="lbl">injury rows in baseline</div><div class="sub"><a href="https://www.nfl.com/injuries/league/2026/reg10">Official NFL Week-10 report</a>; dated snapshot.</div></div>
+  <div class="card"><div class="num">{_RES['counts']['finals']} / {len(_RES['rows'])}</div><div class="lbl">finals / captured results rows</div><div class="sub">Results reconcile under the project verifier; see <a href="hub/verified-results.html">method and feed</a>.</div></div>
+  <div class="card"><div class="num">0 / {len(_ST['strategies'])}</div><div class="lbl">strategies leaderboard-eligible</div><div class="sub">Prices, settlements, and prospective skill gates remain blocking.</div></div>
 </div>
-<section class="callout" style="border:1px solid var(--line);background:#111827">
-<h2 style="margin-top:0">Verification status (official sources)</h2>
-{verification_table}
-<p class="note" style="margin-top:8px">Every value on this site is traced to an official source or left blank and flagged. Nothing is inferred. Full detail: <a href="hub/flagged.html">Flagged for review</a> &middot; <a href="hub/verification.html">Verification log</a>.</p>
+<section class="callout" aria-labelledby="freshness-title">
+<h2 id="freshness-title">Evidence freshness</h2>
+<p><b>Latest successful hashed capture recorded:</b> {latest_capture_status}</p>
+<p class="note">This is a stored capture timestamp, not proof that every dataset is current or that the scheduled capture job is healthy. The model/results baseline remains {AS_OF}; see the per-dataset source dates and flags before relying on a row.</p>
 </section>
-<nav class="nav" style="position:static;background:transparent;border:0;padding:0;display:block">
-{nav}
-</nav>
-<section class="callout"><h2>Start here</h2>
-<p><a href="hub/executive-summary.html"><b>Executive summary</b></a> for the decisions,
-<a href="hub/markets.html"><b>Originated markets</b></a> for the three-market board,
-<a href="hub/price-store.html"><b>Price store</b></a> for the open/close record,
-<a href="hub/verified-results.html"><b>Results feed</b></a> for the reconciled scores,
-<a href="hub/replacements.html"><b>Replacements</b></a> for who is actually starting,
-<a href="hub/suggestions.html"><b>Suggestions</b></a> to choose a path,
-<a href="hub/questions.html"><b>Open questions</b></a> for the information gaps, and
-<a href="hub/flagged.html"><b>Flagged for review</b></a> for everything that could not be verified.
-The <a href="council/index.html"><b>decision council</b></a> restates the eight requirements of the
-brief as pass/fail acceptance tests, and holds the suggestion queue where a path is chosen before
-anything is implemented. <a href="signals/index.html"><b>signals/</b></a> originates its own side,
-total and moneyline in that order, stores an opening and a closing number for every market, and ranks
-strategies on signal with staking reported separately. <a href="x3/index.html"><b>x3/</b></a> is the
-2026 desk: 28 pages built from official NFL sources only, gated by a check script that fails the
-build on a broken link, an unsourced row, or a fabricated figure.</p>
-<p class="note">Earlier sessions published {len(ARCHIVE_ROWS)} overlapping site trees; they are preserved and indexed at
-<a href="hub/archive.html">hub/archive.html</a>. <code>hub/</code> is the maintained tree. The repository
-is <a href="https://github.com/karagemop466-tech/X3">karagemop466-tech/X3</a> and the shared task board is
-<a href="COORDINATION.md">COORDINATION.md</a>.</p></section>
-<section class="callout"><h2>Decision readiness - every requirement, its blocker, and what clears it</h2>
-<p class="lede">One row per registered requirement. Clearance criteria are project targets, not NFL-published facts. Official references support observed inputs only; unavailable evidence and policy thresholds are marked UNVERIFIED.</p>
-<p class="callout"><b>Gate-conflict update (2026-11-18):</b> the current G-2 page says 300 settled bets across 3 seasons, while <a href="https://github.com/karagemop466-tech/X3/pull/58">PR #58</a> proposed 2,272. PR #58 was <b>closed unmerged</b> on 2026-11-18 by integration session <code>arena/a13ae6bd-x3</code> (conflicting, superseded by later merged work — see COORDINATION.md), so the 300-bet rule in <code>origin/data/gates.json</code> stands as the only registered threshold. These are competing project proposals that were never reconciled by a decision; no strategy is eligible under either today.</p>
-{_READINESS}
-<p>See <a href="hub/requirements.html">the full requirements register</a> for acceptance criteria, provenance and status details.</p></section>
-<section class="callout" style="margin-top:22px">
-<h2>Decision readiness — the eight core requirements</h2>
-<p>Each row names the present evidence, the gate blocking a decision and an explicit clearance condition.
-The official NFL links document the league data/source class; repository links show the project’s derived
-work and policy. A link is not evidence that a blocker is cleared. Unknown values remain blank and flagged.
-The full requirement/question registers and reviewable choices are in <a href="hub/requirements.html">Requirements</a>,
-<a href="hub/questions.html">Questions &amp; information gaps</a> and <a href="hub/suggestions.html">Suggestions</a>.</p>
-{readiness_table}
-<p class="note"><b>Irregularity to resolve first:</b> the repository has competing strategy qualification and demotion
-thresholds in parallel modules. No one should treat the leaderboard as a prize/real-money ranking until
-one policy is frozen in a pre-registration record. See the per-row flags and the <a href="hub/flagged.html">Flagged for review</a> page.</p>
+<section class="callout status-box" aria-labelledby="not-ready-title">
+<h2 id="not-ready-title">Current decision: not ready for betting, rewards, or a skill claim</h2>
+<p>The model publishes its own fair estimates, but no source-backed market-price series is available here for residuals, closing-line value, or staking results. Multiple modules also contain different qualification/demotion thresholds; the canonical choice is unresolved. Availability and roster evidence has explicit gaps. Do not interpret an originated line or backtest score as a validated profitable strategy.</p>
+<p><a href="hub/executive-summary.html"><b>Read the executive summary</b></a> · <a href="hub/flagged.html"><b>Review unresolved flags</b></a> · <a href="hub/questions.html"><b>Open decision questions</b></a></p>
 </section>
-<section class="callout" style="margin-top:22px">
-<h2>Trading desk - the eight operating requirements</h2>
-<p><b>Registration, not replacement.</b> <code>ops/</code> is a separate trading-desk tree that answers the eight
-operating requirements directly and says plainly where it cannot: prices originated in a fixed order
-(side, then total, then moneyline), a price-snapshot store with opening and closing schema for every market,
-correlations that each carry their n, injured starters resolved to the depth of their replacement, and a
-signal-vs-staking leaderboard whose demotion gate is dry-run to prove it fires.</p>
-<p><a href="ops/index.html"><b>Enter the trading desk</b></a> &middot;
-<a href="ops/executive-summary.html">Executive summary</a> &middot;
-<a href="ops/lines.html">Originated lines</a> &middot;
-<a href="ops/snapshots.html">Price snapshots</a> &middot;
-<a href="ops/leaderboard.html">Leaderboard</a> &middot;
-<a href="ops/gates.html">Gates &amp; demotion</a> &middot;
-<a href="ops/correlation.html">Correlation</a> &middot;
-<a href="ops/depth.html">Replacement depth</a> &middot;
-<a href="ops/results.html">Results feed</a> &middot;
-<a href="ops/questions.html">Open questions</a> &middot;
-<a href="ops/suggestions.html">Suggestions</a> &middot;
-<a href="ops/flagged.html">Flagged for review</a></p>
-<p class="note">Every market price on the trading desk is blank on purpose: no official market feed exists in
-this repository, so fair-versus-market, ROI and closing-line value are published as blocked rather than
-estimated.</p>
+<section aria-labelledby="categories-title">
+<h2 id="categories-title">Explore by decision area</h2>
+<div class="grid">
+  <a class="card entry" href="hub/executive-summary.html"><strong>Executive overview</strong><span>Project status, what can be concluded, and what is not supported.</span></a>
+  <a class="card entry" href="hub/markets.html"><strong>Lines &amp; prices</strong><span>Fair line, market line, residual, origination order, and the price-snapshot store.</span></a>
+  <a class="card entry" href="hub/verified-results.html"><strong>Results &amp; settlement</strong><span>Official results feed, reconciliation, and the limits on ROI/backtests.</span></a>
+  <a class="card entry" href="hub/injuries.html"><strong>Availability &amp; injuries</strong><span>Timestamped reports, known status, deltas, and evidence gaps.</span></a>
+  <a class="card entry" href="hub/replacements.html"><strong>Depth &amp; replacements</strong><span>Starter evidence, replacement tier, shared slots, and unverified depth.</span></a>
+  <a class="card entry" href="hub/strategies.html"><strong>Strategies &amp; preregistration</strong><span>Frozen hypotheses, market families, controls, and change-our-mind criteria.</span></a>
+  <a class="card entry" href="hub/leaderboard.html"><strong>Skill leaderboard</strong><span>Proper-score divisions, uncertainty, signal vs staking, and eligibility gates.</span></a>
+  <a class="card entry" href="hub/correlation.html"><strong>Correlations</strong><span>Source classes, methods, sample sizes, and uncertainty.</span></a>
+  <a class="card entry" href="hub/luck.html"><strong>Removal of luck</strong><span>Benchmark-relative signal analysis and uncertainty panel.</span></a>
+  <a class="card entry" href="readiness/index.html"><strong>Decision readiness</strong><span>Requirement-by-requirement blocker and measurable clearance criteria.</span></a>
+  <a class="card entry" href="hub/suggestions.html"><strong>Suggestions for review</strong><span>Options and trade-offs to consider before choosing an implementation path.</span></a>
+  <a class="card entry" href="live/index.html"><strong>Latest operations module</strong><span>Latest dated game-book, injury, transaction, weather, and schedule records.</span></a>
+  <a class="card entry" href="hub/sources.html"><strong>Sources &amp; verification</strong><span>Primary-source register, capture methods, and verification notes.</span></a>
+  <a class="card entry" href="hub/flagged.html"><strong>Flagged for review</strong><span>Unverified values, conflicts, and source or coverage limitations.</span></a>
+  <a class="card entry" href="hub/archive.html"><strong>Earlier modules</strong><span>Archived analysis trees and their separate provenance; hub pages link the maintained records.</span></a>
+</div>
 </section>
 {readiness_section}
+<section class="callout">
+<h2>Official reference pages</h2>
+<ul>
+<li><a href="https://www.nfl.com/injuries/league/2026/reg10">NFL Week-10 injury report</a> — baseline capture.</li>
+<li><a href="https://www.nfl.com/standings/league/2026/REG">NFL 2026 standings</a> — team aggregate reconciliation.</li>
+<li><a href="https://www.nfl.com/schedules/2026/by-week/week-10">NFL Week-10 schedule</a> — fixture and result source.</li>
+</ul>
+<p>Detailed pages: <a href="hub/gates.html">validation gates</a> · <a href="hub/lines.html">model lines</a> · <a href="hub/origination.html">origination</a> · <a href="hub/pricing.html">pricing</a> · <a href="hub/replacement.html">replacement evidence</a> · <a href="hub/requirements.html">requirements register</a> · <a href="hub/results.html">results detail</a> · <a href="hub/signal.html">signal vs staking</a>.</p>
+<p class="note">For the complete repository, task ownership, and verification log see <a href="COORDINATION.md">COORDINATION.md</a>. All project policy thresholds are identified as project criteria, not NFL-published facts; unsupported data remains blank and flagged.</p>
+</section>
 </main>
 </body></html>"""
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
