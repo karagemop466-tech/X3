@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 925,
+      "rows": 926,
       "flagged_rows": 684,
-      "refs": 1339,
+      "refs": 1340,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -157,9 +157,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 304,
+      "rows": 305,
       "flagged_rows": 125,
-      "refs": 489,
+      "refs": 491,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -441,8 +441,8 @@
     }
   },
   "pages_total": 375,
-  "rows_total": 16984,
+  "rows_total": 16986,
   "rows_flagged_or_sourced": 14373,
-  "internal_refs": 9783,
+  "internal_refs": 9786,
   "problems": []
 }
