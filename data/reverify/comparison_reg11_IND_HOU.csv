@@ -1,0 +1,27 @@
+team,player,in_captured_csv,field_result,diff,official_injury,official_practice,official_game,captured_injury,captured_practice,captured_game,captured_cross_check_flag,source_url
+IND,Jaylon Carlies,yes,match,,,Did Not Participate In Practice,,,Did Not Participate In Practice,,FLAG: Placed on Reserve/Injured on 2026-11-17 while listed on reg11,https://www.nfl.com/injuries/league/2026/reg11
+IND,Sauce Gardner,yes,match,,Calf,Did Not Participate In Practice,Questionable,Calf,Did Not Participate In Practice,Questionable,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Anthony Gould,yes,match,,Toe,Full Participation in Practice,Questionable,Toe,Full Participation in Practice,Questionable,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Charlie Heck,yes,mismatch,injury: official='' captured='Not injury related - personal matter' | game: official='' captured='Questionable',,Did Not Participate In Practice,,Not injury related - personal matter,Did Not Participate In Practice,Questionable,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Will Mallory,yes,match,,Hamstring,Did Not Participate In Practice,Out,Hamstring,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Bernhard Raimann,yes,match,,Concussion,Did Not Participate In Practice,Out,Concussion,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Luke Rhodes,yes,match,,Hamstring,Limited Participation in Practice,Questionable,Hamstring,Limited Participation in Practice,Questionable,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Jerry Tillery,yes,match,,Calf,Did Not Participate In Practice,Out,Calf,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Jalen Travis,yes,match,,Knee,Did Not Participate In Practice,Out,Knee,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Dalton Tucker,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Charvarius Ward,yes,match,,Knee,Did Not Participate In Practice,Out,Knee,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Azeez Al-Shaair,yes,match,,,Did Not Participate In Practice,,,Did Not Participate In Practice,,FLAG: Placed on Reserve/Injured on 2026-11-17 while listed on reg11,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Reed Blankenship,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Tank Dell,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Blake Fisher,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Marvin Harrison Jr.,yes,match,,Hamstring,Did Not Participate In Practice,Out,Hamstring,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Jacob Hummel,yes,match,,Groin,Full Participation in Practice,Questionable,Groin,Full Participation in Practice,Questionable,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Danielle Hunter,yes,match,,Hamstring,Did Not Participate In Practice,Out,Hamstring,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Brevin Jordan,yes,match,,"Foot, Illness",Did Not Participate In Practice,Out,"Foot, Illness",Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Kamari Lassiter,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Woody Marks,yes,match,,Concussion,Did Not Participate In Practice,Out,Concussion,Did Not Participate In Practice,Out,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,David Montgomery,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Febechi Nwaiwu,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Keylan Rutledge,yes,match,,,Full Participation in Practice,,,Full Participation in Practice,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Jaylin Smith,yes,match,,Hamstring,Full Participation in Practice,Questionable,Hamstring,Full Participation in Practice,Questionable,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Wyatt Teller,yes,match,,Back,Full Participation in Practice,Questionable,Back,Full Participation in Practice,Questionable,,https://www.nfl.com/injuries/league/2026/reg11

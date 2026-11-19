@@ -1,0 +1,990 @@
+{
+  "as_of": "2026-11-19",
+  "method": "Each official Week-10 Game Book was read with the page-reader fetch tool on 2026-11-19, chunk 0 of each PDF (URL in gamebook_pdf_url). Names are transcribed as printed in the extracted text. Status values: 'printed' = a heading and the names are both legible; 'printed_empty' = heading present, no names under it; 'located_unlabelled' = names present but the heading was not legible in the extraction, so the column is attributed by position in the text; 'ambiguous' = the block cannot be attributed to one club; 'not_legible' = no names extracted from the block. Nothing in this file is inferred; a row with status other than 'printed' is not verified.",
+  "source_page_reads": "All 14 Game Book PDFs chunk 0 read 2026-11-19. reg11 injury page chunk 0 read 2026-11-19. Reserve-list page chunks 0 and 1 read 2026-11-19.",
+  "gamebooks": [
+    {
+      "game_id": "WAS@NYG",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "3QB 16 A.Kaliakmanis",
+          "CB 37 I.Yiadom",
+          "DT 50 R.Barber",
+          "G 62 T.Togiai",
+          "G 63 L.Patrick",
+          "TE 80 C.Yankoff"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 8 M.Mariota",
+          "C/G 61 J.Good-Jones",
+          "C 66 M.Gulbin"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "CB 21 P.Adebo",
+          "CB 35 N.Reed",
+          "LB 54 M.Harrison",
+          "OL 67 J.Sills",
+          "OL 74 J.Davis",
+          "TE 86 T.Fidone",
+          "DL 99 B.Okoye"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "C 61 J.Schmitz"
+        ]
+      },
+      "other_notes": [
+        "WAS Substitutions list (chunk 0) contains 'CB 0 M.Sainristil', not a Not Active entry.",
+        "NYG lineup starts 'LT 78 A.Thomas'; playtime table (chunk 6) lists A.Thomas T 65 snaps 100%."
+      ]
+    },
+    {
+      "game_id": "NE@DET",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "CB 7 C.Davis",
+          "3QB 15 B.Morton",
+          "S 41 B.Schooler",
+          "T 68 D.Crownover",
+          "OL 72 W.Rouse",
+          "C 77 B.Brown"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed_empty",
+        "entries": []
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "CB 4 D.Reed",
+          "CB 6 K.Abney",
+          "LB 57 A.Ogbongbemiga",
+          "C 64 C.Mays",
+          "DL 94 M.Wingo",
+          "DE 99 A.Hassanein"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed_empty",
+        "entries": []
+      }
+    },
+    {
+      "game_id": "KC@ATL",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab582f5b-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "not_legible",
+        "entries": [],
+        "note": "No 'Not Active' heading or names found for KC in chunk 0."
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "RB 9 K.Walker",
+          "3QB 19 G.Nussmeier",
+          "RB 34 J.Ott",
+          "CB 39 M.Smith",
+          "FB 47 B.VanSumeren",
+          "OL 77 J.Moore",
+          "DL 99 P.Woods"
+        ],
+        "note": "Printed under a 'Did Not Play' heading that follows the KC substitutions block."
+      },
+      "home_not_active": {
+        "status": "located_unlabelled",
+        "entries": [
+          "ILB 0 D.Deablo",
+          "CB 12 Av.Terrell",
+          "3QB 13 A.Dalton",
+          "WR 17 Z.Branch",
+          "QB 18 J.Strand",
+          "CB 37 R.Longerbeam",
+          "T 73 C.Williams"
+        ],
+        "note": "No 'Not Active' heading legible; attributed to ATL because it follows the ATL 'Did Not Play' entry."
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 1 T.Tagovailoa"
+        ]
+      }
+    },
+    {
+      "game_id": "HOU@CLE",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "LB 0 A.Al-Shaair",
+          "TE 9 B.Jordan",
+          "WR 18 M.Harrison",
+          "RB 32 D.Montgomery",
+          "DE 55 D.Hunter",
+          "C/G 66 K.Rutledge",
+          "G 75 W.Teller"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 10 D.Mills",
+          "T 71 B.Smith"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "3QB 6 D.Gabriel",
+          "QB 15 T.Green",
+          "LB 17 J.Jefferson",
+          "CB 20 N.Igbinoghene",
+          "S 33 R.Hickman",
+          "C 52 P.Brailsford"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 2 S.Sanders"
+        ]
+      }
+    },
+    {
+      "game_id": "MIN@GB",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "QB 1 K.Murray",
+          "WR 3 J.Addison",
+          "3QB 12 M.Broser",
+          "WR 14 J.Jennings",
+          "LB 51 B.Cashman",
+          "TE 87 T.Hockenson",
+          "DL 90 T.Ingram-Dawkins"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 11 C.Wentz"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "RB 8 J.Jacobs",
+          "RB 22 P.Strong",
+          "LB 44 Z.Franklin",
+          "G/T 67 D.Jennings",
+          "G 70 K.Zeitler",
+          "C/G 75 S.Rhyan"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "C/G 52 J.Burton"
+        ]
+      }
+    },
+    {
+      "game_id": "MIA@IND",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829723/gamecenter/ab789365-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "WR 18 C.Bell",
+          "CB 24 M.Dial",
+          "C 55 A.Brewer",
+          "G/T 77 C.Wallace",
+          "TE 80 J.Joly",
+          "WR 86 J.Wayne"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 15 B.Cook",
+          "G 64 C.Haynes"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "3QB 15 R.Leonard",
+          "LS 46 L.Rhodes",
+          "LB 57 J.Carlies",
+          "T 75 J.Travis",
+          "TE 86 W.Mallory",
+          "DT 94 J.Tillery"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 5 A.Richardson",
+          "WR 9 Q.Watkins",
+          "T 73 C.Heck"
+        ]
+      }
+    },
+    {
+      "game_id": "CAR@NO",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "located_unlabelled",
+        "entries": [
+          "TE 0 J.Sanders",
+          "3QB 16 H.King",
+          "CB 24 W.Lee",
+          "RB 28 A.Dillon",
+          "LB 58 B.Okereke",
+          "C 75 S.Hecht",
+          "DT 93 T.Edwards"
+        ],
+        "note": "Names follow the CAR substitutions block; heading not legible."
+      },
+      "away_dnp": {
+        "status": "not_legible",
+        "entries": []
+      },
+      "home_not_active": {
+        "status": "located_unlabelled",
+        "entries": [
+          "3QB 11 Z.Wilson",
+          "S 42 M.Reid",
+          "RB 43 C.Donaldson",
+          "LB 53 J.Ford",
+          "T 75 T.Fuaga",
+          "C 78 E.McCoy"
+        ],
+        "note": "Names follow the NO substitutions block; heading not legible."
+      },
+      "home_dnp": {
+        "status": "not_legible",
+        "entries": []
+      }
+    },
+    {
+      "game_id": "BUF@NYJ",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789ac9-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "QB 6 S.Buechele",
+          "S 29 J.Kilgore",
+          "OLB 51 M.Danna",
+          "G 60 A.Reed-Adams",
+          "T/G 74 J.Bowry",
+          "DL 97 G.Gaines"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "T 76 B.Freeland"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "DB 2 J.Brownlee",
+          "WR 17 T.Patrick",
+          "LB 49 T.Wallace",
+          "TE 86 J.Woods",
+          "DE 92 N.Lynn"
+        ]
+      },
+      "home_dnp": {
+        "status": "ambiguous",
+        "entries": [],
+        "note": "A 25-name block (RB 0 B.Allen ... DL 98 P.Page) sits in the Buffalo Did Not Play row's right-hand column, and it includes K 19 J.Sanders and QB 10 C.Klubnik, who appear in the Jets stat tables. It cannot be attributed to one club with confidence, so no names are recorded."
+      }
+    },
+    {
+      "game_id": "JAX@TEN",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "S 0 J.Bates",
+          "WR 18 C.Williams",
+          "DT 90 J.Davis",
+          "DE 97 W.Williams",
+          "DT 98 A.Regis"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 10 Q.Ewers"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "WR 14 C.Tate",
+          "RB 32 N.Singleton",
+          "CB 42 J.Jones",
+          "LB 50 C.Barton",
+          "LB 53 A.Hill",
+          "T 78 B.Crenshaw-Dickson",
+          "DT 96 J.Marshall"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 10 M.Trubisky"
+        ]
+      }
+    },
+    {
+      "game_id": "LA@AZ",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794854921/gamecenter/ab78a133-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "3QB 15 T.Simpson",
+          "S 36 M.Pulley",
+          "LS 49 J.Cardona",
+          "OLB 59 D.Peterson",
+          "OL 73 S.Avila",
+          "OL 79 K.Trost",
+          "OLB 94 D.Johnson"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 13 S.Bennett"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "3QB 18 J.Aguilar",
+          "CB 24 S.Thomas",
+          "OLB 54 E.Leota",
+          "OL 66 J.Williams",
+          "OL 71 J.Gaines",
+          "OL 72 H.Froholdt"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 9 J.Johnson",
+          "OL 76 A.Reese"
+        ]
+      }
+    },
+    {
+      "game_id": "SEA@LV",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829726/gamecenter/ab78a43c-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "QB 14 S.Darnold",
+          "RB 23 E.Wilson",
+          "CB 27 A.Smith",
+          "G 53 Q.Nelson",
+          "T 67 C.Cross",
+          "NT 97 D.Eastern",
+          "DT 99 L.Williams"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 6 J.Milroe",
+          "C 55 O.Oluwatimi"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "WR 10 D.Thornton",
+          "WR 19 M.Benson",
+          "S 27 T.McCollum",
+          "S 43 D.Johnson",
+          "G 77 B.Cabeldue",
+          "DT 99 T.Booker"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 12 A.O'Connell"
+        ]
+      }
+    },
+    {
+      "game_id": "SF@DAL",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "WR 5 M.Evans",
+          "3QB 14 K.Rourke",
+          "LB 48 T.Bethune",
+          "OL 69 E.Cruz",
+          "WR 84 B.Cooks"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 10 M.Jones"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "S 1 P.Locke",
+          "OL B 6 D.Ezeiruaku",
+          "CB 15 D.Kendrick",
+          "WR 18 J.Mingo",
+          "S 43 J.Thomas",
+          "T 65 A.Cornelius",
+          "TE 87 J.Ferguson"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 16 S.Howell"
+        ]
+      }
+    },
+    {
+      "game_id": "PIT@CIN",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794829727/gamecenter/ab78aa48-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "QB 16 D.Allar",
+          "3QB 18 W.Howard",
+          "S 25 D.Elliott",
+          "CB 27 S.Murphy-Bunting",
+          "RB/WR 29 E.Heidenreich"
+        ]
+      },
+      "away_dnp": {
+        "status": "not_legible",
+        "entries": [],
+        "note": "Heading present, no names extracted in chunk 0 (garbled layout)."
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "S 29 K.Dugger",
+          "C 65 C.Lew",
+          "T 77 M.Hinton",
+          "DT 96 L.Robinson"
+        ]
+      },
+      "home_dnp": {
+        "status": "not_legible",
+        "entries": [],
+        "note": "Heading present, no names extracted in chunk 0."
+      }
+    },
+    {
+      "game_id": "LAC@BAL",
+      "gamebook_pdf_url": "https://static.www.nfl.com/image/upload/v1794916121/gamecenter/ab78ad5a-4feb-11f1-abca-2c54536568a9.pdf",
+      "away_not_active": {
+        "status": "printed",
+        "entries": [
+          "WR 15 L.McConkey",
+          "S 32 K.Williamson",
+          "CB 37 I.Waxter",
+          "OLB 48 B.Dupree",
+          "WR 89 B.Thompson",
+          "DL 92 J.Eboigbe"
+        ]
+      },
+      "away_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 7 D.Uiagalelei",
+          "C 60 J.Spomer",
+          "G 73 A.Harkey"
+        ]
+      },
+      "home_not_active": {
+        "status": "printed",
+        "entries": [
+          "WR 13 E.Sarratt",
+          "3QB 18 K.Slovis",
+          "S 21 J.Hawkins",
+          "CB 29 C.Rivers",
+          "G/T 51 E.Jones",
+          "DL 90 A.Peebles"
+        ]
+      },
+      "home_dnp": {
+        "status": "printed",
+        "entries": [
+          "QB 12 J.Fagnano",
+          "OL 58 R.Neuzil"
+        ]
+      }
+    }
+  ],
+  "snap_playtime_WAS_NYG": {
+    "source_url": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+    "section": "Playtime Percentage table, read 2026-11-19 (chunk 6). Columns: snaps and percent of team snaps, by unit.",
+    "rows": [
+      {
+        "team": "WAS",
+        "player": "J.Daniels",
+        "pos": "QB",
+        "unit": "Offense",
+        "snaps": 69,
+        "pct": 100
+      },
+      {
+        "team": "WAS",
+        "player": "A.Williams",
+        "pos": "WR",
+        "unit": "Offense",
+        "snaps": 59,
+        "pct": 86
+      },
+      {
+        "team": "WAS",
+        "player": "S.Diggs",
+        "pos": "WR",
+        "unit": "Offense",
+        "snaps": 44,
+        "pct": 64
+      },
+      {
+        "team": "WAS",
+        "player": "F.Luvu",
+        "pos": "LB",
+        "unit": "Defense",
+        "snaps": 65,
+        "pct": 100
+      },
+      {
+        "team": "WAS",
+        "player": "S.Styles",
+        "pos": "LB",
+        "unit": "Defense",
+        "snaps": 65,
+        "pct": 100
+      },
+      {
+        "team": "WAS",
+        "player": "M.Sainristil",
+        "pos": "CB",
+        "unit": "Special Teams",
+        "snaps": 14,
+        "pct": 54
+      },
+      {
+        "team": "NYG",
+        "player": "J.McCarthy",
+        "pos": "QB",
+        "unit": "Offense",
+        "snaps": 62,
+        "pct": 95
+      },
+      {
+        "team": "NYG",
+        "player": "C.Skattebo",
+        "pos": "RB",
+        "unit": "Offense",
+        "snaps": 58,
+        "pct": 89
+      },
+      {
+        "team": "NYG",
+        "player": "M.Nabers",
+        "pos": "WR",
+        "unit": "Offense",
+        "snaps": 52,
+        "pct": 80
+      },
+      {
+        "team": "NYG",
+        "player": "A.Thomas",
+        "pos": "T",
+        "unit": "Offense",
+        "snaps": 65,
+        "pct": 100
+      },
+      {
+        "team": "NYG",
+        "player": "A.Reese",
+        "pos": "LB",
+        "unit": "Defense",
+        "snaps": 69,
+        "pct": 100
+      }
+    ],
+    "note": "Sainristil's printed row is special teams only; he is not in the printed Not Active list. The captured snap CSV (week10_snap_depth.csv) carries 9 WAS@NYG rows and does not include Sainristil or Thomas."
+  },
+  "reg11_IND_HOU": {
+    "source_url": "https://www.nfl.com/injuries/league/2026/reg11",
+    "section": "THURSDAY, NOVEMBER 19TH: IND Colts (3-7) and HOU Texans (3-6), 8:15 PM EST (read 2026-11-19, chunk 0)",
+    "rows": [
+      {
+        "team": "IND",
+        "player": "Jaylon Carlies",
+        "pos": "LB",
+        "injury": "",
+        "practice": "Did Not Participate In Practice",
+        "game": ""
+      },
+      {
+        "team": "IND",
+        "player": "Sauce Gardner",
+        "pos": "CB",
+        "injury": "Calf",
+        "practice": "Did Not Participate In Practice",
+        "game": "Questionable"
+      },
+      {
+        "team": "IND",
+        "player": "Anthony Gould",
+        "pos": "WR",
+        "injury": "Toe",
+        "practice": "Full Participation in Practice",
+        "game": "Questionable"
+      },
+      {
+        "team": "IND",
+        "player": "Charlie Heck",
+        "pos": "T",
+        "injury": "",
+        "practice": "Did Not Participate In Practice",
+        "game": ""
+      },
+      {
+        "team": "IND",
+        "player": "Will Mallory",
+        "pos": "TE",
+        "injury": "Hamstring",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "IND",
+        "player": "Bernhard Raimann",
+        "pos": "T",
+        "injury": "Concussion",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "IND",
+        "player": "Luke Rhodes",
+        "pos": "LS",
+        "injury": "Hamstring",
+        "practice": "Limited Participation in Practice",
+        "game": "Questionable"
+      },
+      {
+        "team": "IND",
+        "player": "Jerry Tillery",
+        "pos": "DT",
+        "injury": "Calf",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "IND",
+        "player": "Jalen Travis",
+        "pos": "T",
+        "injury": "Knee",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "IND",
+        "player": "Dalton Tucker",
+        "pos": "G",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "IND",
+        "player": "Charvarius Ward",
+        "pos": "CB",
+        "injury": "Knee",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "HOU",
+        "player": "Azeez Al-Shaair",
+        "pos": "LB",
+        "injury": "",
+        "practice": "Did Not Participate In Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Reed Blankenship",
+        "pos": "S",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Tank Dell",
+        "pos": "WR",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Blake Fisher",
+        "pos": "T",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Marvin Harrison Jr.",
+        "pos": "WR",
+        "injury": "Hamstring",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "HOU",
+        "player": "Jacob Hummel",
+        "pos": "LB",
+        "injury": "Groin",
+        "practice": "Full Participation in Practice",
+        "game": "Questionable"
+      },
+      {
+        "team": "HOU",
+        "player": "Danielle Hunter",
+        "pos": "DE",
+        "injury": "Hamstring",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "HOU",
+        "player": "Brevin Jordan",
+        "pos": "TE",
+        "injury": "Foot, Illness",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "HOU",
+        "player": "Kamari Lassiter",
+        "pos": "CB",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Woody Marks",
+        "pos": "RB",
+        "injury": "Concussion",
+        "practice": "Did Not Participate In Practice",
+        "game": "Out"
+      },
+      {
+        "team": "HOU",
+        "player": "David Montgomery",
+        "pos": "RB",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Febechi Nwaiwu",
+        "pos": "G",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Keylan Rutledge",
+        "pos": "G",
+        "injury": "",
+        "practice": "Full Participation in Practice",
+        "game": ""
+      },
+      {
+        "team": "HOU",
+        "player": "Jaylin Smith",
+        "pos": "CB",
+        "injury": "Hamstring",
+        "practice": "Full Participation in Practice",
+        "game": "Questionable"
+      },
+      {
+        "team": "HOU",
+        "player": "Wyatt Teller",
+        "pos": "G",
+        "injury": "Back",
+        "practice": "Full Participation in Practice",
+        "game": "Questionable"
+      }
+    ]
+  },
+  "reserve_list_nov_2026": {
+    "source_url": "https://www.nfl.com/transactions/league/reserve-list/2026/11",
+    "section": "2026 NFL Transactions, Reserve List, November 2026 (read 2026-11-19, chunks 0 and 1; 25 rows; transaction text is 'Reserve/Injured' on every row)",
+    "rows": [
+      {
+        "date": "2026-11-18",
+        "team": "PIT",
+        "player": "Mason McCormick"
+      },
+      {
+        "date": "2026-11-18",
+        "team": "KC",
+        "player": "Jared Wiley"
+      },
+      {
+        "date": "2026-11-18",
+        "team": "DET",
+        "player": "Aidan Hutchinson"
+      },
+      {
+        "date": "2026-11-18",
+        "team": "MIN",
+        "player": "Bo Richter"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "HOU",
+        "player": "Azeez Al-Shaair"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "MIA",
+        "player": "Zeek Biggers"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "MIA",
+        "player": "Jordan Phillips"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "AZ",
+        "player": "Andrew Wingard"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "AZ",
+        "player": "Jordan Burch"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "BUF",
+        "player": "Ar'maj Reed-Adams"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "IND",
+        "player": "Jaylon Carlies"
+      },
+      {
+        "date": "2026-11-17",
+        "team": "TEN",
+        "player": "Wan'Dale Robinson"
+      },
+      {
+        "date": "2026-11-16",
+        "team": "LA",
+        "player": "Dylan McMahon"
+      },
+      {
+        "date": "2026-11-16",
+        "team": "LAC",
+        "player": "Branson Taylor"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "NO",
+        "player": "Christen Miller"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "NE",
+        "player": "TreVeyon Henderson"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "CLE",
+        "player": "Michael Burton"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "IND",
+        "player": "Mo Alie-Cox"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "IND",
+        "player": "Akeem Davis-Gaither"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "TEN",
+        "player": "Peter Skoronski"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "TEN",
+        "player": "Tommy Townsend"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "DAL",
+        "player": "Tyler Goodson"
+      },
+      {
+        "date": "2026-11-14",
+        "team": "GB",
+        "player": "Josh Whyle"
+      },
+      {
+        "date": "2026-11-12",
+        "team": "LA",
+        "player": "Puka Nacua"
+      },
+      {
+        "date": "2026-11-10",
+        "team": "LA",
+        "player": "Jordan Whittington"
+      }
+    ]
+  }
+}
