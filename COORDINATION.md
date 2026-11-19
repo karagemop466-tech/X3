@@ -4828,3 +4828,38 @@ Branch: `arena/d6d831c6-x3` (platform-assigned; the brief's `session-<id>/<task>
 | W10R-4 | Gates run locally (`audit_all`, `check_links`, `verify_integration`), PR → merge (no approval wait, per brief) → Pages deploy check → record here | in progress | `COORDINATION.md`, PR |
 
 Not claimed or changed here: any market, price, CLV, ROI, leaderboard, or staking value (no official source exists; `nfl.com/odds` returns 404 per the atlas log); shared hub/index outputs (requested via the log below, not edited).
+
+### Result (arena/d6d831c6-x3, 2026-11-19)
+
+| ID | Task | Status | Output |
+|---|---|---|---|
+| W10R-1 | Transcribe all 8 chunks of the live reg10 page | **done** (single reader; see R-F6) | `data/recount/reg10_2026_live_transcription.psv` (347 rows), `data/recount/reg10_2026_live.csv` |
+| W10R-2 | Row-level reconciliation against the committed tables | **done** | `data/recount/diffs.csv` (69 lines), `recount/index.html` §2–§3, `recount/rows.html` (all 347 rows) |
+| W10R-3 | Verifier | **done** | `scripts/recount_verify.py` (PASS; 37 checks incl. determinism and MANIFEST hashes), `scripts/recount_build.py`, `scripts/recount_pages.py` |
+| W10R-4 | Gates, PR, merge, Pages | see PR record below | — |
+
+**Live page, read 2026-11-19 (`https://www.nfl.com/injuries/league/2026/reg10`, chunks 0–7):** 347 player rows; 28 club sections; 14 games; game status Out 70 / Questionable 90 / Doubtful 11 / blank 176. Clubs with no section: CHI, DEN, PHI, TB, the Week-10 byes printed on `https://www.nfl.com/schedules/2026/by-week/week-10` ("Teams on Bye").
+
+**Committed tables vs live:**
+- `agency/data/derived/injury_designations_w10_2026.csv` (347 rows, captured 2026-11-15T19:05Z): all 347 players match; one capitalisation-only difference (Trevin Wallace, NYJ).
+- `audit/official_injury_wk10_2026.csv` and `data/hub/injuries_2026_wk10.csv` (345 rows each): **stale**. Missing BAL Calais Campbell and Ronnie Stanley. 32 field values differ: 30 in the LAC @ BAL block, 2 for IND Arden Key (committed Hamstring / Questionable; live blank).
+- Lions Kerby Joseph, Cade Mays and D.J. Reed show **Out** in the live page, the agency capture, the audit table and the hub table, so the Lions game-status item is resolved in the data.
+
+**Irregularities (published as R-F1…R-F9 on `recount/index.html`, all with links; none blocks merge):**
+- R-F1 the page heading reads "Week 11 of the 2026 Season" while the body reads "Injuries - WEEK 10" (unresolved).
+- R-F2 audit/hub missing two Ravens rows. R-F3 LAC @ BAL block values stale or different in audit/hub; cause not established. R-F9 Arden Key conflict.
+- R-F4 the brief's 254-row / 279-row figures are **not** reproduced (live 347; committed 345 and 347). No section on the live page is empty; four clubs have no section (byes).
+- R-F5 the brief's "Seattle and Cincinnati injury-free" is **not** reproduced: both list players (live SEA 15, CIN 9). The page that showed the injury-free display was not located.
+- R-F6 single-reader transcription; raw bytes not retainable (curl to nfl.com fails with a TLS error from this sandbox). Needs a second reader.
+- R-F7 roster-club assignments not checked against transactions (example: Myles Garrett under LAR, LB).
+- R-F8 casing-only difference (agency file).
+
+**Verification performed:** all 8 chunks of the reg10 page read; all 14 game links and the 4 bye clubs confirmed from the schedule page (chunks 0–1); per-game and per-club counts recomputed from the transcription; `recount_verify.py` PASS (37 checks); rebuild byte-identical; MANIFEST sha256 of inputs and outputs matches. Repo gates on this branch: `audit_all` PASS (384 pages), `check_links` PASS, `verify_integration` PASS, `check_hub` PASS, `verify_site` PASS, `verify_data` PASS, `check_site` PASS.
+
+**Change requests for the integration session (logged, not edited — shared outputs):**
+- **R-1** Regenerate `data/hub/injuries_2026_wk10.csv` and the hub injuries page from `data/recount/reg10_2026_live.csv` (347 rows; adds 2 Ravens rows; corrects 32 values; see `data/recount/diffs.csv`). The hub is a shared build output, so this belongs to the integration session. The audit folder is owned by the closed session `arena/d968fa97-x3`; its update is also left to integration.
+- **R-2** Add a nav entry for `recount/index.html` through `tools/build_hub.py` (not edited here; `arena/e0146586-x3` owns the landing page).
+- **R-3** Add `python3 scripts/recount_verify.py` to `.github/workflows/pages.yml` so the recount is checked on each push. The workflow is shared, so it was not edited here.
+- **R-4** A second reader should check `data/recount/reg10_2026_live_transcription.psv` against the live page (R-F6) before the table is republished as verified.
+
+**Not done in this session (honest scope):** the other items in the brief were not taken up. Several are already on main with their own registers and gates, several are blocked on sources that do not exist on any official NFL page (for example market prices, where `nfl.com/odds` returns 404 per the atlas log), the Texans depth image needs an authorised structured source, and official snap counts are not captured. Items claimed by other sessions were left to them: the brief coverage register (`arena/5a7f85bc-x3`) and the landing page (`arena/e0146586-x3`).
