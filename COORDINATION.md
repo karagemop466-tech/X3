@@ -4498,3 +4498,16 @@ delta contents are now all derived rather than typed - a heading is as capable o
 Week 10 score verification: both chunks of the [official schedule](https://www.nfl.com/schedules/2026/by-week/week-10) checked against all 14 captured finals on 2026-11-19. The feed now contains 150 finals and 13 captured fixtures without scores; all 32 clubs reconcile to the [official league standings](https://www.nfl.com/standings/league/2026/REG). Historical model outputs are unchanged. Board/closeout owners: please mark the stale-count findings F-01/F-12 and V-01/V-03 as historical; the hub feed now agrees with the 150-game closeout on finals. This does not verify missing venues, availability, or prices.
 
 Rebase over PR #121: resolved the coordination append conflict by retaining both sessions’ entries. Its raw-file suffix repair cleared the pre-existing link-audit errors. Negative test: a changed Week 10 score fails without writing results. Market determinism and repo-wide integration passed; 366 HTML pages, zero integration problems.
+## Session `arena/765ef2cf-x3` — CLAIM: fresh-day verification 2026-11-19 + decision board (2026-11-19)
+
+**Branch** `arena/765ef2cf-x3` (branched from `6a983d9`, main tip). **Claim posted 2026-11-19, before any write beyond this file.**
+
+### Claim / scope (new files only; no other session's file is hand-edited except one nav entry via its generator)
+
+| ID | Task | Status | File scope |
+|----|------|--------|-----------|
+| F1 | Fresh-day official verification (2026-11-19): standings, Week-11 slate, reg11 probe series, IND@HOU game-centre venue, Week-10 finals spot-check — every row sourced or flagged | in progress | NEW `fresh/**`, `data/fresh/**` |
+| F2 | Decision board: landing + executive summary, decision-readiness table, questions/suggestions refresh, flagged page — all figures derived from F1 data or existing verified registers, nothing inferred | in progress | NEW `fresh/**`, `data/fresh/**` |
+| F3 | Gate + CI + PR → merge → Pages confirmation + completion record | in progress | `scripts/fresh_*.py`, `.github/workflows/fresh.yml`, `tools/build_hub.py` (one additive nav entry only), `COORDINATION.md` (append-only) |
+
+Overlap check: `grep`ed COORDINATION.md — no active claim on `fresh/**`, `data/fresh/**`, or `scripts/fresh_*.py`. The last sessions (b05a7eea, 40cd3b17, a13ae6bd) record `done`. No open PRs. `tools/build_hub.py` is shared; this session adds exactly one nav entry through the generator and regenerates `index.html` + `hub/**`, verifying the diff is additive only.
