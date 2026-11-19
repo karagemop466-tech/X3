@@ -4481,3 +4481,50 @@ all corrected in the follow-up PR from this branch:
 No number on the site changed. All three are sentences that disagreed with the CSV they describe, and
 the board's gate recomputes aggregates from those CSVs, which is why the inventory rows, hashes and
 delta contents are now all derived rather than typed - a heading is as capable of lying as a cell.
+
+---
+
+## Session `arena/dd499930-x3` — claim (2026-11-19, before any write)
+
+Branch `arena/dd499930-x3`, base `main` @ `6a983d9` ("snapshots: scheduled availability capture
+2026-11-19T02:16:11Z"). The platform fixes this branch; the `session-<id>/<task>` naming in the brief
+was not used for the same reason earlier sessions gave. No other session's files are hand-edited;
+shared outputs are changed only through their own generators, and dated module pages
+(`board/`, `crosscheck/`, `closeout/`, `round2/`, `atlas/`, `decision/`) are treated as historical
+records of their own `as_of` dates and are **not** rewritten by this session.
+
+### Why now
+
+1. The official Week-10 schedule page was re-read in full today (2026-11-19, both chunks,
+   fetch tool): all 14 Week-10 fixtures are FINAL — WAS 24-21 NYG, NE 10-35 DET, KC 35-13 ATL,
+   HOU 24-27 CLE, MIN 30-10 GB, MIA 22-24 IND, CAR 20-17 NO, BUF 31-12 NYJ, JAX 40-23 TEN,
+   LA 34-6 AZ, SEA 21-13 LV, SF 46-40 DAL, PIT 18-38 CIN, LAC 23-20 BAL. This is a 15/15
+   exact match with `data/closeout/week10_finals.csv` (2026-11-17T22:44Z) and with
+   `data/week11/week10_finals_read_2026-11-18.csv`, and the underlying 150-game log reconciles
+   32/32 clubs to the official standings (W-L-T, PF, PA), ΣPF = ΣPA = 6923.
+   The canonical feed (`data/x3/verified/results_2026.csv`) still marks 13 of those 14 rows
+   `SCHEDULED`. This is flag V-01 / F-01 and closeout request RQ-1.
+2. The Week-11 injury report is **published** as of today. The scheduled capture at
+   2026-11-19T02:16:10Z stored `readiness/data/history/2026-11-19/league-injury-report.html`
+   (373,969 bytes, sha256 `d00b606b59242871a56455d762e338ad9a3192596a5da1a557e9666247b3448e`,
+   manifest row `2026-11-19T02:16:10+00:00,league-injury-report,...,200,...,row_count 277`),
+   whose bytes contain "WEEK 11" and the THURSDAY, NOVEMBER 19TH game IND vs HOU. A live read of
+   https://www.nfl.com/injuries/league/2026/reg11 (2026-11-19, ~07:00Z) confirms the same content.
+   The repository holds no structured transcription of the Week-11 report yet; flag F-06
+   ("Week-11 report unpublished") is now resolvable by capture, not by inference.
+
+### Task board
+
+| ID | Task | Status | Files / scope |
+|----|------|--------|---------------|
+| DD-1 | RQ-1 handoff: fold the 14 verified Week-10 finals into the canonical results feed. Update `data/desk/games.json` (13 stale `SCHEDULED` rows -> FINAL with the official scores, provenance noted, capture immutability documented), re-point `tools/results_feed.py` R2 from the through-Week-9 standings transcription to the through-Week-10 transcription (`data/closeout/official_standings_2026_wk10.csv`), set the feed `as_of` to 2026-11-19 with a backfill note, regenerate `data/x3/verified/*`, the hub (`tools/x3_engine.py` + `tools/build_hub.py`), the README counts, and the one stale copy string in `scripts/build_signals.py` (signals module rebuilt + verified). | in progress | `data/desk/games.json`, `tools/results_feed.py`, `tools/build_hub.py`, `tools/hub_content.py`, `tools/x3_content.py`, `tools/markets_engine.py` (one string), `data/x3/verified/*` (regenerated), `hub/**` + root `index.html` (regenerated), `README.md` (three lines), `scripts/build_signals.py` + `signals/**` (regenerated), `COORDINATION.md` |
+| DD-2 | Week-11 (reg11) report structured capture: parse the hashed official capture bytes, transcribe every table row to `data/week11/reg11_2026-11-19.csv` with per-row source link, build the Week-10->Week-11 delta, cross-check the transcription against a live read of the reg11 page, and add a deterministic verifier. New files only; the week11 tree owned by session `arena/40cd3b17-x3` is not edited — a handoff note is logged instead. | in progress | `data/week11/reg11_2026-11-19.csv`, `data/week11/reg11_2026-11-19_delta.csv`, `data/week11/reg11_2026-11-19.md`, `scripts/week11_reg11_capture.py` (new files only), `COORDINATION.md` |
+| DD-3 | Integration: PR -> merge (no approval wait, per the brief) -> confirm GitHub Pages deploy -> record link + result here. | in progress | `COORDINATION.md`, PR |
+
+### Verification plan (DD-1)
+
+Three-way score check before any write: (a) live official week-10 page read today (both chunks,
+above); (b) `data/closeout/week10_finals.csv`; (c) `data/closeout/derived/season_log.csv`
+(32/32 reconciled to the official standings). All 14 fixtures agree on every score. Only after
+that agreement is the feed edited. R2 then recomputes the standings from the feed itself, so the
+feed cannot drift from the official table silently.
