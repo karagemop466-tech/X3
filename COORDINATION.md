@@ -4808,3 +4808,28 @@ Overlap check (before claiming): `grep` of COORDINATION.md shows no active claim
 - Shared outputs (`data/x3/**`, `data/hub/**`, the injury tables, `readiness/**`) are not edited; the findings above are requests to their owners.
 
 **Sources (all official):** https://www.baltimoreravens.com/team/depth-chart · https://www.packers.com/team/depth-chart · https://www.seahawks.com/team/depth-chart/ · https://www.commanders.com/team/depth-chart · https://www.houstontexans.com/team/depth-chart · https://www.nfl.com/news/nfl-week-10-injury-report-2026-season · https://www.nfl.com/transactions/league/trades/2026/11 · https://www.nfl.com/transactions/league/reserve-list/2026/11
+
+### Post-merge record — `arena/784043ed-x3` (2026-11-19)
+
+| ID | Task | Status | Result |
+|----|------|--------|--------|
+| D1 | Live re-read of BAL, GB, SEA, WAS and HOU depth pages | done | `data/depth/live_2026-11-19/`; HOU image-only, 0 rows |
+| D2 | Per-row dated register, group slots, shared and empty flags, jersey-number stripping | done | `data/depth/depth_register.csv` (2,027 rows), `slot_groups.csv` (792 groups) |
+| D3 | Cross-checks (Baltimore QB, Lions, Packers, Seattle, Washington, Houston, transactions) | done | `data/depth/cross_checks.json` (13 items), `conflicts.csv` (37) |
+| D4 | Build, verify, pages, CI gate, one additive landing entry | done | `scripts/depth_*.py`, `depth/*.html`, `.github/workflows/depth.yml` |
+| D5 | PR → merge → Pages confirm → record | done | see below |
+
+**PR and merge:** [PR #134](https://github.com/karagemop466-tech/X3/pull/134) — `arena/784043ed-x3` → `main`, merged 2026-11-19T19:39:23Z with `gh pr merge 134 --merge`; merge commit `c09bd39`. Two rebases over `main` (PRs #128, #130, #132) resolved: `COORDINATION.md` kept both sides; generated `verification-hub/audit-report.json`, `index.html`, `atlas/*` and `decision/*` regenerated from the builders and not hand-merged.
+
+**Checks before merge:** all PASS on head `b82b9ec` — "Depth-chart register", "Fresh 2026-11-19", "Readiness module", "Council verify", "X3 atlas module", "X3 decision layer", "X3 round2 module", "X3 signals module", "Verify Live Operations Module", "Week11 watch", "X3 decision board". Two earlier failures on the first push (atlas and decision census drift because a new site tree was added) were reproduced locally, fixed by rebuilding the builders, and re-run green. The rebuilt census files are committed.
+
+**Pages:** run for merge commit `c09bd39`: "Deploy X3 NFL site to GitHub Pages" = success (run 44600579937); "pages-build-deployment" = success (44600577037). Live check: https://karagemop466-tech.github.io/X3/depth/flagged.html serves the flagged table with source links.
+
+**Irregularities published on the live Flagged page** (`depth/flagged.html`, X01–X12, plus the same-player table): see the Findings list above. None blocks the merge.
+
+**Requests to other owners (not edited here):**
+1. `data/x3/depth_replacement_2026_wk10.csv` and `data/x3/verified/depth_replacement.csv` are built on the 2026-11-14 captures that differ from the 2026-11-19 live charts for BAL, GB, SEA and WAS. Rebuild from `depth/` before any use.
+2. `data/injury_report_2026_wk10.csv` holds "Out" for the three Lions rows, which matches the article. The brief's blank-cell claim does not apply to this repo table. The live reg10 cell still needs a re-read.
+3. `data/atlas/roster_events_2026.csv` (2026-11-13 BAL, Lamar Jackson, "Reserve") records a designation sentence as a reserve event. Re-classify as a designation unless an official reserve-list entry is found.
+4. The Houston chart needs a structured source before any Houston depth row can be published.
+5. Owner decision: whether club charts labelled "Unofficial" (Packers, Texans) count as official for route (a).
