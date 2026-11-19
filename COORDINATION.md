@@ -4748,3 +4748,24 @@ Session `arena/55e3547f-x3` status: verification sweep complete; PR/merge/deploy
 ### New irregularity logged this session
 
 - **BR-04 — readiness table labels contradict their source notes.** On the live landing page (`hub/index.html`, rows R-01 to R-10 and R-31 region) the **Current state** cell reads `VERIFIED` while the source cell reads `UNVERIFIED — No official NFL source defines this policy/threshold`. Example: R-01 "Shared coordination board". A reader cannot tell whether the state or the source is authoritative. Not edited (hub owner's file; generated page). Request: the hub owner should decide whether "VERIFIED" in that column means "the internal gate passed" (then rename the column) or should be changed to match the UNVERIFIED source note.
+
+---
+
+## Session `arena/784043ed-x3` — CLAIM: depth-chart register with date+source per row, live re-read audit (2026-11-19)
+
+**Branch** `arena/784043ed-x3` (platform-fixed; base `main` @ `e5f771d`). Claim written before any other write.
+
+### Why this scope
+Live re-reads taken 2026-11-19 of four official club depth-chart pages do not reproduce the 2026-11-14 captures in `data/x3/raw/club_depth_charts_2026_wk10/` (Baltimore, Green Bay, Seattle, Washington). The existing depth outputs (`data/x3/depth_replacement_2026_wk10.csv`, `data/x3/verified/depth_replacement.csv`) inherit those captures. Several brief items (per-row date and source, group slots, shared and empty slots, jersey-number stripping, the Houston image gap, the Baltimore stale-QB check) concern this same evidence and are not built anywhere.
+
+### Task board
+
+| ID | Task | Status | File scope (new files only) |
+|----|------|--------|-----------------------------|
+| D1 | Live re-read of BAL, GB, SEA, WAS and HOU depth pages (2026-11-19), verbatim to raw files with hashes | in progress | `data/depth/live_2026-11-19/**` |
+| D2 | Register: one row per snapshot, club, unit, row and rank, with date, source URL and raw-file hash; group slots; shared and empty flags; jersey-number stripping with raw string kept | unclaimed→in progress | `data/depth/depth_register.csv`, `data/depth/slot_groups.csv` |
+| D3 | Cross-checks: live vs 2026-11-14 capture conflicts; Baltimore QB vs official transactions log; Lions Week-10 article designations | in progress | `data/depth/conflicts.csv`, `data/depth/cross_checks.json` |
+| D4 | Build + verify scripts; page `depth/` (index + flagged) | in progress | `scripts/depth_build.py`, `scripts/depth_verify.py`, `depth/**` |
+| D5 | Integration: PR → merge → confirm Pages → completion record | pending | `COORDINATION.md` |
+
+Overlap check (before claiming): `grep` of COORDINATION.md shows no active claim on `data/depth/**`, `depth/**`, or `scripts/depth_*.py`. Existing depth modules (`scripts/x3/depth_replacement.py`, `tools/depth_engine.py`, `data/x3/**`) are **not edited**; their conflicts are logged here as requests to their owners.
