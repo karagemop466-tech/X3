@@ -4808,3 +4808,23 @@ Overlap check (before claiming): `grep` of COORDINATION.md shows no active claim
 - Shared outputs (`data/x3/**`, `data/hub/**`, the injury tables, `readiness/**`) are not edited; the findings above are requests to their owners.
 
 **Sources (all official):** https://www.baltimoreravens.com/team/depth-chart · https://www.packers.com/team/depth-chart · https://www.seahawks.com/team/depth-chart/ · https://www.commanders.com/team/depth-chart · https://www.houstontexans.com/team/depth-chart · https://www.nfl.com/news/nfl-week-10-injury-report-2026-season · https://www.nfl.com/transactions/league/trades/2026/11 · https://www.nfl.com/transactions/league/reserve-list/2026/11
+---
+
+## Session `arena/d6d831c6-x3` — CLAIM: Week-10 official injury report full recount + row-level reconciliation (2026-11-19)
+
+Branch: `arena/d6d831c6-x3` (platform-assigned; the brief's `session-<id>/<task>` names are not used, per the platform rule). Base `e5f771d` (main after PR #125). Claim committed and pushed before any other write.
+
+**Overlap check (2026-11-19, before claiming):**
+- `arena/5a7f85bc-x3` claims BC-1..BC-4 = brief coverage register (`analysis/brief-coverage-2026-11-19.csv`, `scripts/brief_coverage_verify.py`). This session does **not** build a coverage register.
+- `arena/e0146586-x3` claims EI-1 = root landing page (`tools/build_hub.py`, `index.html`). This session does **not** edit the landing page or `tools/build_hub.py`.
+- Lions designations (VR-08), Malik Willis IR (VR-25), and the Texans image are already recorded as resolved or blocked on main; this session does not redo them.
+- Open on main and unclaimed: the Week-10 injury table row count is still unreconciled. Committed tables hold 345 rows, a second capture holds 347 rows, the live page was never fully recounted, and the Ravens rows differ (live 10 vs committed 8). This is the only item claimed here.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| W10R-1 | Read all 8 chunks of `https://www.nfl.com/injuries/league/2026/reg10` and transcribe every row (team, player, position, injury, practice status, game status) into a CSV with the chunk index | in progress | `data/recount/reg10_2026_live.csv` (new) |
+| W10R-2 | Reconcile per row against the committed tables (`audit/official_injury_wk10_2026.csv`, `agency/data/derived/injury_designations_w10_2026.csv`, `data/hub/injuries_2026_wk10.csv`); publish the diff with source links and flag every unexplained row | in progress | `recount/**` (new), `scripts/recount_*.py` (new) |
+| W10R-3 | Verifier: fails if a row lacks a team, practice status or source link, or if the per-team counts do not sum to the total | in progress | `scripts/recount_verify.py` (new) |
+| W10R-4 | Gates run locally (`audit_all`, `check_links`, `verify_integration`), PR → merge (no approval wait, per brief) → Pages deploy check → record here | in progress | `COORDINATION.md`, PR |
+
+Not claimed or changed here: any market, price, CLV, ROI, leaderboard, or staking value (no official source exists; `nfl.com/odds` returns 404 per the atlas log); shared hub/index outputs (requested via the log below, not edited).
