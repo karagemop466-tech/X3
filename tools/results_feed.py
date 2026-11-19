@@ -13,7 +13,7 @@ computed at all"):
                           scores is dropped and counted, never imputed;
     R2  standings      -- the final scores must aggregate to exactly the official
                           standings (W-L-T, PF, PA, games played) for all 32 clubs,
-                          read from data/hub/standings_2026_thru_wk9.csv, which a
+                          read from data/closeout/official_standings_2026_wk10.csv, which a
                           different session transcribed from a different NFL page;
     R3  box scores     -- a sample of games is compared score-by-score against an
                           independent live read of the official week page; the
@@ -23,8 +23,9 @@ Inputs are read-only:
   data/desk/games.json                     capture of nfl.com/schedules/2026/by-week/week-N
                                            (captured by the repo's own CI runner; every
                                            page returned HTTP 200 - data/desk/capture_diag.json)
-  data/hub/standings_2026_thru_wk9.csv      official standings transcription (other session)
+  data/closeout/official_standings_2026_wk10.csv      official standings transcription (other session)
   data/desk/injuries.json                   report availability per week 8/9/10
+  data/closeout/week10_finals.csv           later Week 10 score capture
 
 Outputs:
   data/x3/verified/results_2026.csv     one row per game, every row source-linked
@@ -70,17 +71,56 @@ def norm(t: str) -> str:
 def main() -> int:
     cap = json.load(open(os.path.join(ROOT, "data", "desk", "games.json"), encoding="utf-8"))
     raw = cap["games"]
-    st = {r["team"]: r for r in csv.DictReader(
-        open(os.path.join(ROOT, "data", "hub", "standings_2026_thru_wk9.csv"), encoding="utf-8"))}
+    st = {norm(r["team"]): r for r in csv.DictReader(
+        open(os.path.join(ROOT, "data", "closeout", "official_standings_2026_wk10.csv"), encoding="utf-8"))}
 
     errors: list[str] = []
     dropped: list[dict] = []
     rows: list[dict] = []
 
+    # Reconcile the later score capture by fixture identity, never row order.
+    # All 14 scores were re-read on the official Week 10 schedule on 2026-11-19.
+    week10 = {
+        "WAS@NYG": (24, 21), "NE@DET": (10, 35), "KC@ATL": (35, 13),
+        "HOU@CLE": (24, 27), "MIN@GB": (30, 10), "MIA@IND": (22, 24),
+        "CAR@NO": (20, 17), "BUF@NYJ": (31, 12), "JAX@TEN": (40, 23),
+        "LAR@AZ": (34, 6), "SEA@LV": (21, 13), "SF@DAL": (46, 40),
+        "PIT@CIN": (18, 38), "LAC@BAL": (23, 20),
+    }
+    with open(os.path.join(ROOT, "data", "closeout", "week10_finals.csv"), encoding="utf-8") as f:
+        latest = {}
+        for r in csv.DictReader(f):
+            key = f"{norm(r['away'])}@{norm(r['home'])}"
+            if (key in latest or r["week"] != "10" or r["status"] != "FINAL"
+                    or r["source_page"] != SRC_WEEK.format(w=10)
+                    or (int(r["away_score"]), int(r["home_score"])) != week10.get(key)):
+                raise ValueError(f"Invalid or conflicting Week 10 evidence for {key}")
+            latest[key] = r
+    if set(latest) != set(week10):
+        raise ValueError("Week 10 evidence omits an official final")
+    seen = set()
+    matched = set()
+
     for g in raw:
         away, home = norm(g["away"]), norm(g["home"])
         final = g["status"] == "FINAL"
         a_s, h_s = g.get("away_score"), g.get("home_score")
+        key = f"{away}@{home}"
+        identity = (g["week"], key)
+        if identity in seen:
+            raise ValueError(f"Duplicate fixture: {identity}")
+        seen.add(identity)
+        status = g["status"]
+        source = g["source"] or SRC_WEEK.format(w=g["week"])
+        if g["week"] == 10:
+            evidence = latest.get(key)
+            if not evidence or evidence["date_iso"] != g["date_iso"]:
+                raise ValueError(f"Week 10 fixture mismatch: {identity}")
+            if final and (a_s, h_s) != week10[key]:
+                raise ValueError(f"Conflicting final scores: {identity}")
+            a_s, h_s = week10[key]
+            final, status, source = True, "FINAL", evidence["source_page"]
+            matched.add(key)
         # R1 completeness: a final must carry both scores; never imputed.
         if final and (a_s in ("", None) or h_s in ("", None)):
             dropped.append({"week": g["week"], "game": f"{away}@{home}", "reason": "FINAL with no score"})
@@ -95,15 +135,21 @@ def main() -> int:
             "home_name": g["home_name"],
             "neutral_site": bool(g["neutral_site"]),
             "venue": g["neutral_site_name"] or "",
-            "status": g["status"],
+            "status": status,
             "away_score": a_s if final else "",
             "home_score": h_s if final else "",
             "margin_home": (h_s - a_s) if final else "",
             "total": (h_s + a_s) if final else "",
-            "source": g["source"] or SRC_WEEK.format(w=g["week"]),
+            "source": source,
         }
         rows.append(row)
 
+    if matched != set(week10):
+        raise ValueError("Schedule capture omits a verified Week 10 fixture")
+    if dropped:
+        errors.append(f"{len(dropped)} final rows lack a score")
+    if set(st) != {r[k] for r in rows if r["status"] == "FINAL" for k in ("away", "home")}:
+        errors.append("Standings and final results contain different club sets")
     rows.sort(key=lambda r: (r["week"], r["date_iso"], r["game_id"]))
 
     # ---- R2: the results must reproduce the official standings exactly ----------
@@ -168,7 +214,7 @@ def main() -> int:
 
     finals = [r for r in rows if r["status"] == "FINAL"]
     meta = {
-        "as_of": "2026-11-14",
+        "as_of": "2026-11-19",
         "generated_by": "tools/results_feed.py",
         "season": cap["season"],
         "counts": {
@@ -178,12 +224,13 @@ def main() -> int:
             "dropped_for_missing_score": len(dropped),
         },
         "sources": {
-            "schedule": "https://www.nfl.com/schedules/2026/by-week/week-N (N=1..11)",
+            "schedule": SRC_WEEK.format(w=10),
             "standings": SRC_STANDINGS,
+            "week10_finals": "data/closeout/week10_finals.csv (14 scores re-read on the official schedule)",
             "capture_diagnostics": "data/desk/capture_diag.json (212/212 pages HTTP 200)",
         },
         "checks": {
-            "R1_completeness": {"rule": "a FINAL row without both scores is dropped, never imputed",
+            "R1_completeness": {"rule": "a FINAL row without both scores fails the build; scores are never imputed",
                                 "dropped": len(dropped), "detail": dropped},
             "R2_standings_reconciliation": {
                 "rule": "final scores aggregated per club must equal the official standings on "
@@ -194,6 +241,10 @@ def main() -> int:
                 "source": SRC_STANDINGS,
                 "note": "independent of the results capture: a different page, transcribed by a "
                         "different session, with club-code aliasing ARI->AZ and LA->LAR applied once",
+            },
+            "R4_week10_finals": {
+                "rule": "All Week 10 fixture identities and scores must match the 2026-11-19 official schedule read",
+                "agreed": len(matched), "source": SRC_WEEK.format(w=10),
             },
             "R3_box_score_sample": {
                 "rule": "16 Week-1 finals compared score-by-score with a live read of the official "
@@ -206,11 +257,16 @@ def main() -> int:
         "limitations": [
             "One season to date. No prior-season results are in this repository, so no strategy "
             "can clear a three-season walk-forward yet (gate G-3).",
-            "The capture covers weeks 1-11 of the 2026 schedule only.",
+            "The fixture capture covers weeks 1-11 only; scores are reconciled through Week 10.",
             "No prices are attached to any row. A result grades a bet; it cannot price one.",
         ],
         "rows": rows,
     }
+
+    if errors:
+        for e in errors:
+            print("FAIL", e)
+        return 1
 
     os.makedirs(OUT, exist_ok=True)
     with open(os.path.join(OUT, "results.json"), "w", encoding="utf-8") as f:
@@ -226,10 +282,6 @@ def main() -> int:
           f"{len(agg)} clubs")
     print(f"R2 standings: {len(standings_rows)} clubs compared, {len(mismatches)} mismatches")
     print(f"R3 box scores: {agreed}/{checked} Week-1 finals agree with the live read")
-    if errors:
-        for e in errors:
-            print("FAIL", e)
-        return 1
     print("PASS - results feed reconciles to the official standings with zero mismatches")
     return 0
 

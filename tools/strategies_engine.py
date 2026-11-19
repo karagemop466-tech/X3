@@ -48,6 +48,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import x3_model as M  # noqa: E402
+import markets_engine
 
 OUT = os.path.join(ROOT, "data", "x3", "verified")
 SRC_RESULTS = "https://www.nfl.com/schedules/2026/by-week/week-N"
@@ -88,7 +89,7 @@ def bootstrap_mean_ci(xs, iters=4000, seed=SEED):
 
 def main() -> int:
     C = load_content()
-    games = json.load(open(os.path.join(OUT, "results.json"), encoding="utf-8"))["rows"]
+    games = markets_engine.games_from_feed()
     finals = [g for g in games if g["status"] == "FINAL"]
     bt = json.load(open(os.path.join(OUT, "markets.json"), encoding="utf-8"))
 
