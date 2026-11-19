@@ -1,0 +1,70 @@
+source,row_no,club,player,field,live,committed,file
+audit,161,IND,Arden Key,injury,,Hamstring,audit/official_injury_wk10_2026.csv
+audit,161,IND,Arden Key,game_status,,Questionable,audit/official_injury_wk10_2026.csv
+audit,319,LAC,Kayode Awosika,injury,Fibula,,audit/official_injury_wk10_2026.csv
+audit,319,LAC,Kayode Awosika,practice_status,Full Participation in Practice,Limited Participation in Practice,audit/official_injury_wk10_2026.csv
+audit,319,LAC,Kayode Awosika,game_status,Questionable,,audit/official_injury_wk10_2026.csv
+audit,320,LAC,Bud Dupree,practice_status,Full Participation in Practice,Did Not Participate In Practice,audit/official_injury_wk10_2026.csv
+audit,321,LAC,Justin Eboigbe,injury,Ankle,,audit/official_injury_wk10_2026.csv
+audit,321,LAC,Justin Eboigbe,game_status,Questionable,,audit/official_injury_wk10_2026.csv
+audit,328,LAC,Ladd McConkey,injury,Back,,audit/official_injury_wk10_2026.csv
+audit,328,LAC,Ladd McConkey,game_status,Questionable,,audit/official_injury_wk10_2026.csv
+audit,329,LAC,Keaton Mitchell,practice_status,Full Participation in Practice,Limited Participation in Practice,audit/official_injury_wk10_2026.csv
+audit,330,LAC,David Njoku,injury,Fibula,,audit/official_injury_wk10_2026.csv
+audit,330,LAC,David Njoku,practice_status,Full Participation in Practice,Limited Participation in Practice,audit/official_injury_wk10_2026.csv
+audit,330,LAC,David Njoku,game_status,Questionable,,audit/official_injury_wk10_2026.csv
+audit,331,LAC,Denzel Perryman,injury,Pectoral,,audit/official_injury_wk10_2026.csv
+audit,331,LAC,Denzel Perryman,game_status,Questionable,,audit/official_injury_wk10_2026.csv
+audit,332,LAC,Trey Pipkins,injury,"Not injury related - personal matter, Knee",,audit/official_injury_wk10_2026.csv
+audit,332,LAC,Trey Pipkins,practice_status,Limited Participation in Practice,Did Not Participate In Practice,audit/official_injury_wk10_2026.csv
+audit,332,LAC,Trey Pipkins,game_status,Questionable,,audit/official_injury_wk10_2026.csv
+audit,333,LAC,Rodney Shelley,practice_status,Full Participation in Practice,Limited Participation in Practice,audit/official_injury_wk10_2026.csv
+audit,334,LAC,Branson Taylor,injury,Ankle,,audit/official_injury_wk10_2026.csv
+audit,334,LAC,Branson Taylor,game_status,Out,,audit/official_injury_wk10_2026.csv
+audit,335,LAC,Brenen Thompson,injury,Hamstring,,audit/official_injury_wk10_2026.csv
+audit,335,LAC,Brenen Thompson,game_status,Doubtful,,audit/official_injury_wk10_2026.csv
+audit,336,LAC,Isas Waxter,injury,Ankle,,audit/official_injury_wk10_2026.csv
+audit,336,LAC,Isas Waxter,game_status,Out,,audit/official_injury_wk10_2026.csv
+audit,337,LAC,Kendall Williamson,injury,Calf,,audit/official_injury_wk10_2026.csv
+audit,337,LAC,Kendall Williamson,game_status,Out,,audit/official_injury_wk10_2026.csv
+audit,340,BAL,Calais Campbell,ROW,present,missing,audit/official_injury_wk10_2026.csv
+audit,342,BAL,Jaylinn Hawkins,injury,Knee,,audit/official_injury_wk10_2026.csv
+audit,342,BAL,Jaylinn Hawkins,game_status,Out,,audit/official_injury_wk10_2026.csv
+audit,345,BAL,Adam Randall,injury,"Neck, Hamstring",,audit/official_injury_wk10_2026.csv
+audit,345,BAL,Adam Randall,game_status,Questionable,,audit/official_injury_wk10_2026.csv
+audit,346,BAL,Ronnie Stanley,ROW,present,missing,audit/official_injury_wk10_2026.csv
+hub,161,IND,Arden Key,injury,,Hamstring,data/hub/injuries_2026_wk10.csv
+hub,161,IND,Arden Key,game_status,,Questionable,data/hub/injuries_2026_wk10.csv
+hub,319,LAC,Kayode Awosika,injury,Fibula,,data/hub/injuries_2026_wk10.csv
+hub,319,LAC,Kayode Awosika,practice_status,Full Participation in Practice,Limited Participation in Practice,data/hub/injuries_2026_wk10.csv
+hub,319,LAC,Kayode Awosika,game_status,Questionable,,data/hub/injuries_2026_wk10.csv
+hub,320,LAC,Bud Dupree,practice_status,Full Participation in Practice,Did Not Participate In Practice,data/hub/injuries_2026_wk10.csv
+hub,321,LAC,Justin Eboigbe,injury,Ankle,,data/hub/injuries_2026_wk10.csv
+hub,321,LAC,Justin Eboigbe,game_status,Questionable,,data/hub/injuries_2026_wk10.csv
+hub,328,LAC,Ladd McConkey,injury,Back,,data/hub/injuries_2026_wk10.csv
+hub,328,LAC,Ladd McConkey,game_status,Questionable,,data/hub/injuries_2026_wk10.csv
+hub,329,LAC,Keaton Mitchell,practice_status,Full Participation in Practice,Limited Participation in Practice,data/hub/injuries_2026_wk10.csv
+hub,330,LAC,David Njoku,injury,Fibula,,data/hub/injuries_2026_wk10.csv
+hub,330,LAC,David Njoku,practice_status,Full Participation in Practice,Limited Participation in Practice,data/hub/injuries_2026_wk10.csv
+hub,330,LAC,David Njoku,game_status,Questionable,,data/hub/injuries_2026_wk10.csv
+hub,331,LAC,Denzel Perryman,injury,Pectoral,,data/hub/injuries_2026_wk10.csv
+hub,331,LAC,Denzel Perryman,game_status,Questionable,,data/hub/injuries_2026_wk10.csv
+hub,332,LAC,Trey Pipkins,injury,"Not injury related - personal matter, Knee",,data/hub/injuries_2026_wk10.csv
+hub,332,LAC,Trey Pipkins,practice_status,Limited Participation in Practice,Did Not Participate In Practice,data/hub/injuries_2026_wk10.csv
+hub,332,LAC,Trey Pipkins,game_status,Questionable,,data/hub/injuries_2026_wk10.csv
+hub,333,LAC,Rodney Shelley,practice_status,Full Participation in Practice,Limited Participation in Practice,data/hub/injuries_2026_wk10.csv
+hub,334,LAC,Branson Taylor,injury,Ankle,,data/hub/injuries_2026_wk10.csv
+hub,334,LAC,Branson Taylor,game_status,Out,,data/hub/injuries_2026_wk10.csv
+hub,335,LAC,Brenen Thompson,injury,Hamstring,,data/hub/injuries_2026_wk10.csv
+hub,335,LAC,Brenen Thompson,game_status,Doubtful,,data/hub/injuries_2026_wk10.csv
+hub,336,LAC,Isas Waxter,injury,Ankle,,data/hub/injuries_2026_wk10.csv
+hub,336,LAC,Isas Waxter,game_status,Out,,data/hub/injuries_2026_wk10.csv
+hub,337,LAC,Kendall Williamson,injury,Calf,,data/hub/injuries_2026_wk10.csv
+hub,337,LAC,Kendall Williamson,game_status,Out,,data/hub/injuries_2026_wk10.csv
+hub,340,BAL,Calais Campbell,ROW,present,missing,data/hub/injuries_2026_wk10.csv
+hub,342,BAL,Jaylinn Hawkins,injury,Knee,,data/hub/injuries_2026_wk10.csv
+hub,342,BAL,Jaylinn Hawkins,game_status,Out,,data/hub/injuries_2026_wk10.csv
+hub,345,BAL,Adam Randall,injury,"Neck, Hamstring",,data/hub/injuries_2026_wk10.csv
+hub,345,BAL,Adam Randall,game_status,Questionable,,data/hub/injuries_2026_wk10.csv
+hub,346,BAL,Ronnie Stanley,ROW,present,missing,data/hub/injuries_2026_wk10.csv
+agency,142,NYJ,Trevin Wallace,practice_status,Did Not Participate In Practice,Did Not Participate in Practice,agency/data/derived/injury_designations_w10_2026.csv

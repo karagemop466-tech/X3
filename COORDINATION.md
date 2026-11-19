@@ -4850,7 +4850,7 @@ This is the platform-assigned current branch; no session branch/worktree was cre
 
 | ID | Task | Status | Owner | File scope |
 |---|---|---|---|---|
-| EI-1 | Final integration review: make the root landing page a concise, freshness-honest decision dashboard, remove stale/inconsistent top-level status claims, preserve links to all project categories, refresh any generated cross-tree counts that a CI gate flags, and validate the generated site. | in progress (latest rebased checks pending; merge/deploy pending) | `arena/e0146586-x3` | `tools/build_hub.py`, regenerated `index.html`, `verification-hub/audit-report.json`, `crosscheck/data/selfcheck.json`, generated `council/repo-review.html` + `data/council/council.json`, `COORDINATION.md` |
+| EI-1 | Final integration review: make the root landing page a concise, freshness-honest decision dashboard, remove stale/inconsistent top-level status claims, preserve links to all project categories, refresh any generated cross-tree counts that a CI gate flags, and validate the generated site. | done | `arena/e0146586-x3` | `tools/build_hub.py`, regenerated `index.html`, `verification-hub/audit-report.json`, `crosscheck/data/selfcheck.json`, generated `council/repo-review.html` + `data/council/council.json`, `COORDINATION.md` |
 
 Claim basis: the existing page labels itself canonical but reports `data as of 2026-11-14`, retains a 2026-11-14 readiness caption, displays multiple inconsistent results counts, and exposes a very long flat navigation list despite the request for a simple category dashboard. Initial repo-wide audit on 2026-11-19: `scripts/audit_all.py` PASS (382 pages, 26,916 link refs, 660 tables; 13,305 source rows; 270 explicitly unverified; 577 flagged rows checked). `tools/check_links.py` PASS (13 pages, 582 links). `tools/check_site.py` does not exist (not a repo test; invocation error only). `scripts/closeout_verify.py` PASS (24 checks); `tools/verify_markets.py` PASS. Attempting `scripts/availability_snapshot.py --help` instead entered capture mode and failed because this sandbox cannot reach nfl.com (HTTP 000); no source data was changed. This is an environment limitation, not an official-source recheck.
 
@@ -4860,7 +4860,7 @@ The landing page now separates the **2026-11-14 model/input baseline** from the 
 
 ### Verification
 
-- PR #131: https://github.com/karagemop466-tech/X3/pull/131 (`arena/e0146586-x3` → `main`). Earlier checks on prior heads passed except Council run `44599297468`, which caught a stale generated root census; regenerated Council outputs and reruns passed. Main advanced through PRs #132 and #134 while this branch was in progress; the current root now also links the dated depth register from PR #134. Local integration checks pass at the combined tree. PR checks for the latest rebased head are pending rerun; merge and main deploy still pending.
+- PR #131: https://github.com/karagemop466-tech/X3/pull/131 (`arena/e0146586-x3` → `main`), **merged** 2026-11-19T19:43:48Z as `26ea0d79f9af02cd897adec12593dd4f4e9e4aaa`. Final head checks on `0aad21c` all passed: Pages build `44601192615`, board `44601192521`, round2 `44601193098`, signals `44601192489`, and all reported verification workflows; the deploy job correctly skipped on the PR. The first merge call returned a 502, but a retry confirmed PR #131 was already merged. Pages workflow `44601336967` then passed both build and deploy; Pages API reports `built`, serving `https://karagemop466-tech.github.io/X3/` from `main` root with HTTPS enforced.
 - `python3 -m py_compile tools/build_hub.py` — PASS.
 - `python3 tools/build_hub.py` — PASS; 27 hub pages built. Re-running after `tools/x3_engine.py` produced no drift in `hub/` or `data/hub/`; the only expected generated-site difference is the intentionally redesigned `index.html`.
 - `python3 scripts/audit_all.py` — PASS (385 pages, 29,237 link references, 9,808 internal refs, 664 tables; 13,258 sourced-or-explicitly-unverified source rows; 776 flagged-page rows checked).
@@ -4891,3 +4891,66 @@ The landing page now separates the **2026-11-14 model/input baseline** from the 
 | [#135](https://github.com/karagemop466-tech/X3/pull/135) | Record of PR #128/#132; BR-04 | `f9620e8` | `Deploy X3 NFL site to GitHub Pages` on `f9620e8` = success (`gh run list`, 2026-11-19) |
 
 Main has since advanced to `26ea0d7` (PR #131, another session). The Pages build for `26ea0d7` completed with `success` (run `44601336967`) and GitHub reports the latest build as `built`.
+---
+
+## Session `arena/d6d831c6-x3` — CLAIM: Week-10 official injury report full recount + row-level reconciliation (2026-11-19)
+
+Branch: `arena/d6d831c6-x3` (platform-assigned; the brief's `session-<id>/<task>` names are not used, per the platform rule). Base `e5f771d` (main after PR #125). Claim committed and pushed before any other write.
+
+**Overlap check (2026-11-19, before claiming):**
+- `arena/5a7f85bc-x3` claims BC-1..BC-4 = brief coverage register (`analysis/brief-coverage-2026-11-19.csv`, `scripts/brief_coverage_verify.py`). This session does **not** build a coverage register.
+- `arena/e0146586-x3` claims EI-1 = root landing page (`tools/build_hub.py`, `index.html`). This session does **not** edit the landing page or `tools/build_hub.py`.
+- Lions designations (VR-08), Malik Willis IR (VR-25), and the Texans image are already recorded as resolved or blocked on main; this session does not redo them.
+- Open on main and unclaimed: the Week-10 injury table row count is still unreconciled. Committed tables hold 345 rows, a second capture holds 347 rows, the live page was never fully recounted, and the Ravens rows differ (live 10 vs committed 8). This is the only item claimed here.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| W10R-1 | Read all 8 chunks of `https://www.nfl.com/injuries/league/2026/reg10` and transcribe every row (team, player, position, injury, practice status, game status) into a CSV with the chunk index | in progress | `data/recount/reg10_2026_live.csv` (new) |
+| W10R-2 | Reconcile per row against the committed tables (`audit/official_injury_wk10_2026.csv`, `agency/data/derived/injury_designations_w10_2026.csv`, `data/hub/injuries_2026_wk10.csv`); publish the diff with source links and flag every unexplained row | in progress | `recount/**` (new), `scripts/recount_*.py` (new) |
+| W10R-3 | Verifier: fails if a row lacks a team, practice status or source link, or if the per-team counts do not sum to the total | in progress | `scripts/recount_verify.py` (new) |
+| W10R-4 | Gates run locally (`audit_all`, `check_links`, `verify_integration`), PR → merge (no approval wait, per brief) → Pages deploy check → record here | in progress | `COORDINATION.md`, PR |
+
+Not claimed or changed here: any market, price, CLV, ROI, leaderboard, or staking value (no official source exists; `nfl.com/odds` returns 404 per the atlas log); shared hub/index outputs (requested via the log below, not edited).
+
+### Result (arena/d6d831c6-x3, 2026-11-19)
+
+| ID | Task | Status | Output |
+|---|---|---|---|
+| W10R-1 | Transcribe all 8 chunks of the live reg10 page | **done** (single reader; see R-F6) | `data/recount/reg10_2026_live_transcription.psv` (347 rows), `data/recount/reg10_2026_live.csv` |
+| W10R-2 | Row-level reconciliation against the committed tables | **done** | `data/recount/diffs.csv` (69 lines), `recount/index.html` §2–§3, `recount/rows.html` (all 347 rows) |
+| W10R-3 | Verifier | **done** | `scripts/recount_verify.py` (PASS; 37 checks incl. determinism and MANIFEST hashes), `scripts/recount_build.py`, `scripts/recount_pages.py` |
+| W10R-4 | Gates, PR, merge, Pages | see PR record below | — |
+
+**Live page, read 2026-11-19 (`https://www.nfl.com/injuries/league/2026/reg10`, chunks 0–7):** 347 player rows; 28 club sections; 14 games; game status Out 70 / Questionable 90 / Doubtful 11 / blank 176. Clubs with no section: CHI, DEN, PHI, TB, the Week-10 byes printed on `https://www.nfl.com/schedules/2026/by-week/week-10` ("Teams on Bye").
+
+**Committed tables vs live:**
+- `agency/data/derived/injury_designations_w10_2026.csv` (347 rows, captured 2026-11-15T19:05Z): all 347 players match; one capitalisation-only difference (Trevin Wallace, NYJ).
+- `audit/official_injury_wk10_2026.csv` and `data/hub/injuries_2026_wk10.csv` (345 rows each): **stale**. Missing BAL Calais Campbell and Ronnie Stanley. 32 field values differ: 30 in the LAC @ BAL block, 2 for IND Arden Key (committed Hamstring / Questionable; live blank).
+- Lions Kerby Joseph, Cade Mays and D.J. Reed show **Out** in the live page, the agency capture, the audit table and the hub table, so the Lions game-status item is resolved in the data.
+
+**Irregularities (published as R-F1…R-F9 on `recount/index.html`, all with links; none blocks merge):**
+- R-F1 the page heading reads "Week 11 of the 2026 Season" while the body reads "Injuries - WEEK 10" (unresolved).
+- R-F2 audit/hub missing two Ravens rows. R-F3 LAC @ BAL block values stale or different in audit/hub; cause not established. R-F9 Arden Key conflict.
+- R-F4 the brief's 254-row / 279-row figures are **not** reproduced (live 347; committed 345 and 347). No section on the live page is empty; four clubs have no section (byes).
+- R-F5 the brief's "Seattle and Cincinnati injury-free" is **not** reproduced: both list players (live SEA 15, CIN 9). The page that showed the injury-free display was not located.
+- R-F6 single-reader transcription; raw bytes not retainable (curl to nfl.com fails with a TLS error from this sandbox). Needs a second reader.
+- R-F7 roster-club assignments not checked against transactions (example: Myles Garrett under LAR, LB).
+- R-F8 casing-only difference (agency file).
+
+**Verification performed:** all 8 chunks of the reg10 page read; all 14 game links and the 4 bye clubs confirmed from the schedule page (chunks 0–1); per-game and per-club counts recomputed from the transcription; `recount_verify.py` PASS (37 checks); rebuild byte-identical; MANIFEST sha256 of inputs and outputs matches. Repo gates on this branch: `audit_all` PASS (384 pages), `check_links` PASS, `verify_integration` PASS, `check_hub` PASS, `verify_site` PASS, `verify_data` PASS, `check_site` PASS.
+
+**Change requests for the integration session (logged, not edited — shared outputs):**
+- **R-1** Regenerate `data/hub/injuries_2026_wk10.csv` and the hub injuries page from `data/recount/reg10_2026_live.csv` (347 rows; adds 2 Ravens rows; corrects 32 values; see `data/recount/diffs.csv`). The hub is a shared build output, so this belongs to the integration session. The audit folder is owned by the closed session `arena/d968fa97-x3`; its update is also left to integration.
+- **R-2** Add a nav entry for `recount/index.html` through `tools/build_hub.py` (not edited here; `arena/e0146586-x3` owns the landing page).
+- **R-3** Add `python3 scripts/recount_verify.py` to `.github/workflows/pages.yml` so the recount is checked on each push. The workflow is shared, so it was not edited here.
+- **R-4** A second reader should check `data/recount/reg10_2026_live_transcription.psv` against the live page (R-F6) before the table is republished as verified.
+
+**Not done in this session (honest scope):** the other items in the brief were not taken up. Several are already on main with their own registers and gates, several are blocked on sources that do not exist on any official NFL page (for example market prices, where `nfl.com/odds` returns 404 per the atlas log), the Texans depth image needs an authorised structured source, and official snap counts are not captured. Items claimed by other sessions were left to them: the brief coverage register (`arena/5a7f85bc-x3`) and the landing page (`arena/e0146586-x3`).
+
+### W10R — gate update (2026-11-19, after rebase onto `c09bd39`)
+
+- **Hub failure on PR #133 was not caused by W10R.** The Pages step "Check hub rebuilds from data/hub" failed because the base commit (`682f355`) carried a stale root `index.html` (readiness counts 13 blocked vs `readiness/data/readiness.json` 9). `origin/main` fixed this in `de13240`. After rebasing, `tools/x3_engine.py && tools/build_hub.py && tools/verify_hub.py` and `scripts/check_hub.py` leave the tree clean.
+- **Decision and atlas "build left the tree dirty" failures were caused by W10R.** Both census builders count site trees: `scripts/build_decision.py` (from top-level dirs with `index.html`) and `tools/atlas_site.py` (from any top-level dir containing HTML). Adding `recount/` moves the count 31→32 trees and 27→28 directories, and adds one census row. The census regeneration was run with the existing builders (`python3 scripts/build_decision.py`, `python3 tools/atlas_site.py`); no outputs were hand-edited. This matches the precedent in `b82b9ec` (depth/ census). The changed files are `atlas/flagged.html`, `atlas/repo-review.html`, `atlas/suggestions.html`, `decision/{executive-summary,index,landing-block,readiness,suggestions,trees}.html`.
+- **Local gates on the rebased tree, all exit 0:** `recount_verify`, `audit_all`, `check_links`, `check_site`, `verify_site`, `verify_integration`, `verify_data`, `check_hub`, `verify_readiness`, `verify_ledger`, `crosscheck --verify`, `origin_verify`, `desk_verify`, `ops_run`, `check_dashboard` + node checks, `results_feed` → `markets_engine` → `correlation_engine` → `depth_engine` → `strategies_engine` → `verify_markets` (no change under `data/x3/verified`), `decision` rebuild + verify, `atlas` rebuild + verify.
+- `crosscheck/data/selfcheck.json` is rewritten with a new timestamp on every run of `crosscheck --verify`. It is reverted in this commit and is not part of W10R.
+- **Irregularity:** GitHub's failed-step logs for the 2026-11-19 PR #133 runs could not be downloaded (EOF / blob errors). The failing steps were identified from the jobs API and reproduced locally instead.
