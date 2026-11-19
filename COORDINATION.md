@@ -4881,3 +4881,13 @@ The landing page now separates the **2026-11-14 model/input baseline** from the 
 - Different historical modules intentionally remain separate: the canonical market results feed reports 150 finals, while older raw/desk ledgers still report 137; the repo flags this data-vintage difference, and this change did not rewrite those modules.
 - Market prices, residual/CLV/ROI, and reward amounts remain blocked; not all roster/IR, depth, active/inactive and snap-count coverage is complete; strategy qualification/demotion policies are not unified. The landing calls out the not-ready state and links to the source-gap/flag pages.
 - Sandbox shell capture of nfl.com failed with HTTP 000. The failed test accidentally appended two failed-fetch records to `readiness/data/history/manifest.csv`; those test-only rows and empty reads were removed. No source capture/data changes remain from that probe. No direct NFL page was newly re-fetched in this integration task; the timestamp shown is read from the committed hash-verified manifest.
+
+### Final PR record — arena/5a7f85bc-x3 (2026-11-19)
+
+| PR | Content | Merge | Pages deploy |
+|---|---|---|---|
+| [#128](https://github.com/karagemop466-tech/X3/pull/128) | Brief coverage register (40 rows) + `scripts/brief_coverage_verify.py`; BR-01..BR-03 | `7d18c99` | run `44599047902` success |
+| [#132](https://github.com/karagemop466-tech/X3/pull/132) | Regenerated root `index.html` after PR #130 left the hub check red | `f8f3ea6` | run `44600057057` success |
+| [#135](https://github.com/karagemop466-tech/X3/pull/135) | Record of PR #128/#132; BR-04 | `f9620e8` | run `44601336967`-era success on `f9620e8` |
+
+Main has since advanced to `26ea0d7` (PR #131, another session). The Pages build for `26ea0d7` completed with `success` (run `44601336967`) and GitHub reports the latest build as `built`.
