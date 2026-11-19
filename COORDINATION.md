@@ -4888,6 +4888,6 @@ The landing page now separates the **2026-11-14 model/input baseline** from the 
 |---|---|---|---|
 | [#128](https://github.com/karagemop466-tech/X3/pull/128) | Brief coverage register (40 rows) + `scripts/brief_coverage_verify.py`; BR-01..BR-03 | `7d18c99` | run `44599047902` success |
 | [#132](https://github.com/karagemop466-tech/X3/pull/132) | Regenerated root `index.html` after PR #130 left the hub check red | `f8f3ea6` | run `44600057057` success |
-| [#135](https://github.com/karagemop466-tech/X3/pull/135) | Record of PR #128/#132; BR-04 | `f9620e8` | run `44601336967`-era success on `f9620e8` |
+| [#135](https://github.com/karagemop466-tech/X3/pull/135) | Record of PR #128/#132; BR-04 | `f9620e8` | `Deploy X3 NFL site to GitHub Pages` on `f9620e8` = success (`gh run list`, 2026-11-19) |
 
 Main has since advanced to `26ea0d7` (PR #131, another session). The Pages build for `26ea0d7` completed with `success` (run `44601336967`) and GitHub reports the latest build as `built`.
