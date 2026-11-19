@@ -1650,6 +1650,7 @@ def landing():
   <a class="card entry" href="readiness/index.html"><strong>Decision readiness</strong><span>Requirement-by-requirement blocker and measurable clearance criteria.</span></a>
   <a class="card entry" href="hub/suggestions.html"><strong>Suggestions for review</strong><span>Options and trade-offs to consider before choosing an implementation path.</span></a>
   <a class="card entry" href="live/index.html"><strong>Latest operations module</strong><span>Latest dated game-book, injury, transaction, weather, and schedule records.</span></a>
+  <a class="card entry" href="live/reverify.html"><strong>Live re-verification</strong><span>Official re-reads vs captured lists, corrections, and RV flags.</span></a>
   <a class="card entry" href="hub/sources.html"><strong>Sources &amp; verification</strong><span>Primary-source register, capture methods, and verification notes.</span></a>
   <a class="card entry" href="hub/flagged.html"><strong>Flagged for review</strong><span>Unverified values, conflicts, and source or coverage limitations.</span></a>
   <a class="card entry" href="hub/archive.html"><strong>Earlier modules</strong><span>Archived analysis trees and their separate provenance; hub pages link the maintained records.</span></a>

@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 381,
       "flagged_rows": 301,
-      "refs": 505,
+      "refs": 506,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 928,
+      "rows": 929,
       "flagged_rows": 684,
-      "refs": 1342,
+      "refs": 1343,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -157,9 +157,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 307,
+      "rows": 308,
       "flagged_rows": 125,
-      "refs": 495,
+      "refs": 497,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -280,10 +280,10 @@
       "unsourced_examples": []
     },
     "live": {
-      "pages": 7,
-      "rows": 757,
-      "flagged_rows": 739,
-      "refs": 803,
+      "pages": 8,
+      "rows": 911,
+      "flagged_rows": 887,
+      "refs": 956,
       "unsourced_examples": [
         "live/calibration-strategies.html: Team Player 2025 W10 Designation Practice Official 2025 Game Book Outcome Status Source",
         "live/calibration-strategies.html: Slot Leaderboard Division Current State &amp; Demotion / Falsifier Rule Status Source",
@@ -359,6 +359,21 @@
         "readiness/index.html: RD-01 Decision-readiness table on the landing page decision-readiness.html + the same table on the root landing 74 requi"
       ]
     },
+    "recount": {
+      "pages": 2,
+      "rows": 455,
+      "flagged_rows": 448,
+      "refs": 822,
+      "unsourced_examples": [
+        "recount/index.html: Measure Value Source",
+        "recount/index.html: Committed file Rows Matched by club + player Missing Field values that differ Verdict Source",
+        "recount/index.html: Live row Club Player Field Live (official) Audit file Hub file Agency file Source",
+        "recount/index.html: Game (away @ home) Day Kickoff ET Network Rows Source",
+        "recount/index.html: Club Live rows Out Questionable Doubtful Audit rows Hub rows Agency rows Source",
+        "recount/index.html: ID Irregularity Status Source",
+        "recount/rows.html: # Game Club Player Pos Injury Practice status Game status Committed copies Source"
+      ]
+    },
     "reliability": {
       "pages": 7,
       "rows": 265,
@@ -432,9 +447,9 @@
     },
     "week11": {
       "pages": 6,
-      "rows": 1005,
-      "flagged_rows": 992,
-      "refs": 1038,
+      "rows": 1006,
+      "flagged_rows": 993,
+      "refs": 1039,
       "unsourced_examples": [
         "week11/flagged.html: ID Status Area Finding Evidence Action",
         "week11/freshness-detail.html: Dataset Key Field Committed Read today Verdict Committed register Source",
@@ -470,9 +485,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 385,
-  "rows_total": 20073,
-  "rows_flagged_or_sourced": 17435,
-  "internal_refs": 9808,
+  "pages_total": 388,
+  "rows_total": 20685,
+  "rows_flagged_or_sourced": 18032,
+  "internal_refs": 9822,
   "problems": []
 }
