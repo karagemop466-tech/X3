@@ -4619,3 +4619,16 @@ Inline root-page link check (31 pages), `check_site` (353 rows, 0 unsourced), `c
 - Overlapping open PR #125 must be reconciled by its owner against this entry.
 
 **Status:** DD-1 superseded-by-main (results reconciliation already merged) · DD-2 artefact added (hash-pinned capture parse + delta) · DD-3 done (PR merged, Pages confirmed live).
+## Session `arena/213236fb-x3` — CLAIM (2026-11-19T06:5xZ, before any other write)
+
+Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap check against active parallel sessions (`arena/aaad52f3-x3` on `tools/results_feed.py` + `data/x3/verified/`, `arena/46153df1-x3` on `scripts/availability_snapshot.py` + `scripts/test_availability_snapshot.py` + `.github/workflows/availability-snapshots.yml`): zero overlapping files.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| L1 | Capture & parse the newly published live **Week-11 NFL Injury Report** (2026-11-19, `nfl.com/injuries/league/2026/reg11`, all chunks) + Week-10→Week-11 availability surprise delta | in progress | `data/live/**` |
+| L2 | Capture & parse all **14 Week-10 Official NFL Game Books** (starters, substitutions, DNP, Not Active, official **Playtime Percentage / snap counts** for all 28 playing clubs incl. Houston, plus official venues, roof, surface, weather, kickoff/return counts) and build the full 14-game **Availability Graph** (expected vs actual starters & snaps) | in progress | `data/live/**` |
+| L3 | Capture & transcribe all **13 Week-11 Official Game Centers** (venues, roof/surface, weather check via NWS if reachable) + the league's **dated 2026 schedule announcement** (`media.nfl.com`) | in progress | `data/live/**` |
+| L4 | Capture **2026 Kickoff & Declared Onside-Kick Rulebook Priors** (`operations.nfl.com` Rules 6-1-3, 6-1-5, 6-1-6 + empirical Week-10 Game Book kick stats) + **November 2026 Official Transactions** (trades, signings, waivers, other) for roster-turnover versioning | in progress | `data/live/**` |
+| L5 | Build the **`live/`** dashboard module (executive summary, Week-11 injuries & surprise, 14-game Week-10 Game Books & snap-count depth proxy, availability graph & empirical designation reliability, venues/weather/schedule announcement, 2026 kickoff priors, roster turnover, line origination & strategies/gates/correlations/leaderboard, questions/suggestions, flagged for review, sources) + deterministic verifier & CI workflow | in progress | `live/**`, `scripts/live_build.py`, `scripts/live_verify.py`, `.github/workflows/live.yml` |
+| L6 | Additive landing registration in `tools/build_hub.py` + full local verification + PR → merge → Pages deploy confirmation | in progress | `tools/build_hub.py` (1 additive entry), regenerated `index.html` + `COORDINATION.md` |
+
