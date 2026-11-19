@@ -4619,3 +4619,22 @@ Inline root-page link check (31 pages), `check_site` (353 rows, 0 unsourced), `c
 - Overlapping open PR #125 must be reconciled by its owner against this entry.
 
 **Status:** DD-1 superseded-by-main (results reconciliation already merged) · DD-2 artefact added (hash-pinned capture parse + delta) · DD-3 done (PR merged, Pages confirmed live).
+## Session `arena/213236fb-x3` — DONE (2026-11-19)
+
+Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap check against active parallel sessions (`arena/aaad52f3-x3` on `tools/results_feed.py` + `data/x3/verified/`, `arena/46153df1-x3` on `scripts/availability_snapshot.py` + `scripts/test_availability_snapshot.py` + `.github/workflows/availability-snapshots.yml`): zero overlapping files.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| L1 | Capture & parse live **Week-11 NFL Injury Report** (`2026/reg11`, `253` player rows across `12` games + `CIN@WAS` MNF zero-injuries notice) + **Week-10→Week-11 delta** (`362` player transitions) | **DONE** | `data/live/**` |
+| L2 | Capture & parse all **14/14 Week-10 Official NFL Game Books** (`WAS@NYG`..`LAC@BAL`: starters, Not Active, DNP, weather/roof/surface, attendance, kickoffs/EZ/TB/onside, Playtime Percentage snap counts) + `345`-row `2026/reg10` empirical designation calibration | **DONE** | `data/live/**` |
+| L3 | Capture & transcribe all **13/13 Week-11 Official Game Centers** (`IND@HOU`..`CIN@WAS` venues, records, PPG/YPG/TO-diff) + **May 14, 2026 Schedule Announcement** (`media.nfl.com`) + live **NWS (`api.weather.gov`) hourly kickoff forecasts** for all `8/8` US outdoor Week-11 stadiums | **DONE** | `data/live/**` |
+| L4 | Capture **2026 Rulebook Rule 6** (`6-1-3`, `6-1-5`, `6-1-6`, `19-2` + `147` W10 kickoffs, `12.24%` TB, `1` onside kick recovered by ATL, `28.89` avg start) + **November 2026 Official Transactions** (`53` events across trades, reserve-list, waivers, terminations, signings, other) + **`2025/reg10`** archive & `PHI@GB` 2025 W10 Game Book calibration | **DONE** | `data/live/**` |
+| L5 | Build the **`live/`** 7-page dashboard module (`index.html`, `lines-weather.html`, `week10-gamebooks.html`, `injuries-transactions.html`, `calibration-strategies.html`, `questions-suggestions.html`, `flagged.html`) + deterministic `scripts/live_build.py`, `scripts/live_site.py`, `scripts/live_verify.py`, `.github/workflows/live.yml` | **DONE** | `live/**`, `data/live/**`, `scripts/live_*.py`, `.github/workflows/live.yml` |
+| L6 | Additive landing registration in `tools/build_hub.py` + full local verification + PR → merge → Pages deploy confirmation | **DONE** (local gates green; PR/merge/deploy pending below) | `tools/build_hub.py` (1 additive entry), regenerated `index.html` + `COORDINATION.md` |
+
+### Verified Outputs & Irregularities (`live/flagged.html`, `LF-01`–`LF-08`)
+- `scripts/live_build.py && scripts/live_site.py && scripts/live_verify.py`: **PASS** (`7` HTML pages, `21` SHA-256 hashed data files, `14/14` W10 Game Books, `13/13` W11 games, `253` `reg11` rows, `362` W10→W11 delta rows, `53` Nov transactions, `0` errors; `100%` of `737` `<tbody>` rows sourced or explicitly badged).
+- `tools/x3_engine.py && tools/build_hub.py && tools/verify_hub.py`: **PASS** (`27` hub pages, `1,513` rows checked, `0` failures, `0` warnings).
+- `scripts/audit_all.py`: **PASS** (`375` pages, `12,876` source rows).
+- **Flagged irregularities**: `LF-01` no official NFL market-price feed (market/diff/CLV/ROI/leaderboard kept blank/empty); `LF-02` `Azeez Al-Shaair` (HOU) & `Jaylon Carlies` (IND) placed on `11/17` Reserve/Injured yet still listed on `reg11`; `LF-03` `Daiyan Henley` listed in `11/10` LAC→DEN trade yet started `11/16` for LAC in `LAC@BAL` Game Book; `LF-04` 3 Week-11 Game Center stadium names differ from schedule page (`RELIANT STADIUM` vs `NRG Stadium`, `ARROWHEAD STADIUM` vs `GEHA Field`, `NORTHWEST STADIUM` vs `FedEx Field`); `LF-05` `MIN@SF` Mexico City outside NWS domain; `LF-06` Game Book name variants (`T.Though`/`T.Shough`, `J.Smith-Nijgba`, 2025 `Zach Bako-Bewele`); `LF-07` `CIN@WAS` MNF zero-injuries notice pending Thursday report; `LF-08` pre-existing `readiness/data/history/2026-11-19/*.html` tracked by `arena/46153df1-x3`.
+

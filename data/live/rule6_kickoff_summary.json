@@ -1,0 +1,33 @@
+{
+  "as_of": "2026-11-19",
+  "source_rulebook": "https://operations.nfl.com/rules-officiating/2026-nfl-rulebook",
+  "source_featured_rules": "https://operations.nfl.com/rules-officiating/featured-rules",
+  "sample_games": 14,
+  "kickoffs_total": 147,
+  "kickoffs_in_endzone": 34,
+  "endzone_rate_pct": 23.13,
+  "touchbacks": 18,
+  "touchback_rate_pct": 12.24,
+  "in_play_return_rate_pct": 87.76,
+  "onside_kicks_observed": 1,
+  "onside_recoveries_observed": 1,
+  "avg_kickoff_drive_start_yd": 28.89,
+  "rule_changes_2026": [
+    {
+      "rule": "6-1-3",
+      "summary": "Modifies alignment requirements for receiving team players in the setup zone on a kickoff or safety kick."
+    },
+    {
+      "rule": "6-1-5",
+      "summary": "Modifies the dead ball spot after a touchback when the kickoff is from the 50-yard line (following 2025 touchback spot move to 35-yard line)."
+    },
+    {
+      "rule": "6-1-6",
+      "summary": "Permits the kicking team to declare an onside kick at any time during the game (removing trailing-only restriction from 2025); untouched beyond setup zone = 15-yd penalty."
+    },
+    {
+      "rule": "19-2",
+      "summary": "Permits officials to consult with NFL Officiating staff on flagrant foul disqualifications."
+    }
+  ]
+}

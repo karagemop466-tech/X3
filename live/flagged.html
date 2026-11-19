@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for Review — X3 Live Desk (2026-11-19)</title>
+<link rel="stylesheet" href="assets/live.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <a class="home-link" href="../index.html">&larr; Main X3 Hub</a>
+      <span class="pill">AS OF 2026-11-19 UTC</span>
+    </div>
+    <h1>Flagged for Review</h1>
+    <p class="subtitle">All unverified inputs, missing official feeds, and cross-source irregularities discovered during 2026-11-19 verification.</p>
+    <nav class="nav"><a class="" href="index.html">Overview &amp; Readiness</a><a class="" href="lines-weather.html">Week-11 Lines &amp; NWS Weather</a><a class="" href="week10-gamebooks.html">Week-10 Game Books &amp; Rule 6</a><a class="" href="injuries-transactions.html">Injuries, Delta &amp; Transactions</a><a class="" href="calibration-strategies.html">Calibration, Strategies &amp; Gates</a><a class="" href="questions-suggestions.html">What Changed, Q&amp;A &amp; Suggestions</a><a class="active" href="flagged.html">Flagged for Review</a></nav>
+  </div>
+</header>
+<main class="wrap">
+
+<div class="callout warn"><b>Strict Verification Policy:</b> Nothing unconfirmable is filled in. Market prices stay blank under <code>LF-01</code>, international NWS weather stays blank under <code>LF-05</code>, and every discrepancy discovered between official NFL sources (Reserve List vs <code>reg11</code>, Trades vs Game Book, Schedule vs Game Center venues) is logged here for review.</div>
+<h2>Flagged for Review (8 Items)</h2>
+<div class="tbl-wrap"><table id="flagged-rows"><thead><tr><th>ID</th><th>Category</th><th>Irregularity / Unverified Item</th><th>Verification Detail</th><th>Status</th><th>Source</th></tr></thead><tbody><tr><td><b>LF-01</b></td><td>Market Prices</td><td>No official NFL odds / market-price feed</td><td>NFL.com publishes scores, stats, standings, injuries, transactions, and Game Books, not betting lines. Market spread/total/ML, diff, CLV, and ROI remain blank.</td><td><span class="badge v">UNVERIFIED / BLOCKED</span></td><td><span class="badge u">UNVERIFIED</span> <span class="mut">UNVERIFIED - no official NFL market-price feed</span></td></tr><tr><td><b>LF-02</b></td><td>IR vs Injury Report</td><td>Azeez Al-Shaair (HOU) &amp; Jaylon Carlies (IND) listed on reg11 despite 11/17 Reserve/Injured</td><td>Both players were placed on Reserve/Injured on 2026-11-17 (official Reserve List) after being Not Active in Week 10, yet still appear on the Week-11 reg11 practice report.</td><td><span class="badge u">FLAGGED</span></td><td><a href="https://www.nfl.com/transactions/league/reserve-list/2026/11" target="_blank" rel="noopener">Official source</a></td></tr><tr><td><b>LF-03</b></td><td>Trade vs Game Book</td><td>Daiyan Henley listed on 11/10 trade (LAC-&gt;DEN) yet started 11/16 for LAC</td><td>Official Trades page lists Daiyan Henley traded from Chargers to Broncos on 11/10, but the 11/16 LAC@BAL Game Book lists LB 0 D.Henley starting for LAC with 11 tackles.</td><td><span class="badge u">FLAGGED</span></td><td><a href="https://www.nfl.com/transactions/league/trades/2026/11" target="_blank" rel="noopener">Official source</a></td></tr><tr><td><b>LF-04</b></td><td>Venue Naming Diff</td><td>3 Week-11 Game Center stadium names differ from NFL schedule page</td><td>IND@HOU: RELIANT STADIUM vs NRG Stadium; AZ@KC: ARROWHEAD STADIUM vs GEHA Field at Arrowhead Stadium; CIN@WAS: NORTHWEST STADIUM vs FedEx Field.</td><td><span class="badge u">FLAGGED</span></td><td><a href="https://www.nfl.com/games/bengals-at-commanders-2026-reg-11" target="_blank" rel="noopener">Official source</a></td></tr><tr><td><b>LF-05</b></td><td>International Weather</td><td>MIN@SF Estadio Banorte (Mexico City) outside US NWS grid</td><td>National Weather Service api.weather.gov covers US territories only. Mexico City kickoff forecast is left blank/UNVERIFIED rather than filled from unverified sources.</td><td><span class="badge v">UNVERIFIED</span></td><td><a href="https://www.nfl.com/games/vikings-at-49ers-2026-reg-11" target="_blank" rel="noopener">Official source</a></td></tr><tr><td><b>LF-06</b></td><td>Game Book Typo</td><td>Official Game Book player name spelling variants</td><td>CAR@NO Game Book spells Saints QB T.Shough as &#x27;T.Though&#x27; in box score; SEA@LV spells J.Smith-Njigba as &#x27;J.Smith-Nijgba&#x27;; 2025/reg10 lists &#x27;Zach Bako-Bewele&#x27; for zach-tom.</td><td><span class="badge u">FLAGGED</span></td><td><a href="https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf" target="_blank" rel="noopener">Official source</a></td></tr><tr><td><b>LF-07</b></td><td>MNF Missing Report</td><td>CIN@WAS has no injuries reported on reg11 as of 2026-11-19 02:16 UTC</td><td>Monday Night Football clubs publish initial practice participation on Thursday afternoon; treated as pending rather than healthy.</td><td><span class="badge u">FLAGGED / PENDING</span></td><td><a href="https://www.nfl.com/injuries/league/2026/reg11" target="_blank" rel="noopener">Official source</a></td></tr><tr><td><b>LF-08</b></td><td>Scheduled Raw HTML</td><td>readiness/data/history/2026-11-19/*.html triggers verify_integration.py baseline failure</td><td>Scheduled bot committed raw HTML pages with root-absolute links inside readiness/; tracked by session arena/46153df1-x3 in COORDINATION.md.</td><td><span class="badge u">FLAGGED</span></td><td><a href="https://github.com/karagemop466-tech/X3" target="_blank" rel="noopener">Official source</a></td></tr></tbody></table></div>
+
+</main>
+<footer class="wrap foot">
+  <p>X3 Live Operations Desk &middot; Every factual cell is linked to an official source URL or explicitly marked <code>UNVERIFIED</code> / <code>DERIVED</code> / <code>FLAGGED</code>. Generated deterministically by <code>scripts/live_build.py</code> &amp; <code>scripts/live_site.py</code>.</p>
+</footer>
+</body>
+</html>

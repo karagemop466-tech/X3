@@ -1,0 +1,93 @@
+game_id,team,player,pos,unit,snaps,snap_pct,note,source_url
+WAS@NYG,WAS,J.Daniels,QB,OFF,69,100,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,WAS,A.Williams,WR,OFF,59,86,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,WAS,S.Diggs,WR,OFF,44,64,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,WAS,F.Luvu,LB,DEF,65,100,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,WAS,S.Styles,LB,DEF,65,100,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,NYG,J.McCarthy,QB,OFF,62,95,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,NYG,C.Skattebo,RB,OFF,58,89,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,NYG,M.Nabers,WR,OFF,52,80,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+WAS@NYG,NYG,A.Reese,LB,DEF,69,100,,https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,T.DeVito,QB,OFF,49,83,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,D.Maye,QB,OFF,10,17,injured early,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,M.Hollins,WR,OFF,54,92,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,NE,C.Gonzalez,CB,DEF,64,90,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,J.Goff,QB,OFF,61,86,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,J.Gibbs,RB,OFF,49,69,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,A.St. Brown,WR,OFF,47,66,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+NE@DET,DET,A.Hutchinson,DE,DEF,9,15,injured; placed on IR 11/18,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab582c2f-4feb-11f1-abca-2c54536568a9.pdf
+KC@ATL,KC,P.Mahomes,QB,BOX,,,"Starter, 22/35 348 yds 5 TD",https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab582f5b-4feb-11f1-abca-2c54536568a9.pdf
+KC@ATL,KC,J.Downs,WR,BOX,,,Active sub after 11/10 trade from IND; 4 rec 53 yds 1 TD,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab582f5b-4feb-11f1-abca-2c54536568a9.pdf
+KC@ATL,KC,G.Karlaftis,DE,DEF,59,82,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab582f5b-4feb-11f1-abca-2c54536568a9.pdf
+KC@ATL,KC,C.Jones,DT,DEF,55,76,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab582f5b-4feb-11f1-abca-2c54536568a9.pdf
+KC@ATL,ATL,M.Penix,QB,BOX,,,"Starter, 23/43 286 yds",https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab582f5b-4feb-11f1-abca-2c54536568a9.pdf
+KC@ATL,ATL,B.Robinson,RB,BOX,,,"Starter, 16 att 71 yds 1 TD",https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab582f5b-4feb-11f1-abca-2c54536568a9.pdf
+HOU@CLE,HOU,K.Lassiter,CB,DEF,68,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf
+HOU@CLE,HOU,J.Pitre,S,DEF,68,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf
+HOU@CLE,HOU,C.Bullock,S,DEF,68,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf
+HOU@CLE,HOU,J.Hansen,LB,DEF,66,97,Replaced injured A.Al-Shaair,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf
+HOU@CLE,HOU,W.Anderson,DE,DEF,54,79,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf
+HOU@CLE,CLE,D.Ward,CB,DEF,67,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf
+HOU@CLE,CLE,C.Schwesinger,LB,DEF,67,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab583279-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,MIN,K.Cousins,QB,OFF,69,100,Started after 11/10 trade from LV,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,MIN,J.Jefferson,WR,OFF,63,91,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,MIN,T.Felton,WR,OFF,59,86,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,MIN,J.Metellus,S,DEF,55,100,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,GB,J.Love,QB,OFF,52,95,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,GB,T.Kraft,TE,OFF,52,95,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,GB,C.Watson,WR,OFF,47,85,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,GB,M.Golden,WR,OFF,46,84,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIN@GB,GB,X.McKinney,S,DEF,69,100,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab788967-4feb-11f1-abca-2c54536568a9.pdf
+MIA@IND,MIA,C.Johnson,CB,DEF,59,100,,https://static.www.nfl.com/image/upload/v1794829723/gamecenter/ab789365-4feb-11f1-abca-2c54536568a9.pdf
+MIA@IND,MIA,J.Brooks,LB,DEF,59,100,,https://static.www.nfl.com/image/upload/v1794829723/gamecenter/ab789365-4feb-11f1-abca-2c54536568a9.pdf
+MIA@IND,MIA,D.Trader,S,DEF,59,100,,https://static.www.nfl.com/image/upload/v1794829723/gamecenter/ab789365-4feb-11f1-abca-2c54536568a9.pdf
+MIA@IND,IND,C.Bynum,S,DEF,69,100,,https://static.www.nfl.com/image/upload/v1794829723/gamecenter/ab789365-4feb-11f1-abca-2c54536568a9.pdf
+MIA@IND,IND,C.Allen,LB,DEF,69,100,,https://static.www.nfl.com/image/upload/v1794829723/gamecenter/ab789365-4feb-11f1-abca-2c54536568a9.pdf
+MIA@IND,IND,A.Gardner,CB,DEF,41,59,,https://static.www.nfl.com/image/upload/v1794829723/gamecenter/ab789365-4feb-11f1-abca-2c54536568a9.pdf
+CAR@NO,CAR,B.Young,QB,OFF,70,100,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf
+CAR@NO,CAR,C.Hubbard,RB,OFF,59,84,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf
+CAR@NO,CAR,T.McMillan,WR,OFF,56,80,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf
+CAR@NO,CAR,T.Dodson,LB,DEF,63,100,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf
+CAR@NO,NO,T.Shough,QB,OFF,63,100,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf
+CAR@NO,NO,C.Olave,WR,OFF,56,89,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf
+CAR@NO,NO,K.Elliss,LB,DEF,70,100,,https://static.www.nfl.com/image/upload/v1794829721/gamecenter/ab789769-4feb-11f1-abca-2c54536568a9.pdf
+BUF@NYJ,BUF,J.Allen,QB,BOX,,,"Starter, 11/21 196 yds 1 TD, 2 rush TD",https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789ac9-4feb-11f1-abca-2c54536568a9.pdf
+BUF@NYJ,BUF,A.Hooker,S,BOX,,,"Started at S after 11/10 trade from TEN (7 tackles, 1 PD)",https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789ac9-4feb-11f1-abca-2c54536568a9.pdf
+BUF@NYJ,BUF,E.Oliver,DL,DEF,47,66,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789ac9-4feb-11f1-abca-2c54536568a9.pdf
+BUF@NYJ,NYJ,G.Smith,QB,BOX,,,"Starter, 13/21 148 yds (suffered ankle injury)",https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789ac9-4feb-11f1-abca-2c54536568a9.pdf
+BUF@NYJ,NYJ,C.Klubnik,QB,BOX,,,"Played relief, 11/20 137 yds",https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789ac9-4feb-11f1-abca-2c54536568a9.pdf
+BUF@NYJ,NYJ,K.Enagbare,DE,DEF,34,60,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789ac9-4feb-11f1-abca-2c54536568a9.pdf
+JAX@TEN,JAX,T.Lawrence,QB,OFF,73,100,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf
+JAX@TEN,JAX,J.Meyers,WR,OFF,59,81,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf
+JAX@TEN,JAX,T.Hunter,WR/CB,OFF,6,8,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf
+JAX@TEN,JAX,F.Oluokun,LB,DEF,57,100,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf
+JAX@TEN,TEN,C.Ward,QB,OFF,57,100,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf
+JAX@TEN,TEN,C.Dike,WR,OFF,54,95,,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf
+JAX@TEN,TEN,C.Ridley,WR,OFF,4,7,limited/exited,https://static.www.nfl.com/image/upload/v1794829722/gamecenter/ab789e15-4feb-11f1-abca-2c54536568a9.pdf
+LA@AZ,LA,B.Corum,RB,OFF,39,51,,https://static.www.nfl.com/image/upload/v1794854921/gamecenter/ab78a133-4feb-11f1-abca-2c54536568a9.pdf
+LA@AZ,LA,K.Williams,RB,OFF,39,51,,https://static.www.nfl.com/image/upload/v1794854921/gamecenter/ab78a133-4feb-11f1-abca-2c54536568a9.pdf
+LA@AZ,LA,Q.Lake,S,DEF,35,100,,https://static.www.nfl.com/image/upload/v1794854921/gamecenter/ab78a133-4feb-11f1-abca-2c54536568a9.pdf
+LA@AZ,AZ,Ma.Wilson,LB,DEF,76,100,,https://static.www.nfl.com/image/upload/v1794854921/gamecenter/ab78a133-4feb-11f1-abca-2c54536568a9.pdf
+LA@AZ,AZ,A.Wingard,S,DEF,76,100,Placed on IR 11/17,https://static.www.nfl.com/image/upload/v1794854921/gamecenter/ab78a133-4feb-11f1-abca-2c54536568a9.pdf
+SEA@LV,SEA,E.Jones,LB,DEF,59,100,,https://static.www.nfl.com/image/upload/v1794829726/gamecenter/ab78a43c-4feb-11f1-abca-2c54536568a9.pdf
+SEA@LV,SEA,D.Witherspoon,CB,DEF,59,100,,https://static.www.nfl.com/image/upload/v1794829726/gamecenter/ab78a43c-4feb-11f1-abca-2c54536568a9.pdf
+SEA@LV,LV,N.Dean,LB,DEF,57,100,,https://static.www.nfl.com/image/upload/v1794829726/gamecenter/ab78a43c-4feb-11f1-abca-2c54536568a9.pdf
+SEA@LV,LV,M.Crosby,DE,DEF,53,93,,https://static.www.nfl.com/image/upload/v1794829726/gamecenter/ab78a43c-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,SF,B.Purdy,QB,OFF,65,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,SF,G.Kittle,TE,OFF,61,94,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,SF,C.McCaffrey,RB,OFF,39,60,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,SF,K.Allen,WR,OFF,31,48,Active after 11/10 trade from IND,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,SF,F.Warner,LB,DEF,83,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,DAL,D.Prescott,QB,OFF,83,100,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,DAL,G.Pickens,WR,OFF,74,89,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+SF@DAL,DAL,C.Lamb,WR,OFF,72,87,,https://static.www.nfl.com/image/upload/v1794829724/gamecenter/ab78a748-4feb-11f1-abca-2c54536568a9.pdf
+PIT@CIN,PIT,A.Rodgers,QB,BOX,,,"Starter, 15/29 143 yds 2 TD",https://static.www.nfl.com/image/upload/v1794829727/gamecenter/ab78aa48-4feb-11f1-abca-2c54536568a9.pdf
+PIT@CIN,PIT,M.McCormick,LG,BOX,,,Started; placed on Reserve/Injured 11/18,https://static.www.nfl.com/image/upload/v1794829727/gamecenter/ab78aa48-4feb-11f1-abca-2c54536568a9.pdf
+PIT@CIN,PIT,P.Wilson,LB,BOX,,,18 tackles,https://static.www.nfl.com/image/upload/v1794829727/gamecenter/ab78aa48-4feb-11f1-abca-2c54536568a9.pdf
+PIT@CIN,CIN,J.Burrow,QB,BOX,,,"Starter, 35/44 409 yds 4 TD",https://static.www.nfl.com/image/upload/v1794829727/gamecenter/ab78aa48-4feb-11f1-abca-2c54536568a9.pdf
+PIT@CIN,CIN,J.Chase,WR,BOX,,,11 rec 231 yds,https://static.www.nfl.com/image/upload/v1794829727/gamecenter/ab78aa48-4feb-11f1-abca-2c54536568a9.pdf
+LAC@BAL,LAC,J.Herbert,QB,BOX,,,"Starter, 12/18 129 yds + 51 rush yds 1 TD",https://static.www.nfl.com/image/upload/v1794916121/gamecenter/ab78ad5a-4feb-11f1-abca-2c54536568a9.pdf
+LAC@BAL,LAC,O.Hampton,RB,BOX,,,"Starter, 22 att 105 yds 1 TD",https://static.www.nfl.com/image/upload/v1794916121/gamecenter/ab78ad5a-4feb-11f1-abca-2c54536568a9.pdf
+LAC@BAL,LAC,D.Henley,LB,BOX,,,Started for LAC (11 tkl) after 11/10 trade note? Wait: Game Book lists LAC #0 D.Henley while Transactions 11/10 lists LAC->DEN D.Henley — FLAGGED!,https://static.www.nfl.com/image/upload/v1794916121/gamecenter/ab78ad5a-4feb-11f1-abca-2c54536568a9.pdf
+LAC@BAL,BAL,J.Brissett,QB,BOX,,,"Starter after 11/06 trade from AZ, 33/49 340 yds",https://static.www.nfl.com/image/upload/v1794916121/gamecenter/ab78ad5a-4feb-11f1-abca-2c54536568a9.pdf
+LAC@BAL,BAL,T.Hendrickson,LB,DEF,41,72,,https://static.www.nfl.com/image/upload/v1794916121/gamecenter/ab78ad5a-4feb-11f1-abca-2c54536568a9.pdf

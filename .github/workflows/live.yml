@@ -1,0 +1,39 @@
+name: Verify Live Operations Module
+
+on:
+  push:
+    branches: [ main, "arena/**" ]
+    paths:
+      - 'data/live/**'
+      - 'live/**'
+      - 'scripts/live_build.py'
+      - 'scripts/live_site.py'
+      - 'scripts/live_verify.py'
+      - '.github/workflows/live.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'data/live/**'
+      - 'live/**'
+      - 'scripts/live_build.py'
+      - 'scripts/live_site.py'
+      - 'scripts/live_verify.py'
+      - '.github/workflows/live.yml'
+  workflow_dispatch:
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Rebuild data/live and live/ and verify determinism
+        run: |
+          python3 scripts/live_build.py
+          python3 scripts/live_site.py
+          python3 scripts/live_verify.py
+          git diff --exit-code -- data/live live || {
+            echo "::error::data/live/ or live/ is stale relative to scripts/live_build.py & scripts/live_site.py"
+            exit 1
+          }

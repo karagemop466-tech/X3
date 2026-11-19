@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 589,
+      "refs": 590,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 926,
+      "rows": 927,
       "flagged_rows": 684,
-      "refs": 1340,
+      "refs": 1341,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -157,9 +157,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 305,
+      "rows": 306,
       "flagged_rows": 125,
-      "refs": 491,
+      "refs": 493,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -264,6 +264,22 @@
       "flagged_rows": 0,
       "refs": 14,
       "unsourced_examples": []
+    },
+    "live": {
+      "pages": 7,
+      "rows": 755,
+      "flagged_rows": 737,
+      "refs": 801,
+      "unsourced_examples": [
+        "live/calibration-strategies.html: Team Player 2025 W10 Designation Practice Official 2025 Game Book Outcome Status Source",
+        "live/calibration-strategies.html: Slot Leaderboard Division Current State &amp; Demotion / Falsifier Rule Status Source",
+        "live/calibration-strategies.html: ID Division Scored Target n Brier Skill vs Bench MAE Sample Gate Skill Gate Verdict Source",
+        "live/calibration-strategies.html: Measure Value Method Caveat Type Source",
+        "live/calibration-strategies.html: Shrink k Margin MAE Win Brier Total MAE vs Naive Margin n Note Type Source",
+        "live/calibration-strategies.html: ID Quantity n r 95% CI Interpretation Type Source",
+        "live/index.html: # Executive Finding Verified Evidence (2026-11-19) Status Source",
+        "live/index.html: ID Area Requirement Blocking / Verification Gate Clearing Number / Evidence Status Source"
+      ]
     },
     "ops": {
       "pages": 18,
@@ -440,9 +456,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 375,
-  "rows_total": 16986,
-  "rows_flagged_or_sourced": 14373,
-  "internal_refs": 9786,
+  "pages_total": 382,
+  "rows_total": 17743,
+  "rows_flagged_or_sourced": 15110,
+  "internal_refs": 9853,
   "problems": []
 }
