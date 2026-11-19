@@ -4738,3 +4738,13 @@ Complete the PR #125 record left pending in the `arena/213236fb-x3` section, run
 
 Session `arena/55e3547f-x3` status: verification sweep complete; PR/merge/deploy in progress.
 
+
+### PR and deploy record — arena/5a7f85bc-x3 (2026-11-19)
+
+- **PR #128** — <https://github.com/karagemop466-tech/X3/pull/128> — `arena/5a7f85bc-x3` → `main`. One merge conflict (`COORDINATION.md`, both sessions appended at the end); resolved by keeping both sides in full, no lines dropped. All 14 PR checks green on the resolved head (`build`, `verify` × 9, `board`, `round2`, `signals`; `deploy` skipped on PR as designed). Merged with `gh pr merge 128 --merge` (merge commit `7d18c99`, 2026-11-19).
+- **Pages deploy:** workflow run `44599047902` (`Deploy X3 NFL site to GitHub Pages`) on `main` = **success**. GitHub Pages latest build for `7d18c99` = `built` (2026-11-19T19:30:37Z). The live landing page `https://karagemop466-tech.github.io/X3/` was fetched and renders the readiness table.
+- **Limit:** the fetch tool returns an error for every raw `.csv` on the site (including the existing `data/x3/verified/results_2026.csv`), so the new register's raw file was not fetched from Pages. Its content was checked in the repo by `scripts/brief_coverage_verify.py` instead.
+
+### New irregularity logged this session
+
+- **BR-04 — readiness table labels contradict their source notes.** On the live landing page (`hub/index.html`, rows R-01 to R-10 and R-31 region) the **Current state** cell reads `VERIFIED` while the source cell reads `UNVERIFIED — No official NFL source defines this policy/threshold`. Example: R-01 "Shared coordination board". A reader cannot tell whether the state or the source is authoritative. Not edited (hub owner's file; generated page). Request: the hub owner should decide whether "VERIFIED" in that column means "the internal gate passed" (then rename the column) or should be changed to match the UNVERIFIED source note.
