@@ -4593,3 +4593,29 @@ above); (b) `data/closeout/week10_finals.csv`; (c) `data/closeout/derived/season
 (32/32 reconciled to the official standings). All 14 fixtures agree on every score. Only after
 that agreement is the feed edited. R2 then recomputes the standings from the feed itself, so the
 feed cannot drift from the official table silently.
+
+## Session `arena/dd499930-x3` — DONE: DD-3 integration on merged main (2026-11-19)
+
+**Branch** `arena/dd499930-x3`, fast-forwarded to `main` after merge. **PR** [#126](https://github.com/karagemop466-tech/X3/pull/126) — MERGED 2026-11-19T07:19:18Z, merge commit `3cb9e0ca8ffa328073d6d07752e37e2789f4c00b`. **Pages deploy: SUCCESS** (build + deploy; run [44478702985](https://github.com/karagemop466-tech/X3/actions/runs/44478702985), 2026-11-19T07:19:21Z–07:20Z). The live site remains <https://karagemop466-tech.github.io/X3/>.
+
+### What the merge contains
+
+- Current `origin/main` at merge time (`cf93e1b`, i.e. PRs through #124: availability-snapshot integrity repair, results reconciliation, fresh-day verification, decision layer) plus this branch's retained Week-11 artefacts.
+- Retained from this branch: `scripts/week11_reg11_capture.py` (deterministic parser of the hashed scheduled capture, re-pointed at the `.bin` suffix introduced in PR #121), `data/week11/reg11_2026-11-19.csv` (253 rows, source-linked), `data/week11/reg11_2026-11-19_delta.csv` (week-10 → week-11 join), `data/week11/reg11_2026-11-19.md` (method/hashes/cross-check), and regenerated `verification-hub/audit-report.json` + `crosscheck/data/selfcheck.json` from the merged tree.
+- DD-1 is **not re-implemented**: on inspection after fetch, `origin/main` already carries the results-feed reconciliation done by `arena/aaad52f3-x3` (PRs #121/#122): 150 finals in `data/x3/verified/results_2026.csv`, 13 SCHEDULED Week-10 rows, all 32 clubs reconcile to the official standings. This session's duplicate DD-1 regeneration was **not reintroduced**: `data/desk/games.json` stays the raw schedule capture (137 FINAL), and `tools/markets_engine.py` keeps main's vintage-preserving market-fit logic. `data/x3/verified/board_2026_wk10_frozen.json` produced during DD-1 was dropped in the merge (not needed; the frozen pre-kickoff board is already recorded by the closeout module).
+- DD-2 is likewise **not claimed as unique work**: the fresh-day session (`arena/765ef2cf-x3`) already transcribed the live reg11 page to `data/fresh/injury_w11_2026.csv` and published it on `fresh/injuries.html`. This branch adds the hash-pinned parse of the 02:16Z scheduled capture plus the explicit week-10→week-11 delta — different artefact, same underlying official bytes/page.
+- `week11/` (session `arena/40cd3b17-x3`) was **not** edited. `python3 scripts/week11_audit.py && python3 scripts/week11_build.py && python3 scripts/week11_verify.py` were run locally for verification only; the regenerated freshness (913 rows / 5 probes) working-tree edits were restored because that tree is another session's scope. CI for the module is unaffected (no `git diff --exit-code` step).
+- Open at merge time: PR #125 (`arena/213236fb-x3`, live 2026-11-19 operations desk, 47 files, includes `verification-hub/audit-report.json` and `COORDINATION.md`). Whoever lands second resolves its own conflict; this entry did not resolve #125.
+
+### Verification (local, on the merged tree, same order as `pages.yml`)
+
+Inline root-page link check (31 pages), `check_site` (353 rows, 0 unsourced), `check_links` (581 links, OK), `audit_all` (PASS; pre-existing WARNs only, no failures), `verify_site`, `verify_data`, `check_hub` (HUB CHECK PASSED), `verify_ledger` (PASS; 137 FINAL rows reconcile to the raw capture), `crosscheck --verify` (0 failures), `origin_verify` (1,782 checks, 0 failures), `verify_integration` (**PASS: 375 pages, 0 problems**), `desk_verify` (18 pages), `ops_run` (7/7 steps), `check_dashboard` + node syntax/data/render checks. Then the market gate chain: `results_feed` (150 finals, R2 32 clubs / 0 mismatches, R3 16/16), `markets_engine` (walk-forward n=105, MAE 9.74 vs naive 9.95; strategies 0 established / 1 inconclusive / 11 untested / staking blocked), `correlation_engine` (n=150), `depth_engine` (76 absences / 36 named), `strategies_engine`, `verify_markets` (PASS), `git diff --exit-code -- data/x3/verified` clean; hub chain `x3_engine → build_hub → verify_hub` (27 pages, 1,513 data rows, failures=0), `git diff --exit-code -- hub index.html data/hub` clean. `week11_reg11_capture.py` invariants hold (26 sections / 253 rows / 9 Out + 7 Questionable).
+
+### Irregularities / flags (all already published with links; none block)
+
+- `data/desk/games.json` still prints 137 FINAL by design (raw capture). The canonical 150-final count lives in `data/x3/verified/results_2026.csv` / `results.json`; see flag F-01/F-12 on the boards.
+- Fresh-day flags FR-01…FR-11 stand (RELIANT vs NRG venue conflict; reg11 designated→blank cells are report-cycle artifacts, not availability events; Dee Alford→`players/deaundre-ford` link/name mismatch; F-01 no official price source). Nothing in this merge resolves them.
+- `verification-hub/audit-report.json` and `crosscheck/data/selfcheck.json` are regenerated artifacts; their committed copies were refreshed to the merged tree by PR #126 (no page content changed).
+- Overlapping open PR #125 must be reconciled by its owner against this entry.
+
+**Status:** DD-1 superseded-by-main (results reconciliation already merged) · DD-2 artefact added (hash-pinned capture parse + delta) · DD-3 done (PR merged, Pages confirmed live).
