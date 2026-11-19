@@ -1642,6 +1642,7 @@ def landing():
   <a class="card entry" href="hub/verified-results.html"><strong>Results &amp; settlement</strong><span>Official results feed, reconciliation, and the limits on ROI/backtests.</span></a>
   <a class="card entry" href="hub/injuries.html"><strong>Availability &amp; injuries</strong><span>Timestamped reports, known status, deltas, and evidence gaps.</span></a>
   <a class="card entry" href="hub/replacements.html"><strong>Depth &amp; replacements</strong><span>Starter evidence, replacement tier, shared slots, and unverified depth.</span></a>
+  <a class="card entry" href="depth/index.html"><strong>Dated depth-chart register</strong><span>Club chart rows with read date and source, shared/empty slots, conflicts, and flags.</span></a>
   <a class="card entry" href="hub/strategies.html"><strong>Strategies &amp; preregistration</strong><span>Frozen hypotheses, market families, controls, and change-our-mind criteria.</span></a>
   <a class="card entry" href="hub/leaderboard.html"><strong>Skill leaderboard</strong><span>Proper-score divisions, uncertainty, signal vs staking, and eligibility gates.</span></a>
   <a class="card entry" href="hub/correlation.html"><strong>Correlations</strong><span>Source classes, methods, sample sizes, and uncertainty.</span></a>

@@ -2,9 +2,9 @@
   "units": {
     "(root)": {
       "pages": 13,
-      "rows": 433,
-      "flagged_rows": 350,
-      "refs": 591,
+      "rows": 381,
+      "flagged_rows": 301,
+      "refs": 505,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -13,7 +13,7 @@
         "flagged.html: Live or historical betting lines / odds \u2014 No line archive or provider is present. NFL is not the source of bookmaker quo",
         "flagged.html: Strategy performance, edge, correlation \u2014 No wagers, outcomes, model output, holdout, or joint data in repository. Valid",
         "flagged.html: Item Type Detail Official source",
-        "index.html: Dataset Official source Status Notes"
+        "index.html: ID Requirement Status Where it lives Gate that blocks it Number that would clear it Source"
       ]
     },
     "agency": {
@@ -50,9 +50,9 @@
     },
     "atlas": {
       "pages": 23,
-      "rows": 927,
+      "rows": 928,
       "flagged_rows": 684,
-      "refs": 1341,
+      "refs": 1342,
       "unsourced_examples": [
         "atlas/availability.html: Date Club Kind Player What the official page says Source",
         "atlas/correlation.html: Quantity A Quantity B n Pearson r 95% low 95% high Source",
@@ -157,9 +157,9 @@
     },
     "decision": {
       "pages": 12,
-      "rows": 306,
+      "rows": 307,
       "flagged_rows": 125,
-      "refs": 493,
+      "refs": 495,
       "unsourced_examples": [
         "decision/flagged.html: id severity irregularity what the artefacts say proposed action source",
         "decision/flagged.html: F-D01 HIGH the frozen model applies exactly the fixed injury penalty the brief rejects hub/data/prereg.json pins pos_cos",
@@ -471,8 +471,8 @@
     }
   },
   "pages_total": 385,
-  "rows_total": 20123,
-  "rows_flagged_or_sourced": 17484,
-  "internal_refs": 9866,
+  "rows_total": 20073,
+  "rows_flagged_or_sourced": 17435,
+  "internal_refs": 9808,
   "problems": []
 }
