@@ -5026,3 +5026,19 @@ Branch `arena/7d73022d-x3` (platform-fixed; the `session-<id>/<task>` naming in 
 | D3 | Record the delta and the one-row contradiction (Heck) for the integration session; do NOT edit shared pages (`live/`, `readiness/`, `index.html`) | in progress | `COORDINATION.md` (append-only) |
 
 Not claimed (remain with their existing owners or blocked): price/odds data, results feed, parlay/prop evidence, depth-chart register, snap counts, roster-transaction log.
+
+### arena/7d73022d-x3 — DONE: D1–D3 (2026-11-19)
+
+| ID | Status | Result | Sources / verification |
+|----|--------|--------|------------------------|
+| D1 | done | Stored capture `readiness/data/history/2026-11-19/league-injury-report.bin` hashes to `d00b606b…3448e`, which matches `manifest.csv` (captured 2026-11-19T02:16:10Z, HTTP 200, 277 rows). The `league-schedule.bin` hash also matches the manifest. | `readiness/data/history/2026-11-19/`, `manifest.csv`, https://www.nfl.com/injuries/league/2026/reg11 |
+| D2 | done | Thursday IND@HOU block: **25 of 26 rows MATCH** the stored CSV on injury, practice and game status. **One DELTA: Charlie Heck (IND, T).** Stored (02:16:10Z): injury "Not injury related - personal matter", practice DNP, game status "Questionable". Live (fetched 22:02:09Z, stable on a second fetch): injury cell blank, DNP, game status blank. The raw stored bytes confirm the stored text. | `data/fresh_check/ind_hou_thu_2026_11_19_compare.csv`, `data/fresh_check/ind_hou_thu_2026_11_19_summary.json`, `data/fresh_check/compare_ind_hou.py` (reproduces the table from the stored files and the transcribed live values) |
+| D3 | done | Delta and the capture-gap finding recorded here for the integration session. No shared page was edited. | this entry |
+
+**Irregularities (for the Flagged for Review page; non-blocking):**
+1. **Heck (IND) delta.** The game-status and injury cells changed between the 02:16Z capture and the 22:02Z fetch. Only the rendered page could be compared from this sandbox; I could not obtain the live raw HTML, so I cannot say whether the page changed or the rendering dropped the cell. This row also appears as RV-01 on `live/reverify.html`; the new evidence should be attached there by the integration session. Source: https://www.nfl.com/injuries/league/2026/reg11
+2. **Scheduled capture gap.** The `availability-snapshots` workflow has exactly one run in GitHub history (`schedule`, 2026-11-19T02:16:05Z, success). The cron windows Wed 2026-11-18 21:00Z and Thu 2026-11-19 21:00Z have no run in the history at 22:02Z on 2026-11-19. GitHub scheduled runs can be delayed, so this needs a check on the next window. Workflow: `.github/workflows/availability-snapshots.yml`.
+3. **Audit gate rewrites a tracked file.** Running `scripts/audit_all.py` locally changes `verification-hub/audit-report.json` (row counts 928→929, refs 1342→1343 for atlas). I restored the file; the integration session should regenerate it through the gate chain rather than by hand (matches the earlier note on this file).
+4. **Not verifiable from this session:** a delta on the reg11 injury page for the other 14 teams was not checked; only IND@HOU was in scope. No official odds, results, roster-transaction, snap-count or depth source was fetched in this session; those rows stay as previously recorded.
+
+**Gates run on the branch base before any write (all passed):** `check_site`, `check_links`, `audit_all`, `verify_site`, `verify_data`, `check_hub`, `verify_ledger`, `origin_verify`, `verify_integration`, `desk_verify`, `check_dashboard`, `verify_readiness`, `drift_alarm`, `live_verify`.
