@@ -4638,3 +4638,17 @@ Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap chec
 - `scripts/audit_all.py`: **PASS** (`375` pages, `12,876` source rows).
 - **Flagged irregularities**: `LF-01` no official NFL market-price feed (market/diff/CLV/ROI/leaderboard kept blank/empty); `LF-02` `Azeez Al-Shaair` (HOU) & `Jaylon Carlies` (IND) placed on `11/17` Reserve/Injured yet still listed on `reg11`; `LF-03` `Daiyan Henley` listed in `11/10` LAC→DEN trade yet started `11/16` for LAC in `LAC@BAL` Game Book; `LF-04` 3 Week-11 Game Center stadium names differ from schedule page (`RELIANT STADIUM` vs `NRG Stadium`, `ARROWHEAD STADIUM` vs `GEHA Field`, `NORTHWEST STADIUM` vs `FedEx Field`); `LF-05` `MIN@SF` Mexico City outside NWS domain; `LF-06` Game Book name variants (`T.Though`/`T.Shough`, `J.Smith-Nijgba`, 2025 `Zach Bako-Bewele`); `LF-07` `CIN@WAS` MNF zero-injuries notice pending Thursday report; `LF-08` pre-existing `readiness/data/history/2026-11-19/*.html` tracked by `arena/46153df1-x3`.
 
+
+---
+
+## Session `arena/6bf76e24-x3` — CLAIM: current-state landing integration (2026-11-19)
+
+**Status:** in progress. This is the platform-assigned current branch; work remains on it.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| I-01 | Refresh the canonical root landing from the dated 2026-11-19 official-source capture; label Week-10 model inputs as historical, surface current freshness/price blockers without inference, and simplify navigation into decision-oriented categories while retaining the complete module directory and requirement register. | in progress | `tools/build_hub.py`, generated `index.html`, generated `hub/**`, `hub/assets/hub.css` |
+| I-02 | Update the README's current-state summary and verification entry points so it does not describe the 2026-11-14 snapshot as the latest evidence or misstate the available third-party market history. | in progress | `README.md` |
+| I-03 | Rebuild and run the landing/module gates; verify the source, freshness, and scope claims against committed dated official-source evidence; open/merge a PR from this branch only if checks pass, then record Pages deployment status. | in progress | verification only; `COORDINATION.md` (append-only), PR |
+
+**Overlap check:** the current coordination log has no active claim for `tools/build_hub.py`, root `index.html`, `hub/**`, or `README.md`; the prior integrations recorded above are merged. This task owns only the canonical landing integration and does not edit source datasets or another module's page.
