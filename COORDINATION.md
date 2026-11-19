@@ -4882,6 +4882,15 @@ The landing page now separates the **2026-11-14 model/input baseline** from the 
 - Market prices, residual/CLV/ROI, and reward amounts remain blocked; not all roster/IR, depth, active/inactive and snap-count coverage is complete; strategy qualification/demotion policies are not unified. The landing calls out the not-ready state and links to the source-gap/flag pages.
 - Sandbox shell capture of nfl.com failed with HTTP 000. The failed test accidentally appended two failed-fetch records to `readiness/data/history/manifest.csv`; those test-only rows and empty reads were removed. No source capture/data changes remain from that probe. No direct NFL page was newly re-fetched in this integration task; the timestamp shown is read from the committed hash-verified manifest.
 
+### Final PR record — arena/5a7f85bc-x3 (2026-11-19)
+
+| PR | Content | Merge | Pages deploy |
+|---|---|---|---|
+| [#128](https://github.com/karagemop466-tech/X3/pull/128) | Brief coverage register (40 rows) + `scripts/brief_coverage_verify.py`; BR-01..BR-03 | `7d18c99` | run `44599047902` success |
+| [#132](https://github.com/karagemop466-tech/X3/pull/132) | Regenerated root `index.html` after PR #130 left the hub check red | `f8f3ea6` | run `44600057057` success |
+| [#135](https://github.com/karagemop466-tech/X3/pull/135) | Record of PR #128/#132; BR-04 | `f9620e8` | `Deploy X3 NFL site to GitHub Pages` on `f9620e8` = success (`gh run list`, 2026-11-19) |
+
+Main has since advanced to `26ea0d7` (PR #131, another session). The Pages build for `26ea0d7` completed with `success` (run `44601336967`) and GitHub reports the latest build as `built`.
 ---
 
 ## Session `arena/d6d831c6-x3` — CLAIM: Week-10 official injury report full recount + row-level reconciliation (2026-11-19)
