@@ -28,7 +28,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Test snapshot integrity
+        run: python3 -m unittest discover -s scripts -p test_availability_snapshot.py
+
       - name: Capture official pages (raw + sha256 + manifest)
+        id: capture
+        continue-on-error: true
         run: python3 scripts/availability_snapshot.py
 
       - name: Commit snapshots (only when something new was stored)
@@ -38,7 +43,12 @@ jobs:
             git config user.email "actions@users.noreply.github.com"
             git add readiness/data/history
             git commit -m "snapshots: scheduled availability capture $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           else
             echo "no new snapshot content; nothing to commit"
           fi
+
+      - name: Surface capture alerts after preserving evidence
+        if: steps.capture.outcome == 'failure'
+        run: exit 1
