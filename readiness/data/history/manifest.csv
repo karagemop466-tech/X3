@@ -1,0 +1,3 @@
+captured_at_utc,slug,url,http_status,bytes,sha256,row_count
+2026-11-19T02:16:10+00:00,league-injury-report,https://www.nfl.com/injuries/,200,373969,d00b606b59242871a56455d762e338ad9a3192596a5da1a557e9666247b3448e,277
+2026-11-19T02:16:10+00:00,league-schedule,https://www.nfl.com/schedules/,200,2298706,9aae90a847be96cd507beb4b8ba45a65faeda6b0890072cdd1e69a1f58f8aa43,0
