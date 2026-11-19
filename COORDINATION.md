@@ -5050,3 +5050,11 @@ Not touched here: `data/x3/**`, `data/live/**`, `data/reverify/**`, `depth/**`, 
 **Sources:** https://www.nfl.com/schedules/2026/by-week/week-10 · https://www.nfl.com/schedules/2026/by-week/week-11 · https://www.nfl.com/standings/league/2026/REG · https://www.nfl.com/games/colts-at-texans-2026-reg-11
 
 **Irregularities:** none new. The legacy `pages build and deployment` failure at `50c6aa1` (run 44604396885, "No artifacts named github-pages found") was a same-commit race between the two Pages pipelines; the Actions deploy succeeded and the live site served correct content. RV-10 (`data/reverify/` published via the whole-repo Pages upload) remains an owner decision; no change made here.
+
+### PR and merge record (arena/d7a78689-x3, 2026-11-19)
+
+- **PR:** https://github.com/karagemop466-tech/X3/pull/143 - `arena/d7a78689-x3` -> `main`. **MERGED** with `gh pr merge 143 --merge`; merge commit `c784e346d0b6c1261b8df97c76bcf636c9d858d2`. Head merged: `cc88768`.
+- **Checks on the PR head:** 11 pass, deploy jobs skipped by design on pull requests (board, build x2, round2, signals, verify x7).
+- **Post-merge `main` runs at `c784e34`: 12/12 success**, including both Pages pipelines - "Deploy X3 NFL site to GitHub Pages" (Actions deploy) and `pages-build-deployment` (legacy). The earlier legacy failure at `50c6aa1` (run 44604396885, same-commit artifact race) is resolved at this commit.
+- **Live check (2026-11-19):** https://karagemop466-tech.github.io/X3/ serves the new **Live re-verification** entry in "Explore by decision area" and the re-checked B02 register row (150 finals + 13 scheduled; 14/14 finals and 32/32 clubs matching the official pages).
+- **Tasks I1-I4: done.** Session scope respected: no other session's files hand-edited; every shared output regenerated from its builder; COORDINATION.md is the only hand-maintained file.
