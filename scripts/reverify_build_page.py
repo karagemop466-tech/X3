@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REV = ROOT / "data" / "reverify"
-OUT = ROOT / "reverify" / "index.html"
+OUT = ROOT / "live" / "reverify.html"
 AS_OF = "2026-11-19"
 
 GB_URL = {}
@@ -195,7 +195,7 @@ th{{background:#f6f8fa}}
 a{{color:#0969da}}
 </style></head>
 <body>
-<p><a href="../">Home</a></p>
+<p><a href="index.html">&larr; Live desk</a></p>
 {body}
 </body></html>
 """
