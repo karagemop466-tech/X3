@@ -139,7 +139,7 @@ def main():
 
     # readiness
     rows.append("<h2>Decision-readiness register: rows re-checked</h2>")
-    rows.append("<p class='meta'>Status changes are applied in readiness/data/readiness.json and rebuilt by scripts/build_readiness.py. Each evidence link is shown below.</p>")
+    rows.append("<p class='meta'>Register: readiness/data/readiness.json. B25, B30 and B33 were set to partial on main by arena/ffc3eb40-x3 (commit 9350704); this session re-read the same official pages and the links below are the evidence. B55 and B63 were set by this session.</p>")
     rows.append("<table><thead><tr><th>ID</th><th>Requirement</th><th>Status before (2026-11-15)</th><th>Status now</th><th>Evidence in this session</th><th>Register source</th></tr></thead><tbody>")
     now = {}
     reg = json.loads((ROOT / "readiness" / "data" / "readiness.json").read_text())
