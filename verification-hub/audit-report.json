@@ -267,9 +267,9 @@
     },
     "live": {
       "pages": 7,
-      "rows": 755,
-      "flagged_rows": 737,
-      "refs": 801,
+      "rows": 757,
+      "flagged_rows": 739,
+      "refs": 803,
       "unsourced_examples": [
         "live/calibration-strategies.html: Team Player 2025 W10 Designation Practice Official 2025 Game Book Outcome Status Source",
         "live/calibration-strategies.html: Slot Leaderboard Division Current State &amp; Demotion / Falsifier Rule Status Source",
@@ -457,8 +457,8 @@
     }
   },
   "pages_total": 382,
-  "rows_total": 17743,
-  "rows_flagged_or_sourced": 15110,
+  "rows_total": 17745,
+  "rows_flagged_or_sourced": 15112,
   "internal_refs": 9853,
   "problems": []
 }

@@ -4648,3 +4648,17 @@ Scope this session (branch `arena/ffc3eb40-x3`, base `e5f771d`, single-session b
 | Q1 | Re-check the stale decision-readiness register rows B10, B23, B25, B30, B33 against the captured official data in `data/live/` (Week 10 Game Books, Week 11 Game Centers, November transactions, Week 10 snap shares) and correct status/gate/clears text | in progress | `readiness/data/readiness.json`, regenerated `readiness/*.html`, `fresh/*.html` |
 | Q2 | Live re-verification against nfl.com: Week 11 injury report (`/injuries/league/2026/reg11`) and TB@DET rows vs the capture | in progress | `data/live/**` (read only), this log |
 | Q3 | Record the open items from the full request list that cannot be closed from official sources in this sandbox (flags only, no invented values) | in progress | `COORDINATION.md` |
+
+## Session `arena/ffc3eb40-x3` — DONE (2026-11-19)
+
+Base `e5f771d` (main). Single-session branch; no overlapping claims.
+
+| ID | Task | Status | Sources checked (official) | Verification performed | Irregularities |
+|---|---|---|---|---|---|
+| Q1 | Re-check stale decision-readiness rows B10, B23, B25, B30, B33 against captured official data | **done** | `data/live/week10_gamebooks.csv` (14 W10 Game Books with `gamebook_pdf_url` and `gc_stadium`), `data/live/week11_lines_live.csv` (13 W11 `gc_venue`), `data/live/week10_snap_depth.csv` (92 Playtime Percentage rows), `data/live/transactions_audit.csv` (53 Nov events; source `https://www.nfl.com/transactions/league/trades/2026/11`) | Rows changed from `blocked` to `partial` with counts and scope; links resolve; `build_readiness.py`, `drift_alarm.py`, `verify_readiness.py`, `fresh_build.py`, `fresh_verify.py`, `audit_all.py` all PASS | B33 depth rows still not versioned against transactions (Baltimore QB flag open); B10/B30 cover Week 10 only |
+| Q2 | Live nfl.com check of Week 11 report and TB@DET designations | **done** (partial scope) | `https://www.nfl.com/injuries/league/2026/reg11` chunks 0-4 (IND@HOU, TB@DET Lions section, DET-related rows) | IND/HOU sample rows and the TB@DET Lions rows (Joseph Full Participation, Mays DNP, Reed Limited, game status blank) match `data/live/week11_injuries.csv`. Blank game status is the official Week-11 state, not a capture error. | Full 253-row live re-capture was not performed in this session; chunks 5-6 of reg11 not re-read |
+| Q3 | Flag items that cannot be closed from official sources here | **done** | `https://www.nfl.com/injuries/league/2026/reg10` chunks 1-5 | Lions Week 10 section (Joseph, Mays, Reed) NOT located in chunks 0-5, so the three Week-10 "Out" designations were **not** entered. Logged as `LF-09` (UNVERIFIED). | `LF-10`: the reg10 URL currently serves a page titled "Week 11 of the 2026 Season" while its content includes Week-10 games. Logged as FLAGGED. |
+
+Files changed: `readiness/data/readiness.json` (5 rows + `as_of` 2026-11-19), regenerated `readiness/*.html`, `readiness/data/change_mind.json`, `fresh/decision-board.html`, `scripts/live_build.py` (+LF-09, LF-10), regenerated `data/live/flagged.csv`, `data/live/manifest.json`, `live/flagged.html`, `verification-hub/audit-report.json` (regenerated artifact), this log.
+
+Scope note: the full request list (about 100 lines) is not closed by this session. Items that remain open and are blocked on sources or on decisions are listed in the executive summary and on the Flagged page, not marked done.
