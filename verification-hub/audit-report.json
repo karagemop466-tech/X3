@@ -4,7 +4,7 @@
       "pages": 13,
       "rows": 433,
       "flagged_rows": 350,
-      "refs": 590,
+      "refs": 591,
       "unsourced_examples": [
         "data.html: Information needed Required fields / definition Current value Source / evidence Decision use",
         "executive-summary.html:  Item  Detail  Source ",
@@ -169,6 +169,20 @@
         "decision/flagged.html: F-D10 LOW counts quoted in the brief are stale against the repository the brief cites 254 rows / 4 no-injury sections / ",
         "decision/flagged.html: F-D12 LOW two snapshot stores now exist in the project this session sealed data/snapshots/ledger.json + delta.json + wk1",
         "decision/landing-block.html: id requirement status gate that blocks it the number that would clear it source"
+      ]
+    },
+    "depth": {
+      "pages": 3,
+      "rows": 2378,
+      "flagged_rows": 2372,
+      "refs": 2401,
+      "unsourced_examples": [
+        "depth/flagged.html: ID Item Status Notes Source",
+        "depth/flagged.html: Snapshot Club Player Slots Source",
+        "depth/index.html: ID Brief item What the record shows Status Notes Source",
+        "depth/index.html: Club Change Player 2026-11-14 capture 2026-11-19 live Source",
+        "depth/index.html: Snapshot Club Unit Position Rows Rank-1 rows filled More than one rank-1 Shared Gaps Note Source",
+        "depth/index.html: Player Pos Injury Practice Game status (repo) Source"
       ]
     },
     "desk": {
@@ -456,9 +470,9 @@
       "unsourced_examples": []
     }
   },
-  "pages_total": 382,
-  "rows_total": 17745,
-  "rows_flagged_or_sourced": 15112,
-  "internal_refs": 9853,
+  "pages_total": 385,
+  "rows_total": 20123,
+  "rows_flagged_or_sourced": 17484,
+  "internal_refs": 9866,
   "problems": []
 }

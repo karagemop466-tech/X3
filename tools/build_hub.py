@@ -1696,6 +1696,13 @@ def landing():
             '<span>14/14 Week-10 Game Books, live Week-11 reg11 injuries &amp; W10-&gt;W11 delta, '
             'NWS hourly weather, Nov transactions, Rule 6 kickoff priors &amp; 2025/2026 calibration</span></a>')
 
+    # session arena/784043ed-x3: depth-chart register (dated per row, official club pages, conflicts
+    # between the 2026-11-14 captures and the 2026-11-19 live re-read). One additive nav entry only;
+    # the module keeps its own builder and gate (scripts/depth_build.py, scripts/depth_verify.py).
+    nav += ('<a href="depth/index.html"><b>Depth-chart register (dated)</b>'
+            '<span>Every club chart row with its read date and official page; 2026-11-14 captures '
+            'vs 2026-11-19 live re-read; conflicts and flags published</span></a>')
+
     # RD-01 (arena/6259c7b0-x3): decision-readiness table, one row per requirement,
     # with the gate that blocks it and the number that would clear it.
     with open(os.path.join(ROOT, "readiness", "data", "readiness.json"), encoding="utf-8") as _f:
