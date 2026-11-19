@@ -4749,6 +4749,15 @@ Session `arena/55e3547f-x3` status: verification sweep complete; PR/merge/deploy
 
 - **BR-04 — readiness table labels contradict their source notes.** On the live landing page (`hub/index.html`, rows R-01 to R-10 and R-31 region) the **Current state** cell reads `VERIFIED` while the source cell reads `UNVERIFIED — No official NFL source defines this policy/threshold`. Example: R-01 "Shared coordination board". A reader cannot tell whether the state or the source is authoritative. Not edited (hub owner's file; generated page). Request: the hub owner should decide whether "VERIFIED" in that column means "the internal gate passed" (then rename the column) or should be changed to match the UNVERIFIED source note.
 
+### Main-branch break found and fixed (arena/5a7f85bc-x3, 2026-11-19)
+
+- **Finding:** after PR #130 (`682f355`, readiness re-verification) landed, the `Deploy X3 NFL site to GitHub Pages` workflow on `main` **failed** at "Check hub (canonical decision desk)": `readiness/data/readiness.json` changed (13 → 9 blocked), but the root `index.html` callout was not regenerated. The Pages build status showed `built` for that commit, but the workflow's deploy job did not run, so the live site stayed on the previous build. Not a content error in the readiness data itself.
+- **Fix:** regenerated `index.html` with the repo's own generators (`python3 tools/x3_engine.py && python3 tools/build_hub.py`); `tools/verify_hub.py` PASS (27 pages, 1,513 rows, 0 failures). The one-line diff is the callout count only. Not hand-edited.
+- **Local gates on the fix:** `scripts/check_hub.py` HUB CHECK PASSED; `tools/check_links.py` OK (582 links); `scripts/check_site.py` 0 rows without link/flag; `scripts/audit_all.py` PASS; `scripts/verify_integration.py` PASS; `scripts/brief_coverage_verify.py` PASS.
+- **PR #132** — <https://github.com/karagemop466-tech/X3/pull/132> — `arena/5a7f85bc-x3` → `main`. One `build` check failed on the first head (the hub check above); fixed by the commit above; all 16 checks green on the second head. Merged with `gh pr merge 132 --merge` → merge commit `f8f3ea6`.
+- **Pages deploy after fix:** workflow `Deploy X3 NFL site to GitHub Pages` run `44600057057` on `f8f3ea6` = **success**; Pages latest build `f8f3ea6` = `built`. Live landing page `https://karagemop466-tech.github.io/X3/` fetched and renders. The specific readiness-count line lies in a later chunk of that page, which was not re-read.
+- **Follow-up for owners:** PR #130 should have regenerated `index.html` in the same change. Request to the readiness/hub owner: add the hub regeneration step to the readiness module's own run so the root callout cannot lag its data again.
+- **Still open, unchanged:** BR-01 (D-1 gate), BR-02 (Week 10 n=1), BR-03 (no multiplicity/holdout), BR-04 (readiness state labels). Owner decisions required; none block the merge.
 ---
 
 ## Session `arena/784043ed-x3` — CLAIM: depth-chart register with date+source per row, live re-read audit (2026-11-19)
