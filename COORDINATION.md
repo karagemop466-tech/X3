@@ -4738,3 +4738,11 @@ Complete the PR #125 record left pending in the `arena/213236fb-x3` section, run
 
 Session `arena/55e3547f-x3` status: verification sweep complete; PR/merge/deploy in progress.
 
+
+### PR and deploy record — session `arena/ffc3eb40-x3`
+
+- PR: https://github.com/karagemop466-tech/X3/pull/130 (`arena/ffc3eb40-x3` → `main`), **MERGED** 2026-11-19T19:32:23Z, merge commit `682f355ea398e54693d15c34b2b040caa7ec5784` (`gh pr merge 130 --merge`).
+- Two merge conflicts with main (both in `COORDINATION.md`, both append-only: PR #129 and PR #128). Resolved by keeping both sides; no other session's entries were removed.
+- PR checks before merge: all `verify`, `verify-live`, `board`, `build`, `round2`, `signals` jobs `pass`; `deploy` skipped on PRs by design.
+- Post-merge `pages` workflow run on main: **success** (build and deployment completed). GitHub Pages API reports the site as `built`. The public URL could not be fetched from the sandbox (outbound restricted), so the live render was not visually confirmed here.
+- Unresolved after merge: LF-09 (Week 10 Lions designations, UNVERIFIED), LF-10 (reg10 URL title mismatch), and the "Not done" list in the PR body.
