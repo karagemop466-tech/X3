@@ -4638,3 +4638,16 @@ Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap chec
 - `scripts/audit_all.py`: **PASS** (`375` pages, `12,876` source rows).
 - **Flagged irregularities**: `LF-01` no official NFL market-price feed (market/diff/CLV/ROI/leaderboard kept blank/empty); `LF-02` `Azeez Al-Shaair` (HOU) & `Jaylon Carlies` (IND) placed on `11/17` Reserve/Injured yet still listed on `reg11`; `LF-03` `Daiyan Henley` listed in `11/10` LAC→DEN trade yet started `11/16` for LAC in `LAC@BAL` Game Book; `LF-04` 3 Week-11 Game Center stadium names differ from schedule page (`RELIANT STADIUM` vs `NRG Stadium`, `ARROWHEAD STADIUM` vs `GEHA Field`, `NORTHWEST STADIUM` vs `FedEx Field`); `LF-05` `MIN@SF` Mexico City outside NWS domain; `LF-06` Game Book name variants (`T.Though`/`T.Shough`, `J.Smith-Nijgba`, 2025 `Zach Bako-Bewele`); `LF-07` `CIN@WAS` MNF zero-injuries notice pending Thursday report; `LF-08` pre-existing `readiness/data/history/2026-11-19/*.html` tracked by `arena/46153df1-x3`.
 
+
+## Session `arena/5a7f85bc-x3` — brief coverage register + gate verifier (CLAIM, 2026-11-19)
+
+Base `e5f771d` (main after PR #125). Claim before any write.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| BC-1 | Line-by-line coverage register: every brief requirement mapped to a file that exists, a status (Present / Partial / Blocked), and a stated gap | in progress | `analysis/brief-coverage-2026-11-19.csv` (new) |
+| BC-2 | Verifier that fails if a cited file, substring or source URL is missing | in progress | `scripts/brief_coverage_verify.py` (new) |
+| BC-3 | Log irregularities found while verifying (no edits to other sessions' engines or pages) | in progress | this section only |
+| BC-4 | Integration: PR -> merge (no approval wait, per brief) -> confirm Pages deploy -> record here | in progress | `COORDINATION.md`, PR |
+
+Explicitly not touched: `tools/strategies_engine.py`, `data/x3/verified/**`, any site page. The D-1 gate is pre-registered; it is flagged, not edited.
