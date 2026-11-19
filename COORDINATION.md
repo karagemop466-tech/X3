@@ -4489,3 +4489,12 @@ delta contents are now all derived rather than typed - a heading is as capable o
 - Verified source endpoints against the live [NFL injury report](https://www.nfl.com/injuries/) and [NFL schedule](https://www.nfl.com/schedules/): both showed 2026 Week 11. This confirms the endpoints, not every published player row or the report's publication time.
 - The two legacy raw files matched their recorded size and SHA-256. Their suffix changed from `.html` to `.bin` without changing a byte: vendor evidence was being audited as site HTML, breaking the integration build on NFL-relative links. New records preserve bytes, clock time and final URL per response and do not overwrite same-day captures. Tests cover same-day retention, hash fidelity, redirects and zero-row alerts. Repo audit passed (366 pages, 9,589 internal references).
 - Needs review: raw evidence is **not private**; a `.bin` suffix is not access control. No permission to redistribute raw NFL data was established. A restricted archive and retention policy, official depth and Game Book joins, and an authorized price feed remain separate blockers. Nothing in this change verifies a replacement, a price, or a strategy edge.
+---
+
+## Session `arena/13a5f257-x3` — claim: public/private boundary audit for scheduled NFL captures (2026-11-19)
+
+The session branch supplied by Arena is `arena/13a5f257-x3`; it is the only branch used. The repository task board was read before work began. This is a new, narrow governance task, not a duplicate of the completed availability-capture implementation.
+
+| ID | Task | Status | Owner | File scope |
+|---|---|---|---|---|
+| PVT-01 | Verify whether the automated NFL snapshot workflow places raw source captures in the public Pages artifact; review the applicable official NFL terms and log a scoped containment/rights-review request without editing another session's files | in progress | `arena/13a5f257-x3` | `COORDINATION.md` (append-only) |
