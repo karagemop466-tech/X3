@@ -1691,6 +1691,11 @@ def landing():
             '<span>Week-11 report first capture, slate and standings re-read, '
             'game-centre venue conflict flagged</span></a>')
 
+    # session arena/213236fb-x3 (L1-L6): live 2026-11-19 operations desk. One additive nav entry only.
+    nav += ('<a href="live/index.html"><b>Live 2026-11-19 operations desk</b>'
+            '<span>14/14 Week-10 Game Books, live Week-11 reg11 injuries &amp; W10-&gt;W11 delta, '
+            'NWS hourly weather, Nov transactions, Rule 6 kickoff priors &amp; 2025/2026 calibration</span></a>')
+
     # RD-01 (arena/6259c7b0-x3): decision-readiness table, one row per requirement,
     # with the gate that blocks it and the number that would clear it.
     with open(os.path.join(ROOT, "readiness", "data", "readiness.json"), encoding="utf-8") as _f:

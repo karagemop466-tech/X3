@@ -1,0 +1,363 @@
+team,player,pos,delta_type,w10_practice,w10_status,w11_practice,w11_status,injury,ir_or_tx_note,source_url
+AZ,Andrew Wingard,S,placed_on_IR,Did Not Participate In Practice,Questionable,Not listed,,Groin,FLAG: Reserve/Injured on 2026-11-17 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+AZ,Bam Knight,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+AZ,Budda Baker,S,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Dante Stills,DT,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+AZ,Darius Robinson,DT,status_changed,Limited Participation in Practice,Questionable,Full Participation in Practice,,Wrist,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Hjalte Froholdt,C,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Hunter Long,TE,removed_from_report,Limited Participation in Practice,Questionable,Not listed,,Knee,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+AZ,Isaac Seumalo,G,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Jayden Williams,T,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Jon Gaines II,G,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Josh Sweat,LB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Mack Wilson,LB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Max Melton,CB,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,"Knee, Hand",,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Roy Lopez,DT,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,"Toe, Ankle",,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Walter Nolen,DT,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+AZ,Zachary Carter,DT,status_changed,Limited Participation in Practice,Out,Full Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+BAL,Adam Randall,RB,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BAL,Jaylinn Hawkins,S,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BAL,Kyle Hamilton,S,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BAL,Matthew Hibner,TE,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BAL,Mike Green,LB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BAL,Nate Wiggins,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BAL,Nnamdi Madubuike,DT,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BAL,Olaivavega Ioane,G,status_changed,Full Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BAL,Rasheen Ali,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BAL,Rashod Bateman,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Alec Anderson,G,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Amani Hooker,S,new_via_trade,Not on W10 report,,Limited Participation in Practice,,,Traded TEN->BUF on 2026-11-10,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Ar'maj Reed-Adams,G,placed_on_IR,Full Participation in Practice,,Not listed,,,FLAG: Reserve/Injured on 2026-11-17 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+BUF,Christian Benford,CB,status_changed,Full Participation in Practice,Questionable,Did Not Participate In Practice,,Wrist,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Cole Bishop,S,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Connor McGovern,C,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Dalton Kincaid,TE,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Damar Hamlin,S,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Dee Alford,CB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Dion Dawkins,T,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Dorian Williams,LB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Ed Oliver,DE,removed_from_report,Did Not Participate In Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Greg Gaines,DT,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Jackson Hawes,TE,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Jordan Hancock,CB,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Hamstring,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Keon Coleman,WR,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,O'Cyrus Torrence,G,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Ray Davis,RB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Sam Franklin Jr.,S,removed_from_report,Limited Participation in Practice,Questionable,Not listed,,Shoulder,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Spencer Brown,T,removed_from_report,Did Not Participate In Practice,Doubtful,Not listed,,Ankle,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,T.J. Sanders,DE,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Terrel Bernard,LB,removed_from_report,Did Not Participate In Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+BUF,Ty Johnson,RB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+BUF,Tyrell Shavers,WR,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Bobby Okereke,LB,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Foot,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Brady Christensen,G,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Bryce Young,QB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Chuba Hubbard,RB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Damien Lewis,G,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+CAR,Darren Waller,TE,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Feleipe Franks,TE,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Isaiah Simmons,S,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Jackson Kuwatch,LB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Jaelan Phillips,LB,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Hamstring,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+CAR,Jonathon Brooks,RB,status_changed,Limited Participation in Practice,Doubtful,Full Participation in Practice,,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Lee Hunter,DT,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+CAR,Mike Jackson,CB,status_changed,Limited Participation in Practice,Doubtful,Full Participation in Practice,,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Tommy Tremble,TE,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Torricelli Simpkins III,G,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+CAR,Trevis Gipson,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Trevor Etienne,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+CAR,Will Lee III,CB,status_changed,Limited Participation in Practice,Questionable,Full Participation in Practice,,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+CAR,Xavier Legette,WR,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Knee,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+CHI,Jeffery Simmons,DT,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CHI,Kyle Monangai,RB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CHI,Kyler Gordon,CB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CHI,Luther Burden III,WR,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+CHI,Malik Muhammad,CB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Alijah Clark,S,removed_from_report,Did Not Participate In Practice,Questionable,Not listed,,Illness,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,Brevyn Spann-Ford,TE,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,DaRon Bland,CB,status_changed,Limited Participation in Practice,Questionable,Did Not Participate In Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,DeMarvion Overshown,LB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,Devin Moore,CB,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Hip,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Donovan Ezeiruaku,LB,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,George Pickens,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,Jake Ferguson,TE,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,"Knee, Ankle",,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Jalen Thompson,S,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,James Houston,LB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Joey Porter Jr.,CB,status_changed,Limited Participation in Practice,Questionable,Full Participation in Practice,,"Ankle, Foot",,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Jonathan Bullard,DT,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Calf,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,Jonathan Mingo,WR,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Juanyeh Thomas,S,status_changed,Did Not Participate In Practice,Doubtful,Limited Participation in Practice,,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,KaVontae Turpin,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,Luke Schoonmaker,TE,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,Malik Hooker,S,status_changed,Did Not Participate In Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Marist Liufau,LB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DAL,Otito Ogbonnia,DE,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,P.J. Locke,S,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Tyler Booker,G,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DAL,Tyler Goodson,RB,placed_on_IR,Did Not Participate In Practice,Out,Not listed,,"Ankle, Knee",FLAG: Reserve/Injured on 2026-11-14 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+DAL,Von Miller,LB,unchanged,Did Not Participate In Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Adam Prentice,FB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Brandon Jones,S,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Caleb Lohner,TE,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Courtland Sutton,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Jaylen Waddle,WR,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Kris Abrams-Draine,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Riley Moss,CB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Talanoa Hufanga,S,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DEN,Zach Allen,DE,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DET,Amon-Ra St. Brown,WR,removed_from_report,Limited Participation in Practice,Questionable,Not listed,,Rib,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DET,Brian Branch,S,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DET,Cade Mays,C,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+DET,D.J. Reed,CB,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,,Hip,,https://www.nfl.com/injuries/league/2026/reg11
+DET,DJ Wonnum,DE,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DET,Ennis Rakestraw Jr.,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DET,Jacob Saylors,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DET,Jared Goff,QB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+DET,Joe Bachie,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DET,Kerby Joseph,S,status_changed,Did Not Participate In Practice,Out,Full Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+DET,Khalil Dorsey,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+DET,Sione Vaki,RB,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+DET,Tyler Lacy,DE,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Azeez Al-Shaair,LB,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,"Groin, Not injury related - personal matter",FLAG: Placed on Reserve/Injured on 2026-11-17 while listed on reg11,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Blake Fisher,T,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Brevin Jordan,TE,unchanged,Did Not Participate In Practice,Out,Did Not Participate In Practice,Out,"Foot, Illness",,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Danielle Hunter,DE,unchanged,Did Not Participate In Practice,Out,Did Not Participate In Practice,Out,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,David Montgomery,RB,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Febechi Nwaiwu,G,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Jacob Hummel,LB,unchanged,Full Participation in Practice,Questionable,Full Participation in Practice,Questionable,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Jaylin Smith,CB,unchanged,Full Participation in Practice,Questionable,Full Participation in Practice,Questionable,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Kamari Lassiter,CB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Keylan Rutledge,G,status_changed,Did Not Participate In Practice,Out,Full Participation in Practice,,"Neck, Shoulder",,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Marvin Harrison Jr.,WR,unchanged,Did Not Participate In Practice,Out,Did Not Participate In Practice,Out,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Reed Blankenship,S,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Tank Dell,WR,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Tommy Togiai,DT,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+HOU,Trent Brown,T,removed_from_report,Did Not Participate In Practice,Questionable,Not listed,,"Wrist, Illness",Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+HOU,Will Anderson Jr.,DE,removed_from_report,Did Not Participate In Practice,Questionable,Not listed,,Ankle,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+HOU,Woody Marks,RB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,Out,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+HOU,Wyatt Teller,G,status_changed,Limited Participation in Practice,Questionable,Full Participation in Practice,Questionable,Back,,https://www.nfl.com/injuries/league/2026/reg11
+IND,A.J. Haulcy,S,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+IND,Akeem Davis-Gaither,LB,placed_on_IR,Did Not Participate In Practice,Out,Not listed,,Knee,FLAG: Reserve/Injured on 2026-11-14 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+IND,Anthony Gould,WR,new_to_report,Not on W10 report,,Full Participation in Practice,Questionable,Toe,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Arden Key,DE,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Hamstring,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+IND,Bernhard Raimann,T,new_to_report,Not on W10 report,,Did Not Participate In Practice,Out,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Charlie Heck,T,new_to_report,Not on W10 report,,Did Not Participate In Practice,Questionable,Not injury related - personal matter,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Charvarius Ward,CB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,Out,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+IND,CJ Allen,LB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+IND,Dalton Tucker,G,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Grover Stewart,DT,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+IND,Jalen Travis,T,unchanged,Did Not Participate In Practice,Out,Did Not Participate In Practice,Out,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Jaylon Carlies,LB,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Neck,FLAG: Placed on Reserve/Injured on 2026-11-17 while listed on reg11,https://www.nfl.com/injuries/league/2026/reg11
+IND,Jerry Tillery,DT,unchanged,Did Not Participate In Practice,Out,Did Not Participate In Practice,Out,Calf,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Jonathan Taylor,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+IND,Justin Walley,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+IND,Luke Rhodes,LS,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,Questionable,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Mo Alie-Cox,TE,placed_on_IR,Did Not Participate In Practice,Out,Not listed,,Groin,FLAG: Reserve/Injured on 2026-11-14 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+IND,Sauce Gardner,CB,new_to_report,Not on W10 report,,Did Not Participate In Practice,Questionable,Calf,,https://www.nfl.com/injuries/league/2026/reg11
+IND,Will Mallory,TE,status_changed,Limited Participation in Practice,Questionable,Did Not Participate In Practice,Out,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Antonio Johnson,S,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Arik Armstead,DT,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Bhayshul Tuten,RB,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,BJ Green II,DE,status_changed,Full Participation in Practice,Out,Full Participation in Practice,,Forearm,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Branson Combs,LB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+JAX,Chris Rodriguez Jr.,RB,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Danny Striggow,DE,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Ezra Cleveland,G,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+JAX,Jakobi Meyers,WR,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Jalen McLeod,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Jessie Bates,S,removed_from_report,Limited Participation in Practice,Out,Not listed,,Not injury related - resting player,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+JAX,Jonah Monheim,C,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Jordan Davis,DT,removed_from_report,Limited Participation in Practice,Out,Not listed,,Not injury related - resting player,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+JAX,LeQuint Allen Jr.,RB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Matt Dickerson,DT,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Robert Hainsey,C,status_changed,Limited Participation in Practice,Questionable,Did Not Participate In Practice,,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+JAX,Travon Walker,DE,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Alohi Gilman,S,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Jaden Hicks,S,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+KC,Jadon Canady,CB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Jaydn Ott,RB,status_changed,Limited Participation in Practice,Questionable,Full Participation in Practice,,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Jaylon Moore,T,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Jeffrey Bassa,LB,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Justin Fields,QB,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Kenneth Walker III,RB,status_changed,Did Not Participate In Practice,Questionable,Did Not Participate In Practice,,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Mansoor Delane,CB,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Shoulder,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Nick Bolton,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Omarr Norman-Lott,DT,status_changed,Limited Participation in Practice,Out,Limited Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Patrick Mahomes,QB,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Peter Woods,DT,status_changed,Did Not Participate In Practice,Out,Full Participation in Practice,,Neck,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Rashee Rice,WR,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Travis Kelce,TE,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Trey Smith,G,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+KC,Xavier Worthy,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Alex Harkey,G,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Branson Taylor,G,placed_on_IR,Did Not Participate In Practice,,Not listed,,,FLAG: Reserve/Injured on 2026-11-16 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+LAC,Brenen Thompson,WR,unchanged,Did Not Participate In Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Bud Dupree,DE,removed_from_report,Did Not Participate In Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Cam Hart,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Charlie Kolar,TE,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Daiyan Henley,LB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,Traded LAC->DEN on 2026-11-10,https://www.nfl.com/injuries/league/2026/reg11
+LAC,David Njoku,TE,removed_from_report,Limited Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Deane Leonard,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Denzel Perryman,LB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Donte Jackson,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Isas Waxter,CB,unchanged,Did Not Participate In Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Justin Eboigbe,DE,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Kayode Awosika,G,removed_from_report,Limited Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Keaton Mitchell,RB,removed_from_report,Limited Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Kendall Williamson,S,status_changed,Did Not Participate In Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Khalil Mack,DE,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Ladd McConkey,WR,status_changed,Did Not Participate In Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Rodney Shelley,CB,status_changed,Limited Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LAC,Tre Harris,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LAC,Trey Pipkins,T,status_changed,Did Not Participate In Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LV,Brock Bowers,TE,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LV,Dont'e Thornton Jr.,WR,removed_from_report,Did Not Participate In Practice,Questionable,Not listed,,Back,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+LV,Foley Fatukasi,DT,status_changed,Full Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LV,Ian Thomas,TE,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LV,Matt Gay,K,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LV,Thomas Booker,DT,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+LV,Tonka Hemingway,DT,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+LV,Trey Zuhn III,C,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIA,Aaron Brewer,C,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Andrew Meyer,C,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Bradley Pinion,P,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Caleb Douglas,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Chris Bell,WR,status_changed,Did Not Participate In Practice,Doubtful,Limited Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Dante Trader Jr.,S,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Darrell Baker Jr.,CB,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Jared Wayne,WR,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Quadricep,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Jaylen Wright,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIA,Jaylin Simpson,CB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Julius Brents,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Kaytron Allen,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIA,Malik Herring,DE,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIA,Michael Taaffe,S,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIA,Tucker Addington,LS,unchanged,Limited Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIA,Will Kacmarek,TE,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIN,Andrew Van Ginkel,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Blake Cashman,LB,status_changed,Limited Participation in Practice,Out,Full Participation in Practice,,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Carson Wentz,QB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIN,Christian Darrisaw,T,removed_from_report,Did Not Participate In Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIN,Harrison Smith,S,removed_from_report,Limited Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIN,Jauan Jennings,WR,status_changed,Did Not Participate In Practice,Out,Full Participation in Practice,,Calf,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Jay Ward,S,status_changed,Full Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Jeshaun Jones,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Jordan Addison,WR,status_changed,Limited Participation in Practice,Questionable,Did Not Participate In Practice,,Thumb,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Josh Metellus,S,removed_from_report,Limited Participation in Practice,Questionable,Not listed,,Shoulder,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIN,Kyle Van Noy,LB,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,Calf,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Kyler Murray,QB,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Hamstring,,https://www.nfl.com/injuries/league/2026/reg11
+MIN,T.J. Hockenson,TE,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,,"Wrist, Chest",,https://www.nfl.com/injuries/league/2026/reg11
+MIN,Theo Jackson,S,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+MIN,Tyrion Ingram-Dawkins,DT,status_changed,Did Not Participate In Practice,Out,Full Participation in Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Alvin Kamara,RB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Asim Richards,T,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Christen Miller,DT,placed_on_IR,Did Not Participate In Practice,Out,Not listed,,Knee,FLAG: Reserve/Injured on 2026-11-14 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+NO,CJ Donaldson,RB,status_changed,Did Not Participate In Practice,Out,Full Participation in Practice,,Shoulder,,https://www.nfl.com/injuries/league/2026/reg11
+NO,David Edwards,G,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NO,Decamerion Richardson,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Erik McCoy,C,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Biceps,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Jordyn Tyson,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Justin Reid,S,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Kelvin Banks Jr.,T,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NO,Martin Emerson,CB,status_changed,Limited Participation in Practice,Questionable,Did Not Participate In Practice,,Shin,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Noah Fant,TE,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NO,Pete Werner,LB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Quincy Riley,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NO,Taliese Fuaga,T,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+NO,Travis Etienne,RB,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Hamstring,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Abdul Carter,LB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Andrew Thomas,T,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Ben Mann,LS,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYG,Cam Skattebo,RB,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYG,Charlie Jones,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Colton Hood,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Darnell Mooney,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Deonte Banks,CB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYG,J.J. McCarthy,QB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Jason Pinnock,S,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYG,Jermaine Eluemunor,T,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Malik Harrison,LB,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+NYG,Malik Nabers,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYG,Nic Jones,CB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYG,Theo Johnson,TE,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Adonai Mitchell,WR,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Knee,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYJ,David Onyemata,DT,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Dylan Parham,G,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Garrett Wilson,WR,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Concussion,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Geno Smith,QB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Harrison Phillips,DT,status_changed,Full Participation in Practice,Questionable,Did Not Participate In Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Isaiah Williams,WR,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Jarvis Brownlee Jr.,CB,removed_from_report,Limited Participation in Practice,Questionable,Not listed,,Illness,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Joseph Ossai,DE,status_changed,Full Participation in Practice,Questionable,Limited Participation in Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Nahshon Wright,CB,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Back,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Omar Cooper Jr.,WR,status_changed,Full Participation in Practice,Questionable,Did Not Participate In Practice,,Ankle,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,Trevin Wallace,LB,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+NYJ,VJ Payne,S,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Knee,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+PHI,Andrew Mukuba,S,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Britain Covey,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,DeVonta Smith,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Dontayvion Wicks,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Jalyx Hunt,LB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Jihaad Campbell,LB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Jonathan Greenard,LB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Jonathan Jones,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Michael Carter II,CB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Nolan Smith,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Saquon Barkley,RB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Smael Mondon Jr.,LB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Tanner McKee,QB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Will Shipley,RB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PHI,Zack Baun,LB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Ben Skowronek,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+PIT,Brandin Echols,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+PIT,Cameron Heyward,DT,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Darnell Washington,TE,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Derrick Harmon,DT,removed_from_report,Full Participation in Practice,Questionable,Not listed,,Foot,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+PIT,DeShon Elliott,S,status_changed,Full Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Doneiko Slaughter,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+PIT,Gennings Dunker,G,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Jalen Ramsey,CB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Michael Pittman,WR,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Nick Herbig,LB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Patrick Queen,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,Roman Wilson,WR,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+PIT,T.J. Watt,LB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,C.J. West,DT,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Christian McCaffrey,RB,status_changed,Full Participation in Practice,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Deebo Samuel Sr.,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+SF,Demarcus Robinson,WR,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+SF,Deommodore Lenoir,CB,removed_from_report,Limited Participation in Practice,Questionable,Not listed,,Foot,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+SF,Dre Greenlaw,LB,status_changed,Limited Participation in Practice,Questionable,Did Not Participate In Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Ji'Ayir Brown,S,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Jon Weeks,LS,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Khalid Kareem,DE,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Luke Gifford,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Mac Jones,QB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Mike Evans,WR,status_changed,Did Not Participate In Practice,Out,Did Not Participate In Practice,,Achilles,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Mykel Williams,DE,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Nate Hobbs,CB,status_changed,Full Participation in Practice,Questionable,Full Participation in Practice,,Groin,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Renardo Green,CB,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,Back,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Siran Neal,S,status_changed,Full Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Trent Williams,T,status_changed,Did Not Participate In Practice,Questionable,Did Not Participate In Practice,,Shoulder,,https://www.nfl.com/injuries/league/2026/reg11
+SF,Upton Stout,CB,status_changed,Limited Participation in Practice,Questionable,Limited Participation in Practice,,"Shoulder, Neck",,https://www.nfl.com/injuries/league/2026/reg11
+TB,Antoine Winfield Jr.,S,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TB,Baker Mayfield,QB,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TB,Cade Otton,TE,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TB,Josh Hayes,CB,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TB,Tristan Wirfs,T,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TB,Yaya Diaby,LB,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Anthony Hill Jr.,LB,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,,Neck,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Carnell Tate,WR,status_changed,Did Not Participate In Practice,Out,Limited Participation in Practice,,Shoulder,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Cody Barton,LB,status_changed,Did Not Participate In Practice,Out,Full Participation in Practice,,Concussion,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Fernando Carmona,G,new_to_report,Not on W10 report,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Jaylon Jones,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+TEN,JC Latham,T,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+TEN,John Franklin-Myers,DE,status_changed,Full Participation in Practice,,Limited Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Kevin Winston Jr.,S,unchanged,Full Participation in Practice,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Kylen Granson,TE,new_to_report,Not on W10 report,,Full Participation in Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Marcus Harris,CB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+TEN,Peter Skoronski,G,placed_on_IR,Did Not Participate In Practice,Out,Not listed,,Hamstring,FLAG: Reserve/Injured on 2026-11-14 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+TEN,Tommy Townsend,P,placed_on_IR,Did Not Participate In Practice,Out,Not listed,,"Knee, Achilles",FLAG: Reserve/Injured on 2026-11-14 ('not listed' != available),https://www.nfl.com/transactions/league/reserve-list/2026/11
+TEN,Tony Adams,S,new_to_report,Not on W10 report,,Did Not Participate In Practice,,,,https://www.nfl.com/injuries/league/2026/reg11
+TEN,Tony Pollard,RB,removed_from_report,Full Participation in Practice,,Not listed,,,Not listed on W11 report (check roster/IR),https://www.nfl.com/injuries/league/2026/reg11
+TEN,Tyjae Spears,RB,status_changed,Full Participation in Practice,Questionable,Did Not Participate In Practice,,Knee,,https://www.nfl.com/injuries/league/2026/reg11

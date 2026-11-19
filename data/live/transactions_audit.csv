@@ -1,0 +1,54 @@
+category,date,from_team,to_team,player,transaction,audit_note,source_url
+trades,2026-11-10,ATL,JAX,Jessie Bates,Traded,,https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,PHI,JAX,Jordan Davis,Traded,,https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,TEN,BUF,Amani Hooker,Traded,Verified active/played in Week-10 Game Book for new club (BUF),https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,IND,SF,Keenan Allen,Traded,Verified active/played in Week-10 Game Book for new club (SF),https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,LV,MIN,Kirk Cousins,Traded,Verified active/played in Week-10 Game Book for new club (MIN),https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,LAC,DEN,Daiyan Henley,Traded,"FLAG: Official 11/10 trade lists LAC->DEN, but 11/16 LAC@BAL Game Book still lists LB 0 D.Henley starting with 11 tackles",https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,IND,KC,Josh Downs,Traded,Verified active/played in Week-10 Game Book for new club (KC),https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,ATL,BAL,Ryan Neuzil,Traded,,https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-10,BAL,ATL,Andrew Vorhees,Traded,,https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-09,NYJ,DET,Andre Cisco,Traded,,https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-09,NO,JAX,Davon Godchaux,Traded,,https://www.nfl.com/transactions/league/trades/2026/11
+trades,2026-11-06,AZ,BAL,Jacoby Brissett,Traded,Verified active/played in Week-10 Game Book for new club (BAL),https://www.nfl.com/transactions/league/trades/2026/11
+reserve-list,2026-11-18,PIT,PIT,Mason McCormick,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-18,KC,KC,Jared Wiley,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-18,DET,DET,Aidan Hutchinson,Reserve/Injured,"Played 9 snaps (15%) vs NE on 11/15, placed on Reserve/Injured 11/18; absent from reg11 report",https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-18,MIN,MIN,Bo Richter,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,HOU,HOU,Azeez Al-Shaair,Reserve/Injured,FLAG: Placed on Reserve/Injured (2026-11-17) yet still appears on Week-11 reg11 practice report,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,MIA,MIA,Zeek Biggers,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,MIA,MIA,Jordan Phillips,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,AZ,AZ,Andrew Wingard,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,AZ,AZ,Jordan Burch,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,BUF,BUF,Ar'maj Reed-Adams,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,IND,IND,Jaylon Carlies,Reserve/Injured,FLAG: Placed on Reserve/Injured (2026-11-17) yet still appears on Week-11 reg11 practice report,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-17,TEN,TEN,Wan'Dale Robinson,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-16,LA,LA,Dylan McMahon,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-16,LAC,LAC,Branson Taylor,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,NO,NO,Christen Miller,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,NE,NE,TreVeyon Henderson,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,CLE,CLE,Michael Burton,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,IND,IND,Mo Alie-Cox,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,IND,IND,Akeem Davis-Gaither,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,TEN,TEN,Peter Skoronski,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,TEN,TEN,Tommy Townsend,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,DAL,DAL,Tyler Goodson,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-14,GB,GB,Josh Whyle,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-12,LA,LA,Puka Nacua,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+reserve-list,2026-11-10,LA,LA,Jordan Whittington,Reserve/Injured,Active Reserve/Injured — excludes player from available depth,https://www.nfl.com/transactions/league/reserve-list/2026/11
+other,2026-11-09,SF,SF,Brandon Aiyuk,Exempt/Commissioner Permission,,https://www.nfl.com/transactions/league/other/2026/11
+other,2026-11-02,ATL,ATL,James Pearce Jr.,Suspension Lifted by Commissioner,,https://www.nfl.com/transactions/league/other/2026/11
+other,2026-11-02,BUF,BUF,C.J. Gardner-Johnson,Suspension Lifted by Commissioner,,https://www.nfl.com/transactions/league/other/2026/11
+waivers,2026-11-18,DAL,PHI,Ajani Cornelius,Assigned via Waivers,,https://www.nfl.com/transactions/league/waivers/2026/11
+waivers,2026-11-17,MIA,CLE,Jamree Kromah,Assigned via Waivers,,https://www.nfl.com/transactions/league/waivers/2026/11
+waivers,2026-11-16,PHI,--,Marquise Brown,"Terminated Via Waivers, all contracts",,https://www.nfl.com/transactions/league/waivers/2026/11
+waivers,2026-11-16,PHI,--,Fred Johnson,"Terminated Via Waivers, all contracts",,https://www.nfl.com/transactions/league/waivers/2026/11
+terminations,2026-11-10,MIN,--,Odell Beckham Jr.,"Terminated, Vested Veteran, all contracts",,https://www.nfl.com/transactions/league/terminations/2026/11
+terminations,2026-11-06,DEN,--,Taylor Rapp,"Terminated, Vested Veteran, all contracts",,https://www.nfl.com/transactions/league/terminations/2026/11
+terminations,2026-11-03,BUF,--,C.J. Gardner-Johnson,"Terminated, Vested Veteran, all contracts",,https://www.nfl.com/transactions/league/terminations/2026/11
+signings,2026-11-18,--,MIN,Jeshaun Jones,Free Agent Signing,,https://www.nfl.com/transactions/league/signings/2026/11
+signings,2026-11-18,--,MIA,Max Llewellyn,Free Agent Signing,,https://www.nfl.com/transactions/league/signings/2026/11
+signings,2026-11-17,--,DAL,Nick Leverett,Free Agent Signing,,https://www.nfl.com/transactions/league/signings/2026/11
+signings,2026-11-17,--,MIA,Brady Cook,Free Agent Signing,,https://www.nfl.com/transactions/league/signings/2026/11
+signings,2026-11-17,--,MIA,Eric Watts,Free Agent Signing,,https://www.nfl.com/transactions/league/signings/2026/11
+signings,2026-11-18,--,KC,Fred Johnson,Practice Squad Veteran,,https://www.nfl.com/transactions/league/signings/2026/11
