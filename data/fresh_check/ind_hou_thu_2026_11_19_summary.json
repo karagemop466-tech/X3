@@ -1,0 +1,14 @@
+{
+  "game": "IND@HOU (Thu 2026-11-19, Week 11)",
+  "source_url": "https://www.nfl.com/injuries/league/2026/reg11",
+  "stored_capture_utc": "2026-11-19T02:16:10Z",
+  "stored_capture_sha256": "d00b606b59242871a56455d762e338ad9a3192596a5da1a557e9666247b3448e",
+  "live_fetch_utc": "2026-11-19T22:02:09Z",
+  "rows_compared": 26,
+  "match": 25,
+  "delta": [
+    "IND Charlie Heck: DELTA: injury,game"
+  ],
+  "live_names_missing_from_stored": [],
+  "note": "Only the live page's rendered table was compared (markdown rendering). The stored capture's Heck injury text is confirmed in the raw bytes; the live rendered cell is blank."
+}
