@@ -4493,6 +4493,8 @@ delta contents are now all derived rather than typed - a heading is as capable o
 
 | Task | Status | Owner | Scope |
 |---|---|---|---|
-| Reconcile the market-layer results feed with official Week 10 finals (F-01/F-12); preserve historical strategy windows | in progress | arena/aaad52f3-x3 | `tools/results_feed.py`, generated `data/x3/verified/` and affected integration surfaces if required |
+| Reconcile the market-layer results feed with official Week 10 finals (F-01/F-12); preserve historical strategy windows | done | arena/aaad52f3-x3 | `tools/results_feed.py`, generated `data/x3/verified/` and affected integration surfaces if required |
 
 Week 10 score verification: both chunks of the [official schedule](https://www.nfl.com/schedules/2026/by-week/week-10) checked against all 14 captured finals on 2026-11-19. The feed now contains 150 finals and 13 captured fixtures without scores; all 32 clubs reconcile to the [official league standings](https://www.nfl.com/standings/league/2026/REG). Historical model outputs are unchanged. Board/closeout owners: please mark the stale-count findings F-01/F-12 and V-01/V-03 as historical; the hub feed now agrees with the 150-game closeout on finals. This does not verify missing venues, availability, or prices.
+
+Rebase over PR #121: resolved the coordination append conflict by retaining both sessions’ entries. Its raw-file suffix repair cleared the pre-existing link-audit errors. Negative test: a changed Week 10 score fails without writing results. Market determinism and repo-wide integration passed; 366 HTML pages, zero integration problems.
