@@ -4945,3 +4945,14 @@ Not claimed or changed here: any market, price, CLV, ROI, leaderboard, or stakin
 - **Local gates on the rebased tree, all exit 0:** `recount_verify`, `audit_all`, `check_links`, `check_site`, `verify_site`, `verify_integration`, `verify_data`, `check_hub`, `verify_readiness`, `verify_ledger`, `crosscheck --verify`, `origin_verify`, `desk_verify`, `ops_run`, `check_dashboard` + node checks, `results_feed` → `markets_engine` → `correlation_engine` → `depth_engine` → `strategies_engine` → `verify_markets` (no change under `data/x3/verified`), `decision` rebuild + verify, `atlas` rebuild + verify.
 - `crosscheck/data/selfcheck.json` is rewritten with a new timestamp on every run of `crosscheck --verify`. It is reverted in this commit and is not part of W10R.
 - **Irregularity:** GitHub's failed-step logs for the 2026-11-19 PR #133 runs could not be downloaded (EOF / blob errors). The failing steps were identified from the jobs API and reproduced locally instead.
+## Session `arena/55cbd2af-x3` — CLAIM: line-by-line re-verification of the 2026-11-19 live captures + readiness refresh (2026-11-19, before any data write)
+
+Branch `arena/55cbd2af-x3` (platform-fixed; the `session-<id>/<task>` naming in the brief is not used for the same reason earlier sessions gave). Base `main` @ `e5f771d`. No other open claim, PR or remote branch touches these paths at claim time (checked: `git branch -a`, `git fetch origin`; only `main` exists on origin).
+
+| ID | Task | Status | File scope |
+|----|------|--------|-----------|
+| R1 | Re-read the official Week-10 Game Book PDFs (chunk 0 = lineups + Not Active / Did Not Play; chunk 6-7 = playtime) and the live reg11 / reserve-list pages; compare every captured row line by line; publish MATCH / CORRECTED / CONFLICT / UNRESOLVED with source links | in progress | NEW `reverify/**`, NEW `data/reverify/**`, NEW `scripts/reverify_*.py` |
+| R2 | Correct the one game whose captured inactive lists are contradicted by the official book (WAS@NYG, both clubs) with an annotated overlay; regenerate `data/live/**` through `scripts/live_build.py`; add LF rows for each unresolved item | in progress | `data/live/raw/week10_gamebooks_2026.json` (WAS@NYG lists only), `data/live/**` (generated), `scripts/live_build.py` (flag rows only) |
+| R3 | Refresh the decision-readiness register rows that the evidence changes (B02, B10, B19, B23, B25, B30, B33, B55, B63); regenerate the readiness pages, the decision board and the landing page through their generators | in progress | `readiness/data/readiness.json`, `readiness/**` (generated), `fresh/**` (generated), `index.html` + `hub/**` (generated, one additive nav entry) |
+| R4 | Gate + CI + PR → merge (no approval wait, per the brief) → confirm GitHub Pages deploy → record PR link and result here | in progress | `.github/workflows/pages.yml` (one added step), `COORDINATION.md` (append-only) |
+
