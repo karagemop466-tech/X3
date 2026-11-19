@@ -1,0 +1,381 @@
+{
+  "as_of": "2026-11-19",
+  "note": "Frozen copy of the captured Not Active / Did Not Play lists exactly as committed at e5f771d, before the 2026-11-19 re-verification overlay. Do not edit.",
+  "source_file": "data/live/raw/week10_gamebooks_2026.json@e5f771d",
+  "games": [
+    {
+      "game_id": "WAS@NYG",
+      "away": "WAS",
+      "home": "NYG",
+      "away_not_active": [
+        "CB 21 M.Sainristil",
+        "G 62 L.Patrick",
+        "C 63 T.Biadasz",
+        "T 73 M.Jones",
+        "TE 87 C.Yankoff"
+      ],
+      "away_dnp": [
+        "QB 11 J.Flacco",
+        "T 78 L.Tunsil"
+      ],
+      "home_not_active": [
+        "WR 12 K.Toney",
+        "RB 22 S.Barkley",
+        "CB 27 R.Gaines",
+        "LB 50 M.Harrison",
+        "G 61 M.Johnson",
+        "T 70 A.Thomas"
+      ],
+      "home_dnp": [
+        "QB 1 J.Dart"
+      ]
+    },
+    {
+      "game_id": "NE@DET",
+      "away": "NE",
+      "home": "DET",
+      "away_not_active": [
+        "CB 7 C.Davis",
+        "3QB 15 B.Morton",
+        "S 41 B.Schooler",
+        "T 68 D.Crownover",
+        "OL 72 W.Rouse",
+        "C 77 B.Brown"
+      ],
+      "away_dnp": [],
+      "home_not_active": [
+        "CB 4 D.Reed",
+        "CB 6 K.Abney",
+        "LB 57 A.Ogbongbemiga",
+        "C 64 C.Mays",
+        "DL 94 M.Wingo",
+        "DE 99 A.Hassanein"
+      ],
+      "home_dnp": []
+    },
+    {
+      "game_id": "KC@ATL",
+      "away": "KC",
+      "home": "ATL",
+      "away_not_active": [
+        "RB 9 K.Walker",
+        "3QB 19 G.Nussmeier",
+        "RB 34 J.Ott",
+        "CB 39 M.Smith",
+        "FB 47 B.VanSumeren",
+        "OL 77 J.Moore",
+        "DL 99 P.Woods"
+      ],
+      "away_dnp": [],
+      "home_not_active": [
+        "ILB 0 D.Deablo",
+        "CB 12 Av.Terrell",
+        "3QB 13 A.Dalton",
+        "WR 17 Z.Branch",
+        "QB 18 J.Strand",
+        "CB 37 R.Longerbeam",
+        "T 73 C.Williams"
+      ],
+      "home_dnp": [
+        "QB 1 T.Tagovailoa"
+      ]
+    },
+    {
+      "game_id": "HOU@CLE",
+      "away": "HOU",
+      "home": "CLE",
+      "away_not_active": [
+        "LB 0 A.Al-Shaair",
+        "TE 9 B.Jordan",
+        "WR 18 M.Harrison",
+        "RB 32 D.Montgomery",
+        "DE 55 D.Hunter",
+        "C/G 66 K.Rutledge",
+        "G 75 W.Teller"
+      ],
+      "away_dnp": [
+        "QB 10 D.Mills",
+        "T 71 B.Smith"
+      ],
+      "home_not_active": [
+        "3QB 6 D.Gabriel",
+        "QB 15 T.Green",
+        "LB 17 J.Jefferson",
+        "CB 20 N.Igbinoghene",
+        "S 33 R.Hickman",
+        "C 52 P.Brailsford"
+      ],
+      "home_dnp": [
+        "QB 2 S.Sanders"
+      ]
+    },
+    {
+      "game_id": "MIN@GB",
+      "away": "MIN",
+      "home": "GB",
+      "away_not_active": [
+        "QB 1 K.Murray",
+        "WR 3 J.Addison",
+        "3QB 12 M.Broser",
+        "WR 14 J.Jennings",
+        "LB 51 B.Cashman",
+        "TE 87 T.Hockenson",
+        "DL 90 T.Ingram-Dawkins"
+      ],
+      "away_dnp": [
+        "QB 11 C.Wentz"
+      ],
+      "home_not_active": [
+        "RB 8 J.Jacobs",
+        "RB 22 P.Strong",
+        "LB 44 Z.Franklin",
+        "G/T 67 D.Jennings",
+        "G 70 K.Zeitler",
+        "C/G 75 S.Rhyan"
+      ],
+      "home_dnp": [
+        "C/G 52 J.Burton"
+      ]
+    },
+    {
+      "game_id": "MIA@IND",
+      "away": "MIA",
+      "home": "IND",
+      "away_not_active": [
+        "WR 18 C.Bell",
+        "CB 24 M.Dial",
+        "C 55 A.Brewer",
+        "G/T 77 C.Wallace",
+        "TE 80 J.Joly",
+        "WR 86 J.Wayne"
+      ],
+      "away_dnp": [
+        "QB 15 B.Cook",
+        "G 64 C.Haynes"
+      ],
+      "home_not_active": [
+        "3QB 15 R.Leonard",
+        "LS 46 L.Rhodes",
+        "LB 57 J.Carlies",
+        "T 75 J.Travis",
+        "TE 86 W.Mallory",
+        "DT 94 J.Tillery"
+      ],
+      "home_dnp": [
+        "QB 5 A.Richardson",
+        "WR 9 Q.Watkins",
+        "T 73 C.Heck"
+      ]
+    },
+    {
+      "game_id": "CAR@NO",
+      "away": "CAR",
+      "home": "NO",
+      "away_not_active": [
+        "TE 0 J.Sanders",
+        "3QB 16 H.King",
+        "CB 24 W.Lee",
+        "RB 28 A.Dillon",
+        "LB 58 B.Okereke",
+        "C 75 S.Hecht",
+        "DT 93 T.Edwards"
+      ],
+      "away_dnp": [],
+      "home_not_active": [
+        "3QB 11 Z.Wilson",
+        "S 42 M.Reid",
+        "RB 43 C.Donaldson",
+        "LB 53 J.Ford",
+        "T 75 T.Fuaga",
+        "C 78 E.McCoy"
+      ],
+      "home_dnp": []
+    },
+    {
+      "game_id": "BUF@NYJ",
+      "away": "BUF",
+      "home": "NYJ",
+      "away_not_active": [
+        "QB 6 S.Buechele",
+        "S 29 J.Kilgore",
+        "OLB 51 M.Danna",
+        "G 60 A.Reed-Adams",
+        "T/G 74 J.Bowry",
+        "DL 97 G.Gaines"
+      ],
+      "away_dnp": [
+        "T 76 B.Freeland"
+      ],
+      "home_not_active": [
+        "DB 2 J.Brownlee",
+        "WR 17 T.Patrick",
+        "LB 49 T.Wallace",
+        "TE 86 J.Woods",
+        "DE 92 N.Lynn"
+      ],
+      "home_dnp": []
+    },
+    {
+      "game_id": "JAX@TEN",
+      "away": "JAX",
+      "home": "TEN",
+      "away_not_active": [
+        "S 0 J.Bates",
+        "WR 18 C.Williams",
+        "DT 90 J.Davis",
+        "DE 97 W.Williams",
+        "DT 98 A.Regis"
+      ],
+      "away_dnp": [
+        "QB 10 Q.Ewers"
+      ],
+      "home_not_active": [
+        "WR 14 C.Tate",
+        "RB 32 N.Singleton",
+        "CB 42 J.Jones",
+        "LB 50 C.Barton",
+        "LB 53 A.Hill",
+        "T 78 B.Crenshaw-Dickson",
+        "DT 96 J.Marshall"
+      ],
+      "home_dnp": [
+        "QB 10 M.Trubisky"
+      ]
+    },
+    {
+      "game_id": "LA@AZ",
+      "away": "LA",
+      "home": "AZ",
+      "away_not_active": [
+        "3QB 15 T.Simpson",
+        "S 36 M.Pulley",
+        "LS 49 J.Cardona",
+        "OLB 59 D.Peterson",
+        "OL 73 S.Avila",
+        "OL 79 K.Trost",
+        "OLB 94 D.Johnson"
+      ],
+      "away_dnp": [
+        "QB 13 S.Bennett"
+      ],
+      "home_not_active": [
+        "3QB 18 J.Aguilar",
+        "CB 24 S.Thomas",
+        "OLB 54 E.Leota",
+        "OL 66 J.Williams",
+        "OL 71 J.Gaines",
+        "OL 72 H.Froholdt"
+      ],
+      "home_dnp": [
+        "QB 9 J.Johnson",
+        "OL 76 A.Reese"
+      ]
+    },
+    {
+      "game_id": "SEA@LV",
+      "away": "SEA",
+      "home": "LV",
+      "away_not_active": [
+        "QB 14 S.Darnold",
+        "RB 23 E.Wilson",
+        "CB 27 A.Smith",
+        "G 53 Q.Nelson",
+        "T 67 C.Cross",
+        "NT 97 D.Eastern",
+        "DT 99 L.Williams"
+      ],
+      "away_dnp": [
+        "QB 6 J.Milroe",
+        "C 55 O.Oluwatimi"
+      ],
+      "home_not_active": [
+        "WR 10 D.Thornton",
+        "WR 19 M.Benson",
+        "S 27 T.McCollum",
+        "S 43 D.Johnson",
+        "G 77 B.Cabeldue",
+        "DT 99 T.Booker"
+      ],
+      "home_dnp": [
+        "QB 12 A.O'Connell"
+      ]
+    },
+    {
+      "game_id": "SF@DAL",
+      "away": "SF",
+      "home": "DAL",
+      "away_not_active": [
+        "WR 5 M.Evans",
+        "3QB 14 K.Rourke",
+        "LB 48 T.Bethune",
+        "OL 69 E.Cruz",
+        "WR 84 B.Cooks"
+      ],
+      "away_dnp": [
+        "QB 10 M.Jones"
+      ],
+      "home_not_active": [
+        "S 1 P.Locke",
+        "OLB 6 D.Ezeiruaku",
+        "CB 15 D.Kendrick",
+        "WR 18 J.Mingo",
+        "S 43 J.Thomas",
+        "T 65 A.Cornelius",
+        "TE 87 J.Ferguson"
+      ],
+      "home_dnp": [
+        "QB 16 S.Howell"
+      ]
+    },
+    {
+      "game_id": "PIT@CIN",
+      "away": "PIT",
+      "home": "CIN",
+      "away_not_active": [
+        "QB 16 D.Allar",
+        "3QB 18 W.Howard",
+        "S 25 D.Elliott",
+        "CB 27 S.Murphy-Bunting",
+        "RB/WR 29 E.Heidenreich"
+      ],
+      "away_dnp": [],
+      "home_not_active": [
+        "S 29 K.Dugger",
+        "C 65 C.Lew",
+        "T 77 M.Hinton",
+        "DT 96 L.Robinson"
+      ],
+      "home_dnp": []
+    },
+    {
+      "game_id": "LAC@BAL",
+      "away": "LAC",
+      "home": "BAL",
+      "away_not_active": [
+        "WR 15 L.McConkey",
+        "S 32 K.Williamson",
+        "CB 37 I.Waxter",
+        "OLB 48 B.Dupree",
+        "WR 89 B.Thompson",
+        "DL 92 J.Eboigbe"
+      ],
+      "away_dnp": [
+        "QB 7 D.Uiagalelei",
+        "C 60 J.Spomer",
+        "G 73 A.Harkey"
+      ],
+      "home_not_active": [
+        "WR 13 E.Sarratt",
+        "3QB 18 K.Slovis",
+        "S 21 J.Hawkins",
+        "CB 29 C.Rivers",
+        "G/T 51 E.Jones",
+        "DL 90 A.Peebles"
+      ],
+      "home_dnp": [
+        "QB 12 J.Fagnano",
+        "OL 58 R.Neuzil"
+      ]
+    }
+  ]
+}

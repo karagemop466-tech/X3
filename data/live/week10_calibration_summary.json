@@ -24,9 +24,9 @@
     },
     "No Designation": {
       "total": 185,
-      "not_active": 12,
+      "not_active": 11,
       "moved_to_ir": 2,
-      "dnp": 2,
+      "dnp": 3,
       "active_or_other": 169
     }
   },

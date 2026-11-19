@@ -1,0 +1,99 @@
+{
+  "method": "scripts/reverify_compare.py; see module docstring for rules",
+  "per_game": {
+    "WAS@NYG": {
+      "match": 0,
+      "mismatch": 4,
+      "unverified": 0
+    },
+    "NE@DET": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "KC@ATL": {
+      "match": 1,
+      "mismatch": 1,
+      "unverified": 2
+    },
+    "HOU@CLE": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "MIN@GB": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "MIA@IND": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "CAR@NO": {
+      "match": 0,
+      "mismatch": 0,
+      "unverified": 4
+    },
+    "BUF@NYJ": {
+      "match": 3,
+      "mismatch": 0,
+      "unverified": 1
+    },
+    "JAX@TEN": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "LA@AZ": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "SEA@LV": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "SF@DAL": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    },
+    "PIT@CIN": {
+      "match": 2,
+      "mismatch": 0,
+      "unverified": 2
+    },
+    "LAC@BAL": {
+      "match": 4,
+      "mismatch": 0,
+      "unverified": 0
+    }
+  },
+  "totals": {
+    "match": 42,
+    "mismatch": 5,
+    "unverified": 9
+  },
+  "reserve": {
+    "official_rows": 25,
+    "official_rows_11_14_to_11_18": 23,
+    "captured_reserve_events": 25,
+    "captured_events_11_14_to_11_18": 23,
+    "official_rows_found_in_captured": 25,
+    "captured_only_not_on_official_page": []
+  },
+  "reg11_IND_HOU": {
+    "official_rows": 26,
+    "in_captured_csv": 26,
+    "rows_all_fields_match": 25,
+    "rows_with_field_mismatch": 1
+  },
+  "snap_WAS_NYG": {
+    "official_rows": 11,
+    "match": 9,
+    "not_in_captured_csv": 2
+  }
+}

@@ -29,10 +29,21 @@
       "home_ko": 4, "home_ez": 0, "home_tb": 0, "home_avg_start": "NYG 28",
       "onside_kicks": 0,
       "onside_recoveries": 0,
-      "away_not_active": ["CB 21 M.Sainristil", "G 62 L.Patrick", "C 63 T.Biadasz", "T 73 M.Jones", "TE 87 C.Yankoff"],
-      "away_dnp": ["QB 11 J.Flacco", "T 78 L.Tunsil"],
-      "home_not_active": ["WR 12 K.Toney", "RB 22 S.Barkley", "CB 27 R.Gaines", "LB 50 M.Harrison", "G 61 M.Johnson", "T 70 A.Thomas"],
-      "home_dnp": ["QB 1 J.Dart"],
+      "away_not_active": ["3QB 16 A.Kaliakmanis", "CB 37 I.Yiadom", "DT 50 R.Barber", "G 62 T.Togiai", "G 63 L.Patrick", "TE 80 C.Yankoff"],
+      "away_dnp": ["QB 8 M.Mariota", "C/G 61 J.Good-Jones", "C 66 M.Gulbin"],
+      "home_not_active": ["CB 21 P.Adebo", "CB 35 N.Reed", "LB 54 M.Harrison", "OL 67 J.Sills", "OL 74 J.Davis", "TE 86 T.Fidone", "DL 99 B.Okoye"],
+      "home_dnp": ["C 61 J.Schmitz"],
+      "reverify_2026_11_19": {
+        "status": "corrected from official Game Book (printed headings)",
+        "source_url": "https://static.www.nfl.com/image/upload/v1794570519/gamecenter/ab5828d9-4feb-11f1-abca-2c54536568a9.pdf",
+        "basis": "Chunk 0 of the official WAS@NYG Game Book was read on 2026-11-19. Not Active and Did Not Play headings and names are printed. Row-level record: data/reverify/official_read_2026-11-19.json. Comparison: data/reverify/comparison_w10_inactives.csv.",
+        "captured_before_correction_at_e5f771d": {
+          "away_not_active": ["CB 21 M.Sainristil", "G 62 L.Patrick", "C 63 T.Biadasz", "T 73 M.Jones", "TE 87 C.Yankoff"],
+          "away_dnp": ["QB 11 J.Flacco", "T 78 L.Tunsil"],
+          "home_not_active": ["WR 12 K.Toney", "RB 22 S.Barkley", "CB 27 R.Gaines", "LB 50 M.Harrison", "G 61 M.Johnson", "T 70 A.Thomas"],
+          "home_dnp": ["QB 1 J.Dart"]
+        }
+      },
       "key_snaps": [
         {"team": "WAS", "player": "J.Daniels", "pos": "QB", "off_snaps": 69, "off_pct": 100},
         {"team": "WAS", "player": "A.Williams", "pos": "WR", "off_snaps": 59, "off_pct": 86},
