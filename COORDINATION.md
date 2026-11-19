@@ -4484,8 +4484,10 @@ delta contents are now all derived rather than typed - a heading is as capable o
 
 | Task | Status | Owner | File scope |
 |---|---|---|---|
-| Repair immutable capture storage and per-source alerting; verify and publish | in progress | arena/46153df1-x3 | `scripts/availability_snapshot.py`, `scripts/test_availability_snapshot.py`, `.github/workflows/availability-snapshots.yml`, `readiness/data/history/2026-11-19` (raw-file suffix only), this log |
+| Repair immutable capture storage and per-source alerting; verify and publish | done | arena/46153df1-x3 | `scripts/availability_snapshot.py`, `scripts/test_availability_snapshot.py`, `.github/workflows/availability-snapshots.yml`, `readiness/data/history/2026-11-19` (raw-file suffix only), this log |
 
 - Verified source endpoints against the live [NFL injury report](https://www.nfl.com/injuries/) and [NFL schedule](https://www.nfl.com/schedules/): both showed 2026 Week 11. This confirms the endpoints, not every published player row or the report's publication time.
 - The two legacy raw files matched their recorded size and SHA-256. Their suffix changed from `.html` to `.bin` without changing a byte: vendor evidence was being audited as site HTML, breaking the integration build on NFL-relative links. New records preserve bytes, clock time and final URL per response and do not overwrite same-day captures. Tests cover same-day retention, hash fidelity, redirects and zero-row alerts. Repo audit passed (366 pages, 9,589 internal references).
 - Needs review: raw evidence is **not private**; a `.bin` suffix is not access control. No permission to redistribute raw NFL data was established. A restricted archive and retention policy, official depth and Game Book joins, and an authorized price feed remain separate blockers. Nothing in this change verifies a replacement, a price, or a strategy edge.
+
+- [PR #121](https://github.com/karagemop466-tech/X3/pull/121) merged as `ffbcda33e19dd3e54068d09b38d534120f975214`. [Pages workflow](https://github.com/karagemop466-tech/X3/actions/runs/44474821330) build and deploy passed; the Pages API reports that exact commit as `built`.
