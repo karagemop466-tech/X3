@@ -1,0 +1,73 @@
+{
+  "as_of": "2026-11-19",
+  "capture_date": "2026-11-14",
+  "clubs_captured_2026_11_14": 31,
+  "clubs_text_read_2026_11_19": 4,
+  "clubs_no_text_2026_11_19": [
+    "HOU"
+  ],
+  "register_rows": 2027,
+  "register_rows_by_snapshot": {
+    "2026-11-14": 1789,
+    "2026-11-19": 238
+  },
+  "slot_status_counts": {
+    "FILLED": 1999,
+    "SHARED": 22,
+    "GAP": 4,
+    "EMPTY": 2
+  },
+  "groups_total": 792,
+  "multi_rank1_groups": {
+    "2026-11-14": 155,
+    "2026-11-19": 18
+  },
+  "same_player_multi_slot": {
+    "2026-11-14": 163,
+    "2026-11-19": 24
+  },
+  "jersey_numbers_stripped": 55,
+  "conflicts": {
+    "NEW_ON_LIVE_CHART": 13,
+    "SLOT_CHANGED": 16,
+    "NOT_ON_LIVE_CHART": 8
+  },
+  "conflicts_by_club": {
+    "BAL": 6,
+    "GB": 2,
+    "SEA": 2,
+    "WAS": 27
+  },
+  "live_club_files": {
+    "BAL": {
+      "url": "https://www.baltimoreravens.com/team/depth-chart",
+      "file": "data/depth/live_2026-11-19/BAL.md",
+      "sha256": "2a445d2b1932d5245897ff6628db61cf3663d1d925cbc1957b242ab7029536db",
+      "label": "none in chunk 0 of 2 read (the page title is \"Baltimore Ravens Depth Chart\"); chunk 1 not read"
+    },
+    "GB": {
+      "url": "https://www.packers.com/team/depth-chart",
+      "file": "data/depth/live_2026-11-19/GB.md",
+      "sha256": "775501ddff04847d8cb5eff4ee2004e61634e4a457b3c0972e9c1714fa20b2ea",
+      "label": "\"Unofficial, Nov. 10, 2026\" (page footer, verbatim)"
+    },
+    "HOU": {
+      "url": "https://www.houstontexans.com/team/depth-chart",
+      "file": "data/depth/live_2026-11-19/HOU.md",
+      "sha256": "d60335e8b4e8a863dba20e11cca1e8634f24365ec6b5aa1003a9fc3563ecc2d9",
+      "label": "\"Unofficial Depth Chart\" (heading, verbatim)"
+    },
+    "SEA": {
+      "url": "https://www.seahawks.com/team/depth-chart/",
+      "file": "data/depth/live_2026-11-19/SEA.md",
+      "sha256": "7557d8a056eb1eb58db13b688679a463f2f3482efac2195d742601d7876d3f9b",
+      "label": "none in chunk 0 of 2 read; chunk 1 not read"
+    },
+    "WAS": {
+      "url": "https://www.commanders.com/team/depth-chart",
+      "file": "data/depth/live_2026-11-19/WAS.md",
+      "sha256": "63fd60f3c51c24f1d780511572a18169524141827ad83826cd1f4b564322215f",
+      "label": "none (single chunk read)"
+    }
+  }
+}

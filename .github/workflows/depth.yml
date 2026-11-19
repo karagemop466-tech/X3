@@ -1,0 +1,45 @@
+# Depth-chart register (session arena/784043ed-x3).
+# Fails loudly when the committed register is not the current build of its inputs,
+# when a source file's SHA-256 changes, or when a row loses its source link.
+name: Depth-chart register
+
+on:
+  push:
+    paths:
+      - 'depth/**'
+      - 'data/depth/**'
+      - 'data/x3/raw/club_depth_charts_2026_wk10/**'
+      - 'scripts/depth_build.py'
+      - 'scripts/depth_pages.py'
+      - 'scripts/depth_verify.py'
+      - '.github/workflows/depth.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild the register and pages from committed inputs
+        run: python3 scripts/depth_build.py
+
+      - name: Reproducibility gate - committed register must match a fresh build
+        run: |
+          git diff --exit-code -- data/depth depth || {
+            echo '::error::depth register is not reproducible - run scripts/depth_build.py locally and commit the result.'
+            exit 1; }
+
+      - name: Independent verification (hashes, recounts, source links, internal links)
+        run: python3 scripts/depth_verify.py

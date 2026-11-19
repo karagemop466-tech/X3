@@ -4748,3 +4748,63 @@ Session `arena/55e3547f-x3` status: verification sweep complete; PR/merge/deploy
 ### New irregularity logged this session
 
 - **BR-04 — readiness table labels contradict their source notes.** On the live landing page (`hub/index.html`, rows R-01 to R-10 and R-31 region) the **Current state** cell reads `VERIFIED` while the source cell reads `UNVERIFIED — No official NFL source defines this policy/threshold`. Example: R-01 "Shared coordination board". A reader cannot tell whether the state or the source is authoritative. Not edited (hub owner's file; generated page). Request: the hub owner should decide whether "VERIFIED" in that column means "the internal gate passed" (then rename the column) or should be changed to match the UNVERIFIED source note.
+
+---
+
+## Session `arena/784043ed-x3` — CLAIM: depth-chart register with date+source per row, live re-read audit (2026-11-19)
+
+**Branch** `arena/784043ed-x3` (platform-fixed; base `main` @ `e5f771d`). Claim written before any other write.
+
+### Why this scope
+Live re-reads taken 2026-11-19 of four official club depth-chart pages do not reproduce the 2026-11-14 captures in `data/x3/raw/club_depth_charts_2026_wk10/` (Baltimore, Green Bay, Seattle, Washington). The existing depth outputs (`data/x3/depth_replacement_2026_wk10.csv`, `data/x3/verified/depth_replacement.csv`) inherit those captures. Several brief items (per-row date and source, group slots, shared and empty slots, jersey-number stripping, the Houston image gap, the Baltimore stale-QB check) concern this same evidence and are not built anywhere.
+
+### Task board
+
+| ID | Task | Status | File scope (new files only) |
+|----|------|--------|-----------------------------|
+| D1 | Live re-read of BAL, GB, SEA, WAS and HOU depth pages (2026-11-19), verbatim to raw files with hashes | in progress | `data/depth/live_2026-11-19/**` |
+| D2 | Register: one row per snapshot, club, unit, row and rank, with date, source URL and raw-file hash; group slots; shared and empty flags; jersey-number stripping with raw string kept | unclaimed→in progress | `data/depth/depth_register.csv`, `data/depth/slot_groups.csv` |
+| D3 | Cross-checks: live vs 2026-11-14 capture conflicts; Baltimore QB vs official transactions log; Lions Week-10 article designations | in progress | `data/depth/conflicts.csv`, `data/depth/cross_checks.json` |
+| D4 | Build + verify scripts; page `depth/` (index + flagged) | in progress | `scripts/depth_build.py`, `scripts/depth_verify.py`, `depth/**` |
+| D5 | Integration: PR → merge → confirm Pages → completion record | pending | `COORDINATION.md` |
+
+Overlap check (before claiming): `grep` of COORDINATION.md shows no active claim on `data/depth/**`, `depth/**`, or `scripts/depth_*.py`. Existing depth modules (`scripts/x3/depth_replacement.py`, `tools/depth_engine.py`, `data/x3/**`) are **not edited**; their conflicts are logged here as requests to their owners.
+
+### Completion record — `arena/784043ed-x3` (2026-11-19)
+
+**Status:** D1–D4 done, gated locally and in CI (`depth.yml`). D5 (PR, merge, Pages) recorded below after merge.
+
+**Delivered (new files only, plus one additive landing entry)**
+- `data/depth/live_2026-11-19/{BAL,GB,SEA,WAS,HOU}.md` — verbatim re-reads of four club charts (link URLs removed, names kept as published) and Houston (no text, image only), with the page URL and read date in each file.
+- `data/depth/depth_register.csv` — 2,027 rows, one per filled, shared, gap or empty cell, for 31 captured charts (2026-11-14, from the repo's raw files) and 4 live charts (2026-11-19). Each row carries read date, club page URL, source file and its SHA-256, and the cell as published.
+- `data/depth/slot_groups.csv` (792 groups), `data/depth/conflicts.csv` (37 live-vs-capture differences), `data/depth/cross_checks.json` (13 brief items with status), `data/depth/summary.json`.
+- `depth/index.html` (summary), `depth/register.html` (full register), `depth/flagged.html` (Flagged for review). Every table row links its source.
+- `scripts/depth_build.py`, `scripts/depth_pages.py`, `scripts/depth_verify.py`, `.github/workflows/depth.yml`.
+- `tools/build_hub.py`: one additive nav entry ("Depth-chart register (dated)"). Regenerated `index.html` differs from `main` only by that entry (checked by string diff).
+
+**Verification performed**
+- Live reads: BAL, GB, SEA, WAS (page reader, chunk 0; BAL chunk 1 of 2 and SEA chunk 1 of 2 not read). HOU page read (single chunk; image only).
+- nfl.com November trades and reserve-list pages read in full (trades: 1 chunk; reserve list: 2 chunks).
+- nfl.com Week-10 injury-report article read (chunk 0 of 3): Lions OUT rows match the repo.
+- `depth_verify.py` PASS: SHA-256 of all 31 captures and 4 live files re-computed; live filled-cell count recounted from raw markdown; 55 jersey numbers recounted; every row has an https source and a 64-hex hash; every table row on the three pages has a source link; all internal links resolve; Houston contributes 0 rows.
+- Repo gates re-run on this branch, all PASS: `check_site.py`, `tools/check_links.py` (583 links), `verify_integration.py`, `audit_all.py`, `tools/verify_hub.py`.
+
+**Findings (all published on `depth/flagged.html`; none blocks the merge)**
+- **The 2026-11-14 captures do not match the 2026-11-19 live pages.** Differences recorded for BAL (6), GB (2), SEA (2), WAS (27). The repo cannot tell whether a capture omitted cells or the page changed. Existing depth outputs built on the captures (`data/x3/depth_replacement_2026_wk10.csv`, `data/x3/verified/depth_replacement.csv`) are not re-derived here and should not be treated as current. Owner request: rebuild them from `depth/` before further use.
+- **Baltimore stale QB (brief VR-17/VR-26/VQ-07): not reproduced.** The live chart's QB row is Brissett / Fagnano / Slovis. Jackson and Huntley are in no Baltimore cell. The nfl.com trades page confirms Brissett AZ→BAL on 11/06. The nfl.com November reserve list (entries 11/10–11/18) has no Baltimore entry, so Jackson's IR status is **unverified**. The repo's roster-event row for Jackson (2026-11-13) cites a designation sentence, not a reserve transaction.
+- **Lions game status (VR-08/VR-12):** the repo table already holds Out for Joseph, Mays and Reed, matching the Week-10 article. The live reg10 cell was not re-read, so that page cell is not re-checked.
+- **Washington empty slot (VR-23):** shown in the 2026-11-14 capture (LB rank 2 empty). Not present on the 2026-11-19 live chart (two named players).
+- **Seattle shared slot (VR-21):** reproduced. The live WR1 cell holds two names with no separator; the register records it as SHARED.
+- **Packers jersey numbers:** reproduced on the live page (55 cells). Stripped into `jersey_no`; raw cell kept.
+- **Houston:** image only (labelled "Unofficial Depth Chart"). No rows; not transcribed by eye. Needs a structured source.
+- **"Unofficial" labels:** Packers footer ("Unofficial, Nov. 10, 2026") and Texans heading. The brief's route (a) assumes official club charts. Owner decision needed.
+- **149 vs 155:** the brief's count of club/unit/position groups with more than one rank-1 row is not reproduced. This register counts 155 on the 2026-11-14 captures under (club, unit, position label). The brief does not state its grouping rule.
+- **Name vs URL slug:** BAL DT "Nnamdi Madubuike" links to `justin-madubuike`; WAS FS "Quan Martin" links to `jartavius-martin`. Displayed names kept.
+- **Packers chart:** an unlabelled row carries "26 Kaleb Johnson" at rank 3 (kept, flagged); "Kitan Oladapo" appears at S rank 2 in both S rows.
+
+**Not done here (honest scope)**
+- The other 26 clubs were not re-read on 2026-11-19; their rows remain dated 2026-11-14.
+- No attempt to derive depth from snap counts or rosters (brief rejects roster-attribute inference).
+- Shared outputs (`data/x3/**`, `data/hub/**`, the injury tables, `readiness/**`) are not edited; the findings above are requests to their owners.
+
+**Sources (all official):** https://www.baltimoreravens.com/team/depth-chart · https://www.packers.com/team/depth-chart · https://www.seahawks.com/team/depth-chart/ · https://www.commanders.com/team/depth-chart · https://www.houstontexans.com/team/depth-chart · https://www.nfl.com/news/nfl-week-10-injury-report-2026-season · https://www.nfl.com/transactions/league/trades/2026/11 · https://www.nfl.com/transactions/league/reserve-list/2026/11
