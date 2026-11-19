@@ -4481,3 +4481,7 @@ all corrected in the follow-up PR from this branch:
 No number on the site changed. All three are sentences that disagreed with the CSV they describe, and
 the board's gate recomputes aggregates from those CSVs, which is why the inventory rows, hashes and
 delta contents are now all derived rather than typed - a heading is as capable of lying as a cell.
+
+| Task | Status | Owner | File scope |
+|---|---|---|---|
+| Repair immutable capture storage and per-source alerting; verify and publish | in progress | arena/46153df1-x3 | `scripts/availability_snapshot.py`, `scripts/test_availability_snapshot.py`, `.github/workflows/availability-snapshots.yml`, this log |
