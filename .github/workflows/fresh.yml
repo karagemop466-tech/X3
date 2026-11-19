@@ -1,0 +1,37 @@
+# Fresh-day verification 2026-11-19 (session arena/765ef2cf-x3, F1-F3).
+# Fails loudly when the committed Week-11 reads drift from the captured evidence,
+# the module is not the current build of data/fresh/, or a fresh flag goes missing
+# - the same fail-loudly rule the drift-alarm requirement (B62) pins on every scraper.
+name: Fresh 2026-11-19
+
+on:
+  push:
+    paths:
+      - 'fresh/**'
+      - 'data/fresh/**'
+      - 'data/week11/reg11_probes.csv'
+      - 'scripts/fresh_build.py'
+      - 'scripts/fresh_verify.py'
+      - '.github/workflows/fresh.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fresh-day verify + build + freshness gate
+        run: |
+          python3 scripts/fresh_verify.py
+          python3 scripts/fresh_build.py
+          git diff --exit-code -- fresh || {
+            echo '::error::fresh/*.html is not the current build of data/fresh/*.csv - run `python3 scripts/fresh_build.py` and commit the result.'
+            exit 1; }
+          python3 scripts/audit_all.py --quiet
