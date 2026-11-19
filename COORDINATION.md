@@ -4639,6 +4639,29 @@ Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap chec
 - **Flagged irregularities**: `LF-01` no official NFL market-price feed (market/diff/CLV/ROI/leaderboard kept blank/empty); `LF-02` `Azeez Al-Shaair` (HOU) & `Jaylon Carlies` (IND) placed on `11/17` Reserve/Injured yet still listed on `reg11`; `LF-03` `Daiyan Henley` listed in `11/10` LAC→DEN trade yet started `11/16` for LAC in `LAC@BAL` Game Book; `LF-04` 3 Week-11 Game Center stadium names differ from schedule page (`RELIANT STADIUM` vs `NRG Stadium`, `ARROWHEAD STADIUM` vs `GEHA Field`, `NORTHWEST STADIUM` vs `FedEx Field`); `LF-05` `MIN@SF` Mexico City outside NWS domain; `LF-06` Game Book name variants (`T.Though`/`T.Shough`, `J.Smith-Nijgba`, 2025 `Zach Bako-Bewele`); `LF-07` `CIN@WAS` MNF zero-injuries notice pending Thursday report; `LF-08` pre-existing `readiness/data/history/2026-11-19/*.html` tracked by `arena/46153df1-x3`.
 
 
+## Session `arena/ffc3eb40-x3` — CLAIM (2026-11-19, before any write)
+
+Scope this session (branch `arena/ffc3eb40-x3`, base `e5f771d`, single-session branch; no other session claims these files):
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| Q1 | Re-check the stale decision-readiness register rows B10, B23, B25, B30, B33 against the captured official data in `data/live/` (Week 10 Game Books, Week 11 Game Centers, November transactions, Week 10 snap shares) and correct status/gate/clears text | in progress | `readiness/data/readiness.json`, regenerated `readiness/*.html`, `fresh/*.html` |
+| Q2 | Live re-verification against nfl.com: Week 11 injury report (`/injuries/league/2026/reg11`) and TB@DET rows vs the capture | in progress | `data/live/**` (read only), this log |
+| Q3 | Record the open items from the full request list that cannot be closed from official sources in this sandbox (flags only, no invented values) | in progress | `COORDINATION.md` |
+
+## Session `arena/ffc3eb40-x3` — DONE (2026-11-19)
+
+Base `e5f771d` (main). Single-session branch; no overlapping claims.
+
+| ID | Task | Status | Sources checked (official) | Verification performed | Irregularities |
+|---|---|---|---|---|---|
+| Q1 | Re-check stale decision-readiness rows B10, B23, B25, B30, B33 against captured official data | **done** | `data/live/week10_gamebooks.csv` (14 W10 Game Books with `gamebook_pdf_url` and `gc_stadium`), `data/live/week11_lines_live.csv` (13 W11 `gc_venue`), `data/live/week10_snap_depth.csv` (92 Playtime Percentage rows), `data/live/transactions_audit.csv` (53 Nov events; source `https://www.nfl.com/transactions/league/trades/2026/11`) | Rows changed from `blocked` to `partial` with counts and scope; links resolve; `build_readiness.py`, `drift_alarm.py`, `verify_readiness.py`, `fresh_build.py`, `fresh_verify.py`, `audit_all.py` all PASS | B33 depth rows still not versioned against transactions (Baltimore QB flag open); B10/B30 cover Week 10 only |
+| Q2 | Live nfl.com check of Week 11 report and TB@DET designations | **done** (partial scope) | `https://www.nfl.com/injuries/league/2026/reg11` chunks 0-4 (IND@HOU, TB@DET Lions section, DET-related rows) | IND/HOU sample rows and the TB@DET Lions rows (Joseph Full Participation, Mays DNP, Reed Limited, game status blank) match `data/live/week11_injuries.csv`. Blank game status is the official Week-11 state, not a capture error. | Full 253-row live re-capture was not performed in this session; chunks 5-6 of reg11 not re-read |
+| Q3 | Flag items that cannot be closed from official sources here | **done** | `https://www.nfl.com/injuries/league/2026/reg10` chunks 1-5 | Lions Week 10 section (Joseph, Mays, Reed) NOT located in chunks 0-5, so the three Week-10 "Out" designations were **not** entered. Logged as `LF-09` (UNVERIFIED). | `LF-10`: the reg10 URL currently serves a page titled "Week 11 of the 2026 Season" while its content includes Week-10 games. Logged as FLAGGED. |
+
+Files changed: `readiness/data/readiness.json` (5 rows + `as_of` 2026-11-19), regenerated `readiness/*.html`, `readiness/data/change_mind.json`, `fresh/decision-board.html`, `scripts/live_build.py` (+LF-09, LF-10), regenerated `data/live/flagged.csv`, `data/live/manifest.json`, `live/flagged.html`, `verification-hub/audit-report.json` (regenerated artifact), this log.
+
+Scope note: the full request list (about 100 lines) is not closed by this session. Items that remain open and are blocked on sources or on decisions are listed in the executive summary and on the Flagged page, not marked done.
 ## Session `arena/5a7f85bc-x3` — brief coverage register + gate verifier (CLAIM, 2026-11-19)
 
 Base `e5f771d` (main after PR #125). Claim before any write.
