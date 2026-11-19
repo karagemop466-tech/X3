@@ -4873,6 +4873,7 @@ The landing page now separates the **2026-11-14 model/input baseline** from the 
 
 ### Remaining irregularities (unchanged, not hidden)
 
+- Rebase before push picked up main moving from `e5f771d` to `7d18c99` (PRs #128 and #129). `COORDINATION.md` had an append-at-EOF conflict with sessions `arena/5a7f85bc-x3` and `arena/55e3547f-x3`; resolution retained both main-side records and this session's claim. No other session files were edited or discarded.
 - Core model inputs are dated 2026-11-14, and the latest successful archived capture is dated 2026-11-19 02:16Z; this does not establish live freshness or successful recurring automation.
 - Different historical modules intentionally remain separate: the canonical market results feed reports 150 finals, while older raw/desk ledgers still report 137; the repo flags this data-vintage difference, and this change did not rewrite those modules.
 - Market prices, residual/CLV/ROI, and reward amounts remain blocked; not all roster/IR, depth, active/inactive and snap-count coverage is complete; strategy qualification/demotion policies are not unified. The landing calls out the not-ready state and links to the source-gap/flag pages.
