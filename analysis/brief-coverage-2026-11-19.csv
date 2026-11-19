@@ -1,0 +1,41 @@
+id,requirement,status,evidence_path,evidence_check,source_url,gap
+BC-01,Price-snapshot store with opening and closing numbers for every originated market,Partial,data/x3/verified/price_store.csv,DERIVED,https://www.nfl.com/schedules/2026/by-week/week-3,All 786 rows are DERIVED fair prices; 0 rows carry a market_source; 262 open_line cells blank (flag F-01 / LF-01)
+BC-02,Verified results feed for backtests and ROI,Present,data/x3/verified/results_2026.csv,FINAL,https://www.nfl.com/schedules/2026/by-week/week-10,150 FINAL rows; 13 Week-11 rows SCHEDULED; no ROI is computable without prices (BC-01)
+BC-03,Origination order: side then total then moneyline,Partial,data/x3/model_lines_2026.csv,origination_seq,,Sequence column exists; market columns blank so no residual can be computed
+BC-04,Fair line / market line / difference as separate columns,Partial,data/x3/model_lines_2026.csv,mkt_spread_home,,fair_* and mkt_* columns exist; no difference column; mkt_* cells blank
+BC-05,Signal separated from staking on the leaderboard,Present,data/x3/verified/strategies.json,staking_blocked,,staking_blocked = 12 of 12; no staking score exists yet
+BC-06,Demotion gate that returns a live strategy to paper,Partial,data/x3/verified/strategies.json,demotion_gate,,"Gate exists; D-1 evaluates only the trailing streak, so a historical run of 3 bad weeks (5-7) is recorded as worst_streak_observed 3 and does not fire (flag BR-01)"
+BC-07,Pre-register every strategy; no backtest numbers on the leaderboard,Partial,data/x3/verified/strategies.json,registration,,Registration wording exists; no per-strategy commit hash is recorded in the file (checked this session)
+BC-08,Availability graph as a dataset (expected vs actual starters),Partial,agency/data/out/availability.json,starters,,Starters and inactives keys exist; coverage is the single 2026 Week-10 read
+BC-09,"Injury signal as a surprise, never a level",Partial,agency/data/out/injury_surprise.json,,,File exists; the surprise definition was not re-verified this session
+BC-10,"Depth modelled from playing time, not jersey order",Partial,data/x3/verified/depth_replacement.csv,,,"File exists; 32-club depth-source route not verified (Texans depth is an image, see BC-22)"
+BC-11,Official Game Books for starters and game-day status,Present,data/live/week10_gamebooks.csv,,https://www.nfl.com/games/49ers-at-cowboys-2026-reg-10,Week 10 read 14 of 14 Game Books per data/live/what_changed.csv
+BC-12,Immutable multi-day availability snapshots with retained hashes,Partial,data/x3/verified/snapshots/2026-11-14.json,,,One verified snapshot file; daily workflow exists at .github/workflows/availability-snapshots.yml; multi-day history not yet long enough to replay
+BC-13,Injury-report time series with fetch timestamps and deltas,Partial,data/live/what_changed.csv,,https://www.nfl.com/injuries/league/2026/reg11,"Two dated reads only; the designation evolution (Questionable to Out, DNP to LP to FP) cannot yet be measured"
+BC-14,Official inactive lists and snap counts,Partial,data/live/week10_snap_depth.csv,,,Game Book Playtime Percentage is captured; no official snap-count table (board F-11)
+BC-15,Injury designation reliability scored against inactives (play rate with CI),Blocked,data/desk/calibration.json,,,Needs several seasons of archived reports joined to inactive lists; only 2026 weeks are captured
+BC-16,Calibrate what Questionable means empirically,Blocked,data/desk/calibration.json,,,Official text gives no percentages; needs the same multi-season join as BC-15
+BC-17,Drift alarm on every scraper (pinned row counts and required fields),Present,scripts/drift_alarm.py,expected,,Alarm script exists; per-scraper coverage not re-verified this session
+BC-18,Reserve list so not listed never means available,Present,board/data/reserve_list_2026.csv,Willis,,Captured; 7 of 21 joined rows carry a play-permitting designation (board F-02)
+BC-19,Roster turnover as a first-class versioned event,Partial,data/closeout/roster_turnover.csv,,,File exists; Ravens QB stale-chart claim not confirmable from captured transactions (board F-07)
+BC-20,Shared and empty depth slots represented faithfully,Partial,atlas/depth.html,,,Page exists; the Seattle shared slot and Washington empty slot were not re-verified this session
+BC-21,Injury and personnel ablations with uncertainty,Partial,data/closeout/derived/ablation_shrink.csv,,,File exists; contents not re-verified this session
+BC-22,Official depth source verified for all 32 clubs before a backup-deficiency feature,Blocked,data/desk/samples/row-depth-ARI.txt,,,Texans publish depth as an image; no authorized structured source captured; feature not built
+BC-23,Brier-skill ranking with game-cluster lower bound and multiplicity adjustment,Partial,tools/strategies_engine.py,Brier,,Brier term exists; multiplicity adjustment has 0 matches in the engine and in data/x3/verified/strategies.json (flag BR-03)
+BC-24,Parlays and combos behind a joint-evidence gate,Blocked,tools/correlation_engine.py,joint,,Gate language exists; no directly validated joint probability or operator void/push rules are captured
+BC-25,"Correlations computed only from official numbers, with n published",Present,data/x3/verified/correlations.json,n_games,https://www.nfl.com/schedules/2026/by-week/week-10,7 computed rows with n=150; 5 rows blank
+BC-26,Decision-readiness table on the landing page,Present,index.html,readiness,,Landing page carries a readiness reference (count verified this session)
+BC-27,Removal-of-luck panel on the dashboard,Partial,board/data/luck_panel_2026-11-18.csv,,,Panel file exists; not re-verified this session
+BC-28,Terms of use read before a private data layer,Blocked,COORDINATION.md,terms,https://www.nfl.com/terms-and-conditions/,Terms cited but not read in full (owner decision Q1)
+BC-29,Vig-free consensus vs originated fair-line decomposition,Blocked,data/x3/verified/price_store.csv,DERIVED,,No market prices exist (owner decision PDP-3); the decomposition cannot be computed
+BC-30,Weekly what-changed diff,Partial,data/live/what_changed.csv,,https://www.nfl.com/injuries/league/2026/reg11,One diff table (Week 10 to 11); rank and rating change columns not present
+BC-31,"Per-team view (starters out, replacements named, net injury count)",Partial,index.html,team,,Landing references team views; per-team totals not re-verified this session
+BC-32,Stadium roof and NWS hourly overlay for totals and passing props,Partial,data/live/raw/week11_slate_weather_2026.json,,https://api.weather.gov/gridpoints/LOT/76,NWS forecasts captured for Week 11; MIN@SF (Mexico City) is outside the NWS domain (LF-05)
+BC-33,Onside-kick and kickoff regime priors,Partial,data/live/rule6_kickoff_summary.json,operations.nfl.com,https://operations.nfl.com/rules-officiating/2026-nfl-rulebook,Rule and kickoff counts captured; not verified that the priors feed any model
+BC-34,"Train, validation and final holdout seasons",Partial,tools/markets_engine.py,walk,,Walk-forward evaluation exists (n=105); no declared final holdout season was verified (flag BR-03)
+BC-35,Suggestions section,Present,suggestions.html,uggest,,Page exists
+BC-36,Flagged for Review page,Present,flagged.html,Flagged,,Page exists; this session's irregularities BR-01 to BR-03 are logged in COORDINATION.md and are not yet on that page
+BC-37,Executive summary,Present,executive-summary.html,Executive Summary,,Page exists
+BC-38,"Singles, game parlays, same-game parlays and prop combos as separate leaderboard divisions",Partial,data/x3/verified/strategies.json,Correlated game-script parlay,,"No division field exists. ST-06 is a registered parlay with no division label; no singles, same-game parlay or prop-combo division is separated, and the file has no singles label (checked this session)"
+BC-39,32-team roster and IR sweep before any team-level model is trusted,Partial,data/atlas/roster_events_2026.csv,,,Roster event file exists; the 32-club sweep was not re-verified this session
+BC-40,Weekly series with ranked strategy results and a control baseline,Partial,data/x3/verified/strategies.json,weekly_series,,Weekly series starts at Week 3; Week 10 has n=1 scored game although the feed holds 14 finals (flag BR-02)

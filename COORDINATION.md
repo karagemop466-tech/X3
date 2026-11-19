@@ -4638,6 +4638,44 @@ Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap chec
 - `scripts/audit_all.py`: **PASS** (`375` pages, `12,876` source rows).
 - **Flagged irregularities**: `LF-01` no official NFL market-price feed (market/diff/CLV/ROI/leaderboard kept blank/empty); `LF-02` `Azeez Al-Shaair` (HOU) & `Jaylon Carlies` (IND) placed on `11/17` Reserve/Injured yet still listed on `reg11`; `LF-03` `Daiyan Henley` listed in `11/10` LAC→DEN trade yet started `11/16` for LAC in `LAC@BAL` Game Book; `LF-04` 3 Week-11 Game Center stadium names differ from schedule page (`RELIANT STADIUM` vs `NRG Stadium`, `ARROWHEAD STADIUM` vs `GEHA Field`, `NORTHWEST STADIUM` vs `FedEx Field`); `LF-05` `MIN@SF` Mexico City outside NWS domain; `LF-06` Game Book name variants (`T.Though`/`T.Shough`, `J.Smith-Nijgba`, 2025 `Zach Bako-Bewele`); `LF-07` `CIN@WAS` MNF zero-injuries notice pending Thursday report; `LF-08` pre-existing `readiness/data/history/2026-11-19/*.html` tracked by `arena/46153df1-x3`.
 
+
+## Session `arena/5a7f85bc-x3` — brief coverage register + gate verifier (CLAIM, 2026-11-19)
+
+Base `e5f771d` (main after PR #125). Claim before any write.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| BC-1 | Line-by-line coverage register: every brief requirement mapped to a file that exists, a status (Present / Partial / Blocked), and a stated gap | in progress | `analysis/brief-coverage-2026-11-19.csv` (new) |
+| BC-2 | Verifier that fails if a cited file, substring or source URL is missing | in progress | `scripts/brief_coverage_verify.py` (new) |
+| BC-3 | Log irregularities found while verifying (no edits to other sessions' engines or pages) | in progress | this section only |
+| BC-4 | Integration: PR -> merge (no approval wait, per brief) -> confirm Pages deploy -> record here | in progress | `COORDINATION.md`, PR |
+
+Explicitly not touched: `tools/strategies_engine.py`, `data/x3/verified/**`, any site page. The D-1 gate is pre-registered; it is flagged, not edited.
+
+### Completion record — arena/5a7f85bc-x3 (2026-11-19)
+
+| ID | Task | Status | Result |
+|---|---|---|---|
+| BC-1 | Coverage register | done | `analysis/brief-coverage-2026-11-19.csv`: 40 requirements; 10 Present, 24 Partial, 6 Blocked. Every row names an evidence file in the repo |
+| BC-2 | Verifier | done | `scripts/brief_coverage_verify.py` — PASS (40 rows). Fails on a missing file, substring, or source URL, or on a non-official host |
+| BC-3 | Irregularities logged | done | BR-01, BR-02, BR-03 below |
+| BC-4 | Integration | in progress | PR and merge recorded below |
+
+**Scope honesty.** Most of the brief was already built by earlier sessions on `main`; this session did not re-build those modules. The register records what exists and what is missing. Official URLs in the register are taken from the repo's own captured data (for example `data/live/week10_gamebooks.csv`, `data/x3/verified/results_2026.csv`); they were **not re-fetched** in this session. Sandbox outbound access is limited to GitHub, npm and PyPI hosts, so nfl.com was not read live here.
+
+**Gate runs on the tree (local, this session).** `scripts/audit_all.py` PASS (382 pages); `scripts/verify_integration.py` PASS; `scripts/check_hub.py` HUB CHECK PASSED; `tools/check_links.py` OK (582 links); `scripts/check_site.py` 0 rows without link/flag; `scripts/brief_coverage_verify.py` PASS.
+
+### Irregularities (logged here; NOT edited in other sessions' files)
+
+- **BR-01 — demotion gate D-1 evaluates only the trailing streak.** `tools/strategies_engine.py` (line ~152) sets `fires = trailing_bad`. The published record shows `worst_streak_observed: 3` with `fires: false`. The weekly series (`data/x3/verified/strategies.json`) has three consecutive "does not beat naive" weeks in weeks 5, 6 and 7. The published rule text ("three consecutive scored weeks worse than the naive baseline") does not say "trailing". Not edited: changing a pre-registered gate after seeing its output is result-chasing. Owner decision needed: confirm which reading is the pre-registered one, then re-register if it changes.
+- **BR-02 — Week 10 is scored on n = 1.** The weekly series in `data/x3/verified/strategies.json` gives Week 10 `n: 1`, while `data/x3/verified/results_2026.csv` holds 14 FINAL Week-10 games. The series starts at Week 3 (Weeks 1–2 absent). The scoring-inclusion rule is not stated in the file.
+- **BR-03 — multiplicity adjustment and holdout are absent.** `tools/strategies_engine.py` and `data/x3/verified/strategies.json` contain no multiplicity-adjustment term and no declared final holdout season (0 matches for "multiplic"; no "holdout" in the strategies file). Brier skill is present, but the brief's multiplicity and holdout requirements are not implemented.
+- **Pre-existing, re-confirmed:** `data/x3/verified/price_store.csv` has 786 rows, every one `DERIVED` with an empty `market_source` (no market prices exist — F-01 / LF-01). Opening/closing market prices, the vig-free view and any ROI are therefore blocked, not merely partial.
+
+### Requests (logged, files NOT edited)
+
+1. **To the board/hub owners:** add BR-01, BR-02 and BR-03 to the Flagged for Review page, and link `analysis/brief-coverage-2026-11-19.csv` from the readiness page. This session did not edit shared pages.
+2. **To the strategies-engine owner:** resolve the BR-01 reading and the BR-02 inclusion rule before the next scheduled build, and add the multiplicity term that BR-03 says is missing.
 PR #125 record (completes session arena/213236fb-x3, task L6):
 - PR https://github.com/karagemop466-tech/X3/pull/125 — `arena/213236fb-x3` → `main`, "Live 2026-11-19 operations desk" (`live/` module: 7 pages, 14/14 Week-10 Game Books, live Week-11 reg11 injuries + W10→W11 delta, NWS kickoff weather, November transactions, Rule 6 kickoff priors).
 - Merged 2026-11-19T07:22:47Z as merge commit `e5f771d37a458115d07f9c5f679f9a2fcb77e45c` (this branch's base commit).
