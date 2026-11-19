@@ -33,7 +33,7 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 import x3_model as M  # noqa: E402
 
 OUT = os.path.join(ROOT, "data", "x3", "verified")
-SRC_RESULTS = "https://www.nfl.com/schedules/2026/by-week/week-N"
+SRC_RESULTS = "https://www.nfl.com/schedules/2026/by-week/week-10"
 SRC_STANDINGS = "https://www.nfl.com/standings/league/2026/REG"
 
 
@@ -74,14 +74,12 @@ def main() -> int:
     rows.append(row("home margin", "game total", nn, r, "Pearson r, 95% CI via Fisher z",
                     SRC_RESULTS,
                     "the side and the total are the two markets we originate; a small |r| is the "
-                    "arithmetic reason they can be modelled separately, and it is measured here "
-                    "rather than assumed"))
+                    "sample association between these outcomes; it does not establish independence"))
 
     r, nn = M.pearson(home_s, away_s)
     rows.append(row("home points", "away points", nn, r, "Pearson r, 95% CI via Fisher z",
                     SRC_RESULTS,
-                    "positive r means the two offences feed off the same game environment; this is "
-                    "the dependence term that makes a naive 'same game, two props' product wrong"))
+                    "descriptive association only; it does not estimate a joint probability for player props"))
 
     r, nn = M.pearson(total, [abs(x) for x in margin])
     rows.append(row("game total", "|home margin|", nn, r, "Pearson r, 95% CI via Fisher z",
@@ -96,8 +94,8 @@ def main() -> int:
                     "shape and the ratings window should be weighted; it is not"))
 
     # ---- team level, from the official standings (n = 32 clubs) -------------------
-    st = list(csv.DictReader(open(os.path.join(ROOT, "data", "hub",
-                                               "standings_2026_thru_wk9.csv"), encoding="utf-8")))
+    st = list(csv.DictReader(open(os.path.join(ROOT, "data", "closeout",
+                                               "official_standings_2026_wk10.csv"), encoding="utf-8")))
     def col(f):
         return [float(f(x)) for x in st]
     pairs = [

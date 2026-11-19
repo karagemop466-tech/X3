@@ -79,7 +79,10 @@ def main() -> int:
     bs = res["checks"]["R3_box_score_sample"]
     check(bs["agreed"] == bs["checked"] == 16,
           f"M2 box-score sample {bs['agreed']}/{bs['checked']}, expected 16/16")
-    check(res["counts"]["finals"] > 0, "M2 no final games in the feed")
+    wk10 = [r for r in res["rows"] if r["week"] == 10]
+    check(len(wk10) == res["checks"]["R4_week10_finals"]["agreed"] == 14
+          and all(r["status"] == "FINAL" for r in wk10), "M2 incomplete Week 10 results")
+    check(res["counts"]["finals"] == 150, "M2 unexpected final count through Week 10")
     for r in res["rows"]:
         if r["status"] == "FINAL":
             check(r["away_score"] != "" and r["home_score"] != "",

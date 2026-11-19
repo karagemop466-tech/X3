@@ -4489,3 +4489,12 @@ delta contents are now all derived rather than typed - a heading is as capable o
 - Verified source endpoints against the live [NFL injury report](https://www.nfl.com/injuries/) and [NFL schedule](https://www.nfl.com/schedules/): both showed 2026 Week 11. This confirms the endpoints, not every published player row or the report's publication time.
 - The two legacy raw files matched their recorded size and SHA-256. Their suffix changed from `.html` to `.bin` without changing a byte: vendor evidence was being audited as site HTML, breaking the integration build on NFL-relative links. New records preserve bytes, clock time and final URL per response and do not overwrite same-day captures. Tests cover same-day retention, hash fidelity, redirects and zero-row alerts. Repo audit passed (366 pages, 9,589 internal references).
 - Needs review: raw evidence is **not private**; a `.bin` suffix is not access control. No permission to redistribute raw NFL data was established. A restricted archive and retention policy, official depth and Game Book joins, and an authorized price feed remain separate blockers. Nothing in this change verifies a replacement, a price, or a strategy edge.
+## Session arena/aaad52f3-x3
+
+| Task | Status | Owner | Scope |
+|---|---|---|---|
+| Reconcile the market-layer results feed with official Week 10 finals (F-01/F-12); preserve historical strategy windows | done | arena/aaad52f3-x3 | `tools/results_feed.py`, generated `data/x3/verified/` and affected integration surfaces if required |
+
+Week 10 score verification: both chunks of the [official schedule](https://www.nfl.com/schedules/2026/by-week/week-10) checked against all 14 captured finals on 2026-11-19. The feed now contains 150 finals and 13 captured fixtures without scores; all 32 clubs reconcile to the [official league standings](https://www.nfl.com/standings/league/2026/REG). Historical model outputs are unchanged. Board/closeout owners: please mark the stale-count findings F-01/F-12 and V-01/V-03 as historical; the hub feed now agrees with the 150-game closeout on finals. This does not verify missing venues, availability, or prices.
+
+Rebase over PR #121: resolved the coordination append conflict by retaining both sessions’ entries. Its raw-file suffix repair cleared the pre-existing link-audit errors. Negative test: a changed Week 10 score fails without writing results. Market determinism and repo-wide integration passed; 366 HTML pages, zero integration problems.
