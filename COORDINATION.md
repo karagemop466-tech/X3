@@ -4638,3 +4638,13 @@ Branch `arena/213236fb-x3` (platform-fixed), base commit `6a983d9`. Overlap chec
 - `scripts/audit_all.py`: **PASS** (`375` pages, `12,876` source rows).
 - **Flagged irregularities**: `LF-01` no official NFL market-price feed (market/diff/CLV/ROI/leaderboard kept blank/empty); `LF-02` `Azeez Al-Shaair` (HOU) & `Jaylon Carlies` (IND) placed on `11/17` Reserve/Injured yet still listed on `reg11`; `LF-03` `Daiyan Henley` listed in `11/10` LAC→DEN trade yet started `11/16` for LAC in `LAC@BAL` Game Book; `LF-04` 3 Week-11 Game Center stadium names differ from schedule page (`RELIANT STADIUM` vs `NRG Stadium`, `ARROWHEAD STADIUM` vs `GEHA Field`, `NORTHWEST STADIUM` vs `FedEx Field`); `LF-05` `MIN@SF` Mexico City outside NWS domain; `LF-06` Game Book name variants (`T.Though`/`T.Shough`, `J.Smith-Nijgba`, 2025 `Zach Bako-Bewele`); `LF-07` `CIN@WAS` MNF zero-injuries notice pending Thursday report; `LF-08` pre-existing `readiness/data/history/2026-11-19/*.html` tracked by `arena/46153df1-x3`.
 
+
+## Session `arena/ffc3eb40-x3` — CLAIM (2026-11-19, before any write)
+
+Scope this session (branch `arena/ffc3eb40-x3`, base `e5f771d`, single-session branch; no other session claims these files):
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| Q1 | Re-check the stale decision-readiness register rows B10, B23, B25, B30, B33 against the captured official data in `data/live/` (Week 10 Game Books, Week 11 Game Centers, November transactions, Week 10 snap shares) and correct status/gate/clears text | in progress | `readiness/data/readiness.json`, regenerated `readiness/*.html`, `fresh/*.html` |
+| Q2 | Live re-verification against nfl.com: Week 11 injury report (`/injuries/league/2026/reg11`) and TB@DET rows vs the capture | in progress | `data/live/**` (read only), this log |
+| Q3 | Record the open items from the full request list that cannot be closed from official sources in this sandbox (flags only, no invented values) | in progress | `COORDINATION.md` |
