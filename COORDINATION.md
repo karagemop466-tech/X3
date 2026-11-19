@@ -4881,3 +4881,67 @@ The landing page now separates the **2026-11-14 model/input baseline** from the 
 - Different historical modules intentionally remain separate: the canonical market results feed reports 150 finals, while older raw/desk ledgers still report 137; the repo flags this data-vintage difference, and this change did not rewrite those modules.
 - Market prices, residual/CLV/ROI, and reward amounts remain blocked; not all roster/IR, depth, active/inactive and snap-count coverage is complete; strategy qualification/demotion policies are not unified. The landing calls out the not-ready state and links to the source-gap/flag pages.
 - Sandbox shell capture of nfl.com failed with HTTP 000. The failed test accidentally appended two failed-fetch records to `readiness/data/history/manifest.csv`; those test-only rows and empty reads were removed. No source capture/data changes remain from that probe. No direct NFL page was newly re-fetched in this integration task; the timestamp shown is read from the committed hash-verified manifest.
+
+---
+
+## Session `arena/d6d831c6-x3` — CLAIM: Week-10 official injury report full recount + row-level reconciliation (2026-11-19)
+
+Branch: `arena/d6d831c6-x3` (platform-assigned; the brief's `session-<id>/<task>` names are not used, per the platform rule). Base `e5f771d` (main after PR #125). Claim committed and pushed before any other write.
+
+**Overlap check (2026-11-19, before claiming):**
+- `arena/5a7f85bc-x3` claims BC-1..BC-4 = brief coverage register (`analysis/brief-coverage-2026-11-19.csv`, `scripts/brief_coverage_verify.py`). This session does **not** build a coverage register.
+- `arena/e0146586-x3` claims EI-1 = root landing page (`tools/build_hub.py`, `index.html`). This session does **not** edit the landing page or `tools/build_hub.py`.
+- Lions designations (VR-08), Malik Willis IR (VR-25), and the Texans image are already recorded as resolved or blocked on main; this session does not redo them.
+- Open on main and unclaimed: the Week-10 injury table row count is still unreconciled. Committed tables hold 345 rows, a second capture holds 347 rows, the live page was never fully recounted, and the Ravens rows differ (live 10 vs committed 8). This is the only item claimed here.
+
+| ID | Task | Status | File scope |
+|---|---|---|---|
+| W10R-1 | Read all 8 chunks of `https://www.nfl.com/injuries/league/2026/reg10` and transcribe every row (team, player, position, injury, practice status, game status) into a CSV with the chunk index | in progress | `data/recount/reg10_2026_live.csv` (new) |
+| W10R-2 | Reconcile per row against the committed tables (`audit/official_injury_wk10_2026.csv`, `agency/data/derived/injury_designations_w10_2026.csv`, `data/hub/injuries_2026_wk10.csv`); publish the diff with source links and flag every unexplained row | in progress | `recount/**` (new), `scripts/recount_*.py` (new) |
+| W10R-3 | Verifier: fails if a row lacks a team, practice status or source link, or if the per-team counts do not sum to the total | in progress | `scripts/recount_verify.py` (new) |
+| W10R-4 | Gates run locally (`audit_all`, `check_links`, `verify_integration`), PR → merge (no approval wait, per brief) → Pages deploy check → record here | in progress | `COORDINATION.md`, PR |
+
+Not claimed or changed here: any market, price, CLV, ROI, leaderboard, or staking value (no official source exists; `nfl.com/odds` returns 404 per the atlas log); shared hub/index outputs (requested via the log below, not edited).
+
+### Result (arena/d6d831c6-x3, 2026-11-19)
+
+| ID | Task | Status | Output |
+|---|---|---|---|
+| W10R-1 | Transcribe all 8 chunks of the live reg10 page | **done** (single reader; see R-F6) | `data/recount/reg10_2026_live_transcription.psv` (347 rows), `data/recount/reg10_2026_live.csv` |
+| W10R-2 | Row-level reconciliation against the committed tables | **done** | `data/recount/diffs.csv` (69 lines), `recount/index.html` §2–§3, `recount/rows.html` (all 347 rows) |
+| W10R-3 | Verifier | **done** | `scripts/recount_verify.py` (PASS; 37 checks incl. determinism and MANIFEST hashes), `scripts/recount_build.py`, `scripts/recount_pages.py` |
+| W10R-4 | Gates, PR, merge, Pages | see PR record below | — |
+
+**Live page, read 2026-11-19 (`https://www.nfl.com/injuries/league/2026/reg10`, chunks 0–7):** 347 player rows; 28 club sections; 14 games; game status Out 70 / Questionable 90 / Doubtful 11 / blank 176. Clubs with no section: CHI, DEN, PHI, TB, the Week-10 byes printed on `https://www.nfl.com/schedules/2026/by-week/week-10` ("Teams on Bye").
+
+**Committed tables vs live:**
+- `agency/data/derived/injury_designations_w10_2026.csv` (347 rows, captured 2026-11-15T19:05Z): all 347 players match; one capitalisation-only difference (Trevin Wallace, NYJ).
+- `audit/official_injury_wk10_2026.csv` and `data/hub/injuries_2026_wk10.csv` (345 rows each): **stale**. Missing BAL Calais Campbell and Ronnie Stanley. 32 field values differ: 30 in the LAC @ BAL block, 2 for IND Arden Key (committed Hamstring / Questionable; live blank).
+- Lions Kerby Joseph, Cade Mays and D.J. Reed show **Out** in the live page, the agency capture, the audit table and the hub table, so the Lions game-status item is resolved in the data.
+
+**Irregularities (published as R-F1…R-F9 on `recount/index.html`, all with links; none blocks merge):**
+- R-F1 the page heading reads "Week 11 of the 2026 Season" while the body reads "Injuries - WEEK 10" (unresolved).
+- R-F2 audit/hub missing two Ravens rows. R-F3 LAC @ BAL block values stale or different in audit/hub; cause not established. R-F9 Arden Key conflict.
+- R-F4 the brief's 254-row / 279-row figures are **not** reproduced (live 347; committed 345 and 347). No section on the live page is empty; four clubs have no section (byes).
+- R-F5 the brief's "Seattle and Cincinnati injury-free" is **not** reproduced: both list players (live SEA 15, CIN 9). The page that showed the injury-free display was not located.
+- R-F6 single-reader transcription; raw bytes not retainable (curl to nfl.com fails with a TLS error from this sandbox). Needs a second reader.
+- R-F7 roster-club assignments not checked against transactions (example: Myles Garrett under LAR, LB).
+- R-F8 casing-only difference (agency file).
+
+**Verification performed:** all 8 chunks of the reg10 page read; all 14 game links and the 4 bye clubs confirmed from the schedule page (chunks 0–1); per-game and per-club counts recomputed from the transcription; `recount_verify.py` PASS (37 checks); rebuild byte-identical; MANIFEST sha256 of inputs and outputs matches. Repo gates on this branch: `audit_all` PASS (384 pages), `check_links` PASS, `verify_integration` PASS, `check_hub` PASS, `verify_site` PASS, `verify_data` PASS, `check_site` PASS.
+
+**Change requests for the integration session (logged, not edited — shared outputs):**
+- **R-1** Regenerate `data/hub/injuries_2026_wk10.csv` and the hub injuries page from `data/recount/reg10_2026_live.csv` (347 rows; adds 2 Ravens rows; corrects 32 values; see `data/recount/diffs.csv`). The hub is a shared build output, so this belongs to the integration session. The audit folder is owned by the closed session `arena/d968fa97-x3`; its update is also left to integration.
+- **R-2** Add a nav entry for `recount/index.html` through `tools/build_hub.py` (not edited here; `arena/e0146586-x3` owns the landing page).
+- **R-3** Add `python3 scripts/recount_verify.py` to `.github/workflows/pages.yml` so the recount is checked on each push. The workflow is shared, so it was not edited here.
+- **R-4** A second reader should check `data/recount/reg10_2026_live_transcription.psv` against the live page (R-F6) before the table is republished as verified.
+
+**Not done in this session (honest scope):** the other items in the brief were not taken up. Several are already on main with their own registers and gates, several are blocked on sources that do not exist on any official NFL page (for example market prices, where `nfl.com/odds` returns 404 per the atlas log), the Texans depth image needs an authorised structured source, and official snap counts are not captured. Items claimed by other sessions were left to them: the brief coverage register (`arena/5a7f85bc-x3`) and the landing page (`arena/e0146586-x3`).
+
+### W10R — gate update (2026-11-19, after rebase onto `c09bd39`)
+
+- **Hub failure on PR #133 was not caused by W10R.** The Pages step "Check hub rebuilds from data/hub" failed because the base commit (`682f355`) carried a stale root `index.html` (readiness counts 13 blocked vs `readiness/data/readiness.json` 9). `origin/main` fixed this in `de13240`. After rebasing, `tools/x3_engine.py && tools/build_hub.py && tools/verify_hub.py` and `scripts/check_hub.py` leave the tree clean.
+- **Decision and atlas "build left the tree dirty" failures were caused by W10R.** Both census builders count site trees: `scripts/build_decision.py` (from top-level dirs with `index.html`) and `tools/atlas_site.py` (from any top-level dir containing HTML). Adding `recount/` moves the count 31→32 trees and 27→28 directories, and adds one census row. The census regeneration was run with the existing builders (`python3 scripts/build_decision.py`, `python3 tools/atlas_site.py`); no outputs were hand-edited. This matches the precedent in `b82b9ec` (depth/ census). The changed files are `atlas/flagged.html`, `atlas/repo-review.html`, `atlas/suggestions.html`, `decision/{executive-summary,index,landing-block,readiness,suggestions,trees}.html`.
+- **Local gates on the rebased tree, all exit 0:** `recount_verify`, `audit_all`, `check_links`, `check_site`, `verify_site`, `verify_integration`, `verify_data`, `check_hub`, `verify_readiness`, `verify_ledger`, `crosscheck --verify`, `origin_verify`, `desk_verify`, `ops_run`, `check_dashboard` + node checks, `results_feed` → `markets_engine` → `correlation_engine` → `depth_engine` → `strategies_engine` → `verify_markets` (no change under `data/x3/verified`), `decision` rebuild + verify, `atlas` rebuild + verify.
+- `crosscheck/data/selfcheck.json` is rewritten with a new timestamp on every run of `crosscheck --verify`. It is reverted in this commit and is not part of W10R.
+- **Irregularity:** GitHub's failed-step logs for the 2026-11-19 PR #133 runs could not be downloaded (EOF / blob errors). The failing steps were identified from the jobs API and reproduced locally instead.

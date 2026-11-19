@@ -1,0 +1,16 @@
+{
+  "session": "arena/d6d831c6-x3",
+  "retrieved": "2026-11-19",
+  "method": "Transcribed from fetch_page text of all 8 chunks of the official page; the raw HTML bytes could not be retained because the sandbox cannot reach nfl.com with curl (TLS failure). A second reader should check the transcription against the live page before reuse.",
+  "inputs": {
+    "data/recount/reg10_2026_live_transcription.psv": "2e4719a456f8dc618aa82d8d2e99f08b243d16660a840c526badcf87dbd90578",
+    "audit/official_injury_wk10_2026.csv": "2f1445c903c4d49033b213f14cfcc88be1cdb826a8051255d8a5e61435fe7999",
+    "agency/data/derived/injury_designations_w10_2026.csv": "32ba56a53fdfe11d92d1b592eabde1c660f907126c86b3c532926245522fc2f5",
+    "data/hub/injuries_2026_wk10.csv": "cf62be62e175e22ef2c4f9a822074be7da14e674d8a0dd41d9bddc276bb716ec"
+  },
+  "outputs": {
+    "data/recount/reg10_2026_live.csv": "51f83220a62c2d403763607b99598ac8002ff5ca43fab4b43dfd0e7abbcd131a",
+    "data/recount/comparison.json": "8d02b1aada3850f67c1f3a0d770ee4d05cccb25c82d0cb4b3f506820721d158d",
+    "data/recount/diffs.csv": "2b82f00102983f5ee93d71d4ef1d859bd5ab29aeb773216c9bfe623654f83ae9"
+  }
+}

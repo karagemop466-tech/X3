@@ -1,0 +1,212 @@
+{
+  "retrieved": "2026-11-19",
+  "source": "https://www.nfl.com/injuries/league/2026/reg10",
+  "schedule": "https://www.nfl.com/schedules/2026/by-week/week-10",
+  "live_rows": 347,
+  "live_games": 14,
+  "live_clubs": 28,
+  "bye_clubs": [
+    "CHI",
+    "DEN",
+    "PHI",
+    "TB"
+  ],
+  "clubs_in_32": 32,
+  "by_game": {
+    "G01": {
+      "rows": 20,
+      "away": "WAS",
+      "home": "NYG",
+      "day": "Thu 2026-11-12",
+      "kick": "20:15",
+      "net": "Prime Video"
+    },
+    "G02": {
+      "rows": 24,
+      "away": "NE",
+      "home": "DET",
+      "day": "Sun 2026-11-15",
+      "kick": "09:30",
+      "net": "FOX, FOX DEPORTES (Munich)"
+    },
+    "G03": {
+      "rows": 24,
+      "away": "KC",
+      "home": "ATL",
+      "day": "Sun 2026-11-15",
+      "kick": "13:00",
+      "net": "CBS"
+    },
+    "G04": {
+      "rows": 30,
+      "away": "MIN",
+      "home": "GB",
+      "day": "Sun 2026-11-15",
+      "kick": "13:00",
+      "net": "FOX"
+    },
+    "G05": {
+      "rows": 23,
+      "away": "JAX",
+      "home": "TEN",
+      "day": "Sun 2026-11-15",
+      "kick": "13:00",
+      "net": "FOX"
+    },
+    "G06": {
+      "rows": 23,
+      "away": "BUF",
+      "home": "NYJ",
+      "day": "Sun 2026-11-15",
+      "kick": "13:00",
+      "net": "CBS"
+    },
+    "G07": {
+      "rows": 25,
+      "away": "MIA",
+      "home": "IND",
+      "day": "Sun 2026-11-15",
+      "kick": "13:00",
+      "net": "CBS"
+    },
+    "G08": {
+      "rows": 24,
+      "away": "CAR",
+      "home": "NO",
+      "day": "Sun 2026-11-15",
+      "kick": "13:00",
+      "net": "FOX"
+    },
+    "G09": {
+      "rows": 28,
+      "away": "HOU",
+      "home": "CLE",
+      "day": "Sun 2026-11-15",
+      "kick": "13:00",
+      "net": "FOX"
+    },
+    "G10": {
+      "rows": 29,
+      "away": "LAR",
+      "home": "AZ",
+      "day": "Sun 2026-11-15",
+      "kick": "16:05",
+      "net": "CBS"
+    },
+    "G11": {
+      "rows": 20,
+      "away": "SEA",
+      "home": "LV",
+      "day": "Sun 2026-11-15",
+      "kick": "16:05",
+      "net": "CBS"
+    },
+    "G12": {
+      "rows": 31,
+      "away": "SF",
+      "home": "DAL",
+      "day": "Sun 2026-11-15",
+      "kick": "16:25",
+      "net": "FOX, FOX DEPORTES"
+    },
+    "G13": {
+      "rows": 17,
+      "away": "PIT",
+      "home": "CIN",
+      "day": "Sun 2026-11-15",
+      "kick": "20:20",
+      "net": "NBC, UNIVERSO"
+    },
+    "G14": {
+      "rows": 29,
+      "away": "LAC",
+      "home": "BAL",
+      "day": "Mon 2026-11-16",
+      "kick": "20:15",
+      "net": "ESPN, ABC, ESPN2, ESPN DEPORTES"
+    }
+  },
+  "by_club": {
+    "ATL": 11,
+    "AZ": 15,
+    "BAL": 10,
+    "BUF": 14,
+    "CAR": 12,
+    "CIN": 9,
+    "CLE": 12,
+    "DAL": 19,
+    "DET": 9,
+    "GB": 17,
+    "HOU": 16,
+    "IND": 14,
+    "JAX": 11,
+    "KC": 13,
+    "LAC": 19,
+    "LAR": 14,
+    "LV": 5,
+    "MIA": 11,
+    "MIN": 13,
+    "NE": 15,
+    "NO": 12,
+    "NYG": 11,
+    "NYJ": 9,
+    "PIT": 8,
+    "SEA": 15,
+    "SF": 12,
+    "TEN": 12,
+    "WAS": 9
+  },
+  "status_counts": {
+    "(blank)": 176,
+    "Out": 70,
+    "Questionable": 90,
+    "Doubtful": 11
+  },
+  "practice_counts": {
+    "Full Participation in Practice": 180,
+    "Did Not Participate In Practice": 94,
+    "Limited Participation in Practice": 73
+  },
+  "comparisons": [
+    {
+      "label": "agency",
+      "file": "agency/data/derived/injury_designations_w10_2026.csv",
+      "committed_rows": 347,
+      "live_rows": 347,
+      "matched_players": 347,
+      "missing_from_committed": 0,
+      "committed_not_on_live": 0,
+      "field_differences": 1,
+      "missing_players": []
+    },
+    {
+      "label": "audit",
+      "file": "audit/official_injury_wk10_2026.csv",
+      "committed_rows": 345,
+      "live_rows": 347,
+      "matched_players": 345,
+      "missing_from_committed": 2,
+      "committed_not_on_live": 0,
+      "field_differences": 32,
+      "missing_players": [
+        "BAL Calais Campbell",
+        "BAL Ronnie Stanley"
+      ]
+    },
+    {
+      "label": "hub",
+      "file": "data/hub/injuries_2026_wk10.csv",
+      "committed_rows": 345,
+      "live_rows": 347,
+      "matched_players": 345,
+      "missing_from_committed": 2,
+      "committed_not_on_live": 0,
+      "field_differences": 32,
+      "missing_players": [
+        "BAL Calais Campbell",
+        "BAL Ronnie Stanley"
+      ]
+    }
+  ],
+  "diff_total": 69
+}
