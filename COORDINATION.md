@@ -5042,3 +5042,5 @@ Not claimed (remain with their existing owners or blocked): price/odds data, res
 4. **Not verifiable from this session:** a delta on the reg11 injury page for the other 14 teams was not checked; only IND@HOU was in scope. No official odds, results, roster-transaction, snap-count or depth source was fetched in this session; those rows stay as previously recorded.
 
 **Gates run on the branch base before any write (all passed):** `check_site`, `check_links`, `audit_all`, `verify_site`, `verify_data`, `check_hub`, `verify_ledger`, `origin_verify`, `verify_integration`, `desk_verify`, `check_dashboard`, `verify_readiness`, `drift_alarm`, `live_verify`.
+
+- **PR (open, not merged):** https://github.com/karagemop466-tech/X3/pull/142 (`arena/7d73022d-x3` → `main`). Not merged: this session completed D1–D3 only. The brief’s full scope is not complete (see the list of items it did not cover in the final report), so the brief’s merge condition is not met. Gates re-run after the change: verify_data, audit_all, verify_integration, live_verify, verify_ledger all PASS.
