@@ -1,0 +1,11 @@
+{
+  "captured_at_utc": "2026-11-20T02:00:22.916438+00:00",
+  "slug": "league-schedule",
+  "url": "https://www.nfl.com/schedules/",
+  "http_status": 200,
+  "bytes": 2307799,
+  "sha256": "dac9c0ae3e9324bbb91168370aa4f9cccad53550902d34102f2d173688ada3c0",
+  "row_count": 0,
+  "effective_url": "https://www.nfl.com/schedules",
+  "alerts": []
+}
