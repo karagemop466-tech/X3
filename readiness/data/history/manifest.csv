@@ -3,3 +3,5 @@ captured_at_utc,slug,url,http_status,bytes,sha256,row_count
 2026-11-19T02:16:10+00:00,league-schedule,https://www.nfl.com/schedules/,200,2298706,9aae90a847be96cd507beb4b8ba45a65faeda6b0890072cdd1e69a1f58f8aa43,0
 2026-11-20T02:00:22.713117+00:00,league-injury-report,https://www.nfl.com/injuries/,200,382935,e5a27d7e31a4e253d382fd2487f216c23eefe6380d263fa65c0d97155742f585,317
 2026-11-20T02:00:22.916438+00:00,league-schedule,https://www.nfl.com/schedules/,200,2307799,dac9c0ae3e9324bbb91168370aa4f9cccad53550902d34102f2d173688ada3c0,0
+2026-11-21T01:57:37.642922+00:00,league-injury-report,https://www.nfl.com/injuries/,200,389287,89ad3cf6458dae18ca984ef04c49e5e77ea63e0063efa6ddec7f9600a3f6c176,336
+2026-11-21T01:57:37.719584+00:00,league-schedule,https://www.nfl.com/schedules/,200,2362149,37342abc503e484bc0dd3705711127064caa85e4e04f68db44c4a35d45c98354,0

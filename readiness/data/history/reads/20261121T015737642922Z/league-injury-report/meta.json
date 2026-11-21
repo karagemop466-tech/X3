@@ -1,0 +1,11 @@
+{
+  "captured_at_utc": "2026-11-21T01:57:37.642922+00:00",
+  "slug": "league-injury-report",
+  "url": "https://www.nfl.com/injuries/",
+  "http_status": 200,
+  "bytes": 389287,
+  "sha256": "89ad3cf6458dae18ca984ef04c49e5e77ea63e0063efa6ddec7f9600a3f6c176",
+  "row_count": 336,
+  "effective_url": "https://www.nfl.com/injuries/",
+  "alerts": []
+}
